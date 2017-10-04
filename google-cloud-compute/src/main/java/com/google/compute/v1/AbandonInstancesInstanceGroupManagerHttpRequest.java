@@ -126,7 +126,7 @@ public final class AbandonInstancesInstanceGroupManagerHttpRequest implements Ap
   @Nullable
   @Override
   public InstanceGroupManagersAbandonInstancesRequest getRequestBody() {
-    return instanceGroupManagersAbandonInstancesRequest;
+    return instanceGroupManagersAbandonInstancesRequestResource;
   }
 
   public String getAccessToken() {

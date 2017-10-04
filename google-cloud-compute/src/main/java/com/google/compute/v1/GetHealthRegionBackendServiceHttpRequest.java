@@ -126,7 +126,7 @@ public final class GetHealthRegionBackendServiceHttpRequest implements ApiMessag
   @Nullable
   @Override
   public ResourceGroupReference getRequestBody() {
-    return resourceGroupReference;
+    return resourceGroupReferenceResource;
   }
 
   public String getAccessToken() {

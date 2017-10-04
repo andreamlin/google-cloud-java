@@ -119,7 +119,7 @@ public final class InsertTargetPoolHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public TargetPool getRequestBody() {
-    return targetPool;
+    return targetPoolResource;
   }
 
   public String getAccessToken() {

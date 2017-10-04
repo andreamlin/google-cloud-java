@@ -126,7 +126,7 @@ public final class UpdateAutoscalerHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Autoscaler getRequestBody() {
-    return autoscaler;
+    return autoscalerResource;
   }
 
   public String getAccessToken() {

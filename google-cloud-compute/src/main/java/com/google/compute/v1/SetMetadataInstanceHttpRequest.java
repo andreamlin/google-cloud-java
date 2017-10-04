@@ -126,7 +126,7 @@ public final class SetMetadataInstanceHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Metadata getRequestBody() {
-    return metadata;
+    return metadataResource;
   }
 
   public String getAccessToken() {

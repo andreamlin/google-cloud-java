@@ -119,7 +119,7 @@ public final class InsertVpnTunnelHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public VpnTunnel getRequestBody() {
-    return vpnTunnel;
+    return vpnTunnelResource;
   }
 
   public String getAccessToken() {

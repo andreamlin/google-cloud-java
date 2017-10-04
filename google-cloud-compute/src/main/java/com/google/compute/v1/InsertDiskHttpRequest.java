@@ -126,7 +126,7 @@ public final class InsertDiskHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Disk getRequestBody() {
-    return disk;
+    return diskResource;
   }
 
   public String getAccessToken() {

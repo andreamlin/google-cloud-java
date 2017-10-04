@@ -126,7 +126,7 @@ public final class SetNamedPortsInstanceGroupHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public InstanceGroupsSetNamedPortsRequest getRequestBody() {
-    return instanceGroupsSetNamedPortsRequest;
+    return instanceGroupsSetNamedPortsRequestResource;
   }
 
   public String getAccessToken() {

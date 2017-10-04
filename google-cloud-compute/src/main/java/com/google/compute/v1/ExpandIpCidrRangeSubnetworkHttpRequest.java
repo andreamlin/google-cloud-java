@@ -126,7 +126,7 @@ public final class ExpandIpCidrRangeSubnetworkHttpRequest implements ApiMessage 
   @Nullable
   @Override
   public SubnetworksExpandIpCidrRangeRequest getRequestBody() {
-    return subnetworksExpandIpCidrRangeRequest;
+    return subnetworksExpandIpCidrRangeRequestResource;
   }
 
   public String getAccessToken() {

@@ -126,7 +126,7 @@ public final class SetMachineTypeInstanceHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public InstancesSetMachineTypeRequest getRequestBody() {
-    return instancesSetMachineTypeRequest;
+    return instancesSetMachineTypeRequestResource;
   }
 
   public String getAccessToken() {

@@ -112,7 +112,7 @@ public final class InsertGlobalAddressHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Address getRequestBody() {
-    return address;
+    return addressResource;
   }
 
   public String getAccessToken() {

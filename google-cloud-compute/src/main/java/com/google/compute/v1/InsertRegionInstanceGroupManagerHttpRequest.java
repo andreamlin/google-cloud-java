@@ -119,7 +119,7 @@ public final class InsertRegionInstanceGroupManagerHttpRequest implements ApiMes
   @Nullable
   @Override
   public InstanceGroupManager getRequestBody() {
-    return instanceGroupManager;
+    return instanceGroupManagerResource;
   }
 
   public String getAccessToken() {

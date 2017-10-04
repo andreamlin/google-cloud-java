@@ -119,7 +119,7 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
   @Nullable
   @Override
   public TargetSslProxiesSetProxyHeaderRequest getRequestBody() {
-    return targetSslProxiesSetProxyHeaderRequest;
+    return targetSslProxiesSetProxyHeaderRequestResource;
   }
 
   public String getAccessToken() {

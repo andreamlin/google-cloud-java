@@ -112,7 +112,7 @@ public final class MoveInstanceProjectHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public InstanceMoveRequest getRequestBody() {
-    return instanceMoveRequest;
+    return instanceMoveRequestResource;
   }
 
   public String getAccessToken() {

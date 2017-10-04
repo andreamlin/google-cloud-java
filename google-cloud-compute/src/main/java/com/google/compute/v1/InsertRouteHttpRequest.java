@@ -112,7 +112,7 @@ public final class InsertRouteHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Route getRequestBody() {
-    return route;
+    return routeResource;
   }
 
   public String getAccessToken() {

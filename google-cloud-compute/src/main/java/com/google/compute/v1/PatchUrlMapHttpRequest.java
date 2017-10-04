@@ -119,7 +119,7 @@ public final class PatchUrlMapHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public UrlMap getRequestBody() {
-    return urlMap;
+    return urlMapResource;
   }
 
   public String getAccessToken() {

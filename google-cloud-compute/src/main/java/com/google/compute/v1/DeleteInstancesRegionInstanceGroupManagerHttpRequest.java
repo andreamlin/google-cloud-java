@@ -126,7 +126,7 @@ public final class DeleteInstancesRegionInstanceGroupManagerHttpRequest implemen
   @Nullable
   @Override
   public RegionInstanceGroupManagersDeleteInstancesRequest getRequestBody() {
-    return regionInstanceGroupManagersDeleteInstancesRequest;
+    return regionInstanceGroupManagersDeleteInstancesRequestResource;
   }
 
   public String getAccessToken() {

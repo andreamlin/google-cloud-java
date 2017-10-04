@@ -126,7 +126,7 @@ public final class SetInstanceTemplateRegionInstanceGroupManagerHttpRequest impl
   @Nullable
   @Override
   public RegionInstanceGroupManagersSetTemplateRequest getRequestBody() {
-    return regionInstanceGroupManagersSetTemplateRequest;
+    return regionInstanceGroupManagersSetTemplateRequestResource;
   }
 
   public String getAccessToken() {

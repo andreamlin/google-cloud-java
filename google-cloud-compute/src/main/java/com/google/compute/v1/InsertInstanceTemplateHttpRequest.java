@@ -112,7 +112,7 @@ public final class InsertInstanceTemplateHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public InstanceTemplate getRequestBody() {
-    return instanceTemplate;
+    return instanceTemplateResource;
   }
 
   public String getAccessToken() {

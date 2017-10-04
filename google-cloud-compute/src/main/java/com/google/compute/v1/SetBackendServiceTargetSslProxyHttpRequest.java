@@ -119,7 +119,7 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
   @Nullable
   @Override
   public TargetSslProxiesSetBackendServiceRequest getRequestBody() {
-    return targetSslProxiesSetBackendServiceRequest;
+    return targetSslProxiesSetBackendServiceRequestResource;
   }
 
   public String getAccessToken() {

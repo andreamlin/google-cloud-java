@@ -112,7 +112,7 @@ public final class InsertGlobalForwardingRuleHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public ForwardingRule getRequestBody() {
-    return forwardingRule;
+    return forwardingRuleResource;
   }
 
   public String getAccessToken() {

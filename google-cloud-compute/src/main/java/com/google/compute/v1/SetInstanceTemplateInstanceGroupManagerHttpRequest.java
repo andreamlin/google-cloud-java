@@ -126,7 +126,7 @@ public final class SetInstanceTemplateInstanceGroupManagerHttpRequest implements
   @Nullable
   @Override
   public InstanceGroupManagersSetInstanceTemplateRequest getRequestBody() {
-    return instanceGroupManagersSetInstanceTemplateRequest;
+    return instanceGroupManagersSetInstanceTemplateRequestResource;
   }
 
   public String getAccessToken() {

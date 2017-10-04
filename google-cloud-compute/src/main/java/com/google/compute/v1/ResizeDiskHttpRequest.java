@@ -126,7 +126,7 @@ public final class ResizeDiskHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public DisksResizeRequest getRequestBody() {
-    return disksResizeRequest;
+    return disksResizeRequestResource;
   }
 
   public String getAccessToken() {

@@ -126,7 +126,7 @@ public final class AddInstancesInstanceGroupHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public InstanceGroupsAddInstancesRequest getRequestBody() {
-    return instanceGroupsAddInstancesRequest;
+    return instanceGroupsAddInstancesRequestResource;
   }
 
   public String getAccessToken() {

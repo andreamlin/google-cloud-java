@@ -126,7 +126,7 @@ public final class RemoveInstancesInstanceGroupHttpRequest implements ApiMessage
   @Nullable
   @Override
   public InstanceGroupsRemoveInstancesRequest getRequestBody() {
-    return instanceGroupsRemoveInstancesRequest;
+    return instanceGroupsRemoveInstancesRequestResource;
   }
 
   public String getAccessToken() {

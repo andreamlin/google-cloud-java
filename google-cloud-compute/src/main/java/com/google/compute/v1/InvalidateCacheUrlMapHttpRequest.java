@@ -119,7 +119,7 @@ public final class InvalidateCacheUrlMapHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public CacheInvalidationRule getRequestBody() {
-    return cacheInvalidationRule;
+    return cacheInvalidationRuleResource;
   }
 
   public String getAccessToken() {

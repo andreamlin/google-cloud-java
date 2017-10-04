@@ -112,7 +112,7 @@ public final class InsertHttpHealthCheckHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public HttpHealthCheck getRequestBody() {
-    return httpHealthCheck;
+    return httpHealthCheckResource;
   }
 
   public String getAccessToken() {

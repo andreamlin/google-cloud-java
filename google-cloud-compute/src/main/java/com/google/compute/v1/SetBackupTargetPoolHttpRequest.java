@@ -133,7 +133,7 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public TargetReference getRequestBody() {
-    return targetReference;
+    return targetReferenceResource;
   }
 
   public String getAccessToken() {

@@ -126,7 +126,7 @@ public final class AddInstanceTargetPoolHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public TargetPoolsAddInstanceRequest getRequestBody() {
-    return targetPoolsAddInstanceRequest;
+    return targetPoolsAddInstanceRequestResource;
   }
 
   public String getAccessToken() {

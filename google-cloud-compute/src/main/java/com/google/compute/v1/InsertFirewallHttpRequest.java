@@ -112,7 +112,7 @@ public final class InsertFirewallHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Firewall getRequestBody() {
-    return firewall;
+    return firewallResource;
   }
 
   public String getAccessToken() {

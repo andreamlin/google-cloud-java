@@ -126,7 +126,7 @@ public final class StartWithEncryptionKeyInstanceHttpRequest implements ApiMessa
   @Nullable
   @Override
   public InstancesStartWithEncryptionKeyRequest getRequestBody() {
-    return instancesStartWithEncryptionKeyRequest;
+    return instancesStartWithEncryptionKeyRequestResource;
   }
 
   public String getAccessToken() {

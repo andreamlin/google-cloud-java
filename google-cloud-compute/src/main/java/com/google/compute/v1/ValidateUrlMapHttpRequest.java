@@ -119,7 +119,7 @@ public final class ValidateUrlMapHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public UrlMapsValidateRequest getRequestBody() {
-    return urlMapsValidateRequest;
+    return urlMapsValidateRequestResource;
   }
 
   public String getAccessToken() {

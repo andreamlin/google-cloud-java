@@ -112,7 +112,7 @@ public final class InsertNetworkHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Network getRequestBody() {
-    return network;
+    return networkResource;
   }
 
   public String getAccessToken() {

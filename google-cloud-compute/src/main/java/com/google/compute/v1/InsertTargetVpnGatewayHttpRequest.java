@@ -119,7 +119,7 @@ public final class InsertTargetVpnGatewayHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public TargetVpnGateway getRequestBody() {
-    return targetVpnGateway;
+    return targetVpnGatewayResource;
   }
 
   public String getAccessToken() {

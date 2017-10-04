@@ -119,7 +119,7 @@ public final class InsertSubnetworkHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Subnetwork getRequestBody() {
-    return subnetwork;
+    return subnetworkResource;
   }
 
   public String getAccessToken() {

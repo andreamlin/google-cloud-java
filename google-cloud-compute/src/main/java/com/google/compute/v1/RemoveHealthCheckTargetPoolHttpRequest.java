@@ -126,7 +126,7 @@ public final class RemoveHealthCheckTargetPoolHttpRequest implements ApiMessage 
   @Nullable
   @Override
   public TargetPoolsRemoveHealthCheckRequest getRequestBody() {
-    return targetPoolsRemoveHealthCheckRequest;
+    return targetPoolsRemoveHealthCheckRequestResource;
   }
 
   public String getAccessToken() {

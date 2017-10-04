@@ -119,7 +119,7 @@ public final class InsertTargetInstanceHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public TargetInstance getRequestBody() {
-    return targetInstance;
+    return targetInstanceResource;
   }
 
   public String getAccessToken() {

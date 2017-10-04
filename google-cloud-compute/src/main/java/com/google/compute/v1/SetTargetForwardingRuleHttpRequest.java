@@ -126,7 +126,7 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public TargetReference getRequestBody() {
-    return targetReference;
+    return targetReferenceResource;
   }
 
   public String getAccessToken() {

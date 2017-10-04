@@ -126,7 +126,7 @@ public final class SetNamedPortsRegionInstanceGroupHttpRequest implements ApiMes
   @Nullable
   @Override
   public RegionInstanceGroupsSetNamedPortsRequest getRequestBody() {
-    return regionInstanceGroupsSetNamedPortsRequest;
+    return regionInstanceGroupsSetNamedPortsRequestResource;
   }
 
   public String getAccessToken() {

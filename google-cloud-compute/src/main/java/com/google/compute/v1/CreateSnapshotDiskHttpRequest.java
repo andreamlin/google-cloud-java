@@ -126,7 +126,7 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Snapshot getRequestBody() {
-    return snapshot;
+    return snapshotResource;
   }
 
   public String getAccessToken() {

@@ -126,7 +126,7 @@ public final class RemoveInstanceTargetPoolHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public TargetPoolsRemoveInstanceRequest getRequestBody() {
-    return targetPoolsRemoveInstanceRequest;
+    return targetPoolsRemoveInstanceRequestResource;
   }
 
   public String getAccessToken() {

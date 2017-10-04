@@ -126,7 +126,7 @@ public final class PreviewRouterHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Router getRequestBody() {
-    return router;
+    return routerResource;
   }
 
   public String getAccessToken() {

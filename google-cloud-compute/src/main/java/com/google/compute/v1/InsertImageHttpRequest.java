@@ -112,7 +112,7 @@ public final class InsertImageHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Image getRequestBody() {
-    return image;
+    return imageResource;
   }
 
   public String getAccessToken() {

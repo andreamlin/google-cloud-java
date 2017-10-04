@@ -126,7 +126,7 @@ public final class SetTargetPoolsRegionInstanceGroupManagerHttpRequest implement
   @Nullable
   @Override
   public RegionInstanceGroupManagersSetTargetPoolsRequest getRequestBody() {
-    return regionInstanceGroupManagersSetTargetPoolsRequest;
+    return regionInstanceGroupManagersSetTargetPoolsRequestResource;
   }
 
   public String getAccessToken() {

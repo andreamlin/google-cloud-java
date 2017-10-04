@@ -126,7 +126,7 @@ public final class DeleteInstancesInstanceGroupManagerHttpRequest implements Api
   @Nullable
   @Override
   public InstanceGroupManagersDeleteInstancesRequest getRequestBody() {
-    return instanceGroupManagersDeleteInstancesRequest;
+    return instanceGroupManagersDeleteInstancesRequestResource;
   }
 
   public String getAccessToken() {

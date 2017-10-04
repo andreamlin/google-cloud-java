@@ -119,7 +119,7 @@ public final class DeprecateImageHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public DeprecationStatus getRequestBody() {
-    return deprecationStatus;
+    return deprecationStatusResource;
   }
 
   public String getAccessToken() {

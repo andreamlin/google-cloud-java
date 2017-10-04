@@ -112,7 +112,7 @@ public final class InsertSslCertificateHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public SslCertificate getRequestBody() {
-    return sslCertificate;
+    return sslCertificateResource;
   }
 
   public String getAccessToken() {

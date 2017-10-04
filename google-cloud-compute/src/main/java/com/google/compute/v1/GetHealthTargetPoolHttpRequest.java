@@ -126,7 +126,7 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public InstanceReference getRequestBody() {
-    return instanceReference;
+    return instanceReferenceResource;
   }
 
   public String getAccessToken() {

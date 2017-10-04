@@ -112,7 +112,7 @@ public final class InsertUrlMapHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public UrlMap getRequestBody() {
-    return urlMap;
+    return urlMapResource;
   }
 
   public String getAccessToken() {

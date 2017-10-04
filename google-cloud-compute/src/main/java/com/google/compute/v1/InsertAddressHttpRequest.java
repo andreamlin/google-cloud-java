@@ -119,7 +119,7 @@ public final class InsertAddressHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Address getRequestBody() {
-    return address;
+    return addressResource;
   }
 
   public String getAccessToken() {

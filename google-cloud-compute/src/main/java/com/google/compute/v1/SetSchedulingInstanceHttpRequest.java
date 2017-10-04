@@ -126,7 +126,7 @@ public final class SetSchedulingInstanceHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Scheduling getRequestBody() {
-    return scheduling;
+    return schedulingResource;
   }
 
   public String getAccessToken() {

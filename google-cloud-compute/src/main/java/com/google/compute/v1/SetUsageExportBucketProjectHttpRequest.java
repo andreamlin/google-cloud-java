@@ -112,7 +112,7 @@ public final class SetUsageExportBucketProjectHttpRequest implements ApiMessage 
   @Nullable
   @Override
   public UsageExportLocation getRequestBody() {
-    return usageExportLocation;
+    return usageExportLocationResource;
   }
 
   public String getAccessToken() {

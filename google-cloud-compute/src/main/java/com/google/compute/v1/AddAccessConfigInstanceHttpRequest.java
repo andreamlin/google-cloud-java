@@ -133,7 +133,7 @@ public final class AddAccessConfigInstanceHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public AccessConfig getRequestBody() {
-    return accessConfig;
+    return accessConfigResource;
   }
 
   public AccessConfig getAccessConfigResource() {

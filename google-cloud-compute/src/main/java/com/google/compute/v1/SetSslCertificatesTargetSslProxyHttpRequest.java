@@ -119,7 +119,7 @@ public final class SetSslCertificatesTargetSslProxyHttpRequest implements ApiMes
   @Nullable
   @Override
   public TargetSslProxiesSetSslCertificatesRequest getRequestBody() {
-    return targetSslProxiesSetSslCertificatesRequest;
+    return targetSslProxiesSetSslCertificatesRequestResource;
   }
 
   public String getAccessToken() {

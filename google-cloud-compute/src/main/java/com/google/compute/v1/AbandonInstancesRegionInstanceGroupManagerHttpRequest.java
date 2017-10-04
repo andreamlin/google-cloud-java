@@ -126,7 +126,7 @@ public final class AbandonInstancesRegionInstanceGroupManagerHttpRequest impleme
   @Nullable
   @Override
   public RegionInstanceGroupManagersAbandonInstancesRequest getRequestBody() {
-    return regionInstanceGroupManagersAbandonInstancesRequest;
+    return regionInstanceGroupManagersAbandonInstancesRequestResource;
   }
 
   public String getAccessToken() {

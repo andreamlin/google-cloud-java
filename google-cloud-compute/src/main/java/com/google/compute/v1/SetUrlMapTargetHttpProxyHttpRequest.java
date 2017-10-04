@@ -119,7 +119,7 @@ public final class SetUrlMapTargetHttpProxyHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public UrlMapReference getRequestBody() {
-    return urlMapReference;
+    return urlMapReferenceResource;
   }
 
   public String getAccessToken() {

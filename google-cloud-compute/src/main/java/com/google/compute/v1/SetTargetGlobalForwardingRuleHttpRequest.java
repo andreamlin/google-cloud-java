@@ -119,7 +119,7 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
   @Nullable
   @Override
   public TargetReference getRequestBody() {
-    return targetReference;
+    return targetReferenceResource;
   }
 
   public String getAccessToken() {

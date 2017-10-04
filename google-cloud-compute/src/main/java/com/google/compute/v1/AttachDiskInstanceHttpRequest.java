@@ -126,7 +126,7 @@ public final class AttachDiskInstanceHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public AttachedDisk getRequestBody() {
-    return attachedDisk;
+    return attachedDiskResource;
   }
 
   public String getAccessToken() {

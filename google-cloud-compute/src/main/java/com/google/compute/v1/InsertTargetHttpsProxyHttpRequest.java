@@ -112,7 +112,7 @@ public final class InsertTargetHttpsProxyHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public TargetHttpsProxy getRequestBody() {
-    return targetHttpsProxy;
+    return targetHttpsProxyResource;
   }
 
   public String getAccessToken() {

@@ -119,7 +119,7 @@ public final class UpdateBackendServiceHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public BackendService getRequestBody() {
-    return backendService;
+    return backendServiceResource;
   }
 
   public String getAccessToken() {

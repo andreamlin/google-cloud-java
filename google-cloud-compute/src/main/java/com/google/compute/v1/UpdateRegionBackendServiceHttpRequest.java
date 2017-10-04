@@ -126,7 +126,7 @@ public final class UpdateRegionBackendServiceHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public BackendService getRequestBody() {
-    return backendService;
+    return backendServiceResource;
   }
 
   public String getAccessToken() {

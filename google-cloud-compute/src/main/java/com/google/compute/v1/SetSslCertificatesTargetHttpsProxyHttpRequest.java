@@ -119,7 +119,7 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
   @Nullable
   @Override
   public TargetHttpsProxiesSetSslCertificatesRequest getRequestBody() {
-    return targetHttpsProxiesSetSslCertificatesRequest;
+    return targetHttpsProxiesSetSslCertificatesRequestResource;
   }
 
   public String getAccessToken() {

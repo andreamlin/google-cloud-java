@@ -126,7 +126,7 @@ public final class SetTagsInstanceHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Tags getRequestBody() {
-    return tags;
+    return tagsResource;
   }
 
   public String getAccessToken() {

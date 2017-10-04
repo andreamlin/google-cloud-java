@@ -119,7 +119,7 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public InstanceGroup getRequestBody() {
-    return instanceGroup;
+    return instanceGroupResource;
   }
 
   public String getAccessToken() {

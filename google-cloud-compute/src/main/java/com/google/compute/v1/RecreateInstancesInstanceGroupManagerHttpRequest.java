@@ -126,7 +126,7 @@ public final class RecreateInstancesInstanceGroupManagerHttpRequest implements A
   @Nullable
   @Override
   public InstanceGroupManagersRecreateInstancesRequest getRequestBody() {
-    return instanceGroupManagersRecreateInstancesRequest;
+    return instanceGroupManagersRecreateInstancesRequestResource;
   }
 
   public String getAccessToken() {

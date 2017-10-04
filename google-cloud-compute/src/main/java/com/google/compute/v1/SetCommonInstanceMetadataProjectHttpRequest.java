@@ -112,7 +112,7 @@ public final class SetCommonInstanceMetadataProjectHttpRequest implements ApiMes
   @Nullable
   @Override
   public Metadata getRequestBody() {
-    return metadata;
+    return metadataResource;
   }
 
   public String getAccessToken() {

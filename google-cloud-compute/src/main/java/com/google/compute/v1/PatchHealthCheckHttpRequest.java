@@ -119,7 +119,7 @@ public final class PatchHealthCheckHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public HealthCheck getRequestBody() {
-    return healthCheck;
+    return healthCheckResource;
   }
 
   public String getAccessToken() {

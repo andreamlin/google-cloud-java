@@ -126,7 +126,7 @@ public final class SetServiceAccountInstanceHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public InstancesSetServiceAccountRequest getRequestBody() {
-    return instancesSetServiceAccountRequest;
+    return instancesSetServiceAccountRequestResource;
   }
 
   public String getAccessToken() {

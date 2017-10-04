@@ -126,7 +126,7 @@ public final class PatchRegionBackendServiceHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public BackendService getRequestBody() {
-    return backendService;
+    return backendServiceResource;
   }
 
   public String getAccessToken() {

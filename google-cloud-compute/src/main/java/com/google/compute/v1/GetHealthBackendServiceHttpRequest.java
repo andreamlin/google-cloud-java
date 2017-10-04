@@ -119,7 +119,7 @@ public final class GetHealthBackendServiceHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public ResourceGroupReference getRequestBody() {
-    return resourceGroupReference;
+    return resourceGroupReferenceResource;
   }
 
   public String getAccessToken() {

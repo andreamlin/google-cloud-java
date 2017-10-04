@@ -126,7 +126,7 @@ public final class RecreateInstancesRegionInstanceGroupManagerHttpRequest implem
   @Nullable
   @Override
   public RegionInstanceGroupManagersRecreateRequest getRequestBody() {
-    return regionInstanceGroupManagersRecreateRequest;
+    return regionInstanceGroupManagersRecreateRequestResource;
   }
 
   public String getAccessToken() {

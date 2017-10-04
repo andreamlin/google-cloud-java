@@ -126,7 +126,7 @@ public final class SetTargetPoolsInstanceGroupManagerHttpRequest implements ApiM
   @Nullable
   @Override
   public InstanceGroupManagersSetTargetPoolsRequest getRequestBody() {
-    return instanceGroupManagersSetTargetPoolsRequest;
+    return instanceGroupManagersSetTargetPoolsRequestResource;
   }
 
   public String getAccessToken() {

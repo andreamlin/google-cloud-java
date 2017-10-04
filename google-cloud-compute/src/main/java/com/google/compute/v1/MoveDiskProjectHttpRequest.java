@@ -112,7 +112,7 @@ public final class MoveDiskProjectHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public DiskMoveRequest getRequestBody() {
-    return diskMoveRequest;
+    return diskMoveRequestResource;
   }
 
   public String getAccessToken() {

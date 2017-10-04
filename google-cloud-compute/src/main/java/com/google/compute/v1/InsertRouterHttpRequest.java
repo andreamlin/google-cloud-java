@@ -119,7 +119,7 @@ public final class InsertRouterHttpRequest implements ApiMessage {
   @Nullable
   @Override
   public Router getRequestBody() {
-    return router;
+    return routerResource;
   }
 
   public String getAccessToken() {

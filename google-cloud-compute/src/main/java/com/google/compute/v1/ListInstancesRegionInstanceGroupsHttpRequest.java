@@ -154,7 +154,7 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
   @Nullable
   @Override
   public RegionInstanceGroupsListInstancesRequest getRequestBody() {
-    return regionInstanceGroupsListInstancesRequest;
+    return regionInstanceGroupsListInstancesRequestResource;
   }
 
   public String getAccessToken() {
