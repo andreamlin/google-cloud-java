@@ -330,7 +330,7 @@ public class BackendServiceAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<BackendService> extractResources(BackendServiceAggregatedList payload) {
-          return payload.getBackendServices();
+          return payload.getBackendServicesScopedList().getBackendServices();
         }
       };
 

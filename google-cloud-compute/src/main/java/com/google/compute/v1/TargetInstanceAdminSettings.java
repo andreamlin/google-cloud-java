@@ -303,7 +303,7 @@ public class TargetInstanceAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<TargetInstance> extractResources(TargetInstanceAggregatedList payload) {
-          return payload.getTargetInstances();
+          return payload.getTargetInstancesScopedList().getTargetInstances();
         }
       };
 

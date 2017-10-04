@@ -366,7 +366,7 @@ public class InstanceGroupManagerAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<InstanceGroupManager> extractResources(InstanceGroupManagerAggregatedList payload) {
-          return payload.getInstanceGroupManagers();
+          return payload.getInstanceGroupManagersScopedList().getInstanceGroupManagers();
         }
       };
 

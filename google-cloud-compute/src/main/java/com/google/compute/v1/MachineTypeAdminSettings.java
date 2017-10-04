@@ -285,7 +285,7 @@ public class MachineTypeAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<MachineType> extractResources(MachineTypeAggregatedList payload) {
-          return payload.getMachineTypes();
+          return payload.getMachineTypesScopedList().getMachineTypes();
         }
       };
 

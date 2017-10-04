@@ -49,6 +49,7 @@ import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListRegionOperationsPagedResponse;
 import com.google.compute.v1.stub.HttpRegionOperationAdminStub;
 import com.google.compute.v1.stub.RegionOperationAdminStub;
+import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -106,14 +107,14 @@ public class RegionOperationAdminSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<DeleteRegionOperationHttpRequest, Operation> deleteRegionOperationSettings;
+  private final SimpleCallSettings<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationSettings;
   private final SimpleCallSettings<GetRegionOperationHttpRequest, Operation> getRegionOperationSettings;
   private final PagedCallSettings<ListRegionOperationsHttpRequest, OperationList, ListRegionOperationsPagedResponse> listRegionOperationsSettings;
 
   /**
    * Returns the object with the settings used for calls to deleteRegionOperation.
    */
-  public SimpleCallSettings<DeleteRegionOperationHttpRequest, DeleteRegionOperationHttpResponse> deleteRegionOperationSettings() {
+  public SimpleCallSettings<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationSettings() {
     return deleteRegionOperationSettings;
   }
 
@@ -309,7 +310,7 @@ public class RegionOperationAdminSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<DeleteRegionOperationHttpRequest, DeleteRegionOperationHttpResponse> deleteRegionOperationSettings;
+    private final SimpleCallSettings.Builder<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationSettings;
     private final SimpleCallSettings.Builder<GetRegionOperationHttpRequest, Operation> getRegionOperationSettings;
     private final PagedCallSettings.Builder<ListRegionOperationsHttpRequest, OperationList, ListRegionOperationsPagedResponse> listRegionOperationsSettings;
 
@@ -436,7 +437,7 @@ public class RegionOperationAdminSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteRegionOperation.
      */
-    public SimpleCallSettings.Builder<DeleteRegionOperationHttpRequest, DeleteRegionOperationHttpResponse> deleteRegionOperationSettings() {
+    public SimpleCallSettings.Builder<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationSettings() {
       return deleteRegionOperationSettings;
     }
 

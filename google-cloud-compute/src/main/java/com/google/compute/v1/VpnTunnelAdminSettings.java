@@ -303,7 +303,7 @@ public class VpnTunnelAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<VpnTunnel> extractResources(VpnTunnelAggregatedList payload) {
-          return payload.getVpnTunnels();
+          return payload.getVpnTunnelsScopedList().getVpnTunnels();
         }
       };
 

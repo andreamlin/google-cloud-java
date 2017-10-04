@@ -340,7 +340,7 @@ public class InstanceGroupAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<InstanceGroup> extractResources(InstanceGroupAggregatedList payload) {
-          return payload.getInstanceGroups();
+          return payload.getInstanceGroupsScopedList().getInstanceGroups();
         }
       };
 

@@ -321,7 +321,7 @@ public class DiskAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<Disk> extractResources(DiskAggregatedList payload) {
-          return payload.getDisks();
+          return payload.getDisksScopedList().getDisks();
         }
       };
 

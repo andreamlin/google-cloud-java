@@ -50,6 +50,7 @@ import static com.google.compute.v1.PagedResponseWrappers.AggregatedListGlobalOp
 import static com.google.compute.v1.PagedResponseWrappers.ListGlobalOperationsPagedResponse;
 import com.google.compute.v1.stub.GlobalOperationAdminStub;
 import com.google.compute.v1.stub.HttpGlobalOperationAdminStub;
+import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -108,7 +109,7 @@ public class GlobalOperationAdminSettings extends ClientSettings {
   private static String gapicVersion;
 
   private final PagedCallSettings<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsSettings;
-  private final SimpleCallSettings<DeleteGlobalOperationHttpRequest, DeleteGlobalOperationHttpResponse> deleteGlobalOperationSettings;
+  private final SimpleCallSettings<DeleteGlobalOperationHttpRequest, Empty> deleteGlobalOperationSettings;
   private final SimpleCallSettings<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings;
   private final PagedCallSettings<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse> listGlobalOperationsSettings;
 
@@ -122,7 +123,7 @@ public class GlobalOperationAdminSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to deleteGlobalOperation.
    */
-  public SimpleCallSettings<DeleteGlobalOperationHttpRequest, DeleteGlobalOperationHttpResponse> deleteGlobalOperationSettings() {
+  public SimpleCallSettings<DeleteGlobalOperationHttpRequest, Empty> deleteGlobalOperationSettings() {
     return deleteGlobalOperationSettings;
   }
 
@@ -294,7 +295,7 @@ public class GlobalOperationAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<Operation> extractResources(OperationAggregatedList payload) {
-          return payload.getOperations();
+          return payload.getOperationsScopedList().getOperations();
         }
       };
 
@@ -368,7 +369,7 @@ public class GlobalOperationAdminSettings extends ClientSettings {
     private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsSettings;
-    private final SimpleCallSettings.Builder<DeleteGlobalOperationHttpRequest, DeleteGlobalOperationHttpResponse> deleteGlobalOperationSettings;
+    private final SimpleCallSettings.Builder<DeleteGlobalOperationHttpRequest, Empty> deleteGlobalOperationSettings;
     private final SimpleCallSettings.Builder<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings;
     private final PagedCallSettings.Builder<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse> listGlobalOperationsSettings;
 
@@ -512,7 +513,7 @@ public class GlobalOperationAdminSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteGlobalOperation.
      */
-    public SimpleCallSettings.Builder<DeleteGlobalOperationHttpRequest, DeleteGlobalOperationHttpResponse> deleteGlobalOperationSettings() {
+    public SimpleCallSettings.Builder<DeleteGlobalOperationHttpRequest, Empty> deleteGlobalOperationSettings() {
       return deleteGlobalOperationSettings;
     }
 

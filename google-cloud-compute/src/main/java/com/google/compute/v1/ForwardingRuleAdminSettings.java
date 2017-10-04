@@ -312,7 +312,7 @@ public class ForwardingRuleAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<ForwardingRule> extractResources(ForwardingRuleAggregatedList payload) {
-          return payload.getForwardingRules();
+          return payload.getForwardingRulesScopedList().getForwardingRules();
         }
       };
 

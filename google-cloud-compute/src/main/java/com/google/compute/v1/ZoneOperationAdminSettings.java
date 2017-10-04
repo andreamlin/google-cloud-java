@@ -49,6 +49,7 @@ import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListZoneOperationsPagedResponse;
 import com.google.compute.v1.stub.HttpZoneOperationAdminStub;
 import com.google.compute.v1.stub.ZoneOperationAdminStub;
+import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -106,14 +107,14 @@ public class ZoneOperationAdminSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<DeleteZoneOperationHttpRequest, DeleteZoneOperationHttpResponse> deleteZoneOperationSettings;
+  private final SimpleCallSettings<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationSettings;
   private final SimpleCallSettings<GetZoneOperationHttpRequest, Operation> getZoneOperationSettings;
   private final PagedCallSettings<ListZoneOperationsHttpRequest, OperationList, ListZoneOperationsPagedResponse> listZoneOperationsSettings;
 
   /**
    * Returns the object with the settings used for calls to deleteZoneOperation.
    */
-  public SimpleCallSettings<DeleteZoneOperationHttpRequest, DeleteZoneOperationHttpResponse> deleteZoneOperationSettings() {
+  public SimpleCallSettings<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationSettings() {
     return deleteZoneOperationSettings;
   }
 
@@ -309,7 +310,7 @@ public class ZoneOperationAdminSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<DeleteZoneOperationHttpRequest, DeleteZoneOperationHttpResponse> deleteZoneOperationSettings;
+    private final SimpleCallSettings.Builder<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationSettings;
     private final SimpleCallSettings.Builder<GetZoneOperationHttpRequest, Operation> getZoneOperationSettings;
     private final PagedCallSettings.Builder<ListZoneOperationsHttpRequest, OperationList, ListZoneOperationsPagedResponse> listZoneOperationsSettings;
 
@@ -436,7 +437,7 @@ public class ZoneOperationAdminSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteZoneOperation.
      */
-    public SimpleCallSettings.Builder<DeleteZoneOperationHttpRequest, DeleteZoneOperationHttpResponse> deleteZoneOperationSettings() {
+    public SimpleCallSettings.Builder<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationSettings() {
       return deleteZoneOperationSettings;
     }
 

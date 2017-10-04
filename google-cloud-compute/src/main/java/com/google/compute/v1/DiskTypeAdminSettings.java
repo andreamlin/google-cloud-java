@@ -285,7 +285,7 @@ public class DiskTypeAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<DiskType> extractResources(DiskTypeAggregatedList payload) {
-          return payload.getDiskTypes();
+          return payload.getDiskTypesScopedList().getDiskTypes();
         }
       };
 
