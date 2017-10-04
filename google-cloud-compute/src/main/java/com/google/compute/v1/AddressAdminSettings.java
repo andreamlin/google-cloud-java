@@ -303,7 +303,7 @@ public class AddressAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<Address> extractResources(AddressAggregatedList payload) {
-          return payload.getAddressesScopedList().getAddresses();
+          return payload.getItems().getAddresses();
         }
       };
 

@@ -303,7 +303,7 @@ public class TargetVpnGatewayAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<TargetVpnGateway> extractResources(TargetVpnGatewayAggregatedList payload) {
-          return payload.getTargetVpnGatewaysScopedList().getTargetVpnGateways();
+          return payload.getItems().getTargetVpnGateways();
         }
       };
 

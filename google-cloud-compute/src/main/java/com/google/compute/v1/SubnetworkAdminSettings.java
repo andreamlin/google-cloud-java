@@ -312,7 +312,7 @@ public class SubnetworkAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<Subnetwork> extractResources(SubnetworkAggregatedList payload) {
-          return payload.getSubnetworksScopedList().getSubnetworks();
+          return payload.getItems().getSubnetworks();
         }
       };
 

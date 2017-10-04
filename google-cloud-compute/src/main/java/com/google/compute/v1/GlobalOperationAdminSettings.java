@@ -295,7 +295,7 @@ public class GlobalOperationAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<Operation> extractResources(OperationAggregatedList payload) {
-          return payload.getOperationsScopedList().getOperations();
+          return payload.getItems().getOperations();
         }
       };
 

@@ -339,7 +339,7 @@ public class RouterAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<Router> extractResources(RouterAggregatedList payload) {
-          return payload.getRoutersScopedList().getRouters();
+          return payload.getItems().getRouters();
         }
       };
 

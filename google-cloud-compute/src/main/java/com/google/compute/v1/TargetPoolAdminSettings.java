@@ -357,7 +357,7 @@ public class TargetPoolAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<TargetPool> extractResources(TargetPoolAggregatedList payload) {
-          return payload.getTargetPoolsScopedList().getTargetPools();
+          return payload.getItems().getTargetPools();
         }
       };
 

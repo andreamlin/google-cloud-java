@@ -438,7 +438,7 @@ public class InstanceAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<Instance> extractResources(InstanceAggregatedList payload) {
-          return payload.getInstancesScopedList().getInstances();
+          return payload.getItems().getInstances();
         }
       };
 

@@ -321,7 +321,7 @@ public class AutoscalerAdminSettings extends ClientSettings {
         }
         @Override
         public Iterable<Autoscaler> extractResources(AutoscalerAggregatedList payload) {
-          return payload.getAutoscalersScopedList().getAutoscalers();
+          return payload.getItems().getAutoscalers();
         }
       };
 
