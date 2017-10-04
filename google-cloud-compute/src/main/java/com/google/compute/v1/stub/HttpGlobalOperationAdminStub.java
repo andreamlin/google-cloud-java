@@ -27,7 +27,6 @@ import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListGlobalOperationsHttpRequest;
 import com.google.compute.v1.DeleteGlobalOperationHttpRequest;
-import com.google.compute.v1.DeleteGlobalOperationHttpResponse;
 import com.google.compute.v1.GetGlobalOperationHttpRequest;
 import com.google.compute.v1.GlobalOperationAdminSettings;
 import com.google.compute.v1.GlobalOperationsOperationName;
@@ -38,6 +37,7 @@ import com.google.compute.v1.OperationAggregatedList;
 import com.google.compute.v1.OperationList;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListGlobalOperationsPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListGlobalOperationsPagedResponse;
+import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -73,12 +73,12 @@ public class HttpGlobalOperationAdminStub extends GlobalOperationAdminStub {
               .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
               .setHttpMethod(HttpMethods.GET)
               .build());
-  private static final UnaryCallable<DeleteGlobalOperationHttpRequest, DeleteGlobalOperationHttpResponse> directDeleteGlobalOperationCallable =
+  private static final UnaryCallable<DeleteGlobalOperationHttpRequest, Empty> directDeleteGlobalOperationCallable =
       HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteGlobalOperationHttpRequest, DeleteGlobalOperationHttpResponse>newBuilder()
+          ApiMethodDescriptor.<DeleteGlobalOperationHttpRequest, Empty>newBuilder()
               .setMethodName("compute.globalOperations.delete")
               .setRequestInstance(DeleteGlobalOperationHttpRequest.getDefaultInstance())
-              .setResponseInstance(DeleteGlobalOperationHttpResponse.getDefaultInstance())
+              .setResponseInstance(Empty.getDefaultInstance())
               .setEndpointPathTemplate("{project}/global/operations/{operation}")
               .setPathParams(Sets.<String>newHashSet(
                                 "operation",    "project"
@@ -124,7 +124,7 @@ public class HttpGlobalOperationAdminStub extends GlobalOperationAdminStub {
 
   private final UnaryCallable<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> aggregatedListGlobalOperationsCallable;
   private final UnaryCallable<AggregatedListGlobalOperationsHttpRequest, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsPagedCallable;
-  private final UnaryCallable<DeleteGlobalOperationHttpRequest, DeleteGlobalOperationHttpResponse> deleteGlobalOperationCallable;
+  private final UnaryCallable<DeleteGlobalOperationHttpRequest, Empty> deleteGlobalOperationCallable;
   private final UnaryCallable<GetGlobalOperationHttpRequest, Operation> getGlobalOperationCallable;
   private final UnaryCallable<ListGlobalOperationsHttpRequest, OperationList> listGlobalOperationsCallable;
   private final UnaryCallable<ListGlobalOperationsHttpRequest, ListGlobalOperationsPagedResponse> listGlobalOperationsPagedCallable;
@@ -167,7 +167,7 @@ public class HttpGlobalOperationAdminStub extends GlobalOperationAdminStub {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteGlobalOperationHttpRequest, DeleteGlobalOperationHttpResponse> deleteGlobalOperationCallable() {
+  public UnaryCallable<DeleteGlobalOperationHttpRequest, Empty> deleteGlobalOperationCallable() {
     return deleteGlobalOperationCallable;
   }
 

@@ -26,7 +26,6 @@ import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteRegionOperationHttpRequest;
-import com.google.compute.v1.DeleteRegionOperationHttpResponse;
 import com.google.compute.v1.GetRegionOperationHttpRequest;
 import com.google.compute.v1.ListRegionOperationsHttpRequest;
 import com.google.compute.v1.Operation;
@@ -35,6 +34,7 @@ import static com.google.compute.v1.PagedResponseWrappers.ListRegionOperationsPa
 import com.google.compute.v1.RegionOperationAdminSettings;
 import com.google.compute.v1.RegionOperationsOperationName;
 import com.google.compute.v1.RegionOperationsRegionName;
+import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,12 +54,12 @@ import javax.annotation.Generated;
 public class HttpRegionOperationAdminStub extends RegionOperationAdminStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteRegionOperationHttpRequest, DeleteRegionOperationHttpResponse> directDeleteRegionOperationCallable =
+  private static final UnaryCallable<DeleteRegionOperationHttpRequest, Empty> directDeleteRegionOperationCallable =
       HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteRegionOperationHttpRequest, DeleteRegionOperationHttpResponse>newBuilder()
+          ApiMethodDescriptor.<DeleteRegionOperationHttpRequest, Empty>newBuilder()
               .setMethodName("compute.regionOperations.delete")
               .setRequestInstance(DeleteRegionOperationHttpRequest.getDefaultInstance())
-              .setResponseInstance(DeleteRegionOperationHttpResponse.getDefaultInstance())
+              .setResponseInstance(Empty.getDefaultInstance())
               .setEndpointPathTemplate("{project}/regions/{region}/operations/{operation}")
               .setPathParams(Sets.<String>newHashSet(
                                 "operation",    "project",    "region"
@@ -103,7 +103,7 @@ public class HttpRegionOperationAdminStub extends RegionOperationAdminStub {
 
   private final BackgroundResource backgroundResources;
 
-  private final UnaryCallable<DeleteRegionOperationHttpRequest, DeleteRegionOperationHttpResponse> deleteRegionOperationCallable;
+  private final UnaryCallable<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationCallable;
   private final UnaryCallable<GetRegionOperationHttpRequest, Operation> getRegionOperationCallable;
   private final UnaryCallable<ListRegionOperationsHttpRequest, OperationList> listRegionOperationsCallable;
   private final UnaryCallable<ListRegionOperationsHttpRequest, ListRegionOperationsPagedResponse> listRegionOperationsPagedCallable;
@@ -133,7 +133,7 @@ public class HttpRegionOperationAdminStub extends RegionOperationAdminStub {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteRegionOperationHttpRequest, DeleteRegionOperationHttpResponse> deleteRegionOperationCallable() {
+  public UnaryCallable<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationCallable() {
     return deleteRegionOperationCallable;
   }
 

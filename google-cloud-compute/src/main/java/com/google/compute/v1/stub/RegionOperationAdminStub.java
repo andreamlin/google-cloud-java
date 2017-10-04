@@ -19,7 +19,6 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.compute.v1.DeleteRegionOperationHttpRequest;
-import com.google.compute.v1.DeleteRegionOperationHttpResponse;
 import com.google.compute.v1.GetRegionOperationHttpRequest;
 import com.google.compute.v1.ListRegionOperationsHttpRequest;
 import com.google.compute.v1.Operation;
@@ -27,6 +26,7 @@ import com.google.compute.v1.OperationList;
 import static com.google.compute.v1.PagedResponseWrappers.ListRegionOperationsPagedResponse;
 import com.google.compute.v1.RegionOperationsOperationName;
 import com.google.compute.v1.RegionOperationsRegionName;
+import com.google.protobuf.Empty;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -41,7 +41,7 @@ public abstract class RegionOperationAdminStub implements BackgroundResource {
 
 
   @BetaApi
-  public UnaryCallable<DeleteRegionOperationHttpRequest, DeleteRegionOperationHttpResponse> deleteRegionOperationCallable() {
+  public UnaryCallable<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteRegionOperationCallable()");
   }
 

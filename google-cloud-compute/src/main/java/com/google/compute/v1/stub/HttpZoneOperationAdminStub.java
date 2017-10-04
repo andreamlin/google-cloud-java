@@ -26,7 +26,6 @@ import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteZoneOperationHttpRequest;
-import com.google.compute.v1.DeleteZoneOperationHttpResponse;
 import com.google.compute.v1.GetZoneOperationHttpRequest;
 import com.google.compute.v1.ListZoneOperationsHttpRequest;
 import com.google.compute.v1.Operation;
@@ -35,6 +34,7 @@ import static com.google.compute.v1.PagedResponseWrappers.ListZoneOperationsPage
 import com.google.compute.v1.ZoneOperationAdminSettings;
 import com.google.compute.v1.ZoneOperationsOperationName;
 import com.google.compute.v1.ZoneOperationsZoneName;
+import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,12 +54,12 @@ import javax.annotation.Generated;
 public class HttpZoneOperationAdminStub extends ZoneOperationAdminStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteZoneOperationHttpRequest, DeleteZoneOperationHttpResponse> directDeleteZoneOperationCallable =
+  private static final UnaryCallable<DeleteZoneOperationHttpRequest, Empty> directDeleteZoneOperationCallable =
       HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteZoneOperationHttpRequest, DeleteZoneOperationHttpResponse>newBuilder()
+          ApiMethodDescriptor.<DeleteZoneOperationHttpRequest, Empty>newBuilder()
               .setMethodName("compute.zoneOperations.delete")
               .setRequestInstance(DeleteZoneOperationHttpRequest.getDefaultInstance())
-              .setResponseInstance(DeleteZoneOperationHttpResponse.getDefaultInstance())
+              .setResponseInstance(Empty.getDefaultInstance())
               .setEndpointPathTemplate("{project}/zones/{zone}/operations/{operation}")
               .setPathParams(Sets.<String>newHashSet(
                                 "operation",    "project",    "zone"
@@ -103,7 +103,7 @@ public class HttpZoneOperationAdminStub extends ZoneOperationAdminStub {
 
   private final BackgroundResource backgroundResources;
 
-  private final UnaryCallable<DeleteZoneOperationHttpRequest, DeleteZoneOperationHttpResponse> deleteZoneOperationCallable;
+  private final UnaryCallable<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationCallable;
   private final UnaryCallable<GetZoneOperationHttpRequest, Operation> getZoneOperationCallable;
   private final UnaryCallable<ListZoneOperationsHttpRequest, OperationList> listZoneOperationsCallable;
   private final UnaryCallable<ListZoneOperationsHttpRequest, ListZoneOperationsPagedResponse> listZoneOperationsPagedCallable;
@@ -133,7 +133,7 @@ public class HttpZoneOperationAdminStub extends ZoneOperationAdminStub {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteZoneOperationHttpRequest, DeleteZoneOperationHttpResponse> deleteZoneOperationCallable() {
+  public UnaryCallable<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationCallable() {
     return deleteZoneOperationCallable;
   }
 

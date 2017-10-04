@@ -19,7 +19,6 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.compute.v1.DeleteZoneOperationHttpRequest;
-import com.google.compute.v1.DeleteZoneOperationHttpResponse;
 import com.google.compute.v1.GetZoneOperationHttpRequest;
 import com.google.compute.v1.ListZoneOperationsHttpRequest;
 import com.google.compute.v1.Operation;
@@ -27,6 +26,7 @@ import com.google.compute.v1.OperationList;
 import static com.google.compute.v1.PagedResponseWrappers.ListZoneOperationsPagedResponse;
 import com.google.compute.v1.ZoneOperationsOperationName;
 import com.google.compute.v1.ZoneOperationsZoneName;
+import com.google.protobuf.Empty;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -41,7 +41,7 @@ public abstract class ZoneOperationAdminStub implements BackgroundResource {
 
 
   @BetaApi
-  public UnaryCallable<DeleteZoneOperationHttpRequest, DeleteZoneOperationHttpResponse> deleteZoneOperationCallable() {
+  public UnaryCallable<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteZoneOperationCallable()");
   }
 

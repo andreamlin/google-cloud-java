@@ -20,7 +20,6 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.compute.v1.AggregatedListGlobalOperationsHttpRequest;
 import com.google.compute.v1.DeleteGlobalOperationHttpRequest;
-import com.google.compute.v1.DeleteGlobalOperationHttpResponse;
 import com.google.compute.v1.GetGlobalOperationHttpRequest;
 import com.google.compute.v1.GlobalOperationsOperationName;
 import com.google.compute.v1.GlobalOperationsProjectName;
@@ -30,6 +29,7 @@ import com.google.compute.v1.OperationAggregatedList;
 import com.google.compute.v1.OperationList;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListGlobalOperationsPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListGlobalOperationsPagedResponse;
+import com.google.protobuf.Empty;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -54,7 +54,7 @@ public abstract class GlobalOperationAdminStub implements BackgroundResource {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteGlobalOperationHttpRequest, DeleteGlobalOperationHttpResponse> deleteGlobalOperationCallable() {
+  public UnaryCallable<DeleteGlobalOperationHttpRequest, Empty> deleteGlobalOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteGlobalOperationCallable()");
   }
 
