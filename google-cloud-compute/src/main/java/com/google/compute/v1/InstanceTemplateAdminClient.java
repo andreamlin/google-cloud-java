@@ -299,16 +299,16 @@ public class InstanceTemplateAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param instanceTemplate An Instance Template resource.
+   * @param instanceTemplateResource An Instance Template resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertInstanceTemplate(InstanceTemplatesProjectName project, InstanceTemplate instanceTemplate) {
+  public final Operation insertInstanceTemplate(InstanceTemplatesProjectName project, InstanceTemplate instanceTemplateResource) {
 
     InsertInstanceTemplateHttpRequest request =
         InsertInstanceTemplateHttpRequest.newBuilder()
         .setProjectWithInstanceTemplatesProjectName(project)
-        .setInstanceTemplate(instanceTemplate)
+        .setInstanceTemplateResource(instanceTemplateResource)
         .build();
     return insertInstanceTemplate(request);
   }

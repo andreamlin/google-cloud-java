@@ -299,16 +299,16 @@ public class HealthCheckAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param healthCheck An HealthCheck resource. This resource defines a template for how individual virtual machines should be checked for health, via one of the supported protocols.
+   * @param healthCheckResource An HealthCheck resource. This resource defines a template for how individual virtual machines should be checked for health, via one of the supported protocols.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertHealthCheck(HealthChecksProjectName project, HealthCheck healthCheck) {
+  public final Operation insertHealthCheck(HealthChecksProjectName project, HealthCheck healthCheckResource) {
 
     InsertHealthCheckHttpRequest request =
         InsertHealthCheckHttpRequest.newBuilder()
         .setProjectWithHealthChecksProjectName(project)
-        .setHealthCheck(healthCheck)
+        .setHealthCheckResource(healthCheckResource)
         .build();
     return insertHealthCheck(request);
   }
@@ -463,16 +463,16 @@ public class HealthCheckAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param healthCheck Name of the HealthCheck resource to update.
-   * @param healthCheck An HealthCheck resource. This resource defines a template for how individual virtual machines should be checked for health, via one of the supported protocols.
+   * @param healthCheckResource An HealthCheck resource. This resource defines a template for how individual virtual machines should be checked for health, via one of the supported protocols.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation patchHealthCheck(HealthCheckName healthCheck, HealthCheck healthCheck) {
+  public final Operation patchHealthCheck(HealthCheckName healthCheck, HealthCheck healthCheckResource) {
 
     PatchHealthCheckHttpRequest request =
         PatchHealthCheckHttpRequest.newBuilder()
         .setHealthCheckWithHealthCheckName(healthCheck)
-        .setHealthCheck(healthCheck)
+        .setHealthCheckResource(healthCheckResource)
         .build();
     return patchHealthCheck(request);
   }
@@ -529,16 +529,16 @@ public class HealthCheckAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param healthCheck Name of the HealthCheck resource to update.
-   * @param healthCheck An HealthCheck resource. This resource defines a template for how individual virtual machines should be checked for health, via one of the supported protocols.
+   * @param healthCheckResource An HealthCheck resource. This resource defines a template for how individual virtual machines should be checked for health, via one of the supported protocols.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation updateHealthCheck(HealthCheckName healthCheck, HealthCheck healthCheck) {
+  public final Operation updateHealthCheck(HealthCheckName healthCheck, HealthCheck healthCheckResource) {
 
     UpdateHealthCheckHttpRequest request =
         UpdateHealthCheckHttpRequest.newBuilder()
         .setHealthCheckWithHealthCheckName(healthCheck)
-        .setHealthCheck(healthCheck)
+        .setHealthCheckResource(healthCheckResource)
         .build();
     return updateHealthCheck(request);
   }

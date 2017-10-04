@@ -299,16 +299,16 @@ public class NetworkAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param network Represents a Network resource. Read Networks and Firewalls for more information.
+   * @param networkResource Represents a Network resource. Read Networks and Firewalls for more information.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertNetwork(NetworksProjectName project, Network network) {
+  public final Operation insertNetwork(NetworksProjectName project, Network networkResource) {
 
     InsertNetworkHttpRequest request =
         InsertNetworkHttpRequest.newBuilder()
         .setProjectWithNetworksProjectName(project)
-        .setNetwork(network)
+        .setNetworkResource(networkResource)
         .build();
     return insertNetwork(request);
   }

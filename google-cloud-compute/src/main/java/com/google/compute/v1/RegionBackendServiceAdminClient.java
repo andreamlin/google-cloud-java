@@ -299,16 +299,16 @@ public class RegionBackendServiceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param backendService Name of the BackendService resource to which the queried instance belongs.
-   * @param resourceGroupReference
+   * @param resourceGroupReferenceResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final BackendServiceGroupHealth getHealthRegionBackendService(RegionBackendServicesBackendServiceName backendService, ResourceGroupReference resourceGroupReference) {
+  public final BackendServiceGroupHealth getHealthRegionBackendService(RegionBackendServicesBackendServiceName backendService, ResourceGroupReference resourceGroupReferenceResource) {
 
     GetHealthRegionBackendServiceHttpRequest request =
         GetHealthRegionBackendServiceHttpRequest.newBuilder()
         .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
-        .setResourceGroupReference(resourceGroupReference)
+        .setResourceGroupReferenceResource(resourceGroupReferenceResource)
         .build();
     return getHealthRegionBackendService(request);
   }
@@ -365,16 +365,16 @@ public class RegionBackendServiceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param region Name of the region scoping this request.
-   * @param backendService A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity.
+   * @param backendServiceResource A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertRegionBackendService(RegionBackendServicesRegionName region, BackendService backendService) {
+  public final Operation insertRegionBackendService(RegionBackendServicesRegionName region, BackendService backendServiceResource) {
 
     InsertRegionBackendServiceHttpRequest request =
         InsertRegionBackendServiceHttpRequest.newBuilder()
         .setRegionWithRegionBackendServicesRegionName(region)
-        .setBackendService(backendService)
+        .setBackendServiceResource(backendServiceResource)
         .build();
     return insertRegionBackendService(request);
   }
@@ -529,16 +529,16 @@ public class RegionBackendServiceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param backendService Name of the BackendService resource to update.
-   * @param backendService A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity.
+   * @param backendServiceResource A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation patchRegionBackendService(RegionBackendServicesBackendServiceName backendService, BackendService backendService) {
+  public final Operation patchRegionBackendService(RegionBackendServicesBackendServiceName backendService, BackendService backendServiceResource) {
 
     PatchRegionBackendServiceHttpRequest request =
         PatchRegionBackendServiceHttpRequest.newBuilder()
         .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
-        .setBackendService(backendService)
+        .setBackendServiceResource(backendServiceResource)
         .build();
     return patchRegionBackendService(request);
   }
@@ -595,16 +595,16 @@ public class RegionBackendServiceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param backendService Name of the BackendService resource to update.
-   * @param backendService A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity.
+   * @param backendServiceResource A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation updateRegionBackendService(RegionBackendServicesBackendServiceName backendService, BackendService backendService) {
+  public final Operation updateRegionBackendService(RegionBackendServicesBackendServiceName backendService, BackendService backendServiceResource) {
 
     UpdateRegionBackendServiceHttpRequest request =
         UpdateRegionBackendServiceHttpRequest.newBuilder()
         .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
-        .setBackendService(backendService)
+        .setBackendServiceResource(backendServiceResource)
         .build();
     return updateRegionBackendService(request);
   }

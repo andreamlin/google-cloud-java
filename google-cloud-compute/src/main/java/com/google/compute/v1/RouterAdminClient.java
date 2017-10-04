@@ -462,16 +462,16 @@ public class RouterAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param region Name of the region for this request.
-   * @param router Router resource.
+   * @param routerResource Router resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertRouter(RoutersRegionName region, Router router) {
+  public final Operation insertRouter(RoutersRegionName region, Router routerResource) {
 
     InsertRouterHttpRequest request =
         InsertRouterHttpRequest.newBuilder()
         .setRegionWithRoutersRegionName(region)
-        .setRouter(router)
+        .setRouterResource(routerResource)
         .build();
     return insertRouter(request);
   }
@@ -626,16 +626,16 @@ public class RouterAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param router Name of the Router resource to update.
-   * @param router Router resource.
+   * @param routerResource Router resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation patchRouter(RouterName router, Router router) {
+  public final Operation patchRouter(RouterName router, Router routerResource) {
 
     PatchRouterHttpRequest request =
         PatchRouterHttpRequest.newBuilder()
         .setRouterWithRouterName(router)
-        .setRouter(router)
+        .setRouterResource(routerResource)
         .build();
     return patchRouter(request);
   }
@@ -692,16 +692,16 @@ public class RouterAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param router Name of the Router resource to query.
-   * @param router Router resource.
+   * @param routerResource Router resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final RoutersPreviewResponse previewRouter(RouterName router, Router router) {
+  public final RoutersPreviewResponse previewRouter(RouterName router, Router routerResource) {
 
     PreviewRouterHttpRequest request =
         PreviewRouterHttpRequest.newBuilder()
         .setRouterWithRouterName(router)
-        .setRouter(router)
+        .setRouterResource(routerResource)
         .build();
     return previewRouter(request);
   }
@@ -758,16 +758,16 @@ public class RouterAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param router Name of the Router resource to update.
-   * @param router Router resource.
+   * @param routerResource Router resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation updateRouter(RouterName router, Router router) {
+  public final Operation updateRouter(RouterName router, Router routerResource) {
 
     UpdateRouterHttpRequest request =
         UpdateRouterHttpRequest.newBuilder()
         .setRouterWithRouterName(router)
-        .setRouter(router)
+        .setRouterResource(routerResource)
         .build();
     return updateRouter(request);
   }

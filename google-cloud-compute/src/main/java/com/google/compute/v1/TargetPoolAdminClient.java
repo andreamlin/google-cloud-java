@@ -172,16 +172,16 @@ public class TargetPoolAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param targetPool Name of the target pool to add a health check to.
-   * @param targetPoolsAddHealthCheckRequest
+   * @param targetPoolsAddHealthCheckRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation addHealthCheckTargetPool(TargetPoolName targetPool, TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest) {
+  public final Operation addHealthCheckTargetPool(TargetPoolName targetPool, TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequestResource) {
 
     AddHealthCheckTargetPoolHttpRequest request =
         AddHealthCheckTargetPoolHttpRequest.newBuilder()
         .setTargetPoolWithTargetPoolName(targetPool)
-        .setTargetPoolsAddHealthCheckRequest(targetPoolsAddHealthCheckRequest)
+        .setTargetPoolsAddHealthCheckRequestResource(targetPoolsAddHealthCheckRequestResource)
         .build();
     return addHealthCheckTargetPool(request);
   }
@@ -238,16 +238,16 @@ public class TargetPoolAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param targetPool Name of the TargetPool resource to add instances to.
-   * @param targetPoolsAddInstanceRequest
+   * @param targetPoolsAddInstanceRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation addInstanceTargetPool(TargetPoolName targetPool, TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequest) {
+  public final Operation addInstanceTargetPool(TargetPoolName targetPool, TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequestResource) {
 
     AddInstanceTargetPoolHttpRequest request =
         AddInstanceTargetPoolHttpRequest.newBuilder()
         .setTargetPoolWithTargetPoolName(targetPool)
-        .setTargetPoolsAddInstanceRequest(targetPoolsAddInstanceRequest)
+        .setTargetPoolsAddInstanceRequestResource(targetPoolsAddInstanceRequestResource)
         .build();
     return addInstanceTargetPool(request);
   }
@@ -530,16 +530,16 @@ public class TargetPoolAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param targetPool Name of the TargetPool resource to which the queried instance belongs.
-   * @param instanceReference
+   * @param instanceReferenceResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final TargetPoolInstanceHealth getHealthTargetPool(TargetPoolName targetPool, InstanceReference instanceReference) {
+  public final TargetPoolInstanceHealth getHealthTargetPool(TargetPoolName targetPool, InstanceReference instanceReferenceResource) {
 
     GetHealthTargetPoolHttpRequest request =
         GetHealthTargetPoolHttpRequest.newBuilder()
         .setTargetPoolWithTargetPoolName(targetPool)
-        .setInstanceReference(instanceReference)
+        .setInstanceReferenceResource(instanceReferenceResource)
         .build();
     return getHealthTargetPool(request);
   }
@@ -596,16 +596,16 @@ public class TargetPoolAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param region Name of the region scoping this request.
-   * @param targetPool A TargetPool resource. This resource defines a pool of instances, associated HttpHealthCheck resources, and the fallback target pool.
+   * @param targetPoolResource A TargetPool resource. This resource defines a pool of instances, associated HttpHealthCheck resources, and the fallback target pool.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertTargetPool(TargetPoolsRegionName region, TargetPool targetPool) {
+  public final Operation insertTargetPool(TargetPoolsRegionName region, TargetPool targetPoolResource) {
 
     InsertTargetPoolHttpRequest request =
         InsertTargetPoolHttpRequest.newBuilder()
         .setRegionWithTargetPoolsRegionName(region)
-        .setTargetPool(targetPool)
+        .setTargetPoolResource(targetPoolResource)
         .build();
     return insertTargetPool(request);
   }
@@ -760,16 +760,16 @@ public class TargetPoolAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param targetPool Name of the target pool to remove health checks from.
-   * @param targetPoolsRemoveHealthCheckRequest
+   * @param targetPoolsRemoveHealthCheckRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation removeHealthCheckTargetPool(TargetPoolName targetPool, TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequest) {
+  public final Operation removeHealthCheckTargetPool(TargetPoolName targetPool, TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequestResource) {
 
     RemoveHealthCheckTargetPoolHttpRequest request =
         RemoveHealthCheckTargetPoolHttpRequest.newBuilder()
         .setTargetPoolWithTargetPoolName(targetPool)
-        .setTargetPoolsRemoveHealthCheckRequest(targetPoolsRemoveHealthCheckRequest)
+        .setTargetPoolsRemoveHealthCheckRequestResource(targetPoolsRemoveHealthCheckRequestResource)
         .build();
     return removeHealthCheckTargetPool(request);
   }
@@ -826,16 +826,16 @@ public class TargetPoolAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param targetPool Name of the TargetPool resource to remove instances from.
-   * @param targetPoolsRemoveInstanceRequest
+   * @param targetPoolsRemoveInstanceRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation removeInstanceTargetPool(TargetPoolName targetPool, TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequest) {
+  public final Operation removeInstanceTargetPool(TargetPoolName targetPool, TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequestResource) {
 
     RemoveInstanceTargetPoolHttpRequest request =
         RemoveInstanceTargetPoolHttpRequest.newBuilder()
         .setTargetPoolWithTargetPoolName(targetPool)
-        .setTargetPoolsRemoveInstanceRequest(targetPoolsRemoveInstanceRequest)
+        .setTargetPoolsRemoveInstanceRequestResource(targetPoolsRemoveInstanceRequestResource)
         .build();
     return removeInstanceTargetPool(request);
   }
@@ -893,17 +893,17 @@ public class TargetPoolAdminClient implements BackgroundResource {
    *
    * @param targetPool Name of the TargetPool resource to set a backup pool for.
    * @param failoverRatio New failoverRatio value for the target pool.
-   * @param targetReference
+   * @param targetReferenceResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setBackupTargetPool(TargetPoolName targetPool, Float failoverRatio, TargetReference targetReference) {
+  public final Operation setBackupTargetPool(TargetPoolName targetPool, Float failoverRatio, TargetReference targetReferenceResource) {
 
     SetBackupTargetPoolHttpRequest request =
         SetBackupTargetPoolHttpRequest.newBuilder()
         .setTargetPoolWithTargetPoolName(targetPool)
         .setFailoverRatio(failoverRatio)
-        .setTargetReference(targetReference)
+        .setTargetReferenceResource(targetReferenceResource)
         .build();
     return setBackupTargetPool(request);
   }

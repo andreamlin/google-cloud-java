@@ -299,7 +299,7 @@ public class RouteAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param route Represents a Route resource. A route specifies how certain packets should be handled by the network. Routes are associated with instances by tags and the set of routes for a particular instance is called its routing table.
+   * @param routeResource Represents a Route resource. A route specifies how certain packets should be handled by the network. Routes are associated with instances by tags and the set of routes for a particular instance is called its routing table.
    *
    * For each packet leaving a instance, the system searches that instance's routing table for a single best matching route. Routes match packets by destination IP address, preferring smaller or more specific ranges over larger ones. If there is a tie, the system selects the route with the smallest priority value. If there is still a tie, it uses the layer three and four packet headers to select just one of the remaining matching routes. The packet is then forwarded as specified by the nextHop field of the winning route - either to another instance destination, a instance gateway or a Google Compute Engine-operated gateway.
    *
@@ -307,12 +307,12 @@ public class RouteAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertRoute(RoutesProjectName project, Route route) {
+  public final Operation insertRoute(RoutesProjectName project, Route routeResource) {
 
     InsertRouteHttpRequest request =
         InsertRouteHttpRequest.newBuilder()
         .setProjectWithRoutesProjectName(project)
-        .setRoute(route)
+        .setRouteResource(routeResource)
         .build();
     return insertRoute(request);
   }

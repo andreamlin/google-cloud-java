@@ -398,16 +398,16 @@ public class TargetInstanceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param zone Name of the zone scoping this request.
-   * @param targetInstance A TargetInstance resource. This resource defines an endpoint instance that terminates traffic of certain protocols.
+   * @param targetInstanceResource A TargetInstance resource. This resource defines an endpoint instance that terminates traffic of certain protocols.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertTargetInstance(TargetInstancesZoneName zone, TargetInstance targetInstance) {
+  public final Operation insertTargetInstance(TargetInstancesZoneName zone, TargetInstance targetInstanceResource) {
 
     InsertTargetInstanceHttpRequest request =
         InsertTargetInstanceHttpRequest.newBuilder()
         .setZoneWithTargetInstancesZoneName(zone)
-        .setTargetInstance(targetInstance)
+        .setTargetInstanceResource(targetInstanceResource)
         .build();
     return insertTargetInstance(request);
   }

@@ -270,16 +270,16 @@ public class DiskAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param disk Name of the persistent disk to snapshot.
-   * @param snapshot A persistent disk snapshot resource.
+   * @param snapshotResource A persistent disk snapshot resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation createSnapshotDisk(DiskName disk, Snapshot snapshot) {
+  public final Operation createSnapshotDisk(DiskName disk, Snapshot snapshotResource) {
 
     CreateSnapshotDiskHttpRequest request =
         CreateSnapshotDiskHttpRequest.newBuilder()
         .setDiskWithDiskName(disk)
-        .setSnapshot(snapshot)
+        .setSnapshotResource(snapshotResource)
         .build();
     return createSnapshotDisk(request);
   }
@@ -465,17 +465,17 @@ public class DiskAdminClient implements BackgroundResource {
    *
    * @param sourceImage Optional. Source image to restore onto a disk.
    * @param zone The name of the zone for this request.
-   * @param disk A Disk resource.
+   * @param diskResource A Disk resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertDisk(String sourceImage, DisksZoneName zone, Disk disk) {
+  public final Operation insertDisk(String sourceImage, DisksZoneName zone, Disk diskResource) {
 
     InsertDiskHttpRequest request =
         InsertDiskHttpRequest.newBuilder()
         .setSourceImage(sourceImage)
         .setZoneWithDisksZoneName(zone)
-        .setDisk(disk)
+        .setDiskResource(diskResource)
         .build();
     return insertDisk(request);
   }
@@ -630,16 +630,16 @@ public class DiskAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param disk The name of the persistent disk.
-   * @param disksResizeRequest
+   * @param disksResizeRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation resizeDisk(DiskName disk, DisksResizeRequest disksResizeRequest) {
+  public final Operation resizeDisk(DiskName disk, DisksResizeRequest disksResizeRequestResource) {
 
     ResizeDiskHttpRequest request =
         ResizeDiskHttpRequest.newBuilder()
         .setDiskWithDiskName(disk)
-        .setDisksResizeRequest(disksResizeRequest)
+        .setDisksResizeRequestResource(disksResizeRequestResource)
         .build();
     return resizeDisk(request);
   }

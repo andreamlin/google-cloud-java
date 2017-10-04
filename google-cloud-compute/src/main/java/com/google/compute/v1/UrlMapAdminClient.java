@@ -299,16 +299,16 @@ public class UrlMapAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param urlMap A UrlMap resource. This resource defines the mapping from URL to the BackendService resource, based on the "longest-match" of the URL's host and path.
+   * @param urlMapResource A UrlMap resource. This resource defines the mapping from URL to the BackendService resource, based on the "longest-match" of the URL's host and path.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertUrlMap(UrlMapsProjectName project, UrlMap urlMap) {
+  public final Operation insertUrlMap(UrlMapsProjectName project, UrlMap urlMapResource) {
 
     InsertUrlMapHttpRequest request =
         InsertUrlMapHttpRequest.newBuilder()
         .setProjectWithUrlMapsProjectName(project)
-        .setUrlMap(urlMap)
+        .setUrlMapResource(urlMapResource)
         .build();
     return insertUrlMap(request);
   }
@@ -365,16 +365,16 @@ public class UrlMapAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param urlMap Name of the UrlMap scoping this request.
-   * @param cacheInvalidationRule
+   * @param cacheInvalidationRuleResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation invalidateCacheUrlMap(UrlMapName urlMap, CacheInvalidationRule cacheInvalidationRule) {
+  public final Operation invalidateCacheUrlMap(UrlMapName urlMap, CacheInvalidationRule cacheInvalidationRuleResource) {
 
     InvalidateCacheUrlMapHttpRequest request =
         InvalidateCacheUrlMapHttpRequest.newBuilder()
         .setUrlMapWithUrlMapName(urlMap)
-        .setCacheInvalidationRule(cacheInvalidationRule)
+        .setCacheInvalidationRuleResource(cacheInvalidationRuleResource)
         .build();
     return invalidateCacheUrlMap(request);
   }
@@ -529,16 +529,16 @@ public class UrlMapAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param urlMap Name of the UrlMap resource to update.
-   * @param urlMap A UrlMap resource. This resource defines the mapping from URL to the BackendService resource, based on the "longest-match" of the URL's host and path.
+   * @param urlMapResource A UrlMap resource. This resource defines the mapping from URL to the BackendService resource, based on the "longest-match" of the URL's host and path.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation patchUrlMap(UrlMapName urlMap, UrlMap urlMap) {
+  public final Operation patchUrlMap(UrlMapName urlMap, UrlMap urlMapResource) {
 
     PatchUrlMapHttpRequest request =
         PatchUrlMapHttpRequest.newBuilder()
         .setUrlMapWithUrlMapName(urlMap)
-        .setUrlMap(urlMap)
+        .setUrlMapResource(urlMapResource)
         .build();
     return patchUrlMap(request);
   }
@@ -595,16 +595,16 @@ public class UrlMapAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param urlMap Name of the UrlMap resource to update.
-   * @param urlMap A UrlMap resource. This resource defines the mapping from URL to the BackendService resource, based on the "longest-match" of the URL's host and path.
+   * @param urlMapResource A UrlMap resource. This resource defines the mapping from URL to the BackendService resource, based on the "longest-match" of the URL's host and path.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation updateUrlMap(UrlMapName urlMap, UrlMap urlMap) {
+  public final Operation updateUrlMap(UrlMapName urlMap, UrlMap urlMapResource) {
 
     UpdateUrlMapHttpRequest request =
         UpdateUrlMapHttpRequest.newBuilder()
         .setUrlMapWithUrlMapName(urlMap)
-        .setUrlMap(urlMap)
+        .setUrlMapResource(urlMapResource)
         .build();
     return updateUrlMap(request);
   }
@@ -661,16 +661,16 @@ public class UrlMapAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param urlMap Name of the UrlMap resource to be validated as.
-   * @param urlMapsValidateRequest
+   * @param urlMapsValidateRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final UrlMapsValidateResponse validateUrlMap(UrlMapName urlMap, UrlMapsValidateRequest urlMapsValidateRequest) {
+  public final UrlMapsValidateResponse validateUrlMap(UrlMapName urlMap, UrlMapsValidateRequest urlMapsValidateRequestResource) {
 
     ValidateUrlMapHttpRequest request =
         ValidateUrlMapHttpRequest.newBuilder()
         .setUrlMapWithUrlMapName(urlMap)
-        .setUrlMapsValidateRequest(urlMapsValidateRequest)
+        .setUrlMapsValidateRequestResource(urlMapsValidateRequestResource)
         .build();
     return validateUrlMap(request);
   }

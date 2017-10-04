@@ -299,16 +299,16 @@ public class TargetHttpsProxyAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param targetHttpsProxy A TargetHttpsProxy resource. This resource defines an HTTPS proxy.
+   * @param targetHttpsProxyResource A TargetHttpsProxy resource. This resource defines an HTTPS proxy.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertTargetHttpsProxy(TargetHttpsProxiesProjectName project, TargetHttpsProxy targetHttpsProxy) {
+  public final Operation insertTargetHttpsProxy(TargetHttpsProxiesProjectName project, TargetHttpsProxy targetHttpsProxyResource) {
 
     InsertTargetHttpsProxyHttpRequest request =
         InsertTargetHttpsProxyHttpRequest.newBuilder()
         .setProjectWithTargetHttpsProxiesProjectName(project)
-        .setTargetHttpsProxy(targetHttpsProxy)
+        .setTargetHttpsProxyResource(targetHttpsProxyResource)
         .build();
     return insertTargetHttpsProxy(request);
   }
@@ -463,16 +463,16 @@ public class TargetHttpsProxyAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param targetHttpsProxy Name of the TargetHttpsProxy resource to set an SslCertificates resource for.
-   * @param targetHttpsProxiesSetSslCertificatesRequest
+   * @param targetHttpsProxiesSetSslCertificatesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setSslCertificatesTargetHttpsProxy(TargetHttpsProxyName targetHttpsProxy, TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequest) {
+  public final Operation setSslCertificatesTargetHttpsProxy(TargetHttpsProxyName targetHttpsProxy, TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequestResource) {
 
     SetSslCertificatesTargetHttpsProxyHttpRequest request =
         SetSslCertificatesTargetHttpsProxyHttpRequest.newBuilder()
         .setTargetHttpsProxyWithTargetHttpsProxyName(targetHttpsProxy)
-        .setTargetHttpsProxiesSetSslCertificatesRequest(targetHttpsProxiesSetSslCertificatesRequest)
+        .setTargetHttpsProxiesSetSslCertificatesRequestResource(targetHttpsProxiesSetSslCertificatesRequestResource)
         .build();
     return setSslCertificatesTargetHttpsProxy(request);
   }
@@ -529,16 +529,16 @@ public class TargetHttpsProxyAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param targetHttpsProxy Name of the TargetHttpsProxy resource whose URL map is to be set.
-   * @param urlMapReference
+   * @param urlMapReferenceResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setUrlMapTargetHttpsProxy(TargetHttpsProxyName targetHttpsProxy, UrlMapReference urlMapReference) {
+  public final Operation setUrlMapTargetHttpsProxy(TargetHttpsProxyName targetHttpsProxy, UrlMapReference urlMapReferenceResource) {
 
     SetUrlMapTargetHttpsProxyHttpRequest request =
         SetUrlMapTargetHttpsProxyHttpRequest.newBuilder()
         .setTargetHttpsProxyWithTargetHttpsProxyName(targetHttpsProxy)
-        .setUrlMapReference(urlMapReference)
+        .setUrlMapReferenceResource(urlMapReferenceResource)
         .build();
     return setUrlMapTargetHttpsProxy(request);
   }

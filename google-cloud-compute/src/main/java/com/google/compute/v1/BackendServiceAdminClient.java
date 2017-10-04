@@ -398,16 +398,16 @@ public class BackendServiceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param backendService Name of the BackendService resource to which the queried instance belongs.
-   * @param resourceGroupReference
+   * @param resourceGroupReferenceResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final BackendServiceGroupHealth getHealthBackendService(BackendServiceName backendService, ResourceGroupReference resourceGroupReference) {
+  public final BackendServiceGroupHealth getHealthBackendService(BackendServiceName backendService, ResourceGroupReference resourceGroupReferenceResource) {
 
     GetHealthBackendServiceHttpRequest request =
         GetHealthBackendServiceHttpRequest.newBuilder()
         .setBackendServiceWithBackendServiceName(backendService)
-        .setResourceGroupReference(resourceGroupReference)
+        .setResourceGroupReferenceResource(resourceGroupReferenceResource)
         .build();
     return getHealthBackendService(request);
   }
@@ -464,16 +464,16 @@ public class BackendServiceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param backendService A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity.
+   * @param backendServiceResource A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertBackendService(BackendServicesProjectName project, BackendService backendService) {
+  public final Operation insertBackendService(BackendServicesProjectName project, BackendService backendServiceResource) {
 
     InsertBackendServiceHttpRequest request =
         InsertBackendServiceHttpRequest.newBuilder()
         .setProjectWithBackendServicesProjectName(project)
-        .setBackendService(backendService)
+        .setBackendServiceResource(backendServiceResource)
         .build();
     return insertBackendService(request);
   }
@@ -628,16 +628,16 @@ public class BackendServiceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param backendService Name of the BackendService resource to update.
-   * @param backendService A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity.
+   * @param backendServiceResource A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation patchBackendService(BackendServiceName backendService, BackendService backendService) {
+  public final Operation patchBackendService(BackendServiceName backendService, BackendService backendServiceResource) {
 
     PatchBackendServiceHttpRequest request =
         PatchBackendServiceHttpRequest.newBuilder()
         .setBackendServiceWithBackendServiceName(backendService)
-        .setBackendService(backendService)
+        .setBackendServiceResource(backendServiceResource)
         .build();
     return patchBackendService(request);
   }
@@ -694,16 +694,16 @@ public class BackendServiceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param backendService Name of the BackendService resource to update.
-   * @param backendService A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity.
+   * @param backendServiceResource A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation updateBackendService(BackendServiceName backendService, BackendService backendService) {
+  public final Operation updateBackendService(BackendServiceName backendService, BackendService backendServiceResource) {
 
     UpdateBackendServiceHttpRequest request =
         UpdateBackendServiceHttpRequest.newBuilder()
         .setBackendServiceWithBackendServiceName(backendService)
-        .setBackendService(backendService)
+        .setBackendServiceResource(backendServiceResource)
         .build();
     return updateBackendService(request);
   }

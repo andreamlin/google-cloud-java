@@ -299,16 +299,16 @@ public class GlobalForwardingRuleAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param forwardingRule A ForwardingRule resource. A ForwardingRule resource specifies which pool of target virtual machines to forward a packet to if it matches the given [IPAddress, IPProtocol, portRange] tuple.
+   * @param forwardingRuleResource A ForwardingRule resource. A ForwardingRule resource specifies which pool of target virtual machines to forward a packet to if it matches the given [IPAddress, IPProtocol, portRange] tuple.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertGlobalForwardingRule(GlobalForwardingRulesProjectName project, ForwardingRule forwardingRule) {
+  public final Operation insertGlobalForwardingRule(GlobalForwardingRulesProjectName project, ForwardingRule forwardingRuleResource) {
 
     InsertGlobalForwardingRuleHttpRequest request =
         InsertGlobalForwardingRuleHttpRequest.newBuilder()
         .setProjectWithGlobalForwardingRulesProjectName(project)
-        .setForwardingRule(forwardingRule)
+        .setForwardingRuleResource(forwardingRuleResource)
         .build();
     return insertGlobalForwardingRule(request);
   }
@@ -463,16 +463,16 @@ public class GlobalForwardingRuleAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param forwardingRule Name of the ForwardingRule resource in which target is to be set.
-   * @param targetReference
+   * @param targetReferenceResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setTargetGlobalForwardingRule(GlobalForwardingRulesForwardingRuleName forwardingRule, TargetReference targetReference) {
+  public final Operation setTargetGlobalForwardingRule(GlobalForwardingRulesForwardingRuleName forwardingRule, TargetReference targetReferenceResource) {
 
     SetTargetGlobalForwardingRuleHttpRequest request =
         SetTargetGlobalForwardingRuleHttpRequest.newBuilder()
         .setForwardingRuleWithGlobalForwardingRulesForwardingRuleName(forwardingRule)
-        .setTargetReference(targetReference)
+        .setTargetReferenceResource(targetReferenceResource)
         .build();
     return setTargetGlobalForwardingRule(request);
   }

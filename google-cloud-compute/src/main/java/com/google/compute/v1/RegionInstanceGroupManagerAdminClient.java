@@ -171,16 +171,16 @@ public class RegionInstanceGroupManagerAdminClient implements BackgroundResource
    * </code></pre>
    *
    * @param instanceGroupManager Name of the managed instance group.
-   * @param regionInstanceGroupManagersAbandonInstancesRequest
+   * @param regionInstanceGroupManagersAbandonInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation abandonInstancesRegionInstanceGroupManager(RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager, RegionInstanceGroupManagersAbandonInstancesRequest regionInstanceGroupManagersAbandonInstancesRequest) {
+  public final Operation abandonInstancesRegionInstanceGroupManager(RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager, RegionInstanceGroupManagersAbandonInstancesRequest regionInstanceGroupManagersAbandonInstancesRequestResource) {
 
     AbandonInstancesRegionInstanceGroupManagerHttpRequest request =
         AbandonInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
         .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
-        .setRegionInstanceGroupManagersAbandonInstancesRequest(regionInstanceGroupManagersAbandonInstancesRequest)
+        .setRegionInstanceGroupManagersAbandonInstancesRequestResource(regionInstanceGroupManagersAbandonInstancesRequestResource)
         .build();
     return abandonInstancesRegionInstanceGroupManager(request);
   }
@@ -301,16 +301,16 @@ public class RegionInstanceGroupManagerAdminClient implements BackgroundResource
    * </code></pre>
    *
    * @param instanceGroupManager Name of the managed instance group.
-   * @param regionInstanceGroupManagersDeleteInstancesRequest
+   * @param regionInstanceGroupManagersDeleteInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation deleteInstancesRegionInstanceGroupManager(RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager, RegionInstanceGroupManagersDeleteInstancesRequest regionInstanceGroupManagersDeleteInstancesRequest) {
+  public final Operation deleteInstancesRegionInstanceGroupManager(RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager, RegionInstanceGroupManagersDeleteInstancesRequest regionInstanceGroupManagersDeleteInstancesRequestResource) {
 
     DeleteInstancesRegionInstanceGroupManagerHttpRequest request =
         DeleteInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
         .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
-        .setRegionInstanceGroupManagersDeleteInstancesRequest(regionInstanceGroupManagersDeleteInstancesRequest)
+        .setRegionInstanceGroupManagersDeleteInstancesRequestResource(regionInstanceGroupManagersDeleteInstancesRequestResource)
         .build();
     return deleteInstancesRegionInstanceGroupManager(request);
   }
@@ -431,16 +431,16 @@ public class RegionInstanceGroupManagerAdminClient implements BackgroundResource
    * </code></pre>
    *
    * @param region Name of the region scoping this request.
-   * @param instanceGroupManager An Instance Group Manager resource.
+   * @param instanceGroupManagerResource An Instance Group Manager resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertRegionInstanceGroupManager(RegionInstanceGroupManagersRegionName region, InstanceGroupManager instanceGroupManager) {
+  public final Operation insertRegionInstanceGroupManager(RegionInstanceGroupManagersRegionName region, InstanceGroupManager instanceGroupManagerResource) {
 
     InsertRegionInstanceGroupManagerHttpRequest request =
         InsertRegionInstanceGroupManagerHttpRequest.newBuilder()
         .setRegionWithRegionInstanceGroupManagersRegionName(region)
-        .setInstanceGroupManager(instanceGroupManager)
+        .setInstanceGroupManagerResource(instanceGroupManagerResource)
         .build();
     return insertRegionInstanceGroupManager(request);
   }
@@ -659,16 +659,16 @@ public class RegionInstanceGroupManagerAdminClient implements BackgroundResource
    * </code></pre>
    *
    * @param instanceGroupManager Name of the managed instance group.
-   * @param regionInstanceGroupManagersRecreateRequest
+   * @param regionInstanceGroupManagersRecreateRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation recreateInstancesRegionInstanceGroupManager(RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager, RegionInstanceGroupManagersRecreateRequest regionInstanceGroupManagersRecreateRequest) {
+  public final Operation recreateInstancesRegionInstanceGroupManager(RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager, RegionInstanceGroupManagersRecreateRequest regionInstanceGroupManagersRecreateRequestResource) {
 
     RecreateInstancesRegionInstanceGroupManagerHttpRequest request =
         RecreateInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
         .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
-        .setRegionInstanceGroupManagersRecreateRequest(regionInstanceGroupManagersRecreateRequest)
+        .setRegionInstanceGroupManagersRecreateRequestResource(regionInstanceGroupManagersRecreateRequestResource)
         .build();
     return recreateInstancesRegionInstanceGroupManager(request);
   }
@@ -791,16 +791,16 @@ public class RegionInstanceGroupManagerAdminClient implements BackgroundResource
    * </code></pre>
    *
    * @param instanceGroupManager The name of the managed instance group.
-   * @param regionInstanceGroupManagersSetTemplateRequest
+   * @param regionInstanceGroupManagersSetTemplateRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setInstanceTemplateRegionInstanceGroupManager(RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager, RegionInstanceGroupManagersSetTemplateRequest regionInstanceGroupManagersSetTemplateRequest) {
+  public final Operation setInstanceTemplateRegionInstanceGroupManager(RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager, RegionInstanceGroupManagersSetTemplateRequest regionInstanceGroupManagersSetTemplateRequestResource) {
 
     SetInstanceTemplateRegionInstanceGroupManagerHttpRequest request =
         SetInstanceTemplateRegionInstanceGroupManagerHttpRequest.newBuilder()
         .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
-        .setRegionInstanceGroupManagersSetTemplateRequest(regionInstanceGroupManagersSetTemplateRequest)
+        .setRegionInstanceGroupManagersSetTemplateRequestResource(regionInstanceGroupManagersSetTemplateRequestResource)
         .build();
     return setInstanceTemplateRegionInstanceGroupManager(request);
   }
@@ -857,16 +857,16 @@ public class RegionInstanceGroupManagerAdminClient implements BackgroundResource
    * </code></pre>
    *
    * @param instanceGroupManager Name of the managed instance group.
-   * @param regionInstanceGroupManagersSetTargetPoolsRequest
+   * @param regionInstanceGroupManagersSetTargetPoolsRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setTargetPoolsRegionInstanceGroupManager(RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager, RegionInstanceGroupManagersSetTargetPoolsRequest regionInstanceGroupManagersSetTargetPoolsRequest) {
+  public final Operation setTargetPoolsRegionInstanceGroupManager(RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager, RegionInstanceGroupManagersSetTargetPoolsRequest regionInstanceGroupManagersSetTargetPoolsRequestResource) {
 
     SetTargetPoolsRegionInstanceGroupManagerHttpRequest request =
         SetTargetPoolsRegionInstanceGroupManagerHttpRequest.newBuilder()
         .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
-        .setRegionInstanceGroupManagersSetTargetPoolsRequest(regionInstanceGroupManagersSetTargetPoolsRequest)
+        .setRegionInstanceGroupManagersSetTargetPoolsRequestResource(regionInstanceGroupManagersSetTargetPoolsRequestResource)
         .build();
     return setTargetPoolsRegionInstanceGroupManager(request);
   }

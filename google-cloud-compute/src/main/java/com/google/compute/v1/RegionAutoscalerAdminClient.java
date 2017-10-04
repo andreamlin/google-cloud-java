@@ -299,16 +299,16 @@ public class RegionAutoscalerAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param region Name of the region scoping this request.
-   * @param autoscaler Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.
+   * @param autoscalerResource Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertRegionAutoscaler(RegionAutoscalersRegionName region, Autoscaler autoscaler) {
+  public final Operation insertRegionAutoscaler(RegionAutoscalersRegionName region, Autoscaler autoscalerResource) {
 
     InsertRegionAutoscalerHttpRequest request =
         InsertRegionAutoscalerHttpRequest.newBuilder()
         .setRegionWithRegionAutoscalersRegionName(region)
-        .setAutoscaler(autoscaler)
+        .setAutoscalerResource(autoscalerResource)
         .build();
     return insertRegionAutoscaler(request);
   }
@@ -464,17 +464,17 @@ public class RegionAutoscalerAdminClient implements BackgroundResource {
    *
    * @param region Name of the region scoping this request.
    * @param autoscaler Name of the autoscaler to update.
-   * @param autoscaler Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.
+   * @param autoscalerResource Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation patchRegionAutoscaler(RegionAutoscalersRegionName region, String autoscaler, Autoscaler autoscaler) {
+  public final Operation patchRegionAutoscaler(RegionAutoscalersRegionName region, String autoscaler, Autoscaler autoscalerResource) {
 
     PatchRegionAutoscalerHttpRequest request =
         PatchRegionAutoscalerHttpRequest.newBuilder()
         .setRegionWithRegionAutoscalersRegionName(region)
         .setAutoscaler(autoscaler)
-        .setAutoscaler(autoscaler)
+        .setAutoscalerResource(autoscalerResource)
         .build();
     return patchRegionAutoscaler(request);
   }
@@ -532,17 +532,17 @@ public class RegionAutoscalerAdminClient implements BackgroundResource {
    *
    * @param region Name of the region scoping this request.
    * @param autoscaler Name of the autoscaler to update.
-   * @param autoscaler Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.
+   * @param autoscalerResource Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation updateRegionAutoscaler(RegionAutoscalersRegionName region, String autoscaler, Autoscaler autoscaler) {
+  public final Operation updateRegionAutoscaler(RegionAutoscalersRegionName region, String autoscaler, Autoscaler autoscalerResource) {
 
     UpdateRegionAutoscalerHttpRequest request =
         UpdateRegionAutoscalerHttpRequest.newBuilder()
         .setRegionWithRegionAutoscalersRegionName(region)
         .setAutoscaler(autoscaler)
-        .setAutoscaler(autoscaler)
+        .setAutoscalerResource(autoscalerResource)
         .build();
     return updateRegionAutoscaler(request);
   }

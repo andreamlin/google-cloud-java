@@ -398,16 +398,16 @@ public class AddressAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param region Name of the region for this request.
-   * @param address A reserved address resource.
+   * @param addressResource A reserved address resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertAddress(AddressesRegionName region, Address address) {
+  public final Operation insertAddress(AddressesRegionName region, Address addressResource) {
 
     InsertAddressHttpRequest request =
         InsertAddressHttpRequest.newBuilder()
         .setRegionWithAddressesRegionName(region)
-        .setAddress(address)
+        .setAddressResource(addressResource)
         .build();
     return insertAddress(request);
   }

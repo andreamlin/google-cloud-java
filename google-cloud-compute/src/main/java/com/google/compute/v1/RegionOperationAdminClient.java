@@ -21,6 +21,7 @@ import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import static com.google.compute.v1.PagedResponseWrappers.ListRegionOperationsPagedResponse;
 import com.google.compute.v1.stub.RegionOperationAdminStub;
+import com.google.protobuf.Empty;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -218,7 +219,7 @@ public class RegionOperationAdminClient implements BackgroundResource {
    * </code></pre>
    */
   @BetaApi
-  public final UnaryCallable<DeleteRegionOperationHttpRequest, DeleteRegionOperationHttpResponse> deleteRegionOperationCallable() {
+  public final UnaryCallable<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationCallable() {
     return stub.deleteRegionOperationCallable();
   }
 

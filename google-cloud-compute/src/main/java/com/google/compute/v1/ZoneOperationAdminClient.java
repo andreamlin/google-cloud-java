@@ -21,6 +21,7 @@ import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import static com.google.compute.v1.PagedResponseWrappers.ListZoneOperationsPagedResponse;
 import com.google.compute.v1.stub.ZoneOperationAdminStub;
+import com.google.protobuf.Empty;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -218,7 +219,7 @@ public class ZoneOperationAdminClient implements BackgroundResource {
    * </code></pre>
    */
   @BetaApi
-  public final UnaryCallable<DeleteZoneOperationHttpRequest, DeleteZoneOperationHttpResponse> deleteZoneOperationCallable() {
+  public final UnaryCallable<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationCallable() {
     return stub.deleteZoneOperationCallable();
   }
 

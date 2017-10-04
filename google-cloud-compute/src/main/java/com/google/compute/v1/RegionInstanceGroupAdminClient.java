@@ -336,15 +336,15 @@ public class RegionInstanceGroupAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instanceGroup Name of the regional instance group for which we want to list the instances.
-   * @param regionInstanceGroupsListInstancesRequest
+   * @param regionInstanceGroupsListInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListInstancesRegionInstanceGroupsPagedResponse listInstancesRegionInstanceGroups(RegionInstanceGroupsInstanceGroupName instanceGroup, RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequest) {
+  public final ListInstancesRegionInstanceGroupsPagedResponse listInstancesRegionInstanceGroups(RegionInstanceGroupsInstanceGroupName instanceGroup, RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequestResource) {
     ListInstancesRegionInstanceGroupsHttpRequest request =
         ListInstancesRegionInstanceGroupsHttpRequest.newBuilder()
         .setInstanceGroupWithRegionInstanceGroupsInstanceGroupName(instanceGroup)
-        .setRegionInstanceGroupsListInstancesRequest(regionInstanceGroupsListInstancesRequest)
+        .setRegionInstanceGroupsListInstancesRequestResource(regionInstanceGroupsListInstancesRequestResource)
         .build();
     return listInstancesRegionInstanceGroups(request);
   }
@@ -434,16 +434,16 @@ public class RegionInstanceGroupAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instanceGroup The name of the regional instance group where the named ports are updated.
-   * @param regionInstanceGroupsSetNamedPortsRequest
+   * @param regionInstanceGroupsSetNamedPortsRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setNamedPortsRegionInstanceGroup(RegionInstanceGroupsInstanceGroupName instanceGroup, RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequest) {
+  public final Operation setNamedPortsRegionInstanceGroup(RegionInstanceGroupsInstanceGroupName instanceGroup, RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequestResource) {
 
     SetNamedPortsRegionInstanceGroupHttpRequest request =
         SetNamedPortsRegionInstanceGroupHttpRequest.newBuilder()
         .setInstanceGroupWithRegionInstanceGroupsInstanceGroupName(instanceGroup)
-        .setRegionInstanceGroupsSetNamedPortsRequest(regionInstanceGroupsSetNamedPortsRequest)
+        .setRegionInstanceGroupsSetNamedPortsRequestResource(regionInstanceGroupsSetNamedPortsRequestResource)
         .build();
     return setNamedPortsRegionInstanceGroup(request);
   }

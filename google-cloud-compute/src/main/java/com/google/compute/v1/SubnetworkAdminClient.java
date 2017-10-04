@@ -334,16 +334,16 @@ public class SubnetworkAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param subnetwork Name of the Subnetwork resource to update.
-   * @param subnetworksExpandIpCidrRangeRequest
+   * @param subnetworksExpandIpCidrRangeRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation expandIpCidrRangeSubnetwork(SubnetworkName subnetwork, SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest) {
+  public final Operation expandIpCidrRangeSubnetwork(SubnetworkName subnetwork, SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource) {
 
     ExpandIpCidrRangeSubnetworkHttpRequest request =
         ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
         .setSubnetworkWithSubnetworkName(subnetwork)
-        .setSubnetworksExpandIpCidrRangeRequest(subnetworksExpandIpCidrRangeRequest)
+        .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequestResource)
         .build();
     return expandIpCidrRangeSubnetwork(request);
   }
@@ -464,16 +464,16 @@ public class SubnetworkAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param region Name of the region scoping this request.
-   * @param subnetwork A Subnetwork resource.
+   * @param subnetworkResource A Subnetwork resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertSubnetwork(SubnetworksRegionName region, Subnetwork subnetwork) {
+  public final Operation insertSubnetwork(SubnetworksRegionName region, Subnetwork subnetworkResource) {
 
     InsertSubnetworkHttpRequest request =
         InsertSubnetworkHttpRequest.newBuilder()
         .setRegionWithSubnetworksRegionName(region)
-        .setSubnetwork(subnetwork)
+        .setSubnetworkResource(subnetworkResource)
         .build();
     return insertSubnetwork(request);
   }

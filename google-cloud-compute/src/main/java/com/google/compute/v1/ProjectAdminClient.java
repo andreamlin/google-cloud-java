@@ -234,16 +234,16 @@ public class ProjectAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param diskMoveRequest
+   * @param diskMoveRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation moveDiskProject(ProjectName project, DiskMoveRequest diskMoveRequest) {
+  public final Operation moveDiskProject(ProjectName project, DiskMoveRequest diskMoveRequestResource) {
 
     MoveDiskProjectHttpRequest request =
         MoveDiskProjectHttpRequest.newBuilder()
         .setProjectWithProjectName(project)
-        .setDiskMoveRequest(diskMoveRequest)
+        .setDiskMoveRequestResource(diskMoveRequestResource)
         .build();
     return moveDiskProject(request);
   }
@@ -300,16 +300,16 @@ public class ProjectAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param instanceMoveRequest
+   * @param instanceMoveRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation moveInstanceProject(ProjectName project, InstanceMoveRequest instanceMoveRequest) {
+  public final Operation moveInstanceProject(ProjectName project, InstanceMoveRequest instanceMoveRequestResource) {
 
     MoveInstanceProjectHttpRequest request =
         MoveInstanceProjectHttpRequest.newBuilder()
         .setProjectWithProjectName(project)
-        .setInstanceMoveRequest(instanceMoveRequest)
+        .setInstanceMoveRequestResource(instanceMoveRequestResource)
         .build();
     return moveInstanceProject(request);
   }
@@ -366,16 +366,16 @@ public class ProjectAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param metadata A metadata key/value entry.
+   * @param metadataResource A metadata key/value entry.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setCommonInstanceMetadataProject(ProjectName project, Metadata metadata) {
+  public final Operation setCommonInstanceMetadataProject(ProjectName project, Metadata metadataResource) {
 
     SetCommonInstanceMetadataProjectHttpRequest request =
         SetCommonInstanceMetadataProjectHttpRequest.newBuilder()
         .setProjectWithProjectName(project)
-        .setMetadata(metadata)
+        .setMetadataResource(metadataResource)
         .build();
     return setCommonInstanceMetadataProject(request);
   }
@@ -432,16 +432,16 @@ public class ProjectAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param usageExportLocation The location in Cloud Storage and naming method of the daily usage report. Contains bucket_name and report_name prefix.
+   * @param usageExportLocationResource The location in Cloud Storage and naming method of the daily usage report. Contains bucket_name and report_name prefix.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setUsageExportBucketProject(ProjectName project, UsageExportLocation usageExportLocation) {
+  public final Operation setUsageExportBucketProject(ProjectName project, UsageExportLocation usageExportLocationResource) {
 
     SetUsageExportBucketProjectHttpRequest request =
         SetUsageExportBucketProjectHttpRequest.newBuilder()
         .setProjectWithProjectName(project)
-        .setUsageExportLocation(usageExportLocation)
+        .setUsageExportLocationResource(usageExportLocationResource)
         .build();
     return setUsageExportBucketProject(request);
   }

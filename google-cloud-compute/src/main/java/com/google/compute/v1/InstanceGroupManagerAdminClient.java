@@ -172,16 +172,16 @@ public class InstanceGroupManagerAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instanceGroupManager The name of the managed instance group.
-   * @param instanceGroupManagersAbandonInstancesRequest
+   * @param instanceGroupManagersAbandonInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation abandonInstancesInstanceGroupManager(InstanceGroupManagerName instanceGroupManager, InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequest) {
+  public final Operation abandonInstancesInstanceGroupManager(InstanceGroupManagerName instanceGroupManager, InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource) {
 
     AbandonInstancesInstanceGroupManagerHttpRequest request =
         AbandonInstancesInstanceGroupManagerHttpRequest.newBuilder()
         .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager)
-        .setInstanceGroupManagersAbandonInstancesRequest(instanceGroupManagersAbandonInstancesRequest)
+        .setInstanceGroupManagersAbandonInstancesRequestResource(instanceGroupManagersAbandonInstancesRequestResource)
         .build();
     return abandonInstancesInstanceGroupManager(request);
   }
@@ -400,16 +400,16 @@ public class InstanceGroupManagerAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instanceGroupManager The name of the managed instance group.
-   * @param instanceGroupManagersDeleteInstancesRequest
+   * @param instanceGroupManagersDeleteInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation deleteInstancesInstanceGroupManager(InstanceGroupManagerName instanceGroupManager, InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequest) {
+  public final Operation deleteInstancesInstanceGroupManager(InstanceGroupManagerName instanceGroupManager, InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequestResource) {
 
     DeleteInstancesInstanceGroupManagerHttpRequest request =
         DeleteInstancesInstanceGroupManagerHttpRequest.newBuilder()
         .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager)
-        .setInstanceGroupManagersDeleteInstancesRequest(instanceGroupManagersDeleteInstancesRequest)
+        .setInstanceGroupManagersDeleteInstancesRequestResource(instanceGroupManagersDeleteInstancesRequestResource)
         .build();
     return deleteInstancesInstanceGroupManager(request);
   }
@@ -530,16 +530,16 @@ public class InstanceGroupManagerAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param zone The name of the zone where you want to create the managed instance group.
-   * @param instanceGroupManager An Instance Group Manager resource.
+   * @param instanceGroupManagerResource An Instance Group Manager resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertInstanceGroupManager(InstanceGroupManagersZoneName zone, InstanceGroupManager instanceGroupManager) {
+  public final Operation insertInstanceGroupManager(InstanceGroupManagersZoneName zone, InstanceGroupManager instanceGroupManagerResource) {
 
     InsertInstanceGroupManagerHttpRequest request =
         InsertInstanceGroupManagerHttpRequest.newBuilder()
         .setZoneWithInstanceGroupManagersZoneName(zone)
-        .setInstanceGroupManager(instanceGroupManager)
+        .setInstanceGroupManagerResource(instanceGroupManagerResource)
         .build();
     return insertInstanceGroupManager(request);
   }
@@ -758,16 +758,16 @@ public class InstanceGroupManagerAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instanceGroupManager The name of the managed instance group.
-   * @param instanceGroupManagersRecreateInstancesRequest
+   * @param instanceGroupManagersRecreateInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation recreateInstancesInstanceGroupManager(InstanceGroupManagerName instanceGroupManager, InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequest) {
+  public final Operation recreateInstancesInstanceGroupManager(InstanceGroupManagerName instanceGroupManager, InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequestResource) {
 
     RecreateInstancesInstanceGroupManagerHttpRequest request =
         RecreateInstancesInstanceGroupManagerHttpRequest.newBuilder()
         .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager)
-        .setInstanceGroupManagersRecreateInstancesRequest(instanceGroupManagersRecreateInstancesRequest)
+        .setInstanceGroupManagersRecreateInstancesRequestResource(instanceGroupManagersRecreateInstancesRequestResource)
         .build();
     return recreateInstancesInstanceGroupManager(request);
   }
@@ -890,16 +890,16 @@ public class InstanceGroupManagerAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instanceGroupManager The name of the managed instance group.
-   * @param instanceGroupManagersSetInstanceTemplateRequest
+   * @param instanceGroupManagersSetInstanceTemplateRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setInstanceTemplateInstanceGroupManager(InstanceGroupManagerName instanceGroupManager, InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequest) {
+  public final Operation setInstanceTemplateInstanceGroupManager(InstanceGroupManagerName instanceGroupManager, InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequestResource) {
 
     SetInstanceTemplateInstanceGroupManagerHttpRequest request =
         SetInstanceTemplateInstanceGroupManagerHttpRequest.newBuilder()
         .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager)
-        .setInstanceGroupManagersSetInstanceTemplateRequest(instanceGroupManagersSetInstanceTemplateRequest)
+        .setInstanceGroupManagersSetInstanceTemplateRequestResource(instanceGroupManagersSetInstanceTemplateRequestResource)
         .build();
     return setInstanceTemplateInstanceGroupManager(request);
   }
@@ -956,16 +956,16 @@ public class InstanceGroupManagerAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instanceGroupManager The name of the managed instance group.
-   * @param instanceGroupManagersSetTargetPoolsRequest
+   * @param instanceGroupManagersSetTargetPoolsRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setTargetPoolsInstanceGroupManager(InstanceGroupManagerName instanceGroupManager, InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequest) {
+  public final Operation setTargetPoolsInstanceGroupManager(InstanceGroupManagerName instanceGroupManager, InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequestResource) {
 
     SetTargetPoolsInstanceGroupManagerHttpRequest request =
         SetTargetPoolsInstanceGroupManagerHttpRequest.newBuilder()
         .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager)
-        .setInstanceGroupManagersSetTargetPoolsRequest(instanceGroupManagersSetTargetPoolsRequest)
+        .setInstanceGroupManagersSetTargetPoolsRequestResource(instanceGroupManagersSetTargetPoolsRequestResource)
         .build();
     return setTargetPoolsInstanceGroupManager(request);
   }

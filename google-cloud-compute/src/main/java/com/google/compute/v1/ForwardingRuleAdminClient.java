@@ -398,16 +398,16 @@ public class ForwardingRuleAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param region Name of the region scoping this request.
-   * @param forwardingRule A ForwardingRule resource. A ForwardingRule resource specifies which pool of target virtual machines to forward a packet to if it matches the given [IPAddress, IPProtocol, portRange] tuple.
+   * @param forwardingRuleResource A ForwardingRule resource. A ForwardingRule resource specifies which pool of target virtual machines to forward a packet to if it matches the given [IPAddress, IPProtocol, portRange] tuple.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertForwardingRule(ForwardingRulesRegionName region, ForwardingRule forwardingRule) {
+  public final Operation insertForwardingRule(ForwardingRulesRegionName region, ForwardingRule forwardingRuleResource) {
 
     InsertForwardingRuleHttpRequest request =
         InsertForwardingRuleHttpRequest.newBuilder()
         .setRegionWithForwardingRulesRegionName(region)
-        .setForwardingRule(forwardingRule)
+        .setForwardingRuleResource(forwardingRuleResource)
         .build();
     return insertForwardingRule(request);
   }
@@ -562,16 +562,16 @@ public class ForwardingRuleAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param forwardingRule Name of the ForwardingRule resource in which target is to be set.
-   * @param targetReference
+   * @param targetReferenceResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setTargetForwardingRule(ForwardingRuleName forwardingRule, TargetReference targetReference) {
+  public final Operation setTargetForwardingRule(ForwardingRuleName forwardingRule, TargetReference targetReferenceResource) {
 
     SetTargetForwardingRuleHttpRequest request =
         SetTargetForwardingRuleHttpRequest.newBuilder()
         .setForwardingRuleWithForwardingRuleName(forwardingRule)
-        .setTargetReference(targetReference)
+        .setTargetReferenceResource(targetReferenceResource)
         .build();
     return setTargetForwardingRule(request);
   }

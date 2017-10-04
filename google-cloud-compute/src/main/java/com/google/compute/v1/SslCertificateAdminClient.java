@@ -299,16 +299,16 @@ public class SslCertificateAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param sslCertificate An SslCertificate resource. This resource provides a mechanism to upload an SSL key and certificate to the load balancer to serve secure connections from the user.
+   * @param sslCertificateResource An SslCertificate resource. This resource provides a mechanism to upload an SSL key and certificate to the load balancer to serve secure connections from the user.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertSslCertificate(SslCertificatesProjectName project, SslCertificate sslCertificate) {
+  public final Operation insertSslCertificate(SslCertificatesProjectName project, SslCertificate sslCertificateResource) {
 
     InsertSslCertificateHttpRequest request =
         InsertSslCertificateHttpRequest.newBuilder()
         .setProjectWithSslCertificatesProjectName(project)
-        .setSslCertificate(sslCertificate)
+        .setSslCertificateResource(sslCertificateResource)
         .build();
     return insertSslCertificate(request);
   }

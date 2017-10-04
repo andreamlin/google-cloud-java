@@ -237,16 +237,16 @@ public class ImageAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param image Image name.
-   * @param deprecationStatus Deprecation status for a public resource.
+   * @param deprecationStatusResource Deprecation status for a public resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation deprecateImage(ImageName image, DeprecationStatus deprecationStatus) {
+  public final Operation deprecateImage(ImageName image, DeprecationStatus deprecationStatusResource) {
 
     DeprecateImageHttpRequest request =
         DeprecateImageHttpRequest.newBuilder()
         .setImageWithImageName(image)
-        .setDeprecationStatus(deprecationStatus)
+        .setDeprecationStatusResource(deprecationStatusResource)
         .build();
     return deprecateImage(request);
   }
@@ -435,16 +435,16 @@ public class ImageAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param image An Image resource.
+   * @param imageResource An Image resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertImage(ImagesProjectName project, Image image) {
+  public final Operation insertImage(ImagesProjectName project, Image imageResource) {
 
     InsertImageHttpRequest request =
         InsertImageHttpRequest.newBuilder()
         .setProjectWithImagesProjectName(project)
-        .setImage(image)
+        .setImageResource(imageResource)
         .build();
     return insertImage(request);
   }

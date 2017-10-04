@@ -173,16 +173,16 @@ public class InstanceGroupAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instanceGroup The name of the instance group where you are adding instances.
-   * @param instanceGroupsAddInstancesRequest
+   * @param instanceGroupsAddInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation addInstancesInstanceGroup(InstanceGroupName instanceGroup, InstanceGroupsAddInstancesRequest instanceGroupsAddInstancesRequest) {
+  public final Operation addInstancesInstanceGroup(InstanceGroupName instanceGroup, InstanceGroupsAddInstancesRequest instanceGroupsAddInstancesRequestResource) {
 
     AddInstancesInstanceGroupHttpRequest request =
         AddInstancesInstanceGroupHttpRequest.newBuilder()
         .setInstanceGroupWithInstanceGroupName(instanceGroup)
-        .setInstanceGroupsAddInstancesRequest(instanceGroupsAddInstancesRequest)
+        .setInstanceGroupsAddInstancesRequestResource(instanceGroupsAddInstancesRequestResource)
         .build();
     return addInstancesInstanceGroup(request);
   }
@@ -465,16 +465,16 @@ public class InstanceGroupAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param zone The name of the zone where you want to create the instance group.
-   * @param instanceGroup
+   * @param instanceGroupResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertInstanceGroup(InstanceGroupsZoneName zone, InstanceGroup instanceGroup) {
+  public final Operation insertInstanceGroup(InstanceGroupsZoneName zone, InstanceGroup instanceGroupResource) {
 
     InsertInstanceGroupHttpRequest request =
         InsertInstanceGroupHttpRequest.newBuilder()
         .setZoneWithInstanceGroupsZoneName(zone)
-        .setInstanceGroup(instanceGroup)
+        .setInstanceGroupResource(instanceGroupResource)
         .build();
     return insertInstanceGroup(request);
   }
@@ -631,15 +631,15 @@ public class InstanceGroupAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instanceGroup The name of the instance group from which you want to generate a list of included instances.
-   * @param instanceGroupsListInstancesRequest
+   * @param instanceGroupsListInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListInstancesInstanceGroupsPagedResponse listInstancesInstanceGroups(InstanceGroupName instanceGroup, InstanceGroupsListInstancesRequest instanceGroupsListInstancesRequest) {
+  public final ListInstancesInstanceGroupsPagedResponse listInstancesInstanceGroups(InstanceGroupName instanceGroup, InstanceGroupsListInstancesRequest instanceGroupsListInstancesRequestResource) {
     ListInstancesInstanceGroupsHttpRequest request =
         ListInstancesInstanceGroupsHttpRequest.newBuilder()
         .setInstanceGroupWithInstanceGroupName(instanceGroup)
-        .setInstanceGroupsListInstancesRequest(instanceGroupsListInstancesRequest)
+        .setInstanceGroupsListInstancesRequestResource(instanceGroupsListInstancesRequestResource)
         .build();
     return listInstancesInstanceGroups(request);
   }
@@ -729,16 +729,16 @@ public class InstanceGroupAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instanceGroup The name of the instance group where the specified instances will be removed.
-   * @param instanceGroupsRemoveInstancesRequest
+   * @param instanceGroupsRemoveInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation removeInstancesInstanceGroup(InstanceGroupName instanceGroup, InstanceGroupsRemoveInstancesRequest instanceGroupsRemoveInstancesRequest) {
+  public final Operation removeInstancesInstanceGroup(InstanceGroupName instanceGroup, InstanceGroupsRemoveInstancesRequest instanceGroupsRemoveInstancesRequestResource) {
 
     RemoveInstancesInstanceGroupHttpRequest request =
         RemoveInstancesInstanceGroupHttpRequest.newBuilder()
         .setInstanceGroupWithInstanceGroupName(instanceGroup)
-        .setInstanceGroupsRemoveInstancesRequest(instanceGroupsRemoveInstancesRequest)
+        .setInstanceGroupsRemoveInstancesRequestResource(instanceGroupsRemoveInstancesRequestResource)
         .build();
     return removeInstancesInstanceGroup(request);
   }
@@ -795,16 +795,16 @@ public class InstanceGroupAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instanceGroup The name of the instance group where the named ports are updated.
-   * @param instanceGroupsSetNamedPortsRequest
+   * @param instanceGroupsSetNamedPortsRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setNamedPortsInstanceGroup(InstanceGroupName instanceGroup, InstanceGroupsSetNamedPortsRequest instanceGroupsSetNamedPortsRequest) {
+  public final Operation setNamedPortsInstanceGroup(InstanceGroupName instanceGroup, InstanceGroupsSetNamedPortsRequest instanceGroupsSetNamedPortsRequestResource) {
 
     SetNamedPortsInstanceGroupHttpRequest request =
         SetNamedPortsInstanceGroupHttpRequest.newBuilder()
         .setInstanceGroupWithInstanceGroupName(instanceGroup)
-        .setInstanceGroupsSetNamedPortsRequest(instanceGroupsSetNamedPortsRequest)
+        .setInstanceGroupsSetNamedPortsRequestResource(instanceGroupsSetNamedPortsRequestResource)
         .build();
     return setNamedPortsInstanceGroup(request);
   }

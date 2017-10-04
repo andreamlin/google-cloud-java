@@ -299,16 +299,16 @@ public class TargetHttpProxyAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param targetHttpProxy A TargetHttpProxy resource. This resource defines an HTTP proxy.
+   * @param targetHttpProxyResource A TargetHttpProxy resource. This resource defines an HTTP proxy.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertTargetHttpProxy(TargetHttpProxiesProjectName project, TargetHttpProxy targetHttpProxy) {
+  public final Operation insertTargetHttpProxy(TargetHttpProxiesProjectName project, TargetHttpProxy targetHttpProxyResource) {
 
     InsertTargetHttpProxyHttpRequest request =
         InsertTargetHttpProxyHttpRequest.newBuilder()
         .setProjectWithTargetHttpProxiesProjectName(project)
-        .setTargetHttpProxy(targetHttpProxy)
+        .setTargetHttpProxyResource(targetHttpProxyResource)
         .build();
     return insertTargetHttpProxy(request);
   }
@@ -463,16 +463,16 @@ public class TargetHttpProxyAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param targetHttpProxy Name of the TargetHttpProxy to set a URL map for.
-   * @param urlMapReference
+   * @param urlMapReferenceResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setUrlMapTargetHttpProxy(TargetHttpProxyName targetHttpProxy, UrlMapReference urlMapReference) {
+  public final Operation setUrlMapTargetHttpProxy(TargetHttpProxyName targetHttpProxy, UrlMapReference urlMapReferenceResource) {
 
     SetUrlMapTargetHttpProxyHttpRequest request =
         SetUrlMapTargetHttpProxyHttpRequest.newBuilder()
         .setTargetHttpProxyWithTargetHttpProxyName(targetHttpProxy)
-        .setUrlMapReference(urlMapReference)
+        .setUrlMapReferenceResource(urlMapReferenceResource)
         .build();
     return setUrlMapTargetHttpProxy(request);
   }

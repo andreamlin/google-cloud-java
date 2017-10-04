@@ -299,16 +299,16 @@ public class HttpHealthCheckAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param httpHealthCheck An HttpHealthCheck resource. This resource defines a template for how individual instances should be checked for health, via HTTP.
+   * @param httpHealthCheckResource An HttpHealthCheck resource. This resource defines a template for how individual instances should be checked for health, via HTTP.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertHttpHealthCheck(HttpHealthChecksProjectName project, HttpHealthCheck httpHealthCheck) {
+  public final Operation insertHttpHealthCheck(HttpHealthChecksProjectName project, HttpHealthCheck httpHealthCheckResource) {
 
     InsertHttpHealthCheckHttpRequest request =
         InsertHttpHealthCheckHttpRequest.newBuilder()
         .setProjectWithHttpHealthChecksProjectName(project)
-        .setHttpHealthCheck(httpHealthCheck)
+        .setHttpHealthCheckResource(httpHealthCheckResource)
         .build();
     return insertHttpHealthCheck(request);
   }
@@ -463,16 +463,16 @@ public class HttpHealthCheckAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param httpHealthCheck Name of the HttpHealthCheck resource to update.
-   * @param httpHealthCheck An HttpHealthCheck resource. This resource defines a template for how individual instances should be checked for health, via HTTP.
+   * @param httpHealthCheckResource An HttpHealthCheck resource. This resource defines a template for how individual instances should be checked for health, via HTTP.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation patchHttpHealthCheck(HttpHealthCheckName httpHealthCheck, HttpHealthCheck httpHealthCheck) {
+  public final Operation patchHttpHealthCheck(HttpHealthCheckName httpHealthCheck, HttpHealthCheck httpHealthCheckResource) {
 
     PatchHttpHealthCheckHttpRequest request =
         PatchHttpHealthCheckHttpRequest.newBuilder()
         .setHttpHealthCheckWithHttpHealthCheckName(httpHealthCheck)
-        .setHttpHealthCheck(httpHealthCheck)
+        .setHttpHealthCheckResource(httpHealthCheckResource)
         .build();
     return patchHttpHealthCheck(request);
   }
@@ -529,16 +529,16 @@ public class HttpHealthCheckAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param httpHealthCheck Name of the HttpHealthCheck resource to update.
-   * @param httpHealthCheck An HttpHealthCheck resource. This resource defines a template for how individual instances should be checked for health, via HTTP.
+   * @param httpHealthCheckResource An HttpHealthCheck resource. This resource defines a template for how individual instances should be checked for health, via HTTP.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation updateHttpHealthCheck(HttpHealthCheckName httpHealthCheck, HttpHealthCheck httpHealthCheck) {
+  public final Operation updateHttpHealthCheck(HttpHealthCheckName httpHealthCheck, HttpHealthCheck httpHealthCheckResource) {
 
     UpdateHttpHealthCheckHttpRequest request =
         UpdateHttpHealthCheckHttpRequest.newBuilder()
         .setHttpHealthCheckWithHttpHealthCheckName(httpHealthCheck)
-        .setHttpHealthCheck(httpHealthCheck)
+        .setHttpHealthCheckResource(httpHealthCheckResource)
         .build();
     return updateHttpHealthCheck(request);
   }

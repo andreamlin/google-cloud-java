@@ -398,16 +398,16 @@ public class AutoscalerAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param zone Name of the zone for this request.
-   * @param autoscaler Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.
+   * @param autoscalerResource Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertAutoscaler(AutoscalersZoneName zone, Autoscaler autoscaler) {
+  public final Operation insertAutoscaler(AutoscalersZoneName zone, Autoscaler autoscalerResource) {
 
     InsertAutoscalerHttpRequest request =
         InsertAutoscalerHttpRequest.newBuilder()
         .setZoneWithAutoscalersZoneName(zone)
-        .setAutoscaler(autoscaler)
+        .setAutoscalerResource(autoscalerResource)
         .build();
     return insertAutoscaler(request);
   }
@@ -563,17 +563,17 @@ public class AutoscalerAdminClient implements BackgroundResource {
    *
    * @param autoscaler Name of the autoscaler to update.
    * @param zone Name of the zone for this request.
-   * @param autoscaler Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.
+   * @param autoscalerResource Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation patchAutoscaler(String autoscaler, AutoscalersZoneName zone, Autoscaler autoscaler) {
+  public final Operation patchAutoscaler(String autoscaler, AutoscalersZoneName zone, Autoscaler autoscalerResource) {
 
     PatchAutoscalerHttpRequest request =
         PatchAutoscalerHttpRequest.newBuilder()
         .setAutoscaler(autoscaler)
         .setZoneWithAutoscalersZoneName(zone)
-        .setAutoscaler(autoscaler)
+        .setAutoscalerResource(autoscalerResource)
         .build();
     return patchAutoscaler(request);
   }
@@ -631,17 +631,17 @@ public class AutoscalerAdminClient implements BackgroundResource {
    *
    * @param autoscaler Name of the autoscaler to update.
    * @param zone Name of the zone for this request.
-   * @param autoscaler Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.
+   * @param autoscalerResource Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation updateAutoscaler(String autoscaler, AutoscalersZoneName zone, Autoscaler autoscaler) {
+  public final Operation updateAutoscaler(String autoscaler, AutoscalersZoneName zone, Autoscaler autoscalerResource) {
 
     UpdateAutoscalerHttpRequest request =
         UpdateAutoscalerHttpRequest.newBuilder()
         .setAutoscaler(autoscaler)
         .setZoneWithAutoscalersZoneName(zone)
-        .setAutoscaler(autoscaler)
+        .setAutoscalerResource(autoscalerResource)
         .build();
     return updateAutoscaler(request);
   }

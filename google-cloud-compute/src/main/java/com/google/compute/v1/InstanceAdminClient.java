@@ -173,17 +173,17 @@ public class InstanceAdminClient implements BackgroundResource {
    *
    * @param networkInterface The name of the network interface to add to this instance.
    * @param instance The instance name for this request.
-   * @param accessConfig An access configuration attached to an instance's network interface. Only one access config per instance is supported.
+   * @param accessConfigResource An access configuration attached to an instance's network interface. Only one access config per instance is supported.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation addAccessConfigInstance(String networkInterface, InstanceName instance, AccessConfig accessConfig) {
+  public final Operation addAccessConfigInstance(String networkInterface, InstanceName instance, AccessConfig accessConfigResource) {
 
     AddAccessConfigInstanceHttpRequest request =
         AddAccessConfigInstanceHttpRequest.newBuilder()
         .setNetworkInterface(networkInterface)
         .setInstanceWithInstanceName(instance)
-        .setAccessConfig(accessConfig)
+        .setAccessConfigResource(accessConfigResource)
         .build();
     return addAccessConfigInstance(request);
   }
@@ -338,16 +338,16 @@ public class InstanceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instance The instance name for this request.
-   * @param attachedDisk An instance-attached disk resource.
+   * @param attachedDiskResource An instance-attached disk resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation attachDiskInstance(InstanceName instance, AttachedDisk attachedDisk) {
+  public final Operation attachDiskInstance(InstanceName instance, AttachedDisk attachedDiskResource) {
 
     AttachDiskInstanceHttpRequest request =
         AttachDiskInstanceHttpRequest.newBuilder()
         .setInstanceWithInstanceName(instance)
-        .setAttachedDisk(attachedDisk)
+        .setAttachedDiskResource(attachedDiskResource)
         .build();
     return attachDiskInstance(request);
   }
@@ -734,16 +734,16 @@ public class InstanceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param zone The name of the zone for this request.
-   * @param instance An Instance resource.
+   * @param instanceResource An Instance resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertInstance(InstancesZoneName zone, Instance instance) {
+  public final Operation insertInstance(InstancesZoneName zone, Instance instanceResource) {
 
     InsertInstanceHttpRequest request =
         InsertInstanceHttpRequest.newBuilder()
         .setZoneWithInstancesZoneName(zone)
-        .setInstance(instance)
+        .setInstanceResource(instanceResource)
         .build();
     return insertInstance(request);
   }
@@ -1030,16 +1030,16 @@ public class InstanceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instance Name of the instance scoping this request.
-   * @param instancesSetMachineTypeRequest
+   * @param instancesSetMachineTypeRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setMachineTypeInstance(InstanceName instance, InstancesSetMachineTypeRequest instancesSetMachineTypeRequest) {
+  public final Operation setMachineTypeInstance(InstanceName instance, InstancesSetMachineTypeRequest instancesSetMachineTypeRequestResource) {
 
     SetMachineTypeInstanceHttpRequest request =
         SetMachineTypeInstanceHttpRequest.newBuilder()
         .setInstanceWithInstanceName(instance)
-        .setInstancesSetMachineTypeRequest(instancesSetMachineTypeRequest)
+        .setInstancesSetMachineTypeRequestResource(instancesSetMachineTypeRequestResource)
         .build();
     return setMachineTypeInstance(request);
   }
@@ -1096,16 +1096,16 @@ public class InstanceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instance Name of the instance scoping this request.
-   * @param metadata A metadata key/value entry.
+   * @param metadataResource A metadata key/value entry.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setMetadataInstance(InstanceName instance, Metadata metadata) {
+  public final Operation setMetadataInstance(InstanceName instance, Metadata metadataResource) {
 
     SetMetadataInstanceHttpRequest request =
         SetMetadataInstanceHttpRequest.newBuilder()
         .setInstanceWithInstanceName(instance)
-        .setMetadata(metadata)
+        .setMetadataResource(metadataResource)
         .build();
     return setMetadataInstance(request);
   }
@@ -1162,16 +1162,16 @@ public class InstanceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instance Instance name.
-   * @param scheduling Sets the scheduling options for an Instance.
+   * @param schedulingResource Sets the scheduling options for an Instance.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setSchedulingInstance(InstanceName instance, Scheduling scheduling) {
+  public final Operation setSchedulingInstance(InstanceName instance, Scheduling schedulingResource) {
 
     SetSchedulingInstanceHttpRequest request =
         SetSchedulingInstanceHttpRequest.newBuilder()
         .setInstanceWithInstanceName(instance)
-        .setScheduling(scheduling)
+        .setSchedulingResource(schedulingResource)
         .build();
     return setSchedulingInstance(request);
   }
@@ -1228,16 +1228,16 @@ public class InstanceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instance Name of the instance resource to start.
-   * @param instancesSetServiceAccountRequest
+   * @param instancesSetServiceAccountRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setServiceAccountInstance(InstanceName instance, InstancesSetServiceAccountRequest instancesSetServiceAccountRequest) {
+  public final Operation setServiceAccountInstance(InstanceName instance, InstancesSetServiceAccountRequest instancesSetServiceAccountRequestResource) {
 
     SetServiceAccountInstanceHttpRequest request =
         SetServiceAccountInstanceHttpRequest.newBuilder()
         .setInstanceWithInstanceName(instance)
-        .setInstancesSetServiceAccountRequest(instancesSetServiceAccountRequest)
+        .setInstancesSetServiceAccountRequestResource(instancesSetServiceAccountRequestResource)
         .build();
     return setServiceAccountInstance(request);
   }
@@ -1294,16 +1294,16 @@ public class InstanceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instance Name of the instance scoping this request.
-   * @param tags A set of instance tags.
+   * @param tagsResource A set of instance tags.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setTagsInstance(InstanceName instance, Tags tags) {
+  public final Operation setTagsInstance(InstanceName instance, Tags tagsResource) {
 
     SetTagsInstanceHttpRequest request =
         SetTagsInstanceHttpRequest.newBuilder()
         .setInstanceWithInstanceName(instance)
-        .setTags(tags)
+        .setTagsResource(tagsResource)
         .build();
     return setTagsInstance(request);
   }
@@ -1424,16 +1424,16 @@ public class InstanceAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instance Name of the instance resource to start.
-   * @param instancesStartWithEncryptionKeyRequest
+   * @param instancesStartWithEncryptionKeyRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation startWithEncryptionKeyInstance(InstanceName instance, InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequest) {
+  public final Operation startWithEncryptionKeyInstance(InstanceName instance, InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequestResource) {
 
     StartWithEncryptionKeyInstanceHttpRequest request =
         StartWithEncryptionKeyInstanceHttpRequest.newBuilder()
         .setInstanceWithInstanceName(instance)
-        .setInstancesStartWithEncryptionKeyRequest(instancesStartWithEncryptionKeyRequest)
+        .setInstancesStartWithEncryptionKeyRequestResource(instancesStartWithEncryptionKeyRequestResource)
         .build();
     return startWithEncryptionKeyInstance(request);
   }

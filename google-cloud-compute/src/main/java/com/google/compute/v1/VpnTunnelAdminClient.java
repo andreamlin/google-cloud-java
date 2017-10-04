@@ -398,16 +398,16 @@ public class VpnTunnelAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param region Name of the region for this request.
-   * @param vpnTunnel
+   * @param vpnTunnelResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertVpnTunnel(VpnTunnelsRegionName region, VpnTunnel vpnTunnel) {
+  public final Operation insertVpnTunnel(VpnTunnelsRegionName region, VpnTunnel vpnTunnelResource) {
 
     InsertVpnTunnelHttpRequest request =
         InsertVpnTunnelHttpRequest.newBuilder()
         .setRegionWithVpnTunnelsRegionName(region)
-        .setVpnTunnel(vpnTunnel)
+        .setVpnTunnelResource(vpnTunnelResource)
         .build();
     return insertVpnTunnel(request);
   }

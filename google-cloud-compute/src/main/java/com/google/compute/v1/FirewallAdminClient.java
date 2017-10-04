@@ -299,16 +299,16 @@ public class FirewallAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param firewall Represents a Firewall resource.
+   * @param firewallResource Represents a Firewall resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertFirewall(FirewallsProjectName project, Firewall firewall) {
+  public final Operation insertFirewall(FirewallsProjectName project, Firewall firewallResource) {
 
     InsertFirewallHttpRequest request =
         InsertFirewallHttpRequest.newBuilder()
         .setProjectWithFirewallsProjectName(project)
-        .setFirewall(firewall)
+        .setFirewallResource(firewallResource)
         .build();
     return insertFirewall(request);
   }
@@ -463,16 +463,16 @@ public class FirewallAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param firewall Name of the firewall rule to update.
-   * @param firewall Represents a Firewall resource.
+   * @param firewallResource Represents a Firewall resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation patchFirewall(FirewallName firewall, Firewall firewall) {
+  public final Operation patchFirewall(FirewallName firewall, Firewall firewallResource) {
 
     PatchFirewallHttpRequest request =
         PatchFirewallHttpRequest.newBuilder()
         .setFirewallWithFirewallName(firewall)
-        .setFirewall(firewall)
+        .setFirewallResource(firewallResource)
         .build();
     return patchFirewall(request);
   }
@@ -529,16 +529,16 @@ public class FirewallAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param firewall Name of the firewall rule to update.
-   * @param firewall Represents a Firewall resource.
+   * @param firewallResource Represents a Firewall resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation updateFirewall(FirewallName firewall, Firewall firewall) {
+  public final Operation updateFirewall(FirewallName firewall, Firewall firewallResource) {
 
     UpdateFirewallHttpRequest request =
         UpdateFirewallHttpRequest.newBuilder()
         .setFirewallWithFirewallName(firewall)
-        .setFirewall(firewall)
+        .setFirewallResource(firewallResource)
         .build();
     return updateFirewall(request);
   }

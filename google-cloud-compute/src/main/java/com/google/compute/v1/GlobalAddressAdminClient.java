@@ -299,16 +299,16 @@ public class GlobalAddressAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param address A reserved address resource.
+   * @param addressResource A reserved address resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertGlobalAddress(GlobalAddressesProjectName project, Address address) {
+  public final Operation insertGlobalAddress(GlobalAddressesProjectName project, Address addressResource) {
 
     InsertGlobalAddressHttpRequest request =
         InsertGlobalAddressHttpRequest.newBuilder()
         .setProjectWithGlobalAddressesProjectName(project)
-        .setAddress(address)
+        .setAddressResource(addressResource)
         .build();
     return insertGlobalAddress(request);
   }

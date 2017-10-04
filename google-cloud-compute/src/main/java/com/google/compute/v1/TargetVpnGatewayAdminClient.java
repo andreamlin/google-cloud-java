@@ -398,16 +398,16 @@ public class TargetVpnGatewayAdminClient implements BackgroundResource {
    * </code></pre>
    *
    * @param region Name of the region for this request.
-   * @param targetVpnGateway Represents a Target VPN gateway resource.
+   * @param targetVpnGatewayResource Represents a Target VPN gateway resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertTargetVpnGateway(TargetVpnGatewaysRegionName region, TargetVpnGateway targetVpnGateway) {
+  public final Operation insertTargetVpnGateway(TargetVpnGatewaysRegionName region, TargetVpnGateway targetVpnGatewayResource) {
 
     InsertTargetVpnGatewayHttpRequest request =
         InsertTargetVpnGatewayHttpRequest.newBuilder()
         .setRegionWithTargetVpnGatewaysRegionName(region)
-        .setTargetVpnGateway(targetVpnGateway)
+        .setTargetVpnGatewayResource(targetVpnGatewayResource)
         .build();
     return insertTargetVpnGateway(request);
   }
