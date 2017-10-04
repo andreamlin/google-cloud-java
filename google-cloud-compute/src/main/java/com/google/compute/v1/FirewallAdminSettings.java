@@ -48,7 +48,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListFirewallsPagedResponse;
 import com.google.compute.v1.stub.FirewallAdminStub;
-import com.google.compute.v1.stub.HttpFirewallAdminStub;
+import com.google.compute.v1.stub.HttpJsonFirewallAdminStub;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -158,7 +158,7 @@ public class FirewallAdminSettings extends ClientSettings {
 
   public FirewallAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpFirewallAdminStub.create(this);
+      return HttpJsonFirewallAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

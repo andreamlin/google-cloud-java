@@ -48,7 +48,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListGlobalAddressesPagedResponse;
 import com.google.compute.v1.stub.GlobalAddressAdminStub;
-import com.google.compute.v1.stub.HttpGlobalAddressAdminStub;
+import com.google.compute.v1.stub.HttpJsonGlobalAddressAdminStub;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -142,7 +142,7 @@ public class GlobalAddressAdminSettings extends ClientSettings {
 
   public GlobalAddressAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpGlobalAddressAdminStub.create(this);
+      return HttpJsonGlobalAddressAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

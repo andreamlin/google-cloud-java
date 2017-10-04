@@ -48,7 +48,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListHttpHealthChecksPagedResponse;
 import com.google.compute.v1.stub.HttpHealthCheckAdminStub;
-import com.google.compute.v1.stub.HttpHttpHealthCheckAdminStub;
+import com.google.compute.v1.stub.HttpJsonHttpHealthCheckAdminStub;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -158,7 +158,7 @@ public class HttpHealthCheckAdminSettings extends ClientSettings {
 
   public HttpHealthCheckAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpHttpHealthCheckAdminStub.create(this);
+      return HttpJsonHttpHealthCheckAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

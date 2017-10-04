@@ -47,7 +47,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListRegionOperationsPagedResponse;
-import com.google.compute.v1.stub.HttpRegionOperationAdminStub;
+import com.google.compute.v1.stub.HttpJsonRegionOperationAdminStub;
 import com.google.compute.v1.stub.RegionOperationAdminStub;
 import com.google.protobuf.Empty;
 import java.io.IOException;
@@ -135,7 +135,7 @@ public class RegionOperationAdminSettings extends ClientSettings {
 
   public RegionOperationAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpRegionOperationAdminStub.create(this);
+      return HttpJsonRegionOperationAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

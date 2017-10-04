@@ -49,7 +49,7 @@ import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListBackendServicesPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListBackendServicesPagedResponse;
 import com.google.compute.v1.stub.BackendServiceAdminStub;
-import com.google.compute.v1.stub.HttpBackendServiceAdminStub;
+import com.google.compute.v1.stub.HttpJsonBackendServiceAdminStub;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -175,7 +175,7 @@ public class BackendServiceAdminSettings extends ClientSettings {
 
   public BackendServiceAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpBackendServiceAdminStub.create(this);
+      return HttpJsonBackendServiceAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

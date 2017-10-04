@@ -48,7 +48,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListVpnTunnelsPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListVpnTunnelsPagedResponse;
-import com.google.compute.v1.stub.HttpVpnTunnelAdminStub;
+import com.google.compute.v1.stub.HttpJsonVpnTunnelAdminStub;
 import com.google.compute.v1.stub.VpnTunnelAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -151,7 +151,7 @@ public class VpnTunnelAdminSettings extends ClientSettings {
 
   public VpnTunnelAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpVpnTunnelAdminStub.create(this);
+      return HttpJsonVpnTunnelAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

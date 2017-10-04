@@ -49,7 +49,7 @@ import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListGlobalOperationsPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListGlobalOperationsPagedResponse;
 import com.google.compute.v1.stub.GlobalOperationAdminStub;
-import com.google.compute.v1.stub.HttpGlobalOperationAdminStub;
+import com.google.compute.v1.stub.HttpJsonGlobalOperationAdminStub;
 import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.List;
@@ -144,7 +144,7 @@ public class GlobalOperationAdminSettings extends ClientSettings {
 
   public GlobalOperationAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpGlobalOperationAdminStub.create(this);
+      return HttpJsonGlobalOperationAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

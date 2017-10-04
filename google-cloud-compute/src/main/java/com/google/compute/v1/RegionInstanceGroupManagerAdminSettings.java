@@ -47,7 +47,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListRegionInstanceGroupManagersPagedResponse;
-import com.google.compute.v1.stub.HttpRegionInstanceGroupManagerAdminStub;
+import com.google.compute.v1.stub.HttpJsonRegionInstanceGroupManagerAdminStub;
 import com.google.compute.v1.stub.RegionInstanceGroupManagerAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -198,7 +198,7 @@ public class RegionInstanceGroupManagerAdminSettings extends ClientSettings {
 
   public RegionInstanceGroupManagerAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpRegionInstanceGroupManagerAdminStub.create(this);
+      return HttpJsonRegionInstanceGroupManagerAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

@@ -47,7 +47,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListSslCertificatesPagedResponse;
-import com.google.compute.v1.stub.HttpSslCertificateAdminStub;
+import com.google.compute.v1.stub.HttpJsonSslCertificateAdminStub;
 import com.google.compute.v1.stub.SslCertificateAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -142,7 +142,7 @@ public class SslCertificateAdminSettings extends ClientSettings {
 
   public SslCertificateAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpSslCertificateAdminStub.create(this);
+      return HttpJsonSslCertificateAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

@@ -49,7 +49,7 @@ import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListDiskTypesPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListDiskTypesPagedResponse;
 import com.google.compute.v1.stub.DiskTypeAdminStub;
-import com.google.compute.v1.stub.HttpDiskTypeAdminStub;
+import com.google.compute.v1.stub.HttpJsonDiskTypeAdminStub;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -135,7 +135,7 @@ public class DiskTypeAdminSettings extends ClientSettings {
 
   public DiskTypeAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpDiskTypeAdminStub.create(this);
+      return HttpJsonDiskTypeAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

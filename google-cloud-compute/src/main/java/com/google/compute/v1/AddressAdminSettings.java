@@ -49,7 +49,7 @@ import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListAddressesPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListAddressesPagedResponse;
 import com.google.compute.v1.stub.AddressAdminStub;
-import com.google.compute.v1.stub.HttpAddressAdminStub;
+import com.google.compute.v1.stub.HttpJsonAddressAdminStub;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -151,7 +151,7 @@ public class AddressAdminSettings extends ClientSettings {
 
   public AddressAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpAddressAdminStub.create(this);
+      return HttpJsonAddressAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

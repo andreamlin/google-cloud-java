@@ -48,7 +48,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListMachineTypesPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListMachineTypesPagedResponse;
-import com.google.compute.v1.stub.HttpMachineTypeAdminStub;
+import com.google.compute.v1.stub.HttpJsonMachineTypeAdminStub;
 import com.google.compute.v1.stub.MachineTypeAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -135,7 +135,7 @@ public class MachineTypeAdminSettings extends ClientSettings {
 
   public MachineTypeAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpMachineTypeAdminStub.create(this);
+      return HttpJsonMachineTypeAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

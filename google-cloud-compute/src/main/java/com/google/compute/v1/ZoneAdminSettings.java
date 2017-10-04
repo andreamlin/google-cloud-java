@@ -47,7 +47,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListZonesPagedResponse;
-import com.google.compute.v1.stub.HttpZoneAdminStub;
+import com.google.compute.v1.stub.HttpJsonZoneAdminStub;
 import com.google.compute.v1.stub.ZoneAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -126,7 +126,7 @@ public class ZoneAdminSettings extends ClientSettings {
 
   public ZoneAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpZoneAdminStub.create(this);
+      return HttpJsonZoneAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

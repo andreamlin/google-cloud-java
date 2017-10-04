@@ -48,7 +48,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListGlobalForwardingRulesPagedResponse;
 import com.google.compute.v1.stub.GlobalForwardingRuleAdminStub;
-import com.google.compute.v1.stub.HttpGlobalForwardingRuleAdminStub;
+import com.google.compute.v1.stub.HttpJsonGlobalForwardingRuleAdminStub;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -150,7 +150,7 @@ public class GlobalForwardingRuleAdminSettings extends ClientSettings {
 
   public GlobalForwardingRuleAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpGlobalForwardingRuleAdminStub.create(this);
+      return HttpJsonGlobalForwardingRuleAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

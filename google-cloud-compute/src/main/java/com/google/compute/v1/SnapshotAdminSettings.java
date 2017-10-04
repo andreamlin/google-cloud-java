@@ -47,7 +47,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListSnapshotsPagedResponse;
-import com.google.compute.v1.stub.HttpSnapshotAdminStub;
+import com.google.compute.v1.stub.HttpJsonSnapshotAdminStub;
 import com.google.compute.v1.stub.SnapshotAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -134,7 +134,7 @@ public class SnapshotAdminSettings extends ClientSettings {
 
   public SnapshotAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpSnapshotAdminStub.create(this);
+      return HttpJsonSnapshotAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

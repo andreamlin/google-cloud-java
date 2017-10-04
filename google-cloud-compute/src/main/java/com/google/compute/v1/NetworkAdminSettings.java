@@ -47,7 +47,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListNetworksPagedResponse;
-import com.google.compute.v1.stub.HttpNetworkAdminStub;
+import com.google.compute.v1.stub.HttpJsonNetworkAdminStub;
 import com.google.compute.v1.stub.NetworkAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -150,7 +150,7 @@ public class NetworkAdminSettings extends ClientSettings {
 
   public NetworkAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpNetworkAdminStub.create(this);
+      return HttpJsonNetworkAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

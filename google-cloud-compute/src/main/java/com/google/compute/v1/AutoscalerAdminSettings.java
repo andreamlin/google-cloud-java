@@ -49,7 +49,7 @@ import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListAutoscalersPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListAutoscalersPagedResponse;
 import com.google.compute.v1.stub.AutoscalerAdminStub;
-import com.google.compute.v1.stub.HttpAutoscalerAdminStub;
+import com.google.compute.v1.stub.HttpJsonAutoscalerAdminStub;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -167,7 +167,7 @@ public class AutoscalerAdminSettings extends ClientSettings {
 
   public AutoscalerAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpAutoscalerAdminStub.create(this);
+      return HttpJsonAutoscalerAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

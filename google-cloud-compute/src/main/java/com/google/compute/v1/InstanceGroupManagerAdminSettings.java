@@ -48,7 +48,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListInstanceGroupManagersPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListInstanceGroupManagersPagedResponse;
-import com.google.compute.v1.stub.HttpInstanceGroupManagerAdminStub;
+import com.google.compute.v1.stub.HttpJsonInstanceGroupManagerAdminStub;
 import com.google.compute.v1.stub.InstanceGroupManagerAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -207,7 +207,7 @@ public class InstanceGroupManagerAdminSettings extends ClientSettings {
 
   public InstanceGroupManagerAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpInstanceGroupManagerAdminStub.create(this);
+      return HttpJsonInstanceGroupManagerAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

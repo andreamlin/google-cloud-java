@@ -47,7 +47,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListTargetHttpsProxiesPagedResponse;
-import com.google.compute.v1.stub.HttpTargetHttpsProxyAdminStub;
+import com.google.compute.v1.stub.HttpJsonTargetHttpsProxyAdminStub;
 import com.google.compute.v1.stub.TargetHttpsProxyAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -158,7 +158,7 @@ public class TargetHttpsProxyAdminSettings extends ClientSettings {
 
   public TargetHttpsProxyAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpTargetHttpsProxyAdminStub.create(this);
+      return HttpJsonTargetHttpsProxyAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

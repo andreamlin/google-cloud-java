@@ -39,7 +39,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.google.compute.v1.stub.HttpProjectAdminStub;
+import com.google.compute.v1.stub.HttpJsonProjectAdminStub;
 import com.google.compute.v1.stub.ProjectAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -142,7 +142,7 @@ public class ProjectAdminSettings extends ClientSettings {
 
   public ProjectAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpProjectAdminStub.create(this);
+      return HttpJsonProjectAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

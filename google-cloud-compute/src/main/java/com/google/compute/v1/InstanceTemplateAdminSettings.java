@@ -47,7 +47,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListInstanceTemplatesPagedResponse;
-import com.google.compute.v1.stub.HttpInstanceTemplateAdminStub;
+import com.google.compute.v1.stub.HttpJsonInstanceTemplateAdminStub;
 import com.google.compute.v1.stub.InstanceTemplateAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -142,7 +142,7 @@ public class InstanceTemplateAdminSettings extends ClientSettings {
 
   public InstanceTemplateAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpInstanceTemplateAdminStub.create(this);
+      return HttpJsonInstanceTemplateAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

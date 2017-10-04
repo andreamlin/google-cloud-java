@@ -47,7 +47,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListUrlMapsPagedResponse;
-import com.google.compute.v1.stub.HttpUrlMapAdminStub;
+import com.google.compute.v1.stub.HttpJsonUrlMapAdminStub;
 import com.google.compute.v1.stub.UrlMapAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -174,7 +174,7 @@ public class UrlMapAdminSettings extends ClientSettings {
 
   public UrlMapAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpUrlMapAdminStub.create(this);
+      return HttpJsonUrlMapAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

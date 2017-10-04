@@ -39,7 +39,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.google.compute.v1.stub.HttpLicensAdminStub;
+import com.google.compute.v1.stub.HttpJsonLicensAdminStub;
 import com.google.compute.v1.stub.LicensAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -110,7 +110,7 @@ public class LicensAdminSettings extends ClientSettings {
 
   public LicensAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpLicensAdminStub.create(this);
+      return HttpJsonLicensAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

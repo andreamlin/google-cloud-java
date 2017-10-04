@@ -47,7 +47,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListRoutesPagedResponse;
-import com.google.compute.v1.stub.HttpRouteAdminStub;
+import com.google.compute.v1.stub.HttpJsonRouteAdminStub;
 import com.google.compute.v1.stub.RouteAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -142,7 +142,7 @@ public class RouteAdminSettings extends ClientSettings {
 
   public RouteAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpRouteAdminStub.create(this);
+      return HttpJsonRouteAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

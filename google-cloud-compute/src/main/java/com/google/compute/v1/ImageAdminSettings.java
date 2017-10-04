@@ -47,7 +47,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListImagesPagedResponse;
-import com.google.compute.v1.stub.HttpImageAdminStub;
+import com.google.compute.v1.stub.HttpJsonImageAdminStub;
 import com.google.compute.v1.stub.ImageAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -158,7 +158,7 @@ public class ImageAdminSettings extends ClientSettings {
 
   public ImageAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpImageAdminStub.create(this);
+      return HttpJsonImageAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

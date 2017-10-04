@@ -48,7 +48,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListSubnetworksPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListSubnetworksPagedResponse;
-import com.google.compute.v1.stub.HttpSubnetworkAdminStub;
+import com.google.compute.v1.stub.HttpJsonSubnetworkAdminStub;
 import com.google.compute.v1.stub.SubnetworkAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -159,7 +159,7 @@ public class SubnetworkAdminSettings extends ClientSettings {
 
   public SubnetworkAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpSubnetworkAdminStub.create(this);
+      return HttpJsonSubnetworkAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

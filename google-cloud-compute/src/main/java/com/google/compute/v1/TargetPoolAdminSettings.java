@@ -48,7 +48,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetPoolsPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListTargetPoolsPagedResponse;
-import com.google.compute.v1.stub.HttpTargetPoolAdminStub;
+import com.google.compute.v1.stub.HttpJsonTargetPoolAdminStub;
 import com.google.compute.v1.stub.TargetPoolAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -199,7 +199,7 @@ public class TargetPoolAdminSettings extends ClientSettings {
 
   public TargetPoolAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpTargetPoolAdminStub.create(this);
+      return HttpJsonTargetPoolAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

@@ -48,7 +48,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetInstancesPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListTargetInstancesPagedResponse;
-import com.google.compute.v1.stub.HttpTargetInstanceAdminStub;
+import com.google.compute.v1.stub.HttpJsonTargetInstanceAdminStub;
 import com.google.compute.v1.stub.TargetInstanceAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -151,7 +151,7 @@ public class TargetInstanceAdminSettings extends ClientSettings {
 
   public TargetInstanceAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpTargetInstanceAdminStub.create(this);
+      return HttpJsonTargetInstanceAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());

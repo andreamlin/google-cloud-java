@@ -48,7 +48,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetVpnGatewaysPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListTargetVpnGatewaysPagedResponse;
-import com.google.compute.v1.stub.HttpTargetVpnGatewayAdminStub;
+import com.google.compute.v1.stub.HttpJsonTargetVpnGatewayAdminStub;
 import com.google.compute.v1.stub.TargetVpnGatewayAdminStub;
 import java.io.IOException;
 import java.util.List;
@@ -151,7 +151,7 @@ public class TargetVpnGatewayAdminSettings extends ClientSettings {
 
   public TargetVpnGatewayAdminStub createStub() throws IOException {
     if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
-      return HttpTargetVpnGatewayAdminStub.create(this);
+      return HttpJsonTargetVpnGatewayAdminStub.create(this);
     } else {
       throw new UnsupportedOperationException(
           "Transport not supported: " + getTransportProvider().getTransportName());
