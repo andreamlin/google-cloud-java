@@ -29,14 +29,14 @@ import static com.google.compute.v1.PagedResponseWrappers.AggregatedListRoutersP
 import static com.google.compute.v1.PagedResponseWrappers.ListRoutersPagedResponse;
 import com.google.compute.v1.PatchRouterHttpRequest;
 import com.google.compute.v1.PreviewRouterHttpRequest;
+import com.google.compute.v1.ProjectName;
+import com.google.compute.v1.RegionName;
 import com.google.compute.v1.Router;
 import com.google.compute.v1.RouterAggregatedList;
 import com.google.compute.v1.RouterList;
 import com.google.compute.v1.RouterName;
 import com.google.compute.v1.RouterStatusResponse;
 import com.google.compute.v1.RoutersPreviewResponse;
-import com.google.compute.v1.RoutersProjectName;
-import com.google.compute.v1.RoutersRegionName;
 import com.google.compute.v1.UpdateRouterHttpRequest;
 import javax.annotation.Generated;
 

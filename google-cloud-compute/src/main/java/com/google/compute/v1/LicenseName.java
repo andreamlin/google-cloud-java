@@ -27,11 +27,11 @@ import javax.annotation.Generated;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class InstanceGroupsZoneName implements ResourceName {
+public final class LicenseName implements ResourceName {
+  private final String license;
   private final String project;
-  private final String zone;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/zones/{zone}/instanceGroups");
+        PathTemplate.createWithoutUrlEncoding("{project}/licenses/{license}");
 
   public static Builder newBuilder() {
     return new Builder();
@@ -41,36 +41,36 @@ public final class InstanceGroupsZoneName implements ResourceName {
     return new Builder(this);
   }
 
-  private InstanceGroupsZoneName(Builder builder) {
+  private LicenseName(Builder builder) {
+    license = Preconditions.checkNotNull(builder.getLicense());
     project = Preconditions.checkNotNull(builder.getProject());
-    zone = Preconditions.checkNotNull(builder.getZone());
   }
 
-  public static InstanceGroupsZoneName create(
-      String project,
-      String zone
+  public static LicenseName create(
+      String license,
+      String project
       ) {
     return newBuilder()
+    .setLicense(license)
     .setProject(project)
-    .setZone(zone)
       .build();
+  }
+
+  public String getLicense() {
+    return license;
   }
 
   public String getProject() {
     return project;
   }
 
-  public String getZone() {
-    return zone;
-  }
 
-
-  public static InstanceGroupsZoneName parse(String formattedString) {
+  public static LicenseName parse(String formattedString) {
     Map<String, String> matchMap =
-        PATH_TEMPLATE.validatedMatch(formattedString, "InstanceGroupsZoneName.parse: formattedString not in valid format");
+        PATH_TEMPLATE.validatedMatch(formattedString, "LicenseName.parse: formattedString not in valid format");
     return create(
-      matchMap.get("project"),
-      matchMap.get("zone")
+      matchMap.get("license"),
+      matchMap.get("project")
     );
   }
 
@@ -80,46 +80,46 @@ public final class InstanceGroupsZoneName implements ResourceName {
 
   @Override
   public ResourceNameType getType() {
-    return InstanceGroupsZoneNameType.instance();
+    return LicenseNameType.instance();
   }
 
   public static class Builder {
+    private String license;
     private String project;
-    private String zone;
 
+    public String getLicense() {
+      return license;
+    }
     public String getProject() {
       return project;
     }
-    public String getZone() {
-      return zone;
-    }
 
-    public Builder setProject(String project) {
-      this.project = project;
+    public Builder setLicense(String license) {
+      this.license = license;
       return this;
     }
-    public Builder setZone(String zone) {
-      this.zone = zone;
+    public Builder setProject(String project) {
+      this.project = project;
       return this;
     }
 
     private Builder() {}
 
-    public Builder (InstanceGroupsZoneName instanceGroupsZoneName) {
-      project = instanceGroupsZoneName.project;
-      zone = instanceGroupsZoneName.zone;
+    public Builder (LicenseName licenseName) {
+      license = licenseName.license;
+      project = licenseName.project;
     }
 
-    public InstanceGroupsZoneName build() {
-      return new InstanceGroupsZoneName(this);
+    public LicenseName build() {
+      return new LicenseName(this);
     }
   }
 
   @Override
   public String toString() {
     return PATH_TEMPLATE.instantiate(
-        "project", project,
-        "zone", zone
+        "license", license,
+        "project", project
         );
   }
 
@@ -128,11 +128,11 @@ public final class InstanceGroupsZoneName implements ResourceName {
     if (o == this) {
       return true;
     }
-    if (o instanceof InstanceGroupsZoneName) {
-      InstanceGroupsZoneName that = (InstanceGroupsZoneName) o;
+    if (o instanceof LicenseName) {
+      LicenseName that = (LicenseName) o;
       return
-          Objects.equals(this.project, that.getProject()) &&
-          Objects.equals(this.zone, that.getZone())
+          Objects.equals(this.license, that.getLicense()) &&
+          Objects.equals(this.project, that.getProject())
           ;
     }
     return false;
@@ -141,8 +141,8 @@ public final class InstanceGroupsZoneName implements ResourceName {
   @Override
   public int hashCode() {
     return Objects.hash(
-      project,
-      zone
+      license,
+      project
     );
   }
 }

@@ -303,11 +303,11 @@ public class GlobalAddressAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertGlobalAddress(GlobalAddressesProjectName project, Address addressResource) {
+  public final Operation insertGlobalAddress(ProjectName project, Address addressResource) {
 
     InsertGlobalAddressHttpRequest request =
         InsertGlobalAddressHttpRequest.newBuilder()
-        .setProjectWithGlobalAddressesProjectName(project)
+        .setProjectWithProjectName(project)
         .setAddressResource(addressResource)
         .build();
     return insertGlobalAddress(request);
@@ -370,10 +370,10 @@ public class GlobalAddressAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListGlobalAddressesPagedResponse listGlobalAddresses(GlobalAddressesProjectName project) {
+  public final ListGlobalAddressesPagedResponse listGlobalAddresses(ProjectName project) {
     ListGlobalAddressesHttpRequest request =
         ListGlobalAddressesHttpRequest.newBuilder()
-        .setProjectWithGlobalAddressesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listGlobalAddresses(request);
   }

@@ -31,7 +31,7 @@ public final class NetworkName implements ResourceName {
   private final String network;
   private final String project;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/global/networks/{network}/switchToCustomMode");
+        PathTemplate.createWithoutUrlEncoding("{project}/networks/{network}");
 
   public static Builder newBuilder() {
     return new Builder();

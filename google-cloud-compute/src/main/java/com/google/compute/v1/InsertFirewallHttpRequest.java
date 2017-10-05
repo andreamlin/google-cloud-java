@@ -353,7 +353,7 @@ public final class InsertFirewallHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithFirewallsProjectName(FirewallsProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -364,8 +364,8 @@ public final class InsertFirewallHttpRequest implements ApiMessage {
           ;
     }
 
-    public final FirewallsProjectName getProjectAsFirewallsProjectName() {
-      return FirewallsProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

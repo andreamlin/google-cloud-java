@@ -245,10 +245,10 @@ public class InstanceAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListInstancesPagedResponse aggregatedListInstances(InstancesProjectName project) {
+  public final AggregatedListInstancesPagedResponse aggregatedListInstances(ProjectName project) {
     AggregatedListInstancesHttpRequest request =
         AggregatedListInstancesHttpRequest.newBuilder()
-        .setProjectWithInstancesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListInstances(request);
   }
@@ -738,11 +738,11 @@ public class InstanceAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertInstance(InstancesZoneName zone, Instance instanceResource) {
+  public final Operation insertInstance(ZoneName zone, Instance instanceResource) {
 
     InsertInstanceHttpRequest request =
         InsertInstanceHttpRequest.newBuilder()
-        .setZoneWithInstancesZoneName(zone)
+        .setZoneWithZoneName(zone)
         .setInstanceResource(instanceResource)
         .build();
     return insertInstance(request);
@@ -805,10 +805,10 @@ public class InstanceAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListInstancesPagedResponse listInstances(InstancesZoneName zone) {
+  public final ListInstancesPagedResponse listInstances(ZoneName zone) {
     ListInstancesHttpRequest request =
         ListInstancesHttpRequest.newBuilder()
-        .setZoneWithInstancesZoneName(zone)
+        .setZoneWithZoneName(zone)
         .build();
     return listInstances(request);
   }

@@ -177,10 +177,10 @@ public class VpnTunnelAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListVpnTunnelsPagedResponse aggregatedListVpnTunnels(VpnTunnelsProjectName project) {
+  public final AggregatedListVpnTunnelsPagedResponse aggregatedListVpnTunnels(ProjectName project) {
     AggregatedListVpnTunnelsHttpRequest request =
         AggregatedListVpnTunnelsHttpRequest.newBuilder()
-        .setProjectWithVpnTunnelsProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListVpnTunnels(request);
   }
@@ -402,11 +402,11 @@ public class VpnTunnelAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertVpnTunnel(VpnTunnelsRegionName region, VpnTunnel vpnTunnelResource) {
+  public final Operation insertVpnTunnel(RegionName region, VpnTunnel vpnTunnelResource) {
 
     InsertVpnTunnelHttpRequest request =
         InsertVpnTunnelHttpRequest.newBuilder()
-        .setRegionWithVpnTunnelsRegionName(region)
+        .setRegionWithRegionName(region)
         .setVpnTunnelResource(vpnTunnelResource)
         .build();
     return insertVpnTunnel(request);
@@ -469,10 +469,10 @@ public class VpnTunnelAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListVpnTunnelsPagedResponse listVpnTunnels(VpnTunnelsRegionName region) {
+  public final ListVpnTunnelsPagedResponse listVpnTunnels(RegionName region) {
     ListVpnTunnelsHttpRequest request =
         ListVpnTunnelsHttpRequest.newBuilder()
-        .setRegionWithVpnTunnelsRegionName(region)
+        .setRegionWithRegionName(region)
         .build();
     return listVpnTunnels(request);
   }

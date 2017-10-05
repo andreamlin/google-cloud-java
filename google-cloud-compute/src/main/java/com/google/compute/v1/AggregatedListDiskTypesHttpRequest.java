@@ -437,7 +437,7 @@ public final class AggregatedListDiskTypesHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithDiskTypesProjectName(DiskTypesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class AggregatedListDiskTypesHttpRequest implements ApiMessage {
           ;
     }
 
-    public final DiskTypesProjectName getProjectAsDiskTypesProjectName() {
-      return DiskTypesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

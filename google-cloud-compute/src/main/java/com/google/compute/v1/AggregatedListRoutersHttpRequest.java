@@ -437,7 +437,7 @@ public final class AggregatedListRoutersHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithRoutersProjectName(RoutersProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class AggregatedListRoutersHttpRequest implements ApiMessage {
           ;
     }
 
-    public final RoutersProjectName getProjectAsRoutersProjectName() {
-      return RoutersProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

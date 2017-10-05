@@ -437,7 +437,7 @@ public final class ListHttpHealthChecksHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithHttpHealthChecksProjectName(HttpHealthChecksProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class ListHttpHealthChecksHttpRequest implements ApiMessage {
           ;
     }
 
-    public final HttpHealthChecksProjectName getProjectAsHttpHealthChecksProjectName() {
-      return HttpHealthChecksProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

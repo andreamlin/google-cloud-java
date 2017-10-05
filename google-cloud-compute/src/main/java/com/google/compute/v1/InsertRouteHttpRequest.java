@@ -353,7 +353,7 @@ public final class InsertRouteHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithRoutesProjectName(RoutesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -364,8 +364,8 @@ public final class InsertRouteHttpRequest implements ApiMessage {
           ;
     }
 
-    public final RoutesProjectName getProjectAsRoutesProjectName() {
-      return RoutesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

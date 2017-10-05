@@ -21,12 +21,12 @@ import javax.annotation.Generated;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class RegionInstanceGroupManagersRegionNameType implements ResourceNameType {
-  private static RegionInstanceGroupManagersRegionNameType instance = new RegionInstanceGroupManagersRegionNameType();
+public final class FamilyNameType implements ResourceNameType {
+  private static FamilyNameType instance = new FamilyNameType();
 
-  private RegionInstanceGroupManagersRegionNameType() {}
+  private FamilyNameType() {}
 
-  public static RegionInstanceGroupManagersRegionNameType instance() {
+  public static FamilyNameType instance() {
     return instance;
   }
 }

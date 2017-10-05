@@ -31,20 +31,20 @@ import com.google.compute.v1.InstanceGroupManagerName;
 import com.google.compute.v1.InstanceGroupManagersAbandonInstancesRequest;
 import com.google.compute.v1.InstanceGroupManagersDeleteInstancesRequest;
 import com.google.compute.v1.InstanceGroupManagersListManagedInstancesResponse;
-import com.google.compute.v1.InstanceGroupManagersProjectName;
 import com.google.compute.v1.InstanceGroupManagersRecreateInstancesRequest;
 import com.google.compute.v1.InstanceGroupManagersSetInstanceTemplateRequest;
 import com.google.compute.v1.InstanceGroupManagersSetTargetPoolsRequest;
-import com.google.compute.v1.InstanceGroupManagersZoneName;
 import com.google.compute.v1.ListInstanceGroupManagersHttpRequest;
 import com.google.compute.v1.ListManagedInstancesInstanceGroupManagersHttpRequest;
 import com.google.compute.v1.Operation;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListInstanceGroupManagersPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListInstanceGroupManagersPagedResponse;
+import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RecreateInstancesInstanceGroupManagerHttpRequest;
 import com.google.compute.v1.ResizeInstanceGroupManagerHttpRequest;
 import com.google.compute.v1.SetInstanceTemplateInstanceGroupManagerHttpRequest;
 import com.google.compute.v1.SetTargetPoolsInstanceGroupManagerHttpRequest;
+import com.google.compute.v1.ZoneName;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

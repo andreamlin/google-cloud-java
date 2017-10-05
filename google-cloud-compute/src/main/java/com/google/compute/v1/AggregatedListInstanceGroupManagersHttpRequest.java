@@ -437,7 +437,7 @@ public final class AggregatedListInstanceGroupManagersHttpRequest implements Api
       return newBuilder;
     }
 
-    public final Builder setProjectWithInstanceGroupManagersProjectName(InstanceGroupManagersProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class AggregatedListInstanceGroupManagersHttpRequest implements Api
           ;
     }
 
-    public final InstanceGroupManagersProjectName getProjectAsInstanceGroupManagersProjectName() {
-      return InstanceGroupManagersProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

@@ -355,7 +355,7 @@ public final class GetFromFamilyImageHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setFamilyWithImagesFamilyName(ImagesFamilyName value) {
+    public final Builder setFamilyWithFamilyName(FamilyName value) {
       if (value == null) {
         return
             setFamily("").          setProject("")
@@ -366,8 +366,8 @@ public final class GetFromFamilyImageHttpRequest implements ApiMessage {
           ;
     }
 
-    public final ImagesFamilyName getFamilyAsImagesFamilyName() {
-      return ImagesFamilyName.create(
+    public final FamilyName getFamilyAsFamilyName() {
+      return FamilyName.create(
           getFamily(),
           getProject()
           );

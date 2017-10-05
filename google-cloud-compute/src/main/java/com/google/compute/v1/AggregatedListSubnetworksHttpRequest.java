@@ -437,7 +437,7 @@ public final class AggregatedListSubnetworksHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithSubnetworksProjectName(SubnetworksProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class AggregatedListSubnetworksHttpRequest implements ApiMessage {
           ;
     }
 
-    public final SubnetworksProjectName getProjectAsSubnetworksProjectName() {
-      return SubnetworksProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

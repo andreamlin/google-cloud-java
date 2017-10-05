@@ -31,7 +31,7 @@ public final class UrlMapName implements ResourceName {
   private final String project;
   private final String urlMap;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/global/urlMaps/{urlMap}/validate");
+        PathTemplate.createWithoutUrlEncoding("{project}/urlMaps/{urlMap}");
 
   public static Builder newBuilder() {
     return new Builder();

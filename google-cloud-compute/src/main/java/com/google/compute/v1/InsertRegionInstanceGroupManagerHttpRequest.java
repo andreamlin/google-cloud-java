@@ -383,7 +383,7 @@ public final class InsertRegionInstanceGroupManagerHttpRequest implements ApiMes
       return newBuilder;
     }
 
-    public final Builder setRegionWithRegionInstanceGroupManagersRegionName(RegionInstanceGroupManagersRegionName value) {
+    public final Builder setRegionWithRegionName(RegionName value) {
       if (value == null) {
         return
             setProject("").          setRegion("")
@@ -394,8 +394,8 @@ public final class InsertRegionInstanceGroupManagerHttpRequest implements ApiMes
           ;
     }
 
-    public final RegionInstanceGroupManagersRegionName getRegionAsRegionInstanceGroupManagersRegionName() {
-      return RegionInstanceGroupManagersRegionName.create(
+    public final RegionName getRegionAsRegionName() {
+      return RegionName.create(
           getProject(),
           getRegion()
           );

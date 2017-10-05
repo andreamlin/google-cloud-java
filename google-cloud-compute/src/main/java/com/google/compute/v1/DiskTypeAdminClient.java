@@ -177,10 +177,10 @@ public class DiskTypeAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListDiskTypesPagedResponse aggregatedListDiskTypes(DiskTypesProjectName project) {
+  public final AggregatedListDiskTypesPagedResponse aggregatedListDiskTypes(ProjectName project) {
     AggregatedListDiskTypesHttpRequest request =
         AggregatedListDiskTypesHttpRequest.newBuilder()
-        .setProjectWithDiskTypesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListDiskTypes(request);
   }
@@ -339,10 +339,10 @@ public class DiskTypeAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListDiskTypesPagedResponse listDiskTypes(DiskTypesZoneName zone) {
+  public final ListDiskTypesPagedResponse listDiskTypes(ZoneName zone) {
     ListDiskTypesHttpRequest request =
         ListDiskTypesHttpRequest.newBuilder()
-        .setZoneWithDiskTypesZoneName(zone)
+        .setZoneWithZoneName(zone)
         .build();
     return listDiskTypes(request);
   }

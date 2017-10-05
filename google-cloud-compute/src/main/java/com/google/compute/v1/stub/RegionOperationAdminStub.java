@@ -24,8 +24,8 @@ import com.google.compute.v1.ListRegionOperationsHttpRequest;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.OperationList;
 import static com.google.compute.v1.PagedResponseWrappers.ListRegionOperationsPagedResponse;
+import com.google.compute.v1.RegionName;
 import com.google.compute.v1.RegionOperationsOperationName;
-import com.google.compute.v1.RegionOperationsRegionName;
 import com.google.protobuf.Empty;
 import javax.annotation.Generated;
 

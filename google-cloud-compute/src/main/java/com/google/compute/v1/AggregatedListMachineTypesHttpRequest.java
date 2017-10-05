@@ -437,7 +437,7 @@ public final class AggregatedListMachineTypesHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithMachineTypesProjectName(MachineTypesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class AggregatedListMachineTypesHttpRequest implements ApiMessage {
           ;
     }
 
-    public final MachineTypesProjectName getProjectAsMachineTypesProjectName() {
-      return MachineTypesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

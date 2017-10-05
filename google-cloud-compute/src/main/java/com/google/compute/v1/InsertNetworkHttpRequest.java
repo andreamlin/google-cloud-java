@@ -353,7 +353,7 @@ public final class InsertNetworkHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithNetworksProjectName(NetworksProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -364,8 +364,8 @@ public final class InsertNetworkHttpRequest implements ApiMessage {
           ;
     }
 
-    public final NetworksProjectName getProjectAsNetworksProjectName() {
-      return NetworksProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

@@ -178,10 +178,10 @@ public class GlobalOperationAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListGlobalOperationsPagedResponse aggregatedListGlobalOperations(GlobalOperationsProjectName project) {
+  public final AggregatedListGlobalOperationsPagedResponse aggregatedListGlobalOperations(ProjectName project) {
     AggregatedListGlobalOperationsHttpRequest request =
         AggregatedListGlobalOperationsHttpRequest.newBuilder()
-        .setProjectWithGlobalOperationsProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListGlobalOperations(request);
   }
@@ -404,10 +404,10 @@ public class GlobalOperationAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListGlobalOperationsPagedResponse listGlobalOperations(GlobalOperationsProjectName project) {
+  public final ListGlobalOperationsPagedResponse listGlobalOperations(ProjectName project) {
     ListGlobalOperationsHttpRequest request =
         ListGlobalOperationsHttpRequest.newBuilder()
-        .setProjectWithGlobalOperationsProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listGlobalOperations(request);
   }

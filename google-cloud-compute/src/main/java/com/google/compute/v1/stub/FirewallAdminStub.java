@@ -22,13 +22,13 @@ import com.google.compute.v1.DeleteFirewallHttpRequest;
 import com.google.compute.v1.Firewall;
 import com.google.compute.v1.FirewallList;
 import com.google.compute.v1.FirewallName;
-import com.google.compute.v1.FirewallsProjectName;
 import com.google.compute.v1.GetFirewallHttpRequest;
 import com.google.compute.v1.InsertFirewallHttpRequest;
 import com.google.compute.v1.ListFirewallsHttpRequest;
 import com.google.compute.v1.Operation;
 import static com.google.compute.v1.PagedResponseWrappers.ListFirewallsPagedResponse;
 import com.google.compute.v1.PatchFirewallHttpRequest;
+import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.UpdateFirewallHttpRequest;
 import javax.annotation.Generated;
 

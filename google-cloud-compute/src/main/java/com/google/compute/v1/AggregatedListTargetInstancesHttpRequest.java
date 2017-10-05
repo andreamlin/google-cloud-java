@@ -437,7 +437,7 @@ public final class AggregatedListTargetInstancesHttpRequest implements ApiMessag
       return newBuilder;
     }
 
-    public final Builder setProjectWithTargetInstancesProjectName(TargetInstancesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class AggregatedListTargetInstancesHttpRequest implements ApiMessag
           ;
     }
 
-    public final TargetInstancesProjectName getProjectAsTargetInstancesProjectName() {
-      return TargetInstancesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

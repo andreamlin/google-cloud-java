@@ -27,13 +27,13 @@ import com.google.compute.v1.ListSubnetworksHttpRequest;
 import com.google.compute.v1.Operation;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListSubnetworksPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListSubnetworksPagedResponse;
+import com.google.compute.v1.ProjectName;
+import com.google.compute.v1.RegionName;
 import com.google.compute.v1.Subnetwork;
 import com.google.compute.v1.SubnetworkAggregatedList;
 import com.google.compute.v1.SubnetworkList;
 import com.google.compute.v1.SubnetworkName;
 import com.google.compute.v1.SubnetworksExpandIpCidrRangeRequest;
-import com.google.compute.v1.SubnetworksProjectName;
-import com.google.compute.v1.SubnetworksRegionName;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

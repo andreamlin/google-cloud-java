@@ -303,11 +303,11 @@ public class FirewallAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertFirewall(FirewallsProjectName project, Firewall firewallResource) {
+  public final Operation insertFirewall(ProjectName project, Firewall firewallResource) {
 
     InsertFirewallHttpRequest request =
         InsertFirewallHttpRequest.newBuilder()
-        .setProjectWithFirewallsProjectName(project)
+        .setProjectWithProjectName(project)
         .setFirewallResource(firewallResource)
         .build();
     return insertFirewall(request);
@@ -370,10 +370,10 @@ public class FirewallAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListFirewallsPagedResponse listFirewalls(FirewallsProjectName project) {
+  public final ListFirewallsPagedResponse listFirewalls(ProjectName project) {
     ListFirewallsHttpRequest request =
         ListFirewallsHttpRequest.newBuilder()
-        .setProjectWithFirewallsProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listFirewalls(request);
   }

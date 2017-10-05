@@ -310,10 +310,10 @@ public class SnapshotAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListSnapshotsPagedResponse listSnapshots(SnapshotsProjectName project) {
+  public final ListSnapshotsPagedResponse listSnapshots(ProjectName project) {
     ListSnapshotsHttpRequest request =
         ListSnapshotsHttpRequest.newBuilder()
-        .setProjectWithSnapshotsProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listSnapshots(request);
   }

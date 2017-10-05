@@ -177,10 +177,10 @@ public class ForwardingRuleAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListForwardingRulesPagedResponse aggregatedListForwardingRules(ForwardingRulesProjectName project) {
+  public final AggregatedListForwardingRulesPagedResponse aggregatedListForwardingRules(ProjectName project) {
     AggregatedListForwardingRulesHttpRequest request =
         AggregatedListForwardingRulesHttpRequest.newBuilder()
-        .setProjectWithForwardingRulesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListForwardingRules(request);
   }
@@ -402,11 +402,11 @@ public class ForwardingRuleAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertForwardingRule(ForwardingRulesRegionName region, ForwardingRule forwardingRuleResource) {
+  public final Operation insertForwardingRule(RegionName region, ForwardingRule forwardingRuleResource) {
 
     InsertForwardingRuleHttpRequest request =
         InsertForwardingRuleHttpRequest.newBuilder()
-        .setRegionWithForwardingRulesRegionName(region)
+        .setRegionWithRegionName(region)
         .setForwardingRuleResource(forwardingRuleResource)
         .build();
     return insertForwardingRule(request);
@@ -469,10 +469,10 @@ public class ForwardingRuleAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListForwardingRulesPagedResponse listForwardingRules(ForwardingRulesRegionName region) {
+  public final ListForwardingRulesPagedResponse listForwardingRules(RegionName region) {
     ListForwardingRulesHttpRequest request =
         ListForwardingRulesHttpRequest.newBuilder()
-        .setRegionWithForwardingRulesRegionName(region)
+        .setRegionWithRegionName(region)
         .build();
     return listForwardingRules(request);
   }

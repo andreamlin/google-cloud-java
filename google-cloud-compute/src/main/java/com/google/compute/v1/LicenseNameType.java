@@ -21,12 +21,12 @@ import javax.annotation.Generated;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class RoutesProjectNameType implements ResourceNameType {
-  private static RoutesProjectNameType instance = new RoutesProjectNameType();
+public final class LicenseNameType implements ResourceNameType {
+  private static LicenseNameType instance = new LicenseNameType();
 
-  private RoutesProjectNameType() {}
+  private LicenseNameType() {}
 
-  public static RoutesProjectNameType instance() {
+  public static LicenseNameType instance() {
     return instance;
   }
 }

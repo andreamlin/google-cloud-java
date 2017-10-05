@@ -303,11 +303,11 @@ public class UrlMapAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertUrlMap(UrlMapsProjectName project, UrlMap urlMapResource) {
+  public final Operation insertUrlMap(ProjectName project, UrlMap urlMapResource) {
 
     InsertUrlMapHttpRequest request =
         InsertUrlMapHttpRequest.newBuilder()
-        .setProjectWithUrlMapsProjectName(project)
+        .setProjectWithProjectName(project)
         .setUrlMapResource(urlMapResource)
         .build();
     return insertUrlMap(request);
@@ -436,10 +436,10 @@ public class UrlMapAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListUrlMapsPagedResponse listUrlMaps(UrlMapsProjectName project) {
+  public final ListUrlMapsPagedResponse listUrlMaps(ProjectName project) {
     ListUrlMapsHttpRequest request =
         ListUrlMapsHttpRequest.newBuilder()
-        .setProjectWithUrlMapsProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listUrlMaps(request);
   }

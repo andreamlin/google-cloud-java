@@ -20,7 +20,7 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.compute.v1.GetLicensHttpRequest;
 import com.google.compute.v1.License;
-import com.google.compute.v1.LicensesLicenseName;
+import com.google.compute.v1.LicenseName;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

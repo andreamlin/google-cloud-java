@@ -31,7 +31,7 @@ public final class TargetSslProxyName implements ResourceName {
   private final String project;
   private final String targetSslProxy;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/global/targetSslProxies/{targetSslProxy}/setSslCertificates");
+        PathTemplate.createWithoutUrlEncoding("{project}/targetSslProxies/{targetSslProxy}");
 
   public static Builder newBuilder() {
     return new Builder();

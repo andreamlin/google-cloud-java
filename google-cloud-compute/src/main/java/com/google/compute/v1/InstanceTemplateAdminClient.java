@@ -303,11 +303,11 @@ public class InstanceTemplateAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertInstanceTemplate(InstanceTemplatesProjectName project, InstanceTemplate instanceTemplateResource) {
+  public final Operation insertInstanceTemplate(ProjectName project, InstanceTemplate instanceTemplateResource) {
 
     InsertInstanceTemplateHttpRequest request =
         InsertInstanceTemplateHttpRequest.newBuilder()
-        .setProjectWithInstanceTemplatesProjectName(project)
+        .setProjectWithProjectName(project)
         .setInstanceTemplateResource(instanceTemplateResource)
         .build();
     return insertInstanceTemplate(request);
@@ -370,10 +370,10 @@ public class InstanceTemplateAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListInstanceTemplatesPagedResponse listInstanceTemplates(InstanceTemplatesProjectName project) {
+  public final ListInstanceTemplatesPagedResponse listInstanceTemplates(ProjectName project) {
     ListInstanceTemplatesHttpRequest request =
         ListInstanceTemplatesHttpRequest.newBuilder()
-        .setProjectWithInstanceTemplatesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listInstanceTemplates(request);
   }

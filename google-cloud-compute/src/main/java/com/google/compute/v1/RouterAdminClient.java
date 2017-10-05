@@ -177,10 +177,10 @@ public class RouterAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListRoutersPagedResponse aggregatedListRouters(RoutersProjectName project) {
+  public final AggregatedListRoutersPagedResponse aggregatedListRouters(ProjectName project) {
     AggregatedListRoutersHttpRequest request =
         AggregatedListRoutersHttpRequest.newBuilder()
-        .setProjectWithRoutersProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListRouters(request);
   }
@@ -466,11 +466,11 @@ public class RouterAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertRouter(RoutersRegionName region, Router routerResource) {
+  public final Operation insertRouter(RegionName region, Router routerResource) {
 
     InsertRouterHttpRequest request =
         InsertRouterHttpRequest.newBuilder()
-        .setRegionWithRoutersRegionName(region)
+        .setRegionWithRegionName(region)
         .setRouterResource(routerResource)
         .build();
     return insertRouter(request);
@@ -533,10 +533,10 @@ public class RouterAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListRoutersPagedResponse listRouters(RoutersRegionName region) {
+  public final ListRoutersPagedResponse listRouters(RegionName region) {
     ListRoutersHttpRequest request =
         ListRoutersHttpRequest.newBuilder()
-        .setRegionWithRoutersRegionName(region)
+        .setRegionWithRegionName(region)
         .build();
     return listRouters(request);
   }

@@ -355,7 +355,7 @@ public final class GetLicensHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setLicenseWithLicensesLicenseName(LicensesLicenseName value) {
+    public final Builder setLicenseWithLicenseName(LicenseName value) {
       if (value == null) {
         return
             setLicense("").          setProject("")
@@ -366,8 +366,8 @@ public final class GetLicensHttpRequest implements ApiMessage {
           ;
     }
 
-    public final LicensesLicenseName getLicenseAsLicensesLicenseName() {
-      return LicensesLicenseName.create(
+    public final LicenseName getLicenseAsLicenseName() {
+      return LicenseName.create(
           getLicense(),
           getProject()
           );

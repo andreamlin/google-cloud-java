@@ -467,7 +467,7 @@ public final class ListRoutersHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setRegionWithRoutersRegionName(RoutersRegionName value) {
+    public final Builder setRegionWithRegionName(RegionName value) {
       if (value == null) {
         return
             setProject("").          setRegion("")
@@ -478,8 +478,8 @@ public final class ListRoutersHttpRequest implements ApiMessage {
           ;
     }
 
-    public final RoutersRegionName getRegionAsRoutersRegionName() {
-      return RoutersRegionName.create(
+    public final RegionName getRegionAsRegionName() {
+      return RegionName.create(
           getProject(),
           getRegion()
           );

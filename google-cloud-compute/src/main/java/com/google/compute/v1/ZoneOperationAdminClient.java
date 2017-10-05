@@ -305,10 +305,10 @@ public class ZoneOperationAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListZoneOperationsPagedResponse listZoneOperations(ZoneOperationsZoneName zone) {
+  public final ListZoneOperationsPagedResponse listZoneOperations(ZoneName zone) {
     ListZoneOperationsHttpRequest request =
         ListZoneOperationsHttpRequest.newBuilder()
-        .setZoneWithZoneOperationsZoneName(zone)
+        .setZoneWithZoneName(zone)
         .build();
     return listZoneOperations(request);
   }

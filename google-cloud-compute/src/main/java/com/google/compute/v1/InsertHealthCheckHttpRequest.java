@@ -353,7 +353,7 @@ public final class InsertHealthCheckHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithHealthChecksProjectName(HealthChecksProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -364,8 +364,8 @@ public final class InsertHealthCheckHttpRequest implements ApiMessage {
           ;
     }
 
-    public final HealthChecksProjectName getProjectAsHealthChecksProjectName() {
-      return HealthChecksProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

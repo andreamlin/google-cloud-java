@@ -27,10 +27,11 @@ import javax.annotation.Generated;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class DisksProjectName implements ResourceName {
+public final class FamilyName implements ResourceName {
+  private final String family;
   private final String project;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/aggregated/disks");
+        PathTemplate.createWithoutUrlEncoding("{project}/family/{family}");
 
   public static Builder newBuilder() {
     return new Builder();
@@ -40,16 +41,23 @@ public final class DisksProjectName implements ResourceName {
     return new Builder(this);
   }
 
-  private DisksProjectName(Builder builder) {
+  private FamilyName(Builder builder) {
+    family = Preconditions.checkNotNull(builder.getFamily());
     project = Preconditions.checkNotNull(builder.getProject());
   }
 
-  public static DisksProjectName create(
+  public static FamilyName create(
+      String family,
       String project
       ) {
     return newBuilder()
+    .setFamily(family)
     .setProject(project)
       .build();
+  }
+
+  public String getFamily() {
+    return family;
   }
 
   public String getProject() {
@@ -57,10 +65,11 @@ public final class DisksProjectName implements ResourceName {
   }
 
 
-  public static DisksProjectName parse(String formattedString) {
+  public static FamilyName parse(String formattedString) {
     Map<String, String> matchMap =
-        PATH_TEMPLATE.validatedMatch(formattedString, "DisksProjectName.parse: formattedString not in valid format");
+        PATH_TEMPLATE.validatedMatch(formattedString, "FamilyName.parse: formattedString not in valid format");
     return create(
+      matchMap.get("family"),
       matchMap.get("project")
     );
   }
@@ -71,16 +80,24 @@ public final class DisksProjectName implements ResourceName {
 
   @Override
   public ResourceNameType getType() {
-    return DisksProjectNameType.instance();
+    return FamilyNameType.instance();
   }
 
   public static class Builder {
+    private String family;
     private String project;
 
+    public String getFamily() {
+      return family;
+    }
     public String getProject() {
       return project;
     }
 
+    public Builder setFamily(String family) {
+      this.family = family;
+      return this;
+    }
     public Builder setProject(String project) {
       this.project = project;
       return this;
@@ -88,18 +105,20 @@ public final class DisksProjectName implements ResourceName {
 
     private Builder() {}
 
-    public Builder (DisksProjectName disksProjectName) {
-      project = disksProjectName.project;
+    public Builder (FamilyName familyName) {
+      family = familyName.family;
+      project = familyName.project;
     }
 
-    public DisksProjectName build() {
-      return new DisksProjectName(this);
+    public FamilyName build() {
+      return new FamilyName(this);
     }
   }
 
   @Override
   public String toString() {
     return PATH_TEMPLATE.instantiate(
+        "family", family,
         "project", project
         );
   }
@@ -109,9 +128,10 @@ public final class DisksProjectName implements ResourceName {
     if (o == this) {
       return true;
     }
-    if (o instanceof DisksProjectName) {
-      DisksProjectName that = (DisksProjectName) o;
+    if (o instanceof FamilyName) {
+      FamilyName that = (FamilyName) o;
       return
+          Objects.equals(this.family, that.getFamily()) &&
           Objects.equals(this.project, that.getProject())
           ;
     }
@@ -121,6 +141,7 @@ public final class DisksProjectName implements ResourceName {
   @Override
   public int hashCode() {
     return Objects.hash(
+      family,
       project
     );
   }

@@ -467,7 +467,7 @@ public final class ListRegionInstanceGroupsHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setRegionWithRegionInstanceGroupsRegionName(RegionInstanceGroupsRegionName value) {
+    public final Builder setRegionWithRegionName(RegionName value) {
       if (value == null) {
         return
             setProject("").          setRegion("")
@@ -478,8 +478,8 @@ public final class ListRegionInstanceGroupsHttpRequest implements ApiMessage {
           ;
     }
 
-    public final RegionInstanceGroupsRegionName getRegionAsRegionInstanceGroupsRegionName() {
-      return RegionInstanceGroupsRegionName.create(
+    public final RegionName getRegionAsRegionName() {
+      return RegionName.create(
           getProject(),
           getRegion()
           );

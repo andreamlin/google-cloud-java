@@ -26,12 +26,12 @@ import com.google.compute.v1.ListTargetVpnGatewaysHttpRequest;
 import com.google.compute.v1.Operation;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetVpnGatewaysPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListTargetVpnGatewaysPagedResponse;
+import com.google.compute.v1.ProjectName;
+import com.google.compute.v1.RegionName;
 import com.google.compute.v1.TargetVpnGateway;
 import com.google.compute.v1.TargetVpnGatewayAggregatedList;
 import com.google.compute.v1.TargetVpnGatewayList;
 import com.google.compute.v1.TargetVpnGatewayName;
-import com.google.compute.v1.TargetVpnGatewaysProjectName;
-import com.google.compute.v1.TargetVpnGatewaysRegionName;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

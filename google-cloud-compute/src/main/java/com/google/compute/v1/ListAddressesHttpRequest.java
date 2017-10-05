@@ -467,7 +467,7 @@ public final class ListAddressesHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setRegionWithAddressesRegionName(AddressesRegionName value) {
+    public final Builder setRegionWithRegionName(RegionName value) {
       if (value == null) {
         return
             setProject("").          setRegion("")
@@ -478,8 +478,8 @@ public final class ListAddressesHttpRequest implements ApiMessage {
           ;
     }
 
-    public final AddressesRegionName getRegionAsAddressesRegionName() {
-      return AddressesRegionName.create(
+    public final RegionName getRegionAsRegionName() {
+      return RegionName.create(
           getProject(),
           getRegion()
           );

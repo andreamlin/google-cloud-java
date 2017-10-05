@@ -303,11 +303,11 @@ public class NetworkAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertNetwork(NetworksProjectName project, Network networkResource) {
+  public final Operation insertNetwork(ProjectName project, Network networkResource) {
 
     InsertNetworkHttpRequest request =
         InsertNetworkHttpRequest.newBuilder()
-        .setProjectWithNetworksProjectName(project)
+        .setProjectWithProjectName(project)
         .setNetworkResource(networkResource)
         .build();
     return insertNetwork(request);
@@ -370,10 +370,10 @@ public class NetworkAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListNetworksPagedResponse listNetworks(NetworksProjectName project) {
+  public final ListNetworksPagedResponse listNetworks(ProjectName project) {
     ListNetworksHttpRequest request =
         ListNetworksHttpRequest.newBuilder()
-        .setProjectWithNetworksProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listNetworks(request);
   }

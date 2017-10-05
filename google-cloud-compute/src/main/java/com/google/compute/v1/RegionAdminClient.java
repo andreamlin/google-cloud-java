@@ -240,10 +240,10 @@ public class RegionAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListRegionsPagedResponse listRegions(RegionsProjectName project) {
+  public final ListRegionsPagedResponse listRegions(ProjectName project) {
     ListRegionsHttpRequest request =
         ListRegionsHttpRequest.newBuilder()
-        .setProjectWithRegionsProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listRegions(request);
   }

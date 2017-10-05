@@ -383,7 +383,7 @@ public final class InsertRegionBackendServiceHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setRegionWithRegionBackendServicesRegionName(RegionBackendServicesRegionName value) {
+    public final Builder setRegionWithRegionName(RegionName value) {
       if (value == null) {
         return
             setProject("").          setRegion("")
@@ -394,8 +394,8 @@ public final class InsertRegionBackendServiceHttpRequest implements ApiMessage {
           ;
     }
 
-    public final RegionBackendServicesRegionName getRegionAsRegionBackendServicesRegionName() {
-      return RegionBackendServicesRegionName.create(
+    public final RegionName getRegionAsRegionName() {
+      return RegionName.create(
           getProject(),
           getRegion()
           );

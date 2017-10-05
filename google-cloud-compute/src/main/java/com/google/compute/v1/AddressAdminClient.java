@@ -177,10 +177,10 @@ public class AddressAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListAddressesPagedResponse aggregatedListAddresses(AddressesProjectName project) {
+  public final AggregatedListAddressesPagedResponse aggregatedListAddresses(ProjectName project) {
     AggregatedListAddressesHttpRequest request =
         AggregatedListAddressesHttpRequest.newBuilder()
-        .setProjectWithAddressesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListAddresses(request);
   }
@@ -402,11 +402,11 @@ public class AddressAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertAddress(AddressesRegionName region, Address addressResource) {
+  public final Operation insertAddress(RegionName region, Address addressResource) {
 
     InsertAddressHttpRequest request =
         InsertAddressHttpRequest.newBuilder()
-        .setRegionWithAddressesRegionName(region)
+        .setRegionWithRegionName(region)
         .setAddressResource(addressResource)
         .build();
     return insertAddress(request);
@@ -469,10 +469,10 @@ public class AddressAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListAddressesPagedResponse listAddresses(AddressesRegionName region) {
+  public final ListAddressesPagedResponse listAddresses(RegionName region) {
     ListAddressesHttpRequest request =
         ListAddressesHttpRequest.newBuilder()
-        .setRegionWithAddressesRegionName(region)
+        .setRegionWithRegionName(region)
         .build();
     return listAddresses(request);
   }

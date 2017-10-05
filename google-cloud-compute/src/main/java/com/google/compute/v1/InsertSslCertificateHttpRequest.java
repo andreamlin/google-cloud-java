@@ -353,7 +353,7 @@ public final class InsertSslCertificateHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithSslCertificatesProjectName(SslCertificatesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -364,8 +364,8 @@ public final class InsertSslCertificateHttpRequest implements ApiMessage {
           ;
     }
 
-    public final SslCertificatesProjectName getProjectAsSslCertificatesProjectName() {
-      return SslCertificatesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

@@ -309,10 +309,10 @@ public class TargetPoolAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListTargetPoolsPagedResponse aggregatedListTargetPools(TargetPoolsProjectName project) {
+  public final AggregatedListTargetPoolsPagedResponse aggregatedListTargetPools(ProjectName project) {
     AggregatedListTargetPoolsHttpRequest request =
         AggregatedListTargetPoolsHttpRequest.newBuilder()
-        .setProjectWithTargetPoolsProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListTargetPools(request);
   }
@@ -600,11 +600,11 @@ public class TargetPoolAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertTargetPool(TargetPoolsRegionName region, TargetPool targetPoolResource) {
+  public final Operation insertTargetPool(RegionName region, TargetPool targetPoolResource) {
 
     InsertTargetPoolHttpRequest request =
         InsertTargetPoolHttpRequest.newBuilder()
-        .setRegionWithTargetPoolsRegionName(region)
+        .setRegionWithRegionName(region)
         .setTargetPoolResource(targetPoolResource)
         .build();
     return insertTargetPool(request);
@@ -667,10 +667,10 @@ public class TargetPoolAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListTargetPoolsPagedResponse listTargetPools(TargetPoolsRegionName region) {
+  public final ListTargetPoolsPagedResponse listTargetPools(RegionName region) {
     ListTargetPoolsHttpRequest request =
         ListTargetPoolsHttpRequest.newBuilder()
-        .setRegionWithTargetPoolsRegionName(region)
+        .setRegionWithRegionName(region)
         .build();
     return listTargetPools(request);
   }

@@ -25,9 +25,9 @@ import com.google.compute.v1.ListNetworksHttpRequest;
 import com.google.compute.v1.Network;
 import com.google.compute.v1.NetworkList;
 import com.google.compute.v1.NetworkName;
-import com.google.compute.v1.NetworksProjectName;
 import com.google.compute.v1.Operation;
 import static com.google.compute.v1.PagedResponseWrappers.ListNetworksPagedResponse;
+import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.SwitchToCustomModeNetworkHttpRequest;
 import javax.annotation.Generated;
 

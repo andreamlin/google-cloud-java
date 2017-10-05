@@ -467,7 +467,7 @@ public final class ListMachineTypesHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setZoneWithMachineTypesZoneName(MachineTypesZoneName value) {
+    public final Builder setZoneWithZoneName(ZoneName value) {
       if (value == null) {
         return
             setProject("").          setZone("")
@@ -478,8 +478,8 @@ public final class ListMachineTypesHttpRequest implements ApiMessage {
           ;
     }
 
-    public final MachineTypesZoneName getZoneAsMachineTypesZoneName() {
-      return MachineTypesZoneName.create(
+    public final ZoneName getZoneAsZoneName() {
+      return ZoneName.create(
           getProject(),
           getZone()
           );

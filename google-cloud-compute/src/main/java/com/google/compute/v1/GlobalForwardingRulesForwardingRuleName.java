@@ -31,7 +31,7 @@ public final class GlobalForwardingRulesForwardingRuleName implements ResourceNa
   private final String forwardingRule;
   private final String project;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/global/forwardingRules/{forwardingRule}/setTarget");
+        PathTemplate.createWithoutUrlEncoding("{project}/forwardingRules/{forwardingRule}");
 
   public static Builder newBuilder() {
     return new Builder();

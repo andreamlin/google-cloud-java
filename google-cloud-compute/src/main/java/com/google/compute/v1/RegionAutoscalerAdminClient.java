@@ -303,11 +303,11 @@ public class RegionAutoscalerAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertRegionAutoscaler(RegionAutoscalersRegionName region, Autoscaler autoscalerResource) {
+  public final Operation insertRegionAutoscaler(RegionName region, Autoscaler autoscalerResource) {
 
     InsertRegionAutoscalerHttpRequest request =
         InsertRegionAutoscalerHttpRequest.newBuilder()
-        .setRegionWithRegionAutoscalersRegionName(region)
+        .setRegionWithRegionName(region)
         .setAutoscalerResource(autoscalerResource)
         .build();
     return insertRegionAutoscaler(request);
@@ -370,10 +370,10 @@ public class RegionAutoscalerAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListRegionAutoscalersPagedResponse listRegionAutoscalers(RegionAutoscalersRegionName region) {
+  public final ListRegionAutoscalersPagedResponse listRegionAutoscalers(RegionName region) {
     ListRegionAutoscalersHttpRequest request =
         ListRegionAutoscalersHttpRequest.newBuilder()
-        .setRegionWithRegionAutoscalersRegionName(region)
+        .setRegionWithRegionName(region)
         .build();
     return listRegionAutoscalers(request);
   }
@@ -468,11 +468,11 @@ public class RegionAutoscalerAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation patchRegionAutoscaler(RegionAutoscalersRegionName region, String autoscaler, Autoscaler autoscalerResource) {
+  public final Operation patchRegionAutoscaler(RegionName region, String autoscaler, Autoscaler autoscalerResource) {
 
     PatchRegionAutoscalerHttpRequest request =
         PatchRegionAutoscalerHttpRequest.newBuilder()
-        .setRegionWithRegionAutoscalersRegionName(region)
+        .setRegionWithRegionName(region)
         .setAutoscaler(autoscaler)
         .setAutoscalerResource(autoscalerResource)
         .build();
@@ -536,11 +536,11 @@ public class RegionAutoscalerAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation updateRegionAutoscaler(RegionAutoscalersRegionName region, String autoscaler, Autoscaler autoscalerResource) {
+  public final Operation updateRegionAutoscaler(RegionName region, String autoscaler, Autoscaler autoscalerResource) {
 
     UpdateRegionAutoscalerHttpRequest request =
         UpdateRegionAutoscalerHttpRequest.newBuilder()
-        .setRegionWithRegionAutoscalersRegionName(region)
+        .setRegionWithRegionName(region)
         .setAutoscaler(autoscaler)
         .setAutoscalerResource(autoscalerResource)
         .build();

@@ -177,10 +177,10 @@ public class TargetVpnGatewayAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListTargetVpnGatewaysPagedResponse aggregatedListTargetVpnGateways(TargetVpnGatewaysProjectName project) {
+  public final AggregatedListTargetVpnGatewaysPagedResponse aggregatedListTargetVpnGateways(ProjectName project) {
     AggregatedListTargetVpnGatewaysHttpRequest request =
         AggregatedListTargetVpnGatewaysHttpRequest.newBuilder()
-        .setProjectWithTargetVpnGatewaysProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListTargetVpnGateways(request);
   }
@@ -402,11 +402,11 @@ public class TargetVpnGatewayAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertTargetVpnGateway(TargetVpnGatewaysRegionName region, TargetVpnGateway targetVpnGatewayResource) {
+  public final Operation insertTargetVpnGateway(RegionName region, TargetVpnGateway targetVpnGatewayResource) {
 
     InsertTargetVpnGatewayHttpRequest request =
         InsertTargetVpnGatewayHttpRequest.newBuilder()
-        .setRegionWithTargetVpnGatewaysRegionName(region)
+        .setRegionWithRegionName(region)
         .setTargetVpnGatewayResource(targetVpnGatewayResource)
         .build();
     return insertTargetVpnGateway(request);
@@ -469,10 +469,10 @@ public class TargetVpnGatewayAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListTargetVpnGatewaysPagedResponse listTargetVpnGateways(TargetVpnGatewaysRegionName region) {
+  public final ListTargetVpnGatewaysPagedResponse listTargetVpnGateways(RegionName region) {
     ListTargetVpnGatewaysHttpRequest request =
         ListTargetVpnGatewaysHttpRequest.newBuilder()
-        .setRegionWithTargetVpnGatewaysRegionName(region)
+        .setRegionWithRegionName(region)
         .build();
     return listTargetVpnGateways(request);
   }

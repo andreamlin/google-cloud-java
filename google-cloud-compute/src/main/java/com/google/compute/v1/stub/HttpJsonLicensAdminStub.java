@@ -28,7 +28,7 @@ import com.google.common.collect.Sets;
 import com.google.compute.v1.GetLicensHttpRequest;
 import com.google.compute.v1.LicensAdminSettings;
 import com.google.compute.v1.License;
-import com.google.compute.v1.LicensesLicenseName;
+import com.google.compute.v1.LicenseName;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

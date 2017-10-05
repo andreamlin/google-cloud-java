@@ -437,7 +437,7 @@ public final class ListTargetHttpProxiesHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithTargetHttpProxiesProjectName(TargetHttpProxiesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class ListTargetHttpProxiesHttpRequest implements ApiMessage {
           ;
     }
 
-    public final TargetHttpProxiesProjectName getProjectAsTargetHttpProxiesProjectName() {
-      return TargetHttpProxiesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

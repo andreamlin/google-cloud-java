@@ -24,10 +24,10 @@ import com.google.compute.v1.InsertSslCertificateHttpRequest;
 import com.google.compute.v1.ListSslCertificatesHttpRequest;
 import com.google.compute.v1.Operation;
 import static com.google.compute.v1.PagedResponseWrappers.ListSslCertificatesPagedResponse;
+import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.SslCertificate;
 import com.google.compute.v1.SslCertificateList;
 import com.google.compute.v1.SslCertificateName;
-import com.google.compute.v1.SslCertificatesProjectName;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

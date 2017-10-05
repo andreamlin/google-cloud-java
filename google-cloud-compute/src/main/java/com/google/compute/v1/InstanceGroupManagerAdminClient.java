@@ -243,10 +243,10 @@ public class InstanceGroupManagerAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListInstanceGroupManagersPagedResponse aggregatedListInstanceGroupManagers(InstanceGroupManagersProjectName project) {
+  public final AggregatedListInstanceGroupManagersPagedResponse aggregatedListInstanceGroupManagers(ProjectName project) {
     AggregatedListInstanceGroupManagersHttpRequest request =
         AggregatedListInstanceGroupManagersHttpRequest.newBuilder()
-        .setProjectWithInstanceGroupManagersProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListInstanceGroupManagers(request);
   }
@@ -534,11 +534,11 @@ public class InstanceGroupManagerAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertInstanceGroupManager(InstanceGroupManagersZoneName zone, InstanceGroupManager instanceGroupManagerResource) {
+  public final Operation insertInstanceGroupManager(ZoneName zone, InstanceGroupManager instanceGroupManagerResource) {
 
     InsertInstanceGroupManagerHttpRequest request =
         InsertInstanceGroupManagerHttpRequest.newBuilder()
-        .setZoneWithInstanceGroupManagersZoneName(zone)
+        .setZoneWithZoneName(zone)
         .setInstanceGroupManagerResource(instanceGroupManagerResource)
         .build();
     return insertInstanceGroupManager(request);
@@ -601,10 +601,10 @@ public class InstanceGroupManagerAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListInstanceGroupManagersPagedResponse listInstanceGroupManagers(InstanceGroupManagersZoneName zone) {
+  public final ListInstanceGroupManagersPagedResponse listInstanceGroupManagers(ZoneName zone) {
     ListInstanceGroupManagersHttpRequest request =
         ListInstanceGroupManagersHttpRequest.newBuilder()
-        .setZoneWithInstanceGroupManagersZoneName(zone)
+        .setZoneWithZoneName(zone)
         .build();
     return listInstanceGroupManagers(request);
   }

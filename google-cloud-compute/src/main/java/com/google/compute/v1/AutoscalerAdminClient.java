@@ -177,10 +177,10 @@ public class AutoscalerAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListAutoscalersPagedResponse aggregatedListAutoscalers(AutoscalersProjectName project) {
+  public final AggregatedListAutoscalersPagedResponse aggregatedListAutoscalers(ProjectName project) {
     AggregatedListAutoscalersHttpRequest request =
         AggregatedListAutoscalersHttpRequest.newBuilder()
-        .setProjectWithAutoscalersProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListAutoscalers(request);
   }
@@ -402,11 +402,11 @@ public class AutoscalerAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertAutoscaler(AutoscalersZoneName zone, Autoscaler autoscalerResource) {
+  public final Operation insertAutoscaler(ZoneName zone, Autoscaler autoscalerResource) {
 
     InsertAutoscalerHttpRequest request =
         InsertAutoscalerHttpRequest.newBuilder()
-        .setZoneWithAutoscalersZoneName(zone)
+        .setZoneWithZoneName(zone)
         .setAutoscalerResource(autoscalerResource)
         .build();
     return insertAutoscaler(request);
@@ -469,10 +469,10 @@ public class AutoscalerAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListAutoscalersPagedResponse listAutoscalers(AutoscalersZoneName zone) {
+  public final ListAutoscalersPagedResponse listAutoscalers(ZoneName zone) {
     ListAutoscalersHttpRequest request =
         ListAutoscalersHttpRequest.newBuilder()
-        .setZoneWithAutoscalersZoneName(zone)
+        .setZoneWithZoneName(zone)
         .build();
     return listAutoscalers(request);
   }
@@ -567,12 +567,12 @@ public class AutoscalerAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation patchAutoscaler(String autoscaler, AutoscalersZoneName zone, Autoscaler autoscalerResource) {
+  public final Operation patchAutoscaler(String autoscaler, ZoneName zone, Autoscaler autoscalerResource) {
 
     PatchAutoscalerHttpRequest request =
         PatchAutoscalerHttpRequest.newBuilder()
         .setAutoscaler(autoscaler)
-        .setZoneWithAutoscalersZoneName(zone)
+        .setZoneWithZoneName(zone)
         .setAutoscalerResource(autoscalerResource)
         .build();
     return patchAutoscaler(request);
@@ -635,12 +635,12 @@ public class AutoscalerAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation updateAutoscaler(String autoscaler, AutoscalersZoneName zone, Autoscaler autoscalerResource) {
+  public final Operation updateAutoscaler(String autoscaler, ZoneName zone, Autoscaler autoscalerResource) {
 
     UpdateAutoscalerHttpRequest request =
         UpdateAutoscalerHttpRequest.newBuilder()
         .setAutoscaler(autoscaler)
-        .setZoneWithAutoscalersZoneName(zone)
+        .setZoneWithZoneName(zone)
         .setAutoscalerResource(autoscalerResource)
         .build();
     return updateAutoscaler(request);

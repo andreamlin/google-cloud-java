@@ -303,11 +303,11 @@ public class SslCertificateAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertSslCertificate(SslCertificatesProjectName project, SslCertificate sslCertificateResource) {
+  public final Operation insertSslCertificate(ProjectName project, SslCertificate sslCertificateResource) {
 
     InsertSslCertificateHttpRequest request =
         InsertSslCertificateHttpRequest.newBuilder()
-        .setProjectWithSslCertificatesProjectName(project)
+        .setProjectWithProjectName(project)
         .setSslCertificateResource(sslCertificateResource)
         .build();
     return insertSslCertificate(request);
@@ -370,10 +370,10 @@ public class SslCertificateAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListSslCertificatesPagedResponse listSslCertificates(SslCertificatesProjectName project) {
+  public final ListSslCertificatesPagedResponse listSslCertificates(ProjectName project) {
     ListSslCertificatesHttpRequest request =
         ListSslCertificatesHttpRequest.newBuilder()
-        .setProjectWithSslCertificatesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listSslCertificates(request);
   }

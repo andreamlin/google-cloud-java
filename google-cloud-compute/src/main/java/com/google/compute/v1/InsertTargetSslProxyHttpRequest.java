@@ -353,7 +353,7 @@ public final class InsertTargetSslProxyHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithTargetSslProxiesProjectName(TargetSslProxiesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -364,8 +364,8 @@ public final class InsertTargetSslProxyHttpRequest implements ApiMessage {
           ;
     }
 
-    public final TargetSslProxiesProjectName getProjectAsTargetSslProxiesProjectName() {
-      return TargetSslProxiesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

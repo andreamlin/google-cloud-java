@@ -437,7 +437,7 @@ public final class AggregatedListTargetVpnGatewaysHttpRequest implements ApiMess
       return newBuilder;
     }
 
-    public final Builder setProjectWithTargetVpnGatewaysProjectName(TargetVpnGatewaysProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class AggregatedListTargetVpnGatewaysHttpRequest implements ApiMess
           ;
     }
 
-    public final TargetVpnGatewaysProjectName getProjectAsTargetVpnGatewaysProjectName() {
-      return TargetVpnGatewaysProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

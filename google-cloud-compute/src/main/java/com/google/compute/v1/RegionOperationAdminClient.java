@@ -305,10 +305,10 @@ public class RegionOperationAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListRegionOperationsPagedResponse listRegionOperations(RegionOperationsRegionName region) {
+  public final ListRegionOperationsPagedResponse listRegionOperations(RegionName region) {
     ListRegionOperationsHttpRequest request =
         ListRegionOperationsHttpRequest.newBuilder()
-        .setRegionWithRegionOperationsRegionName(region)
+        .setRegionWithRegionName(region)
         .build();
     return listRegionOperations(request);
   }

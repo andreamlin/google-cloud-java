@@ -28,7 +28,7 @@ import static com.google.compute.v1.PagedResponseWrappers.ListRegionAutoscalersP
 import com.google.compute.v1.PatchRegionAutoscalerHttpRequest;
 import com.google.compute.v1.RegionAutoscalerList;
 import com.google.compute.v1.RegionAutoscalersAutoscalerName;
-import com.google.compute.v1.RegionAutoscalersRegionName;
+import com.google.compute.v1.RegionName;
 import com.google.compute.v1.UpdateRegionAutoscalerHttpRequest;
 import javax.annotation.Generated;
 

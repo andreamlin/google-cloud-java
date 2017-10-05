@@ -32,7 +32,7 @@ public final class InstanceGroupManagerName implements ResourceName {
   private final String project;
   private final String zone;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setTargetPools");
+        PathTemplate.createWithoutUrlEncoding("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}");
 
   public static Builder newBuilder() {
     return new Builder();

@@ -437,7 +437,7 @@ public final class ListImagesHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithImagesProjectName(ImagesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class ListImagesHttpRequest implements ApiMessage {
           ;
     }
 
-    public final ImagesProjectName getProjectAsImagesProjectName() {
-      return ImagesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

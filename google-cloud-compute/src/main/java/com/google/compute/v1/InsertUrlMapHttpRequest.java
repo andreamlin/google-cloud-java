@@ -353,7 +353,7 @@ public final class InsertUrlMapHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithUrlMapsProjectName(UrlMapsProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -364,8 +364,8 @@ public final class InsertUrlMapHttpRequest implements ApiMessage {
           ;
     }
 
-    public final UrlMapsProjectName getProjectAsUrlMapsProjectName() {
-      return UrlMapsProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

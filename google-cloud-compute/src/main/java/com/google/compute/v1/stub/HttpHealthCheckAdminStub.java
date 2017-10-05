@@ -23,12 +23,12 @@ import com.google.compute.v1.GetHttpHealthCheckHttpRequest;
 import com.google.compute.v1.HttpHealthCheck;
 import com.google.compute.v1.HttpHealthCheckList;
 import com.google.compute.v1.HttpHealthCheckName;
-import com.google.compute.v1.HttpHealthChecksProjectName;
 import com.google.compute.v1.InsertHttpHealthCheckHttpRequest;
 import com.google.compute.v1.ListHttpHealthChecksHttpRequest;
 import com.google.compute.v1.Operation;
 import static com.google.compute.v1.PagedResponseWrappers.ListHttpHealthChecksPagedResponse;
 import com.google.compute.v1.PatchHttpHealthCheckHttpRequest;
+import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.UpdateHttpHealthCheckHttpRequest;
 import javax.annotation.Generated;
 

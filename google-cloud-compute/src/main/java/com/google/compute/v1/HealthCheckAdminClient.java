@@ -303,11 +303,11 @@ public class HealthCheckAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertHealthCheck(HealthChecksProjectName project, HealthCheck healthCheckResource) {
+  public final Operation insertHealthCheck(ProjectName project, HealthCheck healthCheckResource) {
 
     InsertHealthCheckHttpRequest request =
         InsertHealthCheckHttpRequest.newBuilder()
-        .setProjectWithHealthChecksProjectName(project)
+        .setProjectWithProjectName(project)
         .setHealthCheckResource(healthCheckResource)
         .build();
     return insertHealthCheck(request);
@@ -370,10 +370,10 @@ public class HealthCheckAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListHealthChecksPagedResponse listHealthChecks(HealthChecksProjectName project) {
+  public final ListHealthChecksPagedResponse listHealthChecks(ProjectName project) {
     ListHealthChecksHttpRequest request =
         ListHealthChecksHttpRequest.newBuilder()
-        .setProjectWithHealthChecksProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listHealthChecks(request);
   }

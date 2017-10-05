@@ -435,11 +435,11 @@ public class RegionInstanceGroupManagerAdminClient implements BackgroundResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertRegionInstanceGroupManager(RegionInstanceGroupManagersRegionName region, InstanceGroupManager instanceGroupManagerResource) {
+  public final Operation insertRegionInstanceGroupManager(RegionName region, InstanceGroupManager instanceGroupManagerResource) {
 
     InsertRegionInstanceGroupManagerHttpRequest request =
         InsertRegionInstanceGroupManagerHttpRequest.newBuilder()
-        .setRegionWithRegionInstanceGroupManagersRegionName(region)
+        .setRegionWithRegionName(region)
         .setInstanceGroupManagerResource(instanceGroupManagerResource)
         .build();
     return insertRegionInstanceGroupManager(request);
@@ -502,10 +502,10 @@ public class RegionInstanceGroupManagerAdminClient implements BackgroundResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListRegionInstanceGroupManagersPagedResponse listRegionInstanceGroupManagers(RegionInstanceGroupManagersRegionName region) {
+  public final ListRegionInstanceGroupManagersPagedResponse listRegionInstanceGroupManagers(RegionName region) {
     ListRegionInstanceGroupManagersHttpRequest request =
         ListRegionInstanceGroupManagersHttpRequest.newBuilder()
-        .setRegionWithRegionInstanceGroupManagersRegionName(region)
+        .setRegionWithRegionName(region)
         .build();
     return listRegionInstanceGroupManagers(request);
   }

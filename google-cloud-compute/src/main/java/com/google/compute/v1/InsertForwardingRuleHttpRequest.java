@@ -383,7 +383,7 @@ public final class InsertForwardingRuleHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setRegionWithForwardingRulesRegionName(ForwardingRulesRegionName value) {
+    public final Builder setRegionWithRegionName(RegionName value) {
       if (value == null) {
         return
             setProject("").          setRegion("")
@@ -394,8 +394,8 @@ public final class InsertForwardingRuleHttpRequest implements ApiMessage {
           ;
     }
 
-    public final ForwardingRulesRegionName getRegionAsForwardingRulesRegionName() {
-      return ForwardingRulesRegionName.create(
+    public final RegionName getRegionAsRegionName() {
+      return RegionName.create(
           getProject(),
           getRegion()
           );

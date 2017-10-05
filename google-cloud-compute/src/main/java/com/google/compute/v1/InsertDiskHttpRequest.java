@@ -411,7 +411,7 @@ public final class InsertDiskHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setZoneWithDisksZoneName(DisksZoneName value) {
+    public final Builder setZoneWithZoneName(ZoneName value) {
       if (value == null) {
         return
             setProject("").          setZone("")
@@ -422,8 +422,8 @@ public final class InsertDiskHttpRequest implements ApiMessage {
           ;
     }
 
-    public final DisksZoneName getZoneAsDisksZoneName() {
-      return DisksZoneName.create(
+    public final ZoneName getZoneAsZoneName() {
+      return ZoneName.create(
           getProject(),
           getZone()
           );

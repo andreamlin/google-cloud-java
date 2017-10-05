@@ -177,10 +177,10 @@ public class MachineTypeAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListMachineTypesPagedResponse aggregatedListMachineTypes(MachineTypesProjectName project) {
+  public final AggregatedListMachineTypesPagedResponse aggregatedListMachineTypes(ProjectName project) {
     AggregatedListMachineTypesHttpRequest request =
         AggregatedListMachineTypesHttpRequest.newBuilder()
-        .setProjectWithMachineTypesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListMachineTypes(request);
   }
@@ -339,10 +339,10 @@ public class MachineTypeAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListMachineTypesPagedResponse listMachineTypes(MachineTypesZoneName zone) {
+  public final ListMachineTypesPagedResponse listMachineTypes(ZoneName zone) {
     ListMachineTypesHttpRequest request =
         ListMachineTypesHttpRequest.newBuilder()
-        .setZoneWithMachineTypesZoneName(zone)
+        .setZoneWithZoneName(zone)
         .build();
     return listMachineTypes(request);
   }

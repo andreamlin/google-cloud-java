@@ -467,7 +467,7 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setRegionWithVpnTunnelsRegionName(VpnTunnelsRegionName value) {
+    public final Builder setRegionWithRegionName(RegionName value) {
       if (value == null) {
         return
             setProject("").          setRegion("")
@@ -478,8 +478,8 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
           ;
     }
 
-    public final VpnTunnelsRegionName getRegionAsVpnTunnelsRegionName() {
-      return VpnTunnelsRegionName.create(
+    public final RegionName getRegionAsRegionName() {
+      return RegionName.create(
           getProject(),
           getRegion()
           );

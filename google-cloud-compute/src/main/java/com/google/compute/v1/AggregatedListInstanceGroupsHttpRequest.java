@@ -437,7 +437,7 @@ public final class AggregatedListInstanceGroupsHttpRequest implements ApiMessage
       return newBuilder;
     }
 
-    public final Builder setProjectWithInstanceGroupsProjectName(InstanceGroupsProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class AggregatedListInstanceGroupsHttpRequest implements ApiMessage
           ;
     }
 
-    public final InstanceGroupsProjectName getProjectAsInstanceGroupsProjectName() {
-      return InstanceGroupsProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

@@ -21,17 +21,17 @@ import com.google.api.gax.rpc.UnaryCallable;
 import com.google.compute.v1.DeleteImageHttpRequest;
 import com.google.compute.v1.DeprecateImageHttpRequest;
 import com.google.compute.v1.DeprecationStatus;
+import com.google.compute.v1.FamilyName;
 import com.google.compute.v1.GetFromFamilyImageHttpRequest;
 import com.google.compute.v1.GetImageHttpRequest;
 import com.google.compute.v1.Image;
 import com.google.compute.v1.ImageList;
 import com.google.compute.v1.ImageName;
-import com.google.compute.v1.ImagesFamilyName;
-import com.google.compute.v1.ImagesProjectName;
 import com.google.compute.v1.InsertImageHttpRequest;
 import com.google.compute.v1.ListImagesHttpRequest;
 import com.google.compute.v1.Operation;
 import static com.google.compute.v1.PagedResponseWrappers.ListImagesPagedResponse;
+import com.google.compute.v1.ProjectName;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

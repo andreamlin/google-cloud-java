@@ -374,11 +374,11 @@ public class ImageAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Image getFromFamilyImage(ImagesFamilyName family) {
+  public final Image getFromFamilyImage(FamilyName family) {
 
     GetFromFamilyImageHttpRequest request =
         GetFromFamilyImageHttpRequest.newBuilder()
-        .setFamilyWithImagesFamilyName(family)
+        .setFamilyWithFamilyName(family)
         .build();
     return getFromFamilyImage(request);
   }
@@ -439,11 +439,11 @@ public class ImageAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertImage(ImagesProjectName project, Image imageResource) {
+  public final Operation insertImage(ProjectName project, Image imageResource) {
 
     InsertImageHttpRequest request =
         InsertImageHttpRequest.newBuilder()
-        .setProjectWithImagesProjectName(project)
+        .setProjectWithProjectName(project)
         .setImageResource(imageResource)
         .build();
     return insertImage(request);
@@ -506,10 +506,10 @@ public class ImageAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListImagesPagedResponse listImages(ImagesProjectName project) {
+  public final ListImagesPagedResponse listImages(ProjectName project) {
     ListImagesHttpRequest request =
         ListImagesHttpRequest.newBuilder()
-        .setProjectWithImagesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listImages(request);
   }

@@ -31,7 +31,7 @@ public final class SslCertificateName implements ResourceName {
   private final String project;
   private final String sslCertificate;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/global/sslCertificates/{sslCertificate}");
+        PathTemplate.createWithoutUrlEncoding("{project}/sslCertificates/{sslCertificate}");
 
   public static Builder newBuilder() {
     return new Builder();

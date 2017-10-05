@@ -467,7 +467,7 @@ public final class ListDiskTypesHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setZoneWithDiskTypesZoneName(DiskTypesZoneName value) {
+    public final Builder setZoneWithZoneName(ZoneName value) {
       if (value == null) {
         return
             setProject("").          setZone("")
@@ -478,8 +478,8 @@ public final class ListDiskTypesHttpRequest implements ApiMessage {
           ;
     }
 
-    public final DiskTypesZoneName getZoneAsDiskTypesZoneName() {
-      return DiskTypesZoneName.create(
+    public final ZoneName getZoneAsZoneName() {
+      return ZoneName.create(
           getProject(),
           getZone()
           );

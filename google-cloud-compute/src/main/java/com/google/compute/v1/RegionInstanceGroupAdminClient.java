@@ -241,10 +241,10 @@ public class RegionInstanceGroupAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListRegionInstanceGroupsPagedResponse listRegionInstanceGroups(RegionInstanceGroupsRegionName region) {
+  public final ListRegionInstanceGroupsPagedResponse listRegionInstanceGroups(RegionName region) {
     ListRegionInstanceGroupsHttpRequest request =
         ListRegionInstanceGroupsHttpRequest.newBuilder()
-        .setRegionWithRegionInstanceGroupsRegionName(region)
+        .setRegionWithRegionName(region)
         .build();
     return listRegionInstanceGroups(request);
   }

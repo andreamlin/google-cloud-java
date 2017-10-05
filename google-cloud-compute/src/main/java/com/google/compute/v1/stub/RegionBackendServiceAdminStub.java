@@ -30,7 +30,7 @@ import com.google.compute.v1.Operation;
 import static com.google.compute.v1.PagedResponseWrappers.ListRegionBackendServicesPagedResponse;
 import com.google.compute.v1.PatchRegionBackendServiceHttpRequest;
 import com.google.compute.v1.RegionBackendServicesBackendServiceName;
-import com.google.compute.v1.RegionBackendServicesRegionName;
+import com.google.compute.v1.RegionName;
 import com.google.compute.v1.ResourceGroupReference;
 import com.google.compute.v1.UpdateRegionBackendServiceHttpRequest;
 import javax.annotation.Generated;

@@ -22,13 +22,13 @@ import com.google.compute.v1.AggregatedListGlobalOperationsHttpRequest;
 import com.google.compute.v1.DeleteGlobalOperationHttpRequest;
 import com.google.compute.v1.GetGlobalOperationHttpRequest;
 import com.google.compute.v1.GlobalOperationsOperationName;
-import com.google.compute.v1.GlobalOperationsProjectName;
 import com.google.compute.v1.ListGlobalOperationsHttpRequest;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.OperationAggregatedList;
 import com.google.compute.v1.OperationList;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListGlobalOperationsPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListGlobalOperationsPagedResponse;
+import com.google.compute.v1.ProjectName;
 import com.google.protobuf.Empty;
 import javax.annotation.Generated;
 

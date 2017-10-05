@@ -437,7 +437,7 @@ public final class AggregatedListForwardingRulesHttpRequest implements ApiMessag
       return newBuilder;
     }
 
-    public final Builder setProjectWithForwardingRulesProjectName(ForwardingRulesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class AggregatedListForwardingRulesHttpRequest implements ApiMessag
           ;
     }
 
-    public final ForwardingRulesProjectName getProjectAsForwardingRulesProjectName() {
-      return ForwardingRulesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

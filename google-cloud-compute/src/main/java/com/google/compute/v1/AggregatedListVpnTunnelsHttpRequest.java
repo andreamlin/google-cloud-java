@@ -437,7 +437,7 @@ public final class AggregatedListVpnTunnelsHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithVpnTunnelsProjectName(VpnTunnelsProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class AggregatedListVpnTunnelsHttpRequest implements ApiMessage {
           ;
     }
 
-    public final VpnTunnelsProjectName getProjectAsVpnTunnelsProjectName() {
-      return VpnTunnelsProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

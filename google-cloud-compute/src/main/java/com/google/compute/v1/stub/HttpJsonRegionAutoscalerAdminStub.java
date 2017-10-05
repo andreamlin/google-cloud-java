@@ -36,7 +36,7 @@ import com.google.compute.v1.PatchRegionAutoscalerHttpRequest;
 import com.google.compute.v1.RegionAutoscalerAdminSettings;
 import com.google.compute.v1.RegionAutoscalerList;
 import com.google.compute.v1.RegionAutoscalersAutoscalerName;
-import com.google.compute.v1.RegionAutoscalersRegionName;
+import com.google.compute.v1.RegionName;
 import com.google.compute.v1.UpdateRegionAutoscalerHttpRequest;
 import java.io.IOException;
 import java.util.ArrayList;

@@ -467,7 +467,7 @@ public final class ListRegionInstanceGroupManagersHttpRequest implements ApiMess
       return newBuilder;
     }
 
-    public final Builder setRegionWithRegionInstanceGroupManagersRegionName(RegionInstanceGroupManagersRegionName value) {
+    public final Builder setRegionWithRegionName(RegionName value) {
       if (value == null) {
         return
             setProject("").          setRegion("")
@@ -478,8 +478,8 @@ public final class ListRegionInstanceGroupManagersHttpRequest implements ApiMess
           ;
     }
 
-    public final RegionInstanceGroupManagersRegionName getRegionAsRegionInstanceGroupManagersRegionName() {
-      return RegionInstanceGroupManagersRegionName.create(
+    public final RegionName getRegionAsRegionName() {
+      return RegionName.create(
           getProject(),
           getRegion()
           );

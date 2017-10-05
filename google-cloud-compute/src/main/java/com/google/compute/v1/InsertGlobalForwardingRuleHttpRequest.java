@@ -353,7 +353,7 @@ public final class InsertGlobalForwardingRuleHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithGlobalForwardingRulesProjectName(GlobalForwardingRulesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -364,8 +364,8 @@ public final class InsertGlobalForwardingRuleHttpRequest implements ApiMessage {
           ;
     }
 
-    public final GlobalForwardingRulesProjectName getProjectAsGlobalForwardingRulesProjectName() {
-      return GlobalForwardingRulesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

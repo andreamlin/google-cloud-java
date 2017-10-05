@@ -303,11 +303,11 @@ public class TargetHttpsProxyAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertTargetHttpsProxy(TargetHttpsProxiesProjectName project, TargetHttpsProxy targetHttpsProxyResource) {
+  public final Operation insertTargetHttpsProxy(ProjectName project, TargetHttpsProxy targetHttpsProxyResource) {
 
     InsertTargetHttpsProxyHttpRequest request =
         InsertTargetHttpsProxyHttpRequest.newBuilder()
-        .setProjectWithTargetHttpsProxiesProjectName(project)
+        .setProjectWithProjectName(project)
         .setTargetHttpsProxyResource(targetHttpsProxyResource)
         .build();
     return insertTargetHttpsProxy(request);
@@ -370,10 +370,10 @@ public class TargetHttpsProxyAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListTargetHttpsProxiesPagedResponse listTargetHttpsProxies(TargetHttpsProxiesProjectName project) {
+  public final ListTargetHttpsProxiesPagedResponse listTargetHttpsProxies(ProjectName project) {
     ListTargetHttpsProxiesHttpRequest request =
         ListTargetHttpsProxiesHttpRequest.newBuilder()
-        .setProjectWithTargetHttpsProxiesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listTargetHttpsProxies(request);
   }

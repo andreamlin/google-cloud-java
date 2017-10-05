@@ -437,7 +437,7 @@ public final class AggregatedListAutoscalersHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithAutoscalersProjectName(AutoscalersProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class AggregatedListAutoscalersHttpRequest implements ApiMessage {
           ;
     }
 
-    public final AutoscalersProjectName getProjectAsAutoscalersProjectName() {
-      return AutoscalersProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

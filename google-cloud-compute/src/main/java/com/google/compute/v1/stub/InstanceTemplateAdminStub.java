@@ -24,10 +24,10 @@ import com.google.compute.v1.InsertInstanceTemplateHttpRequest;
 import com.google.compute.v1.InstanceTemplate;
 import com.google.compute.v1.InstanceTemplateList;
 import com.google.compute.v1.InstanceTemplateName;
-import com.google.compute.v1.InstanceTemplatesProjectName;
 import com.google.compute.v1.ListInstanceTemplatesHttpRequest;
 import com.google.compute.v1.Operation;
 import static com.google.compute.v1.PagedResponseWrappers.ListInstanceTemplatesPagedResponse;
+import com.google.compute.v1.ProjectName;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

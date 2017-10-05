@@ -177,10 +177,10 @@ public class TargetInstanceAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListTargetInstancesPagedResponse aggregatedListTargetInstances(TargetInstancesProjectName project) {
+  public final AggregatedListTargetInstancesPagedResponse aggregatedListTargetInstances(ProjectName project) {
     AggregatedListTargetInstancesHttpRequest request =
         AggregatedListTargetInstancesHttpRequest.newBuilder()
-        .setProjectWithTargetInstancesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListTargetInstances(request);
   }
@@ -402,11 +402,11 @@ public class TargetInstanceAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertTargetInstance(TargetInstancesZoneName zone, TargetInstance targetInstanceResource) {
+  public final Operation insertTargetInstance(ZoneName zone, TargetInstance targetInstanceResource) {
 
     InsertTargetInstanceHttpRequest request =
         InsertTargetInstanceHttpRequest.newBuilder()
-        .setZoneWithTargetInstancesZoneName(zone)
+        .setZoneWithZoneName(zone)
         .setTargetInstanceResource(targetInstanceResource)
         .build();
     return insertTargetInstance(request);
@@ -469,10 +469,10 @@ public class TargetInstanceAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListTargetInstancesPagedResponse listTargetInstances(TargetInstancesZoneName zone) {
+  public final ListTargetInstancesPagedResponse listTargetInstances(ZoneName zone) {
     ListTargetInstancesHttpRequest request =
         ListTargetInstancesHttpRequest.newBuilder()
-        .setZoneWithTargetInstancesZoneName(zone)
+        .setZoneWithZoneName(zone)
         .build();
     return listTargetInstances(request);
   }

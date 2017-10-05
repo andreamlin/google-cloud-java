@@ -383,7 +383,7 @@ public final class InsertRegionAutoscalerHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setRegionWithRegionAutoscalersRegionName(RegionAutoscalersRegionName value) {
+    public final Builder setRegionWithRegionName(RegionName value) {
       if (value == null) {
         return
             setProject("").          setRegion("")
@@ -394,8 +394,8 @@ public final class InsertRegionAutoscalerHttpRequest implements ApiMessage {
           ;
     }
 
-    public final RegionAutoscalersRegionName getRegionAsRegionAutoscalersRegionName() {
-      return RegionAutoscalersRegionName.create(
+    public final RegionName getRegionAsRegionName() {
+      return RegionName.create(
           getProject(),
           getRegion()
           );

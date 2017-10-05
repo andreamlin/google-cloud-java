@@ -23,10 +23,10 @@ import com.google.compute.v1.GetSnapshotHttpRequest;
 import com.google.compute.v1.ListSnapshotsHttpRequest;
 import com.google.compute.v1.Operation;
 import static com.google.compute.v1.PagedResponseWrappers.ListSnapshotsPagedResponse;
+import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.Snapshot;
 import com.google.compute.v1.SnapshotList;
 import com.google.compute.v1.SnapshotName;
-import com.google.compute.v1.SnapshotsProjectName;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

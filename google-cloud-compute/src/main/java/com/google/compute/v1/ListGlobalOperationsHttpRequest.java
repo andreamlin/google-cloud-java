@@ -437,7 +437,7 @@ public final class ListGlobalOperationsHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithGlobalOperationsProjectName(GlobalOperationsProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class ListGlobalOperationsHttpRequest implements ApiMessage {
           ;
     }
 
-    public final GlobalOperationsProjectName getProjectAsGlobalOperationsProjectName() {
-      return GlobalOperationsProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

@@ -173,11 +173,11 @@ public class LicensAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final License getLicens(LicensesLicenseName license) {
+  public final License getLicens(LicenseName license) {
 
     GetLicensHttpRequest request =
         GetLicensHttpRequest.newBuilder()
-        .setLicenseWithLicensesLicenseName(license)
+        .setLicenseWithLicenseName(license)
         .build();
     return getLicens(request);
   }

@@ -307,11 +307,11 @@ public class RouteAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertRoute(RoutesProjectName project, Route routeResource) {
+  public final Operation insertRoute(ProjectName project, Route routeResource) {
 
     InsertRouteHttpRequest request =
         InsertRouteHttpRequest.newBuilder()
-        .setProjectWithRoutesProjectName(project)
+        .setProjectWithProjectName(project)
         .setRouteResource(routeResource)
         .build();
     return insertRoute(request);
@@ -374,10 +374,10 @@ public class RouteAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListRoutesPagedResponse listRoutes(RoutesProjectName project) {
+  public final ListRoutesPagedResponse listRoutes(ProjectName project) {
     ListRoutesHttpRequest request =
         ListRoutesHttpRequest.newBuilder()
-        .setProjectWithRoutesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listRoutes(request);
   }

@@ -467,7 +467,7 @@ public final class ListRegionOperationsHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setRegionWithRegionOperationsRegionName(RegionOperationsRegionName value) {
+    public final Builder setRegionWithRegionName(RegionName value) {
       if (value == null) {
         return
             setProject("").          setRegion("")
@@ -478,8 +478,8 @@ public final class ListRegionOperationsHttpRequest implements ApiMessage {
           ;
     }
 
-    public final RegionOperationsRegionName getRegionAsRegionOperationsRegionName() {
-      return RegionOperationsRegionName.create(
+    public final RegionName getRegionAsRegionName() {
+      return RegionName.create(
           getProject(),
           getRegion()
           );

@@ -23,8 +23,6 @@ import com.google.compute.v1.Autoscaler;
 import com.google.compute.v1.AutoscalerAggregatedList;
 import com.google.compute.v1.AutoscalerList;
 import com.google.compute.v1.AutoscalerName;
-import com.google.compute.v1.AutoscalersProjectName;
-import com.google.compute.v1.AutoscalersZoneName;
 import com.google.compute.v1.DeleteAutoscalerHttpRequest;
 import com.google.compute.v1.GetAutoscalerHttpRequest;
 import com.google.compute.v1.InsertAutoscalerHttpRequest;
@@ -33,7 +31,9 @@ import com.google.compute.v1.Operation;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListAutoscalersPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListAutoscalersPagedResponse;
 import com.google.compute.v1.PatchAutoscalerHttpRequest;
+import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.UpdateAutoscalerHttpRequest;
+import com.google.compute.v1.ZoneName;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

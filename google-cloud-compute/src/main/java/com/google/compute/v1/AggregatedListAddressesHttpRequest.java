@@ -437,7 +437,7 @@ public final class AggregatedListAddressesHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithAddressesProjectName(AddressesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class AggregatedListAddressesHttpRequest implements ApiMessage {
           ;
     }
 
-    public final AddressesProjectName getProjectAsAddressesProjectName() {
-      return AddressesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

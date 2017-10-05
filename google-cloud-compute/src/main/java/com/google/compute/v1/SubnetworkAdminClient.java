@@ -177,10 +177,10 @@ public class SubnetworkAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListSubnetworksPagedResponse aggregatedListSubnetworks(SubnetworksProjectName project) {
+  public final AggregatedListSubnetworksPagedResponse aggregatedListSubnetworks(ProjectName project) {
     AggregatedListSubnetworksHttpRequest request =
         AggregatedListSubnetworksHttpRequest.newBuilder()
-        .setProjectWithSubnetworksProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListSubnetworks(request);
   }
@@ -468,11 +468,11 @@ public class SubnetworkAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertSubnetwork(SubnetworksRegionName region, Subnetwork subnetworkResource) {
+  public final Operation insertSubnetwork(RegionName region, Subnetwork subnetworkResource) {
 
     InsertSubnetworkHttpRequest request =
         InsertSubnetworkHttpRequest.newBuilder()
-        .setRegionWithSubnetworksRegionName(region)
+        .setRegionWithRegionName(region)
         .setSubnetworkResource(subnetworkResource)
         .build();
     return insertSubnetwork(request);
@@ -535,10 +535,10 @@ public class SubnetworkAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListSubnetworksPagedResponse listSubnetworks(SubnetworksRegionName region) {
+  public final ListSubnetworksPagedResponse listSubnetworks(RegionName region) {
     ListSubnetworksHttpRequest request =
         ListSubnetworksHttpRequest.newBuilder()
-        .setRegionWithSubnetworksRegionName(region)
+        .setRegionWithRegionName(region)
         .build();
     return listSubnetworks(request);
   }

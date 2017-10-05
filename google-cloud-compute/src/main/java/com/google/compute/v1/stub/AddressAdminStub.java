@@ -22,8 +22,6 @@ import com.google.compute.v1.Address;
 import com.google.compute.v1.AddressAggregatedList;
 import com.google.compute.v1.AddressList;
 import com.google.compute.v1.AddressName;
-import com.google.compute.v1.AddressesProjectName;
-import com.google.compute.v1.AddressesRegionName;
 import com.google.compute.v1.AggregatedListAddressesHttpRequest;
 import com.google.compute.v1.DeleteAddressHttpRequest;
 import com.google.compute.v1.GetAddressHttpRequest;
@@ -32,6 +30,8 @@ import com.google.compute.v1.ListAddressesHttpRequest;
 import com.google.compute.v1.Operation;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListAddressesPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListAddressesPagedResponse;
+import com.google.compute.v1.ProjectName;
+import com.google.compute.v1.RegionName;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

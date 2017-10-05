@@ -383,7 +383,7 @@ public final class InsertAutoscalerHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setZoneWithAutoscalersZoneName(AutoscalersZoneName value) {
+    public final Builder setZoneWithZoneName(ZoneName value) {
       if (value == null) {
         return
             setProject("").          setZone("")
@@ -394,8 +394,8 @@ public final class InsertAutoscalerHttpRequest implements ApiMessage {
           ;
     }
 
-    public final AutoscalersZoneName getZoneAsAutoscalersZoneName() {
-      return AutoscalersZoneName.create(
+    public final ZoneName getZoneAsZoneName() {
+      return ZoneName.create(
           getProject(),
           getZone()
           );

@@ -437,7 +437,7 @@ public final class ListZonesHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithZonesProjectName(ZonesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class ListZonesHttpRequest implements ApiMessage {
           ;
     }
 
-    public final ZonesProjectName getProjectAsZonesProjectName() {
-      return ZonesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

@@ -21,10 +21,10 @@ import com.google.api.gax.rpc.UnaryCallable;
 import com.google.compute.v1.GetRegionHttpRequest;
 import com.google.compute.v1.ListRegionsHttpRequest;
 import static com.google.compute.v1.PagedResponseWrappers.ListRegionsPagedResponse;
+import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.Region;
 import com.google.compute.v1.RegionList;
 import com.google.compute.v1.RegionName;
-import com.google.compute.v1.RegionsProjectName;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

@@ -437,7 +437,7 @@ public final class ListInstanceTemplatesHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithInstanceTemplatesProjectName(InstanceTemplatesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class ListInstanceTemplatesHttpRequest implements ApiMessage {
           ;
     }
 
-    public final InstanceTemplatesProjectName getProjectAsInstanceTemplatesProjectName() {
-      return InstanceTemplatesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

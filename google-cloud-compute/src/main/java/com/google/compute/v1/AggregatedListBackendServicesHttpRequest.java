@@ -437,7 +437,7 @@ public final class AggregatedListBackendServicesHttpRequest implements ApiMessag
       return newBuilder;
     }
 
-    public final Builder setProjectWithBackendServicesProjectName(BackendServicesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class AggregatedListBackendServicesHttpRequest implements ApiMessag
           ;
     }
 
-    public final BackendServicesProjectName getProjectAsBackendServicesProjectName() {
-      return BackendServicesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

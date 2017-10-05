@@ -177,10 +177,10 @@ public class DiskAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListDisksPagedResponse aggregatedListDisks(DisksProjectName project) {
+  public final AggregatedListDisksPagedResponse aggregatedListDisks(ProjectName project) {
     AggregatedListDisksHttpRequest request =
         AggregatedListDisksHttpRequest.newBuilder()
-        .setProjectWithDisksProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListDisks(request);
   }
@@ -469,12 +469,12 @@ public class DiskAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertDisk(String sourceImage, DisksZoneName zone, Disk diskResource) {
+  public final Operation insertDisk(String sourceImage, ZoneName zone, Disk diskResource) {
 
     InsertDiskHttpRequest request =
         InsertDiskHttpRequest.newBuilder()
         .setSourceImage(sourceImage)
-        .setZoneWithDisksZoneName(zone)
+        .setZoneWithZoneName(zone)
         .setDiskResource(diskResource)
         .build();
     return insertDisk(request);
@@ -537,10 +537,10 @@ public class DiskAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListDisksPagedResponse listDisks(DisksZoneName zone) {
+  public final ListDisksPagedResponse listDisks(ZoneName zone) {
     ListDisksHttpRequest request =
         ListDisksHttpRequest.newBuilder()
-        .setZoneWithDisksZoneName(zone)
+        .setZoneWithZoneName(zone)
         .build();
     return listDisks(request);
   }

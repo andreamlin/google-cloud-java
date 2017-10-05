@@ -369,11 +369,11 @@ public class RegionBackendServiceAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertRegionBackendService(RegionBackendServicesRegionName region, BackendService backendServiceResource) {
+  public final Operation insertRegionBackendService(RegionName region, BackendService backendServiceResource) {
 
     InsertRegionBackendServiceHttpRequest request =
         InsertRegionBackendServiceHttpRequest.newBuilder()
-        .setRegionWithRegionBackendServicesRegionName(region)
+        .setRegionWithRegionName(region)
         .setBackendServiceResource(backendServiceResource)
         .build();
     return insertRegionBackendService(request);
@@ -436,10 +436,10 @@ public class RegionBackendServiceAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListRegionBackendServicesPagedResponse listRegionBackendServices(RegionBackendServicesRegionName region) {
+  public final ListRegionBackendServicesPagedResponse listRegionBackendServices(RegionName region) {
     ListRegionBackendServicesHttpRequest request =
         ListRegionBackendServicesHttpRequest.newBuilder()
-        .setRegionWithRegionBackendServicesRegionName(region)
+        .setRegionWithRegionName(region)
         .build();
     return listRegionBackendServices(request);
   }

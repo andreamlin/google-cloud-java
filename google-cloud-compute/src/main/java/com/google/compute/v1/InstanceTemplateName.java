@@ -31,7 +31,7 @@ public final class InstanceTemplateName implements ResourceName {
   private final String instanceTemplate;
   private final String project;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/global/instanceTemplates/{instanceTemplate}");
+        PathTemplate.createWithoutUrlEncoding("{project}/instanceTemplates/{instanceTemplate}");
 
   public static Builder newBuilder() {
     return new Builder();

@@ -31,7 +31,7 @@ public final class GlobalAddressesAddressName implements ResourceName {
   private final String address;
   private final String project;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/global/addresses/{address}");
+        PathTemplate.createWithoutUrlEncoding("{project}/addresses/{address}");
 
   public static Builder newBuilder() {
     return new Builder();

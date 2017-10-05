@@ -25,10 +25,10 @@ import com.google.compute.v1.MachineType;
 import com.google.compute.v1.MachineTypeAggregatedList;
 import com.google.compute.v1.MachineTypeList;
 import com.google.compute.v1.MachineTypeName;
-import com.google.compute.v1.MachineTypesProjectName;
-import com.google.compute.v1.MachineTypesZoneName;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListMachineTypesPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListMachineTypesPagedResponse;
+import com.google.compute.v1.ProjectName;
+import com.google.compute.v1.ZoneName;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

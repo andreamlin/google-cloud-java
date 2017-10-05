@@ -303,11 +303,11 @@ public class GlobalForwardingRuleAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertGlobalForwardingRule(GlobalForwardingRulesProjectName project, ForwardingRule forwardingRuleResource) {
+  public final Operation insertGlobalForwardingRule(ProjectName project, ForwardingRule forwardingRuleResource) {
 
     InsertGlobalForwardingRuleHttpRequest request =
         InsertGlobalForwardingRuleHttpRequest.newBuilder()
-        .setProjectWithGlobalForwardingRulesProjectName(project)
+        .setProjectWithProjectName(project)
         .setForwardingRuleResource(forwardingRuleResource)
         .build();
     return insertGlobalForwardingRule(request);
@@ -370,10 +370,10 @@ public class GlobalForwardingRuleAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListGlobalForwardingRulesPagedResponse listGlobalForwardingRules(GlobalForwardingRulesProjectName project) {
+  public final ListGlobalForwardingRulesPagedResponse listGlobalForwardingRules(ProjectName project) {
     ListGlobalForwardingRulesHttpRequest request =
         ListGlobalForwardingRulesHttpRequest.newBuilder()
-        .setProjectWithGlobalForwardingRulesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listGlobalForwardingRules(request);
   }

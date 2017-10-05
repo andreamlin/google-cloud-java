@@ -437,7 +437,7 @@ public final class AggregatedListTargetPoolsHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithTargetPoolsProjectName(TargetPoolsProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -448,8 +448,8 @@ public final class AggregatedListTargetPoolsHttpRequest implements ApiMessage {
           ;
     }
 
-    public final TargetPoolsProjectName getProjectAsTargetPoolsProjectName() {
-      return TargetPoolsProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

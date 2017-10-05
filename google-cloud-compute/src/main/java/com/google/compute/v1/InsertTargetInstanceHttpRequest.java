@@ -383,7 +383,7 @@ public final class InsertTargetInstanceHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setZoneWithTargetInstancesZoneName(TargetInstancesZoneName value) {
+    public final Builder setZoneWithZoneName(ZoneName value) {
       if (value == null) {
         return
             setProject("").          setZone("")
@@ -394,8 +394,8 @@ public final class InsertTargetInstanceHttpRequest implements ApiMessage {
           ;
     }
 
-    public final TargetInstancesZoneName getZoneAsTargetInstancesZoneName() {
-      return TargetInstancesZoneName.create(
+    public final ZoneName getZoneAsZoneName() {
+      return ZoneName.create(
           getProject(),
           getZone()
           );

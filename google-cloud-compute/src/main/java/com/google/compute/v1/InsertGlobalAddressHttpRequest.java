@@ -353,7 +353,7 @@ public final class InsertGlobalAddressHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setProjectWithGlobalAddressesProjectName(GlobalAddressesProjectName value) {
+    public final Builder setProjectWithProjectName(ProjectName value) {
       if (value == null) {
         return
             setProject("")
@@ -364,8 +364,8 @@ public final class InsertGlobalAddressHttpRequest implements ApiMessage {
           ;
     }
 
-    public final GlobalAddressesProjectName getProjectAsGlobalAddressesProjectName() {
-      return GlobalAddressesProjectName.create(
+    public final ProjectName getProjectAsProjectName() {
+      return ProjectName.create(
           getProject()
           );
     }

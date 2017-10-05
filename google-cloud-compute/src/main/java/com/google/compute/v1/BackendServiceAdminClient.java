@@ -177,10 +177,10 @@ public class BackendServiceAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final AggregatedListBackendServicesPagedResponse aggregatedListBackendServices(BackendServicesProjectName project) {
+  public final AggregatedListBackendServicesPagedResponse aggregatedListBackendServices(ProjectName project) {
     AggregatedListBackendServicesHttpRequest request =
         AggregatedListBackendServicesHttpRequest.newBuilder()
-        .setProjectWithBackendServicesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return aggregatedListBackendServices(request);
   }
@@ -468,11 +468,11 @@ public class BackendServiceAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertBackendService(BackendServicesProjectName project, BackendService backendServiceResource) {
+  public final Operation insertBackendService(ProjectName project, BackendService backendServiceResource) {
 
     InsertBackendServiceHttpRequest request =
         InsertBackendServiceHttpRequest.newBuilder()
-        .setProjectWithBackendServicesProjectName(project)
+        .setProjectWithProjectName(project)
         .setBackendServiceResource(backendServiceResource)
         .build();
     return insertBackendService(request);
@@ -535,10 +535,10 @@ public class BackendServiceAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListBackendServicesPagedResponse listBackendServices(BackendServicesProjectName project) {
+  public final ListBackendServicesPagedResponse listBackendServices(ProjectName project) {
     ListBackendServicesHttpRequest request =
         ListBackendServicesHttpRequest.newBuilder()
-        .setProjectWithBackendServicesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listBackendServices(request);
   }

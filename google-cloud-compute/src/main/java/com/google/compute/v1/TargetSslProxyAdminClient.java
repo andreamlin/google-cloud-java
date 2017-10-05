@@ -303,11 +303,11 @@ public class TargetSslProxyAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertTargetSslProxy(TargetSslProxiesProjectName project, TargetSslProxy targetSslProxyResource) {
+  public final Operation insertTargetSslProxy(ProjectName project, TargetSslProxy targetSslProxyResource) {
 
     InsertTargetSslProxyHttpRequest request =
         InsertTargetSslProxyHttpRequest.newBuilder()
-        .setProjectWithTargetSslProxiesProjectName(project)
+        .setProjectWithProjectName(project)
         .setTargetSslProxyResource(targetSslProxyResource)
         .build();
     return insertTargetSslProxy(request);
@@ -370,10 +370,10 @@ public class TargetSslProxyAdminClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final ListTargetSslProxiesPagedResponse listTargetSslProxies(TargetSslProxiesProjectName project) {
+  public final ListTargetSslProxiesPagedResponse listTargetSslProxies(ProjectName project) {
     ListTargetSslProxiesHttpRequest request =
         ListTargetSslProxiesHttpRequest.newBuilder()
-        .setProjectWithTargetSslProxiesProjectName(project)
+        .setProjectWithProjectName(project)
         .build();
     return listTargetSslProxies(request);
   }

@@ -467,7 +467,7 @@ public final class ListTargetPoolsHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setRegionWithTargetPoolsRegionName(TargetPoolsRegionName value) {
+    public final Builder setRegionWithRegionName(RegionName value) {
       if (value == null) {
         return
             setProject("").          setRegion("")
@@ -478,8 +478,8 @@ public final class ListTargetPoolsHttpRequest implements ApiMessage {
           ;
     }
 
-    public final TargetPoolsRegionName getRegionAsTargetPoolsRegionName() {
-      return TargetPoolsRegionName.create(
+    public final RegionName getRegionAsRegionName() {
+      return RegionName.create(
           getProject(),
           getRegion()
           );

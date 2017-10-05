@@ -383,7 +383,7 @@ public final class InsertSubnetworkHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setRegionWithSubnetworksRegionName(SubnetworksRegionName value) {
+    public final Builder setRegionWithRegionName(RegionName value) {
       if (value == null) {
         return
             setProject("").          setRegion("")
@@ -394,8 +394,8 @@ public final class InsertSubnetworkHttpRequest implements ApiMessage {
           ;
     }
 
-    public final SubnetworksRegionName getRegionAsSubnetworksRegionName() {
-      return SubnetworksRegionName.create(
+    public final RegionName getRegionAsRegionName() {
+      return RegionName.create(
           getProject(),
           getRegion()
           );
