@@ -31,7 +31,7 @@ public final class LicenseName implements ResourceName {
   private final String license;
   private final String project;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/licenses/{license}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}/licenses/{license}");
 
   public static Builder newBuilder() {
     return new Builder();

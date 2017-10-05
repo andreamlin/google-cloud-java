@@ -32,7 +32,7 @@ public final class MachineTypeName implements ResourceName {
   private final String project;
   private final String zone;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/zones/{zone}/machineTypes/{machineType}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}/zones/{zone}/machineTypes/{machineType}");
 
   public static Builder newBuilder() {
     return new Builder();

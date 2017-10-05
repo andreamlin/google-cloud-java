@@ -32,7 +32,7 @@ public final class TargetInstanceName implements ResourceName {
   private final String targetInstance;
   private final String zone;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/zones/{zone}/targetInstances/{targetInstance}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}/zones/{zone}/targetInstances/{targetInstance}");
 
   public static Builder newBuilder() {
     return new Builder();

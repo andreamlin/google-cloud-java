@@ -32,7 +32,7 @@ public final class VpnTunnelName implements ResourceName {
   private final String region;
   private final String vpnTunnel;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/regions/{region}/vpnTunnels/{vpnTunnel}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}/regions/{region}/vpnTunnels/{vpnTunnel}");
 
   public static Builder newBuilder() {
     return new Builder();

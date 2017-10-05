@@ -32,7 +32,7 @@ public final class ZoneOperationsOperationName implements ResourceName {
   private final String project;
   private final String zone;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/zones/{zone}/operations/{operation}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}/zones/{zone}/operations/{operation}");
 
   public static Builder newBuilder() {
     return new Builder();

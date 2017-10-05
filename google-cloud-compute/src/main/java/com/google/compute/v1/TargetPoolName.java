@@ -32,7 +32,7 @@ public final class TargetPoolName implements ResourceName {
   private final String region;
   private final String targetPool;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/regions/{region}/targetPools/{targetPool}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}/regions/{region}/targetPools/{targetPool}");
 
   public static Builder newBuilder() {
     return new Builder();

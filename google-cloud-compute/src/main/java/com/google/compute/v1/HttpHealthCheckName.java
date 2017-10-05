@@ -31,7 +31,7 @@ public final class HttpHealthCheckName implements ResourceName {
   private final String httpHealthCheck;
   private final String project;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/httpHealthChecks/{httpHealthCheck}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}/httpHealthChecks/{httpHealthCheck}");
 
   public static Builder newBuilder() {
     return new Builder();

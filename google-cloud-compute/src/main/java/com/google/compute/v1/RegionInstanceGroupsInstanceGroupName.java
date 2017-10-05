@@ -32,7 +32,7 @@ public final class RegionInstanceGroupsInstanceGroupName implements ResourceName
   private final String project;
   private final String region;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/regions/{region}/instanceGroups/{instanceGroup}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}/regions/{region}/instanceGroups/{instanceGroup}");
 
   public static Builder newBuilder() {
     return new Builder();

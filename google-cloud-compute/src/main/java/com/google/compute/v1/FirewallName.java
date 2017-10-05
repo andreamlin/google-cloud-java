@@ -31,7 +31,7 @@ public final class FirewallName implements ResourceName {
   private final String firewall;
   private final String project;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/firewalls/{firewall}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}/firewalls/{firewall}");
 
   public static Builder newBuilder() {
     return new Builder();

@@ -32,7 +32,7 @@ public final class ForwardingRuleName implements ResourceName {
   private final String project;
   private final String region;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/regions/{region}/forwardingRules/{forwardingRule}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}/regions/{region}/forwardingRules/{forwardingRule}");
 
   public static Builder newBuilder() {
     return new Builder();

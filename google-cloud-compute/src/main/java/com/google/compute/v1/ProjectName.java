@@ -30,7 +30,7 @@ import javax.annotation.Generated;
 public final class ProjectName implements ResourceName {
   private final String project;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}");
 
   public static Builder newBuilder() {
     return new Builder();

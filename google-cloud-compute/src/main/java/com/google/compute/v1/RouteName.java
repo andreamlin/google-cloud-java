@@ -31,7 +31,7 @@ public final class RouteName implements ResourceName {
   private final String project;
   private final String route;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/routes/{route}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}/routes/{route}");
 
   public static Builder newBuilder() {
     return new Builder();

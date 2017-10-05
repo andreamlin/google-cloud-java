@@ -32,7 +32,7 @@ public final class RegionAutoscalersAutoscalerName implements ResourceName {
   private final String project;
   private final String region;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/regions/{region}/autoscalers/{autoscaler}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}/regions/{region}/autoscalers/{autoscaler}");
 
   public static Builder newBuilder() {
     return new Builder();

@@ -31,7 +31,7 @@ public final class TargetHttpProxyName implements ResourceName {
   private final String project;
   private final String targetHttpProxy;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/targetHttpProxies/{targetHttpProxy}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}/targetHttpProxies/{targetHttpProxy}");
 
   public static Builder newBuilder() {
     return new Builder();

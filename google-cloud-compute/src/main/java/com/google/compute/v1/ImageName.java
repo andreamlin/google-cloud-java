@@ -31,7 +31,7 @@ public final class ImageName implements ResourceName {
   private final String image;
   private final String project;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("{project}/images/{image}");
+        PathTemplate.createWithoutUrlEncoding("project/{project}/images/{image}");
 
   public static Builder newBuilder() {
     return new Builder();
