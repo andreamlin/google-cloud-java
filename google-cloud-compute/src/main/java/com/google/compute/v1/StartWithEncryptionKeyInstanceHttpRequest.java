@@ -416,7 +416,9 @@ public final class StartWithEncryptionKeyInstanceHttpRequest implements ApiMessa
     public final Builder setInstanceWithInstanceName(InstanceName value) {
       if (value == null) {
         return
-            setInstance("").          setProject("").          setZone("")
+            setInstance("").
+            setProject("").
+            setZone("")
             ;
       }
       return

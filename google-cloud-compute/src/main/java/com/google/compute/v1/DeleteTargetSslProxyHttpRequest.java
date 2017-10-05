@@ -358,7 +358,8 @@ public final class DeleteTargetSslProxyHttpRequest implements ApiMessage {
     public final Builder setTargetSslProxyWithTargetSslProxyName(TargetSslProxyName value) {
       if (value == null) {
         return
-            setProject("").          setTargetSslProxy("")
+            setProject("").
+            setTargetSslProxy("")
             ;
       }
       return

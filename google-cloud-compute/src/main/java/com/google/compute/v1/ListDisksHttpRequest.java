@@ -470,7 +470,8 @@ public final class ListDisksHttpRequest implements ApiMessage {
     public final Builder setZoneWithZoneName(ZoneName value) {
       if (value == null) {
         return
-            setProject("").          setZone("")
+            setProject("").
+            setZone("")
             ;
       }
       return

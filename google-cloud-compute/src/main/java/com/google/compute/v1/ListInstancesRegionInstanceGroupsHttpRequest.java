@@ -528,7 +528,9 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
     public final Builder setInstanceGroupWithRegionInstanceGroupsInstanceGroupName(RegionInstanceGroupsInstanceGroupName value) {
       if (value == null) {
         return
-            setInstanceGroup("").          setProject("").          setRegion("")
+            setInstanceGroup("").
+            setProject("").
+            setRegion("")
             ;
       }
       return

@@ -386,7 +386,8 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
     public final Builder setTargetHttpsProxyWithTargetHttpsProxyName(TargetHttpsProxyName value) {
       if (value == null) {
         return
-            setProject("").          setTargetHttpsProxy("")
+            setProject("").
+            setTargetHttpsProxy("")
             ;
       }
       return

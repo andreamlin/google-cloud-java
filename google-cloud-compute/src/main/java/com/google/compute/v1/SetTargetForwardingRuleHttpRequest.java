@@ -416,7 +416,9 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
     public final Builder setForwardingRuleWithForwardingRuleName(ForwardingRuleName value) {
       if (value == null) {
         return
-            setForwardingRule("").          setProject("").          setRegion("")
+            setForwardingRule("").
+            setProject("").
+            setRegion("")
             ;
       }
       return

@@ -358,7 +358,8 @@ public final class SwitchToCustomModeNetworkHttpRequest implements ApiMessage {
     public final Builder setNetworkWithNetworkName(NetworkName value) {
       if (value == null) {
         return
-            setNetwork("").          setProject("")
+            setNetwork("").
+            setProject("")
             ;
       }
       return

@@ -388,7 +388,9 @@ public final class DeleteRouterHttpRequest implements ApiMessage {
     public final Builder setRouterWithRouterName(RouterName value) {
       if (value == null) {
         return
-            setProject("").          setRegion("").          setRouter("")
+            setProject("").
+            setRegion("").
+            setRouter("")
             ;
       }
       return

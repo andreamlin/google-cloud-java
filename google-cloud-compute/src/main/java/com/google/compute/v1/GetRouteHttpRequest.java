@@ -358,7 +358,8 @@ public final class GetRouteHttpRequest implements ApiMessage {
     public final Builder setRouteWithRouteName(RouteName value) {
       if (value == null) {
         return
-            setProject("").          setRoute("")
+            setProject("").
+            setRoute("")
             ;
       }
       return

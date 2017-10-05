@@ -388,7 +388,9 @@ public final class DeleteInstanceGroupHttpRequest implements ApiMessage {
     public final Builder setInstanceGroupWithInstanceGroupName(InstanceGroupName value) {
       if (value == null) {
         return
-            setInstanceGroup("").          setProject("").          setZone("")
+            setInstanceGroup("").
+            setProject("").
+            setZone("")
             ;
       }
       return

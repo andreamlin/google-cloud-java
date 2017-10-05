@@ -386,7 +386,8 @@ public final class PatchBackendServiceHttpRequest implements ApiMessage {
     public final Builder setBackendServiceWithBackendServiceName(BackendServiceName value) {
       if (value == null) {
         return
-            setBackendService("").          setProject("")
+            setBackendService("").
+            setProject("")
             ;
       }
       return

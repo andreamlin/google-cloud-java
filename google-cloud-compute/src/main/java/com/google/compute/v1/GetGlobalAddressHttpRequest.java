@@ -358,7 +358,8 @@ public final class GetGlobalAddressHttpRequest implements ApiMessage {
     public final Builder setAddressWithGlobalAddressesAddressName(GlobalAddressesAddressName value) {
       if (value == null) {
         return
-            setAddress("").          setProject("")
+            setAddress("").
+            setProject("")
             ;
       }
       return

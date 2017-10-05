@@ -388,7 +388,9 @@ public final class DeleteAutoscalerHttpRequest implements ApiMessage {
     public final Builder setAutoscalerWithAutoscalerName(AutoscalerName value) {
       if (value == null) {
         return
-            setAutoscaler("").          setProject("").          setZone("")
+            setAutoscaler("").
+            setProject("").
+            setZone("")
             ;
       }
       return

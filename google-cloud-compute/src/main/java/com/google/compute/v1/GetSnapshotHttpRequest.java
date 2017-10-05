@@ -358,7 +358,8 @@ public final class GetSnapshotHttpRequest implements ApiMessage {
     public final Builder setSnapshotWithSnapshotName(SnapshotName value) {
       if (value == null) {
         return
-            setProject("").          setSnapshot("")
+            setProject("").
+            setSnapshot("")
             ;
       }
       return

@@ -386,7 +386,8 @@ public final class InsertRegionInstanceGroupManagerHttpRequest implements ApiMes
     public final Builder setRegionWithRegionName(RegionName value) {
       if (value == null) {
         return
-            setProject("").          setRegion("")
+            setProject("").
+            setRegion("")
             ;
       }
       return

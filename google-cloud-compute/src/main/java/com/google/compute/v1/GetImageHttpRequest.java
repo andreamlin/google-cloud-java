@@ -358,7 +358,8 @@ public final class GetImageHttpRequest implements ApiMessage {
     public final Builder setImageWithImageName(ImageName value) {
       if (value == null) {
         return
-            setImage("").          setProject("")
+            setImage("").
+            setProject("")
             ;
       }
       return

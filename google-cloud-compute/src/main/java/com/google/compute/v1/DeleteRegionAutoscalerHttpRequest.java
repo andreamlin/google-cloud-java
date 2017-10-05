@@ -388,7 +388,9 @@ public final class DeleteRegionAutoscalerHttpRequest implements ApiMessage {
     public final Builder setAutoscalerWithRegionAutoscalersAutoscalerName(RegionAutoscalersAutoscalerName value) {
       if (value == null) {
         return
-            setAutoscaler("").          setProject("").          setRegion("")
+            setAutoscaler("").
+            setProject("").
+            setRegion("")
             ;
       }
       return

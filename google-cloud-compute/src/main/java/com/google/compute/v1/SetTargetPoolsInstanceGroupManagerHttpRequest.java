@@ -416,7 +416,9 @@ public final class SetTargetPoolsInstanceGroupManagerHttpRequest implements ApiM
     public final Builder setInstanceGroupManagerWithInstanceGroupManagerName(InstanceGroupManagerName value) {
       if (value == null) {
         return
-            setInstanceGroupManager("").          setProject("").          setZone("")
+            setInstanceGroupManager("").
+            setProject("").
+            setZone("")
             ;
       }
       return

@@ -388,7 +388,9 @@ public final class DeleteVpnTunnelHttpRequest implements ApiMessage {
     public final Builder setVpnTunnelWithVpnTunnelName(VpnTunnelName value) {
       if (value == null) {
         return
-            setProject("").          setRegion("").          setVpnTunnel("")
+            setProject("").
+            setRegion("").
+            setVpnTunnel("")
             ;
       }
       return

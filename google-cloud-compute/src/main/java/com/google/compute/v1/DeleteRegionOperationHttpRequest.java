@@ -388,7 +388,9 @@ public final class DeleteRegionOperationHttpRequest implements ApiMessage {
     public final Builder setOperationWithRegionOperationsOperationName(RegionOperationsOperationName value) {
       if (value == null) {
         return
-            setOperation("").          setProject("").          setRegion("")
+            setOperation("").
+            setProject("").
+            setRegion("")
             ;
       }
       return

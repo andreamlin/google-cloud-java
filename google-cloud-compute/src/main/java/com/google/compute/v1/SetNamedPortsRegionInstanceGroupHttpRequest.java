@@ -416,7 +416,9 @@ public final class SetNamedPortsRegionInstanceGroupHttpRequest implements ApiMes
     public final Builder setInstanceGroupWithRegionInstanceGroupsInstanceGroupName(RegionInstanceGroupsInstanceGroupName value) {
       if (value == null) {
         return
-            setInstanceGroup("").          setProject("").          setRegion("")
+            setInstanceGroup("").
+            setProject("").
+            setRegion("")
             ;
       }
       return

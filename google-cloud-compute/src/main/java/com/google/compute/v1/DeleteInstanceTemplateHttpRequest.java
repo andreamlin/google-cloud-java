@@ -358,7 +358,8 @@ public final class DeleteInstanceTemplateHttpRequest implements ApiMessage {
     public final Builder setInstanceTemplateWithInstanceTemplateName(InstanceTemplateName value) {
       if (value == null) {
         return
-            setInstanceTemplate("").          setProject("")
+            setInstanceTemplate("").
+            setProject("")
             ;
       }
       return

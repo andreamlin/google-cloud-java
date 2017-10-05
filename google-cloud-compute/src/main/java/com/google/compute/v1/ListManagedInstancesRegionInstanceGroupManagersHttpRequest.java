@@ -500,7 +500,9 @@ public final class ListManagedInstancesRegionInstanceGroupManagersHttpRequest im
     public final Builder setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(RegionInstanceGroupManagersInstanceGroupManagerName value) {
       if (value == null) {
         return
-            setInstanceGroupManager("").          setProject("").          setRegion("")
+            setInstanceGroupManager("").
+            setProject("").
+            setRegion("")
             ;
       }
       return

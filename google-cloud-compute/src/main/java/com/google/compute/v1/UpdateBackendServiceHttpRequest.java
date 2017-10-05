@@ -386,7 +386,8 @@ public final class UpdateBackendServiceHttpRequest implements ApiMessage {
     public final Builder setBackendServiceWithBackendServiceName(BackendServiceName value) {
       if (value == null) {
         return
-            setBackendService("").          setProject("")
+            setBackendService("").
+            setProject("")
             ;
       }
       return

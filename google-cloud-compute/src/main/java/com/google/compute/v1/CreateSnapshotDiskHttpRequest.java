@@ -416,7 +416,9 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
     public final Builder setDiskWithDiskName(DiskName value) {
       if (value == null) {
         return
-            setDisk("").          setProject("").          setZone("")
+            setDisk("").
+            setProject("").
+            setZone("")
             ;
       }
       return

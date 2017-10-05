@@ -446,7 +446,9 @@ public final class AddAccessConfigInstanceHttpRequest implements ApiMessage {
     public final Builder setInstanceWithInstanceName(InstanceName value) {
       if (value == null) {
         return
-            setInstance("").          setProject("").          setZone("")
+            setInstance("").
+            setProject("").
+            setZone("")
             ;
       }
       return

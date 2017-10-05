@@ -358,7 +358,8 @@ public final class GetFromFamilyImageHttpRequest implements ApiMessage {
     public final Builder setFamilyWithFamilyName(FamilyName value) {
       if (value == null) {
         return
-            setFamily("").          setProject("")
+            setFamily("").
+            setProject("")
             ;
       }
       return

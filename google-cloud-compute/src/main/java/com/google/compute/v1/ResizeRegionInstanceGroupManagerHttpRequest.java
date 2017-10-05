@@ -418,7 +418,9 @@ public final class ResizeRegionInstanceGroupManagerHttpRequest implements ApiMes
     public final Builder setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(RegionInstanceGroupManagersInstanceGroupManagerName value) {
       if (value == null) {
         return
-            setInstanceGroupManager("").          setProject("").          setRegion("")
+            setInstanceGroupManager("").
+            setProject("").
+            setRegion("")
             ;
       }
       return

@@ -388,7 +388,9 @@ public final class DeleteZoneOperationHttpRequest implements ApiMessage {
     public final Builder setOperationWithZoneOperationsOperationName(ZoneOperationsOperationName value) {
       if (value == null) {
         return
-            setOperation("").          setProject("").          setZone("")
+            setOperation("").
+            setProject("").
+            setZone("")
             ;
       }
       return

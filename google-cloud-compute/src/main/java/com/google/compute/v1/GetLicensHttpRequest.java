@@ -358,7 +358,8 @@ public final class GetLicensHttpRequest implements ApiMessage {
     public final Builder setLicenseWithLicenseName(LicenseName value) {
       if (value == null) {
         return
-            setLicense("").          setProject("")
+            setLicense("").
+            setProject("")
             ;
       }
       return

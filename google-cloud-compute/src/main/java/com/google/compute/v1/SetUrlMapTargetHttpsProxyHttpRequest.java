@@ -386,7 +386,8 @@ public final class SetUrlMapTargetHttpsProxyHttpRequest implements ApiMessage {
     public final Builder setTargetHttpsProxyWithTargetHttpsProxyName(TargetHttpsProxyName value) {
       if (value == null) {
         return
-            setProject("").          setTargetHttpsProxy("")
+            setProject("").
+            setTargetHttpsProxy("")
             ;
       }
       return

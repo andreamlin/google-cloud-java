@@ -388,7 +388,9 @@ public final class GetDiskTypeHttpRequest implements ApiMessage {
     public final Builder setDiskTypeWithDiskTypeName(DiskTypeName value) {
       if (value == null) {
         return
-            setDiskType("").          setProject("").          setZone("")
+            setDiskType("").
+            setProject("").
+            setZone("")
             ;
       }
       return

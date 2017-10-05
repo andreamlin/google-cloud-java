@@ -358,7 +358,8 @@ public final class GetHttpsHealthCheckHttpRequest implements ApiMessage {
     public final Builder setHttpsHealthCheckWithHttpsHealthCheckName(HttpsHealthCheckName value) {
       if (value == null) {
         return
-            setHttpsHealthCheck("").          setProject("")
+            setHttpsHealthCheck("").
+            setProject("")
             ;
       }
       return

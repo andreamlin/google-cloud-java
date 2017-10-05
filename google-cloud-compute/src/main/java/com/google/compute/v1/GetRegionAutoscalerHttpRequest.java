@@ -388,7 +388,9 @@ public final class GetRegionAutoscalerHttpRequest implements ApiMessage {
     public final Builder setAutoscalerWithRegionAutoscalersAutoscalerName(RegionAutoscalersAutoscalerName value) {
       if (value == null) {
         return
-            setAutoscaler("").          setProject("").          setRegion("")
+            setAutoscaler("").
+            setProject("").
+            setRegion("")
             ;
       }
       return

@@ -416,7 +416,9 @@ public final class RemoveInstanceTargetPoolHttpRequest implements ApiMessage {
     public final Builder setTargetPoolWithTargetPoolName(TargetPoolName value) {
       if (value == null) {
         return
-            setProject("").          setRegion("").          setTargetPool("")
+            setProject("").
+            setRegion("").
+            setTargetPool("")
             ;
       }
       return

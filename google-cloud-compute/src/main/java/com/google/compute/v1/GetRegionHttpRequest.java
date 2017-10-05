@@ -358,7 +358,8 @@ public final class GetRegionHttpRequest implements ApiMessage {
     public final Builder setRegionWithRegionName(RegionName value) {
       if (value == null) {
         return
-            setProject("").          setRegion("")
+            setProject("").
+            setRegion("")
             ;
       }
       return

@@ -388,7 +388,9 @@ public final class GetTargetVpnGatewayHttpRequest implements ApiMessage {
     public final Builder setTargetVpnGatewayWithTargetVpnGatewayName(TargetVpnGatewayName value) {
       if (value == null) {
         return
-            setProject("").          setRegion("").          setTargetVpnGateway("")
+            setProject("").
+            setRegion("").
+            setTargetVpnGateway("")
             ;
       }
       return

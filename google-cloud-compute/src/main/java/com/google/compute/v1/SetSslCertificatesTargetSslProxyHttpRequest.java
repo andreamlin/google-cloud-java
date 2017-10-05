@@ -386,7 +386,8 @@ public final class SetSslCertificatesTargetSslProxyHttpRequest implements ApiMes
     public final Builder setTargetSslProxyWithTargetSslProxyName(TargetSslProxyName value) {
       if (value == null) {
         return
-            setProject("").          setTargetSslProxy("")
+            setProject("").
+            setTargetSslProxy("")
             ;
       }
       return

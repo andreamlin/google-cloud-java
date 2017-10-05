@@ -388,7 +388,9 @@ public final class DeleteTargetInstanceHttpRequest implements ApiMessage {
     public final Builder setTargetInstanceWithTargetInstanceName(TargetInstanceName value) {
       if (value == null) {
         return
-            setProject("").          setTargetInstance("").          setZone("")
+            setProject("").
+            setTargetInstance("").
+            setZone("")
             ;
       }
       return

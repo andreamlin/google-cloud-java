@@ -386,7 +386,8 @@ public final class PatchFirewallHttpRequest implements ApiMessage {
     public final Builder setFirewallWithFirewallName(FirewallName value) {
       if (value == null) {
         return
-            setFirewall("").          setProject("")
+            setFirewall("").
+            setProject("")
             ;
       }
       return

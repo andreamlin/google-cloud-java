@@ -416,7 +416,9 @@ public final class PatchRegionBackendServiceHttpRequest implements ApiMessage {
     public final Builder setBackendServiceWithRegionBackendServicesBackendServiceName(RegionBackendServicesBackendServiceName value) {
       if (value == null) {
         return
-            setBackendService("").          setProject("").          setRegion("")
+            setBackendService("").
+            setProject("").
+            setRegion("")
             ;
       }
       return

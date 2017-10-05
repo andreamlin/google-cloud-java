@@ -388,7 +388,9 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
     public final Builder setAddressWithAddressName(AddressName value) {
       if (value == null) {
         return
-            setAddress("").          setProject("").          setRegion("")
+            setAddress("").
+            setProject("").
+            setRegion("")
             ;
       }
       return

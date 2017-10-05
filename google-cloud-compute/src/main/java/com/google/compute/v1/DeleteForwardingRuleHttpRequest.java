@@ -388,7 +388,9 @@ public final class DeleteForwardingRuleHttpRequest implements ApiMessage {
     public final Builder setForwardingRuleWithForwardingRuleName(ForwardingRuleName value) {
       if (value == null) {
         return
-            setForwardingRule("").          setProject("").          setRegion("")
+            setForwardingRule("").
+            setProject("").
+            setRegion("")
             ;
       }
       return

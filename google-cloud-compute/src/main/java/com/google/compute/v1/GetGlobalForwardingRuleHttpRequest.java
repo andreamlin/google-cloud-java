@@ -358,7 +358,8 @@ public final class GetGlobalForwardingRuleHttpRequest implements ApiMessage {
     public final Builder setForwardingRuleWithGlobalForwardingRulesForwardingRuleName(GlobalForwardingRulesForwardingRuleName value) {
       if (value == null) {
         return
-            setForwardingRule("").          setProject("")
+            setForwardingRule("").
+            setProject("")
             ;
       }
       return

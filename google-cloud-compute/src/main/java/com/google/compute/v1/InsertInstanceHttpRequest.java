@@ -386,7 +386,8 @@ public final class InsertInstanceHttpRequest implements ApiMessage {
     public final Builder setZoneWithZoneName(ZoneName value) {
       if (value == null) {
         return
-            setProject("").          setZone("")
+            setProject("").
+            setZone("")
             ;
       }
       return

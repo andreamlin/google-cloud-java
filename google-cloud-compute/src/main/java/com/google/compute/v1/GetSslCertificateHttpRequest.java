@@ -358,7 +358,8 @@ public final class GetSslCertificateHttpRequest implements ApiMessage {
     public final Builder setSslCertificateWithSslCertificateName(SslCertificateName value) {
       if (value == null) {
         return
-            setProject("").          setSslCertificate("")
+            setProject("").
+            setSslCertificate("")
             ;
       }
       return

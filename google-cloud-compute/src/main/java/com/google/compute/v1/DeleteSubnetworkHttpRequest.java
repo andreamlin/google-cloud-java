@@ -388,7 +388,9 @@ public final class DeleteSubnetworkHttpRequest implements ApiMessage {
     public final Builder setSubnetworkWithSubnetworkName(SubnetworkName value) {
       if (value == null) {
         return
-            setProject("").          setRegion("").          setSubnetwork("")
+            setProject("").
+            setRegion("").
+            setSubnetwork("")
             ;
       }
       return

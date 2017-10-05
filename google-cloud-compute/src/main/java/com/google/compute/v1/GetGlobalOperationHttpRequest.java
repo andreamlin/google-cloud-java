@@ -358,7 +358,8 @@ public final class GetGlobalOperationHttpRequest implements ApiMessage {
     public final Builder setOperationWithGlobalOperationsOperationName(GlobalOperationsOperationName value) {
       if (value == null) {
         return
-            setOperation("").          setProject("")
+            setOperation("").
+            setProject("")
             ;
       }
       return

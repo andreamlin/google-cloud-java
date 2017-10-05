@@ -386,7 +386,8 @@ public final class ValidateUrlMapHttpRequest implements ApiMessage {
     public final Builder setUrlMapWithUrlMapName(UrlMapName value) {
       if (value == null) {
         return
-            setProject("").          setUrlMap("")
+            setProject("").
+            setUrlMap("")
             ;
       }
       return

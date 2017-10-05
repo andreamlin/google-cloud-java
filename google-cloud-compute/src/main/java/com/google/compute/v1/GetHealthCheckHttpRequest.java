@@ -358,7 +358,8 @@ public final class GetHealthCheckHttpRequest implements ApiMessage {
     public final Builder setHealthCheckWithHealthCheckName(HealthCheckName value) {
       if (value == null) {
         return
-            setHealthCheck("").          setProject("")
+            setHealthCheck("").
+            setProject("")
             ;
       }
       return

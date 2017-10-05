@@ -388,7 +388,9 @@ public final class GetMachineTypeHttpRequest implements ApiMessage {
     public final Builder setMachineTypeWithMachineTypeName(MachineTypeName value) {
       if (value == null) {
         return
-            setMachineType("").          setProject("").          setZone("")
+            setMachineType("").
+            setProject("").
+            setZone("")
             ;
       }
       return
