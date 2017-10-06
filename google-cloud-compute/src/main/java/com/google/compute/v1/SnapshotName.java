@@ -31,7 +31,7 @@ public final class SnapshotName implements ResourceName {
   private final String project;
   private final String snapshot;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("project/{project}/snapshots/{snapshot}");
+        PathTemplate.createWithoutUrlEncoding("projects/{project}/snapshots/{snapshot}");
 
   public static Builder newBuilder() {
     return new Builder();

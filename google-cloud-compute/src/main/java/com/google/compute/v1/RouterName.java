@@ -32,7 +32,7 @@ public final class RouterName implements ResourceName {
   private final String region;
   private final String router;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("project/{project}/regions/{region}/routers/{router}");
+        PathTemplate.createWithoutUrlEncoding("projects/{project}/regions/{region}/routers/{router}");
 
   public static Builder newBuilder() {
     return new Builder();

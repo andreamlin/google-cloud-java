@@ -32,7 +32,7 @@ public final class RegionInstanceGroupManagersInstanceGroupManagerName implement
   private final String project;
   private final String region;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("project/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}");
+        PathTemplate.createWithoutUrlEncoding("projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}");
 
   public static Builder newBuilder() {
     return new Builder();

@@ -32,7 +32,7 @@ public final class InstanceGroupName implements ResourceName {
   private final String project;
   private final String zone;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("project/{project}/zones/{zone}/instanceGroups/{instanceGroup}");
+        PathTemplate.createWithoutUrlEncoding("projects/{project}/zones/{zone}/instanceGroups/{instanceGroup}");
 
   public static Builder newBuilder() {
     return new Builder();

@@ -31,7 +31,7 @@ public final class FamilyName implements ResourceName {
   private final String family;
   private final String project;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("project/{project}/family/{family}");
+        PathTemplate.createWithoutUrlEncoding("projects/{project}/family/{family}");
 
   public static Builder newBuilder() {
     return new Builder();

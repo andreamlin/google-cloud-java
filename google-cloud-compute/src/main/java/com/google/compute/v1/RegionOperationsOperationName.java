@@ -32,7 +32,7 @@ public final class RegionOperationsOperationName implements ResourceName {
   private final String project;
   private final String region;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("project/{project}/regions/{region}/operations/{operation}");
+        PathTemplate.createWithoutUrlEncoding("projects/{project}/regions/{region}/operations/{operation}");
 
   public static Builder newBuilder() {
     return new Builder();

@@ -32,7 +32,7 @@ public final class SubnetworkName implements ResourceName {
   private final String region;
   private final String subnetwork;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("project/{project}/regions/{region}/subnetworks/{subnetwork}");
+        PathTemplate.createWithoutUrlEncoding("projects/{project}/regions/{region}/subnetworks/{subnetwork}");
 
   public static Builder newBuilder() {
     return new Builder();

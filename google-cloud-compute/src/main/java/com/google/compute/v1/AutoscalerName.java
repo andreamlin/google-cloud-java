@@ -32,7 +32,7 @@ public final class AutoscalerName implements ResourceName {
   private final String project;
   private final String zone;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("project/{project}/zones/{zone}/autoscalers/{autoscaler}");
+        PathTemplate.createWithoutUrlEncoding("projects/{project}/zones/{zone}/autoscalers/{autoscaler}");
 
   public static Builder newBuilder() {
     return new Builder();

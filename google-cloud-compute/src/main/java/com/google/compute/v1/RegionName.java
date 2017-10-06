@@ -31,7 +31,7 @@ public final class RegionName implements ResourceName {
   private final String project;
   private final String region;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("project/{project}/regions/{region}");
+        PathTemplate.createWithoutUrlEncoding("projects/{project}/regions/{region}");
 
   public static Builder newBuilder() {
     return new Builder();

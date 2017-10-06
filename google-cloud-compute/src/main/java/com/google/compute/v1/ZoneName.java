@@ -31,7 +31,7 @@ public final class ZoneName implements ResourceName {
   private final String project;
   private final String zone;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("project/{project}/zones/{zone}");
+        PathTemplate.createWithoutUrlEncoding("projects/{project}/zones/{zone}");
 
   public static Builder newBuilder() {
     return new Builder();

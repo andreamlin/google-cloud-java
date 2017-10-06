@@ -31,7 +31,7 @@ public final class BackendServiceName implements ResourceName {
   private final String backendService;
   private final String project;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("project/{project}/backendServices/{backendService}");
+        PathTemplate.createWithoutUrlEncoding("projects/{project}/backendServices/{backendService}");
 
   public static Builder newBuilder() {
     return new Builder();

@@ -32,7 +32,7 @@ public final class DiskName implements ResourceName {
   private final String project;
   private final String zone;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("project/{project}/zones/{zone}/disks/{disk}");
+        PathTemplate.createWithoutUrlEncoding("projects/{project}/zones/{zone}/disks/{disk}");
 
   public static Builder newBuilder() {
     return new Builder();
