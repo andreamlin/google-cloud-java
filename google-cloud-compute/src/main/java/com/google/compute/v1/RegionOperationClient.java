@@ -21,7 +21,6 @@ import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import static com.google.compute.v1.PagedResponseWrappers.ListRegionOperationsPagedResponse;
 import com.google.compute.v1.stub.RegionOperationStub;
-import com.google.protobuf.Empty;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -78,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RegionOperationSettings regionOperationSettings =
- *     RegionOperationSettings.defaultBuilder()
+ *     RegionOperationSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * RegionOperationClient regionOperationClient =
@@ -91,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RegionOperationSettings regionOperationSettings =
- *     RegionOperationSettings.defaultBuilder()
- *         .setTransportProvider(RegionOperationSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(RegionOperationSettings.defaultGrpcChannelProviderBuilder()
+ *     RegionOperationSettings.newBuilder()
+ *         .setTransportProvider(RegionOperationSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(RegionOperationSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +114,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Constructs an instance of RegionOperationClient with default settings.
    */
   public static final RegionOperationClient create() throws IOException {
-    return create(RegionOperationSettings.defaultBuilder().build());
+    return create(RegionOperationSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +153,7 @@ public class RegionOperationClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public RegionOperationStub getStub() {
     return stub;
   }
@@ -219,7 +219,7 @@ public class RegionOperationClient implements BackgroundResource {
    * </code></pre>
    */
   @BetaApi
-  public final UnaryCallable<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationCallable() {
+  public final UnaryCallable<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationCallable() {
     return stub.deleteRegionOperationCallable();
   }
 

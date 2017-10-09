@@ -77,7 +77,7 @@ import org.threeten.bp.Duration;
  * <pre>
  * <code>
  * InstanceGroupManagerSettings.Builder instanceGroupManagerSettingsBuilder =
- *     InstanceGroupManagerSettings.defaultBuilder();
+ *     InstanceGroupManagerSettings.newBuilder();
  * instanceGroupManagerSettingsBuilder.abandonInstancesInstanceGroupManagerSettings().getRetrySettingsBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * InstanceGroupManagerSettings instanceGroupManagerSettings = instanceGroupManagerSettingsBuilder.build();
@@ -282,6 +282,7 @@ public class InstanceGroupManagerSettings extends ClientSettings {
   /**
    * Returns a builder for this class with recommended defaults.
    */
+  @Deprecated
   public static Builder defaultBuilder() {
     return Builder.createDefault();
   }
@@ -290,6 +291,7 @@ public class InstanceGroupManagerSettings extends ClientSettings {
    * Returns a builder for this class with recommended defaults for API methods, and the given
    * ClientContext used for executor/transport/credentials.
    */
+  @Deprecated
   public static Builder defaultBuilder(ClientContext clientContext) {
     return new Builder(clientContext);
   }
@@ -298,7 +300,7 @@ public class InstanceGroupManagerSettings extends ClientSettings {
    * Returns a new builder for this class.
    */
   public static Builder newBuilder() {
-    return new Builder();
+    return Builder.createDefault();
   }
 
   /**

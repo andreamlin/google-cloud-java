@@ -229,7 +229,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
   }
 
   public static final HttpJsonInstanceGroupStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonInstanceGroupStub(InstanceGroupSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonInstanceGroupStub(InstanceGroupSettings.newBuilder().build(), clientContext);
   }
 
   /**

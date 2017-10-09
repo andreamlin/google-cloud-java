@@ -262,7 +262,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
   }
 
   public static final HttpJsonTargetPoolStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonTargetPoolStub(TargetPoolSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonTargetPoolStub(TargetPoolSettings.newBuilder().build(), clientContext);
   }
 
   /**

@@ -76,7 +76,7 @@ import org.threeten.bp.Duration;
  * <pre>
  * <code>
  * ZoneSettings.Builder zoneSettingsBuilder =
- *     ZoneSettings.defaultBuilder();
+ *     ZoneSettings.newBuilder();
  * zoneSettingsBuilder.getZoneSettings().getRetrySettingsBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * ZoneSettings zoneSettings = zoneSettingsBuilder.build();
@@ -201,6 +201,7 @@ public class ZoneSettings extends ClientSettings {
   /**
    * Returns a builder for this class with recommended defaults.
    */
+  @Deprecated
   public static Builder defaultBuilder() {
     return Builder.createDefault();
   }
@@ -209,6 +210,7 @@ public class ZoneSettings extends ClientSettings {
    * Returns a builder for this class with recommended defaults for API methods, and the given
    * ClientContext used for executor/transport/credentials.
    */
+  @Deprecated
   public static Builder defaultBuilder(ClientContext clientContext) {
     return new Builder(clientContext);
   }
@@ -217,7 +219,7 @@ public class ZoneSettings extends ClientSettings {
    * Returns a new builder for this class.
    */
   public static Builder newBuilder() {
-    return new Builder();
+    return Builder.createDefault();
   }
 
   /**

@@ -170,7 +170,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
   }
 
   public static final HttpJsonForwardingRuleStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonForwardingRuleStub(ForwardingRuleSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonForwardingRuleStub(ForwardingRuleSettings.newBuilder().build(), clientContext);
   }
 
   /**

@@ -146,7 +146,7 @@ public class HttpJsonProjectStub extends ProjectStub {
   }
 
   public static final HttpJsonProjectStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonProjectStub(ProjectSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonProjectStub(ProjectSettings.newBuilder().build(), clientContext);
   }
 
   /**

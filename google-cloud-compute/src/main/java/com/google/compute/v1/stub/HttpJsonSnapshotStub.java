@@ -113,7 +113,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
   }
 
   public static final HttpJsonSnapshotStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonSnapshotStub(SnapshotSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonSnapshotStub(SnapshotSettings.newBuilder().build(), clientContext);
   }
 
   /**

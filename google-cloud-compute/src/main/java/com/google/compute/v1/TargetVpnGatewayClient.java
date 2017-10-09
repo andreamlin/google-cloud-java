@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * TargetVpnGatewaySettings targetVpnGatewaySettings =
- *     TargetVpnGatewaySettings.defaultBuilder()
+ *     TargetVpnGatewaySettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * TargetVpnGatewayClient targetVpnGatewayClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * TargetVpnGatewaySettings targetVpnGatewaySettings =
- *     TargetVpnGatewaySettings.defaultBuilder()
- *         .setTransportProvider(TargetVpnGatewaySettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(TargetVpnGatewaySettings.defaultGrpcChannelProviderBuilder()
+ *     TargetVpnGatewaySettings.newBuilder()
+ *         .setTransportProvider(TargetVpnGatewaySettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(TargetVpnGatewaySettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Constructs an instance of TargetVpnGatewayClient with default settings.
    */
   public static final TargetVpnGatewayClient create() throws IOException {
-    return create(TargetVpnGatewaySettings.defaultBuilder().build());
+    return create(TargetVpnGatewaySettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public TargetVpnGatewayStub getStub() {
     return stub;
   }

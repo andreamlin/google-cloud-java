@@ -130,7 +130,7 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
   }
 
   public static final HttpJsonInstanceTemplateStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonInstanceTemplateStub(InstanceTemplateSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonInstanceTemplateStub(InstanceTemplateSettings.newBuilder().build(), clientContext);
   }
 
   /**

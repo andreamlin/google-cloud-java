@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * TargetInstanceSettings targetInstanceSettings =
- *     TargetInstanceSettings.defaultBuilder()
+ *     TargetInstanceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * TargetInstanceClient targetInstanceClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * TargetInstanceSettings targetInstanceSettings =
- *     TargetInstanceSettings.defaultBuilder()
- *         .setTransportProvider(TargetInstanceSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(TargetInstanceSettings.defaultGrpcChannelProviderBuilder()
+ *     TargetInstanceSettings.newBuilder()
+ *         .setTransportProvider(TargetInstanceSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(TargetInstanceSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class TargetInstanceClient implements BackgroundResource {
    * Constructs an instance of TargetInstanceClient with default settings.
    */
   public static final TargetInstanceClient create() throws IOException {
-    return create(TargetInstanceSettings.defaultBuilder().build());
+    return create(TargetInstanceSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class TargetInstanceClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public TargetInstanceStub getStub() {
     return stub;
   }

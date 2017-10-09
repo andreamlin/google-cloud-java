@@ -164,7 +164,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
   }
 
   public static final HttpJsonFirewallStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonFirewallStub(FirewallSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonFirewallStub(FirewallSettings.newBuilder().build(), clientContext);
   }
 
   /**

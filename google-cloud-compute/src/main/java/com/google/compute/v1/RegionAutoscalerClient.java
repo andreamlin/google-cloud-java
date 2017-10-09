@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RegionAutoscalerSettings regionAutoscalerSettings =
- *     RegionAutoscalerSettings.defaultBuilder()
+ *     RegionAutoscalerSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * RegionAutoscalerClient regionAutoscalerClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RegionAutoscalerSettings regionAutoscalerSettings =
- *     RegionAutoscalerSettings.defaultBuilder()
- *         .setTransportProvider(RegionAutoscalerSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(RegionAutoscalerSettings.defaultGrpcChannelProviderBuilder()
+ *     RegionAutoscalerSettings.newBuilder()
+ *         .setTransportProvider(RegionAutoscalerSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(RegionAutoscalerSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Constructs an instance of RegionAutoscalerClient with default settings.
    */
   public static final RegionAutoscalerClient create() throws IOException {
-    return create(RegionAutoscalerSettings.defaultBuilder().build());
+    return create(RegionAutoscalerSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public RegionAutoscalerStub getStub() {
     return stub;
   }
@@ -462,18 +463,18 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param region Name of the region scoping this request.
    * @param autoscaler Name of the autoscaler to update.
+   * @param region Name of the region scoping this request.
    * @param autoscalerResource Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation patchRegionAutoscaler(RegionName region, String autoscaler, Autoscaler autoscalerResource) {
+  public final Operation patchRegionAutoscaler(String autoscaler, RegionName region, Autoscaler autoscalerResource) {
 
     PatchRegionAutoscalerHttpRequest request =
         PatchRegionAutoscalerHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
         .setAutoscaler(autoscaler)
+        .setRegionWithRegionName(region)
         .setAutoscalerResource(autoscalerResource)
         .build();
     return patchRegionAutoscaler(request);
@@ -530,18 +531,18 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param region Name of the region scoping this request.
    * @param autoscaler Name of the autoscaler to update.
+   * @param region Name of the region scoping this request.
    * @param autoscalerResource Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation updateRegionAutoscaler(RegionName region, String autoscaler, Autoscaler autoscalerResource) {
+  public final Operation updateRegionAutoscaler(String autoscaler, RegionName region, Autoscaler autoscalerResource) {
 
     UpdateRegionAutoscalerHttpRequest request =
         UpdateRegionAutoscalerHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
         .setAutoscaler(autoscaler)
+        .setRegionWithRegionName(region)
         .setAutoscalerResource(autoscalerResource)
         .build();
     return updateRegionAutoscaler(request);

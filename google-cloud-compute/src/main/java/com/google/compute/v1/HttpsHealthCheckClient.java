@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * HttpsHealthCheckSettings httpsHealthCheckSettings =
- *     HttpsHealthCheckSettings.defaultBuilder()
+ *     HttpsHealthCheckSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * HttpsHealthCheckClient httpsHealthCheckClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * HttpsHealthCheckSettings httpsHealthCheckSettings =
- *     HttpsHealthCheckSettings.defaultBuilder()
- *         .setTransportProvider(HttpsHealthCheckSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(HttpsHealthCheckSettings.defaultGrpcChannelProviderBuilder()
+ *     HttpsHealthCheckSettings.newBuilder()
+ *         .setTransportProvider(HttpsHealthCheckSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(HttpsHealthCheckSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class HttpsHealthCheckClient implements BackgroundResource {
    * Constructs an instance of HttpsHealthCheckClient with default settings.
    */
   public static final HttpsHealthCheckClient create() throws IOException {
-    return create(HttpsHealthCheckSettings.defaultBuilder().build());
+    return create(HttpsHealthCheckSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class HttpsHealthCheckClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public HttpsHealthCheckStub getStub() {
     return stub;
   }

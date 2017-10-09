@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RegionInstanceGroupManagerSettings regionInstanceGroupManagerSettings =
- *     RegionInstanceGroupManagerSettings.defaultBuilder()
+ *     RegionInstanceGroupManagerSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * RegionInstanceGroupManagerClient regionInstanceGroupManagerClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RegionInstanceGroupManagerSettings regionInstanceGroupManagerSettings =
- *     RegionInstanceGroupManagerSettings.defaultBuilder()
- *         .setTransportProvider(RegionInstanceGroupManagerSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(RegionInstanceGroupManagerSettings.defaultGrpcChannelProviderBuilder()
+ *     RegionInstanceGroupManagerSettings.newBuilder()
+ *         .setTransportProvider(RegionInstanceGroupManagerSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(RegionInstanceGroupManagerSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Constructs an instance of RegionInstanceGroupManagerClient with default settings.
    */
   public static final RegionInstanceGroupManagerClient create() throws IOException {
-    return create(RegionInstanceGroupManagerSettings.defaultBuilder().build());
+    return create(RegionInstanceGroupManagerSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public RegionInstanceGroupManagerStub getStub() {
     return stub;
   }
@@ -724,17 +725,17 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param instanceGroupManager Name of the managed instance group.
    * @param size Number of instances that should exist in this instance group manager.
+   * @param instanceGroupManager Name of the managed instance group.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation resizeRegionInstanceGroupManager(RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager, Integer size) {
+  public final Operation resizeRegionInstanceGroupManager(Integer size, RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager) {
 
     ResizeRegionInstanceGroupManagerHttpRequest request =
         ResizeRegionInstanceGroupManagerHttpRequest.newBuilder()
-        .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
         .setSize(size)
+        .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
         .build();
     return resizeRegionInstanceGroupManager(request);
   }

@@ -50,7 +50,6 @@ import static com.google.compute.v1.PagedResponseWrappers.AggregatedListGlobalOp
 import static com.google.compute.v1.PagedResponseWrappers.ListGlobalOperationsPagedResponse;
 import com.google.compute.v1.stub.GlobalOperationStub;
 import com.google.compute.v1.stub.HttpJsonGlobalOperationStub;
-import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -78,7 +77,7 @@ import org.threeten.bp.Duration;
  * <pre>
  * <code>
  * GlobalOperationSettings.Builder globalOperationSettingsBuilder =
- *     GlobalOperationSettings.defaultBuilder();
+ *     GlobalOperationSettings.newBuilder();
  * globalOperationSettingsBuilder.deleteGlobalOperationSettings().getRetrySettingsBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * GlobalOperationSettings globalOperationSettings = globalOperationSettingsBuilder.build();
@@ -109,7 +108,7 @@ public class GlobalOperationSettings extends ClientSettings {
   private static String gapicVersion;
 
   private final PagedCallSettings<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsSettings;
-  private final SimpleCallSettings<DeleteGlobalOperationHttpRequest, Empty> deleteGlobalOperationSettings;
+  private final SimpleCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings;
   private final SimpleCallSettings<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings;
   private final PagedCallSettings<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse> listGlobalOperationsSettings;
 
@@ -123,7 +122,7 @@ public class GlobalOperationSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to deleteGlobalOperation.
    */
-  public SimpleCallSettings<DeleteGlobalOperationHttpRequest, Empty> deleteGlobalOperationSettings() {
+  public SimpleCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings() {
     return deleteGlobalOperationSettings;
   }
 
@@ -219,6 +218,7 @@ public class GlobalOperationSettings extends ClientSettings {
   /**
    * Returns a builder for this class with recommended defaults.
    */
+  @Deprecated
   public static Builder defaultBuilder() {
     return Builder.createDefault();
   }
@@ -227,6 +227,7 @@ public class GlobalOperationSettings extends ClientSettings {
    * Returns a builder for this class with recommended defaults for API methods, and the given
    * ClientContext used for executor/transport/credentials.
    */
+  @Deprecated
   public static Builder defaultBuilder(ClientContext clientContext) {
     return new Builder(clientContext);
   }
@@ -235,7 +236,7 @@ public class GlobalOperationSettings extends ClientSettings {
    * Returns a new builder for this class.
    */
   public static Builder newBuilder() {
-    return new Builder();
+    return Builder.createDefault();
   }
 
   /**
@@ -369,7 +370,7 @@ public class GlobalOperationSettings extends ClientSettings {
     private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsSettings;
-    private final SimpleCallSettings.Builder<DeleteGlobalOperationHttpRequest, Empty> deleteGlobalOperationSettings;
+    private final SimpleCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings;
     private final SimpleCallSettings.Builder<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings;
     private final PagedCallSettings.Builder<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse> listGlobalOperationsSettings;
 
@@ -513,7 +514,7 @@ public class GlobalOperationSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteGlobalOperation.
      */
-    public SimpleCallSettings.Builder<DeleteGlobalOperationHttpRequest, Empty> deleteGlobalOperationSettings() {
+    public SimpleCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings() {
       return deleteGlobalOperationSettings;
     }
 

@@ -117,7 +117,7 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
   }
 
   public static final HttpJsonDiskTypeStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonDiskTypeStub(DiskTypeSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonDiskTypeStub(DiskTypeSettings.newBuilder().build(), clientContext);
   }
 
   /**

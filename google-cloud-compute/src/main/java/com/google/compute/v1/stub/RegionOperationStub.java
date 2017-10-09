@@ -26,7 +26,6 @@ import com.google.compute.v1.OperationList;
 import static com.google.compute.v1.PagedResponseWrappers.ListRegionOperationsPagedResponse;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.RegionOperationsOperationName;
-import com.google.protobuf.Empty;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -41,7 +40,7 @@ public abstract class RegionOperationStub implements BackgroundResource {
 
 
   @BetaApi
-  public UnaryCallable<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationCallable() {
+  public UnaryCallable<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteRegionOperationCallable()");
   }
 

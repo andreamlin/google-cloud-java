@@ -73,7 +73,7 @@ public class HttpJsonLicensStub extends LicensStub {
   }
 
   public static final HttpJsonLicensStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonLicensStub(LicensSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonLicensStub(LicensSettings.newBuilder().build(), clientContext);
   }
 
   /**

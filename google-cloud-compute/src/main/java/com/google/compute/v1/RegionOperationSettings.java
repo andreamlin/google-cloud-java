@@ -49,7 +49,6 @@ import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListRegionOperationsPagedResponse;
 import com.google.compute.v1.stub.HttpJsonRegionOperationStub;
 import com.google.compute.v1.stub.RegionOperationStub;
-import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -77,7 +76,7 @@ import org.threeten.bp.Duration;
  * <pre>
  * <code>
  * RegionOperationSettings.Builder regionOperationSettingsBuilder =
- *     RegionOperationSettings.defaultBuilder();
+ *     RegionOperationSettings.newBuilder();
  * regionOperationSettingsBuilder.deleteRegionOperationSettings().getRetrySettingsBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * RegionOperationSettings regionOperationSettings = regionOperationSettingsBuilder.build();
@@ -107,14 +106,14 @@ public class RegionOperationSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationSettings;
+  private final SimpleCallSettings<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationSettings;
   private final SimpleCallSettings<GetRegionOperationHttpRequest, Operation> getRegionOperationSettings;
   private final PagedCallSettings<ListRegionOperationsHttpRequest, OperationList, ListRegionOperationsPagedResponse> listRegionOperationsSettings;
 
   /**
    * Returns the object with the settings used for calls to deleteRegionOperation.
    */
-  public SimpleCallSettings<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationSettings() {
+  public SimpleCallSettings<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationSettings() {
     return deleteRegionOperationSettings;
   }
 
@@ -210,6 +209,7 @@ public class RegionOperationSettings extends ClientSettings {
   /**
    * Returns a builder for this class with recommended defaults.
    */
+  @Deprecated
   public static Builder defaultBuilder() {
     return Builder.createDefault();
   }
@@ -218,6 +218,7 @@ public class RegionOperationSettings extends ClientSettings {
    * Returns a builder for this class with recommended defaults for API methods, and the given
    * ClientContext used for executor/transport/credentials.
    */
+  @Deprecated
   public static Builder defaultBuilder(ClientContext clientContext) {
     return new Builder(clientContext);
   }
@@ -226,7 +227,7 @@ public class RegionOperationSettings extends ClientSettings {
    * Returns a new builder for this class.
    */
   public static Builder newBuilder() {
-    return new Builder();
+    return Builder.createDefault();
   }
 
   /**
@@ -310,7 +311,7 @@ public class RegionOperationSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationSettings;
+    private final SimpleCallSettings.Builder<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationSettings;
     private final SimpleCallSettings.Builder<GetRegionOperationHttpRequest, Operation> getRegionOperationSettings;
     private final PagedCallSettings.Builder<ListRegionOperationsHttpRequest, OperationList, ListRegionOperationsPagedResponse> listRegionOperationsSettings;
 
@@ -437,7 +438,7 @@ public class RegionOperationSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteRegionOperation.
      */
-    public SimpleCallSettings.Builder<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationSettings() {
+    public SimpleCallSettings.Builder<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationSettings() {
       return deleteRegionOperationSettings;
     }
 

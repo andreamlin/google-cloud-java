@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * UrlMapSettings urlMapSettings =
- *     UrlMapSettings.defaultBuilder()
+ *     UrlMapSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * UrlMapClient urlMapClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * UrlMapSettings urlMapSettings =
- *     UrlMapSettings.defaultBuilder()
- *         .setTransportProvider(UrlMapSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(UrlMapSettings.defaultGrpcChannelProviderBuilder()
+ *     UrlMapSettings.newBuilder()
+ *         .setTransportProvider(UrlMapSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(UrlMapSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class UrlMapClient implements BackgroundResource {
    * Constructs an instance of UrlMapClient with default settings.
    */
   public static final UrlMapClient create() throws IOException {
-    return create(UrlMapSettings.defaultBuilder().build());
+    return create(UrlMapSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class UrlMapClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public UrlMapStub getStub() {
     return stub;
   }

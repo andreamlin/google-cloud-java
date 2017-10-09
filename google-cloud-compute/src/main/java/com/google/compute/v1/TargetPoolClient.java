@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * TargetPoolSettings targetPoolSettings =
- *     TargetPoolSettings.defaultBuilder()
+ *     TargetPoolSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * TargetPoolClient targetPoolClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * TargetPoolSettings targetPoolSettings =
- *     TargetPoolSettings.defaultBuilder()
- *         .setTransportProvider(TargetPoolSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(TargetPoolSettings.defaultGrpcChannelProviderBuilder()
+ *     TargetPoolSettings.newBuilder()
+ *         .setTransportProvider(TargetPoolSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(TargetPoolSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class TargetPoolClient implements BackgroundResource {
    * Constructs an instance of TargetPoolClient with default settings.
    */
   public static final TargetPoolClient create() throws IOException {
-    return create(TargetPoolSettings.defaultBuilder().build());
+    return create(TargetPoolSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class TargetPoolClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public TargetPoolStub getStub() {
     return stub;
   }

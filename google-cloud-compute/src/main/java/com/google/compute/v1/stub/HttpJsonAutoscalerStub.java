@@ -188,7 +188,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
   }
 
   public static final HttpJsonAutoscalerStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonAutoscalerStub(AutoscalerSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonAutoscalerStub(AutoscalerSettings.newBuilder().build(), clientContext);
   }
 
   /**

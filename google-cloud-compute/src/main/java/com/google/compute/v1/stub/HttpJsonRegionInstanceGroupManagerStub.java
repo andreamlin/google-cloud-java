@@ -257,7 +257,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
   }
 
   public static final HttpJsonRegionInstanceGroupManagerStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRegionInstanceGroupManagerStub(RegionInstanceGroupManagerSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonRegionInstanceGroupManagerStub(RegionInstanceGroupManagerSettings.newBuilder().build(), clientContext);
   }
 
   /**

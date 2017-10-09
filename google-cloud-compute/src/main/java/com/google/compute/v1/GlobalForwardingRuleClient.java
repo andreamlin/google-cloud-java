@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * GlobalForwardingRuleSettings globalForwardingRuleSettings =
- *     GlobalForwardingRuleSettings.defaultBuilder()
+ *     GlobalForwardingRuleSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * GlobalForwardingRuleClient globalForwardingRuleClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * GlobalForwardingRuleSettings globalForwardingRuleSettings =
- *     GlobalForwardingRuleSettings.defaultBuilder()
- *         .setTransportProvider(GlobalForwardingRuleSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(GlobalForwardingRuleSettings.defaultGrpcChannelProviderBuilder()
+ *     GlobalForwardingRuleSettings.newBuilder()
+ *         .setTransportProvider(GlobalForwardingRuleSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(GlobalForwardingRuleSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Constructs an instance of GlobalForwardingRuleClient with default settings.
    */
   public static final GlobalForwardingRuleClient create() throws IOException {
-    return create(GlobalForwardingRuleSettings.defaultBuilder().build());
+    return create(GlobalForwardingRuleSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public GlobalForwardingRuleStub getStub() {
     return stub;
   }

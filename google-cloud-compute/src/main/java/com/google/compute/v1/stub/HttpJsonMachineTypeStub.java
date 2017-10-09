@@ -117,7 +117,7 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
   }
 
   public static final HttpJsonMachineTypeStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonMachineTypeStub(MachineTypeSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonMachineTypeStub(MachineTypeSettings.newBuilder().build(), clientContext);
   }
 
   /**

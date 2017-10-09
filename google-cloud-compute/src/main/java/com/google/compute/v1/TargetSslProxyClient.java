@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * TargetSslProxySettings targetSslProxySettings =
- *     TargetSslProxySettings.defaultBuilder()
+ *     TargetSslProxySettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * TargetSslProxyClient targetSslProxyClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * TargetSslProxySettings targetSslProxySettings =
- *     TargetSslProxySettings.defaultBuilder()
- *         .setTransportProvider(TargetSslProxySettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(TargetSslProxySettings.defaultGrpcChannelProviderBuilder()
+ *     TargetSslProxySettings.newBuilder()
+ *         .setTransportProvider(TargetSslProxySettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(TargetSslProxySettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Constructs an instance of TargetSslProxyClient with default settings.
    */
   public static final TargetSslProxyClient create() throws IOException {
-    return create(TargetSslProxySettings.defaultBuilder().build());
+    return create(TargetSslProxySettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class TargetSslProxyClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public TargetSslProxyStub getStub() {
     return stub;
   }

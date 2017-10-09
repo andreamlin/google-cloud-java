@@ -130,7 +130,7 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
   }
 
   public static final HttpJsonSslCertificateStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonSslCertificateStub(SslCertificateSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonSslCertificateStub(SslCertificateSettings.newBuilder().build(), clientContext);
   }
 
   /**

@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * InstanceGroupManagerSettings instanceGroupManagerSettings =
- *     InstanceGroupManagerSettings.defaultBuilder()
+ *     InstanceGroupManagerSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * InstanceGroupManagerClient instanceGroupManagerClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * InstanceGroupManagerSettings instanceGroupManagerSettings =
- *     InstanceGroupManagerSettings.defaultBuilder()
- *         .setTransportProvider(InstanceGroupManagerSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(InstanceGroupManagerSettings.defaultGrpcChannelProviderBuilder()
+ *     InstanceGroupManagerSettings.newBuilder()
+ *         .setTransportProvider(InstanceGroupManagerSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(InstanceGroupManagerSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * Constructs an instance of InstanceGroupManagerClient with default settings.
    */
   public static final InstanceGroupManagerClient create() throws IOException {
-    return create(InstanceGroupManagerSettings.defaultBuilder().build());
+    return create(InstanceGroupManagerSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public InstanceGroupManagerStub getStub() {
     return stub;
   }
@@ -823,17 +824,17 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param instanceGroupManager The name of the managed instance group.
    * @param size The number of running instances that the managed instance group should maintain at any given time. The group automatically adds or removes instances to maintain the number of instances specified by this parameter.
+   * @param instanceGroupManager The name of the managed instance group.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation resizeInstanceGroupManager(InstanceGroupManagerName instanceGroupManager, Integer size) {
+  public final Operation resizeInstanceGroupManager(Integer size, InstanceGroupManagerName instanceGroupManager) {
 
     ResizeInstanceGroupManagerHttpRequest request =
         ResizeInstanceGroupManagerHttpRequest.newBuilder()
-        .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager)
         .setSize(size)
+        .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager)
         .build();
     return resizeInstanceGroupManager(request);
   }

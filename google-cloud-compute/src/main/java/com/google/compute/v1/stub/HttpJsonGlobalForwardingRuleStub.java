@@ -148,7 +148,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
   }
 
   public static final HttpJsonGlobalForwardingRuleStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleSettings.newBuilder().build(), clientContext);
   }
 
   /**

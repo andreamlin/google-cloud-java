@@ -152,7 +152,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
   }
 
   public static final HttpJsonTargetVpnGatewayStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonTargetVpnGatewayStub(TargetVpnGatewaySettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonTargetVpnGatewayStub(TargetVpnGatewaySettings.newBuilder().build(), clientContext);
   }
 
   /**

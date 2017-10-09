@@ -201,7 +201,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
   }
 
   public static final HttpJsonUrlMapStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonUrlMapStub(UrlMapSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonUrlMapStub(UrlMapSettings.newBuilder().build(), clientContext);
   }
 
   /**

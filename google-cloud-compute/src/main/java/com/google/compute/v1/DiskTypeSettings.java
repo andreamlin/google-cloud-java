@@ -77,7 +77,7 @@ import org.threeten.bp.Duration;
  * <pre>
  * <code>
  * DiskTypeSettings.Builder diskTypeSettingsBuilder =
- *     DiskTypeSettings.defaultBuilder();
+ *     DiskTypeSettings.newBuilder();
  * diskTypeSettingsBuilder.getDiskTypeSettings().getRetrySettingsBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * DiskTypeSettings diskTypeSettings = diskTypeSettingsBuilder.build();
@@ -210,6 +210,7 @@ public class DiskTypeSettings extends ClientSettings {
   /**
    * Returns a builder for this class with recommended defaults.
    */
+  @Deprecated
   public static Builder defaultBuilder() {
     return Builder.createDefault();
   }
@@ -218,6 +219,7 @@ public class DiskTypeSettings extends ClientSettings {
    * Returns a builder for this class with recommended defaults for API methods, and the given
    * ClientContext used for executor/transport/credentials.
    */
+  @Deprecated
   public static Builder defaultBuilder(ClientContext clientContext) {
     return new Builder(clientContext);
   }
@@ -226,7 +228,7 @@ public class DiskTypeSettings extends ClientSettings {
    * Returns a new builder for this class.
    */
   public static Builder newBuilder() {
-    return new Builder();
+    return Builder.createDefault();
   }
 
   /**

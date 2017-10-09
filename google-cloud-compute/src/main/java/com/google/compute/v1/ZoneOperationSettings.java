@@ -49,7 +49,6 @@ import com.google.common.collect.Sets;
 import static com.google.compute.v1.PagedResponseWrappers.ListZoneOperationsPagedResponse;
 import com.google.compute.v1.stub.HttpJsonZoneOperationStub;
 import com.google.compute.v1.stub.ZoneOperationStub;
-import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -77,7 +76,7 @@ import org.threeten.bp.Duration;
  * <pre>
  * <code>
  * ZoneOperationSettings.Builder zoneOperationSettingsBuilder =
- *     ZoneOperationSettings.defaultBuilder();
+ *     ZoneOperationSettings.newBuilder();
  * zoneOperationSettingsBuilder.deleteZoneOperationSettings().getRetrySettingsBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * ZoneOperationSettings zoneOperationSettings = zoneOperationSettingsBuilder.build();
@@ -107,14 +106,14 @@ public class ZoneOperationSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationSettings;
+  private final SimpleCallSettings<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationSettings;
   private final SimpleCallSettings<GetZoneOperationHttpRequest, Operation> getZoneOperationSettings;
   private final PagedCallSettings<ListZoneOperationsHttpRequest, OperationList, ListZoneOperationsPagedResponse> listZoneOperationsSettings;
 
   /**
    * Returns the object with the settings used for calls to deleteZoneOperation.
    */
-  public SimpleCallSettings<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationSettings() {
+  public SimpleCallSettings<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationSettings() {
     return deleteZoneOperationSettings;
   }
 
@@ -210,6 +209,7 @@ public class ZoneOperationSettings extends ClientSettings {
   /**
    * Returns a builder for this class with recommended defaults.
    */
+  @Deprecated
   public static Builder defaultBuilder() {
     return Builder.createDefault();
   }
@@ -218,6 +218,7 @@ public class ZoneOperationSettings extends ClientSettings {
    * Returns a builder for this class with recommended defaults for API methods, and the given
    * ClientContext used for executor/transport/credentials.
    */
+  @Deprecated
   public static Builder defaultBuilder(ClientContext clientContext) {
     return new Builder(clientContext);
   }
@@ -226,7 +227,7 @@ public class ZoneOperationSettings extends ClientSettings {
    * Returns a new builder for this class.
    */
   public static Builder newBuilder() {
-    return new Builder();
+    return Builder.createDefault();
   }
 
   /**
@@ -310,7 +311,7 @@ public class ZoneOperationSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationSettings;
+    private final SimpleCallSettings.Builder<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationSettings;
     private final SimpleCallSettings.Builder<GetZoneOperationHttpRequest, Operation> getZoneOperationSettings;
     private final PagedCallSettings.Builder<ListZoneOperationsHttpRequest, OperationList, ListZoneOperationsPagedResponse> listZoneOperationsSettings;
 
@@ -437,7 +438,7 @@ public class ZoneOperationSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteZoneOperation.
      */
-    public SimpleCallSettings.Builder<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationSettings() {
+    public SimpleCallSettings.Builder<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationSettings() {
       return deleteZoneOperationSettings;
     }
 

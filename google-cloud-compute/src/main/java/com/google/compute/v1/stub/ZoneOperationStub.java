@@ -26,7 +26,6 @@ import com.google.compute.v1.OperationList;
 import static com.google.compute.v1.PagedResponseWrappers.ListZoneOperationsPagedResponse;
 import com.google.compute.v1.ZoneName;
 import com.google.compute.v1.ZoneOperationsOperationName;
-import com.google.protobuf.Empty;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -41,7 +40,7 @@ public abstract class ZoneOperationStub implements BackgroundResource {
 
 
   @BetaApi
-  public UnaryCallable<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationCallable() {
+  public UnaryCallable<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteZoneOperationCallable()");
   }
 

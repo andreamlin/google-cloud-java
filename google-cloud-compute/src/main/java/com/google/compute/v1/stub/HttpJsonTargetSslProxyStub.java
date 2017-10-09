@@ -184,7 +184,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
   }
 
   public static final HttpJsonTargetSslProxyStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonTargetSslProxyStub(TargetSslProxySettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonTargetSslProxyStub(TargetSslProxySettings.newBuilder().build(), clientContext);
   }
 
   /**

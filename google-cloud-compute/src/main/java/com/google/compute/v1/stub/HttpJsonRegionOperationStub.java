@@ -34,7 +34,6 @@ import static com.google.compute.v1.PagedResponseWrappers.ListRegionOperationsPa
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.RegionOperationSettings;
 import com.google.compute.v1.RegionOperationsOperationName;
-import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,12 +53,11 @@ import javax.annotation.Generated;
 public class HttpJsonRegionOperationStub extends RegionOperationStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteRegionOperationHttpRequest, Empty> directDeleteRegionOperationCallable =
+  private static final UnaryCallable<DeleteRegionOperationHttpRequest, Void> directDeleteRegionOperationCallable =
       HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteRegionOperationHttpRequest, Empty>newBuilder()
+          ApiMethodDescriptor.<DeleteRegionOperationHttpRequest, Void>newBuilder()
               .setMethodName("compute.regionOperations.delete")
               .setRequestInstance(DeleteRegionOperationHttpRequest.getDefaultInstance())
-              .setResponseInstance(Empty.getDefaultInstance())
               .setEndpointPathTemplate("{project}/regions/{region}/operations/{operation}")
               .setPathParams(Sets.<String>newHashSet(
                                 "operation",    "project",    "region"
@@ -103,7 +101,7 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
 
   private final BackgroundResource backgroundResources;
 
-  private final UnaryCallable<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationCallable;
+  private final UnaryCallable<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationCallable;
   private final UnaryCallable<GetRegionOperationHttpRequest, Operation> getRegionOperationCallable;
   private final UnaryCallable<ListRegionOperationsHttpRequest, OperationList> listRegionOperationsCallable;
   private final UnaryCallable<ListRegionOperationsHttpRequest, ListRegionOperationsPagedResponse> listRegionOperationsPagedCallable;
@@ -113,7 +111,7 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
   }
 
   public static final HttpJsonRegionOperationStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRegionOperationStub(RegionOperationSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonRegionOperationStub(RegionOperationSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -133,7 +131,7 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteRegionOperationHttpRequest, Empty> deleteRegionOperationCallable() {
+  public UnaryCallable<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationCallable() {
     return deleteRegionOperationCallable;
   }
 

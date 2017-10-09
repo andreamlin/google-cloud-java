@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RegionBackendServiceSettings regionBackendServiceSettings =
- *     RegionBackendServiceSettings.defaultBuilder()
+ *     RegionBackendServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * RegionBackendServiceClient regionBackendServiceClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RegionBackendServiceSettings regionBackendServiceSettings =
- *     RegionBackendServiceSettings.defaultBuilder()
- *         .setTransportProvider(RegionBackendServiceSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(RegionBackendServiceSettings.defaultGrpcChannelProviderBuilder()
+ *     RegionBackendServiceSettings.newBuilder()
+ *         .setTransportProvider(RegionBackendServiceSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(RegionBackendServiceSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    * Constructs an instance of RegionBackendServiceClient with default settings.
    */
   public static final RegionBackendServiceClient create() throws IOException {
-    return create(RegionBackendServiceSettings.defaultBuilder().build());
+    return create(RegionBackendServiceSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public RegionBackendServiceStub getStub() {
     return stub;
   }

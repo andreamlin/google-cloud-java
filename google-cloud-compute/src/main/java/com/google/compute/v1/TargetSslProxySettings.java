@@ -76,7 +76,7 @@ import org.threeten.bp.Duration;
  * <pre>
  * <code>
  * TargetSslProxySettings.Builder targetSslProxySettingsBuilder =
- *     TargetSslProxySettings.defaultBuilder();
+ *     TargetSslProxySettings.newBuilder();
  * targetSslProxySettingsBuilder.deleteTargetSslProxySettings().getRetrySettingsBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * TargetSslProxySettings targetSslProxySettings = targetSslProxySettingsBuilder.build();
@@ -241,6 +241,7 @@ public class TargetSslProxySettings extends ClientSettings {
   /**
    * Returns a builder for this class with recommended defaults.
    */
+  @Deprecated
   public static Builder defaultBuilder() {
     return Builder.createDefault();
   }
@@ -249,6 +250,7 @@ public class TargetSslProxySettings extends ClientSettings {
    * Returns a builder for this class with recommended defaults for API methods, and the given
    * ClientContext used for executor/transport/credentials.
    */
+  @Deprecated
   public static Builder defaultBuilder(ClientContext clientContext) {
     return new Builder(clientContext);
   }
@@ -257,7 +259,7 @@ public class TargetSslProxySettings extends ClientSettings {
    * Returns a new builder for this class.
    */
   public static Builder newBuilder() {
-    return new Builder();
+    return Builder.createDefault();
   }
 
   /**

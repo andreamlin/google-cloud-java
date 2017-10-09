@@ -166,7 +166,7 @@ public class HttpJsonImageStub extends ImageStub {
   }
 
   public static final HttpJsonImageStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonImageStub(ImageSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonImageStub(ImageSettings.newBuilder().build(), clientContext);
   }
 
   /**

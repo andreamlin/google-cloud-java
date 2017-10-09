@@ -130,7 +130,7 @@ public class HttpJsonRouteStub extends RouteStub {
   }
 
   public static final HttpJsonRouteStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRouteStub(RouteSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonRouteStub(RouteSettings.newBuilder().build(), clientContext);
   }
 
   /**

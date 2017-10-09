@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RegionInstanceGroupSettings regionInstanceGroupSettings =
- *     RegionInstanceGroupSettings.defaultBuilder()
+ *     RegionInstanceGroupSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * RegionInstanceGroupClient regionInstanceGroupClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RegionInstanceGroupSettings regionInstanceGroupSettings =
- *     RegionInstanceGroupSettings.defaultBuilder()
- *         .setTransportProvider(RegionInstanceGroupSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(RegionInstanceGroupSettings.defaultGrpcChannelProviderBuilder()
+ *     RegionInstanceGroupSettings.newBuilder()
+ *         .setTransportProvider(RegionInstanceGroupSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(RegionInstanceGroupSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Constructs an instance of RegionInstanceGroupClient with default settings.
    */
   public static final RegionInstanceGroupClient create() throws IOException {
-    return create(RegionInstanceGroupSettings.defaultBuilder().build());
+    return create(RegionInstanceGroupSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public RegionInstanceGroupStub getStub() {
     return stub;
   }

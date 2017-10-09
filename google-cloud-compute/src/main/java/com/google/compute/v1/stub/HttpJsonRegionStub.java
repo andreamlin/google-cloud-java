@@ -95,7 +95,7 @@ public class HttpJsonRegionStub extends RegionStub {
   }
 
   public static final HttpJsonRegionStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRegionStub(RegionSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonRegionStub(RegionSettings.newBuilder().build(), clientContext);
   }
 
   /**

@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * ImageSettings imageSettings =
- *     ImageSettings.defaultBuilder()
+ *     ImageSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * ImageClient imageClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * ImageSettings imageSettings =
- *     ImageSettings.defaultBuilder()
- *         .setTransportProvider(ImageSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(ImageSettings.defaultGrpcChannelProviderBuilder()
+ *     ImageSettings.newBuilder()
+ *         .setTransportProvider(ImageSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(ImageSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class ImageClient implements BackgroundResource {
    * Constructs an instance of ImageClient with default settings.
    */
   public static final ImageClient create() throws IOException {
-    return create(ImageSettings.defaultBuilder().build());
+    return create(ImageSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class ImageClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public ImageStub getStub() {
     return stub;
   }

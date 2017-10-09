@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * AddressSettings addressSettings =
- *     AddressSettings.defaultBuilder()
+ *     AddressSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * AddressClient addressClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * AddressSettings addressSettings =
- *     AddressSettings.defaultBuilder()
- *         .setTransportProvider(AddressSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(AddressSettings.defaultGrpcChannelProviderBuilder()
+ *     AddressSettings.newBuilder()
+ *         .setTransportProvider(AddressSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(AddressSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class AddressClient implements BackgroundResource {
    * Constructs an instance of AddressClient with default settings.
    */
   public static final AddressClient create() throws IOException {
-    return create(AddressSettings.defaultBuilder().build());
+    return create(AddressSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class AddressClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public AddressStub getStub() {
     return stub;
   }

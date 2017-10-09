@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * DiskTypeSettings diskTypeSettings =
- *     DiskTypeSettings.defaultBuilder()
+ *     DiskTypeSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * DiskTypeClient diskTypeClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * DiskTypeSettings diskTypeSettings =
- *     DiskTypeSettings.defaultBuilder()
- *         .setTransportProvider(DiskTypeSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(DiskTypeSettings.defaultGrpcChannelProviderBuilder()
+ *     DiskTypeSettings.newBuilder()
+ *         .setTransportProvider(DiskTypeSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(DiskTypeSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class DiskTypeClient implements BackgroundResource {
    * Constructs an instance of DiskTypeClient with default settings.
    */
   public static final DiskTypeClient create() throws IOException {
-    return create(DiskTypeSettings.defaultBuilder().build());
+    return create(DiskTypeSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class DiskTypeClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public DiskTypeStub getStub() {
     return stub;
   }

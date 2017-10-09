@@ -152,7 +152,7 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
   }
 
   public static final HttpJsonTargetInstanceStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonTargetInstanceStub(TargetInstanceSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonTargetInstanceStub(TargetInstanceSettings.newBuilder().build(), clientContext);
   }
 
   /**

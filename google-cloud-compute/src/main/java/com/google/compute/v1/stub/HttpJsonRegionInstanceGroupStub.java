@@ -137,7 +137,7 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
   }
 
   public static final HttpJsonRegionInstanceGroupStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRegionInstanceGroupStub(RegionInstanceGroupSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonRegionInstanceGroupStub(RegionInstanceGroupSettings.newBuilder().build(), clientContext);
   }
 
   /**

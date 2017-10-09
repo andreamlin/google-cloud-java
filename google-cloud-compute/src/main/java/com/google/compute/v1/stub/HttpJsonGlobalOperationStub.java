@@ -37,7 +37,6 @@ import com.google.compute.v1.OperationList;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListGlobalOperationsPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListGlobalOperationsPagedResponse;
 import com.google.compute.v1.ProjectName;
-import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -73,12 +72,11 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
               .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
               .setHttpMethod(HttpMethods.GET)
               .build());
-  private static final UnaryCallable<DeleteGlobalOperationHttpRequest, Empty> directDeleteGlobalOperationCallable =
+  private static final UnaryCallable<DeleteGlobalOperationHttpRequest, Void> directDeleteGlobalOperationCallable =
       HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteGlobalOperationHttpRequest, Empty>newBuilder()
+          ApiMethodDescriptor.<DeleteGlobalOperationHttpRequest, Void>newBuilder()
               .setMethodName("compute.globalOperations.delete")
               .setRequestInstance(DeleteGlobalOperationHttpRequest.getDefaultInstance())
-              .setResponseInstance(Empty.getDefaultInstance())
               .setEndpointPathTemplate("{project}/global/operations/{operation}")
               .setPathParams(Sets.<String>newHashSet(
                                 "operation",    "project"
@@ -124,7 +122,7 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
 
   private final UnaryCallable<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> aggregatedListGlobalOperationsCallable;
   private final UnaryCallable<AggregatedListGlobalOperationsHttpRequest, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsPagedCallable;
-  private final UnaryCallable<DeleteGlobalOperationHttpRequest, Empty> deleteGlobalOperationCallable;
+  private final UnaryCallable<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationCallable;
   private final UnaryCallable<GetGlobalOperationHttpRequest, Operation> getGlobalOperationCallable;
   private final UnaryCallable<ListGlobalOperationsHttpRequest, OperationList> listGlobalOperationsCallable;
   private final UnaryCallable<ListGlobalOperationsHttpRequest, ListGlobalOperationsPagedResponse> listGlobalOperationsPagedCallable;
@@ -134,7 +132,7 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
   }
 
   public static final HttpJsonGlobalOperationStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonGlobalOperationStub(GlobalOperationSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonGlobalOperationStub(GlobalOperationSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -167,7 +165,7 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteGlobalOperationHttpRequest, Empty> deleteGlobalOperationCallable() {
+  public UnaryCallable<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationCallable() {
     return deleteGlobalOperationCallable;
   }
 

@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * AutoscalerSettings autoscalerSettings =
- *     AutoscalerSettings.defaultBuilder()
+ *     AutoscalerSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * AutoscalerClient autoscalerClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * AutoscalerSettings autoscalerSettings =
- *     AutoscalerSettings.defaultBuilder()
- *         .setTransportProvider(AutoscalerSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(AutoscalerSettings.defaultGrpcChannelProviderBuilder()
+ *     AutoscalerSettings.newBuilder()
+ *         .setTransportProvider(AutoscalerSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(AutoscalerSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Constructs an instance of AutoscalerClient with default settings.
    */
   public static final AutoscalerClient create() throws IOException {
-    return create(AutoscalerSettings.defaultBuilder().build());
+    return create(AutoscalerSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class AutoscalerClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public AutoscalerStub getStub() {
     return stub;
   }

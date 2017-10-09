@@ -76,7 +76,7 @@ import org.threeten.bp.Duration;
  * <pre>
  * <code>
  * FirewallSettings.Builder firewallSettingsBuilder =
- *     FirewallSettings.defaultBuilder();
+ *     FirewallSettings.newBuilder();
  * firewallSettingsBuilder.deleteFirewallSettings().getRetrySettingsBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * FirewallSettings firewallSettings = firewallSettingsBuilder.build();
@@ -233,6 +233,7 @@ public class FirewallSettings extends ClientSettings {
   /**
    * Returns a builder for this class with recommended defaults.
    */
+  @Deprecated
   public static Builder defaultBuilder() {
     return Builder.createDefault();
   }
@@ -241,6 +242,7 @@ public class FirewallSettings extends ClientSettings {
    * Returns a builder for this class with recommended defaults for API methods, and the given
    * ClientContext used for executor/transport/credentials.
    */
+  @Deprecated
   public static Builder defaultBuilder(ClientContext clientContext) {
     return new Builder(clientContext);
   }
@@ -249,7 +251,7 @@ public class FirewallSettings extends ClientSettings {
    * Returns a new builder for this class.
    */
   public static Builder newBuilder() {
-    return new Builder();
+    return Builder.createDefault();
   }
 
   /**

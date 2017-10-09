@@ -130,7 +130,7 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
   }
 
   public static final HttpJsonGlobalAddressStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonGlobalAddressStub(GlobalAddressSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonGlobalAddressStub(GlobalAddressSettings.newBuilder().build(), clientContext);
   }
 
   /**

@@ -152,7 +152,7 @@ public class HttpJsonAddressStub extends AddressStub {
   }
 
   public static final HttpJsonAddressStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonAddressStub(AddressSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonAddressStub(AddressSettings.newBuilder().build(), clientContext);
   }
 
   /**

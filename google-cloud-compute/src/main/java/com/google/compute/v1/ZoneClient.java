@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * ZoneSettings zoneSettings =
- *     ZoneSettings.defaultBuilder()
+ *     ZoneSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * ZoneClient zoneClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * ZoneSettings zoneSettings =
- *     ZoneSettings.defaultBuilder()
- *         .setTransportProvider(ZoneSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(ZoneSettings.defaultGrpcChannelProviderBuilder()
+ *     ZoneSettings.newBuilder()
+ *         .setTransportProvider(ZoneSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(ZoneSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class ZoneClient implements BackgroundResource {
    * Constructs an instance of ZoneClient with default settings.
    */
   public static final ZoneClient create() throws IOException {
-    return create(ZoneSettings.defaultBuilder().build());
+    return create(ZoneSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class ZoneClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public ZoneStub getStub() {
     return stub;
   }

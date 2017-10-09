@@ -183,7 +183,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
   }
 
   public static final HttpJsonRegionBackendServiceStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRegionBackendServiceStub(RegionBackendServiceSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonRegionBackendServiceStub(RegionBackendServiceSettings.newBuilder().build(), clientContext);
   }
 
   /**

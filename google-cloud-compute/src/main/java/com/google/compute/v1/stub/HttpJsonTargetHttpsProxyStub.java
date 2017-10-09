@@ -166,7 +166,7 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
   }
 
   public static final HttpJsonTargetHttpsProxyStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonTargetHttpsProxyStub(TargetHttpsProxySettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonTargetHttpsProxyStub(TargetHttpsProxySettings.newBuilder().build(), clientContext);
   }
 
   /**

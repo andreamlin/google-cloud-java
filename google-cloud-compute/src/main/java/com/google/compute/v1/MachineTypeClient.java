@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * MachineTypeSettings machineTypeSettings =
- *     MachineTypeSettings.defaultBuilder()
+ *     MachineTypeSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * MachineTypeClient machineTypeClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * MachineTypeSettings machineTypeSettings =
- *     MachineTypeSettings.defaultBuilder()
- *         .setTransportProvider(MachineTypeSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(MachineTypeSettings.defaultGrpcChannelProviderBuilder()
+ *     MachineTypeSettings.newBuilder()
+ *         .setTransportProvider(MachineTypeSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(MachineTypeSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class MachineTypeClient implements BackgroundResource {
    * Constructs an instance of MachineTypeClient with default settings.
    */
   public static final MachineTypeClient create() throws IOException {
-    return create(MachineTypeSettings.defaultBuilder().build());
+    return create(MachineTypeSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class MachineTypeClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public MachineTypeStub getStub() {
     return stub;
   }

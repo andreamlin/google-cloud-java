@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * TargetHttpProxySettings targetHttpProxySettings =
- *     TargetHttpProxySettings.defaultBuilder()
+ *     TargetHttpProxySettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * TargetHttpProxyClient targetHttpProxyClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * TargetHttpProxySettings targetHttpProxySettings =
- *     TargetHttpProxySettings.defaultBuilder()
- *         .setTransportProvider(TargetHttpProxySettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(TargetHttpProxySettings.defaultGrpcChannelProviderBuilder()
+ *     TargetHttpProxySettings.newBuilder()
+ *         .setTransportProvider(TargetHttpProxySettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(TargetHttpProxySettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Constructs an instance of TargetHttpProxyClient with default settings.
    */
   public static final TargetHttpProxyClient create() throws IOException {
-    return create(TargetHttpProxySettings.defaultBuilder().build());
+    return create(TargetHttpProxySettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public TargetHttpProxyStub getStub() {
     return stub;
   }

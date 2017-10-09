@@ -76,7 +76,7 @@ import org.threeten.bp.Duration;
  * <pre>
  * <code>
  * GlobalAddressSettings.Builder globalAddressSettingsBuilder =
- *     GlobalAddressSettings.defaultBuilder();
+ *     GlobalAddressSettings.newBuilder();
  * globalAddressSettingsBuilder.deleteGlobalAddressSettings().getRetrySettingsBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * GlobalAddressSettings globalAddressSettings = globalAddressSettingsBuilder.build();
@@ -217,6 +217,7 @@ public class GlobalAddressSettings extends ClientSettings {
   /**
    * Returns a builder for this class with recommended defaults.
    */
+  @Deprecated
   public static Builder defaultBuilder() {
     return Builder.createDefault();
   }
@@ -225,6 +226,7 @@ public class GlobalAddressSettings extends ClientSettings {
    * Returns a builder for this class with recommended defaults for API methods, and the given
    * ClientContext used for executor/transport/credentials.
    */
+  @Deprecated
   public static Builder defaultBuilder(ClientContext clientContext) {
     return new Builder(clientContext);
   }
@@ -233,7 +235,7 @@ public class GlobalAddressSettings extends ClientSettings {
    * Returns a new builder for this class.
    */
   public static Builder newBuilder() {
-    return new Builder();
+    return Builder.createDefault();
   }
 
   /**

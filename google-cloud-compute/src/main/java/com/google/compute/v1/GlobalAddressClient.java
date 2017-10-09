@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * GlobalAddressSettings globalAddressSettings =
- *     GlobalAddressSettings.defaultBuilder()
+ *     GlobalAddressSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * GlobalAddressClient globalAddressClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * GlobalAddressSettings globalAddressSettings =
- *     GlobalAddressSettings.defaultBuilder()
- *         .setTransportProvider(GlobalAddressSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(GlobalAddressSettings.defaultGrpcChannelProviderBuilder()
+ *     GlobalAddressSettings.newBuilder()
+ *         .setTransportProvider(GlobalAddressSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(GlobalAddressSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Constructs an instance of GlobalAddressClient with default settings.
    */
   public static final GlobalAddressClient create() throws IOException {
-    return create(GlobalAddressSettings.defaultBuilder().build());
+    return create(GlobalAddressSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class GlobalAddressClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public GlobalAddressStub getStub() {
     return stub;
   }

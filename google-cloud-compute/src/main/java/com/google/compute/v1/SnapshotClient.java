@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * SnapshotSettings snapshotSettings =
- *     SnapshotSettings.defaultBuilder()
+ *     SnapshotSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * SnapshotClient snapshotClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * SnapshotSettings snapshotSettings =
- *     SnapshotSettings.defaultBuilder()
- *         .setTransportProvider(SnapshotSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(SnapshotSettings.defaultGrpcChannelProviderBuilder()
+ *     SnapshotSettings.newBuilder()
+ *         .setTransportProvider(SnapshotSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(SnapshotSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class SnapshotClient implements BackgroundResource {
    * Constructs an instance of SnapshotClient with default settings.
    */
   public static final SnapshotClient create() throws IOException {
-    return create(SnapshotSettings.defaultBuilder().build());
+    return create(SnapshotSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class SnapshotClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public SnapshotStub getStub() {
     return stub;
   }

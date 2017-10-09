@@ -152,7 +152,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
   }
 
   public static final HttpJsonVpnTunnelStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonVpnTunnelStub(VpnTunnelSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonVpnTunnelStub(VpnTunnelSettings.newBuilder().build(), clientContext);
   }
 
   /**

@@ -22,7 +22,6 @@ import com.google.api.pathtemplate.PathTemplate;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListGlobalOperationsPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListGlobalOperationsPagedResponse;
 import com.google.compute.v1.stub.GlobalOperationStub;
-import com.google.protobuf.Empty;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -79,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * GlobalOperationSettings globalOperationSettings =
- *     GlobalOperationSettings.defaultBuilder()
+ *     GlobalOperationSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * GlobalOperationClient globalOperationClient =
@@ -92,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * GlobalOperationSettings globalOperationSettings =
- *     GlobalOperationSettings.defaultBuilder()
- *         .setTransportProvider(GlobalOperationSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(GlobalOperationSettings.defaultGrpcChannelProviderBuilder()
+ *     GlobalOperationSettings.newBuilder()
+ *         .setTransportProvider(GlobalOperationSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(GlobalOperationSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -116,7 +115,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Constructs an instance of GlobalOperationClient with default settings.
    */
   public static final GlobalOperationClient create() throws IOException {
-    return create(GlobalOperationSettings.defaultBuilder().build());
+    return create(GlobalOperationSettings.newBuilder().build());
   }
 
   /**
@@ -155,6 +154,7 @@ public class GlobalOperationClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public GlobalOperationStub getStub() {
     return stub;
   }
@@ -318,7 +318,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * </code></pre>
    */
   @BetaApi
-  public final UnaryCallable<DeleteGlobalOperationHttpRequest, Empty> deleteGlobalOperationCallable() {
+  public final UnaryCallable<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationCallable() {
     return stub.deleteGlobalOperationCallable();
   }
 

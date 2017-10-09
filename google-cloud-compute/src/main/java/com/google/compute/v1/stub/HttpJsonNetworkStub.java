@@ -147,7 +147,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
   }
 
   public static final HttpJsonNetworkStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonNetworkStub(NetworkSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonNetworkStub(NetworkSettings.newBuilder().build(), clientContext);
   }
 
   /**

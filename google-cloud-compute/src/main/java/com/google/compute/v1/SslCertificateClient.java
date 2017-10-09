@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * SslCertificateSettings sslCertificateSettings =
- *     SslCertificateSettings.defaultBuilder()
+ *     SslCertificateSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * SslCertificateClient sslCertificateClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * SslCertificateSettings sslCertificateSettings =
- *     SslCertificateSettings.defaultBuilder()
- *         .setTransportProvider(SslCertificateSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(SslCertificateSettings.defaultGrpcChannelProviderBuilder()
+ *     SslCertificateSettings.newBuilder()
+ *         .setTransportProvider(SslCertificateSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(SslCertificateSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Constructs an instance of SslCertificateClient with default settings.
    */
   public static final SslCertificateClient create() throws IOException {
-    return create(SslCertificateSettings.defaultBuilder().build());
+    return create(SslCertificateSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class SslCertificateClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public SslCertificateStub getStub() {
     return stub;
   }

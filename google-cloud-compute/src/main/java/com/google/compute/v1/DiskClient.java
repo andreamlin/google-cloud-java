@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * DiskSettings diskSettings =
- *     DiskSettings.defaultBuilder()
+ *     DiskSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * DiskClient diskClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * DiskSettings diskSettings =
- *     DiskSettings.defaultBuilder()
- *         .setTransportProvider(DiskSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(DiskSettings.defaultGrpcChannelProviderBuilder()
+ *     DiskSettings.newBuilder()
+ *         .setTransportProvider(DiskSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(DiskSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class DiskClient implements BackgroundResource {
    * Constructs an instance of DiskClient with default settings.
    */
   public static final DiskClient create() throws IOException {
-    return create(DiskSettings.defaultBuilder().build());
+    return create(DiskSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class DiskClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public DiskStub getStub() {
     return stub;
   }
@@ -463,18 +464,18 @@ public class DiskClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param sourceImage Optional. Source image to restore onto a disk.
    * @param zone The name of the zone for this request.
+   * @param sourceImage Optional. Source image to restore onto a disk.
    * @param diskResource A Disk resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation insertDisk(String sourceImage, ZoneName zone, Disk diskResource) {
+  public final Operation insertDisk(ZoneName zone, String sourceImage, Disk diskResource) {
 
     InsertDiskHttpRequest request =
         InsertDiskHttpRequest.newBuilder()
-        .setSourceImage(sourceImage)
         .setZoneWithZoneName(zone)
+        .setSourceImage(sourceImage)
         .setDiskResource(diskResource)
         .build();
     return insertDisk(request);

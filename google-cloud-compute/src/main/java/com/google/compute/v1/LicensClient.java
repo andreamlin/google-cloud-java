@@ -76,7 +76,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * LicensSettings licensSettings =
- *     LicensSettings.defaultBuilder()
+ *     LicensSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * LicensClient licensClient =
@@ -89,9 +89,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * LicensSettings licensSettings =
- *     LicensSettings.defaultBuilder()
- *         .setTransportProvider(LicensSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(LicensSettings.defaultGrpcChannelProviderBuilder()
+ *     LicensSettings.newBuilder()
+ *         .setTransportProvider(LicensSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(LicensSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -113,7 +113,7 @@ public class LicensClient implements BackgroundResource {
    * Constructs an instance of LicensClient with default settings.
    */
   public static final LicensClient create() throws IOException {
-    return create(LicensSettings.defaultBuilder().build());
+    return create(LicensSettings.newBuilder().build());
   }
 
   /**
@@ -152,6 +152,7 @@ public class LicensClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public LicensStub getStub() {
     return stub;
   }

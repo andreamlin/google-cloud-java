@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * InstanceSettings instanceSettings =
- *     InstanceSettings.defaultBuilder()
+ *     InstanceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * InstanceClient instanceClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * InstanceSettings instanceSettings =
- *     InstanceSettings.defaultBuilder()
- *         .setTransportProvider(InstanceSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(InstanceSettings.defaultGrpcChannelProviderBuilder()
+ *     InstanceSettings.newBuilder()
+ *         .setTransportProvider(InstanceSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(InstanceSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class InstanceClient implements BackgroundResource {
    * Constructs an instance of InstanceClient with default settings.
    */
   public static final InstanceClient create() throws IOException {
-    return create(InstanceSettings.defaultBuilder().build());
+    return create(InstanceSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class InstanceClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public InstanceStub getStub() {
     return stub;
   }
@@ -171,18 +172,18 @@ public class InstanceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param networkInterface The name of the network interface to add to this instance.
    * @param instance The instance name for this request.
+   * @param networkInterface The name of the network interface to add to this instance.
    * @param accessConfigResource An access configuration attached to an instance's network interface. Only one access config per instance is supported.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation addAccessConfigInstance(String networkInterface, InstanceName instance, AccessConfig accessConfigResource) {
+  public final Operation addAccessConfigInstance(InstanceName instance, String networkInterface, AccessConfig accessConfigResource) {
 
     AddAccessConfigInstanceHttpRequest request =
         AddAccessConfigInstanceHttpRequest.newBuilder()
-        .setNetworkInterface(networkInterface)
         .setInstanceWithInstanceName(instance)
+        .setNetworkInterface(networkInterface)
         .setAccessConfigResource(accessConfigResource)
         .build();
     return addAccessConfigInstance(request);
@@ -467,19 +468,19 @@ public class InstanceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
+   * @param instance The instance name for this request.
    * @param networkInterface The name of the network interface.
    * @param accessConfig The name of the access config to delete.
-   * @param instance The instance name for this request.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation deleteAccessConfigInstance(String networkInterface, String accessConfig, InstanceName instance) {
+  public final Operation deleteAccessConfigInstance(InstanceName instance, String networkInterface, String accessConfig) {
 
     DeleteAccessConfigInstanceHttpRequest request =
         DeleteAccessConfigInstanceHttpRequest.newBuilder()
+        .setInstanceWithInstanceName(instance)
         .setNetworkInterface(networkInterface)
         .setAccessConfig(accessConfig)
-        .setInstanceWithInstanceName(instance)
         .build();
     return deleteAccessConfigInstance(request);
   }
@@ -535,17 +536,17 @@ public class InstanceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param deviceName Disk device name to detach.
    * @param instance Instance name.
+   * @param deviceName Disk device name to detach.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation detachDiskInstance(String deviceName, InstanceName instance) {
+  public final Operation detachDiskInstance(InstanceName instance, String deviceName) {
 
     DetachDiskInstanceHttpRequest request =
         DetachDiskInstanceHttpRequest.newBuilder()
-        .setDeviceName(deviceName)
         .setInstanceWithInstanceName(instance)
+        .setDeviceName(deviceName)
         .build();
     return detachDiskInstance(request);
   }
@@ -665,19 +666,19 @@ public class InstanceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
+   * @param instance Name of the instance scoping this request.
    * @param port Specifies which COM or serial port to retrieve data from.
    * @param start For the initial request, leave this field unspecified. For subsequent calls, this field should be set to the next value that was returned in the previous call.
-   * @param instance Name of the instance scoping this request.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final SerialPortOutput getSerialPortOutputInstance(Integer port, String start, InstanceName instance) {
+  public final SerialPortOutput getSerialPortOutputInstance(InstanceName instance, Integer port, String start) {
 
     GetSerialPortOutputInstanceHttpRequest request =
         GetSerialPortOutputInstanceHttpRequest.newBuilder()
+        .setInstanceWithInstanceName(instance)
         .setPort(port)
         .setStart(start)
-        .setInstanceWithInstanceName(instance)
         .build();
     return getSerialPortOutputInstance(request);
   }
@@ -961,19 +962,19 @@ public class InstanceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param deviceName The device name of the disk to modify.
-   * @param autoDelete Whether to auto-delete the disk when the instance is deleted.
    * @param instance The instance name.
+   * @param autoDelete Whether to auto-delete the disk when the instance is deleted.
+   * @param deviceName The device name of the disk to modify.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation setDiskAutoDeleteInstance(String deviceName, Boolean autoDelete, InstanceName instance) {
+  public final Operation setDiskAutoDeleteInstance(InstanceName instance, Boolean autoDelete, String deviceName) {
 
     SetDiskAutoDeleteInstanceHttpRequest request =
         SetDiskAutoDeleteInstanceHttpRequest.newBuilder()
-        .setDeviceName(deviceName)
-        .setAutoDelete(autoDelete)
         .setInstanceWithInstanceName(instance)
+        .setAutoDelete(autoDelete)
+        .setDeviceName(deviceName)
         .build();
     return setDiskAutoDeleteInstance(request);
   }

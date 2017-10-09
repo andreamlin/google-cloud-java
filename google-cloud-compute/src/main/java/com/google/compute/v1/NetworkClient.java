@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * NetworkSettings networkSettings =
- *     NetworkSettings.defaultBuilder()
+ *     NetworkSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * NetworkClient networkClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * NetworkSettings networkSettings =
- *     NetworkSettings.defaultBuilder()
- *         .setTransportProvider(NetworkSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(NetworkSettings.defaultGrpcChannelProviderBuilder()
+ *     NetworkSettings.newBuilder()
+ *         .setTransportProvider(NetworkSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(NetworkSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class NetworkClient implements BackgroundResource {
    * Constructs an instance of NetworkClient with default settings.
    */
   public static final NetworkClient create() throws IOException {
-    return create(NetworkSettings.defaultBuilder().build());
+    return create(NetworkSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class NetworkClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public NetworkStub getStub() {
     return stub;
   }

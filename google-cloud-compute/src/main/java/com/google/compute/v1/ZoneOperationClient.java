@@ -21,7 +21,6 @@ import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import static com.google.compute.v1.PagedResponseWrappers.ListZoneOperationsPagedResponse;
 import com.google.compute.v1.stub.ZoneOperationStub;
-import com.google.protobuf.Empty;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -78,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * ZoneOperationSettings zoneOperationSettings =
- *     ZoneOperationSettings.defaultBuilder()
+ *     ZoneOperationSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * ZoneOperationClient zoneOperationClient =
@@ -91,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * ZoneOperationSettings zoneOperationSettings =
- *     ZoneOperationSettings.defaultBuilder()
- *         .setTransportProvider(ZoneOperationSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(ZoneOperationSettings.defaultGrpcChannelProviderBuilder()
+ *     ZoneOperationSettings.newBuilder()
+ *         .setTransportProvider(ZoneOperationSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(ZoneOperationSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +114,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * Constructs an instance of ZoneOperationClient with default settings.
    */
   public static final ZoneOperationClient create() throws IOException {
-    return create(ZoneOperationSettings.defaultBuilder().build());
+    return create(ZoneOperationSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +153,7 @@ public class ZoneOperationClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public ZoneOperationStub getStub() {
     return stub;
   }
@@ -219,7 +219,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * </code></pre>
    */
   @BetaApi
-  public final UnaryCallable<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationCallable() {
+  public final UnaryCallable<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationCallable() {
     return stub.deleteZoneOperationCallable();
   }
 

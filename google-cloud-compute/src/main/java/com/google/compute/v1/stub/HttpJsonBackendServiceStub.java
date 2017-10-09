@@ -204,7 +204,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
   }
 
   public static final HttpJsonBackendServiceStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonBackendServiceStub(BackendServiceSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonBackendServiceStub(BackendServiceSettings.newBuilder().build(), clientContext);
   }
 
   /**

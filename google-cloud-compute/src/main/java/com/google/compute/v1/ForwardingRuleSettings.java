@@ -77,7 +77,7 @@ import org.threeten.bp.Duration;
  * <pre>
  * <code>
  * ForwardingRuleSettings.Builder forwardingRuleSettingsBuilder =
- *     ForwardingRuleSettings.defaultBuilder();
+ *     ForwardingRuleSettings.newBuilder();
  * forwardingRuleSettingsBuilder.deleteForwardingRuleSettings().getRetrySettingsBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * ForwardingRuleSettings forwardingRuleSettings = forwardingRuleSettingsBuilder.build();
@@ -234,6 +234,7 @@ public class ForwardingRuleSettings extends ClientSettings {
   /**
    * Returns a builder for this class with recommended defaults.
    */
+  @Deprecated
   public static Builder defaultBuilder() {
     return Builder.createDefault();
   }
@@ -242,6 +243,7 @@ public class ForwardingRuleSettings extends ClientSettings {
    * Returns a builder for this class with recommended defaults for API methods, and the given
    * ClientContext used for executor/transport/credentials.
    */
+  @Deprecated
   public static Builder defaultBuilder(ClientContext clientContext) {
     return new Builder(clientContext);
   }
@@ -250,7 +252,7 @@ public class ForwardingRuleSettings extends ClientSettings {
    * Returns a new builder for this class.
    */
   public static Builder newBuilder() {
-    return new Builder();
+    return Builder.createDefault();
   }
 
   /**

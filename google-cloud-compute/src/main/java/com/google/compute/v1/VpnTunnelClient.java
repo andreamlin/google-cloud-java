@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * VpnTunnelSettings vpnTunnelSettings =
- *     VpnTunnelSettings.defaultBuilder()
+ *     VpnTunnelSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * VpnTunnelClient vpnTunnelClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * VpnTunnelSettings vpnTunnelSettings =
- *     VpnTunnelSettings.defaultBuilder()
- *         .setTransportProvider(VpnTunnelSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(VpnTunnelSettings.defaultGrpcChannelProviderBuilder()
+ *     VpnTunnelSettings.newBuilder()
+ *         .setTransportProvider(VpnTunnelSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(VpnTunnelSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class VpnTunnelClient implements BackgroundResource {
    * Constructs an instance of VpnTunnelClient with default settings.
    */
   public static final VpnTunnelClient create() throws IOException {
-    return create(VpnTunnelSettings.defaultBuilder().build());
+    return create(VpnTunnelSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class VpnTunnelClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public VpnTunnelStub getStub() {
     return stub;
   }

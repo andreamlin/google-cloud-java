@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * FirewallSettings firewallSettings =
- *     FirewallSettings.defaultBuilder()
+ *     FirewallSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * FirewallClient firewallClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * FirewallSettings firewallSettings =
- *     FirewallSettings.defaultBuilder()
- *         .setTransportProvider(FirewallSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(FirewallSettings.defaultGrpcChannelProviderBuilder()
+ *     FirewallSettings.newBuilder()
+ *         .setTransportProvider(FirewallSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(FirewallSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class FirewallClient implements BackgroundResource {
    * Constructs an instance of FirewallClient with default settings.
    */
   public static final FirewallClient create() throws IOException {
-    return create(FirewallSettings.defaultBuilder().build());
+    return create(FirewallSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class FirewallClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public FirewallStub getStub() {
     return stub;
   }

@@ -79,7 +79,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * InstanceGroupSettings instanceGroupSettings =
- *     InstanceGroupSettings.defaultBuilder()
+ *     InstanceGroupSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * InstanceGroupClient instanceGroupClient =
@@ -92,9 +92,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * InstanceGroupSettings instanceGroupSettings =
- *     InstanceGroupSettings.defaultBuilder()
- *         .setTransportProvider(InstanceGroupSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(InstanceGroupSettings.defaultGrpcChannelProviderBuilder()
+ *     InstanceGroupSettings.newBuilder()
+ *         .setTransportProvider(InstanceGroupSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(InstanceGroupSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -116,7 +116,7 @@ public class InstanceGroupClient implements BackgroundResource {
    * Constructs an instance of InstanceGroupClient with default settings.
    */
   public static final InstanceGroupClient create() throws IOException {
-    return create(InstanceGroupSettings.defaultBuilder().build());
+    return create(InstanceGroupSettings.newBuilder().build());
   }
 
   /**
@@ -155,6 +155,7 @@ public class InstanceGroupClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public InstanceGroupStub getStub() {
     return stub;
   }

@@ -189,7 +189,7 @@ public class HttpJsonDiskStub extends DiskStub {
   }
 
   public static final HttpJsonDiskStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonDiskStub(DiskSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonDiskStub(DiskSettings.newBuilder().build(), clientContext);
   }
 
   /**

@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RouteSettings routeSettings =
- *     RouteSettings.defaultBuilder()
+ *     RouteSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * RouteClient routeClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RouteSettings routeSettings =
- *     RouteSettings.defaultBuilder()
- *         .setTransportProvider(RouteSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(RouteSettings.defaultGrpcChannelProviderBuilder()
+ *     RouteSettings.newBuilder()
+ *         .setTransportProvider(RouteSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(RouteSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class RouteClient implements BackgroundResource {
    * Constructs an instance of RouteClient with default settings.
    */
   public static final RouteClient create() throws IOException {
-    return create(RouteSettings.defaultBuilder().build());
+    return create(RouteSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class RouteClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public RouteStub getStub() {
     return stub;
   }

@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * BackendServiceSettings backendServiceSettings =
- *     BackendServiceSettings.defaultBuilder()
+ *     BackendServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * BackendServiceClient backendServiceClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * BackendServiceSettings backendServiceSettings =
- *     BackendServiceSettings.defaultBuilder()
- *         .setTransportProvider(BackendServiceSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(BackendServiceSettings.defaultGrpcChannelProviderBuilder()
+ *     BackendServiceSettings.newBuilder()
+ *         .setTransportProvider(BackendServiceSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(BackendServiceSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class BackendServiceClient implements BackgroundResource {
    * Constructs an instance of BackendServiceClient with default settings.
    */
   public static final BackendServiceClient create() throws IOException {
-    return create(BackendServiceSettings.defaultBuilder().build());
+    return create(BackendServiceSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class BackendServiceClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public BackendServiceStub getStub() {
     return stub;
   }

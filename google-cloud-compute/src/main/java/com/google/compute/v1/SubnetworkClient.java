@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * SubnetworkSettings subnetworkSettings =
- *     SubnetworkSettings.defaultBuilder()
+ *     SubnetworkSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * SubnetworkClient subnetworkClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * SubnetworkSettings subnetworkSettings =
- *     SubnetworkSettings.defaultBuilder()
- *         .setTransportProvider(SubnetworkSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(SubnetworkSettings.defaultGrpcChannelProviderBuilder()
+ *     SubnetworkSettings.newBuilder()
+ *         .setTransportProvider(SubnetworkSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(SubnetworkSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Constructs an instance of SubnetworkClient with default settings.
    */
   public static final SubnetworkClient create() throws IOException {
-    return create(SubnetworkSettings.defaultBuilder().build());
+    return create(SubnetworkSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class SubnetworkClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public SubnetworkStub getStub() {
     return stub;
   }

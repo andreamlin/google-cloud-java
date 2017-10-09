@@ -222,7 +222,7 @@ public class HttpJsonRouterStub extends RouterStub {
   }
 
   public static final HttpJsonRouterStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRouterStub(RouterSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonRouterStub(RouterSettings.newBuilder().build(), clientContext);
   }
 
   /**

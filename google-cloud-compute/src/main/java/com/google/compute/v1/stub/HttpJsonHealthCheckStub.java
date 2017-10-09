@@ -164,7 +164,7 @@ public class HttpJsonHealthCheckStub extends HealthCheckStub {
   }
 
   public static final HttpJsonHealthCheckStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonHealthCheckStub(HealthCheckSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonHealthCheckStub(HealthCheckSettings.newBuilder().build(), clientContext);
   }
 
   /**

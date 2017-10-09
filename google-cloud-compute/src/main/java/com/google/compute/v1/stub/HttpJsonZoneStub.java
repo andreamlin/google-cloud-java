@@ -95,7 +95,7 @@ public class HttpJsonZoneStub extends ZoneStub {
   }
 
   public static final HttpJsonZoneStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonZoneStub(ZoneSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonZoneStub(ZoneSettings.newBuilder().build(), clientContext);
   }
 
   /**

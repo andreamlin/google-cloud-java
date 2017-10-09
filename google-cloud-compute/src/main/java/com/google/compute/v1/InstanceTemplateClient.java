@@ -77,7 +77,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * InstanceTemplateSettings instanceTemplateSettings =
- *     InstanceTemplateSettings.defaultBuilder()
+ *     InstanceTemplateSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * InstanceTemplateClient instanceTemplateClient =
@@ -90,9 +90,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * InstanceTemplateSettings instanceTemplateSettings =
- *     InstanceTemplateSettings.defaultBuilder()
- *         .setTransportProvider(InstanceTemplateSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(InstanceTemplateSettings.defaultGrpcChannelProviderBuilder()
+ *     InstanceTemplateSettings.newBuilder()
+ *         .setTransportProvider(InstanceTemplateSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(InstanceTemplateSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -114,7 +114,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Constructs an instance of InstanceTemplateClient with default settings.
    */
   public static final InstanceTemplateClient create() throws IOException {
-    return create(InstanceTemplateSettings.defaultBuilder().build());
+    return create(InstanceTemplateSettings.newBuilder().build());
   }
 
   /**
@@ -153,6 +153,7 @@ public class InstanceTemplateClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public InstanceTemplateStub getStub() {
     return stub;
   }

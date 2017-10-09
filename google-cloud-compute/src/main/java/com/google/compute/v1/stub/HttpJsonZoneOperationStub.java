@@ -34,7 +34,6 @@ import static com.google.compute.v1.PagedResponseWrappers.ListZoneOperationsPage
 import com.google.compute.v1.ZoneName;
 import com.google.compute.v1.ZoneOperationSettings;
 import com.google.compute.v1.ZoneOperationsOperationName;
-import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,12 +53,11 @@ import javax.annotation.Generated;
 public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteZoneOperationHttpRequest, Empty> directDeleteZoneOperationCallable =
+  private static final UnaryCallable<DeleteZoneOperationHttpRequest, Void> directDeleteZoneOperationCallable =
       HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteZoneOperationHttpRequest, Empty>newBuilder()
+          ApiMethodDescriptor.<DeleteZoneOperationHttpRequest, Void>newBuilder()
               .setMethodName("compute.zoneOperations.delete")
               .setRequestInstance(DeleteZoneOperationHttpRequest.getDefaultInstance())
-              .setResponseInstance(Empty.getDefaultInstance())
               .setEndpointPathTemplate("{project}/zones/{zone}/operations/{operation}")
               .setPathParams(Sets.<String>newHashSet(
                                 "operation",    "project",    "zone"
@@ -103,7 +101,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
 
   private final BackgroundResource backgroundResources;
 
-  private final UnaryCallable<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationCallable;
+  private final UnaryCallable<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationCallable;
   private final UnaryCallable<GetZoneOperationHttpRequest, Operation> getZoneOperationCallable;
   private final UnaryCallable<ListZoneOperationsHttpRequest, OperationList> listZoneOperationsCallable;
   private final UnaryCallable<ListZoneOperationsHttpRequest, ListZoneOperationsPagedResponse> listZoneOperationsPagedCallable;
@@ -113,7 +111,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   }
 
   public static final HttpJsonZoneOperationStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonZoneOperationStub(ZoneOperationSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonZoneOperationStub(ZoneOperationSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -133,7 +131,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteZoneOperationHttpRequest, Empty> deleteZoneOperationCallable() {
+  public UnaryCallable<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationCallable() {
     return deleteZoneOperationCallable;
   }
 

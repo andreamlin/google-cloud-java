@@ -279,7 +279,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
   }
 
   public static final HttpJsonInstanceGroupManagerStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonInstanceGroupManagerStub(InstanceGroupManagerSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonInstanceGroupManagerStub(InstanceGroupManagerSettings.newBuilder().build(), clientContext);
   }
 
   /**

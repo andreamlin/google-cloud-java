@@ -170,7 +170,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
   }
 
   public static final HttpJsonSubnetworkStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonSubnetworkStub(SubnetworkSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonSubnetworkStub(SubnetworkSettings.newBuilder().build(), clientContext);
   }
 
   /**

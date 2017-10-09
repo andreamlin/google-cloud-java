@@ -166,7 +166,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
   }
 
   public static final HttpJsonRegionAutoscalerStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRegionAutoscalerStub(RegionAutoscalerSettings.defaultBuilder().build(), clientContext);
+    return new HttpJsonRegionAutoscalerStub(RegionAutoscalerSettings.newBuilder().build(), clientContext);
   }
 
   /**

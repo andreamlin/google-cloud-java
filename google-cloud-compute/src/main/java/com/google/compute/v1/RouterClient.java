@@ -78,7 +78,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RouterSettings routerSettings =
- *     RouterSettings.defaultBuilder()
+ *     RouterSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * RouterClient routerClient =
@@ -91,9 +91,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RouterSettings routerSettings =
- *     RouterSettings.defaultBuilder()
- *         .setTransportProvider(RouterSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(RouterSettings.defaultGrpcChannelProviderBuilder()
+ *     RouterSettings.newBuilder()
+ *         .setTransportProvider(RouterSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(RouterSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -115,7 +115,7 @@ public class RouterClient implements BackgroundResource {
    * Constructs an instance of RouterClient with default settings.
    */
   public static final RouterClient create() throws IOException {
-    return create(RouterSettings.defaultBuilder().build());
+    return create(RouterSettings.newBuilder().build());
   }
 
   /**
@@ -154,6 +154,7 @@ public class RouterClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public RouterStub getStub() {
     return stub;
   }

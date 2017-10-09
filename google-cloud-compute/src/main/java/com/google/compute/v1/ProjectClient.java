@@ -76,7 +76,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * ProjectSettings projectSettings =
- *     ProjectSettings.defaultBuilder()
+ *     ProjectSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *         .build();
  * ProjectClient projectClient =
@@ -89,9 +89,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * ProjectSettings projectSettings =
- *     ProjectSettings.defaultBuilder()
- *         .setTransportProvider(ProjectSettings.defaultGrpcTransportProviderBuilder()
- *             .setChannelProvider(ProjectSettings.defaultGrpcChannelProviderBuilder()
+ *     ProjectSettings.newBuilder()
+ *         .setTransportProvider(ProjectSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setChannelProvider(ProjectSettings.defaultHttpJsonChannelProviderBuilder()
  *                 .setEndpoint(myEndpoint)
  *                 .build())
  *             .build())
@@ -113,7 +113,7 @@ public class ProjectClient implements BackgroundResource {
    * Constructs an instance of ProjectClient with default settings.
    */
   public static final ProjectClient create() throws IOException {
-    return create(ProjectSettings.defaultBuilder().build());
+    return create(ProjectSettings.newBuilder().build());
   }
 
   /**
@@ -152,6 +152,7 @@ public class ProjectClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public ProjectStub getStub() {
     return stub;
   }
