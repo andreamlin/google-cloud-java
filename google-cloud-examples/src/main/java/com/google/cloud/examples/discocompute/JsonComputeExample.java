@@ -1,6 +1,5 @@
 package com.google.cloud.examples.discocompute;
 
-import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
@@ -17,19 +16,34 @@ public class JsonComputeExample {
 
   public static void main(String[] args) {
     try {
-      Credentials myCredentials = GoogleCredentials.getApplicationDefault();
-      AddressSettings addressSettings =
-          AddressSettings.newBuilder()
-              .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
-              .build();
-      AddressClient addressClient =
-          AddressClient.create(addressSettings);
+      AddressClient addressClient = createCredentialedClient();
       runExampleWithGapicGen(addressClient);
       System.out.println("-------------------------------------------------------");
       runExampleWithGapicGenResourceName(addressClient);
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  private static AddressClient createCredentialedClient() throws IOException {
+    Credentials myCredentials = GoogleCredentials.getApplicationDefault();
+    String myEndpoint = AddressSettings.getDefaultEndpoint();
+
+    // Begin samplegen code. This combines the "customize credentials" and "customize the endpoint" samples.
+    AddressSettings addressSettings =
+        AddressSettings.newBuilder()
+            .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
+            .setTransportProvider(AddressSettings.defaultHttpJsonTransportProviderBuilder()
+                .setChannelProvider(AddressSettings.defaultHttpJsonChannelProviderBuilder()
+                    .setEndpoint(myEndpoint)
+                    .build())
+                .build())
+            .build();
+    AddressClient addressClient =
+        AddressClient.create(addressSettings);
+    // End samplegen code.
+
+    return addressClient;
   }
 
   // A basic List Address example.
