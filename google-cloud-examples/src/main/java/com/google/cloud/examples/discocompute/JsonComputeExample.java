@@ -58,8 +58,13 @@ public class JsonComputeExample {
     System.out.println("Running with Gapic Client and Resource Name.");
     String newAddressName = "usseaparkview";
     System.out.println("Inserting address:");
+
+    // Begin samplegen code for insertAddress().
     Address newAddress = Address.newBuilder().setName(newAddressName).build();
-    Operation insertResponse = client.insertAddress(RegionName.create(PROJECT_NAME, REGION), newAddress);
+    RegionName region = RegionName.create("PROJECT_NAME", "REGION");
+    Operation insertResponse = client.insertAddress(region, newAddress);
+    // End samplegen code for insertAddress().
+
     System.out.format("Result of insert: %s\n", insertResponse.toString());
     listAddresses(client);
 
