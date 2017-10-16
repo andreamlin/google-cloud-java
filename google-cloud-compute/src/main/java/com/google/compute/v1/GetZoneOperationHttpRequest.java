@@ -385,7 +385,7 @@ public final class GetZoneOperationHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setOperationWithZoneOperationsOperationName(ZoneOperationsOperationName value) {
+    public final Builder setOperationWithGlobalOperationsOperationName(ZoneOperationsOperationName value) {
       if (value == null) {
         return
             setOperation("").
@@ -398,7 +398,7 @@ public final class GetZoneOperationHttpRequest implements ApiMessage {
           ;
     }
 
-    public final ZoneOperationsOperationName getOperationAsZoneOperationsOperationName() {
+    public final ZoneOperationsOperationName getOperationAsGlobalOperationsOperationName() {
       return ZoneOperationsOperationName.create(
           getOperation(),
           getProject(),

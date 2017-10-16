@@ -385,7 +385,7 @@ public final class GetRegionAutoscalerHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setAutoscalerWithRegionAutoscalersAutoscalerName(RegionAutoscalersAutoscalerName value) {
+    public final Builder setAutoscalerWithAutoscalerName(RegionAutoscalersAutoscalerName value) {
       if (value == null) {
         return
             setAutoscaler("").
@@ -398,7 +398,7 @@ public final class GetRegionAutoscalerHttpRequest implements ApiMessage {
           ;
     }
 
-    public final RegionAutoscalersAutoscalerName getAutoscalerAsRegionAutoscalersAutoscalerName() {
+    public final RegionAutoscalersAutoscalerName getAutoscalerAsAutoscalerName() {
       return RegionAutoscalersAutoscalerName.create(
           getAutoscaler(),
           getProject(),
