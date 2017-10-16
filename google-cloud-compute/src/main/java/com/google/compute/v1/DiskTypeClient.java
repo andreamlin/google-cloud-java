@@ -40,8 +40,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
- *
- *   DiskType response = diskTypeClient.getDiskType();
+ *   DiskTypeName diskType = DiskTypeName.create("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
+ *   DiskType response = diskTypeClient.getDiskType(diskType);
  * }
  * </code>
  * </pre>
@@ -167,8 +167,8 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *
-   *   for (DiskType element : diskTypeClient.aggregatedListDiskTypes().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (DiskType element : diskTypeClient.aggregatedListDiskTypes(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -193,8 +193,11 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *
-   *   for (DiskType element : diskTypeClient.aggregatedListDiskTypes().iterateAll()) {
+   *   String formattedProject = DiskTypeClient.formatProjectName("[PROJECT]");
+   *   AggregatedListDiskTypesHttpRequest request = AggregatedListDiskTypesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (DiskType element : diskTypeClient.aggregatedListDiskTypes(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -216,8 +219,11 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *
-   *   ApiFuture&lt;AggregatedListDiskTypesPagedResponse&gt; future = diskTypeClient.aggregatedListDiskTypesPagedCallable().futureCall();
+   *   String formattedProject = DiskTypeClient.formatProjectName("[PROJECT]");
+   *   AggregatedListDiskTypesHttpRequest request = AggregatedListDiskTypesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;AggregatedListDiskTypesPagedResponse&gt; future = diskTypeClient.aggregatedListDiskTypesPagedCallable().futureCall(request);
    *   // Do something
    *   for (DiskType element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -237,9 +243,12 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *
+   *   String formattedProject = DiskTypeClient.formatProjectName("[PROJECT]");
+   *   AggregatedListDiskTypesHttpRequest request = AggregatedListDiskTypesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     DiskTypeAggregatedList response = diskTypeClient.aggregatedListDiskTypesCallable().call();
+   *     DiskTypeAggregatedList response = diskTypeClient.aggregatedListDiskTypesCallable().call(request);
    *     for (DiskType element : response.getDiskTypes()) {
    *       // doThingsWith(element);
    *     }
@@ -265,8 +274,8 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *
-   *   DiskType response = diskTypeClient.getDiskType();
+   *   DiskTypeName diskType = DiskTypeName.create("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
+   *   DiskType response = diskTypeClient.getDiskType(diskType);
    * }
    * </code></pre>
    *
@@ -290,8 +299,11 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *
-   *   DiskType response = diskTypeClient.getDiskType();
+   *   String formattedDiskType = DiskTypeClient.formatDiskTypeName("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
+   *   GetDiskTypeHttpRequest request = GetDiskTypeHttpRequest.newBuilder()
+   *     .setDiskType(formattedDiskType)
+   *     .build();
+   *   DiskType response = diskTypeClient.getDiskType(request);
    * }
    * </code></pre>
    *
@@ -310,8 +322,11 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *
-   *   ApiFuture&lt;DiskType&gt; future = diskTypeClient.getDiskTypeCallable().futureCall();
+   *   String formattedDiskType = DiskTypeClient.formatDiskTypeName("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
+   *   GetDiskTypeHttpRequest request = GetDiskTypeHttpRequest.newBuilder()
+   *     .setDiskType(formattedDiskType)
+   *     .build();
+   *   ApiFuture&lt;DiskType&gt; future = diskTypeClient.getDiskTypeCallable().futureCall(request);
    *   // Do something
    *   DiskType response = future.get();
    * }
@@ -329,8 +344,8 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *
-   *   for (DiskType element : diskTypeClient.listDiskTypes().iterateAll()) {
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   for (DiskType element : diskTypeClient.listDiskTypes(zone).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -355,8 +370,11 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *
-   *   for (DiskType element : diskTypeClient.listDiskTypes().iterateAll()) {
+   *   String formattedZone = DiskTypeClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ListDiskTypesHttpRequest request = ListDiskTypesHttpRequest.newBuilder()
+   *     .setZone(formattedZone)
+   *     .build();
+   *   for (DiskType element : diskTypeClient.listDiskTypes(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -378,8 +396,11 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *
-   *   ApiFuture&lt;ListDiskTypesPagedResponse&gt; future = diskTypeClient.listDiskTypesPagedCallable().futureCall();
+   *   String formattedZone = DiskTypeClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ListDiskTypesHttpRequest request = ListDiskTypesHttpRequest.newBuilder()
+   *     .setZone(formattedZone)
+   *     .build();
+   *   ApiFuture&lt;ListDiskTypesPagedResponse&gt; future = diskTypeClient.listDiskTypesPagedCallable().futureCall(request);
    *   // Do something
    *   for (DiskType element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -399,9 +420,12 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *
+   *   String formattedZone = DiskTypeClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ListDiskTypesHttpRequest request = ListDiskTypesHttpRequest.newBuilder()
+   *     .setZone(formattedZone)
+   *     .build();
    *   while (true) {
-   *     DiskTypeList response = diskTypeClient.listDiskTypesCallable().call();
+   *     DiskTypeList response = diskTypeClient.listDiskTypesCallable().call(request);
    *     for (DiskType element : response.getItems()) {
    *       // doThingsWith(element);
    *     }

@@ -40,8 +40,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
- *
- *   Operation response = backendServiceClient.deleteBackendService();
+ *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+ *   Operation response = backendServiceClient.deleteBackendService(backendService);
  * }
  * </code>
  * </pre>
@@ -167,8 +167,8 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   for (BackendService element : backendServiceClient.aggregatedListBackendServices().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (BackendService element : backendServiceClient.aggregatedListBackendServices(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -193,8 +193,11 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   for (BackendService element : backendServiceClient.aggregatedListBackendServices().iterateAll()) {
+   *   String formattedProject = BackendServiceClient.formatProjectName("[PROJECT]");
+   *   AggregatedListBackendServicesHttpRequest request = AggregatedListBackendServicesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (BackendService element : backendServiceClient.aggregatedListBackendServices(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -216,8 +219,11 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   ApiFuture&lt;AggregatedListBackendServicesPagedResponse&gt; future = backendServiceClient.aggregatedListBackendServicesPagedCallable().futureCall();
+   *   String formattedProject = BackendServiceClient.formatProjectName("[PROJECT]");
+   *   AggregatedListBackendServicesHttpRequest request = AggregatedListBackendServicesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;AggregatedListBackendServicesPagedResponse&gt; future = backendServiceClient.aggregatedListBackendServicesPagedCallable().futureCall(request);
    *   // Do something
    *   for (BackendService element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -237,9 +243,12 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
+   *   String formattedProject = BackendServiceClient.formatProjectName("[PROJECT]");
+   *   AggregatedListBackendServicesHttpRequest request = AggregatedListBackendServicesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     BackendServiceAggregatedList response = backendServiceClient.aggregatedListBackendServicesCallable().call();
+   *     BackendServiceAggregatedList response = backendServiceClient.aggregatedListBackendServicesCallable().call(request);
    *     for (BackendService element : response.getBackendServices()) {
    *       // doThingsWith(element);
    *     }
@@ -265,8 +274,8 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   Operation response = backendServiceClient.deleteBackendService();
+   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   Operation response = backendServiceClient.deleteBackendService(backendService);
    * }
    * </code></pre>
    *
@@ -290,8 +299,11 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   Operation response = backendServiceClient.deleteBackendService();
+   *   String formattedBackendService = BackendServiceClient.formatBackendServiceName("[PROJECT]", "[BACKEND_SERVICE]");
+   *   DeleteBackendServiceHttpRequest request = DeleteBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(formattedBackendService)
+   *     .build();
+   *   Operation response = backendServiceClient.deleteBackendService(request);
    * }
    * </code></pre>
    *
@@ -310,8 +322,11 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = backendServiceClient.deleteBackendServiceCallable().futureCall();
+   *   String formattedBackendService = BackendServiceClient.formatBackendServiceName("[PROJECT]", "[BACKEND_SERVICE]");
+   *   DeleteBackendServiceHttpRequest request = DeleteBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(formattedBackendService)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = backendServiceClient.deleteBackendServiceCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -329,8 +344,8 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   BackendService response = backendServiceClient.getBackendService();
+   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   BackendService response = backendServiceClient.getBackendService(backendService);
    * }
    * </code></pre>
    *
@@ -354,8 +369,11 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   BackendService response = backendServiceClient.getBackendService();
+   *   String formattedBackendService = BackendServiceClient.formatBackendServiceName("[PROJECT]", "[BACKEND_SERVICE]");
+   *   GetBackendServiceHttpRequest request = GetBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(formattedBackendService)
+   *     .build();
+   *   BackendService response = backendServiceClient.getBackendService(request);
    * }
    * </code></pre>
    *
@@ -374,8 +392,11 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   ApiFuture&lt;BackendService&gt; future = backendServiceClient.getBackendServiceCallable().futureCall();
+   *   String formattedBackendService = BackendServiceClient.formatBackendServiceName("[PROJECT]", "[BACKEND_SERVICE]");
+   *   GetBackendServiceHttpRequest request = GetBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(formattedBackendService)
+   *     .build();
+   *   ApiFuture&lt;BackendService&gt; future = backendServiceClient.getBackendServiceCallable().futureCall(request);
    *   // Do something
    *   BackendService response = future.get();
    * }
@@ -393,8 +414,9 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   BackendServiceGroupHealth response = backendServiceClient.getHealthBackendService();
+   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
+   *   BackendServiceGroupHealth response = backendServiceClient.getHealthBackendService(backendService, resourceGroupReference);
    * }
    * </code></pre>
    *
@@ -420,8 +442,13 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   BackendServiceGroupHealth response = backendServiceClient.getHealthBackendService();
+   *   String formattedBackendService = BackendServiceClient.formatBackendServiceName("[PROJECT]", "[BACKEND_SERVICE]");
+   *   ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
+   *   GetHealthBackendServiceHttpRequest request = GetHealthBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(formattedBackendService)
+   *     .setResourceGroupReference(resourceGroupReference)
+   *     .build();
+   *   BackendServiceGroupHealth response = backendServiceClient.getHealthBackendService(request);
    * }
    * </code></pre>
    *
@@ -440,8 +467,13 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   ApiFuture&lt;BackendServiceGroupHealth&gt; future = backendServiceClient.getHealthBackendServiceCallable().futureCall();
+   *   String formattedBackendService = BackendServiceClient.formatBackendServiceName("[PROJECT]", "[BACKEND_SERVICE]");
+   *   ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
+   *   GetHealthBackendServiceHttpRequest request = GetHealthBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(formattedBackendService)
+   *     .setResourceGroupReference(resourceGroupReference)
+   *     .build();
+   *   ApiFuture&lt;BackendServiceGroupHealth&gt; future = backendServiceClient.getHealthBackendServiceCallable().futureCall(request);
    *   // Do something
    *   BackendServiceGroupHealth response = future.get();
    * }
@@ -459,8 +491,9 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   Operation response = backendServiceClient.insertBackendService();
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   BackendService backendService = BackendService.newBuilder().build();
+   *   Operation response = backendServiceClient.insertBackendService(project, backendService);
    * }
    * </code></pre>
    *
@@ -486,8 +519,13 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   Operation response = backendServiceClient.insertBackendService();
+   *   String formattedProject = BackendServiceClient.formatProjectName("[PROJECT]");
+   *   BackendService backendService = BackendService.newBuilder().build();
+   *   InsertBackendServiceHttpRequest request = InsertBackendServiceHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .setBackendService(backendService)
+   *     .build();
+   *   Operation response = backendServiceClient.insertBackendService(request);
    * }
    * </code></pre>
    *
@@ -506,8 +544,13 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = backendServiceClient.insertBackendServiceCallable().futureCall();
+   *   String formattedProject = BackendServiceClient.formatProjectName("[PROJECT]");
+   *   BackendService backendService = BackendService.newBuilder().build();
+   *   InsertBackendServiceHttpRequest request = InsertBackendServiceHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .setBackendService(backendService)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = backendServiceClient.insertBackendServiceCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -525,8 +568,8 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   for (BackendService element : backendServiceClient.listBackendServices().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (BackendService element : backendServiceClient.listBackendServices(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -551,8 +594,11 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   for (BackendService element : backendServiceClient.listBackendServices().iterateAll()) {
+   *   String formattedProject = BackendServiceClient.formatProjectName("[PROJECT]");
+   *   ListBackendServicesHttpRequest request = ListBackendServicesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (BackendService element : backendServiceClient.listBackendServices(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -574,8 +620,11 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   ApiFuture&lt;ListBackendServicesPagedResponse&gt; future = backendServiceClient.listBackendServicesPagedCallable().futureCall();
+   *   String formattedProject = BackendServiceClient.formatProjectName("[PROJECT]");
+   *   ListBackendServicesHttpRequest request = ListBackendServicesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;ListBackendServicesPagedResponse&gt; future = backendServiceClient.listBackendServicesPagedCallable().futureCall(request);
    *   // Do something
    *   for (BackendService element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -595,9 +644,12 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
+   *   String formattedProject = BackendServiceClient.formatProjectName("[PROJECT]");
+   *   ListBackendServicesHttpRequest request = ListBackendServicesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     BackendServiceList response = backendServiceClient.listBackendServicesCallable().call();
+   *     BackendServiceList response = backendServiceClient.listBackendServicesCallable().call(request);
    *     for (BackendService element : response.getItems()) {
    *       // doThingsWith(element);
    *     }
@@ -623,8 +675,8 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   Operation response = backendServiceClient.patchBackendService();
+   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   Operation response = backendServiceClient.patchBackendService(backendService);
    * }
    * </code></pre>
    *
@@ -650,8 +702,11 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   Operation response = backendServiceClient.patchBackendService();
+   *   String formattedBackendService = BackendServiceClient.formatBackendServiceName("[PROJECT]", "[BACKEND_SERVICE]");
+   *   PatchBackendServiceHttpRequest request = PatchBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(formattedBackendService)
+   *     .build();
+   *   Operation response = backendServiceClient.patchBackendService(request);
    * }
    * </code></pre>
    *
@@ -670,8 +725,11 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = backendServiceClient.patchBackendServiceCallable().futureCall();
+   *   String formattedBackendService = BackendServiceClient.formatBackendServiceName("[PROJECT]", "[BACKEND_SERVICE]");
+   *   PatchBackendServiceHttpRequest request = PatchBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(formattedBackendService)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = backendServiceClient.patchBackendServiceCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -689,8 +747,8 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   Operation response = backendServiceClient.updateBackendService();
+   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   Operation response = backendServiceClient.updateBackendService(backendService);
    * }
    * </code></pre>
    *
@@ -716,8 +774,11 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   Operation response = backendServiceClient.updateBackendService();
+   *   String formattedBackendService = BackendServiceClient.formatBackendServiceName("[PROJECT]", "[BACKEND_SERVICE]");
+   *   UpdateBackendServiceHttpRequest request = UpdateBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(formattedBackendService)
+   *     .build();
+   *   Operation response = backendServiceClient.updateBackendService(request);
    * }
    * </code></pre>
    *
@@ -736,8 +797,11 @@ public class BackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = backendServiceClient.updateBackendServiceCallable().futureCall();
+   *   String formattedBackendService = BackendServiceClient.formatBackendServiceName("[PROJECT]", "[BACKEND_SERVICE]");
+   *   UpdateBackendServiceHttpRequest request = UpdateBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(formattedBackendService)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = backendServiceClient.updateBackendServiceCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }

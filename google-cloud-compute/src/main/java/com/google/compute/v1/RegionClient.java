@@ -39,8 +39,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (RegionClient regionClient = RegionClient.create()) {
- *
- *   Region response = regionClient.getRegion();
+ *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+ *   Region response = regionClient.getRegion(region);
  * }
  * </code>
  * </pre>
@@ -166,8 +166,8 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *
-   *   Region response = regionClient.getRegion();
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   Region response = regionClient.getRegion(region);
    * }
    * </code></pre>
    *
@@ -191,8 +191,11 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *
-   *   Region response = regionClient.getRegion();
+   *   String formattedRegion = RegionClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   GetRegionHttpRequest request = GetRegionHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
+   *   Region response = regionClient.getRegion(request);
    * }
    * </code></pre>
    *
@@ -211,8 +214,11 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *
-   *   ApiFuture&lt;Region&gt; future = regionClient.getRegionCallable().futureCall();
+   *   String formattedRegion = RegionClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   GetRegionHttpRequest request = GetRegionHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
+   *   ApiFuture&lt;Region&gt; future = regionClient.getRegionCallable().futureCall(request);
    *   // Do something
    *   Region response = future.get();
    * }
@@ -230,8 +236,8 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *
-   *   for (Region element : regionClient.listRegions().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (Region element : regionClient.listRegions(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -256,8 +262,11 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *
-   *   for (Region element : regionClient.listRegions().iterateAll()) {
+   *   String formattedProject = RegionClient.formatProjectName("[PROJECT]");
+   *   ListRegionsHttpRequest request = ListRegionsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (Region element : regionClient.listRegions(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -279,8 +288,11 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *
-   *   ApiFuture&lt;ListRegionsPagedResponse&gt; future = regionClient.listRegionsPagedCallable().futureCall();
+   *   String formattedProject = RegionClient.formatProjectName("[PROJECT]");
+   *   ListRegionsHttpRequest request = ListRegionsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;ListRegionsPagedResponse&gt; future = regionClient.listRegionsPagedCallable().futureCall(request);
    *   // Do something
    *   for (Region element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -300,9 +312,12 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *
+   *   String formattedProject = RegionClient.formatProjectName("[PROJECT]");
+   *   ListRegionsHttpRequest request = ListRegionsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     RegionList response = regionClient.listRegionsCallable().call();
+   *     RegionList response = regionClient.listRegionsCallable().call(request);
    *     for (Region element : response.getItems()) {
    *       // doThingsWith(element);
    *     }

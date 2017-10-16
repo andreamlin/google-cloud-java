@@ -39,8 +39,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
- *
- *   Operation response = urlMapClient.deleteUrlMap();
+ *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+ *   Operation response = urlMapClient.deleteUrlMap(urlMap);
  * }
  * </code>
  * </pre>
@@ -166,8 +166,8 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   Operation response = urlMapClient.deleteUrlMap();
+   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   Operation response = urlMapClient.deleteUrlMap(urlMap);
    * }
    * </code></pre>
    *
@@ -191,8 +191,11 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   Operation response = urlMapClient.deleteUrlMap();
+   *   String formattedUrlMap = UrlMapClient.formatUrlMapName("[PROJECT]", "[URL_MAP]");
+   *   DeleteUrlMapHttpRequest request = DeleteUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(formattedUrlMap)
+   *     .build();
+   *   Operation response = urlMapClient.deleteUrlMap(request);
    * }
    * </code></pre>
    *
@@ -211,8 +214,11 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = urlMapClient.deleteUrlMapCallable().futureCall();
+   *   String formattedUrlMap = UrlMapClient.formatUrlMapName("[PROJECT]", "[URL_MAP]");
+   *   DeleteUrlMapHttpRequest request = DeleteUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(formattedUrlMap)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = urlMapClient.deleteUrlMapCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -230,8 +236,8 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   UrlMap response = urlMapClient.getUrlMap();
+   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMap response = urlMapClient.getUrlMap(urlMap);
    * }
    * </code></pre>
    *
@@ -255,8 +261,11 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   UrlMap response = urlMapClient.getUrlMap();
+   *   String formattedUrlMap = UrlMapClient.formatUrlMapName("[PROJECT]", "[URL_MAP]");
+   *   GetUrlMapHttpRequest request = GetUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(formattedUrlMap)
+   *     .build();
+   *   UrlMap response = urlMapClient.getUrlMap(request);
    * }
    * </code></pre>
    *
@@ -275,8 +284,11 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   ApiFuture&lt;UrlMap&gt; future = urlMapClient.getUrlMapCallable().futureCall();
+   *   String formattedUrlMap = UrlMapClient.formatUrlMapName("[PROJECT]", "[URL_MAP]");
+   *   GetUrlMapHttpRequest request = GetUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(formattedUrlMap)
+   *     .build();
+   *   ApiFuture&lt;UrlMap&gt; future = urlMapClient.getUrlMapCallable().futureCall(request);
    *   // Do something
    *   UrlMap response = future.get();
    * }
@@ -294,8 +306,9 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   Operation response = urlMapClient.insertUrlMap();
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   UrlMap urlMap = UrlMap.newBuilder().build();
+   *   Operation response = urlMapClient.insertUrlMap(project, urlMap);
    * }
    * </code></pre>
    *
@@ -321,8 +334,13 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   Operation response = urlMapClient.insertUrlMap();
+   *   String formattedProject = UrlMapClient.formatProjectName("[PROJECT]");
+   *   UrlMap urlMap = UrlMap.newBuilder().build();
+   *   InsertUrlMapHttpRequest request = InsertUrlMapHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .setUrlMap(urlMap)
+   *     .build();
+   *   Operation response = urlMapClient.insertUrlMap(request);
    * }
    * </code></pre>
    *
@@ -341,8 +359,13 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = urlMapClient.insertUrlMapCallable().futureCall();
+   *   String formattedProject = UrlMapClient.formatProjectName("[PROJECT]");
+   *   UrlMap urlMap = UrlMap.newBuilder().build();
+   *   InsertUrlMapHttpRequest request = InsertUrlMapHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .setUrlMap(urlMap)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = urlMapClient.insertUrlMapCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -360,8 +383,9 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   Operation response = urlMapClient.invalidateCacheUrlMap();
+   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   CacheInvalidationRule cacheInvalidationRule = CacheInvalidationRule.newBuilder().build();
+   *   Operation response = urlMapClient.invalidateCacheUrlMap(urlMap, cacheInvalidationRule);
    * }
    * </code></pre>
    *
@@ -387,8 +411,13 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   Operation response = urlMapClient.invalidateCacheUrlMap();
+   *   String formattedUrlMap = UrlMapClient.formatUrlMapName("[PROJECT]", "[URL_MAP]");
+   *   CacheInvalidationRule cacheInvalidationRule = CacheInvalidationRule.newBuilder().build();
+   *   InvalidateCacheUrlMapHttpRequest request = InvalidateCacheUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(formattedUrlMap)
+   *     .setCacheInvalidationRule(cacheInvalidationRule)
+   *     .build();
+   *   Operation response = urlMapClient.invalidateCacheUrlMap(request);
    * }
    * </code></pre>
    *
@@ -407,8 +436,13 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = urlMapClient.invalidateCacheUrlMapCallable().futureCall();
+   *   String formattedUrlMap = UrlMapClient.formatUrlMapName("[PROJECT]", "[URL_MAP]");
+   *   CacheInvalidationRule cacheInvalidationRule = CacheInvalidationRule.newBuilder().build();
+   *   InvalidateCacheUrlMapHttpRequest request = InvalidateCacheUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(formattedUrlMap)
+   *     .setCacheInvalidationRule(cacheInvalidationRule)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = urlMapClient.invalidateCacheUrlMapCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -426,8 +460,8 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   for (UrlMap element : urlMapClient.listUrlMaps().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (UrlMap element : urlMapClient.listUrlMaps(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -452,8 +486,11 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   for (UrlMap element : urlMapClient.listUrlMaps().iterateAll()) {
+   *   String formattedProject = UrlMapClient.formatProjectName("[PROJECT]");
+   *   ListUrlMapsHttpRequest request = ListUrlMapsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (UrlMap element : urlMapClient.listUrlMaps(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -475,8 +512,11 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   ApiFuture&lt;ListUrlMapsPagedResponse&gt; future = urlMapClient.listUrlMapsPagedCallable().futureCall();
+   *   String formattedProject = UrlMapClient.formatProjectName("[PROJECT]");
+   *   ListUrlMapsHttpRequest request = ListUrlMapsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;ListUrlMapsPagedResponse&gt; future = urlMapClient.listUrlMapsPagedCallable().futureCall(request);
    *   // Do something
    *   for (UrlMap element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -496,9 +536,12 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
+   *   String formattedProject = UrlMapClient.formatProjectName("[PROJECT]");
+   *   ListUrlMapsHttpRequest request = ListUrlMapsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     UrlMapList response = urlMapClient.listUrlMapsCallable().call();
+   *     UrlMapList response = urlMapClient.listUrlMapsCallable().call(request);
    *     for (UrlMap element : response.getItems()) {
    *       // doThingsWith(element);
    *     }
@@ -524,8 +567,8 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   Operation response = urlMapClient.patchUrlMap();
+   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   Operation response = urlMapClient.patchUrlMap(urlMap);
    * }
    * </code></pre>
    *
@@ -551,8 +594,11 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   Operation response = urlMapClient.patchUrlMap();
+   *   String formattedUrlMap = UrlMapClient.formatUrlMapName("[PROJECT]", "[URL_MAP]");
+   *   PatchUrlMapHttpRequest request = PatchUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(formattedUrlMap)
+   *     .build();
+   *   Operation response = urlMapClient.patchUrlMap(request);
    * }
    * </code></pre>
    *
@@ -571,8 +617,11 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = urlMapClient.patchUrlMapCallable().futureCall();
+   *   String formattedUrlMap = UrlMapClient.formatUrlMapName("[PROJECT]", "[URL_MAP]");
+   *   PatchUrlMapHttpRequest request = PatchUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(formattedUrlMap)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = urlMapClient.patchUrlMapCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -590,8 +639,8 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   Operation response = urlMapClient.updateUrlMap();
+   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   Operation response = urlMapClient.updateUrlMap(urlMap);
    * }
    * </code></pre>
    *
@@ -617,8 +666,11 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   Operation response = urlMapClient.updateUrlMap();
+   *   String formattedUrlMap = UrlMapClient.formatUrlMapName("[PROJECT]", "[URL_MAP]");
+   *   UpdateUrlMapHttpRequest request = UpdateUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(formattedUrlMap)
+   *     .build();
+   *   Operation response = urlMapClient.updateUrlMap(request);
    * }
    * </code></pre>
    *
@@ -637,8 +689,11 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = urlMapClient.updateUrlMapCallable().futureCall();
+   *   String formattedUrlMap = UrlMapClient.formatUrlMapName("[PROJECT]", "[URL_MAP]");
+   *   UpdateUrlMapHttpRequest request = UpdateUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(formattedUrlMap)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = urlMapClient.updateUrlMapCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -656,8 +711,9 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   UrlMapsValidateResponse response = urlMapClient.validateUrlMap();
+   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapsValidateRequest urlMapsValidateRequest = UrlMapsValidateRequest.newBuilder().build();
+   *   UrlMapsValidateResponse response = urlMapClient.validateUrlMap(urlMap, urlMapsValidateRequest);
    * }
    * </code></pre>
    *
@@ -683,8 +739,13 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   UrlMapsValidateResponse response = urlMapClient.validateUrlMap();
+   *   String formattedUrlMap = UrlMapClient.formatUrlMapName("[PROJECT]", "[URL_MAP]");
+   *   UrlMapsValidateRequest urlMapsValidateRequest = UrlMapsValidateRequest.newBuilder().build();
+   *   ValidateUrlMapHttpRequest request = ValidateUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(formattedUrlMap)
+   *     .setUrlMapsValidateRequest(urlMapsValidateRequest)
+   *     .build();
+   *   UrlMapsValidateResponse response = urlMapClient.validateUrlMap(request);
    * }
    * </code></pre>
    *
@@ -703,8 +764,13 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *
-   *   ApiFuture&lt;UrlMapsValidateResponse&gt; future = urlMapClient.validateUrlMapCallable().futureCall();
+   *   String formattedUrlMap = UrlMapClient.formatUrlMapName("[PROJECT]", "[URL_MAP]");
+   *   UrlMapsValidateRequest urlMapsValidateRequest = UrlMapsValidateRequest.newBuilder().build();
+   *   ValidateUrlMapHttpRequest request = ValidateUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(formattedUrlMap)
+   *     .setUrlMapsValidateRequest(urlMapsValidateRequest)
+   *     .build();
+   *   ApiFuture&lt;UrlMapsValidateResponse&gt; future = urlMapClient.validateUrlMapCallable().futureCall(request);
    *   // Do something
    *   UrlMapsValidateResponse response = future.get();
    * }

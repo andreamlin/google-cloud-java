@@ -40,8 +40,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
- *
- *   Operation response = targetInstanceClient.deleteTargetInstance();
+ *   TargetInstanceName targetInstance = TargetInstanceName.create("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
+ *   Operation response = targetInstanceClient.deleteTargetInstance(targetInstance);
  * }
  * </code>
  * </pre>
@@ -167,8 +167,8 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   for (TargetInstance element : targetInstanceClient.aggregatedListTargetInstances().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (TargetInstance element : targetInstanceClient.aggregatedListTargetInstances(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -193,8 +193,11 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   for (TargetInstance element : targetInstanceClient.aggregatedListTargetInstances().iterateAll()) {
+   *   String formattedProject = TargetInstanceClient.formatProjectName("[PROJECT]");
+   *   AggregatedListTargetInstancesHttpRequest request = AggregatedListTargetInstancesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (TargetInstance element : targetInstanceClient.aggregatedListTargetInstances(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -216,8 +219,11 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   ApiFuture&lt;AggregatedListTargetInstancesPagedResponse&gt; future = targetInstanceClient.aggregatedListTargetInstancesPagedCallable().futureCall();
+   *   String formattedProject = TargetInstanceClient.formatProjectName("[PROJECT]");
+   *   AggregatedListTargetInstancesHttpRequest request = AggregatedListTargetInstancesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;AggregatedListTargetInstancesPagedResponse&gt; future = targetInstanceClient.aggregatedListTargetInstancesPagedCallable().futureCall(request);
    *   // Do something
    *   for (TargetInstance element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -237,9 +243,12 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
+   *   String formattedProject = TargetInstanceClient.formatProjectName("[PROJECT]");
+   *   AggregatedListTargetInstancesHttpRequest request = AggregatedListTargetInstancesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     TargetInstanceAggregatedList response = targetInstanceClient.aggregatedListTargetInstancesCallable().call();
+   *     TargetInstanceAggregatedList response = targetInstanceClient.aggregatedListTargetInstancesCallable().call(request);
    *     for (TargetInstance element : response.getTargetInstances()) {
    *       // doThingsWith(element);
    *     }
@@ -265,8 +274,8 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   Operation response = targetInstanceClient.deleteTargetInstance();
+   *   TargetInstanceName targetInstance = TargetInstanceName.create("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
+   *   Operation response = targetInstanceClient.deleteTargetInstance(targetInstance);
    * }
    * </code></pre>
    *
@@ -290,8 +299,11 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   Operation response = targetInstanceClient.deleteTargetInstance();
+   *   String formattedTargetInstance = TargetInstanceClient.formatTargetInstanceName("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
+   *   DeleteTargetInstanceHttpRequest request = DeleteTargetInstanceHttpRequest.newBuilder()
+   *     .setTargetInstance(formattedTargetInstance)
+   *     .build();
+   *   Operation response = targetInstanceClient.deleteTargetInstance(request);
    * }
    * </code></pre>
    *
@@ -310,8 +322,11 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetInstanceClient.deleteTargetInstanceCallable().futureCall();
+   *   String formattedTargetInstance = TargetInstanceClient.formatTargetInstanceName("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
+   *   DeleteTargetInstanceHttpRequest request = DeleteTargetInstanceHttpRequest.newBuilder()
+   *     .setTargetInstance(formattedTargetInstance)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetInstanceClient.deleteTargetInstanceCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -329,8 +344,8 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   TargetInstance response = targetInstanceClient.getTargetInstance();
+   *   TargetInstanceName targetInstance = TargetInstanceName.create("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
+   *   TargetInstance response = targetInstanceClient.getTargetInstance(targetInstance);
    * }
    * </code></pre>
    *
@@ -354,8 +369,11 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   TargetInstance response = targetInstanceClient.getTargetInstance();
+   *   String formattedTargetInstance = TargetInstanceClient.formatTargetInstanceName("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
+   *   GetTargetInstanceHttpRequest request = GetTargetInstanceHttpRequest.newBuilder()
+   *     .setTargetInstance(formattedTargetInstance)
+   *     .build();
+   *   TargetInstance response = targetInstanceClient.getTargetInstance(request);
    * }
    * </code></pre>
    *
@@ -374,8 +392,11 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   ApiFuture&lt;TargetInstance&gt; future = targetInstanceClient.getTargetInstanceCallable().futureCall();
+   *   String formattedTargetInstance = TargetInstanceClient.formatTargetInstanceName("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
+   *   GetTargetInstanceHttpRequest request = GetTargetInstanceHttpRequest.newBuilder()
+   *     .setTargetInstance(formattedTargetInstance)
+   *     .build();
+   *   ApiFuture&lt;TargetInstance&gt; future = targetInstanceClient.getTargetInstanceCallable().futureCall(request);
    *   // Do something
    *   TargetInstance response = future.get();
    * }
@@ -393,8 +414,9 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   Operation response = targetInstanceClient.insertTargetInstance();
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   TargetInstance targetInstance = TargetInstance.newBuilder().build();
+   *   Operation response = targetInstanceClient.insertTargetInstance(zone, targetInstance);
    * }
    * </code></pre>
    *
@@ -420,8 +442,13 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   Operation response = targetInstanceClient.insertTargetInstance();
+   *   String formattedZone = TargetInstanceClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   TargetInstance targetInstance = TargetInstance.newBuilder().build();
+   *   InsertTargetInstanceHttpRequest request = InsertTargetInstanceHttpRequest.newBuilder()
+   *     .setZone(formattedZone)
+   *     .setTargetInstance(targetInstance)
+   *     .build();
+   *   Operation response = targetInstanceClient.insertTargetInstance(request);
    * }
    * </code></pre>
    *
@@ -440,8 +467,13 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetInstanceClient.insertTargetInstanceCallable().futureCall();
+   *   String formattedZone = TargetInstanceClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   TargetInstance targetInstance = TargetInstance.newBuilder().build();
+   *   InsertTargetInstanceHttpRequest request = InsertTargetInstanceHttpRequest.newBuilder()
+   *     .setZone(formattedZone)
+   *     .setTargetInstance(targetInstance)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetInstanceClient.insertTargetInstanceCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -459,8 +491,8 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   for (TargetInstance element : targetInstanceClient.listTargetInstances().iterateAll()) {
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   for (TargetInstance element : targetInstanceClient.listTargetInstances(zone).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -485,8 +517,11 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   for (TargetInstance element : targetInstanceClient.listTargetInstances().iterateAll()) {
+   *   String formattedZone = TargetInstanceClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ListTargetInstancesHttpRequest request = ListTargetInstancesHttpRequest.newBuilder()
+   *     .setZone(formattedZone)
+   *     .build();
+   *   for (TargetInstance element : targetInstanceClient.listTargetInstances(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -508,8 +543,11 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
-   *   ApiFuture&lt;ListTargetInstancesPagedResponse&gt; future = targetInstanceClient.listTargetInstancesPagedCallable().futureCall();
+   *   String formattedZone = TargetInstanceClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ListTargetInstancesHttpRequest request = ListTargetInstancesHttpRequest.newBuilder()
+   *     .setZone(formattedZone)
+   *     .build();
+   *   ApiFuture&lt;ListTargetInstancesPagedResponse&gt; future = targetInstanceClient.listTargetInstancesPagedCallable().futureCall(request);
    *   // Do something
    *   for (TargetInstance element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -529,9 +567,12 @@ public class TargetInstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
-   *
+   *   String formattedZone = TargetInstanceClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ListTargetInstancesHttpRequest request = ListTargetInstancesHttpRequest.newBuilder()
+   *     .setZone(formattedZone)
+   *     .build();
    *   while (true) {
-   *     TargetInstanceList response = targetInstanceClient.listTargetInstancesCallable().call();
+   *     TargetInstanceList response = targetInstanceClient.listTargetInstancesCallable().call(request);
    *     for (TargetInstance element : response.getItems()) {
    *       // doThingsWith(element);
    *     }

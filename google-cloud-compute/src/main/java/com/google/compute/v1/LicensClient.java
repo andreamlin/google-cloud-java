@@ -38,8 +38,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (LicensClient licensClient = LicensClient.create()) {
- *
- *   License response = licensClient.getLicens();
+ *   LicenseName license = LicenseName.create("[PROJECT]", "[LICENSE]");
+ *   License response = licensClient.getLicens(license);
  * }
  * </code>
  * </pre>
@@ -165,8 +165,8 @@ public class LicensClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (LicensClient licensClient = LicensClient.create()) {
-   *
-   *   License response = licensClient.getLicens();
+   *   LicenseName license = LicenseName.create("[PROJECT]", "[LICENSE]");
+   *   License response = licensClient.getLicens(license);
    * }
    * </code></pre>
    *
@@ -190,8 +190,11 @@ public class LicensClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (LicensClient licensClient = LicensClient.create()) {
-   *
-   *   License response = licensClient.getLicens();
+   *   String formattedLicense = LicensClient.formatLicenseName("[PROJECT]", "[LICENSE]");
+   *   GetLicensHttpRequest request = GetLicensHttpRequest.newBuilder()
+   *     .setLicense(formattedLicense)
+   *     .build();
+   *   License response = licensClient.getLicens(request);
    * }
    * </code></pre>
    *
@@ -210,8 +213,11 @@ public class LicensClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (LicensClient licensClient = LicensClient.create()) {
-   *
-   *   ApiFuture&lt;License&gt; future = licensClient.getLicensCallable().futureCall();
+   *   String formattedLicense = LicensClient.formatLicenseName("[PROJECT]", "[LICENSE]");
+   *   GetLicensHttpRequest request = GetLicensHttpRequest.newBuilder()
+   *     .setLicense(formattedLicense)
+   *     .build();
+   *   ApiFuture&lt;License&gt; future = licensClient.getLicensCallable().futureCall(request);
    *   // Do something
    *   License response = future.get();
    * }

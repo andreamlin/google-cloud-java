@@ -39,8 +39,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
- *
- *   Operation response = targetHttpProxyClient.deleteTargetHttpProxy();
+ *   TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.create("[PROJECT]", "[TARGET_HTTP_PROXY]");
+ *   Operation response = targetHttpProxyClient.deleteTargetHttpProxy(targetHttpProxy);
  * }
  * </code>
  * </pre>
@@ -166,8 +166,8 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   Operation response = targetHttpProxyClient.deleteTargetHttpProxy();
+   *   TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.create("[PROJECT]", "[TARGET_HTTP_PROXY]");
+   *   Operation response = targetHttpProxyClient.deleteTargetHttpProxy(targetHttpProxy);
    * }
    * </code></pre>
    *
@@ -191,8 +191,11 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   Operation response = targetHttpProxyClient.deleteTargetHttpProxy();
+   *   String formattedTargetHttpProxy = TargetHttpProxyClient.formatTargetHttpProxyName("[PROJECT]", "[TARGET_HTTP_PROXY]");
+   *   DeleteTargetHttpProxyHttpRequest request = DeleteTargetHttpProxyHttpRequest.newBuilder()
+   *     .setTargetHttpProxy(formattedTargetHttpProxy)
+   *     .build();
+   *   Operation response = targetHttpProxyClient.deleteTargetHttpProxy(request);
    * }
    * </code></pre>
    *
@@ -211,8 +214,11 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetHttpProxyClient.deleteTargetHttpProxyCallable().futureCall();
+   *   String formattedTargetHttpProxy = TargetHttpProxyClient.formatTargetHttpProxyName("[PROJECT]", "[TARGET_HTTP_PROXY]");
+   *   DeleteTargetHttpProxyHttpRequest request = DeleteTargetHttpProxyHttpRequest.newBuilder()
+   *     .setTargetHttpProxy(formattedTargetHttpProxy)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetHttpProxyClient.deleteTargetHttpProxyCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -230,8 +236,8 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   TargetHttpProxy response = targetHttpProxyClient.getTargetHttpProxy();
+   *   TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.create("[PROJECT]", "[TARGET_HTTP_PROXY]");
+   *   TargetHttpProxy response = targetHttpProxyClient.getTargetHttpProxy(targetHttpProxy);
    * }
    * </code></pre>
    *
@@ -255,8 +261,11 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   TargetHttpProxy response = targetHttpProxyClient.getTargetHttpProxy();
+   *   String formattedTargetHttpProxy = TargetHttpProxyClient.formatTargetHttpProxyName("[PROJECT]", "[TARGET_HTTP_PROXY]");
+   *   GetTargetHttpProxyHttpRequest request = GetTargetHttpProxyHttpRequest.newBuilder()
+   *     .setTargetHttpProxy(formattedTargetHttpProxy)
+   *     .build();
+   *   TargetHttpProxy response = targetHttpProxyClient.getTargetHttpProxy(request);
    * }
    * </code></pre>
    *
@@ -275,8 +284,11 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   ApiFuture&lt;TargetHttpProxy&gt; future = targetHttpProxyClient.getTargetHttpProxyCallable().futureCall();
+   *   String formattedTargetHttpProxy = TargetHttpProxyClient.formatTargetHttpProxyName("[PROJECT]", "[TARGET_HTTP_PROXY]");
+   *   GetTargetHttpProxyHttpRequest request = GetTargetHttpProxyHttpRequest.newBuilder()
+   *     .setTargetHttpProxy(formattedTargetHttpProxy)
+   *     .build();
+   *   ApiFuture&lt;TargetHttpProxy&gt; future = targetHttpProxyClient.getTargetHttpProxyCallable().futureCall(request);
    *   // Do something
    *   TargetHttpProxy response = future.get();
    * }
@@ -294,8 +306,9 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   Operation response = targetHttpProxyClient.insertTargetHttpProxy();
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   TargetHttpProxy targetHttpProxy = TargetHttpProxy.newBuilder().build();
+   *   Operation response = targetHttpProxyClient.insertTargetHttpProxy(project, targetHttpProxy);
    * }
    * </code></pre>
    *
@@ -321,8 +334,13 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   Operation response = targetHttpProxyClient.insertTargetHttpProxy();
+   *   String formattedProject = TargetHttpProxyClient.formatProjectName("[PROJECT]");
+   *   TargetHttpProxy targetHttpProxy = TargetHttpProxy.newBuilder().build();
+   *   InsertTargetHttpProxyHttpRequest request = InsertTargetHttpProxyHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .setTargetHttpProxy(targetHttpProxy)
+   *     .build();
+   *   Operation response = targetHttpProxyClient.insertTargetHttpProxy(request);
    * }
    * </code></pre>
    *
@@ -341,8 +359,13 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetHttpProxyClient.insertTargetHttpProxyCallable().futureCall();
+   *   String formattedProject = TargetHttpProxyClient.formatProjectName("[PROJECT]");
+   *   TargetHttpProxy targetHttpProxy = TargetHttpProxy.newBuilder().build();
+   *   InsertTargetHttpProxyHttpRequest request = InsertTargetHttpProxyHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .setTargetHttpProxy(targetHttpProxy)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetHttpProxyClient.insertTargetHttpProxyCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -360,8 +383,8 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   for (TargetHttpProxy element : targetHttpProxyClient.listTargetHttpProxies().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (TargetHttpProxy element : targetHttpProxyClient.listTargetHttpProxies(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -386,8 +409,11 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   for (TargetHttpProxy element : targetHttpProxyClient.listTargetHttpProxies().iterateAll()) {
+   *   String formattedProject = TargetHttpProxyClient.formatProjectName("[PROJECT]");
+   *   ListTargetHttpProxiesHttpRequest request = ListTargetHttpProxiesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (TargetHttpProxy element : targetHttpProxyClient.listTargetHttpProxies(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -409,8 +435,11 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   ApiFuture&lt;ListTargetHttpProxiesPagedResponse&gt; future = targetHttpProxyClient.listTargetHttpProxiesPagedCallable().futureCall();
+   *   String formattedProject = TargetHttpProxyClient.formatProjectName("[PROJECT]");
+   *   ListTargetHttpProxiesHttpRequest request = ListTargetHttpProxiesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;ListTargetHttpProxiesPagedResponse&gt; future = targetHttpProxyClient.listTargetHttpProxiesPagedCallable().futureCall(request);
    *   // Do something
    *   for (TargetHttpProxy element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -430,9 +459,12 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
+   *   String formattedProject = TargetHttpProxyClient.formatProjectName("[PROJECT]");
+   *   ListTargetHttpProxiesHttpRequest request = ListTargetHttpProxiesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     TargetHttpProxyList response = targetHttpProxyClient.listTargetHttpProxiesCallable().call();
+   *     TargetHttpProxyList response = targetHttpProxyClient.listTargetHttpProxiesCallable().call(request);
    *     for (TargetHttpProxy element : response.getItems()) {
    *       // doThingsWith(element);
    *     }
@@ -458,8 +490,9 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   Operation response = targetHttpProxyClient.setUrlMapTargetHttpProxy();
+   *   TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.create("[PROJECT]", "[TARGET_HTTP_PROXY]");
+   *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
+   *   Operation response = targetHttpProxyClient.setUrlMapTargetHttpProxy(targetHttpProxy, urlMapReference);
    * }
    * </code></pre>
    *
@@ -485,8 +518,13 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   Operation response = targetHttpProxyClient.setUrlMapTargetHttpProxy();
+   *   String formattedTargetHttpProxy = TargetHttpProxyClient.formatTargetHttpProxyName("[PROJECT]", "[TARGET_HTTP_PROXY]");
+   *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
+   *   SetUrlMapTargetHttpProxyHttpRequest request = SetUrlMapTargetHttpProxyHttpRequest.newBuilder()
+   *     .setTargetHttpProxy(formattedTargetHttpProxy)
+   *     .setUrlMapReference(urlMapReference)
+   *     .build();
+   *   Operation response = targetHttpProxyClient.setUrlMapTargetHttpProxy(request);
    * }
    * </code></pre>
    *
@@ -505,8 +543,13 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetHttpProxyClient.setUrlMapTargetHttpProxyCallable().futureCall();
+   *   String formattedTargetHttpProxy = TargetHttpProxyClient.formatTargetHttpProxyName("[PROJECT]", "[TARGET_HTTP_PROXY]");
+   *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
+   *   SetUrlMapTargetHttpProxyHttpRequest request = SetUrlMapTargetHttpProxyHttpRequest.newBuilder()
+   *     .setTargetHttpProxy(formattedTargetHttpProxy)
+   *     .setUrlMapReference(urlMapReference)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetHttpProxyClient.setUrlMapTargetHttpProxyCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }

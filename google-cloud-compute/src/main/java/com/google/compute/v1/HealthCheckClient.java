@@ -39,8 +39,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
- *
- *   Operation response = healthCheckClient.deleteHealthCheck();
+ *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+ *   Operation response = healthCheckClient.deleteHealthCheck(healthCheck);
  * }
  * </code>
  * </pre>
@@ -166,8 +166,8 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   Operation response = healthCheckClient.deleteHealthCheck();
+   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   Operation response = healthCheckClient.deleteHealthCheck(healthCheck);
    * }
    * </code></pre>
    *
@@ -191,8 +191,11 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   Operation response = healthCheckClient.deleteHealthCheck();
+   *   String formattedHealthCheck = HealthCheckClient.formatHealthCheckName("[PROJECT]", "[HEALTH_CHECK]");
+   *   DeleteHealthCheckHttpRequest request = DeleteHealthCheckHttpRequest.newBuilder()
+   *     .setHealthCheck(formattedHealthCheck)
+   *     .build();
+   *   Operation response = healthCheckClient.deleteHealthCheck(request);
    * }
    * </code></pre>
    *
@@ -211,8 +214,11 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = healthCheckClient.deleteHealthCheckCallable().futureCall();
+   *   String formattedHealthCheck = HealthCheckClient.formatHealthCheckName("[PROJECT]", "[HEALTH_CHECK]");
+   *   DeleteHealthCheckHttpRequest request = DeleteHealthCheckHttpRequest.newBuilder()
+   *     .setHealthCheck(formattedHealthCheck)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = healthCheckClient.deleteHealthCheckCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -230,8 +236,8 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   HealthCheck response = healthCheckClient.getHealthCheck();
+   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   HealthCheck response = healthCheckClient.getHealthCheck(healthCheck);
    * }
    * </code></pre>
    *
@@ -255,8 +261,11 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   HealthCheck response = healthCheckClient.getHealthCheck();
+   *   String formattedHealthCheck = HealthCheckClient.formatHealthCheckName("[PROJECT]", "[HEALTH_CHECK]");
+   *   GetHealthCheckHttpRequest request = GetHealthCheckHttpRequest.newBuilder()
+   *     .setHealthCheck(formattedHealthCheck)
+   *     .build();
+   *   HealthCheck response = healthCheckClient.getHealthCheck(request);
    * }
    * </code></pre>
    *
@@ -275,8 +284,11 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   ApiFuture&lt;HealthCheck&gt; future = healthCheckClient.getHealthCheckCallable().futureCall();
+   *   String formattedHealthCheck = HealthCheckClient.formatHealthCheckName("[PROJECT]", "[HEALTH_CHECK]");
+   *   GetHealthCheckHttpRequest request = GetHealthCheckHttpRequest.newBuilder()
+   *     .setHealthCheck(formattedHealthCheck)
+   *     .build();
+   *   ApiFuture&lt;HealthCheck&gt; future = healthCheckClient.getHealthCheckCallable().futureCall(request);
    *   // Do something
    *   HealthCheck response = future.get();
    * }
@@ -294,8 +306,9 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   Operation response = healthCheckClient.insertHealthCheck();
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   HealthCheck healthCheck = HealthCheck.newBuilder().build();
+   *   Operation response = healthCheckClient.insertHealthCheck(project, healthCheck);
    * }
    * </code></pre>
    *
@@ -321,8 +334,13 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   Operation response = healthCheckClient.insertHealthCheck();
+   *   String formattedProject = HealthCheckClient.formatProjectName("[PROJECT]");
+   *   HealthCheck healthCheck = HealthCheck.newBuilder().build();
+   *   InsertHealthCheckHttpRequest request = InsertHealthCheckHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .setHealthCheck(healthCheck)
+   *     .build();
+   *   Operation response = healthCheckClient.insertHealthCheck(request);
    * }
    * </code></pre>
    *
@@ -341,8 +359,13 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = healthCheckClient.insertHealthCheckCallable().futureCall();
+   *   String formattedProject = HealthCheckClient.formatProjectName("[PROJECT]");
+   *   HealthCheck healthCheck = HealthCheck.newBuilder().build();
+   *   InsertHealthCheckHttpRequest request = InsertHealthCheckHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .setHealthCheck(healthCheck)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = healthCheckClient.insertHealthCheckCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -360,8 +383,8 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   for (HealthCheck element : healthCheckClient.listHealthChecks().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (HealthCheck element : healthCheckClient.listHealthChecks(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -386,8 +409,11 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   for (HealthCheck element : healthCheckClient.listHealthChecks().iterateAll()) {
+   *   String formattedProject = HealthCheckClient.formatProjectName("[PROJECT]");
+   *   ListHealthChecksHttpRequest request = ListHealthChecksHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (HealthCheck element : healthCheckClient.listHealthChecks(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -409,8 +435,11 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   ApiFuture&lt;ListHealthChecksPagedResponse&gt; future = healthCheckClient.listHealthChecksPagedCallable().futureCall();
+   *   String formattedProject = HealthCheckClient.formatProjectName("[PROJECT]");
+   *   ListHealthChecksHttpRequest request = ListHealthChecksHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;ListHealthChecksPagedResponse&gt; future = healthCheckClient.listHealthChecksPagedCallable().futureCall(request);
    *   // Do something
    *   for (HealthCheck element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -430,9 +459,12 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
+   *   String formattedProject = HealthCheckClient.formatProjectName("[PROJECT]");
+   *   ListHealthChecksHttpRequest request = ListHealthChecksHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     HealthCheckList response = healthCheckClient.listHealthChecksCallable().call();
+   *     HealthCheckList response = healthCheckClient.listHealthChecksCallable().call(request);
    *     for (HealthCheck element : response.getItems()) {
    *       // doThingsWith(element);
    *     }
@@ -458,8 +490,8 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   Operation response = healthCheckClient.patchHealthCheck();
+   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   Operation response = healthCheckClient.patchHealthCheck(healthCheck);
    * }
    * </code></pre>
    *
@@ -485,8 +517,11 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   Operation response = healthCheckClient.patchHealthCheck();
+   *   String formattedHealthCheck = HealthCheckClient.formatHealthCheckName("[PROJECT]", "[HEALTH_CHECK]");
+   *   PatchHealthCheckHttpRequest request = PatchHealthCheckHttpRequest.newBuilder()
+   *     .setHealthCheck(formattedHealthCheck)
+   *     .build();
+   *   Operation response = healthCheckClient.patchHealthCheck(request);
    * }
    * </code></pre>
    *
@@ -505,8 +540,11 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = healthCheckClient.patchHealthCheckCallable().futureCall();
+   *   String formattedHealthCheck = HealthCheckClient.formatHealthCheckName("[PROJECT]", "[HEALTH_CHECK]");
+   *   PatchHealthCheckHttpRequest request = PatchHealthCheckHttpRequest.newBuilder()
+   *     .setHealthCheck(formattedHealthCheck)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = healthCheckClient.patchHealthCheckCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -524,8 +562,8 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   Operation response = healthCheckClient.updateHealthCheck();
+   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   Operation response = healthCheckClient.updateHealthCheck(healthCheck);
    * }
    * </code></pre>
    *
@@ -551,8 +589,11 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   Operation response = healthCheckClient.updateHealthCheck();
+   *   String formattedHealthCheck = HealthCheckClient.formatHealthCheckName("[PROJECT]", "[HEALTH_CHECK]");
+   *   UpdateHealthCheckHttpRequest request = UpdateHealthCheckHttpRequest.newBuilder()
+   *     .setHealthCheck(formattedHealthCheck)
+   *     .build();
+   *   Operation response = healthCheckClient.updateHealthCheck(request);
    * }
    * </code></pre>
    *
@@ -571,8 +612,11 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = healthCheckClient.updateHealthCheckCallable().futureCall();
+   *   String formattedHealthCheck = HealthCheckClient.formatHealthCheckName("[PROJECT]", "[HEALTH_CHECK]");
+   *   UpdateHealthCheckHttpRequest request = UpdateHealthCheckHttpRequest.newBuilder()
+   *     .setHealthCheck(formattedHealthCheck)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = healthCheckClient.updateHealthCheckCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }

@@ -39,8 +39,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (ImageClient imageClient = ImageClient.create()) {
- *
- *   Operation response = imageClient.deleteImage();
+ *   ImageName image = ImageName.create("[PROJECT]", "[IMAGE]");
+ *   Operation response = imageClient.deleteImage(image);
  * }
  * </code>
  * </pre>
@@ -166,8 +166,8 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   Operation response = imageClient.deleteImage();
+   *   ImageName image = ImageName.create("[PROJECT]", "[IMAGE]");
+   *   Operation response = imageClient.deleteImage(image);
    * }
    * </code></pre>
    *
@@ -191,8 +191,11 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   Operation response = imageClient.deleteImage();
+   *   String formattedImage = ImageClient.formatImageName("[PROJECT]", "[IMAGE]");
+   *   DeleteImageHttpRequest request = DeleteImageHttpRequest.newBuilder()
+   *     .setImage(formattedImage)
+   *     .build();
+   *   Operation response = imageClient.deleteImage(request);
    * }
    * </code></pre>
    *
@@ -211,8 +214,11 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = imageClient.deleteImageCallable().futureCall();
+   *   String formattedImage = ImageClient.formatImageName("[PROJECT]", "[IMAGE]");
+   *   DeleteImageHttpRequest request = DeleteImageHttpRequest.newBuilder()
+   *     .setImage(formattedImage)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = imageClient.deleteImageCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -232,8 +238,9 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   Operation response = imageClient.deprecateImage();
+   *   ImageName image = ImageName.create("[PROJECT]", "[IMAGE]");
+   *   DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
+   *   Operation response = imageClient.deprecateImage(image, deprecationStatus);
    * }
    * </code></pre>
    *
@@ -261,8 +268,13 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   Operation response = imageClient.deprecateImage();
+   *   String formattedImage = ImageClient.formatImageName("[PROJECT]", "[IMAGE]");
+   *   DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
+   *   DeprecateImageHttpRequest request = DeprecateImageHttpRequest.newBuilder()
+   *     .setImage(formattedImage)
+   *     .setDeprecationStatus(deprecationStatus)
+   *     .build();
+   *   Operation response = imageClient.deprecateImage(request);
    * }
    * </code></pre>
    *
@@ -283,8 +295,13 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = imageClient.deprecateImageCallable().futureCall();
+   *   String formattedImage = ImageClient.formatImageName("[PROJECT]", "[IMAGE]");
+   *   DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
+   *   DeprecateImageHttpRequest request = DeprecateImageHttpRequest.newBuilder()
+   *     .setImage(formattedImage)
+   *     .setDeprecationStatus(deprecationStatus)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = imageClient.deprecateImageCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -302,8 +319,8 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   Image response = imageClient.getImage();
+   *   ImageName image = ImageName.create("[PROJECT]", "[IMAGE]");
+   *   Image response = imageClient.getImage(image);
    * }
    * </code></pre>
    *
@@ -327,8 +344,11 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   Image response = imageClient.getImage();
+   *   String formattedImage = ImageClient.formatImageName("[PROJECT]", "[IMAGE]");
+   *   GetImageHttpRequest request = GetImageHttpRequest.newBuilder()
+   *     .setImage(formattedImage)
+   *     .build();
+   *   Image response = imageClient.getImage(request);
    * }
    * </code></pre>
    *
@@ -347,8 +367,11 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   ApiFuture&lt;Image&gt; future = imageClient.getImageCallable().futureCall();
+   *   String formattedImage = ImageClient.formatImageName("[PROJECT]", "[IMAGE]");
+   *   GetImageHttpRequest request = GetImageHttpRequest.newBuilder()
+   *     .setImage(formattedImage)
+   *     .build();
+   *   ApiFuture&lt;Image&gt; future = imageClient.getImageCallable().futureCall(request);
    *   // Do something
    *   Image response = future.get();
    * }
@@ -366,8 +389,8 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   Image response = imageClient.getFromFamilyImage();
+   *   FamilyName family = FamilyName.create("[PROJECT]", "[FAMILY]");
+   *   Image response = imageClient.getFromFamilyImage(family);
    * }
    * </code></pre>
    *
@@ -391,8 +414,11 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   Image response = imageClient.getFromFamilyImage();
+   *   String formattedFamily = ImageClient.formatFamilyName("[PROJECT]", "[FAMILY]");
+   *   GetFromFamilyImageHttpRequest request = GetFromFamilyImageHttpRequest.newBuilder()
+   *     .setFamily(formattedFamily)
+   *     .build();
+   *   Image response = imageClient.getFromFamilyImage(request);
    * }
    * </code></pre>
    *
@@ -411,8 +437,11 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   ApiFuture&lt;Image&gt; future = imageClient.getFromFamilyImageCallable().futureCall();
+   *   String formattedFamily = ImageClient.formatFamilyName("[PROJECT]", "[FAMILY]");
+   *   GetFromFamilyImageHttpRequest request = GetFromFamilyImageHttpRequest.newBuilder()
+   *     .setFamily(formattedFamily)
+   *     .build();
+   *   ApiFuture&lt;Image&gt; future = imageClient.getFromFamilyImageCallable().futureCall(request);
    *   // Do something
    *   Image response = future.get();
    * }
@@ -430,8 +459,9 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   Operation response = imageClient.insertImage();
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   Image image = Image.newBuilder().build();
+   *   Operation response = imageClient.insertImage(project, image);
    * }
    * </code></pre>
    *
@@ -457,8 +487,13 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   Operation response = imageClient.insertImage();
+   *   String formattedProject = ImageClient.formatProjectName("[PROJECT]");
+   *   Image image = Image.newBuilder().build();
+   *   InsertImageHttpRequest request = InsertImageHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .setImage(image)
+   *     .build();
+   *   Operation response = imageClient.insertImage(request);
    * }
    * </code></pre>
    *
@@ -477,8 +512,13 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = imageClient.insertImageCallable().futureCall();
+   *   String formattedProject = ImageClient.formatProjectName("[PROJECT]");
+   *   Image image = Image.newBuilder().build();
+   *   InsertImageHttpRequest request = InsertImageHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .setImage(image)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = imageClient.insertImageCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -496,8 +536,8 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   for (Image element : imageClient.listImages().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (Image element : imageClient.listImages(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -522,8 +562,11 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   for (Image element : imageClient.listImages().iterateAll()) {
+   *   String formattedProject = ImageClient.formatProjectName("[PROJECT]");
+   *   ListImagesHttpRequest request = ListImagesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (Image element : imageClient.listImages(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -545,8 +588,11 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
-   *   ApiFuture&lt;ListImagesPagedResponse&gt; future = imageClient.listImagesPagedCallable().futureCall();
+   *   String formattedProject = ImageClient.formatProjectName("[PROJECT]");
+   *   ListImagesHttpRequest request = ListImagesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;ListImagesPagedResponse&gt; future = imageClient.listImagesPagedCallable().futureCall(request);
    *   // Do something
    *   for (Image element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -566,9 +612,12 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *
+   *   String formattedProject = ImageClient.formatProjectName("[PROJECT]");
+   *   ListImagesHttpRequest request = ListImagesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     ImageList response = imageClient.listImagesCallable().call();
+   *     ImageList response = imageClient.listImagesCallable().call(request);
    *     for (Image element : response.getItems()) {
    *       // doThingsWith(element);
    *     }

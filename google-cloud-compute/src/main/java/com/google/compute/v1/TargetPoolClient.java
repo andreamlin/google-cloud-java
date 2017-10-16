@@ -40,8 +40,9 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
- *
- *   Operation response = targetPoolClient.addHealthCheckTargetPool();
+ *   TargetPoolName targetPool = TargetPoolName.create("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+ *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest = TargetPoolsAddHealthCheckRequest.newBuilder().build();
+ *   Operation response = targetPoolClient.addHealthCheckTargetPool(targetPool, targetPoolsAddHealthCheckRequest);
  * }
  * </code>
  * </pre>
@@ -167,8 +168,9 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   Operation response = targetPoolClient.addHealthCheckTargetPool();
+   *   TargetPoolName targetPool = TargetPoolName.create("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest = TargetPoolsAddHealthCheckRequest.newBuilder().build();
+   *   Operation response = targetPoolClient.addHealthCheckTargetPool(targetPool, targetPoolsAddHealthCheckRequest);
    * }
    * </code></pre>
    *
@@ -194,8 +196,13 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   Operation response = targetPoolClient.addHealthCheckTargetPool();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest = TargetPoolsAddHealthCheckRequest.newBuilder().build();
+   *   AddHealthCheckTargetPoolHttpRequest request = AddHealthCheckTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .setTargetPoolsAddHealthCheckRequest(targetPoolsAddHealthCheckRequest)
+   *     .build();
+   *   Operation response = targetPoolClient.addHealthCheckTargetPool(request);
    * }
    * </code></pre>
    *
@@ -214,8 +221,13 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetPoolClient.addHealthCheckTargetPoolCallable().futureCall();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest = TargetPoolsAddHealthCheckRequest.newBuilder().build();
+   *   AddHealthCheckTargetPoolHttpRequest request = AddHealthCheckTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .setTargetPoolsAddHealthCheckRequest(targetPoolsAddHealthCheckRequest)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetPoolClient.addHealthCheckTargetPoolCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -233,8 +245,9 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   Operation response = targetPoolClient.addInstanceTargetPool();
+   *   TargetPoolName targetPool = TargetPoolName.create("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequest = TargetPoolsAddInstanceRequest.newBuilder().build();
+   *   Operation response = targetPoolClient.addInstanceTargetPool(targetPool, targetPoolsAddInstanceRequest);
    * }
    * </code></pre>
    *
@@ -260,8 +273,13 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   Operation response = targetPoolClient.addInstanceTargetPool();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequest = TargetPoolsAddInstanceRequest.newBuilder().build();
+   *   AddInstanceTargetPoolHttpRequest request = AddInstanceTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .setTargetPoolsAddInstanceRequest(targetPoolsAddInstanceRequest)
+   *     .build();
+   *   Operation response = targetPoolClient.addInstanceTargetPool(request);
    * }
    * </code></pre>
    *
@@ -280,8 +298,13 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetPoolClient.addInstanceTargetPoolCallable().futureCall();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequest = TargetPoolsAddInstanceRequest.newBuilder().build();
+   *   AddInstanceTargetPoolHttpRequest request = AddInstanceTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .setTargetPoolsAddInstanceRequest(targetPoolsAddInstanceRequest)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetPoolClient.addInstanceTargetPoolCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -299,8 +322,8 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   for (TargetPool element : targetPoolClient.aggregatedListTargetPools().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (TargetPool element : targetPoolClient.aggregatedListTargetPools(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -325,8 +348,11 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   for (TargetPool element : targetPoolClient.aggregatedListTargetPools().iterateAll()) {
+   *   String formattedProject = TargetPoolClient.formatProjectName("[PROJECT]");
+   *   AggregatedListTargetPoolsHttpRequest request = AggregatedListTargetPoolsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (TargetPool element : targetPoolClient.aggregatedListTargetPools(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -348,8 +374,11 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   ApiFuture&lt;AggregatedListTargetPoolsPagedResponse&gt; future = targetPoolClient.aggregatedListTargetPoolsPagedCallable().futureCall();
+   *   String formattedProject = TargetPoolClient.formatProjectName("[PROJECT]");
+   *   AggregatedListTargetPoolsHttpRequest request = AggregatedListTargetPoolsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;AggregatedListTargetPoolsPagedResponse&gt; future = targetPoolClient.aggregatedListTargetPoolsPagedCallable().futureCall(request);
    *   // Do something
    *   for (TargetPool element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -369,9 +398,12 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
+   *   String formattedProject = TargetPoolClient.formatProjectName("[PROJECT]");
+   *   AggregatedListTargetPoolsHttpRequest request = AggregatedListTargetPoolsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     TargetPoolAggregatedList response = targetPoolClient.aggregatedListTargetPoolsCallable().call();
+   *     TargetPoolAggregatedList response = targetPoolClient.aggregatedListTargetPoolsCallable().call(request);
    *     for (TargetPool element : response.getTargetPools()) {
    *       // doThingsWith(element);
    *     }
@@ -397,8 +429,8 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   Operation response = targetPoolClient.deleteTargetPool();
+   *   TargetPoolName targetPool = TargetPoolName.create("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   Operation response = targetPoolClient.deleteTargetPool(targetPool);
    * }
    * </code></pre>
    *
@@ -422,8 +454,11 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   Operation response = targetPoolClient.deleteTargetPool();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   DeleteTargetPoolHttpRequest request = DeleteTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .build();
+   *   Operation response = targetPoolClient.deleteTargetPool(request);
    * }
    * </code></pre>
    *
@@ -442,8 +477,11 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetPoolClient.deleteTargetPoolCallable().futureCall();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   DeleteTargetPoolHttpRequest request = DeleteTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetPoolClient.deleteTargetPoolCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -461,8 +499,8 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   TargetPool response = targetPoolClient.getTargetPool();
+   *   TargetPoolName targetPool = TargetPoolName.create("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPool response = targetPoolClient.getTargetPool(targetPool);
    * }
    * </code></pre>
    *
@@ -486,8 +524,11 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   TargetPool response = targetPoolClient.getTargetPool();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   GetTargetPoolHttpRequest request = GetTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .build();
+   *   TargetPool response = targetPoolClient.getTargetPool(request);
    * }
    * </code></pre>
    *
@@ -506,8 +547,11 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   ApiFuture&lt;TargetPool&gt; future = targetPoolClient.getTargetPoolCallable().futureCall();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   GetTargetPoolHttpRequest request = GetTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .build();
+   *   ApiFuture&lt;TargetPool&gt; future = targetPoolClient.getTargetPoolCallable().futureCall(request);
    *   // Do something
    *   TargetPool response = future.get();
    * }
@@ -525,8 +569,9 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   TargetPoolInstanceHealth response = targetPoolClient.getHealthTargetPool();
+   *   TargetPoolName targetPool = TargetPoolName.create("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   InstanceReference instanceReference = InstanceReference.newBuilder().build();
+   *   TargetPoolInstanceHealth response = targetPoolClient.getHealthTargetPool(targetPool, instanceReference);
    * }
    * </code></pre>
    *
@@ -552,8 +597,13 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   TargetPoolInstanceHealth response = targetPoolClient.getHealthTargetPool();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   InstanceReference instanceReference = InstanceReference.newBuilder().build();
+   *   GetHealthTargetPoolHttpRequest request = GetHealthTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .setInstanceReference(instanceReference)
+   *     .build();
+   *   TargetPoolInstanceHealth response = targetPoolClient.getHealthTargetPool(request);
    * }
    * </code></pre>
    *
@@ -572,8 +622,13 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   ApiFuture&lt;TargetPoolInstanceHealth&gt; future = targetPoolClient.getHealthTargetPoolCallable().futureCall();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   InstanceReference instanceReference = InstanceReference.newBuilder().build();
+   *   GetHealthTargetPoolHttpRequest request = GetHealthTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .setInstanceReference(instanceReference)
+   *     .build();
+   *   ApiFuture&lt;TargetPoolInstanceHealth&gt; future = targetPoolClient.getHealthTargetPoolCallable().futureCall(request);
    *   // Do something
    *   TargetPoolInstanceHealth response = future.get();
    * }
@@ -591,8 +646,9 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   Operation response = targetPoolClient.insertTargetPool();
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   TargetPool targetPool = TargetPool.newBuilder().build();
+   *   Operation response = targetPoolClient.insertTargetPool(region, targetPool);
    * }
    * </code></pre>
    *
@@ -618,8 +674,13 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   Operation response = targetPoolClient.insertTargetPool();
+   *   String formattedRegion = TargetPoolClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   TargetPool targetPool = TargetPool.newBuilder().build();
+   *   InsertTargetPoolHttpRequest request = InsertTargetPoolHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .setTargetPool(targetPool)
+   *     .build();
+   *   Operation response = targetPoolClient.insertTargetPool(request);
    * }
    * </code></pre>
    *
@@ -638,8 +699,13 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetPoolClient.insertTargetPoolCallable().futureCall();
+   *   String formattedRegion = TargetPoolClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   TargetPool targetPool = TargetPool.newBuilder().build();
+   *   InsertTargetPoolHttpRequest request = InsertTargetPoolHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .setTargetPool(targetPool)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetPoolClient.insertTargetPoolCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -657,8 +723,8 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   for (TargetPool element : targetPoolClient.listTargetPools().iterateAll()) {
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   for (TargetPool element : targetPoolClient.listTargetPools(region).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -683,8 +749,11 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   for (TargetPool element : targetPoolClient.listTargetPools().iterateAll()) {
+   *   String formattedRegion = TargetPoolClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListTargetPoolsHttpRequest request = ListTargetPoolsHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
+   *   for (TargetPool element : targetPoolClient.listTargetPools(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -706,8 +775,11 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   ApiFuture&lt;ListTargetPoolsPagedResponse&gt; future = targetPoolClient.listTargetPoolsPagedCallable().futureCall();
+   *   String formattedRegion = TargetPoolClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListTargetPoolsHttpRequest request = ListTargetPoolsHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
+   *   ApiFuture&lt;ListTargetPoolsPagedResponse&gt; future = targetPoolClient.listTargetPoolsPagedCallable().futureCall(request);
    *   // Do something
    *   for (TargetPool element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -727,9 +799,12 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
+   *   String formattedRegion = TargetPoolClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListTargetPoolsHttpRequest request = ListTargetPoolsHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
    *   while (true) {
-   *     TargetPoolList response = targetPoolClient.listTargetPoolsCallable().call();
+   *     TargetPoolList response = targetPoolClient.listTargetPoolsCallable().call(request);
    *     for (TargetPool element : response.getItems()) {
    *       // doThingsWith(element);
    *     }
@@ -755,8 +830,9 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   Operation response = targetPoolClient.removeHealthCheckTargetPool();
+   *   TargetPoolName targetPool = TargetPoolName.create("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequest = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
+   *   Operation response = targetPoolClient.removeHealthCheckTargetPool(targetPool, targetPoolsRemoveHealthCheckRequest);
    * }
    * </code></pre>
    *
@@ -782,8 +858,13 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   Operation response = targetPoolClient.removeHealthCheckTargetPool();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequest = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
+   *   RemoveHealthCheckTargetPoolHttpRequest request = RemoveHealthCheckTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .setTargetPoolsRemoveHealthCheckRequest(targetPoolsRemoveHealthCheckRequest)
+   *     .build();
+   *   Operation response = targetPoolClient.removeHealthCheckTargetPool(request);
    * }
    * </code></pre>
    *
@@ -802,8 +883,13 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetPoolClient.removeHealthCheckTargetPoolCallable().futureCall();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequest = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
+   *   RemoveHealthCheckTargetPoolHttpRequest request = RemoveHealthCheckTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .setTargetPoolsRemoveHealthCheckRequest(targetPoolsRemoveHealthCheckRequest)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetPoolClient.removeHealthCheckTargetPoolCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -821,8 +907,9 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   Operation response = targetPoolClient.removeInstanceTargetPool();
+   *   TargetPoolName targetPool = TargetPoolName.create("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequest = TargetPoolsRemoveInstanceRequest.newBuilder().build();
+   *   Operation response = targetPoolClient.removeInstanceTargetPool(targetPool, targetPoolsRemoveInstanceRequest);
    * }
    * </code></pre>
    *
@@ -848,8 +935,13 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   Operation response = targetPoolClient.removeInstanceTargetPool();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequest = TargetPoolsRemoveInstanceRequest.newBuilder().build();
+   *   RemoveInstanceTargetPoolHttpRequest request = RemoveInstanceTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .setTargetPoolsRemoveInstanceRequest(targetPoolsRemoveInstanceRequest)
+   *     .build();
+   *   Operation response = targetPoolClient.removeInstanceTargetPool(request);
    * }
    * </code></pre>
    *
@@ -868,8 +960,13 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetPoolClient.removeInstanceTargetPoolCallable().futureCall();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequest = TargetPoolsRemoveInstanceRequest.newBuilder().build();
+   *   RemoveInstanceTargetPoolHttpRequest request = RemoveInstanceTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .setTargetPoolsRemoveInstanceRequest(targetPoolsRemoveInstanceRequest)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetPoolClient.removeInstanceTargetPoolCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -887,8 +984,10 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   Operation response = targetPoolClient.setBackupTargetPool();
+   *   TargetPoolName targetPool = TargetPoolName.create("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   Float failoverRatio = 0;
+   *   TargetReference targetReference = TargetReference.newBuilder().build();
+   *   Operation response = targetPoolClient.setBackupTargetPool(targetPool, failoverRatio, targetReference);
    * }
    * </code></pre>
    *
@@ -916,8 +1015,15 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   Operation response = targetPoolClient.setBackupTargetPool();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   Float failoverRatio = 0;
+   *   TargetReference targetReference = TargetReference.newBuilder().build();
+   *   SetBackupTargetPoolHttpRequest request = SetBackupTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .setFailoverRatio(failoverRatio)
+   *     .setTargetReference(targetReference)
+   *     .build();
+   *   Operation response = targetPoolClient.setBackupTargetPool(request);
    * }
    * </code></pre>
    *
@@ -936,8 +1042,15 @@ public class TargetPoolClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetPoolClient.setBackupTargetPoolCallable().futureCall();
+   *   String formattedTargetPool = TargetPoolClient.formatTargetPoolName("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   Float failoverRatio = 0;
+   *   TargetReference targetReference = TargetReference.newBuilder().build();
+   *   SetBackupTargetPoolHttpRequest request = SetBackupTargetPoolHttpRequest.newBuilder()
+   *     .setTargetPool(formattedTargetPool)
+   *     .setFailoverRatio(failoverRatio)
+   *     .setTargetReference(targetReference)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetPoolClient.setBackupTargetPoolCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }

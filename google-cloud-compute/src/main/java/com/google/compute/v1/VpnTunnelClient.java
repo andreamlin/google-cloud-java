@@ -40,8 +40,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
- *
- *   Operation response = vpnTunnelClient.deleteVpnTunnel();
+ *   VpnTunnelName vpnTunnel = VpnTunnelName.create("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
+ *   Operation response = vpnTunnelClient.deleteVpnTunnel(vpnTunnel);
  * }
  * </code>
  * </pre>
@@ -167,8 +167,8 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   for (VpnTunnel element : vpnTunnelClient.aggregatedListVpnTunnels().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (VpnTunnel element : vpnTunnelClient.aggregatedListVpnTunnels(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -193,8 +193,11 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   for (VpnTunnel element : vpnTunnelClient.aggregatedListVpnTunnels().iterateAll()) {
+   *   String formattedProject = VpnTunnelClient.formatProjectName("[PROJECT]");
+   *   AggregatedListVpnTunnelsHttpRequest request = AggregatedListVpnTunnelsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (VpnTunnel element : vpnTunnelClient.aggregatedListVpnTunnels(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -216,8 +219,11 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   ApiFuture&lt;AggregatedListVpnTunnelsPagedResponse&gt; future = vpnTunnelClient.aggregatedListVpnTunnelsPagedCallable().futureCall();
+   *   String formattedProject = VpnTunnelClient.formatProjectName("[PROJECT]");
+   *   AggregatedListVpnTunnelsHttpRequest request = AggregatedListVpnTunnelsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;AggregatedListVpnTunnelsPagedResponse&gt; future = vpnTunnelClient.aggregatedListVpnTunnelsPagedCallable().futureCall(request);
    *   // Do something
    *   for (VpnTunnel element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -237,9 +243,12 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
+   *   String formattedProject = VpnTunnelClient.formatProjectName("[PROJECT]");
+   *   AggregatedListVpnTunnelsHttpRequest request = AggregatedListVpnTunnelsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     VpnTunnelAggregatedList response = vpnTunnelClient.aggregatedListVpnTunnelsCallable().call();
+   *     VpnTunnelAggregatedList response = vpnTunnelClient.aggregatedListVpnTunnelsCallable().call(request);
    *     for (VpnTunnel element : response.getVpnTunnels()) {
    *       // doThingsWith(element);
    *     }
@@ -265,8 +274,8 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   Operation response = vpnTunnelClient.deleteVpnTunnel();
+   *   VpnTunnelName vpnTunnel = VpnTunnelName.create("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
+   *   Operation response = vpnTunnelClient.deleteVpnTunnel(vpnTunnel);
    * }
    * </code></pre>
    *
@@ -290,8 +299,11 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   Operation response = vpnTunnelClient.deleteVpnTunnel();
+   *   String formattedVpnTunnel = VpnTunnelClient.formatVpnTunnelName("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
+   *   DeleteVpnTunnelHttpRequest request = DeleteVpnTunnelHttpRequest.newBuilder()
+   *     .setVpnTunnel(formattedVpnTunnel)
+   *     .build();
+   *   Operation response = vpnTunnelClient.deleteVpnTunnel(request);
    * }
    * </code></pre>
    *
@@ -310,8 +322,11 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = vpnTunnelClient.deleteVpnTunnelCallable().futureCall();
+   *   String formattedVpnTunnel = VpnTunnelClient.formatVpnTunnelName("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
+   *   DeleteVpnTunnelHttpRequest request = DeleteVpnTunnelHttpRequest.newBuilder()
+   *     .setVpnTunnel(formattedVpnTunnel)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = vpnTunnelClient.deleteVpnTunnelCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -329,8 +344,8 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   VpnTunnel response = vpnTunnelClient.getVpnTunnel();
+   *   VpnTunnelName vpnTunnel = VpnTunnelName.create("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
+   *   VpnTunnel response = vpnTunnelClient.getVpnTunnel(vpnTunnel);
    * }
    * </code></pre>
    *
@@ -354,8 +369,11 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   VpnTunnel response = vpnTunnelClient.getVpnTunnel();
+   *   String formattedVpnTunnel = VpnTunnelClient.formatVpnTunnelName("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
+   *   GetVpnTunnelHttpRequest request = GetVpnTunnelHttpRequest.newBuilder()
+   *     .setVpnTunnel(formattedVpnTunnel)
+   *     .build();
+   *   VpnTunnel response = vpnTunnelClient.getVpnTunnel(request);
    * }
    * </code></pre>
    *
@@ -374,8 +392,11 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   ApiFuture&lt;VpnTunnel&gt; future = vpnTunnelClient.getVpnTunnelCallable().futureCall();
+   *   String formattedVpnTunnel = VpnTunnelClient.formatVpnTunnelName("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
+   *   GetVpnTunnelHttpRequest request = GetVpnTunnelHttpRequest.newBuilder()
+   *     .setVpnTunnel(formattedVpnTunnel)
+   *     .build();
+   *   ApiFuture&lt;VpnTunnel&gt; future = vpnTunnelClient.getVpnTunnelCallable().futureCall(request);
    *   // Do something
    *   VpnTunnel response = future.get();
    * }
@@ -393,8 +414,9 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   Operation response = vpnTunnelClient.insertVpnTunnel();
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   VpnTunnel vpnTunnel = VpnTunnel.newBuilder().build();
+   *   Operation response = vpnTunnelClient.insertVpnTunnel(region, vpnTunnel);
    * }
    * </code></pre>
    *
@@ -420,8 +442,13 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   Operation response = vpnTunnelClient.insertVpnTunnel();
+   *   String formattedRegion = VpnTunnelClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   VpnTunnel vpnTunnel = VpnTunnel.newBuilder().build();
+   *   InsertVpnTunnelHttpRequest request = InsertVpnTunnelHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .setVpnTunnel(vpnTunnel)
+   *     .build();
+   *   Operation response = vpnTunnelClient.insertVpnTunnel(request);
    * }
    * </code></pre>
    *
@@ -440,8 +467,13 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = vpnTunnelClient.insertVpnTunnelCallable().futureCall();
+   *   String formattedRegion = VpnTunnelClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   VpnTunnel vpnTunnel = VpnTunnel.newBuilder().build();
+   *   InsertVpnTunnelHttpRequest request = InsertVpnTunnelHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .setVpnTunnel(vpnTunnel)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = vpnTunnelClient.insertVpnTunnelCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -459,8 +491,8 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   for (VpnTunnel element : vpnTunnelClient.listVpnTunnels().iterateAll()) {
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   for (VpnTunnel element : vpnTunnelClient.listVpnTunnels(region).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -485,8 +517,11 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   for (VpnTunnel element : vpnTunnelClient.listVpnTunnels().iterateAll()) {
+   *   String formattedRegion = VpnTunnelClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListVpnTunnelsHttpRequest request = ListVpnTunnelsHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
+   *   for (VpnTunnel element : vpnTunnelClient.listVpnTunnels(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -508,8 +543,11 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
-   *   ApiFuture&lt;ListVpnTunnelsPagedResponse&gt; future = vpnTunnelClient.listVpnTunnelsPagedCallable().futureCall();
+   *   String formattedRegion = VpnTunnelClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListVpnTunnelsHttpRequest request = ListVpnTunnelsHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
+   *   ApiFuture&lt;ListVpnTunnelsPagedResponse&gt; future = vpnTunnelClient.listVpnTunnelsPagedCallable().futureCall(request);
    *   // Do something
    *   for (VpnTunnel element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -529,9 +567,12 @@ public class VpnTunnelClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
-   *
+   *   String formattedRegion = VpnTunnelClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListVpnTunnelsHttpRequest request = ListVpnTunnelsHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
    *   while (true) {
-   *     VpnTunnelList response = vpnTunnelClient.listVpnTunnelsCallable().call();
+   *     VpnTunnelList response = vpnTunnelClient.listVpnTunnelsCallable().call(request);
    *     for (VpnTunnel element : response.getItems()) {
    *       // doThingsWith(element);
    *     }

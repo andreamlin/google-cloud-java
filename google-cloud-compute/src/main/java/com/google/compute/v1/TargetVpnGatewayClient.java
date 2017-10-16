@@ -40,8 +40,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
- *
- *   Operation response = targetVpnGatewayClient.deleteTargetVpnGateway();
+ *   TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.create("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
+ *   Operation response = targetVpnGatewayClient.deleteTargetVpnGateway(targetVpnGateway);
  * }
  * </code>
  * </pre>
@@ -167,8 +167,8 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   for (TargetVpnGateway element : targetVpnGatewayClient.aggregatedListTargetVpnGateways().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (TargetVpnGateway element : targetVpnGatewayClient.aggregatedListTargetVpnGateways(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -193,8 +193,11 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   for (TargetVpnGateway element : targetVpnGatewayClient.aggregatedListTargetVpnGateways().iterateAll()) {
+   *   String formattedProject = TargetVpnGatewayClient.formatProjectName("[PROJECT]");
+   *   AggregatedListTargetVpnGatewaysHttpRequest request = AggregatedListTargetVpnGatewaysHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (TargetVpnGateway element : targetVpnGatewayClient.aggregatedListTargetVpnGateways(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -216,8 +219,11 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   ApiFuture&lt;AggregatedListTargetVpnGatewaysPagedResponse&gt; future = targetVpnGatewayClient.aggregatedListTargetVpnGatewaysPagedCallable().futureCall();
+   *   String formattedProject = TargetVpnGatewayClient.formatProjectName("[PROJECT]");
+   *   AggregatedListTargetVpnGatewaysHttpRequest request = AggregatedListTargetVpnGatewaysHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;AggregatedListTargetVpnGatewaysPagedResponse&gt; future = targetVpnGatewayClient.aggregatedListTargetVpnGatewaysPagedCallable().futureCall(request);
    *   // Do something
    *   for (TargetVpnGateway element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -237,9 +243,12 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
+   *   String formattedProject = TargetVpnGatewayClient.formatProjectName("[PROJECT]");
+   *   AggregatedListTargetVpnGatewaysHttpRequest request = AggregatedListTargetVpnGatewaysHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     TargetVpnGatewayAggregatedList response = targetVpnGatewayClient.aggregatedListTargetVpnGatewaysCallable().call();
+   *     TargetVpnGatewayAggregatedList response = targetVpnGatewayClient.aggregatedListTargetVpnGatewaysCallable().call(request);
    *     for (TargetVpnGateway element : response.getTargetVpnGateways()) {
    *       // doThingsWith(element);
    *     }
@@ -265,8 +274,8 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   Operation response = targetVpnGatewayClient.deleteTargetVpnGateway();
+   *   TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.create("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
+   *   Operation response = targetVpnGatewayClient.deleteTargetVpnGateway(targetVpnGateway);
    * }
    * </code></pre>
    *
@@ -290,8 +299,11 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   Operation response = targetVpnGatewayClient.deleteTargetVpnGateway();
+   *   String formattedTargetVpnGateway = TargetVpnGatewayClient.formatTargetVpnGatewayName("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
+   *   DeleteTargetVpnGatewayHttpRequest request = DeleteTargetVpnGatewayHttpRequest.newBuilder()
+   *     .setTargetVpnGateway(formattedTargetVpnGateway)
+   *     .build();
+   *   Operation response = targetVpnGatewayClient.deleteTargetVpnGateway(request);
    * }
    * </code></pre>
    *
@@ -310,8 +322,11 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetVpnGatewayClient.deleteTargetVpnGatewayCallable().futureCall();
+   *   String formattedTargetVpnGateway = TargetVpnGatewayClient.formatTargetVpnGatewayName("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
+   *   DeleteTargetVpnGatewayHttpRequest request = DeleteTargetVpnGatewayHttpRequest.newBuilder()
+   *     .setTargetVpnGateway(formattedTargetVpnGateway)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetVpnGatewayClient.deleteTargetVpnGatewayCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -329,8 +344,8 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   TargetVpnGateway response = targetVpnGatewayClient.getTargetVpnGateway();
+   *   TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.create("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
+   *   TargetVpnGateway response = targetVpnGatewayClient.getTargetVpnGateway(targetVpnGateway);
    * }
    * </code></pre>
    *
@@ -354,8 +369,11 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   TargetVpnGateway response = targetVpnGatewayClient.getTargetVpnGateway();
+   *   String formattedTargetVpnGateway = TargetVpnGatewayClient.formatTargetVpnGatewayName("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
+   *   GetTargetVpnGatewayHttpRequest request = GetTargetVpnGatewayHttpRequest.newBuilder()
+   *     .setTargetVpnGateway(formattedTargetVpnGateway)
+   *     .build();
+   *   TargetVpnGateway response = targetVpnGatewayClient.getTargetVpnGateway(request);
    * }
    * </code></pre>
    *
@@ -374,8 +392,11 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   ApiFuture&lt;TargetVpnGateway&gt; future = targetVpnGatewayClient.getTargetVpnGatewayCallable().futureCall();
+   *   String formattedTargetVpnGateway = TargetVpnGatewayClient.formatTargetVpnGatewayName("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
+   *   GetTargetVpnGatewayHttpRequest request = GetTargetVpnGatewayHttpRequest.newBuilder()
+   *     .setTargetVpnGateway(formattedTargetVpnGateway)
+   *     .build();
+   *   ApiFuture&lt;TargetVpnGateway&gt; future = targetVpnGatewayClient.getTargetVpnGatewayCallable().futureCall(request);
    *   // Do something
    *   TargetVpnGateway response = future.get();
    * }
@@ -393,8 +414,9 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   Operation response = targetVpnGatewayClient.insertTargetVpnGateway();
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   TargetVpnGateway targetVpnGateway = TargetVpnGateway.newBuilder().build();
+   *   Operation response = targetVpnGatewayClient.insertTargetVpnGateway(region, targetVpnGateway);
    * }
    * </code></pre>
    *
@@ -420,8 +442,13 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   Operation response = targetVpnGatewayClient.insertTargetVpnGateway();
+   *   String formattedRegion = TargetVpnGatewayClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   TargetVpnGateway targetVpnGateway = TargetVpnGateway.newBuilder().build();
+   *   InsertTargetVpnGatewayHttpRequest request = InsertTargetVpnGatewayHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .setTargetVpnGateway(targetVpnGateway)
+   *     .build();
+   *   Operation response = targetVpnGatewayClient.insertTargetVpnGateway(request);
    * }
    * </code></pre>
    *
@@ -440,8 +467,13 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetVpnGatewayClient.insertTargetVpnGatewayCallable().futureCall();
+   *   String formattedRegion = TargetVpnGatewayClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   TargetVpnGateway targetVpnGateway = TargetVpnGateway.newBuilder().build();
+   *   InsertTargetVpnGatewayHttpRequest request = InsertTargetVpnGatewayHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .setTargetVpnGateway(targetVpnGateway)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetVpnGatewayClient.insertTargetVpnGatewayCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -459,8 +491,8 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   for (TargetVpnGateway element : targetVpnGatewayClient.listTargetVpnGateways().iterateAll()) {
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   for (TargetVpnGateway element : targetVpnGatewayClient.listTargetVpnGateways(region).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -485,8 +517,11 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   for (TargetVpnGateway element : targetVpnGatewayClient.listTargetVpnGateways().iterateAll()) {
+   *   String formattedRegion = TargetVpnGatewayClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListTargetVpnGatewaysHttpRequest request = ListTargetVpnGatewaysHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
+   *   for (TargetVpnGateway element : targetVpnGatewayClient.listTargetVpnGateways(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -508,8 +543,11 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
-   *   ApiFuture&lt;ListTargetVpnGatewaysPagedResponse&gt; future = targetVpnGatewayClient.listTargetVpnGatewaysPagedCallable().futureCall();
+   *   String formattedRegion = TargetVpnGatewayClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListTargetVpnGatewaysHttpRequest request = ListTargetVpnGatewaysHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
+   *   ApiFuture&lt;ListTargetVpnGatewaysPagedResponse&gt; future = targetVpnGatewayClient.listTargetVpnGatewaysPagedCallable().futureCall(request);
    *   // Do something
    *   for (TargetVpnGateway element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -529,9 +567,12 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
-   *
+   *   String formattedRegion = TargetVpnGatewayClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListTargetVpnGatewaysHttpRequest request = ListTargetVpnGatewaysHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
    *   while (true) {
-   *     TargetVpnGatewayList response = targetVpnGatewayClient.listTargetVpnGatewaysCallable().call();
+   *     TargetVpnGatewayList response = targetVpnGatewayClient.listTargetVpnGatewaysCallable().call(request);
    *     for (TargetVpnGateway element : response.getItems()) {
    *       // doThingsWith(element);
    *     }

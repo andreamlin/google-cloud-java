@@ -40,8 +40,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
- *
- *   Operation response = subnetworkClient.deleteSubnetwork();
+ *   SubnetworkName subnetwork = SubnetworkName.create("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+ *   Operation response = subnetworkClient.deleteSubnetwork(subnetwork);
  * }
  * </code>
  * </pre>
@@ -167,8 +167,8 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   for (Subnetwork element : subnetworkClient.aggregatedListSubnetworks().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (Subnetwork element : subnetworkClient.aggregatedListSubnetworks(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -193,8 +193,11 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   for (Subnetwork element : subnetworkClient.aggregatedListSubnetworks().iterateAll()) {
+   *   String formattedProject = SubnetworkClient.formatProjectName("[PROJECT]");
+   *   AggregatedListSubnetworksHttpRequest request = AggregatedListSubnetworksHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (Subnetwork element : subnetworkClient.aggregatedListSubnetworks(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -216,8 +219,11 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   ApiFuture&lt;AggregatedListSubnetworksPagedResponse&gt; future = subnetworkClient.aggregatedListSubnetworksPagedCallable().futureCall();
+   *   String formattedProject = SubnetworkClient.formatProjectName("[PROJECT]");
+   *   AggregatedListSubnetworksHttpRequest request = AggregatedListSubnetworksHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;AggregatedListSubnetworksPagedResponse&gt; future = subnetworkClient.aggregatedListSubnetworksPagedCallable().futureCall(request);
    *   // Do something
    *   for (Subnetwork element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -237,9 +243,12 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
+   *   String formattedProject = SubnetworkClient.formatProjectName("[PROJECT]");
+   *   AggregatedListSubnetworksHttpRequest request = AggregatedListSubnetworksHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     SubnetworkAggregatedList response = subnetworkClient.aggregatedListSubnetworksCallable().call();
+   *     SubnetworkAggregatedList response = subnetworkClient.aggregatedListSubnetworksCallable().call(request);
    *     for (Subnetwork element : response.getSubnetworks()) {
    *       // doThingsWith(element);
    *     }
@@ -265,8 +274,8 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   Operation response = subnetworkClient.deleteSubnetwork();
+   *   SubnetworkName subnetwork = SubnetworkName.create("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   Operation response = subnetworkClient.deleteSubnetwork(subnetwork);
    * }
    * </code></pre>
    *
@@ -290,8 +299,11 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   Operation response = subnetworkClient.deleteSubnetwork();
+   *   String formattedSubnetwork = SubnetworkClient.formatSubnetworkName("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   DeleteSubnetworkHttpRequest request = DeleteSubnetworkHttpRequest.newBuilder()
+   *     .setSubnetwork(formattedSubnetwork)
+   *     .build();
+   *   Operation response = subnetworkClient.deleteSubnetwork(request);
    * }
    * </code></pre>
    *
@@ -310,8 +322,11 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = subnetworkClient.deleteSubnetworkCallable().futureCall();
+   *   String formattedSubnetwork = SubnetworkClient.formatSubnetworkName("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   DeleteSubnetworkHttpRequest request = DeleteSubnetworkHttpRequest.newBuilder()
+   *     .setSubnetwork(formattedSubnetwork)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = subnetworkClient.deleteSubnetworkCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -329,8 +344,9 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   Operation response = subnetworkClient.expandIpCidrRangeSubnetwork();
+   *   SubnetworkName subnetwork = SubnetworkName.create("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
+   *   Operation response = subnetworkClient.expandIpCidrRangeSubnetwork(subnetwork, subnetworksExpandIpCidrRangeRequest);
    * }
    * </code></pre>
    *
@@ -356,8 +372,13 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   Operation response = subnetworkClient.expandIpCidrRangeSubnetwork();
+   *   String formattedSubnetwork = SubnetworkClient.formatSubnetworkName("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
+   *   ExpandIpCidrRangeSubnetworkHttpRequest request = ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
+   *     .setSubnetwork(formattedSubnetwork)
+   *     .setSubnetworksExpandIpCidrRangeRequest(subnetworksExpandIpCidrRangeRequest)
+   *     .build();
+   *   Operation response = subnetworkClient.expandIpCidrRangeSubnetwork(request);
    * }
    * </code></pre>
    *
@@ -376,8 +397,13 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = subnetworkClient.expandIpCidrRangeSubnetworkCallable().futureCall();
+   *   String formattedSubnetwork = SubnetworkClient.formatSubnetworkName("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
+   *   ExpandIpCidrRangeSubnetworkHttpRequest request = ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
+   *     .setSubnetwork(formattedSubnetwork)
+   *     .setSubnetworksExpandIpCidrRangeRequest(subnetworksExpandIpCidrRangeRequest)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = subnetworkClient.expandIpCidrRangeSubnetworkCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -395,8 +421,8 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   Subnetwork response = subnetworkClient.getSubnetwork();
+   *   SubnetworkName subnetwork = SubnetworkName.create("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   Subnetwork response = subnetworkClient.getSubnetwork(subnetwork);
    * }
    * </code></pre>
    *
@@ -420,8 +446,11 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   Subnetwork response = subnetworkClient.getSubnetwork();
+   *   String formattedSubnetwork = SubnetworkClient.formatSubnetworkName("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   GetSubnetworkHttpRequest request = GetSubnetworkHttpRequest.newBuilder()
+   *     .setSubnetwork(formattedSubnetwork)
+   *     .build();
+   *   Subnetwork response = subnetworkClient.getSubnetwork(request);
    * }
    * </code></pre>
    *
@@ -440,8 +469,11 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   ApiFuture&lt;Subnetwork&gt; future = subnetworkClient.getSubnetworkCallable().futureCall();
+   *   String formattedSubnetwork = SubnetworkClient.formatSubnetworkName("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   GetSubnetworkHttpRequest request = GetSubnetworkHttpRequest.newBuilder()
+   *     .setSubnetwork(formattedSubnetwork)
+   *     .build();
+   *   ApiFuture&lt;Subnetwork&gt; future = subnetworkClient.getSubnetworkCallable().futureCall(request);
    *   // Do something
    *   Subnetwork response = future.get();
    * }
@@ -459,8 +491,9 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   Operation response = subnetworkClient.insertSubnetwork();
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   Subnetwork subnetwork = Subnetwork.newBuilder().build();
+   *   Operation response = subnetworkClient.insertSubnetwork(region, subnetwork);
    * }
    * </code></pre>
    *
@@ -486,8 +519,13 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   Operation response = subnetworkClient.insertSubnetwork();
+   *   String formattedRegion = SubnetworkClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   Subnetwork subnetwork = Subnetwork.newBuilder().build();
+   *   InsertSubnetworkHttpRequest request = InsertSubnetworkHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .setSubnetwork(subnetwork)
+   *     .build();
+   *   Operation response = subnetworkClient.insertSubnetwork(request);
    * }
    * </code></pre>
    *
@@ -506,8 +544,13 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = subnetworkClient.insertSubnetworkCallable().futureCall();
+   *   String formattedRegion = SubnetworkClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   Subnetwork subnetwork = Subnetwork.newBuilder().build();
+   *   InsertSubnetworkHttpRequest request = InsertSubnetworkHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .setSubnetwork(subnetwork)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = subnetworkClient.insertSubnetworkCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -525,8 +568,8 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   for (Subnetwork element : subnetworkClient.listSubnetworks().iterateAll()) {
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   for (Subnetwork element : subnetworkClient.listSubnetworks(region).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -551,8 +594,11 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   for (Subnetwork element : subnetworkClient.listSubnetworks().iterateAll()) {
+   *   String formattedRegion = SubnetworkClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListSubnetworksHttpRequest request = ListSubnetworksHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
+   *   for (Subnetwork element : subnetworkClient.listSubnetworks(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -574,8 +620,11 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
-   *   ApiFuture&lt;ListSubnetworksPagedResponse&gt; future = subnetworkClient.listSubnetworksPagedCallable().futureCall();
+   *   String formattedRegion = SubnetworkClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListSubnetworksHttpRequest request = ListSubnetworksHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
+   *   ApiFuture&lt;ListSubnetworksPagedResponse&gt; future = subnetworkClient.listSubnetworksPagedCallable().futureCall(request);
    *   // Do something
    *   for (Subnetwork element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -595,9 +644,12 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *
+   *   String formattedRegion = SubnetworkClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListSubnetworksHttpRequest request = ListSubnetworksHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
    *   while (true) {
-   *     SubnetworkList response = subnetworkClient.listSubnetworksCallable().call();
+   *     SubnetworkList response = subnetworkClient.listSubnetworksCallable().call(request);
    *     for (Subnetwork element : response.getItems()) {
    *       // doThingsWith(element);
    *     }

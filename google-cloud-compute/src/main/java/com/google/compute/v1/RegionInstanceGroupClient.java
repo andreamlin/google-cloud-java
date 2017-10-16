@@ -40,8 +40,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
- *
- *   InstanceGroup response = regionInstanceGroupClient.getRegionInstanceGroup();
+ *   RegionInstanceGroupsInstanceGroupName instanceGroup = RegionInstanceGroupsInstanceGroupName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
+ *   InstanceGroup response = regionInstanceGroupClient.getRegionInstanceGroup(instanceGroup);
  * }
  * </code>
  * </pre>
@@ -167,8 +167,8 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
-   *
-   *   InstanceGroup response = regionInstanceGroupClient.getRegionInstanceGroup();
+   *   RegionInstanceGroupsInstanceGroupName instanceGroup = RegionInstanceGroupsInstanceGroupName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
+   *   InstanceGroup response = regionInstanceGroupClient.getRegionInstanceGroup(instanceGroup);
    * }
    * </code></pre>
    *
@@ -192,8 +192,11 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
-   *
-   *   InstanceGroup response = regionInstanceGroupClient.getRegionInstanceGroup();
+   *   String formattedInstanceGroup = RegionInstanceGroupClient.formatRegionInstanceGroupsInstanceGroupName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
+   *   GetRegionInstanceGroupHttpRequest request = GetRegionInstanceGroupHttpRequest.newBuilder()
+   *     .setInstanceGroup(formattedInstanceGroup)
+   *     .build();
+   *   InstanceGroup response = regionInstanceGroupClient.getRegionInstanceGroup(request);
    * }
    * </code></pre>
    *
@@ -212,8 +215,11 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
-   *
-   *   ApiFuture&lt;InstanceGroup&gt; future = regionInstanceGroupClient.getRegionInstanceGroupCallable().futureCall();
+   *   String formattedInstanceGroup = RegionInstanceGroupClient.formatRegionInstanceGroupsInstanceGroupName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
+   *   GetRegionInstanceGroupHttpRequest request = GetRegionInstanceGroupHttpRequest.newBuilder()
+   *     .setInstanceGroup(formattedInstanceGroup)
+   *     .build();
+   *   ApiFuture&lt;InstanceGroup&gt; future = regionInstanceGroupClient.getRegionInstanceGroupCallable().futureCall(request);
    *   // Do something
    *   InstanceGroup response = future.get();
    * }
@@ -231,8 +237,8 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
-   *
-   *   for (InstanceGroup element : regionInstanceGroupClient.listRegionInstanceGroups().iterateAll()) {
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   for (InstanceGroup element : regionInstanceGroupClient.listRegionInstanceGroups(region).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -257,8 +263,11 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
-   *
-   *   for (InstanceGroup element : regionInstanceGroupClient.listRegionInstanceGroups().iterateAll()) {
+   *   String formattedRegion = RegionInstanceGroupClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListRegionInstanceGroupsHttpRequest request = ListRegionInstanceGroupsHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
+   *   for (InstanceGroup element : regionInstanceGroupClient.listRegionInstanceGroups(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -280,8 +289,11 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
-   *
-   *   ApiFuture&lt;ListRegionInstanceGroupsPagedResponse&gt; future = regionInstanceGroupClient.listRegionInstanceGroupsPagedCallable().futureCall();
+   *   String formattedRegion = RegionInstanceGroupClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListRegionInstanceGroupsHttpRequest request = ListRegionInstanceGroupsHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
+   *   ApiFuture&lt;ListRegionInstanceGroupsPagedResponse&gt; future = regionInstanceGroupClient.listRegionInstanceGroupsPagedCallable().futureCall(request);
    *   // Do something
    *   for (InstanceGroup element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -301,9 +313,12 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
-   *
+   *   String formattedRegion = RegionInstanceGroupClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   ListRegionInstanceGroupsHttpRequest request = ListRegionInstanceGroupsHttpRequest.newBuilder()
+   *     .setRegion(formattedRegion)
+   *     .build();
    *   while (true) {
-   *     RegionInstanceGroupList response = regionInstanceGroupClient.listRegionInstanceGroupsCallable().call();
+   *     RegionInstanceGroupList response = regionInstanceGroupClient.listRegionInstanceGroupsCallable().call(request);
    *     for (InstanceGroup element : response.getItems()) {
    *       // doThingsWith(element);
    *     }
@@ -329,8 +344,9 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
-   *
-   *   for (InstanceWithNamedPorts element : regionInstanceGroupClient.listInstancesRegionInstanceGroups().iterateAll()) {
+   *   RegionInstanceGroupsInstanceGroupName instanceGroup = RegionInstanceGroupsInstanceGroupName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
+   *   RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequest = RegionInstanceGroupsListInstancesRequest.newBuilder().build();
+   *   for (InstanceWithNamedPorts element : regionInstanceGroupClient.listInstancesRegionInstanceGroups(instanceGroup, regionInstanceGroupsListInstancesRequest).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -357,8 +373,13 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
-   *
-   *   for (InstanceWithNamedPorts element : regionInstanceGroupClient.listInstancesRegionInstanceGroups().iterateAll()) {
+   *   String formattedInstanceGroup = RegionInstanceGroupClient.formatRegionInstanceGroupsInstanceGroupName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
+   *   RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequest = RegionInstanceGroupsListInstancesRequest.newBuilder().build();
+   *   ListInstancesRegionInstanceGroupsHttpRequest request = ListInstancesRegionInstanceGroupsHttpRequest.newBuilder()
+   *     .setInstanceGroup(formattedInstanceGroup)
+   *     .setRegionInstanceGroupsListInstancesRequest(regionInstanceGroupsListInstancesRequest)
+   *     .build();
+   *   for (InstanceWithNamedPorts element : regionInstanceGroupClient.listInstancesRegionInstanceGroups(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -380,8 +401,13 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
-   *
-   *   ApiFuture&lt;ListInstancesRegionInstanceGroupsPagedResponse&gt; future = regionInstanceGroupClient.listInstancesRegionInstanceGroupsPagedCallable().futureCall();
+   *   String formattedInstanceGroup = RegionInstanceGroupClient.formatRegionInstanceGroupsInstanceGroupName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
+   *   RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequest = RegionInstanceGroupsListInstancesRequest.newBuilder().build();
+   *   ListInstancesRegionInstanceGroupsHttpRequest request = ListInstancesRegionInstanceGroupsHttpRequest.newBuilder()
+   *     .setInstanceGroup(formattedInstanceGroup)
+   *     .setRegionInstanceGroupsListInstancesRequest(regionInstanceGroupsListInstancesRequest)
+   *     .build();
+   *   ApiFuture&lt;ListInstancesRegionInstanceGroupsPagedResponse&gt; future = regionInstanceGroupClient.listInstancesRegionInstanceGroupsPagedCallable().futureCall(request);
    *   // Do something
    *   for (InstanceWithNamedPorts element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -401,9 +427,14 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
-   *
+   *   String formattedInstanceGroup = RegionInstanceGroupClient.formatRegionInstanceGroupsInstanceGroupName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
+   *   RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequest = RegionInstanceGroupsListInstancesRequest.newBuilder().build();
+   *   ListInstancesRegionInstanceGroupsHttpRequest request = ListInstancesRegionInstanceGroupsHttpRequest.newBuilder()
+   *     .setInstanceGroup(formattedInstanceGroup)
+   *     .setRegionInstanceGroupsListInstancesRequest(regionInstanceGroupsListInstancesRequest)
+   *     .build();
    *   while (true) {
-   *     RegionInstanceGroupsListInstances response = regionInstanceGroupClient.listInstancesRegionInstanceGroupsCallable().call();
+   *     RegionInstanceGroupsListInstances response = regionInstanceGroupClient.listInstancesRegionInstanceGroupsCallable().call(request);
    *     for (InstanceWithNamedPorts element : response.getItems()) {
    *       // doThingsWith(element);
    *     }
@@ -429,8 +460,9 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
-   *
-   *   Operation response = regionInstanceGroupClient.setNamedPortsRegionInstanceGroup();
+   *   RegionInstanceGroupsInstanceGroupName instanceGroup = RegionInstanceGroupsInstanceGroupName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
+   *   RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequest = RegionInstanceGroupsSetNamedPortsRequest.newBuilder().build();
+   *   Operation response = regionInstanceGroupClient.setNamedPortsRegionInstanceGroup(instanceGroup, regionInstanceGroupsSetNamedPortsRequest);
    * }
    * </code></pre>
    *
@@ -456,8 +488,13 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
-   *
-   *   Operation response = regionInstanceGroupClient.setNamedPortsRegionInstanceGroup();
+   *   String formattedInstanceGroup = RegionInstanceGroupClient.formatRegionInstanceGroupsInstanceGroupName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
+   *   RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequest = RegionInstanceGroupsSetNamedPortsRequest.newBuilder().build();
+   *   SetNamedPortsRegionInstanceGroupHttpRequest request = SetNamedPortsRegionInstanceGroupHttpRequest.newBuilder()
+   *     .setInstanceGroup(formattedInstanceGroup)
+   *     .setRegionInstanceGroupsSetNamedPortsRequest(regionInstanceGroupsSetNamedPortsRequest)
+   *     .build();
+   *   Operation response = regionInstanceGroupClient.setNamedPortsRegionInstanceGroup(request);
    * }
    * </code></pre>
    *
@@ -476,8 +513,13 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupClient.setNamedPortsRegionInstanceGroupCallable().futureCall();
+   *   String formattedInstanceGroup = RegionInstanceGroupClient.formatRegionInstanceGroupsInstanceGroupName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
+   *   RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequest = RegionInstanceGroupsSetNamedPortsRequest.newBuilder().build();
+   *   SetNamedPortsRegionInstanceGroupHttpRequest request = SetNamedPortsRegionInstanceGroupHttpRequest.newBuilder()
+   *     .setInstanceGroup(formattedInstanceGroup)
+   *     .setRegionInstanceGroupsSetNamedPortsRequest(regionInstanceGroupsSetNamedPortsRequest)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupClient.setNamedPortsRegionInstanceGroupCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }

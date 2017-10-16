@@ -39,8 +39,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (ZoneClient zoneClient = ZoneClient.create()) {
- *
- *   Zone response = zoneClient.getZone();
+ *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+ *   Zone response = zoneClient.getZone(zone);
  * }
  * </code>
  * </pre>
@@ -166,8 +166,8 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *
-   *   Zone response = zoneClient.getZone();
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   Zone response = zoneClient.getZone(zone);
    * }
    * </code></pre>
    *
@@ -191,8 +191,11 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *
-   *   Zone response = zoneClient.getZone();
+   *   String formattedZone = ZoneClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   GetZoneHttpRequest request = GetZoneHttpRequest.newBuilder()
+   *     .setZone(formattedZone)
+   *     .build();
+   *   Zone response = zoneClient.getZone(request);
    * }
    * </code></pre>
    *
@@ -211,8 +214,11 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *
-   *   ApiFuture&lt;Zone&gt; future = zoneClient.getZoneCallable().futureCall();
+   *   String formattedZone = ZoneClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   GetZoneHttpRequest request = GetZoneHttpRequest.newBuilder()
+   *     .setZone(formattedZone)
+   *     .build();
+   *   ApiFuture&lt;Zone&gt; future = zoneClient.getZoneCallable().futureCall(request);
    *   // Do something
    *   Zone response = future.get();
    * }
@@ -230,8 +236,8 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *
-   *   for (Zone element : zoneClient.listZones().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (Zone element : zoneClient.listZones(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -256,8 +262,11 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *
-   *   for (Zone element : zoneClient.listZones().iterateAll()) {
+   *   String formattedProject = ZoneClient.formatProjectName("[PROJECT]");
+   *   ListZonesHttpRequest request = ListZonesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (Zone element : zoneClient.listZones(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -279,8 +288,11 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *
-   *   ApiFuture&lt;ListZonesPagedResponse&gt; future = zoneClient.listZonesPagedCallable().futureCall();
+   *   String formattedProject = ZoneClient.formatProjectName("[PROJECT]");
+   *   ListZonesHttpRequest request = ListZonesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;ListZonesPagedResponse&gt; future = zoneClient.listZonesPagedCallable().futureCall(request);
    *   // Do something
    *   for (Zone element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -300,9 +312,12 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *
+   *   String formattedProject = ZoneClient.formatProjectName("[PROJECT]");
+   *   ListZonesHttpRequest request = ListZonesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     ZoneList response = zoneClient.listZonesCallable().call();
+   *     ZoneList response = zoneClient.listZonesCallable().call(request);
    *     for (Zone element : response.getItems()) {
    *       // doThingsWith(element);
    *     }

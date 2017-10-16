@@ -39,8 +39,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
- *
- *   Operation response = targetSslProxyClient.deleteTargetSslProxy();
+ *   TargetSslProxyName targetSslProxy = TargetSslProxyName.create("[PROJECT]", "[TARGET_SSL_PROXY]");
+ *   Operation response = targetSslProxyClient.deleteTargetSslProxy(targetSslProxy);
  * }
  * </code>
  * </pre>
@@ -166,8 +166,8 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   Operation response = targetSslProxyClient.deleteTargetSslProxy();
+   *   TargetSslProxyName targetSslProxy = TargetSslProxyName.create("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   Operation response = targetSslProxyClient.deleteTargetSslProxy(targetSslProxy);
    * }
    * </code></pre>
    *
@@ -191,8 +191,11 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   Operation response = targetSslProxyClient.deleteTargetSslProxy();
+   *   String formattedTargetSslProxy = TargetSslProxyClient.formatTargetSslProxyName("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   DeleteTargetSslProxyHttpRequest request = DeleteTargetSslProxyHttpRequest.newBuilder()
+   *     .setTargetSslProxy(formattedTargetSslProxy)
+   *     .build();
+   *   Operation response = targetSslProxyClient.deleteTargetSslProxy(request);
    * }
    * </code></pre>
    *
@@ -211,8 +214,11 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetSslProxyClient.deleteTargetSslProxyCallable().futureCall();
+   *   String formattedTargetSslProxy = TargetSslProxyClient.formatTargetSslProxyName("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   DeleteTargetSslProxyHttpRequest request = DeleteTargetSslProxyHttpRequest.newBuilder()
+   *     .setTargetSslProxy(formattedTargetSslProxy)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetSslProxyClient.deleteTargetSslProxyCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -230,8 +236,8 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   TargetSslProxy response = targetSslProxyClient.getTargetSslProxy();
+   *   TargetSslProxyName targetSslProxy = TargetSslProxyName.create("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   TargetSslProxy response = targetSslProxyClient.getTargetSslProxy(targetSslProxy);
    * }
    * </code></pre>
    *
@@ -255,8 +261,11 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   TargetSslProxy response = targetSslProxyClient.getTargetSslProxy();
+   *   String formattedTargetSslProxy = TargetSslProxyClient.formatTargetSslProxyName("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   GetTargetSslProxyHttpRequest request = GetTargetSslProxyHttpRequest.newBuilder()
+   *     .setTargetSslProxy(formattedTargetSslProxy)
+   *     .build();
+   *   TargetSslProxy response = targetSslProxyClient.getTargetSslProxy(request);
    * }
    * </code></pre>
    *
@@ -275,8 +284,11 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   ApiFuture&lt;TargetSslProxy&gt; future = targetSslProxyClient.getTargetSslProxyCallable().futureCall();
+   *   String formattedTargetSslProxy = TargetSslProxyClient.formatTargetSslProxyName("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   GetTargetSslProxyHttpRequest request = GetTargetSslProxyHttpRequest.newBuilder()
+   *     .setTargetSslProxy(formattedTargetSslProxy)
+   *     .build();
+   *   ApiFuture&lt;TargetSslProxy&gt; future = targetSslProxyClient.getTargetSslProxyCallable().futureCall(request);
    *   // Do something
    *   TargetSslProxy response = future.get();
    * }
@@ -294,8 +306,9 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   Operation response = targetSslProxyClient.insertTargetSslProxy();
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   TargetSslProxy targetSslProxy = TargetSslProxy.newBuilder().build();
+   *   Operation response = targetSslProxyClient.insertTargetSslProxy(project, targetSslProxy);
    * }
    * </code></pre>
    *
@@ -321,8 +334,13 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   Operation response = targetSslProxyClient.insertTargetSslProxy();
+   *   String formattedProject = TargetSslProxyClient.formatProjectName("[PROJECT]");
+   *   TargetSslProxy targetSslProxy = TargetSslProxy.newBuilder().build();
+   *   InsertTargetSslProxyHttpRequest request = InsertTargetSslProxyHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .setTargetSslProxy(targetSslProxy)
+   *     .build();
+   *   Operation response = targetSslProxyClient.insertTargetSslProxy(request);
    * }
    * </code></pre>
    *
@@ -341,8 +359,13 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetSslProxyClient.insertTargetSslProxyCallable().futureCall();
+   *   String formattedProject = TargetSslProxyClient.formatProjectName("[PROJECT]");
+   *   TargetSslProxy targetSslProxy = TargetSslProxy.newBuilder().build();
+   *   InsertTargetSslProxyHttpRequest request = InsertTargetSslProxyHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .setTargetSslProxy(targetSslProxy)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetSslProxyClient.insertTargetSslProxyCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -360,8 +383,8 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   for (TargetSslProxy element : targetSslProxyClient.listTargetSslProxies().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (TargetSslProxy element : targetSslProxyClient.listTargetSslProxies(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -386,8 +409,11 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   for (TargetSslProxy element : targetSslProxyClient.listTargetSslProxies().iterateAll()) {
+   *   String formattedProject = TargetSslProxyClient.formatProjectName("[PROJECT]");
+   *   ListTargetSslProxiesHttpRequest request = ListTargetSslProxiesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (TargetSslProxy element : targetSslProxyClient.listTargetSslProxies(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -409,8 +435,11 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   ApiFuture&lt;ListTargetSslProxiesPagedResponse&gt; future = targetSslProxyClient.listTargetSslProxiesPagedCallable().futureCall();
+   *   String formattedProject = TargetSslProxyClient.formatProjectName("[PROJECT]");
+   *   ListTargetSslProxiesHttpRequest request = ListTargetSslProxiesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;ListTargetSslProxiesPagedResponse&gt; future = targetSslProxyClient.listTargetSslProxiesPagedCallable().futureCall(request);
    *   // Do something
    *   for (TargetSslProxy element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -430,9 +459,12 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
+   *   String formattedProject = TargetSslProxyClient.formatProjectName("[PROJECT]");
+   *   ListTargetSslProxiesHttpRequest request = ListTargetSslProxiesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     TargetSslProxyList response = targetSslProxyClient.listTargetSslProxiesCallable().call();
+   *     TargetSslProxyList response = targetSslProxyClient.listTargetSslProxiesCallable().call(request);
    *     for (TargetSslProxy element : response.getItems()) {
    *       // doThingsWith(element);
    *     }
@@ -458,8 +490,9 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   Operation response = targetSslProxyClient.setBackendServiceTargetSslProxy();
+   *   TargetSslProxyName targetSslProxy = TargetSslProxyName.create("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequest = TargetSslProxiesSetBackendServiceRequest.newBuilder().build();
+   *   Operation response = targetSslProxyClient.setBackendServiceTargetSslProxy(targetSslProxy, targetSslProxiesSetBackendServiceRequest);
    * }
    * </code></pre>
    *
@@ -485,8 +518,13 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   Operation response = targetSslProxyClient.setBackendServiceTargetSslProxy();
+   *   String formattedTargetSslProxy = TargetSslProxyClient.formatTargetSslProxyName("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequest = TargetSslProxiesSetBackendServiceRequest.newBuilder().build();
+   *   SetBackendServiceTargetSslProxyHttpRequest request = SetBackendServiceTargetSslProxyHttpRequest.newBuilder()
+   *     .setTargetSslProxy(formattedTargetSslProxy)
+   *     .setTargetSslProxiesSetBackendServiceRequest(targetSslProxiesSetBackendServiceRequest)
+   *     .build();
+   *   Operation response = targetSslProxyClient.setBackendServiceTargetSslProxy(request);
    * }
    * </code></pre>
    *
@@ -505,8 +543,13 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetSslProxyClient.setBackendServiceTargetSslProxyCallable().futureCall();
+   *   String formattedTargetSslProxy = TargetSslProxyClient.formatTargetSslProxyName("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequest = TargetSslProxiesSetBackendServiceRequest.newBuilder().build();
+   *   SetBackendServiceTargetSslProxyHttpRequest request = SetBackendServiceTargetSslProxyHttpRequest.newBuilder()
+   *     .setTargetSslProxy(formattedTargetSslProxy)
+   *     .setTargetSslProxiesSetBackendServiceRequest(targetSslProxiesSetBackendServiceRequest)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetSslProxyClient.setBackendServiceTargetSslProxyCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -524,8 +567,9 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   Operation response = targetSslProxyClient.setProxyHeaderTargetSslProxy();
+   *   TargetSslProxyName targetSslProxy = TargetSslProxyName.create("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequest = TargetSslProxiesSetProxyHeaderRequest.newBuilder().build();
+   *   Operation response = targetSslProxyClient.setProxyHeaderTargetSslProxy(targetSslProxy, targetSslProxiesSetProxyHeaderRequest);
    * }
    * </code></pre>
    *
@@ -551,8 +595,13 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   Operation response = targetSslProxyClient.setProxyHeaderTargetSslProxy();
+   *   String formattedTargetSslProxy = TargetSslProxyClient.formatTargetSslProxyName("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequest = TargetSslProxiesSetProxyHeaderRequest.newBuilder().build();
+   *   SetProxyHeaderTargetSslProxyHttpRequest request = SetProxyHeaderTargetSslProxyHttpRequest.newBuilder()
+   *     .setTargetSslProxy(formattedTargetSslProxy)
+   *     .setTargetSslProxiesSetProxyHeaderRequest(targetSslProxiesSetProxyHeaderRequest)
+   *     .build();
+   *   Operation response = targetSslProxyClient.setProxyHeaderTargetSslProxy(request);
    * }
    * </code></pre>
    *
@@ -571,8 +620,13 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetSslProxyClient.setProxyHeaderTargetSslProxyCallable().futureCall();
+   *   String formattedTargetSslProxy = TargetSslProxyClient.formatTargetSslProxyName("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequest = TargetSslProxiesSetProxyHeaderRequest.newBuilder().build();
+   *   SetProxyHeaderTargetSslProxyHttpRequest request = SetProxyHeaderTargetSslProxyHttpRequest.newBuilder()
+   *     .setTargetSslProxy(formattedTargetSslProxy)
+   *     .setTargetSslProxiesSetProxyHeaderRequest(targetSslProxiesSetProxyHeaderRequest)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetSslProxyClient.setProxyHeaderTargetSslProxyCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -590,8 +644,9 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   Operation response = targetSslProxyClient.setSslCertificatesTargetSslProxy();
+   *   TargetSslProxyName targetSslProxy = TargetSslProxyName.create("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   TargetSslProxiesSetSslCertificatesRequest targetSslProxiesSetSslCertificatesRequest = TargetSslProxiesSetSslCertificatesRequest.newBuilder().build();
+   *   Operation response = targetSslProxyClient.setSslCertificatesTargetSslProxy(targetSslProxy, targetSslProxiesSetSslCertificatesRequest);
    * }
    * </code></pre>
    *
@@ -617,8 +672,13 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   Operation response = targetSslProxyClient.setSslCertificatesTargetSslProxy();
+   *   String formattedTargetSslProxy = TargetSslProxyClient.formatTargetSslProxyName("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   TargetSslProxiesSetSslCertificatesRequest targetSslProxiesSetSslCertificatesRequest = TargetSslProxiesSetSslCertificatesRequest.newBuilder().build();
+   *   SetSslCertificatesTargetSslProxyHttpRequest request = SetSslCertificatesTargetSslProxyHttpRequest.newBuilder()
+   *     .setTargetSslProxy(formattedTargetSslProxy)
+   *     .setTargetSslProxiesSetSslCertificatesRequest(targetSslProxiesSetSslCertificatesRequest)
+   *     .build();
+   *   Operation response = targetSslProxyClient.setSslCertificatesTargetSslProxy(request);
    * }
    * </code></pre>
    *
@@ -637,8 +697,13 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = targetSslProxyClient.setSslCertificatesTargetSslProxyCallable().futureCall();
+   *   String formattedTargetSslProxy = TargetSslProxyClient.formatTargetSslProxyName("[PROJECT]", "[TARGET_SSL_PROXY]");
+   *   TargetSslProxiesSetSslCertificatesRequest targetSslProxiesSetSslCertificatesRequest = TargetSslProxiesSetSslCertificatesRequest.newBuilder().build();
+   *   SetSslCertificatesTargetSslProxyHttpRequest request = SetSslCertificatesTargetSslProxyHttpRequest.newBuilder()
+   *     .setTargetSslProxy(formattedTargetSslProxy)
+   *     .setTargetSslProxiesSetSslCertificatesRequest(targetSslProxiesSetSslCertificatesRequest)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = targetSslProxyClient.setSslCertificatesTargetSslProxyCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }

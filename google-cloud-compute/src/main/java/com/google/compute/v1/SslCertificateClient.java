@@ -39,8 +39,8 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
- *
- *   Operation response = sslCertificateClient.deleteSslCertificate();
+ *   SslCertificateName sslCertificate = SslCertificateName.create("[PROJECT]", "[SSL_CERTIFICATE]");
+ *   Operation response = sslCertificateClient.deleteSslCertificate(sslCertificate);
  * }
  * </code>
  * </pre>
@@ -166,8 +166,8 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *
-   *   Operation response = sslCertificateClient.deleteSslCertificate();
+   *   SslCertificateName sslCertificate = SslCertificateName.create("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   Operation response = sslCertificateClient.deleteSslCertificate(sslCertificate);
    * }
    * </code></pre>
    *
@@ -191,8 +191,11 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *
-   *   Operation response = sslCertificateClient.deleteSslCertificate();
+   *   String formattedSslCertificate = SslCertificateClient.formatSslCertificateName("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   DeleteSslCertificateHttpRequest request = DeleteSslCertificateHttpRequest.newBuilder()
+   *     .setSslCertificate(formattedSslCertificate)
+   *     .build();
+   *   Operation response = sslCertificateClient.deleteSslCertificate(request);
    * }
    * </code></pre>
    *
@@ -211,8 +214,11 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = sslCertificateClient.deleteSslCertificateCallable().futureCall();
+   *   String formattedSslCertificate = SslCertificateClient.formatSslCertificateName("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   DeleteSslCertificateHttpRequest request = DeleteSslCertificateHttpRequest.newBuilder()
+   *     .setSslCertificate(formattedSslCertificate)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = sslCertificateClient.deleteSslCertificateCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -230,8 +236,8 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *
-   *   SslCertificate response = sslCertificateClient.getSslCertificate();
+   *   SslCertificateName sslCertificate = SslCertificateName.create("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   SslCertificate response = sslCertificateClient.getSslCertificate(sslCertificate);
    * }
    * </code></pre>
    *
@@ -255,8 +261,11 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *
-   *   SslCertificate response = sslCertificateClient.getSslCertificate();
+   *   String formattedSslCertificate = SslCertificateClient.formatSslCertificateName("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   GetSslCertificateHttpRequest request = GetSslCertificateHttpRequest.newBuilder()
+   *     .setSslCertificate(formattedSslCertificate)
+   *     .build();
+   *   SslCertificate response = sslCertificateClient.getSslCertificate(request);
    * }
    * </code></pre>
    *
@@ -275,8 +284,11 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *
-   *   ApiFuture&lt;SslCertificate&gt; future = sslCertificateClient.getSslCertificateCallable().futureCall();
+   *   String formattedSslCertificate = SslCertificateClient.formatSslCertificateName("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   GetSslCertificateHttpRequest request = GetSslCertificateHttpRequest.newBuilder()
+   *     .setSslCertificate(formattedSslCertificate)
+   *     .build();
+   *   ApiFuture&lt;SslCertificate&gt; future = sslCertificateClient.getSslCertificateCallable().futureCall(request);
    *   // Do something
    *   SslCertificate response = future.get();
    * }
@@ -294,8 +306,9 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *
-   *   Operation response = sslCertificateClient.insertSslCertificate();
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   SslCertificate sslCertificate = SslCertificate.newBuilder().build();
+   *   Operation response = sslCertificateClient.insertSslCertificate(project, sslCertificate);
    * }
    * </code></pre>
    *
@@ -321,8 +334,13 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *
-   *   Operation response = sslCertificateClient.insertSslCertificate();
+   *   String formattedProject = SslCertificateClient.formatProjectName("[PROJECT]");
+   *   SslCertificate sslCertificate = SslCertificate.newBuilder().build();
+   *   InsertSslCertificateHttpRequest request = InsertSslCertificateHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .setSslCertificate(sslCertificate)
+   *     .build();
+   *   Operation response = sslCertificateClient.insertSslCertificate(request);
    * }
    * </code></pre>
    *
@@ -341,8 +359,13 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *
-   *   ApiFuture&lt;Operation&gt; future = sslCertificateClient.insertSslCertificateCallable().futureCall();
+   *   String formattedProject = SslCertificateClient.formatProjectName("[PROJECT]");
+   *   SslCertificate sslCertificate = SslCertificate.newBuilder().build();
+   *   InsertSslCertificateHttpRequest request = InsertSslCertificateHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .setSslCertificate(sslCertificate)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = sslCertificateClient.insertSslCertificateCallable().futureCall(request);
    *   // Do something
    *   Operation response = future.get();
    * }
@@ -360,8 +383,8 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *
-   *   for (SslCertificate element : sslCertificateClient.listSslCertificates().iterateAll()) {
+   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   for (SslCertificate element : sslCertificateClient.listSslCertificates(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -386,8 +409,11 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *
-   *   for (SslCertificate element : sslCertificateClient.listSslCertificates().iterateAll()) {
+   *   String formattedProject = SslCertificateClient.formatProjectName("[PROJECT]");
+   *   ListSslCertificatesHttpRequest request = ListSslCertificatesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (SslCertificate element : sslCertificateClient.listSslCertificates(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -409,8 +435,11 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *
-   *   ApiFuture&lt;ListSslCertificatesPagedResponse&gt; future = sslCertificateClient.listSslCertificatesPagedCallable().futureCall();
+   *   String formattedProject = SslCertificateClient.formatProjectName("[PROJECT]");
+   *   ListSslCertificatesHttpRequest request = ListSslCertificatesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;ListSslCertificatesPagedResponse&gt; future = sslCertificateClient.listSslCertificatesPagedCallable().futureCall(request);
    *   // Do something
    *   for (SslCertificate element : future.get().iterateAll()) {
    *     // doThingsWith(element);
@@ -430,9 +459,12 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *
+   *   String formattedProject = SslCertificateClient.formatProjectName("[PROJECT]");
+   *   ListSslCertificatesHttpRequest request = ListSslCertificatesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
    *   while (true) {
-   *     SslCertificateList response = sslCertificateClient.listSslCertificatesCallable().call();
+   *     SslCertificateList response = sslCertificateClient.listSslCertificatesCallable().call(request);
    *     for (SslCertificate element : response.getItems()) {
    *       // doThingsWith(element);
    *     }
