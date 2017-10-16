@@ -1,5 +1,6 @@
 package com.google.cloud.examples.discocompute;
 
+import com.google.api.core.ApiFuture;
 import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
@@ -59,13 +60,8 @@ public class JsonComputeExample {
     String newAddressName = "usseaparkview";
     System.out.println("Inserting address:");
 
-    // Begin samplegen code for insertAddress().
-    Address newAddress = Address.newBuilder().setName(newAddressName).build();
-    RegionName region = RegionName.create(PROJECT_NAME, REGION);
-    Operation insertResponse = client.insertAddress(region, newAddress);
-    // End samplegen code for insertAddress().
+    insertNewAddressJustClient(client, newAddressName);
 
-    System.out.format("Result of insert: %s\n", insertResponse.toString());
     listAddresses(client);
 
     System.out.println("Deleting address:");
@@ -81,6 +77,32 @@ public class JsonComputeExample {
       e.printStackTrace();
     }
     listAddresses(client);
+  }
+
+  private static void insertNewAddressJustClient(AddressClient client, String newAddressName) {
+    // Begin samplegen code for insertAddress().
+    Address newAddress = Address.newBuilder().setName(newAddressName).build();
+    RegionName region = RegionName.create(PROJECT_NAME, REGION);
+    Operation response = client.insertAddress(region, newAddress);
+    // End samplegen code for insertAddress().
+    System.out.format("Result of insert: %s\n", response.toString());
+  }
+
+  private static void insertNewAddressUsingRequest(AddressClient client, String newAddressName) {
+//    // Begin samplegen code for insertAddress().
+//    String formattedRegion = AddressClient.formatRegionName("[PROJECT]", "[REGION]");
+//    Address address = Address.newBuilder().build();
+//    InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
+//        .setRegion(formattedRegion)
+//        .setAddress(address)
+//        .build();
+//    ApiFuture<Operation> future = addressClient.insertAddressCallable().futureCall(request);
+//    // Do something
+//    Operation response = future.get();
+//    System.out.format("Result of insert: %s\n", response.toString());
+//
+//    // End samplegen code for insertAddress().
+//    System.out.format("Result of insert: %s\n", insertResponse.toString());
   }
 
   private static PagedResponseWrappers.ListAddressesPagedResponse listAddresses(AddressClient client) {
