@@ -61,7 +61,7 @@ public class JsonComputeExample {
 
     // Begin samplegen code for insertAddress().
     Address newAddress = Address.newBuilder().setName(newAddressName).build();
-    RegionName region = RegionName.create("PROJECT_NAME", "REGION");
+    RegionName region = RegionName.create(PROJECT_NAME, REGION);
     Operation insertResponse = client.insertAddress(region, newAddress);
     // End samplegen code for insertAddress().
 
