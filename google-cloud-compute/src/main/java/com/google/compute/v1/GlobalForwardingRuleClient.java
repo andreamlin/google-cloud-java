@@ -179,7 +179,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
 
     DeleteGlobalForwardingRuleHttpRequest request =
         DeleteGlobalForwardingRuleHttpRequest.newBuilder()
-        .setForwardingRuleWithForwardingRuleName(forwardingRule == null ? null : ForwardingRuleName.from(forwardingRule))
+        .setForwardingRuleWithForwardingRuleName(forwardingRule)
         .build();
     return deleteGlobalForwardingRule(request);
   }
@@ -249,7 +249,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
 
     GetGlobalForwardingRuleHttpRequest request =
         GetGlobalForwardingRuleHttpRequest.newBuilder()
-        .setForwardingRuleWithForwardingRuleName(forwardingRule == null ? null : ForwardingRuleName.from(forwardingRule))
+        .setForwardingRuleWithForwardingRuleName(forwardingRule)
         .build();
     return getGlobalForwardingRule(request);
   }
@@ -505,7 +505,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
 
     SetTargetGlobalForwardingRuleHttpRequest request =
         SetTargetGlobalForwardingRuleHttpRequest.newBuilder()
-        .setForwardingRuleWithForwardingRuleName(forwardingRule == null ? null : ForwardingRuleName.from(forwardingRule))
+        .setForwardingRuleWithForwardingRuleName(forwardingRule)
         .setTargetReferenceResource(targetReferenceResource)
         .build();
     return setTargetGlobalForwardingRule(request);

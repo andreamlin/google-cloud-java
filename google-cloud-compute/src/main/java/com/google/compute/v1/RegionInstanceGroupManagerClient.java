@@ -658,7 +658,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
 
     ListManagedInstancesRegionInstanceGroupManagersHttpRequest request =
         ListManagedInstancesRegionInstanceGroupManagersHttpRequest.newBuilder()
-        .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager == null ? null : InstanceGroupManagerName.from(instanceGroupManager))
+        .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager)
         .build();
     return listManagedInstancesRegionInstanceGroupManagers(request);
   }
@@ -884,7 +884,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
 
     SetInstanceTemplateRegionInstanceGroupManagerHttpRequest request =
         SetInstanceTemplateRegionInstanceGroupManagerHttpRequest.newBuilder()
-        .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager == null ? null : InstanceGroupManagerName.from(instanceGroupManager))
+        .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager)
         .setRegionInstanceGroupManagersSetTemplateRequestResource(regionInstanceGroupManagersSetTemplateRequestResource)
         .build();
     return setInstanceTemplateRegionInstanceGroupManager(request);

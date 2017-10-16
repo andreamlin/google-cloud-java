@@ -179,7 +179,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
 
     DeleteRegionAutoscalerHttpRequest request =
         DeleteRegionAutoscalerHttpRequest.newBuilder()
-        .setAutoscalerWithAutoscalerName(autoscaler == null ? null : AutoscalerName.from(autoscaler))
+        .setAutoscalerWithAutoscalerName(autoscaler)
         .build();
     return deleteRegionAutoscaler(request);
   }
@@ -249,7 +249,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
 
     GetRegionAutoscalerHttpRequest request =
         GetRegionAutoscalerHttpRequest.newBuilder()
-        .setAutoscalerWithAutoscalerName(autoscaler == null ? null : AutoscalerName.from(autoscaler))
+        .setAutoscalerWithAutoscalerName(autoscaler)
         .build();
     return getRegionAutoscaler(request);
   }

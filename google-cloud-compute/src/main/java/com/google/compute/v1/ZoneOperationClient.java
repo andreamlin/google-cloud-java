@@ -179,7 +179,7 @@ public class ZoneOperationClient implements BackgroundResource {
 
     DeleteZoneOperationHttpRequest request =
         DeleteZoneOperationHttpRequest.newBuilder()
-        .setOperationWithGlobalOperationsOperationName(operation == null ? null : GlobalOperationsOperationName.from(operation))
+        .setOperationWithGlobalOperationsOperationName(operation)
         .build();
     deleteZoneOperation(request);
   }
@@ -249,7 +249,7 @@ public class ZoneOperationClient implements BackgroundResource {
 
     GetZoneOperationHttpRequest request =
         GetZoneOperationHttpRequest.newBuilder()
-        .setOperationWithGlobalOperationsOperationName(operation == null ? null : GlobalOperationsOperationName.from(operation))
+        .setOperationWithGlobalOperationsOperationName(operation)
         .build();
     return getZoneOperation(request);
   }

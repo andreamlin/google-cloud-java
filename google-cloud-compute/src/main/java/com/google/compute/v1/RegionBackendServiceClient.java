@@ -179,7 +179,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
 
     DeleteRegionBackendServiceHttpRequest request =
         DeleteRegionBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService == null ? null : BackendServiceName.from(backendService))
+        .setBackendServiceWithBackendServiceName(backendService)
         .build();
     return deleteRegionBackendService(request);
   }
@@ -249,7 +249,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
 
     GetRegionBackendServiceHttpRequest request =
         GetRegionBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService == null ? null : BackendServiceName.from(backendService))
+        .setBackendServiceWithBackendServiceName(backendService)
         .build();
     return getRegionBackendService(request);
   }
@@ -321,7 +321,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
 
     GetHealthRegionBackendServiceHttpRequest request =
         GetHealthRegionBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService == null ? null : BackendServiceName.from(backendService))
+        .setBackendServiceWithBackendServiceName(backendService)
         .setResourceGroupReferenceResource(resourceGroupReferenceResource)
         .build();
     return getHealthRegionBackendService(request);
@@ -581,7 +581,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
 
     PatchRegionBackendServiceHttpRequest request =
         PatchRegionBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService == null ? null : BackendServiceName.from(backendService))
+        .setBackendServiceWithBackendServiceName(backendService)
         .setBackendServiceResource(backendServiceResource)
         .build();
     return patchRegionBackendService(request);
@@ -653,7 +653,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
 
     UpdateRegionBackendServiceHttpRequest request =
         UpdateRegionBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService == null ? null : BackendServiceName.from(backendService))
+        .setBackendServiceWithBackendServiceName(backendService)
         .setBackendServiceResource(backendServiceResource)
         .build();
     return updateRegionBackendService(request);

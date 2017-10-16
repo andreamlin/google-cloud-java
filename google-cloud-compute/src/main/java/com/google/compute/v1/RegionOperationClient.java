@@ -179,7 +179,7 @@ public class RegionOperationClient implements BackgroundResource {
 
     DeleteRegionOperationHttpRequest request =
         DeleteRegionOperationHttpRequest.newBuilder()
-        .setOperationWithGlobalOperationsOperationName(operation == null ? null : GlobalOperationsOperationName.from(operation))
+        .setOperationWithGlobalOperationsOperationName(operation)
         .build();
     deleteRegionOperation(request);
   }
@@ -249,7 +249,7 @@ public class RegionOperationClient implements BackgroundResource {
 
     GetRegionOperationHttpRequest request =
         GetRegionOperationHttpRequest.newBuilder()
-        .setOperationWithGlobalOperationsOperationName(operation == null ? null : GlobalOperationsOperationName.from(operation))
+        .setOperationWithGlobalOperationsOperationName(operation)
         .build();
     return getRegionOperation(request);
   }

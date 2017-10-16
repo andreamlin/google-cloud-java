@@ -179,7 +179,7 @@ public class GlobalAddressClient implements BackgroundResource {
 
     DeleteGlobalAddressHttpRequest request =
         DeleteGlobalAddressHttpRequest.newBuilder()
-        .setAddressWithAddressName(address == null ? null : AddressName.from(address))
+        .setAddressWithAddressName(address)
         .build();
     return deleteGlobalAddress(request);
   }
@@ -249,7 +249,7 @@ public class GlobalAddressClient implements BackgroundResource {
 
     GetGlobalAddressHttpRequest request =
         GetGlobalAddressHttpRequest.newBuilder()
-        .setAddressWithAddressName(address == null ? null : AddressName.from(address))
+        .setAddressWithAddressName(address)
         .build();
     return getGlobalAddress(request);
   }
