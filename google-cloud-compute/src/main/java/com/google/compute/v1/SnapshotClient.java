@@ -195,9 +195,9 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   String formattedSnapshot = SnapshotClient.formatSnapshotName("[PROJECT]", "[SNAPSHOT]");
+   *   SnapshotName snapshot = SnapshotName.create("[PROJECT]", "[SNAPSHOT]");
    *   DeleteSnapshotHttpRequest request = DeleteSnapshotHttpRequest.newBuilder()
-   *     .setSnapshot(formattedSnapshot)
+   *     .setSnapshotWithSnapshotName(snapshot)
    *     .build();
    *   Operation response = snapshotClient.deleteSnapshot(request);
    * }
@@ -220,9 +220,9 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   String formattedSnapshot = SnapshotClient.formatSnapshotName("[PROJECT]", "[SNAPSHOT]");
+   *   SnapshotName snapshot = SnapshotName.create("[PROJECT]", "[SNAPSHOT]");
    *   DeleteSnapshotHttpRequest request = DeleteSnapshotHttpRequest.newBuilder()
-   *     .setSnapshot(formattedSnapshot)
+   *     .setSnapshotWithSnapshotName(snapshot)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = snapshotClient.deleteSnapshotCallable().futureCall(request);
    *   // Do something
@@ -267,9 +267,9 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   String formattedSnapshot = SnapshotClient.formatSnapshotName("[PROJECT]", "[SNAPSHOT]");
+   *   SnapshotName snapshot = SnapshotName.create("[PROJECT]", "[SNAPSHOT]");
    *   GetSnapshotHttpRequest request = GetSnapshotHttpRequest.newBuilder()
-   *     .setSnapshot(formattedSnapshot)
+   *     .setSnapshotWithSnapshotName(snapshot)
    *     .build();
    *   Snapshot response = snapshotClient.getSnapshot(request);
    * }
@@ -290,9 +290,9 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   String formattedSnapshot = SnapshotClient.formatSnapshotName("[PROJECT]", "[SNAPSHOT]");
+   *   SnapshotName snapshot = SnapshotName.create("[PROJECT]", "[SNAPSHOT]");
    *   GetSnapshotHttpRequest request = GetSnapshotHttpRequest.newBuilder()
-   *     .setSnapshot(formattedSnapshot)
+   *     .setSnapshotWithSnapshotName(snapshot)
    *     .build();
    *   ApiFuture&lt;Snapshot&gt; future = snapshotClient.getSnapshotCallable().futureCall(request);
    *   // Do something
@@ -338,9 +338,9 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   String formattedProject = SnapshotClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   ListSnapshotsHttpRequest request = ListSnapshotsHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   for (Snapshot element : snapshotClient.listSnapshots(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -364,9 +364,9 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   String formattedProject = SnapshotClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   ListSnapshotsHttpRequest request = ListSnapshotsHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   ApiFuture&lt;ListSnapshotsPagedResponse&gt; future = snapshotClient.listSnapshotsPagedCallable().futureCall(request);
    *   // Do something
@@ -388,9 +388,9 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   String formattedProject = SnapshotClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   ListSnapshotsHttpRequest request = ListSnapshotsHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   while (true) {
    *     SnapshotList response = snapshotClient.listSnapshotsCallable().call(request);

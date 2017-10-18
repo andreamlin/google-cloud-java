@@ -190,9 +190,9 @@ public class LicensClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (LicensClient licensClient = LicensClient.create()) {
-   *   String formattedLicense = LicensClient.formatLicenseName("[PROJECT]", "[LICENSE]");
+   *   LicenseName license = LicenseName.create("[PROJECT]", "[LICENSE]");
    *   GetLicensHttpRequest request = GetLicensHttpRequest.newBuilder()
-   *     .setLicense(formattedLicense)
+   *     .setLicenseWithLicenseName(license)
    *     .build();
    *   License response = licensClient.getLicens(request);
    * }
@@ -213,9 +213,9 @@ public class LicensClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (LicensClient licensClient = LicensClient.create()) {
-   *   String formattedLicense = LicensClient.formatLicenseName("[PROJECT]", "[LICENSE]");
+   *   LicenseName license = LicenseName.create("[PROJECT]", "[LICENSE]");
    *   GetLicensHttpRequest request = GetLicensHttpRequest.newBuilder()
-   *     .setLicense(formattedLicense)
+   *     .setLicenseWithLicenseName(license)
    *     .build();
    *   ApiFuture&lt;License&gt; future = licensClient.getLicensCallable().futureCall(request);
    *   // Do something

@@ -193,9 +193,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedProject = RouterClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   AggregatedListRoutersHttpRequest request = AggregatedListRoutersHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   for (Router element : routerClient.aggregatedListRouters(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -219,9 +219,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedProject = RouterClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   AggregatedListRoutersHttpRequest request = AggregatedListRoutersHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   ApiFuture&lt;AggregatedListRoutersPagedResponse&gt; future = routerClient.aggregatedListRoutersPagedCallable().futureCall(request);
    *   // Do something
@@ -243,9 +243,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedProject = RouterClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   AggregatedListRoutersHttpRequest request = AggregatedListRoutersHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   while (true) {
    *     RouterAggregatedList response = routerClient.aggregatedListRoutersCallable().call(request);
@@ -299,9 +299,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRouter = RouterClient.formatRouterName("[PROJECT]", "[REGION]", "[ROUTER]");
+   *   RouterName router = RouterName.create("[PROJECT]", "[REGION]", "[ROUTER]");
    *   DeleteRouterHttpRequest request = DeleteRouterHttpRequest.newBuilder()
-   *     .setRouter(formattedRouter)
+   *     .setRouterWithRouterName(router)
    *     .build();
    *   Operation response = routerClient.deleteRouter(request);
    * }
@@ -322,9 +322,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRouter = RouterClient.formatRouterName("[PROJECT]", "[REGION]", "[ROUTER]");
+   *   RouterName router = RouterName.create("[PROJECT]", "[REGION]", "[ROUTER]");
    *   DeleteRouterHttpRequest request = DeleteRouterHttpRequest.newBuilder()
-   *     .setRouter(formattedRouter)
+   *     .setRouterWithRouterName(router)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = routerClient.deleteRouterCallable().futureCall(request);
    *   // Do something
@@ -369,9 +369,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRouter = RouterClient.formatRouterName("[PROJECT]", "[REGION]", "[ROUTER]");
+   *   RouterName router = RouterName.create("[PROJECT]", "[REGION]", "[ROUTER]");
    *   GetRouterHttpRequest request = GetRouterHttpRequest.newBuilder()
-   *     .setRouter(formattedRouter)
+   *     .setRouterWithRouterName(router)
    *     .build();
    *   Router response = routerClient.getRouter(request);
    * }
@@ -392,9 +392,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRouter = RouterClient.formatRouterName("[PROJECT]", "[REGION]", "[ROUTER]");
+   *   RouterName router = RouterName.create("[PROJECT]", "[REGION]", "[ROUTER]");
    *   GetRouterHttpRequest request = GetRouterHttpRequest.newBuilder()
-   *     .setRouter(formattedRouter)
+   *     .setRouterWithRouterName(router)
    *     .build();
    *   ApiFuture&lt;Router&gt; future = routerClient.getRouterCallable().futureCall(request);
    *   // Do something
@@ -439,9 +439,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRouter = RouterClient.formatRouterName("[PROJECT]", "[REGION]", "[ROUTER]");
+   *   RouterName router = RouterName.create("[PROJECT]", "[REGION]", "[ROUTER]");
    *   GetRouterStatusRouterHttpRequest request = GetRouterStatusRouterHttpRequest.newBuilder()
-   *     .setRouter(formattedRouter)
+   *     .setRouterWithRouterName(router)
    *     .build();
    *   RouterStatusResponse response = routerClient.getRouterStatusRouter(request);
    * }
@@ -462,9 +462,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRouter = RouterClient.formatRouterName("[PROJECT]", "[REGION]", "[ROUTER]");
+   *   RouterName router = RouterName.create("[PROJECT]", "[REGION]", "[ROUTER]");
    *   GetRouterStatusRouterHttpRequest request = GetRouterStatusRouterHttpRequest.newBuilder()
-   *     .setRouter(formattedRouter)
+   *     .setRouterWithRouterName(router)
    *     .build();
    *   ApiFuture&lt;RouterStatusResponse&gt; future = routerClient.getRouterStatusRouterCallable().futureCall(request);
    *   // Do something
@@ -512,10 +512,10 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRegion = RouterClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
    *   Router router = Router.newBuilder().build();
    *   InsertRouterHttpRequest request = InsertRouterHttpRequest.newBuilder()
-   *     .setRegion(formattedRegion)
+   *     .setRegionWithRegionName(region)
    *     .setRouter(router)
    *     .build();
    *   Operation response = routerClient.insertRouter(request);
@@ -537,10 +537,10 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRegion = RouterClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
    *   Router router = Router.newBuilder().build();
    *   InsertRouterHttpRequest request = InsertRouterHttpRequest.newBuilder()
-   *     .setRegion(formattedRegion)
+   *     .setRegionWithRegionName(region)
    *     .setRouter(router)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = routerClient.insertRouterCallable().futureCall(request);
@@ -587,9 +587,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRegion = RouterClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
    *   ListRoutersHttpRequest request = ListRoutersHttpRequest.newBuilder()
-   *     .setRegion(formattedRegion)
+   *     .setRegionWithRegionName(region)
    *     .build();
    *   for (Router element : routerClient.listRouters(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -613,9 +613,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRegion = RouterClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
    *   ListRoutersHttpRequest request = ListRoutersHttpRequest.newBuilder()
-   *     .setRegion(formattedRegion)
+   *     .setRegionWithRegionName(region)
    *     .build();
    *   ApiFuture&lt;ListRoutersPagedResponse&gt; future = routerClient.listRoutersPagedCallable().futureCall(request);
    *   // Do something
@@ -637,9 +637,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRegion = RouterClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
    *   ListRoutersHttpRequest request = ListRoutersHttpRequest.newBuilder()
-   *     .setRegion(formattedRegion)
+   *     .setRegionWithRegionName(region)
    *     .build();
    *   while (true) {
    *     RouterList response = routerClient.listRoutersCallable().call(request);
@@ -695,9 +695,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRouter = RouterClient.formatRouterName("[PROJECT]", "[REGION]", "[ROUTER]");
+   *   RouterName router = RouterName.create("[PROJECT]", "[REGION]", "[ROUTER]");
    *   PatchRouterHttpRequest request = PatchRouterHttpRequest.newBuilder()
-   *     .setRouter(formattedRouter)
+   *     .setRouterWithRouterName(router)
    *     .build();
    *   Operation response = routerClient.patchRouter(request);
    * }
@@ -718,9 +718,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRouter = RouterClient.formatRouterName("[PROJECT]", "[REGION]", "[ROUTER]");
+   *   RouterName router = RouterName.create("[PROJECT]", "[REGION]", "[ROUTER]");
    *   PatchRouterHttpRequest request = PatchRouterHttpRequest.newBuilder()
-   *     .setRouter(formattedRouter)
+   *     .setRouterWithRouterName(router)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = routerClient.patchRouterCallable().futureCall(request);
    *   // Do something
@@ -767,9 +767,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRouter = RouterClient.formatRouterName("[PROJECT]", "[REGION]", "[ROUTER]");
+   *   RouterName router = RouterName.create("[PROJECT]", "[REGION]", "[ROUTER]");
    *   PreviewRouterHttpRequest request = PreviewRouterHttpRequest.newBuilder()
-   *     .setRouter(formattedRouter)
+   *     .setRouterWithRouterName(router)
    *     .build();
    *   RoutersPreviewResponse response = routerClient.previewRouter(request);
    * }
@@ -790,9 +790,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRouter = RouterClient.formatRouterName("[PROJECT]", "[REGION]", "[ROUTER]");
+   *   RouterName router = RouterName.create("[PROJECT]", "[REGION]", "[ROUTER]");
    *   PreviewRouterHttpRequest request = PreviewRouterHttpRequest.newBuilder()
-   *     .setRouter(formattedRouter)
+   *     .setRouterWithRouterName(router)
    *     .build();
    *   ApiFuture&lt;RoutersPreviewResponse&gt; future = routerClient.previewRouterCallable().futureCall(request);
    *   // Do something
@@ -839,9 +839,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRouter = RouterClient.formatRouterName("[PROJECT]", "[REGION]", "[ROUTER]");
+   *   RouterName router = RouterName.create("[PROJECT]", "[REGION]", "[ROUTER]");
    *   UpdateRouterHttpRequest request = UpdateRouterHttpRequest.newBuilder()
-   *     .setRouter(formattedRouter)
+   *     .setRouterWithRouterName(router)
    *     .build();
    *   Operation response = routerClient.updateRouter(request);
    * }
@@ -862,9 +862,9 @@ public class RouterClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
-   *   String formattedRouter = RouterClient.formatRouterName("[PROJECT]", "[REGION]", "[ROUTER]");
+   *   RouterName router = RouterName.create("[PROJECT]", "[REGION]", "[ROUTER]");
    *   UpdateRouterHttpRequest request = UpdateRouterHttpRequest.newBuilder()
-   *     .setRouter(formattedRouter)
+   *     .setRouterWithRouterName(router)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = routerClient.updateRouterCallable().futureCall(request);
    *   // Do something

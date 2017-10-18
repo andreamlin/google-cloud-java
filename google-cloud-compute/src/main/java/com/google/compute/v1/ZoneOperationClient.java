@@ -191,9 +191,9 @@ public class ZoneOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
-   *   String formattedOperation = ZoneOperationClient.formatZoneOperationsOperationName("[PROJECT]", "[ZONE]", "[OPERATION]");
+   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
    *   DeleteZoneOperationHttpRequest request = DeleteZoneOperationHttpRequest.newBuilder()
-   *     .setOperation(formattedOperation)
+   *     .setOperationWithGlobalOperationsOperationName(operation)
    *     .build();
    *   zoneOperationClient.deleteZoneOperation(request);
    * }
@@ -214,9 +214,9 @@ public class ZoneOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
-   *   String formattedOperation = ZoneOperationClient.formatZoneOperationsOperationName("[PROJECT]", "[ZONE]", "[OPERATION]");
+   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
    *   DeleteZoneOperationHttpRequest request = DeleteZoneOperationHttpRequest.newBuilder()
-   *     .setOperation(formattedOperation)
+   *     .setOperationWithGlobalOperationsOperationName(operation)
    *     .build();
    *   ApiFuture&lt;Void&gt; future = zoneOperationClient.deleteZoneOperationCallable().futureCall(request);
    *   // Do something
@@ -261,9 +261,9 @@ public class ZoneOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
-   *   String formattedOperation = ZoneOperationClient.formatZoneOperationsOperationName("[PROJECT]", "[ZONE]", "[OPERATION]");
+   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
    *   GetZoneOperationHttpRequest request = GetZoneOperationHttpRequest.newBuilder()
-   *     .setOperation(formattedOperation)
+   *     .setOperationWithGlobalOperationsOperationName(operation)
    *     .build();
    *   Operation response = zoneOperationClient.getZoneOperation(request);
    * }
@@ -284,9 +284,9 @@ public class ZoneOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
-   *   String formattedOperation = ZoneOperationClient.formatZoneOperationsOperationName("[PROJECT]", "[ZONE]", "[OPERATION]");
+   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
    *   GetZoneOperationHttpRequest request = GetZoneOperationHttpRequest.newBuilder()
-   *     .setOperation(formattedOperation)
+   *     .setOperationWithGlobalOperationsOperationName(operation)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = zoneOperationClient.getZoneOperationCallable().futureCall(request);
    *   // Do something
@@ -332,9 +332,9 @@ public class ZoneOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
-   *   String formattedZone = ZoneOperationClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
    *   ListZoneOperationsHttpRequest request = ListZoneOperationsHttpRequest.newBuilder()
-   *     .setZone(formattedZone)
+   *     .setZoneWithZoneName(zone)
    *     .build();
    *   for (Operation element : zoneOperationClient.listZoneOperations(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -358,9 +358,9 @@ public class ZoneOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
-   *   String formattedZone = ZoneOperationClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
    *   ListZoneOperationsHttpRequest request = ListZoneOperationsHttpRequest.newBuilder()
-   *     .setZone(formattedZone)
+   *     .setZoneWithZoneName(zone)
    *     .build();
    *   ApiFuture&lt;ListZoneOperationsPagedResponse&gt; future = zoneOperationClient.listZoneOperationsPagedCallable().futureCall(request);
    *   // Do something
@@ -382,9 +382,9 @@ public class ZoneOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
-   *   String formattedZone = ZoneOperationClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
    *   ListZoneOperationsHttpRequest request = ListZoneOperationsHttpRequest.newBuilder()
-   *     .setZone(formattedZone)
+   *     .setZoneWithZoneName(zone)
    *     .build();
    *   while (true) {
    *     OperationList response = zoneOperationClient.listZoneOperationsCallable().call(request);

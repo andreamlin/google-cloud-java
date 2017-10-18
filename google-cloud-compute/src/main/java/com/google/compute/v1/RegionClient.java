@@ -191,9 +191,9 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *   String formattedRegion = RegionClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
    *   GetRegionHttpRequest request = GetRegionHttpRequest.newBuilder()
-   *     .setRegion(formattedRegion)
+   *     .setRegionWithRegionName(region)
    *     .build();
    *   Region response = regionClient.getRegion(request);
    * }
@@ -214,9 +214,9 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *   String formattedRegion = RegionClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
    *   GetRegionHttpRequest request = GetRegionHttpRequest.newBuilder()
-   *     .setRegion(formattedRegion)
+   *     .setRegionWithRegionName(region)
    *     .build();
    *   ApiFuture&lt;Region&gt; future = regionClient.getRegionCallable().futureCall(request);
    *   // Do something
@@ -262,9 +262,9 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *   String formattedProject = RegionClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   ListRegionsHttpRequest request = ListRegionsHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   for (Region element : regionClient.listRegions(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -288,9 +288,9 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *   String formattedProject = RegionClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   ListRegionsHttpRequest request = ListRegionsHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   ApiFuture&lt;ListRegionsPagedResponse&gt; future = regionClient.listRegionsPagedCallable().futureCall(request);
    *   // Do something
@@ -312,9 +312,9 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *   String formattedProject = RegionClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   ListRegionsHttpRequest request = ListRegionsHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   while (true) {
    *     RegionList response = regionClient.listRegionsCallable().call(request);

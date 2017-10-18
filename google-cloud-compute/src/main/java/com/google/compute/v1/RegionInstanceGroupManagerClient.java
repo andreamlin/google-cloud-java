@@ -195,10 +195,10 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersAbandonInstancesRequest regionInstanceGroupManagersAbandonInstancesRequest = RegionInstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
    *   AbandonInstancesRegionInstanceGroupManagerHttpRequest request = AbandonInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
    *     .setRegionInstanceGroupManagersAbandonInstancesRequest(regionInstanceGroupManagersAbandonInstancesRequest)
    *     .build();
    *   Operation response = regionInstanceGroupManagerClient.abandonInstancesRegionInstanceGroupManager(request);
@@ -220,10 +220,10 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersAbandonInstancesRequest regionInstanceGroupManagersAbandonInstancesRequest = RegionInstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
    *   AbandonInstancesRegionInstanceGroupManagerHttpRequest request = AbandonInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
    *     .setRegionInstanceGroupManagersAbandonInstancesRequest(regionInstanceGroupManagersAbandonInstancesRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.abandonInstancesRegionInstanceGroupManagerCallable().futureCall(request);
@@ -269,9 +269,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   DeleteRegionInstanceGroupManagerHttpRequest request = DeleteRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
    *     .build();
    *   Operation response = regionInstanceGroupManagerClient.deleteRegionInstanceGroupManager(request);
    * }
@@ -292,9 +292,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   DeleteRegionInstanceGroupManagerHttpRequest request = DeleteRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.deleteRegionInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
@@ -342,10 +342,10 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersDeleteInstancesRequest regionInstanceGroupManagersDeleteInstancesRequest = RegionInstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
    *   DeleteInstancesRegionInstanceGroupManagerHttpRequest request = DeleteInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
    *     .setRegionInstanceGroupManagersDeleteInstancesRequest(regionInstanceGroupManagersDeleteInstancesRequest)
    *     .build();
    *   Operation response = regionInstanceGroupManagerClient.deleteInstancesRegionInstanceGroupManager(request);
@@ -367,10 +367,10 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersDeleteInstancesRequest regionInstanceGroupManagersDeleteInstancesRequest = RegionInstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
    *   DeleteInstancesRegionInstanceGroupManagerHttpRequest request = DeleteInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
    *     .setRegionInstanceGroupManagersDeleteInstancesRequest(regionInstanceGroupManagersDeleteInstancesRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.deleteInstancesRegionInstanceGroupManagerCallable().futureCall(request);
@@ -416,9 +416,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   GetRegionInstanceGroupManagerHttpRequest request = GetRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
    *     .build();
    *   InstanceGroupManager response = regionInstanceGroupManagerClient.getRegionInstanceGroupManager(request);
    * }
@@ -439,9 +439,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   GetRegionInstanceGroupManagerHttpRequest request = GetRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
    *     .build();
    *   ApiFuture&lt;InstanceGroupManager&gt; future = regionInstanceGroupManagerClient.getRegionInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
@@ -489,10 +489,10 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedRegion = RegionInstanceGroupManagerClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
    *   InstanceGroupManager instanceGroupManager = InstanceGroupManager.newBuilder().build();
    *   InsertRegionInstanceGroupManagerHttpRequest request = InsertRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setRegion(formattedRegion)
+   *     .setRegionWithRegionName(region)
    *     .setInstanceGroupManager(instanceGroupManager)
    *     .build();
    *   Operation response = regionInstanceGroupManagerClient.insertRegionInstanceGroupManager(request);
@@ -514,10 +514,10 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedRegion = RegionInstanceGroupManagerClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
    *   InstanceGroupManager instanceGroupManager = InstanceGroupManager.newBuilder().build();
    *   InsertRegionInstanceGroupManagerHttpRequest request = InsertRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setRegion(formattedRegion)
+   *     .setRegionWithRegionName(region)
    *     .setInstanceGroupManager(instanceGroupManager)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.insertRegionInstanceGroupManagerCallable().futureCall(request);
@@ -564,9 +564,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedRegion = RegionInstanceGroupManagerClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
    *   ListRegionInstanceGroupManagersHttpRequest request = ListRegionInstanceGroupManagersHttpRequest.newBuilder()
-   *     .setRegion(formattedRegion)
+   *     .setRegionWithRegionName(region)
    *     .build();
    *   for (InstanceGroupManager element : regionInstanceGroupManagerClient.listRegionInstanceGroupManagers(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -590,9 +590,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedRegion = RegionInstanceGroupManagerClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
    *   ListRegionInstanceGroupManagersHttpRequest request = ListRegionInstanceGroupManagersHttpRequest.newBuilder()
-   *     .setRegion(formattedRegion)
+   *     .setRegionWithRegionName(region)
    *     .build();
    *   ApiFuture&lt;ListRegionInstanceGroupManagersPagedResponse&gt; future = regionInstanceGroupManagerClient.listRegionInstanceGroupManagersPagedCallable().futureCall(request);
    *   // Do something
@@ -614,9 +614,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedRegion = RegionInstanceGroupManagerClient.formatRegionName("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
    *   ListRegionInstanceGroupManagersHttpRequest request = ListRegionInstanceGroupManagersHttpRequest.newBuilder()
-   *     .setRegion(formattedRegion)
+   *     .setRegionWithRegionName(region)
    *     .build();
    *   while (true) {
    *     RegionInstanceGroupManagerList response = regionInstanceGroupManagerClient.listRegionInstanceGroupManagersCallable().call(request);
@@ -670,9 +670,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.create("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   ListManagedInstancesRegionInstanceGroupManagersHttpRequest request = ListManagedInstancesRegionInstanceGroupManagersHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager)
    *     .build();
    *   RegionInstanceGroupManagersListInstancesResponse response = regionInstanceGroupManagerClient.listManagedInstancesRegionInstanceGroupManagers(request);
    * }
@@ -693,9 +693,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.create("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   ListManagedInstancesRegionInstanceGroupManagersHttpRequest request = ListManagedInstancesRegionInstanceGroupManagersHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager)
    *     .build();
    *   ApiFuture&lt;RegionInstanceGroupManagersListInstancesResponse&gt; future = regionInstanceGroupManagerClient.listManagedInstancesRegionInstanceGroupManagersCallable().futureCall(request);
    *   // Do something
@@ -743,10 +743,10 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersRecreateRequest regionInstanceGroupManagersRecreateRequest = RegionInstanceGroupManagersRecreateRequest.newBuilder().build();
    *   RecreateInstancesRegionInstanceGroupManagerHttpRequest request = RecreateInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
    *     .setRegionInstanceGroupManagersRecreateRequest(regionInstanceGroupManagersRecreateRequest)
    *     .build();
    *   Operation response = regionInstanceGroupManagerClient.recreateInstancesRegionInstanceGroupManager(request);
@@ -768,10 +768,10 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersRecreateRequest regionInstanceGroupManagersRecreateRequest = RegionInstanceGroupManagersRecreateRequest.newBuilder().build();
    *   RecreateInstancesRegionInstanceGroupManagerHttpRequest request = RecreateInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
    *     .setRegionInstanceGroupManagersRecreateRequest(regionInstanceGroupManagersRecreateRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.recreateInstancesRegionInstanceGroupManagerCallable().futureCall(request);
@@ -821,10 +821,10 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   Integer size = 0;
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   ResizeRegionInstanceGroupManagerHttpRequest request = ResizeRegionInstanceGroupManagerHttpRequest.newBuilder()
    *     .setSize(size)
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
    *     .build();
    *   Operation response = regionInstanceGroupManagerClient.resizeRegionInstanceGroupManager(request);
    * }
@@ -846,10 +846,10 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   Integer size = 0;
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   ResizeRegionInstanceGroupManagerHttpRequest request = ResizeRegionInstanceGroupManagerHttpRequest.newBuilder()
    *     .setSize(size)
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.resizeRegionInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
@@ -897,10 +897,10 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.create("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersSetTemplateRequest regionInstanceGroupManagersSetTemplateRequest = RegionInstanceGroupManagersSetTemplateRequest.newBuilder().build();
    *   SetInstanceTemplateRegionInstanceGroupManagerHttpRequest request = SetInstanceTemplateRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager)
    *     .setRegionInstanceGroupManagersSetTemplateRequest(regionInstanceGroupManagersSetTemplateRequest)
    *     .build();
    *   Operation response = regionInstanceGroupManagerClient.setInstanceTemplateRegionInstanceGroupManager(request);
@@ -922,10 +922,10 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.create("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersSetTemplateRequest regionInstanceGroupManagersSetTemplateRequest = RegionInstanceGroupManagersSetTemplateRequest.newBuilder().build();
    *   SetInstanceTemplateRegionInstanceGroupManagerHttpRequest request = SetInstanceTemplateRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithInstanceGroupManagerName(instanceGroupManager)
    *     .setRegionInstanceGroupManagersSetTemplateRequest(regionInstanceGroupManagersSetTemplateRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.setInstanceTemplateRegionInstanceGroupManagerCallable().futureCall(request);
@@ -974,10 +974,10 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersSetTargetPoolsRequest regionInstanceGroupManagersSetTargetPoolsRequest = RegionInstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
    *   SetTargetPoolsRegionInstanceGroupManagerHttpRequest request = SetTargetPoolsRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
    *     .setRegionInstanceGroupManagersSetTargetPoolsRequest(regionInstanceGroupManagersSetTargetPoolsRequest)
    *     .build();
    *   Operation response = regionInstanceGroupManagerClient.setTargetPoolsRegionInstanceGroupManager(request);
@@ -999,10 +999,10 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   String formattedInstanceGroupManager = RegionInstanceGroupManagerClient.formatRegionInstanceGroupManagersInstanceGroupManagerName("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.create("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersSetTargetPoolsRequest regionInstanceGroupManagersSetTargetPoolsRequest = RegionInstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
    *   SetTargetPoolsRegionInstanceGroupManagerHttpRequest request = SetTargetPoolsRegionInstanceGroupManagerHttpRequest.newBuilder()
-   *     .setInstanceGroupManager(formattedInstanceGroupManager)
+   *     .setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(instanceGroupManager)
    *     .setRegionInstanceGroupManagersSetTargetPoolsRequest(regionInstanceGroupManagersSetTargetPoolsRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.setTargetPoolsRegionInstanceGroupManagerCallable().futureCall(request);

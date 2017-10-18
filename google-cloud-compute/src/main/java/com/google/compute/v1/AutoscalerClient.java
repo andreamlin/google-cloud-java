@@ -193,9 +193,9 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   String formattedProject = AutoscalerClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   AggregatedListAutoscalersHttpRequest request = AggregatedListAutoscalersHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   for (Autoscaler element : autoscalerClient.aggregatedListAutoscalers(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -219,9 +219,9 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   String formattedProject = AutoscalerClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   AggregatedListAutoscalersHttpRequest request = AggregatedListAutoscalersHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   ApiFuture&lt;AggregatedListAutoscalersPagedResponse&gt; future = autoscalerClient.aggregatedListAutoscalersPagedCallable().futureCall(request);
    *   // Do something
@@ -243,9 +243,9 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   String formattedProject = AutoscalerClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   AggregatedListAutoscalersHttpRequest request = AggregatedListAutoscalersHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   while (true) {
    *     AutoscalerAggregatedList response = autoscalerClient.aggregatedListAutoscalersCallable().call(request);
@@ -299,9 +299,9 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   String formattedAutoscaler = AutoscalerClient.formatAutoscalerName("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
+   *   AutoscalerName autoscaler = AutoscalerName.create("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
    *   DeleteAutoscalerHttpRequest request = DeleteAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscaler(formattedAutoscaler)
+   *     .setAutoscalerWithAutoscalerName(autoscaler)
    *     .build();
    *   Operation response = autoscalerClient.deleteAutoscaler(request);
    * }
@@ -322,9 +322,9 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   String formattedAutoscaler = AutoscalerClient.formatAutoscalerName("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
+   *   AutoscalerName autoscaler = AutoscalerName.create("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
    *   DeleteAutoscalerHttpRequest request = DeleteAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscaler(formattedAutoscaler)
+   *     .setAutoscalerWithAutoscalerName(autoscaler)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = autoscalerClient.deleteAutoscalerCallable().futureCall(request);
    *   // Do something
@@ -369,9 +369,9 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   String formattedAutoscaler = AutoscalerClient.formatAutoscalerName("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
+   *   AutoscalerName autoscaler = AutoscalerName.create("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
    *   GetAutoscalerHttpRequest request = GetAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscaler(formattedAutoscaler)
+   *     .setAutoscalerWithAutoscalerName(autoscaler)
    *     .build();
    *   Autoscaler response = autoscalerClient.getAutoscaler(request);
    * }
@@ -392,9 +392,9 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   String formattedAutoscaler = AutoscalerClient.formatAutoscalerName("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
+   *   AutoscalerName autoscaler = AutoscalerName.create("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
    *   GetAutoscalerHttpRequest request = GetAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscaler(formattedAutoscaler)
+   *     .setAutoscalerWithAutoscalerName(autoscaler)
    *     .build();
    *   ApiFuture&lt;Autoscaler&gt; future = autoscalerClient.getAutoscalerCallable().futureCall(request);
    *   // Do something
@@ -442,10 +442,10 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   String formattedZone = AutoscalerClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   InsertAutoscalerHttpRequest request = InsertAutoscalerHttpRequest.newBuilder()
-   *     .setZone(formattedZone)
+   *     .setZoneWithZoneName(zone)
    *     .setAutoscaler(autoscaler)
    *     .build();
    *   Operation response = autoscalerClient.insertAutoscaler(request);
@@ -467,10 +467,10 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   String formattedZone = AutoscalerClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   InsertAutoscalerHttpRequest request = InsertAutoscalerHttpRequest.newBuilder()
-   *     .setZone(formattedZone)
+   *     .setZoneWithZoneName(zone)
    *     .setAutoscaler(autoscaler)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = autoscalerClient.insertAutoscalerCallable().futureCall(request);
@@ -517,9 +517,9 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   String formattedZone = AutoscalerClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
    *   ListAutoscalersHttpRequest request = ListAutoscalersHttpRequest.newBuilder()
-   *     .setZone(formattedZone)
+   *     .setZoneWithZoneName(zone)
    *     .build();
    *   for (Autoscaler element : autoscalerClient.listAutoscalers(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -543,9 +543,9 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   String formattedZone = AutoscalerClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
    *   ListAutoscalersHttpRequest request = ListAutoscalersHttpRequest.newBuilder()
-   *     .setZone(formattedZone)
+   *     .setZoneWithZoneName(zone)
    *     .build();
    *   ApiFuture&lt;ListAutoscalersPagedResponse&gt; future = autoscalerClient.listAutoscalersPagedCallable().futureCall(request);
    *   // Do something
@@ -567,9 +567,9 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   String formattedZone = AutoscalerClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
    *   ListAutoscalersHttpRequest request = ListAutoscalersHttpRequest.newBuilder()
-   *     .setZone(formattedZone)
+   *     .setZoneWithZoneName(zone)
    *     .build();
    *   while (true) {
    *     AutoscalerList response = autoscalerClient.listAutoscalersCallable().call(request);
@@ -629,10 +629,10 @@ public class AutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   String formattedZone = AutoscalerClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
    *   PatchAutoscalerHttpRequest request = PatchAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler)
-   *     .setZone(formattedZone)
+   *     .setZoneWithZoneName(zone)
    *     .build();
    *   Operation response = autoscalerClient.patchAutoscaler(request);
    * }
@@ -654,10 +654,10 @@ public class AutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   String formattedZone = AutoscalerClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
    *   PatchAutoscalerHttpRequest request = PatchAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler)
-   *     .setZone(formattedZone)
+   *     .setZoneWithZoneName(zone)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = autoscalerClient.patchAutoscalerCallable().futureCall(request);
    *   // Do something
@@ -708,10 +708,10 @@ public class AutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   String formattedZone = AutoscalerClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
    *   UpdateAutoscalerHttpRequest request = UpdateAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler)
-   *     .setZone(formattedZone)
+   *     .setZoneWithZoneName(zone)
    *     .build();
    *   Operation response = autoscalerClient.updateAutoscaler(request);
    * }
@@ -733,10 +733,10 @@ public class AutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   String formattedZone = AutoscalerClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
    *   UpdateAutoscalerHttpRequest request = UpdateAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler)
-   *     .setZone(formattedZone)
+   *     .setZoneWithZoneName(zone)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = autoscalerClient.updateAutoscalerCallable().futureCall(request);
    *   // Do something

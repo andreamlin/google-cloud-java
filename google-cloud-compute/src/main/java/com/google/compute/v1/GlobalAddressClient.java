@@ -191,9 +191,9 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   String formattedAddress = GlobalAddressClient.formatGlobalAddressesAddressName("[PROJECT]", "[ADDRESS]");
+   *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
    *   DeleteGlobalAddressHttpRequest request = DeleteGlobalAddressHttpRequest.newBuilder()
-   *     .setAddress(formattedAddress)
+   *     .setAddressWithAddressName(address)
    *     .build();
    *   Operation response = globalAddressClient.deleteGlobalAddress(request);
    * }
@@ -214,9 +214,9 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   String formattedAddress = GlobalAddressClient.formatGlobalAddressesAddressName("[PROJECT]", "[ADDRESS]");
+   *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
    *   DeleteGlobalAddressHttpRequest request = DeleteGlobalAddressHttpRequest.newBuilder()
-   *     .setAddress(formattedAddress)
+   *     .setAddressWithAddressName(address)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = globalAddressClient.deleteGlobalAddressCallable().futureCall(request);
    *   // Do something
@@ -261,9 +261,9 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   String formattedAddress = GlobalAddressClient.formatGlobalAddressesAddressName("[PROJECT]", "[ADDRESS]");
+   *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
    *   GetGlobalAddressHttpRequest request = GetGlobalAddressHttpRequest.newBuilder()
-   *     .setAddress(formattedAddress)
+   *     .setAddressWithAddressName(address)
    *     .build();
    *   Address response = globalAddressClient.getGlobalAddress(request);
    * }
@@ -284,9 +284,9 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   String formattedAddress = GlobalAddressClient.formatGlobalAddressesAddressName("[PROJECT]", "[ADDRESS]");
+   *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
    *   GetGlobalAddressHttpRequest request = GetGlobalAddressHttpRequest.newBuilder()
-   *     .setAddress(formattedAddress)
+   *     .setAddressWithAddressName(address)
    *     .build();
    *   ApiFuture&lt;Address&gt; future = globalAddressClient.getGlobalAddressCallable().futureCall(request);
    *   // Do something
@@ -334,10 +334,10 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   String formattedProject = GlobalAddressClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   Address address = Address.newBuilder().build();
    *   InsertGlobalAddressHttpRequest request = InsertGlobalAddressHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .setAddress(address)
    *     .build();
    *   Operation response = globalAddressClient.insertGlobalAddress(request);
@@ -359,10 +359,10 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   String formattedProject = GlobalAddressClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   Address address = Address.newBuilder().build();
    *   InsertGlobalAddressHttpRequest request = InsertGlobalAddressHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .setAddress(address)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = globalAddressClient.insertGlobalAddressCallable().futureCall(request);
@@ -409,9 +409,9 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   String formattedProject = GlobalAddressClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   ListGlobalAddressesHttpRequest request = ListGlobalAddressesHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   for (Address element : globalAddressClient.listGlobalAddresses(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -435,9 +435,9 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   String formattedProject = GlobalAddressClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   ListGlobalAddressesHttpRequest request = ListGlobalAddressesHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   ApiFuture&lt;ListGlobalAddressesPagedResponse&gt; future = globalAddressClient.listGlobalAddressesPagedCallable().futureCall(request);
    *   // Do something
@@ -459,9 +459,9 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   String formattedProject = GlobalAddressClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   ListGlobalAddressesHttpRequest request = ListGlobalAddressesHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   while (true) {
    *     AddressList response = globalAddressClient.listGlobalAddressesCallable().call(request);

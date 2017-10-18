@@ -191,9 +191,9 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *   String formattedZone = ZoneClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
    *   GetZoneHttpRequest request = GetZoneHttpRequest.newBuilder()
-   *     .setZone(formattedZone)
+   *     .setZoneWithZoneName(zone)
    *     .build();
    *   Zone response = zoneClient.getZone(request);
    * }
@@ -214,9 +214,9 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *   String formattedZone = ZoneClient.formatZoneName("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
    *   GetZoneHttpRequest request = GetZoneHttpRequest.newBuilder()
-   *     .setZone(formattedZone)
+   *     .setZoneWithZoneName(zone)
    *     .build();
    *   ApiFuture&lt;Zone&gt; future = zoneClient.getZoneCallable().futureCall(request);
    *   // Do something
@@ -262,9 +262,9 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *   String formattedProject = ZoneClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   ListZonesHttpRequest request = ListZonesHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   for (Zone element : zoneClient.listZones(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -288,9 +288,9 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *   String formattedProject = ZoneClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   ListZonesHttpRequest request = ListZonesHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   ApiFuture&lt;ListZonesPagedResponse&gt; future = zoneClient.listZonesPagedCallable().futureCall(request);
    *   // Do something
@@ -312,9 +312,9 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *   String formattedProject = ZoneClient.formatProjectName("[PROJECT]");
+   *   ProjectName project = ProjectName.create("[PROJECT]");
    *   ListZonesHttpRequest request = ListZonesHttpRequest.newBuilder()
-   *     .setProject(formattedProject)
+   *     .setProjectWithProjectName(project)
    *     .build();
    *   while (true) {
    *     ZoneList response = zoneClient.listZonesCallable().call(request);
