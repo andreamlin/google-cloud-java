@@ -272,7 +272,7 @@ public class ImageClient implements BackgroundResource {
    *   DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
    *   DeprecateImageHttpRequest request = DeprecateImageHttpRequest.newBuilder()
    *     .setImageWithImageName(image)
-   *     .setDeprecationStatus(deprecationStatus)
+   *     .setDeprecationStatusResource(deprecationStatus)
    *     .build();
    *   Operation response = imageClient.deprecateImage(request);
    * }
@@ -299,7 +299,7 @@ public class ImageClient implements BackgroundResource {
    *   DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
    *   DeprecateImageHttpRequest request = DeprecateImageHttpRequest.newBuilder()
    *     .setImageWithImageName(image)
-   *     .setDeprecationStatus(deprecationStatus)
+   *     .setDeprecationStatusResource(deprecationStatus)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = imageClient.deprecateImageCallable().futureCall(request);
    *   // Do something
@@ -491,7 +491,7 @@ public class ImageClient implements BackgroundResource {
    *   Image image = Image.newBuilder().build();
    *   InsertImageHttpRequest request = InsertImageHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setImage(image)
+   *     .setImageResource(image)
    *     .build();
    *   Operation response = imageClient.insertImage(request);
    * }
@@ -516,7 +516,7 @@ public class ImageClient implements BackgroundResource {
    *   Image image = Image.newBuilder().build();
    *   InsertImageHttpRequest request = InsertImageHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setImage(image)
+   *     .setImageResource(image)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = imageClient.insertImageCallable().futureCall(request);
    *   // Do something

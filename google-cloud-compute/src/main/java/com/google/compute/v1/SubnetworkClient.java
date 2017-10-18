@@ -376,7 +376,7 @@ public class SubnetworkClient implements BackgroundResource {
    *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
    *   ExpandIpCidrRangeSubnetworkHttpRequest request = ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
    *     .setSubnetworkWithSubnetworkName(subnetwork)
-   *     .setSubnetworksExpandIpCidrRangeRequest(subnetworksExpandIpCidrRangeRequest)
+   *     .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequest)
    *     .build();
    *   Operation response = subnetworkClient.expandIpCidrRangeSubnetwork(request);
    * }
@@ -401,7 +401,7 @@ public class SubnetworkClient implements BackgroundResource {
    *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
    *   ExpandIpCidrRangeSubnetworkHttpRequest request = ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
    *     .setSubnetworkWithSubnetworkName(subnetwork)
-   *     .setSubnetworksExpandIpCidrRangeRequest(subnetworksExpandIpCidrRangeRequest)
+   *     .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = subnetworkClient.expandIpCidrRangeSubnetworkCallable().futureCall(request);
    *   // Do something
@@ -523,7 +523,7 @@ public class SubnetworkClient implements BackgroundResource {
    *   Subnetwork subnetwork = Subnetwork.newBuilder().build();
    *   InsertSubnetworkHttpRequest request = InsertSubnetworkHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setSubnetwork(subnetwork)
+   *     .setSubnetworkResource(subnetwork)
    *     .build();
    *   Operation response = subnetworkClient.insertSubnetwork(request);
    * }
@@ -548,7 +548,7 @@ public class SubnetworkClient implements BackgroundResource {
    *   Subnetwork subnetwork = Subnetwork.newBuilder().build();
    *   InsertSubnetworkHttpRequest request = InsertSubnetworkHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setSubnetwork(subnetwork)
+   *     .setSubnetworkResource(subnetwork)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = subnetworkClient.insertSubnetworkCallable().futureCall(request);
    *   // Do something

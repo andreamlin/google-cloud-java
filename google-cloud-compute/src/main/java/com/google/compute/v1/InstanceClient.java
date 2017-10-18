@@ -206,7 +206,7 @@ public class InstanceClient implements BackgroundResource {
    *   AddAccessConfigInstanceHttpRequest request = AddAccessConfigInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
    *     .setNetworkInterface(networkInterface)
-   *     .setAccessConfig(accessConfig)
+   *     .setAccessConfigResource(accessConfig)
    *     .build();
    *   Operation response = instanceClient.addAccessConfigInstance(request);
    * }
@@ -233,7 +233,7 @@ public class InstanceClient implements BackgroundResource {
    *   AddAccessConfigInstanceHttpRequest request = AddAccessConfigInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
    *     .setNetworkInterface(networkInterface)
-   *     .setAccessConfig(accessConfig)
+   *     .setAccessConfigResource(accessConfig)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.addAccessConfigInstanceCallable().futureCall(request);
    *   // Do something
@@ -392,7 +392,7 @@ public class InstanceClient implements BackgroundResource {
    *   AttachedDisk attachedDisk = AttachedDisk.newBuilder().build();
    *   AttachDiskInstanceHttpRequest request = AttachDiskInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
-   *     .setAttachedDisk(attachedDisk)
+   *     .setAttachedDiskResource(attachedDisk)
    *     .build();
    *   Operation response = instanceClient.attachDiskInstance(request);
    * }
@@ -417,7 +417,7 @@ public class InstanceClient implements BackgroundResource {
    *   AttachedDisk attachedDisk = AttachedDisk.newBuilder().build();
    *   AttachDiskInstanceHttpRequest request = AttachDiskInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
-   *     .setAttachedDisk(attachedDisk)
+   *     .setAttachedDiskResource(attachedDisk)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.attachDiskInstanceCallable().futureCall(request);
    *   // Do something
@@ -854,7 +854,7 @@ public class InstanceClient implements BackgroundResource {
    *   Instance instance = Instance.newBuilder().build();
    *   InsertInstanceHttpRequest request = InsertInstanceHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
-   *     .setInstance(instance)
+   *     .setInstanceResource(instance)
    *     .build();
    *   Operation response = instanceClient.insertInstance(request);
    * }
@@ -879,7 +879,7 @@ public class InstanceClient implements BackgroundResource {
    *   Instance instance = Instance.newBuilder().build();
    *   InsertInstanceHttpRequest request = InsertInstanceHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
-   *     .setInstance(instance)
+   *     .setInstanceResource(instance)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.insertInstanceCallable().futureCall(request);
    *   // Do something
@@ -1192,7 +1192,7 @@ public class InstanceClient implements BackgroundResource {
    *   InstancesSetMachineTypeRequest instancesSetMachineTypeRequest = InstancesSetMachineTypeRequest.newBuilder().build();
    *   SetMachineTypeInstanceHttpRequest request = SetMachineTypeInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
-   *     .setInstancesSetMachineTypeRequest(instancesSetMachineTypeRequest)
+   *     .setInstancesSetMachineTypeRequestResource(instancesSetMachineTypeRequest)
    *     .build();
    *   Operation response = instanceClient.setMachineTypeInstance(request);
    * }
@@ -1217,7 +1217,7 @@ public class InstanceClient implements BackgroundResource {
    *   InstancesSetMachineTypeRequest instancesSetMachineTypeRequest = InstancesSetMachineTypeRequest.newBuilder().build();
    *   SetMachineTypeInstanceHttpRequest request = SetMachineTypeInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
-   *     .setInstancesSetMachineTypeRequest(instancesSetMachineTypeRequest)
+   *     .setInstancesSetMachineTypeRequestResource(instancesSetMachineTypeRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.setMachineTypeInstanceCallable().futureCall(request);
    *   // Do something
@@ -1269,7 +1269,7 @@ public class InstanceClient implements BackgroundResource {
    *   Metadata metadata = Metadata.newBuilder().build();
    *   SetMetadataInstanceHttpRequest request = SetMetadataInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
-   *     .setMetadata(metadata)
+   *     .setMetadataResource(metadata)
    *     .build();
    *   Operation response = instanceClient.setMetadataInstance(request);
    * }
@@ -1294,7 +1294,7 @@ public class InstanceClient implements BackgroundResource {
    *   Metadata metadata = Metadata.newBuilder().build();
    *   SetMetadataInstanceHttpRequest request = SetMetadataInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
-   *     .setMetadata(metadata)
+   *     .setMetadataResource(metadata)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.setMetadataInstanceCallable().futureCall(request);
    *   // Do something
@@ -1346,7 +1346,7 @@ public class InstanceClient implements BackgroundResource {
    *   Scheduling scheduling = Scheduling.newBuilder().build();
    *   SetSchedulingInstanceHttpRequest request = SetSchedulingInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
-   *     .setScheduling(scheduling)
+   *     .setSchedulingResource(scheduling)
    *     .build();
    *   Operation response = instanceClient.setSchedulingInstance(request);
    * }
@@ -1371,7 +1371,7 @@ public class InstanceClient implements BackgroundResource {
    *   Scheduling scheduling = Scheduling.newBuilder().build();
    *   SetSchedulingInstanceHttpRequest request = SetSchedulingInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
-   *     .setScheduling(scheduling)
+   *     .setSchedulingResource(scheduling)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.setSchedulingInstanceCallable().futureCall(request);
    *   // Do something
@@ -1423,7 +1423,7 @@ public class InstanceClient implements BackgroundResource {
    *   InstancesSetServiceAccountRequest instancesSetServiceAccountRequest = InstancesSetServiceAccountRequest.newBuilder().build();
    *   SetServiceAccountInstanceHttpRequest request = SetServiceAccountInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
-   *     .setInstancesSetServiceAccountRequest(instancesSetServiceAccountRequest)
+   *     .setInstancesSetServiceAccountRequestResource(instancesSetServiceAccountRequest)
    *     .build();
    *   Operation response = instanceClient.setServiceAccountInstance(request);
    * }
@@ -1448,7 +1448,7 @@ public class InstanceClient implements BackgroundResource {
    *   InstancesSetServiceAccountRequest instancesSetServiceAccountRequest = InstancesSetServiceAccountRequest.newBuilder().build();
    *   SetServiceAccountInstanceHttpRequest request = SetServiceAccountInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
-   *     .setInstancesSetServiceAccountRequest(instancesSetServiceAccountRequest)
+   *     .setInstancesSetServiceAccountRequestResource(instancesSetServiceAccountRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.setServiceAccountInstanceCallable().futureCall(request);
    *   // Do something
@@ -1500,7 +1500,7 @@ public class InstanceClient implements BackgroundResource {
    *   Tags tags = Tags.newBuilder().build();
    *   SetTagsInstanceHttpRequest request = SetTagsInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
-   *     .setTags(tags)
+   *     .setTagsResource(tags)
    *     .build();
    *   Operation response = instanceClient.setTagsInstance(request);
    * }
@@ -1525,7 +1525,7 @@ public class InstanceClient implements BackgroundResource {
    *   Tags tags = Tags.newBuilder().build();
    *   SetTagsInstanceHttpRequest request = SetTagsInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
-   *     .setTags(tags)
+   *     .setTagsResource(tags)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.setTagsInstanceCallable().futureCall(request);
    *   // Do something
@@ -1647,7 +1647,7 @@ public class InstanceClient implements BackgroundResource {
    *   InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequest = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
    *   StartWithEncryptionKeyInstanceHttpRequest request = StartWithEncryptionKeyInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
-   *     .setInstancesStartWithEncryptionKeyRequest(instancesStartWithEncryptionKeyRequest)
+   *     .setInstancesStartWithEncryptionKeyRequestResource(instancesStartWithEncryptionKeyRequest)
    *     .build();
    *   Operation response = instanceClient.startWithEncryptionKeyInstance(request);
    * }
@@ -1672,7 +1672,7 @@ public class InstanceClient implements BackgroundResource {
    *   InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequest = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
    *   StartWithEncryptionKeyInstanceHttpRequest request = StartWithEncryptionKeyInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
-   *     .setInstancesStartWithEncryptionKeyRequest(instancesStartWithEncryptionKeyRequest)
+   *     .setInstancesStartWithEncryptionKeyRequestResource(instancesStartWithEncryptionKeyRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.startWithEncryptionKeyInstanceCallable().futureCall(request);
    *   // Do something

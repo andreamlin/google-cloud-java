@@ -446,7 +446,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    *   ForwardingRule forwardingRule = ForwardingRule.newBuilder().build();
    *   InsertForwardingRuleHttpRequest request = InsertForwardingRuleHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setForwardingRule(forwardingRule)
+   *     .setForwardingRuleResource(forwardingRule)
    *     .build();
    *   Operation response = forwardingRuleClient.insertForwardingRule(request);
    * }
@@ -471,7 +471,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    *   ForwardingRule forwardingRule = ForwardingRule.newBuilder().build();
    *   InsertForwardingRuleHttpRequest request = InsertForwardingRuleHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setForwardingRule(forwardingRule)
+   *     .setForwardingRuleResource(forwardingRule)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = forwardingRuleClient.insertForwardingRuleCallable().futureCall(request);
    *   // Do something
@@ -630,7 +630,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    *   TargetReference targetReference = TargetReference.newBuilder().build();
    *   SetTargetForwardingRuleHttpRequest request = SetTargetForwardingRuleHttpRequest.newBuilder()
    *     .setForwardingRuleWithForwardingRuleName(forwardingRule)
-   *     .setTargetReference(targetReference)
+   *     .setTargetReferenceResource(targetReference)
    *     .build();
    *   Operation response = forwardingRuleClient.setTargetForwardingRule(request);
    * }
@@ -655,7 +655,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    *   TargetReference targetReference = TargetReference.newBuilder().build();
    *   SetTargetForwardingRuleHttpRequest request = SetTargetForwardingRuleHttpRequest.newBuilder()
    *     .setForwardingRuleWithForwardingRuleName(forwardingRule)
-   *     .setTargetReference(targetReference)
+   *     .setTargetReferenceResource(targetReference)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = forwardingRuleClient.setTargetForwardingRuleCallable().futureCall(request);
    *   // Do something

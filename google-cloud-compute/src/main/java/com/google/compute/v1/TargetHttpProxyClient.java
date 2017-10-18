@@ -338,7 +338,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *   TargetHttpProxy targetHttpProxy = TargetHttpProxy.newBuilder().build();
    *   InsertTargetHttpProxyHttpRequest request = InsertTargetHttpProxyHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setTargetHttpProxy(targetHttpProxy)
+   *     .setTargetHttpProxyResource(targetHttpProxy)
    *     .build();
    *   Operation response = targetHttpProxyClient.insertTargetHttpProxy(request);
    * }
@@ -363,7 +363,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *   TargetHttpProxy targetHttpProxy = TargetHttpProxy.newBuilder().build();
    *   InsertTargetHttpProxyHttpRequest request = InsertTargetHttpProxyHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setTargetHttpProxy(targetHttpProxy)
+   *     .setTargetHttpProxyResource(targetHttpProxy)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetHttpProxyClient.insertTargetHttpProxyCallable().futureCall(request);
    *   // Do something
@@ -522,7 +522,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
    *   SetUrlMapTargetHttpProxyHttpRequest request = SetUrlMapTargetHttpProxyHttpRequest.newBuilder()
    *     .setTargetHttpProxyWithTargetHttpProxyName(targetHttpProxy)
-   *     .setUrlMapReference(urlMapReference)
+   *     .setUrlMapReferenceResource(urlMapReference)
    *     .build();
    *   Operation response = targetHttpProxyClient.setUrlMapTargetHttpProxy(request);
    * }
@@ -547,7 +547,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
    *   SetUrlMapTargetHttpProxyHttpRequest request = SetUrlMapTargetHttpProxyHttpRequest.newBuilder()
    *     .setTargetHttpProxyWithTargetHttpProxyName(targetHttpProxy)
-   *     .setUrlMapReference(urlMapReference)
+   *     .setUrlMapReferenceResource(urlMapReference)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetHttpProxyClient.setUrlMapTargetHttpProxyCallable().futureCall(request);
    *   // Do something

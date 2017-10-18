@@ -446,7 +446,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *   TargetVpnGateway targetVpnGateway = TargetVpnGateway.newBuilder().build();
    *   InsertTargetVpnGatewayHttpRequest request = InsertTargetVpnGatewayHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setTargetVpnGateway(targetVpnGateway)
+   *     .setTargetVpnGatewayResource(targetVpnGateway)
    *     .build();
    *   Operation response = targetVpnGatewayClient.insertTargetVpnGateway(request);
    * }
@@ -471,7 +471,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *   TargetVpnGateway targetVpnGateway = TargetVpnGateway.newBuilder().build();
    *   InsertTargetVpnGatewayHttpRequest request = InsertTargetVpnGatewayHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setTargetVpnGateway(targetVpnGateway)
+   *     .setTargetVpnGatewayResource(targetVpnGateway)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetVpnGatewayClient.insertTargetVpnGatewayCallable().futureCall(request);
    *   // Do something

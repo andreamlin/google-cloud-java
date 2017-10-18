@@ -338,7 +338,7 @@ public class GlobalAddressClient implements BackgroundResource {
    *   Address address = Address.newBuilder().build();
    *   InsertGlobalAddressHttpRequest request = InsertGlobalAddressHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setAddress(address)
+   *     .setAddressResource(address)
    *     .build();
    *   Operation response = globalAddressClient.insertGlobalAddress(request);
    * }
@@ -363,7 +363,7 @@ public class GlobalAddressClient implements BackgroundResource {
    *   Address address = Address.newBuilder().build();
    *   InsertGlobalAddressHttpRequest request = InsertGlobalAddressHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setAddress(address)
+   *     .setAddressResource(address)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = globalAddressClient.insertGlobalAddressCallable().futureCall(request);
    *   // Do something

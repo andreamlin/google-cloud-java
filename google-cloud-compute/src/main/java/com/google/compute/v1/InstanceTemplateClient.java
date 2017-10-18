@@ -338,7 +338,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    *   InstanceTemplate instanceTemplate = InstanceTemplate.newBuilder().build();
    *   InsertInstanceTemplateHttpRequest request = InsertInstanceTemplateHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setInstanceTemplate(instanceTemplate)
+   *     .setInstanceTemplateResource(instanceTemplate)
    *     .build();
    *   Operation response = instanceTemplateClient.insertInstanceTemplate(request);
    * }
@@ -363,7 +363,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    *   InstanceTemplate instanceTemplate = InstanceTemplate.newBuilder().build();
    *   InsertInstanceTemplateHttpRequest request = InsertInstanceTemplateHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setInstanceTemplate(instanceTemplate)
+   *     .setInstanceTemplateResource(instanceTemplate)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceTemplateClient.insertInstanceTemplateCallable().futureCall(request);
    *   // Do something

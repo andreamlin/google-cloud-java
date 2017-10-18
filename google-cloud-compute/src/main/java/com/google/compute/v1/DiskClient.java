@@ -307,7 +307,7 @@ public class DiskClient implements BackgroundResource {
    *   Snapshot snapshot = Snapshot.newBuilder().build();
    *   CreateSnapshotDiskHttpRequest request = CreateSnapshotDiskHttpRequest.newBuilder()
    *     .setDiskWithDiskName(disk)
-   *     .setSnapshot(snapshot)
+   *     .setSnapshotResource(snapshot)
    *     .build();
    *   Operation response = diskClient.createSnapshotDisk(request);
    * }
@@ -332,7 +332,7 @@ public class DiskClient implements BackgroundResource {
    *   Snapshot snapshot = Snapshot.newBuilder().build();
    *   CreateSnapshotDiskHttpRequest request = CreateSnapshotDiskHttpRequest.newBuilder()
    *     .setDiskWithDiskName(disk)
-   *     .setSnapshot(snapshot)
+   *     .setSnapshotResource(snapshot)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = diskClient.createSnapshotDiskCallable().futureCall(request);
    *   // Do something
@@ -529,7 +529,7 @@ public class DiskClient implements BackgroundResource {
    *   InsertDiskHttpRequest request = InsertDiskHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .setSourceImage(sourceImage)
-   *     .setDisk(disk)
+   *     .setDiskResource(disk)
    *     .build();
    *   Operation response = diskClient.insertDisk(request);
    * }
@@ -556,7 +556,7 @@ public class DiskClient implements BackgroundResource {
    *   InsertDiskHttpRequest request = InsertDiskHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .setSourceImage(sourceImage)
-   *     .setDisk(disk)
+   *     .setDiskResource(disk)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = diskClient.insertDiskCallable().futureCall(request);
    *   // Do something
@@ -715,7 +715,7 @@ public class DiskClient implements BackgroundResource {
    *   DisksResizeRequest disksResizeRequest = DisksResizeRequest.newBuilder().build();
    *   ResizeDiskHttpRequest request = ResizeDiskHttpRequest.newBuilder()
    *     .setDiskWithDiskName(disk)
-   *     .setDisksResizeRequest(disksResizeRequest)
+   *     .setDisksResizeRequestResource(disksResizeRequest)
    *     .build();
    *   Operation response = diskClient.resizeDisk(request);
    * }
@@ -740,7 +740,7 @@ public class DiskClient implements BackgroundResource {
    *   DisksResizeRequest disksResizeRequest = DisksResizeRequest.newBuilder().build();
    *   ResizeDiskHttpRequest request = ResizeDiskHttpRequest.newBuilder()
    *     .setDiskWithDiskName(disk)
-   *     .setDisksResizeRequest(disksResizeRequest)
+   *     .setDisksResizeRequestResource(disksResizeRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = diskClient.resizeDiskCallable().futureCall(request);
    *   // Do something

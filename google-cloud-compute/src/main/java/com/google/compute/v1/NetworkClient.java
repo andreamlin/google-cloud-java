@@ -338,7 +338,7 @@ public class NetworkClient implements BackgroundResource {
    *   Network network = Network.newBuilder().build();
    *   InsertNetworkHttpRequest request = InsertNetworkHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setNetwork(network)
+   *     .setNetworkResource(network)
    *     .build();
    *   Operation response = networkClient.insertNetwork(request);
    * }
@@ -363,7 +363,7 @@ public class NetworkClient implements BackgroundResource {
    *   Network network = Network.newBuilder().build();
    *   InsertNetworkHttpRequest request = InsertNetworkHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setNetwork(network)
+   *     .setNetworkResource(network)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = networkClient.insertNetworkCallable().futureCall(request);
    *   // Do something

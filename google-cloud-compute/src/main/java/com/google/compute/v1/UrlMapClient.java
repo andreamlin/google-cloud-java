@@ -338,7 +338,7 @@ public class UrlMapClient implements BackgroundResource {
    *   UrlMap urlMap = UrlMap.newBuilder().build();
    *   InsertUrlMapHttpRequest request = InsertUrlMapHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setUrlMap(urlMap)
+   *     .setUrlMapResource(urlMap)
    *     .build();
    *   Operation response = urlMapClient.insertUrlMap(request);
    * }
@@ -363,7 +363,7 @@ public class UrlMapClient implements BackgroundResource {
    *   UrlMap urlMap = UrlMap.newBuilder().build();
    *   InsertUrlMapHttpRequest request = InsertUrlMapHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setUrlMap(urlMap)
+   *     .setUrlMapResource(urlMap)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = urlMapClient.insertUrlMapCallable().futureCall(request);
    *   // Do something
@@ -415,7 +415,7 @@ public class UrlMapClient implements BackgroundResource {
    *   CacheInvalidationRule cacheInvalidationRule = CacheInvalidationRule.newBuilder().build();
    *   InvalidateCacheUrlMapHttpRequest request = InvalidateCacheUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
-   *     .setCacheInvalidationRule(cacheInvalidationRule)
+   *     .setCacheInvalidationRuleResource(cacheInvalidationRule)
    *     .build();
    *   Operation response = urlMapClient.invalidateCacheUrlMap(request);
    * }
@@ -440,7 +440,7 @@ public class UrlMapClient implements BackgroundResource {
    *   CacheInvalidationRule cacheInvalidationRule = CacheInvalidationRule.newBuilder().build();
    *   InvalidateCacheUrlMapHttpRequest request = InvalidateCacheUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
-   *     .setCacheInvalidationRule(cacheInvalidationRule)
+   *     .setCacheInvalidationRuleResource(cacheInvalidationRule)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = urlMapClient.invalidateCacheUrlMapCallable().futureCall(request);
    *   // Do something
@@ -743,7 +743,7 @@ public class UrlMapClient implements BackgroundResource {
    *   UrlMapsValidateRequest urlMapsValidateRequest = UrlMapsValidateRequest.newBuilder().build();
    *   ValidateUrlMapHttpRequest request = ValidateUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
-   *     .setUrlMapsValidateRequest(urlMapsValidateRequest)
+   *     .setUrlMapsValidateRequestResource(urlMapsValidateRequest)
    *     .build();
    *   UrlMapsValidateResponse response = urlMapClient.validateUrlMap(request);
    * }
@@ -768,7 +768,7 @@ public class UrlMapClient implements BackgroundResource {
    *   UrlMapsValidateRequest urlMapsValidateRequest = UrlMapsValidateRequest.newBuilder().build();
    *   ValidateUrlMapHttpRequest request = ValidateUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
-   *     .setUrlMapsValidateRequest(urlMapsValidateRequest)
+   *     .setUrlMapsValidateRequestResource(urlMapsValidateRequest)
    *     .build();
    *   ApiFuture&lt;UrlMapsValidateResponse&gt; future = urlMapClient.validateUrlMapCallable().futureCall(request);
    *   // Do something

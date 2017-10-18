@@ -377,7 +377,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    *   RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequest = RegionInstanceGroupsListInstancesRequest.newBuilder().build();
    *   ListInstancesRegionInstanceGroupsHttpRequest request = ListInstancesRegionInstanceGroupsHttpRequest.newBuilder()
    *     .setInstanceGroupWithRegionInstanceGroupsInstanceGroupName(instanceGroup)
-   *     .setRegionInstanceGroupsListInstancesRequest(regionInstanceGroupsListInstancesRequest)
+   *     .setRegionInstanceGroupsListInstancesRequestResource(regionInstanceGroupsListInstancesRequest)
    *     .build();
    *   for (InstanceWithNamedPorts element : regionInstanceGroupClient.listInstancesRegionInstanceGroups(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -405,7 +405,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    *   RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequest = RegionInstanceGroupsListInstancesRequest.newBuilder().build();
    *   ListInstancesRegionInstanceGroupsHttpRequest request = ListInstancesRegionInstanceGroupsHttpRequest.newBuilder()
    *     .setInstanceGroupWithRegionInstanceGroupsInstanceGroupName(instanceGroup)
-   *     .setRegionInstanceGroupsListInstancesRequest(regionInstanceGroupsListInstancesRequest)
+   *     .setRegionInstanceGroupsListInstancesRequestResource(regionInstanceGroupsListInstancesRequest)
    *     .build();
    *   ApiFuture&lt;ListInstancesRegionInstanceGroupsPagedResponse&gt; future = regionInstanceGroupClient.listInstancesRegionInstanceGroupsPagedCallable().futureCall(request);
    *   // Do something
@@ -431,7 +431,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    *   RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequest = RegionInstanceGroupsListInstancesRequest.newBuilder().build();
    *   ListInstancesRegionInstanceGroupsHttpRequest request = ListInstancesRegionInstanceGroupsHttpRequest.newBuilder()
    *     .setInstanceGroupWithRegionInstanceGroupsInstanceGroupName(instanceGroup)
-   *     .setRegionInstanceGroupsListInstancesRequest(regionInstanceGroupsListInstancesRequest)
+   *     .setRegionInstanceGroupsListInstancesRequestResource(regionInstanceGroupsListInstancesRequest)
    *     .build();
    *   while (true) {
    *     RegionInstanceGroupsListInstances response = regionInstanceGroupClient.listInstancesRegionInstanceGroupsCallable().call(request);
@@ -492,7 +492,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    *   RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequest = RegionInstanceGroupsSetNamedPortsRequest.newBuilder().build();
    *   SetNamedPortsRegionInstanceGroupHttpRequest request = SetNamedPortsRegionInstanceGroupHttpRequest.newBuilder()
    *     .setInstanceGroupWithRegionInstanceGroupsInstanceGroupName(instanceGroup)
-   *     .setRegionInstanceGroupsSetNamedPortsRequest(regionInstanceGroupsSetNamedPortsRequest)
+   *     .setRegionInstanceGroupsSetNamedPortsRequestResource(regionInstanceGroupsSetNamedPortsRequest)
    *     .build();
    *   Operation response = regionInstanceGroupClient.setNamedPortsRegionInstanceGroup(request);
    * }
@@ -517,7 +517,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    *   RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequest = RegionInstanceGroupsSetNamedPortsRequest.newBuilder().build();
    *   SetNamedPortsRegionInstanceGroupHttpRequest request = SetNamedPortsRegionInstanceGroupHttpRequest.newBuilder()
    *     .setInstanceGroupWithRegionInstanceGroupsInstanceGroupName(instanceGroup)
-   *     .setRegionInstanceGroupsSetNamedPortsRequest(regionInstanceGroupsSetNamedPortsRequest)
+   *     .setRegionInstanceGroupsSetNamedPortsRequestResource(regionInstanceGroupsSetNamedPortsRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupClient.setNamedPortsRegionInstanceGroupCallable().futureCall(request);
    *   // Do something

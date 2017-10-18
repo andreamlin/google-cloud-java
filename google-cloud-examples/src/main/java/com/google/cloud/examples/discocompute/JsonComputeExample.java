@@ -6,6 +6,7 @@ import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.compute.v1.*;
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -88,21 +89,21 @@ public class JsonComputeExample {
     System.out.format("Result of insert: %s\n", response.toString());
   }
 
-  private static void insertNewAddressUsingRequest(AddressClient client, String newAddressName) {
-//    // Begin samplegen code for insertAddress().
-//    String formattedRegion = AddressClient.formatRegionName("[PROJECT]", "[REGION]");
-//    Address address = Address.newBuilder().build();
-//    InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
-//        .setRegion(formattedRegion)
-//        .setAddress(address)
-//        .build();
-//    ApiFuture<Operation> future = addressClient.insertAddressCallable().futureCall(request);
-//    // Do something
-//    Operation response = future.get();
-//    System.out.format("Result of insert: %s\n", response.toString());
-//
-//    // End samplegen code for insertAddress().
-//    System.out.format("Result of insert: %s\n", insertResponse.toString());
+  private static void insertNewAddressUsingRequest(AddressClient client, String newAddressName)
+      throws InterruptedException, ExecutionException {
+    // Begin samplegen code for insertAddress().
+    RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+    Address address = Address.newBuilder().build();
+    InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
+        .setRegionWithRegionName(region)
+        .setAddress(address)
+        .build();
+    ApiFuture<Operation> future = client.insertAddressCallable().futureCall(request);
+    // Do something
+    Operation response = future.get();
+
+    // End samplegen code for insertAddress().
+    System.out.format("Result of insert: %s\n", response.toString());
   }
 
   private static PagedResponseWrappers.ListAddressesPagedResponse listAddresses(AddressClient client) {

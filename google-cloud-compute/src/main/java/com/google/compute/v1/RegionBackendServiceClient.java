@@ -338,7 +338,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *   ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
    *   GetHealthRegionBackendServiceHttpRequest request = GetHealthRegionBackendServiceHttpRequest.newBuilder()
    *     .setBackendServiceWithBackendServiceName(backendService)
-   *     .setResourceGroupReference(resourceGroupReference)
+   *     .setResourceGroupReferenceResource(resourceGroupReference)
    *     .build();
    *   BackendServiceGroupHealth response = regionBackendServiceClient.getHealthRegionBackendService(request);
    * }
@@ -363,7 +363,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *   ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
    *   GetHealthRegionBackendServiceHttpRequest request = GetHealthRegionBackendServiceHttpRequest.newBuilder()
    *     .setBackendServiceWithBackendServiceName(backendService)
-   *     .setResourceGroupReference(resourceGroupReference)
+   *     .setResourceGroupReferenceResource(resourceGroupReference)
    *     .build();
    *   ApiFuture&lt;BackendServiceGroupHealth&gt; future = regionBackendServiceClient.getHealthRegionBackendServiceCallable().futureCall(request);
    *   // Do something
@@ -415,7 +415,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *   BackendService backendService = BackendService.newBuilder().build();
    *   InsertRegionBackendServiceHttpRequest request = InsertRegionBackendServiceHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setBackendService(backendService)
+   *     .setBackendServiceResource(backendService)
    *     .build();
    *   Operation response = regionBackendServiceClient.insertRegionBackendService(request);
    * }
@@ -440,7 +440,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *   BackendService backendService = BackendService.newBuilder().build();
    *   InsertRegionBackendServiceHttpRequest request = InsertRegionBackendServiceHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setBackendService(backendService)
+   *     .setBackendServiceResource(backendService)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionBackendServiceClient.insertRegionBackendServiceCallable().futureCall(request);
    *   // Do something

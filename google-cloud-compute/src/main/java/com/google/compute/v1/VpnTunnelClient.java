@@ -446,7 +446,7 @@ public class VpnTunnelClient implements BackgroundResource {
    *   VpnTunnel vpnTunnel = VpnTunnel.newBuilder().build();
    *   InsertVpnTunnelHttpRequest request = InsertVpnTunnelHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setVpnTunnel(vpnTunnel)
+   *     .setVpnTunnelResource(vpnTunnel)
    *     .build();
    *   Operation response = vpnTunnelClient.insertVpnTunnel(request);
    * }
@@ -471,7 +471,7 @@ public class VpnTunnelClient implements BackgroundResource {
    *   VpnTunnel vpnTunnel = VpnTunnel.newBuilder().build();
    *   InsertVpnTunnelHttpRequest request = InsertVpnTunnelHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setVpnTunnel(vpnTunnel)
+   *     .setVpnTunnelResource(vpnTunnel)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = vpnTunnelClient.insertVpnTunnelCallable().futureCall(request);
    *   // Do something

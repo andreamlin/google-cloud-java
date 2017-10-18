@@ -267,7 +267,7 @@ public class ProjectClient implements BackgroundResource {
    *   DiskMoveRequest diskMoveRequest = DiskMoveRequest.newBuilder().build();
    *   MoveDiskProjectHttpRequest request = MoveDiskProjectHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setDiskMoveRequest(diskMoveRequest)
+   *     .setDiskMoveRequestResource(diskMoveRequest)
    *     .build();
    *   Operation response = projectClient.moveDiskProject(request);
    * }
@@ -292,7 +292,7 @@ public class ProjectClient implements BackgroundResource {
    *   DiskMoveRequest diskMoveRequest = DiskMoveRequest.newBuilder().build();
    *   MoveDiskProjectHttpRequest request = MoveDiskProjectHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setDiskMoveRequest(diskMoveRequest)
+   *     .setDiskMoveRequestResource(diskMoveRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = projectClient.moveDiskProjectCallable().futureCall(request);
    *   // Do something
@@ -344,7 +344,7 @@ public class ProjectClient implements BackgroundResource {
    *   InstanceMoveRequest instanceMoveRequest = InstanceMoveRequest.newBuilder().build();
    *   MoveInstanceProjectHttpRequest request = MoveInstanceProjectHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setInstanceMoveRequest(instanceMoveRequest)
+   *     .setInstanceMoveRequestResource(instanceMoveRequest)
    *     .build();
    *   Operation response = projectClient.moveInstanceProject(request);
    * }
@@ -369,7 +369,7 @@ public class ProjectClient implements BackgroundResource {
    *   InstanceMoveRequest instanceMoveRequest = InstanceMoveRequest.newBuilder().build();
    *   MoveInstanceProjectHttpRequest request = MoveInstanceProjectHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setInstanceMoveRequest(instanceMoveRequest)
+   *     .setInstanceMoveRequestResource(instanceMoveRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = projectClient.moveInstanceProjectCallable().futureCall(request);
    *   // Do something
@@ -421,7 +421,7 @@ public class ProjectClient implements BackgroundResource {
    *   Metadata metadata = Metadata.newBuilder().build();
    *   SetCommonInstanceMetadataProjectHttpRequest request = SetCommonInstanceMetadataProjectHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setMetadata(metadata)
+   *     .setMetadataResource(metadata)
    *     .build();
    *   Operation response = projectClient.setCommonInstanceMetadataProject(request);
    * }
@@ -446,7 +446,7 @@ public class ProjectClient implements BackgroundResource {
    *   Metadata metadata = Metadata.newBuilder().build();
    *   SetCommonInstanceMetadataProjectHttpRequest request = SetCommonInstanceMetadataProjectHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setMetadata(metadata)
+   *     .setMetadataResource(metadata)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = projectClient.setCommonInstanceMetadataProjectCallable().futureCall(request);
    *   // Do something
@@ -498,7 +498,7 @@ public class ProjectClient implements BackgroundResource {
    *   UsageExportLocation usageExportLocation = UsageExportLocation.newBuilder().build();
    *   SetUsageExportBucketProjectHttpRequest request = SetUsageExportBucketProjectHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setUsageExportLocation(usageExportLocation)
+   *     .setUsageExportLocationResource(usageExportLocation)
    *     .build();
    *   Operation response = projectClient.setUsageExportBucketProject(request);
    * }
@@ -523,7 +523,7 @@ public class ProjectClient implements BackgroundResource {
    *   UsageExportLocation usageExportLocation = UsageExportLocation.newBuilder().build();
    *   SetUsageExportBucketProjectHttpRequest request = SetUsageExportBucketProjectHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setUsageExportLocation(usageExportLocation)
+   *     .setUsageExportLocationResource(usageExportLocation)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = projectClient.setUsageExportBucketProjectCallable().futureCall(request);
    *   // Do something

@@ -200,7 +200,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest = TargetPoolsAddHealthCheckRequest.newBuilder().build();
    *   AddHealthCheckTargetPoolHttpRequest request = AddHealthCheckTargetPoolHttpRequest.newBuilder()
    *     .setTargetPoolWithTargetPoolName(targetPool)
-   *     .setTargetPoolsAddHealthCheckRequest(targetPoolsAddHealthCheckRequest)
+   *     .setTargetPoolsAddHealthCheckRequestResource(targetPoolsAddHealthCheckRequest)
    *     .build();
    *   Operation response = targetPoolClient.addHealthCheckTargetPool(request);
    * }
@@ -225,7 +225,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest = TargetPoolsAddHealthCheckRequest.newBuilder().build();
    *   AddHealthCheckTargetPoolHttpRequest request = AddHealthCheckTargetPoolHttpRequest.newBuilder()
    *     .setTargetPoolWithTargetPoolName(targetPool)
-   *     .setTargetPoolsAddHealthCheckRequest(targetPoolsAddHealthCheckRequest)
+   *     .setTargetPoolsAddHealthCheckRequestResource(targetPoolsAddHealthCheckRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.addHealthCheckTargetPoolCallable().futureCall(request);
    *   // Do something
@@ -277,7 +277,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequest = TargetPoolsAddInstanceRequest.newBuilder().build();
    *   AddInstanceTargetPoolHttpRequest request = AddInstanceTargetPoolHttpRequest.newBuilder()
    *     .setTargetPoolWithTargetPoolName(targetPool)
-   *     .setTargetPoolsAddInstanceRequest(targetPoolsAddInstanceRequest)
+   *     .setTargetPoolsAddInstanceRequestResource(targetPoolsAddInstanceRequest)
    *     .build();
    *   Operation response = targetPoolClient.addInstanceTargetPool(request);
    * }
@@ -302,7 +302,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequest = TargetPoolsAddInstanceRequest.newBuilder().build();
    *   AddInstanceTargetPoolHttpRequest request = AddInstanceTargetPoolHttpRequest.newBuilder()
    *     .setTargetPoolWithTargetPoolName(targetPool)
-   *     .setTargetPoolsAddInstanceRequest(targetPoolsAddInstanceRequest)
+   *     .setTargetPoolsAddInstanceRequestResource(targetPoolsAddInstanceRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.addInstanceTargetPoolCallable().futureCall(request);
    *   // Do something
@@ -601,7 +601,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   InstanceReference instanceReference = InstanceReference.newBuilder().build();
    *   GetHealthTargetPoolHttpRequest request = GetHealthTargetPoolHttpRequest.newBuilder()
    *     .setTargetPoolWithTargetPoolName(targetPool)
-   *     .setInstanceReference(instanceReference)
+   *     .setInstanceReferenceResource(instanceReference)
    *     .build();
    *   TargetPoolInstanceHealth response = targetPoolClient.getHealthTargetPool(request);
    * }
@@ -626,7 +626,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   InstanceReference instanceReference = InstanceReference.newBuilder().build();
    *   GetHealthTargetPoolHttpRequest request = GetHealthTargetPoolHttpRequest.newBuilder()
    *     .setTargetPoolWithTargetPoolName(targetPool)
-   *     .setInstanceReference(instanceReference)
+   *     .setInstanceReferenceResource(instanceReference)
    *     .build();
    *   ApiFuture&lt;TargetPoolInstanceHealth&gt; future = targetPoolClient.getHealthTargetPoolCallable().futureCall(request);
    *   // Do something
@@ -678,7 +678,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPool targetPool = TargetPool.newBuilder().build();
    *   InsertTargetPoolHttpRequest request = InsertTargetPoolHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setTargetPool(targetPool)
+   *     .setTargetPoolResource(targetPool)
    *     .build();
    *   Operation response = targetPoolClient.insertTargetPool(request);
    * }
@@ -703,7 +703,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPool targetPool = TargetPool.newBuilder().build();
    *   InsertTargetPoolHttpRequest request = InsertTargetPoolHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setTargetPool(targetPool)
+   *     .setTargetPoolResource(targetPool)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.insertTargetPoolCallable().futureCall(request);
    *   // Do something
@@ -862,7 +862,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequest = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
    *   RemoveHealthCheckTargetPoolHttpRequest request = RemoveHealthCheckTargetPoolHttpRequest.newBuilder()
    *     .setTargetPoolWithTargetPoolName(targetPool)
-   *     .setTargetPoolsRemoveHealthCheckRequest(targetPoolsRemoveHealthCheckRequest)
+   *     .setTargetPoolsRemoveHealthCheckRequestResource(targetPoolsRemoveHealthCheckRequest)
    *     .build();
    *   Operation response = targetPoolClient.removeHealthCheckTargetPool(request);
    * }
@@ -887,7 +887,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequest = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
    *   RemoveHealthCheckTargetPoolHttpRequest request = RemoveHealthCheckTargetPoolHttpRequest.newBuilder()
    *     .setTargetPoolWithTargetPoolName(targetPool)
-   *     .setTargetPoolsRemoveHealthCheckRequest(targetPoolsRemoveHealthCheckRequest)
+   *     .setTargetPoolsRemoveHealthCheckRequestResource(targetPoolsRemoveHealthCheckRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.removeHealthCheckTargetPoolCallable().futureCall(request);
    *   // Do something
@@ -939,7 +939,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequest = TargetPoolsRemoveInstanceRequest.newBuilder().build();
    *   RemoveInstanceTargetPoolHttpRequest request = RemoveInstanceTargetPoolHttpRequest.newBuilder()
    *     .setTargetPoolWithTargetPoolName(targetPool)
-   *     .setTargetPoolsRemoveInstanceRequest(targetPoolsRemoveInstanceRequest)
+   *     .setTargetPoolsRemoveInstanceRequestResource(targetPoolsRemoveInstanceRequest)
    *     .build();
    *   Operation response = targetPoolClient.removeInstanceTargetPool(request);
    * }
@@ -964,7 +964,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequest = TargetPoolsRemoveInstanceRequest.newBuilder().build();
    *   RemoveInstanceTargetPoolHttpRequest request = RemoveInstanceTargetPoolHttpRequest.newBuilder()
    *     .setTargetPoolWithTargetPoolName(targetPool)
-   *     .setTargetPoolsRemoveInstanceRequest(targetPoolsRemoveInstanceRequest)
+   *     .setTargetPoolsRemoveInstanceRequestResource(targetPoolsRemoveInstanceRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.removeInstanceTargetPoolCallable().futureCall(request);
    *   // Do something
@@ -1021,7 +1021,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   SetBackupTargetPoolHttpRequest request = SetBackupTargetPoolHttpRequest.newBuilder()
    *     .setTargetPoolWithTargetPoolName(targetPool)
    *     .setFailoverRatio(failoverRatio)
-   *     .setTargetReference(targetReference)
+   *     .setTargetReferenceResource(targetReference)
    *     .build();
    *   Operation response = targetPoolClient.setBackupTargetPool(request);
    * }
@@ -1048,7 +1048,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   SetBackupTargetPoolHttpRequest request = SetBackupTargetPoolHttpRequest.newBuilder()
    *     .setTargetPoolWithTargetPoolName(targetPool)
    *     .setFailoverRatio(failoverRatio)
-   *     .setTargetReference(targetReference)
+   *     .setTargetReferenceResource(targetReference)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.setBackupTargetPoolCallable().futureCall(request);
    *   // Do something

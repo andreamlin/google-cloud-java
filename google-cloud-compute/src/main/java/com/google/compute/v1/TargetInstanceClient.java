@@ -446,7 +446,7 @@ public class TargetInstanceClient implements BackgroundResource {
    *   TargetInstance targetInstance = TargetInstance.newBuilder().build();
    *   InsertTargetInstanceHttpRequest request = InsertTargetInstanceHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
-   *     .setTargetInstance(targetInstance)
+   *     .setTargetInstanceResource(targetInstance)
    *     .build();
    *   Operation response = targetInstanceClient.insertTargetInstance(request);
    * }
@@ -471,7 +471,7 @@ public class TargetInstanceClient implements BackgroundResource {
    *   TargetInstance targetInstance = TargetInstance.newBuilder().build();
    *   InsertTargetInstanceHttpRequest request = InsertTargetInstanceHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
-   *     .setTargetInstance(targetInstance)
+   *     .setTargetInstanceResource(targetInstance)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetInstanceClient.insertTargetInstanceCallable().futureCall(request);
    *   // Do something

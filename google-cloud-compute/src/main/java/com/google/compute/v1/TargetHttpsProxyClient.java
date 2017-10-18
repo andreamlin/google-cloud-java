@@ -338,7 +338,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    *   TargetHttpsProxy targetHttpsProxy = TargetHttpsProxy.newBuilder().build();
    *   InsertTargetHttpsProxyHttpRequest request = InsertTargetHttpsProxyHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setTargetHttpsProxy(targetHttpsProxy)
+   *     .setTargetHttpsProxyResource(targetHttpsProxy)
    *     .build();
    *   Operation response = targetHttpsProxyClient.insertTargetHttpsProxy(request);
    * }
@@ -363,7 +363,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    *   TargetHttpsProxy targetHttpsProxy = TargetHttpsProxy.newBuilder().build();
    *   InsertTargetHttpsProxyHttpRequest request = InsertTargetHttpsProxyHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setTargetHttpsProxy(targetHttpsProxy)
+   *     .setTargetHttpsProxyResource(targetHttpsProxy)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetHttpsProxyClient.insertTargetHttpsProxyCallable().futureCall(request);
    *   // Do something
@@ -522,7 +522,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    *   TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequest = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
    *   SetSslCertificatesTargetHttpsProxyHttpRequest request = SetSslCertificatesTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxyWithTargetHttpsProxyName(targetHttpsProxy)
-   *     .setTargetHttpsProxiesSetSslCertificatesRequest(targetHttpsProxiesSetSslCertificatesRequest)
+   *     .setTargetHttpsProxiesSetSslCertificatesRequestResource(targetHttpsProxiesSetSslCertificatesRequest)
    *     .build();
    *   Operation response = targetHttpsProxyClient.setSslCertificatesTargetHttpsProxy(request);
    * }
@@ -547,7 +547,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    *   TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequest = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
    *   SetSslCertificatesTargetHttpsProxyHttpRequest request = SetSslCertificatesTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxyWithTargetHttpsProxyName(targetHttpsProxy)
-   *     .setTargetHttpsProxiesSetSslCertificatesRequest(targetHttpsProxiesSetSslCertificatesRequest)
+   *     .setTargetHttpsProxiesSetSslCertificatesRequestResource(targetHttpsProxiesSetSslCertificatesRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetHttpsProxyClient.setSslCertificatesTargetHttpsProxyCallable().futureCall(request);
    *   // Do something
@@ -599,7 +599,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
    *   SetUrlMapTargetHttpsProxyHttpRequest request = SetUrlMapTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxyWithTargetHttpsProxyName(targetHttpsProxy)
-   *     .setUrlMapReference(urlMapReference)
+   *     .setUrlMapReferenceResource(urlMapReference)
    *     .build();
    *   Operation response = targetHttpsProxyClient.setUrlMapTargetHttpsProxy(request);
    * }
@@ -624,7 +624,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
    *   SetUrlMapTargetHttpsProxyHttpRequest request = SetUrlMapTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxyWithTargetHttpsProxyName(targetHttpsProxy)
-   *     .setUrlMapReference(urlMapReference)
+   *     .setUrlMapReferenceResource(urlMapReference)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetHttpsProxyClient.setUrlMapTargetHttpsProxyCallable().futureCall(request);
    *   // Do something

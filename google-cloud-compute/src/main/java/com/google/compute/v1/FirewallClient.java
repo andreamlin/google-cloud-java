@@ -338,7 +338,7 @@ public class FirewallClient implements BackgroundResource {
    *   Firewall firewall = Firewall.newBuilder().build();
    *   InsertFirewallHttpRequest request = InsertFirewallHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setFirewall(firewall)
+   *     .setFirewallResource(firewall)
    *     .build();
    *   Operation response = firewallClient.insertFirewall(request);
    * }
@@ -363,7 +363,7 @@ public class FirewallClient implements BackgroundResource {
    *   Firewall firewall = Firewall.newBuilder().build();
    *   InsertFirewallHttpRequest request = InsertFirewallHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setFirewall(firewall)
+   *     .setFirewallResource(firewall)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = firewallClient.insertFirewallCallable().futureCall(request);
    *   // Do something

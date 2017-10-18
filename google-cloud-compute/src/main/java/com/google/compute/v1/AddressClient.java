@@ -446,7 +446,7 @@ public class AddressClient implements BackgroundResource {
    *   Address address = Address.newBuilder().build();
    *   InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setAddress(address)
+   *     .setAddressResource(address)
    *     .build();
    *   Operation response = addressClient.insertAddress(request);
    * }
@@ -471,7 +471,7 @@ public class AddressClient implements BackgroundResource {
    *   Address address = Address.newBuilder().build();
    *   InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setAddress(address)
+   *     .setAddressResource(address)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = addressClient.insertAddressCallable().futureCall(request);
    *   // Do something

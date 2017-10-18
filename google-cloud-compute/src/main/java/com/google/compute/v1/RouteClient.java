@@ -342,7 +342,7 @@ public class RouteClient implements BackgroundResource {
    *   Route route = Route.newBuilder().build();
    *   InsertRouteHttpRequest request = InsertRouteHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setRoute(route)
+   *     .setRouteResource(route)
    *     .build();
    *   Operation response = routeClient.insertRoute(request);
    * }
@@ -367,7 +367,7 @@ public class RouteClient implements BackgroundResource {
    *   Route route = Route.newBuilder().build();
    *   InsertRouteHttpRequest request = InsertRouteHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setRoute(route)
+   *     .setRouteResource(route)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = routeClient.insertRouteCallable().futureCall(request);
    *   // Do something

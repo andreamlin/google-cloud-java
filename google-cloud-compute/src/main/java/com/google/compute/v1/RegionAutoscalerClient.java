@@ -338,7 +338,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   InsertRegionAutoscalerHttpRequest request = InsertRegionAutoscalerHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setAutoscaler(autoscaler)
+   *     .setAutoscalerResource(autoscaler)
    *     .build();
    *   Operation response = regionAutoscalerClient.insertRegionAutoscaler(request);
    * }
@@ -363,7 +363,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   InsertRegionAutoscalerHttpRequest request = InsertRegionAutoscalerHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setAutoscaler(autoscaler)
+   *     .setAutoscalerResource(autoscaler)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionAutoscalerClient.insertRegionAutoscalerCallable().futureCall(request);
    *   // Do something

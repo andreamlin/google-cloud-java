@@ -338,7 +338,7 @@ public class SslCertificateClient implements BackgroundResource {
    *   SslCertificate sslCertificate = SslCertificate.newBuilder().build();
    *   InsertSslCertificateHttpRequest request = InsertSslCertificateHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setSslCertificate(sslCertificate)
+   *     .setSslCertificateResource(sslCertificate)
    *     .build();
    *   Operation response = sslCertificateClient.insertSslCertificate(request);
    * }
@@ -363,7 +363,7 @@ public class SslCertificateClient implements BackgroundResource {
    *   SslCertificate sslCertificate = SslCertificate.newBuilder().build();
    *   InsertSslCertificateHttpRequest request = InsertSslCertificateHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setSslCertificate(sslCertificate)
+   *     .setSslCertificateResource(sslCertificate)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = sslCertificateClient.insertSslCertificateCallable().futureCall(request);
    *   // Do something

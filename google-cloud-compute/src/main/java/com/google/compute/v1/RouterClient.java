@@ -516,7 +516,7 @@ public class RouterClient implements BackgroundResource {
    *   Router router = Router.newBuilder().build();
    *   InsertRouterHttpRequest request = InsertRouterHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setRouter(router)
+   *     .setRouterResource(router)
    *     .build();
    *   Operation response = routerClient.insertRouter(request);
    * }
@@ -541,7 +541,7 @@ public class RouterClient implements BackgroundResource {
    *   Router router = Router.newBuilder().build();
    *   InsertRouterHttpRequest request = InsertRouterHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
-   *     .setRouter(router)
+   *     .setRouterResource(router)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = routerClient.insertRouterCallable().futureCall(request);
    *   // Do something

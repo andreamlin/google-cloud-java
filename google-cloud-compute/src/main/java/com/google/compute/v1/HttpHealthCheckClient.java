@@ -338,7 +338,7 @@ public class HttpHealthCheckClient implements BackgroundResource {
    *   HttpHealthCheck httpHealthCheck = HttpHealthCheck.newBuilder().build();
    *   InsertHttpHealthCheckHttpRequest request = InsertHttpHealthCheckHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setHttpHealthCheck(httpHealthCheck)
+   *     .setHttpHealthCheckResource(httpHealthCheck)
    *     .build();
    *   Operation response = httpHealthCheckClient.insertHttpHealthCheck(request);
    * }
@@ -363,7 +363,7 @@ public class HttpHealthCheckClient implements BackgroundResource {
    *   HttpHealthCheck httpHealthCheck = HttpHealthCheck.newBuilder().build();
    *   InsertHttpHealthCheckHttpRequest request = InsertHttpHealthCheckHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setHttpHealthCheck(httpHealthCheck)
+   *     .setHttpHealthCheckResource(httpHealthCheck)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = httpHealthCheckClient.insertHttpHealthCheckCallable().futureCall(request);
    *   // Do something

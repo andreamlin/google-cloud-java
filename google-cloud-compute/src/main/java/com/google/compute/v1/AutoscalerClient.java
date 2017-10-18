@@ -446,7 +446,7 @@ public class AutoscalerClient implements BackgroundResource {
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   InsertAutoscalerHttpRequest request = InsertAutoscalerHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
-   *     .setAutoscaler(autoscaler)
+   *     .setAutoscalerResource(autoscaler)
    *     .build();
    *   Operation response = autoscalerClient.insertAutoscaler(request);
    * }
@@ -471,7 +471,7 @@ public class AutoscalerClient implements BackgroundResource {
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   InsertAutoscalerHttpRequest request = InsertAutoscalerHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
-   *     .setAutoscaler(autoscaler)
+   *     .setAutoscalerResource(autoscaler)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = autoscalerClient.insertAutoscalerCallable().futureCall(request);
    *   // Do something

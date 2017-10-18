@@ -446,7 +446,7 @@ public class BackendServiceClient implements BackgroundResource {
    *   ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
    *   GetHealthBackendServiceHttpRequest request = GetHealthBackendServiceHttpRequest.newBuilder()
    *     .setBackendServiceWithBackendServiceName(backendService)
-   *     .setResourceGroupReference(resourceGroupReference)
+   *     .setResourceGroupReferenceResource(resourceGroupReference)
    *     .build();
    *   BackendServiceGroupHealth response = backendServiceClient.getHealthBackendService(request);
    * }
@@ -471,7 +471,7 @@ public class BackendServiceClient implements BackgroundResource {
    *   ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
    *   GetHealthBackendServiceHttpRequest request = GetHealthBackendServiceHttpRequest.newBuilder()
    *     .setBackendServiceWithBackendServiceName(backendService)
-   *     .setResourceGroupReference(resourceGroupReference)
+   *     .setResourceGroupReferenceResource(resourceGroupReference)
    *     .build();
    *   ApiFuture&lt;BackendServiceGroupHealth&gt; future = backendServiceClient.getHealthBackendServiceCallable().futureCall(request);
    *   // Do something
@@ -523,7 +523,7 @@ public class BackendServiceClient implements BackgroundResource {
    *   BackendService backendService = BackendService.newBuilder().build();
    *   InsertBackendServiceHttpRequest request = InsertBackendServiceHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setBackendService(backendService)
+   *     .setBackendServiceResource(backendService)
    *     .build();
    *   Operation response = backendServiceClient.insertBackendService(request);
    * }
@@ -548,7 +548,7 @@ public class BackendServiceClient implements BackgroundResource {
    *   BackendService backendService = BackendService.newBuilder().build();
    *   InsertBackendServiceHttpRequest request = InsertBackendServiceHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
-   *     .setBackendService(backendService)
+   *     .setBackendServiceResource(backendService)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = backendServiceClient.insertBackendServiceCallable().futureCall(request);
    *   // Do something
