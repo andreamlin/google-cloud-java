@@ -363,7 +363,8 @@ public final class DeleteNetworkHttpRequest implements ApiMessage {
             ;
       }
       return
-          setNetwork(value.getNetwork()).        setProject(value.getProject())
+          setNetwork(value.getNetwork()).
+          setProject(value.getProject())
           ;
     }
 

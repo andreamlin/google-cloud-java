@@ -394,7 +394,9 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
             ;
       }
       return
-          setAddress(value.getAddress()).        setProject(value.getProject()).        setRegion(value.getRegion())
+          setAddress(value.getAddress()).
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 

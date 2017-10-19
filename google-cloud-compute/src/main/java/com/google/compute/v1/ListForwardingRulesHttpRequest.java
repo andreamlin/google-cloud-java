@@ -475,7 +475,8 @@ public final class ListForwardingRulesHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setRegion(value.getRegion())
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 

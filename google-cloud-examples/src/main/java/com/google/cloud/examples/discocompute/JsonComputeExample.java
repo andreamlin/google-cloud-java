@@ -5,6 +5,8 @@ import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.compute.v1.*;
+import com.sun.org.apache.regexp.internal.RE;
+
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -92,11 +94,27 @@ public class JsonComputeExample {
   private static void insertNewAddressUsingRequest(AddressClient client, String newAddressName)
       throws InterruptedException, ExecutionException {
     // Begin samplegen code for insertAddress().
-    RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+    RegionName region = RegionName.create(PROJECT_NAME, REGION);
     Address address = Address.newBuilder().build();
     InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
         .setRegionWithRegionName(region)
-        .setAddress(address)
+        .setAddressResource(address)
+        .build();
+    // Do something
+    Operation response = client.insertAddress(request);
+
+    // End samplegen code for insertAddress().
+    System.out.format("Result of insert: %s\n", response.toString());
+  }
+
+  private static void insertAddressUsingCallable(AddressClient client, String newAddressName)
+      throws InterruptedException, ExecutionException {
+    // Begin samplegen code for insertAddress().
+    RegionName region = RegionName.create(PROJECT_NAME, REGION);
+    Address address = Address.newBuilder().build();
+    InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
+        .setRegionWithRegionName(region)
+        .setAddressResource(address)
         .build();
     ApiFuture<Operation> future = client.insertAddressCallable().futureCall(request);
     // Do something

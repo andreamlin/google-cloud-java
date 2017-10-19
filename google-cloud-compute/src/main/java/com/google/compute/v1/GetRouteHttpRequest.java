@@ -363,7 +363,8 @@ public final class GetRouteHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setRoute(value.getRoute())
+          setProject(value.getProject()).
+          setRoute(value.getRoute())
           ;
     }
 

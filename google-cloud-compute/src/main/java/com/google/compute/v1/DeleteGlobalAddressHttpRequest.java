@@ -363,7 +363,8 @@ public final class DeleteGlobalAddressHttpRequest implements ApiMessage {
             ;
       }
       return
-          setAddress(value.getAddress()).        setProject(value.getProject())
+          setAddress(value.getAddress()).
+          setProject(value.getProject())
           ;
     }
 

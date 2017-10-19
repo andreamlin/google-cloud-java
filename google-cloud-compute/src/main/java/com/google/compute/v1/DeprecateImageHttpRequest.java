@@ -391,7 +391,8 @@ public final class DeprecateImageHttpRequest implements ApiMessage {
             ;
       }
       return
-          setImage(value.getImage()).        setProject(value.getProject())
+          setImage(value.getImage()).
+          setProject(value.getProject())
           ;
     }
 

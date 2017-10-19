@@ -422,7 +422,9 @@ public final class DeleteInstancesInstanceGroupManagerHttpRequest implements Api
             ;
       }
       return
-          setInstanceGroupManager(value.getInstanceGroupManager()).        setProject(value.getProject()).        setZone(value.getZone())
+          setInstanceGroupManager(value.getInstanceGroupManager()).
+          setProject(value.getProject()).
+          setZone(value.getZone())
           ;
     }
 

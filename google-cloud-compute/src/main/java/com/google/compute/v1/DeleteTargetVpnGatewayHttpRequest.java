@@ -394,7 +394,9 @@ public final class DeleteTargetVpnGatewayHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setRegion(value.getRegion()).        setTargetVpnGateway(value.getTargetVpnGateway())
+          setProject(value.getProject()).
+          setRegion(value.getRegion()).
+          setTargetVpnGateway(value.getTargetVpnGateway())
           ;
     }
 

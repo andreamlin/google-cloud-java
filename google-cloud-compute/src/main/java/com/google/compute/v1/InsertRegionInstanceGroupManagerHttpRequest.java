@@ -391,7 +391,8 @@ public final class InsertRegionInstanceGroupManagerHttpRequest implements ApiMes
             ;
       }
       return
-          setProject(value.getProject()).        setRegion(value.getRegion())
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 

@@ -394,7 +394,9 @@ public final class DeleteVpnTunnelHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setRegion(value.getRegion()).        setVpnTunnel(value.getVpnTunnel())
+          setProject(value.getProject()).
+          setRegion(value.getRegion()).
+          setVpnTunnel(value.getVpnTunnel())
           ;
     }
 

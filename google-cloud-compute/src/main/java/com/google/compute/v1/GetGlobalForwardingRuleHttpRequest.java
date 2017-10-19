@@ -363,7 +363,8 @@ public final class GetGlobalForwardingRuleHttpRequest implements ApiMessage {
             ;
       }
       return
-          setForwardingRule(value.getForwardingRule()).        setProject(value.getProject())
+          setForwardingRule(value.getForwardingRule()).
+          setProject(value.getProject())
           ;
     }
 

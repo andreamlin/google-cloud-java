@@ -363,7 +363,8 @@ public final class DeleteSslCertificateHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setSslCertificate(value.getSslCertificate())
+          setProject(value.getProject()).
+          setSslCertificate(value.getSslCertificate())
           ;
     }
 

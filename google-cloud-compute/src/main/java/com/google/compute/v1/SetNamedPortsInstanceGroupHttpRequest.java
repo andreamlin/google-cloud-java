@@ -422,7 +422,9 @@ public final class SetNamedPortsInstanceGroupHttpRequest implements ApiMessage {
             ;
       }
       return
-          setInstanceGroup(value.getInstanceGroup()).        setProject(value.getProject()).        setZone(value.getZone())
+          setInstanceGroup(value.getInstanceGroup()).
+          setProject(value.getProject()).
+          setZone(value.getZone())
           ;
     }
 

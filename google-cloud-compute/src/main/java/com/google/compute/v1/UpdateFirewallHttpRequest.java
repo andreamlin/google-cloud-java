@@ -391,7 +391,8 @@ public final class UpdateFirewallHttpRequest implements ApiMessage {
             ;
       }
       return
-          setFirewall(value.getFirewall()).        setProject(value.getProject())
+          setFirewall(value.getFirewall()).
+          setProject(value.getProject())
           ;
     }
 

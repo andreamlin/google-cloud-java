@@ -422,7 +422,9 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setRegion(value.getRegion()).        setTargetPool(value.getTargetPool())
+          setProject(value.getProject()).
+          setRegion(value.getRegion()).
+          setTargetPool(value.getTargetPool())
           ;
     }
 

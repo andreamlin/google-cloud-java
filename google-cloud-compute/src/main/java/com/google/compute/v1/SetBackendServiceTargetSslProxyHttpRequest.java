@@ -391,7 +391,8 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
             ;
       }
       return
-          setProject(value.getProject()).        setTargetSslProxy(value.getTargetSslProxy())
+          setProject(value.getProject()).
+          setTargetSslProxy(value.getTargetSslProxy())
           ;
     }
 

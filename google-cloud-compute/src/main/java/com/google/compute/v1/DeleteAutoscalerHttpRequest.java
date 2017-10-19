@@ -394,7 +394,9 @@ public final class DeleteAutoscalerHttpRequest implements ApiMessage {
             ;
       }
       return
-          setAutoscaler(value.getAutoscaler()).        setProject(value.getProject()).        setZone(value.getZone())
+          setAutoscaler(value.getAutoscaler()).
+          setProject(value.getProject()).
+          setZone(value.getZone())
           ;
     }
 

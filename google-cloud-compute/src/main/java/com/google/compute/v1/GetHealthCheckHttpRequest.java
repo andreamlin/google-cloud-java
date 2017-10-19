@@ -363,7 +363,8 @@ public final class GetHealthCheckHttpRequest implements ApiMessage {
             ;
       }
       return
-          setHealthCheck(value.getHealthCheck()).        setProject(value.getProject())
+          setHealthCheck(value.getHealthCheck()).
+          setProject(value.getProject())
           ;
     }
 

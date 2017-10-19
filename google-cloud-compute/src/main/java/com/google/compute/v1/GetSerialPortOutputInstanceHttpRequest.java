@@ -450,7 +450,9 @@ public final class GetSerialPortOutputInstanceHttpRequest implements ApiMessage 
             ;
       }
       return
-          setInstance(value.getInstance()).        setProject(value.getProject()).        setZone(value.getZone())
+          setInstance(value.getInstance()).
+          setProject(value.getProject()).
+          setZone(value.getZone())
           ;
     }
 

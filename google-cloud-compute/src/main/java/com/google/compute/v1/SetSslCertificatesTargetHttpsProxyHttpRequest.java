@@ -391,7 +391,8 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
             ;
       }
       return
-          setProject(value.getProject()).        setTargetHttpsProxy(value.getTargetHttpsProxy())
+          setProject(value.getProject()).
+          setTargetHttpsProxy(value.getTargetHttpsProxy())
           ;
     }
 

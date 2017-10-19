@@ -394,7 +394,9 @@ public final class GetMachineTypeHttpRequest implements ApiMessage {
             ;
       }
       return
-          setMachineType(value.getMachineType()).        setProject(value.getProject()).        setZone(value.getZone())
+          setMachineType(value.getMachineType()).
+          setProject(value.getProject()).
+          setZone(value.getZone())
           ;
     }
 

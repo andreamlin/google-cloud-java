@@ -363,7 +363,8 @@ public final class GetUrlMapHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setUrlMap(value.getUrlMap())
+          setProject(value.getProject()).
+          setUrlMap(value.getUrlMap())
           ;
     }
 

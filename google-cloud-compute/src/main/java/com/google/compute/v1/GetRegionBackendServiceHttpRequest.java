@@ -394,7 +394,9 @@ public final class GetRegionBackendServiceHttpRequest implements ApiMessage {
             ;
       }
       return
-          setBackendService(value.getBackendService()).        setProject(value.getProject()).        setRegion(value.getRegion())
+          setBackendService(value.getBackendService()).
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 

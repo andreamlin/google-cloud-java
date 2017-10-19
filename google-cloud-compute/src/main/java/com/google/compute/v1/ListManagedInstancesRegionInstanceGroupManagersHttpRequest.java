@@ -506,7 +506,9 @@ public final class ListManagedInstancesRegionInstanceGroupManagersHttpRequest im
             ;
       }
       return
-          setInstanceGroupManager(value.getInstanceGroupManager()).        setProject(value.getProject()).        setRegion(value.getRegion())
+          setInstanceGroupManager(value.getInstanceGroupManager()).
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 

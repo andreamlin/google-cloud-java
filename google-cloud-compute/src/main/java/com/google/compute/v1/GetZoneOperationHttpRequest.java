@@ -394,7 +394,9 @@ public final class GetZoneOperationHttpRequest implements ApiMessage {
             ;
       }
       return
-          setOperation(value.getOperation()).        setProject(value.getProject()).        setZone(value.getZone())
+          setOperation(value.getOperation()).
+          setProject(value.getProject()).
+          setZone(value.getZone())
           ;
     }
 

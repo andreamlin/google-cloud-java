@@ -391,7 +391,8 @@ public final class InsertRegionAutoscalerHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setRegion(value.getRegion())
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 

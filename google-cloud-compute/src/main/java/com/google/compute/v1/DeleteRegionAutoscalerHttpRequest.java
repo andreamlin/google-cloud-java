@@ -394,7 +394,9 @@ public final class DeleteRegionAutoscalerHttpRequest implements ApiMessage {
             ;
       }
       return
-          setAutoscaler(value.getAutoscaler()).        setProject(value.getProject()).        setRegion(value.getRegion())
+          setAutoscaler(value.getAutoscaler()).
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 

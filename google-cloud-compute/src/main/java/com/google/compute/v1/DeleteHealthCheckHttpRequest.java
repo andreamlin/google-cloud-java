@@ -363,7 +363,8 @@ public final class DeleteHealthCheckHttpRequest implements ApiMessage {
             ;
       }
       return
-          setHealthCheck(value.getHealthCheck()).        setProject(value.getProject())
+          setHealthCheck(value.getHealthCheck()).
+          setProject(value.getProject())
           ;
     }
 

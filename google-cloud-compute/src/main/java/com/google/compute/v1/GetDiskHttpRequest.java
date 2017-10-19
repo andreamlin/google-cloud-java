@@ -394,7 +394,9 @@ public final class GetDiskHttpRequest implements ApiMessage {
             ;
       }
       return
-          setDisk(value.getDisk()).        setProject(value.getProject()).        setZone(value.getZone())
+          setDisk(value.getDisk()).
+          setProject(value.getProject()).
+          setZone(value.getZone())
           ;
     }
 

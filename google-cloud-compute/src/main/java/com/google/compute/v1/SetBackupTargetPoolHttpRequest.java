@@ -450,7 +450,9 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setRegion(value.getRegion()).        setTargetPool(value.getTargetPool())
+          setProject(value.getProject()).
+          setRegion(value.getRegion()).
+          setTargetPool(value.getTargetPool())
           ;
     }
 

@@ -391,7 +391,8 @@ public final class InvalidateCacheUrlMapHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setUrlMap(value.getUrlMap())
+          setProject(value.getProject()).
+          setUrlMap(value.getUrlMap())
           ;
     }
 

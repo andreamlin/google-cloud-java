@@ -422,7 +422,9 @@ public final class SetSchedulingInstanceHttpRequest implements ApiMessage {
             ;
       }
       return
-          setInstance(value.getInstance()).        setProject(value.getProject()).        setZone(value.getZone())
+          setInstance(value.getInstance()).
+          setProject(value.getProject()).
+          setZone(value.getZone())
           ;
     }
 

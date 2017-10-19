@@ -394,7 +394,9 @@ public final class GetTargetPoolHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setRegion(value.getRegion()).        setTargetPool(value.getTargetPool())
+          setProject(value.getProject()).
+          setRegion(value.getRegion()).
+          setTargetPool(value.getTargetPool())
           ;
     }
 

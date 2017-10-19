@@ -422,7 +422,9 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setRegion(value.getRegion()).        setRouter(value.getRouter())
+          setProject(value.getProject()).
+          setRegion(value.getRegion()).
+          setRouter(value.getRouter())
           ;
     }
 

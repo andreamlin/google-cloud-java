@@ -394,7 +394,9 @@ public final class GetRegionOperationHttpRequest implements ApiMessage {
             ;
       }
       return
-          setOperation(value.getOperation()).        setProject(value.getProject()).        setRegion(value.getRegion())
+          setOperation(value.getOperation()).
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 

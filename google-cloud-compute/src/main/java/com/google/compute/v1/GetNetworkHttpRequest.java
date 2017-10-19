@@ -363,7 +363,8 @@ public final class GetNetworkHttpRequest implements ApiMessage {
             ;
       }
       return
-          setNetwork(value.getNetwork()).        setProject(value.getProject())
+          setNetwork(value.getNetwork()).
+          setProject(value.getProject())
           ;
     }
 

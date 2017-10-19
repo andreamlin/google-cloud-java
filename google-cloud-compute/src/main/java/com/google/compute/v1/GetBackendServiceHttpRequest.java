@@ -363,7 +363,8 @@ public final class GetBackendServiceHttpRequest implements ApiMessage {
             ;
       }
       return
-          setBackendService(value.getBackendService()).        setProject(value.getProject())
+          setBackendService(value.getBackendService()).
+          setProject(value.getProject())
           ;
     }
 

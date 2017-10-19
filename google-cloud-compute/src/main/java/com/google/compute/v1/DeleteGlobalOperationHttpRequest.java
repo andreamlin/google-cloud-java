@@ -363,7 +363,8 @@ public final class DeleteGlobalOperationHttpRequest implements ApiMessage {
             ;
       }
       return
-          setOperation(value.getOperation()).        setProject(value.getProject())
+          setOperation(value.getOperation()).
+          setProject(value.getProject())
           ;
     }
 

@@ -422,7 +422,9 @@ public final class SetInstanceTemplateRegionInstanceGroupManagerHttpRequest impl
             ;
       }
       return
-          setInstanceGroupManager(value.getInstanceGroupManager()).        setProject(value.getProject()).        setRegion(value.getRegion())
+          setInstanceGroupManager(value.getInstanceGroupManager()).
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 

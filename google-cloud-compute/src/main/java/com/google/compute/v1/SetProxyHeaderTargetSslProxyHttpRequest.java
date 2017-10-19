@@ -391,7 +391,8 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
             ;
       }
       return
-          setProject(value.getProject()).        setTargetSslProxy(value.getTargetSslProxy())
+          setProject(value.getProject()).
+          setTargetSslProxy(value.getTargetSslProxy())
           ;
     }
 

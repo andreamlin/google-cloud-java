@@ -394,7 +394,9 @@ public final class GetRegionInstanceGroupManagerHttpRequest implements ApiMessag
             ;
       }
       return
-          setInstanceGroupManager(value.getInstanceGroupManager()).        setProject(value.getProject()).        setRegion(value.getRegion())
+          setInstanceGroupManager(value.getInstanceGroupManager()).
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 

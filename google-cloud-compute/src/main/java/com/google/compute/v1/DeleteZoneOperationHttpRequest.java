@@ -394,7 +394,9 @@ public final class DeleteZoneOperationHttpRequest implements ApiMessage {
             ;
       }
       return
-          setOperation(value.getOperation()).        setProject(value.getProject()).        setZone(value.getZone())
+          setOperation(value.getOperation()).
+          setProject(value.getProject()).
+          setZone(value.getZone())
           ;
     }
 

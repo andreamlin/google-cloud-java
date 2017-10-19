@@ -394,7 +394,9 @@ public final class GetRegionAutoscalerHttpRequest implements ApiMessage {
             ;
       }
       return
-          setAutoscaler(value.getAutoscaler()).        setProject(value.getProject()).        setRegion(value.getRegion())
+          setAutoscaler(value.getAutoscaler()).
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 

@@ -422,7 +422,9 @@ public final class RecreateInstancesInstanceGroupManagerHttpRequest implements A
             ;
       }
       return
-          setInstanceGroupManager(value.getInstanceGroupManager()).        setProject(value.getProject()).        setZone(value.getZone())
+          setInstanceGroupManager(value.getInstanceGroupManager()).
+          setProject(value.getProject()).
+          setZone(value.getZone())
           ;
     }
 

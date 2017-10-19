@@ -363,7 +363,8 @@ public final class GetFromFamilyImageHttpRequest implements ApiMessage {
             ;
       }
       return
-          setFamily(value.getFamily()).        setProject(value.getProject())
+          setFamily(value.getFamily()).
+          setProject(value.getProject())
           ;
     }
 

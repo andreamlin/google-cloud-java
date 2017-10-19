@@ -422,7 +422,9 @@ public final class RecreateInstancesRegionInstanceGroupManagerHttpRequest implem
             ;
       }
       return
-          setInstanceGroupManager(value.getInstanceGroupManager()).        setProject(value.getProject()).        setRegion(value.getRegion())
+          setInstanceGroupManager(value.getInstanceGroupManager()).
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 

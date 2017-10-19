@@ -391,7 +391,8 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
             ;
       }
       return
-          setForwardingRule(value.getForwardingRule()).        setProject(value.getProject())
+          setForwardingRule(value.getForwardingRule()).
+          setProject(value.getProject())
           ;
     }
 

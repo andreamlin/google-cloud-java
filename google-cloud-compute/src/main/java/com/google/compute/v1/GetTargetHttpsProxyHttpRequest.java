@@ -363,7 +363,8 @@ public final class GetTargetHttpsProxyHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setTargetHttpsProxy(value.getTargetHttpsProxy())
+          setProject(value.getProject()).
+          setTargetHttpsProxy(value.getTargetHttpsProxy())
           ;
     }
 

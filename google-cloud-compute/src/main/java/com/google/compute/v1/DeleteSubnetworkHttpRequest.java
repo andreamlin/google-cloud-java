@@ -394,7 +394,9 @@ public final class DeleteSubnetworkHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setRegion(value.getRegion()).        setSubnetwork(value.getSubnetwork())
+          setProject(value.getProject()).
+          setRegion(value.getRegion()).
+          setSubnetwork(value.getSubnetwork())
           ;
     }
 

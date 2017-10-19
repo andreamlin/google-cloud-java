@@ -363,7 +363,8 @@ public final class DeleteFirewallHttpRequest implements ApiMessage {
             ;
       }
       return
-          setFirewall(value.getFirewall()).        setProject(value.getProject())
+          setFirewall(value.getFirewall()).
+          setProject(value.getProject())
           ;
     }
 

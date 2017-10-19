@@ -475,7 +475,8 @@ public final class ListRegionInstanceGroupManagersHttpRequest implements ApiMess
             ;
       }
       return
-          setProject(value.getProject()).        setRegion(value.getRegion())
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 

@@ -394,7 +394,9 @@ public final class DeleteTargetInstanceHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setTargetInstance(value.getTargetInstance()).        setZone(value.getZone())
+          setProject(value.getProject()).
+          setTargetInstance(value.getTargetInstance()).
+          setZone(value.getZone())
           ;
     }
 

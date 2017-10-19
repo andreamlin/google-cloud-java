@@ -422,7 +422,9 @@ public final class GetHealthRegionBackendServiceHttpRequest implements ApiMessag
             ;
       }
       return
-          setBackendService(value.getBackendService()).        setProject(value.getProject()).        setRegion(value.getRegion())
+          setBackendService(value.getBackendService()).
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 

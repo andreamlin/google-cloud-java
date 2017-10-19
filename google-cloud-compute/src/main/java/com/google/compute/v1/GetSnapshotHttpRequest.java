@@ -363,7 +363,8 @@ public final class GetSnapshotHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setSnapshot(value.getSnapshot())
+          setProject(value.getProject()).
+          setSnapshot(value.getSnapshot())
           ;
     }
 

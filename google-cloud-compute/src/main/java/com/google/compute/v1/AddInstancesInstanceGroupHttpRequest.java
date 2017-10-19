@@ -422,7 +422,9 @@ public final class AddInstancesInstanceGroupHttpRequest implements ApiMessage {
             ;
       }
       return
-          setInstanceGroup(value.getInstanceGroup()).        setProject(value.getProject()).        setZone(value.getZone())
+          setInstanceGroup(value.getInstanceGroup()).
+          setProject(value.getProject()).
+          setZone(value.getZone())
           ;
     }
 

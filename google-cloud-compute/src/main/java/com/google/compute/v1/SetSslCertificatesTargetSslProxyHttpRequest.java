@@ -391,7 +391,8 @@ public final class SetSslCertificatesTargetSslProxyHttpRequest implements ApiMes
             ;
       }
       return
-          setProject(value.getProject()).        setTargetSslProxy(value.getTargetSslProxy())
+          setProject(value.getProject()).
+          setTargetSslProxy(value.getTargetSslProxy())
           ;
     }
 

@@ -391,7 +391,8 @@ public final class SetUrlMapTargetHttpProxyHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setTargetHttpProxy(value.getTargetHttpProxy())
+          setProject(value.getProject()).
+          setTargetHttpProxy(value.getTargetHttpProxy())
           ;
     }
 

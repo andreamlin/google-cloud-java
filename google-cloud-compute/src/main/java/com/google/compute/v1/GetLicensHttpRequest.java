@@ -363,7 +363,8 @@ public final class GetLicensHttpRequest implements ApiMessage {
             ;
       }
       return
-          setLicense(value.getLicense()).        setProject(value.getProject())
+          setLicense(value.getLicense()).
+          setProject(value.getProject())
           ;
     }
 

@@ -363,7 +363,8 @@ public final class GetInstanceTemplateHttpRequest implements ApiMessage {
             ;
       }
       return
-          setInstanceTemplate(value.getInstanceTemplate()).        setProject(value.getProject())
+          setInstanceTemplate(value.getInstanceTemplate()).
+          setProject(value.getProject())
           ;
     }
 

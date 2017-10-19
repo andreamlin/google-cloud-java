@@ -363,7 +363,8 @@ public final class DeleteUrlMapHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setUrlMap(value.getUrlMap())
+          setProject(value.getProject()).
+          setUrlMap(value.getUrlMap())
           ;
     }
 

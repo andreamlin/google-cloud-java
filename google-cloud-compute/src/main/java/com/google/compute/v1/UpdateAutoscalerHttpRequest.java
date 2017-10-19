@@ -419,7 +419,8 @@ public final class UpdateAutoscalerHttpRequest implements ApiMessage {
             ;
       }
       return
-          setProject(value.getProject()).        setZone(value.getZone())
+          setProject(value.getProject()).
+          setZone(value.getZone())
           ;
     }
 

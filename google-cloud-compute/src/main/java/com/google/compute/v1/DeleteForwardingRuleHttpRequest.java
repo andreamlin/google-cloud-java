@@ -394,7 +394,9 @@ public final class DeleteForwardingRuleHttpRequest implements ApiMessage {
             ;
       }
       return
-          setForwardingRule(value.getForwardingRule()).        setProject(value.getProject()).        setRegion(value.getRegion())
+          setForwardingRule(value.getForwardingRule()).
+          setProject(value.getProject()).
+          setRegion(value.getRegion())
           ;
     }
 
