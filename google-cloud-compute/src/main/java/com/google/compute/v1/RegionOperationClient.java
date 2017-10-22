@@ -179,7 +179,7 @@ public class RegionOperationClient implements BackgroundResource {
 
     DeleteRegionOperationHttpRequest request =
         DeleteRegionOperationHttpRequest.newBuilder()
-        .setOperationWithGlobalOperationsOperationName(operation)
+        .setOperationWithRegionOperationsOperationName(operation)
         .build();
     deleteRegionOperation(request);
   }
@@ -191,9 +191,9 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
+   *   RegionOperationsOperationName operation = RegionOperationsOperationName.create("[PROJECT]", "[REGION]", "[OPERATION]");
    *   DeleteRegionOperationHttpRequest request = DeleteRegionOperationHttpRequest.newBuilder()
-   *     .setOperationWithGlobalOperationsOperationName(operation)
+   *     .setOperationWithRegionOperationsOperationName(operation)
    *     .build();
    *   regionOperationClient.deleteRegionOperation(request);
    * }
@@ -214,9 +214,9 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
+   *   RegionOperationsOperationName operation = RegionOperationsOperationName.create("[PROJECT]", "[REGION]", "[OPERATION]");
    *   DeleteRegionOperationHttpRequest request = DeleteRegionOperationHttpRequest.newBuilder()
-   *     .setOperationWithGlobalOperationsOperationName(operation)
+   *     .setOperationWithRegionOperationsOperationName(operation)
    *     .build();
    *   ApiFuture&lt;Void&gt; future = regionOperationClient.deleteRegionOperationCallable().futureCall(request);
    *   // Do something
@@ -249,7 +249,7 @@ public class RegionOperationClient implements BackgroundResource {
 
     GetRegionOperationHttpRequest request =
         GetRegionOperationHttpRequest.newBuilder()
-        .setOperationWithGlobalOperationsOperationName(operation)
+        .setOperationWithRegionOperationsOperationName(operation)
         .build();
     return getRegionOperation(request);
   }
@@ -261,9 +261,9 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
+   *   RegionOperationsOperationName operation = RegionOperationsOperationName.create("[PROJECT]", "[REGION]", "[OPERATION]");
    *   GetRegionOperationHttpRequest request = GetRegionOperationHttpRequest.newBuilder()
-   *     .setOperationWithGlobalOperationsOperationName(operation)
+   *     .setOperationWithRegionOperationsOperationName(operation)
    *     .build();
    *   Operation response = regionOperationClient.getRegionOperation(request);
    * }
@@ -284,9 +284,9 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
+   *   RegionOperationsOperationName operation = RegionOperationsOperationName.create("[PROJECT]", "[REGION]", "[OPERATION]");
    *   GetRegionOperationHttpRequest request = GetRegionOperationHttpRequest.newBuilder()
-   *     .setOperationWithGlobalOperationsOperationName(operation)
+   *     .setOperationWithRegionOperationsOperationName(operation)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionOperationClient.getRegionOperationCallable().futureCall(request);
    *   // Do something

@@ -179,7 +179,7 @@ public class GlobalAddressClient implements BackgroundResource {
 
     DeleteGlobalAddressHttpRequest request =
         DeleteGlobalAddressHttpRequest.newBuilder()
-        .setAddressWithAddressName(address)
+        .setAddressWithGlobalAddressesAddressName(address)
         .build();
     return deleteGlobalAddress(request);
   }
@@ -191,9 +191,9 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
+   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.create("[PROJECT]", "[ADDRESS]");
    *   DeleteGlobalAddressHttpRequest request = DeleteGlobalAddressHttpRequest.newBuilder()
-   *     .setAddressWithAddressName(address)
+   *     .setAddressWithGlobalAddressesAddressName(address)
    *     .build();
    *   Operation response = globalAddressClient.deleteGlobalAddress(request);
    * }
@@ -214,9 +214,9 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
+   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.create("[PROJECT]", "[ADDRESS]");
    *   DeleteGlobalAddressHttpRequest request = DeleteGlobalAddressHttpRequest.newBuilder()
-   *     .setAddressWithAddressName(address)
+   *     .setAddressWithGlobalAddressesAddressName(address)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = globalAddressClient.deleteGlobalAddressCallable().futureCall(request);
    *   // Do something
@@ -249,7 +249,7 @@ public class GlobalAddressClient implements BackgroundResource {
 
     GetGlobalAddressHttpRequest request =
         GetGlobalAddressHttpRequest.newBuilder()
-        .setAddressWithAddressName(address)
+        .setAddressWithGlobalAddressesAddressName(address)
         .build();
     return getGlobalAddress(request);
   }
@@ -261,9 +261,9 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
+   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.create("[PROJECT]", "[ADDRESS]");
    *   GetGlobalAddressHttpRequest request = GetGlobalAddressHttpRequest.newBuilder()
-   *     .setAddressWithAddressName(address)
+   *     .setAddressWithGlobalAddressesAddressName(address)
    *     .build();
    *   Address response = globalAddressClient.getGlobalAddress(request);
    * }
@@ -284,9 +284,9 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
+   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.create("[PROJECT]", "[ADDRESS]");
    *   GetGlobalAddressHttpRequest request = GetGlobalAddressHttpRequest.newBuilder()
-   *     .setAddressWithAddressName(address)
+   *     .setAddressWithGlobalAddressesAddressName(address)
    *     .build();
    *   ApiFuture&lt;Address&gt; future = globalAddressClient.getGlobalAddressCallable().futureCall(request);
    *   // Do something

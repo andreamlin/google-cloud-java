@@ -355,7 +355,7 @@ public final class GetGlobalForwardingRuleHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setForwardingRuleWithForwardingRuleName(GlobalForwardingRulesForwardingRuleName value) {
+    public final Builder setForwardingRuleWithGlobalForwardingRulesForwardingRuleName(GlobalForwardingRulesForwardingRuleName value) {
       if (value == null) {
         return
             setForwardingRule("").
@@ -368,7 +368,7 @@ public final class GetGlobalForwardingRuleHttpRequest implements ApiMessage {
           ;
     }
 
-    public final GlobalForwardingRulesForwardingRuleName getForwardingRuleAsForwardingRuleName() {
+    public final GlobalForwardingRulesForwardingRuleName getForwardingRuleAsGlobalForwardingRulesForwardingRuleName() {
       return GlobalForwardingRulesForwardingRuleName.create(
           getForwardingRule(),
           getProject()

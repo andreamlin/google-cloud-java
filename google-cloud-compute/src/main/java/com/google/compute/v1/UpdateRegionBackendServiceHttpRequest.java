@@ -413,7 +413,7 @@ public final class UpdateRegionBackendServiceHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setBackendServiceWithBackendServiceName(RegionBackendServicesBackendServiceName value) {
+    public final Builder setBackendServiceWithRegionBackendServicesBackendServiceName(RegionBackendServicesBackendServiceName value) {
       if (value == null) {
         return
             setBackendService("").
@@ -428,7 +428,7 @@ public final class UpdateRegionBackendServiceHttpRequest implements ApiMessage {
           ;
     }
 
-    public final RegionBackendServicesBackendServiceName getBackendServiceAsBackendServiceName() {
+    public final RegionBackendServicesBackendServiceName getBackendServiceAsRegionBackendServicesBackendServiceName() {
       return RegionBackendServicesBackendServiceName.create(
           getBackendService(),
           getProject(),

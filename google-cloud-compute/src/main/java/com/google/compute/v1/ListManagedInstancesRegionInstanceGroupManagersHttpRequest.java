@@ -497,7 +497,7 @@ public final class ListManagedInstancesRegionInstanceGroupManagersHttpRequest im
       return newBuilder;
     }
 
-    public final Builder setInstanceGroupManagerWithInstanceGroupManagerName(RegionInstanceGroupManagersInstanceGroupManagerName value) {
+    public final Builder setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(RegionInstanceGroupManagersInstanceGroupManagerName value) {
       if (value == null) {
         return
             setInstanceGroupManager("").
@@ -512,7 +512,7 @@ public final class ListManagedInstancesRegionInstanceGroupManagersHttpRequest im
           ;
     }
 
-    public final RegionInstanceGroupManagersInstanceGroupManagerName getInstanceGroupManagerAsInstanceGroupManagerName() {
+    public final RegionInstanceGroupManagersInstanceGroupManagerName getInstanceGroupManagerAsRegionInstanceGroupManagersInstanceGroupManagerName() {
       return RegionInstanceGroupManagersInstanceGroupManagerName.create(
           getInstanceGroupManager(),
           getProject(),

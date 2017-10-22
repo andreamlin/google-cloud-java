@@ -383,7 +383,7 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
       return newBuilder;
     }
 
-    public final Builder setForwardingRuleWithForwardingRuleName(GlobalForwardingRulesForwardingRuleName value) {
+    public final Builder setForwardingRuleWithGlobalForwardingRulesForwardingRuleName(GlobalForwardingRulesForwardingRuleName value) {
       if (value == null) {
         return
             setForwardingRule("").
@@ -396,7 +396,7 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
           ;
     }
 
-    public final GlobalForwardingRulesForwardingRuleName getForwardingRuleAsForwardingRuleName() {
+    public final GlobalForwardingRulesForwardingRuleName getForwardingRuleAsGlobalForwardingRulesForwardingRuleName() {
       return GlobalForwardingRulesForwardingRuleName.create(
           getForwardingRule(),
           getProject()

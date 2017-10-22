@@ -179,7 +179,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
 
     DeleteRegionBackendServiceHttpRequest request =
         DeleteRegionBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService)
+        .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
         .build();
     return deleteRegionBackendService(request);
   }
@@ -191,9 +191,9 @@ public class RegionBackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
-   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.create("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
    *   DeleteRegionBackendServiceHttpRequest request = DeleteRegionBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
    *     .build();
    *   Operation response = regionBackendServiceClient.deleteRegionBackendService(request);
    * }
@@ -214,9 +214,9 @@ public class RegionBackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
-   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.create("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
    *   DeleteRegionBackendServiceHttpRequest request = DeleteRegionBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionBackendServiceClient.deleteRegionBackendServiceCallable().futureCall(request);
    *   // Do something
@@ -249,7 +249,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
 
     GetRegionBackendServiceHttpRequest request =
         GetRegionBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService)
+        .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
         .build();
     return getRegionBackendService(request);
   }
@@ -261,9 +261,9 @@ public class RegionBackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
-   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.create("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
    *   GetRegionBackendServiceHttpRequest request = GetRegionBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
    *     .build();
    *   BackendService response = regionBackendServiceClient.getRegionBackendService(request);
    * }
@@ -284,9 +284,9 @@ public class RegionBackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
-   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.create("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
    *   GetRegionBackendServiceHttpRequest request = GetRegionBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
    *     .build();
    *   ApiFuture&lt;BackendService&gt; future = regionBackendServiceClient.getRegionBackendServiceCallable().futureCall(request);
    *   // Do something
@@ -321,7 +321,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
 
     GetHealthRegionBackendServiceHttpRequest request =
         GetHealthRegionBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService)
+        .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
         .setResourceGroupReferenceResource(resourceGroupReferenceResource)
         .build();
     return getHealthRegionBackendService(request);
@@ -334,10 +334,10 @@ public class RegionBackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
-   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.create("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
    *   ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
    *   GetHealthRegionBackendServiceHttpRequest request = GetHealthRegionBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
    *     .setResourceGroupReferenceResource(resourceGroupReference)
    *     .build();
    *   BackendServiceGroupHealth response = regionBackendServiceClient.getHealthRegionBackendService(request);
@@ -359,10 +359,10 @@ public class RegionBackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
-   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.create("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
    *   ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
    *   GetHealthRegionBackendServiceHttpRequest request = GetHealthRegionBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
    *     .setResourceGroupReferenceResource(resourceGroupReference)
    *     .build();
    *   ApiFuture&lt;BackendServiceGroupHealth&gt; future = regionBackendServiceClient.getHealthRegionBackendServiceCallable().futureCall(request);
@@ -581,7 +581,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
 
     PatchRegionBackendServiceHttpRequest request =
         PatchRegionBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService)
+        .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
         .setBackendServiceResource(backendServiceResource)
         .build();
     return patchRegionBackendService(request);
@@ -594,9 +594,9 @@ public class RegionBackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
-   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.create("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
    *   PatchRegionBackendServiceHttpRequest request = PatchRegionBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
    *     .build();
    *   Operation response = regionBackendServiceClient.patchRegionBackendService(request);
    * }
@@ -617,9 +617,9 @@ public class RegionBackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
-   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.create("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
    *   PatchRegionBackendServiceHttpRequest request = PatchRegionBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionBackendServiceClient.patchRegionBackendServiceCallable().futureCall(request);
    *   // Do something
@@ -653,7 +653,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
 
     UpdateRegionBackendServiceHttpRequest request =
         UpdateRegionBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService)
+        .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
         .setBackendServiceResource(backendServiceResource)
         .build();
     return updateRegionBackendService(request);
@@ -666,9 +666,9 @@ public class RegionBackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
-   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.create("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
    *   UpdateRegionBackendServiceHttpRequest request = UpdateRegionBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
    *     .build();
    *   Operation response = regionBackendServiceClient.updateRegionBackendService(request);
    * }
@@ -689,9 +689,9 @@ public class RegionBackendServiceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
-   *   BackendServiceName backendService = BackendServiceName.create("[PROJECT]", "[BACKEND_SERVICE]");
+   *   RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.create("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
    *   UpdateRegionBackendServiceHttpRequest request = UpdateRegionBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendServiceWithRegionBackendServicesBackendServiceName(backendService)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionBackendServiceClient.updateRegionBackendServiceCallable().futureCall(request);
    *   // Do something

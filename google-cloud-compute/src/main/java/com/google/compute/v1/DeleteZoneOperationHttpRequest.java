@@ -385,7 +385,7 @@ public final class DeleteZoneOperationHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setOperationWithGlobalOperationsOperationName(ZoneOperationsOperationName value) {
+    public final Builder setOperationWithZoneOperationsOperationName(ZoneOperationsOperationName value) {
       if (value == null) {
         return
             setOperation("").
@@ -400,7 +400,7 @@ public final class DeleteZoneOperationHttpRequest implements ApiMessage {
           ;
     }
 
-    public final ZoneOperationsOperationName getOperationAsGlobalOperationsOperationName() {
+    public final ZoneOperationsOperationName getOperationAsZoneOperationsOperationName() {
       return ZoneOperationsOperationName.create(
           getOperation(),
           getProject(),

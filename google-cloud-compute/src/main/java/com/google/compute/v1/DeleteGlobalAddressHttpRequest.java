@@ -355,7 +355,7 @@ public final class DeleteGlobalAddressHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setAddressWithAddressName(GlobalAddressesAddressName value) {
+    public final Builder setAddressWithGlobalAddressesAddressName(GlobalAddressesAddressName value) {
       if (value == null) {
         return
             setAddress("").
@@ -368,7 +368,7 @@ public final class DeleteGlobalAddressHttpRequest implements ApiMessage {
           ;
     }
 
-    public final GlobalAddressesAddressName getAddressAsAddressName() {
+    public final GlobalAddressesAddressName getAddressAsGlobalAddressesAddressName() {
       return GlobalAddressesAddressName.create(
           getAddress(),
           getProject()

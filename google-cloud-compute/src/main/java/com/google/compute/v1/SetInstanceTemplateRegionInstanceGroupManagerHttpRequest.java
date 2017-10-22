@@ -413,7 +413,7 @@ public final class SetInstanceTemplateRegionInstanceGroupManagerHttpRequest impl
       return newBuilder;
     }
 
-    public final Builder setInstanceGroupManagerWithInstanceGroupManagerName(RegionInstanceGroupManagersInstanceGroupManagerName value) {
+    public final Builder setInstanceGroupManagerWithRegionInstanceGroupManagersInstanceGroupManagerName(RegionInstanceGroupManagersInstanceGroupManagerName value) {
       if (value == null) {
         return
             setInstanceGroupManager("").
@@ -428,7 +428,7 @@ public final class SetInstanceTemplateRegionInstanceGroupManagerHttpRequest impl
           ;
     }
 
-    public final RegionInstanceGroupManagersInstanceGroupManagerName getInstanceGroupManagerAsInstanceGroupManagerName() {
+    public final RegionInstanceGroupManagersInstanceGroupManagerName getInstanceGroupManagerAsRegionInstanceGroupManagersInstanceGroupManagerName() {
       return RegionInstanceGroupManagersInstanceGroupManagerName.create(
           getInstanceGroupManager(),
           getProject(),
