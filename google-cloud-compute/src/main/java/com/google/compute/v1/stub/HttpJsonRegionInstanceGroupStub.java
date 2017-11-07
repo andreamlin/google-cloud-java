@@ -77,7 +77,7 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList> listRegionInstanceGroupsMethodDescriptor =
       ApiMethodDescriptor.<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList>newBuilder()
           .setMethodName("compute.regionInstanceGroups.list")
@@ -92,7 +92,7 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances> listInstancesRegionInstanceGroupsMethodDescriptor =
       ApiMethodDescriptor.<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances>newBuilder()
           .setMethodName("compute.regionInstanceGroups.listInstances")
@@ -107,7 +107,7 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroups.setNamedPorts")
@@ -121,7 +121,7 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

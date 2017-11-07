@@ -87,7 +87,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList> aggregatedListInstanceGroupsMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList>newBuilder()
           .setMethodName("compute.instanceGroups.aggregatedList")
@@ -102,7 +102,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<DeleteInstanceGroupHttpRequest, Operation> deleteInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<DeleteInstanceGroupHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instanceGroups.delete")
@@ -116,7 +116,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<GetInstanceGroupHttpRequest, InstanceGroup>newBuilder()
           .setMethodName("compute.instanceGroups.get")
@@ -130,7 +130,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertInstanceGroupHttpRequest, Operation> insertInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<InsertInstanceGroupHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instanceGroups.insert")
@@ -144,7 +144,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListInstanceGroupsHttpRequest, InstanceGroupList> listInstanceGroupsMethodDescriptor =
       ApiMethodDescriptor.<ListInstanceGroupsHttpRequest, InstanceGroupList>newBuilder()
           .setMethodName("compute.instanceGroups.list")
@@ -159,7 +159,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListInstancesInstanceGroupsHttpRequest, InstanceGroupsListInstances> listInstancesInstanceGroupsMethodDescriptor =
       ApiMethodDescriptor.<ListInstancesInstanceGroupsHttpRequest, InstanceGroupsListInstances>newBuilder()
           .setMethodName("compute.instanceGroups.listInstances")
@@ -174,7 +174,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<RemoveInstancesInstanceGroupHttpRequest, Operation> removeInstancesInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<RemoveInstancesInstanceGroupHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instanceGroups.removeInstances")
@@ -188,7 +188,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<SetNamedPortsInstanceGroupHttpRequest, Operation> setNamedPortsInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<SetNamedPortsInstanceGroupHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instanceGroups.setNamedPorts")
@@ -202,7 +202,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

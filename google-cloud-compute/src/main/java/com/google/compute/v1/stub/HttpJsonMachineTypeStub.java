@@ -74,7 +74,7 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetMachineTypeHttpRequest, MachineType> getMachineTypeMethodDescriptor =
       ApiMethodDescriptor.<GetMachineTypeHttpRequest, MachineType>newBuilder()
           .setMethodName("compute.machineTypes.get")
@@ -88,7 +88,7 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListMachineTypesHttpRequest, MachineTypeList> listMachineTypesMethodDescriptor =
       ApiMethodDescriptor.<ListMachineTypesHttpRequest, MachineTypeList>newBuilder()
           .setMethodName("compute.machineTypes.list")
@@ -103,7 +103,7 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

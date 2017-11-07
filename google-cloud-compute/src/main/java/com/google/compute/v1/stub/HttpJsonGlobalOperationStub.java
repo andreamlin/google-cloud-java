@@ -74,7 +74,7 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationMethodDescriptor =
       ApiMethodDescriptor.<DeleteGlobalOperationHttpRequest, Void>newBuilder()
           .setMethodName("compute.globalOperations.delete")
@@ -87,7 +87,7 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetGlobalOperationHttpRequest, Operation> getGlobalOperationMethodDescriptor =
       ApiMethodDescriptor.<GetGlobalOperationHttpRequest, Operation>newBuilder()
           .setMethodName("compute.globalOperations.get")
@@ -101,7 +101,7 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListGlobalOperationsHttpRequest, OperationList> listGlobalOperationsMethodDescriptor =
       ApiMethodDescriptor.<ListGlobalOperationsHttpRequest, OperationList>newBuilder()
           .setMethodName("compute.globalOperations.list")
@@ -116,7 +116,7 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

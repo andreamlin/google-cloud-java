@@ -69,7 +69,7 @@ public class HttpJsonRegionStub extends RegionStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListRegionsHttpRequest, RegionList> listRegionsMethodDescriptor =
       ApiMethodDescriptor.<ListRegionsHttpRequest, RegionList>newBuilder()
           .setMethodName("compute.regions.list")
@@ -84,7 +84,7 @@ public class HttpJsonRegionStub extends RegionStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

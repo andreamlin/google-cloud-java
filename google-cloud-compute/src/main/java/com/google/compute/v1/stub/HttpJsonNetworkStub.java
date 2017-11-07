@@ -73,7 +73,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetNetworkHttpRequest, Network> getNetworkMethodDescriptor =
       ApiMethodDescriptor.<GetNetworkHttpRequest, Network>newBuilder()
           .setMethodName("compute.networks.get")
@@ -87,7 +87,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertNetworkHttpRequest, Operation> insertNetworkMethodDescriptor =
       ApiMethodDescriptor.<InsertNetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.networks.insert")
@@ -101,7 +101,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListNetworksHttpRequest, NetworkList> listNetworksMethodDescriptor =
       ApiMethodDescriptor.<ListNetworksHttpRequest, NetworkList>newBuilder()
           .setMethodName("compute.networks.list")
@@ -116,7 +116,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<SwitchToCustomModeNetworkHttpRequest, Operation> switchToCustomModeNetworkMethodDescriptor =
       ApiMethodDescriptor.<SwitchToCustomModeNetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.networks.switchToCustomMode")
@@ -130,7 +130,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

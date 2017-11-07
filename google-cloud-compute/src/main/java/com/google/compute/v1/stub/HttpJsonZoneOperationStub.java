@@ -69,7 +69,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetZoneOperationHttpRequest, Operation> getZoneOperationMethodDescriptor =
       ApiMethodDescriptor.<GetZoneOperationHttpRequest, Operation>newBuilder()
           .setMethodName("compute.zoneOperations.get")
@@ -83,7 +83,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListZoneOperationsHttpRequest, OperationList> listZoneOperationsMethodDescriptor =
       ApiMethodDescriptor.<ListZoneOperationsHttpRequest, OperationList>newBuilder()
           .setMethodName("compute.zoneOperations.list")
@@ -98,7 +98,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

@@ -74,7 +74,7 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetTargetHttpProxyHttpRequest, TargetHttpProxy> getTargetHttpProxyMethodDescriptor =
       ApiMethodDescriptor.<GetTargetHttpProxyHttpRequest, TargetHttpProxy>newBuilder()
           .setMethodName("compute.targetHttpProxies.get")
@@ -88,7 +88,7 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertTargetHttpProxyHttpRequest, Operation> insertTargetHttpProxyMethodDescriptor =
       ApiMethodDescriptor.<InsertTargetHttpProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetHttpProxies.insert")
@@ -102,7 +102,7 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList> listTargetHttpProxiesMethodDescriptor =
       ApiMethodDescriptor.<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList>newBuilder()
           .setMethodName("compute.targetHttpProxies.list")
@@ -117,7 +117,7 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<SetUrlMapTargetHttpProxyHttpRequest, Operation> setUrlMapTargetHttpProxyMethodDescriptor =
       ApiMethodDescriptor.<SetUrlMapTargetHttpProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetHttpProxies.setUrlMap")
@@ -131,7 +131,7 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

@@ -78,7 +78,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetTargetSslProxyHttpRequest, TargetSslProxy> getTargetSslProxyMethodDescriptor =
       ApiMethodDescriptor.<GetTargetSslProxyHttpRequest, TargetSslProxy>newBuilder()
           .setMethodName("compute.targetSslProxies.get")
@@ -92,7 +92,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertTargetSslProxyHttpRequest, Operation> insertTargetSslProxyMethodDescriptor =
       ApiMethodDescriptor.<InsertTargetSslProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetSslProxies.insert")
@@ -106,7 +106,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListTargetSslProxiesHttpRequest, TargetSslProxyList> listTargetSslProxiesMethodDescriptor =
       ApiMethodDescriptor.<ListTargetSslProxiesHttpRequest, TargetSslProxyList>newBuilder()
           .setMethodName("compute.targetSslProxies.list")
@@ -121,7 +121,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<SetBackendServiceTargetSslProxyHttpRequest, Operation> setBackendServiceTargetSslProxyMethodDescriptor =
       ApiMethodDescriptor.<SetBackendServiceTargetSslProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetSslProxies.setBackendService")
@@ -135,7 +135,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<SetProxyHeaderTargetSslProxyHttpRequest, Operation> setProxyHeaderTargetSslProxyMethodDescriptor =
       ApiMethodDescriptor.<SetProxyHeaderTargetSslProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetSslProxies.setProxyHeader")
@@ -149,7 +149,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<SetSslCertificatesTargetSslProxyHttpRequest, Operation> setSslCertificatesTargetSslProxyMethodDescriptor =
       ApiMethodDescriptor.<SetSslCertificatesTargetSslProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetSslProxies.setSslCertificates")
@@ -163,7 +163,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

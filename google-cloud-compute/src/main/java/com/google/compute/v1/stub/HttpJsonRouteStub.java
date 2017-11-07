@@ -72,7 +72,7 @@ public class HttpJsonRouteStub extends RouteStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetRouteHttpRequest, Route> getRouteMethodDescriptor =
       ApiMethodDescriptor.<GetRouteHttpRequest, Route>newBuilder()
           .setMethodName("compute.routes.get")
@@ -86,7 +86,7 @@ public class HttpJsonRouteStub extends RouteStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertRouteHttpRequest, Operation> insertRouteMethodDescriptor =
       ApiMethodDescriptor.<InsertRouteHttpRequest, Operation>newBuilder()
           .setMethodName("compute.routes.insert")
@@ -100,7 +100,7 @@ public class HttpJsonRouteStub extends RouteStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListRoutesHttpRequest, RouteList> listRoutesMethodDescriptor =
       ApiMethodDescriptor.<ListRoutesHttpRequest, RouteList>newBuilder()
           .setMethodName("compute.routes.list")
@@ -115,7 +115,7 @@ public class HttpJsonRouteStub extends RouteStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

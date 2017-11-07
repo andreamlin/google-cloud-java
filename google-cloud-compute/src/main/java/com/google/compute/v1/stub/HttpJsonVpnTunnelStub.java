@@ -77,7 +77,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelMethodDescriptor =
       ApiMethodDescriptor.<DeleteVpnTunnelHttpRequest, Operation>newBuilder()
           .setMethodName("compute.vpnTunnels.delete")
@@ -91,7 +91,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelMethodDescriptor =
       ApiMethodDescriptor.<GetVpnTunnelHttpRequest, VpnTunnel>newBuilder()
           .setMethodName("compute.vpnTunnels.get")
@@ -105,7 +105,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelMethodDescriptor =
       ApiMethodDescriptor.<InsertVpnTunnelHttpRequest, Operation>newBuilder()
           .setMethodName("compute.vpnTunnels.insert")
@@ -119,7 +119,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListVpnTunnelsHttpRequest, VpnTunnelList> listVpnTunnelsMethodDescriptor =
       ApiMethodDescriptor.<ListVpnTunnelsHttpRequest, VpnTunnelList>newBuilder()
           .setMethodName("compute.vpnTunnels.list")
@@ -134,7 +134,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

@@ -71,7 +71,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetSnapshotHttpRequest, Snapshot> getSnapshotMethodDescriptor =
       ApiMethodDescriptor.<GetSnapshotHttpRequest, Snapshot>newBuilder()
           .setMethodName("compute.snapshots.get")
@@ -85,7 +85,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListSnapshotsHttpRequest, SnapshotList> listSnapshotsMethodDescriptor =
       ApiMethodDescriptor.<ListSnapshotsHttpRequest, SnapshotList>newBuilder()
           .setMethodName("compute.snapshots.list")
@@ -100,7 +100,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

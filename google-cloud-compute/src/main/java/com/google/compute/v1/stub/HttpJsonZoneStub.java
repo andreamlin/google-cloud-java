@@ -69,7 +69,7 @@ public class HttpJsonZoneStub extends ZoneStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListZonesHttpRequest, ZoneList> listZonesMethodDescriptor =
       ApiMethodDescriptor.<ListZonesHttpRequest, ZoneList>newBuilder()
           .setMethodName("compute.zones.list")
@@ -84,7 +84,7 @@ public class HttpJsonZoneStub extends ZoneStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

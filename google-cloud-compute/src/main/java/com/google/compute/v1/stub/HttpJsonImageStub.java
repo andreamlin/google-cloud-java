@@ -76,7 +76,7 @@ public class HttpJsonImageStub extends ImageStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<DeprecateImageHttpRequest, Operation> deprecateImageMethodDescriptor =
       ApiMethodDescriptor.<DeprecateImageHttpRequest, Operation>newBuilder()
           .setMethodName("compute.images.deprecate")
@@ -90,7 +90,7 @@ public class HttpJsonImageStub extends ImageStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetImageHttpRequest, Image> getImageMethodDescriptor =
       ApiMethodDescriptor.<GetImageHttpRequest, Image>newBuilder()
           .setMethodName("compute.images.get")
@@ -104,7 +104,7 @@ public class HttpJsonImageStub extends ImageStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetFromFamilyImageHttpRequest, Image> getFromFamilyImageMethodDescriptor =
       ApiMethodDescriptor.<GetFromFamilyImageHttpRequest, Image>newBuilder()
           .setMethodName("compute.images.getFromFamily")
@@ -118,7 +118,7 @@ public class HttpJsonImageStub extends ImageStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertImageHttpRequest, Operation> insertImageMethodDescriptor =
       ApiMethodDescriptor.<InsertImageHttpRequest, Operation>newBuilder()
           .setMethodName("compute.images.insert")
@@ -132,7 +132,7 @@ public class HttpJsonImageStub extends ImageStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListImagesHttpRequest, ImageList> listImagesMethodDescriptor =
       ApiMethodDescriptor.<ListImagesHttpRequest, ImageList>newBuilder()
           .setMethodName("compute.images.list")
@@ -147,7 +147,7 @@ public class HttpJsonImageStub extends ImageStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

@@ -72,7 +72,7 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateMethodDescriptor =
       ApiMethodDescriptor.<GetSslCertificateHttpRequest, SslCertificate>newBuilder()
           .setMethodName("compute.sslCertificates.get")
@@ -86,7 +86,7 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertSslCertificateHttpRequest, Operation> insertSslCertificateMethodDescriptor =
       ApiMethodDescriptor.<InsertSslCertificateHttpRequest, Operation>newBuilder()
           .setMethodName("compute.sslCertificates.insert")
@@ -100,7 +100,7 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListSslCertificatesHttpRequest, SslCertificateList> listSslCertificatesMethodDescriptor =
       ApiMethodDescriptor.<ListSslCertificatesHttpRequest, SslCertificateList>newBuilder()
           .setMethodName("compute.sslCertificates.list")
@@ -115,7 +115,7 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

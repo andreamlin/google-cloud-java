@@ -79,7 +79,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<DeleteAutoscalerHttpRequest, Operation> deleteAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<DeleteAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.autoscalers.delete")
@@ -93,7 +93,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetAutoscalerHttpRequest, Autoscaler> getAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<GetAutoscalerHttpRequest, Autoscaler>newBuilder()
           .setMethodName("compute.autoscalers.get")
@@ -107,7 +107,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertAutoscalerHttpRequest, Operation> insertAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<InsertAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.autoscalers.insert")
@@ -121,7 +121,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListAutoscalersHttpRequest, AutoscalerList> listAutoscalersMethodDescriptor =
       ApiMethodDescriptor.<ListAutoscalersHttpRequest, AutoscalerList>newBuilder()
           .setMethodName("compute.autoscalers.list")
@@ -136,7 +136,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<PatchAutoscalerHttpRequest, Operation> patchAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<PatchAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.autoscalers.patch")
@@ -151,7 +151,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<UpdateAutoscalerHttpRequest, Operation> updateAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<UpdateAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.autoscalers.update")
@@ -166,7 +166,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PUT)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

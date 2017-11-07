@@ -74,7 +74,7 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetDiskTypeHttpRequest, DiskType> getDiskTypeMethodDescriptor =
       ApiMethodDescriptor.<GetDiskTypeHttpRequest, DiskType>newBuilder()
           .setMethodName("compute.diskTypes.get")
@@ -88,7 +88,7 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListDiskTypesHttpRequest, DiskTypeList> listDiskTypesMethodDescriptor =
       ApiMethodDescriptor.<ListDiskTypesHttpRequest, DiskTypeList>newBuilder()
           .setMethodName("compute.diskTypes.list")
@@ -103,7 +103,7 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

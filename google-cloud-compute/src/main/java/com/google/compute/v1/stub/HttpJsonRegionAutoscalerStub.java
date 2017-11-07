@@ -74,7 +74,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<GetRegionAutoscalerHttpRequest, Autoscaler>newBuilder()
           .setMethodName("compute.regionAutoscalers.get")
@@ -88,7 +88,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertRegionAutoscalerHttpRequest, Operation> insertRegionAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<InsertRegionAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionAutoscalers.insert")
@@ -102,7 +102,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListRegionAutoscalersHttpRequest, RegionAutoscalerList> listRegionAutoscalersMethodDescriptor =
       ApiMethodDescriptor.<ListRegionAutoscalersHttpRequest, RegionAutoscalerList>newBuilder()
           .setMethodName("compute.regionAutoscalers.list")
@@ -117,7 +117,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<PatchRegionAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionAutoscalers.patch")
@@ -132,7 +132,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<UpdateRegionAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionAutoscalers.update")
@@ -147,7 +147,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PUT)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

@@ -81,7 +81,7 @@ public class HttpJsonDiskStub extends DiskStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<CreateSnapshotDiskHttpRequest, Operation> createSnapshotDiskMethodDescriptor =
       ApiMethodDescriptor.<CreateSnapshotDiskHttpRequest, Operation>newBuilder()
           .setMethodName("compute.disks.createSnapshot")
@@ -95,7 +95,7 @@ public class HttpJsonDiskStub extends DiskStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<DeleteDiskHttpRequest, Operation> deleteDiskMethodDescriptor =
       ApiMethodDescriptor.<DeleteDiskHttpRequest, Operation>newBuilder()
           .setMethodName("compute.disks.delete")
@@ -109,7 +109,7 @@ public class HttpJsonDiskStub extends DiskStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetDiskHttpRequest, Disk> getDiskMethodDescriptor =
       ApiMethodDescriptor.<GetDiskHttpRequest, Disk>newBuilder()
           .setMethodName("compute.disks.get")
@@ -123,7 +123,7 @@ public class HttpJsonDiskStub extends DiskStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertDiskHttpRequest, Operation> insertDiskMethodDescriptor =
       ApiMethodDescriptor.<InsertDiskHttpRequest, Operation>newBuilder()
           .setMethodName("compute.disks.insert")
@@ -138,7 +138,7 @@ public class HttpJsonDiskStub extends DiskStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListDisksHttpRequest, DiskList> listDisksMethodDescriptor =
       ApiMethodDescriptor.<ListDisksHttpRequest, DiskList>newBuilder()
           .setMethodName("compute.disks.list")
@@ -153,7 +153,7 @@ public class HttpJsonDiskStub extends DiskStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ResizeDiskHttpRequest, Operation> resizeDiskMethodDescriptor =
       ApiMethodDescriptor.<ResizeDiskHttpRequest, Operation>newBuilder()
           .setMethodName("compute.disks.resize")
@@ -167,7 +167,7 @@ public class HttpJsonDiskStub extends DiskStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 
