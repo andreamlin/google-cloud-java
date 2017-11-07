@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,10 @@
 package com.google.cloud.dlp.v2beta1;
 
 import com.google.longrunning.Operation;
+import com.google.privacy.dlp.v2beta1.AnalyzeDataSourceRiskRequest;
 import com.google.privacy.dlp.v2beta1.CreateInspectOperationRequest;
+import com.google.privacy.dlp.v2beta1.DeidentifyContentRequest;
+import com.google.privacy.dlp.v2beta1.DeidentifyContentResponse;
 import com.google.privacy.dlp.v2beta1.DlpServiceGrpc.DlpServiceImplBase;
 import com.google.privacy.dlp.v2beta1.InspectContentRequest;
 import com.google.privacy.dlp.v2beta1.InspectContentResponse;
@@ -97,8 +100,39 @@ public class MockDlpServiceImpl extends DlpServiceImplBase {
   }
 
   @Override
+  public void deidentifyContent(
+      DeidentifyContentRequest request,
+      StreamObserver<DeidentifyContentResponse> responseObserver) {
+    Object response = responses.remove();
+    if (response instanceof DeidentifyContentResponse) {
+      requests.add(request);
+      responseObserver.onNext((DeidentifyContentResponse) response);
+      responseObserver.onCompleted();
+    } else if (response instanceof Exception) {
+      responseObserver.onError((Exception) response);
+    } else {
+      responseObserver.onError(new IllegalArgumentException("Unrecognized response type"));
+    }
+  }
+
+  @Override
   public void createInspectOperation(
       CreateInspectOperationRequest request, StreamObserver<Operation> responseObserver) {
+    Object response = responses.remove();
+    if (response instanceof Operation) {
+      requests.add(request);
+      responseObserver.onNext((Operation) response);
+      responseObserver.onCompleted();
+    } else if (response instanceof Exception) {
+      responseObserver.onError((Exception) response);
+    } else {
+      responseObserver.onError(new IllegalArgumentException("Unrecognized response type"));
+    }
+  }
+
+  @Override
+  public void analyzeDataSourceRisk(
+      AnalyzeDataSourceRiskRequest request, StreamObserver<Operation> responseObserver) {
     Object response = responses.remove();
     if (response instanceof Operation) {
       requests.add(request);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,9 +31,10 @@
  * <pre>
  * <code>
  * try (DlpServiceClient dlpServiceClient = DlpServiceClient.create()) {
+ *   DeidentifyConfig deidentifyConfig = DeidentifyConfig.newBuilder().build();
  *   InspectConfig inspectConfig = InspectConfig.newBuilder().build();
  *   List&lt;ContentItem&gt; items = new ArrayList&lt;&gt;();
- *   InspectContentResponse response = dlpServiceClient.inspectContent(inspectConfig, items);
+ *   DeidentifyContentResponse response = dlpServiceClient.deidentifyContent(deidentifyConfig, inspectConfig, items);
  * }
  * </code>
  * </pre>

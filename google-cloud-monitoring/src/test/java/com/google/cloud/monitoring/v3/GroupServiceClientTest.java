@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,10 +19,9 @@ import static com.google.cloud.monitoring.v3.PagedResponseWrappers.ListGroupMemb
 
 import com.google.api.MonitoredResource;
 import com.google.api.gax.core.NoCredentialsProvider;
-import com.google.api.gax.grpc.GrpcApiException;
-import com.google.api.gax.grpc.GrpcTransportProvider;
 import com.google.api.gax.grpc.testing.MockGrpcService;
 import com.google.api.gax.grpc.testing.MockServiceHelper;
+import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.common.collect.Lists;
 import com.google.monitoring.v3.CreateGroupRequest;
 import com.google.monitoring.v3.DeleteGroupRequest;
@@ -73,12 +72,9 @@ public class GroupServiceClientTest {
   public void setUp() throws IOException {
     serviceHelper.reset();
     GroupServiceSettings settings =
-        GroupServiceSettings.defaultBuilder()
-            .setTransportProvider(
-                GrpcTransportProvider.newBuilder()
-                    .setChannelProvider(serviceHelper.createChannelProvider())
-                    .build())
-            .setCredentialsProvider(new NoCredentialsProvider())
+        GroupServiceSettings.newBuilder()
+            .setTransportChannelProvider(serviceHelper.createChannelProvider())
+            .setCredentialsProvider(NoCredentialsProvider.create())
             .build();
     client = GroupServiceClient.create(settings);
   }
@@ -91,9 +87,9 @@ public class GroupServiceClientTest {
   @Test
   @SuppressWarnings("all")
   public void getGroupTest() {
-    GroupName name2 = GroupName.create("[PROJECT]", "[GROUP]");
+    GroupName name2 = GroupName.of("[PROJECT]", "[GROUP]");
     String displayName = "displayName1615086568";
-    GroupName parentName = GroupName.create("[PROJECT]", "[GROUP]");
+    GroupName parentName = GroupName.of("[PROJECT]", "[GROUP]");
     String filter = "filter-1274492040";
     boolean isCluster = false;
     Group expectedResponse =
@@ -106,7 +102,7 @@ public class GroupServiceClientTest {
             .build();
     mockGroupService.addResponse(expectedResponse);
 
-    GroupName name = GroupName.create("[PROJECT]", "[GROUP]");
+    GroupName name = GroupName.of("[PROJECT]", "[GROUP]");
 
     Group actualResponse = client.getGroup(name);
     Assert.assertEquals(expectedResponse, actualResponse);
@@ -125,21 +121,21 @@ public class GroupServiceClientTest {
     mockGroupService.addException(exception);
 
     try {
-      GroupName name = GroupName.create("[PROJECT]", "[GROUP]");
+      GroupName name = GroupName.of("[PROJECT]", "[GROUP]");
 
       client.getGroup(name);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void createGroupTest() {
-    GroupName name2 = GroupName.create("[PROJECT]", "[GROUP]");
+    GroupName name2 = GroupName.of("[PROJECT]", "[GROUP]");
     String displayName = "displayName1615086568";
-    GroupName parentName = GroupName.create("[PROJECT]", "[GROUP]");
+    GroupName parentName = GroupName.of("[PROJECT]", "[GROUP]");
     String filter = "filter-1274492040";
     boolean isCluster = false;
     Group expectedResponse =
@@ -152,7 +148,7 @@ public class GroupServiceClientTest {
             .build();
     mockGroupService.addResponse(expectedResponse);
 
-    ProjectName name = ProjectName.create("[PROJECT]");
+    ProjectName name = ProjectName.of("[PROJECT]");
     Group group = Group.newBuilder().build();
 
     Group actualResponse = client.createGroup(name, group);
@@ -173,22 +169,22 @@ public class GroupServiceClientTest {
     mockGroupService.addException(exception);
 
     try {
-      ProjectName name = ProjectName.create("[PROJECT]");
+      ProjectName name = ProjectName.of("[PROJECT]");
       Group group = Group.newBuilder().build();
 
       client.createGroup(name, group);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void updateGroupTest() {
-    GroupName name = GroupName.create("[PROJECT]", "[GROUP]");
+    GroupName name = GroupName.of("[PROJECT]", "[GROUP]");
     String displayName = "displayName1615086568";
-    GroupName parentName = GroupName.create("[PROJECT]", "[GROUP]");
+    GroupName parentName = GroupName.of("[PROJECT]", "[GROUP]");
     String filter = "filter-1274492040";
     boolean isCluster = false;
     Group expectedResponse =
@@ -224,8 +220,8 @@ public class GroupServiceClientTest {
 
       client.updateGroup(group);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 
@@ -235,7 +231,7 @@ public class GroupServiceClientTest {
     Empty expectedResponse = Empty.newBuilder().build();
     mockGroupService.addResponse(expectedResponse);
 
-    GroupName name = GroupName.create("[PROJECT]", "[GROUP]");
+    GroupName name = GroupName.of("[PROJECT]", "[GROUP]");
 
     client.deleteGroup(name);
 
@@ -253,12 +249,12 @@ public class GroupServiceClientTest {
     mockGroupService.addException(exception);
 
     try {
-      GroupName name = GroupName.create("[PROJECT]", "[GROUP]");
+      GroupName name = GroupName.of("[PROJECT]", "[GROUP]");
 
       client.deleteGroup(name);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 
@@ -277,7 +273,7 @@ public class GroupServiceClientTest {
             .build();
     mockGroupService.addResponse(expectedResponse);
 
-    GroupName name = GroupName.create("[PROJECT]", "[GROUP]");
+    GroupName name = GroupName.of("[PROJECT]", "[GROUP]");
 
     ListGroupMembersPagedResponse pagedListResponse = client.listGroupMembers(name);
 
@@ -299,12 +295,12 @@ public class GroupServiceClientTest {
     mockGroupService.addException(exception);
 
     try {
-      GroupName name = GroupName.create("[PROJECT]", "[GROUP]");
+      GroupName name = GroupName.of("[PROJECT]", "[GROUP]");
 
       client.listGroupMembers(name);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 }

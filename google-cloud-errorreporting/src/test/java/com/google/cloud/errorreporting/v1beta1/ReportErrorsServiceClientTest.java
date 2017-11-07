@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 package com.google.cloud.errorreporting.v1beta1;
 
 import com.google.api.gax.core.NoCredentialsProvider;
-import com.google.api.gax.grpc.GrpcApiException;
-import com.google.api.gax.grpc.GrpcTransportProvider;
 import com.google.api.gax.grpc.testing.MockGrpcService;
 import com.google.api.gax.grpc.testing.MockServiceHelper;
+import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.devtools.clouderrorreporting.v1beta1.ProjectName;
 import com.google.devtools.clouderrorreporting.v1beta1.ReportErrorEventRequest;
 import com.google.devtools.clouderrorreporting.v1beta1.ReportErrorEventResponse;
@@ -67,12 +66,9 @@ public class ReportErrorsServiceClientTest {
   public void setUp() throws IOException {
     serviceHelper.reset();
     ReportErrorsServiceSettings settings =
-        ReportErrorsServiceSettings.defaultBuilder()
-            .setTransportProvider(
-                GrpcTransportProvider.newBuilder()
-                    .setChannelProvider(serviceHelper.createChannelProvider())
-                    .build())
-            .setCredentialsProvider(new NoCredentialsProvider())
+        ReportErrorsServiceSettings.newBuilder()
+            .setTransportChannelProvider(serviceHelper.createChannelProvider())
+            .setCredentialsProvider(NoCredentialsProvider.create())
             .build();
     client = ReportErrorsServiceClient.create(settings);
   }
@@ -88,7 +84,7 @@ public class ReportErrorsServiceClientTest {
     ReportErrorEventResponse expectedResponse = ReportErrorEventResponse.newBuilder().build();
     mockReportErrorsService.addResponse(expectedResponse);
 
-    ProjectName projectName = ProjectName.create("[PROJECT]");
+    ProjectName projectName = ProjectName.of("[PROJECT]");
     ReportedErrorEvent event = ReportedErrorEvent.newBuilder().build();
 
     ReportErrorEventResponse actualResponse = client.reportErrorEvent(projectName, event);
@@ -109,13 +105,13 @@ public class ReportErrorsServiceClientTest {
     mockReportErrorsService.addException(exception);
 
     try {
-      ProjectName projectName = ProjectName.create("[PROJECT]");
+      ProjectName projectName = ProjectName.of("[PROJECT]");
       ReportedErrorEvent event = ReportedErrorEvent.newBuilder().build();
 
       client.reportErrorEvent(projectName, event);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,24 +31,24 @@ import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.grpc.GrpcStatusCode;
-import com.google.api.gax.grpc.GrpcTransport;
-import com.google.api.gax.grpc.GrpcTransportProvider;
-import com.google.api.gax.grpc.InstantiatingChannelProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.grpc.GrpcTransportChannel;
+import com.google.api.gax.grpc.InstantiatingGrpcChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.BatchedRequestIssuer;
 import com.google.api.gax.rpc.BatchingCallSettings;
 import com.google.api.gax.rpc.BatchingDescriptor;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.pubsub.v1.stub.GrpcPublisherStub;
@@ -72,7 +72,7 @@ import com.google.pubsub.v1.ListTopicsResponse;
 import com.google.pubsub.v1.PublishRequest;
 import com.google.pubsub.v1.PublishResponse;
 import com.google.pubsub.v1.Topic;
-import io.grpc.Status;
+import com.google.pubsub.v1.UpdateTopicRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -99,7 +99,7 @@ import org.threeten.bp.Duration;
  * <pre>
  * <code>
  * TopicAdminSettings.Builder topicAdminSettingsBuilder =
- *     TopicAdminSettings.defaultBuilder();
+ *     TopicAdminSettings.newBuilder();
  * topicAdminSettingsBuilder.createTopicSettings().getRetrySettingsBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * TopicAdminSettings topicAdminSettings = topicAdminSettingsBuilder.build();
@@ -124,24 +124,30 @@ public class TopicAdminSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<Topic, Topic> createTopicSettings;
+  private final UnaryCallSettings<Topic, Topic> createTopicSettings;
+  private final UnaryCallSettings<UpdateTopicRequest, Topic> updateTopicSettings;
   private final BatchingCallSettings<PublishRequest, PublishResponse> publishSettings;
-  private final SimpleCallSettings<GetTopicRequest, Topic> getTopicSettings;
+  private final UnaryCallSettings<GetTopicRequest, Topic> getTopicSettings;
   private final PagedCallSettings<ListTopicsRequest, ListTopicsResponse, ListTopicsPagedResponse>
       listTopicsSettings;
   private final PagedCallSettings<
           ListTopicSubscriptionsRequest, ListTopicSubscriptionsResponse,
           ListTopicSubscriptionsPagedResponse>
       listTopicSubscriptionsSettings;
-  private final SimpleCallSettings<DeleteTopicRequest, Empty> deleteTopicSettings;
-  private final SimpleCallSettings<SetIamPolicyRequest, Policy> setIamPolicySettings;
-  private final SimpleCallSettings<GetIamPolicyRequest, Policy> getIamPolicySettings;
-  private final SimpleCallSettings<TestIamPermissionsRequest, TestIamPermissionsResponse>
+  private final UnaryCallSettings<DeleteTopicRequest, Empty> deleteTopicSettings;
+  private final UnaryCallSettings<SetIamPolicyRequest, Policy> setIamPolicySettings;
+  private final UnaryCallSettings<GetIamPolicyRequest, Policy> getIamPolicySettings;
+  private final UnaryCallSettings<TestIamPermissionsRequest, TestIamPermissionsResponse>
       testIamPermissionsSettings;
 
   /** Returns the object with the settings used for calls to createTopic. */
-  public SimpleCallSettings<Topic, Topic> createTopicSettings() {
+  public UnaryCallSettings<Topic, Topic> createTopicSettings() {
     return createTopicSettings;
+  }
+
+  /** Returns the object with the settings used for calls to updateTopic. */
+  public UnaryCallSettings<UpdateTopicRequest, Topic> updateTopicSettings() {
+    return updateTopicSettings;
   }
 
   /** Returns the object with the settings used for calls to publish. */
@@ -150,7 +156,7 @@ public class TopicAdminSettings extends ClientSettings {
   }
 
   /** Returns the object with the settings used for calls to getTopic. */
-  public SimpleCallSettings<GetTopicRequest, Topic> getTopicSettings() {
+  public UnaryCallSettings<GetTopicRequest, Topic> getTopicSettings() {
     return getTopicSettings;
   }
 
@@ -169,32 +175,34 @@ public class TopicAdminSettings extends ClientSettings {
   }
 
   /** Returns the object with the settings used for calls to deleteTopic. */
-  public SimpleCallSettings<DeleteTopicRequest, Empty> deleteTopicSettings() {
+  public UnaryCallSettings<DeleteTopicRequest, Empty> deleteTopicSettings() {
     return deleteTopicSettings;
   }
 
   /** Returns the object with the settings used for calls to setIamPolicy. */
-  public SimpleCallSettings<SetIamPolicyRequest, Policy> setIamPolicySettings() {
+  public UnaryCallSettings<SetIamPolicyRequest, Policy> setIamPolicySettings() {
     return setIamPolicySettings;
   }
 
   /** Returns the object with the settings used for calls to getIamPolicy. */
-  public SimpleCallSettings<GetIamPolicyRequest, Policy> getIamPolicySettings() {
+  public UnaryCallSettings<GetIamPolicyRequest, Policy> getIamPolicySettings() {
     return getIamPolicySettings;
   }
 
   /** Returns the object with the settings used for calls to testIamPermissions. */
-  public SimpleCallSettings<TestIamPermissionsRequest, TestIamPermissionsResponse>
+  public UnaryCallSettings<TestIamPermissionsRequest, TestIamPermissionsResponse>
       testIamPermissionsSettings() {
     return testIamPermissionsSettings;
   }
 
   public PublisherStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(GrpcTransport.getGrpcTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(GrpcTransportChannel.getGrpcTransportName())) {
       return GrpcPublisherStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -219,20 +227,19 @@ public class TopicAdminSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingChannelProvider.Builder defaultGrpcChannelProviderBuilder() {
-    return InstantiatingChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+  public static InstantiatingGrpcChannelProvider.Builder defaultGrpcTransportProviderBuilder() {
+    return InstantiatingGrpcChannelProvider.newBuilder().setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static GrpcTransportProvider.Builder defaultGrpcTransportProviderBuilder() {
-    return GrpcTransportProvider.newBuilder()
-        .setChannelProvider(defaultGrpcChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultGrpcTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -246,6 +253,7 @@ public class TopicAdminSettings extends ClientSettings {
   }
 
   /** Returns a builder for this class with recommended defaults. */
+  @Deprecated
   public static Builder defaultBuilder() {
     return Builder.createDefault();
   }
@@ -254,13 +262,14 @@ public class TopicAdminSettings extends ClientSettings {
    * Returns a builder for this class with recommended defaults for API methods, and the given
    * ClientContext used for executor/transport/credentials.
    */
+  @Deprecated
   public static Builder defaultBuilder(ClientContext clientContext) {
     return new Builder(clientContext);
   }
 
   /** Returns a new builder for this class. */
   public static Builder newBuilder() {
-    return new Builder();
+    return Builder.createDefault();
   }
 
   /** Returns a new builder for this class. */
@@ -276,11 +285,13 @@ public class TopicAdminSettings extends ClientSettings {
   private TopicAdminSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     createTopicSettings = settingsBuilder.createTopicSettings().build();
+    updateTopicSettings = settingsBuilder.updateTopicSettings().build();
     publishSettings = settingsBuilder.publishSettings().build();
     getTopicSettings = settingsBuilder.getTopicSettings().build();
     listTopicsSettings = settingsBuilder.listTopicsSettings().build();
@@ -472,11 +483,12 @@ public class TopicAdminSettings extends ClientSettings {
 
   /** Builder for TopicAdminSettings. */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<Topic, Topic> createTopicSettings;
+    private final UnaryCallSettings.Builder<Topic, Topic> createTopicSettings;
+    private final UnaryCallSettings.Builder<UpdateTopicRequest, Topic> updateTopicSettings;
     private final BatchingCallSettings.Builder<PublishRequest, PublishResponse> publishSettings;
-    private final SimpleCallSettings.Builder<GetTopicRequest, Topic> getTopicSettings;
+    private final UnaryCallSettings.Builder<GetTopicRequest, Topic> getTopicSettings;
     private final PagedCallSettings.Builder<
             ListTopicsRequest, ListTopicsResponse, ListTopicsPagedResponse>
         listTopicsSettings;
@@ -484,34 +496,35 @@ public class TopicAdminSettings extends ClientSettings {
             ListTopicSubscriptionsRequest, ListTopicSubscriptionsResponse,
             ListTopicSubscriptionsPagedResponse>
         listTopicSubscriptionsSettings;
-    private final SimpleCallSettings.Builder<DeleteTopicRequest, Empty> deleteTopicSettings;
-    private final SimpleCallSettings.Builder<SetIamPolicyRequest, Policy> setIamPolicySettings;
-    private final SimpleCallSettings.Builder<GetIamPolicyRequest, Policy> getIamPolicySettings;
-    private final SimpleCallSettings.Builder<TestIamPermissionsRequest, TestIamPermissionsResponse>
+    private final UnaryCallSettings.Builder<DeleteTopicRequest, Empty> deleteTopicSettings;
+    private final UnaryCallSettings.Builder<SetIamPolicyRequest, Policy> setIamPolicySettings;
+    private final UnaryCallSettings.Builder<GetIamPolicyRequest, Policy> getIamPolicySettings;
+    private final UnaryCallSettings.Builder<TestIamPermissionsRequest, TestIamPermissionsResponse>
         testIamPermissionsSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
+        RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions =
+          ImmutableMap.builder();
       definitions.put(
           "idempotent",
           ImmutableSet.copyOf(
-              Lists.<StatusCode>newArrayList(
-                  GrpcStatusCode.of(Status.Code.DEADLINE_EXCEEDED),
-                  GrpcStatusCode.of(Status.Code.UNAVAILABLE))));
+              Lists.<StatusCode.Code>newArrayList(
+                  StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "one_plus_delivery",
           ImmutableSet.copyOf(
-              Lists.<StatusCode>newArrayList(
-                  GrpcStatusCode.of(Status.Code.CANCELLED),
-                  GrpcStatusCode.of(Status.Code.UNKNOWN),
-                  GrpcStatusCode.of(Status.Code.DEADLINE_EXCEEDED),
-                  GrpcStatusCode.of(Status.Code.RESOURCE_EXHAUSTED),
-                  GrpcStatusCode.of(Status.Code.ABORTED),
-                  GrpcStatusCode.of(Status.Code.INTERNAL),
-                  GrpcStatusCode.of(Status.Code.UNAVAILABLE))));
-      definitions.put("non_idempotent", ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+              Lists.<StatusCode.Code>newArrayList(
+                  StatusCode.Code.ABORTED,
+                  StatusCode.Code.CANCELLED,
+                  StatusCode.Code.DEADLINE_EXCEEDED,
+                  StatusCode.Code.INTERNAL,
+                  StatusCode.Code.RESOURCE_EXHAUSTED,
+                  StatusCode.Code.UNAVAILABLE,
+                  StatusCode.Code.UNKNOWN)));
+      definitions.put("non_idempotent", ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -538,7 +551,7 @@ public class TopicAdminSettings extends ClientSettings {
               .setMaxRetryDelay(Duration.ofMillis(60000L))
               .setInitialRpcTimeout(Duration.ofMillis(12000L))
               .setRpcTimeoutMultiplier(1.0)
-              .setMaxRpcTimeout(Duration.ofMillis(12000L))
+              .setMaxRpcTimeout(Duration.ofMillis(30000L))
               .setTotalTimeout(Duration.ofMillis(600000L))
               .build();
       definitions.put("messaging", settings);
@@ -552,30 +565,33 @@ public class TopicAdminSettings extends ClientSettings {
     private Builder(ClientContext clientContext) {
       super(clientContext);
 
-      createTopicSettings = SimpleCallSettings.newBuilder();
+      createTopicSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      updateTopicSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       publishSettings =
           BatchingCallSettings.newBuilder(PUBLISH_BATCHING_DESC)
               .setBatchingSettings(BatchingSettings.newBuilder().build());
 
-      getTopicSettings = SimpleCallSettings.newBuilder();
+      getTopicSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listTopicsSettings = PagedCallSettings.newBuilder(LIST_TOPICS_PAGE_STR_FACT);
 
       listTopicSubscriptionsSettings =
           PagedCallSettings.newBuilder(LIST_TOPIC_SUBSCRIPTIONS_PAGE_STR_FACT);
 
-      deleteTopicSettings = SimpleCallSettings.newBuilder();
+      deleteTopicSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      setIamPolicySettings = SimpleCallSettings.newBuilder();
+      setIamPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getIamPolicySettings = SimpleCallSettings.newBuilder();
+      getIamPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      testIamPermissionsSettings = SimpleCallSettings.newBuilder();
+      testIamPermissionsSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       unaryMethodSettingsBuilders =
-          ImmutableList.<UnaryCallSettings.Builder>of(
+          ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
               createTopicSettings,
+              updateTopicSettings,
               publishSettings,
               getTopicSettings,
               listTopicsSettings,
@@ -590,8 +606,9 @@ public class TopicAdminSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -599,6 +616,11 @@ public class TopicAdminSettings extends ClientSettings {
 
       builder
           .createTopicSettings()
+          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+
+      builder
+          .updateTopicSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
 
@@ -661,6 +683,7 @@ public class TopicAdminSettings extends ClientSettings {
       super(settings);
 
       createTopicSettings = settings.createTopicSettings.toBuilder();
+      updateTopicSettings = settings.updateTopicSettings.toBuilder();
       publishSettings = settings.publishSettings.toBuilder();
       getTopicSettings = settings.getTopicSettings.toBuilder();
       listTopicsSettings = settings.listTopicsSettings.toBuilder();
@@ -671,8 +694,9 @@ public class TopicAdminSettings extends ClientSettings {
       testIamPermissionsSettings = settings.testIamPermissionsSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
-          ImmutableList.<UnaryCallSettings.Builder>of(
+          ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
               createTopicSettings,
+              updateTopicSettings,
               publishSettings,
               getTopicSettings,
               listTopicsSettings,
@@ -690,8 +714,14 @@ public class TopicAdminSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -707,14 +737,19 @@ public class TopicAdminSettings extends ClientSettings {
      * <p>Note: This method does not support applying settings to streaming methods.
      */
     public Builder applyToAllUnaryMethods(
-        ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+        ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
 
     /** Returns the builder for the settings used for calls to createTopic. */
-    public SimpleCallSettings.Builder<Topic, Topic> createTopicSettings() {
+    public UnaryCallSettings.Builder<Topic, Topic> createTopicSettings() {
       return createTopicSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to updateTopic. */
+    public UnaryCallSettings.Builder<UpdateTopicRequest, Topic> updateTopicSettings() {
+      return updateTopicSettings;
     }
 
     /** Returns the builder for the settings used for calls to publish. */
@@ -723,7 +758,7 @@ public class TopicAdminSettings extends ClientSettings {
     }
 
     /** Returns the builder for the settings used for calls to getTopic. */
-    public SimpleCallSettings.Builder<GetTopicRequest, Topic> getTopicSettings() {
+    public UnaryCallSettings.Builder<GetTopicRequest, Topic> getTopicSettings() {
       return getTopicSettings;
     }
 
@@ -742,22 +777,22 @@ public class TopicAdminSettings extends ClientSettings {
     }
 
     /** Returns the builder for the settings used for calls to deleteTopic. */
-    public SimpleCallSettings.Builder<DeleteTopicRequest, Empty> deleteTopicSettings() {
+    public UnaryCallSettings.Builder<DeleteTopicRequest, Empty> deleteTopicSettings() {
       return deleteTopicSettings;
     }
 
     /** Returns the builder for the settings used for calls to setIamPolicy. */
-    public SimpleCallSettings.Builder<SetIamPolicyRequest, Policy> setIamPolicySettings() {
+    public UnaryCallSettings.Builder<SetIamPolicyRequest, Policy> setIamPolicySettings() {
       return setIamPolicySettings;
     }
 
     /** Returns the builder for the settings used for calls to getIamPolicy. */
-    public SimpleCallSettings.Builder<GetIamPolicyRequest, Policy> getIamPolicySettings() {
+    public UnaryCallSettings.Builder<GetIamPolicyRequest, Policy> getIamPolicySettings() {
       return getIamPolicySettings;
     }
 
     /** Returns the builder for the settings used for calls to testIamPermissions. */
-    public SimpleCallSettings.Builder<TestIamPermissionsRequest, TestIamPermissionsResponse>
+    public UnaryCallSettings.Builder<TestIamPermissionsRequest, TestIamPermissionsResponse>
         testIamPermissionsSettings() {
       return testIamPermissionsSettings;
     }

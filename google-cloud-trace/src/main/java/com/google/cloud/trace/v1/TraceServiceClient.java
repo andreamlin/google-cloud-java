@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -78,11 +78,28 @@ import javax.annotation.Generated;
  * <p>This class can be customized by passing in a custom instance of TraceServiceSettings to
  * create(). For example:
  *
+ * <p>To customize credentials:
+ *
  * <pre>
  * <code>
  * TraceServiceSettings traceServiceSettings =
- *     TraceServiceSettings.defaultBuilder()
+ *     TraceServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
+ *         .build();
+ * TraceServiceClient traceServiceClient =
+ *     TraceServiceClient.create(traceServiceSettings);
+ * </code>
+ * </pre>
+ *
+ * To customize the endpoint:
+ *
+ * <pre>
+ * <code>
+ * TraceServiceSettings traceServiceSettings =
+ *     TraceServiceSettings.newBuilder()
+ *         .setTransportChannelProvider(TraceServiceSettings.defaultGrpcTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
+ *             .build())
  *         .build();
  * TraceServiceClient traceServiceClient =
  *     TraceServiceClient.create(traceServiceSettings);
@@ -97,7 +114,7 @@ public class TraceServiceClient implements BackgroundResource {
 
   /** Constructs an instance of TraceServiceClient with default settings. */
   public static final TraceServiceClient create() throws IOException {
-    return create(TraceServiceSettings.defaultBuilder().build());
+    return create(TraceServiceSettings.newBuilder().build());
   }
 
   /**
@@ -112,6 +129,7 @@ public class TraceServiceClient implements BackgroundResource {
    * Constructs an instance of TraceServiceClient, using the given stub for making calls. This is
    * for advanced usage - prefer to use TraceServiceSettings}.
    */
+  @BetaApi
   public static final TraceServiceClient create(TraceServiceStub stub) {
     return new TraceServiceClient(stub);
   }
@@ -135,6 +153,7 @@ public class TraceServiceClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public TraceServiceStub getStub() {
     return stub;
   }

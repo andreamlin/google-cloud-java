@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,12 +20,16 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.language.v1.AnalyzeEntitiesRequest;
 import com.google.cloud.language.v1.AnalyzeEntitiesResponse;
+import com.google.cloud.language.v1.AnalyzeEntitySentimentRequest;
+import com.google.cloud.language.v1.AnalyzeEntitySentimentResponse;
 import com.google.cloud.language.v1.AnalyzeSentimentRequest;
 import com.google.cloud.language.v1.AnalyzeSentimentResponse;
 import com.google.cloud.language.v1.AnalyzeSyntaxRequest;
 import com.google.cloud.language.v1.AnalyzeSyntaxResponse;
 import com.google.cloud.language.v1.AnnotateTextRequest;
 import com.google.cloud.language.v1.AnnotateTextResponse;
+import com.google.cloud.language.v1.ClassifyTextRequest;
+import com.google.cloud.language.v1.ClassifyTextResponse;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -47,8 +51,17 @@ public abstract class LanguageServiceStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: analyzeEntitiesCallable()");
   }
 
+  public UnaryCallable<AnalyzeEntitySentimentRequest, AnalyzeEntitySentimentResponse>
+      analyzeEntitySentimentCallable() {
+    throw new UnsupportedOperationException("Not implemented: analyzeEntitySentimentCallable()");
+  }
+
   public UnaryCallable<AnalyzeSyntaxRequest, AnalyzeSyntaxResponse> analyzeSyntaxCallable() {
     throw new UnsupportedOperationException("Not implemented: analyzeSyntaxCallable()");
+  }
+
+  public UnaryCallable<ClassifyTextRequest, ClassifyTextResponse> classifyTextCallable() {
+    throw new UnsupportedOperationException("Not implemented: classifyTextCallable()");
   }
 
   public UnaryCallable<AnnotateTextRequest, AnnotateTextResponse> annotateTextCallable() {

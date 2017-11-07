@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,13 @@
 package com.google.cloud.speech.v1;
 
 import com.google.api.gax.core.NoCredentialsProvider;
-import com.google.api.gax.grpc.GrpcApiException;
-import com.google.api.gax.grpc.GrpcTransportProvider;
 import com.google.api.gax.grpc.testing.MockGrpcService;
 import com.google.api.gax.grpc.testing.MockServiceHelper;
 import com.google.api.gax.grpc.testing.MockStreamObserver;
 import com.google.api.gax.rpc.ApiStreamObserver;
-import com.google.api.gax.rpc.StreamingCallable;
+import com.google.api.gax.rpc.BidiStreamingCallable;
+import com.google.api.gax.rpc.InvalidArgumentException;
+import com.google.api.gax.rpc.StatusCode;
 import com.google.cloud.speech.v1.RecognitionConfig.AudioEncoding;
 import com.google.longrunning.Operation;
 import com.google.protobuf.Any;
@@ -63,12 +63,9 @@ public class SpeechClientTest {
   public void setUp() throws IOException {
     serviceHelper.reset();
     SpeechSettings settings =
-        SpeechSettings.defaultBuilder()
-            .setTransportProvider(
-                GrpcTransportProvider.newBuilder()
-                    .setChannelProvider(serviceHelper.createChannelProvider())
-                    .build())
-            .setCredentialsProvider(new NoCredentialsProvider())
+        SpeechSettings.newBuilder()
+            .setTransportChannelProvider(serviceHelper.createChannelProvider())
+            .setCredentialsProvider(NoCredentialsProvider.create())
             .build();
     client = SpeechClient.create(settings);
   }
@@ -128,8 +125,8 @@ public class SpeechClientTest {
 
       client.recognize(config, audio);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 
@@ -192,10 +189,9 @@ public class SpeechClientTest {
       client.longRunningRecognizeAsync(config, audio).get();
       Assert.fail("No exception raised");
     } catch (ExecutionException e) {
-      Assert.assertEquals(GrpcApiException.class, e.getCause().getClass());
-      GrpcApiException apiException = (GrpcApiException) e.getCause();
-      Assert.assertEquals(
-          Status.INVALID_ARGUMENT.getCode(), apiException.getStatusCode().getCode());
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -208,7 +204,7 @@ public class SpeechClientTest {
 
     MockStreamObserver<StreamingRecognizeResponse> responseObserver = new MockStreamObserver<>();
 
-    StreamingCallable<StreamingRecognizeRequest, StreamingRecognizeResponse> callable =
+    BidiStreamingCallable<StreamingRecognizeRequest, StreamingRecognizeResponse> callable =
         client.streamingRecognizeCallable();
     ApiStreamObserver<StreamingRecognizeRequest> requestObserver =
         callable.bidiStreamingCall(responseObserver);
@@ -230,7 +226,7 @@ public class SpeechClientTest {
 
     MockStreamObserver<StreamingRecognizeResponse> responseObserver = new MockStreamObserver<>();
 
-    StreamingCallable<StreamingRecognizeRequest, StreamingRecognizeResponse> callable =
+    BidiStreamingCallable<StreamingRecognizeRequest, StreamingRecognizeResponse> callable =
         client.streamingRecognizeCallable();
     ApiStreamObserver<StreamingRecognizeRequest> requestObserver =
         callable.bidiStreamingCall(responseObserver);

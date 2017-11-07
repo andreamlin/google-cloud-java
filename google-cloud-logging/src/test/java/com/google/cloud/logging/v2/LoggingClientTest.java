@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,10 +20,9 @@ import static com.google.cloud.logging.v2.PagedResponseWrappers.ListLogsPagedRes
 
 import com.google.api.MonitoredResource;
 import com.google.api.gax.core.NoCredentialsProvider;
-import com.google.api.gax.grpc.GrpcApiException;
-import com.google.api.gax.grpc.GrpcTransportProvider;
 import com.google.api.gax.grpc.testing.MockGrpcService;
 import com.google.api.gax.grpc.testing.MockServiceHelper;
+import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.common.collect.Lists;
 import com.google.logging.v2.DeleteLogRequest;
 import com.google.logging.v2.ListLogEntriesRequest;
@@ -84,12 +83,9 @@ public class LoggingClientTest {
   public void setUp() throws IOException {
     serviceHelper.reset();
     LoggingSettings settings =
-        LoggingSettings.defaultBuilder()
-            .setTransportProvider(
-                GrpcTransportProvider.newBuilder()
-                    .setChannelProvider(serviceHelper.createChannelProvider())
-                    .build())
-            .setCredentialsProvider(new NoCredentialsProvider())
+        LoggingSettings.newBuilder()
+            .setTransportChannelProvider(serviceHelper.createChannelProvider())
+            .setCredentialsProvider(NoCredentialsProvider.create())
             .build();
     client = LoggingClient.create(settings);
   }
@@ -105,7 +101,7 @@ public class LoggingClientTest {
     Empty expectedResponse = Empty.newBuilder().build();
     mockLoggingServiceV2.addResponse(expectedResponse);
 
-    LogNameOneof logName = LogNameOneof.from(LogName.create("[PROJECT]", "[LOG]"));
+    LogNameOneof logName = LogNameOneof.from(LogName.of("[PROJECT]", "[LOG]"));
 
     client.deleteLog(logName);
 
@@ -123,12 +119,12 @@ public class LoggingClientTest {
     mockLoggingServiceV2.addException(exception);
 
     try {
-      LogNameOneof logName = LogNameOneof.from(LogName.create("[PROJECT]", "[LOG]"));
+      LogNameOneof logName = LogNameOneof.from(LogName.of("[PROJECT]", "[LOG]"));
 
       client.deleteLog(logName);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 
@@ -138,7 +134,7 @@ public class LoggingClientTest {
     WriteLogEntriesResponse expectedResponse = WriteLogEntriesResponse.newBuilder().build();
     mockLoggingServiceV2.addResponse(expectedResponse);
 
-    LogNameOneof logName = LogNameOneof.from(LogName.create("[PROJECT]", "[LOG]"));
+    LogNameOneof logName = LogNameOneof.from(LogName.of("[PROJECT]", "[LOG]"));
     MonitoredResource resource = MonitoredResource.newBuilder().build();
     Map<String, String> labels = new HashMap<>();
     List<LogEntry> entries = new ArrayList<>();
@@ -164,15 +160,15 @@ public class LoggingClientTest {
     mockLoggingServiceV2.addException(exception);
 
     try {
-      LogNameOneof logName = LogNameOneof.from(LogName.create("[PROJECT]", "[LOG]"));
+      LogNameOneof logName = LogNameOneof.from(LogName.of("[PROJECT]", "[LOG]"));
       MonitoredResource resource = MonitoredResource.newBuilder().build();
       Map<String, String> labels = new HashMap<>();
       List<LogEntry> entries = new ArrayList<>();
 
       client.writeLogEntries(logName, resource, labels, entries);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 
@@ -222,8 +218,8 @@ public class LoggingClientTest {
 
       client.listLogEntries(resourceNames, filter, orderBy);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 
@@ -240,7 +236,7 @@ public class LoggingClientTest {
             .build();
     mockLoggingServiceV2.addResponse(expectedResponse);
 
-    ParentNameOneof parent = ParentNameOneof.from(ProjectName.create("[PROJECT]"));
+    ParentNameOneof parent = ParentNameOneof.from(ProjectName.of("[PROJECT]"));
 
     ListLogsPagedResponse pagedListResponse = client.listLogs(parent);
 
@@ -262,12 +258,12 @@ public class LoggingClientTest {
     mockLoggingServiceV2.addException(exception);
 
     try {
-      ParentNameOneof parent = ParentNameOneof.from(ProjectName.create("[PROJECT]"));
+      ParentNameOneof parent = ParentNameOneof.from(ProjectName.of("[PROJECT]"));
 
       client.listLogs(parent);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 }

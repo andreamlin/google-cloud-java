@@ -20,6 +20,9 @@ import com.google.api.core.AbstractApiService;
 import com.google.api.core.ApiClock;
 import com.google.api.gax.batching.FlowController;
 import com.google.api.gax.core.Distribution;
+import com.google.api.gax.grpc.GrpcStatusCode;
+import com.google.api.gax.rpc.ApiException;
+import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.cloud.pubsub.v1.MessageDispatcher.AckProcessor;
 import com.google.cloud.pubsub.v1.MessageDispatcher.PendingModifyAckDeadline;
 import com.google.common.annotations.VisibleForTesting;
@@ -29,17 +32,18 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.pubsub.v1.StreamingPullRequest;
 import com.google.pubsub.v1.StreamingPullResponse;
-import com.google.pubsub.v1.SubscriberGrpc;
-import io.grpc.CallOptions;
-import io.grpc.Channel;
+import com.google.pubsub.v1.SubscriberGrpc.SubscriberStub;
 import io.grpc.Status;
 import io.grpc.stub.ClientCallStreamObserver;
-import io.grpc.stub.ClientCalls;
 import io.grpc.stub.ClientResponseObserver;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Nullable;
@@ -51,15 +55,18 @@ final class StreamingSubscriberConnection extends AbstractApiService implements 
       Logger.getLogger(StreamingSubscriberConnection.class.getName());
 
   private static final Duration INITIAL_CHANNEL_RECONNECT_BACKOFF = Duration.ofMillis(100);
+  private static final Duration MAX_CHANNEL_RECONNECT_BACKOFF = Duration.ofSeconds(10);
   private static final int MAX_PER_REQUEST_CHANGES = 10000;
 
-  private Duration channelReconnectBackoff = INITIAL_CHANNEL_RECONNECT_BACKOFF;
-
-  private final Channel channel;
-
+  private final SubscriberStub asyncStub;
   private final String subscription;
   private final ScheduledExecutorService executor;
   private final MessageDispatcher messageDispatcher;
+
+  private final AtomicLong channelReconnectBackoffMillis =
+      new AtomicLong(INITIAL_CHANNEL_RECONNECT_BACKOFF.toMillis());
+
+  private final Lock lock = new ReentrantLock();
   private ClientCallStreamObserver<StreamingPullRequest> requestObserver;
 
   public StreamingSubscriberConnection(
@@ -69,14 +76,15 @@ final class StreamingSubscriberConnection extends AbstractApiService implements 
       Duration maxAckExtensionPeriod,
       int streamAckDeadlineSeconds,
       Distribution ackLatencyDistribution,
-      Channel channel,
+      SubscriberStub asyncStub,
       FlowController flowController,
+      Deque<MessageDispatcher.OutstandingMessageBatch> outstandingMessageBatches,
       ScheduledExecutorService executor,
       @Nullable ScheduledExecutorService alarmsExecutor,
       ApiClock clock) {
     this.subscription = subscription;
     this.executor = executor;
-    this.channel = channel;
+    this.asyncStub = asyncStub;
     this.messageDispatcher =
         new MessageDispatcher(
             receiver,
@@ -85,6 +93,7 @@ final class StreamingSubscriberConnection extends AbstractApiService implements 
             maxAckExtensionPeriod,
             ackLatencyDistribution,
             flowController,
+            outstandingMessageBatches,
             executor,
             alarmsExecutor,
             clock);
@@ -101,8 +110,14 @@ final class StreamingSubscriberConnection extends AbstractApiService implements 
   @Override
   protected void doStop() {
     messageDispatcher.stop();
-    notifyStopped();
-    requestObserver.onError(Status.CANCELLED.asException());
+
+    lock.lock();
+    try {
+      requestObserver.onError(Status.CANCELLED.asException());
+    } finally {
+      lock.unlock();
+      notifyStopped();
+    }
   }
 
   private class StreamingPullResponseObserver
@@ -110,26 +125,45 @@ final class StreamingSubscriberConnection extends AbstractApiService implements 
 
     final SettableFuture<Void> errorFuture;
 
+    /**
+     * When a batch finsihes processing, we want to request one more batch from the server. But by
+     * the time this happens, our stream might have already errored, and new stream created. We
+     * don't want to request more batches from the new stream -- that might pull more messages than
+     * the user can deal with -- so we save the request observer this response observer is "paired
+     * with". If the stream has already errored, requesting more messages is a no-op.
+     */
+    ClientCallStreamObserver<StreamingPullRequest> thisRequestObserver;
+
     StreamingPullResponseObserver(SettableFuture<Void> errorFuture) {
       this.errorFuture = errorFuture;
     }
 
     @Override
     public void beforeStart(ClientCallStreamObserver<StreamingPullRequest> requestObserver) {
-      StreamingSubscriberConnection.this.requestObserver = requestObserver;
+      thisRequestObserver = requestObserver;
       requestObserver.disableAutoInboundFlowControl();
     }
 
     @Override
     public void onNext(StreamingPullResponse response) {
+      channelReconnectBackoffMillis.set(INITIAL_CHANNEL_RECONNECT_BACKOFF.toMillis());
       messageDispatcher.processReceivedMessages(
           response.getReceivedMessagesList(),
           new Runnable() {
             @Override
             public void run() {
-              // Only if not shutdown we will request one more batches of messages to be delivered.
-              if (isAlive()) {
-                requestObserver.request(1);
+              // Only request more if we're not shutdown.
+              // If errorFuture is done, the stream has either failed or hung up,
+              // and we don't need to request.
+              if (isAlive() && !errorFuture.isDone()) {
+                lock.lock();
+                try {
+                  thisRequestObserver.request(1);
+                } catch (Exception e) {
+                  logger.log(Level.WARNING, "cannot request more messages", e);
+                } finally {
+                  lock.unlock();
+                }
               }
             }
           });
@@ -137,7 +171,6 @@ final class StreamingSubscriberConnection extends AbstractApiService implements 
 
     @Override
     public void onError(Throwable t) {
-      logger.log(Level.WARNING, "Terminated streaming with exception", t);
       errorFuture.setException(t);
     }
 
@@ -154,9 +187,7 @@ final class StreamingSubscriberConnection extends AbstractApiService implements 
         new StreamingPullResponseObserver(errorFuture);
     final ClientCallStreamObserver<StreamingPullRequest> requestObserver =
         (ClientCallStreamObserver<StreamingPullRequest>)
-            (ClientCalls.asyncBidiStreamingCall(
-                channel.newCall(SubscriberGrpc.METHOD_STREAMING_PULL, CallOptions.DEFAULT),
-                responseObserver));
+            (asyncStub.streamingPull(responseObserver));
     logger.log(
         Level.FINER,
         "Initializing stream to subscription {0} with deadline {1}",
@@ -168,12 +199,27 @@ final class StreamingSubscriberConnection extends AbstractApiService implements 
             .build());
     requestObserver.request(1);
 
+    /**
+     * Must make sure we do this after sending the subscription name and deadline. Otherwise, some
+     * other thread might use this stream to do something else before we could send the first
+     * request.
+     */
+    lock.lock();
+    try {
+      this.requestObserver = requestObserver;
+    } finally {
+      lock.unlock();
+    }
+
     Futures.addCallback(
         errorFuture,
         new FutureCallback<Void>() {
           @Override
           public void onSuccess(@Nullable Void result) {
-            channelReconnectBackoff = INITIAL_CHANNEL_RECONNECT_BACKOFF;
+            if (!isAlive()) {
+              return;
+            }
+            channelReconnectBackoffMillis.set(INITIAL_CHANNEL_RECONNECT_BACKOFF.toMillis());
             // The stream was closed. And any case we want to reopen it to continue receiving
             // messages.
             initialize();
@@ -186,24 +232,31 @@ final class StreamingSubscriberConnection extends AbstractApiService implements 
               logger.log(Level.FINE, "pull failure after service no longer running", cause);
               return;
             }
-            if (StatusUtil.isRetryable(cause)) {
-              long backoffMillis = channelReconnectBackoff.toMillis();
-              channelReconnectBackoff = channelReconnectBackoff.plusMillis(backoffMillis);
-              executor.schedule(
-                  new Runnable() {
-                    @Override
-                    public void run() {
-                      initialize();
-                    }
-                  },
-                  backoffMillis,
-                  TimeUnit.MILLISECONDS);
-            } else {
-              notifyFailed(cause);
+            if (!StatusUtil.isRetryable(cause)) {
+              ApiException gaxException =
+                  ApiExceptionFactory.createException(
+                      cause, GrpcStatusCode.of(Status.fromThrowable(cause).getCode()), false);
+              logger.log(Level.SEVERE, "terminated streaming with exception", gaxException);
+              notifyFailed(gaxException);
+              return;
             }
+            logger.log(Level.FINE, "stream closed with retryable exception; will reconnect", cause);
+            long backoffMillis = channelReconnectBackoffMillis.get();
+            long newBackoffMillis =
+                Math.min(backoffMillis * 2, MAX_CHANNEL_RECONNECT_BACKOFF.toMillis());
+            channelReconnectBackoffMillis.set(newBackoffMillis);
+
+            executor.schedule(
+                new Runnable() {
+                  @Override
+                  public void run() {
+                    initialize();
+                  }
+                },
+                backoffMillis,
+                TimeUnit.MILLISECONDS);
           }
-        },
-        executor);
+        });
   }
 
   private boolean isAlive() {
@@ -215,8 +268,15 @@ final class StreamingSubscriberConnection extends AbstractApiService implements 
       List<String> acksToSend, List<PendingModifyAckDeadline> ackDeadlineExtensions) {
     List<StreamingPullRequest> requests =
         partitionAckOperations(acksToSend, ackDeadlineExtensions, MAX_PER_REQUEST_CHANGES);
-    for (StreamingPullRequest request : requests) {
-      requestObserver.onNext(request);
+    lock.lock();
+    try {
+      for (StreamingPullRequest request : requests) {
+        requestObserver.onNext(request);
+      }
+    } catch (Exception e) {
+      logger.log(Level.WARNING, "failed to send acks", e);
+    } finally {
+      lock.unlock();
     }
   }
 
@@ -266,9 +326,16 @@ final class StreamingSubscriberConnection extends AbstractApiService implements 
 
   public void updateStreamAckDeadline(int newAckDeadlineSeconds) {
     messageDispatcher.setMessageDeadlineSeconds(newAckDeadlineSeconds);
-    requestObserver.onNext(
-        StreamingPullRequest.newBuilder()
-            .setStreamAckDeadlineSeconds(newAckDeadlineSeconds)
-            .build());
+    lock.lock();
+    try {
+      requestObserver.onNext(
+          StreamingPullRequest.newBuilder()
+              .setStreamAckDeadlineSeconds(newAckDeadlineSeconds)
+              .build());
+    } catch (Exception e) {
+      logger.log(Level.WARNING, "failed to set deadline", e);
+    } finally {
+      lock.unlock();
+    }
   }
 }

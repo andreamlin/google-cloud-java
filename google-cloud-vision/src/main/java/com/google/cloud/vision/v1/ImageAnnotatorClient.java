@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,11 +68,28 @@ import javax.annotation.Generated;
  * <p>This class can be customized by passing in a custom instance of ImageAnnotatorSettings to
  * create(). For example:
  *
+ * <p>To customize credentials:
+ *
  * <pre>
  * <code>
  * ImageAnnotatorSettings imageAnnotatorSettings =
- *     ImageAnnotatorSettings.defaultBuilder()
+ *     ImageAnnotatorSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
+ *         .build();
+ * ImageAnnotatorClient imageAnnotatorClient =
+ *     ImageAnnotatorClient.create(imageAnnotatorSettings);
+ * </code>
+ * </pre>
+ *
+ * To customize the endpoint:
+ *
+ * <pre>
+ * <code>
+ * ImageAnnotatorSettings imageAnnotatorSettings =
+ *     ImageAnnotatorSettings.newBuilder()
+ *         .setTransportChannelProvider(ImageAnnotatorSettings.defaultGrpcTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
+ *             .build())
  *         .build();
  * ImageAnnotatorClient imageAnnotatorClient =
  *     ImageAnnotatorClient.create(imageAnnotatorSettings);
@@ -87,7 +104,7 @@ public class ImageAnnotatorClient implements BackgroundResource {
 
   /** Constructs an instance of ImageAnnotatorClient with default settings. */
   public static final ImageAnnotatorClient create() throws IOException {
-    return create(ImageAnnotatorSettings.defaultBuilder().build());
+    return create(ImageAnnotatorSettings.newBuilder().build());
   }
 
   /**
@@ -103,6 +120,7 @@ public class ImageAnnotatorClient implements BackgroundResource {
    * Constructs an instance of ImageAnnotatorClient, using the given stub for making calls. This is
    * for advanced usage - prefer to use ImageAnnotatorSettings}.
    */
+  @BetaApi
   public static final ImageAnnotatorClient create(ImageAnnotatorStub stub) {
     return new ImageAnnotatorClient(stub);
   }
@@ -126,6 +144,7 @@ public class ImageAnnotatorClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public ImageAnnotatorStub getStub() {
     return stub;
   }

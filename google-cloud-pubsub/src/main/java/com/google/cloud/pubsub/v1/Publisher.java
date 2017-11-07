@@ -20,10 +20,16 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.SettableApiFuture;
 import com.google.api.gax.batching.BatchingSettings;
 import com.google.api.gax.core.CredentialsProvider;
+import com.google.api.gax.core.ExecutorAsBackgroundResource;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
-import com.google.api.gax.grpc.ChannelProvider;
+import com.google.api.gax.grpc.GrpcStatusCode;
+import com.google.api.gax.grpc.GrpcTransportChannel;
 import com.google.api.gax.retrying.RetrySettings;
+import com.google.api.gax.rpc.ApiException;
+import com.google.api.gax.rpc.ApiExceptionFactory;
+import com.google.api.gax.rpc.HeaderProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.common.annotations.VisibleForTesting;
@@ -38,7 +44,7 @@ import com.google.pubsub.v1.PublisherGrpc.PublisherFutureStub;
 import com.google.pubsub.v1.PubsubMessage;
 import com.google.pubsub.v1.TopicName;
 import io.grpc.CallCredentials;
-import io.grpc.ManagedChannel;
+import io.grpc.Channel;
 import io.grpc.Status;
 import io.grpc.auth.MoreCallCredentials;
 import java.io.IOException;
@@ -92,7 +98,7 @@ public class Publisher {
 
   private final AtomicBoolean activeAlarm;
 
-  private final ManagedChannel[] channels;
+  private final Channel[] channels;
   private final AtomicRoundRobin channelIndex;
   @Nullable private final CallCredentials callCredentials;
 
@@ -125,31 +131,23 @@ public class Publisher {
     activeAlarm = new AtomicBoolean(false);
     executor = builder.executorProvider.getExecutor();
     if (builder.executorProvider.shouldAutoClose()) {
-      closeables.add(
-          new AutoCloseable() {
-            @Override
-            public void close() {
-              executor.shutdown();
-            }
-          });
+      closeables.add(new ExecutorAsBackgroundResource(executor));
     }
-    channels = new ManagedChannel[Runtime.getRuntime().availableProcessors()];
+    channels = new Channel[Runtime.getRuntime().availableProcessors()];
+    TransportChannelProvider channelProvider = builder.channelProvider;
+    if (channelProvider.needsExecutor()) {
+      channelProvider = channelProvider.withExecutor(executor);
+    }
+    if (channelProvider.needsHeaders()) {
+      channelProvider = channelProvider.withHeaders(builder.headerProvider.getHeaders());
+    }
     for (int i = 0; i < channels.length; i++) {
-      channels[i] =
-          builder.channelProvider.needsExecutor()
-              ? builder.channelProvider.getChannel(executor)
-              : builder.channelProvider.getChannel();
-    }
-    if (builder.channelProvider.shouldAutoClose()) {
-      closeables.add(
-          new AutoCloseable() {
-            @Override
-            public void close() {
-              for (int i = 0; i < channels.length; i++) {
-                channels[i].shutdown();
-              }
-            }
-          });
+      GrpcTransportChannel transportChannel =
+          (GrpcTransportChannel) channelProvider.getTransportChannel();
+      channels[i] = transportChannel.getChannel();
+      if (channelProvider.shouldAutoClose()) {
+        closeables.add(transportChannel);
+      }
     }
     channelIndex = new AtomicRoundRobin(channels.length);
 
@@ -367,9 +365,12 @@ public class Publisher {
                 || System.currentTimeMillis() + nextBackoffDelay
                     > outstandingBatch.creationTime + retrySettings.getTotalTimeout().toMillis()) {
               try {
+                ApiException gaxException =
+                    ApiExceptionFactory.createException(
+                        t, GrpcStatusCode.of(Status.fromThrowable(t).getCode()), false);
                 for (OutstandingPublish outstandingPublish :
                     outstandingBatch.outstandingPublishes) {
-                  outstandingPublish.publishResult.setException(t);
+                  outstandingPublish.publishResult.setException(gaxException);
                 }
               } finally {
                 messagesWaiter.incrementPendingMessages(-outstandingBatch.size());
@@ -495,7 +496,31 @@ public class Publisher {
    * String projectName = "my_project";
    * String topicName = "my_topic";
    * TopicName topic = TopicName.create(projectName, topicName);
-   * Publisher publisher = Publisher.defaultBuilder(topic).build();
+   * Publisher publisher = Publisher.newBuilder(topic).build();
+   * try {
+   *   // ...
+   * } finally {
+   *   // When finished with the publisher, make sure to shutdown to free up resources.
+   *   publisher.shutdown();
+   * }
+   * }</pre>
+   *
+   * @deprecated Use {@link #newBuilder(TopicName)} instead.
+   */
+  @Deprecated
+  public static Builder defaultBuilder(TopicName topicName) {
+    return newBuilder(topicName);
+  }
+
+  /**
+   * Constructs a new {@link Builder} using the given topic.
+   *
+   * <p>Example of creating a {@code Publisher}.
+   * <pre>{@code
+   * String projectName = "my_project";
+   * String topicName = "my_topic";
+   * TopicName topic = TopicName.create(projectName, topicName);
+   * Publisher publisher = Publisher.newBuilder(topic).build();
    * try {
    *   // ...
    * } finally {
@@ -505,7 +530,7 @@ public class Publisher {
    * }</pre>
    *
    */
-  public static Builder defaultBuilder(TopicName topicName) {
+  public static Builder newBuilder(TopicName topicName) {
     return new Builder(topicName);
   }
 
@@ -558,7 +583,10 @@ public class Publisher {
     RetrySettings retrySettings = DEFAULT_RETRY_SETTINGS;
     LongRandom longRandom = DEFAULT_LONG_RANDOM;
 
-    ChannelProvider channelProvider = TopicAdminSettings.defaultGrpcChannelProviderBuilder().build();
+    TransportChannelProvider channelProvider =
+        TopicAdminSettings.defaultGrpcTransportProviderBuilder().build();
+    HeaderProvider headerProvider =
+        SubscriptionAdminSettings.defaultApiClientHeaderProviderBuilder().build();
     ExecutorProvider executorProvider = DEFAULT_EXECUTOR_PROVIDER;
     CredentialsProvider credentialsProvider =
         TopicAdminSettings.defaultCredentialsProviderBuilder().build();
@@ -575,8 +603,13 @@ public class Publisher {
      * are encouraged to provide instances of {@code ChannelProvider} that creates new channels
      * instead of returning pre-initialized ones.
      */
-    public Builder setChannelProvider(ChannelProvider channelProvider) {
+    public Builder setChannelProvider(TransportChannelProvider channelProvider) {
       this.channelProvider = Preconditions.checkNotNull(channelProvider);
+      return this;
+    }
+
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      this.headerProvider = Preconditions.checkNotNull(headerProvider);
       return this;
     }
 

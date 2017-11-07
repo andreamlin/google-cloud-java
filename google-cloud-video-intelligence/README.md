@@ -1,7 +1,7 @@
 Google Cloud Java Client for Video Intelligence
 ======================================
 
-Java idiomatic client for [Google Cloud Video Intelligence](https://cloud.google.com/video-intelligence/).
+Java idiomatic client for [Google Cloud Video Intelligence][cloud-video-intelligence].
 
 [![Build Status](https://travis-ci.org/GoogleCloudPlatform/google-cloud-java.svg?branch=master)](https://travis-ci.org/GoogleCloudPlatform/google-cloud-java)
 [![Coverage Status](https://coveralls.io/repos/GoogleCloudPlatform/google-cloud-java/badge.svg?branch=master)](https://coveralls.io/r/GoogleCloudPlatform/google-cloud-java?branch=master)
@@ -9,8 +9,8 @@ Java idiomatic client for [Google Cloud Video Intelligence](https://cloud.google
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/9da006ad7c3a4fe1abd142e77c003917)](https://www.codacy.com/app/mziccard/google-cloud-java)
 [![Dependency Status](https://www.versioneye.com/user/projects/58fe4c8d6ac171426c414772/badge.svg?style=flat)](https://www.versioneye.com/user/projects/58fe4c8d6ac171426c414772)
 
--  [Homepage](https://googlecloudplatform.github.io/google-cloud-java/)
--  [API Documentation][video-api]
+- [Product Documentation][video-product-docs]
+- [Client Library Documentation][video-client-lib-docs]
 
 > Note: This client is a work-in-progress, and may occasionally
 > make backwards-incompatible changes.
@@ -22,16 +22,16 @@ If you are using Maven, add this to your pom.xml file
 <dependency>
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-video-intelligence</artifactId>
-  <version>0.21.1-alpha</version>
+  <version>0.26.0-beta</version>
 </dependency>
 ```
 If you are using Gradle, add this to your dependencies
 ```Groovy
-compile 'com.google.cloud:google-cloud-video-intelligence:0.21.1-alpha'
+compile 'com.google.cloud:google-cloud-video-intelligence:0.26.0-beta'
 ```
 If you are using SBT, add this to your dependencies
 ```Scala
-libraryDependencies += "com.google.cloud" % "google-cloud-video-intelligence" % "0.21.1-alpha"
+libraryDependencies += "com.google.cloud" % "google-cloud-video-intelligence" % "0.26.0-beta"
 ```
 
 Authentication
@@ -43,10 +43,10 @@ in the base directory's README.
 About Google Cloud Video Intelligence
 ----------------------------
 
-Google [Cloud Video Intelligence API][cloud-video-docs]
+Google [Cloud Video Intelligence API][cloud-video-intelligence]
 allows developers to use Google video analysis technology as part of their applications.
 
-See the ``google-cloud`` API [video intelligence documentation][video-api]
+See the [Video Intelligence client library docs][video-client-lib-docs]
 to learn how to use this Cloud Video Intelligence API Client Library.
 
 Getting Started
@@ -98,5 +98,6 @@ Apache 2.0 - See [LICENSE] for more information.
 [code-of-conduct]:https://github.com/GoogleCloudPlatform/google-cloud-java/blob/master/CODE_OF_CONDUCT.md#contributor-code-of-conduct
 [LICENSE]: https://github.com/GoogleCloudPlatform/google-cloud-java/blob/master/LICENSE
 [cloud-platform]: https://cloud.google.com/
-[cloud-video-docs]: https://cloud.google.com/video-intelligence/docs/
-[video-api]: http://googlecloudplatform.github.io/google-cloud-java/0.20.0/apidocs/com/google/cloud/videointelligence/v1beta1/package-summary.html
+[cloud-video-intelligence]: https://cloud.google.com/video-intelligence/
+[video-product-docs]: https://cloud.google.com/video-intelligence/docs/
+[video-client-lib-docs]: https://googlecloudplatform.github.io/google-cloud-java/latest/apidocs/index.html?com/google/cloud/videointelligence/v1beta1/package-summary.html

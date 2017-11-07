@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,6 +107,21 @@ public class MockLanguageServiceImpl extends LanguageServiceImplBase {
     if (response instanceof AnalyzeSyntaxResponse) {
       requests.add(request);
       responseObserver.onNext((AnalyzeSyntaxResponse) response);
+      responseObserver.onCompleted();
+    } else if (response instanceof Exception) {
+      responseObserver.onError((Exception) response);
+    } else {
+      responseObserver.onError(new IllegalArgumentException("Unrecognized response type"));
+    }
+  }
+
+  @Override
+  public void classifyText(
+      ClassifyTextRequest request, StreamObserver<ClassifyTextResponse> responseObserver) {
+    Object response = responses.remove();
+    if (response instanceof ClassifyTextResponse) {
+      requests.add(request);
+      responseObserver.onNext((ClassifyTextResponse) response);
       responseObserver.onCompleted();
     } else if (response instanceof Exception) {
       responseObserver.onError((Exception) response);

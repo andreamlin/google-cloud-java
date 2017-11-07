@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,7 +59,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
- *   MonitoredResourceDescriptorName name = MonitoredResourceDescriptorName.create("[PROJECT]", "[MONITORED_RESOURCE_DESCRIPTOR]");
+ *   MonitoredResourceDescriptorName name = MonitoredResourceDescriptorName.of("[PROJECT]", "[MONITORED_RESOURCE_DESCRIPTOR]");
  *   MonitoredResourceDescriptor response = metricServiceClient.getMonitoredResourceDescriptor(name);
  * }
  * </code>
@@ -91,11 +91,28 @@ import javax.annotation.Generated;
  * <p>This class can be customized by passing in a custom instance of MetricServiceSettings to
  * create(). For example:
  *
+ * <p>To customize credentials:
+ *
  * <pre>
  * <code>
  * MetricServiceSettings metricServiceSettings =
- *     MetricServiceSettings.defaultBuilder()
+ *     MetricServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
+ *         .build();
+ * MetricServiceClient metricServiceClient =
+ *     MetricServiceClient.create(metricServiceSettings);
+ * </code>
+ * </pre>
+ *
+ * To customize the endpoint:
+ *
+ * <pre>
+ * <code>
+ * MetricServiceSettings metricServiceSettings =
+ *     MetricServiceSettings.newBuilder()
+ *         .setTransportChannelProvider(MetricServiceSettings.defaultGrpcTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
+ *             .build())
  *         .build();
  * MetricServiceClient metricServiceClient =
  *     MetricServiceClient.create(metricServiceSettings);
@@ -110,7 +127,7 @@ public class MetricServiceClient implements BackgroundResource {
 
   /** Constructs an instance of MetricServiceClient with default settings. */
   public static final MetricServiceClient create() throws IOException {
-    return create(MetricServiceSettings.defaultBuilder().build());
+    return create(MetricServiceSettings.newBuilder().build());
   }
 
   /**
@@ -126,6 +143,7 @@ public class MetricServiceClient implements BackgroundResource {
    * Constructs an instance of MetricServiceClient, using the given stub for making calls. This is
    * for advanced usage - prefer to use MetricServiceSettings}.
    */
+  @BetaApi
   public static final MetricServiceClient create(MetricServiceStub stub) {
     return new MetricServiceClient(stub);
   }
@@ -149,6 +167,7 @@ public class MetricServiceClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public MetricServiceStub getStub() {
     return stub;
   }
@@ -162,7 +181,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   for (MonitoredResourceDescriptor element : metricServiceClient.listMonitoredResourceDescriptors(name).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -189,7 +208,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   ListMonitoredResourceDescriptorsRequest request = ListMonitoredResourceDescriptorsRequest.newBuilder()
    *     .setNameWithProjectName(name)
    *     .build();
@@ -216,7 +235,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   ListMonitoredResourceDescriptorsRequest request = ListMonitoredResourceDescriptorsRequest.newBuilder()
    *     .setNameWithProjectName(name)
    *     .build();
@@ -243,7 +262,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   ListMonitoredResourceDescriptorsRequest request = ListMonitoredResourceDescriptorsRequest.newBuilder()
    *     .setNameWithProjectName(name)
    *     .build();
@@ -277,7 +296,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   MonitoredResourceDescriptorName name = MonitoredResourceDescriptorName.create("[PROJECT]", "[MONITORED_RESOURCE_DESCRIPTOR]");
+   *   MonitoredResourceDescriptorName name = MonitoredResourceDescriptorName.of("[PROJECT]", "[MONITORED_RESOURCE_DESCRIPTOR]");
    *   MonitoredResourceDescriptor response = metricServiceClient.getMonitoredResourceDescriptor(name);
    * }
    * </code></pre>
@@ -306,7 +325,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   MonitoredResourceDescriptorName name = MonitoredResourceDescriptorName.create("[PROJECT]", "[MONITORED_RESOURCE_DESCRIPTOR]");
+   *   MonitoredResourceDescriptorName name = MonitoredResourceDescriptorName.of("[PROJECT]", "[MONITORED_RESOURCE_DESCRIPTOR]");
    *   GetMonitoredResourceDescriptorRequest request = GetMonitoredResourceDescriptorRequest.newBuilder()
    *     .setNameWithMonitoredResourceDescriptorName(name)
    *     .build();
@@ -331,7 +350,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   MonitoredResourceDescriptorName name = MonitoredResourceDescriptorName.create("[PROJECT]", "[MONITORED_RESOURCE_DESCRIPTOR]");
+   *   MonitoredResourceDescriptorName name = MonitoredResourceDescriptorName.of("[PROJECT]", "[MONITORED_RESOURCE_DESCRIPTOR]");
    *   GetMonitoredResourceDescriptorRequest request = GetMonitoredResourceDescriptorRequest.newBuilder()
    *     .setNameWithMonitoredResourceDescriptorName(name)
    *     .build();
@@ -355,7 +374,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   for (MetricDescriptor element : metricServiceClient.listMetricDescriptors(name).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -381,7 +400,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   ListMetricDescriptorsRequest request = ListMetricDescriptorsRequest.newBuilder()
    *     .setNameWithProjectName(name)
    *     .build();
@@ -408,7 +427,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   ListMetricDescriptorsRequest request = ListMetricDescriptorsRequest.newBuilder()
    *     .setNameWithProjectName(name)
    *     .build();
@@ -434,7 +453,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   ListMetricDescriptorsRequest request = ListMetricDescriptorsRequest.newBuilder()
    *     .setNameWithProjectName(name)
    *     .build();
@@ -466,7 +485,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   MetricDescriptorName name = MetricDescriptorName.create("[PROJECT]", "[METRIC_DESCRIPTOR]");
+   *   MetricDescriptorName name = MetricDescriptorName.of("[PROJECT]", "[METRIC_DESCRIPTOR]");
    *   MetricDescriptor response = metricServiceClient.getMetricDescriptor(name);
    * }
    * </code></pre>
@@ -491,7 +510,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   MetricDescriptorName name = MetricDescriptorName.create("[PROJECT]", "[METRIC_DESCRIPTOR]");
+   *   MetricDescriptorName name = MetricDescriptorName.of("[PROJECT]", "[METRIC_DESCRIPTOR]");
    *   GetMetricDescriptorRequest request = GetMetricDescriptorRequest.newBuilder()
    *     .setNameWithMetricDescriptorName(name)
    *     .build();
@@ -514,7 +533,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   MetricDescriptorName name = MetricDescriptorName.create("[PROJECT]", "[METRIC_DESCRIPTOR]");
+   *   MetricDescriptorName name = MetricDescriptorName.of("[PROJECT]", "[METRIC_DESCRIPTOR]");
    *   GetMetricDescriptorRequest request = GetMetricDescriptorRequest.newBuilder()
    *     .setNameWithMetricDescriptorName(name)
    *     .build();
@@ -538,7 +557,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   MetricDescriptor metricDescriptor = MetricDescriptor.newBuilder().build();
    *   MetricDescriptor response = metricServiceClient.createMetricDescriptor(name, metricDescriptor);
    * }
@@ -569,7 +588,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   MetricDescriptor metricDescriptor = MetricDescriptor.newBuilder().build();
    *   CreateMetricDescriptorRequest request = CreateMetricDescriptorRequest.newBuilder()
    *     .setNameWithProjectName(name)
@@ -595,7 +614,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   MetricDescriptor metricDescriptor = MetricDescriptor.newBuilder().build();
    *   CreateMetricDescriptorRequest request = CreateMetricDescriptorRequest.newBuilder()
    *     .setNameWithProjectName(name)
@@ -621,7 +640,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   MetricDescriptorName name = MetricDescriptorName.create("[PROJECT]", "[METRIC_DESCRIPTOR]");
+   *   MetricDescriptorName name = MetricDescriptorName.of("[PROJECT]", "[METRIC_DESCRIPTOR]");
    *   metricServiceClient.deleteMetricDescriptor(name);
    * }
    * </code></pre>
@@ -647,7 +666,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   MetricDescriptorName name = MetricDescriptorName.create("[PROJECT]", "[METRIC_DESCRIPTOR]");
+   *   MetricDescriptorName name = MetricDescriptorName.of("[PROJECT]", "[METRIC_DESCRIPTOR]");
    *   DeleteMetricDescriptorRequest request = DeleteMetricDescriptorRequest.newBuilder()
    *     .setNameWithMetricDescriptorName(name)
    *     .build();
@@ -671,7 +690,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   MetricDescriptorName name = MetricDescriptorName.create("[PROJECT]", "[METRIC_DESCRIPTOR]");
+   *   MetricDescriptorName name = MetricDescriptorName.of("[PROJECT]", "[METRIC_DESCRIPTOR]");
    *   DeleteMetricDescriptorRequest request = DeleteMetricDescriptorRequest.newBuilder()
    *     .setNameWithMetricDescriptorName(name)
    *     .build();
@@ -694,7 +713,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   String filter = "";
    *   TimeInterval interval = TimeInterval.newBuilder().build();
    *   ListTimeSeriesRequest.TimeSeriesView view = ListTimeSeriesRequest.TimeSeriesView.FULL;
@@ -739,7 +758,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   String filter = "";
    *   TimeInterval interval = TimeInterval.newBuilder().build();
    *   ListTimeSeriesRequest.TimeSeriesView view = ListTimeSeriesRequest.TimeSeriesView.FULL;
@@ -770,7 +789,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   String filter = "";
    *   TimeInterval interval = TimeInterval.newBuilder().build();
    *   ListTimeSeriesRequest.TimeSeriesView view = ListTimeSeriesRequest.TimeSeriesView.FULL;
@@ -801,7 +820,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   String filter = "";
    *   TimeInterval interval = TimeInterval.newBuilder().build();
    *   ListTimeSeriesRequest.TimeSeriesView view = ListTimeSeriesRequest.TimeSeriesView.FULL;
@@ -841,7 +860,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   List&lt;TimeSeries&gt; timeSeries = new ArrayList&lt;&gt;();
    *   metricServiceClient.createTimeSeries(name, timeSeries);
    * }
@@ -875,7 +894,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   List&lt;TimeSeries&gt; timeSeries = new ArrayList&lt;&gt;();
    *   CreateTimeSeriesRequest request = CreateTimeSeriesRequest.newBuilder()
    *     .setNameWithProjectName(name)
@@ -902,7 +921,7 @@ public class MetricServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (MetricServiceClient metricServiceClient = MetricServiceClient.create()) {
-   *   ProjectName name = ProjectName.create("[PROJECT]");
+   *   ProjectName name = ProjectName.of("[PROJECT]");
    *   List&lt;TimeSeries&gt; timeSeries = new ArrayList&lt;&gt;();
    *   CreateTimeSeriesRequest request = CreateTimeSeriesRequest.newBuilder()
    *     .setNameWithProjectName(name)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (ErrorGroupServiceClient errorGroupServiceClient = ErrorGroupServiceClient.create()) {
- *   GroupName groupName = GroupName.create("[PROJECT]", "[GROUP]");
+ *   GroupName groupName = GroupName.of("[PROJECT]", "[GROUP]");
  *   ErrorGroup response = errorGroupServiceClient.getGroup(groupName);
  * }
  * </code>
@@ -70,11 +70,28 @@ import javax.annotation.Generated;
  * <p>This class can be customized by passing in a custom instance of ErrorGroupServiceSettings to
  * create(). For example:
  *
+ * <p>To customize credentials:
+ *
  * <pre>
  * <code>
  * ErrorGroupServiceSettings errorGroupServiceSettings =
- *     ErrorGroupServiceSettings.defaultBuilder()
+ *     ErrorGroupServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
+ *         .build();
+ * ErrorGroupServiceClient errorGroupServiceClient =
+ *     ErrorGroupServiceClient.create(errorGroupServiceSettings);
+ * </code>
+ * </pre>
+ *
+ * To customize the endpoint:
+ *
+ * <pre>
+ * <code>
+ * ErrorGroupServiceSettings errorGroupServiceSettings =
+ *     ErrorGroupServiceSettings.newBuilder()
+ *         .setTransportChannelProvider(ErrorGroupServiceSettings.defaultGrpcTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
+ *             .build())
  *         .build();
  * ErrorGroupServiceClient errorGroupServiceClient =
  *     ErrorGroupServiceClient.create(errorGroupServiceSettings);
@@ -89,7 +106,7 @@ public class ErrorGroupServiceClient implements BackgroundResource {
 
   /** Constructs an instance of ErrorGroupServiceClient with default settings. */
   public static final ErrorGroupServiceClient create() throws IOException {
-    return create(ErrorGroupServiceSettings.defaultBuilder().build());
+    return create(ErrorGroupServiceSettings.newBuilder().build());
   }
 
   /**
@@ -105,6 +122,7 @@ public class ErrorGroupServiceClient implements BackgroundResource {
    * Constructs an instance of ErrorGroupServiceClient, using the given stub for making calls. This
    * is for advanced usage - prefer to use ErrorGroupServiceSettings}.
    */
+  @BetaApi
   public static final ErrorGroupServiceClient create(ErrorGroupServiceStub stub) {
     return new ErrorGroupServiceClient(stub);
   }
@@ -128,6 +146,7 @@ public class ErrorGroupServiceClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public ErrorGroupServiceStub getStub() {
     return stub;
   }
@@ -140,7 +159,7 @@ public class ErrorGroupServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (ErrorGroupServiceClient errorGroupServiceClient = ErrorGroupServiceClient.create()) {
-   *   GroupName groupName = GroupName.create("[PROJECT]", "[GROUP]");
+   *   GroupName groupName = GroupName.of("[PROJECT]", "[GROUP]");
    *   ErrorGroup response = errorGroupServiceClient.getGroup(groupName);
    * }
    * </code></pre>
@@ -168,7 +187,7 @@ public class ErrorGroupServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (ErrorGroupServiceClient errorGroupServiceClient = ErrorGroupServiceClient.create()) {
-   *   GroupName groupName = GroupName.create("[PROJECT]", "[GROUP]");
+   *   GroupName groupName = GroupName.of("[PROJECT]", "[GROUP]");
    *   GetGroupRequest request = GetGroupRequest.newBuilder()
    *     .setGroupNameWithGroupName(groupName)
    *     .build();
@@ -191,7 +210,7 @@ public class ErrorGroupServiceClient implements BackgroundResource {
    *
    * <pre><code>
    * try (ErrorGroupServiceClient errorGroupServiceClient = ErrorGroupServiceClient.create()) {
-   *   GroupName groupName = GroupName.create("[PROJECT]", "[GROUP]");
+   *   GroupName groupName = GroupName.of("[PROJECT]", "[GROUP]");
    *   GetGroupRequest request = GetGroupRequest.newBuilder()
    *     .setGroupNameWithGroupName(groupName)
    *     .build();

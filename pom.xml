@@ -4,7 +4,7 @@
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-pom</artifactId>
   <packaging>pom</packaging>
-  <version>0.21.2-alpha-SNAPSHOT</version>
+  <version>0.26.1-alpha-SNAPSHOT</version>
   <name>Google Cloud</name>
   <url>https://github.com/GoogleCloudPlatform/google-cloud-java</url>
   <description>
@@ -83,6 +83,15 @@
         <role>Developer</role>
       </roles>
     </developer>
+    <developer>
+      <id>schmidt_sebastian</id>
+      <name>Sebastian Schmidt</name>
+      <email>mrschmidt@google.com</email>
+      <organization>Google</organization>
+      <roles>
+        <role>Developer</role>
+      </roles>
+    </developer>
   </developers>
   <organization>
     <name>Google</name>
@@ -128,46 +137,48 @@
     <github.global.server>github</github.global.server>
     <site.installationModule>google-cloud</site.installationModule>
 
-    <api-client.version>1.22.0</api-client.version>
+    <api-client.version>1.23.0</api-client.version>
 
     <api-common.version>1.1.0</api-common.version>
-    <gax.version>1.5.0</gax.version>
-    <gax-grpc.version>0.22.0</gax-grpc.version>
-    <generatedProto.version>0.1.15</generatedProto.version>
-    <google.auth.version>0.7.0</google.auth.version>
-    <grpc.version>1.4.0</grpc.version>
+    <gax.version>1.12.0</gax.version>
+    <gax-grpc.version>0.29.0</gax-grpc.version>
+    <generatedProto.version>0.1.23</generatedProto.version>
+    <google.auth.version>0.9.0</google.auth.version>
+    <grpc.version>1.7.0</grpc.version>
+    <nettyssl.version>2.0.6.Final</nettyssl.version>
     <guava.version>20.0</guava.version>
-    <http-client.version>1.22.0</http-client.version>
-    <protobuf.version>3.3.1</protobuf.version>
+    <http-client.version>1.23.0</http-client.version>
+    <protobuf.version>3.4.0</protobuf.version>
 
     <easymock.version>3.4</easymock.version>
     <objenesis.version>2.6</objenesis.version>
 
-    <cloud.version>0.21.2-alpha-SNAPSHOT</cloud.version>
-    <bigquery.version>0.21.2-beta-SNAPSHOT</bigquery.version>
-    <compute.version>0.21.2-alpha-SNAPSHOT</compute.version>
-    <contrib.version>0.21.2-alpha-SNAPSHOT</contrib.version>
-    <core.version>1.3.2-SNAPSHOT</core.version>
-    <core-http.version>1.3.2-SNAPSHOT</core-http.version>
-    <core-grpc.version>1.3.2-SNAPSHOT</core-grpc.version>
-    <datastore.version>1.3.2-SNAPSHOT</datastore.version>
-    <dlp.version>0.21.2-alpha-SNAPSHOT</dlp.version>
-    <dns.version>0.21.2-alpha-SNAPSHOT</dns.version>
-    <errorreporting.version>0.21.2-alpha-SNAPSHOT</errorreporting.version>
-    <examples.version>0.21.2-alpha-SNAPSHOT</examples.version>
-    <language.version>0.21.2-beta-SNAPSHOT</language.version>
-    <logging.version>1.3.2-SNAPSHOT</logging.version>
-    <monitoring.version>0.21.2-alpha-SNAPSHOT</monitoring.version>
-    <pubsub.version>0.21.2-beta-SNAPSHOT</pubsub.version>
-    <resourcemanager.version>0.21.2-alpha-SNAPSHOT</resourcemanager.version>
-    <spanner.version>0.21.2-beta-SNAPSHOT</spanner.version>
-    <speech.version>0.21.2-alpha-SNAPSHOT</speech.version>
-    <storage.version>1.3.2-SNAPSHOT</storage.version>
-    <trace.version>0.21.2-alpha-SNAPSHOT</trace.version>
-    <translate.version>1.3.2-SNAPSHOT</translate.version>
-    <vision.version>0.21.2-beta-SNAPSHOT</vision.version>
-    <video-intelligence.version>0.21.2-alpha-SNAPSHOT</video-intelligence.version>
-    <testing.version>0.21.2-alpha-SNAPSHOT</testing.version>
+    <cloud.version>0.26.1-alpha-SNAPSHOT</cloud.version>
+    <bigquery.version>0.26.1-beta-SNAPSHOT</bigquery.version>
+    <compute.version>0.26.1-alpha-SNAPSHOT</compute.version>
+    <contrib.version>0.26.1-alpha-SNAPSHOT</contrib.version>
+    <core.version>1.8.1-SNAPSHOT</core.version>
+    <core-http.version>1.8.1-SNAPSHOT</core-http.version>
+    <core-grpc.version>1.8.1-SNAPSHOT</core-grpc.version>
+    <datastore.version>1.8.1-SNAPSHOT</datastore.version>
+    <dlp.version>0.26.1-alpha-SNAPSHOT</dlp.version>
+    <dns.version>0.26.1-alpha-SNAPSHOT</dns.version>
+    <errorreporting.version>0.26.1-alpha-SNAPSHOT</errorreporting.version>
+    <firestore.version>0.26.1-beta-SNAPSHOT</firestore.version>
+    <examples.version>0.26.1-alpha-SNAPSHOT</examples.version>
+    <language.version>0.26.1-beta-SNAPSHOT</language.version>
+    <logging.version>1.8.1-SNAPSHOT</logging.version>
+    <monitoring.version>0.26.1-alpha-SNAPSHOT</monitoring.version>
+    <pubsub.version>0.26.1-beta-SNAPSHOT</pubsub.version>
+    <resourcemanager.version>0.26.1-alpha-SNAPSHOT</resourcemanager.version>
+    <spanner.version>0.26.1-beta-SNAPSHOT</spanner.version>
+    <speech.version>0.26.1-alpha-SNAPSHOT</speech.version>
+    <storage.version>1.8.1-SNAPSHOT</storage.version>
+    <trace.version>0.26.1-alpha-SNAPSHOT</trace.version>
+    <translate.version>1.8.1-SNAPSHOT</translate.version>
+    <vision.version>0.26.1-beta-SNAPSHOT</vision.version>
+    <video-intelligence.version>0.26.1-beta-SNAPSHOT</video-intelligence.version>
+    <testing.version>0.26.1-alpha-SNAPSHOT</testing.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -278,7 +289,7 @@
         <version>${datastore.version}</version>
         <type>test-jar</type>
       </dependency>
-      
+
       <dependency>
         <groupId>com.google.cloud</groupId>
         <artifactId>google-cloud-dlp</artifactId>
@@ -345,6 +356,28 @@
         <artifactId>google-cloud-examples</artifactId>
         <version>${examples.version}</version>
         <type>test-jar</type>
+      </dependency>
+
+      <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>google-cloud-firestore</artifactId>
+        <version>${firestore.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>google-cloud-firestore</artifactId>
+        <version>${firestore.version}</version>
+        <type>test-jar</type>
+      </dependency>
+      <dependency>
+        <groupId>com.google.api.grpc</groupId>
+        <artifactId>proto-google-cloud-firestore-v1beta1</artifactId>
+        <version>${generatedProto.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.api.grpc</groupId>
+        <artifactId>grpc-google-cloud-firestore-v1beta1</artifactId>
+        <version>${generatedProto.version}</version>
       </dependency>
 
       <dependency>
@@ -622,7 +655,17 @@
       </dependency>
       <dependency>
         <groupId>com.google.api.grpc</groupId>
+        <artifactId>proto-google-cloud-video-intelligence-v1beta2</artifactId>
+        <version>${generatedProto.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.api.grpc</groupId>
         <artifactId>grpc-google-cloud-video-intelligence-v1beta1</artifactId>
+        <version>${generatedProto.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.api.grpc</groupId>
+        <artifactId>grpc-google-cloud-video-intelligence-v1beta2</artifactId>
         <version>${generatedProto.version}</version>
       </dependency>
 
@@ -688,11 +731,6 @@
       </dependency>
       <dependency>
         <groupId>com.google.api.grpc</groupId>
-        <artifactId>grpc-google-common-protos</artifactId>
-        <version>${generatedProto.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.google.api.grpc</groupId>
         <artifactId>proto-google-iam-v1</artifactId>
         <version>${generatedProto.version}</version>
       </dependency>
@@ -729,7 +767,7 @@
       <dependency>
         <groupId>com.google.oauth-client</groupId>
         <artifactId>google-oauth-client</artifactId>
-        <version>1.22.0</version>
+        <version>1.23.0</version>
       </dependency>
       <dependency>
         <groupId>com.google.api-client</groupId>
@@ -760,6 +798,11 @@
         <groupId>com.google.api</groupId>
         <artifactId>gax-grpc</artifactId>
         <version>${gax-grpc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-tcnative-boringssl-static</artifactId>
+        <version>${nettyssl.version}</version>
       </dependency>
 
       <!-- test deps -->
@@ -799,6 +842,17 @@
         <artifactId>objenesis</artifactId>
         <version>${objenesis.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.google.truth</groupId>
+        <artifactId>truth</artifactId>
+        <version>0.30</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.api</groupId>
+        <artifactId>gax-grpc</artifactId>
+        <version>${gax-grpc.version}</version>
+	<classifier>testlib</classifier>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <modules>
@@ -814,6 +868,7 @@
     <module>google-cloud-dns</module>
     <module>google-cloud-errorreporting</module>
     <module>google-cloud-examples</module>
+    <module>google-cloud-firestore</module>
     <module>google-cloud-language</module>
     <module>google-cloud-logging</module>
     <module>google-cloud-monitoring</module>
@@ -1150,6 +1205,10 @@
                     <title>SPI packages</title>
                     <packages>com.google.cloud.spi*:com.google.cloud.bigquery.spi*:com.google.cloud.compute.spi*:com.google.cloud.datastore.spi*:com.google.cloud.dns.spi*:com.google.cloud.logging.spi*:com.google.cloud.resourcemanager.spi*:com.google.cloud.spanner.spi*:com.google.cloud.storage.spi*:com.google.cloud.translate.spi*</packages>
                   </group>
+                  <group>
+                    <title>Stub packages</title>
+                    <packages>com.google.cloud.dlp.v2beta1.stub:com.google.cloud.errorreporting.v1beta1.stub:com.google.cloud.firestore.v1beta1.stub:com.google.cloud.language.v1beta2.stub:com.google.cloud.language.v1.stub:com.google.cloud.logging.v2.stub:com.google.cloud.monitoring.v3.stub:com.google.cloud.pubsub.v1.stub:com.google.cloud.speech.v1beta1.stub:com.google.cloud.speech.v1.stub:com.google.cloud.trace.v1.stub:com.google.cloud.videointelligence.v1beta1.stub:com.google.cloud.videointelligence.v1beta2.stub:com.google.cloud.vision.v1.stub</packages>
+                  </group>
                 </groups>
                 <links>
                   <link>https://developers.google.com/protocol-buffers/docs/reference/java/</link>
@@ -1167,6 +1226,7 @@
                   <link>http://googleapis.github.io/googleapis/java/proto-google-cloud-trace-v1/${generatedProto.version}/apidocs/</link>
                   <link>http://googleapis.github.io/googleapis/java/proto-google-cloud-vision-v1/${generatedProto.version}/apidocs/</link>
                   <link>http://googleapis.github.io/googleapis/java/proto-google-cloud-videointelligence-v1beta1/${generatedProto.version}/apidocs/</link>
+                  <link>http://googleapis.github.io/googleapis/java/proto-google-cloud-videointelligence-v1beta2/${generatedProto.version}/apidocs/</link>
                 </links>
               </configuration>
             </plugin>

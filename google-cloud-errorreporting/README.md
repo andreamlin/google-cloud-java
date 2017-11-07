@@ -1,7 +1,7 @@
 Google Cloud Java Client for Stackdriver Error Reporting
 ======================================
 
-Java idiomatic client for [Stackdriver Error Reporting](https://cloud.google.com/error-reporting/).
+Java idiomatic client for [Stackdriver Error Reporting][stackdriver-error-reporting].
 
 [![Build Status](https://travis-ci.org/GoogleCloudPlatform/google-cloud-java.svg?branch=master)](https://travis-ci.org/GoogleCloudPlatform/google-cloud-java)
 [![Coverage Status](https://coveralls.io/repos/GoogleCloudPlatform/google-cloud-java/badge.svg?branch=master)](https://coveralls.io/r/GoogleCloudPlatform/google-cloud-java?branch=master)
@@ -9,8 +9,8 @@ Java idiomatic client for [Stackdriver Error Reporting](https://cloud.google.com
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/9da006ad7c3a4fe1abd142e77c003917)](https://www.codacy.com/app/mziccard/google-cloud-java)
 [![Dependency Status](https://www.versioneye.com/user/projects/58fe4c8d6ac171426c414772/badge.svg?style=flat)](https://www.versioneye.com/user/projects/58fe4c8d6ac171426c414772)
 
--  [Homepage](https://googlecloudplatform.github.io/google-cloud-java/)
--  [API Documentation][error-reporting-api]
+- [Product Documentation][error-reporting-product-docs]
+- [Client Library Documentation][error-reporting-client-lib-docs]
 
 > Note: This client is a work-in-progress, and may occasionally
 > make backwards-incompatible changes.
@@ -22,16 +22,16 @@ If you are using Maven, add this to your pom.xml file
 <dependency>
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-errorreporting</artifactId>
-  <version>0.21.1-alpha</version>
+  <version>0.26.0-alpha</version>
 </dependency>
 ```
 If you are using Gradle, add this to your dependencies
 ```Groovy
-compile 'com.google.cloud:google-cloud-errorreporting:0.21.1-alpha'
+compile 'com.google.cloud:google-cloud-errorreporting:0.26.0-alpha'
 ```
 If you are using SBT, add this to your dependencies
 ```Scala
-libraryDependencies += "com.google.cloud" % "google-cloud-errorreporting" % "0.21.1-alpha"
+libraryDependencies += "com.google.cloud" % "google-cloud-errorreporting" % "0.26.0-alpha"
 ```
 
 Authentication
@@ -42,12 +42,12 @@ See the [Authentication](https://github.com/GoogleCloudPlatform/google-cloud-jav
 About Stackdriver Error Reporting
 ----------------------------
 
-The Stackdriver Error Reporting API provides:
+The [Stackdriver Error Reporting API][stackdriver-error-reporting] provides:
 
 - A simple endpoint to report errors from your running service.
 - Read access to error groups and their associated errors.
 
-See the ``google-cloud`` API [error reporting documentation][error-reporting-api] to learn how to use this client library.
+See the [Error Reporting client library docs][error-reporting-client-lib-docs] to learn how to use this client library.
 
 Getting Started
 ---------------
@@ -56,7 +56,6 @@ You will need a [Google Developers Console](https://console.developers.google.co
 
 #### Installation and setup
 You'll need to obtain the `google-cloud-errorreporting` library.  See the [Quickstart](#quickstart) section to add `google-cloud-errorreporting` as a dependency in your code.
-
 
 Troubleshooting
 ---------------
@@ -98,4 +97,6 @@ Apache 2.0 - See [LICENSE] for more information.
 [code-of-conduct]:https://github.com/GoogleCloudPlatform/google-cloud-java/blob/master/CODE_OF_CONDUCT.md#contributor-code-of-conduct
 [LICENSE]: https://github.com/GoogleCloudPlatform/google-cloud-java/blob/master/LICENSE
 [cloud-platform]: https://cloud.google.com/
-[error-reporting-api]: http://googlecloudplatform.github.io/google-cloud-java/0.20.1/apidocs/com/google/cloud/errorreporting/v1beta1/package-summary.html
+[stackdriver-error-reporting]: https://cloud.google.com/error-reporting/
+[error-reporting-product-docs]: https://cloud.google.com/error-reporting/docs/
+[error-reporting-client-lib-docs]: https://googlecloudplatform.github.io/google-cloud-java/latest/apidocs/index.html?com/google/cloud/errorreporting/v1beta1/package-summary.html

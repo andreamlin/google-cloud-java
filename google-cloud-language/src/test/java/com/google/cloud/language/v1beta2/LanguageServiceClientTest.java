@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 package com.google.cloud.language.v1beta2;
 
 import com.google.api.gax.core.NoCredentialsProvider;
-import com.google.api.gax.grpc.GrpcApiException;
-import com.google.api.gax.grpc.GrpcTransportProvider;
 import com.google.api.gax.grpc.testing.MockGrpcService;
 import com.google.api.gax.grpc.testing.MockServiceHelper;
+import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.cloud.language.v1beta2.AnnotateTextRequest.Features;
 import com.google.protobuf.GeneratedMessageV3;
 import io.grpc.Status;
@@ -57,12 +56,9 @@ public class LanguageServiceClientTest {
   public void setUp() throws IOException {
     serviceHelper.reset();
     LanguageServiceSettings settings =
-        LanguageServiceSettings.defaultBuilder()
-            .setTransportProvider(
-                GrpcTransportProvider.newBuilder()
-                    .setChannelProvider(serviceHelper.createChannelProvider())
-                    .build())
-            .setCredentialsProvider(new NoCredentialsProvider())
+        LanguageServiceSettings.newBuilder()
+            .setTransportChannelProvider(serviceHelper.createChannelProvider())
+            .setCredentialsProvider(NoCredentialsProvider.create())
             .build();
     client = LanguageServiceClient.create(settings);
   }
@@ -103,8 +99,8 @@ public class LanguageServiceClientTest {
 
       client.analyzeSentiment(document);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 
@@ -142,8 +138,8 @@ public class LanguageServiceClientTest {
 
       client.analyzeEntities(document, encodingType);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 
@@ -183,8 +179,8 @@ public class LanguageServiceClientTest {
 
       client.analyzeEntitySentiment(document, encodingType);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 
@@ -222,8 +218,42 @@ public class LanguageServiceClientTest {
 
       client.analyzeSyntax(document, encodingType);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
+    }
+  }
+
+  @Test
+  @SuppressWarnings("all")
+  public void classifyTextTest() {
+    ClassifyTextResponse expectedResponse = ClassifyTextResponse.newBuilder().build();
+    mockLanguageService.addResponse(expectedResponse);
+
+    Document document = Document.newBuilder().build();
+
+    ClassifyTextResponse actualResponse = client.classifyText(document);
+    Assert.assertEquals(expectedResponse, actualResponse);
+
+    List<GeneratedMessageV3> actualRequests = mockLanguageService.getRequests();
+    Assert.assertEquals(1, actualRequests.size());
+    ClassifyTextRequest actualRequest = (ClassifyTextRequest) actualRequests.get(0);
+
+    Assert.assertEquals(document, actualRequest.getDocument());
+  }
+
+  @Test
+  @SuppressWarnings("all")
+  public void classifyTextExceptionTest() throws Exception {
+    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
+    mockLanguageService.addException(exception);
+
+    try {
+      Document document = Document.newBuilder().build();
+
+      client.classifyText(document);
+      Assert.fail("No exception raised");
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 
@@ -264,8 +294,8 @@ public class LanguageServiceClientTest {
 
       client.annotateText(document, features, encodingType);
       Assert.fail("No exception raised");
-    } catch (GrpcApiException e) {
-      Assert.assertEquals(Status.INVALID_ARGUMENT.getCode(), e.getStatusCode().getCode());
+    } catch (InvalidArgumentException e) {
+      // Expected exception
     }
   }
 }

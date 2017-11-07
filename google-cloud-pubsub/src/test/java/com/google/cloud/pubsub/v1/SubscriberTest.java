@@ -16,13 +16,14 @@
 
 package com.google.cloud.pubsub.v1;
 
-import static com.google.cloud.pubsub.v1.MessageDispatcher.PENDING_ACKS_SEND_DELAY;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import com.google.api.gax.core.FixedExecutorProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
-import com.google.api.gax.grpc.FixedChannelProvider;
+import com.google.api.gax.core.NoCredentialsProvider;
+import com.google.api.gax.grpc.GrpcStatusCode;
+import com.google.api.gax.grpc.GrpcTransportChannel;
+import com.google.api.gax.rpc.ApiException;
+import com.google.api.gax.rpc.FixedTransportChannelProvider;
+import com.google.api.gax.rpc.StatusCode;
 import com.google.cloud.pubsub.v1.FakeSubscriberServiceImpl.ModifyAckDeadline;
 import com.google.cloud.pubsub.v1.Subscriber.Builder;
 import com.google.common.base.Function;
@@ -35,18 +36,11 @@ import com.google.pubsub.v1.ReceivedMessage;
 import com.google.pubsub.v1.StreamingPullResponse;
 import com.google.pubsub.v1.SubscriptionName;
 import io.grpc.ManagedChannel;
+import io.grpc.Server;
 import io.grpc.Status;
 import io.grpc.StatusException;
-import io.grpc.StatusRuntimeException;
 import io.grpc.inprocess.InProcessChannelBuilder;
 import io.grpc.inprocess.InProcessServerBuilder;
-import io.grpc.internal.ServerImpl;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.LinkedBlockingQueue;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -56,6 +50,17 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.threeten.bp.Duration;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.LinkedBlockingQueue;
+
+import static com.google.cloud.pubsub.v1.MessageDispatcher.PENDING_ACKS_SEND_DELAY;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /** Tests for {@link Subscriber}. */
 @RunWith(Parameterized.class)
@@ -74,13 +79,13 @@ public class SubscriberTest {
   private ManagedChannel testChannel;
   private FakeScheduledExecutorService fakeExecutor;
   private FakeSubscriberServiceImpl fakeSubscriberServiceImpl;
-  private ServerImpl testServer;
+  private Server testServer;
 
   private TestReceiver testReceiver;
 
   @Parameters
   public static Collection<Object[]> data() {
-    return Arrays.asList(new Object[][] {{false}});
+    return Arrays.asList(new Object[][] {{true}, {false}});
   }
 
   static class TestReceiver implements MessageReceiver {
@@ -188,6 +193,7 @@ public class SubscriberTest {
   @After
   public void tearDown() throws Exception {
     testServer.shutdownNow().awaitTermination();
+    testChannel.shutdown();
   }
 
   @Test
@@ -205,6 +211,10 @@ public class SubscriberTest {
 
   @Test
   public void testGetSubscriptionOnce() throws Exception {
+    if (isStreamingTest) {
+      // Only applicable to polling.
+      return;
+    }
     Subscriber subscriber = startSubscriber(getTestSubscriberBuilder(testReceiver));
 
     sendMessages(ImmutableList.of("A"));
@@ -513,19 +523,21 @@ public class SubscriberTest {
     } finally {
       // The subscriber must finish with an state error because its FAILED status.
       assertEquals(Subscriber.State.FAILED, subscriber.state());
-      assertEquals(
-          Status.INVALID_ARGUMENT,
-          ((StatusRuntimeException) subscriber.failureCause()).getStatus());
+
+      Throwable t = subscriber.failureCause();
+      assertTrue(t instanceof ApiException);
+
+      ApiException ex = (ApiException) (t);
+      assertTrue(ex.getStatusCode() instanceof GrpcStatusCode);
+
+      GrpcStatusCode grpcCode = (GrpcStatusCode) ex.getStatusCode();
+      assertEquals(StatusCode.Code.INVALID_ARGUMENT, grpcCode.getCode());
     }
   }
 
   private Subscriber startSubscriber(Builder testSubscriberBuilder) throws Exception {
-    Subscriber subscriber = testSubscriberBuilder.build();
+    Subscriber subscriber = testSubscriberBuilder.setUseStreaming(isStreamingTest).build();
     subscriber.startAsync().awaitRunning();
-    // if (!isStreamingTest) {
-    //   // Shutdown streaming
-    //   fakeSubscriberServiceImpl.sendError(new StatusException(Status.UNIMPLEMENTED));
-    // }
     return subscriber;
   }
 
@@ -546,11 +558,11 @@ public class SubscriberTest {
   }
 
   private Builder getTestSubscriberBuilder(MessageReceiver receiver) {
-    return Subscriber.defaultBuilder(TEST_SUBSCRIPTION, receiver)
+    return Subscriber.newBuilder(TEST_SUBSCRIPTION, receiver)
         .setExecutorProvider(FixedExecutorProvider.create(fakeExecutor))
         .setSystemExecutorProvider(FixedExecutorProvider.create(fakeExecutor))
-        .setChannelProvider(FixedChannelProvider.create(testChannel))
-        .setCredentialsProvider(PublisherImplTest.NO_CREDENTIALS_PROVIDER)
+        .setChannelProvider(FixedTransportChannelProvider.create(GrpcTransportChannel.create(testChannel)))
+        .setCredentialsProvider(NoCredentialsProvider.create())
         .setClock(fakeExecutor.getClock());
   }
 

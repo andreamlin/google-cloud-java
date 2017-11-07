@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@ package com.google.cloud.speech.v1beta1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.longrunning.OperationFuture;
+import com.google.api.gax.rpc.BidiStreamingCallable;
 import com.google.api.gax.rpc.OperationCallable;
-import com.google.api.gax.rpc.OperationFuture;
-import com.google.api.gax.rpc.StreamingCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.speech.v1beta1.stub.SpeechStub;
 import com.google.longrunning.Operation;
@@ -79,11 +79,28 @@ import javax.annotation.Generated;
  * <p>This class can be customized by passing in a custom instance of SpeechSettings to create().
  * For example:
  *
+ * <p>To customize credentials:
+ *
  * <pre>
  * <code>
  * SpeechSettings speechSettings =
- *     SpeechSettings.defaultBuilder()
+ *     SpeechSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
+ *         .build();
+ * SpeechClient speechClient =
+ *     SpeechClient.create(speechSettings);
+ * </code>
+ * </pre>
+ *
+ * To customize the endpoint:
+ *
+ * <pre>
+ * <code>
+ * SpeechSettings speechSettings =
+ *     SpeechSettings.newBuilder()
+ *         .setTransportChannelProvider(SpeechSettings.defaultGrpcTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
+ *             .build())
  *         .build();
  * SpeechClient speechClient =
  *     SpeechClient.create(speechSettings);
@@ -99,7 +116,7 @@ public class SpeechClient implements BackgroundResource {
 
   /** Constructs an instance of SpeechClient with default settings. */
   public static final SpeechClient create() throws IOException {
-    return create(SpeechSettings.defaultBuilder().build());
+    return create(SpeechSettings.newBuilder().build());
   }
 
   /**
@@ -114,6 +131,7 @@ public class SpeechClient implements BackgroundResource {
    * Constructs an instance of SpeechClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use SpeechSettings}.
    */
+  @BetaApi
   public static final SpeechClient create(SpeechStub stub) {
     return new SpeechClient(stub);
   }
@@ -138,6 +156,7 @@ public class SpeechClient implements BackgroundResource {
     return settings;
   }
 
+  @BetaApi
   public SpeechStub getStub() {
     return stub;
   }
@@ -283,8 +302,8 @@ public class SpeechClient implements BackgroundResource {
    * @param audio &#42;Required&#42; The audio data to be recognized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  public final OperationFuture<AsyncRecognizeResponse, AsyncRecognizeMetadata, Operation>
-      asyncRecognizeAsync(RecognitionConfig config, RecognitionAudio audio) {
+  public final OperationFuture<AsyncRecognizeResponse, AsyncRecognizeMetadata> asyncRecognizeAsync(
+      RecognitionConfig config, RecognitionAudio audio) {
 
     AsyncRecognizeRequest request =
         AsyncRecognizeRequest.newBuilder().setConfig(config).setAudio(audio).build();
@@ -323,8 +342,8 @@ public class SpeechClient implements BackgroundResource {
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  public final OperationFuture<AsyncRecognizeResponse, AsyncRecognizeMetadata, Operation>
-      asyncRecognizeAsync(AsyncRecognizeRequest request) {
+  public final OperationFuture<AsyncRecognizeResponse, AsyncRecognizeMetadata> asyncRecognizeAsync(
+      AsyncRecognizeRequest request) {
     return asyncRecognizeOperationCallable().futureCall(request);
   }
 
@@ -360,7 +379,7 @@ public class SpeechClient implements BackgroundResource {
    * </code></pre>
    */
   public final OperationCallable<
-          AsyncRecognizeRequest, AsyncRecognizeResponse, AsyncRecognizeMetadata, Operation>
+          AsyncRecognizeRequest, AsyncRecognizeResponse, AsyncRecognizeMetadata>
       asyncRecognizeOperationCallable() {
     return stub.asyncRecognizeOperationCallable();
   }
@@ -434,7 +453,7 @@ public class SpeechClient implements BackgroundResource {
    * }
    * </code></pre>
    */
-  public final StreamingCallable<StreamingRecognizeRequest, StreamingRecognizeResponse>
+  public final BidiStreamingCallable<StreamingRecognizeRequest, StreamingRecognizeResponse>
       streamingRecognizeCallable() {
     return stub.streamingRecognizeCallable();
   }
