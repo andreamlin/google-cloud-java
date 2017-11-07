@@ -37,11 +37,11 @@ public class JsonComputeExample {
     AddressSettings addressSettings =
         AddressSettings.newBuilder()
             .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
-            .setTransportProvider(AddressSettings.defaultHttpJsonTransportProviderBuilder()
-                .setChannelProvider(AddressSettings.defaultHttpJsonChannelProviderBuilder()
+            .setTransportChannelProvider(AddressSettings.defaultHttpJsonTransportProviderBuilder().build())
+                             .setEndpoint(myEndpoint)
                     .setEndpoint(myEndpoint)
-                    .build())
-                .build())
+                    .build()
+                .build()
             .build();
     AddressClient addressClient =
         AddressClient.create(addressSettings);
