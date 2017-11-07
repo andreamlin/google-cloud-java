@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -357,14 +358,14 @@ public class UrlMapSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<DeleteUrlMapHttpRequest, Operation> deleteUrlMapSettings;
-    private final UnaryCallSettings.Builder<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings;
-    private final UnaryCallSettings.Builder<InsertUrlMapHttpRequest, Operation> insertUrlMapSettings;
-    private final UnaryCallSettings.Builder<InvalidateCacheUrlMapHttpRequest, Operation> invalidateCacheUrlMapSettings;
+    private final UnaryCallSettings.Builder deleteUrlMapSettings;
+    private final UnaryCallSettings.Builder getUrlMapSettings;
+    private final UnaryCallSettings.Builder insertUrlMapSettings;
+    private final UnaryCallSettings.Builder invalidateCacheUrlMapSettings;
     private final PagedCallSettings.Builder<ListUrlMapsHttpRequest, UrlMapList, ListUrlMapsPagedResponse> listUrlMapsSettings;
-    private final UnaryCallSettings.Builder<PatchUrlMapHttpRequest, Operation> patchUrlMapSettings;
-    private final UnaryCallSettings.Builder<UpdateUrlMapHttpRequest, Operation> updateUrlMapSettings;
-    private final UnaryCallSettings.Builder<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapSettings;
+    private final UnaryCallSettings.Builder patchUrlMapSettings;
+    private final UnaryCallSettings.Builder updateUrlMapSettings;
+    private final UnaryCallSettings.Builder validateUrlMapSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

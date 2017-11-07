@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -416,14 +417,14 @@ public class RouterSettings extends ClientSettings {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListRoutersHttpRequest, RouterAggregatedList, AggregatedListRoutersPagedResponse> aggregatedListRoutersSettings;
-    private final UnaryCallSettings.Builder<DeleteRouterHttpRequest, Operation> deleteRouterSettings;
-    private final UnaryCallSettings.Builder<GetRouterHttpRequest, Router> getRouterSettings;
-    private final UnaryCallSettings.Builder<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterSettings;
-    private final UnaryCallSettings.Builder<InsertRouterHttpRequest, Operation> insertRouterSettings;
+    private final UnaryCallSettings.Builder deleteRouterSettings;
+    private final UnaryCallSettings.Builder getRouterSettings;
+    private final UnaryCallSettings.Builder getRouterStatusRouterSettings;
+    private final UnaryCallSettings.Builder insertRouterSettings;
     private final PagedCallSettings.Builder<ListRoutersHttpRequest, RouterList, ListRoutersPagedResponse> listRoutersSettings;
-    private final UnaryCallSettings.Builder<PatchRouterHttpRequest, Operation> patchRouterSettings;
-    private final UnaryCallSettings.Builder<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterSettings;
-    private final UnaryCallSettings.Builder<UpdateRouterHttpRequest, Operation> updateRouterSettings;
+    private final UnaryCallSettings.Builder patchRouterSettings;
+    private final UnaryCallSettings.Builder previewRouterSettings;
+    private final UnaryCallSettings.Builder updateRouterSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

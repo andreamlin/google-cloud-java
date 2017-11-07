@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -330,11 +331,11 @@ public class TargetHttpProxySettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<DeleteTargetHttpProxyHttpRequest, Operation> deleteTargetHttpProxySettings;
-    private final UnaryCallSettings.Builder<GetTargetHttpProxyHttpRequest, TargetHttpProxy> getTargetHttpProxySettings;
-    private final UnaryCallSettings.Builder<InsertTargetHttpProxyHttpRequest, Operation> insertTargetHttpProxySettings;
+    private final UnaryCallSettings.Builder deleteTargetHttpProxySettings;
+    private final UnaryCallSettings.Builder getTargetHttpProxySettings;
+    private final UnaryCallSettings.Builder insertTargetHttpProxySettings;
     private final PagedCallSettings.Builder<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList, ListTargetHttpProxiesPagedResponse> listTargetHttpProxiesSettings;
-    private final UnaryCallSettings.Builder<SetUrlMapTargetHttpProxyHttpRequest, Operation> setUrlMapTargetHttpProxySettings;
+    private final UnaryCallSettings.Builder setUrlMapTargetHttpProxySettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -380,9 +381,9 @@ public class VpnTunnelSettings extends ClientSettings {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, AggregatedListVpnTunnelsPagedResponse> aggregatedListVpnTunnelsSettings;
-    private final UnaryCallSettings.Builder<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelSettings;
-    private final UnaryCallSettings.Builder<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelSettings;
-    private final UnaryCallSettings.Builder<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelSettings;
+    private final UnaryCallSettings.Builder deleteVpnTunnelSettings;
+    private final UnaryCallSettings.Builder getVpnTunnelSettings;
+    private final UnaryCallSettings.Builder insertVpnTunnelSettings;
     private final PagedCallSettings.Builder<ListVpnTunnelsHttpRequest, VpnTunnelList, ListVpnTunnelsPagedResponse> listVpnTunnelsSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;

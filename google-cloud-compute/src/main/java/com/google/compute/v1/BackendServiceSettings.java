@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -407,13 +408,13 @@ public class BackendServiceSettings extends ClientSettings {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, AggregatedListBackendServicesPagedResponse> aggregatedListBackendServicesSettings;
-    private final UnaryCallSettings.Builder<DeleteBackendServiceHttpRequest, Operation> deleteBackendServiceSettings;
-    private final UnaryCallSettings.Builder<GetBackendServiceHttpRequest, BackendService> getBackendServiceSettings;
-    private final UnaryCallSettings.Builder<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthBackendServiceSettings;
-    private final UnaryCallSettings.Builder<InsertBackendServiceHttpRequest, Operation> insertBackendServiceSettings;
+    private final UnaryCallSettings.Builder deleteBackendServiceSettings;
+    private final UnaryCallSettings.Builder getBackendServiceSettings;
+    private final UnaryCallSettings.Builder getHealthBackendServiceSettings;
+    private final UnaryCallSettings.Builder insertBackendServiceSettings;
     private final PagedCallSettings.Builder<ListBackendServicesHttpRequest, BackendServiceList, ListBackendServicesPagedResponse> listBackendServicesSettings;
-    private final UnaryCallSettings.Builder<PatchBackendServiceHttpRequest, Operation> patchBackendServiceSettings;
-    private final UnaryCallSettings.Builder<UpdateBackendServiceHttpRequest, Operation> updateBackendServiceSettings;
+    private final UnaryCallSettings.Builder patchBackendServiceSettings;
+    private final UnaryCallSettings.Builder updateBackendServiceSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

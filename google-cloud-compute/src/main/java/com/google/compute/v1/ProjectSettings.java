@@ -17,12 +17,13 @@ package com.google.compute.v1;
 
 import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -276,11 +277,11 @@ public class ProjectSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<GetProjectHttpRequest, Project> getProjectSettings;
-    private final UnaryCallSettings.Builder<MoveDiskProjectHttpRequest, Operation> moveDiskProjectSettings;
-    private final UnaryCallSettings.Builder<MoveInstanceProjectHttpRequest, Operation> moveInstanceProjectSettings;
-    private final UnaryCallSettings.Builder<SetCommonInstanceMetadataProjectHttpRequest, Operation> setCommonInstanceMetadataProjectSettings;
-    private final UnaryCallSettings.Builder<SetUsageExportBucketProjectHttpRequest, Operation> setUsageExportBucketProjectSettings;
+    private final UnaryCallSettings.Builder getProjectSettings;
+    private final UnaryCallSettings.Builder moveDiskProjectSettings;
+    private final UnaryCallSettings.Builder moveInstanceProjectSettings;
+    private final UnaryCallSettings.Builder setCommonInstanceMetadataProjectSettings;
+    private final UnaryCallSettings.Builder setUsageExportBucketProjectSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

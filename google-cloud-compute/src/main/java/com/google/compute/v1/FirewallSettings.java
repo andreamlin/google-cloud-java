@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -339,12 +340,12 @@ public class FirewallSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<DeleteFirewallHttpRequest, Operation> deleteFirewallSettings;
-    private final UnaryCallSettings.Builder<GetFirewallHttpRequest, Firewall> getFirewallSettings;
-    private final UnaryCallSettings.Builder<InsertFirewallHttpRequest, Operation> insertFirewallSettings;
+    private final UnaryCallSettings.Builder deleteFirewallSettings;
+    private final UnaryCallSettings.Builder getFirewallSettings;
+    private final UnaryCallSettings.Builder insertFirewallSettings;
     private final PagedCallSettings.Builder<ListFirewallsHttpRequest, FirewallList, ListFirewallsPagedResponse> listFirewallsSettings;
-    private final UnaryCallSettings.Builder<PatchFirewallHttpRequest, Operation> patchFirewallSettings;
-    private final UnaryCallSettings.Builder<UpdateFirewallHttpRequest, Operation> updateFirewallSettings;
+    private final UnaryCallSettings.Builder patchFirewallSettings;
+    private final UnaryCallSettings.Builder updateFirewallSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

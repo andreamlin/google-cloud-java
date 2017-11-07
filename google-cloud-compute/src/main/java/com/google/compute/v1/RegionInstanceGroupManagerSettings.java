@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -384,17 +385,17 @@ public class RegionInstanceGroupManagerSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation> abandonInstancesRegionInstanceGroupManagerSettings;
-    private final UnaryCallSettings.Builder<DeleteRegionInstanceGroupManagerHttpRequest, Operation> deleteRegionInstanceGroupManagerSettings;
-    private final UnaryCallSettings.Builder<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation> deleteInstancesRegionInstanceGroupManagerSettings;
-    private final UnaryCallSettings.Builder<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager> getRegionInstanceGroupManagerSettings;
-    private final UnaryCallSettings.Builder<InsertRegionInstanceGroupManagerHttpRequest, Operation> insertRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder abandonInstancesRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder deleteRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder deleteInstancesRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder getRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder insertRegionInstanceGroupManagerSettings;
     private final PagedCallSettings.Builder<ListRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagerList, ListRegionInstanceGroupManagersPagedResponse> listRegionInstanceGroupManagersSettings;
-    private final UnaryCallSettings.Builder<ListManagedInstancesRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagersListInstancesResponse> listManagedInstancesRegionInstanceGroupManagersSettings;
-    private final UnaryCallSettings.Builder<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation> recreateInstancesRegionInstanceGroupManagerSettings;
-    private final UnaryCallSettings.Builder<ResizeRegionInstanceGroupManagerHttpRequest, Operation> resizeRegionInstanceGroupManagerSettings;
-    private final UnaryCallSettings.Builder<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateRegionInstanceGroupManagerSettings;
-    private final UnaryCallSettings.Builder<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation> setTargetPoolsRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder listManagedInstancesRegionInstanceGroupManagersSettings;
+    private final UnaryCallSettings.Builder recreateInstancesRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder resizeRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder setInstanceTemplateRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder setTargetPoolsRegionInstanceGroupManagerSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

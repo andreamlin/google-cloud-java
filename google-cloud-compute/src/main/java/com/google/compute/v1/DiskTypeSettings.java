@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -362,7 +363,7 @@ public class DiskTypeSettings extends ClientSettings {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList, AggregatedListDiskTypesPagedResponse> aggregatedListDiskTypesSettings;
-    private final UnaryCallSettings.Builder<GetDiskTypeHttpRequest, DiskType> getDiskTypeSettings;
+    private final UnaryCallSettings.Builder getDiskTypeSettings;
     private final PagedCallSettings.Builder<ListDiskTypesHttpRequest, DiskTypeList, ListDiskTypesPagedResponse> listDiskTypesSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;

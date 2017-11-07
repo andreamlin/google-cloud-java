@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -389,11 +390,11 @@ public class ForwardingRuleSettings extends ClientSettings {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList, AggregatedListForwardingRulesPagedResponse> aggregatedListForwardingRulesSettings;
-    private final UnaryCallSettings.Builder<DeleteForwardingRuleHttpRequest, Operation> deleteForwardingRuleSettings;
-    private final UnaryCallSettings.Builder<GetForwardingRuleHttpRequest, ForwardingRule> getForwardingRuleSettings;
-    private final UnaryCallSettings.Builder<InsertForwardingRuleHttpRequest, Operation> insertForwardingRuleSettings;
+    private final UnaryCallSettings.Builder deleteForwardingRuleSettings;
+    private final UnaryCallSettings.Builder getForwardingRuleSettings;
+    private final UnaryCallSettings.Builder insertForwardingRuleSettings;
     private final PagedCallSettings.Builder<ListForwardingRulesHttpRequest, ForwardingRuleList, ListForwardingRulesPagedResponse> listForwardingRulesSettings;
-    private final UnaryCallSettings.Builder<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleSettings;
+    private final UnaryCallSettings.Builder setTargetForwardingRuleSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

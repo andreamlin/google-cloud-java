@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -339,12 +340,12 @@ public class HttpsHealthCheckSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<DeleteHttpsHealthCheckHttpRequest, Operation> deleteHttpsHealthCheckSettings;
-    private final UnaryCallSettings.Builder<GetHttpsHealthCheckHttpRequest, HttpsHealthCheck> getHttpsHealthCheckSettings;
-    private final UnaryCallSettings.Builder<InsertHttpsHealthCheckHttpRequest, Operation> insertHttpsHealthCheckSettings;
+    private final UnaryCallSettings.Builder deleteHttpsHealthCheckSettings;
+    private final UnaryCallSettings.Builder getHttpsHealthCheckSettings;
+    private final UnaryCallSettings.Builder insertHttpsHealthCheckSettings;
     private final PagedCallSettings.Builder<ListHttpsHealthChecksHttpRequest, HttpsHealthCheckList, ListHttpsHealthChecksPagedResponse> listHttpsHealthChecksSettings;
-    private final UnaryCallSettings.Builder<PatchHttpsHealthCheckHttpRequest, Operation> patchHttpsHealthCheckSettings;
-    private final UnaryCallSettings.Builder<UpdateHttpsHealthCheckHttpRequest, Operation> updateHttpsHealthCheckSettings;
+    private final UnaryCallSettings.Builder patchHttpsHealthCheckSettings;
+    private final UnaryCallSettings.Builder updateHttpsHealthCheckSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -339,12 +340,12 @@ public class TargetHttpsProxySettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<DeleteTargetHttpsProxyHttpRequest, Operation> deleteTargetHttpsProxySettings;
-    private final UnaryCallSettings.Builder<GetTargetHttpsProxyHttpRequest, TargetHttpsProxy> getTargetHttpsProxySettings;
-    private final UnaryCallSettings.Builder<InsertTargetHttpsProxyHttpRequest, Operation> insertTargetHttpsProxySettings;
+    private final UnaryCallSettings.Builder deleteTargetHttpsProxySettings;
+    private final UnaryCallSettings.Builder getTargetHttpsProxySettings;
+    private final UnaryCallSettings.Builder insertTargetHttpsProxySettings;
     private final PagedCallSettings.Builder<ListTargetHttpsProxiesHttpRequest, TargetHttpsProxyList, ListTargetHttpsProxiesPagedResponse> listTargetHttpsProxiesSettings;
-    private final UnaryCallSettings.Builder<SetSslCertificatesTargetHttpsProxyHttpRequest, Operation> setSslCertificatesTargetHttpsProxySettings;
-    private final UnaryCallSettings.Builder<SetUrlMapTargetHttpsProxyHttpRequest, Operation> setUrlMapTargetHttpsProxySettings;
+    private final UnaryCallSettings.Builder setSslCertificatesTargetHttpsProxySettings;
+    private final UnaryCallSettings.Builder setUrlMapTargetHttpsProxySettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

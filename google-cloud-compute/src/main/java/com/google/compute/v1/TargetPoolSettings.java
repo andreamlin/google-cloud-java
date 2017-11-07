@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -433,17 +434,17 @@ public class TargetPoolSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolSettings;
-    private final UnaryCallSettings.Builder<AddInstanceTargetPoolHttpRequest, Operation> addInstanceTargetPoolSettings;
+    private final UnaryCallSettings.Builder addHealthCheckTargetPoolSettings;
+    private final UnaryCallSettings.Builder addInstanceTargetPoolSettings;
     private final PagedCallSettings.Builder<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, AggregatedListTargetPoolsPagedResponse> aggregatedListTargetPoolsSettings;
-    private final UnaryCallSettings.Builder<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolSettings;
-    private final UnaryCallSettings.Builder<GetTargetPoolHttpRequest, TargetPool> getTargetPoolSettings;
-    private final UnaryCallSettings.Builder<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> getHealthTargetPoolSettings;
-    private final UnaryCallSettings.Builder<InsertTargetPoolHttpRequest, Operation> insertTargetPoolSettings;
+    private final UnaryCallSettings.Builder deleteTargetPoolSettings;
+    private final UnaryCallSettings.Builder getTargetPoolSettings;
+    private final UnaryCallSettings.Builder getHealthTargetPoolSettings;
+    private final UnaryCallSettings.Builder insertTargetPoolSettings;
     private final PagedCallSettings.Builder<ListTargetPoolsHttpRequest, TargetPoolList, ListTargetPoolsPagedResponse> listTargetPoolsSettings;
-    private final UnaryCallSettings.Builder<RemoveHealthCheckTargetPoolHttpRequest, Operation> removeHealthCheckTargetPoolSettings;
-    private final UnaryCallSettings.Builder<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolSettings;
-    private final UnaryCallSettings.Builder<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolSettings;
+    private final UnaryCallSettings.Builder removeHealthCheckTargetPoolSettings;
+    private final UnaryCallSettings.Builder removeInstanceTargetPoolSettings;
+    private final UnaryCallSettings.Builder setBackupTargetPoolSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

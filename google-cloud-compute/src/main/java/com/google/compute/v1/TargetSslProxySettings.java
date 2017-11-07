@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -348,13 +349,13 @@ public class TargetSslProxySettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxySettings;
-    private final UnaryCallSettings.Builder<GetTargetSslProxyHttpRequest, TargetSslProxy> getTargetSslProxySettings;
-    private final UnaryCallSettings.Builder<InsertTargetSslProxyHttpRequest, Operation> insertTargetSslProxySettings;
+    private final UnaryCallSettings.Builder deleteTargetSslProxySettings;
+    private final UnaryCallSettings.Builder getTargetSslProxySettings;
+    private final UnaryCallSettings.Builder insertTargetSslProxySettings;
     private final PagedCallSettings.Builder<ListTargetSslProxiesHttpRequest, TargetSslProxyList, ListTargetSslProxiesPagedResponse> listTargetSslProxiesSettings;
-    private final UnaryCallSettings.Builder<SetBackendServiceTargetSslProxyHttpRequest, Operation> setBackendServiceTargetSslProxySettings;
-    private final UnaryCallSettings.Builder<SetProxyHeaderTargetSslProxyHttpRequest, Operation> setProxyHeaderTargetSslProxySettings;
-    private final UnaryCallSettings.Builder<SetSslCertificatesTargetSslProxyHttpRequest, Operation> setSslCertificatesTargetSslProxySettings;
+    private final UnaryCallSettings.Builder setBackendServiceTargetSslProxySettings;
+    private final UnaryCallSettings.Builder setProxyHeaderTargetSslProxySettings;
+    private final UnaryCallSettings.Builder setSslCertificatesTargetSslProxySettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

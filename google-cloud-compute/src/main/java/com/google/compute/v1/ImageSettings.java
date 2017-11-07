@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -339,11 +340,11 @@ public class ImageSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<DeleteImageHttpRequest, Operation> deleteImageSettings;
-    private final UnaryCallSettings.Builder<DeprecateImageHttpRequest, Operation> deprecateImageSettings;
-    private final UnaryCallSettings.Builder<GetImageHttpRequest, Image> getImageSettings;
-    private final UnaryCallSettings.Builder<GetFromFamilyImageHttpRequest, Image> getFromFamilyImageSettings;
-    private final UnaryCallSettings.Builder<InsertImageHttpRequest, Operation> insertImageSettings;
+    private final UnaryCallSettings.Builder deleteImageSettings;
+    private final UnaryCallSettings.Builder deprecateImageSettings;
+    private final UnaryCallSettings.Builder getImageSettings;
+    private final UnaryCallSettings.Builder getFromFamilyImageSettings;
+    private final UnaryCallSettings.Builder insertImageSettings;
     private final PagedCallSettings.Builder<ListImagesHttpRequest, ImageList, ListImagesPagedResponse> listImagesSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;

@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -348,13 +349,13 @@ public class RegionBackendServiceSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceSettings;
-    private final UnaryCallSettings.Builder<GetRegionBackendServiceHttpRequest, BackendService> getRegionBackendServiceSettings;
-    private final UnaryCallSettings.Builder<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthRegionBackendServiceSettings;
-    private final UnaryCallSettings.Builder<InsertRegionBackendServiceHttpRequest, Operation> insertRegionBackendServiceSettings;
+    private final UnaryCallSettings.Builder deleteRegionBackendServiceSettings;
+    private final UnaryCallSettings.Builder getRegionBackendServiceSettings;
+    private final UnaryCallSettings.Builder getHealthRegionBackendServiceSettings;
+    private final UnaryCallSettings.Builder insertRegionBackendServiceSettings;
     private final PagedCallSettings.Builder<ListRegionBackendServicesHttpRequest, BackendServiceList, ListRegionBackendServicesPagedResponse> listRegionBackendServicesSettings;
-    private final UnaryCallSettings.Builder<PatchRegionBackendServiceHttpRequest, Operation> patchRegionBackendServiceSettings;
-    private final UnaryCallSettings.Builder<UpdateRegionBackendServiceHttpRequest, Operation> updateRegionBackendServiceSettings;
+    private final UnaryCallSettings.Builder patchRegionBackendServiceSettings;
+    private final UnaryCallSettings.Builder updateRegionBackendServiceSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

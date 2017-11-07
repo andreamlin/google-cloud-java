@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -464,15 +465,15 @@ public class InstanceGroupSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupSettings;
+    private final UnaryCallSettings.Builder addInstancesInstanceGroupSettings;
     private final PagedCallSettings.Builder<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList, AggregatedListInstanceGroupsPagedResponse> aggregatedListInstanceGroupsSettings;
-    private final UnaryCallSettings.Builder<DeleteInstanceGroupHttpRequest, Operation> deleteInstanceGroupSettings;
-    private final UnaryCallSettings.Builder<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupSettings;
-    private final UnaryCallSettings.Builder<InsertInstanceGroupHttpRequest, Operation> insertInstanceGroupSettings;
+    private final UnaryCallSettings.Builder deleteInstanceGroupSettings;
+    private final UnaryCallSettings.Builder getInstanceGroupSettings;
+    private final UnaryCallSettings.Builder insertInstanceGroupSettings;
     private final PagedCallSettings.Builder<ListInstanceGroupsHttpRequest, InstanceGroupList, ListInstanceGroupsPagedResponse> listInstanceGroupsSettings;
     private final PagedCallSettings.Builder<ListInstancesInstanceGroupsHttpRequest, InstanceGroupsListInstances, ListInstancesInstanceGroupsPagedResponse> listInstancesInstanceGroupsSettings;
-    private final UnaryCallSettings.Builder<RemoveInstancesInstanceGroupHttpRequest, Operation> removeInstancesInstanceGroupSettings;
-    private final UnaryCallSettings.Builder<SetNamedPortsInstanceGroupHttpRequest, Operation> setNamedPortsInstanceGroupSettings;
+    private final UnaryCallSettings.Builder removeInstancesInstanceGroupSettings;
+    private final UnaryCallSettings.Builder setNamedPortsInstanceGroupSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

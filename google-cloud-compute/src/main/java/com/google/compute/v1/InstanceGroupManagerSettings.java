@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -442,18 +443,18 @@ public class InstanceGroupManagerSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<AbandonInstancesInstanceGroupManagerHttpRequest, Operation> abandonInstancesInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder abandonInstancesInstanceGroupManagerSettings;
     private final PagedCallSettings.Builder<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, AggregatedListInstanceGroupManagersPagedResponse> aggregatedListInstanceGroupManagersSettings;
-    private final UnaryCallSettings.Builder<DeleteInstanceGroupManagerHttpRequest, Operation> deleteInstanceGroupManagerSettings;
-    private final UnaryCallSettings.Builder<DeleteInstancesInstanceGroupManagerHttpRequest, Operation> deleteInstancesInstanceGroupManagerSettings;
-    private final UnaryCallSettings.Builder<GetInstanceGroupManagerHttpRequest, InstanceGroupManager> getInstanceGroupManagerSettings;
-    private final UnaryCallSettings.Builder<InsertInstanceGroupManagerHttpRequest, Operation> insertInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder deleteInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder deleteInstancesInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder getInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder insertInstanceGroupManagerSettings;
     private final PagedCallSettings.Builder<ListInstanceGroupManagersHttpRequest, InstanceGroupManagerList, ListInstanceGroupManagersPagedResponse> listInstanceGroupManagersSettings;
-    private final UnaryCallSettings.Builder<ListManagedInstancesInstanceGroupManagersHttpRequest, InstanceGroupManagersListManagedInstancesResponse> listManagedInstancesInstanceGroupManagersSettings;
-    private final UnaryCallSettings.Builder<RecreateInstancesInstanceGroupManagerHttpRequest, Operation> recreateInstancesInstanceGroupManagerSettings;
-    private final UnaryCallSettings.Builder<ResizeInstanceGroupManagerHttpRequest, Operation> resizeInstanceGroupManagerSettings;
-    private final UnaryCallSettings.Builder<SetInstanceTemplateInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateInstanceGroupManagerSettings;
-    private final UnaryCallSettings.Builder<SetTargetPoolsInstanceGroupManagerHttpRequest, Operation> setTargetPoolsInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder listManagedInstancesInstanceGroupManagersSettings;
+    private final UnaryCallSettings.Builder recreateInstancesInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder resizeInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder setInstanceTemplateInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder setTargetPoolsInstanceGroupManagerSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 

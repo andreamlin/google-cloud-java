@@ -18,12 +18,13 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.grpc.GrpcExtraHeaderData;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
@@ -330,11 +331,11 @@ public class GlobalForwardingRuleSettings extends ClientSettings {
   public static class Builder extends ClientSettings.Builder {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<DeleteGlobalForwardingRuleHttpRequest, Operation> deleteGlobalForwardingRuleSettings;
-    private final UnaryCallSettings.Builder<GetGlobalForwardingRuleHttpRequest, ForwardingRule> getGlobalForwardingRuleSettings;
-    private final UnaryCallSettings.Builder<InsertGlobalForwardingRuleHttpRequest, Operation> insertGlobalForwardingRuleSettings;
+    private final UnaryCallSettings.Builder deleteGlobalForwardingRuleSettings;
+    private final UnaryCallSettings.Builder getGlobalForwardingRuleSettings;
+    private final UnaryCallSettings.Builder insertGlobalForwardingRuleSettings;
     private final PagedCallSettings.Builder<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList, ListGlobalForwardingRulesPagedResponse> listGlobalForwardingRulesSettings;
-    private final UnaryCallSettings.Builder<SetTargetGlobalForwardingRuleHttpRequest, Operation> setTargetGlobalForwardingRuleSettings;
+    private final UnaryCallSettings.Builder setTargetGlobalForwardingRuleSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
