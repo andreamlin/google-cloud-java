@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,97 +61,91 @@ import javax.annotation.Generated;
 public class HttpJsonFirewallStub extends FirewallStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteFirewallHttpRequest, Operation> directDeleteFirewallCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteFirewallHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.firewalls.delete")
-              .setRequestInstance(DeleteFirewallHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "firewall",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetFirewallHttpRequest, Firewall> directGetFirewallCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetFirewallHttpRequest, Firewall>newBuilder()
-              .setMethodName("compute.firewalls.get")
-              .setRequestInstance(GetFirewallHttpRequest.getDefaultInstance())
-              .setResponseInstance(Firewall.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "firewall",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertFirewallHttpRequest, Operation> directInsertFirewallCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertFirewallHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.firewalls.insert")
-              .setRequestInstance(InsertFirewallHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/firewalls")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListFirewallsHttpRequest, FirewallList> directListFirewallsCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListFirewallsHttpRequest, FirewallList>newBuilder()
-              .setMethodName("compute.firewalls.list")
-              .setRequestInstance(ListFirewallsHttpRequest.getDefaultInstance())
-              .setResponseInstance(FirewallList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/firewalls")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<PatchFirewallHttpRequest, Operation> directPatchFirewallCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<PatchFirewallHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.firewalls.patch")
-              .setRequestInstance(PatchFirewallHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "firewall",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.PATCH)
-              .build());
-  private static final UnaryCallable<UpdateFirewallHttpRequest, Operation> directUpdateFirewallCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<UpdateFirewallHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.firewalls.update")
-              .setRequestInstance(UpdateFirewallHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "firewall",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.PUT)
-              .build());
+  private static final ApiMethodDescriptor<DeleteFirewallHttpRequest, Operation> deleteFirewallMethodDescriptor =
+      ApiMethodDescriptor.<DeleteFirewallHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.firewalls.delete")
+          .setRequestInstance(DeleteFirewallHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "firewall",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetFirewallHttpRequest, Firewall> getFirewallMethodDescriptor =
+      ApiMethodDescriptor.<GetFirewallHttpRequest, Firewall>newBuilder()
+          .setMethodName("compute.firewalls.get")
+          .setRequestInstance(GetFirewallHttpRequest.getDefaultInstance())
+          .setResponseInstance(Firewall.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "firewall",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertFirewallHttpRequest, Operation> insertFirewallMethodDescriptor =
+      ApiMethodDescriptor.<InsertFirewallHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.firewalls.insert")
+          .setRequestInstance(InsertFirewallHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/firewalls")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListFirewallsHttpRequest, FirewallList> listFirewallsMethodDescriptor =
+      ApiMethodDescriptor.<ListFirewallsHttpRequest, FirewallList>newBuilder()
+          .setMethodName("compute.firewalls.list")
+          .setRequestInstance(ListFirewallsHttpRequest.getDefaultInstance())
+          .setResponseInstance(FirewallList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/firewalls")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<PatchFirewallHttpRequest, Operation> patchFirewallMethodDescriptor =
+      ApiMethodDescriptor.<PatchFirewallHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.firewalls.patch")
+          .setRequestInstance(PatchFirewallHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "firewall",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.PATCH)
+          .build());
+  private static final ApiMethodDescriptor<UpdateFirewallHttpRequest, Operation> updateFirewallMethodDescriptor =
+      ApiMethodDescriptor.<UpdateFirewallHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.firewalls.update")
+          .setRequestInstance(UpdateFirewallHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "firewall",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.PUT)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -178,14 +172,38 @@ public class HttpJsonFirewallStub extends FirewallStub {
    */
   protected HttpJsonFirewallStub(FirewallSettings settings, ClientContext clientContext) throws IOException {
 
-    this.deleteFirewallCallable = HttpJsonCallableFactory.create(directDeleteFirewallCallable,settings.deleteFirewallSettings(), clientContext);
-    this.getFirewallCallable = HttpJsonCallableFactory.create(directGetFirewallCallable,settings.getFirewallSettings(), clientContext);
-    this.insertFirewallCallable = HttpJsonCallableFactory.create(directInsertFirewallCallable,settings.insertFirewallSettings(), clientContext);
-    this.listFirewallsCallable = HttpJsonCallableFactory.create(directListFirewallsCallable,settings.listFirewallsSettings(), clientContext);
-    this.listFirewallsPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListFirewallsCallable,settings.listFirewallsSettings(), clientContext);
-    this.patchFirewallCallable = HttpJsonCallableFactory.create(directPatchFirewallCallable,settings.patchFirewallSettings(), clientContext);
-    this.updateFirewallCallable = HttpJsonCallableFactory.create(directUpdateFirewallCallable,settings.updateFirewallSettings(), clientContext);
+    HttpJsonCallSettings<DeleteFirewallHttpRequest, Operation> deleteFirewallTransportSettings =
+        HttpJsonCallSettings.<DeleteFirewallHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteFirewallMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetFirewallHttpRequest, Firewall> getFirewallTransportSettings =
+        HttpJsonCallSettings.<GetFirewallHttpRequest, Firewall>newBuilder()
+            .setMethodDescriptor(getFirewallMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertFirewallHttpRequest, Operation> insertFirewallTransportSettings =
+        HttpJsonCallSettings.<InsertFirewallHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertFirewallMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListFirewallsHttpRequest, FirewallList> listFirewallsTransportSettings =
+        HttpJsonCallSettings.<ListFirewallsHttpRequest, FirewallList>newBuilder()
+            .setMethodDescriptor(listFirewallsMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<PatchFirewallHttpRequest, Operation> patchFirewallTransportSettings =
+        HttpJsonCallSettings.<PatchFirewallHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(patchFirewallMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<UpdateFirewallHttpRequest, Operation> updateFirewallTransportSettings =
+        HttpJsonCallSettings.<UpdateFirewallHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(updateFirewallMethodDescriptor)
+            .build();
+
+    this.deleteFirewallCallable = HttpJsonCallableFactory.createUnaryCallable(deleteFirewallTransportSettings,settings.deleteFirewallSettings(), clientContext);
+    this.getFirewallCallable = HttpJsonCallableFactory.createUnaryCallable(getFirewallTransportSettings,settings.getFirewallSettings(), clientContext);
+    this.insertFirewallCallable = HttpJsonCallableFactory.createUnaryCallable(insertFirewallTransportSettings,settings.insertFirewallSettings(), clientContext);
+    this.listFirewallsCallable = HttpJsonCallableFactory.createUnaryCallable(listFirewallsTransportSettings,settings.listFirewallsSettings(), clientContext);
+    this.listFirewallsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listFirewallsTransportSettings,settings.listFirewallsSettings(), clientContext);
+    this.patchFirewallCallable = HttpJsonCallableFactory.createUnaryCallable(patchFirewallTransportSettings,settings.patchFirewallSettings(), clientContext);
+    this.updateFirewallCallable = HttpJsonCallableFactory.createUnaryCallable(updateFirewallTransportSettings,settings.updateFirewallSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

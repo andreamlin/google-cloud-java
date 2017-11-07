@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
- *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+ *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
  *   Operation response = urlMapClient.deleteUrlMap(urlMap);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * UrlMapSettings urlMapSettings =
  *     UrlMapSettings.newBuilder()
- *         .setTransportProvider(UrlMapSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(UrlMapSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(UrlMapSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * UrlMapClient urlMapClient =
@@ -130,6 +128,7 @@ public class UrlMapClient implements BackgroundResource {
    * Constructs an instance of UrlMapClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use UrlMapSettings}.
    */
+  @BetaApi
   public static final UrlMapClient create(UrlMapStub stub) {
     return new UrlMapClient(stub);
   }
@@ -166,7 +165,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   Operation response = urlMapClient.deleteUrlMap(urlMap);
    * }
    * </code></pre>
@@ -191,7 +190,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   DeleteUrlMapHttpRequest request = DeleteUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
    *     .build();
@@ -214,7 +213,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   DeleteUrlMapHttpRequest request = DeleteUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
    *     .build();
@@ -236,7 +235,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   UrlMap response = urlMapClient.getUrlMap(urlMap);
    * }
    * </code></pre>
@@ -261,7 +260,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   GetUrlMapHttpRequest request = GetUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
    *     .build();
@@ -284,7 +283,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   GetUrlMapHttpRequest request = GetUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
    *     .build();
@@ -306,7 +305,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   UrlMap urlMap = UrlMap.newBuilder().build();
    *   Operation response = urlMapClient.insertUrlMap(project, urlMap);
    * }
@@ -334,7 +333,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   UrlMap urlMap = UrlMap.newBuilder().build();
    *   InsertUrlMapHttpRequest request = InsertUrlMapHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -359,7 +358,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   UrlMap urlMap = UrlMap.newBuilder().build();
    *   InsertUrlMapHttpRequest request = InsertUrlMapHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -383,7 +382,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   CacheInvalidationRule cacheInvalidationRule = CacheInvalidationRule.newBuilder().build();
    *   Operation response = urlMapClient.invalidateCacheUrlMap(urlMap, cacheInvalidationRule);
    * }
@@ -411,7 +410,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   CacheInvalidationRule cacheInvalidationRule = CacheInvalidationRule.newBuilder().build();
    *   InvalidateCacheUrlMapHttpRequest request = InvalidateCacheUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
@@ -436,7 +435,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   CacheInvalidationRule cacheInvalidationRule = CacheInvalidationRule.newBuilder().build();
    *   InvalidateCacheUrlMapHttpRequest request = InvalidateCacheUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
@@ -460,7 +459,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (UrlMap element : urlMapClient.listUrlMaps(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -486,7 +485,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListUrlMapsHttpRequest request = ListUrlMapsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -512,7 +511,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListUrlMapsHttpRequest request = ListUrlMapsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -536,7 +535,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListUrlMapsHttpRequest request = ListUrlMapsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -567,7 +566,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   Operation response = urlMapClient.patchUrlMap(urlMap);
    * }
    * </code></pre>
@@ -594,7 +593,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   PatchUrlMapHttpRequest request = PatchUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
    *     .build();
@@ -617,7 +616,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   PatchUrlMapHttpRequest request = PatchUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
    *     .build();
@@ -639,7 +638,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   Operation response = urlMapClient.updateUrlMap(urlMap);
    * }
    * </code></pre>
@@ -666,7 +665,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   UpdateUrlMapHttpRequest request = UpdateUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
    *     .build();
@@ -689,7 +688,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   UpdateUrlMapHttpRequest request = UpdateUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
    *     .build();
@@ -711,7 +710,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   UrlMapsValidateRequest urlMapsValidateRequest = UrlMapsValidateRequest.newBuilder().build();
    *   UrlMapsValidateResponse response = urlMapClient.validateUrlMap(urlMap, urlMapsValidateRequest);
    * }
@@ -739,7 +738,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   UrlMapsValidateRequest urlMapsValidateRequest = UrlMapsValidateRequest.newBuilder().build();
    *   ValidateUrlMapHttpRequest request = ValidateUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)
@@ -764,7 +763,7 @@ public class UrlMapClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   UrlMapName urlMap = UrlMapName.create("[PROJECT]", "[URL_MAP]");
+   *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   UrlMapsValidateRequest urlMapsValidateRequest = UrlMapsValidateRequest.newBuilder().build();
    *   ValidateUrlMapHttpRequest request = ValidateUrlMapHttpRequest.newBuilder()
    *     .setUrlMapWithUrlMapName(urlMap)

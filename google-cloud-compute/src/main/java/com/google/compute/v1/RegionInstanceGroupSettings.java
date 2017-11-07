@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -54,7 +53,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -107,15 +105,15 @@ public class RegionInstanceGroupSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupSettings;
+  private final UnaryCallSettings<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupSettings;
   private final PagedCallSettings<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList, ListRegionInstanceGroupsPagedResponse> listRegionInstanceGroupsSettings;
   private final PagedCallSettings<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances, ListInstancesRegionInstanceGroupsPagedResponse> listInstancesRegionInstanceGroupsSettings;
-  private final SimpleCallSettings<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupSettings;
+  private final UnaryCallSettings<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupSettings;
 
   /**
    * Returns the object with the settings used for calls to getRegionInstanceGroup.
    */
-  public SimpleCallSettings<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupSettings() {
+  public UnaryCallSettings<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupSettings() {
     return getRegionInstanceGroupSettings;
   }
 
@@ -136,17 +134,19 @@ public class RegionInstanceGroupSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to setNamedPortsRegionInstanceGroup.
    */
-  public SimpleCallSettings<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupSettings() {
+  public UnaryCallSettings<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupSettings() {
     return setNamedPortsRegionInstanceGroupSettings;
   }
 
 
   public RegionInstanceGroupStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonRegionInstanceGroupStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -190,20 +190,20 @@ public class RegionInstanceGroupSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -256,8 +256,9 @@ public class RegionInstanceGroupSettings extends ClientSettings {
   private RegionInstanceGroupSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     getRegionInstanceGroupSettings = settingsBuilder.getRegionInstanceGroupSettings().build();
@@ -367,23 +368,23 @@ public class RegionInstanceGroupSettings extends ClientSettings {
    * Builder for RegionInstanceGroupSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupSettings;
     private final PagedCallSettings.Builder<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList, ListRegionInstanceGroupsPagedResponse> listRegionInstanceGroupsSettings;
     private final PagedCallSettings.Builder<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances, ListInstancesRegionInstanceGroupsPagedResponse> listInstancesRegionInstanceGroupsSettings;
-    private final SimpleCallSettings.Builder<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -412,7 +413,7 @@ public class RegionInstanceGroupSettings extends ClientSettings {
     private Builder(ClientContext clientContext) {
       super(clientContext);
 
-      getRegionInstanceGroupSettings = SimpleCallSettings.newBuilder();
+      getRegionInstanceGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listRegionInstanceGroupsSettings = PagedCallSettings.newBuilder(
           LIST_REGION_INSTANCE_GROUPS_PAGE_STR_FACT);
@@ -420,9 +421,9 @@ public class RegionInstanceGroupSettings extends ClientSettings {
       listInstancesRegionInstanceGroupsSettings = PagedCallSettings.newBuilder(
           LIST_INSTANCES_REGION_INSTANCE_GROUPS_PAGE_STR_FACT);
 
-      setNamedPortsRegionInstanceGroupSettings = SimpleCallSettings.newBuilder();
+      setNamedPortsRegionInstanceGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           getRegionInstanceGroupSettings,
           listRegionInstanceGroupsSettings,
           listInstancesRegionInstanceGroupsSettings,
@@ -434,8 +435,9 @@ public class RegionInstanceGroupSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -468,7 +470,7 @@ public class RegionInstanceGroupSettings extends ClientSettings {
       listInstancesRegionInstanceGroupsSettings = settings.listInstancesRegionInstanceGroupsSettings.toBuilder();
       setNamedPortsRegionInstanceGroupSettings = settings.setNamedPortsRegionInstanceGroupSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           getRegionInstanceGroupSettings,
           listRegionInstanceGroupsSettings,
           listInstancesRegionInstanceGroupsSettings,
@@ -483,8 +485,14 @@ public class RegionInstanceGroupSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -499,7 +507,7 @@ public class RegionInstanceGroupSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -507,7 +515,7 @@ public class RegionInstanceGroupSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to getRegionInstanceGroup.
      */
-    public SimpleCallSettings.Builder<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupSettings() {
+    public UnaryCallSettings.Builder<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupSettings() {
       return getRegionInstanceGroupSettings;
     }
 
@@ -528,7 +536,7 @@ public class RegionInstanceGroupSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to setNamedPortsRegionInstanceGroup.
      */
-    public SimpleCallSettings.Builder<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupSettings() {
+    public UnaryCallSettings.Builder<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupSettings() {
       return setNamedPortsRegionInstanceGroupSettings;
     }
 

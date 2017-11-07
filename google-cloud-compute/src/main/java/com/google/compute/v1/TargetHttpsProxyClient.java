@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
- *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.create("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+ *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
  *   Operation response = targetHttpsProxyClient.deleteTargetHttpsProxy(targetHttpsProxy);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * TargetHttpsProxySettings targetHttpsProxySettings =
  *     TargetHttpsProxySettings.newBuilder()
- *         .setTransportProvider(TargetHttpsProxySettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(TargetHttpsProxySettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(TargetHttpsProxySettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * TargetHttpsProxyClient targetHttpsProxyClient =
@@ -130,6 +128,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Constructs an instance of TargetHttpsProxyClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use TargetHttpsProxySettings}.
    */
+  @BetaApi
   public static final TargetHttpsProxyClient create(TargetHttpsProxyStub stub) {
     return new TargetHttpsProxyClient(stub);
   }
@@ -166,7 +165,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.create("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
    *   Operation response = targetHttpsProxyClient.deleteTargetHttpsProxy(targetHttpsProxy);
    * }
    * </code></pre>
@@ -191,7 +190,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.create("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
    *   DeleteTargetHttpsProxyHttpRequest request = DeleteTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxyWithTargetHttpsProxyName(targetHttpsProxy)
    *     .build();
@@ -214,7 +213,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.create("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
    *   DeleteTargetHttpsProxyHttpRequest request = DeleteTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxyWithTargetHttpsProxyName(targetHttpsProxy)
    *     .build();
@@ -236,7 +235,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.create("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
    *   TargetHttpsProxy response = targetHttpsProxyClient.getTargetHttpsProxy(targetHttpsProxy);
    * }
    * </code></pre>
@@ -261,7 +260,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.create("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
    *   GetTargetHttpsProxyHttpRequest request = GetTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxyWithTargetHttpsProxyName(targetHttpsProxy)
    *     .build();
@@ -284,7 +283,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.create("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
    *   GetTargetHttpsProxyHttpRequest request = GetTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxyWithTargetHttpsProxyName(targetHttpsProxy)
    *     .build();
@@ -306,7 +305,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   TargetHttpsProxy targetHttpsProxy = TargetHttpsProxy.newBuilder().build();
    *   Operation response = targetHttpsProxyClient.insertTargetHttpsProxy(project, targetHttpsProxy);
    * }
@@ -334,7 +333,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   TargetHttpsProxy targetHttpsProxy = TargetHttpsProxy.newBuilder().build();
    *   InsertTargetHttpsProxyHttpRequest request = InsertTargetHttpsProxyHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -359,7 +358,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   TargetHttpsProxy targetHttpsProxy = TargetHttpsProxy.newBuilder().build();
    *   InsertTargetHttpsProxyHttpRequest request = InsertTargetHttpsProxyHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -383,7 +382,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (TargetHttpsProxy element : targetHttpsProxyClient.listTargetHttpsProxies(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -409,7 +408,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListTargetHttpsProxiesHttpRequest request = ListTargetHttpsProxiesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -435,7 +434,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListTargetHttpsProxiesHttpRequest request = ListTargetHttpsProxiesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -459,7 +458,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListTargetHttpsProxiesHttpRequest request = ListTargetHttpsProxiesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -490,7 +489,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.create("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
    *   TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequest = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
    *   Operation response = targetHttpsProxyClient.setSslCertificatesTargetHttpsProxy(targetHttpsProxy, targetHttpsProxiesSetSslCertificatesRequest);
    * }
@@ -518,7 +517,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.create("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
    *   TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequest = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
    *   SetSslCertificatesTargetHttpsProxyHttpRequest request = SetSslCertificatesTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxyWithTargetHttpsProxyName(targetHttpsProxy)
@@ -543,7 +542,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.create("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
    *   TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequest = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
    *   SetSslCertificatesTargetHttpsProxyHttpRequest request = SetSslCertificatesTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxyWithTargetHttpsProxyName(targetHttpsProxy)
@@ -567,7 +566,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.create("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
    *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
    *   Operation response = targetHttpsProxyClient.setUrlMapTargetHttpsProxy(targetHttpsProxy, urlMapReference);
    * }
@@ -595,7 +594,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.create("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
    *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
    *   SetUrlMapTargetHttpsProxyHttpRequest request = SetUrlMapTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxyWithTargetHttpsProxyName(targetHttpsProxy)
@@ -620,7 +619,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
-   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.create("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
    *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
    *   SetUrlMapTargetHttpsProxyHttpRequest request = SetUrlMapTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxyWithTargetHttpsProxyName(targetHttpsProxy)

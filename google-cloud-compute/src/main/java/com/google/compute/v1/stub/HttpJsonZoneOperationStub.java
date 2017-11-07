@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,51 +57,48 @@ import javax.annotation.Generated;
 public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteZoneOperationHttpRequest, Void> directDeleteZoneOperationCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteZoneOperationHttpRequest, Void>newBuilder()
-              .setMethodName("compute.zoneOperations.delete")
-              .setRequestInstance(DeleteZoneOperationHttpRequest.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/operations/{operation}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "operation",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetZoneOperationHttpRequest, Operation> directGetZoneOperationCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetZoneOperationHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.zoneOperations.get")
-              .setRequestInstance(GetZoneOperationHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/operations/{operation}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "operation",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<ListZoneOperationsHttpRequest, OperationList> directListZoneOperationsCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListZoneOperationsHttpRequest, OperationList>newBuilder()
-              .setMethodName("compute.zoneOperations.list")
-              .setRequestInstance(ListZoneOperationsHttpRequest.getDefaultInstance())
-              .setResponseInstance(OperationList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/operations")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
+  private static final ApiMethodDescriptor<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationMethodDescriptor =
+      ApiMethodDescriptor.<DeleteZoneOperationHttpRequest, Void>newBuilder()
+          .setMethodName("compute.zoneOperations.delete")
+          .setRequestInstance(DeleteZoneOperationHttpRequest.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/operations/{operation}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "operation",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetZoneOperationHttpRequest, Operation> getZoneOperationMethodDescriptor =
+      ApiMethodDescriptor.<GetZoneOperationHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.zoneOperations.get")
+          .setRequestInstance(GetZoneOperationHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/operations/{operation}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "operation",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<ListZoneOperationsHttpRequest, OperationList> listZoneOperationsMethodDescriptor =
+      ApiMethodDescriptor.<ListZoneOperationsHttpRequest, OperationList>newBuilder()
+          .setMethodName("compute.zoneOperations.list")
+          .setRequestInstance(ListZoneOperationsHttpRequest.getDefaultInstance())
+          .setResponseInstance(OperationList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/operations")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -125,11 +122,23 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
    */
   protected HttpJsonZoneOperationStub(ZoneOperationSettings settings, ClientContext clientContext) throws IOException {
 
-    this.deleteZoneOperationCallable = HttpJsonCallableFactory.create(directDeleteZoneOperationCallable,settings.deleteZoneOperationSettings(), clientContext);
-    this.getZoneOperationCallable = HttpJsonCallableFactory.create(directGetZoneOperationCallable,settings.getZoneOperationSettings(), clientContext);
-    this.listZoneOperationsCallable = HttpJsonCallableFactory.create(directListZoneOperationsCallable,settings.listZoneOperationsSettings(), clientContext);
-    this.listZoneOperationsPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListZoneOperationsCallable,settings.listZoneOperationsSettings(), clientContext);
+    HttpJsonCallSettings<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationTransportSettings =
+        HttpJsonCallSettings.<DeleteZoneOperationHttpRequest, Void>newBuilder()
+            .setMethodDescriptor(deleteZoneOperationMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetZoneOperationHttpRequest, Operation> getZoneOperationTransportSettings =
+        HttpJsonCallSettings.<GetZoneOperationHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(getZoneOperationMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListZoneOperationsHttpRequest, OperationList> listZoneOperationsTransportSettings =
+        HttpJsonCallSettings.<ListZoneOperationsHttpRequest, OperationList>newBuilder()
+            .setMethodDescriptor(listZoneOperationsMethodDescriptor)
+            .build();
+
+    this.deleteZoneOperationCallable = HttpJsonCallableFactory.createUnaryCallable(deleteZoneOperationTransportSettings,settings.deleteZoneOperationSettings(), clientContext);
+    this.getZoneOperationCallable = HttpJsonCallableFactory.createUnaryCallable(getZoneOperationTransportSettings,settings.getZoneOperationSettings(), clientContext);
+    this.listZoneOperationsCallable = HttpJsonCallableFactory.createUnaryCallable(listZoneOperationsTransportSettings,settings.listZoneOperationsSettings(), clientContext);
+    this.listZoneOperationsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listZoneOperationsTransportSettings,settings.listZoneOperationsSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

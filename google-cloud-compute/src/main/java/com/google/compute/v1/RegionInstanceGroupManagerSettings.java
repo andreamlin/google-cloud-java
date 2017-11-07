@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -53,7 +52,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -106,50 +104,50 @@ public class RegionInstanceGroupManagerSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation> abandonInstancesRegionInstanceGroupManagerSettings;
-  private final SimpleCallSettings<DeleteRegionInstanceGroupManagerHttpRequest, Operation> deleteRegionInstanceGroupManagerSettings;
-  private final SimpleCallSettings<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation> deleteInstancesRegionInstanceGroupManagerSettings;
-  private final SimpleCallSettings<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager> getRegionInstanceGroupManagerSettings;
-  private final SimpleCallSettings<InsertRegionInstanceGroupManagerHttpRequest, Operation> insertRegionInstanceGroupManagerSettings;
+  private final UnaryCallSettings<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation> abandonInstancesRegionInstanceGroupManagerSettings;
+  private final UnaryCallSettings<DeleteRegionInstanceGroupManagerHttpRequest, Operation> deleteRegionInstanceGroupManagerSettings;
+  private final UnaryCallSettings<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation> deleteInstancesRegionInstanceGroupManagerSettings;
+  private final UnaryCallSettings<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager> getRegionInstanceGroupManagerSettings;
+  private final UnaryCallSettings<InsertRegionInstanceGroupManagerHttpRequest, Operation> insertRegionInstanceGroupManagerSettings;
   private final PagedCallSettings<ListRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagerList, ListRegionInstanceGroupManagersPagedResponse> listRegionInstanceGroupManagersSettings;
-  private final SimpleCallSettings<ListManagedInstancesRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagersListInstancesResponse> listManagedInstancesRegionInstanceGroupManagersSettings;
-  private final SimpleCallSettings<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation> recreateInstancesRegionInstanceGroupManagerSettings;
-  private final SimpleCallSettings<ResizeRegionInstanceGroupManagerHttpRequest, Operation> resizeRegionInstanceGroupManagerSettings;
-  private final SimpleCallSettings<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateRegionInstanceGroupManagerSettings;
-  private final SimpleCallSettings<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation> setTargetPoolsRegionInstanceGroupManagerSettings;
+  private final UnaryCallSettings<ListManagedInstancesRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagersListInstancesResponse> listManagedInstancesRegionInstanceGroupManagersSettings;
+  private final UnaryCallSettings<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation> recreateInstancesRegionInstanceGroupManagerSettings;
+  private final UnaryCallSettings<ResizeRegionInstanceGroupManagerHttpRequest, Operation> resizeRegionInstanceGroupManagerSettings;
+  private final UnaryCallSettings<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateRegionInstanceGroupManagerSettings;
+  private final UnaryCallSettings<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation> setTargetPoolsRegionInstanceGroupManagerSettings;
 
   /**
    * Returns the object with the settings used for calls to abandonInstancesRegionInstanceGroupManager.
    */
-  public SimpleCallSettings<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation> abandonInstancesRegionInstanceGroupManagerSettings() {
+  public UnaryCallSettings<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation> abandonInstancesRegionInstanceGroupManagerSettings() {
     return abandonInstancesRegionInstanceGroupManagerSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to deleteRegionInstanceGroupManager.
    */
-  public SimpleCallSettings<DeleteRegionInstanceGroupManagerHttpRequest, Operation> deleteRegionInstanceGroupManagerSettings() {
+  public UnaryCallSettings<DeleteRegionInstanceGroupManagerHttpRequest, Operation> deleteRegionInstanceGroupManagerSettings() {
     return deleteRegionInstanceGroupManagerSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to deleteInstancesRegionInstanceGroupManager.
    */
-  public SimpleCallSettings<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation> deleteInstancesRegionInstanceGroupManagerSettings() {
+  public UnaryCallSettings<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation> deleteInstancesRegionInstanceGroupManagerSettings() {
     return deleteInstancesRegionInstanceGroupManagerSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getRegionInstanceGroupManager.
    */
-  public SimpleCallSettings<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager> getRegionInstanceGroupManagerSettings() {
+  public UnaryCallSettings<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager> getRegionInstanceGroupManagerSettings() {
     return getRegionInstanceGroupManagerSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to insertRegionInstanceGroupManager.
    */
-  public SimpleCallSettings<InsertRegionInstanceGroupManagerHttpRequest, Operation> insertRegionInstanceGroupManagerSettings() {
+  public UnaryCallSettings<InsertRegionInstanceGroupManagerHttpRequest, Operation> insertRegionInstanceGroupManagerSettings() {
     return insertRegionInstanceGroupManagerSettings;
   }
 
@@ -163,45 +161,47 @@ public class RegionInstanceGroupManagerSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to listManagedInstancesRegionInstanceGroupManagers.
    */
-  public SimpleCallSettings<ListManagedInstancesRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagersListInstancesResponse> listManagedInstancesRegionInstanceGroupManagersSettings() {
+  public UnaryCallSettings<ListManagedInstancesRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagersListInstancesResponse> listManagedInstancesRegionInstanceGroupManagersSettings() {
     return listManagedInstancesRegionInstanceGroupManagersSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to recreateInstancesRegionInstanceGroupManager.
    */
-  public SimpleCallSettings<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation> recreateInstancesRegionInstanceGroupManagerSettings() {
+  public UnaryCallSettings<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation> recreateInstancesRegionInstanceGroupManagerSettings() {
     return recreateInstancesRegionInstanceGroupManagerSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to resizeRegionInstanceGroupManager.
    */
-  public SimpleCallSettings<ResizeRegionInstanceGroupManagerHttpRequest, Operation> resizeRegionInstanceGroupManagerSettings() {
+  public UnaryCallSettings<ResizeRegionInstanceGroupManagerHttpRequest, Operation> resizeRegionInstanceGroupManagerSettings() {
     return resizeRegionInstanceGroupManagerSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to setInstanceTemplateRegionInstanceGroupManager.
    */
-  public SimpleCallSettings<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateRegionInstanceGroupManagerSettings() {
+  public UnaryCallSettings<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateRegionInstanceGroupManagerSettings() {
     return setInstanceTemplateRegionInstanceGroupManagerSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to setTargetPoolsRegionInstanceGroupManager.
    */
-  public SimpleCallSettings<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation> setTargetPoolsRegionInstanceGroupManagerSettings() {
+  public UnaryCallSettings<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation> setTargetPoolsRegionInstanceGroupManagerSettings() {
     return setTargetPoolsRegionInstanceGroupManagerSettings;
   }
 
 
   public RegionInstanceGroupManagerStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonRegionInstanceGroupManagerStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -245,20 +245,20 @@ public class RegionInstanceGroupManagerSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -311,8 +311,9 @@ public class RegionInstanceGroupManagerSettings extends ClientSettings {
   private RegionInstanceGroupManagerSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     abandonInstancesRegionInstanceGroupManagerSettings = settingsBuilder.abandonInstancesRegionInstanceGroupManagerSettings().build();
@@ -381,30 +382,30 @@ public class RegionInstanceGroupManagerSettings extends ClientSettings {
    * Builder for RegionInstanceGroupManagerSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation> abandonInstancesRegionInstanceGroupManagerSettings;
-    private final SimpleCallSettings.Builder<DeleteRegionInstanceGroupManagerHttpRequest, Operation> deleteRegionInstanceGroupManagerSettings;
-    private final SimpleCallSettings.Builder<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation> deleteInstancesRegionInstanceGroupManagerSettings;
-    private final SimpleCallSettings.Builder<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager> getRegionInstanceGroupManagerSettings;
-    private final SimpleCallSettings.Builder<InsertRegionInstanceGroupManagerHttpRequest, Operation> insertRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation> abandonInstancesRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder<DeleteRegionInstanceGroupManagerHttpRequest, Operation> deleteRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation> deleteInstancesRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager> getRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder<InsertRegionInstanceGroupManagerHttpRequest, Operation> insertRegionInstanceGroupManagerSettings;
     private final PagedCallSettings.Builder<ListRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagerList, ListRegionInstanceGroupManagersPagedResponse> listRegionInstanceGroupManagersSettings;
-    private final SimpleCallSettings.Builder<ListManagedInstancesRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagersListInstancesResponse> listManagedInstancesRegionInstanceGroupManagersSettings;
-    private final SimpleCallSettings.Builder<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation> recreateInstancesRegionInstanceGroupManagerSettings;
-    private final SimpleCallSettings.Builder<ResizeRegionInstanceGroupManagerHttpRequest, Operation> resizeRegionInstanceGroupManagerSettings;
-    private final SimpleCallSettings.Builder<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateRegionInstanceGroupManagerSettings;
-    private final SimpleCallSettings.Builder<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation> setTargetPoolsRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder<ListManagedInstancesRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagersListInstancesResponse> listManagedInstancesRegionInstanceGroupManagersSettings;
+    private final UnaryCallSettings.Builder<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation> recreateInstancesRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder<ResizeRegionInstanceGroupManagerHttpRequest, Operation> resizeRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateRegionInstanceGroupManagerSettings;
+    private final UnaryCallSettings.Builder<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation> setTargetPoolsRegionInstanceGroupManagerSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -433,30 +434,30 @@ public class RegionInstanceGroupManagerSettings extends ClientSettings {
     private Builder(ClientContext clientContext) {
       super(clientContext);
 
-      abandonInstancesRegionInstanceGroupManagerSettings = SimpleCallSettings.newBuilder();
+      abandonInstancesRegionInstanceGroupManagerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      deleteRegionInstanceGroupManagerSettings = SimpleCallSettings.newBuilder();
+      deleteRegionInstanceGroupManagerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      deleteInstancesRegionInstanceGroupManagerSettings = SimpleCallSettings.newBuilder();
+      deleteInstancesRegionInstanceGroupManagerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getRegionInstanceGroupManagerSettings = SimpleCallSettings.newBuilder();
+      getRegionInstanceGroupManagerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      insertRegionInstanceGroupManagerSettings = SimpleCallSettings.newBuilder();
+      insertRegionInstanceGroupManagerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listRegionInstanceGroupManagersSettings = PagedCallSettings.newBuilder(
           LIST_REGION_INSTANCE_GROUP_MANAGERS_PAGE_STR_FACT);
 
-      listManagedInstancesRegionInstanceGroupManagersSettings = SimpleCallSettings.newBuilder();
+      listManagedInstancesRegionInstanceGroupManagersSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      recreateInstancesRegionInstanceGroupManagerSettings = SimpleCallSettings.newBuilder();
+      recreateInstancesRegionInstanceGroupManagerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      resizeRegionInstanceGroupManagerSettings = SimpleCallSettings.newBuilder();
+      resizeRegionInstanceGroupManagerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      setInstanceTemplateRegionInstanceGroupManagerSettings = SimpleCallSettings.newBuilder();
+      setInstanceTemplateRegionInstanceGroupManagerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      setTargetPoolsRegionInstanceGroupManagerSettings = SimpleCallSettings.newBuilder();
+      setTargetPoolsRegionInstanceGroupManagerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           abandonInstancesRegionInstanceGroupManagerSettings,
           deleteRegionInstanceGroupManagerSettings,
           deleteInstancesRegionInstanceGroupManagerSettings,
@@ -475,8 +476,9 @@ public class RegionInstanceGroupManagerSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -544,7 +546,7 @@ public class RegionInstanceGroupManagerSettings extends ClientSettings {
       setInstanceTemplateRegionInstanceGroupManagerSettings = settings.setInstanceTemplateRegionInstanceGroupManagerSettings.toBuilder();
       setTargetPoolsRegionInstanceGroupManagerSettings = settings.setTargetPoolsRegionInstanceGroupManagerSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           abandonInstancesRegionInstanceGroupManagerSettings,
           deleteRegionInstanceGroupManagerSettings,
           deleteInstancesRegionInstanceGroupManagerSettings,
@@ -566,8 +568,14 @@ public class RegionInstanceGroupManagerSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -582,7 +590,7 @@ public class RegionInstanceGroupManagerSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -590,35 +598,35 @@ public class RegionInstanceGroupManagerSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to abandonInstancesRegionInstanceGroupManager.
      */
-    public SimpleCallSettings.Builder<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation> abandonInstancesRegionInstanceGroupManagerSettings() {
+    public UnaryCallSettings.Builder<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation> abandonInstancesRegionInstanceGroupManagerSettings() {
       return abandonInstancesRegionInstanceGroupManagerSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to deleteRegionInstanceGroupManager.
      */
-    public SimpleCallSettings.Builder<DeleteRegionInstanceGroupManagerHttpRequest, Operation> deleteRegionInstanceGroupManagerSettings() {
+    public UnaryCallSettings.Builder<DeleteRegionInstanceGroupManagerHttpRequest, Operation> deleteRegionInstanceGroupManagerSettings() {
       return deleteRegionInstanceGroupManagerSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to deleteInstancesRegionInstanceGroupManager.
      */
-    public SimpleCallSettings.Builder<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation> deleteInstancesRegionInstanceGroupManagerSettings() {
+    public UnaryCallSettings.Builder<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation> deleteInstancesRegionInstanceGroupManagerSettings() {
       return deleteInstancesRegionInstanceGroupManagerSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getRegionInstanceGroupManager.
      */
-    public SimpleCallSettings.Builder<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager> getRegionInstanceGroupManagerSettings() {
+    public UnaryCallSettings.Builder<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager> getRegionInstanceGroupManagerSettings() {
       return getRegionInstanceGroupManagerSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to insertRegionInstanceGroupManager.
      */
-    public SimpleCallSettings.Builder<InsertRegionInstanceGroupManagerHttpRequest, Operation> insertRegionInstanceGroupManagerSettings() {
+    public UnaryCallSettings.Builder<InsertRegionInstanceGroupManagerHttpRequest, Operation> insertRegionInstanceGroupManagerSettings() {
       return insertRegionInstanceGroupManagerSettings;
     }
 
@@ -632,35 +640,35 @@ public class RegionInstanceGroupManagerSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to listManagedInstancesRegionInstanceGroupManagers.
      */
-    public SimpleCallSettings.Builder<ListManagedInstancesRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagersListInstancesResponse> listManagedInstancesRegionInstanceGroupManagersSettings() {
+    public UnaryCallSettings.Builder<ListManagedInstancesRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagersListInstancesResponse> listManagedInstancesRegionInstanceGroupManagersSettings() {
       return listManagedInstancesRegionInstanceGroupManagersSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to recreateInstancesRegionInstanceGroupManager.
      */
-    public SimpleCallSettings.Builder<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation> recreateInstancesRegionInstanceGroupManagerSettings() {
+    public UnaryCallSettings.Builder<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation> recreateInstancesRegionInstanceGroupManagerSettings() {
       return recreateInstancesRegionInstanceGroupManagerSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to resizeRegionInstanceGroupManager.
      */
-    public SimpleCallSettings.Builder<ResizeRegionInstanceGroupManagerHttpRequest, Operation> resizeRegionInstanceGroupManagerSettings() {
+    public UnaryCallSettings.Builder<ResizeRegionInstanceGroupManagerHttpRequest, Operation> resizeRegionInstanceGroupManagerSettings() {
       return resizeRegionInstanceGroupManagerSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to setInstanceTemplateRegionInstanceGroupManager.
      */
-    public SimpleCallSettings.Builder<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateRegionInstanceGroupManagerSettings() {
+    public UnaryCallSettings.Builder<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateRegionInstanceGroupManagerSettings() {
       return setInstanceTemplateRegionInstanceGroupManagerSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to setTargetPoolsRegionInstanceGroupManager.
      */
-    public SimpleCallSettings.Builder<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation> setTargetPoolsRegionInstanceGroupManagerSettings() {
+    public UnaryCallSettings.Builder<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation> setTargetPoolsRegionInstanceGroupManagerSettings() {
       return setTargetPoolsRegionInstanceGroupManagerSettings;
     }
 

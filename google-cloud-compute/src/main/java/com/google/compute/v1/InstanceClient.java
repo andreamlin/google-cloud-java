@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (InstanceClient instanceClient = InstanceClient.create()) {
- *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+ *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
  *   String networkInterface = "";
  *   AccessConfig accessConfig = AccessConfig.newBuilder().build();
  *   Operation response = instanceClient.addAccessConfigInstance(instance, networkInterface, accessConfig);
@@ -94,10 +94,8 @@ import javax.annotation.Generated;
  * <code>
  * InstanceSettings instanceSettings =
  *     InstanceSettings.newBuilder()
- *         .setTransportProvider(InstanceSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(InstanceSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(InstanceSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * InstanceClient instanceClient =
@@ -133,6 +131,7 @@ public class InstanceClient implements BackgroundResource {
    * Constructs an instance of InstanceClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use InstanceSettings}.
    */
+  @BetaApi
   public static final InstanceClient create(InstanceStub stub) {
     return new InstanceClient(stub);
   }
@@ -169,7 +168,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   String networkInterface = "";
    *   AccessConfig accessConfig = AccessConfig.newBuilder().build();
    *   Operation response = instanceClient.addAccessConfigInstance(instance, networkInterface, accessConfig);
@@ -200,7 +199,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   String networkInterface = "";
    *   AccessConfig accessConfig = AccessConfig.newBuilder().build();
    *   AddAccessConfigInstanceHttpRequest request = AddAccessConfigInstanceHttpRequest.newBuilder()
@@ -227,7 +226,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   String networkInterface = "";
    *   AccessConfig accessConfig = AccessConfig.newBuilder().build();
    *   AddAccessConfigInstanceHttpRequest request = AddAccessConfigInstanceHttpRequest.newBuilder()
@@ -253,7 +252,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (Instance element : instanceClient.aggregatedListInstances(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -279,7 +278,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListInstancesHttpRequest request = AggregatedListInstancesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -305,7 +304,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListInstancesHttpRequest request = AggregatedListInstancesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -329,7 +328,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListInstancesHttpRequest request = AggregatedListInstancesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -360,7 +359,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   AttachedDisk attachedDisk = AttachedDisk.newBuilder().build();
    *   Operation response = instanceClient.attachDiskInstance(instance, attachedDisk);
    * }
@@ -388,7 +387,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   AttachedDisk attachedDisk = AttachedDisk.newBuilder().build();
    *   AttachDiskInstanceHttpRequest request = AttachDiskInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -413,7 +412,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   AttachedDisk attachedDisk = AttachedDisk.newBuilder().build();
    *   AttachDiskInstanceHttpRequest request = AttachDiskInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -437,7 +436,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Operation response = instanceClient.deleteInstance(instance);
    * }
    * </code></pre>
@@ -462,7 +461,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   DeleteInstanceHttpRequest request = DeleteInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
    *     .build();
@@ -485,7 +484,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   DeleteInstanceHttpRequest request = DeleteInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
    *     .build();
@@ -507,7 +506,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   String networkInterface = "";
    *   String accessConfig = "";
    *   Operation response = instanceClient.deleteAccessConfigInstance(instance, networkInterface, accessConfig);
@@ -538,7 +537,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   String networkInterface = "";
    *   String accessConfig = "";
    *   DeleteAccessConfigInstanceHttpRequest request = DeleteAccessConfigInstanceHttpRequest.newBuilder()
@@ -565,7 +564,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   String networkInterface = "";
    *   String accessConfig = "";
    *   DeleteAccessConfigInstanceHttpRequest request = DeleteAccessConfigInstanceHttpRequest.newBuilder()
@@ -591,7 +590,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   String deviceName = "";
    *   Operation response = instanceClient.detachDiskInstance(instance, deviceName);
    * }
@@ -619,7 +618,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   String deviceName = "";
    *   DetachDiskInstanceHttpRequest request = DetachDiskInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -644,7 +643,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   String deviceName = "";
    *   DetachDiskInstanceHttpRequest request = DetachDiskInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -668,7 +667,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Instance response = instanceClient.getInstance(instance);
    * }
    * </code></pre>
@@ -693,7 +692,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   GetInstanceHttpRequest request = GetInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
    *     .build();
@@ -716,7 +715,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   GetInstanceHttpRequest request = GetInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
    *     .build();
@@ -738,7 +737,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Integer port = 0;
    *   String start = "";
    *   SerialPortOutput response = instanceClient.getSerialPortOutputInstance(instance, port, start);
@@ -769,7 +768,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Integer port = 0;
    *   String start = "";
    *   GetSerialPortOutputInstanceHttpRequest request = GetSerialPortOutputInstanceHttpRequest.newBuilder()
@@ -796,7 +795,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Integer port = 0;
    *   String start = "";
    *   GetSerialPortOutputInstanceHttpRequest request = GetSerialPortOutputInstanceHttpRequest.newBuilder()
@@ -822,7 +821,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   Instance instance = Instance.newBuilder().build();
    *   Operation response = instanceClient.insertInstance(zone, instance);
    * }
@@ -850,7 +849,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   Instance instance = Instance.newBuilder().build();
    *   InsertInstanceHttpRequest request = InsertInstanceHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
@@ -875,7 +874,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   Instance instance = Instance.newBuilder().build();
    *   InsertInstanceHttpRequest request = InsertInstanceHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
@@ -899,7 +898,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   for (Instance element : instanceClient.listInstances(zone).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -925,7 +924,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListInstancesHttpRequest request = ListInstancesHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -951,7 +950,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListInstancesHttpRequest request = ListInstancesHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -975,7 +974,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListInstancesHttpRequest request = ListInstancesHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -1006,7 +1005,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Operation response = instanceClient.resetInstance(instance);
    * }
    * </code></pre>
@@ -1031,7 +1030,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   ResetInstanceHttpRequest request = ResetInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
    *     .build();
@@ -1054,7 +1053,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   ResetInstanceHttpRequest request = ResetInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
    *     .build();
@@ -1076,7 +1075,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Boolean autoDelete = false;
    *   String deviceName = "";
    *   Operation response = instanceClient.setDiskAutoDeleteInstance(instance, autoDelete, deviceName);
@@ -1107,7 +1106,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Boolean autoDelete = false;
    *   String deviceName = "";
    *   SetDiskAutoDeleteInstanceHttpRequest request = SetDiskAutoDeleteInstanceHttpRequest.newBuilder()
@@ -1134,7 +1133,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Boolean autoDelete = false;
    *   String deviceName = "";
    *   SetDiskAutoDeleteInstanceHttpRequest request = SetDiskAutoDeleteInstanceHttpRequest.newBuilder()
@@ -1160,7 +1159,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   InstancesSetMachineTypeRequest instancesSetMachineTypeRequest = InstancesSetMachineTypeRequest.newBuilder().build();
    *   Operation response = instanceClient.setMachineTypeInstance(instance, instancesSetMachineTypeRequest);
    * }
@@ -1188,7 +1187,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   InstancesSetMachineTypeRequest instancesSetMachineTypeRequest = InstancesSetMachineTypeRequest.newBuilder().build();
    *   SetMachineTypeInstanceHttpRequest request = SetMachineTypeInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -1213,7 +1212,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   InstancesSetMachineTypeRequest instancesSetMachineTypeRequest = InstancesSetMachineTypeRequest.newBuilder().build();
    *   SetMachineTypeInstanceHttpRequest request = SetMachineTypeInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -1237,7 +1236,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Metadata metadata = Metadata.newBuilder().build();
    *   Operation response = instanceClient.setMetadataInstance(instance, metadata);
    * }
@@ -1265,7 +1264,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Metadata metadata = Metadata.newBuilder().build();
    *   SetMetadataInstanceHttpRequest request = SetMetadataInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -1290,7 +1289,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Metadata metadata = Metadata.newBuilder().build();
    *   SetMetadataInstanceHttpRequest request = SetMetadataInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -1314,7 +1313,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Scheduling scheduling = Scheduling.newBuilder().build();
    *   Operation response = instanceClient.setSchedulingInstance(instance, scheduling);
    * }
@@ -1342,7 +1341,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Scheduling scheduling = Scheduling.newBuilder().build();
    *   SetSchedulingInstanceHttpRequest request = SetSchedulingInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -1367,7 +1366,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Scheduling scheduling = Scheduling.newBuilder().build();
    *   SetSchedulingInstanceHttpRequest request = SetSchedulingInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -1391,7 +1390,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   InstancesSetServiceAccountRequest instancesSetServiceAccountRequest = InstancesSetServiceAccountRequest.newBuilder().build();
    *   Operation response = instanceClient.setServiceAccountInstance(instance, instancesSetServiceAccountRequest);
    * }
@@ -1419,7 +1418,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   InstancesSetServiceAccountRequest instancesSetServiceAccountRequest = InstancesSetServiceAccountRequest.newBuilder().build();
    *   SetServiceAccountInstanceHttpRequest request = SetServiceAccountInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -1444,7 +1443,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   InstancesSetServiceAccountRequest instancesSetServiceAccountRequest = InstancesSetServiceAccountRequest.newBuilder().build();
    *   SetServiceAccountInstanceHttpRequest request = SetServiceAccountInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -1468,7 +1467,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Tags tags = Tags.newBuilder().build();
    *   Operation response = instanceClient.setTagsInstance(instance, tags);
    * }
@@ -1496,7 +1495,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Tags tags = Tags.newBuilder().build();
    *   SetTagsInstanceHttpRequest request = SetTagsInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -1521,7 +1520,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Tags tags = Tags.newBuilder().build();
    *   SetTagsInstanceHttpRequest request = SetTagsInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -1545,7 +1544,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Operation response = instanceClient.startInstance(instance);
    * }
    * </code></pre>
@@ -1570,7 +1569,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   StartInstanceHttpRequest request = StartInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
    *     .build();
@@ -1593,7 +1592,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   StartInstanceHttpRequest request = StartInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
    *     .build();
@@ -1615,7 +1614,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequest = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
    *   Operation response = instanceClient.startWithEncryptionKeyInstance(instance, instancesStartWithEncryptionKeyRequest);
    * }
@@ -1643,7 +1642,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequest = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
    *   StartWithEncryptionKeyInstanceHttpRequest request = StartWithEncryptionKeyInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -1668,7 +1667,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequest = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
    *   StartWithEncryptionKeyInstanceHttpRequest request = StartWithEncryptionKeyInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
@@ -1692,7 +1691,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   Operation response = instanceClient.stopInstance(instance);
    * }
    * </code></pre>
@@ -1717,7 +1716,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   StopInstanceHttpRequest request = StopInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
    *     .build();
@@ -1740,7 +1739,7 @@ public class InstanceClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
-   *   InstanceName instance = InstanceName.create("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   StopInstanceHttpRequest request = StopInstanceHttpRequest.newBuilder()
    *     .setInstanceWithInstanceName(instance)
    *     .build();

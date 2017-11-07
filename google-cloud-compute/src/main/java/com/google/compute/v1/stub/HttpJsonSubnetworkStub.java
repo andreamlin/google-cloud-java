@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,98 +65,92 @@ import javax.annotation.Generated;
 public class HttpJsonSubnetworkStub extends SubnetworkStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList> directAggregatedListSubnetworksCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList>newBuilder()
-              .setMethodName("compute.subnetworks.aggregatedList")
-              .setRequestInstance(AggregatedListSubnetworksHttpRequest.getDefaultInstance())
-              .setResponseInstance(SubnetworkAggregatedList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/aggregated/subnetworks")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<DeleteSubnetworkHttpRequest, Operation> directDeleteSubnetworkCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteSubnetworkHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.subnetworks.delete")
-              .setRequestInstance(DeleteSubnetworkHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/subnetworks/{subnetwork}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "subnetwork"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<ExpandIpCidrRangeSubnetworkHttpRequest, Operation> directExpandIpCidrRangeSubnetworkCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ExpandIpCidrRangeSubnetworkHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.subnetworks.expandIpCidrRange")
-              .setRequestInstance(ExpandIpCidrRangeSubnetworkHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/subnetworks/{subnetwork}/expandIpCidrRange")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "subnetwork"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<GetSubnetworkHttpRequest, Subnetwork> directGetSubnetworkCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetSubnetworkHttpRequest, Subnetwork>newBuilder()
-              .setMethodName("compute.subnetworks.get")
-              .setRequestInstance(GetSubnetworkHttpRequest.getDefaultInstance())
-              .setResponseInstance(Subnetwork.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/subnetworks/{subnetwork}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "subnetwork"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertSubnetworkHttpRequest, Operation> directInsertSubnetworkCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertSubnetworkHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.subnetworks.insert")
-              .setRequestInstance(InsertSubnetworkHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/subnetworks")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListSubnetworksHttpRequest, SubnetworkList> directListSubnetworksCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListSubnetworksHttpRequest, SubnetworkList>newBuilder()
-              .setMethodName("compute.subnetworks.list")
-              .setRequestInstance(ListSubnetworksHttpRequest.getDefaultInstance())
-              .setResponseInstance(SubnetworkList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/subnetworks")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
+  private static final ApiMethodDescriptor<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList> aggregatedListSubnetworksMethodDescriptor =
+      ApiMethodDescriptor.<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList>newBuilder()
+          .setMethodName("compute.subnetworks.aggregatedList")
+          .setRequestInstance(AggregatedListSubnetworksHttpRequest.getDefaultInstance())
+          .setResponseInstance(SubnetworkAggregatedList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/aggregated/subnetworks")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<DeleteSubnetworkHttpRequest, Operation> deleteSubnetworkMethodDescriptor =
+      ApiMethodDescriptor.<DeleteSubnetworkHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.subnetworks.delete")
+          .setRequestInstance(DeleteSubnetworkHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/subnetworks/{subnetwork}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "subnetwork"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<ExpandIpCidrRangeSubnetworkHttpRequest, Operation> expandIpCidrRangeSubnetworkMethodDescriptor =
+      ApiMethodDescriptor.<ExpandIpCidrRangeSubnetworkHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.subnetworks.expandIpCidrRange")
+          .setRequestInstance(ExpandIpCidrRangeSubnetworkHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/subnetworks/{subnetwork}/expandIpCidrRange")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "subnetwork"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<GetSubnetworkHttpRequest, Subnetwork> getSubnetworkMethodDescriptor =
+      ApiMethodDescriptor.<GetSubnetworkHttpRequest, Subnetwork>newBuilder()
+          .setMethodName("compute.subnetworks.get")
+          .setRequestInstance(GetSubnetworkHttpRequest.getDefaultInstance())
+          .setResponseInstance(Subnetwork.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/subnetworks/{subnetwork}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "subnetwork"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertSubnetworkHttpRequest, Operation> insertSubnetworkMethodDescriptor =
+      ApiMethodDescriptor.<InsertSubnetworkHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.subnetworks.insert")
+          .setRequestInstance(InsertSubnetworkHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/subnetworks")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListSubnetworksHttpRequest, SubnetworkList> listSubnetworksMethodDescriptor =
+      ApiMethodDescriptor.<ListSubnetworksHttpRequest, SubnetworkList>newBuilder()
+          .setMethodName("compute.subnetworks.list")
+          .setRequestInstance(ListSubnetworksHttpRequest.getDefaultInstance())
+          .setResponseInstance(SubnetworkList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/subnetworks")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -184,16 +178,39 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
    */
   protected HttpJsonSubnetworkStub(SubnetworkSettings settings, ClientContext clientContext) throws IOException {
 
-    this.aggregatedListSubnetworksCallable = HttpJsonCallableFactory.create(directAggregatedListSubnetworksCallable,settings.aggregatedListSubnetworksSettings(), clientContext);
-    this.aggregatedListSubnetworksPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directAggregatedListSubnetworksCallable,settings.aggregatedListSubnetworksSettings(), clientContext);
-    this.deleteSubnetworkCallable = HttpJsonCallableFactory.create(directDeleteSubnetworkCallable,settings.deleteSubnetworkSettings(), clientContext);
-    this.expandIpCidrRangeSubnetworkCallable = HttpJsonCallableFactory.create(directExpandIpCidrRangeSubnetworkCallable,settings.expandIpCidrRangeSubnetworkSettings(), clientContext);
-    this.getSubnetworkCallable = HttpJsonCallableFactory.create(directGetSubnetworkCallable,settings.getSubnetworkSettings(), clientContext);
-    this.insertSubnetworkCallable = HttpJsonCallableFactory.create(directInsertSubnetworkCallable,settings.insertSubnetworkSettings(), clientContext);
-    this.listSubnetworksCallable = HttpJsonCallableFactory.create(directListSubnetworksCallable,settings.listSubnetworksSettings(), clientContext);
-    this.listSubnetworksPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListSubnetworksCallable,settings.listSubnetworksSettings(), clientContext);
+    HttpJsonCallSettings<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList> aggregatedListSubnetworksTransportSettings =
+        HttpJsonCallSettings.<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList>newBuilder()
+            .setMethodDescriptor(aggregatedListSubnetworksMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<DeleteSubnetworkHttpRequest, Operation> deleteSubnetworkTransportSettings =
+        HttpJsonCallSettings.<DeleteSubnetworkHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteSubnetworkMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ExpandIpCidrRangeSubnetworkHttpRequest, Operation> expandIpCidrRangeSubnetworkTransportSettings =
+        HttpJsonCallSettings.<ExpandIpCidrRangeSubnetworkHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(expandIpCidrRangeSubnetworkMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetSubnetworkHttpRequest, Subnetwork> getSubnetworkTransportSettings =
+        HttpJsonCallSettings.<GetSubnetworkHttpRequest, Subnetwork>newBuilder()
+            .setMethodDescriptor(getSubnetworkMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertSubnetworkHttpRequest, Operation> insertSubnetworkTransportSettings =
+        HttpJsonCallSettings.<InsertSubnetworkHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertSubnetworkMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListSubnetworksHttpRequest, SubnetworkList> listSubnetworksTransportSettings =
+        HttpJsonCallSettings.<ListSubnetworksHttpRequest, SubnetworkList>newBuilder()
+            .setMethodDescriptor(listSubnetworksMethodDescriptor)
+            .build();
+
+    this.aggregatedListSubnetworksCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListSubnetworksTransportSettings,settings.aggregatedListSubnetworksSettings(), clientContext);
+    this.aggregatedListSubnetworksPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListSubnetworksTransportSettings,settings.aggregatedListSubnetworksSettings(), clientContext);
+    this.deleteSubnetworkCallable = HttpJsonCallableFactory.createUnaryCallable(deleteSubnetworkTransportSettings,settings.deleteSubnetworkSettings(), clientContext);
+    this.expandIpCidrRangeSubnetworkCallable = HttpJsonCallableFactory.createUnaryCallable(expandIpCidrRangeSubnetworkTransportSettings,settings.expandIpCidrRangeSubnetworkSettings(), clientContext);
+    this.getSubnetworkCallable = HttpJsonCallableFactory.createUnaryCallable(getSubnetworkTransportSettings,settings.getSubnetworkSettings(), clientContext);
+    this.insertSubnetworkCallable = HttpJsonCallableFactory.createUnaryCallable(insertSubnetworkTransportSettings,settings.insertSubnetworkSettings(), clientContext);
+    this.listSubnetworksCallable = HttpJsonCallableFactory.createUnaryCallable(listSubnetworksTransportSettings,settings.listSubnetworksSettings(), clientContext);
+    this.listSubnetworksPagedCallable = HttpJsonCallableFactory.createPagedCallable(listSubnetworksTransportSettings,settings.listSubnetworksSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

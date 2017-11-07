@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
- *   MachineTypeName machineType = MachineTypeName.create("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
+ *   MachineTypeName machineType = MachineTypeName.of("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
  *   MachineType response = machineTypeClient.getMachineType(machineType);
  * }
  * </code>
@@ -92,10 +92,8 @@ import javax.annotation.Generated;
  * <code>
  * MachineTypeSettings machineTypeSettings =
  *     MachineTypeSettings.newBuilder()
- *         .setTransportProvider(MachineTypeSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(MachineTypeSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(MachineTypeSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * MachineTypeClient machineTypeClient =
@@ -131,6 +129,7 @@ public class MachineTypeClient implements BackgroundResource {
    * Constructs an instance of MachineTypeClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use MachineTypeSettings}.
    */
+  @BetaApi
   public static final MachineTypeClient create(MachineTypeStub stub) {
     return new MachineTypeClient(stub);
   }
@@ -167,7 +166,7 @@ public class MachineTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (MachineType element : machineTypeClient.aggregatedListMachineTypes(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -193,7 +192,7 @@ public class MachineTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListMachineTypesHttpRequest request = AggregatedListMachineTypesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -219,7 +218,7 @@ public class MachineTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListMachineTypesHttpRequest request = AggregatedListMachineTypesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -243,7 +242,7 @@ public class MachineTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListMachineTypesHttpRequest request = AggregatedListMachineTypesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -274,7 +273,7 @@ public class MachineTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
-   *   MachineTypeName machineType = MachineTypeName.create("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
+   *   MachineTypeName machineType = MachineTypeName.of("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
    *   MachineType response = machineTypeClient.getMachineType(machineType);
    * }
    * </code></pre>
@@ -299,7 +298,7 @@ public class MachineTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
-   *   MachineTypeName machineType = MachineTypeName.create("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
+   *   MachineTypeName machineType = MachineTypeName.of("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
    *   GetMachineTypeHttpRequest request = GetMachineTypeHttpRequest.newBuilder()
    *     .setMachineTypeWithMachineTypeName(machineType)
    *     .build();
@@ -322,7 +321,7 @@ public class MachineTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
-   *   MachineTypeName machineType = MachineTypeName.create("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
+   *   MachineTypeName machineType = MachineTypeName.of("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
    *   GetMachineTypeHttpRequest request = GetMachineTypeHttpRequest.newBuilder()
    *     .setMachineTypeWithMachineTypeName(machineType)
    *     .build();
@@ -344,7 +343,7 @@ public class MachineTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   for (MachineType element : machineTypeClient.listMachineTypes(zone).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -370,7 +369,7 @@ public class MachineTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListMachineTypesHttpRequest request = ListMachineTypesHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -396,7 +395,7 @@ public class MachineTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListMachineTypesHttpRequest request = ListMachineTypesHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -420,7 +419,7 @@ public class MachineTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListMachineTypesHttpRequest request = ListMachineTypesHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();

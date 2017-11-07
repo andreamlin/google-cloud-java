@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,83 +63,78 @@ import javax.annotation.Generated;
 public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList> directAggregatedListTargetVpnGatewaysCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList>newBuilder()
-              .setMethodName("compute.targetVpnGateways.aggregatedList")
-              .setRequestInstance(AggregatedListTargetVpnGatewaysHttpRequest.getDefaultInstance())
-              .setResponseInstance(TargetVpnGatewayAggregatedList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/aggregated/targetVpnGateways")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<DeleteTargetVpnGatewayHttpRequest, Operation> directDeleteTargetVpnGatewayCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteTargetVpnGatewayHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.targetVpnGateways.delete")
-              .setRequestInstance(DeleteTargetVpnGatewayHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "targetVpnGateway"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetTargetVpnGatewayHttpRequest, TargetVpnGateway> directGetTargetVpnGatewayCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>newBuilder()
-              .setMethodName("compute.targetVpnGateways.get")
-              .setRequestInstance(GetTargetVpnGatewayHttpRequest.getDefaultInstance())
-              .setResponseInstance(TargetVpnGateway.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "targetVpnGateway"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertTargetVpnGatewayHttpRequest, Operation> directInsertTargetVpnGatewayCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertTargetVpnGatewayHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.targetVpnGateways.insert")
-              .setRequestInstance(InsertTargetVpnGatewayHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList> directListTargetVpnGatewaysCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList>newBuilder()
-              .setMethodName("compute.targetVpnGateways.list")
-              .setRequestInstance(ListTargetVpnGatewaysHttpRequest.getDefaultInstance())
-              .setResponseInstance(TargetVpnGatewayList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
+  private static final ApiMethodDescriptor<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList> aggregatedListTargetVpnGatewaysMethodDescriptor =
+      ApiMethodDescriptor.<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList>newBuilder()
+          .setMethodName("compute.targetVpnGateways.aggregatedList")
+          .setRequestInstance(AggregatedListTargetVpnGatewaysHttpRequest.getDefaultInstance())
+          .setResponseInstance(TargetVpnGatewayAggregatedList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/aggregated/targetVpnGateways")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<DeleteTargetVpnGatewayHttpRequest, Operation> deleteTargetVpnGatewayMethodDescriptor =
+      ApiMethodDescriptor.<DeleteTargetVpnGatewayHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.targetVpnGateways.delete")
+          .setRequestInstance(DeleteTargetVpnGatewayHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "targetVpnGateway"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetTargetVpnGatewayHttpRequest, TargetVpnGateway> getTargetVpnGatewayMethodDescriptor =
+      ApiMethodDescriptor.<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>newBuilder()
+          .setMethodName("compute.targetVpnGateways.get")
+          .setRequestInstance(GetTargetVpnGatewayHttpRequest.getDefaultInstance())
+          .setResponseInstance(TargetVpnGateway.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "targetVpnGateway"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertTargetVpnGatewayHttpRequest, Operation> insertTargetVpnGatewayMethodDescriptor =
+      ApiMethodDescriptor.<InsertTargetVpnGatewayHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.targetVpnGateways.insert")
+          .setRequestInstance(InsertTargetVpnGatewayHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList> listTargetVpnGatewaysMethodDescriptor =
+      ApiMethodDescriptor.<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList>newBuilder()
+          .setMethodName("compute.targetVpnGateways.list")
+          .setRequestInstance(ListTargetVpnGatewaysHttpRequest.getDefaultInstance())
+          .setResponseInstance(TargetVpnGatewayList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -166,15 +161,34 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
    */
   protected HttpJsonTargetVpnGatewayStub(TargetVpnGatewaySettings settings, ClientContext clientContext) throws IOException {
 
-    this.aggregatedListTargetVpnGatewaysCallable = HttpJsonCallableFactory.create(directAggregatedListTargetVpnGatewaysCallable,settings.aggregatedListTargetVpnGatewaysSettings(), clientContext);
-    this.aggregatedListTargetVpnGatewaysPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directAggregatedListTargetVpnGatewaysCallable,settings.aggregatedListTargetVpnGatewaysSettings(), clientContext);
-    this.deleteTargetVpnGatewayCallable = HttpJsonCallableFactory.create(directDeleteTargetVpnGatewayCallable,settings.deleteTargetVpnGatewaySettings(), clientContext);
-    this.getTargetVpnGatewayCallable = HttpJsonCallableFactory.create(directGetTargetVpnGatewayCallable,settings.getTargetVpnGatewaySettings(), clientContext);
-    this.insertTargetVpnGatewayCallable = HttpJsonCallableFactory.create(directInsertTargetVpnGatewayCallable,settings.insertTargetVpnGatewaySettings(), clientContext);
-    this.listTargetVpnGatewaysCallable = HttpJsonCallableFactory.create(directListTargetVpnGatewaysCallable,settings.listTargetVpnGatewaysSettings(), clientContext);
-    this.listTargetVpnGatewaysPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListTargetVpnGatewaysCallable,settings.listTargetVpnGatewaysSettings(), clientContext);
+    HttpJsonCallSettings<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList> aggregatedListTargetVpnGatewaysTransportSettings =
+        HttpJsonCallSettings.<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList>newBuilder()
+            .setMethodDescriptor(aggregatedListTargetVpnGatewaysMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<DeleteTargetVpnGatewayHttpRequest, Operation> deleteTargetVpnGatewayTransportSettings =
+        HttpJsonCallSettings.<DeleteTargetVpnGatewayHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteTargetVpnGatewayMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetTargetVpnGatewayHttpRequest, TargetVpnGateway> getTargetVpnGatewayTransportSettings =
+        HttpJsonCallSettings.<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>newBuilder()
+            .setMethodDescriptor(getTargetVpnGatewayMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertTargetVpnGatewayHttpRequest, Operation> insertTargetVpnGatewayTransportSettings =
+        HttpJsonCallSettings.<InsertTargetVpnGatewayHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertTargetVpnGatewayMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList> listTargetVpnGatewaysTransportSettings =
+        HttpJsonCallSettings.<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList>newBuilder()
+            .setMethodDescriptor(listTargetVpnGatewaysMethodDescriptor)
+            .build();
+
+    this.aggregatedListTargetVpnGatewaysCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListTargetVpnGatewaysTransportSettings,settings.aggregatedListTargetVpnGatewaysSettings(), clientContext);
+    this.aggregatedListTargetVpnGatewaysPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListTargetVpnGatewaysTransportSettings,settings.aggregatedListTargetVpnGatewaysSettings(), clientContext);
+    this.deleteTargetVpnGatewayCallable = HttpJsonCallableFactory.createUnaryCallable(deleteTargetVpnGatewayTransportSettings,settings.deleteTargetVpnGatewaySettings(), clientContext);
+    this.getTargetVpnGatewayCallable = HttpJsonCallableFactory.createUnaryCallable(getTargetVpnGatewayTransportSettings,settings.getTargetVpnGatewaySettings(), clientContext);
+    this.insertTargetVpnGatewayCallable = HttpJsonCallableFactory.createUnaryCallable(insertTargetVpnGatewayTransportSettings,settings.insertTargetVpnGatewaySettings(), clientContext);
+    this.listTargetVpnGatewaysCallable = HttpJsonCallableFactory.createUnaryCallable(listTargetVpnGatewaysTransportSettings,settings.listTargetVpnGatewaysSettings(), clientContext);
+    this.listTargetVpnGatewaysPagedCallable = HttpJsonCallableFactory.createPagedCallable(listTargetVpnGatewaysTransportSettings,settings.listTargetVpnGatewaysSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

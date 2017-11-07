@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
- *   SnapshotName snapshot = SnapshotName.create("[PROJECT]", "[SNAPSHOT]");
+ *   SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
  *   Operation response = snapshotClient.deleteSnapshot(snapshot);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * SnapshotSettings snapshotSettings =
  *     SnapshotSettings.newBuilder()
- *         .setTransportProvider(SnapshotSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(SnapshotSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(SnapshotSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * SnapshotClient snapshotClient =
@@ -130,6 +128,7 @@ public class SnapshotClient implements BackgroundResource {
    * Constructs an instance of SnapshotClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use SnapshotSettings}.
    */
+  @BetaApi
   public static final SnapshotClient create(SnapshotStub stub) {
     return new SnapshotClient(stub);
   }
@@ -168,7 +167,7 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   SnapshotName snapshot = SnapshotName.create("[PROJECT]", "[SNAPSHOT]");
+   *   SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
    *   Operation response = snapshotClient.deleteSnapshot(snapshot);
    * }
    * </code></pre>
@@ -195,7 +194,7 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   SnapshotName snapshot = SnapshotName.create("[PROJECT]", "[SNAPSHOT]");
+   *   SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
    *   DeleteSnapshotHttpRequest request = DeleteSnapshotHttpRequest.newBuilder()
    *     .setSnapshotWithSnapshotName(snapshot)
    *     .build();
@@ -220,7 +219,7 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   SnapshotName snapshot = SnapshotName.create("[PROJECT]", "[SNAPSHOT]");
+   *   SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
    *   DeleteSnapshotHttpRequest request = DeleteSnapshotHttpRequest.newBuilder()
    *     .setSnapshotWithSnapshotName(snapshot)
    *     .build();
@@ -242,7 +241,7 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   SnapshotName snapshot = SnapshotName.create("[PROJECT]", "[SNAPSHOT]");
+   *   SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
    *   Snapshot response = snapshotClient.getSnapshot(snapshot);
    * }
    * </code></pre>
@@ -267,7 +266,7 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   SnapshotName snapshot = SnapshotName.create("[PROJECT]", "[SNAPSHOT]");
+   *   SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
    *   GetSnapshotHttpRequest request = GetSnapshotHttpRequest.newBuilder()
    *     .setSnapshotWithSnapshotName(snapshot)
    *     .build();
@@ -290,7 +289,7 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   SnapshotName snapshot = SnapshotName.create("[PROJECT]", "[SNAPSHOT]");
+   *   SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
    *   GetSnapshotHttpRequest request = GetSnapshotHttpRequest.newBuilder()
    *     .setSnapshotWithSnapshotName(snapshot)
    *     .build();
@@ -312,7 +311,7 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (Snapshot element : snapshotClient.listSnapshots(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -338,7 +337,7 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListSnapshotsHttpRequest request = ListSnapshotsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -364,7 +363,7 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListSnapshotsHttpRequest request = ListSnapshotsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -388,7 +387,7 @@ public class SnapshotClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListSnapshotsHttpRequest request = ListSnapshotsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();

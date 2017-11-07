@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (RouteClient routeClient = RouteClient.create()) {
- *   RouteName route = RouteName.create("[PROJECT]", "[ROUTE]");
+ *   RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
  *   Operation response = routeClient.deleteRoute(route);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * RouteSettings routeSettings =
  *     RouteSettings.newBuilder()
- *         .setTransportProvider(RouteSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(RouteSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(RouteSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * RouteClient routeClient =
@@ -130,6 +128,7 @@ public class RouteClient implements BackgroundResource {
    * Constructs an instance of RouteClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use RouteSettings}.
    */
+  @BetaApi
   public static final RouteClient create(RouteStub stub) {
     return new RouteClient(stub);
   }
@@ -166,7 +165,7 @@ public class RouteClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
-   *   RouteName route = RouteName.create("[PROJECT]", "[ROUTE]");
+   *   RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
    *   Operation response = routeClient.deleteRoute(route);
    * }
    * </code></pre>
@@ -191,7 +190,7 @@ public class RouteClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
-   *   RouteName route = RouteName.create("[PROJECT]", "[ROUTE]");
+   *   RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
    *   DeleteRouteHttpRequest request = DeleteRouteHttpRequest.newBuilder()
    *     .setRouteWithRouteName(route)
    *     .build();
@@ -214,7 +213,7 @@ public class RouteClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
-   *   RouteName route = RouteName.create("[PROJECT]", "[ROUTE]");
+   *   RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
    *   DeleteRouteHttpRequest request = DeleteRouteHttpRequest.newBuilder()
    *     .setRouteWithRouteName(route)
    *     .build();
@@ -236,7 +235,7 @@ public class RouteClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
-   *   RouteName route = RouteName.create("[PROJECT]", "[ROUTE]");
+   *   RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
    *   Route response = routeClient.getRoute(route);
    * }
    * </code></pre>
@@ -261,7 +260,7 @@ public class RouteClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
-   *   RouteName route = RouteName.create("[PROJECT]", "[ROUTE]");
+   *   RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
    *   GetRouteHttpRequest request = GetRouteHttpRequest.newBuilder()
    *     .setRouteWithRouteName(route)
    *     .build();
@@ -284,7 +283,7 @@ public class RouteClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
-   *   RouteName route = RouteName.create("[PROJECT]", "[ROUTE]");
+   *   RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
    *   GetRouteHttpRequest request = GetRouteHttpRequest.newBuilder()
    *     .setRouteWithRouteName(route)
    *     .build();
@@ -306,7 +305,7 @@ public class RouteClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Route route = Route.newBuilder().build();
    *   Operation response = routeClient.insertRoute(project, route);
    * }
@@ -338,7 +337,7 @@ public class RouteClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Route route = Route.newBuilder().build();
    *   InsertRouteHttpRequest request = InsertRouteHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -363,7 +362,7 @@ public class RouteClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Route route = Route.newBuilder().build();
    *   InsertRouteHttpRequest request = InsertRouteHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -387,7 +386,7 @@ public class RouteClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (Route element : routeClient.listRoutes(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -413,7 +412,7 @@ public class RouteClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListRoutesHttpRequest request = ListRoutesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -439,7 +438,7 @@ public class RouteClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListRoutesHttpRequest request = ListRoutesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -463,7 +462,7 @@ public class RouteClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListRoutesHttpRequest request = ListRoutesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();

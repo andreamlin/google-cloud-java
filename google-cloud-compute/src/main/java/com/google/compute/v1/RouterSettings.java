@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -54,7 +53,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -108,14 +106,14 @@ public class RouterSettings extends ClientSettings {
   private static String gapicVersion;
 
   private final PagedCallSettings<AggregatedListRoutersHttpRequest, RouterAggregatedList, AggregatedListRoutersPagedResponse> aggregatedListRoutersSettings;
-  private final SimpleCallSettings<DeleteRouterHttpRequest, Operation> deleteRouterSettings;
-  private final SimpleCallSettings<GetRouterHttpRequest, Router> getRouterSettings;
-  private final SimpleCallSettings<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterSettings;
-  private final SimpleCallSettings<InsertRouterHttpRequest, Operation> insertRouterSettings;
+  private final UnaryCallSettings<DeleteRouterHttpRequest, Operation> deleteRouterSettings;
+  private final UnaryCallSettings<GetRouterHttpRequest, Router> getRouterSettings;
+  private final UnaryCallSettings<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterSettings;
+  private final UnaryCallSettings<InsertRouterHttpRequest, Operation> insertRouterSettings;
   private final PagedCallSettings<ListRoutersHttpRequest, RouterList, ListRoutersPagedResponse> listRoutersSettings;
-  private final SimpleCallSettings<PatchRouterHttpRequest, Operation> patchRouterSettings;
-  private final SimpleCallSettings<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterSettings;
-  private final SimpleCallSettings<UpdateRouterHttpRequest, Operation> updateRouterSettings;
+  private final UnaryCallSettings<PatchRouterHttpRequest, Operation> patchRouterSettings;
+  private final UnaryCallSettings<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterSettings;
+  private final UnaryCallSettings<UpdateRouterHttpRequest, Operation> updateRouterSettings;
 
   /**
    * Returns the object with the settings used for calls to aggregatedListRouters.
@@ -127,28 +125,28 @@ public class RouterSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to deleteRouter.
    */
-  public SimpleCallSettings<DeleteRouterHttpRequest, Operation> deleteRouterSettings() {
+  public UnaryCallSettings<DeleteRouterHttpRequest, Operation> deleteRouterSettings() {
     return deleteRouterSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getRouter.
    */
-  public SimpleCallSettings<GetRouterHttpRequest, Router> getRouterSettings() {
+  public UnaryCallSettings<GetRouterHttpRequest, Router> getRouterSettings() {
     return getRouterSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getRouterStatusRouter.
    */
-  public SimpleCallSettings<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterSettings() {
+  public UnaryCallSettings<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterSettings() {
     return getRouterStatusRouterSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to insertRouter.
    */
-  public SimpleCallSettings<InsertRouterHttpRequest, Operation> insertRouterSettings() {
+  public UnaryCallSettings<InsertRouterHttpRequest, Operation> insertRouterSettings() {
     return insertRouterSettings;
   }
 
@@ -162,31 +160,33 @@ public class RouterSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to patchRouter.
    */
-  public SimpleCallSettings<PatchRouterHttpRequest, Operation> patchRouterSettings() {
+  public UnaryCallSettings<PatchRouterHttpRequest, Operation> patchRouterSettings() {
     return patchRouterSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to previewRouter.
    */
-  public SimpleCallSettings<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterSettings() {
+  public UnaryCallSettings<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterSettings() {
     return previewRouterSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to updateRouter.
    */
-  public SimpleCallSettings<UpdateRouterHttpRequest, Operation> updateRouterSettings() {
+  public UnaryCallSettings<UpdateRouterHttpRequest, Operation> updateRouterSettings() {
     return updateRouterSettings;
   }
 
 
   public RouterStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonRouterStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -230,20 +230,20 @@ public class RouterSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -296,8 +296,9 @@ public class RouterSettings extends ClientSettings {
   private RouterSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     aggregatedListRoutersSettings = settingsBuilder.aggregatedListRoutersSettings().build();
@@ -412,28 +413,28 @@ public class RouterSettings extends ClientSettings {
    * Builder for RouterSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListRoutersHttpRequest, RouterAggregatedList, AggregatedListRoutersPagedResponse> aggregatedListRoutersSettings;
-    private final SimpleCallSettings.Builder<DeleteRouterHttpRequest, Operation> deleteRouterSettings;
-    private final SimpleCallSettings.Builder<GetRouterHttpRequest, Router> getRouterSettings;
-    private final SimpleCallSettings.Builder<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterSettings;
-    private final SimpleCallSettings.Builder<InsertRouterHttpRequest, Operation> insertRouterSettings;
+    private final UnaryCallSettings.Builder<DeleteRouterHttpRequest, Operation> deleteRouterSettings;
+    private final UnaryCallSettings.Builder<GetRouterHttpRequest, Router> getRouterSettings;
+    private final UnaryCallSettings.Builder<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterSettings;
+    private final UnaryCallSettings.Builder<InsertRouterHttpRequest, Operation> insertRouterSettings;
     private final PagedCallSettings.Builder<ListRoutersHttpRequest, RouterList, ListRoutersPagedResponse> listRoutersSettings;
-    private final SimpleCallSettings.Builder<PatchRouterHttpRequest, Operation> patchRouterSettings;
-    private final SimpleCallSettings.Builder<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterSettings;
-    private final SimpleCallSettings.Builder<UpdateRouterHttpRequest, Operation> updateRouterSettings;
+    private final UnaryCallSettings.Builder<PatchRouterHttpRequest, Operation> patchRouterSettings;
+    private final UnaryCallSettings.Builder<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterSettings;
+    private final UnaryCallSettings.Builder<UpdateRouterHttpRequest, Operation> updateRouterSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -465,24 +466,24 @@ public class RouterSettings extends ClientSettings {
       aggregatedListRoutersSettings = PagedCallSettings.newBuilder(
           AGGREGATED_LIST_ROUTERS_PAGE_STR_FACT);
 
-      deleteRouterSettings = SimpleCallSettings.newBuilder();
+      deleteRouterSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getRouterSettings = SimpleCallSettings.newBuilder();
+      getRouterSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getRouterStatusRouterSettings = SimpleCallSettings.newBuilder();
+      getRouterStatusRouterSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      insertRouterSettings = SimpleCallSettings.newBuilder();
+      insertRouterSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listRoutersSettings = PagedCallSettings.newBuilder(
           LIST_ROUTERS_PAGE_STR_FACT);
 
-      patchRouterSettings = SimpleCallSettings.newBuilder();
+      patchRouterSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      previewRouterSettings = SimpleCallSettings.newBuilder();
+      previewRouterSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      updateRouterSettings = SimpleCallSettings.newBuilder();
+      updateRouterSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           aggregatedListRoutersSettings,
           deleteRouterSettings,
           getRouterSettings,
@@ -499,8 +500,9 @@ public class RouterSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -558,7 +560,7 @@ public class RouterSettings extends ClientSettings {
       previewRouterSettings = settings.previewRouterSettings.toBuilder();
       updateRouterSettings = settings.updateRouterSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           aggregatedListRoutersSettings,
           deleteRouterSettings,
           getRouterSettings,
@@ -578,8 +580,14 @@ public class RouterSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -594,7 +602,7 @@ public class RouterSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -609,28 +617,28 @@ public class RouterSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteRouter.
      */
-    public SimpleCallSettings.Builder<DeleteRouterHttpRequest, Operation> deleteRouterSettings() {
+    public UnaryCallSettings.Builder<DeleteRouterHttpRequest, Operation> deleteRouterSettings() {
       return deleteRouterSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getRouter.
      */
-    public SimpleCallSettings.Builder<GetRouterHttpRequest, Router> getRouterSettings() {
+    public UnaryCallSettings.Builder<GetRouterHttpRequest, Router> getRouterSettings() {
       return getRouterSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getRouterStatusRouter.
      */
-    public SimpleCallSettings.Builder<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterSettings() {
+    public UnaryCallSettings.Builder<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterSettings() {
       return getRouterStatusRouterSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to insertRouter.
      */
-    public SimpleCallSettings.Builder<InsertRouterHttpRequest, Operation> insertRouterSettings() {
+    public UnaryCallSettings.Builder<InsertRouterHttpRequest, Operation> insertRouterSettings() {
       return insertRouterSettings;
     }
 
@@ -644,21 +652,21 @@ public class RouterSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to patchRouter.
      */
-    public SimpleCallSettings.Builder<PatchRouterHttpRequest, Operation> patchRouterSettings() {
+    public UnaryCallSettings.Builder<PatchRouterHttpRequest, Operation> patchRouterSettings() {
       return patchRouterSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to previewRouter.
      */
-    public SimpleCallSettings.Builder<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterSettings() {
+    public UnaryCallSettings.Builder<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterSettings() {
       return previewRouterSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to updateRouter.
      */
-    public SimpleCallSettings.Builder<UpdateRouterHttpRequest, Operation> updateRouterSettings() {
+    public UnaryCallSettings.Builder<UpdateRouterHttpRequest, Operation> updateRouterSettings() {
       return updateRouterSettings;
     }
 

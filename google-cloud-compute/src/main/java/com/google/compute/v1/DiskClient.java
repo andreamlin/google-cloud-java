@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (DiskClient diskClient = DiskClient.create()) {
- *   DiskName disk = DiskName.create("[PROJECT]", "[ZONE]", "[DISK]");
+ *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
  *   Snapshot snapshot = Snapshot.newBuilder().build();
  *   Operation response = diskClient.createSnapshotDisk(disk, snapshot);
  * }
@@ -93,10 +93,8 @@ import javax.annotation.Generated;
  * <code>
  * DiskSettings diskSettings =
  *     DiskSettings.newBuilder()
- *         .setTransportProvider(DiskSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(DiskSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(DiskSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * DiskClient diskClient =
@@ -132,6 +130,7 @@ public class DiskClient implements BackgroundResource {
    * Constructs an instance of DiskClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use DiskSettings}.
    */
+  @BetaApi
   public static final DiskClient create(DiskStub stub) {
     return new DiskClient(stub);
   }
@@ -168,7 +167,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (Disk element : diskClient.aggregatedListDisks(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -194,7 +193,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListDisksHttpRequest request = AggregatedListDisksHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -220,7 +219,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListDisksHttpRequest request = AggregatedListDisksHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -244,7 +243,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListDisksHttpRequest request = AggregatedListDisksHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -275,7 +274,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   DiskName disk = DiskName.create("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   Snapshot snapshot = Snapshot.newBuilder().build();
    *   Operation response = diskClient.createSnapshotDisk(disk, snapshot);
    * }
@@ -303,7 +302,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   DiskName disk = DiskName.create("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   Snapshot snapshot = Snapshot.newBuilder().build();
    *   CreateSnapshotDiskHttpRequest request = CreateSnapshotDiskHttpRequest.newBuilder()
    *     .setDiskWithDiskName(disk)
@@ -328,7 +327,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   DiskName disk = DiskName.create("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   Snapshot snapshot = Snapshot.newBuilder().build();
    *   CreateSnapshotDiskHttpRequest request = CreateSnapshotDiskHttpRequest.newBuilder()
    *     .setDiskWithDiskName(disk)
@@ -352,7 +351,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   DiskName disk = DiskName.create("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   Operation response = diskClient.deleteDisk(disk);
    * }
    * </code></pre>
@@ -377,7 +376,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   DiskName disk = DiskName.create("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   DeleteDiskHttpRequest request = DeleteDiskHttpRequest.newBuilder()
    *     .setDiskWithDiskName(disk)
    *     .build();
@@ -400,7 +399,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   DiskName disk = DiskName.create("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   DeleteDiskHttpRequest request = DeleteDiskHttpRequest.newBuilder()
    *     .setDiskWithDiskName(disk)
    *     .build();
@@ -422,7 +421,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   DiskName disk = DiskName.create("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   Disk response = diskClient.getDisk(disk);
    * }
    * </code></pre>
@@ -447,7 +446,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   DiskName disk = DiskName.create("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   GetDiskHttpRequest request = GetDiskHttpRequest.newBuilder()
    *     .setDiskWithDiskName(disk)
    *     .build();
@@ -470,7 +469,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   DiskName disk = DiskName.create("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   GetDiskHttpRequest request = GetDiskHttpRequest.newBuilder()
    *     .setDiskWithDiskName(disk)
    *     .build();
@@ -492,7 +491,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   String sourceImage = "";
    *   Disk disk = Disk.newBuilder().build();
    *   Operation response = diskClient.insertDisk(zone, sourceImage, disk);
@@ -523,7 +522,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   String sourceImage = "";
    *   Disk disk = Disk.newBuilder().build();
    *   InsertDiskHttpRequest request = InsertDiskHttpRequest.newBuilder()
@@ -550,7 +549,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   String sourceImage = "";
    *   Disk disk = Disk.newBuilder().build();
    *   InsertDiskHttpRequest request = InsertDiskHttpRequest.newBuilder()
@@ -576,7 +575,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   for (Disk element : diskClient.listDisks(zone).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -602,7 +601,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListDisksHttpRequest request = ListDisksHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -628,7 +627,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListDisksHttpRequest request = ListDisksHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -652,7 +651,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListDisksHttpRequest request = ListDisksHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -683,7 +682,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   DiskName disk = DiskName.create("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   DisksResizeRequest disksResizeRequest = DisksResizeRequest.newBuilder().build();
    *   Operation response = diskClient.resizeDisk(disk, disksResizeRequest);
    * }
@@ -711,7 +710,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   DiskName disk = DiskName.create("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   DisksResizeRequest disksResizeRequest = DisksResizeRequest.newBuilder().build();
    *   ResizeDiskHttpRequest request = ResizeDiskHttpRequest.newBuilder()
    *     .setDiskWithDiskName(disk)
@@ -736,7 +735,7 @@ public class DiskClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
-   *   DiskName disk = DiskName.create("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   DisksResizeRequest disksResizeRequest = DisksResizeRequest.newBuilder().build();
    *   ResizeDiskHttpRequest request = ResizeDiskHttpRequest.newBuilder()
    *     .setDiskWithDiskName(disk)

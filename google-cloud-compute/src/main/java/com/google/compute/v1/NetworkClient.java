@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (NetworkClient networkClient = NetworkClient.create()) {
- *   NetworkName network = NetworkName.create("[PROJECT]", "[NETWORK]");
+ *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
  *   Operation response = networkClient.deleteNetwork(network);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * NetworkSettings networkSettings =
  *     NetworkSettings.newBuilder()
- *         .setTransportProvider(NetworkSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(NetworkSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(NetworkSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * NetworkClient networkClient =
@@ -130,6 +128,7 @@ public class NetworkClient implements BackgroundResource {
    * Constructs an instance of NetworkClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use NetworkSettings}.
    */
+  @BetaApi
   public static final NetworkClient create(NetworkStub stub) {
     return new NetworkClient(stub);
   }
@@ -166,7 +165,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   NetworkName network = NetworkName.create("[PROJECT]", "[NETWORK]");
+   *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   Operation response = networkClient.deleteNetwork(network);
    * }
    * </code></pre>
@@ -191,7 +190,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   NetworkName network = NetworkName.create("[PROJECT]", "[NETWORK]");
+   *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   DeleteNetworkHttpRequest request = DeleteNetworkHttpRequest.newBuilder()
    *     .setNetworkWithNetworkName(network)
    *     .build();
@@ -214,7 +213,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   NetworkName network = NetworkName.create("[PROJECT]", "[NETWORK]");
+   *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   DeleteNetworkHttpRequest request = DeleteNetworkHttpRequest.newBuilder()
    *     .setNetworkWithNetworkName(network)
    *     .build();
@@ -236,7 +235,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   NetworkName network = NetworkName.create("[PROJECT]", "[NETWORK]");
+   *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   Network response = networkClient.getNetwork(network);
    * }
    * </code></pre>
@@ -261,7 +260,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   NetworkName network = NetworkName.create("[PROJECT]", "[NETWORK]");
+   *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   GetNetworkHttpRequest request = GetNetworkHttpRequest.newBuilder()
    *     .setNetworkWithNetworkName(network)
    *     .build();
@@ -284,7 +283,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   NetworkName network = NetworkName.create("[PROJECT]", "[NETWORK]");
+   *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   GetNetworkHttpRequest request = GetNetworkHttpRequest.newBuilder()
    *     .setNetworkWithNetworkName(network)
    *     .build();
@@ -306,7 +305,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Network network = Network.newBuilder().build();
    *   Operation response = networkClient.insertNetwork(project, network);
    * }
@@ -334,7 +333,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Network network = Network.newBuilder().build();
    *   InsertNetworkHttpRequest request = InsertNetworkHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -359,7 +358,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Network network = Network.newBuilder().build();
    *   InsertNetworkHttpRequest request = InsertNetworkHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -383,7 +382,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (Network element : networkClient.listNetworks(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -409,7 +408,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListNetworksHttpRequest request = ListNetworksHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -435,7 +434,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListNetworksHttpRequest request = ListNetworksHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -459,7 +458,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListNetworksHttpRequest request = ListNetworksHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -490,7 +489,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   NetworkName network = NetworkName.create("[PROJECT]", "[NETWORK]");
+   *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   Operation response = networkClient.switchToCustomModeNetwork(network);
    * }
    * </code></pre>
@@ -515,7 +514,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   NetworkName network = NetworkName.create("[PROJECT]", "[NETWORK]");
+   *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   SwitchToCustomModeNetworkHttpRequest request = SwitchToCustomModeNetworkHttpRequest.newBuilder()
    *     .setNetworkWithNetworkName(network)
    *     .build();
@@ -538,7 +537,7 @@ public class NetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
-   *   NetworkName network = NetworkName.create("[PROJECT]", "[NETWORK]");
+   *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   SwitchToCustomModeNetworkHttpRequest request = SwitchToCustomModeNetworkHttpRequest.newBuilder()
    *     .setNetworkWithNetworkName(network)
    *     .build();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -54,7 +53,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -108,8 +106,8 @@ public class GlobalOperationSettings extends ClientSettings {
   private static String gapicVersion;
 
   private final PagedCallSettings<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsSettings;
-  private final SimpleCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings;
-  private final SimpleCallSettings<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings;
+  private final UnaryCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings;
+  private final UnaryCallSettings<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings;
   private final PagedCallSettings<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse> listGlobalOperationsSettings;
 
   /**
@@ -122,14 +120,14 @@ public class GlobalOperationSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to deleteGlobalOperation.
    */
-  public SimpleCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings() {
+  public UnaryCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings() {
     return deleteGlobalOperationSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getGlobalOperation.
    */
-  public SimpleCallSettings<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings() {
+  public UnaryCallSettings<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings() {
     return getGlobalOperationSettings;
   }
 
@@ -142,11 +140,13 @@ public class GlobalOperationSettings extends ClientSettings {
 
 
   public GlobalOperationStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonGlobalOperationStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -190,20 +190,20 @@ public class GlobalOperationSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -256,8 +256,9 @@ public class GlobalOperationSettings extends ClientSettings {
   private GlobalOperationSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     aggregatedListGlobalOperationsSettings = settingsBuilder.aggregatedListGlobalOperationsSettings().build();
@@ -367,23 +368,23 @@ public class GlobalOperationSettings extends ClientSettings {
    * Builder for GlobalOperationSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsSettings;
-    private final SimpleCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings;
-    private final SimpleCallSettings.Builder<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings;
+    private final UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings;
+    private final UnaryCallSettings.Builder<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings;
     private final PagedCallSettings.Builder<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse> listGlobalOperationsSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -415,14 +416,14 @@ public class GlobalOperationSettings extends ClientSettings {
       aggregatedListGlobalOperationsSettings = PagedCallSettings.newBuilder(
           AGGREGATED_LIST_GLOBAL_OPERATIONS_PAGE_STR_FACT);
 
-      deleteGlobalOperationSettings = SimpleCallSettings.newBuilder();
+      deleteGlobalOperationSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getGlobalOperationSettings = SimpleCallSettings.newBuilder();
+      getGlobalOperationSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listGlobalOperationsSettings = PagedCallSettings.newBuilder(
           LIST_GLOBAL_OPERATIONS_PAGE_STR_FACT);
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           aggregatedListGlobalOperationsSettings,
           deleteGlobalOperationSettings,
           getGlobalOperationSettings,
@@ -434,8 +435,9 @@ public class GlobalOperationSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -468,7 +470,7 @@ public class GlobalOperationSettings extends ClientSettings {
       getGlobalOperationSettings = settings.getGlobalOperationSettings.toBuilder();
       listGlobalOperationsSettings = settings.listGlobalOperationsSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           aggregatedListGlobalOperationsSettings,
           deleteGlobalOperationSettings,
           getGlobalOperationSettings,
@@ -483,8 +485,14 @@ public class GlobalOperationSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -499,7 +507,7 @@ public class GlobalOperationSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -514,14 +522,14 @@ public class GlobalOperationSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteGlobalOperation.
      */
-    public SimpleCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings() {
+    public UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings() {
       return deleteGlobalOperationSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getGlobalOperation.
      */
-    public SimpleCallSettings.Builder<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings() {
+    public UnaryCallSettings.Builder<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings() {
       return getGlobalOperationSettings;
     }
 

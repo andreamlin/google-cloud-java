@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
- *   RegionOperationsOperationName operation = RegionOperationsOperationName.create("[PROJECT]", "[REGION]", "[OPERATION]");
+ *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
  *   regionOperationClient.deleteRegionOperation(operation);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * RegionOperationSettings regionOperationSettings =
  *     RegionOperationSettings.newBuilder()
- *         .setTransportProvider(RegionOperationSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(RegionOperationSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(RegionOperationSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * RegionOperationClient regionOperationClient =
@@ -130,6 +128,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Constructs an instance of RegionOperationClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use RegionOperationSettings}.
    */
+  @BetaApi
   public static final RegionOperationClient create(RegionOperationStub stub) {
     return new RegionOperationClient(stub);
   }
@@ -166,7 +165,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionOperationsOperationName operation = RegionOperationsOperationName.create("[PROJECT]", "[REGION]", "[OPERATION]");
+   *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   regionOperationClient.deleteRegionOperation(operation);
    * }
    * </code></pre>
@@ -191,7 +190,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionOperationsOperationName operation = RegionOperationsOperationName.create("[PROJECT]", "[REGION]", "[OPERATION]");
+   *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   DeleteRegionOperationHttpRequest request = DeleteRegionOperationHttpRequest.newBuilder()
    *     .setOperationWithRegionOperationsOperationName(operation)
    *     .build();
@@ -214,7 +213,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionOperationsOperationName operation = RegionOperationsOperationName.create("[PROJECT]", "[REGION]", "[OPERATION]");
+   *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   DeleteRegionOperationHttpRequest request = DeleteRegionOperationHttpRequest.newBuilder()
    *     .setOperationWithRegionOperationsOperationName(operation)
    *     .build();
@@ -236,7 +235,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionOperationsOperationName operation = RegionOperationsOperationName.create("[PROJECT]", "[REGION]", "[OPERATION]");
+   *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   Operation response = regionOperationClient.getRegionOperation(operation);
    * }
    * </code></pre>
@@ -261,7 +260,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionOperationsOperationName operation = RegionOperationsOperationName.create("[PROJECT]", "[REGION]", "[OPERATION]");
+   *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   GetRegionOperationHttpRequest request = GetRegionOperationHttpRequest.newBuilder()
    *     .setOperationWithRegionOperationsOperationName(operation)
    *     .build();
@@ -284,7 +283,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionOperationsOperationName operation = RegionOperationsOperationName.create("[PROJECT]", "[REGION]", "[OPERATION]");
+   *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   GetRegionOperationHttpRequest request = GetRegionOperationHttpRequest.newBuilder()
    *     .setOperationWithRegionOperationsOperationName(operation)
    *     .build();
@@ -306,7 +305,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   for (Operation element : regionOperationClient.listRegionOperations(region).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -332,7 +331,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRegionOperationsHttpRequest request = ListRegionOperationsHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
    *     .build();
@@ -358,7 +357,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRegionOperationsHttpRequest request = ListRegionOperationsHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
    *     .build();
@@ -382,7 +381,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRegionOperationsHttpRequest request = ListRegionOperationsHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
    *     .build();

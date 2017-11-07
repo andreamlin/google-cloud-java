@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (RegionClient regionClient = RegionClient.create()) {
- *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+ *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
  *   Region response = regionClient.getRegion(region);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * RegionSettings regionSettings =
  *     RegionSettings.newBuilder()
- *         .setTransportProvider(RegionSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(RegionSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(RegionSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * RegionClient regionClient =
@@ -130,6 +128,7 @@ public class RegionClient implements BackgroundResource {
    * Constructs an instance of RegionClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use RegionSettings}.
    */
+  @BetaApi
   public static final RegionClient create(RegionStub stub) {
     return new RegionClient(stub);
   }
@@ -166,7 +165,7 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Region response = regionClient.getRegion(region);
    * }
    * </code></pre>
@@ -191,7 +190,7 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   GetRegionHttpRequest request = GetRegionHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
    *     .build();
@@ -214,7 +213,7 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   GetRegionHttpRequest request = GetRegionHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
    *     .build();
@@ -236,7 +235,7 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (Region element : regionClient.listRegions(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -262,7 +261,7 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListRegionsHttpRequest request = ListRegionsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -288,7 +287,7 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListRegionsHttpRequest request = ListRegionsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -312,7 +311,7 @@ public class RegionClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionClient regionClient = RegionClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListRegionsHttpRequest request = ListRegionsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();

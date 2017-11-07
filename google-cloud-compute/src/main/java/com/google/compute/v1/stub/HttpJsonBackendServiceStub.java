@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,128 +67,120 @@ import javax.annotation.Generated;
 public class HttpJsonBackendServiceStub extends BackendServiceStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList> directAggregatedListBackendServicesCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList>newBuilder()
-              .setMethodName("compute.backendServices.aggregatedList")
-              .setRequestInstance(AggregatedListBackendServicesHttpRequest.getDefaultInstance())
-              .setResponseInstance(BackendServiceAggregatedList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/aggregated/backendServices")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<DeleteBackendServiceHttpRequest, Operation> directDeleteBackendServiceCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteBackendServiceHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.backendServices.delete")
-              .setRequestInstance(DeleteBackendServiceHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "backendService",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetBackendServiceHttpRequest, BackendService> directGetBackendServiceCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetBackendServiceHttpRequest, BackendService>newBuilder()
-              .setMethodName("compute.backendServices.get")
-              .setRequestInstance(GetBackendServiceHttpRequest.getDefaultInstance())
-              .setResponseInstance(BackendService.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "backendService",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth> directGetHealthBackendServiceCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth>newBuilder()
-              .setMethodName("compute.backendServices.getHealth")
-              .setRequestInstance(GetHealthBackendServiceHttpRequest.getDefaultInstance())
-              .setResponseInstance(BackendServiceGroupHealth.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/backendServices/{backendService}/getHealth")
-              .setPathParams(Sets.<String>newHashSet(
-                                "backendService",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<InsertBackendServiceHttpRequest, Operation> directInsertBackendServiceCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertBackendServiceHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.backendServices.insert")
-              .setRequestInstance(InsertBackendServiceHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/backendServices")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListBackendServicesHttpRequest, BackendServiceList> directListBackendServicesCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListBackendServicesHttpRequest, BackendServiceList>newBuilder()
-              .setMethodName("compute.backendServices.list")
-              .setRequestInstance(ListBackendServicesHttpRequest.getDefaultInstance())
-              .setResponseInstance(BackendServiceList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/backendServices")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<PatchBackendServiceHttpRequest, Operation> directPatchBackendServiceCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<PatchBackendServiceHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.backendServices.patch")
-              .setRequestInstance(PatchBackendServiceHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "backendService",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.PATCH)
-              .build());
-  private static final UnaryCallable<UpdateBackendServiceHttpRequest, Operation> directUpdateBackendServiceCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<UpdateBackendServiceHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.backendServices.update")
-              .setRequestInstance(UpdateBackendServiceHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "backendService",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.PUT)
-              .build());
+  private static final ApiMethodDescriptor<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList> aggregatedListBackendServicesMethodDescriptor =
+      ApiMethodDescriptor.<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList>newBuilder()
+          .setMethodName("compute.backendServices.aggregatedList")
+          .setRequestInstance(AggregatedListBackendServicesHttpRequest.getDefaultInstance())
+          .setResponseInstance(BackendServiceAggregatedList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/aggregated/backendServices")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<DeleteBackendServiceHttpRequest, Operation> deleteBackendServiceMethodDescriptor =
+      ApiMethodDescriptor.<DeleteBackendServiceHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.backendServices.delete")
+          .setRequestInstance(DeleteBackendServiceHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "backendService",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetBackendServiceHttpRequest, BackendService> getBackendServiceMethodDescriptor =
+      ApiMethodDescriptor.<GetBackendServiceHttpRequest, BackendService>newBuilder()
+          .setMethodName("compute.backendServices.get")
+          .setRequestInstance(GetBackendServiceHttpRequest.getDefaultInstance())
+          .setResponseInstance(BackendService.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "backendService",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthBackendServiceMethodDescriptor =
+      ApiMethodDescriptor.<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth>newBuilder()
+          .setMethodName("compute.backendServices.getHealth")
+          .setRequestInstance(GetHealthBackendServiceHttpRequest.getDefaultInstance())
+          .setResponseInstance(BackendServiceGroupHealth.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/backendServices/{backendService}/getHealth")
+          .setPathParams(Sets.<String>newHashSet(
+                            "backendService",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<InsertBackendServiceHttpRequest, Operation> insertBackendServiceMethodDescriptor =
+      ApiMethodDescriptor.<InsertBackendServiceHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.backendServices.insert")
+          .setRequestInstance(InsertBackendServiceHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/backendServices")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListBackendServicesHttpRequest, BackendServiceList> listBackendServicesMethodDescriptor =
+      ApiMethodDescriptor.<ListBackendServicesHttpRequest, BackendServiceList>newBuilder()
+          .setMethodName("compute.backendServices.list")
+          .setRequestInstance(ListBackendServicesHttpRequest.getDefaultInstance())
+          .setResponseInstance(BackendServiceList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/backendServices")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<PatchBackendServiceHttpRequest, Operation> patchBackendServiceMethodDescriptor =
+      ApiMethodDescriptor.<PatchBackendServiceHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.backendServices.patch")
+          .setRequestInstance(PatchBackendServiceHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "backendService",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.PATCH)
+          .build());
+  private static final ApiMethodDescriptor<UpdateBackendServiceHttpRequest, Operation> updateBackendServiceMethodDescriptor =
+      ApiMethodDescriptor.<UpdateBackendServiceHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.backendServices.update")
+          .setRequestInstance(UpdateBackendServiceHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "backendService",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.PUT)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -218,18 +210,49 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
    */
   protected HttpJsonBackendServiceStub(BackendServiceSettings settings, ClientContext clientContext) throws IOException {
 
-    this.aggregatedListBackendServicesCallable = HttpJsonCallableFactory.create(directAggregatedListBackendServicesCallable,settings.aggregatedListBackendServicesSettings(), clientContext);
-    this.aggregatedListBackendServicesPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directAggregatedListBackendServicesCallable,settings.aggregatedListBackendServicesSettings(), clientContext);
-    this.deleteBackendServiceCallable = HttpJsonCallableFactory.create(directDeleteBackendServiceCallable,settings.deleteBackendServiceSettings(), clientContext);
-    this.getBackendServiceCallable = HttpJsonCallableFactory.create(directGetBackendServiceCallable,settings.getBackendServiceSettings(), clientContext);
-    this.getHealthBackendServiceCallable = HttpJsonCallableFactory.create(directGetHealthBackendServiceCallable,settings.getHealthBackendServiceSettings(), clientContext);
-    this.insertBackendServiceCallable = HttpJsonCallableFactory.create(directInsertBackendServiceCallable,settings.insertBackendServiceSettings(), clientContext);
-    this.listBackendServicesCallable = HttpJsonCallableFactory.create(directListBackendServicesCallable,settings.listBackendServicesSettings(), clientContext);
-    this.listBackendServicesPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListBackendServicesCallable,settings.listBackendServicesSettings(), clientContext);
-    this.patchBackendServiceCallable = HttpJsonCallableFactory.create(directPatchBackendServiceCallable,settings.patchBackendServiceSettings(), clientContext);
-    this.updateBackendServiceCallable = HttpJsonCallableFactory.create(directUpdateBackendServiceCallable,settings.updateBackendServiceSettings(), clientContext);
+    HttpJsonCallSettings<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList> aggregatedListBackendServicesTransportSettings =
+        HttpJsonCallSettings.<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList>newBuilder()
+            .setMethodDescriptor(aggregatedListBackendServicesMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<DeleteBackendServiceHttpRequest, Operation> deleteBackendServiceTransportSettings =
+        HttpJsonCallSettings.<DeleteBackendServiceHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteBackendServiceMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetBackendServiceHttpRequest, BackendService> getBackendServiceTransportSettings =
+        HttpJsonCallSettings.<GetBackendServiceHttpRequest, BackendService>newBuilder()
+            .setMethodDescriptor(getBackendServiceMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthBackendServiceTransportSettings =
+        HttpJsonCallSettings.<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth>newBuilder()
+            .setMethodDescriptor(getHealthBackendServiceMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertBackendServiceHttpRequest, Operation> insertBackendServiceTransportSettings =
+        HttpJsonCallSettings.<InsertBackendServiceHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertBackendServiceMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListBackendServicesHttpRequest, BackendServiceList> listBackendServicesTransportSettings =
+        HttpJsonCallSettings.<ListBackendServicesHttpRequest, BackendServiceList>newBuilder()
+            .setMethodDescriptor(listBackendServicesMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<PatchBackendServiceHttpRequest, Operation> patchBackendServiceTransportSettings =
+        HttpJsonCallSettings.<PatchBackendServiceHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(patchBackendServiceMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<UpdateBackendServiceHttpRequest, Operation> updateBackendServiceTransportSettings =
+        HttpJsonCallSettings.<UpdateBackendServiceHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(updateBackendServiceMethodDescriptor)
+            .build();
+
+    this.aggregatedListBackendServicesCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListBackendServicesTransportSettings,settings.aggregatedListBackendServicesSettings(), clientContext);
+    this.aggregatedListBackendServicesPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListBackendServicesTransportSettings,settings.aggregatedListBackendServicesSettings(), clientContext);
+    this.deleteBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(deleteBackendServiceTransportSettings,settings.deleteBackendServiceSettings(), clientContext);
+    this.getBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(getBackendServiceTransportSettings,settings.getBackendServiceSettings(), clientContext);
+    this.getHealthBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(getHealthBackendServiceTransportSettings,settings.getHealthBackendServiceSettings(), clientContext);
+    this.insertBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(insertBackendServiceTransportSettings,settings.insertBackendServiceSettings(), clientContext);
+    this.listBackendServicesCallable = HttpJsonCallableFactory.createUnaryCallable(listBackendServicesTransportSettings,settings.listBackendServicesSettings(), clientContext);
+    this.listBackendServicesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listBackendServicesTransportSettings,settings.listBackendServicesSettings(), clientContext);
+    this.patchBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(patchBackendServiceTransportSettings,settings.patchBackendServiceSettings(), clientContext);
+    this.updateBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(updateBackendServiceTransportSettings,settings.updateBackendServiceSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

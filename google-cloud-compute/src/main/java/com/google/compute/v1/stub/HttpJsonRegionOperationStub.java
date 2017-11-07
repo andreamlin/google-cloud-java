@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,51 +57,48 @@ import javax.annotation.Generated;
 public class HttpJsonRegionOperationStub extends RegionOperationStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteRegionOperationHttpRequest, Void> directDeleteRegionOperationCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteRegionOperationHttpRequest, Void>newBuilder()
-              .setMethodName("compute.regionOperations.delete")
-              .setRequestInstance(DeleteRegionOperationHttpRequest.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/operations/{operation}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "operation",    "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetRegionOperationHttpRequest, Operation> directGetRegionOperationCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetRegionOperationHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.regionOperations.get")
-              .setRequestInstance(GetRegionOperationHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/operations/{operation}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "operation",    "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<ListRegionOperationsHttpRequest, OperationList> directListRegionOperationsCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListRegionOperationsHttpRequest, OperationList>newBuilder()
-              .setMethodName("compute.regionOperations.list")
-              .setRequestInstance(ListRegionOperationsHttpRequest.getDefaultInstance())
-              .setResponseInstance(OperationList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/operations")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
+  private static final ApiMethodDescriptor<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationMethodDescriptor =
+      ApiMethodDescriptor.<DeleteRegionOperationHttpRequest, Void>newBuilder()
+          .setMethodName("compute.regionOperations.delete")
+          .setRequestInstance(DeleteRegionOperationHttpRequest.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/operations/{operation}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "operation",    "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetRegionOperationHttpRequest, Operation> getRegionOperationMethodDescriptor =
+      ApiMethodDescriptor.<GetRegionOperationHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.regionOperations.get")
+          .setRequestInstance(GetRegionOperationHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/operations/{operation}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "operation",    "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<ListRegionOperationsHttpRequest, OperationList> listRegionOperationsMethodDescriptor =
+      ApiMethodDescriptor.<ListRegionOperationsHttpRequest, OperationList>newBuilder()
+          .setMethodName("compute.regionOperations.list")
+          .setRequestInstance(ListRegionOperationsHttpRequest.getDefaultInstance())
+          .setResponseInstance(OperationList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/operations")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -125,11 +122,23 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
    */
   protected HttpJsonRegionOperationStub(RegionOperationSettings settings, ClientContext clientContext) throws IOException {
 
-    this.deleteRegionOperationCallable = HttpJsonCallableFactory.create(directDeleteRegionOperationCallable,settings.deleteRegionOperationSettings(), clientContext);
-    this.getRegionOperationCallable = HttpJsonCallableFactory.create(directGetRegionOperationCallable,settings.getRegionOperationSettings(), clientContext);
-    this.listRegionOperationsCallable = HttpJsonCallableFactory.create(directListRegionOperationsCallable,settings.listRegionOperationsSettings(), clientContext);
-    this.listRegionOperationsPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListRegionOperationsCallable,settings.listRegionOperationsSettings(), clientContext);
+    HttpJsonCallSettings<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationTransportSettings =
+        HttpJsonCallSettings.<DeleteRegionOperationHttpRequest, Void>newBuilder()
+            .setMethodDescriptor(deleteRegionOperationMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetRegionOperationHttpRequest, Operation> getRegionOperationTransportSettings =
+        HttpJsonCallSettings.<GetRegionOperationHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(getRegionOperationMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListRegionOperationsHttpRequest, OperationList> listRegionOperationsTransportSettings =
+        HttpJsonCallSettings.<ListRegionOperationsHttpRequest, OperationList>newBuilder()
+            .setMethodDescriptor(listRegionOperationsMethodDescriptor)
+            .build();
+
+    this.deleteRegionOperationCallable = HttpJsonCallableFactory.createUnaryCallable(deleteRegionOperationTransportSettings,settings.deleteRegionOperationSettings(), clientContext);
+    this.getRegionOperationCallable = HttpJsonCallableFactory.createUnaryCallable(getRegionOperationTransportSettings,settings.getRegionOperationSettings(), clientContext);
+    this.listRegionOperationsCallable = HttpJsonCallableFactory.createUnaryCallable(listRegionOperationsTransportSettings,settings.listRegionOperationsSettings(), clientContext);
+    this.listRegionOperationsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listRegionOperationsTransportSettings,settings.listRegionOperationsSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

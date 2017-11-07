@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -54,7 +53,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -107,31 +105,31 @@ public class InstanceSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<AddAccessConfigInstanceHttpRequest, Operation> addAccessConfigInstanceSettings;
+  private final UnaryCallSettings<AddAccessConfigInstanceHttpRequest, Operation> addAccessConfigInstanceSettings;
   private final PagedCallSettings<AggregatedListInstancesHttpRequest, InstanceAggregatedList, AggregatedListInstancesPagedResponse> aggregatedListInstancesSettings;
-  private final SimpleCallSettings<AttachDiskInstanceHttpRequest, Operation> attachDiskInstanceSettings;
-  private final SimpleCallSettings<DeleteInstanceHttpRequest, Operation> deleteInstanceSettings;
-  private final SimpleCallSettings<DeleteAccessConfigInstanceHttpRequest, Operation> deleteAccessConfigInstanceSettings;
-  private final SimpleCallSettings<DetachDiskInstanceHttpRequest, Operation> detachDiskInstanceSettings;
-  private final SimpleCallSettings<GetInstanceHttpRequest, Instance> getInstanceSettings;
-  private final SimpleCallSettings<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput> getSerialPortOutputInstanceSettings;
-  private final SimpleCallSettings<InsertInstanceHttpRequest, Operation> insertInstanceSettings;
+  private final UnaryCallSettings<AttachDiskInstanceHttpRequest, Operation> attachDiskInstanceSettings;
+  private final UnaryCallSettings<DeleteInstanceHttpRequest, Operation> deleteInstanceSettings;
+  private final UnaryCallSettings<DeleteAccessConfigInstanceHttpRequest, Operation> deleteAccessConfigInstanceSettings;
+  private final UnaryCallSettings<DetachDiskInstanceHttpRequest, Operation> detachDiskInstanceSettings;
+  private final UnaryCallSettings<GetInstanceHttpRequest, Instance> getInstanceSettings;
+  private final UnaryCallSettings<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput> getSerialPortOutputInstanceSettings;
+  private final UnaryCallSettings<InsertInstanceHttpRequest, Operation> insertInstanceSettings;
   private final PagedCallSettings<ListInstancesHttpRequest, InstanceList, ListInstancesPagedResponse> listInstancesSettings;
-  private final SimpleCallSettings<ResetInstanceHttpRequest, Operation> resetInstanceSettings;
-  private final SimpleCallSettings<SetDiskAutoDeleteInstanceHttpRequest, Operation> setDiskAutoDeleteInstanceSettings;
-  private final SimpleCallSettings<SetMachineTypeInstanceHttpRequest, Operation> setMachineTypeInstanceSettings;
-  private final SimpleCallSettings<SetMetadataInstanceHttpRequest, Operation> setMetadataInstanceSettings;
-  private final SimpleCallSettings<SetSchedulingInstanceHttpRequest, Operation> setSchedulingInstanceSettings;
-  private final SimpleCallSettings<SetServiceAccountInstanceHttpRequest, Operation> setServiceAccountInstanceSettings;
-  private final SimpleCallSettings<SetTagsInstanceHttpRequest, Operation> setTagsInstanceSettings;
-  private final SimpleCallSettings<StartInstanceHttpRequest, Operation> startInstanceSettings;
-  private final SimpleCallSettings<StartWithEncryptionKeyInstanceHttpRequest, Operation> startWithEncryptionKeyInstanceSettings;
-  private final SimpleCallSettings<StopInstanceHttpRequest, Operation> stopInstanceSettings;
+  private final UnaryCallSettings<ResetInstanceHttpRequest, Operation> resetInstanceSettings;
+  private final UnaryCallSettings<SetDiskAutoDeleteInstanceHttpRequest, Operation> setDiskAutoDeleteInstanceSettings;
+  private final UnaryCallSettings<SetMachineTypeInstanceHttpRequest, Operation> setMachineTypeInstanceSettings;
+  private final UnaryCallSettings<SetMetadataInstanceHttpRequest, Operation> setMetadataInstanceSettings;
+  private final UnaryCallSettings<SetSchedulingInstanceHttpRequest, Operation> setSchedulingInstanceSettings;
+  private final UnaryCallSettings<SetServiceAccountInstanceHttpRequest, Operation> setServiceAccountInstanceSettings;
+  private final UnaryCallSettings<SetTagsInstanceHttpRequest, Operation> setTagsInstanceSettings;
+  private final UnaryCallSettings<StartInstanceHttpRequest, Operation> startInstanceSettings;
+  private final UnaryCallSettings<StartWithEncryptionKeyInstanceHttpRequest, Operation> startWithEncryptionKeyInstanceSettings;
+  private final UnaryCallSettings<StopInstanceHttpRequest, Operation> stopInstanceSettings;
 
   /**
    * Returns the object with the settings used for calls to addAccessConfigInstance.
    */
-  public SimpleCallSettings<AddAccessConfigInstanceHttpRequest, Operation> addAccessConfigInstanceSettings() {
+  public UnaryCallSettings<AddAccessConfigInstanceHttpRequest, Operation> addAccessConfigInstanceSettings() {
     return addAccessConfigInstanceSettings;
   }
 
@@ -145,49 +143,49 @@ public class InstanceSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to attachDiskInstance.
    */
-  public SimpleCallSettings<AttachDiskInstanceHttpRequest, Operation> attachDiskInstanceSettings() {
+  public UnaryCallSettings<AttachDiskInstanceHttpRequest, Operation> attachDiskInstanceSettings() {
     return attachDiskInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to deleteInstance.
    */
-  public SimpleCallSettings<DeleteInstanceHttpRequest, Operation> deleteInstanceSettings() {
+  public UnaryCallSettings<DeleteInstanceHttpRequest, Operation> deleteInstanceSettings() {
     return deleteInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to deleteAccessConfigInstance.
    */
-  public SimpleCallSettings<DeleteAccessConfigInstanceHttpRequest, Operation> deleteAccessConfigInstanceSettings() {
+  public UnaryCallSettings<DeleteAccessConfigInstanceHttpRequest, Operation> deleteAccessConfigInstanceSettings() {
     return deleteAccessConfigInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to detachDiskInstance.
    */
-  public SimpleCallSettings<DetachDiskInstanceHttpRequest, Operation> detachDiskInstanceSettings() {
+  public UnaryCallSettings<DetachDiskInstanceHttpRequest, Operation> detachDiskInstanceSettings() {
     return detachDiskInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getInstance.
    */
-  public SimpleCallSettings<GetInstanceHttpRequest, Instance> getInstanceSettings() {
+  public UnaryCallSettings<GetInstanceHttpRequest, Instance> getInstanceSettings() {
     return getInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getSerialPortOutputInstance.
    */
-  public SimpleCallSettings<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput> getSerialPortOutputInstanceSettings() {
+  public UnaryCallSettings<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput> getSerialPortOutputInstanceSettings() {
     return getSerialPortOutputInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to insertInstance.
    */
-  public SimpleCallSettings<InsertInstanceHttpRequest, Operation> insertInstanceSettings() {
+  public UnaryCallSettings<InsertInstanceHttpRequest, Operation> insertInstanceSettings() {
     return insertInstanceSettings;
   }
 
@@ -201,80 +199,82 @@ public class InstanceSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to resetInstance.
    */
-  public SimpleCallSettings<ResetInstanceHttpRequest, Operation> resetInstanceSettings() {
+  public UnaryCallSettings<ResetInstanceHttpRequest, Operation> resetInstanceSettings() {
     return resetInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to setDiskAutoDeleteInstance.
    */
-  public SimpleCallSettings<SetDiskAutoDeleteInstanceHttpRequest, Operation> setDiskAutoDeleteInstanceSettings() {
+  public UnaryCallSettings<SetDiskAutoDeleteInstanceHttpRequest, Operation> setDiskAutoDeleteInstanceSettings() {
     return setDiskAutoDeleteInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to setMachineTypeInstance.
    */
-  public SimpleCallSettings<SetMachineTypeInstanceHttpRequest, Operation> setMachineTypeInstanceSettings() {
+  public UnaryCallSettings<SetMachineTypeInstanceHttpRequest, Operation> setMachineTypeInstanceSettings() {
     return setMachineTypeInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to setMetadataInstance.
    */
-  public SimpleCallSettings<SetMetadataInstanceHttpRequest, Operation> setMetadataInstanceSettings() {
+  public UnaryCallSettings<SetMetadataInstanceHttpRequest, Operation> setMetadataInstanceSettings() {
     return setMetadataInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to setSchedulingInstance.
    */
-  public SimpleCallSettings<SetSchedulingInstanceHttpRequest, Operation> setSchedulingInstanceSettings() {
+  public UnaryCallSettings<SetSchedulingInstanceHttpRequest, Operation> setSchedulingInstanceSettings() {
     return setSchedulingInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to setServiceAccountInstance.
    */
-  public SimpleCallSettings<SetServiceAccountInstanceHttpRequest, Operation> setServiceAccountInstanceSettings() {
+  public UnaryCallSettings<SetServiceAccountInstanceHttpRequest, Operation> setServiceAccountInstanceSettings() {
     return setServiceAccountInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to setTagsInstance.
    */
-  public SimpleCallSettings<SetTagsInstanceHttpRequest, Operation> setTagsInstanceSettings() {
+  public UnaryCallSettings<SetTagsInstanceHttpRequest, Operation> setTagsInstanceSettings() {
     return setTagsInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to startInstance.
    */
-  public SimpleCallSettings<StartInstanceHttpRequest, Operation> startInstanceSettings() {
+  public UnaryCallSettings<StartInstanceHttpRequest, Operation> startInstanceSettings() {
     return startInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to startWithEncryptionKeyInstance.
    */
-  public SimpleCallSettings<StartWithEncryptionKeyInstanceHttpRequest, Operation> startWithEncryptionKeyInstanceSettings() {
+  public UnaryCallSettings<StartWithEncryptionKeyInstanceHttpRequest, Operation> startWithEncryptionKeyInstanceSettings() {
     return startWithEncryptionKeyInstanceSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to stopInstance.
    */
-  public SimpleCallSettings<StopInstanceHttpRequest, Operation> stopInstanceSettings() {
+  public UnaryCallSettings<StopInstanceHttpRequest, Operation> stopInstanceSettings() {
     return stopInstanceSettings;
   }
 
 
   public InstanceStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonInstanceStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -318,20 +318,20 @@ public class InstanceSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -384,8 +384,9 @@ public class InstanceSettings extends ClientSettings {
   private InstanceSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     addAccessConfigInstanceSettings = settingsBuilder.addAccessConfigInstanceSettings().build();
@@ -511,39 +512,39 @@ public class InstanceSettings extends ClientSettings {
    * Builder for InstanceSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<AddAccessConfigInstanceHttpRequest, Operation> addAccessConfigInstanceSettings;
+    private final UnaryCallSettings.Builder<AddAccessConfigInstanceHttpRequest, Operation> addAccessConfigInstanceSettings;
     private final PagedCallSettings.Builder<AggregatedListInstancesHttpRequest, InstanceAggregatedList, AggregatedListInstancesPagedResponse> aggregatedListInstancesSettings;
-    private final SimpleCallSettings.Builder<AttachDiskInstanceHttpRequest, Operation> attachDiskInstanceSettings;
-    private final SimpleCallSettings.Builder<DeleteInstanceHttpRequest, Operation> deleteInstanceSettings;
-    private final SimpleCallSettings.Builder<DeleteAccessConfigInstanceHttpRequest, Operation> deleteAccessConfigInstanceSettings;
-    private final SimpleCallSettings.Builder<DetachDiskInstanceHttpRequest, Operation> detachDiskInstanceSettings;
-    private final SimpleCallSettings.Builder<GetInstanceHttpRequest, Instance> getInstanceSettings;
-    private final SimpleCallSettings.Builder<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput> getSerialPortOutputInstanceSettings;
-    private final SimpleCallSettings.Builder<InsertInstanceHttpRequest, Operation> insertInstanceSettings;
+    private final UnaryCallSettings.Builder<AttachDiskInstanceHttpRequest, Operation> attachDiskInstanceSettings;
+    private final UnaryCallSettings.Builder<DeleteInstanceHttpRequest, Operation> deleteInstanceSettings;
+    private final UnaryCallSettings.Builder<DeleteAccessConfigInstanceHttpRequest, Operation> deleteAccessConfigInstanceSettings;
+    private final UnaryCallSettings.Builder<DetachDiskInstanceHttpRequest, Operation> detachDiskInstanceSettings;
+    private final UnaryCallSettings.Builder<GetInstanceHttpRequest, Instance> getInstanceSettings;
+    private final UnaryCallSettings.Builder<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput> getSerialPortOutputInstanceSettings;
+    private final UnaryCallSettings.Builder<InsertInstanceHttpRequest, Operation> insertInstanceSettings;
     private final PagedCallSettings.Builder<ListInstancesHttpRequest, InstanceList, ListInstancesPagedResponse> listInstancesSettings;
-    private final SimpleCallSettings.Builder<ResetInstanceHttpRequest, Operation> resetInstanceSettings;
-    private final SimpleCallSettings.Builder<SetDiskAutoDeleteInstanceHttpRequest, Operation> setDiskAutoDeleteInstanceSettings;
-    private final SimpleCallSettings.Builder<SetMachineTypeInstanceHttpRequest, Operation> setMachineTypeInstanceSettings;
-    private final SimpleCallSettings.Builder<SetMetadataInstanceHttpRequest, Operation> setMetadataInstanceSettings;
-    private final SimpleCallSettings.Builder<SetSchedulingInstanceHttpRequest, Operation> setSchedulingInstanceSettings;
-    private final SimpleCallSettings.Builder<SetServiceAccountInstanceHttpRequest, Operation> setServiceAccountInstanceSettings;
-    private final SimpleCallSettings.Builder<SetTagsInstanceHttpRequest, Operation> setTagsInstanceSettings;
-    private final SimpleCallSettings.Builder<StartInstanceHttpRequest, Operation> startInstanceSettings;
-    private final SimpleCallSettings.Builder<StartWithEncryptionKeyInstanceHttpRequest, Operation> startWithEncryptionKeyInstanceSettings;
-    private final SimpleCallSettings.Builder<StopInstanceHttpRequest, Operation> stopInstanceSettings;
+    private final UnaryCallSettings.Builder<ResetInstanceHttpRequest, Operation> resetInstanceSettings;
+    private final UnaryCallSettings.Builder<SetDiskAutoDeleteInstanceHttpRequest, Operation> setDiskAutoDeleteInstanceSettings;
+    private final UnaryCallSettings.Builder<SetMachineTypeInstanceHttpRequest, Operation> setMachineTypeInstanceSettings;
+    private final UnaryCallSettings.Builder<SetMetadataInstanceHttpRequest, Operation> setMetadataInstanceSettings;
+    private final UnaryCallSettings.Builder<SetSchedulingInstanceHttpRequest, Operation> setSchedulingInstanceSettings;
+    private final UnaryCallSettings.Builder<SetServiceAccountInstanceHttpRequest, Operation> setServiceAccountInstanceSettings;
+    private final UnaryCallSettings.Builder<SetTagsInstanceHttpRequest, Operation> setTagsInstanceSettings;
+    private final UnaryCallSettings.Builder<StartInstanceHttpRequest, Operation> startInstanceSettings;
+    private final UnaryCallSettings.Builder<StartWithEncryptionKeyInstanceHttpRequest, Operation> startWithEncryptionKeyInstanceSettings;
+    private final UnaryCallSettings.Builder<StopInstanceHttpRequest, Operation> stopInstanceSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -572,49 +573,49 @@ public class InstanceSettings extends ClientSettings {
     private Builder(ClientContext clientContext) {
       super(clientContext);
 
-      addAccessConfigInstanceSettings = SimpleCallSettings.newBuilder();
+      addAccessConfigInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       aggregatedListInstancesSettings = PagedCallSettings.newBuilder(
           AGGREGATED_LIST_INSTANCES_PAGE_STR_FACT);
 
-      attachDiskInstanceSettings = SimpleCallSettings.newBuilder();
+      attachDiskInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      deleteInstanceSettings = SimpleCallSettings.newBuilder();
+      deleteInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      deleteAccessConfigInstanceSettings = SimpleCallSettings.newBuilder();
+      deleteAccessConfigInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      detachDiskInstanceSettings = SimpleCallSettings.newBuilder();
+      detachDiskInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getInstanceSettings = SimpleCallSettings.newBuilder();
+      getInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getSerialPortOutputInstanceSettings = SimpleCallSettings.newBuilder();
+      getSerialPortOutputInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      insertInstanceSettings = SimpleCallSettings.newBuilder();
+      insertInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listInstancesSettings = PagedCallSettings.newBuilder(
           LIST_INSTANCES_PAGE_STR_FACT);
 
-      resetInstanceSettings = SimpleCallSettings.newBuilder();
+      resetInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      setDiskAutoDeleteInstanceSettings = SimpleCallSettings.newBuilder();
+      setDiskAutoDeleteInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      setMachineTypeInstanceSettings = SimpleCallSettings.newBuilder();
+      setMachineTypeInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      setMetadataInstanceSettings = SimpleCallSettings.newBuilder();
+      setMetadataInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      setSchedulingInstanceSettings = SimpleCallSettings.newBuilder();
+      setSchedulingInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      setServiceAccountInstanceSettings = SimpleCallSettings.newBuilder();
+      setServiceAccountInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      setTagsInstanceSettings = SimpleCallSettings.newBuilder();
+      setTagsInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      startInstanceSettings = SimpleCallSettings.newBuilder();
+      startInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      startWithEncryptionKeyInstanceSettings = SimpleCallSettings.newBuilder();
+      startWithEncryptionKeyInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      stopInstanceSettings = SimpleCallSettings.newBuilder();
+      stopInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           addAccessConfigInstanceSettings,
           aggregatedListInstancesSettings,
           attachDiskInstanceSettings,
@@ -642,8 +643,9 @@ public class InstanceSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -756,7 +758,7 @@ public class InstanceSettings extends ClientSettings {
       startWithEncryptionKeyInstanceSettings = settings.startWithEncryptionKeyInstanceSettings.toBuilder();
       stopInstanceSettings = settings.stopInstanceSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           addAccessConfigInstanceSettings,
           aggregatedListInstancesSettings,
           attachDiskInstanceSettings,
@@ -787,8 +789,14 @@ public class InstanceSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -803,7 +811,7 @@ public class InstanceSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -811,7 +819,7 @@ public class InstanceSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to addAccessConfigInstance.
      */
-    public SimpleCallSettings.Builder<AddAccessConfigInstanceHttpRequest, Operation> addAccessConfigInstanceSettings() {
+    public UnaryCallSettings.Builder<AddAccessConfigInstanceHttpRequest, Operation> addAccessConfigInstanceSettings() {
       return addAccessConfigInstanceSettings;
     }
 
@@ -825,49 +833,49 @@ public class InstanceSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to attachDiskInstance.
      */
-    public SimpleCallSettings.Builder<AttachDiskInstanceHttpRequest, Operation> attachDiskInstanceSettings() {
+    public UnaryCallSettings.Builder<AttachDiskInstanceHttpRequest, Operation> attachDiskInstanceSettings() {
       return attachDiskInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to deleteInstance.
      */
-    public SimpleCallSettings.Builder<DeleteInstanceHttpRequest, Operation> deleteInstanceSettings() {
+    public UnaryCallSettings.Builder<DeleteInstanceHttpRequest, Operation> deleteInstanceSettings() {
       return deleteInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to deleteAccessConfigInstance.
      */
-    public SimpleCallSettings.Builder<DeleteAccessConfigInstanceHttpRequest, Operation> deleteAccessConfigInstanceSettings() {
+    public UnaryCallSettings.Builder<DeleteAccessConfigInstanceHttpRequest, Operation> deleteAccessConfigInstanceSettings() {
       return deleteAccessConfigInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to detachDiskInstance.
      */
-    public SimpleCallSettings.Builder<DetachDiskInstanceHttpRequest, Operation> detachDiskInstanceSettings() {
+    public UnaryCallSettings.Builder<DetachDiskInstanceHttpRequest, Operation> detachDiskInstanceSettings() {
       return detachDiskInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getInstance.
      */
-    public SimpleCallSettings.Builder<GetInstanceHttpRequest, Instance> getInstanceSettings() {
+    public UnaryCallSettings.Builder<GetInstanceHttpRequest, Instance> getInstanceSettings() {
       return getInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getSerialPortOutputInstance.
      */
-    public SimpleCallSettings.Builder<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput> getSerialPortOutputInstanceSettings() {
+    public UnaryCallSettings.Builder<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput> getSerialPortOutputInstanceSettings() {
       return getSerialPortOutputInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to insertInstance.
      */
-    public SimpleCallSettings.Builder<InsertInstanceHttpRequest, Operation> insertInstanceSettings() {
+    public UnaryCallSettings.Builder<InsertInstanceHttpRequest, Operation> insertInstanceSettings() {
       return insertInstanceSettings;
     }
 
@@ -881,70 +889,70 @@ public class InstanceSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to resetInstance.
      */
-    public SimpleCallSettings.Builder<ResetInstanceHttpRequest, Operation> resetInstanceSettings() {
+    public UnaryCallSettings.Builder<ResetInstanceHttpRequest, Operation> resetInstanceSettings() {
       return resetInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to setDiskAutoDeleteInstance.
      */
-    public SimpleCallSettings.Builder<SetDiskAutoDeleteInstanceHttpRequest, Operation> setDiskAutoDeleteInstanceSettings() {
+    public UnaryCallSettings.Builder<SetDiskAutoDeleteInstanceHttpRequest, Operation> setDiskAutoDeleteInstanceSettings() {
       return setDiskAutoDeleteInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to setMachineTypeInstance.
      */
-    public SimpleCallSettings.Builder<SetMachineTypeInstanceHttpRequest, Operation> setMachineTypeInstanceSettings() {
+    public UnaryCallSettings.Builder<SetMachineTypeInstanceHttpRequest, Operation> setMachineTypeInstanceSettings() {
       return setMachineTypeInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to setMetadataInstance.
      */
-    public SimpleCallSettings.Builder<SetMetadataInstanceHttpRequest, Operation> setMetadataInstanceSettings() {
+    public UnaryCallSettings.Builder<SetMetadataInstanceHttpRequest, Operation> setMetadataInstanceSettings() {
       return setMetadataInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to setSchedulingInstance.
      */
-    public SimpleCallSettings.Builder<SetSchedulingInstanceHttpRequest, Operation> setSchedulingInstanceSettings() {
+    public UnaryCallSettings.Builder<SetSchedulingInstanceHttpRequest, Operation> setSchedulingInstanceSettings() {
       return setSchedulingInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to setServiceAccountInstance.
      */
-    public SimpleCallSettings.Builder<SetServiceAccountInstanceHttpRequest, Operation> setServiceAccountInstanceSettings() {
+    public UnaryCallSettings.Builder<SetServiceAccountInstanceHttpRequest, Operation> setServiceAccountInstanceSettings() {
       return setServiceAccountInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to setTagsInstance.
      */
-    public SimpleCallSettings.Builder<SetTagsInstanceHttpRequest, Operation> setTagsInstanceSettings() {
+    public UnaryCallSettings.Builder<SetTagsInstanceHttpRequest, Operation> setTagsInstanceSettings() {
       return setTagsInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to startInstance.
      */
-    public SimpleCallSettings.Builder<StartInstanceHttpRequest, Operation> startInstanceSettings() {
+    public UnaryCallSettings.Builder<StartInstanceHttpRequest, Operation> startInstanceSettings() {
       return startInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to startWithEncryptionKeyInstance.
      */
-    public SimpleCallSettings.Builder<StartWithEncryptionKeyInstanceHttpRequest, Operation> startWithEncryptionKeyInstanceSettings() {
+    public UnaryCallSettings.Builder<StartWithEncryptionKeyInstanceHttpRequest, Operation> startWithEncryptionKeyInstanceSettings() {
       return startWithEncryptionKeyInstanceSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to stopInstance.
      */
-    public SimpleCallSettings.Builder<StopInstanceHttpRequest, Operation> stopInstanceSettings() {
+    public UnaryCallSettings.Builder<StopInstanceHttpRequest, Operation> stopInstanceSettings() {
       return stopInstanceSettings;
     }
 

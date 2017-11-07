@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
- *   SubnetworkName subnetwork = SubnetworkName.create("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+ *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
  *   Operation response = subnetworkClient.deleteSubnetwork(subnetwork);
  * }
  * </code>
@@ -92,10 +92,8 @@ import javax.annotation.Generated;
  * <code>
  * SubnetworkSettings subnetworkSettings =
  *     SubnetworkSettings.newBuilder()
- *         .setTransportProvider(SubnetworkSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(SubnetworkSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(SubnetworkSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * SubnetworkClient subnetworkClient =
@@ -131,6 +129,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Constructs an instance of SubnetworkClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use SubnetworkSettings}.
    */
+  @BetaApi
   public static final SubnetworkClient create(SubnetworkStub stub) {
     return new SubnetworkClient(stub);
   }
@@ -167,7 +166,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (Subnetwork element : subnetworkClient.aggregatedListSubnetworks(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -193,7 +192,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListSubnetworksHttpRequest request = AggregatedListSubnetworksHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -219,7 +218,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListSubnetworksHttpRequest request = AggregatedListSubnetworksHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -243,7 +242,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListSubnetworksHttpRequest request = AggregatedListSubnetworksHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -274,7 +273,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   SubnetworkName subnetwork = SubnetworkName.create("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   Operation response = subnetworkClient.deleteSubnetwork(subnetwork);
    * }
    * </code></pre>
@@ -299,7 +298,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   SubnetworkName subnetwork = SubnetworkName.create("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   DeleteSubnetworkHttpRequest request = DeleteSubnetworkHttpRequest.newBuilder()
    *     .setSubnetworkWithSubnetworkName(subnetwork)
    *     .build();
@@ -322,7 +321,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   SubnetworkName subnetwork = SubnetworkName.create("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   DeleteSubnetworkHttpRequest request = DeleteSubnetworkHttpRequest.newBuilder()
    *     .setSubnetworkWithSubnetworkName(subnetwork)
    *     .build();
@@ -344,7 +343,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   SubnetworkName subnetwork = SubnetworkName.create("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
    *   Operation response = subnetworkClient.expandIpCidrRangeSubnetwork(subnetwork, subnetworksExpandIpCidrRangeRequest);
    * }
@@ -372,7 +371,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   SubnetworkName subnetwork = SubnetworkName.create("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
    *   ExpandIpCidrRangeSubnetworkHttpRequest request = ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
    *     .setSubnetworkWithSubnetworkName(subnetwork)
@@ -397,7 +396,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   SubnetworkName subnetwork = SubnetworkName.create("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
    *   ExpandIpCidrRangeSubnetworkHttpRequest request = ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
    *     .setSubnetworkWithSubnetworkName(subnetwork)
@@ -421,7 +420,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   SubnetworkName subnetwork = SubnetworkName.create("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   Subnetwork response = subnetworkClient.getSubnetwork(subnetwork);
    * }
    * </code></pre>
@@ -446,7 +445,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   SubnetworkName subnetwork = SubnetworkName.create("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   GetSubnetworkHttpRequest request = GetSubnetworkHttpRequest.newBuilder()
    *     .setSubnetworkWithSubnetworkName(subnetwork)
    *     .build();
@@ -469,7 +468,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   SubnetworkName subnetwork = SubnetworkName.create("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   GetSubnetworkHttpRequest request = GetSubnetworkHttpRequest.newBuilder()
    *     .setSubnetworkWithSubnetworkName(subnetwork)
    *     .build();
@@ -491,7 +490,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Subnetwork subnetwork = Subnetwork.newBuilder().build();
    *   Operation response = subnetworkClient.insertSubnetwork(region, subnetwork);
    * }
@@ -519,7 +518,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Subnetwork subnetwork = Subnetwork.newBuilder().build();
    *   InsertSubnetworkHttpRequest request = InsertSubnetworkHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
@@ -544,7 +543,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Subnetwork subnetwork = Subnetwork.newBuilder().build();
    *   InsertSubnetworkHttpRequest request = InsertSubnetworkHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
@@ -568,7 +567,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   for (Subnetwork element : subnetworkClient.listSubnetworks(region).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -594,7 +593,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListSubnetworksHttpRequest request = ListSubnetworksHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
    *     .build();
@@ -620,7 +619,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListSubnetworksHttpRequest request = ListSubnetworksHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
    *     .build();
@@ -644,7 +643,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListSubnetworksHttpRequest request = ListSubnetworksHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
    *     .build();

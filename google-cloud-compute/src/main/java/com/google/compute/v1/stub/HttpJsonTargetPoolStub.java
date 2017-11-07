@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -76,174 +76,163 @@ import javax.annotation.Generated;
 public class HttpJsonTargetPoolStub extends TargetPoolStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<AddHealthCheckTargetPoolHttpRequest, Operation> directAddHealthCheckTargetPoolCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<AddHealthCheckTargetPoolHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.targetPools.addHealthCheck")
-              .setRequestInstance(AddHealthCheckTargetPoolHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/addHealthCheck")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "targetPool"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<AddInstanceTargetPoolHttpRequest, Operation> directAddInstanceTargetPoolCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<AddInstanceTargetPoolHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.targetPools.addInstance")
-              .setRequestInstance(AddInstanceTargetPoolHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/addInstance")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "targetPool"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList> directAggregatedListTargetPoolsCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList>newBuilder()
-              .setMethodName("compute.targetPools.aggregatedList")
-              .setRequestInstance(AggregatedListTargetPoolsHttpRequest.getDefaultInstance())
-              .setResponseInstance(TargetPoolAggregatedList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/aggregated/targetPools")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<DeleteTargetPoolHttpRequest, Operation> directDeleteTargetPoolCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteTargetPoolHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.targetPools.delete")
-              .setRequestInstance(DeleteTargetPoolHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "targetPool"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetTargetPoolHttpRequest, TargetPool> directGetTargetPoolCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetTargetPoolHttpRequest, TargetPool>newBuilder()
-              .setMethodName("compute.targetPools.get")
-              .setRequestInstance(GetTargetPoolHttpRequest.getDefaultInstance())
-              .setResponseInstance(TargetPool.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "targetPool"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> directGetHealthTargetPoolCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth>newBuilder()
-              .setMethodName("compute.targetPools.getHealth")
-              .setRequestInstance(GetHealthTargetPoolHttpRequest.getDefaultInstance())
-              .setResponseInstance(TargetPoolInstanceHealth.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/getHealth")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "targetPool"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<InsertTargetPoolHttpRequest, Operation> directInsertTargetPoolCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertTargetPoolHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.targetPools.insert")
-              .setRequestInstance(InsertTargetPoolHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/targetPools")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListTargetPoolsHttpRequest, TargetPoolList> directListTargetPoolsCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListTargetPoolsHttpRequest, TargetPoolList>newBuilder()
-              .setMethodName("compute.targetPools.list")
-              .setRequestInstance(ListTargetPoolsHttpRequest.getDefaultInstance())
-              .setResponseInstance(TargetPoolList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/targetPools")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<RemoveHealthCheckTargetPoolHttpRequest, Operation> directRemoveHealthCheckTargetPoolCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<RemoveHealthCheckTargetPoolHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.targetPools.removeHealthCheck")
-              .setRequestInstance(RemoveHealthCheckTargetPoolHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/removeHealthCheck")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "targetPool"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<RemoveInstanceTargetPoolHttpRequest, Operation> directRemoveInstanceTargetPoolCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<RemoveInstanceTargetPoolHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.targetPools.removeInstance")
-              .setRequestInstance(RemoveInstanceTargetPoolHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/removeInstance")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "targetPool"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<SetBackupTargetPoolHttpRequest, Operation> directSetBackupTargetPoolCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<SetBackupTargetPoolHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.targetPools.setBackup")
-              .setRequestInstance(SetBackupTargetPoolHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/setBackup")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "targetPool"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "failoverRatio"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
+  private static final ApiMethodDescriptor<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolMethodDescriptor =
+      ApiMethodDescriptor.<AddHealthCheckTargetPoolHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.targetPools.addHealthCheck")
+          .setRequestInstance(AddHealthCheckTargetPoolHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/addHealthCheck")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "targetPool"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<AddInstanceTargetPoolHttpRequest, Operation> addInstanceTargetPoolMethodDescriptor =
+      ApiMethodDescriptor.<AddInstanceTargetPoolHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.targetPools.addInstance")
+          .setRequestInstance(AddInstanceTargetPoolHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/addInstance")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "targetPool"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList> aggregatedListTargetPoolsMethodDescriptor =
+      ApiMethodDescriptor.<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList>newBuilder()
+          .setMethodName("compute.targetPools.aggregatedList")
+          .setRequestInstance(AggregatedListTargetPoolsHttpRequest.getDefaultInstance())
+          .setResponseInstance(TargetPoolAggregatedList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/aggregated/targetPools")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolMethodDescriptor =
+      ApiMethodDescriptor.<DeleteTargetPoolHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.targetPools.delete")
+          .setRequestInstance(DeleteTargetPoolHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "targetPool"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetTargetPoolHttpRequest, TargetPool> getTargetPoolMethodDescriptor =
+      ApiMethodDescriptor.<GetTargetPoolHttpRequest, TargetPool>newBuilder()
+          .setMethodName("compute.targetPools.get")
+          .setRequestInstance(GetTargetPoolHttpRequest.getDefaultInstance())
+          .setResponseInstance(TargetPool.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "targetPool"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> getHealthTargetPoolMethodDescriptor =
+      ApiMethodDescriptor.<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth>newBuilder()
+          .setMethodName("compute.targetPools.getHealth")
+          .setRequestInstance(GetHealthTargetPoolHttpRequest.getDefaultInstance())
+          .setResponseInstance(TargetPoolInstanceHealth.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/getHealth")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "targetPool"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<InsertTargetPoolHttpRequest, Operation> insertTargetPoolMethodDescriptor =
+      ApiMethodDescriptor.<InsertTargetPoolHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.targetPools.insert")
+          .setRequestInstance(InsertTargetPoolHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/targetPools")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListTargetPoolsHttpRequest, TargetPoolList> listTargetPoolsMethodDescriptor =
+      ApiMethodDescriptor.<ListTargetPoolsHttpRequest, TargetPoolList>newBuilder()
+          .setMethodName("compute.targetPools.list")
+          .setRequestInstance(ListTargetPoolsHttpRequest.getDefaultInstance())
+          .setResponseInstance(TargetPoolList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/targetPools")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<RemoveHealthCheckTargetPoolHttpRequest, Operation> removeHealthCheckTargetPoolMethodDescriptor =
+      ApiMethodDescriptor.<RemoveHealthCheckTargetPoolHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.targetPools.removeHealthCheck")
+          .setRequestInstance(RemoveHealthCheckTargetPoolHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/removeHealthCheck")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "targetPool"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolMethodDescriptor =
+      ApiMethodDescriptor.<RemoveInstanceTargetPoolHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.targetPools.removeInstance")
+          .setRequestInstance(RemoveInstanceTargetPoolHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/removeInstance")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "targetPool"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolMethodDescriptor =
+      ApiMethodDescriptor.<SetBackupTargetPoolHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.targetPools.setBackup")
+          .setRequestInstance(SetBackupTargetPoolHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/setBackup")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "targetPool"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "failoverRatio"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -276,21 +265,64 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
    */
   protected HttpJsonTargetPoolStub(TargetPoolSettings settings, ClientContext clientContext) throws IOException {
 
-    this.addHealthCheckTargetPoolCallable = HttpJsonCallableFactory.create(directAddHealthCheckTargetPoolCallable,settings.addHealthCheckTargetPoolSettings(), clientContext);
-    this.addInstanceTargetPoolCallable = HttpJsonCallableFactory.create(directAddInstanceTargetPoolCallable,settings.addInstanceTargetPoolSettings(), clientContext);
-    this.aggregatedListTargetPoolsCallable = HttpJsonCallableFactory.create(directAggregatedListTargetPoolsCallable,settings.aggregatedListTargetPoolsSettings(), clientContext);
-    this.aggregatedListTargetPoolsPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directAggregatedListTargetPoolsCallable,settings.aggregatedListTargetPoolsSettings(), clientContext);
-    this.deleteTargetPoolCallable = HttpJsonCallableFactory.create(directDeleteTargetPoolCallable,settings.deleteTargetPoolSettings(), clientContext);
-    this.getTargetPoolCallable = HttpJsonCallableFactory.create(directGetTargetPoolCallable,settings.getTargetPoolSettings(), clientContext);
-    this.getHealthTargetPoolCallable = HttpJsonCallableFactory.create(directGetHealthTargetPoolCallable,settings.getHealthTargetPoolSettings(), clientContext);
-    this.insertTargetPoolCallable = HttpJsonCallableFactory.create(directInsertTargetPoolCallable,settings.insertTargetPoolSettings(), clientContext);
-    this.listTargetPoolsCallable = HttpJsonCallableFactory.create(directListTargetPoolsCallable,settings.listTargetPoolsSettings(), clientContext);
-    this.listTargetPoolsPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListTargetPoolsCallable,settings.listTargetPoolsSettings(), clientContext);
-    this.removeHealthCheckTargetPoolCallable = HttpJsonCallableFactory.create(directRemoveHealthCheckTargetPoolCallable,settings.removeHealthCheckTargetPoolSettings(), clientContext);
-    this.removeInstanceTargetPoolCallable = HttpJsonCallableFactory.create(directRemoveInstanceTargetPoolCallable,settings.removeInstanceTargetPoolSettings(), clientContext);
-    this.setBackupTargetPoolCallable = HttpJsonCallableFactory.create(directSetBackupTargetPoolCallable,settings.setBackupTargetPoolSettings(), clientContext);
+    HttpJsonCallSettings<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolTransportSettings =
+        HttpJsonCallSettings.<AddHealthCheckTargetPoolHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(addHealthCheckTargetPoolMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<AddInstanceTargetPoolHttpRequest, Operation> addInstanceTargetPoolTransportSettings =
+        HttpJsonCallSettings.<AddInstanceTargetPoolHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(addInstanceTargetPoolMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList> aggregatedListTargetPoolsTransportSettings =
+        HttpJsonCallSettings.<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList>newBuilder()
+            .setMethodDescriptor(aggregatedListTargetPoolsMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolTransportSettings =
+        HttpJsonCallSettings.<DeleteTargetPoolHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteTargetPoolMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetTargetPoolHttpRequest, TargetPool> getTargetPoolTransportSettings =
+        HttpJsonCallSettings.<GetTargetPoolHttpRequest, TargetPool>newBuilder()
+            .setMethodDescriptor(getTargetPoolMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> getHealthTargetPoolTransportSettings =
+        HttpJsonCallSettings.<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth>newBuilder()
+            .setMethodDescriptor(getHealthTargetPoolMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertTargetPoolHttpRequest, Operation> insertTargetPoolTransportSettings =
+        HttpJsonCallSettings.<InsertTargetPoolHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertTargetPoolMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListTargetPoolsHttpRequest, TargetPoolList> listTargetPoolsTransportSettings =
+        HttpJsonCallSettings.<ListTargetPoolsHttpRequest, TargetPoolList>newBuilder()
+            .setMethodDescriptor(listTargetPoolsMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<RemoveHealthCheckTargetPoolHttpRequest, Operation> removeHealthCheckTargetPoolTransportSettings =
+        HttpJsonCallSettings.<RemoveHealthCheckTargetPoolHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(removeHealthCheckTargetPoolMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolTransportSettings =
+        HttpJsonCallSettings.<RemoveInstanceTargetPoolHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(removeInstanceTargetPoolMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolTransportSettings =
+        HttpJsonCallSettings.<SetBackupTargetPoolHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(setBackupTargetPoolMethodDescriptor)
+            .build();
+
+    this.addHealthCheckTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(addHealthCheckTargetPoolTransportSettings,settings.addHealthCheckTargetPoolSettings(), clientContext);
+    this.addInstanceTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(addInstanceTargetPoolTransportSettings,settings.addInstanceTargetPoolSettings(), clientContext);
+    this.aggregatedListTargetPoolsCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListTargetPoolsTransportSettings,settings.aggregatedListTargetPoolsSettings(), clientContext);
+    this.aggregatedListTargetPoolsPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListTargetPoolsTransportSettings,settings.aggregatedListTargetPoolsSettings(), clientContext);
+    this.deleteTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(deleteTargetPoolTransportSettings,settings.deleteTargetPoolSettings(), clientContext);
+    this.getTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(getTargetPoolTransportSettings,settings.getTargetPoolSettings(), clientContext);
+    this.getHealthTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(getHealthTargetPoolTransportSettings,settings.getHealthTargetPoolSettings(), clientContext);
+    this.insertTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(insertTargetPoolTransportSettings,settings.insertTargetPoolSettings(), clientContext);
+    this.listTargetPoolsCallable = HttpJsonCallableFactory.createUnaryCallable(listTargetPoolsTransportSettings,settings.listTargetPoolsSettings(), clientContext);
+    this.listTargetPoolsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listTargetPoolsTransportSettings,settings.listTargetPoolsSettings(), clientContext);
+    this.removeHealthCheckTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(removeHealthCheckTargetPoolTransportSettings,settings.removeHealthCheckTargetPoolSettings(), clientContext);
+    this.removeInstanceTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(removeInstanceTargetPoolTransportSettings,settings.removeInstanceTargetPoolSettings(), clientContext);
+    this.setBackupTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(setBackupTargetPoolTransportSettings,settings.setBackupTargetPoolSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

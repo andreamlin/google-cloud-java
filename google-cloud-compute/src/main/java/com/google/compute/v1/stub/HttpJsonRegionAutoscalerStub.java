@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,99 +61,93 @@ import javax.annotation.Generated;
 public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteRegionAutoscalerHttpRequest, Operation> directDeleteRegionAutoscalerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteRegionAutoscalerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.regionAutoscalers.delete")
-              .setRequestInstance(DeleteRegionAutoscalerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/autoscalers/{autoscaler}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "autoscaler",    "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetRegionAutoscalerHttpRequest, Autoscaler> directGetRegionAutoscalerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetRegionAutoscalerHttpRequest, Autoscaler>newBuilder()
-              .setMethodName("compute.regionAutoscalers.get")
-              .setRequestInstance(GetRegionAutoscalerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Autoscaler.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/autoscalers/{autoscaler}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "autoscaler",    "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertRegionAutoscalerHttpRequest, Operation> directInsertRegionAutoscalerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertRegionAutoscalerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.regionAutoscalers.insert")
-              .setRequestInstance(InsertRegionAutoscalerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/autoscalers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListRegionAutoscalersHttpRequest, RegionAutoscalerList> directListRegionAutoscalersCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListRegionAutoscalersHttpRequest, RegionAutoscalerList>newBuilder()
-              .setMethodName("compute.regionAutoscalers.list")
-              .setRequestInstance(ListRegionAutoscalersHttpRequest.getDefaultInstance())
-              .setResponseInstance(RegionAutoscalerList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/autoscalers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<PatchRegionAutoscalerHttpRequest, Operation> directPatchRegionAutoscalerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<PatchRegionAutoscalerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.regionAutoscalers.patch")
-              .setRequestInstance(PatchRegionAutoscalerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/autoscalers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "autoscaler"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.PATCH)
-              .build());
-  private static final UnaryCallable<UpdateRegionAutoscalerHttpRequest, Operation> directUpdateRegionAutoscalerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<UpdateRegionAutoscalerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.regionAutoscalers.update")
-              .setRequestInstance(UpdateRegionAutoscalerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/autoscalers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "autoscaler"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.PUT)
-              .build());
+  private static final ApiMethodDescriptor<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerMethodDescriptor =
+      ApiMethodDescriptor.<DeleteRegionAutoscalerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.regionAutoscalers.delete")
+          .setRequestInstance(DeleteRegionAutoscalerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/autoscalers/{autoscaler}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "autoscaler",    "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerMethodDescriptor =
+      ApiMethodDescriptor.<GetRegionAutoscalerHttpRequest, Autoscaler>newBuilder()
+          .setMethodName("compute.regionAutoscalers.get")
+          .setRequestInstance(GetRegionAutoscalerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Autoscaler.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/autoscalers/{autoscaler}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "autoscaler",    "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertRegionAutoscalerHttpRequest, Operation> insertRegionAutoscalerMethodDescriptor =
+      ApiMethodDescriptor.<InsertRegionAutoscalerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.regionAutoscalers.insert")
+          .setRequestInstance(InsertRegionAutoscalerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/autoscalers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListRegionAutoscalersHttpRequest, RegionAutoscalerList> listRegionAutoscalersMethodDescriptor =
+      ApiMethodDescriptor.<ListRegionAutoscalersHttpRequest, RegionAutoscalerList>newBuilder()
+          .setMethodName("compute.regionAutoscalers.list")
+          .setRequestInstance(ListRegionAutoscalersHttpRequest.getDefaultInstance())
+          .setResponseInstance(RegionAutoscalerList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/autoscalers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerMethodDescriptor =
+      ApiMethodDescriptor.<PatchRegionAutoscalerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.regionAutoscalers.patch")
+          .setRequestInstance(PatchRegionAutoscalerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/autoscalers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "autoscaler"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.PATCH)
+          .build());
+  private static final ApiMethodDescriptor<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerMethodDescriptor =
+      ApiMethodDescriptor.<UpdateRegionAutoscalerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.regionAutoscalers.update")
+          .setRequestInstance(UpdateRegionAutoscalerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/autoscalers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "autoscaler"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.PUT)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -180,14 +174,38 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
    */
   protected HttpJsonRegionAutoscalerStub(RegionAutoscalerSettings settings, ClientContext clientContext) throws IOException {
 
-    this.deleteRegionAutoscalerCallable = HttpJsonCallableFactory.create(directDeleteRegionAutoscalerCallable,settings.deleteRegionAutoscalerSettings(), clientContext);
-    this.getRegionAutoscalerCallable = HttpJsonCallableFactory.create(directGetRegionAutoscalerCallable,settings.getRegionAutoscalerSettings(), clientContext);
-    this.insertRegionAutoscalerCallable = HttpJsonCallableFactory.create(directInsertRegionAutoscalerCallable,settings.insertRegionAutoscalerSettings(), clientContext);
-    this.listRegionAutoscalersCallable = HttpJsonCallableFactory.create(directListRegionAutoscalersCallable,settings.listRegionAutoscalersSettings(), clientContext);
-    this.listRegionAutoscalersPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListRegionAutoscalersCallable,settings.listRegionAutoscalersSettings(), clientContext);
-    this.patchRegionAutoscalerCallable = HttpJsonCallableFactory.create(directPatchRegionAutoscalerCallable,settings.patchRegionAutoscalerSettings(), clientContext);
-    this.updateRegionAutoscalerCallable = HttpJsonCallableFactory.create(directUpdateRegionAutoscalerCallable,settings.updateRegionAutoscalerSettings(), clientContext);
+    HttpJsonCallSettings<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerTransportSettings =
+        HttpJsonCallSettings.<DeleteRegionAutoscalerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteRegionAutoscalerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerTransportSettings =
+        HttpJsonCallSettings.<GetRegionAutoscalerHttpRequest, Autoscaler>newBuilder()
+            .setMethodDescriptor(getRegionAutoscalerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertRegionAutoscalerHttpRequest, Operation> insertRegionAutoscalerTransportSettings =
+        HttpJsonCallSettings.<InsertRegionAutoscalerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertRegionAutoscalerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListRegionAutoscalersHttpRequest, RegionAutoscalerList> listRegionAutoscalersTransportSettings =
+        HttpJsonCallSettings.<ListRegionAutoscalersHttpRequest, RegionAutoscalerList>newBuilder()
+            .setMethodDescriptor(listRegionAutoscalersMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerTransportSettings =
+        HttpJsonCallSettings.<PatchRegionAutoscalerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(patchRegionAutoscalerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerTransportSettings =
+        HttpJsonCallSettings.<UpdateRegionAutoscalerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(updateRegionAutoscalerMethodDescriptor)
+            .build();
+
+    this.deleteRegionAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(deleteRegionAutoscalerTransportSettings,settings.deleteRegionAutoscalerSettings(), clientContext);
+    this.getRegionAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(getRegionAutoscalerTransportSettings,settings.getRegionAutoscalerSettings(), clientContext);
+    this.insertRegionAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(insertRegionAutoscalerTransportSettings,settings.insertRegionAutoscalerSettings(), clientContext);
+    this.listRegionAutoscalersCallable = HttpJsonCallableFactory.createUnaryCallable(listRegionAutoscalersTransportSettings,settings.listRegionAutoscalersSettings(), clientContext);
+    this.listRegionAutoscalersPagedCallable = HttpJsonCallableFactory.createPagedCallable(listRegionAutoscalersTransportSettings,settings.listRegionAutoscalersSettings(), clientContext);
+    this.patchRegionAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(patchRegionAutoscalerTransportSettings,settings.patchRegionAutoscalerSettings(), clientContext);
+    this.updateRegionAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(updateRegionAutoscalerTransportSettings,settings.updateRegionAutoscalerSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
- *   InstanceTemplateName instanceTemplate = InstanceTemplateName.create("[PROJECT]", "[INSTANCE_TEMPLATE]");
+ *   InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
  *   Operation response = instanceTemplateClient.deleteInstanceTemplate(instanceTemplate);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * InstanceTemplateSettings instanceTemplateSettings =
  *     InstanceTemplateSettings.newBuilder()
- *         .setTransportProvider(InstanceTemplateSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(InstanceTemplateSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(InstanceTemplateSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * InstanceTemplateClient instanceTemplateClient =
@@ -130,6 +128,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Constructs an instance of InstanceTemplateClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use InstanceTemplateSettings}.
    */
+  @BetaApi
   public static final InstanceTemplateClient create(InstanceTemplateStub stub) {
     return new InstanceTemplateClient(stub);
   }
@@ -166,7 +165,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
-   *   InstanceTemplateName instanceTemplate = InstanceTemplateName.create("[PROJECT]", "[INSTANCE_TEMPLATE]");
+   *   InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
    *   Operation response = instanceTemplateClient.deleteInstanceTemplate(instanceTemplate);
    * }
    * </code></pre>
@@ -191,7 +190,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
-   *   InstanceTemplateName instanceTemplate = InstanceTemplateName.create("[PROJECT]", "[INSTANCE_TEMPLATE]");
+   *   InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
    *   DeleteInstanceTemplateHttpRequest request = DeleteInstanceTemplateHttpRequest.newBuilder()
    *     .setInstanceTemplateWithInstanceTemplateName(instanceTemplate)
    *     .build();
@@ -214,7 +213,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
-   *   InstanceTemplateName instanceTemplate = InstanceTemplateName.create("[PROJECT]", "[INSTANCE_TEMPLATE]");
+   *   InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
    *   DeleteInstanceTemplateHttpRequest request = DeleteInstanceTemplateHttpRequest.newBuilder()
    *     .setInstanceTemplateWithInstanceTemplateName(instanceTemplate)
    *     .build();
@@ -236,7 +235,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
-   *   InstanceTemplateName instanceTemplate = InstanceTemplateName.create("[PROJECT]", "[INSTANCE_TEMPLATE]");
+   *   InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
    *   InstanceTemplate response = instanceTemplateClient.getInstanceTemplate(instanceTemplate);
    * }
    * </code></pre>
@@ -261,7 +260,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
-   *   InstanceTemplateName instanceTemplate = InstanceTemplateName.create("[PROJECT]", "[INSTANCE_TEMPLATE]");
+   *   InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
    *   GetInstanceTemplateHttpRequest request = GetInstanceTemplateHttpRequest.newBuilder()
    *     .setInstanceTemplateWithInstanceTemplateName(instanceTemplate)
    *     .build();
@@ -284,7 +283,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
-   *   InstanceTemplateName instanceTemplate = InstanceTemplateName.create("[PROJECT]", "[INSTANCE_TEMPLATE]");
+   *   InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
    *   GetInstanceTemplateHttpRequest request = GetInstanceTemplateHttpRequest.newBuilder()
    *     .setInstanceTemplateWithInstanceTemplateName(instanceTemplate)
    *     .build();
@@ -306,7 +305,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   InstanceTemplate instanceTemplate = InstanceTemplate.newBuilder().build();
    *   Operation response = instanceTemplateClient.insertInstanceTemplate(project, instanceTemplate);
    * }
@@ -334,7 +333,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   InstanceTemplate instanceTemplate = InstanceTemplate.newBuilder().build();
    *   InsertInstanceTemplateHttpRequest request = InsertInstanceTemplateHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -359,7 +358,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   InstanceTemplate instanceTemplate = InstanceTemplate.newBuilder().build();
    *   InsertInstanceTemplateHttpRequest request = InsertInstanceTemplateHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -383,7 +382,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (InstanceTemplate element : instanceTemplateClient.listInstanceTemplates(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -409,7 +408,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListInstanceTemplatesHttpRequest request = ListInstanceTemplatesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -435,7 +434,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListInstanceTemplatesHttpRequest request = ListInstanceTemplatesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -459,7 +458,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListInstanceTemplatesHttpRequest request = ListInstanceTemplatesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();

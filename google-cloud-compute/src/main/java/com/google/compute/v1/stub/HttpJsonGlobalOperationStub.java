@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,67 +60,63 @@ import javax.annotation.Generated;
 public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> directAggregatedListGlobalOperationsCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList>newBuilder()
-              .setMethodName("compute.globalOperations.aggregatedList")
-              .setRequestInstance(AggregatedListGlobalOperationsHttpRequest.getDefaultInstance())
-              .setResponseInstance(OperationAggregatedList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/aggregated/operations")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<DeleteGlobalOperationHttpRequest, Void> directDeleteGlobalOperationCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteGlobalOperationHttpRequest, Void>newBuilder()
-              .setMethodName("compute.globalOperations.delete")
-              .setRequestInstance(DeleteGlobalOperationHttpRequest.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/operations/{operation}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "operation",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetGlobalOperationHttpRequest, Operation> directGetGlobalOperationCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetGlobalOperationHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.globalOperations.get")
-              .setRequestInstance(GetGlobalOperationHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/operations/{operation}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "operation",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<ListGlobalOperationsHttpRequest, OperationList> directListGlobalOperationsCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListGlobalOperationsHttpRequest, OperationList>newBuilder()
-              .setMethodName("compute.globalOperations.list")
-              .setRequestInstance(ListGlobalOperationsHttpRequest.getDefaultInstance())
-              .setResponseInstance(OperationList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/operations")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
+  private static final ApiMethodDescriptor<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> aggregatedListGlobalOperationsMethodDescriptor =
+      ApiMethodDescriptor.<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList>newBuilder()
+          .setMethodName("compute.globalOperations.aggregatedList")
+          .setRequestInstance(AggregatedListGlobalOperationsHttpRequest.getDefaultInstance())
+          .setResponseInstance(OperationAggregatedList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/aggregated/operations")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationMethodDescriptor =
+      ApiMethodDescriptor.<DeleteGlobalOperationHttpRequest, Void>newBuilder()
+          .setMethodName("compute.globalOperations.delete")
+          .setRequestInstance(DeleteGlobalOperationHttpRequest.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/operations/{operation}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "operation",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetGlobalOperationHttpRequest, Operation> getGlobalOperationMethodDescriptor =
+      ApiMethodDescriptor.<GetGlobalOperationHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.globalOperations.get")
+          .setRequestInstance(GetGlobalOperationHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/operations/{operation}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "operation",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<ListGlobalOperationsHttpRequest, OperationList> listGlobalOperationsMethodDescriptor =
+      ApiMethodDescriptor.<ListGlobalOperationsHttpRequest, OperationList>newBuilder()
+          .setMethodName("compute.globalOperations.list")
+          .setRequestInstance(ListGlobalOperationsHttpRequest.getDefaultInstance())
+          .setResponseInstance(OperationList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/operations")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -146,14 +142,29 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
    */
   protected HttpJsonGlobalOperationStub(GlobalOperationSettings settings, ClientContext clientContext) throws IOException {
 
-    this.aggregatedListGlobalOperationsCallable = HttpJsonCallableFactory.create(directAggregatedListGlobalOperationsCallable,settings.aggregatedListGlobalOperationsSettings(), clientContext);
-    this.aggregatedListGlobalOperationsPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directAggregatedListGlobalOperationsCallable,settings.aggregatedListGlobalOperationsSettings(), clientContext);
-    this.deleteGlobalOperationCallable = HttpJsonCallableFactory.create(directDeleteGlobalOperationCallable,settings.deleteGlobalOperationSettings(), clientContext);
-    this.getGlobalOperationCallable = HttpJsonCallableFactory.create(directGetGlobalOperationCallable,settings.getGlobalOperationSettings(), clientContext);
-    this.listGlobalOperationsCallable = HttpJsonCallableFactory.create(directListGlobalOperationsCallable,settings.listGlobalOperationsSettings(), clientContext);
-    this.listGlobalOperationsPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListGlobalOperationsCallable,settings.listGlobalOperationsSettings(), clientContext);
+    HttpJsonCallSettings<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> aggregatedListGlobalOperationsTransportSettings =
+        HttpJsonCallSettings.<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList>newBuilder()
+            .setMethodDescriptor(aggregatedListGlobalOperationsMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationTransportSettings =
+        HttpJsonCallSettings.<DeleteGlobalOperationHttpRequest, Void>newBuilder()
+            .setMethodDescriptor(deleteGlobalOperationMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetGlobalOperationHttpRequest, Operation> getGlobalOperationTransportSettings =
+        HttpJsonCallSettings.<GetGlobalOperationHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(getGlobalOperationMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListGlobalOperationsHttpRequest, OperationList> listGlobalOperationsTransportSettings =
+        HttpJsonCallSettings.<ListGlobalOperationsHttpRequest, OperationList>newBuilder()
+            .setMethodDescriptor(listGlobalOperationsMethodDescriptor)
+            .build();
+
+    this.aggregatedListGlobalOperationsCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListGlobalOperationsTransportSettings,settings.aggregatedListGlobalOperationsSettings(), clientContext);
+    this.aggregatedListGlobalOperationsPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListGlobalOperationsTransportSettings,settings.aggregatedListGlobalOperationsSettings(), clientContext);
+    this.deleteGlobalOperationCallable = HttpJsonCallableFactory.createUnaryCallable(deleteGlobalOperationTransportSettings,settings.deleteGlobalOperationSettings(), clientContext);
+    this.getGlobalOperationCallable = HttpJsonCallableFactory.createUnaryCallable(getGlobalOperationTransportSettings,settings.getGlobalOperationSettings(), clientContext);
+    this.listGlobalOperationsCallable = HttpJsonCallableFactory.createUnaryCallable(listGlobalOperationsTransportSettings,settings.listGlobalOperationsSettings(), clientContext);
+    this.listGlobalOperationsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listGlobalOperationsTransportSettings,settings.listGlobalOperationsSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

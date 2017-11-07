@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,115 +65,108 @@ import javax.annotation.Generated;
 public class HttpJsonAutoscalerStub extends AutoscalerStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList> directAggregatedListAutoscalersCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList>newBuilder()
-              .setMethodName("compute.autoscalers.aggregatedList")
-              .setRequestInstance(AggregatedListAutoscalersHttpRequest.getDefaultInstance())
-              .setResponseInstance(AutoscalerAggregatedList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/aggregated/autoscalers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<DeleteAutoscalerHttpRequest, Operation> directDeleteAutoscalerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteAutoscalerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.autoscalers.delete")
-              .setRequestInstance(DeleteAutoscalerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers/{autoscaler}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "autoscaler",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetAutoscalerHttpRequest, Autoscaler> directGetAutoscalerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetAutoscalerHttpRequest, Autoscaler>newBuilder()
-              .setMethodName("compute.autoscalers.get")
-              .setRequestInstance(GetAutoscalerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Autoscaler.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers/{autoscaler}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "autoscaler",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertAutoscalerHttpRequest, Operation> directInsertAutoscalerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertAutoscalerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.autoscalers.insert")
-              .setRequestInstance(InsertAutoscalerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListAutoscalersHttpRequest, AutoscalerList> directListAutoscalersCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListAutoscalersHttpRequest, AutoscalerList>newBuilder()
-              .setMethodName("compute.autoscalers.list")
-              .setRequestInstance(ListAutoscalersHttpRequest.getDefaultInstance())
-              .setResponseInstance(AutoscalerList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<PatchAutoscalerHttpRequest, Operation> directPatchAutoscalerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<PatchAutoscalerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.autoscalers.patch")
-              .setRequestInstance(PatchAutoscalerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "autoscaler"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.PATCH)
-              .build());
-  private static final UnaryCallable<UpdateAutoscalerHttpRequest, Operation> directUpdateAutoscalerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<UpdateAutoscalerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.autoscalers.update")
-              .setRequestInstance(UpdateAutoscalerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "autoscaler"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.PUT)
-              .build());
+  private static final ApiMethodDescriptor<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList> aggregatedListAutoscalersMethodDescriptor =
+      ApiMethodDescriptor.<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList>newBuilder()
+          .setMethodName("compute.autoscalers.aggregatedList")
+          .setRequestInstance(AggregatedListAutoscalersHttpRequest.getDefaultInstance())
+          .setResponseInstance(AutoscalerAggregatedList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/aggregated/autoscalers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<DeleteAutoscalerHttpRequest, Operation> deleteAutoscalerMethodDescriptor =
+      ApiMethodDescriptor.<DeleteAutoscalerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.autoscalers.delete")
+          .setRequestInstance(DeleteAutoscalerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers/{autoscaler}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "autoscaler",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetAutoscalerHttpRequest, Autoscaler> getAutoscalerMethodDescriptor =
+      ApiMethodDescriptor.<GetAutoscalerHttpRequest, Autoscaler>newBuilder()
+          .setMethodName("compute.autoscalers.get")
+          .setRequestInstance(GetAutoscalerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Autoscaler.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers/{autoscaler}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "autoscaler",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertAutoscalerHttpRequest, Operation> insertAutoscalerMethodDescriptor =
+      ApiMethodDescriptor.<InsertAutoscalerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.autoscalers.insert")
+          .setRequestInstance(InsertAutoscalerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListAutoscalersHttpRequest, AutoscalerList> listAutoscalersMethodDescriptor =
+      ApiMethodDescriptor.<ListAutoscalersHttpRequest, AutoscalerList>newBuilder()
+          .setMethodName("compute.autoscalers.list")
+          .setRequestInstance(ListAutoscalersHttpRequest.getDefaultInstance())
+          .setResponseInstance(AutoscalerList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<PatchAutoscalerHttpRequest, Operation> patchAutoscalerMethodDescriptor =
+      ApiMethodDescriptor.<PatchAutoscalerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.autoscalers.patch")
+          .setRequestInstance(PatchAutoscalerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "autoscaler"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.PATCH)
+          .build());
+  private static final ApiMethodDescriptor<UpdateAutoscalerHttpRequest, Operation> updateAutoscalerMethodDescriptor =
+      ApiMethodDescriptor.<UpdateAutoscalerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.autoscalers.update")
+          .setRequestInstance(UpdateAutoscalerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "autoscaler"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.PUT)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -202,17 +195,44 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
    */
   protected HttpJsonAutoscalerStub(AutoscalerSettings settings, ClientContext clientContext) throws IOException {
 
-    this.aggregatedListAutoscalersCallable = HttpJsonCallableFactory.create(directAggregatedListAutoscalersCallable,settings.aggregatedListAutoscalersSettings(), clientContext);
-    this.aggregatedListAutoscalersPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directAggregatedListAutoscalersCallable,settings.aggregatedListAutoscalersSettings(), clientContext);
-    this.deleteAutoscalerCallable = HttpJsonCallableFactory.create(directDeleteAutoscalerCallable,settings.deleteAutoscalerSettings(), clientContext);
-    this.getAutoscalerCallable = HttpJsonCallableFactory.create(directGetAutoscalerCallable,settings.getAutoscalerSettings(), clientContext);
-    this.insertAutoscalerCallable = HttpJsonCallableFactory.create(directInsertAutoscalerCallable,settings.insertAutoscalerSettings(), clientContext);
-    this.listAutoscalersCallable = HttpJsonCallableFactory.create(directListAutoscalersCallable,settings.listAutoscalersSettings(), clientContext);
-    this.listAutoscalersPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListAutoscalersCallable,settings.listAutoscalersSettings(), clientContext);
-    this.patchAutoscalerCallable = HttpJsonCallableFactory.create(directPatchAutoscalerCallable,settings.patchAutoscalerSettings(), clientContext);
-    this.updateAutoscalerCallable = HttpJsonCallableFactory.create(directUpdateAutoscalerCallable,settings.updateAutoscalerSettings(), clientContext);
+    HttpJsonCallSettings<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList> aggregatedListAutoscalersTransportSettings =
+        HttpJsonCallSettings.<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList>newBuilder()
+            .setMethodDescriptor(aggregatedListAutoscalersMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<DeleteAutoscalerHttpRequest, Operation> deleteAutoscalerTransportSettings =
+        HttpJsonCallSettings.<DeleteAutoscalerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteAutoscalerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetAutoscalerHttpRequest, Autoscaler> getAutoscalerTransportSettings =
+        HttpJsonCallSettings.<GetAutoscalerHttpRequest, Autoscaler>newBuilder()
+            .setMethodDescriptor(getAutoscalerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertAutoscalerHttpRequest, Operation> insertAutoscalerTransportSettings =
+        HttpJsonCallSettings.<InsertAutoscalerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertAutoscalerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListAutoscalersHttpRequest, AutoscalerList> listAutoscalersTransportSettings =
+        HttpJsonCallSettings.<ListAutoscalersHttpRequest, AutoscalerList>newBuilder()
+            .setMethodDescriptor(listAutoscalersMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<PatchAutoscalerHttpRequest, Operation> patchAutoscalerTransportSettings =
+        HttpJsonCallSettings.<PatchAutoscalerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(patchAutoscalerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<UpdateAutoscalerHttpRequest, Operation> updateAutoscalerTransportSettings =
+        HttpJsonCallSettings.<UpdateAutoscalerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(updateAutoscalerMethodDescriptor)
+            .build();
+
+    this.aggregatedListAutoscalersCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListAutoscalersTransportSettings,settings.aggregatedListAutoscalersSettings(), clientContext);
+    this.aggregatedListAutoscalersPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListAutoscalersTransportSettings,settings.aggregatedListAutoscalersSettings(), clientContext);
+    this.deleteAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(deleteAutoscalerTransportSettings,settings.deleteAutoscalerSettings(), clientContext);
+    this.getAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(getAutoscalerTransportSettings,settings.getAutoscalerSettings(), clientContext);
+    this.insertAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(insertAutoscalerTransportSettings,settings.insertAutoscalerSettings(), clientContext);
+    this.listAutoscalersCallable = HttpJsonCallableFactory.createUnaryCallable(listAutoscalersTransportSettings,settings.listAutoscalersSettings(), clientContext);
+    this.listAutoscalersPagedCallable = HttpJsonCallableFactory.createPagedCallable(listAutoscalersTransportSettings,settings.listAutoscalersSettings(), clientContext);
+    this.patchAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(patchAutoscalerTransportSettings,settings.patchAutoscalerSettings(), clientContext);
+    this.updateAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(updateAutoscalerTransportSettings,settings.updateAutoscalerSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

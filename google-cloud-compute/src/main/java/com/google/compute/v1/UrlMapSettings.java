@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -53,7 +52,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -106,40 +104,40 @@ public class UrlMapSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<DeleteUrlMapHttpRequest, Operation> deleteUrlMapSettings;
-  private final SimpleCallSettings<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings;
-  private final SimpleCallSettings<InsertUrlMapHttpRequest, Operation> insertUrlMapSettings;
-  private final SimpleCallSettings<InvalidateCacheUrlMapHttpRequest, Operation> invalidateCacheUrlMapSettings;
+  private final UnaryCallSettings<DeleteUrlMapHttpRequest, Operation> deleteUrlMapSettings;
+  private final UnaryCallSettings<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings;
+  private final UnaryCallSettings<InsertUrlMapHttpRequest, Operation> insertUrlMapSettings;
+  private final UnaryCallSettings<InvalidateCacheUrlMapHttpRequest, Operation> invalidateCacheUrlMapSettings;
   private final PagedCallSettings<ListUrlMapsHttpRequest, UrlMapList, ListUrlMapsPagedResponse> listUrlMapsSettings;
-  private final SimpleCallSettings<PatchUrlMapHttpRequest, Operation> patchUrlMapSettings;
-  private final SimpleCallSettings<UpdateUrlMapHttpRequest, Operation> updateUrlMapSettings;
-  private final SimpleCallSettings<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapSettings;
+  private final UnaryCallSettings<PatchUrlMapHttpRequest, Operation> patchUrlMapSettings;
+  private final UnaryCallSettings<UpdateUrlMapHttpRequest, Operation> updateUrlMapSettings;
+  private final UnaryCallSettings<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapSettings;
 
   /**
    * Returns the object with the settings used for calls to deleteUrlMap.
    */
-  public SimpleCallSettings<DeleteUrlMapHttpRequest, Operation> deleteUrlMapSettings() {
+  public UnaryCallSettings<DeleteUrlMapHttpRequest, Operation> deleteUrlMapSettings() {
     return deleteUrlMapSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getUrlMap.
    */
-  public SimpleCallSettings<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings() {
+  public UnaryCallSettings<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings() {
     return getUrlMapSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to insertUrlMap.
    */
-  public SimpleCallSettings<InsertUrlMapHttpRequest, Operation> insertUrlMapSettings() {
+  public UnaryCallSettings<InsertUrlMapHttpRequest, Operation> insertUrlMapSettings() {
     return insertUrlMapSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to invalidateCacheUrlMap.
    */
-  public SimpleCallSettings<InvalidateCacheUrlMapHttpRequest, Operation> invalidateCacheUrlMapSettings() {
+  public UnaryCallSettings<InvalidateCacheUrlMapHttpRequest, Operation> invalidateCacheUrlMapSettings() {
     return invalidateCacheUrlMapSettings;
   }
 
@@ -153,31 +151,33 @@ public class UrlMapSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to patchUrlMap.
    */
-  public SimpleCallSettings<PatchUrlMapHttpRequest, Operation> patchUrlMapSettings() {
+  public UnaryCallSettings<PatchUrlMapHttpRequest, Operation> patchUrlMapSettings() {
     return patchUrlMapSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to updateUrlMap.
    */
-  public SimpleCallSettings<UpdateUrlMapHttpRequest, Operation> updateUrlMapSettings() {
+  public UnaryCallSettings<UpdateUrlMapHttpRequest, Operation> updateUrlMapSettings() {
     return updateUrlMapSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to validateUrlMap.
    */
-  public SimpleCallSettings<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapSettings() {
+  public UnaryCallSettings<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapSettings() {
     return validateUrlMapSettings;
   }
 
 
   public UrlMapStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonUrlMapStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -221,20 +221,20 @@ public class UrlMapSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -287,8 +287,9 @@ public class UrlMapSettings extends ClientSettings {
   private UrlMapSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     deleteUrlMapSettings = settingsBuilder.deleteUrlMapSettings().build();
@@ -354,27 +355,27 @@ public class UrlMapSettings extends ClientSettings {
    * Builder for UrlMapSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<DeleteUrlMapHttpRequest, Operation> deleteUrlMapSettings;
-    private final SimpleCallSettings.Builder<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings;
-    private final SimpleCallSettings.Builder<InsertUrlMapHttpRequest, Operation> insertUrlMapSettings;
-    private final SimpleCallSettings.Builder<InvalidateCacheUrlMapHttpRequest, Operation> invalidateCacheUrlMapSettings;
+    private final UnaryCallSettings.Builder<DeleteUrlMapHttpRequest, Operation> deleteUrlMapSettings;
+    private final UnaryCallSettings.Builder<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings;
+    private final UnaryCallSettings.Builder<InsertUrlMapHttpRequest, Operation> insertUrlMapSettings;
+    private final UnaryCallSettings.Builder<InvalidateCacheUrlMapHttpRequest, Operation> invalidateCacheUrlMapSettings;
     private final PagedCallSettings.Builder<ListUrlMapsHttpRequest, UrlMapList, ListUrlMapsPagedResponse> listUrlMapsSettings;
-    private final SimpleCallSettings.Builder<PatchUrlMapHttpRequest, Operation> patchUrlMapSettings;
-    private final SimpleCallSettings.Builder<UpdateUrlMapHttpRequest, Operation> updateUrlMapSettings;
-    private final SimpleCallSettings.Builder<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapSettings;
+    private final UnaryCallSettings.Builder<PatchUrlMapHttpRequest, Operation> patchUrlMapSettings;
+    private final UnaryCallSettings.Builder<UpdateUrlMapHttpRequest, Operation> updateUrlMapSettings;
+    private final UnaryCallSettings.Builder<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -403,24 +404,24 @@ public class UrlMapSettings extends ClientSettings {
     private Builder(ClientContext clientContext) {
       super(clientContext);
 
-      deleteUrlMapSettings = SimpleCallSettings.newBuilder();
+      deleteUrlMapSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getUrlMapSettings = SimpleCallSettings.newBuilder();
+      getUrlMapSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      insertUrlMapSettings = SimpleCallSettings.newBuilder();
+      insertUrlMapSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      invalidateCacheUrlMapSettings = SimpleCallSettings.newBuilder();
+      invalidateCacheUrlMapSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listUrlMapsSettings = PagedCallSettings.newBuilder(
           LIST_URL_MAPS_PAGE_STR_FACT);
 
-      patchUrlMapSettings = SimpleCallSettings.newBuilder();
+      patchUrlMapSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      updateUrlMapSettings = SimpleCallSettings.newBuilder();
+      updateUrlMapSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      validateUrlMapSettings = SimpleCallSettings.newBuilder();
+      validateUrlMapSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           deleteUrlMapSettings,
           getUrlMapSettings,
           insertUrlMapSettings,
@@ -436,8 +437,9 @@ public class UrlMapSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -490,7 +492,7 @@ public class UrlMapSettings extends ClientSettings {
       updateUrlMapSettings = settings.updateUrlMapSettings.toBuilder();
       validateUrlMapSettings = settings.validateUrlMapSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           deleteUrlMapSettings,
           getUrlMapSettings,
           insertUrlMapSettings,
@@ -509,8 +511,14 @@ public class UrlMapSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -525,7 +533,7 @@ public class UrlMapSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -533,28 +541,28 @@ public class UrlMapSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteUrlMap.
      */
-    public SimpleCallSettings.Builder<DeleteUrlMapHttpRequest, Operation> deleteUrlMapSettings() {
+    public UnaryCallSettings.Builder<DeleteUrlMapHttpRequest, Operation> deleteUrlMapSettings() {
       return deleteUrlMapSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getUrlMap.
      */
-    public SimpleCallSettings.Builder<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings() {
+    public UnaryCallSettings.Builder<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings() {
       return getUrlMapSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to insertUrlMap.
      */
-    public SimpleCallSettings.Builder<InsertUrlMapHttpRequest, Operation> insertUrlMapSettings() {
+    public UnaryCallSettings.Builder<InsertUrlMapHttpRequest, Operation> insertUrlMapSettings() {
       return insertUrlMapSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to invalidateCacheUrlMap.
      */
-    public SimpleCallSettings.Builder<InvalidateCacheUrlMapHttpRequest, Operation> invalidateCacheUrlMapSettings() {
+    public UnaryCallSettings.Builder<InvalidateCacheUrlMapHttpRequest, Operation> invalidateCacheUrlMapSettings() {
       return invalidateCacheUrlMapSettings;
     }
 
@@ -568,21 +576,21 @@ public class UrlMapSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to patchUrlMap.
      */
-    public SimpleCallSettings.Builder<PatchUrlMapHttpRequest, Operation> patchUrlMapSettings() {
+    public UnaryCallSettings.Builder<PatchUrlMapHttpRequest, Operation> patchUrlMapSettings() {
       return patchUrlMapSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to updateUrlMap.
      */
-    public SimpleCallSettings.Builder<UpdateUrlMapHttpRequest, Operation> updateUrlMapSettings() {
+    public UnaryCallSettings.Builder<UpdateUrlMapHttpRequest, Operation> updateUrlMapSettings() {
       return updateUrlMapSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to validateUrlMap.
      */
-    public SimpleCallSettings.Builder<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapSettings() {
+    public UnaryCallSettings.Builder<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapSettings() {
       return validateUrlMapSettings;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,82 +61,77 @@ import javax.annotation.Generated;
 public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteGlobalForwardingRuleHttpRequest, Operation> directDeleteGlobalForwardingRuleCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteGlobalForwardingRuleHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.globalForwardingRules.delete")
-              .setRequestInstance(DeleteGlobalForwardingRuleHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/forwardingRules/{forwardingRule}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "forwardingRule",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetGlobalForwardingRuleHttpRequest, ForwardingRule> directGetGlobalForwardingRuleCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetGlobalForwardingRuleHttpRequest, ForwardingRule>newBuilder()
-              .setMethodName("compute.globalForwardingRules.get")
-              .setRequestInstance(GetGlobalForwardingRuleHttpRequest.getDefaultInstance())
-              .setResponseInstance(ForwardingRule.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/forwardingRules/{forwardingRule}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "forwardingRule",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertGlobalForwardingRuleHttpRequest, Operation> directInsertGlobalForwardingRuleCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertGlobalForwardingRuleHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.globalForwardingRules.insert")
-              .setRequestInstance(InsertGlobalForwardingRuleHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/forwardingRules")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList> directListGlobalForwardingRulesCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList>newBuilder()
-              .setMethodName("compute.globalForwardingRules.list")
-              .setRequestInstance(ListGlobalForwardingRulesHttpRequest.getDefaultInstance())
-              .setResponseInstance(ForwardingRuleList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/forwardingRules")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<SetTargetGlobalForwardingRuleHttpRequest, Operation> directSetTargetGlobalForwardingRuleCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<SetTargetGlobalForwardingRuleHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.globalForwardingRules.setTarget")
-              .setRequestInstance(SetTargetGlobalForwardingRuleHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/forwardingRules/{forwardingRule}/setTarget")
-              .setPathParams(Sets.<String>newHashSet(
-                                "forwardingRule",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
+  private static final ApiMethodDescriptor<DeleteGlobalForwardingRuleHttpRequest, Operation> deleteGlobalForwardingRuleMethodDescriptor =
+      ApiMethodDescriptor.<DeleteGlobalForwardingRuleHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.globalForwardingRules.delete")
+          .setRequestInstance(DeleteGlobalForwardingRuleHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/forwardingRules/{forwardingRule}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "forwardingRule",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetGlobalForwardingRuleHttpRequest, ForwardingRule> getGlobalForwardingRuleMethodDescriptor =
+      ApiMethodDescriptor.<GetGlobalForwardingRuleHttpRequest, ForwardingRule>newBuilder()
+          .setMethodName("compute.globalForwardingRules.get")
+          .setRequestInstance(GetGlobalForwardingRuleHttpRequest.getDefaultInstance())
+          .setResponseInstance(ForwardingRule.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/forwardingRules/{forwardingRule}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "forwardingRule",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertGlobalForwardingRuleHttpRequest, Operation> insertGlobalForwardingRuleMethodDescriptor =
+      ApiMethodDescriptor.<InsertGlobalForwardingRuleHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.globalForwardingRules.insert")
+          .setRequestInstance(InsertGlobalForwardingRuleHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/forwardingRules")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList> listGlobalForwardingRulesMethodDescriptor =
+      ApiMethodDescriptor.<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList>newBuilder()
+          .setMethodName("compute.globalForwardingRules.list")
+          .setRequestInstance(ListGlobalForwardingRulesHttpRequest.getDefaultInstance())
+          .setResponseInstance(ForwardingRuleList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/forwardingRules")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<SetTargetGlobalForwardingRuleHttpRequest, Operation> setTargetGlobalForwardingRuleMethodDescriptor =
+      ApiMethodDescriptor.<SetTargetGlobalForwardingRuleHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.globalForwardingRules.setTarget")
+          .setRequestInstance(SetTargetGlobalForwardingRuleHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/forwardingRules/{forwardingRule}/setTarget")
+          .setPathParams(Sets.<String>newHashSet(
+                            "forwardingRule",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -162,13 +157,33 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
    */
   protected HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleSettings settings, ClientContext clientContext) throws IOException {
 
-    this.deleteGlobalForwardingRuleCallable = HttpJsonCallableFactory.create(directDeleteGlobalForwardingRuleCallable,settings.deleteGlobalForwardingRuleSettings(), clientContext);
-    this.getGlobalForwardingRuleCallable = HttpJsonCallableFactory.create(directGetGlobalForwardingRuleCallable,settings.getGlobalForwardingRuleSettings(), clientContext);
-    this.insertGlobalForwardingRuleCallable = HttpJsonCallableFactory.create(directInsertGlobalForwardingRuleCallable,settings.insertGlobalForwardingRuleSettings(), clientContext);
-    this.listGlobalForwardingRulesCallable = HttpJsonCallableFactory.create(directListGlobalForwardingRulesCallable,settings.listGlobalForwardingRulesSettings(), clientContext);
-    this.listGlobalForwardingRulesPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListGlobalForwardingRulesCallable,settings.listGlobalForwardingRulesSettings(), clientContext);
-    this.setTargetGlobalForwardingRuleCallable = HttpJsonCallableFactory.create(directSetTargetGlobalForwardingRuleCallable,settings.setTargetGlobalForwardingRuleSettings(), clientContext);
+    HttpJsonCallSettings<DeleteGlobalForwardingRuleHttpRequest, Operation> deleteGlobalForwardingRuleTransportSettings =
+        HttpJsonCallSettings.<DeleteGlobalForwardingRuleHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteGlobalForwardingRuleMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetGlobalForwardingRuleHttpRequest, ForwardingRule> getGlobalForwardingRuleTransportSettings =
+        HttpJsonCallSettings.<GetGlobalForwardingRuleHttpRequest, ForwardingRule>newBuilder()
+            .setMethodDescriptor(getGlobalForwardingRuleMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertGlobalForwardingRuleHttpRequest, Operation> insertGlobalForwardingRuleTransportSettings =
+        HttpJsonCallSettings.<InsertGlobalForwardingRuleHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertGlobalForwardingRuleMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList> listGlobalForwardingRulesTransportSettings =
+        HttpJsonCallSettings.<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList>newBuilder()
+            .setMethodDescriptor(listGlobalForwardingRulesMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<SetTargetGlobalForwardingRuleHttpRequest, Operation> setTargetGlobalForwardingRuleTransportSettings =
+        HttpJsonCallSettings.<SetTargetGlobalForwardingRuleHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(setTargetGlobalForwardingRuleMethodDescriptor)
+            .build();
+
+    this.deleteGlobalForwardingRuleCallable = HttpJsonCallableFactory.createUnaryCallable(deleteGlobalForwardingRuleTransportSettings,settings.deleteGlobalForwardingRuleSettings(), clientContext);
+    this.getGlobalForwardingRuleCallable = HttpJsonCallableFactory.createUnaryCallable(getGlobalForwardingRuleTransportSettings,settings.getGlobalForwardingRuleSettings(), clientContext);
+    this.insertGlobalForwardingRuleCallable = HttpJsonCallableFactory.createUnaryCallable(insertGlobalForwardingRuleTransportSettings,settings.insertGlobalForwardingRuleSettings(), clientContext);
+    this.listGlobalForwardingRulesCallable = HttpJsonCallableFactory.createUnaryCallable(listGlobalForwardingRulesTransportSettings,settings.listGlobalForwardingRulesSettings(), clientContext);
+    this.listGlobalForwardingRulesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listGlobalForwardingRulesTransportSettings,settings.listGlobalForwardingRulesSettings(), clientContext);
+    this.setTargetGlobalForwardingRuleCallable = HttpJsonCallableFactory.createUnaryCallable(setTargetGlobalForwardingRuleTransportSettings,settings.setTargetGlobalForwardingRuleSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

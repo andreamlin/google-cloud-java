@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (LicensClient licensClient = LicensClient.create()) {
- *   LicenseName license = LicenseName.create("[PROJECT]", "[LICENSE]");
+ *   LicenseName license = LicenseName.of("[PROJECT]", "[LICENSE]");
  *   License response = licensClient.getLicens(license);
  * }
  * </code>
@@ -90,10 +90,8 @@ import javax.annotation.Generated;
  * <code>
  * LicensSettings licensSettings =
  *     LicensSettings.newBuilder()
- *         .setTransportProvider(LicensSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(LicensSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(LicensSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * LicensClient licensClient =
@@ -129,6 +127,7 @@ public class LicensClient implements BackgroundResource {
    * Constructs an instance of LicensClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use LicensSettings}.
    */
+  @BetaApi
   public static final LicensClient create(LicensStub stub) {
     return new LicensClient(stub);
   }
@@ -165,7 +164,7 @@ public class LicensClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (LicensClient licensClient = LicensClient.create()) {
-   *   LicenseName license = LicenseName.create("[PROJECT]", "[LICENSE]");
+   *   LicenseName license = LicenseName.of("[PROJECT]", "[LICENSE]");
    *   License response = licensClient.getLicens(license);
    * }
    * </code></pre>
@@ -190,7 +189,7 @@ public class LicensClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (LicensClient licensClient = LicensClient.create()) {
-   *   LicenseName license = LicenseName.create("[PROJECT]", "[LICENSE]");
+   *   LicenseName license = LicenseName.of("[PROJECT]", "[LICENSE]");
    *   GetLicensHttpRequest request = GetLicensHttpRequest.newBuilder()
    *     .setLicenseWithLicenseName(license)
    *     .build();
@@ -213,7 +212,7 @@ public class LicensClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (LicensClient licensClient = LicensClient.create()) {
-   *   LicenseName license = LicenseName.create("[PROJECT]", "[LICENSE]");
+   *   LicenseName license = LicenseName.of("[PROJECT]", "[LICENSE]");
    *   GetLicensHttpRequest request = GetLicensHttpRequest.newBuilder()
    *     .setLicenseWithLicenseName(license)
    *     .build();

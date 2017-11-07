@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,67 +59,63 @@ import javax.annotation.Generated;
 public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteGlobalAddressHttpRequest, Operation> directDeleteGlobalAddressCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteGlobalAddressHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.globalAddresses.delete")
-              .setRequestInstance(DeleteGlobalAddressHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/addresses/{address}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "address",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetGlobalAddressHttpRequest, Address> directGetGlobalAddressCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetGlobalAddressHttpRequest, Address>newBuilder()
-              .setMethodName("compute.globalAddresses.get")
-              .setRequestInstance(GetGlobalAddressHttpRequest.getDefaultInstance())
-              .setResponseInstance(Address.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/addresses/{address}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "address",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertGlobalAddressHttpRequest, Operation> directInsertGlobalAddressCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertGlobalAddressHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.globalAddresses.insert")
-              .setRequestInstance(InsertGlobalAddressHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/addresses")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListGlobalAddressesHttpRequest, AddressList> directListGlobalAddressesCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListGlobalAddressesHttpRequest, AddressList>newBuilder()
-              .setMethodName("compute.globalAddresses.list")
-              .setRequestInstance(ListGlobalAddressesHttpRequest.getDefaultInstance())
-              .setResponseInstance(AddressList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/addresses")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
+  private static final ApiMethodDescriptor<DeleteGlobalAddressHttpRequest, Operation> deleteGlobalAddressMethodDescriptor =
+      ApiMethodDescriptor.<DeleteGlobalAddressHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.globalAddresses.delete")
+          .setRequestInstance(DeleteGlobalAddressHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/addresses/{address}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "address",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetGlobalAddressHttpRequest, Address> getGlobalAddressMethodDescriptor =
+      ApiMethodDescriptor.<GetGlobalAddressHttpRequest, Address>newBuilder()
+          .setMethodName("compute.globalAddresses.get")
+          .setRequestInstance(GetGlobalAddressHttpRequest.getDefaultInstance())
+          .setResponseInstance(Address.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/addresses/{address}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "address",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertGlobalAddressHttpRequest, Operation> insertGlobalAddressMethodDescriptor =
+      ApiMethodDescriptor.<InsertGlobalAddressHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.globalAddresses.insert")
+          .setRequestInstance(InsertGlobalAddressHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/addresses")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListGlobalAddressesHttpRequest, AddressList> listGlobalAddressesMethodDescriptor =
+      ApiMethodDescriptor.<ListGlobalAddressesHttpRequest, AddressList>newBuilder()
+          .setMethodName("compute.globalAddresses.list")
+          .setRequestInstance(ListGlobalAddressesHttpRequest.getDefaultInstance())
+          .setResponseInstance(AddressList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/addresses")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -144,12 +140,28 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
    */
   protected HttpJsonGlobalAddressStub(GlobalAddressSettings settings, ClientContext clientContext) throws IOException {
 
-    this.deleteGlobalAddressCallable = HttpJsonCallableFactory.create(directDeleteGlobalAddressCallable,settings.deleteGlobalAddressSettings(), clientContext);
-    this.getGlobalAddressCallable = HttpJsonCallableFactory.create(directGetGlobalAddressCallable,settings.getGlobalAddressSettings(), clientContext);
-    this.insertGlobalAddressCallable = HttpJsonCallableFactory.create(directInsertGlobalAddressCallable,settings.insertGlobalAddressSettings(), clientContext);
-    this.listGlobalAddressesCallable = HttpJsonCallableFactory.create(directListGlobalAddressesCallable,settings.listGlobalAddressesSettings(), clientContext);
-    this.listGlobalAddressesPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListGlobalAddressesCallable,settings.listGlobalAddressesSettings(), clientContext);
+    HttpJsonCallSettings<DeleteGlobalAddressHttpRequest, Operation> deleteGlobalAddressTransportSettings =
+        HttpJsonCallSettings.<DeleteGlobalAddressHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteGlobalAddressMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetGlobalAddressHttpRequest, Address> getGlobalAddressTransportSettings =
+        HttpJsonCallSettings.<GetGlobalAddressHttpRequest, Address>newBuilder()
+            .setMethodDescriptor(getGlobalAddressMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertGlobalAddressHttpRequest, Operation> insertGlobalAddressTransportSettings =
+        HttpJsonCallSettings.<InsertGlobalAddressHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertGlobalAddressMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListGlobalAddressesHttpRequest, AddressList> listGlobalAddressesTransportSettings =
+        HttpJsonCallSettings.<ListGlobalAddressesHttpRequest, AddressList>newBuilder()
+            .setMethodDescriptor(listGlobalAddressesMethodDescriptor)
+            .build();
+
+    this.deleteGlobalAddressCallable = HttpJsonCallableFactory.createUnaryCallable(deleteGlobalAddressTransportSettings,settings.deleteGlobalAddressSettings(), clientContext);
+    this.getGlobalAddressCallable = HttpJsonCallableFactory.createUnaryCallable(getGlobalAddressTransportSettings,settings.getGlobalAddressSettings(), clientContext);
+    this.insertGlobalAddressCallable = HttpJsonCallableFactory.createUnaryCallable(insertGlobalAddressTransportSettings,settings.insertGlobalAddressSettings(), clientContext);
+    this.listGlobalAddressesCallable = HttpJsonCallableFactory.createUnaryCallable(listGlobalAddressesTransportSettings,settings.listGlobalAddressesSettings(), clientContext);
+    this.listGlobalAddressesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listGlobalAddressesTransportSettings,settings.listGlobalAddressesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

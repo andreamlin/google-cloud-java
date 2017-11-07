@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (ImageClient imageClient = ImageClient.create()) {
- *   ImageName image = ImageName.create("[PROJECT]", "[IMAGE]");
+ *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
  *   Operation response = imageClient.deleteImage(image);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * ImageSettings imageSettings =
  *     ImageSettings.newBuilder()
- *         .setTransportProvider(ImageSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(ImageSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(ImageSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * ImageClient imageClient =
@@ -130,6 +128,7 @@ public class ImageClient implements BackgroundResource {
    * Constructs an instance of ImageClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use ImageSettings}.
    */
+  @BetaApi
   public static final ImageClient create(ImageStub stub) {
     return new ImageClient(stub);
   }
@@ -166,7 +165,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ImageName image = ImageName.create("[PROJECT]", "[IMAGE]");
+   *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   Operation response = imageClient.deleteImage(image);
    * }
    * </code></pre>
@@ -191,7 +190,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ImageName image = ImageName.create("[PROJECT]", "[IMAGE]");
+   *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   DeleteImageHttpRequest request = DeleteImageHttpRequest.newBuilder()
    *     .setImageWithImageName(image)
    *     .build();
@@ -214,7 +213,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ImageName image = ImageName.create("[PROJECT]", "[IMAGE]");
+   *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   DeleteImageHttpRequest request = DeleteImageHttpRequest.newBuilder()
    *     .setImageWithImageName(image)
    *     .build();
@@ -238,7 +237,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ImageName image = ImageName.create("[PROJECT]", "[IMAGE]");
+   *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
    *   Operation response = imageClient.deprecateImage(image, deprecationStatus);
    * }
@@ -268,7 +267,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ImageName image = ImageName.create("[PROJECT]", "[IMAGE]");
+   *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
    *   DeprecateImageHttpRequest request = DeprecateImageHttpRequest.newBuilder()
    *     .setImageWithImageName(image)
@@ -295,7 +294,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ImageName image = ImageName.create("[PROJECT]", "[IMAGE]");
+   *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
    *   DeprecateImageHttpRequest request = DeprecateImageHttpRequest.newBuilder()
    *     .setImageWithImageName(image)
@@ -319,7 +318,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ImageName image = ImageName.create("[PROJECT]", "[IMAGE]");
+   *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   Image response = imageClient.getImage(image);
    * }
    * </code></pre>
@@ -344,7 +343,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ImageName image = ImageName.create("[PROJECT]", "[IMAGE]");
+   *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   GetImageHttpRequest request = GetImageHttpRequest.newBuilder()
    *     .setImageWithImageName(image)
    *     .build();
@@ -367,7 +366,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ImageName image = ImageName.create("[PROJECT]", "[IMAGE]");
+   *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   GetImageHttpRequest request = GetImageHttpRequest.newBuilder()
    *     .setImageWithImageName(image)
    *     .build();
@@ -389,7 +388,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   FamilyName family = FamilyName.create("[PROJECT]", "[FAMILY]");
+   *   FamilyName family = FamilyName.of("[PROJECT]", "[FAMILY]");
    *   Image response = imageClient.getFromFamilyImage(family);
    * }
    * </code></pre>
@@ -414,7 +413,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   FamilyName family = FamilyName.create("[PROJECT]", "[FAMILY]");
+   *   FamilyName family = FamilyName.of("[PROJECT]", "[FAMILY]");
    *   GetFromFamilyImageHttpRequest request = GetFromFamilyImageHttpRequest.newBuilder()
    *     .setFamilyWithFamilyName(family)
    *     .build();
@@ -437,7 +436,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   FamilyName family = FamilyName.create("[PROJECT]", "[FAMILY]");
+   *   FamilyName family = FamilyName.of("[PROJECT]", "[FAMILY]");
    *   GetFromFamilyImageHttpRequest request = GetFromFamilyImageHttpRequest.newBuilder()
    *     .setFamilyWithFamilyName(family)
    *     .build();
@@ -459,7 +458,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Image image = Image.newBuilder().build();
    *   Operation response = imageClient.insertImage(project, image);
    * }
@@ -487,7 +486,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Image image = Image.newBuilder().build();
    *   InsertImageHttpRequest request = InsertImageHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -512,7 +511,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Image image = Image.newBuilder().build();
    *   InsertImageHttpRequest request = InsertImageHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -536,7 +535,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (Image element : imageClient.listImages(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -562,7 +561,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListImagesHttpRequest request = ListImagesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -588,7 +587,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListImagesHttpRequest request = ListImagesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -612,7 +611,7 @@ public class ImageClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListImagesHttpRequest request = ListImagesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();

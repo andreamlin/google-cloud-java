@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,21 +52,20 @@ import javax.annotation.Generated;
 public class HttpJsonLicensStub extends LicensStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<GetLicensHttpRequest, License> directGetLicensCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetLicensHttpRequest, License>newBuilder()
-              .setMethodName("compute.licenses.get")
-              .setRequestInstance(GetLicensHttpRequest.getDefaultInstance())
-              .setResponseInstance(License.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/licenses/{license}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "license",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
+  private static final ApiMethodDescriptor<GetLicensHttpRequest, License> getLicensMethodDescriptor =
+      ApiMethodDescriptor.<GetLicensHttpRequest, License>newBuilder()
+          .setMethodName("compute.licenses.get")
+          .setRequestInstance(GetLicensHttpRequest.getDefaultInstance())
+          .setResponseInstance(License.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/licenses/{license}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "license",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -87,7 +86,12 @@ public class HttpJsonLicensStub extends LicensStub {
    */
   protected HttpJsonLicensStub(LicensSettings settings, ClientContext clientContext) throws IOException {
 
-    this.getLicensCallable = HttpJsonCallableFactory.create(directGetLicensCallable,settings.getLicensSettings(), clientContext);
+    HttpJsonCallSettings<GetLicensHttpRequest, License> getLicensTransportSettings =
+        HttpJsonCallSettings.<GetLicensHttpRequest, License>newBuilder()
+            .setMethodDescriptor(getLicensMethodDescriptor)
+            .build();
+
+    this.getLicensCallable = HttpJsonCallableFactory.createUnaryCallable(getLicensTransportSettings,settings.getLicensSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

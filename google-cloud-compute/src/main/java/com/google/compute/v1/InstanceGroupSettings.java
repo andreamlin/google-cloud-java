@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -55,7 +54,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -108,20 +106,20 @@ public class InstanceGroupSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupSettings;
+  private final UnaryCallSettings<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupSettings;
   private final PagedCallSettings<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList, AggregatedListInstanceGroupsPagedResponse> aggregatedListInstanceGroupsSettings;
-  private final SimpleCallSettings<DeleteInstanceGroupHttpRequest, Operation> deleteInstanceGroupSettings;
-  private final SimpleCallSettings<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupSettings;
-  private final SimpleCallSettings<InsertInstanceGroupHttpRequest, Operation> insertInstanceGroupSettings;
+  private final UnaryCallSettings<DeleteInstanceGroupHttpRequest, Operation> deleteInstanceGroupSettings;
+  private final UnaryCallSettings<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupSettings;
+  private final UnaryCallSettings<InsertInstanceGroupHttpRequest, Operation> insertInstanceGroupSettings;
   private final PagedCallSettings<ListInstanceGroupsHttpRequest, InstanceGroupList, ListInstanceGroupsPagedResponse> listInstanceGroupsSettings;
   private final PagedCallSettings<ListInstancesInstanceGroupsHttpRequest, InstanceGroupsListInstances, ListInstancesInstanceGroupsPagedResponse> listInstancesInstanceGroupsSettings;
-  private final SimpleCallSettings<RemoveInstancesInstanceGroupHttpRequest, Operation> removeInstancesInstanceGroupSettings;
-  private final SimpleCallSettings<SetNamedPortsInstanceGroupHttpRequest, Operation> setNamedPortsInstanceGroupSettings;
+  private final UnaryCallSettings<RemoveInstancesInstanceGroupHttpRequest, Operation> removeInstancesInstanceGroupSettings;
+  private final UnaryCallSettings<SetNamedPortsInstanceGroupHttpRequest, Operation> setNamedPortsInstanceGroupSettings;
 
   /**
    * Returns the object with the settings used for calls to addInstancesInstanceGroup.
    */
-  public SimpleCallSettings<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupSettings() {
+  public UnaryCallSettings<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupSettings() {
     return addInstancesInstanceGroupSettings;
   }
 
@@ -135,21 +133,21 @@ public class InstanceGroupSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to deleteInstanceGroup.
    */
-  public SimpleCallSettings<DeleteInstanceGroupHttpRequest, Operation> deleteInstanceGroupSettings() {
+  public UnaryCallSettings<DeleteInstanceGroupHttpRequest, Operation> deleteInstanceGroupSettings() {
     return deleteInstanceGroupSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getInstanceGroup.
    */
-  public SimpleCallSettings<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupSettings() {
+  public UnaryCallSettings<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupSettings() {
     return getInstanceGroupSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to insertInstanceGroup.
    */
-  public SimpleCallSettings<InsertInstanceGroupHttpRequest, Operation> insertInstanceGroupSettings() {
+  public UnaryCallSettings<InsertInstanceGroupHttpRequest, Operation> insertInstanceGroupSettings() {
     return insertInstanceGroupSettings;
   }
 
@@ -170,24 +168,26 @@ public class InstanceGroupSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to removeInstancesInstanceGroup.
    */
-  public SimpleCallSettings<RemoveInstancesInstanceGroupHttpRequest, Operation> removeInstancesInstanceGroupSettings() {
+  public UnaryCallSettings<RemoveInstancesInstanceGroupHttpRequest, Operation> removeInstancesInstanceGroupSettings() {
     return removeInstancesInstanceGroupSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to setNamedPortsInstanceGroup.
    */
-  public SimpleCallSettings<SetNamedPortsInstanceGroupHttpRequest, Operation> setNamedPortsInstanceGroupSettings() {
+  public UnaryCallSettings<SetNamedPortsInstanceGroupHttpRequest, Operation> setNamedPortsInstanceGroupSettings() {
     return setNamedPortsInstanceGroupSettings;
   }
 
 
   public InstanceGroupStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonInstanceGroupStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -231,20 +231,20 @@ public class InstanceGroupSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -297,8 +297,9 @@ public class InstanceGroupSettings extends ClientSettings {
   private InstanceGroupSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     addInstancesInstanceGroupSettings = settingsBuilder.addInstancesInstanceGroupSettings().build();
@@ -461,28 +462,28 @@ public class InstanceGroupSettings extends ClientSettings {
    * Builder for InstanceGroupSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupSettings;
     private final PagedCallSettings.Builder<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList, AggregatedListInstanceGroupsPagedResponse> aggregatedListInstanceGroupsSettings;
-    private final SimpleCallSettings.Builder<DeleteInstanceGroupHttpRequest, Operation> deleteInstanceGroupSettings;
-    private final SimpleCallSettings.Builder<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupSettings;
-    private final SimpleCallSettings.Builder<InsertInstanceGroupHttpRequest, Operation> insertInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<DeleteInstanceGroupHttpRequest, Operation> deleteInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<InsertInstanceGroupHttpRequest, Operation> insertInstanceGroupSettings;
     private final PagedCallSettings.Builder<ListInstanceGroupsHttpRequest, InstanceGroupList, ListInstanceGroupsPagedResponse> listInstanceGroupsSettings;
     private final PagedCallSettings.Builder<ListInstancesInstanceGroupsHttpRequest, InstanceGroupsListInstances, ListInstancesInstanceGroupsPagedResponse> listInstancesInstanceGroupsSettings;
-    private final SimpleCallSettings.Builder<RemoveInstancesInstanceGroupHttpRequest, Operation> removeInstancesInstanceGroupSettings;
-    private final SimpleCallSettings.Builder<SetNamedPortsInstanceGroupHttpRequest, Operation> setNamedPortsInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<RemoveInstancesInstanceGroupHttpRequest, Operation> removeInstancesInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<SetNamedPortsInstanceGroupHttpRequest, Operation> setNamedPortsInstanceGroupSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -511,16 +512,16 @@ public class InstanceGroupSettings extends ClientSettings {
     private Builder(ClientContext clientContext) {
       super(clientContext);
 
-      addInstancesInstanceGroupSettings = SimpleCallSettings.newBuilder();
+      addInstancesInstanceGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       aggregatedListInstanceGroupsSettings = PagedCallSettings.newBuilder(
           AGGREGATED_LIST_INSTANCE_GROUPS_PAGE_STR_FACT);
 
-      deleteInstanceGroupSettings = SimpleCallSettings.newBuilder();
+      deleteInstanceGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getInstanceGroupSettings = SimpleCallSettings.newBuilder();
+      getInstanceGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      insertInstanceGroupSettings = SimpleCallSettings.newBuilder();
+      insertInstanceGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listInstanceGroupsSettings = PagedCallSettings.newBuilder(
           LIST_INSTANCE_GROUPS_PAGE_STR_FACT);
@@ -528,11 +529,11 @@ public class InstanceGroupSettings extends ClientSettings {
       listInstancesInstanceGroupsSettings = PagedCallSettings.newBuilder(
           LIST_INSTANCES_INSTANCE_GROUPS_PAGE_STR_FACT);
 
-      removeInstancesInstanceGroupSettings = SimpleCallSettings.newBuilder();
+      removeInstancesInstanceGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      setNamedPortsInstanceGroupSettings = SimpleCallSettings.newBuilder();
+      setNamedPortsInstanceGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           addInstancesInstanceGroupSettings,
           aggregatedListInstanceGroupsSettings,
           deleteInstanceGroupSettings,
@@ -549,8 +550,9 @@ public class InstanceGroupSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -608,7 +610,7 @@ public class InstanceGroupSettings extends ClientSettings {
       removeInstancesInstanceGroupSettings = settings.removeInstancesInstanceGroupSettings.toBuilder();
       setNamedPortsInstanceGroupSettings = settings.setNamedPortsInstanceGroupSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           addInstancesInstanceGroupSettings,
           aggregatedListInstanceGroupsSettings,
           deleteInstanceGroupSettings,
@@ -628,8 +630,14 @@ public class InstanceGroupSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -644,7 +652,7 @@ public class InstanceGroupSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -652,7 +660,7 @@ public class InstanceGroupSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to addInstancesInstanceGroup.
      */
-    public SimpleCallSettings.Builder<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupSettings() {
+    public UnaryCallSettings.Builder<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupSettings() {
       return addInstancesInstanceGroupSettings;
     }
 
@@ -666,21 +674,21 @@ public class InstanceGroupSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteInstanceGroup.
      */
-    public SimpleCallSettings.Builder<DeleteInstanceGroupHttpRequest, Operation> deleteInstanceGroupSettings() {
+    public UnaryCallSettings.Builder<DeleteInstanceGroupHttpRequest, Operation> deleteInstanceGroupSettings() {
       return deleteInstanceGroupSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getInstanceGroup.
      */
-    public SimpleCallSettings.Builder<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupSettings() {
+    public UnaryCallSettings.Builder<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupSettings() {
       return getInstanceGroupSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to insertInstanceGroup.
      */
-    public SimpleCallSettings.Builder<InsertInstanceGroupHttpRequest, Operation> insertInstanceGroupSettings() {
+    public UnaryCallSettings.Builder<InsertInstanceGroupHttpRequest, Operation> insertInstanceGroupSettings() {
       return insertInstanceGroupSettings;
     }
 
@@ -701,14 +709,14 @@ public class InstanceGroupSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to removeInstancesInstanceGroup.
      */
-    public SimpleCallSettings.Builder<RemoveInstancesInstanceGroupHttpRequest, Operation> removeInstancesInstanceGroupSettings() {
+    public UnaryCallSettings.Builder<RemoveInstancesInstanceGroupHttpRequest, Operation> removeInstancesInstanceGroupSettings() {
       return removeInstancesInstanceGroupSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to setNamedPortsInstanceGroup.
      */
-    public SimpleCallSettings.Builder<SetNamedPortsInstanceGroupHttpRequest, Operation> setNamedPortsInstanceGroupSettings() {
+    public UnaryCallSettings.Builder<SetNamedPortsInstanceGroupHttpRequest, Operation> setNamedPortsInstanceGroupSettings() {
       return setNamedPortsInstanceGroupSettings;
     }
 

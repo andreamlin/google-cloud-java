@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,67 +59,63 @@ import javax.annotation.Generated;
 public class HttpJsonSslCertificateStub extends SslCertificateStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteSslCertificateHttpRequest, Operation> directDeleteSslCertificateCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteSslCertificateHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.sslCertificates.delete")
-              .setRequestInstance(DeleteSslCertificateHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/sslCertificates/{sslCertificate}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "sslCertificate"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetSslCertificateHttpRequest, SslCertificate> directGetSslCertificateCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetSslCertificateHttpRequest, SslCertificate>newBuilder()
-              .setMethodName("compute.sslCertificates.get")
-              .setRequestInstance(GetSslCertificateHttpRequest.getDefaultInstance())
-              .setResponseInstance(SslCertificate.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/sslCertificates/{sslCertificate}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "sslCertificate"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertSslCertificateHttpRequest, Operation> directInsertSslCertificateCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertSslCertificateHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.sslCertificates.insert")
-              .setRequestInstance(InsertSslCertificateHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/sslCertificates")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListSslCertificatesHttpRequest, SslCertificateList> directListSslCertificatesCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListSslCertificatesHttpRequest, SslCertificateList>newBuilder()
-              .setMethodName("compute.sslCertificates.list")
-              .setRequestInstance(ListSslCertificatesHttpRequest.getDefaultInstance())
-              .setResponseInstance(SslCertificateList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/sslCertificates")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
+  private static final ApiMethodDescriptor<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateMethodDescriptor =
+      ApiMethodDescriptor.<DeleteSslCertificateHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.sslCertificates.delete")
+          .setRequestInstance(DeleteSslCertificateHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/sslCertificates/{sslCertificate}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "sslCertificate"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateMethodDescriptor =
+      ApiMethodDescriptor.<GetSslCertificateHttpRequest, SslCertificate>newBuilder()
+          .setMethodName("compute.sslCertificates.get")
+          .setRequestInstance(GetSslCertificateHttpRequest.getDefaultInstance())
+          .setResponseInstance(SslCertificate.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/sslCertificates/{sslCertificate}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "sslCertificate"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertSslCertificateHttpRequest, Operation> insertSslCertificateMethodDescriptor =
+      ApiMethodDescriptor.<InsertSslCertificateHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.sslCertificates.insert")
+          .setRequestInstance(InsertSslCertificateHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/sslCertificates")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListSslCertificatesHttpRequest, SslCertificateList> listSslCertificatesMethodDescriptor =
+      ApiMethodDescriptor.<ListSslCertificatesHttpRequest, SslCertificateList>newBuilder()
+          .setMethodName("compute.sslCertificates.list")
+          .setRequestInstance(ListSslCertificatesHttpRequest.getDefaultInstance())
+          .setResponseInstance(SslCertificateList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/sslCertificates")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -144,12 +140,28 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
    */
   protected HttpJsonSslCertificateStub(SslCertificateSettings settings, ClientContext clientContext) throws IOException {
 
-    this.deleteSslCertificateCallable = HttpJsonCallableFactory.create(directDeleteSslCertificateCallable,settings.deleteSslCertificateSettings(), clientContext);
-    this.getSslCertificateCallable = HttpJsonCallableFactory.create(directGetSslCertificateCallable,settings.getSslCertificateSettings(), clientContext);
-    this.insertSslCertificateCallable = HttpJsonCallableFactory.create(directInsertSslCertificateCallable,settings.insertSslCertificateSettings(), clientContext);
-    this.listSslCertificatesCallable = HttpJsonCallableFactory.create(directListSslCertificatesCallable,settings.listSslCertificatesSettings(), clientContext);
-    this.listSslCertificatesPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListSslCertificatesCallable,settings.listSslCertificatesSettings(), clientContext);
+    HttpJsonCallSettings<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateTransportSettings =
+        HttpJsonCallSettings.<DeleteSslCertificateHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteSslCertificateMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateTransportSettings =
+        HttpJsonCallSettings.<GetSslCertificateHttpRequest, SslCertificate>newBuilder()
+            .setMethodDescriptor(getSslCertificateMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertSslCertificateHttpRequest, Operation> insertSslCertificateTransportSettings =
+        HttpJsonCallSettings.<InsertSslCertificateHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertSslCertificateMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListSslCertificatesHttpRequest, SslCertificateList> listSslCertificatesTransportSettings =
+        HttpJsonCallSettings.<ListSslCertificatesHttpRequest, SslCertificateList>newBuilder()
+            .setMethodDescriptor(listSslCertificatesMethodDescriptor)
+            .build();
+
+    this.deleteSslCertificateCallable = HttpJsonCallableFactory.createUnaryCallable(deleteSslCertificateTransportSettings,settings.deleteSslCertificateSettings(), clientContext);
+    this.getSslCertificateCallable = HttpJsonCallableFactory.createUnaryCallable(getSslCertificateTransportSettings,settings.getSslCertificateSettings(), clientContext);
+    this.insertSslCertificateCallable = HttpJsonCallableFactory.createUnaryCallable(insertSslCertificateTransportSettings,settings.insertSslCertificateSettings(), clientContext);
+    this.listSslCertificatesCallable = HttpJsonCallableFactory.createUnaryCallable(listSslCertificatesTransportSettings,settings.listSslCertificatesSettings(), clientContext);
+    this.listSslCertificatesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listSslCertificatesTransportSettings,settings.listSslCertificatesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -53,7 +52,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -106,29 +104,29 @@ public class InstanceTemplateSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateSettings;
-  private final SimpleCallSettings<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateSettings;
-  private final SimpleCallSettings<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateSettings;
+  private final UnaryCallSettings<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateSettings;
+  private final UnaryCallSettings<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateSettings;
+  private final UnaryCallSettings<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateSettings;
   private final PagedCallSettings<ListInstanceTemplatesHttpRequest, InstanceTemplateList, ListInstanceTemplatesPagedResponse> listInstanceTemplatesSettings;
 
   /**
    * Returns the object with the settings used for calls to deleteInstanceTemplate.
    */
-  public SimpleCallSettings<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateSettings() {
+  public UnaryCallSettings<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateSettings() {
     return deleteInstanceTemplateSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getInstanceTemplate.
    */
-  public SimpleCallSettings<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateSettings() {
+  public UnaryCallSettings<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateSettings() {
     return getInstanceTemplateSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to insertInstanceTemplate.
    */
-  public SimpleCallSettings<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateSettings() {
+  public UnaryCallSettings<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateSettings() {
     return insertInstanceTemplateSettings;
   }
 
@@ -141,11 +139,13 @@ public class InstanceTemplateSettings extends ClientSettings {
 
 
   public InstanceTemplateStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonInstanceTemplateStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -189,20 +189,20 @@ public class InstanceTemplateSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -255,8 +255,9 @@ public class InstanceTemplateSettings extends ClientSettings {
   private InstanceTemplateSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     deleteInstanceTemplateSettings = settingsBuilder.deleteInstanceTemplateSettings().build();
@@ -318,23 +319,23 @@ public class InstanceTemplateSettings extends ClientSettings {
    * Builder for InstanceTemplateSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateSettings;
-    private final SimpleCallSettings.Builder<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateSettings;
-    private final SimpleCallSettings.Builder<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateSettings;
+    private final UnaryCallSettings.Builder<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateSettings;
+    private final UnaryCallSettings.Builder<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateSettings;
+    private final UnaryCallSettings.Builder<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateSettings;
     private final PagedCallSettings.Builder<ListInstanceTemplatesHttpRequest, InstanceTemplateList, ListInstanceTemplatesPagedResponse> listInstanceTemplatesSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -363,16 +364,16 @@ public class InstanceTemplateSettings extends ClientSettings {
     private Builder(ClientContext clientContext) {
       super(clientContext);
 
-      deleteInstanceTemplateSettings = SimpleCallSettings.newBuilder();
+      deleteInstanceTemplateSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getInstanceTemplateSettings = SimpleCallSettings.newBuilder();
+      getInstanceTemplateSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      insertInstanceTemplateSettings = SimpleCallSettings.newBuilder();
+      insertInstanceTemplateSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listInstanceTemplatesSettings = PagedCallSettings.newBuilder(
           LIST_INSTANCE_TEMPLATES_PAGE_STR_FACT);
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           deleteInstanceTemplateSettings,
           getInstanceTemplateSettings,
           insertInstanceTemplateSettings,
@@ -384,8 +385,9 @@ public class InstanceTemplateSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -418,7 +420,7 @@ public class InstanceTemplateSettings extends ClientSettings {
       insertInstanceTemplateSettings = settings.insertInstanceTemplateSettings.toBuilder();
       listInstanceTemplatesSettings = settings.listInstanceTemplatesSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           deleteInstanceTemplateSettings,
           getInstanceTemplateSettings,
           insertInstanceTemplateSettings,
@@ -433,8 +435,14 @@ public class InstanceTemplateSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -449,7 +457,7 @@ public class InstanceTemplateSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -457,21 +465,21 @@ public class InstanceTemplateSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteInstanceTemplate.
      */
-    public SimpleCallSettings.Builder<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateSettings() {
+    public UnaryCallSettings.Builder<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateSettings() {
       return deleteInstanceTemplateSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getInstanceTemplate.
      */
-    public SimpleCallSettings.Builder<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateSettings() {
+    public UnaryCallSettings.Builder<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateSettings() {
       return getInstanceTemplateSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to insertInstanceTemplate.
      */
-    public SimpleCallSettings.Builder<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateSettings() {
+    public UnaryCallSettings.Builder<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateSettings() {
       return insertInstanceTemplateSettings;
     }
 

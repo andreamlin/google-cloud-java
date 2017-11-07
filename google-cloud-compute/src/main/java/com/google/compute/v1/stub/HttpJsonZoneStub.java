@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,37 +56,35 @@ import javax.annotation.Generated;
 public class HttpJsonZoneStub extends ZoneStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<GetZoneHttpRequest, Zone> directGetZoneCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetZoneHttpRequest, Zone>newBuilder()
-              .setMethodName("compute.zones.get")
-              .setRequestInstance(GetZoneHttpRequest.getDefaultInstance())
-              .setResponseInstance(Zone.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<ListZonesHttpRequest, ZoneList> directListZonesCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListZonesHttpRequest, ZoneList>newBuilder()
-              .setMethodName("compute.zones.list")
-              .setRequestInstance(ListZonesHttpRequest.getDefaultInstance())
-              .setResponseInstance(ZoneList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
+  private static final ApiMethodDescriptor<GetZoneHttpRequest, Zone> getZoneMethodDescriptor =
+      ApiMethodDescriptor.<GetZoneHttpRequest, Zone>newBuilder()
+          .setMethodName("compute.zones.get")
+          .setRequestInstance(GetZoneHttpRequest.getDefaultInstance())
+          .setResponseInstance(Zone.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<ListZonesHttpRequest, ZoneList> listZonesMethodDescriptor =
+      ApiMethodDescriptor.<ListZonesHttpRequest, ZoneList>newBuilder()
+          .setMethodName("compute.zones.list")
+          .setRequestInstance(ListZonesHttpRequest.getDefaultInstance())
+          .setResponseInstance(ZoneList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -109,10 +107,18 @@ public class HttpJsonZoneStub extends ZoneStub {
    */
   protected HttpJsonZoneStub(ZoneSettings settings, ClientContext clientContext) throws IOException {
 
-    this.getZoneCallable = HttpJsonCallableFactory.create(directGetZoneCallable,settings.getZoneSettings(), clientContext);
-    this.listZonesCallable = HttpJsonCallableFactory.create(directListZonesCallable,settings.listZonesSettings(), clientContext);
-    this.listZonesPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListZonesCallable,settings.listZonesSettings(), clientContext);
+    HttpJsonCallSettings<GetZoneHttpRequest, Zone> getZoneTransportSettings =
+        HttpJsonCallSettings.<GetZoneHttpRequest, Zone>newBuilder()
+            .setMethodDescriptor(getZoneMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListZonesHttpRequest, ZoneList> listZonesTransportSettings =
+        HttpJsonCallSettings.<ListZonesHttpRequest, ZoneList>newBuilder()
+            .setMethodDescriptor(listZonesMethodDescriptor)
+            .build();
+
+    this.getZoneCallable = HttpJsonCallableFactory.createUnaryCallable(getZoneTransportSettings,settings.getZoneSettings(), clientContext);
+    this.listZonesCallable = HttpJsonCallableFactory.createUnaryCallable(listZonesTransportSettings,settings.listZonesSettings(), clientContext);
+    this.listZonesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listZonesTransportSettings,settings.listZonesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

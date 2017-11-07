@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
- *   SslCertificateName sslCertificate = SslCertificateName.create("[PROJECT]", "[SSL_CERTIFICATE]");
+ *   SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
  *   Operation response = sslCertificateClient.deleteSslCertificate(sslCertificate);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * SslCertificateSettings sslCertificateSettings =
  *     SslCertificateSettings.newBuilder()
- *         .setTransportProvider(SslCertificateSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(SslCertificateSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(SslCertificateSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * SslCertificateClient sslCertificateClient =
@@ -130,6 +128,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Constructs an instance of SslCertificateClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use SslCertificateSettings}.
    */
+  @BetaApi
   public static final SslCertificateClient create(SslCertificateStub stub) {
     return new SslCertificateClient(stub);
   }
@@ -166,7 +165,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *   SslCertificateName sslCertificate = SslCertificateName.create("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
    *   Operation response = sslCertificateClient.deleteSslCertificate(sslCertificate);
    * }
    * </code></pre>
@@ -191,7 +190,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *   SslCertificateName sslCertificate = SslCertificateName.create("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
    *   DeleteSslCertificateHttpRequest request = DeleteSslCertificateHttpRequest.newBuilder()
    *     .setSslCertificateWithSslCertificateName(sslCertificate)
    *     .build();
@@ -214,7 +213,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *   SslCertificateName sslCertificate = SslCertificateName.create("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
    *   DeleteSslCertificateHttpRequest request = DeleteSslCertificateHttpRequest.newBuilder()
    *     .setSslCertificateWithSslCertificateName(sslCertificate)
    *     .build();
@@ -236,7 +235,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *   SslCertificateName sslCertificate = SslCertificateName.create("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
    *   SslCertificate response = sslCertificateClient.getSslCertificate(sslCertificate);
    * }
    * </code></pre>
@@ -261,7 +260,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *   SslCertificateName sslCertificate = SslCertificateName.create("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
    *   GetSslCertificateHttpRequest request = GetSslCertificateHttpRequest.newBuilder()
    *     .setSslCertificateWithSslCertificateName(sslCertificate)
    *     .build();
@@ -284,7 +283,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *   SslCertificateName sslCertificate = SslCertificateName.create("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
    *   GetSslCertificateHttpRequest request = GetSslCertificateHttpRequest.newBuilder()
    *     .setSslCertificateWithSslCertificateName(sslCertificate)
    *     .build();
@@ -306,7 +305,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   SslCertificate sslCertificate = SslCertificate.newBuilder().build();
    *   Operation response = sslCertificateClient.insertSslCertificate(project, sslCertificate);
    * }
@@ -334,7 +333,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   SslCertificate sslCertificate = SslCertificate.newBuilder().build();
    *   InsertSslCertificateHttpRequest request = InsertSslCertificateHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -359,7 +358,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   SslCertificate sslCertificate = SslCertificate.newBuilder().build();
    *   InsertSslCertificateHttpRequest request = InsertSslCertificateHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -383,7 +382,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (SslCertificate element : sslCertificateClient.listSslCertificates(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -409,7 +408,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListSslCertificatesHttpRequest request = ListSslCertificatesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -435,7 +434,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListSslCertificatesHttpRequest request = ListSslCertificatesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -459,7 +458,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListSslCertificatesHttpRequest request = ListSslCertificatesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();

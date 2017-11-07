@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -54,7 +53,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -107,29 +105,29 @@ public class TargetPoolSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolSettings;
-  private final SimpleCallSettings<AddInstanceTargetPoolHttpRequest, Operation> addInstanceTargetPoolSettings;
+  private final UnaryCallSettings<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolSettings;
+  private final UnaryCallSettings<AddInstanceTargetPoolHttpRequest, Operation> addInstanceTargetPoolSettings;
   private final PagedCallSettings<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, AggregatedListTargetPoolsPagedResponse> aggregatedListTargetPoolsSettings;
-  private final SimpleCallSettings<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolSettings;
-  private final SimpleCallSettings<GetTargetPoolHttpRequest, TargetPool> getTargetPoolSettings;
-  private final SimpleCallSettings<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> getHealthTargetPoolSettings;
-  private final SimpleCallSettings<InsertTargetPoolHttpRequest, Operation> insertTargetPoolSettings;
+  private final UnaryCallSettings<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolSettings;
+  private final UnaryCallSettings<GetTargetPoolHttpRequest, TargetPool> getTargetPoolSettings;
+  private final UnaryCallSettings<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> getHealthTargetPoolSettings;
+  private final UnaryCallSettings<InsertTargetPoolHttpRequest, Operation> insertTargetPoolSettings;
   private final PagedCallSettings<ListTargetPoolsHttpRequest, TargetPoolList, ListTargetPoolsPagedResponse> listTargetPoolsSettings;
-  private final SimpleCallSettings<RemoveHealthCheckTargetPoolHttpRequest, Operation> removeHealthCheckTargetPoolSettings;
-  private final SimpleCallSettings<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolSettings;
-  private final SimpleCallSettings<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolSettings;
+  private final UnaryCallSettings<RemoveHealthCheckTargetPoolHttpRequest, Operation> removeHealthCheckTargetPoolSettings;
+  private final UnaryCallSettings<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolSettings;
+  private final UnaryCallSettings<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolSettings;
 
   /**
    * Returns the object with the settings used for calls to addHealthCheckTargetPool.
    */
-  public SimpleCallSettings<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolSettings() {
+  public UnaryCallSettings<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolSettings() {
     return addHealthCheckTargetPoolSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to addInstanceTargetPool.
    */
-  public SimpleCallSettings<AddInstanceTargetPoolHttpRequest, Operation> addInstanceTargetPoolSettings() {
+  public UnaryCallSettings<AddInstanceTargetPoolHttpRequest, Operation> addInstanceTargetPoolSettings() {
     return addInstanceTargetPoolSettings;
   }
 
@@ -143,28 +141,28 @@ public class TargetPoolSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to deleteTargetPool.
    */
-  public SimpleCallSettings<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolSettings() {
+  public UnaryCallSettings<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolSettings() {
     return deleteTargetPoolSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getTargetPool.
    */
-  public SimpleCallSettings<GetTargetPoolHttpRequest, TargetPool> getTargetPoolSettings() {
+  public UnaryCallSettings<GetTargetPoolHttpRequest, TargetPool> getTargetPoolSettings() {
     return getTargetPoolSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getHealthTargetPool.
    */
-  public SimpleCallSettings<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> getHealthTargetPoolSettings() {
+  public UnaryCallSettings<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> getHealthTargetPoolSettings() {
     return getHealthTargetPoolSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to insertTargetPool.
    */
-  public SimpleCallSettings<InsertTargetPoolHttpRequest, Operation> insertTargetPoolSettings() {
+  public UnaryCallSettings<InsertTargetPoolHttpRequest, Operation> insertTargetPoolSettings() {
     return insertTargetPoolSettings;
   }
 
@@ -178,31 +176,33 @@ public class TargetPoolSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to removeHealthCheckTargetPool.
    */
-  public SimpleCallSettings<RemoveHealthCheckTargetPoolHttpRequest, Operation> removeHealthCheckTargetPoolSettings() {
+  public UnaryCallSettings<RemoveHealthCheckTargetPoolHttpRequest, Operation> removeHealthCheckTargetPoolSettings() {
     return removeHealthCheckTargetPoolSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to removeInstanceTargetPool.
    */
-  public SimpleCallSettings<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolSettings() {
+  public UnaryCallSettings<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolSettings() {
     return removeInstanceTargetPoolSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to setBackupTargetPool.
    */
-  public SimpleCallSettings<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolSettings() {
+  public UnaryCallSettings<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolSettings() {
     return setBackupTargetPoolSettings;
   }
 
 
   public TargetPoolStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonTargetPoolStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -246,20 +246,20 @@ public class TargetPoolSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -312,8 +312,9 @@ public class TargetPoolSettings extends ClientSettings {
   private TargetPoolSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     addHealthCheckTargetPoolSettings = settingsBuilder.addHealthCheckTargetPoolSettings().build();
@@ -430,30 +431,30 @@ public class TargetPoolSettings extends ClientSettings {
    * Builder for TargetPoolSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolSettings;
-    private final SimpleCallSettings.Builder<AddInstanceTargetPoolHttpRequest, Operation> addInstanceTargetPoolSettings;
+    private final UnaryCallSettings.Builder<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolSettings;
+    private final UnaryCallSettings.Builder<AddInstanceTargetPoolHttpRequest, Operation> addInstanceTargetPoolSettings;
     private final PagedCallSettings.Builder<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, AggregatedListTargetPoolsPagedResponse> aggregatedListTargetPoolsSettings;
-    private final SimpleCallSettings.Builder<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolSettings;
-    private final SimpleCallSettings.Builder<GetTargetPoolHttpRequest, TargetPool> getTargetPoolSettings;
-    private final SimpleCallSettings.Builder<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> getHealthTargetPoolSettings;
-    private final SimpleCallSettings.Builder<InsertTargetPoolHttpRequest, Operation> insertTargetPoolSettings;
+    private final UnaryCallSettings.Builder<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolSettings;
+    private final UnaryCallSettings.Builder<GetTargetPoolHttpRequest, TargetPool> getTargetPoolSettings;
+    private final UnaryCallSettings.Builder<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> getHealthTargetPoolSettings;
+    private final UnaryCallSettings.Builder<InsertTargetPoolHttpRequest, Operation> insertTargetPoolSettings;
     private final PagedCallSettings.Builder<ListTargetPoolsHttpRequest, TargetPoolList, ListTargetPoolsPagedResponse> listTargetPoolsSettings;
-    private final SimpleCallSettings.Builder<RemoveHealthCheckTargetPoolHttpRequest, Operation> removeHealthCheckTargetPoolSettings;
-    private final SimpleCallSettings.Builder<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolSettings;
-    private final SimpleCallSettings.Builder<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolSettings;
+    private final UnaryCallSettings.Builder<RemoveHealthCheckTargetPoolHttpRequest, Operation> removeHealthCheckTargetPoolSettings;
+    private final UnaryCallSettings.Builder<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolSettings;
+    private final UnaryCallSettings.Builder<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -482,31 +483,31 @@ public class TargetPoolSettings extends ClientSettings {
     private Builder(ClientContext clientContext) {
       super(clientContext);
 
-      addHealthCheckTargetPoolSettings = SimpleCallSettings.newBuilder();
+      addHealthCheckTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      addInstanceTargetPoolSettings = SimpleCallSettings.newBuilder();
+      addInstanceTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       aggregatedListTargetPoolsSettings = PagedCallSettings.newBuilder(
           AGGREGATED_LIST_TARGET_POOLS_PAGE_STR_FACT);
 
-      deleteTargetPoolSettings = SimpleCallSettings.newBuilder();
+      deleteTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getTargetPoolSettings = SimpleCallSettings.newBuilder();
+      getTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getHealthTargetPoolSettings = SimpleCallSettings.newBuilder();
+      getHealthTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      insertTargetPoolSettings = SimpleCallSettings.newBuilder();
+      insertTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listTargetPoolsSettings = PagedCallSettings.newBuilder(
           LIST_TARGET_POOLS_PAGE_STR_FACT);
 
-      removeHealthCheckTargetPoolSettings = SimpleCallSettings.newBuilder();
+      removeHealthCheckTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      removeInstanceTargetPoolSettings = SimpleCallSettings.newBuilder();
+      removeInstanceTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      setBackupTargetPoolSettings = SimpleCallSettings.newBuilder();
+      setBackupTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           addHealthCheckTargetPoolSettings,
           addInstanceTargetPoolSettings,
           aggregatedListTargetPoolsSettings,
@@ -525,8 +526,9 @@ public class TargetPoolSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -594,7 +596,7 @@ public class TargetPoolSettings extends ClientSettings {
       removeInstanceTargetPoolSettings = settings.removeInstanceTargetPoolSettings.toBuilder();
       setBackupTargetPoolSettings = settings.setBackupTargetPoolSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           addHealthCheckTargetPoolSettings,
           addInstanceTargetPoolSettings,
           aggregatedListTargetPoolsSettings,
@@ -616,8 +618,14 @@ public class TargetPoolSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -632,7 +640,7 @@ public class TargetPoolSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -640,14 +648,14 @@ public class TargetPoolSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to addHealthCheckTargetPool.
      */
-    public SimpleCallSettings.Builder<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolSettings() {
+    public UnaryCallSettings.Builder<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolSettings() {
       return addHealthCheckTargetPoolSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to addInstanceTargetPool.
      */
-    public SimpleCallSettings.Builder<AddInstanceTargetPoolHttpRequest, Operation> addInstanceTargetPoolSettings() {
+    public UnaryCallSettings.Builder<AddInstanceTargetPoolHttpRequest, Operation> addInstanceTargetPoolSettings() {
       return addInstanceTargetPoolSettings;
     }
 
@@ -661,28 +669,28 @@ public class TargetPoolSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteTargetPool.
      */
-    public SimpleCallSettings.Builder<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolSettings() {
+    public UnaryCallSettings.Builder<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolSettings() {
       return deleteTargetPoolSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getTargetPool.
      */
-    public SimpleCallSettings.Builder<GetTargetPoolHttpRequest, TargetPool> getTargetPoolSettings() {
+    public UnaryCallSettings.Builder<GetTargetPoolHttpRequest, TargetPool> getTargetPoolSettings() {
       return getTargetPoolSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getHealthTargetPool.
      */
-    public SimpleCallSettings.Builder<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> getHealthTargetPoolSettings() {
+    public UnaryCallSettings.Builder<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> getHealthTargetPoolSettings() {
       return getHealthTargetPoolSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to insertTargetPool.
      */
-    public SimpleCallSettings.Builder<InsertTargetPoolHttpRequest, Operation> insertTargetPoolSettings() {
+    public UnaryCallSettings.Builder<InsertTargetPoolHttpRequest, Operation> insertTargetPoolSettings() {
       return insertTargetPoolSettings;
     }
 
@@ -696,21 +704,21 @@ public class TargetPoolSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to removeHealthCheckTargetPool.
      */
-    public SimpleCallSettings.Builder<RemoveHealthCheckTargetPoolHttpRequest, Operation> removeHealthCheckTargetPoolSettings() {
+    public UnaryCallSettings.Builder<RemoveHealthCheckTargetPoolHttpRequest, Operation> removeHealthCheckTargetPoolSettings() {
       return removeHealthCheckTargetPoolSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to removeInstanceTargetPool.
      */
-    public SimpleCallSettings.Builder<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolSettings() {
+    public UnaryCallSettings.Builder<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolSettings() {
       return removeInstanceTargetPoolSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to setBackupTargetPool.
      */
-    public SimpleCallSettings.Builder<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolSettings() {
+    public UnaryCallSettings.Builder<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolSettings() {
       return setBackupTargetPoolSettings;
     }
 

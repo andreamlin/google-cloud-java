@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,37 +56,35 @@ import javax.annotation.Generated;
 public class HttpJsonRegionStub extends RegionStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<GetRegionHttpRequest, Region> directGetRegionCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetRegionHttpRequest, Region>newBuilder()
-              .setMethodName("compute.regions.get")
-              .setRequestInstance(GetRegionHttpRequest.getDefaultInstance())
-              .setResponseInstance(Region.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<ListRegionsHttpRequest, RegionList> directListRegionsCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListRegionsHttpRequest, RegionList>newBuilder()
-              .setMethodName("compute.regions.list")
-              .setRequestInstance(ListRegionsHttpRequest.getDefaultInstance())
-              .setResponseInstance(RegionList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
+  private static final ApiMethodDescriptor<GetRegionHttpRequest, Region> getRegionMethodDescriptor =
+      ApiMethodDescriptor.<GetRegionHttpRequest, Region>newBuilder()
+          .setMethodName("compute.regions.get")
+          .setRequestInstance(GetRegionHttpRequest.getDefaultInstance())
+          .setResponseInstance(Region.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<ListRegionsHttpRequest, RegionList> listRegionsMethodDescriptor =
+      ApiMethodDescriptor.<ListRegionsHttpRequest, RegionList>newBuilder()
+          .setMethodName("compute.regions.list")
+          .setRequestInstance(ListRegionsHttpRequest.getDefaultInstance())
+          .setResponseInstance(RegionList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -109,10 +107,18 @@ public class HttpJsonRegionStub extends RegionStub {
    */
   protected HttpJsonRegionStub(RegionSettings settings, ClientContext clientContext) throws IOException {
 
-    this.getRegionCallable = HttpJsonCallableFactory.create(directGetRegionCallable,settings.getRegionSettings(), clientContext);
-    this.listRegionsCallable = HttpJsonCallableFactory.create(directListRegionsCallable,settings.listRegionsSettings(), clientContext);
-    this.listRegionsPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListRegionsCallable,settings.listRegionsSettings(), clientContext);
+    HttpJsonCallSettings<GetRegionHttpRequest, Region> getRegionTransportSettings =
+        HttpJsonCallSettings.<GetRegionHttpRequest, Region>newBuilder()
+            .setMethodDescriptor(getRegionMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListRegionsHttpRequest, RegionList> listRegionsTransportSettings =
+        HttpJsonCallSettings.<ListRegionsHttpRequest, RegionList>newBuilder()
+            .setMethodDescriptor(listRegionsMethodDescriptor)
+            .build();
+
+    this.getRegionCallable = HttpJsonCallableFactory.createUnaryCallable(getRegionTransportSettings,settings.getRegionSettings(), clientContext);
+    this.listRegionsCallable = HttpJsonCallableFactory.createUnaryCallable(listRegionsTransportSettings,settings.listRegionsSettings(), clientContext);
+    this.listRegionsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listRegionsTransportSettings,settings.listRegionsSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

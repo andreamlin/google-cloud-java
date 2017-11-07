@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
- *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.create("[PROJECT]", "[FORWARDING_RULE]");
+ *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
  *   Operation response = globalForwardingRuleClient.deleteGlobalForwardingRule(forwardingRule);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * GlobalForwardingRuleSettings globalForwardingRuleSettings =
  *     GlobalForwardingRuleSettings.newBuilder()
- *         .setTransportProvider(GlobalForwardingRuleSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(GlobalForwardingRuleSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(GlobalForwardingRuleSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * GlobalForwardingRuleClient globalForwardingRuleClient =
@@ -130,6 +128,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Constructs an instance of GlobalForwardingRuleClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use GlobalForwardingRuleSettings}.
    */
+  @BetaApi
   public static final GlobalForwardingRuleClient create(GlobalForwardingRuleStub stub) {
     return new GlobalForwardingRuleClient(stub);
   }
@@ -166,7 +165,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.create("[PROJECT]", "[FORWARDING_RULE]");
+   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
    *   Operation response = globalForwardingRuleClient.deleteGlobalForwardingRule(forwardingRule);
    * }
    * </code></pre>
@@ -191,7 +190,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.create("[PROJECT]", "[FORWARDING_RULE]");
+   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
    *   DeleteGlobalForwardingRuleHttpRequest request = DeleteGlobalForwardingRuleHttpRequest.newBuilder()
    *     .setForwardingRuleWithGlobalForwardingRulesForwardingRuleName(forwardingRule)
    *     .build();
@@ -214,7 +213,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.create("[PROJECT]", "[FORWARDING_RULE]");
+   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
    *   DeleteGlobalForwardingRuleHttpRequest request = DeleteGlobalForwardingRuleHttpRequest.newBuilder()
    *     .setForwardingRuleWithGlobalForwardingRulesForwardingRuleName(forwardingRule)
    *     .build();
@@ -236,7 +235,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.create("[PROJECT]", "[FORWARDING_RULE]");
+   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
    *   ForwardingRule response = globalForwardingRuleClient.getGlobalForwardingRule(forwardingRule);
    * }
    * </code></pre>
@@ -261,7 +260,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.create("[PROJECT]", "[FORWARDING_RULE]");
+   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
    *   GetGlobalForwardingRuleHttpRequest request = GetGlobalForwardingRuleHttpRequest.newBuilder()
    *     .setForwardingRuleWithGlobalForwardingRulesForwardingRuleName(forwardingRule)
    *     .build();
@@ -284,7 +283,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.create("[PROJECT]", "[FORWARDING_RULE]");
+   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
    *   GetGlobalForwardingRuleHttpRequest request = GetGlobalForwardingRuleHttpRequest.newBuilder()
    *     .setForwardingRuleWithGlobalForwardingRulesForwardingRuleName(forwardingRule)
    *     .build();
@@ -306,7 +305,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ForwardingRule forwardingRule = ForwardingRule.newBuilder().build();
    *   Operation response = globalForwardingRuleClient.insertGlobalForwardingRule(project, forwardingRule);
    * }
@@ -334,7 +333,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ForwardingRule forwardingRule = ForwardingRule.newBuilder().build();
    *   InsertGlobalForwardingRuleHttpRequest request = InsertGlobalForwardingRuleHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -359,7 +358,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ForwardingRule forwardingRule = ForwardingRule.newBuilder().build();
    *   InsertGlobalForwardingRuleHttpRequest request = InsertGlobalForwardingRuleHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -383,7 +382,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (ForwardingRule element : globalForwardingRuleClient.listGlobalForwardingRules(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -409,7 +408,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalForwardingRulesHttpRequest request = ListGlobalForwardingRulesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -435,7 +434,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalForwardingRulesHttpRequest request = ListGlobalForwardingRulesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -459,7 +458,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalForwardingRulesHttpRequest request = ListGlobalForwardingRulesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -490,7 +489,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.create("[PROJECT]", "[FORWARDING_RULE]");
+   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
    *   TargetReference targetReference = TargetReference.newBuilder().build();
    *   Operation response = globalForwardingRuleClient.setTargetGlobalForwardingRule(forwardingRule, targetReference);
    * }
@@ -518,7 +517,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.create("[PROJECT]", "[FORWARDING_RULE]");
+   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
    *   TargetReference targetReference = TargetReference.newBuilder().build();
    *   SetTargetGlobalForwardingRuleHttpRequest request = SetTargetGlobalForwardingRuleHttpRequest.newBuilder()
    *     .setForwardingRuleWithGlobalForwardingRulesForwardingRuleName(forwardingRule)
@@ -543,7 +542,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.create("[PROJECT]", "[FORWARDING_RULE]");
+   *   GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
    *   TargetReference targetReference = TargetReference.newBuilder().build();
    *   SetTargetGlobalForwardingRuleHttpRequest request = SetTargetGlobalForwardingRuleHttpRequest.newBuilder()
    *     .setForwardingRuleWithGlobalForwardingRulesForwardingRuleName(forwardingRule)

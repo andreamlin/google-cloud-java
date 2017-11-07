@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -54,7 +53,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -108,9 +106,9 @@ public class VpnTunnelSettings extends ClientSettings {
   private static String gapicVersion;
 
   private final PagedCallSettings<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, AggregatedListVpnTunnelsPagedResponse> aggregatedListVpnTunnelsSettings;
-  private final SimpleCallSettings<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelSettings;
-  private final SimpleCallSettings<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelSettings;
-  private final SimpleCallSettings<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelSettings;
+  private final UnaryCallSettings<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelSettings;
+  private final UnaryCallSettings<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelSettings;
+  private final UnaryCallSettings<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelSettings;
   private final PagedCallSettings<ListVpnTunnelsHttpRequest, VpnTunnelList, ListVpnTunnelsPagedResponse> listVpnTunnelsSettings;
 
   /**
@@ -123,21 +121,21 @@ public class VpnTunnelSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to deleteVpnTunnel.
    */
-  public SimpleCallSettings<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelSettings() {
+  public UnaryCallSettings<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelSettings() {
     return deleteVpnTunnelSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getVpnTunnel.
    */
-  public SimpleCallSettings<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelSettings() {
+  public UnaryCallSettings<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelSettings() {
     return getVpnTunnelSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to insertVpnTunnel.
    */
-  public SimpleCallSettings<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelSettings() {
+  public UnaryCallSettings<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelSettings() {
     return insertVpnTunnelSettings;
   }
 
@@ -150,11 +148,13 @@ public class VpnTunnelSettings extends ClientSettings {
 
 
   public VpnTunnelStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonVpnTunnelStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -198,20 +198,20 @@ public class VpnTunnelSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -264,8 +264,9 @@ public class VpnTunnelSettings extends ClientSettings {
   private VpnTunnelSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     aggregatedListVpnTunnelsSettings = settingsBuilder.aggregatedListVpnTunnelsSettings().build();
@@ -376,24 +377,24 @@ public class VpnTunnelSettings extends ClientSettings {
    * Builder for VpnTunnelSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, AggregatedListVpnTunnelsPagedResponse> aggregatedListVpnTunnelsSettings;
-    private final SimpleCallSettings.Builder<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelSettings;
-    private final SimpleCallSettings.Builder<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelSettings;
-    private final SimpleCallSettings.Builder<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelSettings;
+    private final UnaryCallSettings.Builder<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelSettings;
+    private final UnaryCallSettings.Builder<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelSettings;
+    private final UnaryCallSettings.Builder<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelSettings;
     private final PagedCallSettings.Builder<ListVpnTunnelsHttpRequest, VpnTunnelList, ListVpnTunnelsPagedResponse> listVpnTunnelsSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -425,16 +426,16 @@ public class VpnTunnelSettings extends ClientSettings {
       aggregatedListVpnTunnelsSettings = PagedCallSettings.newBuilder(
           AGGREGATED_LIST_VPN_TUNNELS_PAGE_STR_FACT);
 
-      deleteVpnTunnelSettings = SimpleCallSettings.newBuilder();
+      deleteVpnTunnelSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getVpnTunnelSettings = SimpleCallSettings.newBuilder();
+      getVpnTunnelSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      insertVpnTunnelSettings = SimpleCallSettings.newBuilder();
+      insertVpnTunnelSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listVpnTunnelsSettings = PagedCallSettings.newBuilder(
           LIST_VPN_TUNNELS_PAGE_STR_FACT);
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           aggregatedListVpnTunnelsSettings,
           deleteVpnTunnelSettings,
           getVpnTunnelSettings,
@@ -447,8 +448,9 @@ public class VpnTunnelSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -486,7 +488,7 @@ public class VpnTunnelSettings extends ClientSettings {
       insertVpnTunnelSettings = settings.insertVpnTunnelSettings.toBuilder();
       listVpnTunnelsSettings = settings.listVpnTunnelsSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           aggregatedListVpnTunnelsSettings,
           deleteVpnTunnelSettings,
           getVpnTunnelSettings,
@@ -502,8 +504,14 @@ public class VpnTunnelSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -518,7 +526,7 @@ public class VpnTunnelSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -533,21 +541,21 @@ public class VpnTunnelSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteVpnTunnel.
      */
-    public SimpleCallSettings.Builder<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelSettings() {
+    public UnaryCallSettings.Builder<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelSettings() {
       return deleteVpnTunnelSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getVpnTunnel.
      */
-    public SimpleCallSettings.Builder<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelSettings() {
+    public UnaryCallSettings.Builder<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelSettings() {
       return getVpnTunnelSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to insertVpnTunnel.
      */
-    public SimpleCallSettings.Builder<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelSettings() {
+    public UnaryCallSettings.Builder<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelSettings() {
       return insertVpnTunnelSettings;
     }
 

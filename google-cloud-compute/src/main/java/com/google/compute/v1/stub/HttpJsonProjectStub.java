@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,81 +61,76 @@ import javax.annotation.Generated;
 public class HttpJsonProjectStub extends ProjectStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<GetProjectHttpRequest, Project> directGetProjectCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetProjectHttpRequest, Project>newBuilder()
-              .setMethodName("compute.projects.get")
-              .setRequestInstance(GetProjectHttpRequest.getDefaultInstance())
-              .setResponseInstance(Project.getDefaultInstance())
-              .setEndpointPathTemplate("{project}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<MoveDiskProjectHttpRequest, Operation> directMoveDiskProjectCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<MoveDiskProjectHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.projects.moveDisk")
-              .setRequestInstance(MoveDiskProjectHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/moveDisk")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<MoveInstanceProjectHttpRequest, Operation> directMoveInstanceProjectCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<MoveInstanceProjectHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.projects.moveInstance")
-              .setRequestInstance(MoveInstanceProjectHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/moveInstance")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<SetCommonInstanceMetadataProjectHttpRequest, Operation> directSetCommonInstanceMetadataProjectCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<SetCommonInstanceMetadataProjectHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.projects.setCommonInstanceMetadata")
-              .setRequestInstance(SetCommonInstanceMetadataProjectHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/setCommonInstanceMetadata")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<SetUsageExportBucketProjectHttpRequest, Operation> directSetUsageExportBucketProjectCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<SetUsageExportBucketProjectHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.projects.setUsageExportBucket")
-              .setRequestInstance(SetUsageExportBucketProjectHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/setUsageExportBucket")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
+  private static final ApiMethodDescriptor<GetProjectHttpRequest, Project> getProjectMethodDescriptor =
+      ApiMethodDescriptor.<GetProjectHttpRequest, Project>newBuilder()
+          .setMethodName("compute.projects.get")
+          .setRequestInstance(GetProjectHttpRequest.getDefaultInstance())
+          .setResponseInstance(Project.getDefaultInstance())
+          .setEndpointPathTemplate("{project}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<MoveDiskProjectHttpRequest, Operation> moveDiskProjectMethodDescriptor =
+      ApiMethodDescriptor.<MoveDiskProjectHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.projects.moveDisk")
+          .setRequestInstance(MoveDiskProjectHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/moveDisk")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<MoveInstanceProjectHttpRequest, Operation> moveInstanceProjectMethodDescriptor =
+      ApiMethodDescriptor.<MoveInstanceProjectHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.projects.moveInstance")
+          .setRequestInstance(MoveInstanceProjectHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/moveInstance")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<SetCommonInstanceMetadataProjectHttpRequest, Operation> setCommonInstanceMetadataProjectMethodDescriptor =
+      ApiMethodDescriptor.<SetCommonInstanceMetadataProjectHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.projects.setCommonInstanceMetadata")
+          .setRequestInstance(SetCommonInstanceMetadataProjectHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/setCommonInstanceMetadata")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<SetUsageExportBucketProjectHttpRequest, Operation> setUsageExportBucketProjectMethodDescriptor =
+      ApiMethodDescriptor.<SetUsageExportBucketProjectHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.projects.setUsageExportBucket")
+          .setRequestInstance(SetUsageExportBucketProjectHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/setUsageExportBucket")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -160,11 +155,32 @@ public class HttpJsonProjectStub extends ProjectStub {
    */
   protected HttpJsonProjectStub(ProjectSettings settings, ClientContext clientContext) throws IOException {
 
-    this.getProjectCallable = HttpJsonCallableFactory.create(directGetProjectCallable,settings.getProjectSettings(), clientContext);
-    this.moveDiskProjectCallable = HttpJsonCallableFactory.create(directMoveDiskProjectCallable,settings.moveDiskProjectSettings(), clientContext);
-    this.moveInstanceProjectCallable = HttpJsonCallableFactory.create(directMoveInstanceProjectCallable,settings.moveInstanceProjectSettings(), clientContext);
-    this.setCommonInstanceMetadataProjectCallable = HttpJsonCallableFactory.create(directSetCommonInstanceMetadataProjectCallable,settings.setCommonInstanceMetadataProjectSettings(), clientContext);
-    this.setUsageExportBucketProjectCallable = HttpJsonCallableFactory.create(directSetUsageExportBucketProjectCallable,settings.setUsageExportBucketProjectSettings(), clientContext);
+    HttpJsonCallSettings<GetProjectHttpRequest, Project> getProjectTransportSettings =
+        HttpJsonCallSettings.<GetProjectHttpRequest, Project>newBuilder()
+            .setMethodDescriptor(getProjectMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<MoveDiskProjectHttpRequest, Operation> moveDiskProjectTransportSettings =
+        HttpJsonCallSettings.<MoveDiskProjectHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(moveDiskProjectMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<MoveInstanceProjectHttpRequest, Operation> moveInstanceProjectTransportSettings =
+        HttpJsonCallSettings.<MoveInstanceProjectHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(moveInstanceProjectMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<SetCommonInstanceMetadataProjectHttpRequest, Operation> setCommonInstanceMetadataProjectTransportSettings =
+        HttpJsonCallSettings.<SetCommonInstanceMetadataProjectHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(setCommonInstanceMetadataProjectMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<SetUsageExportBucketProjectHttpRequest, Operation> setUsageExportBucketProjectTransportSettings =
+        HttpJsonCallSettings.<SetUsageExportBucketProjectHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(setUsageExportBucketProjectMethodDescriptor)
+            .build();
+
+    this.getProjectCallable = HttpJsonCallableFactory.createUnaryCallable(getProjectTransportSettings,settings.getProjectSettings(), clientContext);
+    this.moveDiskProjectCallable = HttpJsonCallableFactory.createUnaryCallable(moveDiskProjectTransportSettings,settings.moveDiskProjectSettings(), clientContext);
+    this.moveInstanceProjectCallable = HttpJsonCallableFactory.createUnaryCallable(moveInstanceProjectTransportSettings,settings.moveInstanceProjectSettings(), clientContext);
+    this.setCommonInstanceMetadataProjectCallable = HttpJsonCallableFactory.createUnaryCallable(setCommonInstanceMetadataProjectTransportSettings,settings.setCommonInstanceMetadataProjectSettings(), clientContext);
+    this.setUsageExportBucketProjectCallable = HttpJsonCallableFactory.createUnaryCallable(setUsageExportBucketProjectTransportSettings,settings.setUsageExportBucketProjectSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,97 +61,91 @@ import javax.annotation.Generated;
 public class HttpJsonHttpHealthCheckStub extends HttpHealthCheckStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteHttpHealthCheckHttpRequest, Operation> directDeleteHttpHealthCheckCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteHttpHealthCheckHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.httpHealthChecks.delete")
-              .setRequestInstance(DeleteHttpHealthCheckHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/httpHealthChecks/{httpHealthCheck}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "httpHealthCheck",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetHttpHealthCheckHttpRequest, HttpHealthCheck> directGetHttpHealthCheckCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetHttpHealthCheckHttpRequest, HttpHealthCheck>newBuilder()
-              .setMethodName("compute.httpHealthChecks.get")
-              .setRequestInstance(GetHttpHealthCheckHttpRequest.getDefaultInstance())
-              .setResponseInstance(HttpHealthCheck.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/httpHealthChecks/{httpHealthCheck}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "httpHealthCheck",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertHttpHealthCheckHttpRequest, Operation> directInsertHttpHealthCheckCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertHttpHealthCheckHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.httpHealthChecks.insert")
-              .setRequestInstance(InsertHttpHealthCheckHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/httpHealthChecks")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListHttpHealthChecksHttpRequest, HttpHealthCheckList> directListHttpHealthChecksCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListHttpHealthChecksHttpRequest, HttpHealthCheckList>newBuilder()
-              .setMethodName("compute.httpHealthChecks.list")
-              .setRequestInstance(ListHttpHealthChecksHttpRequest.getDefaultInstance())
-              .setResponseInstance(HttpHealthCheckList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/httpHealthChecks")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<PatchHttpHealthCheckHttpRequest, Operation> directPatchHttpHealthCheckCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<PatchHttpHealthCheckHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.httpHealthChecks.patch")
-              .setRequestInstance(PatchHttpHealthCheckHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/httpHealthChecks/{httpHealthCheck}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "httpHealthCheck",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.PATCH)
-              .build());
-  private static final UnaryCallable<UpdateHttpHealthCheckHttpRequest, Operation> directUpdateHttpHealthCheckCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<UpdateHttpHealthCheckHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.httpHealthChecks.update")
-              .setRequestInstance(UpdateHttpHealthCheckHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/httpHealthChecks/{httpHealthCheck}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "httpHealthCheck",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.PUT)
-              .build());
+  private static final ApiMethodDescriptor<DeleteHttpHealthCheckHttpRequest, Operation> deleteHttpHealthCheckMethodDescriptor =
+      ApiMethodDescriptor.<DeleteHttpHealthCheckHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.httpHealthChecks.delete")
+          .setRequestInstance(DeleteHttpHealthCheckHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/httpHealthChecks/{httpHealthCheck}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "httpHealthCheck",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetHttpHealthCheckHttpRequest, HttpHealthCheck> getHttpHealthCheckMethodDescriptor =
+      ApiMethodDescriptor.<GetHttpHealthCheckHttpRequest, HttpHealthCheck>newBuilder()
+          .setMethodName("compute.httpHealthChecks.get")
+          .setRequestInstance(GetHttpHealthCheckHttpRequest.getDefaultInstance())
+          .setResponseInstance(HttpHealthCheck.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/httpHealthChecks/{httpHealthCheck}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "httpHealthCheck",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertHttpHealthCheckHttpRequest, Operation> insertHttpHealthCheckMethodDescriptor =
+      ApiMethodDescriptor.<InsertHttpHealthCheckHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.httpHealthChecks.insert")
+          .setRequestInstance(InsertHttpHealthCheckHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/httpHealthChecks")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListHttpHealthChecksHttpRequest, HttpHealthCheckList> listHttpHealthChecksMethodDescriptor =
+      ApiMethodDescriptor.<ListHttpHealthChecksHttpRequest, HttpHealthCheckList>newBuilder()
+          .setMethodName("compute.httpHealthChecks.list")
+          .setRequestInstance(ListHttpHealthChecksHttpRequest.getDefaultInstance())
+          .setResponseInstance(HttpHealthCheckList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/httpHealthChecks")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<PatchHttpHealthCheckHttpRequest, Operation> patchHttpHealthCheckMethodDescriptor =
+      ApiMethodDescriptor.<PatchHttpHealthCheckHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.httpHealthChecks.patch")
+          .setRequestInstance(PatchHttpHealthCheckHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/httpHealthChecks/{httpHealthCheck}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "httpHealthCheck",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.PATCH)
+          .build());
+  private static final ApiMethodDescriptor<UpdateHttpHealthCheckHttpRequest, Operation> updateHttpHealthCheckMethodDescriptor =
+      ApiMethodDescriptor.<UpdateHttpHealthCheckHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.httpHealthChecks.update")
+          .setRequestInstance(UpdateHttpHealthCheckHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/httpHealthChecks/{httpHealthCheck}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "httpHealthCheck",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.PUT)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -178,14 +172,38 @@ public class HttpJsonHttpHealthCheckStub extends HttpHealthCheckStub {
    */
   protected HttpJsonHttpHealthCheckStub(HttpHealthCheckSettings settings, ClientContext clientContext) throws IOException {
 
-    this.deleteHttpHealthCheckCallable = HttpJsonCallableFactory.create(directDeleteHttpHealthCheckCallable,settings.deleteHttpHealthCheckSettings(), clientContext);
-    this.getHttpHealthCheckCallable = HttpJsonCallableFactory.create(directGetHttpHealthCheckCallable,settings.getHttpHealthCheckSettings(), clientContext);
-    this.insertHttpHealthCheckCallable = HttpJsonCallableFactory.create(directInsertHttpHealthCheckCallable,settings.insertHttpHealthCheckSettings(), clientContext);
-    this.listHttpHealthChecksCallable = HttpJsonCallableFactory.create(directListHttpHealthChecksCallable,settings.listHttpHealthChecksSettings(), clientContext);
-    this.listHttpHealthChecksPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListHttpHealthChecksCallable,settings.listHttpHealthChecksSettings(), clientContext);
-    this.patchHttpHealthCheckCallable = HttpJsonCallableFactory.create(directPatchHttpHealthCheckCallable,settings.patchHttpHealthCheckSettings(), clientContext);
-    this.updateHttpHealthCheckCallable = HttpJsonCallableFactory.create(directUpdateHttpHealthCheckCallable,settings.updateHttpHealthCheckSettings(), clientContext);
+    HttpJsonCallSettings<DeleteHttpHealthCheckHttpRequest, Operation> deleteHttpHealthCheckTransportSettings =
+        HttpJsonCallSettings.<DeleteHttpHealthCheckHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteHttpHealthCheckMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetHttpHealthCheckHttpRequest, HttpHealthCheck> getHttpHealthCheckTransportSettings =
+        HttpJsonCallSettings.<GetHttpHealthCheckHttpRequest, HttpHealthCheck>newBuilder()
+            .setMethodDescriptor(getHttpHealthCheckMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertHttpHealthCheckHttpRequest, Operation> insertHttpHealthCheckTransportSettings =
+        HttpJsonCallSettings.<InsertHttpHealthCheckHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertHttpHealthCheckMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListHttpHealthChecksHttpRequest, HttpHealthCheckList> listHttpHealthChecksTransportSettings =
+        HttpJsonCallSettings.<ListHttpHealthChecksHttpRequest, HttpHealthCheckList>newBuilder()
+            .setMethodDescriptor(listHttpHealthChecksMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<PatchHttpHealthCheckHttpRequest, Operation> patchHttpHealthCheckTransportSettings =
+        HttpJsonCallSettings.<PatchHttpHealthCheckHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(patchHttpHealthCheckMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<UpdateHttpHealthCheckHttpRequest, Operation> updateHttpHealthCheckTransportSettings =
+        HttpJsonCallSettings.<UpdateHttpHealthCheckHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(updateHttpHealthCheckMethodDescriptor)
+            .build();
+
+    this.deleteHttpHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(deleteHttpHealthCheckTransportSettings,settings.deleteHttpHealthCheckSettings(), clientContext);
+    this.getHttpHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(getHttpHealthCheckTransportSettings,settings.getHttpHealthCheckSettings(), clientContext);
+    this.insertHttpHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(insertHttpHealthCheckTransportSettings,settings.insertHttpHealthCheckSettings(), clientContext);
+    this.listHttpHealthChecksCallable = HttpJsonCallableFactory.createUnaryCallable(listHttpHealthChecksTransportSettings,settings.listHttpHealthChecksSettings(), clientContext);
+    this.listHttpHealthChecksPagedCallable = HttpJsonCallableFactory.createPagedCallable(listHttpHealthChecksTransportSettings,settings.listHttpHealthChecksSettings(), clientContext);
+    this.patchHttpHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(patchHttpHealthCheckTransportSettings,settings.patchHttpHealthCheckSettings(), clientContext);
+    this.updateHttpHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(updateHttpHealthCheckTransportSettings,settings.updateHttpHealthCheckSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

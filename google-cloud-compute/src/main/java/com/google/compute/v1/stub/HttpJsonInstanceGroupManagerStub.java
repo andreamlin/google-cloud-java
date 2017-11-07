@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -76,190 +76,178 @@ import javax.annotation.Generated;
 public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<AbandonInstancesInstanceGroupManagerHttpRequest, Operation> directAbandonInstancesInstanceGroupManagerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<AbandonInstancesInstanceGroupManagerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.instanceGroupManagers.abandonInstances")
-              .setRequestInstance(AbandonInstancesInstanceGroupManagerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/abandonInstances")
-              .setPathParams(Sets.<String>newHashSet(
-                                "instanceGroupManager",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList> directAggregatedListInstanceGroupManagersCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList>newBuilder()
-              .setMethodName("compute.instanceGroupManagers.aggregatedList")
-              .setRequestInstance(AggregatedListInstanceGroupManagersHttpRequest.getDefaultInstance())
-              .setResponseInstance(InstanceGroupManagerAggregatedList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/aggregated/instanceGroupManagers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<DeleteInstanceGroupManagerHttpRequest, Operation> directDeleteInstanceGroupManagerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteInstanceGroupManagerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.instanceGroupManagers.delete")
-              .setRequestInstance(DeleteInstanceGroupManagerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "instanceGroupManager",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<DeleteInstancesInstanceGroupManagerHttpRequest, Operation> directDeleteInstancesInstanceGroupManagerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteInstancesInstanceGroupManagerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.instanceGroupManagers.deleteInstances")
-              .setRequestInstance(DeleteInstancesInstanceGroupManagerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deleteInstances")
-              .setPathParams(Sets.<String>newHashSet(
-                                "instanceGroupManager",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<GetInstanceGroupManagerHttpRequest, InstanceGroupManager> directGetInstanceGroupManagerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetInstanceGroupManagerHttpRequest, InstanceGroupManager>newBuilder()
-              .setMethodName("compute.instanceGroupManagers.get")
-              .setRequestInstance(GetInstanceGroupManagerHttpRequest.getDefaultInstance())
-              .setResponseInstance(InstanceGroupManager.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "instanceGroupManager",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertInstanceGroupManagerHttpRequest, Operation> directInsertInstanceGroupManagerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertInstanceGroupManagerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.instanceGroupManagers.insert")
-              .setRequestInstance(InsertInstanceGroupManagerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListInstanceGroupManagersHttpRequest, InstanceGroupManagerList> directListInstanceGroupManagersCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListInstanceGroupManagersHttpRequest, InstanceGroupManagerList>newBuilder()
-              .setMethodName("compute.instanceGroupManagers.list")
-              .setRequestInstance(ListInstanceGroupManagersHttpRequest.getDefaultInstance())
-              .setResponseInstance(InstanceGroupManagerList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<ListManagedInstancesInstanceGroupManagersHttpRequest, InstanceGroupManagersListManagedInstancesResponse> directListManagedInstancesInstanceGroupManagersCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListManagedInstancesInstanceGroupManagersHttpRequest, InstanceGroupManagersListManagedInstancesResponse>newBuilder()
-              .setMethodName("compute.instanceGroupManagers.listManagedInstances")
-              .setRequestInstance(ListManagedInstancesInstanceGroupManagersHttpRequest.getDefaultInstance())
-              .setResponseInstance(InstanceGroupManagersListManagedInstancesResponse.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listManagedInstances")
-              .setPathParams(Sets.<String>newHashSet(
-                                "instanceGroupManager",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "order_by",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<RecreateInstancesInstanceGroupManagerHttpRequest, Operation> directRecreateInstancesInstanceGroupManagerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<RecreateInstancesInstanceGroupManagerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.instanceGroupManagers.recreateInstances")
-              .setRequestInstance(RecreateInstancesInstanceGroupManagerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/recreateInstances")
-              .setPathParams(Sets.<String>newHashSet(
-                                "instanceGroupManager",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ResizeInstanceGroupManagerHttpRequest, Operation> directResizeInstanceGroupManagerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ResizeInstanceGroupManagerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.instanceGroupManagers.resize")
-              .setRequestInstance(ResizeInstanceGroupManagerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resize")
-              .setPathParams(Sets.<String>newHashSet(
-                                "instanceGroupManager",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "size"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<SetInstanceTemplateInstanceGroupManagerHttpRequest, Operation> directSetInstanceTemplateInstanceGroupManagerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<SetInstanceTemplateInstanceGroupManagerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.instanceGroupManagers.setInstanceTemplate")
-              .setRequestInstance(SetInstanceTemplateInstanceGroupManagerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate")
-              .setPathParams(Sets.<String>newHashSet(
-                                "instanceGroupManager",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<SetTargetPoolsInstanceGroupManagerHttpRequest, Operation> directSetTargetPoolsInstanceGroupManagerCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<SetTargetPoolsInstanceGroupManagerHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.instanceGroupManagers.setTargetPools")
-              .setRequestInstance(SetTargetPoolsInstanceGroupManagerHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setTargetPools")
-              .setPathParams(Sets.<String>newHashSet(
-                                "instanceGroupManager",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
+  private static final ApiMethodDescriptor<AbandonInstancesInstanceGroupManagerHttpRequest, Operation> abandonInstancesInstanceGroupManagerMethodDescriptor =
+      ApiMethodDescriptor.<AbandonInstancesInstanceGroupManagerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.instanceGroupManagers.abandonInstances")
+          .setRequestInstance(AbandonInstancesInstanceGroupManagerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/abandonInstances")
+          .setPathParams(Sets.<String>newHashSet(
+                            "instanceGroupManager",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList> aggregatedListInstanceGroupManagersMethodDescriptor =
+      ApiMethodDescriptor.<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList>newBuilder()
+          .setMethodName("compute.instanceGroupManagers.aggregatedList")
+          .setRequestInstance(AggregatedListInstanceGroupManagersHttpRequest.getDefaultInstance())
+          .setResponseInstance(InstanceGroupManagerAggregatedList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/aggregated/instanceGroupManagers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<DeleteInstanceGroupManagerHttpRequest, Operation> deleteInstanceGroupManagerMethodDescriptor =
+      ApiMethodDescriptor.<DeleteInstanceGroupManagerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.instanceGroupManagers.delete")
+          .setRequestInstance(DeleteInstanceGroupManagerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "instanceGroupManager",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<DeleteInstancesInstanceGroupManagerHttpRequest, Operation> deleteInstancesInstanceGroupManagerMethodDescriptor =
+      ApiMethodDescriptor.<DeleteInstancesInstanceGroupManagerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.instanceGroupManagers.deleteInstances")
+          .setRequestInstance(DeleteInstancesInstanceGroupManagerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deleteInstances")
+          .setPathParams(Sets.<String>newHashSet(
+                            "instanceGroupManager",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<GetInstanceGroupManagerHttpRequest, InstanceGroupManager> getInstanceGroupManagerMethodDescriptor =
+      ApiMethodDescriptor.<GetInstanceGroupManagerHttpRequest, InstanceGroupManager>newBuilder()
+          .setMethodName("compute.instanceGroupManagers.get")
+          .setRequestInstance(GetInstanceGroupManagerHttpRequest.getDefaultInstance())
+          .setResponseInstance(InstanceGroupManager.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "instanceGroupManager",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertInstanceGroupManagerHttpRequest, Operation> insertInstanceGroupManagerMethodDescriptor =
+      ApiMethodDescriptor.<InsertInstanceGroupManagerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.instanceGroupManagers.insert")
+          .setRequestInstance(InsertInstanceGroupManagerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListInstanceGroupManagersHttpRequest, InstanceGroupManagerList> listInstanceGroupManagersMethodDescriptor =
+      ApiMethodDescriptor.<ListInstanceGroupManagersHttpRequest, InstanceGroupManagerList>newBuilder()
+          .setMethodName("compute.instanceGroupManagers.list")
+          .setRequestInstance(ListInstanceGroupManagersHttpRequest.getDefaultInstance())
+          .setResponseInstance(InstanceGroupManagerList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<ListManagedInstancesInstanceGroupManagersHttpRequest, InstanceGroupManagersListManagedInstancesResponse> listManagedInstancesInstanceGroupManagersMethodDescriptor =
+      ApiMethodDescriptor.<ListManagedInstancesInstanceGroupManagersHttpRequest, InstanceGroupManagersListManagedInstancesResponse>newBuilder()
+          .setMethodName("compute.instanceGroupManagers.listManagedInstances")
+          .setRequestInstance(ListManagedInstancesInstanceGroupManagersHttpRequest.getDefaultInstance())
+          .setResponseInstance(InstanceGroupManagersListManagedInstancesResponse.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listManagedInstances")
+          .setPathParams(Sets.<String>newHashSet(
+                            "instanceGroupManager",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "order_by",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<RecreateInstancesInstanceGroupManagerHttpRequest, Operation> recreateInstancesInstanceGroupManagerMethodDescriptor =
+      ApiMethodDescriptor.<RecreateInstancesInstanceGroupManagerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.instanceGroupManagers.recreateInstances")
+          .setRequestInstance(RecreateInstancesInstanceGroupManagerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/recreateInstances")
+          .setPathParams(Sets.<String>newHashSet(
+                            "instanceGroupManager",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ResizeInstanceGroupManagerHttpRequest, Operation> resizeInstanceGroupManagerMethodDescriptor =
+      ApiMethodDescriptor.<ResizeInstanceGroupManagerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.instanceGroupManagers.resize")
+          .setRequestInstance(ResizeInstanceGroupManagerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resize")
+          .setPathParams(Sets.<String>newHashSet(
+                            "instanceGroupManager",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "size"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<SetInstanceTemplateInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateInstanceGroupManagerMethodDescriptor =
+      ApiMethodDescriptor.<SetInstanceTemplateInstanceGroupManagerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.instanceGroupManagers.setInstanceTemplate")
+          .setRequestInstance(SetInstanceTemplateInstanceGroupManagerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate")
+          .setPathParams(Sets.<String>newHashSet(
+                            "instanceGroupManager",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<SetTargetPoolsInstanceGroupManagerHttpRequest, Operation> setTargetPoolsInstanceGroupManagerMethodDescriptor =
+      ApiMethodDescriptor.<SetTargetPoolsInstanceGroupManagerHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.instanceGroupManagers.setTargetPools")
+          .setRequestInstance(SetTargetPoolsInstanceGroupManagerHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setTargetPools")
+          .setPathParams(Sets.<String>newHashSet(
+                            "instanceGroupManager",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -293,22 +281,69 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
    */
   protected HttpJsonInstanceGroupManagerStub(InstanceGroupManagerSettings settings, ClientContext clientContext) throws IOException {
 
-    this.abandonInstancesInstanceGroupManagerCallable = HttpJsonCallableFactory.create(directAbandonInstancesInstanceGroupManagerCallable,settings.abandonInstancesInstanceGroupManagerSettings(), clientContext);
-    this.aggregatedListInstanceGroupManagersCallable = HttpJsonCallableFactory.create(directAggregatedListInstanceGroupManagersCallable,settings.aggregatedListInstanceGroupManagersSettings(), clientContext);
-    this.aggregatedListInstanceGroupManagersPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directAggregatedListInstanceGroupManagersCallable,settings.aggregatedListInstanceGroupManagersSettings(), clientContext);
-    this.deleteInstanceGroupManagerCallable = HttpJsonCallableFactory.create(directDeleteInstanceGroupManagerCallable,settings.deleteInstanceGroupManagerSettings(), clientContext);
-    this.deleteInstancesInstanceGroupManagerCallable = HttpJsonCallableFactory.create(directDeleteInstancesInstanceGroupManagerCallable,settings.deleteInstancesInstanceGroupManagerSettings(), clientContext);
-    this.getInstanceGroupManagerCallable = HttpJsonCallableFactory.create(directGetInstanceGroupManagerCallable,settings.getInstanceGroupManagerSettings(), clientContext);
-    this.insertInstanceGroupManagerCallable = HttpJsonCallableFactory.create(directInsertInstanceGroupManagerCallable,settings.insertInstanceGroupManagerSettings(), clientContext);
-    this.listInstanceGroupManagersCallable = HttpJsonCallableFactory.create(directListInstanceGroupManagersCallable,settings.listInstanceGroupManagersSettings(), clientContext);
-    this.listInstanceGroupManagersPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListInstanceGroupManagersCallable,settings.listInstanceGroupManagersSettings(), clientContext);
-    this.listManagedInstancesInstanceGroupManagersCallable = HttpJsonCallableFactory.create(directListManagedInstancesInstanceGroupManagersCallable,settings.listManagedInstancesInstanceGroupManagersSettings(), clientContext);
-    this.recreateInstancesInstanceGroupManagerCallable = HttpJsonCallableFactory.create(directRecreateInstancesInstanceGroupManagerCallable,settings.recreateInstancesInstanceGroupManagerSettings(), clientContext);
-    this.resizeInstanceGroupManagerCallable = HttpJsonCallableFactory.create(directResizeInstanceGroupManagerCallable,settings.resizeInstanceGroupManagerSettings(), clientContext);
-    this.setInstanceTemplateInstanceGroupManagerCallable = HttpJsonCallableFactory.create(directSetInstanceTemplateInstanceGroupManagerCallable,settings.setInstanceTemplateInstanceGroupManagerSettings(), clientContext);
-    this.setTargetPoolsInstanceGroupManagerCallable = HttpJsonCallableFactory.create(directSetTargetPoolsInstanceGroupManagerCallable,settings.setTargetPoolsInstanceGroupManagerSettings(), clientContext);
+    HttpJsonCallSettings<AbandonInstancesInstanceGroupManagerHttpRequest, Operation> abandonInstancesInstanceGroupManagerTransportSettings =
+        HttpJsonCallSettings.<AbandonInstancesInstanceGroupManagerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(abandonInstancesInstanceGroupManagerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList> aggregatedListInstanceGroupManagersTransportSettings =
+        HttpJsonCallSettings.<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList>newBuilder()
+            .setMethodDescriptor(aggregatedListInstanceGroupManagersMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<DeleteInstanceGroupManagerHttpRequest, Operation> deleteInstanceGroupManagerTransportSettings =
+        HttpJsonCallSettings.<DeleteInstanceGroupManagerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteInstanceGroupManagerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<DeleteInstancesInstanceGroupManagerHttpRequest, Operation> deleteInstancesInstanceGroupManagerTransportSettings =
+        HttpJsonCallSettings.<DeleteInstancesInstanceGroupManagerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteInstancesInstanceGroupManagerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetInstanceGroupManagerHttpRequest, InstanceGroupManager> getInstanceGroupManagerTransportSettings =
+        HttpJsonCallSettings.<GetInstanceGroupManagerHttpRequest, InstanceGroupManager>newBuilder()
+            .setMethodDescriptor(getInstanceGroupManagerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertInstanceGroupManagerHttpRequest, Operation> insertInstanceGroupManagerTransportSettings =
+        HttpJsonCallSettings.<InsertInstanceGroupManagerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertInstanceGroupManagerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListInstanceGroupManagersHttpRequest, InstanceGroupManagerList> listInstanceGroupManagersTransportSettings =
+        HttpJsonCallSettings.<ListInstanceGroupManagersHttpRequest, InstanceGroupManagerList>newBuilder()
+            .setMethodDescriptor(listInstanceGroupManagersMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListManagedInstancesInstanceGroupManagersHttpRequest, InstanceGroupManagersListManagedInstancesResponse> listManagedInstancesInstanceGroupManagersTransportSettings =
+        HttpJsonCallSettings.<ListManagedInstancesInstanceGroupManagersHttpRequest, InstanceGroupManagersListManagedInstancesResponse>newBuilder()
+            .setMethodDescriptor(listManagedInstancesInstanceGroupManagersMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<RecreateInstancesInstanceGroupManagerHttpRequest, Operation> recreateInstancesInstanceGroupManagerTransportSettings =
+        HttpJsonCallSettings.<RecreateInstancesInstanceGroupManagerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(recreateInstancesInstanceGroupManagerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ResizeInstanceGroupManagerHttpRequest, Operation> resizeInstanceGroupManagerTransportSettings =
+        HttpJsonCallSettings.<ResizeInstanceGroupManagerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(resizeInstanceGroupManagerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<SetInstanceTemplateInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateInstanceGroupManagerTransportSettings =
+        HttpJsonCallSettings.<SetInstanceTemplateInstanceGroupManagerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(setInstanceTemplateInstanceGroupManagerMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<SetTargetPoolsInstanceGroupManagerHttpRequest, Operation> setTargetPoolsInstanceGroupManagerTransportSettings =
+        HttpJsonCallSettings.<SetTargetPoolsInstanceGroupManagerHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(setTargetPoolsInstanceGroupManagerMethodDescriptor)
+            .build();
+
+    this.abandonInstancesInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(abandonInstancesInstanceGroupManagerTransportSettings,settings.abandonInstancesInstanceGroupManagerSettings(), clientContext);
+    this.aggregatedListInstanceGroupManagersCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListInstanceGroupManagersTransportSettings,settings.aggregatedListInstanceGroupManagersSettings(), clientContext);
+    this.aggregatedListInstanceGroupManagersPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListInstanceGroupManagersTransportSettings,settings.aggregatedListInstanceGroupManagersSettings(), clientContext);
+    this.deleteInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(deleteInstanceGroupManagerTransportSettings,settings.deleteInstanceGroupManagerSettings(), clientContext);
+    this.deleteInstancesInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(deleteInstancesInstanceGroupManagerTransportSettings,settings.deleteInstancesInstanceGroupManagerSettings(), clientContext);
+    this.getInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(getInstanceGroupManagerTransportSettings,settings.getInstanceGroupManagerSettings(), clientContext);
+    this.insertInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(insertInstanceGroupManagerTransportSettings,settings.insertInstanceGroupManagerSettings(), clientContext);
+    this.listInstanceGroupManagersCallable = HttpJsonCallableFactory.createUnaryCallable(listInstanceGroupManagersTransportSettings,settings.listInstanceGroupManagersSettings(), clientContext);
+    this.listInstanceGroupManagersPagedCallable = HttpJsonCallableFactory.createPagedCallable(listInstanceGroupManagersTransportSettings,settings.listInstanceGroupManagersSettings(), clientContext);
+    this.listManagedInstancesInstanceGroupManagersCallable = HttpJsonCallableFactory.createUnaryCallable(listManagedInstancesInstanceGroupManagersTransportSettings,settings.listManagedInstancesInstanceGroupManagersSettings(), clientContext);
+    this.recreateInstancesInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(recreateInstancesInstanceGroupManagerTransportSettings,settings.recreateInstancesInstanceGroupManagerSettings(), clientContext);
+    this.resizeInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(resizeInstanceGroupManagerTransportSettings,settings.resizeInstanceGroupManagerSettings(), clientContext);
+    this.setInstanceTemplateInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(setInstanceTemplateInstanceGroupManagerTransportSettings,settings.setInstanceTemplateInstanceGroupManagerSettings(), clientContext);
+    this.setTargetPoolsInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(setTargetPoolsInstanceGroupManagerTransportSettings,settings.setTargetPoolsInstanceGroupManagerSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

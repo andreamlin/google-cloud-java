@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
- *   DiskTypeName diskType = DiskTypeName.create("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
+ *   DiskTypeName diskType = DiskTypeName.of("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
  *   DiskType response = diskTypeClient.getDiskType(diskType);
  * }
  * </code>
@@ -92,10 +92,8 @@ import javax.annotation.Generated;
  * <code>
  * DiskTypeSettings diskTypeSettings =
  *     DiskTypeSettings.newBuilder()
- *         .setTransportProvider(DiskTypeSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(DiskTypeSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(DiskTypeSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * DiskTypeClient diskTypeClient =
@@ -131,6 +129,7 @@ public class DiskTypeClient implements BackgroundResource {
    * Constructs an instance of DiskTypeClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use DiskTypeSettings}.
    */
+  @BetaApi
   public static final DiskTypeClient create(DiskTypeStub stub) {
     return new DiskTypeClient(stub);
   }
@@ -167,7 +166,7 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (DiskType element : diskTypeClient.aggregatedListDiskTypes(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -193,7 +192,7 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListDiskTypesHttpRequest request = AggregatedListDiskTypesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -219,7 +218,7 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListDiskTypesHttpRequest request = AggregatedListDiskTypesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -243,7 +242,7 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListDiskTypesHttpRequest request = AggregatedListDiskTypesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -274,7 +273,7 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *   DiskTypeName diskType = DiskTypeName.create("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
+   *   DiskTypeName diskType = DiskTypeName.of("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
    *   DiskType response = diskTypeClient.getDiskType(diskType);
    * }
    * </code></pre>
@@ -299,7 +298,7 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *   DiskTypeName diskType = DiskTypeName.create("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
+   *   DiskTypeName diskType = DiskTypeName.of("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
    *   GetDiskTypeHttpRequest request = GetDiskTypeHttpRequest.newBuilder()
    *     .setDiskTypeWithDiskTypeName(diskType)
    *     .build();
@@ -322,7 +321,7 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *   DiskTypeName diskType = DiskTypeName.create("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
+   *   DiskTypeName diskType = DiskTypeName.of("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
    *   GetDiskTypeHttpRequest request = GetDiskTypeHttpRequest.newBuilder()
    *     .setDiskTypeWithDiskTypeName(diskType)
    *     .build();
@@ -344,7 +343,7 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   for (DiskType element : diskTypeClient.listDiskTypes(zone).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -370,7 +369,7 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListDiskTypesHttpRequest request = ListDiskTypesHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -396,7 +395,7 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListDiskTypesHttpRequest request = ListDiskTypesHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -420,7 +419,7 @@ public class DiskTypeClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListDiskTypesHttpRequest request = ListDiskTypesHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();

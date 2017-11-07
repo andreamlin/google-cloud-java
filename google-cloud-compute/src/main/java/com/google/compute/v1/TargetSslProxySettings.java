@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -53,7 +52,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -106,32 +104,32 @@ public class TargetSslProxySettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxySettings;
-  private final SimpleCallSettings<GetTargetSslProxyHttpRequest, TargetSslProxy> getTargetSslProxySettings;
-  private final SimpleCallSettings<InsertTargetSslProxyHttpRequest, Operation> insertTargetSslProxySettings;
+  private final UnaryCallSettings<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxySettings;
+  private final UnaryCallSettings<GetTargetSslProxyHttpRequest, TargetSslProxy> getTargetSslProxySettings;
+  private final UnaryCallSettings<InsertTargetSslProxyHttpRequest, Operation> insertTargetSslProxySettings;
   private final PagedCallSettings<ListTargetSslProxiesHttpRequest, TargetSslProxyList, ListTargetSslProxiesPagedResponse> listTargetSslProxiesSettings;
-  private final SimpleCallSettings<SetBackendServiceTargetSslProxyHttpRequest, Operation> setBackendServiceTargetSslProxySettings;
-  private final SimpleCallSettings<SetProxyHeaderTargetSslProxyHttpRequest, Operation> setProxyHeaderTargetSslProxySettings;
-  private final SimpleCallSettings<SetSslCertificatesTargetSslProxyHttpRequest, Operation> setSslCertificatesTargetSslProxySettings;
+  private final UnaryCallSettings<SetBackendServiceTargetSslProxyHttpRequest, Operation> setBackendServiceTargetSslProxySettings;
+  private final UnaryCallSettings<SetProxyHeaderTargetSslProxyHttpRequest, Operation> setProxyHeaderTargetSslProxySettings;
+  private final UnaryCallSettings<SetSslCertificatesTargetSslProxyHttpRequest, Operation> setSslCertificatesTargetSslProxySettings;
 
   /**
    * Returns the object with the settings used for calls to deleteTargetSslProxy.
    */
-  public SimpleCallSettings<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxySettings() {
+  public UnaryCallSettings<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxySettings() {
     return deleteTargetSslProxySettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getTargetSslProxy.
    */
-  public SimpleCallSettings<GetTargetSslProxyHttpRequest, TargetSslProxy> getTargetSslProxySettings() {
+  public UnaryCallSettings<GetTargetSslProxyHttpRequest, TargetSslProxy> getTargetSslProxySettings() {
     return getTargetSslProxySettings;
   }
 
   /**
    * Returns the object with the settings used for calls to insertTargetSslProxy.
    */
-  public SimpleCallSettings<InsertTargetSslProxyHttpRequest, Operation> insertTargetSslProxySettings() {
+  public UnaryCallSettings<InsertTargetSslProxyHttpRequest, Operation> insertTargetSslProxySettings() {
     return insertTargetSslProxySettings;
   }
 
@@ -145,31 +143,33 @@ public class TargetSslProxySettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to setBackendServiceTargetSslProxy.
    */
-  public SimpleCallSettings<SetBackendServiceTargetSslProxyHttpRequest, Operation> setBackendServiceTargetSslProxySettings() {
+  public UnaryCallSettings<SetBackendServiceTargetSslProxyHttpRequest, Operation> setBackendServiceTargetSslProxySettings() {
     return setBackendServiceTargetSslProxySettings;
   }
 
   /**
    * Returns the object with the settings used for calls to setProxyHeaderTargetSslProxy.
    */
-  public SimpleCallSettings<SetProxyHeaderTargetSslProxyHttpRequest, Operation> setProxyHeaderTargetSslProxySettings() {
+  public UnaryCallSettings<SetProxyHeaderTargetSslProxyHttpRequest, Operation> setProxyHeaderTargetSslProxySettings() {
     return setProxyHeaderTargetSslProxySettings;
   }
 
   /**
    * Returns the object with the settings used for calls to setSslCertificatesTargetSslProxy.
    */
-  public SimpleCallSettings<SetSslCertificatesTargetSslProxyHttpRequest, Operation> setSslCertificatesTargetSslProxySettings() {
+  public UnaryCallSettings<SetSslCertificatesTargetSslProxyHttpRequest, Operation> setSslCertificatesTargetSslProxySettings() {
     return setSslCertificatesTargetSslProxySettings;
   }
 
 
   public TargetSslProxyStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonTargetSslProxyStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -213,20 +213,20 @@ public class TargetSslProxySettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -279,8 +279,9 @@ public class TargetSslProxySettings extends ClientSettings {
   private TargetSslProxySettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     deleteTargetSslProxySettings = settingsBuilder.deleteTargetSslProxySettings().build();
@@ -345,26 +346,26 @@ public class TargetSslProxySettings extends ClientSettings {
    * Builder for TargetSslProxySettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxySettings;
-    private final SimpleCallSettings.Builder<GetTargetSslProxyHttpRequest, TargetSslProxy> getTargetSslProxySettings;
-    private final SimpleCallSettings.Builder<InsertTargetSslProxyHttpRequest, Operation> insertTargetSslProxySettings;
+    private final UnaryCallSettings.Builder<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxySettings;
+    private final UnaryCallSettings.Builder<GetTargetSslProxyHttpRequest, TargetSslProxy> getTargetSslProxySettings;
+    private final UnaryCallSettings.Builder<InsertTargetSslProxyHttpRequest, Operation> insertTargetSslProxySettings;
     private final PagedCallSettings.Builder<ListTargetSslProxiesHttpRequest, TargetSslProxyList, ListTargetSslProxiesPagedResponse> listTargetSslProxiesSettings;
-    private final SimpleCallSettings.Builder<SetBackendServiceTargetSslProxyHttpRequest, Operation> setBackendServiceTargetSslProxySettings;
-    private final SimpleCallSettings.Builder<SetProxyHeaderTargetSslProxyHttpRequest, Operation> setProxyHeaderTargetSslProxySettings;
-    private final SimpleCallSettings.Builder<SetSslCertificatesTargetSslProxyHttpRequest, Operation> setSslCertificatesTargetSslProxySettings;
+    private final UnaryCallSettings.Builder<SetBackendServiceTargetSslProxyHttpRequest, Operation> setBackendServiceTargetSslProxySettings;
+    private final UnaryCallSettings.Builder<SetProxyHeaderTargetSslProxyHttpRequest, Operation> setProxyHeaderTargetSslProxySettings;
+    private final UnaryCallSettings.Builder<SetSslCertificatesTargetSslProxyHttpRequest, Operation> setSslCertificatesTargetSslProxySettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -393,22 +394,22 @@ public class TargetSslProxySettings extends ClientSettings {
     private Builder(ClientContext clientContext) {
       super(clientContext);
 
-      deleteTargetSslProxySettings = SimpleCallSettings.newBuilder();
+      deleteTargetSslProxySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getTargetSslProxySettings = SimpleCallSettings.newBuilder();
+      getTargetSslProxySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      insertTargetSslProxySettings = SimpleCallSettings.newBuilder();
+      insertTargetSslProxySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listTargetSslProxiesSettings = PagedCallSettings.newBuilder(
           LIST_TARGET_SSL_PROXIES_PAGE_STR_FACT);
 
-      setBackendServiceTargetSslProxySettings = SimpleCallSettings.newBuilder();
+      setBackendServiceTargetSslProxySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      setProxyHeaderTargetSslProxySettings = SimpleCallSettings.newBuilder();
+      setProxyHeaderTargetSslProxySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      setSslCertificatesTargetSslProxySettings = SimpleCallSettings.newBuilder();
+      setSslCertificatesTargetSslProxySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           deleteTargetSslProxySettings,
           getTargetSslProxySettings,
           insertTargetSslProxySettings,
@@ -423,8 +424,9 @@ public class TargetSslProxySettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -472,7 +474,7 @@ public class TargetSslProxySettings extends ClientSettings {
       setProxyHeaderTargetSslProxySettings = settings.setProxyHeaderTargetSslProxySettings.toBuilder();
       setSslCertificatesTargetSslProxySettings = settings.setSslCertificatesTargetSslProxySettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           deleteTargetSslProxySettings,
           getTargetSslProxySettings,
           insertTargetSslProxySettings,
@@ -490,8 +492,14 @@ public class TargetSslProxySettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -506,7 +514,7 @@ public class TargetSslProxySettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -514,21 +522,21 @@ public class TargetSslProxySettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteTargetSslProxy.
      */
-    public SimpleCallSettings.Builder<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxySettings() {
+    public UnaryCallSettings.Builder<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxySettings() {
       return deleteTargetSslProxySettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getTargetSslProxy.
      */
-    public SimpleCallSettings.Builder<GetTargetSslProxyHttpRequest, TargetSslProxy> getTargetSslProxySettings() {
+    public UnaryCallSettings.Builder<GetTargetSslProxyHttpRequest, TargetSslProxy> getTargetSslProxySettings() {
       return getTargetSslProxySettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to insertTargetSslProxy.
      */
-    public SimpleCallSettings.Builder<InsertTargetSslProxyHttpRequest, Operation> insertTargetSslProxySettings() {
+    public UnaryCallSettings.Builder<InsertTargetSslProxyHttpRequest, Operation> insertTargetSslProxySettings() {
       return insertTargetSslProxySettings;
     }
 
@@ -542,21 +550,21 @@ public class TargetSslProxySettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to setBackendServiceTargetSslProxy.
      */
-    public SimpleCallSettings.Builder<SetBackendServiceTargetSslProxyHttpRequest, Operation> setBackendServiceTargetSslProxySettings() {
+    public UnaryCallSettings.Builder<SetBackendServiceTargetSslProxyHttpRequest, Operation> setBackendServiceTargetSslProxySettings() {
       return setBackendServiceTargetSslProxySettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to setProxyHeaderTargetSslProxy.
      */
-    public SimpleCallSettings.Builder<SetProxyHeaderTargetSslProxyHttpRequest, Operation> setProxyHeaderTargetSslProxySettings() {
+    public UnaryCallSettings.Builder<SetProxyHeaderTargetSslProxyHttpRequest, Operation> setProxyHeaderTargetSslProxySettings() {
       return setProxyHeaderTargetSslProxySettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to setSslCertificatesTargetSslProxy.
      */
-    public SimpleCallSettings.Builder<SetSslCertificatesTargetSslProxyHttpRequest, Operation> setSslCertificatesTargetSslProxySettings() {
+    public UnaryCallSettings.Builder<SetSslCertificatesTargetSslProxyHttpRequest, Operation> setSslCertificatesTargetSslProxySettings() {
       return setSslCertificatesTargetSslProxySettings;
     }
 

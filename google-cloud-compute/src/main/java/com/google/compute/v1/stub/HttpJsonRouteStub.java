@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,67 +59,63 @@ import javax.annotation.Generated;
 public class HttpJsonRouteStub extends RouteStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteRouteHttpRequest, Operation> directDeleteRouteCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteRouteHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.routes.delete")
-              .setRequestInstance(DeleteRouteHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/routes/{route}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "route"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetRouteHttpRequest, Route> directGetRouteCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetRouteHttpRequest, Route>newBuilder()
-              .setMethodName("compute.routes.get")
-              .setRequestInstance(GetRouteHttpRequest.getDefaultInstance())
-              .setResponseInstance(Route.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/routes/{route}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "route"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertRouteHttpRequest, Operation> directInsertRouteCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertRouteHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.routes.insert")
-              .setRequestInstance(InsertRouteHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/routes")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListRoutesHttpRequest, RouteList> directListRoutesCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListRoutesHttpRequest, RouteList>newBuilder()
-              .setMethodName("compute.routes.list")
-              .setRequestInstance(ListRoutesHttpRequest.getDefaultInstance())
-              .setResponseInstance(RouteList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/routes")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
+  private static final ApiMethodDescriptor<DeleteRouteHttpRequest, Operation> deleteRouteMethodDescriptor =
+      ApiMethodDescriptor.<DeleteRouteHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.routes.delete")
+          .setRequestInstance(DeleteRouteHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/routes/{route}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "route"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetRouteHttpRequest, Route> getRouteMethodDescriptor =
+      ApiMethodDescriptor.<GetRouteHttpRequest, Route>newBuilder()
+          .setMethodName("compute.routes.get")
+          .setRequestInstance(GetRouteHttpRequest.getDefaultInstance())
+          .setResponseInstance(Route.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/routes/{route}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "route"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertRouteHttpRequest, Operation> insertRouteMethodDescriptor =
+      ApiMethodDescriptor.<InsertRouteHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.routes.insert")
+          .setRequestInstance(InsertRouteHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/routes")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListRoutesHttpRequest, RouteList> listRoutesMethodDescriptor =
+      ApiMethodDescriptor.<ListRoutesHttpRequest, RouteList>newBuilder()
+          .setMethodName("compute.routes.list")
+          .setRequestInstance(ListRoutesHttpRequest.getDefaultInstance())
+          .setResponseInstance(RouteList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/routes")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -144,12 +140,28 @@ public class HttpJsonRouteStub extends RouteStub {
    */
   protected HttpJsonRouteStub(RouteSettings settings, ClientContext clientContext) throws IOException {
 
-    this.deleteRouteCallable = HttpJsonCallableFactory.create(directDeleteRouteCallable,settings.deleteRouteSettings(), clientContext);
-    this.getRouteCallable = HttpJsonCallableFactory.create(directGetRouteCallable,settings.getRouteSettings(), clientContext);
-    this.insertRouteCallable = HttpJsonCallableFactory.create(directInsertRouteCallable,settings.insertRouteSettings(), clientContext);
-    this.listRoutesCallable = HttpJsonCallableFactory.create(directListRoutesCallable,settings.listRoutesSettings(), clientContext);
-    this.listRoutesPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListRoutesCallable,settings.listRoutesSettings(), clientContext);
+    HttpJsonCallSettings<DeleteRouteHttpRequest, Operation> deleteRouteTransportSettings =
+        HttpJsonCallSettings.<DeleteRouteHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteRouteMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetRouteHttpRequest, Route> getRouteTransportSettings =
+        HttpJsonCallSettings.<GetRouteHttpRequest, Route>newBuilder()
+            .setMethodDescriptor(getRouteMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertRouteHttpRequest, Operation> insertRouteTransportSettings =
+        HttpJsonCallSettings.<InsertRouteHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertRouteMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListRoutesHttpRequest, RouteList> listRoutesTransportSettings =
+        HttpJsonCallSettings.<ListRoutesHttpRequest, RouteList>newBuilder()
+            .setMethodDescriptor(listRoutesMethodDescriptor)
+            .build();
+
+    this.deleteRouteCallable = HttpJsonCallableFactory.createUnaryCallable(deleteRouteTransportSettings,settings.deleteRouteSettings(), clientContext);
+    this.getRouteCallable = HttpJsonCallableFactory.createUnaryCallable(getRouteTransportSettings,settings.getRouteSettings(), clientContext);
+    this.insertRouteCallable = HttpJsonCallableFactory.createUnaryCallable(insertRouteTransportSettings,settings.insertRouteSettings(), clientContext);
+    this.listRoutesCallable = HttpJsonCallableFactory.createUnaryCallable(listRoutesTransportSettings,settings.listRoutesSettings(), clientContext);
+    this.listRoutesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listRoutesTransportSettings,settings.listRoutesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

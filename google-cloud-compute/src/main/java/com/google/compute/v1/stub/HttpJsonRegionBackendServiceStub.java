@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,112 +64,105 @@ import javax.annotation.Generated;
 public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteRegionBackendServiceHttpRequest, Operation> directDeleteRegionBackendServiceCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteRegionBackendServiceHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.regionBackendServices.delete")
-              .setRequestInstance(DeleteRegionBackendServiceHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "backendService",    "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetRegionBackendServiceHttpRequest, BackendService> directGetRegionBackendServiceCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetRegionBackendServiceHttpRequest, BackendService>newBuilder()
-              .setMethodName("compute.regionBackendServices.get")
-              .setRequestInstance(GetRegionBackendServiceHttpRequest.getDefaultInstance())
-              .setResponseInstance(BackendService.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "backendService",    "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth> directGetHealthRegionBackendServiceCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth>newBuilder()
-              .setMethodName("compute.regionBackendServices.getHealth")
-              .setRequestInstance(GetHealthRegionBackendServiceHttpRequest.getDefaultInstance())
-              .setResponseInstance(BackendServiceGroupHealth.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}/getHealth")
-              .setPathParams(Sets.<String>newHashSet(
-                                "backendService",    "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<InsertRegionBackendServiceHttpRequest, Operation> directInsertRegionBackendServiceCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertRegionBackendServiceHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.regionBackendServices.insert")
-              .setRequestInstance(InsertRegionBackendServiceHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/backendServices")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListRegionBackendServicesHttpRequest, BackendServiceList> directListRegionBackendServicesCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListRegionBackendServicesHttpRequest, BackendServiceList>newBuilder()
-              .setMethodName("compute.regionBackendServices.list")
-              .setRequestInstance(ListRegionBackendServicesHttpRequest.getDefaultInstance())
-              .setResponseInstance(BackendServiceList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/backendServices")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<PatchRegionBackendServiceHttpRequest, Operation> directPatchRegionBackendServiceCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<PatchRegionBackendServiceHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.regionBackendServices.patch")
-              .setRequestInstance(PatchRegionBackendServiceHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "backendService",    "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.PATCH)
-              .build());
-  private static final UnaryCallable<UpdateRegionBackendServiceHttpRequest, Operation> directUpdateRegionBackendServiceCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<UpdateRegionBackendServiceHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.regionBackendServices.update")
-              .setRequestInstance(UpdateRegionBackendServiceHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "backendService",    "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.PUT)
-              .build());
+  private static final ApiMethodDescriptor<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceMethodDescriptor =
+      ApiMethodDescriptor.<DeleteRegionBackendServiceHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.regionBackendServices.delete")
+          .setRequestInstance(DeleteRegionBackendServiceHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "backendService",    "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetRegionBackendServiceHttpRequest, BackendService> getRegionBackendServiceMethodDescriptor =
+      ApiMethodDescriptor.<GetRegionBackendServiceHttpRequest, BackendService>newBuilder()
+          .setMethodName("compute.regionBackendServices.get")
+          .setRequestInstance(GetRegionBackendServiceHttpRequest.getDefaultInstance())
+          .setResponseInstance(BackendService.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "backendService",    "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthRegionBackendServiceMethodDescriptor =
+      ApiMethodDescriptor.<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth>newBuilder()
+          .setMethodName("compute.regionBackendServices.getHealth")
+          .setRequestInstance(GetHealthRegionBackendServiceHttpRequest.getDefaultInstance())
+          .setResponseInstance(BackendServiceGroupHealth.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}/getHealth")
+          .setPathParams(Sets.<String>newHashSet(
+                            "backendService",    "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<InsertRegionBackendServiceHttpRequest, Operation> insertRegionBackendServiceMethodDescriptor =
+      ApiMethodDescriptor.<InsertRegionBackendServiceHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.regionBackendServices.insert")
+          .setRequestInstance(InsertRegionBackendServiceHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/backendServices")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListRegionBackendServicesHttpRequest, BackendServiceList> listRegionBackendServicesMethodDescriptor =
+      ApiMethodDescriptor.<ListRegionBackendServicesHttpRequest, BackendServiceList>newBuilder()
+          .setMethodName("compute.regionBackendServices.list")
+          .setRequestInstance(ListRegionBackendServicesHttpRequest.getDefaultInstance())
+          .setResponseInstance(BackendServiceList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/backendServices")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<PatchRegionBackendServiceHttpRequest, Operation> patchRegionBackendServiceMethodDescriptor =
+      ApiMethodDescriptor.<PatchRegionBackendServiceHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.regionBackendServices.patch")
+          .setRequestInstance(PatchRegionBackendServiceHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "backendService",    "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.PATCH)
+          .build());
+  private static final ApiMethodDescriptor<UpdateRegionBackendServiceHttpRequest, Operation> updateRegionBackendServiceMethodDescriptor =
+      ApiMethodDescriptor.<UpdateRegionBackendServiceHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.regionBackendServices.update")
+          .setRequestInstance(UpdateRegionBackendServiceHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "backendService",    "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.PUT)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -197,15 +190,43 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
    */
   protected HttpJsonRegionBackendServiceStub(RegionBackendServiceSettings settings, ClientContext clientContext) throws IOException {
 
-    this.deleteRegionBackendServiceCallable = HttpJsonCallableFactory.create(directDeleteRegionBackendServiceCallable,settings.deleteRegionBackendServiceSettings(), clientContext);
-    this.getRegionBackendServiceCallable = HttpJsonCallableFactory.create(directGetRegionBackendServiceCallable,settings.getRegionBackendServiceSettings(), clientContext);
-    this.getHealthRegionBackendServiceCallable = HttpJsonCallableFactory.create(directGetHealthRegionBackendServiceCallable,settings.getHealthRegionBackendServiceSettings(), clientContext);
-    this.insertRegionBackendServiceCallable = HttpJsonCallableFactory.create(directInsertRegionBackendServiceCallable,settings.insertRegionBackendServiceSettings(), clientContext);
-    this.listRegionBackendServicesCallable = HttpJsonCallableFactory.create(directListRegionBackendServicesCallable,settings.listRegionBackendServicesSettings(), clientContext);
-    this.listRegionBackendServicesPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListRegionBackendServicesCallable,settings.listRegionBackendServicesSettings(), clientContext);
-    this.patchRegionBackendServiceCallable = HttpJsonCallableFactory.create(directPatchRegionBackendServiceCallable,settings.patchRegionBackendServiceSettings(), clientContext);
-    this.updateRegionBackendServiceCallable = HttpJsonCallableFactory.create(directUpdateRegionBackendServiceCallable,settings.updateRegionBackendServiceSettings(), clientContext);
+    HttpJsonCallSettings<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceTransportSettings =
+        HttpJsonCallSettings.<DeleteRegionBackendServiceHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteRegionBackendServiceMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetRegionBackendServiceHttpRequest, BackendService> getRegionBackendServiceTransportSettings =
+        HttpJsonCallSettings.<GetRegionBackendServiceHttpRequest, BackendService>newBuilder()
+            .setMethodDescriptor(getRegionBackendServiceMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthRegionBackendServiceTransportSettings =
+        HttpJsonCallSettings.<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth>newBuilder()
+            .setMethodDescriptor(getHealthRegionBackendServiceMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertRegionBackendServiceHttpRequest, Operation> insertRegionBackendServiceTransportSettings =
+        HttpJsonCallSettings.<InsertRegionBackendServiceHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertRegionBackendServiceMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListRegionBackendServicesHttpRequest, BackendServiceList> listRegionBackendServicesTransportSettings =
+        HttpJsonCallSettings.<ListRegionBackendServicesHttpRequest, BackendServiceList>newBuilder()
+            .setMethodDescriptor(listRegionBackendServicesMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<PatchRegionBackendServiceHttpRequest, Operation> patchRegionBackendServiceTransportSettings =
+        HttpJsonCallSettings.<PatchRegionBackendServiceHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(patchRegionBackendServiceMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<UpdateRegionBackendServiceHttpRequest, Operation> updateRegionBackendServiceTransportSettings =
+        HttpJsonCallSettings.<UpdateRegionBackendServiceHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(updateRegionBackendServiceMethodDescriptor)
+            .build();
+
+    this.deleteRegionBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(deleteRegionBackendServiceTransportSettings,settings.deleteRegionBackendServiceSettings(), clientContext);
+    this.getRegionBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(getRegionBackendServiceTransportSettings,settings.getRegionBackendServiceSettings(), clientContext);
+    this.getHealthRegionBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(getHealthRegionBackendServiceTransportSettings,settings.getHealthRegionBackendServiceSettings(), clientContext);
+    this.insertRegionBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(insertRegionBackendServiceTransportSettings,settings.insertRegionBackendServiceSettings(), clientContext);
+    this.listRegionBackendServicesCallable = HttpJsonCallableFactory.createUnaryCallable(listRegionBackendServicesTransportSettings,settings.listRegionBackendServicesSettings(), clientContext);
+    this.listRegionBackendServicesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listRegionBackendServicesTransportSettings,settings.listRegionBackendServicesSettings(), clientContext);
+    this.patchRegionBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(patchRegionBackendServiceTransportSettings,settings.patchRegionBackendServiceSettings(), clientContext);
+    this.updateRegionBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(updateRegionBackendServiceTransportSettings,settings.updateRegionBackendServiceSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

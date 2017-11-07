@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
- *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
+ *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
  *   globalOperationClient.deleteGlobalOperation(operation);
  * }
  * </code>
@@ -92,10 +92,8 @@ import javax.annotation.Generated;
  * <code>
  * GlobalOperationSettings globalOperationSettings =
  *     GlobalOperationSettings.newBuilder()
- *         .setTransportProvider(GlobalOperationSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(GlobalOperationSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(GlobalOperationSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * GlobalOperationClient globalOperationClient =
@@ -131,6 +129,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Constructs an instance of GlobalOperationClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use GlobalOperationSettings}.
    */
+  @BetaApi
   public static final GlobalOperationClient create(GlobalOperationStub stub) {
     return new GlobalOperationClient(stub);
   }
@@ -167,7 +166,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (Operation element : globalOperationClient.aggregatedListGlobalOperations(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -193,7 +192,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListGlobalOperationsHttpRequest request = AggregatedListGlobalOperationsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -219,7 +218,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListGlobalOperationsHttpRequest request = AggregatedListGlobalOperationsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -243,7 +242,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListGlobalOperationsHttpRequest request = AggregatedListGlobalOperationsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -274,7 +273,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
-   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
+   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
    *   globalOperationClient.deleteGlobalOperation(operation);
    * }
    * </code></pre>
@@ -299,7 +298,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
-   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
+   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
    *   DeleteGlobalOperationHttpRequest request = DeleteGlobalOperationHttpRequest.newBuilder()
    *     .setOperationWithGlobalOperationsOperationName(operation)
    *     .build();
@@ -322,7 +321,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
-   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
+   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
    *   DeleteGlobalOperationHttpRequest request = DeleteGlobalOperationHttpRequest.newBuilder()
    *     .setOperationWithGlobalOperationsOperationName(operation)
    *     .build();
@@ -344,7 +343,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
-   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
+   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
    *   Operation response = globalOperationClient.getGlobalOperation(operation);
    * }
    * </code></pre>
@@ -369,7 +368,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
-   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
+   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
    *   GetGlobalOperationHttpRequest request = GetGlobalOperationHttpRequest.newBuilder()
    *     .setOperationWithGlobalOperationsOperationName(operation)
    *     .build();
@@ -392,7 +391,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
-   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.create("[PROJECT]", "[OPERATION]");
+   *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
    *   GetGlobalOperationHttpRequest request = GetGlobalOperationHttpRequest.newBuilder()
    *     .setOperationWithGlobalOperationsOperationName(operation)
    *     .build();
@@ -414,7 +413,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (Operation element : globalOperationClient.listGlobalOperations(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -440,7 +439,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalOperationsHttpRequest request = ListGlobalOperationsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -466,7 +465,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalOperationsHttpRequest request = ListGlobalOperationsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -490,7 +489,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalOperationsHttpRequest request = ListGlobalOperationsHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();

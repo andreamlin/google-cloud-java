@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -54,7 +53,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -108,11 +106,11 @@ public class ForwardingRuleSettings extends ClientSettings {
   private static String gapicVersion;
 
   private final PagedCallSettings<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList, AggregatedListForwardingRulesPagedResponse> aggregatedListForwardingRulesSettings;
-  private final SimpleCallSettings<DeleteForwardingRuleHttpRequest, Operation> deleteForwardingRuleSettings;
-  private final SimpleCallSettings<GetForwardingRuleHttpRequest, ForwardingRule> getForwardingRuleSettings;
-  private final SimpleCallSettings<InsertForwardingRuleHttpRequest, Operation> insertForwardingRuleSettings;
+  private final UnaryCallSettings<DeleteForwardingRuleHttpRequest, Operation> deleteForwardingRuleSettings;
+  private final UnaryCallSettings<GetForwardingRuleHttpRequest, ForwardingRule> getForwardingRuleSettings;
+  private final UnaryCallSettings<InsertForwardingRuleHttpRequest, Operation> insertForwardingRuleSettings;
   private final PagedCallSettings<ListForwardingRulesHttpRequest, ForwardingRuleList, ListForwardingRulesPagedResponse> listForwardingRulesSettings;
-  private final SimpleCallSettings<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleSettings;
+  private final UnaryCallSettings<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleSettings;
 
   /**
    * Returns the object with the settings used for calls to aggregatedListForwardingRules.
@@ -124,21 +122,21 @@ public class ForwardingRuleSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to deleteForwardingRule.
    */
-  public SimpleCallSettings<DeleteForwardingRuleHttpRequest, Operation> deleteForwardingRuleSettings() {
+  public UnaryCallSettings<DeleteForwardingRuleHttpRequest, Operation> deleteForwardingRuleSettings() {
     return deleteForwardingRuleSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getForwardingRule.
    */
-  public SimpleCallSettings<GetForwardingRuleHttpRequest, ForwardingRule> getForwardingRuleSettings() {
+  public UnaryCallSettings<GetForwardingRuleHttpRequest, ForwardingRule> getForwardingRuleSettings() {
     return getForwardingRuleSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to insertForwardingRule.
    */
-  public SimpleCallSettings<InsertForwardingRuleHttpRequest, Operation> insertForwardingRuleSettings() {
+  public UnaryCallSettings<InsertForwardingRuleHttpRequest, Operation> insertForwardingRuleSettings() {
     return insertForwardingRuleSettings;
   }
 
@@ -152,17 +150,19 @@ public class ForwardingRuleSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to setTargetForwardingRule.
    */
-  public SimpleCallSettings<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleSettings() {
+  public UnaryCallSettings<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleSettings() {
     return setTargetForwardingRuleSettings;
   }
 
 
   public ForwardingRuleStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonForwardingRuleStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -206,20 +206,20 @@ public class ForwardingRuleSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -272,8 +272,9 @@ public class ForwardingRuleSettings extends ClientSettings {
   private ForwardingRuleSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     aggregatedListForwardingRulesSettings = settingsBuilder.aggregatedListForwardingRulesSettings().build();
@@ -385,25 +386,25 @@ public class ForwardingRuleSettings extends ClientSettings {
    * Builder for ForwardingRuleSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList, AggregatedListForwardingRulesPagedResponse> aggregatedListForwardingRulesSettings;
-    private final SimpleCallSettings.Builder<DeleteForwardingRuleHttpRequest, Operation> deleteForwardingRuleSettings;
-    private final SimpleCallSettings.Builder<GetForwardingRuleHttpRequest, ForwardingRule> getForwardingRuleSettings;
-    private final SimpleCallSettings.Builder<InsertForwardingRuleHttpRequest, Operation> insertForwardingRuleSettings;
+    private final UnaryCallSettings.Builder<DeleteForwardingRuleHttpRequest, Operation> deleteForwardingRuleSettings;
+    private final UnaryCallSettings.Builder<GetForwardingRuleHttpRequest, ForwardingRule> getForwardingRuleSettings;
+    private final UnaryCallSettings.Builder<InsertForwardingRuleHttpRequest, Operation> insertForwardingRuleSettings;
     private final PagedCallSettings.Builder<ListForwardingRulesHttpRequest, ForwardingRuleList, ListForwardingRulesPagedResponse> listForwardingRulesSettings;
-    private final SimpleCallSettings.Builder<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleSettings;
+    private final UnaryCallSettings.Builder<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -435,18 +436,18 @@ public class ForwardingRuleSettings extends ClientSettings {
       aggregatedListForwardingRulesSettings = PagedCallSettings.newBuilder(
           AGGREGATED_LIST_FORWARDING_RULES_PAGE_STR_FACT);
 
-      deleteForwardingRuleSettings = SimpleCallSettings.newBuilder();
+      deleteForwardingRuleSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getForwardingRuleSettings = SimpleCallSettings.newBuilder();
+      getForwardingRuleSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      insertForwardingRuleSettings = SimpleCallSettings.newBuilder();
+      insertForwardingRuleSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listForwardingRulesSettings = PagedCallSettings.newBuilder(
           LIST_FORWARDING_RULES_PAGE_STR_FACT);
 
-      setTargetForwardingRuleSettings = SimpleCallSettings.newBuilder();
+      setTargetForwardingRuleSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           aggregatedListForwardingRulesSettings,
           deleteForwardingRuleSettings,
           getForwardingRuleSettings,
@@ -460,8 +461,9 @@ public class ForwardingRuleSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -504,7 +506,7 @@ public class ForwardingRuleSettings extends ClientSettings {
       listForwardingRulesSettings = settings.listForwardingRulesSettings.toBuilder();
       setTargetForwardingRuleSettings = settings.setTargetForwardingRuleSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           aggregatedListForwardingRulesSettings,
           deleteForwardingRuleSettings,
           getForwardingRuleSettings,
@@ -521,8 +523,14 @@ public class ForwardingRuleSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -537,7 +545,7 @@ public class ForwardingRuleSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -552,21 +560,21 @@ public class ForwardingRuleSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteForwardingRule.
      */
-    public SimpleCallSettings.Builder<DeleteForwardingRuleHttpRequest, Operation> deleteForwardingRuleSettings() {
+    public UnaryCallSettings.Builder<DeleteForwardingRuleHttpRequest, Operation> deleteForwardingRuleSettings() {
       return deleteForwardingRuleSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getForwardingRule.
      */
-    public SimpleCallSettings.Builder<GetForwardingRuleHttpRequest, ForwardingRule> getForwardingRuleSettings() {
+    public UnaryCallSettings.Builder<GetForwardingRuleHttpRequest, ForwardingRule> getForwardingRuleSettings() {
       return getForwardingRuleSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to insertForwardingRule.
      */
-    public SimpleCallSettings.Builder<InsertForwardingRuleHttpRequest, Operation> insertForwardingRuleSettings() {
+    public UnaryCallSettings.Builder<InsertForwardingRuleHttpRequest, Operation> insertForwardingRuleSettings() {
       return insertForwardingRuleSettings;
     }
 
@@ -580,7 +588,7 @@ public class ForwardingRuleSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to setTargetForwardingRule.
      */
-    public SimpleCallSettings.Builder<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleSettings() {
+    public UnaryCallSettings.Builder<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleSettings() {
       return setTargetForwardingRuleSettings;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (AddressClient addressClient = AddressClient.create()) {
- *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
+ *   AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
  *   Operation response = addressClient.deleteAddress(address);
  * }
  * </code>
@@ -92,10 +92,8 @@ import javax.annotation.Generated;
  * <code>
  * AddressSettings addressSettings =
  *     AddressSettings.newBuilder()
- *         .setTransportProvider(AddressSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(AddressSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(AddressSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * AddressClient addressClient =
@@ -131,6 +129,7 @@ public class AddressClient implements BackgroundResource {
    * Constructs an instance of AddressClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use AddressSettings}.
    */
+  @BetaApi
   public static final AddressClient create(AddressStub stub) {
     return new AddressClient(stub);
   }
@@ -167,7 +166,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (Address element : addressClient.aggregatedListAddresses(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -193,7 +192,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListAddressesHttpRequest request = AggregatedListAddressesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -219,7 +218,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListAddressesHttpRequest request = AggregatedListAddressesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -243,7 +242,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListAddressesHttpRequest request = AggregatedListAddressesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -274,7 +273,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
+   *   AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
    *   Operation response = addressClient.deleteAddress(address);
    * }
    * </code></pre>
@@ -299,7 +298,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
+   *   AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
    *   DeleteAddressHttpRequest request = DeleteAddressHttpRequest.newBuilder()
    *     .setAddressWithAddressName(address)
    *     .build();
@@ -322,7 +321,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
+   *   AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
    *   DeleteAddressHttpRequest request = DeleteAddressHttpRequest.newBuilder()
    *     .setAddressWithAddressName(address)
    *     .build();
@@ -344,7 +343,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
+   *   AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
    *   Address response = addressClient.getAddress(address);
    * }
    * </code></pre>
@@ -369,7 +368,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
+   *   AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
    *   GetAddressHttpRequest request = GetAddressHttpRequest.newBuilder()
    *     .setAddressWithAddressName(address)
    *     .build();
@@ -392,7 +391,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   AddressName address = AddressName.create("[PROJECT]", "[REGION]", "[ADDRESS]");
+   *   AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
    *   GetAddressHttpRequest request = GetAddressHttpRequest.newBuilder()
    *     .setAddressWithAddressName(address)
    *     .build();
@@ -414,7 +413,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Address address = Address.newBuilder().build();
    *   Operation response = addressClient.insertAddress(region, address);
    * }
@@ -442,7 +441,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Address address = Address.newBuilder().build();
    *   InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
@@ -467,7 +466,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Address address = Address.newBuilder().build();
    *   InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
@@ -491,7 +490,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   for (Address element : addressClient.listAddresses(region).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -517,7 +516,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListAddressesHttpRequest request = ListAddressesHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
    *     .build();
@@ -543,7 +542,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListAddressesHttpRequest request = ListAddressesHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
    *     .build();
@@ -567,7 +566,7 @@ public class AddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListAddressesHttpRequest request = ListAddressesHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
    *     .build();

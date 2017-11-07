@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,97 +63,91 @@ import javax.annotation.Generated;
 public class HttpJsonImageStub extends ImageStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteImageHttpRequest, Operation> directDeleteImageCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteImageHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.images.delete")
-              .setRequestInstance(DeleteImageHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/images/{image}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "image",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<DeprecateImageHttpRequest, Operation> directDeprecateImageCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeprecateImageHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.images.deprecate")
-              .setRequestInstance(DeprecateImageHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/images/{image}/deprecate")
-              .setPathParams(Sets.<String>newHashSet(
-                                "image",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<GetImageHttpRequest, Image> directGetImageCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetImageHttpRequest, Image>newBuilder()
-              .setMethodName("compute.images.get")
-              .setRequestInstance(GetImageHttpRequest.getDefaultInstance())
-              .setResponseInstance(Image.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/images/{image}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "image",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<GetFromFamilyImageHttpRequest, Image> directGetFromFamilyImageCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetFromFamilyImageHttpRequest, Image>newBuilder()
-              .setMethodName("compute.images.getFromFamily")
-              .setRequestInstance(GetFromFamilyImageHttpRequest.getDefaultInstance())
-              .setResponseInstance(Image.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/images/family/{family}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "family",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertImageHttpRequest, Operation> directInsertImageCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertImageHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.images.insert")
-              .setRequestInstance(InsertImageHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/images")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListImagesHttpRequest, ImageList> directListImagesCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListImagesHttpRequest, ImageList>newBuilder()
-              .setMethodName("compute.images.list")
-              .setRequestInstance(ListImagesHttpRequest.getDefaultInstance())
-              .setResponseInstance(ImageList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/images")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
+  private static final ApiMethodDescriptor<DeleteImageHttpRequest, Operation> deleteImageMethodDescriptor =
+      ApiMethodDescriptor.<DeleteImageHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.images.delete")
+          .setRequestInstance(DeleteImageHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/images/{image}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "image",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<DeprecateImageHttpRequest, Operation> deprecateImageMethodDescriptor =
+      ApiMethodDescriptor.<DeprecateImageHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.images.deprecate")
+          .setRequestInstance(DeprecateImageHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/images/{image}/deprecate")
+          .setPathParams(Sets.<String>newHashSet(
+                            "image",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<GetImageHttpRequest, Image> getImageMethodDescriptor =
+      ApiMethodDescriptor.<GetImageHttpRequest, Image>newBuilder()
+          .setMethodName("compute.images.get")
+          .setRequestInstance(GetImageHttpRequest.getDefaultInstance())
+          .setResponseInstance(Image.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/images/{image}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "image",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<GetFromFamilyImageHttpRequest, Image> getFromFamilyImageMethodDescriptor =
+      ApiMethodDescriptor.<GetFromFamilyImageHttpRequest, Image>newBuilder()
+          .setMethodName("compute.images.getFromFamily")
+          .setRequestInstance(GetFromFamilyImageHttpRequest.getDefaultInstance())
+          .setResponseInstance(Image.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/images/family/{family}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "family",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertImageHttpRequest, Operation> insertImageMethodDescriptor =
+      ApiMethodDescriptor.<InsertImageHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.images.insert")
+          .setRequestInstance(InsertImageHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/images")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListImagesHttpRequest, ImageList> listImagesMethodDescriptor =
+      ApiMethodDescriptor.<ListImagesHttpRequest, ImageList>newBuilder()
+          .setMethodName("compute.images.list")
+          .setRequestInstance(ListImagesHttpRequest.getDefaultInstance())
+          .setResponseInstance(ImageList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/images")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -180,14 +174,38 @@ public class HttpJsonImageStub extends ImageStub {
    */
   protected HttpJsonImageStub(ImageSettings settings, ClientContext clientContext) throws IOException {
 
-    this.deleteImageCallable = HttpJsonCallableFactory.create(directDeleteImageCallable,settings.deleteImageSettings(), clientContext);
-    this.deprecateImageCallable = HttpJsonCallableFactory.create(directDeprecateImageCallable,settings.deprecateImageSettings(), clientContext);
-    this.getImageCallable = HttpJsonCallableFactory.create(directGetImageCallable,settings.getImageSettings(), clientContext);
-    this.getFromFamilyImageCallable = HttpJsonCallableFactory.create(directGetFromFamilyImageCallable,settings.getFromFamilyImageSettings(), clientContext);
-    this.insertImageCallable = HttpJsonCallableFactory.create(directInsertImageCallable,settings.insertImageSettings(), clientContext);
-    this.listImagesCallable = HttpJsonCallableFactory.create(directListImagesCallable,settings.listImagesSettings(), clientContext);
-    this.listImagesPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListImagesCallable,settings.listImagesSettings(), clientContext);
+    HttpJsonCallSettings<DeleteImageHttpRequest, Operation> deleteImageTransportSettings =
+        HttpJsonCallSettings.<DeleteImageHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteImageMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<DeprecateImageHttpRequest, Operation> deprecateImageTransportSettings =
+        HttpJsonCallSettings.<DeprecateImageHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deprecateImageMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetImageHttpRequest, Image> getImageTransportSettings =
+        HttpJsonCallSettings.<GetImageHttpRequest, Image>newBuilder()
+            .setMethodDescriptor(getImageMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetFromFamilyImageHttpRequest, Image> getFromFamilyImageTransportSettings =
+        HttpJsonCallSettings.<GetFromFamilyImageHttpRequest, Image>newBuilder()
+            .setMethodDescriptor(getFromFamilyImageMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertImageHttpRequest, Operation> insertImageTransportSettings =
+        HttpJsonCallSettings.<InsertImageHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertImageMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListImagesHttpRequest, ImageList> listImagesTransportSettings =
+        HttpJsonCallSettings.<ListImagesHttpRequest, ImageList>newBuilder()
+            .setMethodDescriptor(listImagesMethodDescriptor)
+            .build();
+
+    this.deleteImageCallable = HttpJsonCallableFactory.createUnaryCallable(deleteImageTransportSettings,settings.deleteImageSettings(), clientContext);
+    this.deprecateImageCallable = HttpJsonCallableFactory.createUnaryCallable(deprecateImageTransportSettings,settings.deprecateImageSettings(), clientContext);
+    this.getImageCallable = HttpJsonCallableFactory.createUnaryCallable(getImageTransportSettings,settings.getImageSettings(), clientContext);
+    this.getFromFamilyImageCallable = HttpJsonCallableFactory.createUnaryCallable(getFromFamilyImageTransportSettings,settings.getFromFamilyImageSettings(), clientContext);
+    this.insertImageCallable = HttpJsonCallableFactory.createUnaryCallable(insertImageTransportSettings,settings.insertImageSettings(), clientContext);
+    this.listImagesCallable = HttpJsonCallableFactory.createUnaryCallable(listImagesTransportSettings,settings.listImagesSettings(), clientContext);
+    this.listImagesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listImagesTransportSettings,settings.listImagesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

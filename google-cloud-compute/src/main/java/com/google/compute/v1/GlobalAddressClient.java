@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
- *   GlobalAddressesAddressName address = GlobalAddressesAddressName.create("[PROJECT]", "[ADDRESS]");
+ *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
  *   Operation response = globalAddressClient.deleteGlobalAddress(address);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * GlobalAddressSettings globalAddressSettings =
  *     GlobalAddressSettings.newBuilder()
- *         .setTransportProvider(GlobalAddressSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(GlobalAddressSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(GlobalAddressSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * GlobalAddressClient globalAddressClient =
@@ -130,6 +128,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Constructs an instance of GlobalAddressClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use GlobalAddressSettings}.
    */
+  @BetaApi
   public static final GlobalAddressClient create(GlobalAddressStub stub) {
     return new GlobalAddressClient(stub);
   }
@@ -166,7 +165,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.create("[PROJECT]", "[ADDRESS]");
+   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
    *   Operation response = globalAddressClient.deleteGlobalAddress(address);
    * }
    * </code></pre>
@@ -191,7 +190,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.create("[PROJECT]", "[ADDRESS]");
+   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
    *   DeleteGlobalAddressHttpRequest request = DeleteGlobalAddressHttpRequest.newBuilder()
    *     .setAddressWithGlobalAddressesAddressName(address)
    *     .build();
@@ -214,7 +213,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.create("[PROJECT]", "[ADDRESS]");
+   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
    *   DeleteGlobalAddressHttpRequest request = DeleteGlobalAddressHttpRequest.newBuilder()
    *     .setAddressWithGlobalAddressesAddressName(address)
    *     .build();
@@ -236,7 +235,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.create("[PROJECT]", "[ADDRESS]");
+   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
    *   Address response = globalAddressClient.getGlobalAddress(address);
    * }
    * </code></pre>
@@ -261,7 +260,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.create("[PROJECT]", "[ADDRESS]");
+   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
    *   GetGlobalAddressHttpRequest request = GetGlobalAddressHttpRequest.newBuilder()
    *     .setAddressWithGlobalAddressesAddressName(address)
    *     .build();
@@ -284,7 +283,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.create("[PROJECT]", "[ADDRESS]");
+   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
    *   GetGlobalAddressHttpRequest request = GetGlobalAddressHttpRequest.newBuilder()
    *     .setAddressWithGlobalAddressesAddressName(address)
    *     .build();
@@ -306,7 +305,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Address address = Address.newBuilder().build();
    *   Operation response = globalAddressClient.insertGlobalAddress(project, address);
    * }
@@ -334,7 +333,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Address address = Address.newBuilder().build();
    *   InsertGlobalAddressHttpRequest request = InsertGlobalAddressHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -359,7 +358,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Address address = Address.newBuilder().build();
    *   InsertGlobalAddressHttpRequest request = InsertGlobalAddressHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -383,7 +382,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (Address element : globalAddressClient.listGlobalAddresses(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -409,7 +408,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalAddressesHttpRequest request = ListGlobalAddressesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -435,7 +434,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalAddressesHttpRequest request = ListGlobalAddressesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -459,7 +458,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalAddressesHttpRequest request = ListGlobalAddressesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();

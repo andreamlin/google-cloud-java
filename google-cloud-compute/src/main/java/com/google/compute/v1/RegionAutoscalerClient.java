@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
- *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.create("[PROJECT]", "[REGION]", "[AUTOSCALER]");
+ *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
  *   Operation response = regionAutoscalerClient.deleteRegionAutoscaler(autoscaler);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * RegionAutoscalerSettings regionAutoscalerSettings =
  *     RegionAutoscalerSettings.newBuilder()
- *         .setTransportProvider(RegionAutoscalerSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(RegionAutoscalerSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(RegionAutoscalerSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * RegionAutoscalerClient regionAutoscalerClient =
@@ -130,6 +128,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Constructs an instance of RegionAutoscalerClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use RegionAutoscalerSettings}.
    */
+  @BetaApi
   public static final RegionAutoscalerClient create(RegionAutoscalerStub stub) {
     return new RegionAutoscalerClient(stub);
   }
@@ -166,7 +165,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
-   *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.create("[PROJECT]", "[REGION]", "[AUTOSCALER]");
+   *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
    *   Operation response = regionAutoscalerClient.deleteRegionAutoscaler(autoscaler);
    * }
    * </code></pre>
@@ -191,7 +190,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
-   *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.create("[PROJECT]", "[REGION]", "[AUTOSCALER]");
+   *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
    *   DeleteRegionAutoscalerHttpRequest request = DeleteRegionAutoscalerHttpRequest.newBuilder()
    *     .setAutoscalerWithRegionAutoscalersAutoscalerName(autoscaler)
    *     .build();
@@ -214,7 +213,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
-   *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.create("[PROJECT]", "[REGION]", "[AUTOSCALER]");
+   *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
    *   DeleteRegionAutoscalerHttpRequest request = DeleteRegionAutoscalerHttpRequest.newBuilder()
    *     .setAutoscalerWithRegionAutoscalersAutoscalerName(autoscaler)
    *     .build();
@@ -236,7 +235,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
-   *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.create("[PROJECT]", "[REGION]", "[AUTOSCALER]");
+   *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
    *   Autoscaler response = regionAutoscalerClient.getRegionAutoscaler(autoscaler);
    * }
    * </code></pre>
@@ -261,7 +260,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
-   *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.create("[PROJECT]", "[REGION]", "[AUTOSCALER]");
+   *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
    *   GetRegionAutoscalerHttpRequest request = GetRegionAutoscalerHttpRequest.newBuilder()
    *     .setAutoscalerWithRegionAutoscalersAutoscalerName(autoscaler)
    *     .build();
@@ -284,7 +283,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
-   *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.create("[PROJECT]", "[REGION]", "[AUTOSCALER]");
+   *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
    *   GetRegionAutoscalerHttpRequest request = GetRegionAutoscalerHttpRequest.newBuilder()
    *     .setAutoscalerWithRegionAutoscalersAutoscalerName(autoscaler)
    *     .build();
@@ -306,7 +305,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   Operation response = regionAutoscalerClient.insertRegionAutoscaler(region, autoscaler);
    * }
@@ -334,7 +333,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   InsertRegionAutoscalerHttpRequest request = InsertRegionAutoscalerHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
@@ -359,7 +358,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   InsertRegionAutoscalerHttpRequest request = InsertRegionAutoscalerHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
@@ -383,7 +382,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   for (Autoscaler element : regionAutoscalerClient.listRegionAutoscalers(region).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -409,7 +408,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRegionAutoscalersHttpRequest request = ListRegionAutoscalersHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
    *     .build();
@@ -435,7 +434,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRegionAutoscalersHttpRequest request = ListRegionAutoscalersHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
    *     .build();
@@ -459,7 +458,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRegionAutoscalersHttpRequest request = ListRegionAutoscalersHttpRequest.newBuilder()
    *     .setRegionWithRegionName(region)
    *     .build();
@@ -491,7 +490,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Operation response = regionAutoscalerClient.patchRegionAutoscaler(autoscaler, region);
    * }
    * </code></pre>
@@ -521,7 +520,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   PatchRegionAutoscalerHttpRequest request = PatchRegionAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler)
    *     .setRegionWithRegionName(region)
@@ -546,7 +545,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   PatchRegionAutoscalerHttpRequest request = PatchRegionAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler)
    *     .setRegionWithRegionName(region)
@@ -570,7 +569,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Operation response = regionAutoscalerClient.updateRegionAutoscaler(autoscaler, region);
    * }
    * </code></pre>
@@ -600,7 +599,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   UpdateRegionAutoscalerHttpRequest request = UpdateRegionAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler)
    *     .setRegionWithRegionName(region)
@@ -625,7 +624,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   RegionName region = RegionName.create("[PROJECT]", "[REGION]");
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   UpdateRegionAutoscalerHttpRequest request = UpdateRegionAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler)
    *     .setRegionWithRegionName(region)

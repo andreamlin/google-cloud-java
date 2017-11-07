@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,53 +60,50 @@ import javax.annotation.Generated;
 public class HttpJsonMachineTypeStub extends MachineTypeStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList> directAggregatedListMachineTypesCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList>newBuilder()
-              .setMethodName("compute.machineTypes.aggregatedList")
-              .setRequestInstance(AggregatedListMachineTypesHttpRequest.getDefaultInstance())
-              .setResponseInstance(MachineTypeAggregatedList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/aggregated/machineTypes")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<GetMachineTypeHttpRequest, MachineType> directGetMachineTypeCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetMachineTypeHttpRequest, MachineType>newBuilder()
-              .setMethodName("compute.machineTypes.get")
-              .setRequestInstance(GetMachineTypeHttpRequest.getDefaultInstance())
-              .setResponseInstance(MachineType.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/machineTypes/{machineType}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "machineType",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<ListMachineTypesHttpRequest, MachineTypeList> directListMachineTypesCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListMachineTypesHttpRequest, MachineTypeList>newBuilder()
-              .setMethodName("compute.machineTypes.list")
-              .setRequestInstance(ListMachineTypesHttpRequest.getDefaultInstance())
-              .setResponseInstance(MachineTypeList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/machineTypes")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
+  private static final ApiMethodDescriptor<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList> aggregatedListMachineTypesMethodDescriptor =
+      ApiMethodDescriptor.<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList>newBuilder()
+          .setMethodName("compute.machineTypes.aggregatedList")
+          .setRequestInstance(AggregatedListMachineTypesHttpRequest.getDefaultInstance())
+          .setResponseInstance(MachineTypeAggregatedList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/aggregated/machineTypes")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<GetMachineTypeHttpRequest, MachineType> getMachineTypeMethodDescriptor =
+      ApiMethodDescriptor.<GetMachineTypeHttpRequest, MachineType>newBuilder()
+          .setMethodName("compute.machineTypes.get")
+          .setRequestInstance(GetMachineTypeHttpRequest.getDefaultInstance())
+          .setResponseInstance(MachineType.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/machineTypes/{machineType}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "machineType",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<ListMachineTypesHttpRequest, MachineTypeList> listMachineTypesMethodDescriptor =
+      ApiMethodDescriptor.<ListMachineTypesHttpRequest, MachineTypeList>newBuilder()
+          .setMethodName("compute.machineTypes.list")
+          .setRequestInstance(ListMachineTypesHttpRequest.getDefaultInstance())
+          .setResponseInstance(MachineTypeList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/machineTypes")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -131,13 +128,24 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
    */
   protected HttpJsonMachineTypeStub(MachineTypeSettings settings, ClientContext clientContext) throws IOException {
 
-    this.aggregatedListMachineTypesCallable = HttpJsonCallableFactory.create(directAggregatedListMachineTypesCallable,settings.aggregatedListMachineTypesSettings(), clientContext);
-    this.aggregatedListMachineTypesPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directAggregatedListMachineTypesCallable,settings.aggregatedListMachineTypesSettings(), clientContext);
-    this.getMachineTypeCallable = HttpJsonCallableFactory.create(directGetMachineTypeCallable,settings.getMachineTypeSettings(), clientContext);
-    this.listMachineTypesCallable = HttpJsonCallableFactory.create(directListMachineTypesCallable,settings.listMachineTypesSettings(), clientContext);
-    this.listMachineTypesPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListMachineTypesCallable,settings.listMachineTypesSettings(), clientContext);
+    HttpJsonCallSettings<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList> aggregatedListMachineTypesTransportSettings =
+        HttpJsonCallSettings.<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList>newBuilder()
+            .setMethodDescriptor(aggregatedListMachineTypesMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetMachineTypeHttpRequest, MachineType> getMachineTypeTransportSettings =
+        HttpJsonCallSettings.<GetMachineTypeHttpRequest, MachineType>newBuilder()
+            .setMethodDescriptor(getMachineTypeMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListMachineTypesHttpRequest, MachineTypeList> listMachineTypesTransportSettings =
+        HttpJsonCallSettings.<ListMachineTypesHttpRequest, MachineTypeList>newBuilder()
+            .setMethodDescriptor(listMachineTypesMethodDescriptor)
+            .build();
+
+    this.aggregatedListMachineTypesCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListMachineTypesTransportSettings,settings.aggregatedListMachineTypesSettings(), clientContext);
+    this.aggregatedListMachineTypesPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListMachineTypesTransportSettings,settings.aggregatedListMachineTypesSettings(), clientContext);
+    this.getMachineTypeCallable = HttpJsonCallableFactory.createUnaryCallable(getMachineTypeTransportSettings,settings.getMachineTypeSettings(), clientContext);
+    this.listMachineTypesCallable = HttpJsonCallableFactory.createUnaryCallable(listMachineTypesTransportSettings,settings.listMachineTypesSettings(), clientContext);
+    this.listMachineTypesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listMachineTypesTransportSettings,settings.listMachineTypesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

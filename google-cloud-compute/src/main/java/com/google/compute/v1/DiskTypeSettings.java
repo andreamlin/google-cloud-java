@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -54,7 +53,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -108,7 +106,7 @@ public class DiskTypeSettings extends ClientSettings {
   private static String gapicVersion;
 
   private final PagedCallSettings<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList, AggregatedListDiskTypesPagedResponse> aggregatedListDiskTypesSettings;
-  private final SimpleCallSettings<GetDiskTypeHttpRequest, DiskType> getDiskTypeSettings;
+  private final UnaryCallSettings<GetDiskTypeHttpRequest, DiskType> getDiskTypeSettings;
   private final PagedCallSettings<ListDiskTypesHttpRequest, DiskTypeList, ListDiskTypesPagedResponse> listDiskTypesSettings;
 
   /**
@@ -121,7 +119,7 @@ public class DiskTypeSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to getDiskType.
    */
-  public SimpleCallSettings<GetDiskTypeHttpRequest, DiskType> getDiskTypeSettings() {
+  public UnaryCallSettings<GetDiskTypeHttpRequest, DiskType> getDiskTypeSettings() {
     return getDiskTypeSettings;
   }
 
@@ -134,11 +132,13 @@ public class DiskTypeSettings extends ClientSettings {
 
 
   public DiskTypeStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonDiskTypeStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -182,20 +182,20 @@ public class DiskTypeSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -248,8 +248,9 @@ public class DiskTypeSettings extends ClientSettings {
   private DiskTypeSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     aggregatedListDiskTypesSettings = settingsBuilder.aggregatedListDiskTypesSettings().build();
@@ -358,22 +359,22 @@ public class DiskTypeSettings extends ClientSettings {
    * Builder for DiskTypeSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList, AggregatedListDiskTypesPagedResponse> aggregatedListDiskTypesSettings;
-    private final SimpleCallSettings.Builder<GetDiskTypeHttpRequest, DiskType> getDiskTypeSettings;
+    private final UnaryCallSettings.Builder<GetDiskTypeHttpRequest, DiskType> getDiskTypeSettings;
     private final PagedCallSettings.Builder<ListDiskTypesHttpRequest, DiskTypeList, ListDiskTypesPagedResponse> listDiskTypesSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -405,12 +406,12 @@ public class DiskTypeSettings extends ClientSettings {
       aggregatedListDiskTypesSettings = PagedCallSettings.newBuilder(
           AGGREGATED_LIST_DISK_TYPES_PAGE_STR_FACT);
 
-      getDiskTypeSettings = SimpleCallSettings.newBuilder();
+      getDiskTypeSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listDiskTypesSettings = PagedCallSettings.newBuilder(
           LIST_DISK_TYPES_PAGE_STR_FACT);
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           aggregatedListDiskTypesSettings,
           getDiskTypeSettings,
           listDiskTypesSettings
@@ -421,8 +422,9 @@ public class DiskTypeSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -450,7 +452,7 @@ public class DiskTypeSettings extends ClientSettings {
       getDiskTypeSettings = settings.getDiskTypeSettings.toBuilder();
       listDiskTypesSettings = settings.listDiskTypesSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           aggregatedListDiskTypesSettings,
           getDiskTypeSettings,
           listDiskTypesSettings
@@ -464,8 +466,14 @@ public class DiskTypeSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -480,7 +488,7 @@ public class DiskTypeSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -495,7 +503,7 @@ public class DiskTypeSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to getDiskType.
      */
-    public SimpleCallSettings.Builder<GetDiskTypeHttpRequest, DiskType> getDiskTypeSettings() {
+    public UnaryCallSettings.Builder<GetDiskTypeHttpRequest, DiskType> getDiskTypeSettings() {
       return getDiskTypeSettings;
     }
 

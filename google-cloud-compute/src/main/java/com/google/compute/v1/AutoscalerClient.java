@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
- *   AutoscalerName autoscaler = AutoscalerName.create("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
+ *   AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
  *   Operation response = autoscalerClient.deleteAutoscaler(autoscaler);
  * }
  * </code>
@@ -92,10 +92,8 @@ import javax.annotation.Generated;
  * <code>
  * AutoscalerSettings autoscalerSettings =
  *     AutoscalerSettings.newBuilder()
- *         .setTransportProvider(AutoscalerSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(AutoscalerSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(AutoscalerSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * AutoscalerClient autoscalerClient =
@@ -131,6 +129,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Constructs an instance of AutoscalerClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use AutoscalerSettings}.
    */
+  @BetaApi
   public static final AutoscalerClient create(AutoscalerStub stub) {
     return new AutoscalerClient(stub);
   }
@@ -167,7 +166,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (Autoscaler element : autoscalerClient.aggregatedListAutoscalers(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -193,7 +192,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListAutoscalersHttpRequest request = AggregatedListAutoscalersHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -219,7 +218,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListAutoscalersHttpRequest request = AggregatedListAutoscalersHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -243,7 +242,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListAutoscalersHttpRequest request = AggregatedListAutoscalersHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -274,7 +273,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   AutoscalerName autoscaler = AutoscalerName.create("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
+   *   AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
    *   Operation response = autoscalerClient.deleteAutoscaler(autoscaler);
    * }
    * </code></pre>
@@ -299,7 +298,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   AutoscalerName autoscaler = AutoscalerName.create("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
+   *   AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
    *   DeleteAutoscalerHttpRequest request = DeleteAutoscalerHttpRequest.newBuilder()
    *     .setAutoscalerWithAutoscalerName(autoscaler)
    *     .build();
@@ -322,7 +321,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   AutoscalerName autoscaler = AutoscalerName.create("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
+   *   AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
    *   DeleteAutoscalerHttpRequest request = DeleteAutoscalerHttpRequest.newBuilder()
    *     .setAutoscalerWithAutoscalerName(autoscaler)
    *     .build();
@@ -344,7 +343,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   AutoscalerName autoscaler = AutoscalerName.create("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
+   *   AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
    *   Autoscaler response = autoscalerClient.getAutoscaler(autoscaler);
    * }
    * </code></pre>
@@ -369,7 +368,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   AutoscalerName autoscaler = AutoscalerName.create("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
+   *   AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
    *   GetAutoscalerHttpRequest request = GetAutoscalerHttpRequest.newBuilder()
    *     .setAutoscalerWithAutoscalerName(autoscaler)
    *     .build();
@@ -392,7 +391,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   AutoscalerName autoscaler = AutoscalerName.create("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
+   *   AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
    *   GetAutoscalerHttpRequest request = GetAutoscalerHttpRequest.newBuilder()
    *     .setAutoscalerWithAutoscalerName(autoscaler)
    *     .build();
@@ -414,7 +413,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   Operation response = autoscalerClient.insertAutoscaler(zone, autoscaler);
    * }
@@ -442,7 +441,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   InsertAutoscalerHttpRequest request = InsertAutoscalerHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
@@ -467,7 +466,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   InsertAutoscalerHttpRequest request = InsertAutoscalerHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
@@ -491,7 +490,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   for (Autoscaler element : autoscalerClient.listAutoscalers(zone).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -517,7 +516,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListAutoscalersHttpRequest request = ListAutoscalersHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -543,7 +542,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListAutoscalersHttpRequest request = ListAutoscalersHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -567,7 +566,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListAutoscalersHttpRequest request = ListAutoscalersHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -599,7 +598,7 @@ public class AutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   Operation response = autoscalerClient.patchAutoscaler(autoscaler, zone);
    * }
    * </code></pre>
@@ -629,7 +628,7 @@ public class AutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   PatchAutoscalerHttpRequest request = PatchAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler)
    *     .setZoneWithZoneName(zone)
@@ -654,7 +653,7 @@ public class AutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   PatchAutoscalerHttpRequest request = PatchAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler)
    *     .setZoneWithZoneName(zone)
@@ -678,7 +677,7 @@ public class AutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   Operation response = autoscalerClient.updateAutoscaler(autoscaler, zone);
    * }
    * </code></pre>
@@ -708,7 +707,7 @@ public class AutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   UpdateAutoscalerHttpRequest request = UpdateAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler)
    *     .setZoneWithZoneName(zone)
@@ -733,7 +732,7 @@ public class AutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   String autoscaler = "";
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   UpdateAutoscalerHttpRequest request = UpdateAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler)
    *     .setZoneWithZoneName(zone)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,82 +61,77 @@ import javax.annotation.Generated;
 public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteTargetHttpProxyHttpRequest, Operation> directDeleteTargetHttpProxyCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteTargetHttpProxyHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.targetHttpProxies.delete")
-              .setRequestInstance(DeleteTargetHttpProxyHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/targetHttpProxies/{targetHttpProxy}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "targetHttpProxy"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetTargetHttpProxyHttpRequest, TargetHttpProxy> directGetTargetHttpProxyCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetTargetHttpProxyHttpRequest, TargetHttpProxy>newBuilder()
-              .setMethodName("compute.targetHttpProxies.get")
-              .setRequestInstance(GetTargetHttpProxyHttpRequest.getDefaultInstance())
-              .setResponseInstance(TargetHttpProxy.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/targetHttpProxies/{targetHttpProxy}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "targetHttpProxy"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertTargetHttpProxyHttpRequest, Operation> directInsertTargetHttpProxyCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertTargetHttpProxyHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.targetHttpProxies.insert")
-              .setRequestInstance(InsertTargetHttpProxyHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/targetHttpProxies")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList> directListTargetHttpProxiesCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList>newBuilder()
-              .setMethodName("compute.targetHttpProxies.list")
-              .setRequestInstance(ListTargetHttpProxiesHttpRequest.getDefaultInstance())
-              .setResponseInstance(TargetHttpProxyList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/targetHttpProxies")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<SetUrlMapTargetHttpProxyHttpRequest, Operation> directSetUrlMapTargetHttpProxyCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<SetUrlMapTargetHttpProxyHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.targetHttpProxies.setUrlMap")
-              .setRequestInstance(SetUrlMapTargetHttpProxyHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/targetHttpProxies/{targetHttpProxy}/setUrlMap")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "targetHttpProxy"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
+  private static final ApiMethodDescriptor<DeleteTargetHttpProxyHttpRequest, Operation> deleteTargetHttpProxyMethodDescriptor =
+      ApiMethodDescriptor.<DeleteTargetHttpProxyHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.targetHttpProxies.delete")
+          .setRequestInstance(DeleteTargetHttpProxyHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/targetHttpProxies/{targetHttpProxy}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "targetHttpProxy"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetTargetHttpProxyHttpRequest, TargetHttpProxy> getTargetHttpProxyMethodDescriptor =
+      ApiMethodDescriptor.<GetTargetHttpProxyHttpRequest, TargetHttpProxy>newBuilder()
+          .setMethodName("compute.targetHttpProxies.get")
+          .setRequestInstance(GetTargetHttpProxyHttpRequest.getDefaultInstance())
+          .setResponseInstance(TargetHttpProxy.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/targetHttpProxies/{targetHttpProxy}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "targetHttpProxy"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertTargetHttpProxyHttpRequest, Operation> insertTargetHttpProxyMethodDescriptor =
+      ApiMethodDescriptor.<InsertTargetHttpProxyHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.targetHttpProxies.insert")
+          .setRequestInstance(InsertTargetHttpProxyHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/targetHttpProxies")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList> listTargetHttpProxiesMethodDescriptor =
+      ApiMethodDescriptor.<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList>newBuilder()
+          .setMethodName("compute.targetHttpProxies.list")
+          .setRequestInstance(ListTargetHttpProxiesHttpRequest.getDefaultInstance())
+          .setResponseInstance(TargetHttpProxyList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/targetHttpProxies")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<SetUrlMapTargetHttpProxyHttpRequest, Operation> setUrlMapTargetHttpProxyMethodDescriptor =
+      ApiMethodDescriptor.<SetUrlMapTargetHttpProxyHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.targetHttpProxies.setUrlMap")
+          .setRequestInstance(SetUrlMapTargetHttpProxyHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/targetHttpProxies/{targetHttpProxy}/setUrlMap")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "targetHttpProxy"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -162,13 +157,33 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
    */
   protected HttpJsonTargetHttpProxyStub(TargetHttpProxySettings settings, ClientContext clientContext) throws IOException {
 
-    this.deleteTargetHttpProxyCallable = HttpJsonCallableFactory.create(directDeleteTargetHttpProxyCallable,settings.deleteTargetHttpProxySettings(), clientContext);
-    this.getTargetHttpProxyCallable = HttpJsonCallableFactory.create(directGetTargetHttpProxyCallable,settings.getTargetHttpProxySettings(), clientContext);
-    this.insertTargetHttpProxyCallable = HttpJsonCallableFactory.create(directInsertTargetHttpProxyCallable,settings.insertTargetHttpProxySettings(), clientContext);
-    this.listTargetHttpProxiesCallable = HttpJsonCallableFactory.create(directListTargetHttpProxiesCallable,settings.listTargetHttpProxiesSettings(), clientContext);
-    this.listTargetHttpProxiesPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListTargetHttpProxiesCallable,settings.listTargetHttpProxiesSettings(), clientContext);
-    this.setUrlMapTargetHttpProxyCallable = HttpJsonCallableFactory.create(directSetUrlMapTargetHttpProxyCallable,settings.setUrlMapTargetHttpProxySettings(), clientContext);
+    HttpJsonCallSettings<DeleteTargetHttpProxyHttpRequest, Operation> deleteTargetHttpProxyTransportSettings =
+        HttpJsonCallSettings.<DeleteTargetHttpProxyHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteTargetHttpProxyMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetTargetHttpProxyHttpRequest, TargetHttpProxy> getTargetHttpProxyTransportSettings =
+        HttpJsonCallSettings.<GetTargetHttpProxyHttpRequest, TargetHttpProxy>newBuilder()
+            .setMethodDescriptor(getTargetHttpProxyMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertTargetHttpProxyHttpRequest, Operation> insertTargetHttpProxyTransportSettings =
+        HttpJsonCallSettings.<InsertTargetHttpProxyHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertTargetHttpProxyMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList> listTargetHttpProxiesTransportSettings =
+        HttpJsonCallSettings.<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList>newBuilder()
+            .setMethodDescriptor(listTargetHttpProxiesMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<SetUrlMapTargetHttpProxyHttpRequest, Operation> setUrlMapTargetHttpProxyTransportSettings =
+        HttpJsonCallSettings.<SetUrlMapTargetHttpProxyHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(setUrlMapTargetHttpProxyMethodDescriptor)
+            .build();
+
+    this.deleteTargetHttpProxyCallable = HttpJsonCallableFactory.createUnaryCallable(deleteTargetHttpProxyTransportSettings,settings.deleteTargetHttpProxySettings(), clientContext);
+    this.getTargetHttpProxyCallable = HttpJsonCallableFactory.createUnaryCallable(getTargetHttpProxyTransportSettings,settings.getTargetHttpProxySettings(), clientContext);
+    this.insertTargetHttpProxyCallable = HttpJsonCallableFactory.createUnaryCallable(insertTargetHttpProxyTransportSettings,settings.insertTargetHttpProxySettings(), clientContext);
+    this.listTargetHttpProxiesCallable = HttpJsonCallableFactory.createUnaryCallable(listTargetHttpProxiesTransportSettings,settings.listTargetHttpProxiesSettings(), clientContext);
+    this.listTargetHttpProxiesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listTargetHttpProxiesTransportSettings,settings.listTargetHttpProxiesSettings(), clientContext);
+    this.setUrlMapTargetHttpProxyCallable = HttpJsonCallableFactory.createUnaryCallable(setUrlMapTargetHttpProxyTransportSettings,settings.setUrlMapTargetHttpProxySettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

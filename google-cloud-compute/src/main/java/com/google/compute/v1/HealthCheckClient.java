@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
- *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+ *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
  *   Operation response = healthCheckClient.deleteHealthCheck(healthCheck);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * HealthCheckSettings healthCheckSettings =
  *     HealthCheckSettings.newBuilder()
- *         .setTransportProvider(HealthCheckSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(HealthCheckSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(HealthCheckSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * HealthCheckClient healthCheckClient =
@@ -130,6 +128,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Constructs an instance of HealthCheckClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use HealthCheckSettings}.
    */
+  @BetaApi
   public static final HealthCheckClient create(HealthCheckStub stub) {
     return new HealthCheckClient(stub);
   }
@@ -166,7 +165,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   Operation response = healthCheckClient.deleteHealthCheck(healthCheck);
    * }
    * </code></pre>
@@ -191,7 +190,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   DeleteHealthCheckHttpRequest request = DeleteHealthCheckHttpRequest.newBuilder()
    *     .setHealthCheckWithHealthCheckName(healthCheck)
    *     .build();
@@ -214,7 +213,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   DeleteHealthCheckHttpRequest request = DeleteHealthCheckHttpRequest.newBuilder()
    *     .setHealthCheckWithHealthCheckName(healthCheck)
    *     .build();
@@ -236,7 +235,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   HealthCheck response = healthCheckClient.getHealthCheck(healthCheck);
    * }
    * </code></pre>
@@ -261,7 +260,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   GetHealthCheckHttpRequest request = GetHealthCheckHttpRequest.newBuilder()
    *     .setHealthCheckWithHealthCheckName(healthCheck)
    *     .build();
@@ -284,7 +283,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   GetHealthCheckHttpRequest request = GetHealthCheckHttpRequest.newBuilder()
    *     .setHealthCheckWithHealthCheckName(healthCheck)
    *     .build();
@@ -306,7 +305,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   HealthCheck healthCheck = HealthCheck.newBuilder().build();
    *   Operation response = healthCheckClient.insertHealthCheck(project, healthCheck);
    * }
@@ -334,7 +333,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   HealthCheck healthCheck = HealthCheck.newBuilder().build();
    *   InsertHealthCheckHttpRequest request = InsertHealthCheckHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -359,7 +358,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   HealthCheck healthCheck = HealthCheck.newBuilder().build();
    *   InsertHealthCheckHttpRequest request = InsertHealthCheckHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
@@ -383,7 +382,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (HealthCheck element : healthCheckClient.listHealthChecks(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -409,7 +408,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListHealthChecksHttpRequest request = ListHealthChecksHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -435,7 +434,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListHealthChecksHttpRequest request = ListHealthChecksHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -459,7 +458,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListHealthChecksHttpRequest request = ListHealthChecksHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -490,7 +489,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   Operation response = healthCheckClient.patchHealthCheck(healthCheck);
    * }
    * </code></pre>
@@ -517,7 +516,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   PatchHealthCheckHttpRequest request = PatchHealthCheckHttpRequest.newBuilder()
    *     .setHealthCheckWithHealthCheckName(healthCheck)
    *     .build();
@@ -540,7 +539,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   PatchHealthCheckHttpRequest request = PatchHealthCheckHttpRequest.newBuilder()
    *     .setHealthCheckWithHealthCheckName(healthCheck)
    *     .build();
@@ -562,7 +561,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   Operation response = healthCheckClient.updateHealthCheck(healthCheck);
    * }
    * </code></pre>
@@ -589,7 +588,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   UpdateHealthCheckHttpRequest request = UpdateHealthCheckHttpRequest.newBuilder()
    *     .setHealthCheckWithHealthCheckName(healthCheck)
    *     .build();
@@ -612,7 +611,7 @@ public class HealthCheckClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
-   *   HealthCheckName healthCheck = HealthCheckName.create("[PROJECT]", "[HEALTH_CHECK]");
+   *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   UpdateHealthCheckHttpRequest request = UpdateHealthCheckHttpRequest.newBuilder()
    *     .setHealthCheckWithHealthCheckName(healthCheck)
    *     .build();

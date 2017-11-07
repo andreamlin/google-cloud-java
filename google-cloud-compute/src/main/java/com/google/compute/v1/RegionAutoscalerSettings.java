@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -53,7 +52,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -106,31 +104,31 @@ public class RegionAutoscalerSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerSettings;
-  private final SimpleCallSettings<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerSettings;
-  private final SimpleCallSettings<InsertRegionAutoscalerHttpRequest, Operation> insertRegionAutoscalerSettings;
+  private final UnaryCallSettings<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerSettings;
+  private final UnaryCallSettings<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerSettings;
+  private final UnaryCallSettings<InsertRegionAutoscalerHttpRequest, Operation> insertRegionAutoscalerSettings;
   private final PagedCallSettings<ListRegionAutoscalersHttpRequest, RegionAutoscalerList, ListRegionAutoscalersPagedResponse> listRegionAutoscalersSettings;
-  private final SimpleCallSettings<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerSettings;
-  private final SimpleCallSettings<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerSettings;
+  private final UnaryCallSettings<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerSettings;
+  private final UnaryCallSettings<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerSettings;
 
   /**
    * Returns the object with the settings used for calls to deleteRegionAutoscaler.
    */
-  public SimpleCallSettings<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerSettings() {
+  public UnaryCallSettings<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerSettings() {
     return deleteRegionAutoscalerSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getRegionAutoscaler.
    */
-  public SimpleCallSettings<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerSettings() {
+  public UnaryCallSettings<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerSettings() {
     return getRegionAutoscalerSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to insertRegionAutoscaler.
    */
-  public SimpleCallSettings<InsertRegionAutoscalerHttpRequest, Operation> insertRegionAutoscalerSettings() {
+  public UnaryCallSettings<InsertRegionAutoscalerHttpRequest, Operation> insertRegionAutoscalerSettings() {
     return insertRegionAutoscalerSettings;
   }
 
@@ -144,24 +142,26 @@ public class RegionAutoscalerSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to patchRegionAutoscaler.
    */
-  public SimpleCallSettings<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerSettings() {
+  public UnaryCallSettings<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerSettings() {
     return patchRegionAutoscalerSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to updateRegionAutoscaler.
    */
-  public SimpleCallSettings<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerSettings() {
+  public UnaryCallSettings<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerSettings() {
     return updateRegionAutoscalerSettings;
   }
 
 
   public RegionAutoscalerStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonRegionAutoscalerStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -205,20 +205,20 @@ public class RegionAutoscalerSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -271,8 +271,9 @@ public class RegionAutoscalerSettings extends ClientSettings {
   private RegionAutoscalerSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     deleteRegionAutoscalerSettings = settingsBuilder.deleteRegionAutoscalerSettings().build();
@@ -336,25 +337,25 @@ public class RegionAutoscalerSettings extends ClientSettings {
    * Builder for RegionAutoscalerSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerSettings;
-    private final SimpleCallSettings.Builder<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerSettings;
-    private final SimpleCallSettings.Builder<InsertRegionAutoscalerHttpRequest, Operation> insertRegionAutoscalerSettings;
+    private final UnaryCallSettings.Builder<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerSettings;
+    private final UnaryCallSettings.Builder<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerSettings;
+    private final UnaryCallSettings.Builder<InsertRegionAutoscalerHttpRequest, Operation> insertRegionAutoscalerSettings;
     private final PagedCallSettings.Builder<ListRegionAutoscalersHttpRequest, RegionAutoscalerList, ListRegionAutoscalersPagedResponse> listRegionAutoscalersSettings;
-    private final SimpleCallSettings.Builder<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerSettings;
-    private final SimpleCallSettings.Builder<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerSettings;
+    private final UnaryCallSettings.Builder<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerSettings;
+    private final UnaryCallSettings.Builder<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -383,20 +384,20 @@ public class RegionAutoscalerSettings extends ClientSettings {
     private Builder(ClientContext clientContext) {
       super(clientContext);
 
-      deleteRegionAutoscalerSettings = SimpleCallSettings.newBuilder();
+      deleteRegionAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getRegionAutoscalerSettings = SimpleCallSettings.newBuilder();
+      getRegionAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      insertRegionAutoscalerSettings = SimpleCallSettings.newBuilder();
+      insertRegionAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listRegionAutoscalersSettings = PagedCallSettings.newBuilder(
           LIST_REGION_AUTOSCALERS_PAGE_STR_FACT);
 
-      patchRegionAutoscalerSettings = SimpleCallSettings.newBuilder();
+      patchRegionAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      updateRegionAutoscalerSettings = SimpleCallSettings.newBuilder();
+      updateRegionAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           deleteRegionAutoscalerSettings,
           getRegionAutoscalerSettings,
           insertRegionAutoscalerSettings,
@@ -410,8 +411,9 @@ public class RegionAutoscalerSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -454,7 +456,7 @@ public class RegionAutoscalerSettings extends ClientSettings {
       patchRegionAutoscalerSettings = settings.patchRegionAutoscalerSettings.toBuilder();
       updateRegionAutoscalerSettings = settings.updateRegionAutoscalerSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           deleteRegionAutoscalerSettings,
           getRegionAutoscalerSettings,
           insertRegionAutoscalerSettings,
@@ -471,8 +473,14 @@ public class RegionAutoscalerSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -487,7 +495,7 @@ public class RegionAutoscalerSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -495,21 +503,21 @@ public class RegionAutoscalerSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteRegionAutoscaler.
      */
-    public SimpleCallSettings.Builder<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerSettings() {
+    public UnaryCallSettings.Builder<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerSettings() {
       return deleteRegionAutoscalerSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getRegionAutoscaler.
      */
-    public SimpleCallSettings.Builder<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerSettings() {
+    public UnaryCallSettings.Builder<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerSettings() {
       return getRegionAutoscalerSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to insertRegionAutoscaler.
      */
-    public SimpleCallSettings.Builder<InsertRegionAutoscalerHttpRequest, Operation> insertRegionAutoscalerSettings() {
+    public UnaryCallSettings.Builder<InsertRegionAutoscalerHttpRequest, Operation> insertRegionAutoscalerSettings() {
       return insertRegionAutoscalerSettings;
     }
 
@@ -523,14 +531,14 @@ public class RegionAutoscalerSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to patchRegionAutoscaler.
      */
-    public SimpleCallSettings.Builder<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerSettings() {
+    public UnaryCallSettings.Builder<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerSettings() {
       return patchRegionAutoscalerSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to updateRegionAutoscaler.
      */
-    public SimpleCallSettings.Builder<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerSettings() {
+    public UnaryCallSettings.Builder<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerSettings() {
       return updateRegionAutoscalerSettings;
     }
 

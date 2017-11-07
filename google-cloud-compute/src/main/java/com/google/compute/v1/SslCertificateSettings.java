@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -53,7 +52,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -106,29 +104,29 @@ public class SslCertificateSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateSettings;
-  private final SimpleCallSettings<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateSettings;
-  private final SimpleCallSettings<InsertSslCertificateHttpRequest, Operation> insertSslCertificateSettings;
+  private final UnaryCallSettings<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateSettings;
+  private final UnaryCallSettings<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateSettings;
+  private final UnaryCallSettings<InsertSslCertificateHttpRequest, Operation> insertSslCertificateSettings;
   private final PagedCallSettings<ListSslCertificatesHttpRequest, SslCertificateList, ListSslCertificatesPagedResponse> listSslCertificatesSettings;
 
   /**
    * Returns the object with the settings used for calls to deleteSslCertificate.
    */
-  public SimpleCallSettings<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateSettings() {
+  public UnaryCallSettings<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateSettings() {
     return deleteSslCertificateSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getSslCertificate.
    */
-  public SimpleCallSettings<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateSettings() {
+  public UnaryCallSettings<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateSettings() {
     return getSslCertificateSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to insertSslCertificate.
    */
-  public SimpleCallSettings<InsertSslCertificateHttpRequest, Operation> insertSslCertificateSettings() {
+  public UnaryCallSettings<InsertSslCertificateHttpRequest, Operation> insertSslCertificateSettings() {
     return insertSslCertificateSettings;
   }
 
@@ -141,11 +139,13 @@ public class SslCertificateSettings extends ClientSettings {
 
 
   public SslCertificateStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonSslCertificateStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -189,20 +189,20 @@ public class SslCertificateSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -255,8 +255,9 @@ public class SslCertificateSettings extends ClientSettings {
   private SslCertificateSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     deleteSslCertificateSettings = settingsBuilder.deleteSslCertificateSettings().build();
@@ -318,23 +319,23 @@ public class SslCertificateSettings extends ClientSettings {
    * Builder for SslCertificateSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateSettings;
-    private final SimpleCallSettings.Builder<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateSettings;
-    private final SimpleCallSettings.Builder<InsertSslCertificateHttpRequest, Operation> insertSslCertificateSettings;
+    private final UnaryCallSettings.Builder<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateSettings;
+    private final UnaryCallSettings.Builder<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateSettings;
+    private final UnaryCallSettings.Builder<InsertSslCertificateHttpRequest, Operation> insertSslCertificateSettings;
     private final PagedCallSettings.Builder<ListSslCertificatesHttpRequest, SslCertificateList, ListSslCertificatesPagedResponse> listSslCertificatesSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -363,16 +364,16 @@ public class SslCertificateSettings extends ClientSettings {
     private Builder(ClientContext clientContext) {
       super(clientContext);
 
-      deleteSslCertificateSettings = SimpleCallSettings.newBuilder();
+      deleteSslCertificateSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getSslCertificateSettings = SimpleCallSettings.newBuilder();
+      getSslCertificateSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      insertSslCertificateSettings = SimpleCallSettings.newBuilder();
+      insertSslCertificateSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listSslCertificatesSettings = PagedCallSettings.newBuilder(
           LIST_SSL_CERTIFICATES_PAGE_STR_FACT);
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           deleteSslCertificateSettings,
           getSslCertificateSettings,
           insertSslCertificateSettings,
@@ -384,8 +385,9 @@ public class SslCertificateSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -418,7 +420,7 @@ public class SslCertificateSettings extends ClientSettings {
       insertSslCertificateSettings = settings.insertSslCertificateSettings.toBuilder();
       listSslCertificatesSettings = settings.listSslCertificatesSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           deleteSslCertificateSettings,
           getSslCertificateSettings,
           insertSslCertificateSettings,
@@ -433,8 +435,14 @@ public class SslCertificateSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -449,7 +457,7 @@ public class SslCertificateSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -457,21 +465,21 @@ public class SslCertificateSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteSslCertificate.
      */
-    public SimpleCallSettings.Builder<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateSettings() {
+    public UnaryCallSettings.Builder<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateSettings() {
       return deleteSslCertificateSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getSslCertificate.
      */
-    public SimpleCallSettings.Builder<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateSettings() {
+    public UnaryCallSettings.Builder<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateSettings() {
       return getSslCertificateSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to insertSslCertificate.
      */
-    public SimpleCallSettings.Builder<InsertSslCertificateHttpRequest, Operation> insertSslCertificateSettings() {
+    public UnaryCallSettings.Builder<InsertSslCertificateHttpRequest, Operation> insertSslCertificateSettings() {
       return insertSslCertificateSettings;
     }
 

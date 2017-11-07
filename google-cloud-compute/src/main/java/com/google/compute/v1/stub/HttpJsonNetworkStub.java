@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,82 +60,77 @@ import javax.annotation.Generated;
 public class HttpJsonNetworkStub extends NetworkStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<DeleteNetworkHttpRequest, Operation> directDeleteNetworkCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteNetworkHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.networks.delete")
-              .setRequestInstance(DeleteNetworkHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/networks/{network}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "network",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetNetworkHttpRequest, Network> directGetNetworkCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetNetworkHttpRequest, Network>newBuilder()
-              .setMethodName("compute.networks.get")
-              .setRequestInstance(GetNetworkHttpRequest.getDefaultInstance())
-              .setResponseInstance(Network.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/networks/{network}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "network",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertNetworkHttpRequest, Operation> directInsertNetworkCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertNetworkHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.networks.insert")
-              .setRequestInstance(InsertNetworkHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/networks")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListNetworksHttpRequest, NetworkList> directListNetworksCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListNetworksHttpRequest, NetworkList>newBuilder()
-              .setMethodName("compute.networks.list")
-              .setRequestInstance(ListNetworksHttpRequest.getDefaultInstance())
-              .setResponseInstance(NetworkList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/networks")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<SwitchToCustomModeNetworkHttpRequest, Operation> directSwitchToCustomModeNetworkCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<SwitchToCustomModeNetworkHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.networks.switchToCustomMode")
-              .setRequestInstance(SwitchToCustomModeNetworkHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/global/networks/{network}/switchToCustomMode")
-              .setPathParams(Sets.<String>newHashSet(
-                                "network",    "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
+  private static final ApiMethodDescriptor<DeleteNetworkHttpRequest, Operation> deleteNetworkMethodDescriptor =
+      ApiMethodDescriptor.<DeleteNetworkHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.networks.delete")
+          .setRequestInstance(DeleteNetworkHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/networks/{network}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "network",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetNetworkHttpRequest, Network> getNetworkMethodDescriptor =
+      ApiMethodDescriptor.<GetNetworkHttpRequest, Network>newBuilder()
+          .setMethodName("compute.networks.get")
+          .setRequestInstance(GetNetworkHttpRequest.getDefaultInstance())
+          .setResponseInstance(Network.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/networks/{network}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "network",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertNetworkHttpRequest, Operation> insertNetworkMethodDescriptor =
+      ApiMethodDescriptor.<InsertNetworkHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.networks.insert")
+          .setRequestInstance(InsertNetworkHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/networks")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListNetworksHttpRequest, NetworkList> listNetworksMethodDescriptor =
+      ApiMethodDescriptor.<ListNetworksHttpRequest, NetworkList>newBuilder()
+          .setMethodName("compute.networks.list")
+          .setRequestInstance(ListNetworksHttpRequest.getDefaultInstance())
+          .setResponseInstance(NetworkList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/networks")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<SwitchToCustomModeNetworkHttpRequest, Operation> switchToCustomModeNetworkMethodDescriptor =
+      ApiMethodDescriptor.<SwitchToCustomModeNetworkHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.networks.switchToCustomMode")
+          .setRequestInstance(SwitchToCustomModeNetworkHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/global/networks/{network}/switchToCustomMode")
+          .setPathParams(Sets.<String>newHashSet(
+                            "network",    "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -161,13 +156,33 @@ public class HttpJsonNetworkStub extends NetworkStub {
    */
   protected HttpJsonNetworkStub(NetworkSettings settings, ClientContext clientContext) throws IOException {
 
-    this.deleteNetworkCallable = HttpJsonCallableFactory.create(directDeleteNetworkCallable,settings.deleteNetworkSettings(), clientContext);
-    this.getNetworkCallable = HttpJsonCallableFactory.create(directGetNetworkCallable,settings.getNetworkSettings(), clientContext);
-    this.insertNetworkCallable = HttpJsonCallableFactory.create(directInsertNetworkCallable,settings.insertNetworkSettings(), clientContext);
-    this.listNetworksCallable = HttpJsonCallableFactory.create(directListNetworksCallable,settings.listNetworksSettings(), clientContext);
-    this.listNetworksPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListNetworksCallable,settings.listNetworksSettings(), clientContext);
-    this.switchToCustomModeNetworkCallable = HttpJsonCallableFactory.create(directSwitchToCustomModeNetworkCallable,settings.switchToCustomModeNetworkSettings(), clientContext);
+    HttpJsonCallSettings<DeleteNetworkHttpRequest, Operation> deleteNetworkTransportSettings =
+        HttpJsonCallSettings.<DeleteNetworkHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteNetworkMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetNetworkHttpRequest, Network> getNetworkTransportSettings =
+        HttpJsonCallSettings.<GetNetworkHttpRequest, Network>newBuilder()
+            .setMethodDescriptor(getNetworkMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertNetworkHttpRequest, Operation> insertNetworkTransportSettings =
+        HttpJsonCallSettings.<InsertNetworkHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertNetworkMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListNetworksHttpRequest, NetworkList> listNetworksTransportSettings =
+        HttpJsonCallSettings.<ListNetworksHttpRequest, NetworkList>newBuilder()
+            .setMethodDescriptor(listNetworksMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<SwitchToCustomModeNetworkHttpRequest, Operation> switchToCustomModeNetworkTransportSettings =
+        HttpJsonCallSettings.<SwitchToCustomModeNetworkHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(switchToCustomModeNetworkMethodDescriptor)
+            .build();
+
+    this.deleteNetworkCallable = HttpJsonCallableFactory.createUnaryCallable(deleteNetworkTransportSettings,settings.deleteNetworkSettings(), clientContext);
+    this.getNetworkCallable = HttpJsonCallableFactory.createUnaryCallable(getNetworkTransportSettings,settings.getNetworkSettings(), clientContext);
+    this.insertNetworkCallable = HttpJsonCallableFactory.createUnaryCallable(insertNetworkTransportSettings,settings.insertNetworkSettings(), clientContext);
+    this.listNetworksCallable = HttpJsonCallableFactory.createUnaryCallable(listNetworksTransportSettings,settings.listNetworksSettings(), clientContext);
+    this.listNetworksPagedCallable = HttpJsonCallableFactory.createPagedCallable(listNetworksTransportSettings,settings.listNetworksSettings(), clientContext);
+    this.switchToCustomModeNetworkCallable = HttpJsonCallableFactory.createUnaryCallable(switchToCustomModeNetworkTransportSettings,settings.switchToCustomModeNetworkSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

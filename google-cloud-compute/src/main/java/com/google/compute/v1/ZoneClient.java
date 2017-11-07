@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (ZoneClient zoneClient = ZoneClient.create()) {
- *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+ *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
  *   Zone response = zoneClient.getZone(zone);
  * }
  * </code>
@@ -91,10 +91,8 @@ import javax.annotation.Generated;
  * <code>
  * ZoneSettings zoneSettings =
  *     ZoneSettings.newBuilder()
- *         .setTransportProvider(ZoneSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setChannelProvider(ZoneSettings.defaultHttpJsonChannelProviderBuilder()
- *                 .setEndpoint(myEndpoint)
- *                 .build())
+ *         .setTransportChannelProvider(ZoneSettings.defaultHttpJsonTransportProviderBuilder()
+ *             .setEndpoint(myEndpoint)
  *             .build())
  *         .build();
  * ZoneClient zoneClient =
@@ -130,6 +128,7 @@ public class ZoneClient implements BackgroundResource {
    * Constructs an instance of ZoneClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use ZoneSettings}.
    */
+  @BetaApi
   public static final ZoneClient create(ZoneStub stub) {
     return new ZoneClient(stub);
   }
@@ -166,7 +165,7 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   Zone response = zoneClient.getZone(zone);
    * }
    * </code></pre>
@@ -191,7 +190,7 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   GetZoneHttpRequest request = GetZoneHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -214,7 +213,7 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *   ZoneName zone = ZoneName.create("[PROJECT]", "[ZONE]");
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   GetZoneHttpRequest request = GetZoneHttpRequest.newBuilder()
    *     .setZoneWithZoneName(zone)
    *     .build();
@@ -236,7 +235,7 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   for (Zone element : zoneClient.listZones(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
@@ -262,7 +261,7 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListZonesHttpRequest request = ListZonesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -288,7 +287,7 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListZonesHttpRequest request = ListZonesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();
@@ -312,7 +311,7 @@ public class ZoneClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneClient zoneClient = ZoneClient.create()) {
-   *   ProjectName project = ProjectName.create("[PROJECT]");
+   *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListZonesHttpRequest request = ListZonesHttpRequest.newBuilder()
    *     .setProjectWithProjectName(project)
    *     .build();

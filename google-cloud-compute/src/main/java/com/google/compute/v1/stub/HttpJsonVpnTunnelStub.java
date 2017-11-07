@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,83 +63,78 @@ import javax.annotation.Generated;
 public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList> directAggregatedListVpnTunnelsCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList>newBuilder()
-              .setMethodName("compute.vpnTunnels.aggregatedList")
-              .setRequestInstance(AggregatedListVpnTunnelsHttpRequest.getDefaultInstance())
-              .setResponseInstance(VpnTunnelAggregatedList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/aggregated/vpnTunnels")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<DeleteVpnTunnelHttpRequest, Operation> directDeleteVpnTunnelCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteVpnTunnelHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.vpnTunnels.delete")
-              .setRequestInstance(DeleteVpnTunnelHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/vpnTunnels/{vpnTunnel}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "vpnTunnel"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetVpnTunnelHttpRequest, VpnTunnel> directGetVpnTunnelCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetVpnTunnelHttpRequest, VpnTunnel>newBuilder()
-              .setMethodName("compute.vpnTunnels.get")
-              .setRequestInstance(GetVpnTunnelHttpRequest.getDefaultInstance())
-              .setResponseInstance(VpnTunnel.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/vpnTunnels/{vpnTunnel}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "vpnTunnel"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertVpnTunnelHttpRequest, Operation> directInsertVpnTunnelCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertVpnTunnelHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.vpnTunnels.insert")
-              .setRequestInstance(InsertVpnTunnelHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/vpnTunnels")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListVpnTunnelsHttpRequest, VpnTunnelList> directListVpnTunnelsCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListVpnTunnelsHttpRequest, VpnTunnelList>newBuilder()
-              .setMethodName("compute.vpnTunnels.list")
-              .setRequestInstance(ListVpnTunnelsHttpRequest.getDefaultInstance())
-              .setResponseInstance(VpnTunnelList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/vpnTunnels")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
+  private static final ApiMethodDescriptor<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList> aggregatedListVpnTunnelsMethodDescriptor =
+      ApiMethodDescriptor.<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList>newBuilder()
+          .setMethodName("compute.vpnTunnels.aggregatedList")
+          .setRequestInstance(AggregatedListVpnTunnelsHttpRequest.getDefaultInstance())
+          .setResponseInstance(VpnTunnelAggregatedList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/aggregated/vpnTunnels")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelMethodDescriptor =
+      ApiMethodDescriptor.<DeleteVpnTunnelHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.vpnTunnels.delete")
+          .setRequestInstance(DeleteVpnTunnelHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/vpnTunnels/{vpnTunnel}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "vpnTunnel"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelMethodDescriptor =
+      ApiMethodDescriptor.<GetVpnTunnelHttpRequest, VpnTunnel>newBuilder()
+          .setMethodName("compute.vpnTunnels.get")
+          .setRequestInstance(GetVpnTunnelHttpRequest.getDefaultInstance())
+          .setResponseInstance(VpnTunnel.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/vpnTunnels/{vpnTunnel}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "vpnTunnel"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelMethodDescriptor =
+      ApiMethodDescriptor.<InsertVpnTunnelHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.vpnTunnels.insert")
+          .setRequestInstance(InsertVpnTunnelHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/vpnTunnels")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListVpnTunnelsHttpRequest, VpnTunnelList> listVpnTunnelsMethodDescriptor =
+      ApiMethodDescriptor.<ListVpnTunnelsHttpRequest, VpnTunnelList>newBuilder()
+          .setMethodName("compute.vpnTunnels.list")
+          .setRequestInstance(ListVpnTunnelsHttpRequest.getDefaultInstance())
+          .setResponseInstance(VpnTunnelList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/vpnTunnels")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -166,15 +161,34 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
    */
   protected HttpJsonVpnTunnelStub(VpnTunnelSettings settings, ClientContext clientContext) throws IOException {
 
-    this.aggregatedListVpnTunnelsCallable = HttpJsonCallableFactory.create(directAggregatedListVpnTunnelsCallable,settings.aggregatedListVpnTunnelsSettings(), clientContext);
-    this.aggregatedListVpnTunnelsPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directAggregatedListVpnTunnelsCallable,settings.aggregatedListVpnTunnelsSettings(), clientContext);
-    this.deleteVpnTunnelCallable = HttpJsonCallableFactory.create(directDeleteVpnTunnelCallable,settings.deleteVpnTunnelSettings(), clientContext);
-    this.getVpnTunnelCallable = HttpJsonCallableFactory.create(directGetVpnTunnelCallable,settings.getVpnTunnelSettings(), clientContext);
-    this.insertVpnTunnelCallable = HttpJsonCallableFactory.create(directInsertVpnTunnelCallable,settings.insertVpnTunnelSettings(), clientContext);
-    this.listVpnTunnelsCallable = HttpJsonCallableFactory.create(directListVpnTunnelsCallable,settings.listVpnTunnelsSettings(), clientContext);
-    this.listVpnTunnelsPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListVpnTunnelsCallable,settings.listVpnTunnelsSettings(), clientContext);
+    HttpJsonCallSettings<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList> aggregatedListVpnTunnelsTransportSettings =
+        HttpJsonCallSettings.<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList>newBuilder()
+            .setMethodDescriptor(aggregatedListVpnTunnelsMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelTransportSettings =
+        HttpJsonCallSettings.<DeleteVpnTunnelHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteVpnTunnelMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelTransportSettings =
+        HttpJsonCallSettings.<GetVpnTunnelHttpRequest, VpnTunnel>newBuilder()
+            .setMethodDescriptor(getVpnTunnelMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelTransportSettings =
+        HttpJsonCallSettings.<InsertVpnTunnelHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertVpnTunnelMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListVpnTunnelsHttpRequest, VpnTunnelList> listVpnTunnelsTransportSettings =
+        HttpJsonCallSettings.<ListVpnTunnelsHttpRequest, VpnTunnelList>newBuilder()
+            .setMethodDescriptor(listVpnTunnelsMethodDescriptor)
+            .build();
+
+    this.aggregatedListVpnTunnelsCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListVpnTunnelsTransportSettings,settings.aggregatedListVpnTunnelsSettings(), clientContext);
+    this.aggregatedListVpnTunnelsPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListVpnTunnelsTransportSettings,settings.aggregatedListVpnTunnelsSettings(), clientContext);
+    this.deleteVpnTunnelCallable = HttpJsonCallableFactory.createUnaryCallable(deleteVpnTunnelTransportSettings,settings.deleteVpnTunnelSettings(), clientContext);
+    this.getVpnTunnelCallable = HttpJsonCallableFactory.createUnaryCallable(getVpnTunnelTransportSettings,settings.getVpnTunnelSettings(), clientContext);
+    this.insertVpnTunnelCallable = HttpJsonCallableFactory.createUnaryCallable(insertVpnTunnelTransportSettings,settings.insertVpnTunnelSettings(), clientContext);
+    this.listVpnTunnelsCallable = HttpJsonCallableFactory.createUnaryCallable(listVpnTunnelsTransportSettings,settings.listVpnTunnelsSettings(), clientContext);
+    this.listVpnTunnelsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listVpnTunnelsTransportSettings,settings.listVpnTunnelsSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

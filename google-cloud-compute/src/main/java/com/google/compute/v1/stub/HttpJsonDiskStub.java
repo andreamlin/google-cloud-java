@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,114 +67,107 @@ import javax.annotation.Generated;
 public class HttpJsonDiskStub extends DiskStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<AggregatedListDisksHttpRequest, DiskAggregatedList> directAggregatedListDisksCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<AggregatedListDisksHttpRequest, DiskAggregatedList>newBuilder()
-              .setMethodName("compute.disks.aggregatedList")
-              .setRequestInstance(AggregatedListDisksHttpRequest.getDefaultInstance())
-              .setResponseInstance(DiskAggregatedList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/aggregated/disks")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<CreateSnapshotDiskHttpRequest, Operation> directCreateSnapshotDiskCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<CreateSnapshotDiskHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.disks.createSnapshot")
-              .setRequestInstance(CreateSnapshotDiskHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}/createSnapshot")
-              .setPathParams(Sets.<String>newHashSet(
-                                "disk",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<DeleteDiskHttpRequest, Operation> directDeleteDiskCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteDiskHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.disks.delete")
-              .setRequestInstance(DeleteDiskHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "disk",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetDiskHttpRequest, Disk> directGetDiskCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetDiskHttpRequest, Disk>newBuilder()
-              .setMethodName("compute.disks.get")
-              .setRequestInstance(GetDiskHttpRequest.getDefaultInstance())
-              .setResponseInstance(Disk.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "disk",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertDiskHttpRequest, Operation> directInsertDiskCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertDiskHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.disks.insert")
-              .setRequestInstance(InsertDiskHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/disks")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "sourceImage"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListDisksHttpRequest, DiskList> directListDisksCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListDisksHttpRequest, DiskList>newBuilder()
-              .setMethodName("compute.disks.list")
-              .setRequestInstance(ListDisksHttpRequest.getDefaultInstance())
-              .setResponseInstance(DiskList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/disks")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<ResizeDiskHttpRequest, Operation> directResizeDiskCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ResizeDiskHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.disks.resize")
-              .setRequestInstance(ResizeDiskHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}/resize")
-              .setPathParams(Sets.<String>newHashSet(
-                                "disk",    "project",    "zone"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
+  private static final ApiMethodDescriptor<AggregatedListDisksHttpRequest, DiskAggregatedList> aggregatedListDisksMethodDescriptor =
+      ApiMethodDescriptor.<AggregatedListDisksHttpRequest, DiskAggregatedList>newBuilder()
+          .setMethodName("compute.disks.aggregatedList")
+          .setRequestInstance(AggregatedListDisksHttpRequest.getDefaultInstance())
+          .setResponseInstance(DiskAggregatedList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/aggregated/disks")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<CreateSnapshotDiskHttpRequest, Operation> createSnapshotDiskMethodDescriptor =
+      ApiMethodDescriptor.<CreateSnapshotDiskHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.disks.createSnapshot")
+          .setRequestInstance(CreateSnapshotDiskHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}/createSnapshot")
+          .setPathParams(Sets.<String>newHashSet(
+                            "disk",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<DeleteDiskHttpRequest, Operation> deleteDiskMethodDescriptor =
+      ApiMethodDescriptor.<DeleteDiskHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.disks.delete")
+          .setRequestInstance(DeleteDiskHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "disk",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetDiskHttpRequest, Disk> getDiskMethodDescriptor =
+      ApiMethodDescriptor.<GetDiskHttpRequest, Disk>newBuilder()
+          .setMethodName("compute.disks.get")
+          .setRequestInstance(GetDiskHttpRequest.getDefaultInstance())
+          .setResponseInstance(Disk.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "disk",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertDiskHttpRequest, Operation> insertDiskMethodDescriptor =
+      ApiMethodDescriptor.<InsertDiskHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.disks.insert")
+          .setRequestInstance(InsertDiskHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/disks")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "sourceImage"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListDisksHttpRequest, DiskList> listDisksMethodDescriptor =
+      ApiMethodDescriptor.<ListDisksHttpRequest, DiskList>newBuilder()
+          .setMethodName("compute.disks.list")
+          .setRequestInstance(ListDisksHttpRequest.getDefaultInstance())
+          .setResponseInstance(DiskList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/disks")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<ResizeDiskHttpRequest, Operation> resizeDiskMethodDescriptor =
+      ApiMethodDescriptor.<ResizeDiskHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.disks.resize")
+          .setRequestInstance(ResizeDiskHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}/resize")
+          .setPathParams(Sets.<String>newHashSet(
+                            "disk",    "project",    "zone"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -203,17 +196,44 @@ public class HttpJsonDiskStub extends DiskStub {
    */
   protected HttpJsonDiskStub(DiskSettings settings, ClientContext clientContext) throws IOException {
 
-    this.aggregatedListDisksCallable = HttpJsonCallableFactory.create(directAggregatedListDisksCallable,settings.aggregatedListDisksSettings(), clientContext);
-    this.aggregatedListDisksPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directAggregatedListDisksCallable,settings.aggregatedListDisksSettings(), clientContext);
-    this.createSnapshotDiskCallable = HttpJsonCallableFactory.create(directCreateSnapshotDiskCallable,settings.createSnapshotDiskSettings(), clientContext);
-    this.deleteDiskCallable = HttpJsonCallableFactory.create(directDeleteDiskCallable,settings.deleteDiskSettings(), clientContext);
-    this.getDiskCallable = HttpJsonCallableFactory.create(directGetDiskCallable,settings.getDiskSettings(), clientContext);
-    this.insertDiskCallable = HttpJsonCallableFactory.create(directInsertDiskCallable,settings.insertDiskSettings(), clientContext);
-    this.listDisksCallable = HttpJsonCallableFactory.create(directListDisksCallable,settings.listDisksSettings(), clientContext);
-    this.listDisksPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListDisksCallable,settings.listDisksSettings(), clientContext);
-    this.resizeDiskCallable = HttpJsonCallableFactory.create(directResizeDiskCallable,settings.resizeDiskSettings(), clientContext);
+    HttpJsonCallSettings<AggregatedListDisksHttpRequest, DiskAggregatedList> aggregatedListDisksTransportSettings =
+        HttpJsonCallSettings.<AggregatedListDisksHttpRequest, DiskAggregatedList>newBuilder()
+            .setMethodDescriptor(aggregatedListDisksMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<CreateSnapshotDiskHttpRequest, Operation> createSnapshotDiskTransportSettings =
+        HttpJsonCallSettings.<CreateSnapshotDiskHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(createSnapshotDiskMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<DeleteDiskHttpRequest, Operation> deleteDiskTransportSettings =
+        HttpJsonCallSettings.<DeleteDiskHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteDiskMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetDiskHttpRequest, Disk> getDiskTransportSettings =
+        HttpJsonCallSettings.<GetDiskHttpRequest, Disk>newBuilder()
+            .setMethodDescriptor(getDiskMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertDiskHttpRequest, Operation> insertDiskTransportSettings =
+        HttpJsonCallSettings.<InsertDiskHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertDiskMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListDisksHttpRequest, DiskList> listDisksTransportSettings =
+        HttpJsonCallSettings.<ListDisksHttpRequest, DiskList>newBuilder()
+            .setMethodDescriptor(listDisksMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ResizeDiskHttpRequest, Operation> resizeDiskTransportSettings =
+        HttpJsonCallSettings.<ResizeDiskHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(resizeDiskMethodDescriptor)
+            .build();
+
+    this.aggregatedListDisksCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListDisksTransportSettings,settings.aggregatedListDisksSettings(), clientContext);
+    this.aggregatedListDisksPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListDisksTransportSettings,settings.aggregatedListDisksSettings(), clientContext);
+    this.createSnapshotDiskCallable = HttpJsonCallableFactory.createUnaryCallable(createSnapshotDiskTransportSettings,settings.createSnapshotDiskSettings(), clientContext);
+    this.deleteDiskCallable = HttpJsonCallableFactory.createUnaryCallable(deleteDiskTransportSettings,settings.deleteDiskSettings(), clientContext);
+    this.getDiskCallable = HttpJsonCallableFactory.createUnaryCallable(getDiskTransportSettings,settings.getDiskSettings(), clientContext);
+    this.insertDiskCallable = HttpJsonCallableFactory.createUnaryCallable(insertDiskTransportSettings,settings.insertDiskSettings(), clientContext);
+    this.listDisksCallable = HttpJsonCallableFactory.createUnaryCallable(listDisksTransportSettings,settings.listDisksSettings(), clientContext);
+    this.listDisksPagedCallable = HttpJsonCallableFactory.createPagedCallable(listDisksTransportSettings,settings.listDisksSettings(), clientContext);
+    this.resizeDiskCallable = HttpJsonCallableFactory.createUnaryCallable(resizeDiskTransportSettings,settings.resizeDiskSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

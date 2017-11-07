@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,143 +69,134 @@ import javax.annotation.Generated;
 public class HttpJsonRouterStub extends RouterStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<AggregatedListRoutersHttpRequest, RouterAggregatedList> directAggregatedListRoutersCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<AggregatedListRoutersHttpRequest, RouterAggregatedList>newBuilder()
-              .setMethodName("compute.routers.aggregatedList")
-              .setRequestInstance(AggregatedListRoutersHttpRequest.getDefaultInstance())
-              .setResponseInstance(RouterAggregatedList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/aggregated/routers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<DeleteRouterHttpRequest, Operation> directDeleteRouterCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<DeleteRouterHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.routers.delete")
-              .setRequestInstance(DeleteRouterHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "router"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.DELETE)
-              .build());
-  private static final UnaryCallable<GetRouterHttpRequest, Router> directGetRouterCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetRouterHttpRequest, Router>newBuilder()
-              .setMethodName("compute.routers.get")
-              .setRequestInstance(GetRouterHttpRequest.getDefaultInstance())
-              .setResponseInstance(Router.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "router"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<GetRouterStatusRouterHttpRequest, RouterStatusResponse> directGetRouterStatusRouterCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetRouterStatusRouterHttpRequest, RouterStatusResponse>newBuilder()
-              .setMethodName("compute.routers.getRouterStatus")
-              .setRequestInstance(GetRouterStatusRouterHttpRequest.getDefaultInstance())
-              .setResponseInstance(RouterStatusResponse.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}/getRouterStatus")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "router"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<InsertRouterHttpRequest, Operation> directInsertRouterCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<InsertRouterHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.routers.insert")
-              .setRequestInstance(InsertRouterHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/routers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<ListRoutersHttpRequest, RouterList> directListRoutersCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListRoutersHttpRequest, RouterList>newBuilder()
-              .setMethodName("compute.routers.list")
-              .setRequestInstance(ListRoutersHttpRequest.getDefaultInstance())
-              .setResponseInstance(RouterList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/routers")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<PatchRouterHttpRequest, Operation> directPatchRouterCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<PatchRouterHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.routers.patch")
-              .setRequestInstance(PatchRouterHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "router"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.PATCH)
-              .build());
-  private static final UnaryCallable<PreviewRouterHttpRequest, RoutersPreviewResponse> directPreviewRouterCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<PreviewRouterHttpRequest, RoutersPreviewResponse>newBuilder()
-              .setMethodName("compute.routers.preview")
-              .setRequestInstance(PreviewRouterHttpRequest.getDefaultInstance())
-              .setResponseInstance(RoutersPreviewResponse.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}/preview")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "router"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<UpdateRouterHttpRequest, Operation> directUpdateRouterCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<UpdateRouterHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.routers.update")
-              .setRequestInstance(UpdateRouterHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region",    "router"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.PUT)
-              .build());
+  private static final ApiMethodDescriptor<AggregatedListRoutersHttpRequest, RouterAggregatedList> aggregatedListRoutersMethodDescriptor =
+      ApiMethodDescriptor.<AggregatedListRoutersHttpRequest, RouterAggregatedList>newBuilder()
+          .setMethodName("compute.routers.aggregatedList")
+          .setRequestInstance(AggregatedListRoutersHttpRequest.getDefaultInstance())
+          .setResponseInstance(RouterAggregatedList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/aggregated/routers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<DeleteRouterHttpRequest, Operation> deleteRouterMethodDescriptor =
+      ApiMethodDescriptor.<DeleteRouterHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.routers.delete")
+          .setRequestInstance(DeleteRouterHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "router"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.DELETE)
+          .build());
+  private static final ApiMethodDescriptor<GetRouterHttpRequest, Router> getRouterMethodDescriptor =
+      ApiMethodDescriptor.<GetRouterHttpRequest, Router>newBuilder()
+          .setMethodName("compute.routers.get")
+          .setRequestInstance(GetRouterHttpRequest.getDefaultInstance())
+          .setResponseInstance(Router.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "router"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterMethodDescriptor =
+      ApiMethodDescriptor.<GetRouterStatusRouterHttpRequest, RouterStatusResponse>newBuilder()
+          .setMethodName("compute.routers.getRouterStatus")
+          .setRequestInstance(GetRouterStatusRouterHttpRequest.getDefaultInstance())
+          .setResponseInstance(RouterStatusResponse.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}/getRouterStatus")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "router"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<InsertRouterHttpRequest, Operation> insertRouterMethodDescriptor =
+      ApiMethodDescriptor.<InsertRouterHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.routers.insert")
+          .setRequestInstance(InsertRouterHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/routers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<ListRoutersHttpRequest, RouterList> listRoutersMethodDescriptor =
+      ApiMethodDescriptor.<ListRoutersHttpRequest, RouterList>newBuilder()
+          .setMethodName("compute.routers.list")
+          .setRequestInstance(ListRoutersHttpRequest.getDefaultInstance())
+          .setResponseInstance(RouterList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/routers")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<PatchRouterHttpRequest, Operation> patchRouterMethodDescriptor =
+      ApiMethodDescriptor.<PatchRouterHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.routers.patch")
+          .setRequestInstance(PatchRouterHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "router"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.PATCH)
+          .build());
+  private static final ApiMethodDescriptor<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterMethodDescriptor =
+      ApiMethodDescriptor.<PreviewRouterHttpRequest, RoutersPreviewResponse>newBuilder()
+          .setMethodName("compute.routers.preview")
+          .setRequestInstance(PreviewRouterHttpRequest.getDefaultInstance())
+          .setResponseInstance(RoutersPreviewResponse.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}/preview")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "router"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<UpdateRouterHttpRequest, Operation> updateRouterMethodDescriptor =
+      ApiMethodDescriptor.<UpdateRouterHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.routers.update")
+          .setRequestInstance(UpdateRouterHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region",    "router"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.PUT)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -236,19 +227,54 @@ public class HttpJsonRouterStub extends RouterStub {
    */
   protected HttpJsonRouterStub(RouterSettings settings, ClientContext clientContext) throws IOException {
 
-    this.aggregatedListRoutersCallable = HttpJsonCallableFactory.create(directAggregatedListRoutersCallable,settings.aggregatedListRoutersSettings(), clientContext);
-    this.aggregatedListRoutersPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directAggregatedListRoutersCallable,settings.aggregatedListRoutersSettings(), clientContext);
-    this.deleteRouterCallable = HttpJsonCallableFactory.create(directDeleteRouterCallable,settings.deleteRouterSettings(), clientContext);
-    this.getRouterCallable = HttpJsonCallableFactory.create(directGetRouterCallable,settings.getRouterSettings(), clientContext);
-    this.getRouterStatusRouterCallable = HttpJsonCallableFactory.create(directGetRouterStatusRouterCallable,settings.getRouterStatusRouterSettings(), clientContext);
-    this.insertRouterCallable = HttpJsonCallableFactory.create(directInsertRouterCallable,settings.insertRouterSettings(), clientContext);
-    this.listRoutersCallable = HttpJsonCallableFactory.create(directListRoutersCallable,settings.listRoutersSettings(), clientContext);
-    this.listRoutersPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListRoutersCallable,settings.listRoutersSettings(), clientContext);
-    this.patchRouterCallable = HttpJsonCallableFactory.create(directPatchRouterCallable,settings.patchRouterSettings(), clientContext);
-    this.previewRouterCallable = HttpJsonCallableFactory.create(directPreviewRouterCallable,settings.previewRouterSettings(), clientContext);
-    this.updateRouterCallable = HttpJsonCallableFactory.create(directUpdateRouterCallable,settings.updateRouterSettings(), clientContext);
+    HttpJsonCallSettings<AggregatedListRoutersHttpRequest, RouterAggregatedList> aggregatedListRoutersTransportSettings =
+        HttpJsonCallSettings.<AggregatedListRoutersHttpRequest, RouterAggregatedList>newBuilder()
+            .setMethodDescriptor(aggregatedListRoutersMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<DeleteRouterHttpRequest, Operation> deleteRouterTransportSettings =
+        HttpJsonCallSettings.<DeleteRouterHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(deleteRouterMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetRouterHttpRequest, Router> getRouterTransportSettings =
+        HttpJsonCallSettings.<GetRouterHttpRequest, Router>newBuilder()
+            .setMethodDescriptor(getRouterMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterTransportSettings =
+        HttpJsonCallSettings.<GetRouterStatusRouterHttpRequest, RouterStatusResponse>newBuilder()
+            .setMethodDescriptor(getRouterStatusRouterMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<InsertRouterHttpRequest, Operation> insertRouterTransportSettings =
+        HttpJsonCallSettings.<InsertRouterHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(insertRouterMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListRoutersHttpRequest, RouterList> listRoutersTransportSettings =
+        HttpJsonCallSettings.<ListRoutersHttpRequest, RouterList>newBuilder()
+            .setMethodDescriptor(listRoutersMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<PatchRouterHttpRequest, Operation> patchRouterTransportSettings =
+        HttpJsonCallSettings.<PatchRouterHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(patchRouterMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterTransportSettings =
+        HttpJsonCallSettings.<PreviewRouterHttpRequest, RoutersPreviewResponse>newBuilder()
+            .setMethodDescriptor(previewRouterMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<UpdateRouterHttpRequest, Operation> updateRouterTransportSettings =
+        HttpJsonCallSettings.<UpdateRouterHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(updateRouterMethodDescriptor)
+            .build();
+
+    this.aggregatedListRoutersCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListRoutersTransportSettings,settings.aggregatedListRoutersSettings(), clientContext);
+    this.aggregatedListRoutersPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListRoutersTransportSettings,settings.aggregatedListRoutersSettings(), clientContext);
+    this.deleteRouterCallable = HttpJsonCallableFactory.createUnaryCallable(deleteRouterTransportSettings,settings.deleteRouterSettings(), clientContext);
+    this.getRouterCallable = HttpJsonCallableFactory.createUnaryCallable(getRouterTransportSettings,settings.getRouterSettings(), clientContext);
+    this.getRouterStatusRouterCallable = HttpJsonCallableFactory.createUnaryCallable(getRouterStatusRouterTransportSettings,settings.getRouterStatusRouterSettings(), clientContext);
+    this.insertRouterCallable = HttpJsonCallableFactory.createUnaryCallable(insertRouterTransportSettings,settings.insertRouterSettings(), clientContext);
+    this.listRoutersCallable = HttpJsonCallableFactory.createUnaryCallable(listRoutersTransportSettings,settings.listRoutersSettings(), clientContext);
+    this.listRoutersPagedCallable = HttpJsonCallableFactory.createPagedCallable(listRoutersTransportSettings,settings.listRoutersSettings(), clientContext);
+    this.patchRouterCallable = HttpJsonCallableFactory.createUnaryCallable(patchRouterTransportSettings,settings.patchRouterSettings(), clientContext);
+    this.previewRouterCallable = HttpJsonCallableFactory.createUnaryCallable(previewRouterTransportSettings,settings.previewRouterSettings(), clientContext);
+    this.updateRouterCallable = HttpJsonCallableFactory.createUnaryCallable(updateRouterTransportSettings,settings.updateRouterSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

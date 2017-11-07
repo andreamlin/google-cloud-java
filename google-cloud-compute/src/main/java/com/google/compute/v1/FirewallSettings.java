@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,25 @@ package com.google.compute.v1;
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
+import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
-import com.google.api.gax.httpjson.HttpJsonStatusCode;
-import com.google.api.gax.httpjson.HttpJsonTransport;
-import com.google.api.gax.httpjson.HttpJsonTransportProvider;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
-import com.google.api.gax.rpc.SimpleCallSettings;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.api.gax.rpc.TransportProvider;
+import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
@@ -53,7 +52,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
-import org.apache.http.HttpStatus;
 import org.threeten.bp.Duration;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS
@@ -106,31 +104,31 @@ public class FirewallSettings extends ClientSettings {
 
   private static String gapicVersion;
 
-  private final SimpleCallSettings<DeleteFirewallHttpRequest, Operation> deleteFirewallSettings;
-  private final SimpleCallSettings<GetFirewallHttpRequest, Firewall> getFirewallSettings;
-  private final SimpleCallSettings<InsertFirewallHttpRequest, Operation> insertFirewallSettings;
+  private final UnaryCallSettings<DeleteFirewallHttpRequest, Operation> deleteFirewallSettings;
+  private final UnaryCallSettings<GetFirewallHttpRequest, Firewall> getFirewallSettings;
+  private final UnaryCallSettings<InsertFirewallHttpRequest, Operation> insertFirewallSettings;
   private final PagedCallSettings<ListFirewallsHttpRequest, FirewallList, ListFirewallsPagedResponse> listFirewallsSettings;
-  private final SimpleCallSettings<PatchFirewallHttpRequest, Operation> patchFirewallSettings;
-  private final SimpleCallSettings<UpdateFirewallHttpRequest, Operation> updateFirewallSettings;
+  private final UnaryCallSettings<PatchFirewallHttpRequest, Operation> patchFirewallSettings;
+  private final UnaryCallSettings<UpdateFirewallHttpRequest, Operation> updateFirewallSettings;
 
   /**
    * Returns the object with the settings used for calls to deleteFirewall.
    */
-  public SimpleCallSettings<DeleteFirewallHttpRequest, Operation> deleteFirewallSettings() {
+  public UnaryCallSettings<DeleteFirewallHttpRequest, Operation> deleteFirewallSettings() {
     return deleteFirewallSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to getFirewall.
    */
-  public SimpleCallSettings<GetFirewallHttpRequest, Firewall> getFirewallSettings() {
+  public UnaryCallSettings<GetFirewallHttpRequest, Firewall> getFirewallSettings() {
     return getFirewallSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to insertFirewall.
    */
-  public SimpleCallSettings<InsertFirewallHttpRequest, Operation> insertFirewallSettings() {
+  public UnaryCallSettings<InsertFirewallHttpRequest, Operation> insertFirewallSettings() {
     return insertFirewallSettings;
   }
 
@@ -144,24 +142,26 @@ public class FirewallSettings extends ClientSettings {
   /**
    * Returns the object with the settings used for calls to patchFirewall.
    */
-  public SimpleCallSettings<PatchFirewallHttpRequest, Operation> patchFirewallSettings() {
+  public UnaryCallSettings<PatchFirewallHttpRequest, Operation> patchFirewallSettings() {
     return patchFirewallSettings;
   }
 
   /**
    * Returns the object with the settings used for calls to updateFirewall.
    */
-  public SimpleCallSettings<UpdateFirewallHttpRequest, Operation> updateFirewallSettings() {
+  public UnaryCallSettings<UpdateFirewallHttpRequest, Operation> updateFirewallSettings() {
     return updateFirewallSettings;
   }
 
 
   public FirewallStub createStub() throws IOException {
-    if (getTransportProvider().getTransportName().equals(HttpJsonTransport.getHttpJsonTransportName())) {
+    if (getTransportChannelProvider()
+        .getTransportName()
+        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
       return HttpJsonFirewallStub.create(this);
     } else {
       throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportProvider().getTransportName());
+          "Transport not supported: " + getTransportChannelProvider().getTransportName());
     }
   }
 
@@ -205,20 +205,20 @@ public class FirewallSettings extends ClientSettings {
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
-  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonChannelProviderBuilder() {
+  public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
     return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint())
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion());
+        .setEndpoint(getDefaultEndpoint());
   }
 
-  /** Returns a builder for the default ChannelProvider for this service. */
-  public static HttpJsonTransportProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return HttpJsonTransportProvider.newBuilder()
-        .setChannelProvider(defaultHttpJsonChannelProviderBuilder().build());
-  }
-
-  public static TransportProvider defaultTransportProvider() {
+  public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
+  }
+
+  public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
+    return ApiClientHeaderProvider.newBuilder()
+        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
+        .setApiClientHeaderLineKey("x-goog-api-client")
+        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
   }
 
   private static String getGapicVersion() {
@@ -271,8 +271,9 @@ public class FirewallSettings extends ClientSettings {
   private FirewallSettings(Builder settingsBuilder) throws IOException {
     super(
         settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportProvider(),
+        settingsBuilder.getTransportChannelProvider(),
         settingsBuilder.getCredentialsProvider(),
+        settingsBuilder.getHeaderProvider(),
         settingsBuilder.getClock());
 
     deleteFirewallSettings = settingsBuilder.deleteFirewallSettings().build();
@@ -336,25 +337,25 @@ public class FirewallSettings extends ClientSettings {
    * Builder for FirewallSettings.
    */
   public static class Builder extends ClientSettings.Builder {
-    private final ImmutableList<UnaryCallSettings.Builder> unaryMethodSettingsBuilders;
+    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final SimpleCallSettings.Builder<DeleteFirewallHttpRequest, Operation> deleteFirewallSettings;
-    private final SimpleCallSettings.Builder<GetFirewallHttpRequest, Firewall> getFirewallSettings;
-    private final SimpleCallSettings.Builder<InsertFirewallHttpRequest, Operation> insertFirewallSettings;
+    private final UnaryCallSettings.Builder<DeleteFirewallHttpRequest, Operation> deleteFirewallSettings;
+    private final UnaryCallSettings.Builder<GetFirewallHttpRequest, Firewall> getFirewallSettings;
+    private final UnaryCallSettings.Builder<InsertFirewallHttpRequest, Operation> insertFirewallSettings;
     private final PagedCallSettings.Builder<ListFirewallsHttpRequest, FirewallList, ListFirewallsPagedResponse> listFirewallsSettings;
-    private final SimpleCallSettings.Builder<PatchFirewallHttpRequest, Operation> patchFirewallSettings;
-    private final SimpleCallSettings.Builder<UpdateFirewallHttpRequest, Operation> updateFirewallSettings;
+    private final UnaryCallSettings.Builder<PatchFirewallHttpRequest, Operation> patchFirewallSettings;
+    private final UnaryCallSettings.Builder<UpdateFirewallHttpRequest, Operation> updateFirewallSettings;
 
-    private static final ImmutableMap<String, ImmutableSet<StatusCode>> RETRYABLE_CODE_DEFINITIONS;
+    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
     static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode>> definitions = ImmutableMap.builder();
+      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList(HttpJsonStatusCode.of(HttpStatus.SC_GATEWAY_TIMEOUT), HttpJsonStatusCode.of(HttpStatus.SC_SERVICE_UNAVAILABLE))));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put(
           "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode>newArrayList()));
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -383,20 +384,20 @@ public class FirewallSettings extends ClientSettings {
     private Builder(ClientContext clientContext) {
       super(clientContext);
 
-      deleteFirewallSettings = SimpleCallSettings.newBuilder();
+      deleteFirewallSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      getFirewallSettings = SimpleCallSettings.newBuilder();
+      getFirewallSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      insertFirewallSettings = SimpleCallSettings.newBuilder();
+      insertFirewallSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       listFirewallsSettings = PagedCallSettings.newBuilder(
           LIST_FIREWALLS_PAGE_STR_FACT);
 
-      patchFirewallSettings = SimpleCallSettings.newBuilder();
+      patchFirewallSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      updateFirewallSettings = SimpleCallSettings.newBuilder();
+      updateFirewallSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           deleteFirewallSettings,
           getFirewallSettings,
           insertFirewallSettings,
@@ -410,8 +411,9 @@ public class FirewallSettings extends ClientSettings {
 
     private static Builder createDefault() {
       Builder builder = new Builder((ClientContext) null);
-      builder.setTransportProvider(defaultTransportProvider());
+      builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
+      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       return initDefaults(builder);
     }
 
@@ -454,7 +456,7 @@ public class FirewallSettings extends ClientSettings {
       patchFirewallSettings = settings.patchFirewallSettings.toBuilder();
       updateFirewallSettings = settings.updateFirewallSettings.toBuilder();
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder>of(
+      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           deleteFirewallSettings,
           getFirewallSettings,
           insertFirewallSettings,
@@ -471,8 +473,14 @@ public class FirewallSettings extends ClientSettings {
     }
 
     @Override
-    public Builder setTransportProvider(TransportProvider transportProvider) {
-      super.setTransportProvider(transportProvider);
+    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
+      super.setTransportChannelProvider(transportProvider);
+      return this;
+    }
+
+    @Override
+    public Builder setHeaderProvider(HeaderProvider headerProvider) {
+      super.setHeaderProvider(headerProvider);
       return this;
     }
 
@@ -487,7 +495,7 @@ public class FirewallSettings extends ClientSettings {
      *
      * Note: This method does not support applying settings to streaming methods.
      */
-    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder, Void> settingsUpdater) throws Exception {
+    public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
       super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
       return this;
     }
@@ -495,21 +503,21 @@ public class FirewallSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to deleteFirewall.
      */
-    public SimpleCallSettings.Builder<DeleteFirewallHttpRequest, Operation> deleteFirewallSettings() {
+    public UnaryCallSettings.Builder<DeleteFirewallHttpRequest, Operation> deleteFirewallSettings() {
       return deleteFirewallSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to getFirewall.
      */
-    public SimpleCallSettings.Builder<GetFirewallHttpRequest, Firewall> getFirewallSettings() {
+    public UnaryCallSettings.Builder<GetFirewallHttpRequest, Firewall> getFirewallSettings() {
       return getFirewallSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to insertFirewall.
      */
-    public SimpleCallSettings.Builder<InsertFirewallHttpRequest, Operation> insertFirewallSettings() {
+    public UnaryCallSettings.Builder<InsertFirewallHttpRequest, Operation> insertFirewallSettings() {
       return insertFirewallSettings;
     }
 
@@ -523,14 +531,14 @@ public class FirewallSettings extends ClientSettings {
     /**
      * Returns the builder for the settings used for calls to patchFirewall.
      */
-    public SimpleCallSettings.Builder<PatchFirewallHttpRequest, Operation> patchFirewallSettings() {
+    public UnaryCallSettings.Builder<PatchFirewallHttpRequest, Operation> patchFirewallSettings() {
       return patchFirewallSettings;
     }
 
     /**
      * Returns the builder for the settings used for calls to updateFirewall.
      */
-    public SimpleCallSettings.Builder<UpdateFirewallHttpRequest, Operation> updateFirewallSettings() {
+    public UnaryCallSettings.Builder<UpdateFirewallHttpRequest, Operation> updateFirewallSettings() {
       return updateFirewallSettings;
     }
 

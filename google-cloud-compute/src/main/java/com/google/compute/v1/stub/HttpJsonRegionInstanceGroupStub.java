@@ -1,5 +1,5 @@
 /*
- * Copyright 2017, Google Inc. All rights reserved.
+ * Copyright 2017, Google LLC All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,68 +64,64 @@ import javax.annotation.Generated;
 public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final UnaryCallable<GetRegionInstanceGroupHttpRequest, InstanceGroup> directGetRegionInstanceGroupCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<GetRegionInstanceGroupHttpRequest, InstanceGroup>newBuilder()
-              .setMethodName("compute.regionInstanceGroups.get")
-              .setRequestInstance(GetRegionInstanceGroupHttpRequest.getDefaultInstance())
-              .setResponseInstance(InstanceGroup.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/instanceGroups/{instanceGroup}")
-              .setPathParams(Sets.<String>newHashSet(
-                                "instanceGroup",    "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList> directListRegionInstanceGroupsCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList>newBuilder()
-              .setMethodName("compute.regionInstanceGroups.list")
-              .setRequestInstance(ListRegionInstanceGroupsHttpRequest.getDefaultInstance())
-              .setResponseInstance(RegionInstanceGroupList.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/instanceGroups")
-              .setPathParams(Sets.<String>newHashSet(
-                                "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.GET)
-              .build());
-  private static final UnaryCallable<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances> directListInstancesRegionInstanceGroupsCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances>newBuilder()
-              .setMethodName("compute.regionInstanceGroups.listInstances")
-              .setRequestInstance(ListInstancesRegionInstanceGroupsHttpRequest.getDefaultInstance())
-              .setResponseInstance(RegionInstanceGroupsListInstances.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/instanceGroups/{instanceGroup}/listInstances")
-              .setPathParams(Sets.<String>newHashSet(
-                                "instanceGroup",    "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 "filter",    "maxResults",    "orderBy",    "pageToken"
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
-  private static final UnaryCallable<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> directSetNamedPortsRegionInstanceGroupCallable =
-      HttpJsonCallableFactory.createDirectCallable(
-          ApiMethodDescriptor.<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>newBuilder()
-              .setMethodName("compute.regionInstanceGroups.setNamedPorts")
-              .setRequestInstance(SetNamedPortsRegionInstanceGroupHttpRequest.getDefaultInstance())
-              .setResponseInstance(Operation.getDefaultInstance())
-              .setEndpointPathTemplate("{project}/regions/{region}/instanceGroups/{instanceGroup}/setNamedPorts")
-              .setPathParams(Sets.<String>newHashSet(
-                                "instanceGroup",    "project",    "region"
-                                ))
-              .setQueryParams(Sets.<String>newHashSet(
-                                 ))
-              .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
-              .setHttpMethod(HttpMethods.POST)
-              .build());
+  private static final ApiMethodDescriptor<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupMethodDescriptor =
+      ApiMethodDescriptor.<GetRegionInstanceGroupHttpRequest, InstanceGroup>newBuilder()
+          .setMethodName("compute.regionInstanceGroups.get")
+          .setRequestInstance(GetRegionInstanceGroupHttpRequest.getDefaultInstance())
+          .setResponseInstance(InstanceGroup.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/instanceGroups/{instanceGroup}")
+          .setPathParams(Sets.<String>newHashSet(
+                            "instanceGroup",    "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList> listRegionInstanceGroupsMethodDescriptor =
+      ApiMethodDescriptor.<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList>newBuilder()
+          .setMethodName("compute.regionInstanceGroups.list")
+          .setRequestInstance(ListRegionInstanceGroupsHttpRequest.getDefaultInstance())
+          .setResponseInstance(RegionInstanceGroupList.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/instanceGroups")
+          .setPathParams(Sets.<String>newHashSet(
+                            "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.GET)
+          .build());
+  private static final ApiMethodDescriptor<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances> listInstancesRegionInstanceGroupsMethodDescriptor =
+      ApiMethodDescriptor.<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances>newBuilder()
+          .setMethodName("compute.regionInstanceGroups.listInstances")
+          .setRequestInstance(ListInstancesRegionInstanceGroupsHttpRequest.getDefaultInstance())
+          .setResponseInstance(RegionInstanceGroupsListInstances.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/instanceGroups/{instanceGroup}/listInstances")
+          .setPathParams(Sets.<String>newHashSet(
+                            "instanceGroup",    "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             "filter",    "maxResults",    "orderBy",    "pageToken"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
+  private static final ApiMethodDescriptor<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupMethodDescriptor =
+      ApiMethodDescriptor.<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.regionInstanceGroups.setNamedPorts")
+          .setRequestInstance(SetNamedPortsRegionInstanceGroupHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/instanceGroups/{instanceGroup}/setNamedPorts")
+          .setPathParams(Sets.<String>newHashSet(
+                            "instanceGroup",    "project",    "region"
+                            ))
+          .setQueryParams(Sets.<String>newHashSet(
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpMethod(HttpMethods.POST)
+          .build());
 
   private final BackgroundResource backgroundResources;
 
@@ -151,14 +147,29 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
    */
   protected HttpJsonRegionInstanceGroupStub(RegionInstanceGroupSettings settings, ClientContext clientContext) throws IOException {
 
-    this.getRegionInstanceGroupCallable = HttpJsonCallableFactory.create(directGetRegionInstanceGroupCallable,settings.getRegionInstanceGroupSettings(), clientContext);
-    this.listRegionInstanceGroupsCallable = HttpJsonCallableFactory.create(directListRegionInstanceGroupsCallable,settings.listRegionInstanceGroupsSettings(), clientContext);
-    this.listRegionInstanceGroupsPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListRegionInstanceGroupsCallable,settings.listRegionInstanceGroupsSettings(), clientContext);
-    this.listInstancesRegionInstanceGroupsCallable = HttpJsonCallableFactory.create(directListInstancesRegionInstanceGroupsCallable,settings.listInstancesRegionInstanceGroupsSettings(), clientContext);
-    this.listInstancesRegionInstanceGroupsPagedCallable =
-        HttpJsonCallableFactory.createPagedVariant(directListInstancesRegionInstanceGroupsCallable,settings.listInstancesRegionInstanceGroupsSettings(), clientContext);
-    this.setNamedPortsRegionInstanceGroupCallable = HttpJsonCallableFactory.create(directSetNamedPortsRegionInstanceGroupCallable,settings.setNamedPortsRegionInstanceGroupSettings(), clientContext);
+    HttpJsonCallSettings<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupTransportSettings =
+        HttpJsonCallSettings.<GetRegionInstanceGroupHttpRequest, InstanceGroup>newBuilder()
+            .setMethodDescriptor(getRegionInstanceGroupMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList> listRegionInstanceGroupsTransportSettings =
+        HttpJsonCallSettings.<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList>newBuilder()
+            .setMethodDescriptor(listRegionInstanceGroupsMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances> listInstancesRegionInstanceGroupsTransportSettings =
+        HttpJsonCallSettings.<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances>newBuilder()
+            .setMethodDescriptor(listInstancesRegionInstanceGroupsMethodDescriptor)
+            .build();
+    HttpJsonCallSettings<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupTransportSettings =
+        HttpJsonCallSettings.<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(setNamedPortsRegionInstanceGroupMethodDescriptor)
+            .build();
+
+    this.getRegionInstanceGroupCallable = HttpJsonCallableFactory.createUnaryCallable(getRegionInstanceGroupTransportSettings,settings.getRegionInstanceGroupSettings(), clientContext);
+    this.listRegionInstanceGroupsCallable = HttpJsonCallableFactory.createUnaryCallable(listRegionInstanceGroupsTransportSettings,settings.listRegionInstanceGroupsSettings(), clientContext);
+    this.listRegionInstanceGroupsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listRegionInstanceGroupsTransportSettings,settings.listRegionInstanceGroupsSettings(), clientContext);
+    this.listInstancesRegionInstanceGroupsCallable = HttpJsonCallableFactory.createUnaryCallable(listInstancesRegionInstanceGroupsTransportSettings,settings.listInstancesRegionInstanceGroupsSettings(), clientContext);
+    this.listInstancesRegionInstanceGroupsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listInstancesRegionInstanceGroupsTransportSettings,settings.listInstancesRegionInstanceGroupsSettings(), clientContext);
+    this.setNamedPortsRegionInstanceGroupCallable = HttpJsonCallableFactory.createUnaryCallable(setNamedPortsRegionInstanceGroupTransportSettings,settings.setNamedPortsRegionInstanceGroupSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }
