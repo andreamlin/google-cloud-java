@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
-import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -77,7 +77,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<DeleteTargetVpnGatewayHttpRequest, Operation> deleteTargetVpnGatewayMethodDescriptor =
       ApiMethodDescriptor.<DeleteTargetVpnGatewayHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetVpnGateways.delete")
@@ -91,7 +91,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<GetTargetVpnGatewayHttpRequest, TargetVpnGateway> getTargetVpnGatewayMethodDescriptor =
       ApiMethodDescriptor.<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>newBuilder()
           .setMethodName("compute.targetVpnGateways.get")
@@ -105,7 +105,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<InsertTargetVpnGatewayHttpRequest, Operation> insertTargetVpnGatewayMethodDescriptor =
       ApiMethodDescriptor.<InsertTargetVpnGatewayHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetVpnGateways.insert")
@@ -119,7 +119,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList> listTargetVpnGatewaysMethodDescriptor =
       ApiMethodDescriptor.<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList>newBuilder()
           .setMethodName("compute.targetVpnGateways.list")
@@ -134,7 +134,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
 
   private final BackgroundResource backgroundResources;
 

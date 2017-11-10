@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
-import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -69,7 +69,7 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<GetRegionOperationHttpRequest, Operation> getRegionOperationMethodDescriptor =
       ApiMethodDescriptor.<GetRegionOperationHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionOperations.get")
@@ -83,7 +83,7 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<ListRegionOperationsHttpRequest, OperationList> listRegionOperationsMethodDescriptor =
       ApiMethodDescriptor.<ListRegionOperationsHttpRequest, OperationList>newBuilder()
           .setMethodName("compute.regionOperations.list")
@@ -98,7 +98,7 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
 
   private final BackgroundResource backgroundResources;
 

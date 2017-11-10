@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
-import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -85,7 +85,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<DeleteRegionInstanceGroupManagerHttpRequest, Operation> deleteRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<DeleteRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.delete")
@@ -99,7 +99,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation> deleteInstancesRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.deleteInstances")
@@ -113,7 +113,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager> getRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.get")
@@ -127,7 +127,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<InsertRegionInstanceGroupManagerHttpRequest, Operation> insertRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<InsertRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.insert")
@@ -141,7 +141,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<ListRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagerList> listRegionInstanceGroupManagersMethodDescriptor =
       ApiMethodDescriptor.<ListRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagerList>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.list")
@@ -156,7 +156,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<ListManagedInstancesRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagersListInstancesResponse> listManagedInstancesRegionInstanceGroupManagersMethodDescriptor =
       ApiMethodDescriptor.<ListManagedInstancesRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagersListInstancesResponse>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.listManagedInstances")
@@ -171,7 +171,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation> recreateInstancesRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.recreateInstances")
@@ -185,7 +185,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<ResizeRegionInstanceGroupManagerHttpRequest, Operation> resizeRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<ResizeRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.resize")
@@ -200,7 +200,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.setInstanceTemplate")
@@ -214,7 +214,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation> setTargetPoolsRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.setTargetPools")
@@ -228,7 +228,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
 
   private final BackgroundResource backgroundResources;
 

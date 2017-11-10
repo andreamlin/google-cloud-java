@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
-import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -74,7 +74,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<GetFirewallHttpRequest, Firewall> getFirewallMethodDescriptor =
       ApiMethodDescriptor.<GetFirewallHttpRequest, Firewall>newBuilder()
           .setMethodName("compute.firewalls.get")
@@ -88,7 +88,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<InsertFirewallHttpRequest, Operation> insertFirewallMethodDescriptor =
       ApiMethodDescriptor.<InsertFirewallHttpRequest, Operation>newBuilder()
           .setMethodName("compute.firewalls.insert")
@@ -102,7 +102,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<ListFirewallsHttpRequest, FirewallList> listFirewallsMethodDescriptor =
       ApiMethodDescriptor.<ListFirewallsHttpRequest, FirewallList>newBuilder()
           .setMethodName("compute.firewalls.list")
@@ -117,7 +117,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<PatchFirewallHttpRequest, Operation> patchFirewallMethodDescriptor =
       ApiMethodDescriptor.<PatchFirewallHttpRequest, Operation>newBuilder()
           .setMethodName("compute.firewalls.patch")
@@ -131,7 +131,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<UpdateFirewallHttpRequest, Operation> updateFirewallMethodDescriptor =
       ApiMethodDescriptor.<UpdateFirewallHttpRequest, Operation>newBuilder()
           .setMethodName("compute.firewalls.update")
@@ -145,7 +145,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PUT)
-          .build();
+          .build());
 
   private final BackgroundResource backgroundResources;
 

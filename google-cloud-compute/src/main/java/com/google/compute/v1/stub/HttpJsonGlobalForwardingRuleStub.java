@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
-import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -74,7 +74,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<GetGlobalForwardingRuleHttpRequest, ForwardingRule> getGlobalForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<GetGlobalForwardingRuleHttpRequest, ForwardingRule>newBuilder()
           .setMethodName("compute.globalForwardingRules.get")
@@ -88,7 +88,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<InsertGlobalForwardingRuleHttpRequest, Operation> insertGlobalForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<InsertGlobalForwardingRuleHttpRequest, Operation>newBuilder()
           .setMethodName("compute.globalForwardingRules.insert")
@@ -102,7 +102,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList> listGlobalForwardingRulesMethodDescriptor =
       ApiMethodDescriptor.<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList>newBuilder()
           .setMethodName("compute.globalForwardingRules.list")
@@ -117,7 +117,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<SetTargetGlobalForwardingRuleHttpRequest, Operation> setTargetGlobalForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<SetTargetGlobalForwardingRuleHttpRequest, Operation>newBuilder()
           .setMethodName("compute.globalForwardingRules.setTarget")
@@ -131,7 +131,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
 
   private final BackgroundResource backgroundResources;
 

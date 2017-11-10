@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
-import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -71,7 +71,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<GetSnapshotHttpRequest, Snapshot> getSnapshotMethodDescriptor =
       ApiMethodDescriptor.<GetSnapshotHttpRequest, Snapshot>newBuilder()
           .setMethodName("compute.snapshots.get")
@@ -85,7 +85,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<ListSnapshotsHttpRequest, SnapshotList> listSnapshotsMethodDescriptor =
       ApiMethodDescriptor.<ListSnapshotsHttpRequest, SnapshotList>newBuilder()
           .setMethodName("compute.snapshots.list")
@@ -100,7 +100,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
 
   private final BackgroundResource backgroundResources;
 

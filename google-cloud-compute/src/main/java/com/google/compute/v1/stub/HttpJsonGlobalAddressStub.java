@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
-import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -72,7 +72,7 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<GetGlobalAddressHttpRequest, Address> getGlobalAddressMethodDescriptor =
       ApiMethodDescriptor.<GetGlobalAddressHttpRequest, Address>newBuilder()
           .setMethodName("compute.globalAddresses.get")
@@ -86,7 +86,7 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<InsertGlobalAddressHttpRequest, Operation> insertGlobalAddressMethodDescriptor =
       ApiMethodDescriptor.<InsertGlobalAddressHttpRequest, Operation>newBuilder()
           .setMethodName("compute.globalAddresses.insert")
@@ -100,7 +100,7 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<ListGlobalAddressesHttpRequest, AddressList> listGlobalAddressesMethodDescriptor =
       ApiMethodDescriptor.<ListGlobalAddressesHttpRequest, AddressList>newBuilder()
           .setMethodName("compute.globalAddresses.list")
@@ -115,7 +115,7 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
 
   private final BackgroundResource backgroundResources;
 

@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
-import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -77,7 +77,7 @@ public class HttpJsonAddressStub extends AddressStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<DeleteAddressHttpRequest, Operation> deleteAddressMethodDescriptor =
       ApiMethodDescriptor.<DeleteAddressHttpRequest, Operation>newBuilder()
           .setMethodName("compute.addresses.delete")
@@ -91,7 +91,7 @@ public class HttpJsonAddressStub extends AddressStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<GetAddressHttpRequest, Address> getAddressMethodDescriptor =
       ApiMethodDescriptor.<GetAddressHttpRequest, Address>newBuilder()
           .setMethodName("compute.addresses.get")
@@ -105,7 +105,7 @@ public class HttpJsonAddressStub extends AddressStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<InsertAddressHttpRequest, Operation> insertAddressMethodDescriptor =
       ApiMethodDescriptor.<InsertAddressHttpRequest, Operation>newBuilder()
           .setMethodName("compute.addresses.insert")
@@ -119,7 +119,7 @@ public class HttpJsonAddressStub extends AddressStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<ListAddressesHttpRequest, AddressList> listAddressesMethodDescriptor =
       ApiMethodDescriptor.<ListAddressesHttpRequest, AddressList>newBuilder()
           .setMethodName("compute.addresses.list")
@@ -134,7 +134,7 @@ public class HttpJsonAddressStub extends AddressStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
 
   private final BackgroundResource backgroundResources;
 

@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
-import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -74,7 +74,7 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<GetHttpsHealthCheckHttpRequest, HttpsHealthCheck> getHttpsHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<GetHttpsHealthCheckHttpRequest, HttpsHealthCheck>newBuilder()
           .setMethodName("compute.httpsHealthChecks.get")
@@ -88,7 +88,7 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<InsertHttpsHealthCheckHttpRequest, Operation> insertHttpsHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<InsertHttpsHealthCheckHttpRequest, Operation>newBuilder()
           .setMethodName("compute.httpsHealthChecks.insert")
@@ -102,7 +102,7 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<ListHttpsHealthChecksHttpRequest, HttpsHealthCheckList> listHttpsHealthChecksMethodDescriptor =
       ApiMethodDescriptor.<ListHttpsHealthChecksHttpRequest, HttpsHealthCheckList>newBuilder()
           .setMethodName("compute.httpsHealthChecks.list")
@@ -117,7 +117,7 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<PatchHttpsHealthCheckHttpRequest, Operation> patchHttpsHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<PatchHttpsHealthCheckHttpRequest, Operation>newBuilder()
           .setMethodName("compute.httpsHealthChecks.patch")
@@ -131,7 +131,7 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<UpdateHttpsHealthCheckHttpRequest, Operation> updateHttpsHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<UpdateHttpsHealthCheckHttpRequest, Operation>newBuilder()
           .setMethodName("compute.httpsHealthChecks.update")
@@ -145,7 +145,7 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PUT)
-          .build();
+          .build());
 
   private final BackgroundResource backgroundResources;
 

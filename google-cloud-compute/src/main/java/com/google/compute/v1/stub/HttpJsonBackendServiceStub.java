@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
-import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -81,7 +81,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<DeleteBackendServiceHttpRequest, Operation> deleteBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<DeleteBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.backendServices.delete")
@@ -95,7 +95,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<GetBackendServiceHttpRequest, BackendService> getBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<GetBackendServiceHttpRequest, BackendService>newBuilder()
           .setMethodName("compute.backendServices.get")
@@ -109,7 +109,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth>newBuilder()
           .setMethodName("compute.backendServices.getHealth")
@@ -123,7 +123,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<InsertBackendServiceHttpRequest, Operation> insertBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<InsertBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.backendServices.insert")
@@ -137,7 +137,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<ListBackendServicesHttpRequest, BackendServiceList> listBackendServicesMethodDescriptor =
       ApiMethodDescriptor.<ListBackendServicesHttpRequest, BackendServiceList>newBuilder()
           .setMethodName("compute.backendServices.list")
@@ -152,7 +152,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<PatchBackendServiceHttpRequest, Operation> patchBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<PatchBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.backendServices.patch")
@@ -166,7 +166,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<UpdateBackendServiceHttpRequest, Operation> updateBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<UpdateBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.backendServices.update")
@@ -180,7 +180,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PUT)
-          .build();
+          .build());
 
   private final BackgroundResource backgroundResources;
 

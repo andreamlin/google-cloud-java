@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
-import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -74,7 +74,7 @@ public class HttpJsonProjectStub extends ProjectStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<MoveDiskProjectHttpRequest, Operation> moveDiskProjectMethodDescriptor =
       ApiMethodDescriptor.<MoveDiskProjectHttpRequest, Operation>newBuilder()
           .setMethodName("compute.projects.moveDisk")
@@ -88,7 +88,7 @@ public class HttpJsonProjectStub extends ProjectStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<MoveInstanceProjectHttpRequest, Operation> moveInstanceProjectMethodDescriptor =
       ApiMethodDescriptor.<MoveInstanceProjectHttpRequest, Operation>newBuilder()
           .setMethodName("compute.projects.moveInstance")
@@ -102,7 +102,7 @@ public class HttpJsonProjectStub extends ProjectStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<SetCommonInstanceMetadataProjectHttpRequest, Operation> setCommonInstanceMetadataProjectMethodDescriptor =
       ApiMethodDescriptor.<SetCommonInstanceMetadataProjectHttpRequest, Operation>newBuilder()
           .setMethodName("compute.projects.setCommonInstanceMetadata")
@@ -116,7 +116,7 @@ public class HttpJsonProjectStub extends ProjectStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<SetUsageExportBucketProjectHttpRequest, Operation> setUsageExportBucketProjectMethodDescriptor =
       ApiMethodDescriptor.<SetUsageExportBucketProjectHttpRequest, Operation>newBuilder()
           .setMethodName("compute.projects.setUsageExportBucket")
@@ -130,7 +130,7 @@ public class HttpJsonProjectStub extends ProjectStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
 
   private final BackgroundResource backgroundResources;
 

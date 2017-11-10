@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
-import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -101,7 +101,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<AggregatedListInstancesHttpRequest, InstanceAggregatedList> aggregatedListInstancesMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListInstancesHttpRequest, InstanceAggregatedList>newBuilder()
           .setMethodName("compute.instances.aggregatedList")
@@ -116,7 +116,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<AttachDiskInstanceHttpRequest, Operation> attachDiskInstanceMethodDescriptor =
       ApiMethodDescriptor.<AttachDiskInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.attachDisk")
@@ -130,7 +130,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<DeleteInstanceHttpRequest, Operation> deleteInstanceMethodDescriptor =
       ApiMethodDescriptor.<DeleteInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.delete")
@@ -144,7 +144,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<DeleteAccessConfigInstanceHttpRequest, Operation> deleteAccessConfigInstanceMethodDescriptor =
       ApiMethodDescriptor.<DeleteAccessConfigInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.deleteAccessConfig")
@@ -159,7 +159,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<DetachDiskInstanceHttpRequest, Operation> detachDiskInstanceMethodDescriptor =
       ApiMethodDescriptor.<DetachDiskInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.detachDisk")
@@ -174,7 +174,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<GetInstanceHttpRequest, Instance> getInstanceMethodDescriptor =
       ApiMethodDescriptor.<GetInstanceHttpRequest, Instance>newBuilder()
           .setMethodName("compute.instances.get")
@@ -188,7 +188,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput> getSerialPortOutputInstanceMethodDescriptor =
       ApiMethodDescriptor.<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput>newBuilder()
           .setMethodName("compute.instances.getSerialPortOutput")
@@ -203,7 +203,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<InsertInstanceHttpRequest, Operation> insertInstanceMethodDescriptor =
       ApiMethodDescriptor.<InsertInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.insert")
@@ -217,7 +217,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<ListInstancesHttpRequest, InstanceList> listInstancesMethodDescriptor =
       ApiMethodDescriptor.<ListInstancesHttpRequest, InstanceList>newBuilder()
           .setMethodName("compute.instances.list")
@@ -232,7 +232,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<ResetInstanceHttpRequest, Operation> resetInstanceMethodDescriptor =
       ApiMethodDescriptor.<ResetInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.reset")
@@ -246,7 +246,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<SetDiskAutoDeleteInstanceHttpRequest, Operation> setDiskAutoDeleteInstanceMethodDescriptor =
       ApiMethodDescriptor.<SetDiskAutoDeleteInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.setDiskAutoDelete")
@@ -261,7 +261,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<SetMachineTypeInstanceHttpRequest, Operation> setMachineTypeInstanceMethodDescriptor =
       ApiMethodDescriptor.<SetMachineTypeInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.setMachineType")
@@ -275,7 +275,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<SetMetadataInstanceHttpRequest, Operation> setMetadataInstanceMethodDescriptor =
       ApiMethodDescriptor.<SetMetadataInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.setMetadata")
@@ -289,7 +289,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<SetSchedulingInstanceHttpRequest, Operation> setSchedulingInstanceMethodDescriptor =
       ApiMethodDescriptor.<SetSchedulingInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.setScheduling")
@@ -303,7 +303,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<SetServiceAccountInstanceHttpRequest, Operation> setServiceAccountInstanceMethodDescriptor =
       ApiMethodDescriptor.<SetServiceAccountInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.setServiceAccount")
@@ -317,7 +317,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<SetTagsInstanceHttpRequest, Operation> setTagsInstanceMethodDescriptor =
       ApiMethodDescriptor.<SetTagsInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.setTags")
@@ -331,7 +331,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<StartInstanceHttpRequest, Operation> startInstanceMethodDescriptor =
       ApiMethodDescriptor.<StartInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.start")
@@ -345,7 +345,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<StartWithEncryptionKeyInstanceHttpRequest, Operation> startWithEncryptionKeyInstanceMethodDescriptor =
       ApiMethodDescriptor.<StartWithEncryptionKeyInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.startWithEncryptionKey")
@@ -359,7 +359,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
   private static final ApiMethodDescriptor<StopInstanceHttpRequest, Operation> stopInstanceMethodDescriptor =
       ApiMethodDescriptor.<StopInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.stop")
@@ -373,7 +373,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build();
+          .build());
 
   private final BackgroundResource backgroundResources;
 
