@@ -5,7 +5,6 @@ import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.compute.v1.*;
-import com.sun.org.apache.regexp.internal.RE;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -34,15 +33,13 @@ public class JsonComputeExample {
     String myEndpoint = AddressSettings.getDefaultEndpoint();
 
     // Begin samplegen code. This combines the "customize credentials" and "customize the endpoint" samples.
+    // TODO(andrealin): update sample snippet
     AddressSettings addressSettings =
         AddressSettings.newBuilder()
             .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
-            .setTransportChannelProvider(AddressSettings.defaultHttpJsonTransportProviderBuilder().build())
-                             .setEndpoint(myEndpoint)
-                    .setEndpoint(myEndpoint)
-                    .build()
-                .build()
-            .build();
+            .setTransportChannelProvider(
+                AddressSettings.defaultHttpJsonTransportProviderBuilder()
+                   .setEndpoint(myEndpoint).build()).build();
     AddressClient addressClient =
         AddressClient.create(addressSettings);
     // End samplegen code.
