@@ -84,7 +84,7 @@ import org.threeten.bp.Duration;
  */
 @Generated("by GAPIC v0.0.5")
 @BetaApi
-public class TargetSslProxySettings extends ClientSettings {
+public class TargetSslProxySettings extends ClientSettings<TargetSslProxySettings> {
   /**
    * The default scopes of the service.
    */
@@ -163,6 +163,7 @@ public class TargetSslProxySettings extends ClientSettings {
   }
 
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public TargetSslProxyStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()
@@ -215,14 +216,14 @@ public class TargetSslProxySettings extends ClientSettings {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint());
+    return InstantiatingHttpJsonChannelProvider.newBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
   }
 
+  @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
@@ -237,23 +238,6 @@ public class TargetSslProxySettings extends ClientSettings {
       gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
     }
     return gapicVersion;
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults.
-   */
-  @Deprecated
-  public static Builder defaultBuilder() {
-    return Builder.createDefault();
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults for API methods, and the given
-   * ClientContext used for executor/transport/credentials.
-   */
-  @Deprecated
-  public static Builder defaultBuilder(ClientContext clientContext) {
-    return new Builder(clientContext);
   }
 
   /**
@@ -278,12 +262,7 @@ public class TargetSslProxySettings extends ClientSettings {
   }
 
   private TargetSslProxySettings(Builder settingsBuilder) throws IOException {
-    super(
-        settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportChannelProvider(),
-        settingsBuilder.getCredentialsProvider(),
-        settingsBuilder.getHeaderProvider(),
-        settingsBuilder.getClock());
+    super(settingsBuilder);
 
     deleteTargetSslProxySettings = settingsBuilder.deleteTargetSslProxySettings().build();
     getTargetSslProxySettings = settingsBuilder.getTargetSslProxySettings().build();
@@ -346,16 +325,16 @@ public class TargetSslProxySettings extends ClientSettings {
   /**
    * Builder for TargetSslProxySettings.
    */
-  public static class Builder extends ClientSettings.Builder {
+  public static class Builder extends ClientSettings.Builder<TargetSslProxySettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder deleteTargetSslProxySettings;
-    private final UnaryCallSettings.Builder getTargetSslProxySettings;
-    private final UnaryCallSettings.Builder insertTargetSslProxySettings;
+    private final UnaryCallSettings.Builder<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxySettings;
+    private final UnaryCallSettings.Builder<GetTargetSslProxyHttpRequest, TargetSslProxy> getTargetSslProxySettings;
+    private final UnaryCallSettings.Builder<InsertTargetSslProxyHttpRequest, Operation> insertTargetSslProxySettings;
     private final PagedCallSettings.Builder<ListTargetSslProxiesHttpRequest, TargetSslProxyList, ListTargetSslProxiesPagedResponse> listTargetSslProxiesSettings;
-    private final UnaryCallSettings.Builder setBackendServiceTargetSslProxySettings;
-    private final UnaryCallSettings.Builder setProxyHeaderTargetSslProxySettings;
-    private final UnaryCallSettings.Builder setSslCertificatesTargetSslProxySettings;
+    private final UnaryCallSettings.Builder<SetBackendServiceTargetSslProxyHttpRequest, Operation> setBackendServiceTargetSslProxySettings;
+    private final UnaryCallSettings.Builder<SetProxyHeaderTargetSslProxyHttpRequest, Operation> setProxyHeaderTargetSslProxySettings;
+    private final UnaryCallSettings.Builder<SetSslCertificatesTargetSslProxyHttpRequest, Operation> setSslCertificatesTargetSslProxySettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
@@ -428,6 +407,7 @@ public class TargetSslProxySettings extends ClientSettings {
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
 
@@ -484,30 +464,6 @@ public class TargetSslProxySettings extends ClientSettings {
           setProxyHeaderTargetSslProxySettings,
           setSslCertificatesTargetSslProxySettings
       );
-    }
-
-    @Override
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      super.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
-      super.setTransportChannelProvider(transportProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      super.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
-      super.setCredentialsProvider(credentialsProvider);
-      return this;
     }
 
     /**

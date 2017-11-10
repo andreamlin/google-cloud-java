@@ -91,11 +91,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RegionInstanceGroupManagerSettings regionInstanceGroupManagerSettings =
- *     RegionInstanceGroupManagerSettings.newBuilder()
- *         .setTransportChannelProvider(RegionInstanceGroupManagerSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     RegionInstanceGroupManagerSettings.newBuilder().setEndpoint(myEndpoint).build();
  * RegionInstanceGroupManagerClient regionInstanceGroupManagerClient =
  *     RegionInstanceGroupManagerClient.create(regionInstanceGroupManagerSettings);
  * </code>
@@ -129,7 +125,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * Constructs an instance of RegionInstanceGroupManagerClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use RegionInstanceGroupManagerSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final RegionInstanceGroupManagerClient create(RegionInstanceGroupManagerStub stub) {
     return new RegionInstanceGroupManagerClient(stub);
   }
@@ -144,6 +140,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected RegionInstanceGroupManagerClient(RegionInstanceGroupManagerStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -153,7 +150,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public RegionInstanceGroupManagerStub getStub() {
     return stub;
   }

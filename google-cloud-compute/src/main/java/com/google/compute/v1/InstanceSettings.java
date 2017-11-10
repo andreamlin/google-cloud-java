@@ -85,7 +85,7 @@ import org.threeten.bp.Duration;
  */
 @Generated("by GAPIC v0.0.5")
 @BetaApi
-public class InstanceSettings extends ClientSettings {
+public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /**
    * The default scopes of the service.
    */
@@ -268,6 +268,7 @@ public class InstanceSettings extends ClientSettings {
   }
 
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public InstanceStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()
@@ -320,14 +321,14 @@ public class InstanceSettings extends ClientSettings {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint());
+    return InstantiatingHttpJsonChannelProvider.newBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
   }
 
+  @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
@@ -342,23 +343,6 @@ public class InstanceSettings extends ClientSettings {
       gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
     }
     return gapicVersion;
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults.
-   */
-  @Deprecated
-  public static Builder defaultBuilder() {
-    return Builder.createDefault();
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults for API methods, and the given
-   * ClientContext used for executor/transport/credentials.
-   */
-  @Deprecated
-  public static Builder defaultBuilder(ClientContext clientContext) {
-    return new Builder(clientContext);
   }
 
   /**
@@ -383,12 +367,7 @@ public class InstanceSettings extends ClientSettings {
   }
 
   private InstanceSettings(Builder settingsBuilder) throws IOException {
-    super(
-        settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportChannelProvider(),
-        settingsBuilder.getCredentialsProvider(),
-        settingsBuilder.getHeaderProvider(),
-        settingsBuilder.getClock());
+    super(settingsBuilder);
 
     addAccessConfigInstanceSettings = settingsBuilder.addAccessConfigInstanceSettings().build();
     aggregatedListInstancesSettings = settingsBuilder.aggregatedListInstancesSettings().build();
@@ -512,29 +491,29 @@ public class InstanceSettings extends ClientSettings {
   /**
    * Builder for InstanceSettings.
    */
-  public static class Builder extends ClientSettings.Builder {
+  public static class Builder extends ClientSettings.Builder<InstanceSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder addAccessConfigInstanceSettings;
+    private final UnaryCallSettings.Builder<AddAccessConfigInstanceHttpRequest, Operation> addAccessConfigInstanceSettings;
     private final PagedCallSettings.Builder<AggregatedListInstancesHttpRequest, InstanceAggregatedList, AggregatedListInstancesPagedResponse> aggregatedListInstancesSettings;
-    private final UnaryCallSettings.Builder attachDiskInstanceSettings;
-    private final UnaryCallSettings.Builder deleteInstanceSettings;
-    private final UnaryCallSettings.Builder deleteAccessConfigInstanceSettings;
-    private final UnaryCallSettings.Builder detachDiskInstanceSettings;
-    private final UnaryCallSettings.Builder getInstanceSettings;
-    private final UnaryCallSettings.Builder getSerialPortOutputInstanceSettings;
-    private final UnaryCallSettings.Builder insertInstanceSettings;
+    private final UnaryCallSettings.Builder<AttachDiskInstanceHttpRequest, Operation> attachDiskInstanceSettings;
+    private final UnaryCallSettings.Builder<DeleteInstanceHttpRequest, Operation> deleteInstanceSettings;
+    private final UnaryCallSettings.Builder<DeleteAccessConfigInstanceHttpRequest, Operation> deleteAccessConfigInstanceSettings;
+    private final UnaryCallSettings.Builder<DetachDiskInstanceHttpRequest, Operation> detachDiskInstanceSettings;
+    private final UnaryCallSettings.Builder<GetInstanceHttpRequest, Instance> getInstanceSettings;
+    private final UnaryCallSettings.Builder<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput> getSerialPortOutputInstanceSettings;
+    private final UnaryCallSettings.Builder<InsertInstanceHttpRequest, Operation> insertInstanceSettings;
     private final PagedCallSettings.Builder<ListInstancesHttpRequest, InstanceList, ListInstancesPagedResponse> listInstancesSettings;
-    private final UnaryCallSettings.Builder resetInstanceSettings;
-    private final UnaryCallSettings.Builder setDiskAutoDeleteInstanceSettings;
-    private final UnaryCallSettings.Builder setMachineTypeInstanceSettings;
-    private final UnaryCallSettings.Builder setMetadataInstanceSettings;
-    private final UnaryCallSettings.Builder setSchedulingInstanceSettings;
-    private final UnaryCallSettings.Builder setServiceAccountInstanceSettings;
-    private final UnaryCallSettings.Builder setTagsInstanceSettings;
-    private final UnaryCallSettings.Builder startInstanceSettings;
-    private final UnaryCallSettings.Builder startWithEncryptionKeyInstanceSettings;
-    private final UnaryCallSettings.Builder stopInstanceSettings;
+    private final UnaryCallSettings.Builder<ResetInstanceHttpRequest, Operation> resetInstanceSettings;
+    private final UnaryCallSettings.Builder<SetDiskAutoDeleteInstanceHttpRequest, Operation> setDiskAutoDeleteInstanceSettings;
+    private final UnaryCallSettings.Builder<SetMachineTypeInstanceHttpRequest, Operation> setMachineTypeInstanceSettings;
+    private final UnaryCallSettings.Builder<SetMetadataInstanceHttpRequest, Operation> setMetadataInstanceSettings;
+    private final UnaryCallSettings.Builder<SetSchedulingInstanceHttpRequest, Operation> setSchedulingInstanceSettings;
+    private final UnaryCallSettings.Builder<SetServiceAccountInstanceHttpRequest, Operation> setServiceAccountInstanceSettings;
+    private final UnaryCallSettings.Builder<SetTagsInstanceHttpRequest, Operation> setTagsInstanceSettings;
+    private final UnaryCallSettings.Builder<StartInstanceHttpRequest, Operation> startInstanceSettings;
+    private final UnaryCallSettings.Builder<StartWithEncryptionKeyInstanceHttpRequest, Operation> startWithEncryptionKeyInstanceSettings;
+    private final UnaryCallSettings.Builder<StopInstanceHttpRequest, Operation> stopInstanceSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
@@ -647,6 +626,7 @@ public class InstanceSettings extends ClientSettings {
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
 
@@ -781,30 +761,6 @@ public class InstanceSettings extends ClientSettings {
           startWithEncryptionKeyInstanceSettings,
           stopInstanceSettings
       );
-    }
-
-    @Override
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      super.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
-      super.setTransportChannelProvider(transportProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      super.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
-      super.setCredentialsProvider(credentialsProvider);
-      return this;
     }
 
     /**

@@ -89,11 +89,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * LicensSettings licensSettings =
- *     LicensSettings.newBuilder()
- *         .setTransportChannelProvider(LicensSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     LicensSettings.newBuilder().setEndpoint(myEndpoint).build();
  * LicensClient licensClient =
  *     LicensClient.create(licensSettings);
  * </code>
@@ -127,7 +123,7 @@ public class LicensClient implements BackgroundResource {
    * Constructs an instance of LicensClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use LicensSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final LicensClient create(LicensStub stub) {
     return new LicensClient(stub);
   }
@@ -142,6 +138,7 @@ public class LicensClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected LicensClient(LicensStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -151,7 +148,7 @@ public class LicensClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public LicensStub getStub() {
     return stub;
   }

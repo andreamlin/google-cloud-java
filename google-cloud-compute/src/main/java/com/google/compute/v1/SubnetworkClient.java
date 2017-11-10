@@ -91,11 +91,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * SubnetworkSettings subnetworkSettings =
- *     SubnetworkSettings.newBuilder()
- *         .setTransportChannelProvider(SubnetworkSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     SubnetworkSettings.newBuilder().setEndpoint(myEndpoint).build();
  * SubnetworkClient subnetworkClient =
  *     SubnetworkClient.create(subnetworkSettings);
  * </code>
@@ -129,7 +125,7 @@ public class SubnetworkClient implements BackgroundResource {
    * Constructs an instance of SubnetworkClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use SubnetworkSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final SubnetworkClient create(SubnetworkStub stub) {
     return new SubnetworkClient(stub);
   }
@@ -144,6 +140,7 @@ public class SubnetworkClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected SubnetworkClient(SubnetworkStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -153,7 +150,7 @@ public class SubnetworkClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public SubnetworkStub getStub() {
     return stub;
   }

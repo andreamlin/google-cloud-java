@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * SnapshotSettings snapshotSettings =
- *     SnapshotSettings.newBuilder()
- *         .setTransportChannelProvider(SnapshotSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     SnapshotSettings.newBuilder().setEndpoint(myEndpoint).build();
  * SnapshotClient snapshotClient =
  *     SnapshotClient.create(snapshotSettings);
  * </code>
@@ -128,7 +124,7 @@ public class SnapshotClient implements BackgroundResource {
    * Constructs an instance of SnapshotClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use SnapshotSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final SnapshotClient create(SnapshotStub stub) {
     return new SnapshotClient(stub);
   }
@@ -143,6 +139,7 @@ public class SnapshotClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected SnapshotClient(SnapshotStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class SnapshotClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public SnapshotStub getStub() {
     return stub;
   }

@@ -84,7 +84,7 @@ import org.threeten.bp.Duration;
  */
 @Generated("by GAPIC v0.0.5")
 @BetaApi
-public class RouteSettings extends ClientSettings {
+public class RouteSettings extends ClientSettings<RouteSettings> {
   /**
    * The default scopes of the service.
    */
@@ -139,6 +139,7 @@ public class RouteSettings extends ClientSettings {
   }
 
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public RouteStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()
@@ -191,14 +192,14 @@ public class RouteSettings extends ClientSettings {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint());
+    return InstantiatingHttpJsonChannelProvider.newBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
   }
 
+  @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
@@ -213,23 +214,6 @@ public class RouteSettings extends ClientSettings {
       gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
     }
     return gapicVersion;
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults.
-   */
-  @Deprecated
-  public static Builder defaultBuilder() {
-    return Builder.createDefault();
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults for API methods, and the given
-   * ClientContext used for executor/transport/credentials.
-   */
-  @Deprecated
-  public static Builder defaultBuilder(ClientContext clientContext) {
-    return new Builder(clientContext);
   }
 
   /**
@@ -254,12 +238,7 @@ public class RouteSettings extends ClientSettings {
   }
 
   private RouteSettings(Builder settingsBuilder) throws IOException {
-    super(
-        settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportChannelProvider(),
-        settingsBuilder.getCredentialsProvider(),
-        settingsBuilder.getHeaderProvider(),
-        settingsBuilder.getClock());
+    super(settingsBuilder);
 
     deleteRouteSettings = settingsBuilder.deleteRouteSettings().build();
     getRouteSettings = settingsBuilder.getRouteSettings().build();
@@ -319,12 +298,12 @@ public class RouteSettings extends ClientSettings {
   /**
    * Builder for RouteSettings.
    */
-  public static class Builder extends ClientSettings.Builder {
+  public static class Builder extends ClientSettings.Builder<RouteSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder deleteRouteSettings;
-    private final UnaryCallSettings.Builder getRouteSettings;
-    private final UnaryCallSettings.Builder insertRouteSettings;
+    private final UnaryCallSettings.Builder<DeleteRouteHttpRequest, Operation> deleteRouteSettings;
+    private final UnaryCallSettings.Builder<GetRouteHttpRequest, Route> getRouteSettings;
+    private final UnaryCallSettings.Builder<InsertRouteHttpRequest, Operation> insertRouteSettings;
     private final PagedCallSettings.Builder<ListRoutesHttpRequest, RouteList, ListRoutesPagedResponse> listRoutesSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
@@ -389,6 +368,7 @@ public class RouteSettings extends ClientSettings {
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
 
@@ -427,30 +407,6 @@ public class RouteSettings extends ClientSettings {
           insertRouteSettings,
           listRoutesSettings
       );
-    }
-
-    @Override
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      super.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
-      super.setTransportChannelProvider(transportProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      super.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
-      super.setCredentialsProvider(credentialsProvider);
-      return this;
     }
 
     /**

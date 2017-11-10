@@ -91,11 +91,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * VpnTunnelSettings vpnTunnelSettings =
- *     VpnTunnelSettings.newBuilder()
- *         .setTransportChannelProvider(VpnTunnelSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     VpnTunnelSettings.newBuilder().setEndpoint(myEndpoint).build();
  * VpnTunnelClient vpnTunnelClient =
  *     VpnTunnelClient.create(vpnTunnelSettings);
  * </code>
@@ -129,7 +125,7 @@ public class VpnTunnelClient implements BackgroundResource {
    * Constructs an instance of VpnTunnelClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use VpnTunnelSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final VpnTunnelClient create(VpnTunnelStub stub) {
     return new VpnTunnelClient(stub);
   }
@@ -144,6 +140,7 @@ public class VpnTunnelClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected VpnTunnelClient(VpnTunnelStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -153,7 +150,7 @@ public class VpnTunnelClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public VpnTunnelStub getStub() {
     return stub;
   }

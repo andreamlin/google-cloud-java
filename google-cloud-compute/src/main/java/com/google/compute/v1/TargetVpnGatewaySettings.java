@@ -85,7 +85,7 @@ import org.threeten.bp.Duration;
  */
 @Generated("by GAPIC v0.0.5")
 @BetaApi
-public class TargetVpnGatewaySettings extends ClientSettings {
+public class TargetVpnGatewaySettings extends ClientSettings<TargetVpnGatewaySettings> {
   /**
    * The default scopes of the service.
    */
@@ -148,6 +148,7 @@ public class TargetVpnGatewaySettings extends ClientSettings {
   }
 
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public TargetVpnGatewayStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()
@@ -200,14 +201,14 @@ public class TargetVpnGatewaySettings extends ClientSettings {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint());
+    return InstantiatingHttpJsonChannelProvider.newBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
   }
 
+  @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
@@ -222,23 +223,6 @@ public class TargetVpnGatewaySettings extends ClientSettings {
       gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
     }
     return gapicVersion;
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults.
-   */
-  @Deprecated
-  public static Builder defaultBuilder() {
-    return Builder.createDefault();
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults for API methods, and the given
-   * ClientContext used for executor/transport/credentials.
-   */
-  @Deprecated
-  public static Builder defaultBuilder(ClientContext clientContext) {
-    return new Builder(clientContext);
   }
 
   /**
@@ -263,12 +247,7 @@ public class TargetVpnGatewaySettings extends ClientSettings {
   }
 
   private TargetVpnGatewaySettings(Builder settingsBuilder) throws IOException {
-    super(
-        settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportChannelProvider(),
-        settingsBuilder.getCredentialsProvider(),
-        settingsBuilder.getHeaderProvider(),
-        settingsBuilder.getClock());
+    super(settingsBuilder);
 
     aggregatedListTargetVpnGatewaysSettings = settingsBuilder.aggregatedListTargetVpnGatewaysSettings().build();
     deleteTargetVpnGatewaySettings = settingsBuilder.deleteTargetVpnGatewaySettings().build();
@@ -377,13 +356,13 @@ public class TargetVpnGatewaySettings extends ClientSettings {
   /**
    * Builder for TargetVpnGatewaySettings.
    */
-  public static class Builder extends ClientSettings.Builder {
+  public static class Builder extends ClientSettings.Builder<TargetVpnGatewaySettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, AggregatedListTargetVpnGatewaysPagedResponse> aggregatedListTargetVpnGatewaysSettings;
-    private final UnaryCallSettings.Builder deleteTargetVpnGatewaySettings;
-    private final UnaryCallSettings.Builder getTargetVpnGatewaySettings;
-    private final UnaryCallSettings.Builder insertTargetVpnGatewaySettings;
+    private final UnaryCallSettings.Builder<DeleteTargetVpnGatewayHttpRequest, Operation> deleteTargetVpnGatewaySettings;
+    private final UnaryCallSettings.Builder<GetTargetVpnGatewayHttpRequest, TargetVpnGateway> getTargetVpnGatewaySettings;
+    private final UnaryCallSettings.Builder<InsertTargetVpnGatewayHttpRequest, Operation> insertTargetVpnGatewaySettings;
     private final PagedCallSettings.Builder<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList, ListTargetVpnGatewaysPagedResponse> listTargetVpnGatewaysSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
@@ -452,6 +431,7 @@ public class TargetVpnGatewaySettings extends ClientSettings {
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
 
@@ -496,30 +476,6 @@ public class TargetVpnGatewaySettings extends ClientSettings {
           insertTargetVpnGatewaySettings,
           listTargetVpnGatewaysSettings
       );
-    }
-
-    @Override
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      super.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
-      super.setTransportChannelProvider(transportProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      super.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
-      super.setCredentialsProvider(credentialsProvider);
-      return this;
     }
 
     /**

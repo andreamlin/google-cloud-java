@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * TargetHttpsProxySettings targetHttpsProxySettings =
- *     TargetHttpsProxySettings.newBuilder()
- *         .setTransportChannelProvider(TargetHttpsProxySettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     TargetHttpsProxySettings.newBuilder().setEndpoint(myEndpoint).build();
  * TargetHttpsProxyClient targetHttpsProxyClient =
  *     TargetHttpsProxyClient.create(targetHttpsProxySettings);
  * </code>
@@ -128,7 +124,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * Constructs an instance of TargetHttpsProxyClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use TargetHttpsProxySettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final TargetHttpsProxyClient create(TargetHttpsProxyStub stub) {
     return new TargetHttpsProxyClient(stub);
   }
@@ -143,6 +139,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected TargetHttpsProxyClient(TargetHttpsProxyStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public TargetHttpsProxyStub getStub() {
     return stub;
   }

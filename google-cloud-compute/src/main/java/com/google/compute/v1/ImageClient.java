@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * ImageSettings imageSettings =
- *     ImageSettings.newBuilder()
- *         .setTransportChannelProvider(ImageSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     ImageSettings.newBuilder().setEndpoint(myEndpoint).build();
  * ImageClient imageClient =
  *     ImageClient.create(imageSettings);
  * </code>
@@ -128,7 +124,7 @@ public class ImageClient implements BackgroundResource {
    * Constructs an instance of ImageClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use ImageSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final ImageClient create(ImageStub stub) {
     return new ImageClient(stub);
   }
@@ -143,6 +139,7 @@ public class ImageClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected ImageClient(ImageStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class ImageClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public ImageStub getStub() {
     return stub;
   }

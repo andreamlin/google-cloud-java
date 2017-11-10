@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RegionOperationSettings regionOperationSettings =
- *     RegionOperationSettings.newBuilder()
- *         .setTransportChannelProvider(RegionOperationSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     RegionOperationSettings.newBuilder().setEndpoint(myEndpoint).build();
  * RegionOperationClient regionOperationClient =
  *     RegionOperationClient.create(regionOperationSettings);
  * </code>
@@ -128,7 +124,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Constructs an instance of RegionOperationClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use RegionOperationSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final RegionOperationClient create(RegionOperationStub stub) {
     return new RegionOperationClient(stub);
   }
@@ -143,6 +139,7 @@ public class RegionOperationClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected RegionOperationClient(RegionOperationStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class RegionOperationClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public RegionOperationStub getStub() {
     return stub;
   }

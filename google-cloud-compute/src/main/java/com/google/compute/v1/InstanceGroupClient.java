@@ -93,11 +93,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * InstanceGroupSettings instanceGroupSettings =
- *     InstanceGroupSettings.newBuilder()
- *         .setTransportChannelProvider(InstanceGroupSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     InstanceGroupSettings.newBuilder().setEndpoint(myEndpoint).build();
  * InstanceGroupClient instanceGroupClient =
  *     InstanceGroupClient.create(instanceGroupSettings);
  * </code>
@@ -131,7 +127,7 @@ public class InstanceGroupClient implements BackgroundResource {
    * Constructs an instance of InstanceGroupClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use InstanceGroupSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final InstanceGroupClient create(InstanceGroupStub stub) {
     return new InstanceGroupClient(stub);
   }
@@ -146,6 +142,7 @@ public class InstanceGroupClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected InstanceGroupClient(InstanceGroupStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -155,7 +152,7 @@ public class InstanceGroupClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public InstanceGroupStub getStub() {
     return stub;
   }

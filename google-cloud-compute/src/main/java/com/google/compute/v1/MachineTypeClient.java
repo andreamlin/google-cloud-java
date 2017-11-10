@@ -91,11 +91,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * MachineTypeSettings machineTypeSettings =
- *     MachineTypeSettings.newBuilder()
- *         .setTransportChannelProvider(MachineTypeSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     MachineTypeSettings.newBuilder().setEndpoint(myEndpoint).build();
  * MachineTypeClient machineTypeClient =
  *     MachineTypeClient.create(machineTypeSettings);
  * </code>
@@ -129,7 +125,7 @@ public class MachineTypeClient implements BackgroundResource {
    * Constructs an instance of MachineTypeClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use MachineTypeSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final MachineTypeClient create(MachineTypeStub stub) {
     return new MachineTypeClient(stub);
   }
@@ -144,6 +140,7 @@ public class MachineTypeClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected MachineTypeClient(MachineTypeStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -153,7 +150,7 @@ public class MachineTypeClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public MachineTypeStub getStub() {
     return stub;
   }

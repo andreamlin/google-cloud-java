@@ -91,11 +91,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * ForwardingRuleSettings forwardingRuleSettings =
- *     ForwardingRuleSettings.newBuilder()
- *         .setTransportChannelProvider(ForwardingRuleSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     ForwardingRuleSettings.newBuilder().setEndpoint(myEndpoint).build();
  * ForwardingRuleClient forwardingRuleClient =
  *     ForwardingRuleClient.create(forwardingRuleSettings);
  * </code>
@@ -129,7 +125,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    * Constructs an instance of ForwardingRuleClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use ForwardingRuleSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final ForwardingRuleClient create(ForwardingRuleStub stub) {
     return new ForwardingRuleClient(stub);
   }
@@ -144,6 +140,7 @@ public class ForwardingRuleClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected ForwardingRuleClient(ForwardingRuleStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -153,7 +150,7 @@ public class ForwardingRuleClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public ForwardingRuleStub getStub() {
     return stub;
   }

@@ -91,11 +91,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * AddressSettings addressSettings =
- *     AddressSettings.newBuilder()
- *         .setTransportChannelProvider(AddressSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     AddressSettings.newBuilder().setEndpoint(myEndpoint).build();
  * AddressClient addressClient =
  *     AddressClient.create(addressSettings);
  * </code>
@@ -129,7 +125,7 @@ public class AddressClient implements BackgroundResource {
    * Constructs an instance of AddressClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use AddressSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final AddressClient create(AddressStub stub) {
     return new AddressClient(stub);
   }
@@ -144,6 +140,7 @@ public class AddressClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected AddressClient(AddressStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -153,7 +150,7 @@ public class AddressClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public AddressStub getStub() {
     return stub;
   }

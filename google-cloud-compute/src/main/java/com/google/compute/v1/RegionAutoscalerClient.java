@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RegionAutoscalerSettings regionAutoscalerSettings =
- *     RegionAutoscalerSettings.newBuilder()
- *         .setTransportChannelProvider(RegionAutoscalerSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     RegionAutoscalerSettings.newBuilder().setEndpoint(myEndpoint).build();
  * RegionAutoscalerClient regionAutoscalerClient =
  *     RegionAutoscalerClient.create(regionAutoscalerSettings);
  * </code>
@@ -128,7 +124,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * Constructs an instance of RegionAutoscalerClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use RegionAutoscalerSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final RegionAutoscalerClient create(RegionAutoscalerStub stub) {
     return new RegionAutoscalerClient(stub);
   }
@@ -143,6 +139,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected RegionAutoscalerClient(RegionAutoscalerStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public RegionAutoscalerStub getStub() {
     return stub;
   }

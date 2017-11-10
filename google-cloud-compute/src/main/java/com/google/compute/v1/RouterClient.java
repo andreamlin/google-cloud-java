@@ -91,11 +91,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RouterSettings routerSettings =
- *     RouterSettings.newBuilder()
- *         .setTransportChannelProvider(RouterSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     RouterSettings.newBuilder().setEndpoint(myEndpoint).build();
  * RouterClient routerClient =
  *     RouterClient.create(routerSettings);
  * </code>
@@ -129,7 +125,7 @@ public class RouterClient implements BackgroundResource {
    * Constructs an instance of RouterClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use RouterSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final RouterClient create(RouterStub stub) {
     return new RouterClient(stub);
   }
@@ -144,6 +140,7 @@ public class RouterClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected RouterClient(RouterStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -153,7 +150,7 @@ public class RouterClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public RouterStub getStub() {
     return stub;
   }

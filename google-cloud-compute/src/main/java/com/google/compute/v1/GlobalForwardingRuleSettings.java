@@ -84,7 +84,7 @@ import org.threeten.bp.Duration;
  */
 @Generated("by GAPIC v0.0.5")
 @BetaApi
-public class GlobalForwardingRuleSettings extends ClientSettings {
+public class GlobalForwardingRuleSettings extends ClientSettings<GlobalForwardingRuleSettings> {
   /**
    * The default scopes of the service.
    */
@@ -147,6 +147,7 @@ public class GlobalForwardingRuleSettings extends ClientSettings {
   }
 
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public GlobalForwardingRuleStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()
@@ -199,14 +200,14 @@ public class GlobalForwardingRuleSettings extends ClientSettings {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint());
+    return InstantiatingHttpJsonChannelProvider.newBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
   }
 
+  @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
@@ -221,23 +222,6 @@ public class GlobalForwardingRuleSettings extends ClientSettings {
       gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
     }
     return gapicVersion;
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults.
-   */
-  @Deprecated
-  public static Builder defaultBuilder() {
-    return Builder.createDefault();
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults for API methods, and the given
-   * ClientContext used for executor/transport/credentials.
-   */
-  @Deprecated
-  public static Builder defaultBuilder(ClientContext clientContext) {
-    return new Builder(clientContext);
   }
 
   /**
@@ -262,12 +246,7 @@ public class GlobalForwardingRuleSettings extends ClientSettings {
   }
 
   private GlobalForwardingRuleSettings(Builder settingsBuilder) throws IOException {
-    super(
-        settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportChannelProvider(),
-        settingsBuilder.getCredentialsProvider(),
-        settingsBuilder.getHeaderProvider(),
-        settingsBuilder.getClock());
+    super(settingsBuilder);
 
     deleteGlobalForwardingRuleSettings = settingsBuilder.deleteGlobalForwardingRuleSettings().build();
     getGlobalForwardingRuleSettings = settingsBuilder.getGlobalForwardingRuleSettings().build();
@@ -328,14 +307,14 @@ public class GlobalForwardingRuleSettings extends ClientSettings {
   /**
    * Builder for GlobalForwardingRuleSettings.
    */
-  public static class Builder extends ClientSettings.Builder {
+  public static class Builder extends ClientSettings.Builder<GlobalForwardingRuleSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder deleteGlobalForwardingRuleSettings;
-    private final UnaryCallSettings.Builder getGlobalForwardingRuleSettings;
-    private final UnaryCallSettings.Builder insertGlobalForwardingRuleSettings;
+    private final UnaryCallSettings.Builder<DeleteGlobalForwardingRuleHttpRequest, Operation> deleteGlobalForwardingRuleSettings;
+    private final UnaryCallSettings.Builder<GetGlobalForwardingRuleHttpRequest, ForwardingRule> getGlobalForwardingRuleSettings;
+    private final UnaryCallSettings.Builder<InsertGlobalForwardingRuleHttpRequest, Operation> insertGlobalForwardingRuleSettings;
     private final PagedCallSettings.Builder<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList, ListGlobalForwardingRulesPagedResponse> listGlobalForwardingRulesSettings;
-    private final UnaryCallSettings.Builder setTargetGlobalForwardingRuleSettings;
+    private final UnaryCallSettings.Builder<SetTargetGlobalForwardingRuleHttpRequest, Operation> setTargetGlobalForwardingRuleSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
@@ -402,6 +381,7 @@ public class GlobalForwardingRuleSettings extends ClientSettings {
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
 
@@ -446,30 +426,6 @@ public class GlobalForwardingRuleSettings extends ClientSettings {
           listGlobalForwardingRulesSettings,
           setTargetGlobalForwardingRuleSettings
       );
-    }
-
-    @Override
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      super.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
-      super.setTransportChannelProvider(transportProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      super.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
-      super.setCredentialsProvider(credentialsProvider);
-      return this;
     }
 
     /**

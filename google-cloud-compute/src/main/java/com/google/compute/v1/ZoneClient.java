@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * ZoneSettings zoneSettings =
- *     ZoneSettings.newBuilder()
- *         .setTransportChannelProvider(ZoneSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     ZoneSettings.newBuilder().setEndpoint(myEndpoint).build();
  * ZoneClient zoneClient =
  *     ZoneClient.create(zoneSettings);
  * </code>
@@ -128,7 +124,7 @@ public class ZoneClient implements BackgroundResource {
    * Constructs an instance of ZoneClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use ZoneSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final ZoneClient create(ZoneStub stub) {
     return new ZoneClient(stub);
   }
@@ -143,6 +139,7 @@ public class ZoneClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected ZoneClient(ZoneStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class ZoneClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public ZoneStub getStub() {
     return stub;
   }

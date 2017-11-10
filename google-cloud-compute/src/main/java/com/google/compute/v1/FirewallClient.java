@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * FirewallSettings firewallSettings =
- *     FirewallSettings.newBuilder()
- *         .setTransportChannelProvider(FirewallSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     FirewallSettings.newBuilder().setEndpoint(myEndpoint).build();
  * FirewallClient firewallClient =
  *     FirewallClient.create(firewallSettings);
  * </code>
@@ -128,7 +124,7 @@ public class FirewallClient implements BackgroundResource {
    * Constructs an instance of FirewallClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use FirewallSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final FirewallClient create(FirewallStub stub) {
     return new FirewallClient(stub);
   }
@@ -143,6 +139,7 @@ public class FirewallClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected FirewallClient(FirewallStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class FirewallClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public FirewallStub getStub() {
     return stub;
   }

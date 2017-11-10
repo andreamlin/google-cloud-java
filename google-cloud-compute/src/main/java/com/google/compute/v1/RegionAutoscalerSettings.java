@@ -84,7 +84,7 @@ import org.threeten.bp.Duration;
  */
 @Generated("by GAPIC v0.0.5")
 @BetaApi
-public class RegionAutoscalerSettings extends ClientSettings {
+public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSettings> {
   /**
    * The default scopes of the service.
    */
@@ -155,6 +155,7 @@ public class RegionAutoscalerSettings extends ClientSettings {
   }
 
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public RegionAutoscalerStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()
@@ -207,14 +208,14 @@ public class RegionAutoscalerSettings extends ClientSettings {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint());
+    return InstantiatingHttpJsonChannelProvider.newBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
   }
 
+  @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
@@ -229,23 +230,6 @@ public class RegionAutoscalerSettings extends ClientSettings {
       gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
     }
     return gapicVersion;
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults.
-   */
-  @Deprecated
-  public static Builder defaultBuilder() {
-    return Builder.createDefault();
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults for API methods, and the given
-   * ClientContext used for executor/transport/credentials.
-   */
-  @Deprecated
-  public static Builder defaultBuilder(ClientContext clientContext) {
-    return new Builder(clientContext);
   }
 
   /**
@@ -270,12 +254,7 @@ public class RegionAutoscalerSettings extends ClientSettings {
   }
 
   private RegionAutoscalerSettings(Builder settingsBuilder) throws IOException {
-    super(
-        settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportChannelProvider(),
-        settingsBuilder.getCredentialsProvider(),
-        settingsBuilder.getHeaderProvider(),
-        settingsBuilder.getClock());
+    super(settingsBuilder);
 
     deleteRegionAutoscalerSettings = settingsBuilder.deleteRegionAutoscalerSettings().build();
     getRegionAutoscalerSettings = settingsBuilder.getRegionAutoscalerSettings().build();
@@ -337,15 +316,15 @@ public class RegionAutoscalerSettings extends ClientSettings {
   /**
    * Builder for RegionAutoscalerSettings.
    */
-  public static class Builder extends ClientSettings.Builder {
+  public static class Builder extends ClientSettings.Builder<RegionAutoscalerSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder deleteRegionAutoscalerSettings;
-    private final UnaryCallSettings.Builder getRegionAutoscalerSettings;
-    private final UnaryCallSettings.Builder insertRegionAutoscalerSettings;
+    private final UnaryCallSettings.Builder<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerSettings;
+    private final UnaryCallSettings.Builder<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerSettings;
+    private final UnaryCallSettings.Builder<InsertRegionAutoscalerHttpRequest, Operation> insertRegionAutoscalerSettings;
     private final PagedCallSettings.Builder<ListRegionAutoscalersHttpRequest, RegionAutoscalerList, ListRegionAutoscalersPagedResponse> listRegionAutoscalersSettings;
-    private final UnaryCallSettings.Builder patchRegionAutoscalerSettings;
-    private final UnaryCallSettings.Builder updateRegionAutoscalerSettings;
+    private final UnaryCallSettings.Builder<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerSettings;
+    private final UnaryCallSettings.Builder<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
@@ -415,6 +394,7 @@ public class RegionAutoscalerSettings extends ClientSettings {
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
 
@@ -465,30 +445,6 @@ public class RegionAutoscalerSettings extends ClientSettings {
           patchRegionAutoscalerSettings,
           updateRegionAutoscalerSettings
       );
-    }
-
-    @Override
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      super.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
-      super.setTransportChannelProvider(transportProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      super.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
-      super.setCredentialsProvider(credentialsProvider);
-      return this;
     }
 
     /**

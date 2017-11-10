@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * SslCertificateSettings sslCertificateSettings =
- *     SslCertificateSettings.newBuilder()
- *         .setTransportChannelProvider(SslCertificateSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     SslCertificateSettings.newBuilder().setEndpoint(myEndpoint).build();
  * SslCertificateClient sslCertificateClient =
  *     SslCertificateClient.create(sslCertificateSettings);
  * </code>
@@ -128,7 +124,7 @@ public class SslCertificateClient implements BackgroundResource {
    * Constructs an instance of SslCertificateClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use SslCertificateSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final SslCertificateClient create(SslCertificateStub stub) {
     return new SslCertificateClient(stub);
   }
@@ -143,6 +139,7 @@ public class SslCertificateClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected SslCertificateClient(SslCertificateStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class SslCertificateClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public SslCertificateStub getStub() {
     return stub;
   }

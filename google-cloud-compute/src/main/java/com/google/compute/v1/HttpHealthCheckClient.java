@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * HttpHealthCheckSettings httpHealthCheckSettings =
- *     HttpHealthCheckSettings.newBuilder()
- *         .setTransportChannelProvider(HttpHealthCheckSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     HttpHealthCheckSettings.newBuilder().setEndpoint(myEndpoint).build();
  * HttpHealthCheckClient httpHealthCheckClient =
  *     HttpHealthCheckClient.create(httpHealthCheckSettings);
  * </code>
@@ -128,7 +124,7 @@ public class HttpHealthCheckClient implements BackgroundResource {
    * Constructs an instance of HttpHealthCheckClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use HttpHealthCheckSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final HttpHealthCheckClient create(HttpHealthCheckStub stub) {
     return new HttpHealthCheckClient(stub);
   }
@@ -143,6 +139,7 @@ public class HttpHealthCheckClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected HttpHealthCheckClient(HttpHealthCheckStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class HttpHealthCheckClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public HttpHealthCheckStub getStub() {
     return stub;
   }

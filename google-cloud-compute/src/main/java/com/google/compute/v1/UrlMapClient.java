@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * UrlMapSettings urlMapSettings =
- *     UrlMapSettings.newBuilder()
- *         .setTransportChannelProvider(UrlMapSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     UrlMapSettings.newBuilder().setEndpoint(myEndpoint).build();
  * UrlMapClient urlMapClient =
  *     UrlMapClient.create(urlMapSettings);
  * </code>
@@ -128,7 +124,7 @@ public class UrlMapClient implements BackgroundResource {
    * Constructs an instance of UrlMapClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use UrlMapSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final UrlMapClient create(UrlMapStub stub) {
     return new UrlMapClient(stub);
   }
@@ -143,6 +139,7 @@ public class UrlMapClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected UrlMapClient(UrlMapStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class UrlMapClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public UrlMapStub getStub() {
     return stub;
   }

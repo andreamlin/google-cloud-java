@@ -92,11 +92,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * TargetPoolSettings targetPoolSettings =
- *     TargetPoolSettings.newBuilder()
- *         .setTransportChannelProvider(TargetPoolSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     TargetPoolSettings.newBuilder().setEndpoint(myEndpoint).build();
  * TargetPoolClient targetPoolClient =
  *     TargetPoolClient.create(targetPoolSettings);
  * </code>
@@ -130,7 +126,7 @@ public class TargetPoolClient implements BackgroundResource {
    * Constructs an instance of TargetPoolClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use TargetPoolSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final TargetPoolClient create(TargetPoolStub stub) {
     return new TargetPoolClient(stub);
   }
@@ -145,6 +141,7 @@ public class TargetPoolClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected TargetPoolClient(TargetPoolStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -154,7 +151,7 @@ public class TargetPoolClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public TargetPoolStub getStub() {
     return stub;
   }

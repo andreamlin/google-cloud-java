@@ -91,11 +91,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * BackendServiceSettings backendServiceSettings =
- *     BackendServiceSettings.newBuilder()
- *         .setTransportChannelProvider(BackendServiceSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     BackendServiceSettings.newBuilder().setEndpoint(myEndpoint).build();
  * BackendServiceClient backendServiceClient =
  *     BackendServiceClient.create(backendServiceSettings);
  * </code>
@@ -129,7 +125,7 @@ public class BackendServiceClient implements BackgroundResource {
    * Constructs an instance of BackendServiceClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use BackendServiceSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final BackendServiceClient create(BackendServiceStub stub) {
     return new BackendServiceClient(stub);
   }
@@ -144,6 +140,7 @@ public class BackendServiceClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected BackendServiceClient(BackendServiceStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -153,7 +150,7 @@ public class BackendServiceClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public BackendServiceStub getStub() {
     return stub;
   }

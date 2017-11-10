@@ -89,11 +89,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * ProjectSettings projectSettings =
- *     ProjectSettings.newBuilder()
- *         .setTransportChannelProvider(ProjectSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     ProjectSettings.newBuilder().setEndpoint(myEndpoint).build();
  * ProjectClient projectClient =
  *     ProjectClient.create(projectSettings);
  * </code>
@@ -127,7 +123,7 @@ public class ProjectClient implements BackgroundResource {
    * Constructs an instance of ProjectClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use ProjectSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final ProjectClient create(ProjectStub stub) {
     return new ProjectClient(stub);
   }
@@ -142,6 +138,7 @@ public class ProjectClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected ProjectClient(ProjectStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -151,7 +148,7 @@ public class ProjectClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public ProjectStub getStub() {
     return stub;
   }

@@ -84,7 +84,7 @@ import org.threeten.bp.Duration;
  */
 @Generated("by GAPIC v0.0.5")
 @BetaApi
-public class SslCertificateSettings extends ClientSettings {
+public class SslCertificateSettings extends ClientSettings<SslCertificateSettings> {
   /**
    * The default scopes of the service.
    */
@@ -139,6 +139,7 @@ public class SslCertificateSettings extends ClientSettings {
   }
 
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public SslCertificateStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()
@@ -191,14 +192,14 @@ public class SslCertificateSettings extends ClientSettings {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint());
+    return InstantiatingHttpJsonChannelProvider.newBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
   }
 
+  @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
@@ -213,23 +214,6 @@ public class SslCertificateSettings extends ClientSettings {
       gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
     }
     return gapicVersion;
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults.
-   */
-  @Deprecated
-  public static Builder defaultBuilder() {
-    return Builder.createDefault();
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults for API methods, and the given
-   * ClientContext used for executor/transport/credentials.
-   */
-  @Deprecated
-  public static Builder defaultBuilder(ClientContext clientContext) {
-    return new Builder(clientContext);
   }
 
   /**
@@ -254,12 +238,7 @@ public class SslCertificateSettings extends ClientSettings {
   }
 
   private SslCertificateSettings(Builder settingsBuilder) throws IOException {
-    super(
-        settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportChannelProvider(),
-        settingsBuilder.getCredentialsProvider(),
-        settingsBuilder.getHeaderProvider(),
-        settingsBuilder.getClock());
+    super(settingsBuilder);
 
     deleteSslCertificateSettings = settingsBuilder.deleteSslCertificateSettings().build();
     getSslCertificateSettings = settingsBuilder.getSslCertificateSettings().build();
@@ -319,12 +298,12 @@ public class SslCertificateSettings extends ClientSettings {
   /**
    * Builder for SslCertificateSettings.
    */
-  public static class Builder extends ClientSettings.Builder {
+  public static class Builder extends ClientSettings.Builder<SslCertificateSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder deleteSslCertificateSettings;
-    private final UnaryCallSettings.Builder getSslCertificateSettings;
-    private final UnaryCallSettings.Builder insertSslCertificateSettings;
+    private final UnaryCallSettings.Builder<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateSettings;
+    private final UnaryCallSettings.Builder<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateSettings;
+    private final UnaryCallSettings.Builder<InsertSslCertificateHttpRequest, Operation> insertSslCertificateSettings;
     private final PagedCallSettings.Builder<ListSslCertificatesHttpRequest, SslCertificateList, ListSslCertificatesPagedResponse> listSslCertificatesSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
@@ -389,6 +368,7 @@ public class SslCertificateSettings extends ClientSettings {
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
 
@@ -427,30 +407,6 @@ public class SslCertificateSettings extends ClientSettings {
           insertSslCertificateSettings,
           listSslCertificatesSettings
       );
-    }
-
-    @Override
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      super.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
-      super.setTransportChannelProvider(transportProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      super.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
-      super.setCredentialsProvider(credentialsProvider);
-      return this;
     }
 
     /**

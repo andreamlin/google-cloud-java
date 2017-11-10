@@ -84,7 +84,7 @@ import org.threeten.bp.Duration;
  */
 @Generated("by GAPIC v0.0.5")
 @BetaApi
-public class InstanceTemplateSettings extends ClientSettings {
+public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSettings> {
   /**
    * The default scopes of the service.
    */
@@ -139,6 +139,7 @@ public class InstanceTemplateSettings extends ClientSettings {
   }
 
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public InstanceTemplateStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()
@@ -191,14 +192,14 @@ public class InstanceTemplateSettings extends ClientSettings {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint());
+    return InstantiatingHttpJsonChannelProvider.newBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
   }
 
+  @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
@@ -213,23 +214,6 @@ public class InstanceTemplateSettings extends ClientSettings {
       gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
     }
     return gapicVersion;
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults.
-   */
-  @Deprecated
-  public static Builder defaultBuilder() {
-    return Builder.createDefault();
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults for API methods, and the given
-   * ClientContext used for executor/transport/credentials.
-   */
-  @Deprecated
-  public static Builder defaultBuilder(ClientContext clientContext) {
-    return new Builder(clientContext);
   }
 
   /**
@@ -254,12 +238,7 @@ public class InstanceTemplateSettings extends ClientSettings {
   }
 
   private InstanceTemplateSettings(Builder settingsBuilder) throws IOException {
-    super(
-        settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportChannelProvider(),
-        settingsBuilder.getCredentialsProvider(),
-        settingsBuilder.getHeaderProvider(),
-        settingsBuilder.getClock());
+    super(settingsBuilder);
 
     deleteInstanceTemplateSettings = settingsBuilder.deleteInstanceTemplateSettings().build();
     getInstanceTemplateSettings = settingsBuilder.getInstanceTemplateSettings().build();
@@ -319,12 +298,12 @@ public class InstanceTemplateSettings extends ClientSettings {
   /**
    * Builder for InstanceTemplateSettings.
    */
-  public static class Builder extends ClientSettings.Builder {
+  public static class Builder extends ClientSettings.Builder<InstanceTemplateSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder deleteInstanceTemplateSettings;
-    private final UnaryCallSettings.Builder getInstanceTemplateSettings;
-    private final UnaryCallSettings.Builder insertInstanceTemplateSettings;
+    private final UnaryCallSettings.Builder<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateSettings;
+    private final UnaryCallSettings.Builder<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateSettings;
+    private final UnaryCallSettings.Builder<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateSettings;
     private final PagedCallSettings.Builder<ListInstanceTemplatesHttpRequest, InstanceTemplateList, ListInstanceTemplatesPagedResponse> listInstanceTemplatesSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
@@ -389,6 +368,7 @@ public class InstanceTemplateSettings extends ClientSettings {
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
 
@@ -427,30 +407,6 @@ public class InstanceTemplateSettings extends ClientSettings {
           insertInstanceTemplateSettings,
           listInstanceTemplatesSettings
       );
-    }
-
-    @Override
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      super.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
-      super.setTransportChannelProvider(transportProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      super.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
-      super.setCredentialsProvider(credentialsProvider);
-      return this;
     }
 
     /**

@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * GlobalAddressSettings globalAddressSettings =
- *     GlobalAddressSettings.newBuilder()
- *         .setTransportChannelProvider(GlobalAddressSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     GlobalAddressSettings.newBuilder().setEndpoint(myEndpoint).build();
  * GlobalAddressClient globalAddressClient =
  *     GlobalAddressClient.create(globalAddressSettings);
  * </code>
@@ -128,7 +124,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Constructs an instance of GlobalAddressClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use GlobalAddressSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final GlobalAddressClient create(GlobalAddressStub stub) {
     return new GlobalAddressClient(stub);
   }
@@ -143,6 +139,7 @@ public class GlobalAddressClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected GlobalAddressClient(GlobalAddressStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class GlobalAddressClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public GlobalAddressStub getStub() {
     return stub;
   }

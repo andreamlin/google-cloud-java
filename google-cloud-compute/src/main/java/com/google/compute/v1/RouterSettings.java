@@ -85,7 +85,7 @@ import org.threeten.bp.Duration;
  */
 @Generated("by GAPIC v0.0.5")
 @BetaApi
-public class RouterSettings extends ClientSettings {
+public class RouterSettings extends ClientSettings<RouterSettings> {
   /**
    * The default scopes of the service.
    */
@@ -180,6 +180,7 @@ public class RouterSettings extends ClientSettings {
   }
 
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public RouterStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()
@@ -232,14 +233,14 @@ public class RouterSettings extends ClientSettings {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint());
+    return InstantiatingHttpJsonChannelProvider.newBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
   }
 
+  @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
@@ -254,23 +255,6 @@ public class RouterSettings extends ClientSettings {
       gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
     }
     return gapicVersion;
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults.
-   */
-  @Deprecated
-  public static Builder defaultBuilder() {
-    return Builder.createDefault();
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults for API methods, and the given
-   * ClientContext used for executor/transport/credentials.
-   */
-  @Deprecated
-  public static Builder defaultBuilder(ClientContext clientContext) {
-    return new Builder(clientContext);
   }
 
   /**
@@ -295,12 +279,7 @@ public class RouterSettings extends ClientSettings {
   }
 
   private RouterSettings(Builder settingsBuilder) throws IOException {
-    super(
-        settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportChannelProvider(),
-        settingsBuilder.getCredentialsProvider(),
-        settingsBuilder.getHeaderProvider(),
-        settingsBuilder.getClock());
+    super(settingsBuilder);
 
     aggregatedListRoutersSettings = settingsBuilder.aggregatedListRoutersSettings().build();
     deleteRouterSettings = settingsBuilder.deleteRouterSettings().build();
@@ -413,18 +392,18 @@ public class RouterSettings extends ClientSettings {
   /**
    * Builder for RouterSettings.
    */
-  public static class Builder extends ClientSettings.Builder {
+  public static class Builder extends ClientSettings.Builder<RouterSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListRoutersHttpRequest, RouterAggregatedList, AggregatedListRoutersPagedResponse> aggregatedListRoutersSettings;
-    private final UnaryCallSettings.Builder deleteRouterSettings;
-    private final UnaryCallSettings.Builder getRouterSettings;
-    private final UnaryCallSettings.Builder getRouterStatusRouterSettings;
-    private final UnaryCallSettings.Builder insertRouterSettings;
+    private final UnaryCallSettings.Builder<DeleteRouterHttpRequest, Operation> deleteRouterSettings;
+    private final UnaryCallSettings.Builder<GetRouterHttpRequest, Router> getRouterSettings;
+    private final UnaryCallSettings.Builder<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterSettings;
+    private final UnaryCallSettings.Builder<InsertRouterHttpRequest, Operation> insertRouterSettings;
     private final PagedCallSettings.Builder<ListRoutersHttpRequest, RouterList, ListRoutersPagedResponse> listRoutersSettings;
-    private final UnaryCallSettings.Builder patchRouterSettings;
-    private final UnaryCallSettings.Builder previewRouterSettings;
-    private final UnaryCallSettings.Builder updateRouterSettings;
+    private final UnaryCallSettings.Builder<PatchRouterHttpRequest, Operation> patchRouterSettings;
+    private final UnaryCallSettings.Builder<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterSettings;
+    private final UnaryCallSettings.Builder<UpdateRouterHttpRequest, Operation> updateRouterSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
@@ -504,6 +483,7 @@ public class RouterSettings extends ClientSettings {
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
 
@@ -572,30 +552,6 @@ public class RouterSettings extends ClientSettings {
           previewRouterSettings,
           updateRouterSettings
       );
-    }
-
-    @Override
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      super.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
-      super.setTransportChannelProvider(transportProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      super.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
-      super.setCredentialsProvider(credentialsProvider);
-      return this;
     }
 
     /**

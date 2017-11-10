@@ -91,11 +91,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * DiskTypeSettings diskTypeSettings =
- *     DiskTypeSettings.newBuilder()
- *         .setTransportChannelProvider(DiskTypeSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     DiskTypeSettings.newBuilder().setEndpoint(myEndpoint).build();
  * DiskTypeClient diskTypeClient =
  *     DiskTypeClient.create(diskTypeSettings);
  * </code>
@@ -129,7 +125,7 @@ public class DiskTypeClient implements BackgroundResource {
    * Constructs an instance of DiskTypeClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use DiskTypeSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final DiskTypeClient create(DiskTypeStub stub) {
     return new DiskTypeClient(stub);
   }
@@ -144,6 +140,7 @@ public class DiskTypeClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected DiskTypeClient(DiskTypeStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -153,7 +150,7 @@ public class DiskTypeClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public DiskTypeStub getStub() {
     return stub;
   }

@@ -91,11 +91,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * AutoscalerSettings autoscalerSettings =
- *     AutoscalerSettings.newBuilder()
- *         .setTransportChannelProvider(AutoscalerSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     AutoscalerSettings.newBuilder().setEndpoint(myEndpoint).build();
  * AutoscalerClient autoscalerClient =
  *     AutoscalerClient.create(autoscalerSettings);
  * </code>
@@ -129,7 +125,7 @@ public class AutoscalerClient implements BackgroundResource {
    * Constructs an instance of AutoscalerClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use AutoscalerSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final AutoscalerClient create(AutoscalerStub stub) {
     return new AutoscalerClient(stub);
   }
@@ -144,6 +140,7 @@ public class AutoscalerClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected AutoscalerClient(AutoscalerStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -153,7 +150,7 @@ public class AutoscalerClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public AutoscalerStub getStub() {
     return stub;
   }

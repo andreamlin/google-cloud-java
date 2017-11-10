@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * TargetSslProxySettings targetSslProxySettings =
- *     TargetSslProxySettings.newBuilder()
- *         .setTransportChannelProvider(TargetSslProxySettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     TargetSslProxySettings.newBuilder().setEndpoint(myEndpoint).build();
  * TargetSslProxyClient targetSslProxyClient =
  *     TargetSslProxyClient.create(targetSslProxySettings);
  * </code>
@@ -128,7 +124,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    * Constructs an instance of TargetSslProxyClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use TargetSslProxySettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final TargetSslProxyClient create(TargetSslProxyStub stub) {
     return new TargetSslProxyClient(stub);
   }
@@ -143,6 +139,7 @@ public class TargetSslProxyClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected TargetSslProxyClient(TargetSslProxyStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class TargetSslProxyClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public TargetSslProxyStub getStub() {
     return stub;
   }

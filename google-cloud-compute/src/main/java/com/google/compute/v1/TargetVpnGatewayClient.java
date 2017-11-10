@@ -91,11 +91,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * TargetVpnGatewaySettings targetVpnGatewaySettings =
- *     TargetVpnGatewaySettings.newBuilder()
- *         .setTransportChannelProvider(TargetVpnGatewaySettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     TargetVpnGatewaySettings.newBuilder().setEndpoint(myEndpoint).build();
  * TargetVpnGatewayClient targetVpnGatewayClient =
  *     TargetVpnGatewayClient.create(targetVpnGatewaySettings);
  * </code>
@@ -129,7 +125,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * Constructs an instance of TargetVpnGatewayClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use TargetVpnGatewaySettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final TargetVpnGatewayClient create(TargetVpnGatewayStub stub) {
     return new TargetVpnGatewayClient(stub);
   }
@@ -144,6 +140,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected TargetVpnGatewayClient(TargetVpnGatewayStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -153,7 +150,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public TargetVpnGatewayStub getStub() {
     return stub;
   }

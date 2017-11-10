@@ -86,7 +86,7 @@ import org.threeten.bp.Duration;
  */
 @Generated("by GAPIC v0.0.5")
 @BetaApi
-public class InstanceGroupSettings extends ClientSettings {
+public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings> {
   /**
    * The default scopes of the service.
    */
@@ -181,6 +181,7 @@ public class InstanceGroupSettings extends ClientSettings {
   }
 
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public InstanceGroupStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()
@@ -233,14 +234,14 @@ public class InstanceGroupSettings extends ClientSettings {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint());
+    return InstantiatingHttpJsonChannelProvider.newBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
   }
 
+  @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
@@ -255,23 +256,6 @@ public class InstanceGroupSettings extends ClientSettings {
       gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
     }
     return gapicVersion;
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults.
-   */
-  @Deprecated
-  public static Builder defaultBuilder() {
-    return Builder.createDefault();
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults for API methods, and the given
-   * ClientContext used for executor/transport/credentials.
-   */
-  @Deprecated
-  public static Builder defaultBuilder(ClientContext clientContext) {
-    return new Builder(clientContext);
   }
 
   /**
@@ -296,12 +280,7 @@ public class InstanceGroupSettings extends ClientSettings {
   }
 
   private InstanceGroupSettings(Builder settingsBuilder) throws IOException {
-    super(
-        settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportChannelProvider(),
-        settingsBuilder.getCredentialsProvider(),
-        settingsBuilder.getHeaderProvider(),
-        settingsBuilder.getClock());
+    super(settingsBuilder);
 
     addInstancesInstanceGroupSettings = settingsBuilder.addInstancesInstanceGroupSettings().build();
     aggregatedListInstanceGroupsSettings = settingsBuilder.aggregatedListInstanceGroupsSettings().build();
@@ -462,18 +441,18 @@ public class InstanceGroupSettings extends ClientSettings {
   /**
    * Builder for InstanceGroupSettings.
    */
-  public static class Builder extends ClientSettings.Builder {
+  public static class Builder extends ClientSettings.Builder<InstanceGroupSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder addInstancesInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupSettings;
     private final PagedCallSettings.Builder<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList, AggregatedListInstanceGroupsPagedResponse> aggregatedListInstanceGroupsSettings;
-    private final UnaryCallSettings.Builder deleteInstanceGroupSettings;
-    private final UnaryCallSettings.Builder getInstanceGroupSettings;
-    private final UnaryCallSettings.Builder insertInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<DeleteInstanceGroupHttpRequest, Operation> deleteInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<InsertInstanceGroupHttpRequest, Operation> insertInstanceGroupSettings;
     private final PagedCallSettings.Builder<ListInstanceGroupsHttpRequest, InstanceGroupList, ListInstanceGroupsPagedResponse> listInstanceGroupsSettings;
     private final PagedCallSettings.Builder<ListInstancesInstanceGroupsHttpRequest, InstanceGroupsListInstances, ListInstancesInstanceGroupsPagedResponse> listInstancesInstanceGroupsSettings;
-    private final UnaryCallSettings.Builder removeInstancesInstanceGroupSettings;
-    private final UnaryCallSettings.Builder setNamedPortsInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<RemoveInstancesInstanceGroupHttpRequest, Operation> removeInstancesInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<SetNamedPortsInstanceGroupHttpRequest, Operation> setNamedPortsInstanceGroupSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
@@ -554,6 +533,7 @@ public class InstanceGroupSettings extends ClientSettings {
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
 
@@ -622,30 +602,6 @@ public class InstanceGroupSettings extends ClientSettings {
           removeInstancesInstanceGroupSettings,
           setNamedPortsInstanceGroupSettings
       );
-    }
-
-    @Override
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      super.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
-      super.setTransportChannelProvider(transportProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      super.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
-      super.setCredentialsProvider(credentialsProvider);
-      return this;
     }
 
     /**

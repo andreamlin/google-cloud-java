@@ -93,11 +93,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * InstanceSettings instanceSettings =
- *     InstanceSettings.newBuilder()
- *         .setTransportChannelProvider(InstanceSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     InstanceSettings.newBuilder().setEndpoint(myEndpoint).build();
  * InstanceClient instanceClient =
  *     InstanceClient.create(instanceSettings);
  * </code>
@@ -131,7 +127,7 @@ public class InstanceClient implements BackgroundResource {
    * Constructs an instance of InstanceClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use InstanceSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final InstanceClient create(InstanceStub stub) {
     return new InstanceClient(stub);
   }
@@ -146,6 +142,7 @@ public class InstanceClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected InstanceClient(InstanceStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -155,7 +152,7 @@ public class InstanceClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public InstanceStub getStub() {
     return stub;
   }

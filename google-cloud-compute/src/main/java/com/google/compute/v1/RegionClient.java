@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * RegionSettings regionSettings =
- *     RegionSettings.newBuilder()
- *         .setTransportChannelProvider(RegionSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     RegionSettings.newBuilder().setEndpoint(myEndpoint).build();
  * RegionClient regionClient =
  *     RegionClient.create(regionSettings);
  * </code>
@@ -128,7 +124,7 @@ public class RegionClient implements BackgroundResource {
    * Constructs an instance of RegionClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use RegionSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final RegionClient create(RegionStub stub) {
     return new RegionClient(stub);
   }
@@ -143,6 +139,7 @@ public class RegionClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected RegionClient(RegionStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class RegionClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public RegionStub getStub() {
     return stub;
   }

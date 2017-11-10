@@ -84,7 +84,7 @@ import org.threeten.bp.Duration;
  */
 @Generated("by GAPIC v0.0.5")
 @BetaApi
-public class UrlMapSettings extends ClientSettings {
+public class UrlMapSettings extends ClientSettings<UrlMapSettings> {
   /**
    * The default scopes of the service.
    */
@@ -171,6 +171,7 @@ public class UrlMapSettings extends ClientSettings {
   }
 
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public UrlMapStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()
@@ -223,14 +224,14 @@ public class UrlMapSettings extends ClientSettings {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint());
+    return InstantiatingHttpJsonChannelProvider.newBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
   }
 
+  @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
@@ -245,23 +246,6 @@ public class UrlMapSettings extends ClientSettings {
       gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
     }
     return gapicVersion;
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults.
-   */
-  @Deprecated
-  public static Builder defaultBuilder() {
-    return Builder.createDefault();
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults for API methods, and the given
-   * ClientContext used for executor/transport/credentials.
-   */
-  @Deprecated
-  public static Builder defaultBuilder(ClientContext clientContext) {
-    return new Builder(clientContext);
   }
 
   /**
@@ -286,12 +270,7 @@ public class UrlMapSettings extends ClientSettings {
   }
 
   private UrlMapSettings(Builder settingsBuilder) throws IOException {
-    super(
-        settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportChannelProvider(),
-        settingsBuilder.getCredentialsProvider(),
-        settingsBuilder.getHeaderProvider(),
-        settingsBuilder.getClock());
+    super(settingsBuilder);
 
     deleteUrlMapSettings = settingsBuilder.deleteUrlMapSettings().build();
     getUrlMapSettings = settingsBuilder.getUrlMapSettings().build();
@@ -355,17 +334,17 @@ public class UrlMapSettings extends ClientSettings {
   /**
    * Builder for UrlMapSettings.
    */
-  public static class Builder extends ClientSettings.Builder {
+  public static class Builder extends ClientSettings.Builder<UrlMapSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder deleteUrlMapSettings;
-    private final UnaryCallSettings.Builder getUrlMapSettings;
-    private final UnaryCallSettings.Builder insertUrlMapSettings;
-    private final UnaryCallSettings.Builder invalidateCacheUrlMapSettings;
+    private final UnaryCallSettings.Builder<DeleteUrlMapHttpRequest, Operation> deleteUrlMapSettings;
+    private final UnaryCallSettings.Builder<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings;
+    private final UnaryCallSettings.Builder<InsertUrlMapHttpRequest, Operation> insertUrlMapSettings;
+    private final UnaryCallSettings.Builder<InvalidateCacheUrlMapHttpRequest, Operation> invalidateCacheUrlMapSettings;
     private final PagedCallSettings.Builder<ListUrlMapsHttpRequest, UrlMapList, ListUrlMapsPagedResponse> listUrlMapsSettings;
-    private final UnaryCallSettings.Builder patchUrlMapSettings;
-    private final UnaryCallSettings.Builder updateUrlMapSettings;
-    private final UnaryCallSettings.Builder validateUrlMapSettings;
+    private final UnaryCallSettings.Builder<PatchUrlMapHttpRequest, Operation> patchUrlMapSettings;
+    private final UnaryCallSettings.Builder<UpdateUrlMapHttpRequest, Operation> updateUrlMapSettings;
+    private final UnaryCallSettings.Builder<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
@@ -441,6 +420,7 @@ public class UrlMapSettings extends ClientSettings {
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
 
@@ -503,30 +483,6 @@ public class UrlMapSettings extends ClientSettings {
           updateUrlMapSettings,
           validateUrlMapSettings
       );
-    }
-
-    @Override
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      super.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
-      super.setTransportChannelProvider(transportProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      super.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
-      super.setCredentialsProvider(credentialsProvider);
-      return this;
     }
 
     /**

@@ -84,7 +84,7 @@ import org.threeten.bp.Duration;
  */
 @Generated("by GAPIC v0.0.5")
 @BetaApi
-public class FirewallSettings extends ClientSettings {
+public class FirewallSettings extends ClientSettings<FirewallSettings> {
   /**
    * The default scopes of the service.
    */
@@ -155,6 +155,7 @@ public class FirewallSettings extends ClientSettings {
   }
 
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public FirewallStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()
@@ -207,14 +208,14 @@ public class FirewallSettings extends ClientSettings {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint());
+    return InstantiatingHttpJsonChannelProvider.newBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
   }
 
+  @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
@@ -229,23 +230,6 @@ public class FirewallSettings extends ClientSettings {
       gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
     }
     return gapicVersion;
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults.
-   */
-  @Deprecated
-  public static Builder defaultBuilder() {
-    return Builder.createDefault();
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults for API methods, and the given
-   * ClientContext used for executor/transport/credentials.
-   */
-  @Deprecated
-  public static Builder defaultBuilder(ClientContext clientContext) {
-    return new Builder(clientContext);
   }
 
   /**
@@ -270,12 +254,7 @@ public class FirewallSettings extends ClientSettings {
   }
 
   private FirewallSettings(Builder settingsBuilder) throws IOException {
-    super(
-        settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportChannelProvider(),
-        settingsBuilder.getCredentialsProvider(),
-        settingsBuilder.getHeaderProvider(),
-        settingsBuilder.getClock());
+    super(settingsBuilder);
 
     deleteFirewallSettings = settingsBuilder.deleteFirewallSettings().build();
     getFirewallSettings = settingsBuilder.getFirewallSettings().build();
@@ -337,15 +316,15 @@ public class FirewallSettings extends ClientSettings {
   /**
    * Builder for FirewallSettings.
    */
-  public static class Builder extends ClientSettings.Builder {
+  public static class Builder extends ClientSettings.Builder<FirewallSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder deleteFirewallSettings;
-    private final UnaryCallSettings.Builder getFirewallSettings;
-    private final UnaryCallSettings.Builder insertFirewallSettings;
+    private final UnaryCallSettings.Builder<DeleteFirewallHttpRequest, Operation> deleteFirewallSettings;
+    private final UnaryCallSettings.Builder<GetFirewallHttpRequest, Firewall> getFirewallSettings;
+    private final UnaryCallSettings.Builder<InsertFirewallHttpRequest, Operation> insertFirewallSettings;
     private final PagedCallSettings.Builder<ListFirewallsHttpRequest, FirewallList, ListFirewallsPagedResponse> listFirewallsSettings;
-    private final UnaryCallSettings.Builder patchFirewallSettings;
-    private final UnaryCallSettings.Builder updateFirewallSettings;
+    private final UnaryCallSettings.Builder<PatchFirewallHttpRequest, Operation> patchFirewallSettings;
+    private final UnaryCallSettings.Builder<UpdateFirewallHttpRequest, Operation> updateFirewallSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
@@ -415,6 +394,7 @@ public class FirewallSettings extends ClientSettings {
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
 
@@ -465,30 +445,6 @@ public class FirewallSettings extends ClientSettings {
           patchFirewallSettings,
           updateFirewallSettings
       );
-    }
-
-    @Override
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      super.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
-      super.setTransportChannelProvider(transportProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      super.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
-      super.setCredentialsProvider(credentialsProvider);
-      return this;
     }
 
     /**

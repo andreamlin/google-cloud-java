@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * GlobalForwardingRuleSettings globalForwardingRuleSettings =
- *     GlobalForwardingRuleSettings.newBuilder()
- *         .setTransportChannelProvider(GlobalForwardingRuleSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     GlobalForwardingRuleSettings.newBuilder().setEndpoint(myEndpoint).build();
  * GlobalForwardingRuleClient globalForwardingRuleClient =
  *     GlobalForwardingRuleClient.create(globalForwardingRuleSettings);
  * </code>
@@ -128,7 +124,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * Constructs an instance of GlobalForwardingRuleClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use GlobalForwardingRuleSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final GlobalForwardingRuleClient create(GlobalForwardingRuleStub stub) {
     return new GlobalForwardingRuleClient(stub);
   }
@@ -143,6 +139,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected GlobalForwardingRuleClient(GlobalForwardingRuleStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public GlobalForwardingRuleStub getStub() {
     return stub;
   }

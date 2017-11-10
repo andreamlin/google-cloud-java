@@ -85,7 +85,7 @@ import org.threeten.bp.Duration;
  */
 @Generated("by GAPIC v0.0.5")
 @BetaApi
-public class RegionInstanceGroupSettings extends ClientSettings {
+public class RegionInstanceGroupSettings extends ClientSettings<RegionInstanceGroupSettings> {
   /**
    * The default scopes of the service.
    */
@@ -140,6 +140,7 @@ public class RegionInstanceGroupSettings extends ClientSettings {
   }
 
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public RegionInstanceGroupStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()
@@ -192,14 +193,14 @@ public class RegionInstanceGroupSettings extends ClientSettings {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint());
+    return InstantiatingHttpJsonChannelProvider.newBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
   }
 
+  @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
@@ -214,23 +215,6 @@ public class RegionInstanceGroupSettings extends ClientSettings {
       gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
     }
     return gapicVersion;
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults.
-   */
-  @Deprecated
-  public static Builder defaultBuilder() {
-    return Builder.createDefault();
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults for API methods, and the given
-   * ClientContext used for executor/transport/credentials.
-   */
-  @Deprecated
-  public static Builder defaultBuilder(ClientContext clientContext) {
-    return new Builder(clientContext);
   }
 
   /**
@@ -255,12 +239,7 @@ public class RegionInstanceGroupSettings extends ClientSettings {
   }
 
   private RegionInstanceGroupSettings(Builder settingsBuilder) throws IOException {
-    super(
-        settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportChannelProvider(),
-        settingsBuilder.getCredentialsProvider(),
-        settingsBuilder.getHeaderProvider(),
-        settingsBuilder.getClock());
+    super(settingsBuilder);
 
     getRegionInstanceGroupSettings = settingsBuilder.getRegionInstanceGroupSettings().build();
     listRegionInstanceGroupsSettings = settingsBuilder.listRegionInstanceGroupsSettings().build();
@@ -368,13 +347,13 @@ public class RegionInstanceGroupSettings extends ClientSettings {
   /**
    * Builder for RegionInstanceGroupSettings.
    */
-  public static class Builder extends ClientSettings.Builder {
+  public static class Builder extends ClientSettings.Builder<RegionInstanceGroupSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder getRegionInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupSettings;
     private final PagedCallSettings.Builder<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList, ListRegionInstanceGroupsPagedResponse> listRegionInstanceGroupsSettings;
     private final PagedCallSettings.Builder<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances, ListInstancesRegionInstanceGroupsPagedResponse> listInstancesRegionInstanceGroupsSettings;
-    private final UnaryCallSettings.Builder setNamedPortsRegionInstanceGroupSettings;
+    private final UnaryCallSettings.Builder<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
@@ -439,6 +418,7 @@ public class RegionInstanceGroupSettings extends ClientSettings {
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
 
@@ -477,30 +457,6 @@ public class RegionInstanceGroupSettings extends ClientSettings {
           listInstancesRegionInstanceGroupsSettings,
           setNamedPortsRegionInstanceGroupSettings
       );
-    }
-
-    @Override
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      super.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
-      super.setTransportChannelProvider(transportProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      super.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
-      super.setCredentialsProvider(credentialsProvider);
-      return this;
     }
 
     /**

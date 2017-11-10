@@ -91,11 +91,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * GlobalOperationSettings globalOperationSettings =
- *     GlobalOperationSettings.newBuilder()
- *         .setTransportChannelProvider(GlobalOperationSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     GlobalOperationSettings.newBuilder().setEndpoint(myEndpoint).build();
  * GlobalOperationClient globalOperationClient =
  *     GlobalOperationClient.create(globalOperationSettings);
  * </code>
@@ -129,7 +125,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * Constructs an instance of GlobalOperationClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use GlobalOperationSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final GlobalOperationClient create(GlobalOperationStub stub) {
     return new GlobalOperationClient(stub);
   }
@@ -144,6 +140,7 @@ public class GlobalOperationClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected GlobalOperationClient(GlobalOperationStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -153,7 +150,7 @@ public class GlobalOperationClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public GlobalOperationStub getStub() {
     return stub;
   }

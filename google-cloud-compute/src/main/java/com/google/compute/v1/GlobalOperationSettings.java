@@ -85,7 +85,7 @@ import org.threeten.bp.Duration;
  */
 @Generated("by GAPIC v0.0.5")
 @BetaApi
-public class GlobalOperationSettings extends ClientSettings {
+public class GlobalOperationSettings extends ClientSettings<GlobalOperationSettings> {
   /**
    * The default scopes of the service.
    */
@@ -140,6 +140,7 @@ public class GlobalOperationSettings extends ClientSettings {
   }
 
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public GlobalOperationStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()
@@ -192,14 +193,14 @@ public class GlobalOperationSettings extends ClientSettings {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder()
-        .setEndpoint(getDefaultEndpoint());
+    return InstantiatingHttpJsonChannelProvider.newBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
     return defaultHttpJsonTransportProviderBuilder().build();
   }
 
+  @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
@@ -214,23 +215,6 @@ public class GlobalOperationSettings extends ClientSettings {
       gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
     }
     return gapicVersion;
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults.
-   */
-  @Deprecated
-  public static Builder defaultBuilder() {
-    return Builder.createDefault();
-  }
-
-  /**
-   * Returns a builder for this class with recommended defaults for API methods, and the given
-   * ClientContext used for executor/transport/credentials.
-   */
-  @Deprecated
-  public static Builder defaultBuilder(ClientContext clientContext) {
-    return new Builder(clientContext);
   }
 
   /**
@@ -255,12 +239,7 @@ public class GlobalOperationSettings extends ClientSettings {
   }
 
   private GlobalOperationSettings(Builder settingsBuilder) throws IOException {
-    super(
-        settingsBuilder.getExecutorProvider(),
-        settingsBuilder.getTransportChannelProvider(),
-        settingsBuilder.getCredentialsProvider(),
-        settingsBuilder.getHeaderProvider(),
-        settingsBuilder.getClock());
+    super(settingsBuilder);
 
     aggregatedListGlobalOperationsSettings = settingsBuilder.aggregatedListGlobalOperationsSettings().build();
     deleteGlobalOperationSettings = settingsBuilder.deleteGlobalOperationSettings().build();
@@ -368,12 +347,12 @@ public class GlobalOperationSettings extends ClientSettings {
   /**
    * Builder for GlobalOperationSettings.
    */
-  public static class Builder extends ClientSettings.Builder {
+  public static class Builder extends ClientSettings.Builder<GlobalOperationSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsSettings;
-    private final UnaryCallSettings.Builder deleteGlobalOperationSettings;
-    private final UnaryCallSettings.Builder getGlobalOperationSettings;
+    private final UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings;
+    private final UnaryCallSettings.Builder<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings;
     private final PagedCallSettings.Builder<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse> listGlobalOperationsSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
@@ -439,6 +418,7 @@ public class GlobalOperationSettings extends ClientSettings {
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
       builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
 
@@ -477,30 +457,6 @@ public class GlobalOperationSettings extends ClientSettings {
           getGlobalOperationSettings,
           listGlobalOperationsSettings
       );
-    }
-
-    @Override
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      super.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setTransportChannelProvider(TransportChannelProvider transportProvider) {
-      super.setTransportChannelProvider(transportProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      super.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    @Override
-    public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
-      super.setCredentialsProvider(credentialsProvider);
-      return this;
     }
 
     /**

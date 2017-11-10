@@ -90,11 +90,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * NetworkSettings networkSettings =
- *     NetworkSettings.newBuilder()
- *         .setTransportChannelProvider(NetworkSettings.defaultHttpJsonTransportProviderBuilder()
- *             .setEndpoint(myEndpoint)
- *             .build())
- *         .build();
+ *     NetworkSettings.newBuilder().setEndpoint(myEndpoint).build();
  * NetworkClient networkClient =
  *     NetworkClient.create(networkSettings);
  * </code>
@@ -128,7 +124,7 @@ public class NetworkClient implements BackgroundResource {
    * Constructs an instance of NetworkClient, using the given stub for making calls. This is for
    * advanced usage - prefer to use NetworkSettings}.
    */
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final NetworkClient create(NetworkStub stub) {
     return new NetworkClient(stub);
   }
@@ -143,6 +139,7 @@ public class NetworkClient implements BackgroundResource {
     this.stub = settings.createStub();
   }
 
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected NetworkClient(NetworkStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +149,7 @@ public class NetworkClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi
+  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public NetworkStub getStub() {
     return stub;
   }
