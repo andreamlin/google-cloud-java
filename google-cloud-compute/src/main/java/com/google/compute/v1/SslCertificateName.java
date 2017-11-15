@@ -46,7 +46,7 @@ public final class SslCertificateName implements ResourceName {
     sslCertificate = Preconditions.checkNotNull(builder.getSslCertificate());
   }
 
-  public static SslCertificateName create(
+  public static SslCertificateName of(
       String project,
       String sslCertificate
       ) {
@@ -68,7 +68,7 @@ public final class SslCertificateName implements ResourceName {
   public static SslCertificateName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "SslCertificateName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("project"),
       matchMap.get("sslCertificate")
     );

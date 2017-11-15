@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
-import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -79,7 +79,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<DeleteSubnetworkHttpRequest, Operation> deleteSubnetworkMethodDescriptor =
       ApiMethodDescriptor.<DeleteSubnetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.subnetworks.delete")
@@ -93,7 +93,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ExpandIpCidrRangeSubnetworkHttpRequest, Operation> expandIpCidrRangeSubnetworkMethodDescriptor =
       ApiMethodDescriptor.<ExpandIpCidrRangeSubnetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.subnetworks.expandIpCidrRange")
@@ -107,7 +107,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetSubnetworkHttpRequest, Subnetwork> getSubnetworkMethodDescriptor =
       ApiMethodDescriptor.<GetSubnetworkHttpRequest, Subnetwork>newBuilder()
           .setMethodName("compute.subnetworks.get")
@@ -121,7 +121,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertSubnetworkHttpRequest, Operation> insertSubnetworkMethodDescriptor =
       ApiMethodDescriptor.<InsertSubnetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.subnetworks.insert")
@@ -135,7 +135,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListSubnetworksHttpRequest, SubnetworkList> listSubnetworksMethodDescriptor =
       ApiMethodDescriptor.<ListSubnetworksHttpRequest, SubnetworkList>newBuilder()
           .setMethodName("compute.subnetworks.list")
@@ -150,7 +150,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

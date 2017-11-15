@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
-import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -72,7 +72,7 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateMethodDescriptor =
       ApiMethodDescriptor.<GetInstanceTemplateHttpRequest, InstanceTemplate>newBuilder()
           .setMethodName("compute.instanceTemplates.get")
@@ -86,7 +86,7 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateMethodDescriptor =
       ApiMethodDescriptor.<InsertInstanceTemplateHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instanceTemplates.insert")
@@ -100,7 +100,7 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListInstanceTemplatesHttpRequest, InstanceTemplateList> listInstanceTemplatesMethodDescriptor =
       ApiMethodDescriptor.<ListInstanceTemplatesHttpRequest, InstanceTemplateList>newBuilder()
           .setMethodName("compute.instanceTemplates.list")
@@ -115,7 +115,7 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

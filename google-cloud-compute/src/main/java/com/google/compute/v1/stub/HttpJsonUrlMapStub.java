@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
-import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -79,7 +79,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetUrlMapHttpRequest, UrlMap> getUrlMapMethodDescriptor =
       ApiMethodDescriptor.<GetUrlMapHttpRequest, UrlMap>newBuilder()
           .setMethodName("compute.urlMaps.get")
@@ -93,7 +93,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertUrlMapHttpRequest, Operation> insertUrlMapMethodDescriptor =
       ApiMethodDescriptor.<InsertUrlMapHttpRequest, Operation>newBuilder()
           .setMethodName("compute.urlMaps.insert")
@@ -107,7 +107,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InvalidateCacheUrlMapHttpRequest, Operation> invalidateCacheUrlMapMethodDescriptor =
       ApiMethodDescriptor.<InvalidateCacheUrlMapHttpRequest, Operation>newBuilder()
           .setMethodName("compute.urlMaps.invalidateCache")
@@ -121,7 +121,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListUrlMapsHttpRequest, UrlMapList> listUrlMapsMethodDescriptor =
       ApiMethodDescriptor.<ListUrlMapsHttpRequest, UrlMapList>newBuilder()
           .setMethodName("compute.urlMaps.list")
@@ -136,7 +136,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<PatchUrlMapHttpRequest, Operation> patchUrlMapMethodDescriptor =
       ApiMethodDescriptor.<PatchUrlMapHttpRequest, Operation>newBuilder()
           .setMethodName("compute.urlMaps.patch")
@@ -150,7 +150,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<UpdateUrlMapHttpRequest, Operation> updateUrlMapMethodDescriptor =
       ApiMethodDescriptor.<UpdateUrlMapHttpRequest, Operation>newBuilder()
           .setMethodName("compute.urlMaps.update")
@@ -164,7 +164,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PUT)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapMethodDescriptor =
       ApiMethodDescriptor.<ValidateUrlMapHttpRequest, UrlMapsValidateResponse>newBuilder()
           .setMethodName("compute.urlMaps.validate")
@@ -178,7 +178,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

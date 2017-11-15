@@ -369,7 +369,7 @@ public final class GetInstanceTemplateHttpRequest implements ApiMessage {
     }
 
     public final InstanceTemplateName getInstanceTemplateAsInstanceTemplateName() {
-      return InstanceTemplateName.create(
+      return InstanceTemplateName.of(
           getInstanceTemplate(),
           getProject()
           );

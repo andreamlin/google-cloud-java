@@ -369,7 +369,7 @@ public final class GetTargetSslProxyHttpRequest implements ApiMessage {
     }
 
     public final TargetSslProxyName getTargetSslProxyAsTargetSslProxyName() {
-      return TargetSslProxyName.create(
+      return TargetSslProxyName.of(
           getProject(),
           getTargetSslProxy()
           );

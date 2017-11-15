@@ -429,7 +429,7 @@ public final class SetNamedPortsRegionInstanceGroupHttpRequest implements ApiMes
     }
 
     public final RegionInstanceGroupsInstanceGroupName getInstanceGroupAsRegionInstanceGroupsInstanceGroupName() {
-      return RegionInstanceGroupsInstanceGroupName.create(
+      return RegionInstanceGroupsInstanceGroupName.of(
           getInstanceGroup(),
           getProject(),
           getRegion()

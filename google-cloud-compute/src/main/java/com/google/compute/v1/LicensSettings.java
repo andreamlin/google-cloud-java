@@ -17,12 +17,12 @@ package com.google.compute.v1;
 
 import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
-import com.google.api.gax.core.ChannelProvider;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -67,7 +67,7 @@ import org.threeten.bp.Duration;
  * <code>
  * LicensSettings.Builder licensSettingsBuilder =
  *     LicensSettings.newBuilder();
- * licensSettingsBuilder.getLicensSettings().getRetrySettings().toBuilder()
+ * licensSettingsBuilder.getLicensSettings().getRetrySettingsBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * LicensSettings licensSettings = licensSettingsBuilder.build();
  * </code>
@@ -170,8 +170,7 @@ public class LicensSettings extends ClientSettings<LicensSettings> {
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
         .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
-        .setApiClientHeaderLineKey("x-goog-api-client")
-        .addApiClientHeaderLineData(GrpcExtraHeaderData.getXGoogApiClientData());
+        ;
   }
 
   private static String getGapicVersion() {

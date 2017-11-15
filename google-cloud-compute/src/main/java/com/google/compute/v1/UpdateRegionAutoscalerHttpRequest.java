@@ -425,7 +425,7 @@ public final class UpdateRegionAutoscalerHttpRequest implements ApiMessage {
     }
 
     public final RegionName getRegionAsRegionName() {
-      return RegionName.create(
+      return RegionName.of(
           getProject(),
           getRegion()
           );

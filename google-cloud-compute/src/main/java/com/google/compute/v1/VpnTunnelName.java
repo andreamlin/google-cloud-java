@@ -48,7 +48,7 @@ public final class VpnTunnelName implements ResourceName {
     vpnTunnel = Preconditions.checkNotNull(builder.getVpnTunnel());
   }
 
-  public static VpnTunnelName create(
+  public static VpnTunnelName of(
       String project,
       String region,
       String vpnTunnel
@@ -76,7 +76,7 @@ public final class VpnTunnelName implements ResourceName {
   public static VpnTunnelName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "VpnTunnelName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("project"),
       matchMap.get("region"),
       matchMap.get("vpnTunnel")

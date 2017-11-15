@@ -401,7 +401,7 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
     }
 
     public final AddressName getAddressAsAddressName() {
-      return AddressName.create(
+      return AddressName.of(
           getAddress(),
           getProject(),
           getRegion()

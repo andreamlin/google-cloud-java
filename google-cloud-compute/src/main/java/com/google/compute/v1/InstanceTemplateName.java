@@ -46,7 +46,7 @@ public final class InstanceTemplateName implements ResourceName {
     project = Preconditions.checkNotNull(builder.getProject());
   }
 
-  public static InstanceTemplateName create(
+  public static InstanceTemplateName of(
       String instanceTemplate,
       String project
       ) {
@@ -68,7 +68,7 @@ public final class InstanceTemplateName implements ResourceName {
   public static InstanceTemplateName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "InstanceTemplateName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("instanceTemplate"),
       matchMap.get("project")
     );

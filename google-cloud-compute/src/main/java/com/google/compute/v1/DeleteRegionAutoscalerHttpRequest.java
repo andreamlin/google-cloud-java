@@ -401,7 +401,7 @@ public final class DeleteRegionAutoscalerHttpRequest implements ApiMessage {
     }
 
     public final RegionAutoscalersAutoscalerName getAutoscalerAsRegionAutoscalersAutoscalerName() {
-      return RegionAutoscalersAutoscalerName.create(
+      return RegionAutoscalersAutoscalerName.of(
           getAutoscaler(),
           getProject(),
           getRegion()

@@ -401,7 +401,7 @@ public final class GetDiskHttpRequest implements ApiMessage {
     }
 
     public final DiskName getDiskAsDiskName() {
-      return DiskName.create(
+      return DiskName.of(
           getDisk(),
           getProject(),
           getZone()

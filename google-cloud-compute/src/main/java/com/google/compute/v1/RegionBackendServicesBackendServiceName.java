@@ -48,7 +48,7 @@ public final class RegionBackendServicesBackendServiceName implements ResourceNa
     region = Preconditions.checkNotNull(builder.getRegion());
   }
 
-  public static RegionBackendServicesBackendServiceName create(
+  public static RegionBackendServicesBackendServiceName of(
       String backendService,
       String project,
       String region
@@ -76,7 +76,7 @@ public final class RegionBackendServicesBackendServiceName implements ResourceNa
   public static RegionBackendServicesBackendServiceName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "RegionBackendServicesBackendServiceName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("backendService"),
       matchMap.get("project"),
       matchMap.get("region")

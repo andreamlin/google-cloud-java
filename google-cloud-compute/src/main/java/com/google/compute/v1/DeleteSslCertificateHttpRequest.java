@@ -369,7 +369,7 @@ public final class DeleteSslCertificateHttpRequest implements ApiMessage {
     }
 
     public final SslCertificateName getSslCertificateAsSslCertificateName() {
-      return SslCertificateName.create(
+      return SslCertificateName.of(
           getProject(),
           getSslCertificate()
           );

@@ -401,7 +401,7 @@ public final class GetTargetVpnGatewayHttpRequest implements ApiMessage {
     }
 
     public final TargetVpnGatewayName getTargetVpnGatewayAsTargetVpnGatewayName() {
-      return TargetVpnGatewayName.create(
+      return TargetVpnGatewayName.of(
           getProject(),
           getRegion(),
           getTargetVpnGateway()

@@ -397,7 +397,7 @@ public final class InsertTargetPoolHttpRequest implements ApiMessage {
     }
 
     public final RegionName getRegionAsRegionName() {
-      return RegionName.create(
+      return RegionName.of(
           getProject(),
           getRegion()
           );

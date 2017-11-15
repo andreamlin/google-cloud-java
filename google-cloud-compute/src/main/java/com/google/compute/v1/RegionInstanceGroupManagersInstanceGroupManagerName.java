@@ -48,7 +48,7 @@ public final class RegionInstanceGroupManagersInstanceGroupManagerName implement
     region = Preconditions.checkNotNull(builder.getRegion());
   }
 
-  public static RegionInstanceGroupManagersInstanceGroupManagerName create(
+  public static RegionInstanceGroupManagersInstanceGroupManagerName of(
       String instanceGroupManager,
       String project,
       String region
@@ -76,7 +76,7 @@ public final class RegionInstanceGroupManagersInstanceGroupManagerName implement
   public static RegionInstanceGroupManagersInstanceGroupManagerName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "RegionInstanceGroupManagersInstanceGroupManagerName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("instanceGroupManager"),
       matchMap.get("project"),
       matchMap.get("region")

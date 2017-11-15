@@ -481,7 +481,7 @@ public final class ListRegionOperationsHttpRequest implements ApiMessage {
     }
 
     public final RegionName getRegionAsRegionName() {
-      return RegionName.create(
+      return RegionName.of(
           getProject(),
           getRegion()
           );

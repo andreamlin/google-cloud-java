@@ -429,7 +429,7 @@ public final class UpdateRegionBackendServiceHttpRequest implements ApiMessage {
     }
 
     public final RegionBackendServicesBackendServiceName getBackendServiceAsRegionBackendServicesBackendServiceName() {
-      return RegionBackendServicesBackendServiceName.create(
+      return RegionBackendServicesBackendServiceName.of(
           getBackendService(),
           getProject(),
           getRegion()

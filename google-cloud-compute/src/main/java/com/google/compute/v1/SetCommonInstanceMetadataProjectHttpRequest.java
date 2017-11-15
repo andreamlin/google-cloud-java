@@ -365,7 +365,7 @@ public final class SetCommonInstanceMetadataProjectHttpRequest implements ApiMes
     }
 
     public final ProjectName getProjectAsProjectName() {
-      return ProjectName.create(
+      return ProjectName.of(
           getProject()
           );
     }

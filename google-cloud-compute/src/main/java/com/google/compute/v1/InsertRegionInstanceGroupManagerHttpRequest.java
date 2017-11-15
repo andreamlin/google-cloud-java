@@ -397,7 +397,7 @@ public final class InsertRegionInstanceGroupManagerHttpRequest implements ApiMes
     }
 
     public final RegionName getRegionAsRegionName() {
-      return RegionName.create(
+      return RegionName.of(
           getProject(),
           getRegion()
           );

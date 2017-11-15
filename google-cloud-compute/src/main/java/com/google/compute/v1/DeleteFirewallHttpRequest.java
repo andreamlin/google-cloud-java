@@ -369,7 +369,7 @@ public final class DeleteFirewallHttpRequest implements ApiMessage {
     }
 
     public final FirewallName getFirewallAsFirewallName() {
-      return FirewallName.create(
+      return FirewallName.of(
           getFirewall(),
           getProject()
           );

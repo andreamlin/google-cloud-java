@@ -369,7 +369,7 @@ public final class GetBackendServiceHttpRequest implements ApiMessage {
     }
 
     public final BackendServiceName getBackendServiceAsBackendServiceName() {
-      return BackendServiceName.create(
+      return BackendServiceName.of(
           getBackendService(),
           getProject()
           );

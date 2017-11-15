@@ -365,7 +365,7 @@ public final class InsertHttpHealthCheckHttpRequest implements ApiMessage {
     }
 
     public final ProjectName getProjectAsProjectName() {
-      return ProjectName.create(
+      return ProjectName.of(
           getProject()
           );
     }

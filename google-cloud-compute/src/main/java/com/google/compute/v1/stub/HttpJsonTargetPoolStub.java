@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
-import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -89,7 +89,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<AddInstanceTargetPoolHttpRequest, Operation> addInstanceTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<AddInstanceTargetPoolHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetPools.addInstance")
@@ -103,7 +103,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList> aggregatedListTargetPoolsMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList>newBuilder()
           .setMethodName("compute.targetPools.aggregatedList")
@@ -118,7 +118,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<DeleteTargetPoolHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetPools.delete")
@@ -132,7 +132,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetTargetPoolHttpRequest, TargetPool> getTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<GetTargetPoolHttpRequest, TargetPool>newBuilder()
           .setMethodName("compute.targetPools.get")
@@ -146,7 +146,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> getHealthTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth>newBuilder()
           .setMethodName("compute.targetPools.getHealth")
@@ -160,7 +160,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertTargetPoolHttpRequest, Operation> insertTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<InsertTargetPoolHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetPools.insert")
@@ -174,7 +174,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListTargetPoolsHttpRequest, TargetPoolList> listTargetPoolsMethodDescriptor =
       ApiMethodDescriptor.<ListTargetPoolsHttpRequest, TargetPoolList>newBuilder()
           .setMethodName("compute.targetPools.list")
@@ -189,7 +189,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<RemoveHealthCheckTargetPoolHttpRequest, Operation> removeHealthCheckTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<RemoveHealthCheckTargetPoolHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetPools.removeHealthCheck")
@@ -203,7 +203,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<RemoveInstanceTargetPoolHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetPools.removeInstance")
@@ -217,7 +217,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<SetBackupTargetPoolHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetPools.setBackup")
@@ -232,7 +232,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

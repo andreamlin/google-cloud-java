@@ -48,7 +48,7 @@ public final class TargetVpnGatewayName implements ResourceName {
     targetVpnGateway = Preconditions.checkNotNull(builder.getTargetVpnGateway());
   }
 
-  public static TargetVpnGatewayName create(
+  public static TargetVpnGatewayName of(
       String project,
       String region,
       String targetVpnGateway
@@ -76,7 +76,7 @@ public final class TargetVpnGatewayName implements ResourceName {
   public static TargetVpnGatewayName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "TargetVpnGatewayName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("project"),
       matchMap.get("region"),
       matchMap.get("targetVpnGateway")

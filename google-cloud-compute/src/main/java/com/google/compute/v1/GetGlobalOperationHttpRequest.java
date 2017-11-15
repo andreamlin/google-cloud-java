@@ -369,7 +369,7 @@ public final class GetGlobalOperationHttpRequest implements ApiMessage {
     }
 
     public final GlobalOperationsOperationName getOperationAsGlobalOperationsOperationName() {
-      return GlobalOperationsOperationName.create(
+      return GlobalOperationsOperationName.of(
           getOperation(),
           getProject()
           );

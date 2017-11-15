@@ -44,7 +44,7 @@ public final class ProjectName implements ResourceName {
     project = Preconditions.checkNotNull(builder.getProject());
   }
 
-  public static ProjectName create(
+  public static ProjectName of(
       String project
       ) {
     return newBuilder()
@@ -60,7 +60,7 @@ public final class ProjectName implements ResourceName {
   public static ProjectName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "ProjectName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("project")
     );
   }

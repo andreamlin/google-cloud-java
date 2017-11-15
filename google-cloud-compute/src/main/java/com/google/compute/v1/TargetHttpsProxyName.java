@@ -46,7 +46,7 @@ public final class TargetHttpsProxyName implements ResourceName {
     targetHttpsProxy = Preconditions.checkNotNull(builder.getTargetHttpsProxy());
   }
 
-  public static TargetHttpsProxyName create(
+  public static TargetHttpsProxyName of(
       String project,
       String targetHttpsProxy
       ) {
@@ -68,7 +68,7 @@ public final class TargetHttpsProxyName implements ResourceName {
   public static TargetHttpsProxyName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "TargetHttpsProxyName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("project"),
       matchMap.get("targetHttpsProxy")
     );

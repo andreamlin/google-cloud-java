@@ -397,7 +397,7 @@ public final class DeprecateImageHttpRequest implements ApiMessage {
     }
 
     public final ImageName getImageAsImageName() {
-      return ImageName.create(
+      return ImageName.of(
           getImage(),
           getProject()
           );

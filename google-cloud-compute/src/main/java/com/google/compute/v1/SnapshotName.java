@@ -46,7 +46,7 @@ public final class SnapshotName implements ResourceName {
     snapshot = Preconditions.checkNotNull(builder.getSnapshot());
   }
 
-  public static SnapshotName create(
+  public static SnapshotName of(
       String project,
       String snapshot
       ) {
@@ -68,7 +68,7 @@ public final class SnapshotName implements ResourceName {
   public static SnapshotName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "SnapshotName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("project"),
       matchMap.get("snapshot")
     );

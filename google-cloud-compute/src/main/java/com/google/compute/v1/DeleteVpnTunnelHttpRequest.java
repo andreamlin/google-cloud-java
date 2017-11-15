@@ -401,7 +401,7 @@ public final class DeleteVpnTunnelHttpRequest implements ApiMessage {
     }
 
     public final VpnTunnelName getVpnTunnelAsVpnTunnelName() {
-      return VpnTunnelName.create(
+      return VpnTunnelName.of(
           getProject(),
           getRegion(),
           getVpnTunnel()

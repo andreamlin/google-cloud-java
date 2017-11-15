@@ -369,7 +369,7 @@ public final class SwitchToCustomModeNetworkHttpRequest implements ApiMessage {
     }
 
     public final NetworkName getNetworkAsNetworkName() {
-      return NetworkName.create(
+      return NetworkName.of(
           getNetwork(),
           getProject()
           );

@@ -48,7 +48,7 @@ public final class TargetPoolName implements ResourceName {
     targetPool = Preconditions.checkNotNull(builder.getTargetPool());
   }
 
-  public static TargetPoolName create(
+  public static TargetPoolName of(
       String project,
       String region,
       String targetPool
@@ -76,7 +76,7 @@ public final class TargetPoolName implements ResourceName {
   public static TargetPoolName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "TargetPoolName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("project"),
       matchMap.get("region"),
       matchMap.get("targetPool")

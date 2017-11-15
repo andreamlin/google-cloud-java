@@ -48,7 +48,7 @@ public final class MachineTypeName implements ResourceName {
     zone = Preconditions.checkNotNull(builder.getZone());
   }
 
-  public static MachineTypeName create(
+  public static MachineTypeName of(
       String machineType,
       String project,
       String zone
@@ -76,7 +76,7 @@ public final class MachineTypeName implements ResourceName {
   public static MachineTypeName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "MachineTypeName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("machineType"),
       matchMap.get("project"),
       matchMap.get("zone")

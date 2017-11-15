@@ -401,7 +401,7 @@ public final class GetZoneOperationHttpRequest implements ApiMessage {
     }
 
     public final ZoneOperationsOperationName getOperationAsZoneOperationsOperationName() {
-      return ZoneOperationsOperationName.create(
+      return ZoneOperationsOperationName.of(
           getOperation(),
           getProject(),
           getZone()

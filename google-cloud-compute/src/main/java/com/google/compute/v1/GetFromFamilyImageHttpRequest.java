@@ -369,7 +369,7 @@ public final class GetFromFamilyImageHttpRequest implements ApiMessage {
     }
 
     public final FamilyName getFamilyAsFamilyName() {
-      return FamilyName.create(
+      return FamilyName.of(
           getFamily(),
           getProject()
           );

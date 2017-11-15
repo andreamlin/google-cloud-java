@@ -449,7 +449,7 @@ public final class ListZonesHttpRequest implements ApiMessage {
     }
 
     public final ProjectName getProjectAsProjectName() {
-      return ProjectName.create(
+      return ProjectName.of(
           getProject()
           );
     }

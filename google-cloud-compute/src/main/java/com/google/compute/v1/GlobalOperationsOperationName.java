@@ -46,7 +46,7 @@ public final class GlobalOperationsOperationName implements ResourceName {
     project = Preconditions.checkNotNull(builder.getProject());
   }
 
-  public static GlobalOperationsOperationName create(
+  public static GlobalOperationsOperationName of(
       String operation,
       String project
       ) {
@@ -68,7 +68,7 @@ public final class GlobalOperationsOperationName implements ResourceName {
   public static GlobalOperationsOperationName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "GlobalOperationsOperationName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("operation"),
       matchMap.get("project")
     );

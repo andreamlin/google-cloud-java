@@ -401,7 +401,7 @@ public final class GetForwardingRuleHttpRequest implements ApiMessage {
     }
 
     public final ForwardingRuleName getForwardingRuleAsForwardingRuleName() {
-      return ForwardingRuleName.create(
+      return ForwardingRuleName.of(
           getForwardingRule(),
           getProject(),
           getRegion()

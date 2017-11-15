@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
-import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -79,7 +79,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<DeleteForwardingRuleHttpRequest, Operation> deleteForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<DeleteForwardingRuleHttpRequest, Operation>newBuilder()
           .setMethodName("compute.forwardingRules.delete")
@@ -93,7 +93,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetForwardingRuleHttpRequest, ForwardingRule> getForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<GetForwardingRuleHttpRequest, ForwardingRule>newBuilder()
           .setMethodName("compute.forwardingRules.get")
@@ -107,7 +107,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertForwardingRuleHttpRequest, Operation> insertForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<InsertForwardingRuleHttpRequest, Operation>newBuilder()
           .setMethodName("compute.forwardingRules.insert")
@@ -121,7 +121,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListForwardingRulesHttpRequest, ForwardingRuleList> listForwardingRulesMethodDescriptor =
       ApiMethodDescriptor.<ListForwardingRulesHttpRequest, ForwardingRuleList>newBuilder()
           .setMethodName("compute.forwardingRules.list")
@@ -136,7 +136,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<SetTargetForwardingRuleHttpRequest, Operation>newBuilder()
           .setMethodName("compute.forwardingRules.setTarget")
@@ -150,7 +150,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

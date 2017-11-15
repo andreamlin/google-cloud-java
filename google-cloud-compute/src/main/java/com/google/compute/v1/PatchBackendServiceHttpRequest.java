@@ -397,7 +397,7 @@ public final class PatchBackendServiceHttpRequest implements ApiMessage {
     }
 
     public final BackendServiceName getBackendServiceAsBackendServiceName() {
-      return BackendServiceName.create(
+      return BackendServiceName.of(
           getBackendService(),
           getProject()
           );

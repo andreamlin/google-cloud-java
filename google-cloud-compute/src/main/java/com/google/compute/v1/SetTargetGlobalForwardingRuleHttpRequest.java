@@ -397,7 +397,7 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
     }
 
     public final GlobalForwardingRulesForwardingRuleName getForwardingRuleAsGlobalForwardingRulesForwardingRuleName() {
-      return GlobalForwardingRulesForwardingRuleName.create(
+      return GlobalForwardingRulesForwardingRuleName.of(
           getForwardingRule(),
           getProject()
           );

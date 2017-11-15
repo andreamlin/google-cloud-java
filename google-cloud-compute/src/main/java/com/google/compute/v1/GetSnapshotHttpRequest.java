@@ -369,7 +369,7 @@ public final class GetSnapshotHttpRequest implements ApiMessage {
     }
 
     public final SnapshotName getSnapshotAsSnapshotName() {
-      return SnapshotName.create(
+      return SnapshotName.of(
           getProject(),
           getSnapshot()
           );

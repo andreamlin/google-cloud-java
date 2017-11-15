@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
-import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -76,7 +76,7 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetTargetHttpsProxyHttpRequest, TargetHttpsProxy> getTargetHttpsProxyMethodDescriptor =
       ApiMethodDescriptor.<GetTargetHttpsProxyHttpRequest, TargetHttpsProxy>newBuilder()
           .setMethodName("compute.targetHttpsProxies.get")
@@ -90,7 +90,7 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertTargetHttpsProxyHttpRequest, Operation> insertTargetHttpsProxyMethodDescriptor =
       ApiMethodDescriptor.<InsertTargetHttpsProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetHttpsProxies.insert")
@@ -104,7 +104,7 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListTargetHttpsProxiesHttpRequest, TargetHttpsProxyList> listTargetHttpsProxiesMethodDescriptor =
       ApiMethodDescriptor.<ListTargetHttpsProxiesHttpRequest, TargetHttpsProxyList>newBuilder()
           .setMethodName("compute.targetHttpsProxies.list")
@@ -119,7 +119,7 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<SetSslCertificatesTargetHttpsProxyHttpRequest, Operation> setSslCertificatesTargetHttpsProxyMethodDescriptor =
       ApiMethodDescriptor.<SetSslCertificatesTargetHttpsProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetHttpsProxies.setSslCertificates")
@@ -133,7 +133,7 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<SetUrlMapTargetHttpsProxyHttpRequest, Operation> setUrlMapTargetHttpsProxyMethodDescriptor =
       ApiMethodDescriptor.<SetUrlMapTargetHttpsProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetHttpsProxies.setUrlMap")
@@ -147,7 +147,7 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

@@ -48,7 +48,7 @@ public final class ForwardingRuleName implements ResourceName {
     region = Preconditions.checkNotNull(builder.getRegion());
   }
 
-  public static ForwardingRuleName create(
+  public static ForwardingRuleName of(
       String forwardingRule,
       String project,
       String region
@@ -76,7 +76,7 @@ public final class ForwardingRuleName implements ResourceName {
   public static ForwardingRuleName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "ForwardingRuleName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("forwardingRule"),
       matchMap.get("project"),
       matchMap.get("region")

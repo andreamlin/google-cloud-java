@@ -429,7 +429,7 @@ public final class StartWithEncryptionKeyInstanceHttpRequest implements ApiMessa
     }
 
     public final InstanceName getInstanceAsInstanceName() {
-      return InstanceName.create(
+      return InstanceName.of(
           getInstance(),
           getProject(),
           getZone()

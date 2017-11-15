@@ -46,7 +46,7 @@ public final class UrlMapName implements ResourceName {
     urlMap = Preconditions.checkNotNull(builder.getUrlMap());
   }
 
-  public static UrlMapName create(
+  public static UrlMapName of(
       String project,
       String urlMap
       ) {
@@ -68,7 +68,7 @@ public final class UrlMapName implements ResourceName {
   public static UrlMapName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "UrlMapName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("project"),
       matchMap.get("urlMap")
     );

@@ -401,7 +401,7 @@ public final class DeleteRegionOperationHttpRequest implements ApiMessage {
     }
 
     public final RegionOperationsOperationName getOperationAsRegionOperationsOperationName() {
-      return RegionOperationsOperationName.create(
+      return RegionOperationsOperationName.of(
           getOperation(),
           getProject(),
           getRegion()

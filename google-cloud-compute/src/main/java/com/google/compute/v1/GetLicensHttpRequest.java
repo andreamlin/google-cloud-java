@@ -369,7 +369,7 @@ public final class GetLicensHttpRequest implements ApiMessage {
     }
 
     public final LicenseName getLicenseAsLicenseName() {
-      return LicenseName.create(
+      return LicenseName.of(
           getLicense(),
           getProject()
           );

@@ -48,7 +48,7 @@ public final class AddressName implements ResourceName {
     region = Preconditions.checkNotNull(builder.getRegion());
   }
 
-  public static AddressName create(
+  public static AddressName of(
       String address,
       String project,
       String region
@@ -76,7 +76,7 @@ public final class AddressName implements ResourceName {
   public static AddressName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "AddressName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("address"),
       matchMap.get("project"),
       matchMap.get("region")

@@ -449,7 +449,7 @@ public final class ListGlobalAddressesHttpRequest implements ApiMessage {
     }
 
     public final ProjectName getProjectAsProjectName() {
-      return ProjectName.create(
+      return ProjectName.of(
           getProject()
           );
     }

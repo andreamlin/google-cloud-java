@@ -401,7 +401,7 @@ public final class GetInstanceGroupManagerHttpRequest implements ApiMessage {
     }
 
     public final InstanceGroupManagerName getInstanceGroupManagerAsInstanceGroupManagerName() {
-      return InstanceGroupManagerName.create(
+      return InstanceGroupManagerName.of(
           getInstanceGroupManager(),
           getProject(),
           getZone()

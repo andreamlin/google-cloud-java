@@ -397,7 +397,7 @@ public final class UpdateFirewallHttpRequest implements ApiMessage {
     }
 
     public final FirewallName getFirewallAsFirewallName() {
-      return FirewallName.create(
+      return FirewallName.of(
           getFirewall(),
           getProject()
           );

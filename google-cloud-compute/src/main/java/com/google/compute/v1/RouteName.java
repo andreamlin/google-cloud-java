@@ -46,7 +46,7 @@ public final class RouteName implements ResourceName {
     route = Preconditions.checkNotNull(builder.getRoute());
   }
 
-  public static RouteName create(
+  public static RouteName of(
       String project,
       String route
       ) {
@@ -68,7 +68,7 @@ public final class RouteName implements ResourceName {
   public static RouteName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "RouteName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("project"),
       matchMap.get("route")
     );

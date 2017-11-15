@@ -46,7 +46,7 @@ public final class HttpHealthCheckName implements ResourceName {
     project = Preconditions.checkNotNull(builder.getProject());
   }
 
-  public static HttpHealthCheckName create(
+  public static HttpHealthCheckName of(
       String httpHealthCheck,
       String project
       ) {
@@ -68,7 +68,7 @@ public final class HttpHealthCheckName implements ResourceName {
   public static HttpHealthCheckName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "HttpHealthCheckName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("httpHealthCheck"),
       matchMap.get("project")
     );

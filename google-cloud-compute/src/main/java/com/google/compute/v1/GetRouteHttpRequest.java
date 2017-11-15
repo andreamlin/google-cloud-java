@@ -369,7 +369,7 @@ public final class GetRouteHttpRequest implements ApiMessage {
     }
 
     public final RouteName getRouteAsRouteName() {
-      return RouteName.create(
+      return RouteName.of(
           getProject(),
           getRoute()
           );

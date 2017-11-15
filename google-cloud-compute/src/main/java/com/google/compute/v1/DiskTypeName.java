@@ -48,7 +48,7 @@ public final class DiskTypeName implements ResourceName {
     zone = Preconditions.checkNotNull(builder.getZone());
   }
 
-  public static DiskTypeName create(
+  public static DiskTypeName of(
       String diskType,
       String project,
       String zone
@@ -76,7 +76,7 @@ public final class DiskTypeName implements ResourceName {
   public static DiskTypeName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "DiskTypeName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("diskType"),
       matchMap.get("project"),
       matchMap.get("zone")

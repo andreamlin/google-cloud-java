@@ -429,7 +429,7 @@ public final class SetTargetPoolsInstanceGroupManagerHttpRequest implements ApiM
     }
 
     public final InstanceGroupManagerName getInstanceGroupManagerAsInstanceGroupManagerName() {
-      return InstanceGroupManagerName.create(
+      return InstanceGroupManagerName.of(
           getInstanceGroupManager(),
           getProject(),
           getZone()

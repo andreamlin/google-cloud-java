@@ -449,7 +449,7 @@ public final class AggregatedListBackendServicesHttpRequest implements ApiMessag
     }
 
     public final ProjectName getProjectAsProjectName() {
-      return ProjectName.create(
+      return ProjectName.of(
           getProject()
           );
     }

@@ -48,7 +48,7 @@ public final class InstanceGroupManagerName implements ResourceName {
     zone = Preconditions.checkNotNull(builder.getZone());
   }
 
-  public static InstanceGroupManagerName create(
+  public static InstanceGroupManagerName of(
       String instanceGroupManager,
       String project,
       String zone
@@ -76,7 +76,7 @@ public final class InstanceGroupManagerName implements ResourceName {
   public static InstanceGroupManagerName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "InstanceGroupManagerName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("instanceGroupManager"),
       matchMap.get("project"),
       matchMap.get("zone")

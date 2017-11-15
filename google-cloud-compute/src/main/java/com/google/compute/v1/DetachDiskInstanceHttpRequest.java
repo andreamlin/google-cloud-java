@@ -431,7 +431,7 @@ public final class DetachDiskInstanceHttpRequest implements ApiMessage {
     }
 
     public final InstanceName getInstanceAsInstanceName() {
-      return InstanceName.create(
+      return InstanceName.of(
           getInstance(),
           getProject(),
           getZone()

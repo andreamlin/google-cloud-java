@@ -397,7 +397,7 @@ public final class InsertTargetInstanceHttpRequest implements ApiMessage {
     }
 
     public final ZoneName getZoneAsZoneName() {
-      return ZoneName.create(
+      return ZoneName.of(
           getProject(),
           getZone()
           );

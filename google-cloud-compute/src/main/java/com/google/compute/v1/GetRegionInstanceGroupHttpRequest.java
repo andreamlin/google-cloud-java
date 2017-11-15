@@ -401,7 +401,7 @@ public final class GetRegionInstanceGroupHttpRequest implements ApiMessage {
     }
 
     public final RegionInstanceGroupsInstanceGroupName getInstanceGroupAsRegionInstanceGroupsInstanceGroupName() {
-      return RegionInstanceGroupsInstanceGroupName.create(
+      return RegionInstanceGroupsInstanceGroupName.of(
           getInstanceGroup(),
           getProject(),
           getRegion()

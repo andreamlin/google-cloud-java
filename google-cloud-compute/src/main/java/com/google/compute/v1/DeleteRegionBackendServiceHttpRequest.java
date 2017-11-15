@@ -401,7 +401,7 @@ public final class DeleteRegionBackendServiceHttpRequest implements ApiMessage {
     }
 
     public final RegionBackendServicesBackendServiceName getBackendServiceAsRegionBackendServicesBackendServiceName() {
-      return RegionBackendServicesBackendServiceName.create(
+      return RegionBackendServicesBackendServiceName.of(
           getBackendService(),
           getProject(),
           getRegion()

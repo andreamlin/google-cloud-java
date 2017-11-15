@@ -21,9 +21,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
-import com.google.api.gax.rpc.EmptyRequestParamsExtractor;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.common.collect.ImmutableMap;
@@ -77,7 +77,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetRegionBackendServiceHttpRequest, BackendService> getRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<GetRegionBackendServiceHttpRequest, BackendService>newBuilder()
           .setMethodName("compute.regionBackendServices.get")
@@ -91,7 +91,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth>newBuilder()
           .setMethodName("compute.regionBackendServices.getHealth")
@@ -105,7 +105,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<InsertRegionBackendServiceHttpRequest, Operation> insertRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<InsertRegionBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionBackendServices.insert")
@@ -119,7 +119,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<ListRegionBackendServicesHttpRequest, BackendServiceList> listRegionBackendServicesMethodDescriptor =
       ApiMethodDescriptor.<ListRegionBackendServicesHttpRequest, BackendServiceList>newBuilder()
           .setMethodName("compute.regionBackendServices.list")
@@ -134,7 +134,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<PatchRegionBackendServiceHttpRequest, Operation> patchRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<PatchRegionBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionBackendServices.patch")
@@ -148,7 +148,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
-          .build());
+          .build();
   private static final ApiMethodDescriptor<UpdateRegionBackendServiceHttpRequest, Operation> updateRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<UpdateRegionBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionBackendServices.update")
@@ -162,7 +162,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PUT)
-          .build());
+          .build();
 
   private final BackgroundResource backgroundResources;
 

@@ -369,7 +369,7 @@ public final class DeleteHealthCheckHttpRequest implements ApiMessage {
     }
 
     public final HealthCheckName getHealthCheckAsHealthCheckName() {
-      return HealthCheckName.create(
+      return HealthCheckName.of(
           getHealthCheck(),
           getProject()
           );

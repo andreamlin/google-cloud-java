@@ -48,7 +48,7 @@ public final class SubnetworkName implements ResourceName {
     subnetwork = Preconditions.checkNotNull(builder.getSubnetwork());
   }
 
-  public static SubnetworkName create(
+  public static SubnetworkName of(
       String project,
       String region,
       String subnetwork
@@ -76,7 +76,7 @@ public final class SubnetworkName implements ResourceName {
   public static SubnetworkName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "SubnetworkName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("project"),
       matchMap.get("region"),
       matchMap.get("subnetwork")

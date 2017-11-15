@@ -48,7 +48,7 @@ public final class InstanceName implements ResourceName {
     zone = Preconditions.checkNotNull(builder.getZone());
   }
 
-  public static InstanceName create(
+  public static InstanceName of(
       String instance,
       String project,
       String zone
@@ -76,7 +76,7 @@ public final class InstanceName implements ResourceName {
   public static InstanceName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "InstanceName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("instance"),
       matchMap.get("project"),
       matchMap.get("zone")

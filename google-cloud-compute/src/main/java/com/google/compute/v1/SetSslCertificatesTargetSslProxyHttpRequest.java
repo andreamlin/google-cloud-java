@@ -397,7 +397,7 @@ public final class SetSslCertificatesTargetSslProxyHttpRequest implements ApiMes
     }
 
     public final TargetSslProxyName getTargetSslProxyAsTargetSslProxyName() {
-      return TargetSslProxyName.create(
+      return TargetSslProxyName.of(
           getProject(),
           getTargetSslProxy()
           );

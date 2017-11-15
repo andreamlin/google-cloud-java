@@ -48,7 +48,7 @@ public final class RegionAutoscalersAutoscalerName implements ResourceName {
     region = Preconditions.checkNotNull(builder.getRegion());
   }
 
-  public static RegionAutoscalersAutoscalerName create(
+  public static RegionAutoscalersAutoscalerName of(
       String autoscaler,
       String project,
       String region
@@ -76,7 +76,7 @@ public final class RegionAutoscalersAutoscalerName implements ResourceName {
   public static RegionAutoscalersAutoscalerName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "RegionAutoscalersAutoscalerName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("autoscaler"),
       matchMap.get("project"),
       matchMap.get("region")

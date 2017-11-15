@@ -401,7 +401,7 @@ public final class GetAutoscalerHttpRequest implements ApiMessage {
     }
 
     public final AutoscalerName getAutoscalerAsAutoscalerName() {
-      return AutoscalerName.create(
+      return AutoscalerName.of(
           getAutoscaler(),
           getProject(),
           getZone()

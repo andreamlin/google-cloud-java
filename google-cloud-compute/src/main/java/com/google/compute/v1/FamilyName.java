@@ -46,7 +46,7 @@ public final class FamilyName implements ResourceName {
     project = Preconditions.checkNotNull(builder.getProject());
   }
 
-  public static FamilyName create(
+  public static FamilyName of(
       String family,
       String project
       ) {
@@ -68,7 +68,7 @@ public final class FamilyName implements ResourceName {
   public static FamilyName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "FamilyName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("family"),
       matchMap.get("project")
     );

@@ -46,7 +46,7 @@ public final class FirewallName implements ResourceName {
     project = Preconditions.checkNotNull(builder.getProject());
   }
 
-  public static FirewallName create(
+  public static FirewallName of(
       String firewall,
       String project
       ) {
@@ -68,7 +68,7 @@ public final class FirewallName implements ResourceName {
   public static FirewallName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "FirewallName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("firewall"),
       matchMap.get("project")
     );

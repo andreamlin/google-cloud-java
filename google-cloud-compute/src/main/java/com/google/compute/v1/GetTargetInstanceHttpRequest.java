@@ -401,7 +401,7 @@ public final class GetTargetInstanceHttpRequest implements ApiMessage {
     }
 
     public final TargetInstanceName getTargetInstanceAsTargetInstanceName() {
-      return TargetInstanceName.create(
+      return TargetInstanceName.of(
           getProject(),
           getTargetInstance(),
           getZone()

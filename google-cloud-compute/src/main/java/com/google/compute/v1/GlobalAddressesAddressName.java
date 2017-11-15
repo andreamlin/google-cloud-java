@@ -46,7 +46,7 @@ public final class GlobalAddressesAddressName implements ResourceName {
     project = Preconditions.checkNotNull(builder.getProject());
   }
 
-  public static GlobalAddressesAddressName create(
+  public static GlobalAddressesAddressName of(
       String address,
       String project
       ) {
@@ -68,7 +68,7 @@ public final class GlobalAddressesAddressName implements ResourceName {
   public static GlobalAddressesAddressName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "GlobalAddressesAddressName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("address"),
       matchMap.get("project")
     );

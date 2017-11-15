@@ -369,7 +369,7 @@ public final class GetGlobalAddressHttpRequest implements ApiMessage {
     }
 
     public final GlobalAddressesAddressName getAddressAsGlobalAddressesAddressName() {
-      return GlobalAddressesAddressName.create(
+      return GlobalAddressesAddressName.of(
           getAddress(),
           getProject()
           );

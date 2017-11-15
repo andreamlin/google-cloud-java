@@ -369,7 +369,7 @@ public final class DeleteTargetHttpProxyHttpRequest implements ApiMessage {
     }
 
     public final TargetHttpProxyName getTargetHttpProxyAsTargetHttpProxyName() {
-      return TargetHttpProxyName.create(
+      return TargetHttpProxyName.of(
           getProject(),
           getTargetHttpProxy()
           );

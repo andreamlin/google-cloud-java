@@ -401,7 +401,7 @@ public final class DeleteSubnetworkHttpRequest implements ApiMessage {
     }
 
     public final SubnetworkName getSubnetworkAsSubnetworkName() {
-      return SubnetworkName.create(
+      return SubnetworkName.of(
           getProject(),
           getRegion(),
           getSubnetwork()

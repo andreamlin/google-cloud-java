@@ -401,7 +401,7 @@ public final class GetMachineTypeHttpRequest implements ApiMessage {
     }
 
     public final MachineTypeName getMachineTypeAsMachineTypeName() {
-      return MachineTypeName.create(
+      return MachineTypeName.of(
           getMachineType(),
           getProject(),
           getZone()

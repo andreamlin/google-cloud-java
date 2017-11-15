@@ -46,7 +46,7 @@ public final class RegionName implements ResourceName {
     region = Preconditions.checkNotNull(builder.getRegion());
   }
 
-  public static RegionName create(
+  public static RegionName of(
       String project,
       String region
       ) {
@@ -68,7 +68,7 @@ public final class RegionName implements ResourceName {
   public static RegionName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "RegionName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("project"),
       matchMap.get("region")
     );

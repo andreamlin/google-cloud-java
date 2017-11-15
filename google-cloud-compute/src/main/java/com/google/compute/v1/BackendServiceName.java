@@ -46,7 +46,7 @@ public final class BackendServiceName implements ResourceName {
     project = Preconditions.checkNotNull(builder.getProject());
   }
 
-  public static BackendServiceName create(
+  public static BackendServiceName of(
       String backendService,
       String project
       ) {
@@ -68,7 +68,7 @@ public final class BackendServiceName implements ResourceName {
   public static BackendServiceName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "BackendServiceName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("backendService"),
       matchMap.get("project")
     );

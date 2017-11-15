@@ -46,7 +46,7 @@ public final class TargetSslProxyName implements ResourceName {
     targetSslProxy = Preconditions.checkNotNull(builder.getTargetSslProxy());
   }
 
-  public static TargetSslProxyName create(
+  public static TargetSslProxyName of(
       String project,
       String targetSslProxy
       ) {
@@ -68,7 +68,7 @@ public final class TargetSslProxyName implements ResourceName {
   public static TargetSslProxyName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "TargetSslProxyName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("project"),
       matchMap.get("targetSslProxy")
     );

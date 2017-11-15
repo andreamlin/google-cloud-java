@@ -429,7 +429,7 @@ public final class DeleteInstancesInstanceGroupManagerHttpRequest implements Api
     }
 
     public final InstanceGroupManagerName getInstanceGroupManagerAsInstanceGroupManagerName() {
-      return InstanceGroupManagerName.create(
+      return InstanceGroupManagerName.of(
           getInstanceGroupManager(),
           getProject(),
           getZone()

@@ -46,7 +46,7 @@ public final class GlobalForwardingRulesForwardingRuleName implements ResourceNa
     project = Preconditions.checkNotNull(builder.getProject());
   }
 
-  public static GlobalForwardingRulesForwardingRuleName create(
+  public static GlobalForwardingRulesForwardingRuleName of(
       String forwardingRule,
       String project
       ) {
@@ -68,7 +68,7 @@ public final class GlobalForwardingRulesForwardingRuleName implements ResourceNa
   public static GlobalForwardingRulesForwardingRuleName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "GlobalForwardingRulesForwardingRuleName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("forwardingRule"),
       matchMap.get("project")
     );

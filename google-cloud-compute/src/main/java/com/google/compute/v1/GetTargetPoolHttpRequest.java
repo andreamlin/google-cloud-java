@@ -401,7 +401,7 @@ public final class GetTargetPoolHttpRequest implements ApiMessage {
     }
 
     public final TargetPoolName getTargetPoolAsTargetPoolName() {
-      return TargetPoolName.create(
+      return TargetPoolName.of(
           getProject(),
           getRegion(),
           getTargetPool()

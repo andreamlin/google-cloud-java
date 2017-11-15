@@ -429,7 +429,7 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
     }
 
     public final DiskName getDiskAsDiskName() {
-      return DiskName.create(
+      return DiskName.of(
           getDisk(),
           getProject(),
           getZone()

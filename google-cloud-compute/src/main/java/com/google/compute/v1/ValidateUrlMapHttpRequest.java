@@ -397,7 +397,7 @@ public final class ValidateUrlMapHttpRequest implements ApiMessage {
     }
 
     public final UrlMapName getUrlMapAsUrlMapName() {
-      return UrlMapName.create(
+      return UrlMapName.of(
           getProject(),
           getUrlMap()
           );

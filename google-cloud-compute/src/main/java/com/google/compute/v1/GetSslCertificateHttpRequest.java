@@ -369,7 +369,7 @@ public final class GetSslCertificateHttpRequest implements ApiMessage {
     }
 
     public final SslCertificateName getSslCertificateAsSslCertificateName() {
-      return SslCertificateName.create(
+      return SslCertificateName.of(
           getProject(),
           getSslCertificate()
           );

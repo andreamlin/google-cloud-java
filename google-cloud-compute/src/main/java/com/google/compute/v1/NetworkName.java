@@ -46,7 +46,7 @@ public final class NetworkName implements ResourceName {
     project = Preconditions.checkNotNull(builder.getProject());
   }
 
-  public static NetworkName create(
+  public static NetworkName of(
       String network,
       String project
       ) {
@@ -68,7 +68,7 @@ public final class NetworkName implements ResourceName {
   public static NetworkName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "NetworkName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("network"),
       matchMap.get("project")
     );

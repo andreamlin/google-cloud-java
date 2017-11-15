@@ -369,7 +369,7 @@ public final class GetHttpsHealthCheckHttpRequest implements ApiMessage {
     }
 
     public final HttpsHealthCheckName getHttpsHealthCheckAsHttpsHealthCheckName() {
-      return HttpsHealthCheckName.create(
+      return HttpsHealthCheckName.of(
           getHttpsHealthCheck(),
           getProject()
           );

@@ -429,7 +429,7 @@ public final class PreviewRouterHttpRequest implements ApiMessage {
     }
 
     public final RouterName getRouterAsRouterName() {
-      return RouterName.create(
+      return RouterName.of(
           getProject(),
           getRegion(),
           getRouter()

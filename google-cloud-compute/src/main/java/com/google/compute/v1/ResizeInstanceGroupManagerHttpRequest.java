@@ -431,7 +431,7 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
     }
 
     public final InstanceGroupManagerName getInstanceGroupManagerAsInstanceGroupManagerName() {
-      return InstanceGroupManagerName.create(
+      return InstanceGroupManagerName.of(
           getInstanceGroupManager(),
           getProject(),
           getZone()

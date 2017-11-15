@@ -425,7 +425,7 @@ public final class UpdateAutoscalerHttpRequest implements ApiMessage {
     }
 
     public final ZoneName getZoneAsZoneName() {
-      return ZoneName.create(
+      return ZoneName.of(
           getProject(),
           getZone()
           );

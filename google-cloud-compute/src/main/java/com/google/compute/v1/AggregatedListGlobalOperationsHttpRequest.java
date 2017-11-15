@@ -449,7 +449,7 @@ public final class AggregatedListGlobalOperationsHttpRequest implements ApiMessa
     }
 
     public final ProjectName getProjectAsProjectName() {
-      return ProjectName.create(
+      return ProjectName.of(
           getProject()
           );
     }

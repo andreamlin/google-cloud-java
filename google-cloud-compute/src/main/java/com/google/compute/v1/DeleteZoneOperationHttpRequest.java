@@ -401,7 +401,7 @@ public final class DeleteZoneOperationHttpRequest implements ApiMessage {
     }
 
     public final ZoneOperationsOperationName getOperationAsZoneOperationsOperationName() {
-      return ZoneOperationsOperationName.create(
+      return ZoneOperationsOperationName.of(
           getOperation(),
           getProject(),
           getZone()

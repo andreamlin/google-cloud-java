@@ -429,7 +429,7 @@ public final class SetInstanceTemplateRegionInstanceGroupManagerHttpRequest impl
     }
 
     public final RegionInstanceGroupManagersInstanceGroupManagerName getInstanceGroupManagerAsRegionInstanceGroupManagersInstanceGroupManagerName() {
-      return RegionInstanceGroupManagersInstanceGroupManagerName.create(
+      return RegionInstanceGroupManagersInstanceGroupManagerName.of(
           getInstanceGroupManager(),
           getProject(),
           getRegion()

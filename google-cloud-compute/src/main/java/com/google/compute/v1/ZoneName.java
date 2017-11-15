@@ -46,7 +46,7 @@ public final class ZoneName implements ResourceName {
     zone = Preconditions.checkNotNull(builder.getZone());
   }
 
-  public static ZoneName create(
+  public static ZoneName of(
       String project,
       String zone
       ) {
@@ -68,7 +68,7 @@ public final class ZoneName implements ResourceName {
   public static ZoneName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "ZoneName.parse: formattedString not in valid format");
-    return create(
+    return of(
       matchMap.get("project"),
       matchMap.get("zone")
     );

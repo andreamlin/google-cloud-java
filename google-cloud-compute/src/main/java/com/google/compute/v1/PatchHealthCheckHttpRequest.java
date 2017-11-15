@@ -397,7 +397,7 @@ public final class PatchHealthCheckHttpRequest implements ApiMessage {
     }
 
     public final HealthCheckName getHealthCheckAsHealthCheckName() {
-      return HealthCheckName.create(
+      return HealthCheckName.of(
           getHealthCheck(),
           getProject()
           );

@@ -369,7 +369,7 @@ public final class DeleteBackendServiceHttpRequest implements ApiMessage {
     }
 
     public final BackendServiceName getBackendServiceAsBackendServiceName() {
-      return BackendServiceName.create(
+      return BackendServiceName.of(
           getBackendService(),
           getProject()
           );

@@ -397,7 +397,7 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
     }
 
     public final UrlMapName getUrlMapAsUrlMapName() {
-      return UrlMapName.create(
+      return UrlMapName.of(
           getProject(),
           getUrlMap()
           );

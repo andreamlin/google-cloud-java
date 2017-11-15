@@ -429,7 +429,7 @@ public final class GetHealthRegionBackendServiceHttpRequest implements ApiMessag
     }
 
     public final RegionBackendServicesBackendServiceName getBackendServiceAsRegionBackendServicesBackendServiceName() {
-      return RegionBackendServicesBackendServiceName.create(
+      return RegionBackendServicesBackendServiceName.of(
           getBackendService(),
           getProject(),
           getRegion()

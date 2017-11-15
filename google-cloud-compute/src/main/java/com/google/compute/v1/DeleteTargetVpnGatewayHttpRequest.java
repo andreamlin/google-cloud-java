@@ -401,7 +401,7 @@ public final class DeleteTargetVpnGatewayHttpRequest implements ApiMessage {
     }
 
     public final TargetVpnGatewayName getTargetVpnGatewayAsTargetVpnGatewayName() {
-      return TargetVpnGatewayName.create(
+      return TargetVpnGatewayName.of(
           getProject(),
           getRegion(),
           getTargetVpnGateway()

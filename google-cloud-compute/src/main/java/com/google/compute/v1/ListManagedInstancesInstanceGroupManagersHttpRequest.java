@@ -513,7 +513,7 @@ public final class ListManagedInstancesInstanceGroupManagersHttpRequest implemen
     }
 
     public final InstanceGroupManagerName getInstanceGroupManagerAsInstanceGroupManagerName() {
-      return InstanceGroupManagerName.create(
+      return InstanceGroupManagerName.of(
           getInstanceGroupManager(),
           getProject(),
           getZone()

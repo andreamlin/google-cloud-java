@@ -481,7 +481,7 @@ public final class ListRegionInstanceGroupManagersHttpRequest implements ApiMess
     }
 
     public final RegionName getRegionAsRegionName() {
-      return RegionName.create(
+      return RegionName.of(
           getProject(),
           getRegion()
           );
