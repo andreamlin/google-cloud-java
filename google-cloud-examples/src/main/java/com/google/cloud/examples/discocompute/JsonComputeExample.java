@@ -4,11 +4,14 @@ import com.google.api.core.ApiFuture;
 import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.common.base.Strings;
 import com.google.compute.v1.*;
 
+import com.google.compute.v1.PagedResponseWrappers.AggregatedListAddressesPagedResponse;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
+import org.threeten.bp.Duration;
 
 /**
  * Use gax-java and generated message type to List Addresses in a test GCP Compute project.
@@ -17,7 +20,7 @@ public class JsonComputeExample {
   private static String PROJECT_NAME = "gapic-test";
   private static String REGION = "us-central1";
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
     try {
       AddressClient addressClient = createCredentialedClient();
       runExampleWithGapicGen(addressClient);
@@ -33,7 +36,6 @@ public class JsonComputeExample {
     String myEndpoint = AddressSettings.getDefaultEndpoint();
 
     // Begin samplegen code. This combines the "customize credentials" and "customize the endpoint" samples.
-    // TODO(andrealin): update sample snippet
     AddressSettings addressSettings =
         AddressSettings.newBuilder()
             .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
@@ -45,6 +47,30 @@ public class JsonComputeExample {
     // End samplegen code.
 
     return addressClient;
+  }
+
+  private static AddressClient createCredentialedClient2() throws IOException, Exception {
+    try (AddressClient addressClient = AddressClient.create()) {
+      ProjectName project = ProjectName.of("[PROJECT]");
+      AggregatedListAddressesHttpRequest request = AggregatedListAddressesHttpRequest.newBuilder()
+          .setProjectWithProjectName(project)
+          .build();
+      while (true) {
+        AddressAggregatedList response = addressClient.aggregatedListAddressesCallable()
+            .call(request);
+        AddressesScopedList scopedList = response.getItems();
+        for (Address element : scopedList.getAddresses()) {
+          // doThingsWith(element);
+        }
+        String nextPageToken = response.getNextPageToken();
+        if (!Strings.isNullOrEmpty(nextPageToken)) {
+          request = request.toBuilder().setPageToken(nextPageToken).build();
+        } else {
+          break;
+        }
+      }
+    }
+    return null;
   }
 
   // A basic List Address example.
@@ -66,7 +92,7 @@ public class JsonComputeExample {
 
     System.out.println("Deleting address:");
     Operation deleteResponse = client.deleteAddress(
-        AddressName.create(newAddressName, PROJECT_NAME, REGION));
+        AddressName.of(newAddressName, PROJECT_NAME, REGION));
     System.out.format("Result of delete: %s\n", deleteResponse.toString());
     int sleepTimeInSeconds = 3;
     System.out.format("Waiting %d seconds for server to update...\n", sleepTimeInSeconds);
@@ -82,7 +108,7 @@ public class JsonComputeExample {
   private static void insertNewAddressJustClient(AddressClient client, String newAddressName) {
     // Begin samplegen code for insertAddress().
     Address newAddress = Address.newBuilder().setName(newAddressName).build();
-    RegionName region = RegionName.create(PROJECT_NAME, REGION);
+    RegionName region = RegionName.of(PROJECT_NAME, REGION);
     Operation response = client.insertAddress(region, newAddress);
     // End samplegen code for insertAddress().
     System.out.format("Result of insert: %s\n", response.toString());
@@ -91,7 +117,7 @@ public class JsonComputeExample {
   private static void insertNewAddressUsingRequest(AddressClient client, String newAddressName)
       throws InterruptedException, ExecutionException {
     // Begin samplegen code for insertAddress().
-    RegionName region = RegionName.create(PROJECT_NAME, REGION);
+    RegionName region = RegionName.of(PROJECT_NAME, REGION);
     Address address = Address.newBuilder().build();
     InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
         .setRegionWithRegionName(region)
@@ -107,7 +133,7 @@ public class JsonComputeExample {
   private static void insertAddressUsingCallable(AddressClient client, String newAddressName)
       throws InterruptedException, ExecutionException {
     // Begin samplegen code for insertAddress().
-    RegionName region = RegionName.create(PROJECT_NAME, REGION);
+    RegionName region = RegionName.of(PROJECT_NAME, REGION);
     Address address = Address.newBuilder().build();
     InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
         .setRegionWithRegionName(region)
@@ -123,9 +149,9 @@ public class JsonComputeExample {
 
   private static PagedResponseWrappers.ListAddressesPagedResponse listAddresses(AddressClient client) {
     System.out.println("Listing addresses:");
+    RegionName regionName = RegionName.newBuilder().setRegion(REGION).setProject(PROJECT_NAME).build();
     ListAddressesHttpRequest listRequest = ListAddressesHttpRequest.newBuilder()
-        .setRegion(REGION)
-        .setProject(PROJECT_NAME)
+        .setRegionWithRegionName(regionName)
         .build();
     PagedResponseWrappers.ListAddressesPagedResponse response = client.listAddresses(listRequest);
     for (Address address : response.iterateAll()) {
@@ -137,7 +163,7 @@ public class JsonComputeExample {
   private static void verifyListAddressWithGets(AddressClient client, PagedResponseWrappers.ListAddressesPagedResponse listResponse) {
     for (Address address : listResponse.iterateAll()) {
       System.out.format("Making get request for address \"%s\"...\n", address.getName());
-      Address fetchedAddress = client.getAddress(AddressName.create(address.getName(), PROJECT_NAME, REGION));
+      Address fetchedAddress = client.getAddress(AddressName.of(address.getName(), PROJECT_NAME, REGION));
       System.out.format("addresses.get returns \n\t%s\n\n", fetchedAddress.toString());
     }
   }
