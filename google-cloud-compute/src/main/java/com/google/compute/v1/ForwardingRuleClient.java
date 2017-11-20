@@ -245,7 +245,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     ForwardingRuleAggregatedList response = forwardingRuleClient.aggregatedListForwardingRulesCallable().call(request);
-   *     for (ForwardingRule element : response.getForwardingRules()) {
+   *     for (ForwardingRule element : response.getItems().getForwardingRules()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

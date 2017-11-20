@@ -75,7 +75,7 @@ import org.threeten.bp.Duration;
  * <code>
  * FirewallSettings.Builder firewallSettingsBuilder =
  *     FirewallSettings.newBuilder();
- * firewallSettingsBuilder.deleteFirewallSettings().getRetrySettingsBuilder()
+ * firewallSettingsBuilder.deleteFirewallSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * FirewallSettings firewallSettings = firewallSettingsBuilder.build();
  * </code>

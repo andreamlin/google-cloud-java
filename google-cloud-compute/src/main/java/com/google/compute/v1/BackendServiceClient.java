@@ -245,7 +245,7 @@ public class BackendServiceClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     BackendServiceAggregatedList response = backendServiceClient.aggregatedListBackendServicesCallable().call(request);
-   *     for (BackendService element : response.getBackendServices()) {
+   *     for (BackendService element : response.getItems().getBackendServices()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

@@ -76,7 +76,7 @@ import org.threeten.bp.Duration;
  * <code>
  * TargetInstanceSettings.Builder targetInstanceSettingsBuilder =
  *     TargetInstanceSettings.newBuilder();
- * targetInstanceSettingsBuilder.deleteTargetInstanceSettings().getRetrySettingsBuilder()
+ * targetInstanceSettingsBuilder.deleteTargetInstanceSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * TargetInstanceSettings targetInstanceSettings = targetInstanceSettingsBuilder.build();
  * </code>

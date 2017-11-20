@@ -75,7 +75,7 @@ import org.threeten.bp.Duration;
  * <code>
  * HttpsHealthCheckSettings.Builder httpsHealthCheckSettingsBuilder =
  *     HttpsHealthCheckSettings.newBuilder();
- * httpsHealthCheckSettingsBuilder.deleteHttpsHealthCheckSettings().getRetrySettingsBuilder()
+ * httpsHealthCheckSettingsBuilder.deleteHttpsHealthCheckSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * HttpsHealthCheckSettings httpsHealthCheckSettings = httpsHealthCheckSettingsBuilder.build();
  * </code>

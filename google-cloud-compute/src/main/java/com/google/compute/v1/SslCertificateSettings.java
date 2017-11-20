@@ -75,7 +75,7 @@ import org.threeten.bp.Duration;
  * <code>
  * SslCertificateSettings.Builder sslCertificateSettingsBuilder =
  *     SslCertificateSettings.newBuilder();
- * sslCertificateSettingsBuilder.deleteSslCertificateSettings().getRetrySettingsBuilder()
+ * sslCertificateSettingsBuilder.deleteSslCertificateSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * SslCertificateSettings sslCertificateSettings = sslCertificateSettingsBuilder.build();
  * </code>

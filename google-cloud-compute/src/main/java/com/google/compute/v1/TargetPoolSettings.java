@@ -76,7 +76,7 @@ import org.threeten.bp.Duration;
  * <code>
  * TargetPoolSettings.Builder targetPoolSettingsBuilder =
  *     TargetPoolSettings.newBuilder();
- * targetPoolSettingsBuilder.addHealthCheckTargetPoolSettings().getRetrySettingsBuilder()
+ * targetPoolSettingsBuilder.addHealthCheckTargetPoolSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * TargetPoolSettings targetPoolSettings = targetPoolSettingsBuilder.build();
  * </code>

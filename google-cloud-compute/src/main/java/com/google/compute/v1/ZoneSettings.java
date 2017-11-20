@@ -75,7 +75,7 @@ import org.threeten.bp.Duration;
  * <code>
  * ZoneSettings.Builder zoneSettingsBuilder =
  *     ZoneSettings.newBuilder();
- * zoneSettingsBuilder.getZoneSettings().getRetrySettingsBuilder()
+ * zoneSettingsBuilder.getZoneSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * ZoneSettings zoneSettings = zoneSettingsBuilder.build();
  * </code>

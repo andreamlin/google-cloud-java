@@ -75,7 +75,7 @@ import org.threeten.bp.Duration;
  * <code>
  * SnapshotSettings.Builder snapshotSettingsBuilder =
  *     SnapshotSettings.newBuilder();
- * snapshotSettingsBuilder.deleteSnapshotSettings().getRetrySettingsBuilder()
+ * snapshotSettingsBuilder.deleteSnapshotSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * SnapshotSettings snapshotSettings = snapshotSettingsBuilder.build();
  * </code>

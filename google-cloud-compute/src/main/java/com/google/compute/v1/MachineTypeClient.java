@@ -245,7 +245,7 @@ public class MachineTypeClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     MachineTypeAggregatedList response = machineTypeClient.aggregatedListMachineTypesCallable().call(request);
-   *     for (MachineType element : response.getMachineTypes()) {
+   *     for (MachineType element : response.getItems().getMachineTypes()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

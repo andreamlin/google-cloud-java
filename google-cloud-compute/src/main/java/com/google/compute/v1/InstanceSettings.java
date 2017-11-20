@@ -76,7 +76,7 @@ import org.threeten.bp.Duration;
  * <code>
  * InstanceSettings.Builder instanceSettingsBuilder =
  *     InstanceSettings.newBuilder();
- * instanceSettingsBuilder.addAccessConfigInstanceSettings().getRetrySettingsBuilder()
+ * instanceSettingsBuilder.addAccessConfigInstanceSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * InstanceSettings instanceSettings = instanceSettingsBuilder.build();
  * </code>

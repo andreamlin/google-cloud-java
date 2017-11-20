@@ -245,7 +245,7 @@ public class SubnetworkClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     SubnetworkAggregatedList response = subnetworkClient.aggregatedListSubnetworksCallable().call(request);
-   *     for (Subnetwork element : response.getSubnetworks()) {
+   *     for (Subnetwork element : response.getItems().getSubnetworks()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

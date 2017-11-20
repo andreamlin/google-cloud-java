@@ -76,7 +76,7 @@ import org.threeten.bp.Duration;
  * <code>
  * DiskSettings.Builder diskSettingsBuilder =
  *     DiskSettings.newBuilder();
- * diskSettingsBuilder.createSnapshotDiskSettings().getRetrySettingsBuilder()
+ * diskSettingsBuilder.createSnapshotDiskSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * DiskSettings diskSettings = diskSettingsBuilder.build();
  * </code>

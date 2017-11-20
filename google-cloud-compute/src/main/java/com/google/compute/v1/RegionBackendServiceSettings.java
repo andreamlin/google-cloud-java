@@ -75,7 +75,7 @@ import org.threeten.bp.Duration;
  * <code>
  * RegionBackendServiceSettings.Builder regionBackendServiceSettingsBuilder =
  *     RegionBackendServiceSettings.newBuilder();
- * regionBackendServiceSettingsBuilder.deleteRegionBackendServiceSettings().getRetrySettingsBuilder()
+ * regionBackendServiceSettingsBuilder.deleteRegionBackendServiceSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * RegionBackendServiceSettings regionBackendServiceSettings = regionBackendServiceSettingsBuilder.build();
  * </code>

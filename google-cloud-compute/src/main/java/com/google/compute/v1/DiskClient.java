@@ -246,7 +246,7 @@ public class DiskClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     DiskAggregatedList response = diskClient.aggregatedListDisksCallable().call(request);
-   *     for (Disk element : response.getDisks()) {
+   *     for (Disk element : response.getItems().getDisks()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

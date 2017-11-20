@@ -245,7 +245,7 @@ public class AutoscalerClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     AutoscalerAggregatedList response = autoscalerClient.aggregatedListAutoscalersCallable().call(request);
-   *     for (Autoscaler element : response.getAutoscalers()) {
+   *     for (Autoscaler element : response.getItems().getAutoscalers()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

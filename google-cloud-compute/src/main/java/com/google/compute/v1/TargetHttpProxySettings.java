@@ -75,7 +75,7 @@ import org.threeten.bp.Duration;
  * <code>
  * TargetHttpProxySettings.Builder targetHttpProxySettingsBuilder =
  *     TargetHttpProxySettings.newBuilder();
- * targetHttpProxySettingsBuilder.deleteTargetHttpProxySettings().getRetrySettingsBuilder()
+ * targetHttpProxySettingsBuilder.deleteTargetHttpProxySettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * TargetHttpProxySettings targetHttpProxySettings = targetHttpProxySettingsBuilder.build();
  * </code>

@@ -75,7 +75,7 @@ import org.threeten.bp.Duration;
  * <code>
  * ImageSettings.Builder imageSettingsBuilder =
  *     ImageSettings.newBuilder();
- * imageSettingsBuilder.deleteImageSettings().getRetrySettingsBuilder()
+ * imageSettingsBuilder.deleteImageSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * ImageSettings imageSettings = imageSettingsBuilder.build();
  * </code>

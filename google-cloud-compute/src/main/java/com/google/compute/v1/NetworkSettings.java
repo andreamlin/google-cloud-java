@@ -75,7 +75,7 @@ import org.threeten.bp.Duration;
  * <code>
  * NetworkSettings.Builder networkSettingsBuilder =
  *     NetworkSettings.newBuilder();
- * networkSettingsBuilder.deleteNetworkSettings().getRetrySettingsBuilder()
+ * networkSettingsBuilder.deleteNetworkSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * NetworkSettings networkSettings = networkSettingsBuilder.build();
  * </code>

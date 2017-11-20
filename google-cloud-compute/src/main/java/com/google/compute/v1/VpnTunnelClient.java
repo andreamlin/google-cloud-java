@@ -245,7 +245,7 @@ public class VpnTunnelClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     VpnTunnelAggregatedList response = vpnTunnelClient.aggregatedListVpnTunnelsCallable().call(request);
-   *     for (VpnTunnel element : response.getVpnTunnels()) {
+   *     for (VpnTunnel element : response.getItems().getVpnTunnels()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

@@ -76,7 +76,7 @@ import org.threeten.bp.Duration;
  * <code>
  * InstanceGroupManagerSettings.Builder instanceGroupManagerSettingsBuilder =
  *     InstanceGroupManagerSettings.newBuilder();
- * instanceGroupManagerSettingsBuilder.abandonInstancesInstanceGroupManagerSettings().getRetrySettingsBuilder()
+ * instanceGroupManagerSettingsBuilder.abandonInstancesInstanceGroupManagerSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * InstanceGroupManagerSettings instanceGroupManagerSettings = instanceGroupManagerSettingsBuilder.build();
  * </code>

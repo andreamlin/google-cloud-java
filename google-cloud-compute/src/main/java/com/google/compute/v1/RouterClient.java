@@ -245,7 +245,7 @@ public class RouterClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     RouterAggregatedList response = routerClient.aggregatedListRoutersCallable().call(request);
-   *     for (Router element : response.getRouters()) {
+   *     for (Router element : response.getItems().getRouters()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

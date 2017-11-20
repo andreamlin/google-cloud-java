@@ -400,7 +400,7 @@ public class TargetPoolClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     TargetPoolAggregatedList response = targetPoolClient.aggregatedListTargetPoolsCallable().call(request);
-   *     for (TargetPool element : response.getTargetPools()) {
+   *     for (TargetPool element : response.getItems().getTargetPools()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

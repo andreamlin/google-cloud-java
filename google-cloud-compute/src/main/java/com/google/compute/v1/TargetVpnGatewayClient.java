@@ -245,7 +245,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     TargetVpnGatewayAggregatedList response = targetVpnGatewayClient.aggregatedListTargetVpnGatewaysCallable().call(request);
-   *     for (TargetVpnGateway element : response.getTargetVpnGateways()) {
+   *     for (TargetVpnGateway element : response.getItems().getTargetVpnGateways()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

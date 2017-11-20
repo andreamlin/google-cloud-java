@@ -323,7 +323,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     InstanceGroupManagerAggregatedList response = instanceGroupManagerClient.aggregatedListInstanceGroupManagersCallable().call(request);
-   *     for (InstanceGroupManager element : response.getInstanceGroupManagers()) {
+   *     for (InstanceGroupManager element : response.getItems().getInstanceGroupManagers()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

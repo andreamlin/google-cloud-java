@@ -67,7 +67,7 @@ import org.threeten.bp.Duration;
  * <code>
  * LicensSettings.Builder licensSettingsBuilder =
  *     LicensSettings.newBuilder();
- * licensSettingsBuilder.getLicensSettings().getRetrySettingsBuilder()
+ * licensSettingsBuilder.getLicensSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * LicensSettings licensSettings = licensSettingsBuilder.build();
  * </code>

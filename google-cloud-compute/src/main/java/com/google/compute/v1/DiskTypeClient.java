@@ -245,7 +245,7 @@ public class DiskTypeClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     DiskTypeAggregatedList response = diskTypeClient.aggregatedListDiskTypesCallable().call(request);
-   *     for (DiskType element : response.getDiskTypes()) {
+   *     for (DiskType element : response.getItems().getDiskTypes()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

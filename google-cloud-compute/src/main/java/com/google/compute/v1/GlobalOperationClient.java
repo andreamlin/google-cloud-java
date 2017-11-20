@@ -245,7 +245,7 @@ public class GlobalOperationClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     OperationAggregatedList response = globalOperationClient.aggregatedListGlobalOperationsCallable().call(request);
-   *     for (Operation element : response.getOperations()) {
+   *     for (Operation element : response.getItems().getOperations()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

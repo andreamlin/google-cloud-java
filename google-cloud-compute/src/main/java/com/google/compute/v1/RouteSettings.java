@@ -75,7 +75,7 @@ import org.threeten.bp.Duration;
  * <code>
  * RouteSettings.Builder routeSettingsBuilder =
  *     RouteSettings.newBuilder();
- * routeSettingsBuilder.deleteRouteSettings().getRetrySettingsBuilder()
+ * routeSettingsBuilder.deleteRouteSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * RouteSettings routeSettings = routeSettingsBuilder.build();
  * </code>

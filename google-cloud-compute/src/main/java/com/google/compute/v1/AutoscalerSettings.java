@@ -76,7 +76,7 @@ import org.threeten.bp.Duration;
  * <code>
  * AutoscalerSettings.Builder autoscalerSettingsBuilder =
  *     AutoscalerSettings.newBuilder();
- * autoscalerSettingsBuilder.deleteAutoscalerSettings().getRetrySettingsBuilder()
+ * autoscalerSettingsBuilder.deleteAutoscalerSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * AutoscalerSettings autoscalerSettings = autoscalerSettingsBuilder.build();
  * </code>

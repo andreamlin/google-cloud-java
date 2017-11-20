@@ -324,7 +324,7 @@ public class InstanceGroupClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     InstanceGroupAggregatedList response = instanceGroupClient.aggregatedListInstanceGroupsCallable().call(request);
-   *     for (InstanceGroup element : response.getInstanceGroups()) {
+   *     for (InstanceGroup element : response.getItems().getInstanceGroups()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

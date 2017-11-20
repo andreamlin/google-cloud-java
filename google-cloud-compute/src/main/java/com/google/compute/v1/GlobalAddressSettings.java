@@ -75,7 +75,7 @@ import org.threeten.bp.Duration;
  * <code>
  * GlobalAddressSettings.Builder globalAddressSettingsBuilder =
  *     GlobalAddressSettings.newBuilder();
- * globalAddressSettingsBuilder.deleteGlobalAddressSettings().getRetrySettingsBuilder()
+ * globalAddressSettingsBuilder.deleteGlobalAddressSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * GlobalAddressSettings globalAddressSettings = globalAddressSettingsBuilder.build();
  * </code>

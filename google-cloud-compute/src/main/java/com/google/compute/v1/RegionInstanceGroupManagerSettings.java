@@ -75,7 +75,7 @@ import org.threeten.bp.Duration;
  * <code>
  * RegionInstanceGroupManagerSettings.Builder regionInstanceGroupManagerSettingsBuilder =
  *     RegionInstanceGroupManagerSettings.newBuilder();
- * regionInstanceGroupManagerSettingsBuilder.abandonInstancesRegionInstanceGroupManagerSettings().getRetrySettingsBuilder()
+ * regionInstanceGroupManagerSettingsBuilder.abandonInstancesRegionInstanceGroupManagerSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * RegionInstanceGroupManagerSettings regionInstanceGroupManagerSettings = regionInstanceGroupManagerSettingsBuilder.build();
  * </code>

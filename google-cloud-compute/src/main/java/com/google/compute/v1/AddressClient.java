@@ -245,7 +245,7 @@ public class AddressClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     AddressAggregatedList response = addressClient.aggregatedListAddressesCallable().call(request);
-   *     for (Address element : response.getAddresses()) {
+   *     for (Address element : response.getItems().getAddresses()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

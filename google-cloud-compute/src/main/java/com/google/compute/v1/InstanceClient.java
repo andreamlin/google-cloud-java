@@ -331,7 +331,7 @@ public class InstanceClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     InstanceAggregatedList response = instanceClient.aggregatedListInstancesCallable().call(request);
-   *     for (Instance element : response.getInstances()) {
+   *     for (Instance element : response.getItems().getInstances()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

@@ -75,7 +75,7 @@ import org.threeten.bp.Duration;
  * <code>
  * GlobalForwardingRuleSettings.Builder globalForwardingRuleSettingsBuilder =
  *     GlobalForwardingRuleSettings.newBuilder();
- * globalForwardingRuleSettingsBuilder.deleteGlobalForwardingRuleSettings().getRetrySettingsBuilder()
+ * globalForwardingRuleSettingsBuilder.deleteGlobalForwardingRuleSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * GlobalForwardingRuleSettings globalForwardingRuleSettings = globalForwardingRuleSettingsBuilder.build();
  * </code>
