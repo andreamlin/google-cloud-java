@@ -232,7 +232,7 @@ public class AddressClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -298,7 +298,7 @@ public class AddressClientTest {
     String id = "id3355";
     String region = "region-934795532";
     String selfLink = "selfLink-1691268851";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Address expectedResponse = Address.newBuilder()
       .setAddress(address2)
       .setKindResource(kind)
@@ -364,7 +364,7 @@ public class AddressClientTest {
     String region2 = "region2-690338393";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)

@@ -180,7 +180,7 @@ public class ImageClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -258,7 +258,7 @@ public class ImageClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -324,14 +324,14 @@ public class ImageClientTest {
     String kind = "kind3292052";
     String description = "description-1724546052";
     String selfLink = "selfLink-1691268851";
-    String sourceType = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String sourceType = "sourceType-84625186";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
     String archiveSizeBytes = "archiveSizeBytes-1766390198";
     String id = "id3355";
     String family = "family-1281860764";
     String diskSizeGb = "diskSizeGb-757478089";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Image expectedResponse = Image.newBuilder()
       .setSourceDiskResource(sourceDisk)
       .setSourceDiskIdResource(sourceDiskId)
@@ -386,14 +386,14 @@ public class ImageClientTest {
     String kind = "kind3292052";
     String description = "description-1724546052";
     String selfLink = "selfLink-1691268851";
-    String sourceType = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String sourceType = "sourceType-84625186";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
     String archiveSizeBytes = "archiveSizeBytes-1766390198";
     String id = "id3355";
     String family2 = "family2787422743";
     String diskSizeGb = "diskSizeGb-757478089";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Image expectedResponse = Image.newBuilder()
       .setSourceDiskResource(sourceDisk)
       .setSourceDiskIdResource(sourceDiskId)
@@ -463,7 +463,7 @@ public class ImageClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)

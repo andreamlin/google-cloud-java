@@ -167,7 +167,7 @@ public class ZoneClientTest {
     String id = "id3355";
     String region = "region-934795532";
     String selfLink = "selfLink-1691268851";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Zone expectedResponse = Zone.newBuilder()
       .setKindResource(kind)
       .setCreationTimestampResource(creationTimestamp)

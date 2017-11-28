@@ -232,7 +232,7 @@ public class TargetInstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -297,7 +297,7 @@ public class TargetInstanceClientTest {
     String name = "name3373707";
     String description = "description-1724546052";
     String id = "id3355";
-    String natPolicy = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String natPolicy = "natPolicy-1637703152";
     String selfLink = "selfLink-1691268851";
     TargetInstance expectedResponse = TargetInstance.newBuilder()
       .setInstanceResource(instance)
@@ -364,7 +364,7 @@ public class TargetInstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)

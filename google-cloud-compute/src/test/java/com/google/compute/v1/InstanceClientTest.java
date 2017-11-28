@@ -181,7 +181,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -316,7 +316,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -397,7 +397,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -475,7 +475,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -559,7 +559,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -631,7 +631,7 @@ public class InstanceClientTest {
     String name = "name3373707";
     String id = "id3355";
     String machineType = "machineType1838323762";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Instance expectedResponse = Instance.newBuilder()
       .setCanIpForwardResource(canIpForward)
       .setKindResource(kind)
@@ -752,7 +752,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -882,7 +882,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -960,7 +960,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -1044,7 +1044,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -1125,7 +1125,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -1206,7 +1206,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -1287,7 +1287,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -1368,7 +1368,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -1449,7 +1449,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -1527,7 +1527,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -1608,7 +1608,7 @@ public class InstanceClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)

@@ -232,7 +232,7 @@ public class DiskClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -313,7 +313,7 @@ public class DiskClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -387,7 +387,7 @@ public class DiskClientTest {
     String options = "options-1249474914";
     String id = "id3355";
     String sourceImage = "sourceImage1661056055";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Disk expectedResponse = Disk.newBuilder()
       .setSizeGbResource(sizeGb)
       .setSourceSnapshotIdResource(sourceSnapshotId)
@@ -461,7 +461,7 @@ public class DiskClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -594,7 +594,7 @@ public class DiskClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)

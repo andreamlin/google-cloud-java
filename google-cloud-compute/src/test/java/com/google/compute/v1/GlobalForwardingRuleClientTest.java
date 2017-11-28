@@ -180,7 +180,7 @@ public class GlobalForwardingRuleClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -240,10 +240,10 @@ public class GlobalForwardingRuleClientTest {
   public void getGlobalForwardingRuleTest() {
     String portRange = "portRange217518079";
     String kind = "kind3292052";
-    String iPProtocol = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String iPProtocol = "iPProtocol323774237";
     String backendService = "backendService306946058";
     String description = "description-1724546052";
-    String loadBalancingScheme = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String loadBalancingScheme = "loadBalancingScheme1974502980";
     String network = "network1843485230";
     String selfLink = "selfLink-1691268851";
     String target = "target-880905839";
@@ -324,7 +324,7 @@ public class GlobalForwardingRuleClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
@@ -454,7 +454,7 @@ public class GlobalForwardingRuleClientTest {
     String region = "region-934795532";
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
-    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
       .setHttpErrorMessageResource(httpErrorMessage)
       .setTargetIdResource(targetId)
