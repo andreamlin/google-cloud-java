@@ -161,7 +161,21 @@ public class TargetInstanceClientTest {
   @Test
   @SuppressWarnings("all")
   public void aggregatedListTargetInstancesTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    TargetInstancesScopedList targetInstances = TargetInstancesScopedList.newBuilder().build();
+    TargetInstancesScopedList items = TargetInstancesScopedList.newBuilder()
+      .setTargetInstances(targetInstances)
+      .build();
+    TargetInstanceAggregatedList expectedResponse = TargetInstanceAggregatedList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .setItems(items)
+      .build();
     mockTargetInstances.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");
@@ -198,7 +212,50 @@ public class TargetInstanceClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteTargetInstanceTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockTargetInstances.addResponse(expectedResponse);
 
     TargetInstanceName targetInstance = TargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
@@ -233,7 +290,26 @@ public class TargetInstanceClientTest {
   @Test
   @SuppressWarnings("all")
   public void getTargetInstanceTest() {
-    this would be init code
+    String instance = "instance555127957";
+    String zone = "zone3744684";
+    String kind = "kind3292052";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    String description = "description-1724546052";
+    String id = "id3355";
+    String natPolicy = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String selfLink = "selfLink-1691268851";
+    TargetInstance expectedResponse = TargetInstance.newBuilder()
+      .setInstanceResource(instance)
+      .setZoneResource(zone)
+      .setKindResource(kind)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setDescriptionResource(description)
+      .setIdResource(id)
+      .setNatPolicyResource(natPolicy)
+      .setSelfLinkResource(selfLink)
+      .build();
     mockTargetInstances.addResponse(expectedResponse);
 
     TargetInstanceName targetInstance = TargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
@@ -268,7 +344,50 @@ public class TargetInstanceClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertTargetInstanceTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone2 = "zone2-696322977";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZone(zone2)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockTargetInstances.addResponse(expectedResponse);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -306,7 +425,19 @@ public class TargetInstanceClientTest {
   @Test
   @SuppressWarnings("all")
   public void listTargetInstancesTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    TargetInstance itemsElement = new ArrayList<>();
+    List<TargetInstance> items = Arrays.asList(itemsElement);
+    TargetInstanceList expectedResponse = TargetInstanceList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .addAllItems(items)
+      .build();
     mockTargetInstances.addResponse(expectedResponse);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");

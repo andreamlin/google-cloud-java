@@ -161,7 +161,50 @@ public class InstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void abandonInstancesInstanceGroupManagerTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockInstanceGroupManagers.addResponse(expectedResponse);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -199,7 +242,21 @@ public class InstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void aggregatedListInstanceGroupManagersTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    InstanceGroupManagersScopedList instanceGroupManagers = InstanceGroupManagersScopedList.newBuilder().build();
+    InstanceGroupManagersScopedList items = InstanceGroupManagersScopedList.newBuilder()
+      .setInstanceGroupManagers(instanceGroupManagers)
+      .build();
+    InstanceGroupManagerAggregatedList expectedResponse = InstanceGroupManagerAggregatedList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .setItems(items)
+      .build();
     mockInstanceGroupManagers.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");
@@ -236,7 +293,50 @@ public class InstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteInstanceGroupManagerTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockInstanceGroupManagers.addResponse(expectedResponse);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -271,7 +371,50 @@ public class InstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteInstancesInstanceGroupManagerTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockInstanceGroupManagers.addResponse(expectedResponse);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -309,7 +452,34 @@ public class InstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void getInstanceGroupManagerTest() {
-    this would be init code
+    String instanceTemplate = "instanceTemplate309248228";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String baseInstanceName = "baseInstanceName389106439";
+    String instanceGroup = "instanceGroup81095253";
+    String selfLink = "selfLink-1691268851";
+    Integer targetSize = -2084603409;
+    String zone = "zone3744684";
+    String creationTimestamp = "creationTimestamp567396278";
+    String fingerprint = "fingerprint-1375934236";
+    String name = "name3373707";
+    String id = "id3355";
+    String region = "region-934795532";
+    InstanceGroupManager expectedResponse = InstanceGroupManager.newBuilder()
+      .setInstanceTemplateResource(instanceTemplate)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setBaseInstanceNameResource(baseInstanceName)
+      .setInstanceGroupResource(instanceGroup)
+      .setSelfLinkResource(selfLink)
+      .setTargetSizeResource(targetSize)
+      .setZoneResource(zone)
+      .setCreationTimestampResource(creationTimestamp)
+      .setFingerprintResource(fingerprint)
+      .setNameResource(name)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .build();
     mockInstanceGroupManagers.addResponse(expectedResponse);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -344,7 +514,50 @@ public class InstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertInstanceGroupManagerTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone2 = "zone2-696322977";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZone(zone2)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockInstanceGroupManagers.addResponse(expectedResponse);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -382,7 +595,19 @@ public class InstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void listInstanceGroupManagersTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    InstanceGroupManager itemsElement = new ArrayList<>();
+    List<InstanceGroupManager> items = Arrays.asList(itemsElement);
+    InstanceGroupManagerList expectedResponse = InstanceGroupManagerList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .addAllItems(items)
+      .build();
     mockInstanceGroupManagers.addResponse(expectedResponse);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -419,7 +644,7 @@ public class InstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void listManagedInstancesInstanceGroupManagersTest() {
-    this would be init code
+    InstanceGroupManagersListManagedInstancesResponse expectedResponse = InstanceGroupManagersListManagedInstancesResponse.newBuilder().build();
     mockInstanceGroupManagers.addResponse(expectedResponse);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -454,7 +679,50 @@ public class InstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void recreateInstancesInstanceGroupManagerTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockInstanceGroupManagers.addResponse(expectedResponse);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -492,7 +760,50 @@ public class InstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void resizeInstanceGroupManagerTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockInstanceGroupManagers.addResponse(expectedResponse);
 
     Integer size = 3530753;
@@ -530,7 +841,50 @@ public class InstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void setInstanceTemplateInstanceGroupManagerTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockInstanceGroupManagers.addResponse(expectedResponse);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -568,7 +922,50 @@ public class InstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void setTargetPoolsInstanceGroupManagerTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockInstanceGroupManagers.addResponse(expectedResponse);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");

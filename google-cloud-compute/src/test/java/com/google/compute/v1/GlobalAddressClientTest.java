@@ -160,7 +160,50 @@ public class GlobalAddressClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteGlobalAddressTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockGlobalAddresses.addResponse(expectedResponse);
 
     GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
@@ -195,7 +238,26 @@ public class GlobalAddressClientTest {
   @Test
   @SuppressWarnings("all")
   public void getGlobalAddressTest() {
-    this would be init code
+    String address2 = "address2874543783";
+    String kind = "kind3292052";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    String description = "description-1724546052";
+    String id = "id3355";
+    String region = "region-934795532";
+    String selfLink = "selfLink-1691268851";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Address expectedResponse = Address.newBuilder()
+      .setAddress(address2)
+      .setKindResource(kind)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setDescriptionResource(description)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setSelfLinkResource(selfLink)
+      .setStatusResource(status)
+      .build();
     mockGlobalAddresses.addResponse(expectedResponse);
 
     GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
@@ -230,7 +292,50 @@ public class GlobalAddressClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertGlobalAddressTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockGlobalAddresses.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");
@@ -268,7 +373,19 @@ public class GlobalAddressClientTest {
   @Test
   @SuppressWarnings("all")
   public void listGlobalAddressesTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    Address itemsElement = new ArrayList<>();
+    List<Address> items = Arrays.asList(itemsElement);
+    AddressList expectedResponse = AddressList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .addAllItems(items)
+      .build();
     mockGlobalAddresses.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");

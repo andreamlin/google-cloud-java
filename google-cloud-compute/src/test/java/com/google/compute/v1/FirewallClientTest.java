@@ -160,7 +160,50 @@ public class FirewallClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteFirewallTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockFirewalls.addResponse(expectedResponse);
 
     FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
@@ -195,7 +238,22 @@ public class FirewallClientTest {
   @Test
   @SuppressWarnings("all")
   public void getFirewallTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    String description = "description-1724546052";
+    String id = "id3355";
+    String network = "network1843485230";
+    String selfLink = "selfLink-1691268851";
+    Firewall expectedResponse = Firewall.newBuilder()
+      .setKindResource(kind)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setDescriptionResource(description)
+      .setIdResource(id)
+      .setNetworkResource(network)
+      .setSelfLinkResource(selfLink)
+      .build();
     mockFirewalls.addResponse(expectedResponse);
 
     FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
@@ -230,7 +288,50 @@ public class FirewallClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertFirewallTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockFirewalls.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");
@@ -268,7 +369,19 @@ public class FirewallClientTest {
   @Test
   @SuppressWarnings("all")
   public void listFirewallsTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    Firewall itemsElement = new ArrayList<>();
+    List<Firewall> items = Arrays.asList(itemsElement);
+    FirewallList expectedResponse = FirewallList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .addAllItems(items)
+      .build();
     mockFirewalls.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");
@@ -305,7 +418,50 @@ public class FirewallClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchFirewallTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockFirewalls.addResponse(expectedResponse);
 
     FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
@@ -340,7 +496,50 @@ public class FirewallClientTest {
   @Test
   @SuppressWarnings("all")
   public void updateFirewallTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockFirewalls.addResponse(expectedResponse);
 
     FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");

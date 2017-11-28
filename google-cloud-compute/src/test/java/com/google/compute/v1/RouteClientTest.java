@@ -160,7 +160,50 @@ public class RouteClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteRouteTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockRoutes.addResponse(expectedResponse);
 
     RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
@@ -195,7 +238,36 @@ public class RouteClientTest {
   @Test
   @SuppressWarnings("all")
   public void getRouteTest() {
-    this would be init code
+    String nextHopGateway = "nextHopGateway-159695614";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    Integer priority = -1165461084;
+    String nextHopNetwork = "nextHopNetwork1872908524";
+    String network = "network1843485230";
+    String selfLink = "selfLink-1691268851";
+    String nextHopInstance = "nextHopInstance1467250071";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    String destRange = "destRange918198624";
+    String nextHopVpnTunnel = "nextHopVpnTunnel-1627639147";
+    String nextHopIp = "nextHopIp1184061353";
+    String id = "id3355";
+    Route expectedResponse = Route.newBuilder()
+      .setNextHopGatewayResource(nextHopGateway)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setPriorityResource(priority)
+      .setNextHopNetworkResource(nextHopNetwork)
+      .setNetworkResource(network)
+      .setSelfLinkResource(selfLink)
+      .setNextHopInstanceResource(nextHopInstance)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setDestRangeResource(destRange)
+      .setNextHopVpnTunnelResource(nextHopVpnTunnel)
+      .setNextHopIpResource(nextHopIp)
+      .setIdResource(id)
+      .build();
     mockRoutes.addResponse(expectedResponse);
 
     RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
@@ -230,7 +302,50 @@ public class RouteClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertRouteTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockRoutes.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");
@@ -268,7 +383,19 @@ public class RouteClientTest {
   @Test
   @SuppressWarnings("all")
   public void listRoutesTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    Route itemsElement = new ArrayList<>();
+    List<Route> items = Arrays.asList(itemsElement);
+    RouteList expectedResponse = RouteList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .addAllItems(items)
+      .build();
     mockRoutes.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");

@@ -160,7 +160,24 @@ public class ZoneClientTest {
   @Test
   @SuppressWarnings("all")
   public void getZoneTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    String description = "description-1724546052";
+    String id = "id3355";
+    String region = "region-934795532";
+    String selfLink = "selfLink-1691268851";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Zone expectedResponse = Zone.newBuilder()
+      .setKindResource(kind)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setDescriptionResource(description)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setSelfLinkResource(selfLink)
+      .setStatusResource(status)
+      .build();
     mockZones.addResponse(expectedResponse);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -195,7 +212,19 @@ public class ZoneClientTest {
   @Test
   @SuppressWarnings("all")
   public void listZonesTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    Zone itemsElement = new ArrayList<>();
+    List<Zone> items = Arrays.asList(itemsElement);
+    ZoneList expectedResponse = ZoneList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .addAllItems(items)
+      .build();
     mockZones.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");

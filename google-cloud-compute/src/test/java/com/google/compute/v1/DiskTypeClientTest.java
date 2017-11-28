@@ -161,7 +161,21 @@ public class DiskTypeClientTest {
   @Test
   @SuppressWarnings("all")
   public void aggregatedListDiskTypesTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    DiskTypesScopedList diskTypes = DiskTypesScopedList.newBuilder().build();
+    DiskTypesScopedList items = DiskTypesScopedList.newBuilder()
+      .setDiskTypes(diskTypes)
+      .build();
+    DiskTypeAggregatedList expectedResponse = DiskTypeAggregatedList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .setItems(items)
+      .build();
     mockDiskTypes.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");
@@ -198,7 +212,26 @@ public class DiskTypeClientTest {
   @Test
   @SuppressWarnings("all")
   public void getDiskTypeTest() {
-    this would be init code
+    String defaultDiskSizeGb = "defaultDiskSizeGb807490165";
+    String zone = "zone3744684";
+    String kind = "kind3292052";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    String description = "description-1724546052";
+    String id = "id3355";
+    String validDiskSize = "validDiskSize-1653521184";
+    String selfLink = "selfLink-1691268851";
+    DiskType expectedResponse = DiskType.newBuilder()
+      .setDefaultDiskSizeGbResource(defaultDiskSizeGb)
+      .setZoneResource(zone)
+      .setKindResource(kind)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setDescriptionResource(description)
+      .setIdResource(id)
+      .setValidDiskSizeResource(validDiskSize)
+      .setSelfLinkResource(selfLink)
+      .build();
     mockDiskTypes.addResponse(expectedResponse);
 
     DiskTypeName diskType = DiskTypeName.of("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
@@ -233,7 +266,19 @@ public class DiskTypeClientTest {
   @Test
   @SuppressWarnings("all")
   public void listDiskTypesTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    DiskType itemsElement = new ArrayList<>();
+    List<DiskType> items = Arrays.asList(itemsElement);
+    DiskTypeList expectedResponse = DiskTypeList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .addAllItems(items)
+      .build();
     mockDiskTypes.addResponse(expectedResponse);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");

@@ -160,7 +160,50 @@ public class ImageClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteImageTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockImages.addResponse(expectedResponse);
 
     ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
@@ -195,7 +238,50 @@ public class ImageClientTest {
   @Test
   @SuppressWarnings("all")
   public void deprecateImageTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockImages.addResponse(expectedResponse);
 
     ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
@@ -233,7 +319,34 @@ public class ImageClientTest {
   @Test
   @SuppressWarnings("all")
   public void getImageTest() {
-    this would be init code
+    String sourceDisk = "sourceDisk-85117119";
+    String sourceDiskId = "sourceDiskId-1693292839";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String selfLink = "selfLink-1691268851";
+    String sourceType = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    String archiveSizeBytes = "archiveSizeBytes-1766390198";
+    String id = "id3355";
+    String family = "family-1281860764";
+    String diskSizeGb = "diskSizeGb-757478089";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Image expectedResponse = Image.newBuilder()
+      .setSourceDiskResource(sourceDisk)
+      .setSourceDiskIdResource(sourceDiskId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setSelfLinkResource(selfLink)
+      .setSourceTypeResource(sourceType)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setArchiveSizeBytesResource(archiveSizeBytes)
+      .setIdResource(id)
+      .setFamilyResource(family)
+      .setDiskSizeGbResource(diskSizeGb)
+      .setStatusResource(status)
+      .build();
     mockImages.addResponse(expectedResponse);
 
     ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
@@ -268,7 +381,34 @@ public class ImageClientTest {
   @Test
   @SuppressWarnings("all")
   public void getFromFamilyImageTest() {
-    this would be init code
+    String sourceDisk = "sourceDisk-85117119";
+    String sourceDiskId = "sourceDiskId-1693292839";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String selfLink = "selfLink-1691268851";
+    String sourceType = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    String archiveSizeBytes = "archiveSizeBytes-1766390198";
+    String id = "id3355";
+    String family2 = "family2787422743";
+    String diskSizeGb = "diskSizeGb-757478089";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Image expectedResponse = Image.newBuilder()
+      .setSourceDiskResource(sourceDisk)
+      .setSourceDiskIdResource(sourceDiskId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setSelfLinkResource(selfLink)
+      .setSourceTypeResource(sourceType)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setArchiveSizeBytesResource(archiveSizeBytes)
+      .setIdResource(id)
+      .setFamily(family2)
+      .setDiskSizeGbResource(diskSizeGb)
+      .setStatusResource(status)
+      .build();
     mockImages.addResponse(expectedResponse);
 
     FamilyName family = FamilyName.of("[PROJECT]", "[FAMILY]");
@@ -303,7 +443,50 @@ public class ImageClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertImageTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockImages.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");
@@ -341,7 +524,19 @@ public class ImageClientTest {
   @Test
   @SuppressWarnings("all")
   public void listImagesTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    Image itemsElement = new ArrayList<>();
+    List<Image> items = Arrays.asList(itemsElement);
+    ImageList expectedResponse = ImageList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .addAllItems(items)
+      .build();
     mockImages.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");

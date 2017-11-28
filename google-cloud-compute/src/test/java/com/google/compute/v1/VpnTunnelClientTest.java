@@ -161,7 +161,21 @@ public class VpnTunnelClientTest {
   @Test
   @SuppressWarnings("all")
   public void aggregatedListVpnTunnelsTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    VpnTunnelsScopedList vpnTunnels = VpnTunnelsScopedList.newBuilder().build();
+    VpnTunnelsScopedList items = VpnTunnelsScopedList.newBuilder()
+      .setVpnTunnels(vpnTunnels)
+      .build();
+    VpnTunnelAggregatedList expectedResponse = VpnTunnelAggregatedList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .setItems(items)
+      .build();
     mockVpnTunnels.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");
@@ -198,7 +212,50 @@ public class VpnTunnelClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteVpnTunnelTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockVpnTunnels.addResponse(expectedResponse);
 
     VpnTunnelName vpnTunnel = VpnTunnelName.of("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
@@ -233,7 +290,38 @@ public class VpnTunnelClientTest {
   @Test
   @SuppressWarnings("all")
   public void getVpnTunnelTest() {
-    this would be init code
+    String sharedSecretHash = "sharedSecretHash935752803";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    Integer ikeVersion = 1292118044;
+    String selfLink = "selfLink-1691268851";
+    String router = "router-925132983";
+    String detailedStatus = "detailedStatus-740240799";
+    String peerIp = "peerIp-690492124";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    String id = "id3355";
+    String region = "region-934795532";
+    String sharedSecret = "sharedSecret-154938422";
+    String targetVpnGateway = "targetVpnGateway-4358069";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    VpnTunnel expectedResponse = VpnTunnel.newBuilder()
+      .setSharedSecretHashResource(sharedSecretHash)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setIkeVersionResource(ikeVersion)
+      .setSelfLinkResource(selfLink)
+      .setRouterResource(router)
+      .setDetailedStatusResource(detailedStatus)
+      .setPeerIpResource(peerIp)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setSharedSecretResource(sharedSecret)
+      .setTargetVpnGatewayResource(targetVpnGateway)
+      .setStatusResource(status)
+      .build();
     mockVpnTunnels.addResponse(expectedResponse);
 
     VpnTunnelName vpnTunnel = VpnTunnelName.of("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
@@ -268,7 +356,50 @@ public class VpnTunnelClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertVpnTunnelTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region2 = "region2-690338393";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegion(region2)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockVpnTunnels.addResponse(expectedResponse);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -306,7 +437,19 @@ public class VpnTunnelClientTest {
   @Test
   @SuppressWarnings("all")
   public void listVpnTunnelsTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    VpnTunnel itemsElement = new ArrayList<>();
+    List<VpnTunnel> items = Arrays.asList(itemsElement);
+    VpnTunnelList expectedResponse = VpnTunnelList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .addAllItems(items)
+      .build();
     mockVpnTunnels.addResponse(expectedResponse);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");

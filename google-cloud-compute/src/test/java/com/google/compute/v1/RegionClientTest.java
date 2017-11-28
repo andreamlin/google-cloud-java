@@ -160,7 +160,22 @@ public class RegionClientTest {
   @Test
   @SuppressWarnings("all")
   public void getRegionTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    String description = "description-1724546052";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Region expectedResponse = Region.newBuilder()
+      .setKindResource(kind)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setDescriptionResource(description)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .setStatusResource(status)
+      .build();
     mockRegions.addResponse(expectedResponse);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -195,7 +210,19 @@ public class RegionClientTest {
   @Test
   @SuppressWarnings("all")
   public void listRegionsTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    Region itemsElement = new ArrayList<>();
+    List<Region> items = Arrays.asList(itemsElement);
+    RegionList expectedResponse = RegionList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .addAllItems(items)
+      .build();
     mockRegions.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");

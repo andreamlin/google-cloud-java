@@ -160,7 +160,50 @@ public class SnapshotClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteSnapshotTest() {
-    this would be init code
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    String targetId = "targetId-815576439";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String statusMessage = "statusMessage-239442758";
+    String selfLink = "selfLink-1691268851";
+    String insertTime = "insertTime-103148397";
+    Integer httpErrorStatusCode = 1386087020;
+    String zone = "zone3744684";
+    String targetLink = "targetLink-2084812312";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    Integer progress = -1001078227;
+    String operationType = "operationType-1432962286";
+    String startTime = "startTime-1573145462";
+    String endTime = "endTime1725551537";
+    String id = "id3355";
+    String region = "region-934795532";
+    String clientOperationId = "clientOperationId-239630617";
+    String user = "user3599307";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Operation expectedResponse = Operation.newBuilder()
+      .setHttpErrorMessageResource(httpErrorMessage)
+      .setTargetIdResource(targetId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setStatusMessageResource(statusMessage)
+      .setSelfLinkResource(selfLink)
+      .setInsertTimeResource(insertTime)
+      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
+      .setZoneResource(zone)
+      .setTargetLinkResource(targetLink)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setProgressResource(progress)
+      .setOperationTypeResource(operationType)
+      .setStartTimeResource(startTime)
+      .setEndTimeResource(endTime)
+      .setIdResource(id)
+      .setRegionResource(region)
+      .setClientOperationIdResource(clientOperationId)
+      .setUserResource(user)
+      .setStatusResource(status)
+      .build();
     mockSnapshots.addResponse(expectedResponse);
 
     SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
@@ -195,7 +238,32 @@ public class SnapshotClientTest {
   @Test
   @SuppressWarnings("all")
   public void getSnapshotTest() {
-    this would be init code
+    String sourceDisk = "sourceDisk-85117119";
+    String sourceDiskId = "sourceDiskId-1693292839";
+    String kind = "kind3292052";
+    String description = "description-1724546052";
+    String selfLink = "selfLink-1691268851";
+    String storageBytesStatus = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    String storageBytes = "storageBytes2035244455";
+    String creationTimestamp = "creationTimestamp567396278";
+    String name = "name3373707";
+    String id = "id3355";
+    String diskSizeGb = "diskSizeGb-757478089";
+    String status = $ NOT IMPLEMENTED: SchemaTypeTable.getFullNameFor(TypeModel type, String value) $;
+    Snapshot expectedResponse = Snapshot.newBuilder()
+      .setSourceDiskResource(sourceDisk)
+      .setSourceDiskIdResource(sourceDiskId)
+      .setKindResource(kind)
+      .setDescriptionResource(description)
+      .setSelfLinkResource(selfLink)
+      .setStorageBytesStatusResource(storageBytesStatus)
+      .setStorageBytesResource(storageBytes)
+      .setCreationTimestampResource(creationTimestamp)
+      .setNameResource(name)
+      .setIdResource(id)
+      .setDiskSizeGbResource(diskSizeGb)
+      .setStatusResource(status)
+      .build();
     mockSnapshots.addResponse(expectedResponse);
 
     SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
@@ -230,7 +298,19 @@ public class SnapshotClientTest {
   @Test
   @SuppressWarnings("all")
   public void listSnapshotsTest() {
-    this would be init code
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String id = "id3355";
+    String selfLink = "selfLink-1691268851";
+    Snapshot itemsElement = new ArrayList<>();
+    List<Snapshot> items = Arrays.asList(itemsElement);
+    SnapshotList expectedResponse = SnapshotList.newBuilder()
+      .setKindResource(kind)
+      .setNextPageToken(nextPageToken)
+      .setIdResource(id)
+      .setSelfLinkResource(selfLink)
+      .addAllItems(items)
+      .build();
     mockSnapshots.addResponse(expectedResponse);
 
     ProjectName project = ProjectName.of("[PROJECT]");

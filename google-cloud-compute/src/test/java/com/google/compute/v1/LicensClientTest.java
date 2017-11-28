@@ -158,7 +158,16 @@ public class LicensClientTest {
   @Test
   @SuppressWarnings("all")
   public void getLicensTest() {
-    this would be init code
+    Boolean chargesUseFee = true;
+    String kind = "kind3292052";
+    String name = "name3373707";
+    String selfLink = "selfLink-1691268851";
+    License expectedResponse = License.newBuilder()
+      .setChargesUseFeeResource(chargesUseFee)
+      .setKindResource(kind)
+      .setNameResource(name)
+      .setSelfLinkResource(selfLink)
+      .build();
     mockLicenses.addResponse(expectedResponse);
 
     LicenseName license = LicenseName.of("[PROJECT]", "[LICENSE]");
