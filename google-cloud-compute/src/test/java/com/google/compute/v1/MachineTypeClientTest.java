@@ -170,10 +170,10 @@ public class MachineTypeClientTest {
       .setMachineTypes(machineTypes)
       .build();
     MachineTypeAggregatedList expectedResponse = MachineTypeAggregatedList.newBuilder()
-      .setKindResource(kind)
+      .setKind(kind)
       .setNextPageToken(nextPageToken)
-      .setIdResource(id)
-      .setSelfLinkResource(selfLink)
+      .setId(id)
+      .setSelfLink(selfLink)
       .setItems(items)
       .build();
     mockMachineTypes.addResponse(expectedResponse);
@@ -226,19 +226,19 @@ public class MachineTypeClientTest {
     String id = "id3355";
     Integer imageSpaceGb = -461539048;
     MachineType expectedResponse = MachineType.newBuilder()
-      .setIsSharedCpuResource(isSharedCpu)
-      .setGuestCpusResource(guestCpus)
-      .setKindResource(kind)
-      .setDescriptionResource(description)
-      .setSelfLinkResource(selfLink)
-      .setMemoryMbResource(memoryMb)
-      .setMaximumPersistentDisksResource(maximumPersistentDisks)
-      .setMaximumPersistentDisksSizeGbResource(maximumPersistentDisksSizeGb)
-      .setZoneResource(zone)
-      .setCreationTimestampResource(creationTimestamp)
-      .setNameResource(name)
-      .setIdResource(id)
-      .setImageSpaceGbResource(imageSpaceGb)
+      .setIsSharedCpu(isSharedCpu)
+      .setGuestCpus(guestCpus)
+      .setKind(kind)
+      .setDescription(description)
+      .setSelfLink(selfLink)
+      .setMemoryMb(memoryMb)
+      .setMaximumPersistentDisks(maximumPersistentDisks)
+      .setMaximumPersistentDisksSizeGb(maximumPersistentDisksSizeGb)
+      .setZone(zone)
+      .setCreationTimestamp(creationTimestamp)
+      .setName(name)
+      .setId(id)
+      .setImageSpaceGb(imageSpaceGb)
       .build();
     mockMachineTypes.addResponse(expectedResponse);
 
@@ -281,10 +281,10 @@ public class MachineTypeClientTest {
     MachineType itemsElement = new ArrayList<>();
     List<MachineType> items = Arrays.asList(itemsElement);
     MachineTypeList expectedResponse = MachineTypeList.newBuilder()
-      .setKindResource(kind)
+      .setKind(kind)
       .setNextPageToken(nextPageToken)
-      .setIdResource(id)
-      .setSelfLinkResource(selfLink)
+      .setId(id)
+      .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
     mockMachineTypes.addResponse(expectedResponse);

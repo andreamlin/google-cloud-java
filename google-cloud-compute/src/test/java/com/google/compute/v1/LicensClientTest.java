@@ -163,10 +163,10 @@ public class LicensClientTest {
     String name = "name3373707";
     String selfLink = "selfLink-1691268851";
     License expectedResponse = License.newBuilder()
-      .setChargesUseFeeResource(chargesUseFee)
-      .setKindResource(kind)
-      .setNameResource(name)
-      .setSelfLinkResource(selfLink)
+      .setChargesUseFee(chargesUseFee)
+      .setKind(kind)
+      .setName(name)
+      .setSelfLink(selfLink)
       .build();
     mockLicenses.addResponse(expectedResponse);
 

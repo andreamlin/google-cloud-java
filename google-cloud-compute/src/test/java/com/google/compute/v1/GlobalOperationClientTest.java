@@ -170,10 +170,10 @@ public class GlobalOperationClientTest {
       .setOperations(operations)
       .build();
     OperationAggregatedList expectedResponse = OperationAggregatedList.newBuilder()
-      .setKindResource(kind)
+      .setKind(kind)
       .setNextPageToken(nextPageToken)
-      .setIdResource(id)
-      .setSelfLinkResource(selfLink)
+      .setId(id)
+      .setSelfLink(selfLink)
       .setItems(items)
       .build();
     mockGlobalOperations.addResponse(expectedResponse);
@@ -267,27 +267,27 @@ public class GlobalOperationClientTest {
     String user = "user3599307";
     String status = "status-892481550";
     Operation expectedResponse = Operation.newBuilder()
-      .setHttpErrorMessageResource(httpErrorMessage)
-      .setTargetIdResource(targetId)
-      .setKindResource(kind)
-      .setDescriptionResource(description)
-      .setStatusMessageResource(statusMessage)
-      .setSelfLinkResource(selfLink)
-      .setInsertTimeResource(insertTime)
-      .setHttpErrorStatusCodeResource(httpErrorStatusCode)
-      .setZoneResource(zone)
-      .setTargetLinkResource(targetLink)
-      .setCreationTimestampResource(creationTimestamp)
-      .setNameResource(name)
-      .setProgressResource(progress)
-      .setOperationTypeResource(operationType)
-      .setStartTimeResource(startTime)
-      .setEndTimeResource(endTime)
-      .setIdResource(id)
-      .setRegionResource(region)
-      .setClientOperationIdResource(clientOperationId)
-      .setUserResource(user)
-      .setStatusResource(status)
+      .setHttpErrorMessage(httpErrorMessage)
+      .setTargetId(targetId)
+      .setKind(kind)
+      .setDescription(description)
+      .setStatusMessage(statusMessage)
+      .setSelfLink(selfLink)
+      .setInsertTime(insertTime)
+      .setHttpErrorStatusCode(httpErrorStatusCode)
+      .setZone(zone)
+      .setTargetLink(targetLink)
+      .setCreationTimestamp(creationTimestamp)
+      .setName(name)
+      .setProgress(progress)
+      .setOperationType(operationType)
+      .setStartTime(startTime)
+      .setEndTime(endTime)
+      .setId(id)
+      .setRegion(region)
+      .setClientOperationId(clientOperationId)
+      .setUser(user)
+      .setStatus(status)
       .build();
     mockGlobalOperations.addResponse(expectedResponse);
 
@@ -330,10 +330,10 @@ public class GlobalOperationClientTest {
     Operation itemsElement = new ArrayList<>();
     List<Operation> items = Arrays.asList(itemsElement);
     OperationList expectedResponse = OperationList.newBuilder()
-      .setKindResource(kind)
+      .setKind(kind)
       .setNextPageToken(nextPageToken)
-      .setIdResource(id)
-      .setSelfLinkResource(selfLink)
+      .setId(id)
+      .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
     mockGlobalOperations.addResponse(expectedResponse);

@@ -169,14 +169,14 @@ public class ZoneClientTest {
     String selfLink = "selfLink-1691268851";
     String status = "status-892481550";
     Zone expectedResponse = Zone.newBuilder()
-      .setKindResource(kind)
-      .setCreationTimestampResource(creationTimestamp)
-      .setNameResource(name)
-      .setDescriptionResource(description)
-      .setIdResource(id)
-      .setRegionResource(region)
-      .setSelfLinkResource(selfLink)
-      .setStatusResource(status)
+      .setKind(kind)
+      .setCreationTimestamp(creationTimestamp)
+      .setName(name)
+      .setDescription(description)
+      .setId(id)
+      .setRegion(region)
+      .setSelfLink(selfLink)
+      .setStatus(status)
       .build();
     mockZones.addResponse(expectedResponse);
 
@@ -219,10 +219,10 @@ public class ZoneClientTest {
     Zone itemsElement = new ArrayList<>();
     List<Zone> items = Arrays.asList(itemsElement);
     ZoneList expectedResponse = ZoneList.newBuilder()
-      .setKindResource(kind)
+      .setKind(kind)
       .setNextPageToken(nextPageToken)
-      .setIdResource(id)
-      .setSelfLinkResource(selfLink)
+      .setId(id)
+      .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
     mockZones.addResponse(expectedResponse);

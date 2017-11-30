@@ -170,10 +170,10 @@ public class DiskTypeClientTest {
       .setDiskTypes(diskTypes)
       .build();
     DiskTypeAggregatedList expectedResponse = DiskTypeAggregatedList.newBuilder()
-      .setKindResource(kind)
+      .setKind(kind)
       .setNextPageToken(nextPageToken)
-      .setIdResource(id)
-      .setSelfLinkResource(selfLink)
+      .setId(id)
+      .setSelfLink(selfLink)
       .setItems(items)
       .build();
     mockDiskTypes.addResponse(expectedResponse);
@@ -222,15 +222,15 @@ public class DiskTypeClientTest {
     String validDiskSize = "validDiskSize-1653521184";
     String selfLink = "selfLink-1691268851";
     DiskType expectedResponse = DiskType.newBuilder()
-      .setDefaultDiskSizeGbResource(defaultDiskSizeGb)
-      .setZoneResource(zone)
-      .setKindResource(kind)
-      .setCreationTimestampResource(creationTimestamp)
-      .setNameResource(name)
-      .setDescriptionResource(description)
-      .setIdResource(id)
-      .setValidDiskSizeResource(validDiskSize)
-      .setSelfLinkResource(selfLink)
+      .setDefaultDiskSizeGb(defaultDiskSizeGb)
+      .setZone(zone)
+      .setKind(kind)
+      .setCreationTimestamp(creationTimestamp)
+      .setName(name)
+      .setDescription(description)
+      .setId(id)
+      .setValidDiskSize(validDiskSize)
+      .setSelfLink(selfLink)
       .build();
     mockDiskTypes.addResponse(expectedResponse);
 
@@ -273,10 +273,10 @@ public class DiskTypeClientTest {
     DiskType itemsElement = new ArrayList<>();
     List<DiskType> items = Arrays.asList(itemsElement);
     DiskTypeList expectedResponse = DiskTypeList.newBuilder()
-      .setKindResource(kind)
+      .setKind(kind)
       .setNextPageToken(nextPageToken)
-      .setIdResource(id)
-      .setSelfLinkResource(selfLink)
+      .setId(id)
+      .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
     mockDiskTypes.addResponse(expectedResponse);

@@ -168,13 +168,13 @@ public class RegionClientTest {
     String selfLink = "selfLink-1691268851";
     String status = "status-892481550";
     Region expectedResponse = Region.newBuilder()
-      .setKindResource(kind)
-      .setCreationTimestampResource(creationTimestamp)
-      .setNameResource(name)
-      .setDescriptionResource(description)
-      .setIdResource(id)
-      .setSelfLinkResource(selfLink)
-      .setStatusResource(status)
+      .setKind(kind)
+      .setCreationTimestamp(creationTimestamp)
+      .setName(name)
+      .setDescription(description)
+      .setId(id)
+      .setSelfLink(selfLink)
+      .setStatus(status)
       .build();
     mockRegions.addResponse(expectedResponse);
 
@@ -217,10 +217,10 @@ public class RegionClientTest {
     Region itemsElement = new ArrayList<>();
     List<Region> items = Arrays.asList(itemsElement);
     RegionList expectedResponse = RegionList.newBuilder()
-      .setKindResource(kind)
+      .setKind(kind)
       .setNextPageToken(nextPageToken)
-      .setIdResource(id)
-      .setSelfLinkResource(selfLink)
+      .setId(id)
+      .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
     mockRegions.addResponse(expectedResponse);
