@@ -1,11 +1,11 @@
 /*
- * Copyright 2017, Google LLC All rights reserved.
+ * Copyright 2017 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,16 +17,17 @@ package com.google.compute.v1;
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.core.PagedListResponse;
+import com.google.api.gax.grpc.GaxGrpcProperties;
 import com.google.api.gax.grpc.GrpcStatusCode;
+import com.google.api.gax.grpc.testing.LocalChannelProvider;
 import com.google.api.gax.grpc.testing.MockGrpcService;
 import com.google.api.gax.grpc.testing.MockServiceHelper;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.PagedResponseWrappers.ListRegionBackendServicesPagedResponse;
 import com.google.protobuf.GeneratedMessageV3;
-import io.grpc.Status;
-import io.grpc.StatusRuntimeException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -87,6 +88,7 @@ public class RegionBackendServiceClientTest {
   private static MockZones mockZones;
   private static MockServiceHelper serviceHelper;
   private RegionBackendServiceClient client;
+  private LocalChannelProvider channelProvider;
 
   @BeforeClass
   public static void startStaticServer() {
@@ -145,8 +147,9 @@ public class RegionBackendServiceClientTest {
   @Before
   public void setUp() throws IOException {
     serviceHelper.reset();
+    channelProvider = serviceHelper.createChannelProvider();
     RegionBackendServiceSettings settings = RegionBackendServiceSettings.newBuilder()
-        .setTransportChannelProvider(serviceHelper.createChannelProvider())
+        .setTransportChannelProvider(channelProvider)
         .setCredentialsProvider(NoCredentialsProvider.create())
         .build();
     client = RegionBackendServiceClient.create(settings);
@@ -172,7 +175,7 @@ public class RegionBackendServiceClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -217,6 +220,10 @@ public class RegionBackendServiceClientTest {
     DeleteRegionBackendServiceHttpRequest actualRequest = (DeleteRegionBackendServiceHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(backendService, actualRequest.getBackendServiceAsRegionBackendServicesBackendServiceName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -238,13 +245,13 @@ public class RegionBackendServiceClientTest {
   @Test
   @SuppressWarnings("all")
   public void getRegionBackendServiceTest() {
-    Integer affinityCookieTtlSec = -1777486694;
+    Integer affinityCookieTtlSec = 1777486694;
     String kind = "kind3292052";
     String sessionAffinity = "sessionAffinity1000759473";
     String description = "description-1724546052";
     String loadBalancingScheme = "loadBalancingScheme1974502980";
     String portName = "portName1115276169";
-    Integer timeoutSec = -2067488653;
+    Integer timeoutSec = 2067488653;
     String selfLink = "selfLink-1691268851";
     String protocol = "protocol-989163880";
     Boolean enableCDN = false;
@@ -285,6 +292,10 @@ public class RegionBackendServiceClientTest {
     GetRegionBackendServiceHttpRequest actualRequest = (GetRegionBackendServiceHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(backendService, actualRequest.getBackendServiceAsRegionBackendServicesBackendServiceName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -325,6 +336,10 @@ public class RegionBackendServiceClientTest {
 
     Assert.assertEquals(backendService, actualRequest.getBackendServiceAsRegionBackendServicesBackendServiceName());
     Assert.assertEquals(resourceGroupReference, actualRequest.getResourceGroupReference());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -359,7 +374,7 @@ public class RegionBackendServiceClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -406,6 +421,10 @@ public class RegionBackendServiceClientTest {
 
     Assert.assertEquals(region, actualRequest.getRegionAsRegionName());
     Assert.assertEquals(backendService, actualRequest.getBackendService());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -456,6 +475,10 @@ public class RegionBackendServiceClientTest {
     ListRegionBackendServicesHttpRequest actualRequest = (ListRegionBackendServicesHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(region, actualRequest.getRegionAsRegionName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -489,7 +512,7 @@ public class RegionBackendServiceClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -534,6 +557,10 @@ public class RegionBackendServiceClientTest {
     PatchRegionBackendServiceHttpRequest actualRequest = (PatchRegionBackendServiceHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(backendService, actualRequest.getBackendServiceAsRegionBackendServicesBackendServiceName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -567,7 +594,7 @@ public class RegionBackendServiceClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -612,6 +639,10 @@ public class RegionBackendServiceClientTest {
     UpdateRegionBackendServiceHttpRequest actualRequest = (UpdateRegionBackendServiceHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(backendService, actualRequest.getBackendServiceAsRegionBackendServicesBackendServiceName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test

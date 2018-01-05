@@ -1,11 +1,11 @@
 /*
- * Copyright 2017, Google LLC All rights reserved.
+ * Copyright 2017 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,8 +17,7 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.common.collect.Lists;
-import com.google.protobuf.GeneratedMessageV3;
-import io.grpc.stub.StreamObserver;
+import google.compute.v1.TargetInstancesHttp.TargetInstancesImplBase;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,7 +25,7 @@ import java.util.Queue;
 
 @javax.annotation.Generated("by GAPIC")
 @BetaApi
-public class MockTargetInstancesImpl extends grpcClassName {
+public class MockTargetInstancesImpl extends TargetInstancesImplBase {
   private ArrayList<GeneratedMessageV3> requests;
   private Queue<Object> responses;
 

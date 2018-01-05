@@ -1,11 +1,11 @@
 /*
- * Copyright 2017, Google LLC All rights reserved.
+ * Copyright 2017 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -20,9 +20,10 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.ExecutorProvider;
+import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
-import com.google.api.gax.core.PropertiesProvider;
+import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
@@ -96,14 +97,6 @@ public class DiskTypeSettings extends ClientSettings<DiskTypeSettings> {
       .add("https://www.googleapis.com/auth/devstorage.read_only")
       .add("https://www.googleapis.com/auth/devstorage.read_write")
       .build();
-
-  private static final String DEFAULT_GAPIC_NAME = "gapic";
-  private static final String DEFAULT_GAPIC_VERSION = "";
-
-  private static final String PROPERTIES_FILE = "/com/google/compute/project.properties";
-  private static final String META_VERSION_KEY = "artifact.version";
-
-  private static String gapicVersion;
 
   private final PagedCallSettings<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList, AggregatedListDiskTypesPagedResponse> aggregatedListDiskTypesSettings;
   private final UnaryCallSettings<GetDiskTypeHttpRequest, DiskType> getDiskTypeSettings;
@@ -194,18 +187,8 @@ public class DiskTypeSettings extends ClientSettings<DiskTypeSettings> {
   @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
     return ApiClientHeaderProvider.newBuilder()
-        .setGeneratorHeader(DEFAULT_GAPIC_NAME, getGapicVersion())
-        .setApiClientHeaderLineKey("x-goog-api-client")
-        ;
-  }
-
-  private static String getGapicVersion() {
-    if (gapicVersion == null) {
-      gapicVersion = PropertiesProvider.loadProperty(
-          DiskTypeSettings.class, PROPERTIES_FILE, META_VERSION_KEY);
-      gapicVersion = gapicVersion == null ? DEFAULT_GAPIC_VERSION : gapicVersion;
-    }
-    return gapicVersion;
+        .setGeneratedLibToken("gapic", GaxProperties.getLibraryVersion(DiskTypeSettings.class))
+        .setTransportToken(GaxHttpJsonProperties.getHttpJsonTokenName(), GaxHttpJsonProperties.getHttpJsonVersion());
   }
 
   /**
@@ -229,7 +212,7 @@ public class DiskTypeSettings extends ClientSettings<DiskTypeSettings> {
     return new Builder(this);
   }
 
-  private DiskTypeSettings(Builder settingsBuilder) throws IOException {
+  protected DiskTypeSettings(Builder settingsBuilder) throws IOException {
     super(settingsBuilder);
 
     aggregatedListDiskTypesSettings = settingsBuilder.aggregatedListDiskTypesSettings().build();
@@ -375,11 +358,11 @@ public class DiskTypeSettings extends ClientSettings<DiskTypeSettings> {
       RETRY_PARAM_DEFINITIONS = definitions.build();
     }
 
-    private Builder() {
+    protected Builder() {
       this((ClientContext) null);
     }
 
-    private Builder(ClientContext clientContext) {
+    protected Builder(ClientContext clientContext) {
       super(clientContext);
 
       aggregatedListDiskTypesSettings = PagedCallSettings.newBuilder(
@@ -403,7 +386,7 @@ public class DiskTypeSettings extends ClientSettings<DiskTypeSettings> {
       Builder builder = new Builder((ClientContext) null);
       builder.setTransportChannelProvider(defaultTransportChannelProvider());
       builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
-      builder.setHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
+      builder.setInternalHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
       builder.setEndpoint(getDefaultEndpoint());
       return initDefaults(builder);
     }
@@ -425,7 +408,7 @@ public class DiskTypeSettings extends ClientSettings<DiskTypeSettings> {
       return builder;
     }
 
-    private Builder(DiskTypeSettings settings) {
+    protected Builder(DiskTypeSettings settings) {
       super(settings);
 
       aggregatedListDiskTypesSettings = settings.aggregatedListDiskTypesSettings.toBuilder();

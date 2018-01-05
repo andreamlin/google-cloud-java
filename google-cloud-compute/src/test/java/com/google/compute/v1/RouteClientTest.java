@@ -1,11 +1,11 @@
 /*
- * Copyright 2017, Google LLC All rights reserved.
+ * Copyright 2017 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,16 +17,17 @@ package com.google.compute.v1;
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.core.PagedListResponse;
+import com.google.api.gax.grpc.GaxGrpcProperties;
 import com.google.api.gax.grpc.GrpcStatusCode;
+import com.google.api.gax.grpc.testing.LocalChannelProvider;
 import com.google.api.gax.grpc.testing.MockGrpcService;
 import com.google.api.gax.grpc.testing.MockServiceHelper;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.PagedResponseWrappers.ListRoutesPagedResponse;
 import com.google.protobuf.GeneratedMessageV3;
-import io.grpc.Status;
-import io.grpc.StatusRuntimeException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -87,6 +88,7 @@ public class RouteClientTest {
   private static MockZones mockZones;
   private static MockServiceHelper serviceHelper;
   private RouteClient client;
+  private LocalChannelProvider channelProvider;
 
   @BeforeClass
   public static void startStaticServer() {
@@ -145,8 +147,9 @@ public class RouteClientTest {
   @Before
   public void setUp() throws IOException {
     serviceHelper.reset();
+    channelProvider = serviceHelper.createChannelProvider();
     RouteSettings settings = RouteSettings.newBuilder()
-        .setTransportChannelProvider(serviceHelper.createChannelProvider())
+        .setTransportChannelProvider(channelProvider)
         .setCredentialsProvider(NoCredentialsProvider.create())
         .build();
     client = RouteClient.create(settings);
@@ -172,7 +175,7 @@ public class RouteClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -217,6 +220,10 @@ public class RouteClientTest {
     DeleteRouteHttpRequest actualRequest = (DeleteRouteHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(route, actualRequest.getRouteAsRouteName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -241,7 +248,7 @@ public class RouteClientTest {
     String nextHopGateway = "nextHopGateway-159695614";
     String kind = "kind3292052";
     String description = "description-1724546052";
-    Integer priority = -1165461084;
+    Integer priority = 1165461084;
     String nextHopNetwork = "nextHopNetwork1872908524";
     String network = "network1843485230";
     String selfLink = "selfLink-1691268851";
@@ -281,6 +288,10 @@ public class RouteClientTest {
     GetRouteHttpRequest actualRequest = (GetRouteHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(route, actualRequest.getRouteAsRouteName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -314,7 +325,7 @@ public class RouteClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -361,6 +372,10 @@ public class RouteClientTest {
 
     Assert.assertEquals(project, actualRequest.getProjectAsProjectName());
     Assert.assertEquals(route, actualRequest.getRoute());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -411,6 +426,10 @@ public class RouteClientTest {
     ListRoutesHttpRequest actualRequest = (ListRoutesHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(project, actualRequest.getProjectAsProjectName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test

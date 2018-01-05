@@ -1,11 +1,11 @@
 /*
- * Copyright 2017, Google LLC All rights reserved.
+ * Copyright 2017 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,17 +17,18 @@ package com.google.compute.v1;
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.core.PagedListResponse;
+import com.google.api.gax.grpc.GaxGrpcProperties;
 import com.google.api.gax.grpc.GrpcStatusCode;
+import com.google.api.gax.grpc.testing.LocalChannelProvider;
 import com.google.api.gax.grpc.testing.MockGrpcService;
 import com.google.api.gax.grpc.testing.MockServiceHelper;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListDisksPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListDisksPagedResponse;
 import com.google.protobuf.GeneratedMessageV3;
-import io.grpc.Status;
-import io.grpc.StatusRuntimeException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -88,6 +89,7 @@ public class DiskClientTest {
   private static MockZones mockZones;
   private static MockServiceHelper serviceHelper;
   private DiskClient client;
+  private LocalChannelProvider channelProvider;
 
   @BeforeClass
   public static void startStaticServer() {
@@ -146,8 +148,9 @@ public class DiskClientTest {
   @Before
   public void setUp() throws IOException {
     serviceHelper.reset();
+    channelProvider = serviceHelper.createChannelProvider();
     DiskSettings settings = DiskSettings.newBuilder()
-        .setTransportChannelProvider(serviceHelper.createChannelProvider())
+        .setTransportChannelProvider(channelProvider)
         .setCredentialsProvider(NoCredentialsProvider.create())
         .build();
     client = DiskClient.create(settings);
@@ -191,6 +194,10 @@ public class DiskClientTest {
     AggregatedListDisksHttpRequest actualRequest = (AggregatedListDisksHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(project, actualRequest.getProjectAsProjectName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -224,7 +231,7 @@ public class DiskClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -271,6 +278,10 @@ public class DiskClientTest {
 
     Assert.assertEquals(disk, actualRequest.getDiskAsDiskName());
     Assert.assertEquals(snapshot, actualRequest.getSnapshot());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -305,7 +316,7 @@ public class DiskClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -350,6 +361,10 @@ public class DiskClientTest {
     DeleteDiskHttpRequest actualRequest = (DeleteDiskHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(disk, actualRequest.getDiskAsDiskName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -420,6 +435,10 @@ public class DiskClientTest {
     GetDiskHttpRequest actualRequest = (GetDiskHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(disk, actualRequest.getDiskAsDiskName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -453,7 +472,7 @@ public class DiskClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -502,6 +521,10 @@ public class DiskClientTest {
     Assert.assertEquals(zone, actualRequest.getZoneAsZoneName());
     Assert.assertEquals(sourceImage, actualRequest.getSourceImage());
     Assert.assertEquals(disk, actualRequest.getDisk());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -553,6 +576,10 @@ public class DiskClientTest {
     ListDisksHttpRequest actualRequest = (ListDisksHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(zone, actualRequest.getZoneAsZoneName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -586,7 +613,7 @@ public class DiskClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -633,6 +660,10 @@ public class DiskClientTest {
 
     Assert.assertEquals(disk, actualRequest.getDiskAsDiskName());
     Assert.assertEquals(disksResizeRequest, actualRequest.getDisksResizeRequest());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test

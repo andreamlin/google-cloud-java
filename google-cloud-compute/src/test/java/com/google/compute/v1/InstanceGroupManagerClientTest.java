@@ -1,11 +1,11 @@
 /*
- * Copyright 2017, Google LLC All rights reserved.
+ * Copyright 2017 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,17 +17,18 @@ package com.google.compute.v1;
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.core.PagedListResponse;
+import com.google.api.gax.grpc.GaxGrpcProperties;
 import com.google.api.gax.grpc.GrpcStatusCode;
+import com.google.api.gax.grpc.testing.LocalChannelProvider;
 import com.google.api.gax.grpc.testing.MockGrpcService;
 import com.google.api.gax.grpc.testing.MockServiceHelper;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.PagedResponseWrappers.AggregatedListInstanceGroupManagersPagedResponse;
 import static com.google.compute.v1.PagedResponseWrappers.ListInstanceGroupManagersPagedResponse;
 import com.google.protobuf.GeneratedMessageV3;
-import io.grpc.Status;
-import io.grpc.StatusRuntimeException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -88,6 +89,7 @@ public class InstanceGroupManagerClientTest {
   private static MockZones mockZones;
   private static MockServiceHelper serviceHelper;
   private InstanceGroupManagerClient client;
+  private LocalChannelProvider channelProvider;
 
   @BeforeClass
   public static void startStaticServer() {
@@ -146,8 +148,9 @@ public class InstanceGroupManagerClientTest {
   @Before
   public void setUp() throws IOException {
     serviceHelper.reset();
+    channelProvider = serviceHelper.createChannelProvider();
     InstanceGroupManagerSettings settings = InstanceGroupManagerSettings.newBuilder()
-        .setTransportChannelProvider(serviceHelper.createChannelProvider())
+        .setTransportChannelProvider(channelProvider)
         .setCredentialsProvider(NoCredentialsProvider.create())
         .build();
     client = InstanceGroupManagerClient.create(settings);
@@ -173,7 +176,7 @@ public class InstanceGroupManagerClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -220,6 +223,10 @@ public class InstanceGroupManagerClientTest {
 
     Assert.assertEquals(instanceGroupManager, actualRequest.getInstanceGroupManagerAsInstanceGroupManagerName());
     Assert.assertEquals(instanceGroupManagersAbandonInstancesRequest, actualRequest.getInstanceGroupManagersAbandonInstancesRequest());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -272,6 +279,10 @@ public class InstanceGroupManagerClientTest {
     AggregatedListInstanceGroupManagersHttpRequest actualRequest = (AggregatedListInstanceGroupManagersHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(project, actualRequest.getProjectAsProjectName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -305,7 +316,7 @@ public class InstanceGroupManagerClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -350,6 +361,10 @@ public class InstanceGroupManagerClientTest {
     DeleteInstanceGroupManagerHttpRequest actualRequest = (DeleteInstanceGroupManagerHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(instanceGroupManager, actualRequest.getInstanceGroupManagerAsInstanceGroupManagerName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -383,7 +398,7 @@ public class InstanceGroupManagerClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -430,6 +445,10 @@ public class InstanceGroupManagerClientTest {
 
     Assert.assertEquals(instanceGroupManager, actualRequest.getInstanceGroupManagerAsInstanceGroupManagerName());
     Assert.assertEquals(instanceGroupManagersDeleteInstancesRequest, actualRequest.getInstanceGroupManagersDeleteInstancesRequest());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -458,7 +477,7 @@ public class InstanceGroupManagerClientTest {
     String baseInstanceName = "baseInstanceName389106439";
     String instanceGroup = "instanceGroup81095253";
     String selfLink = "selfLink-1691268851";
-    Integer targetSize = -2084603409;
+    Integer targetSize = 2084603409;
     String zone = "zone3744684";
     String creationTimestamp = "creationTimestamp567396278";
     String fingerprint = "fingerprint-1375934236";
@@ -493,6 +512,10 @@ public class InstanceGroupManagerClientTest {
     GetInstanceGroupManagerHttpRequest actualRequest = (GetInstanceGroupManagerHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(instanceGroupManager, actualRequest.getInstanceGroupManagerAsInstanceGroupManagerName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -526,7 +549,7 @@ public class InstanceGroupManagerClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -573,6 +596,10 @@ public class InstanceGroupManagerClientTest {
 
     Assert.assertEquals(zone, actualRequest.getZoneAsZoneName());
     Assert.assertEquals(instanceGroupManager, actualRequest.getInstanceGroupManager());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -623,6 +650,10 @@ public class InstanceGroupManagerClientTest {
     ListInstanceGroupManagersHttpRequest actualRequest = (ListInstanceGroupManagersHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(zone, actualRequest.getZoneAsZoneName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -658,6 +689,10 @@ public class InstanceGroupManagerClientTest {
     ListManagedInstancesInstanceGroupManagersHttpRequest actualRequest = (ListManagedInstancesInstanceGroupManagersHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(instanceGroupManager, actualRequest.getInstanceGroupManagerAsInstanceGroupManagerName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -691,7 +726,7 @@ public class InstanceGroupManagerClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -738,6 +773,10 @@ public class InstanceGroupManagerClientTest {
 
     Assert.assertEquals(instanceGroupManager, actualRequest.getInstanceGroupManagerAsInstanceGroupManagerName());
     Assert.assertEquals(instanceGroupManagersRecreateInstancesRequest, actualRequest.getInstanceGroupManagersRecreateInstancesRequest());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -772,7 +811,7 @@ public class InstanceGroupManagerClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -819,6 +858,10 @@ public class InstanceGroupManagerClientTest {
 
     Assert.assertEquals(size, actualRequest.getSize());
     Assert.assertEquals(instanceGroupManager, actualRequest.getInstanceGroupManagerAsInstanceGroupManagerName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -853,7 +896,7 @@ public class InstanceGroupManagerClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -900,6 +943,10 @@ public class InstanceGroupManagerClientTest {
 
     Assert.assertEquals(instanceGroupManager, actualRequest.getInstanceGroupManagerAsInstanceGroupManagerName());
     Assert.assertEquals(instanceGroupManagersSetInstanceTemplateRequest, actualRequest.getInstanceGroupManagersSetInstanceTemplateRequest());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -934,7 +981,7 @@ public class InstanceGroupManagerClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -981,6 +1028,10 @@ public class InstanceGroupManagerClientTest {
 
     Assert.assertEquals(instanceGroupManager, actualRequest.getInstanceGroupManagerAsInstanceGroupManagerName());
     Assert.assertEquals(instanceGroupManagersSetTargetPoolsRequest, actualRequest.getInstanceGroupManagersSetTargetPoolsRequest());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test

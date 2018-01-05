@@ -1,11 +1,11 @@
 /*
- * Copyright 2017, Google LLC All rights reserved.
+ * Copyright 2017 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,16 +17,17 @@ package com.google.compute.v1;
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.core.PagedListResponse;
+import com.google.api.gax.grpc.GaxGrpcProperties;
 import com.google.api.gax.grpc.GrpcStatusCode;
+import com.google.api.gax.grpc.testing.LocalChannelProvider;
 import com.google.api.gax.grpc.testing.MockGrpcService;
 import com.google.api.gax.grpc.testing.MockServiceHelper;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.PagedResponseWrappers.ListRegionAutoscalersPagedResponse;
 import com.google.protobuf.GeneratedMessageV3;
-import io.grpc.Status;
-import io.grpc.StatusRuntimeException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -87,6 +88,7 @@ public class RegionAutoscalerClientTest {
   private static MockZones mockZones;
   private static MockServiceHelper serviceHelper;
   private RegionAutoscalerClient client;
+  private LocalChannelProvider channelProvider;
 
   @BeforeClass
   public static void startStaticServer() {
@@ -145,8 +147,9 @@ public class RegionAutoscalerClientTest {
   @Before
   public void setUp() throws IOException {
     serviceHelper.reset();
+    channelProvider = serviceHelper.createChannelProvider();
     RegionAutoscalerSettings settings = RegionAutoscalerSettings.newBuilder()
-        .setTransportChannelProvider(serviceHelper.createChannelProvider())
+        .setTransportChannelProvider(channelProvider)
         .setCredentialsProvider(NoCredentialsProvider.create())
         .build();
     client = RegionAutoscalerClient.create(settings);
@@ -172,7 +175,7 @@ public class RegionAutoscalerClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -217,6 +220,10 @@ public class RegionAutoscalerClientTest {
     DeleteRegionAutoscalerHttpRequest actualRequest = (DeleteRegionAutoscalerHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(autoscaler, actualRequest.getAutoscalerAsRegionAutoscalersAutoscalerName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -271,6 +278,10 @@ public class RegionAutoscalerClientTest {
     GetRegionAutoscalerHttpRequest actualRequest = (GetRegionAutoscalerHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(autoscaler, actualRequest.getAutoscalerAsRegionAutoscalersAutoscalerName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -304,7 +315,7 @@ public class RegionAutoscalerClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -351,6 +362,10 @@ public class RegionAutoscalerClientTest {
 
     Assert.assertEquals(region, actualRequest.getRegionAsRegionName());
     Assert.assertEquals(autoscaler, actualRequest.getAutoscaler());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -401,6 +416,10 @@ public class RegionAutoscalerClientTest {
     ListRegionAutoscalersHttpRequest actualRequest = (ListRegionAutoscalersHttpRequest)actualRequests.get(0);
 
     Assert.assertEquals(region, actualRequest.getRegionAsRegionName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -434,7 +453,7 @@ public class RegionAutoscalerClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -481,6 +500,10 @@ public class RegionAutoscalerClientTest {
 
     Assert.assertEquals(autoscaler, actualRequest.getAutoscaler());
     Assert.assertEquals(region, actualRequest.getRegionAsRegionName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
@@ -515,7 +538,7 @@ public class RegionAutoscalerClientTest {
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
-    Integer progress = -1001078227;
+    Integer progress = 1001078227;
     String operationType = "operationType-1432962286";
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
@@ -562,6 +585,10 @@ public class RegionAutoscalerClientTest {
 
     Assert.assertEquals(autoscaler, actualRequest.getAutoscaler());
     Assert.assertEquals(region, actualRequest.getRegionAsRegionName());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
