@@ -267,6 +267,19 @@
         <version>${compute.version}</version>
         <type>test-jar</type>
       </dependency>
+
+      <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>google-cloud-simplecompute</artifactId>
+        <version>${simplecompute.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>google-cloud-simplecompute</artifactId>
+        <version>${simplecompute.version}</version>
+        <type>test-jar</type>
+      </dependency>
+
       <dependency>
         <groupId>com.google.apis</groupId>
         <artifactId>google-api-services-compute</artifactId>

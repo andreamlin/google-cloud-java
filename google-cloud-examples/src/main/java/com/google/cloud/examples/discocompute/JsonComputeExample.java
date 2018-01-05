@@ -48,30 +48,6 @@ public class JsonComputeExample {
     return addressClient;
   }
 
-  private static AddressClient createCredentialedClient2() throws IOException, Exception {
-    try (AddressClient addressClient = AddressClient.create()) {
-      ProjectName project = ProjectName.of("[PROJECT]");
-      AggregatedListAddressesHttpRequest request = AggregatedListAddressesHttpRequest.newBuilder()
-          .setProjectWithProjectName(project)
-          .build();
-      while (true) {
-        AddressAggregatedList response = addressClient.aggregatedListAddressesCallable()
-            .call(request);
-        AddressesScopedList scopedList = response.getItems();
-        for (Address element : scopedList.getAddresses()) {
-          // doThingsWith(element);
-        }
-        String nextPageToken = response.getNextPageToken();
-        if (!Strings.isNullOrEmpty(nextPageToken)) {
-          request = request.toBuilder().setPageToken(nextPageToken).build();
-        } else {
-          break;
-        }
-      }
-    }
-    return null;
-  }
-
   // A basic List Address example.
   private static void runExampleWithGapicGen(AddressClient client) {
     System.out.println("Running with Gapic Client.");
