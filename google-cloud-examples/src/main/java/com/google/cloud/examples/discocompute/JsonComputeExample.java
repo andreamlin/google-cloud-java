@@ -5,9 +5,8 @@ import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.common.base.Strings;
-import com.google.compute.v1.*;
+import com.google.cloud.simplecompute.v1.*;
 
-import com.google.compute.v1.PagedResponseWrappers.AggregatedListAddressesPagedResponse;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
