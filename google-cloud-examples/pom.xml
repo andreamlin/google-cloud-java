@@ -61,6 +61,10 @@
               <name>ComputeExample</name>
             </program>
             <program>
+              <mainClass>com.google.cloud.examples.discocompute.JsonComputeExample</mainClass>
+              <name>JsonComputeExample</name>
+            </program>
+            <program>
               <mainClass>com.google.cloud.examples.datastore.DatastoreExample</mainClass>
               <name>DatastoreExample</name>
             </program>

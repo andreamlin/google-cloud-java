@@ -162,6 +162,7 @@
     <monitoring.version>0.32.1-beta-SNAPSHOT</monitoring.version>
     <pubsub.version>0.32.1-beta-SNAPSHOT</pubsub.version>
     <resourcemanager.version>0.32.1-alpha-SNAPSHOT</resourcemanager.version>
+    <simplecompute.version>0.32.1-alpha-SNAPSHOT</simplecompute.version>
     <spanner.version>0.32.1-beta-SNAPSHOT</spanner.version>
     <speech.version>0.32.1-alpha-SNAPSHOT</speech.version>
     <storage.version>1.14.1-SNAPSHOT</storage.version>
