@@ -19,6 +19,7 @@ import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
+import com.google.api.gax.httpjson.ApiMessage;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
@@ -70,7 +71,7 @@ public class HttpJsonAddressStub extends AddressStub {
                             ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter<DeleteAddressHttpRequest>())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
   private static final ApiMethodDescriptor<GetAddressHttpRequest, Address> getAddressMethodDescriptor =
