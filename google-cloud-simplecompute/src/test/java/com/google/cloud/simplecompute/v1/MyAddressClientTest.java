@@ -55,32 +55,6 @@ public class MyAddressClientTest {
   public void setUp() {
   }
 
-  public class ResultCaptor<T> implements Answer {
-    private T result = null;
-    public T getResult() {
-      return result;
-    }
-
-    @Override
-    public T answer(InvocationOnMock invocationOnMock) throws Throwable {
-      result = (T) invocationOnMock.callRealMethod();
-      return result;
-    }
-  }
-
-  public class SpyResultCaptor<T> implements Answer {
-    private T result = null;
-    public T getResult() {
-      return result;
-    }
-
-    @Override
-    public T answer(InvocationOnMock invocationOnMock) throws Throwable {
-      result = spy((T) invocationOnMock.callRealMethod());
-      return result;
-    }
-  }
-
   @Test
   public void insertAddressesTest() throws Throwable {
     String httpErrorMessage = "httpErrorMessage1276263769";
