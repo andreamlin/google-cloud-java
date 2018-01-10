@@ -38,6 +38,7 @@ import com.google.cloud.simplecompute.v1.ListAddressesHttpRequest;
 import com.google.cloud.simplecompute.v1.Operation;
 import static com.google.cloud.simplecompute.v1.PagedResponseWrappers.ListAddressesPagedResponse;
 import com.google.cloud.simplecompute.v1.RegionName;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import java.io.IOException;
@@ -74,6 +75,10 @@ public class HttpJsonAddressStub extends AddressStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter<DeleteAddressHttpRequest>())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
+  @VisibleForTesting
+  public ApiMethodDescriptor<DeleteAddressHttpRequest, Operation> getDeleteAddressMethodDescriptor() {
+    return deleteAddressMethodDescriptor;
+  }
   private static final ApiMethodDescriptor<GetAddressHttpRequest, Address> getAddressMethodDescriptor =
       ApiMethodDescriptor.<GetAddressHttpRequest, Address>newBuilder()
           .setMethodName("compute.addresses.get")
@@ -88,6 +93,10 @@ public class HttpJsonAddressStub extends AddressStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
+  @VisibleForTesting
+  public ApiMethodDescriptor<GetAddressHttpRequest, Address> getGetAddressMethodDescriptor() {
+    return getAddressMethodDescriptor;
+  }
   private static final ApiMethodDescriptor<InsertAddressHttpRequest, Operation> insertAddressMethodDescriptor =
       ApiMethodDescriptor.<InsertAddressHttpRequest, Operation>newBuilder()
           .setMethodName("compute.addresses.insert")
@@ -102,6 +111,10 @@ public class HttpJsonAddressStub extends AddressStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
+  @VisibleForTesting
+  public ApiMethodDescriptor<InsertAddressHttpRequest, Operation> getInsertAddressMethodDescriptor() {
+    return insertAddressMethodDescriptor;
+  }
   private static final ApiMethodDescriptor<ListAddressesHttpRequest, AddressList> listAddressesMethodDescriptor =
       ApiMethodDescriptor.<ListAddressesHttpRequest, AddressList>newBuilder()
           .setMethodName("compute.addresses.list")
@@ -117,6 +130,10 @@ public class HttpJsonAddressStub extends AddressStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
+  @VisibleForTesting
+  public ApiMethodDescriptor<ListAddressesHttpRequest, AddressList> getListAddressesMethodDescriptor() {
+    return listAddressesMethodDescriptor;
+  }
 
   private final BackgroundResource backgroundResources;
 
@@ -143,19 +160,19 @@ public class HttpJsonAddressStub extends AddressStub {
 
     HttpJsonCallSettings<DeleteAddressHttpRequest, Operation> deleteAddressTransportSettings =
         HttpJsonCallSettings.<DeleteAddressHttpRequest, Operation>newBuilder()
-            .setMethodDescriptor(deleteAddressMethodDescriptor)
+            .setMethodDescriptor(getDeleteAddressMethodDescriptor())
             .build();
     HttpJsonCallSettings<GetAddressHttpRequest, Address> getAddressTransportSettings =
         HttpJsonCallSettings.<GetAddressHttpRequest, Address>newBuilder()
-            .setMethodDescriptor(getAddressMethodDescriptor)
+            .setMethodDescriptor(getGetAddressMethodDescriptor())
             .build();
     HttpJsonCallSettings<InsertAddressHttpRequest, Operation> insertAddressTransportSettings =
         HttpJsonCallSettings.<InsertAddressHttpRequest, Operation>newBuilder()
-            .setMethodDescriptor(insertAddressMethodDescriptor)
+            .setMethodDescriptor(getInsertAddressMethodDescriptor())
             .build();
     HttpJsonCallSettings<ListAddressesHttpRequest, AddressList> listAddressesTransportSettings =
         HttpJsonCallSettings.<ListAddressesHttpRequest, AddressList>newBuilder()
-            .setMethodDescriptor(listAddressesMethodDescriptor)
+            .setMethodDescriptor(getListAddressesMethodDescriptor())
             .build();
 
     this.deleteAddressCallable = HttpJsonCallableFactory.createUnaryCallable(deleteAddressTransportSettings,settings.deleteAddressSettings(), clientContext);

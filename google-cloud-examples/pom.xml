@@ -32,6 +32,11 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>google-cloud-simplecompute</artifactId>
+      <version>0.32.1-alpha-SNAPSHOT</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

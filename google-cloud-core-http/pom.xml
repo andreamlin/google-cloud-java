@@ -37,6 +37,13 @@
       </exclusions>
     </dependency>
     <dependency>
+      <groupId>com.google.api</groupId>
+      <artifactId>gax-httpjson</artifactId>
+      <version>${gax-httpjson.version}</version>
+      <scope>system</scope>
+      <systemPath>/usr/local/google/home/andrealin/Documents/git/veneer/gax-java/gax-httpjson/build/libs/gax-httpjson-0.33.1-SNAPSHOT.jar</systemPath>
+    </dependency>
+    <dependency>
       <groupId>com.google.http-client</groupId>
       <artifactId>google-http-client</artifactId>
       <scope>compile</scope>
