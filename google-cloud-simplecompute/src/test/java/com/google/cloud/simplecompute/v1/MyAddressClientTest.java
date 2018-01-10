@@ -23,9 +23,15 @@ import com.google.api.client.testing.http.MockLowLevelHttpRequest;
 import com.google.api.client.testing.http.MockLowLevelHttpResponse;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.cloud.simplecompute.v1.stub.HttpJsonAddressStub;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.io.Writer;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -40,48 +46,13 @@ public class MyAddressClientTest {
 
   private static AddressSettings addressSettings;
 
-  private static final MockLowLevelHttpResponse SUCCESS_RESPONSE = new MockLowLevelHttpResponse() {
-    @Override
-    public InputStream getContent() {
-      return new InputStream() {
-        @Override
-        public int read() throws IOException {
-          return EXPECTED_CONTENT;
-        }
-      };
-    }
-  };
-
-  private static MockLowLevelHttpRequest mockHttpRequest =
-      new MockLowLevelHttpRequest() {
-        @Override
-        public LowLevelHttpResponse execute() throws IOException {
-          return SUCCESS_RESPONSE;
-        }
-      };
-
-
-  private static MockHttpTransport mockHttpTransport = new MockHttpTransport.Builder().setLowLevelHttpRequest(mockHttpRequest).build();
-
-  private static final int EXPECTED_CONTENT = 206;
-
   private static final RegionName TEST_REGION =
       RegionName.of("test-project", "test-subscription");
 
+  MockHttpTransport mockHttpTransport;
 
   @Before
   public void setUp() {
-    try {
-      addressSettings =
-          AddressSettings.newBuilder()
-              .setTransportChannelProvider(
-                  AddressSettings.defaultHttpJsonTransportProviderBuilder()
-                      .setHttpTransport(mockHttpTransport).build()).build();
-      client =
-          AddressClient.create(addressSettings);
-    } catch (IOException e) {
-      fail();
-    }
   }
 
   public class ResultCaptor<T> implements Answer {
@@ -110,10 +81,6 @@ public class MyAddressClientTest {
     }
   }
 
-  private class MockAddressStub extends HttpJsonAddressStub {
-
-  }
-
   @Test
   public void insertAddressesTest() throws Throwable {
     String httpErrorMessage = "httpErrorMessage1276263769";
@@ -137,7 +104,7 @@ public class MyAddressClientTest {
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
-    Operation expectedResponse = Operation.newBuilder()
+    final Operation expectedResponse = Operation.newBuilder()
         .setHttpErrorMessage(httpErrorMessage)
         .setTargetId(targetId)
         .setKind(kind)
@@ -163,11 +130,40 @@ public class MyAddressClientTest {
 
     Address address = Address.newBuilder().build();
 
+    final MockLowLevelHttpResponse SUCCESS_RESPONSE = new MockLowLevelHttpResponse() {
+      @Override
+      public InputStream getContent() {
+        Writer writer = new StringWriter();
+        ((HttpJsonAddressStub) client.getStub()).getInsertAddressMethodDescriptor().writeResponse(writer, expectedResponse);
+        return new ByteArrayInputStream(writer.toString().getBytes());
+      }
+    };
+
+    MockLowLevelHttpRequest mockHttpRequest =
+        new MockLowLevelHttpRequest() {
+          @Override
+          public LowLevelHttpResponse execute() throws IOException {
+            return SUCCESS_RESPONSE;
+          }
+        };
+
+    mockHttpTransport = new MockHttpTransport.Builder().setLowLevelHttpRequest(mockHttpRequest).build();
+
+    try {
+      addressSettings =
+          AddressSettings.newBuilder()
+              .setTransportChannelProvider(
+                  AddressSettings.defaultHttpJsonTransportProviderBuilder()
+                      .setHttpTransport(mockHttpTransport).build()).build();
+      client =
+          AddressClient.create(addressSettings);
+    } catch (IOException e) {
+      fail();
+    }
+
     Operation actualResponse =
         client.insertAddress(TEST_REGION, address);
     Assert.assertEquals(expectedResponse, actualResponse);
-
-    HttpJsonAddressStub httpJsonAddressStub = spy(new HttpJsonAddressStub(addressSettings, ClientContext.create(addressSettings)));
 
     client.listAddresses(TEST_REGION);
   }
