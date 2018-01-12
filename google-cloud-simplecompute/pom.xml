@@ -4,7 +4,7 @@
   <artifactId>google-cloud-simplecompute</artifactId>
   <version>0.32.1-alpha-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <name>Google Cloud Compute</name>
+  <name>Google Cloud SimpleCompute</name>
   <url>https://github.com/andreamlin/google-cloud-java/tree/simplecompute/google-cloud-simplecompute</url>
   <description>
     Java idiomatic client for Google Cloud Compute Engine.
@@ -31,24 +31,13 @@
       <artifactId>mockito-all</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>com.google.apis</groupId>
-      <artifactId>google-api-services-compute</artifactId>
-      <scope>compile</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>com.google.guava</groupId>
-          <artifactId>guava-jdk5</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>com.google.api</groupId>
-      <artifactId>gax-httpjson</artifactId>
-      <version>${gax-httpjson.version}</version>
-      <scope>system</scope>
-      <systemPath>/usr/local/google/home/andrealin/Documents/git/veneer/gax-java/gax-httpjson/build/libs/gax-httpjson-0.33.1-SNAPSHOT.jar</systemPath>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>com.google.api</groupId>-->
+      <!--<artifactId>gax-httpjson</artifactId>-->
+      <!--<version>${gax-httpjson.version}</version>-->
+      <!--<scope>system</scope>-->
+      <!--<systemPath>/usr/local/google/home/andrealin/Documents/git/veneer/gax-java/gax-httpjson/build/libs/gax-httpjson-0.33.1-SNAPSHOT.jar</systemPath>-->
+    <!--</dependency>-->
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>google-cloud-core</artifactId>
@@ -70,5 +59,79 @@
       <artifactId>objenesis</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.google.truth</groupId>
+      <artifactId>truth</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.api.grpc</groupId>
+      <artifactId>grpc-google-iam-v1</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.api</groupId>
+      <artifactId>gax-grpc</artifactId>
+      <classifier>testlib</classifier>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
+  <profiles>
+    <profile>
+      <id>doclint-java8-disable</id>
+      <activation>
+        <jdk>[1.8,)</jdk>
+      </activation>
+      <properties>
+        <!-- add this to disable checking -->
+        <javadoc.opts>-Xdoclint:none</javadoc.opts>
+      </properties>
+    </profile>
+  </profiles>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.9.1</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals><goal>add-source</goal></goals>
+            <configuration>
+              <sources>
+                <source>generated/src/main/java</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.3</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <additionalparam>${javadoc.opts}</additionalparam>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+          <encoding>UTF-8</encoding>
+          <compilerArgument>-Xlint:unchecked</compilerArgument>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

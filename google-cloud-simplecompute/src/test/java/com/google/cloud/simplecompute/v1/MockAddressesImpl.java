@@ -16,8 +16,7 @@
 // package com.google.cloud.simplecompute.v1;
 //
 // import com.google.api.core.BetaApi;
-// import com.google.common.collect.Lists;
-// import google.simplecompute.v1.AddressesHttp.AddressesImplBase;
+// import com.google.api.gax.httpjson.ApiMessage;
 // import java.util.ArrayList;
 // import java.util.LinkedList;
 // import java.util.List;
@@ -25,8 +24,8 @@
 //
 // @javax.annotation.Generated("by GAPIC")
 // @BetaApi
-// public class MockAddressesImpl extends AddressesImplBase {
-//   private ArrayList<GeneratedMessageV3> requests;
+// public class MockAddressesImpl {
+//   private ArrayList<ApiMessage> requests;
 //   private Queue<Object> responses;
 //
 //   public MockAddressesImpl() {
@@ -34,15 +33,15 @@
 //     responses = new LinkedList<>();
 //   }
 //
-//   public List<GeneratedMessageV3> getRequests() {
+//   public List<ApiMessage> getRequests() {
 //     return requests;
 //   }
 //
-//   public void addResponse(GeneratedMessageV3 response) {
+//   public void addResponse(ApiMessage response) {
 //     responses.add(response);
 //   }
 //
-//   public void setResponses(List<GeneratedMessageV3> responses) {
+//   public void setResponses(List<ApiMessage> responses) {
 //     this.responses = new LinkedList<Object>(responses);
 //   }
 //
@@ -55,9 +54,7 @@
 //     responses = new LinkedList<>();
 //   }
 //
-//   @Override
-//   public void deleteAddress(DeleteAddressHttpRequest request,
-//     StreamObserver<Operation> responseObserver) {
+//   public Operation deleteAddress(DeleteAddressHttpRequest request) {
 //     Object response = responses.remove();
 //     if (response instanceof Operation) {
 //       requests.add(request);
@@ -70,7 +67,6 @@
 //     }
 //   }
 //
-//   @Override
 //   public void getAddress(GetAddressHttpRequest request,
 //     StreamObserver<Address> responseObserver) {
 //     Object response = responses.remove();
@@ -85,7 +81,6 @@
 //     }
 //   }
 //
-//   @Override
 //   public void insertAddress(InsertAddressHttpRequest request,
 //     StreamObserver<Operation> responseObserver) {
 //     Object response = responses.remove();
@@ -100,7 +95,6 @@
 //     }
 //   }
 //
-//   @Override
 //   public void listAddresses(ListAddressesHttpRequest request,
 //     StreamObserver<AddressList> responseObserver) {
 //     Object response = responses.remove();

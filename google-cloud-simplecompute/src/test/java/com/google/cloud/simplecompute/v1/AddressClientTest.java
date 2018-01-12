@@ -15,67 +15,59 @@
  */
 package com.google.cloud.simplecompute.v1;
 
-import com.google.api.gax.core.NoCredentialsProvider;
-import com.google.api.gax.paging.PagedListResponse;
-import com.google.api.gax.grpc.GaxGrpcProperties;
-import com.google.api.gax.grpc.GrpcStatusCode;
-import com.google.api.gax.rpc.ApiClientHeaderProvider;
+import com.google.api.gax.httpjson.MockHttpLayer;
+import com.google.api.gax.rpc.ApiException;
+import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
-import com.google.api.gax.rpc.StatusCode;
 import static com.google.cloud.simplecompute.v1.PagedResponseWrappers.ListAddressesPagedResponse;
+
+import com.google.api.gax.rpc.StatusCode.Code;
+import com.google.cloud.simplecompute.v1.stub.HttpJsonAddressStub;
 import com.google.common.collect.Lists;
-import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class AddressClientTest {
-  private static MockAddresses mockAddresses;
-  private static MockServiceHelper serviceHelper;
-  private AddressClient client;
-  private LocalChannelProvider channelProvider;
+  private static AddressClient client;
+  private static AddressSettings addressSettings;
+  private static final MockHttpLayer MOCK_ADDRESSES = new MockHttpLayer();
+  private static final RegionName TEST_REGION =
+      RegionName.of("test-project", "test-subscription");
 
   @BeforeClass
-  public static void startStaticServer() {
-    mockAddresses = new MockAddresses();
-    serviceHelper = new MockServiceHelper("in-process-1", Arrays.<MockGrpcService>asList(mockAddresses));
-    serviceHelper.start();
-  }
-
-  @AfterClass
-  public static void stopServer() {
-    serviceHelper.stop();
-  }
-
-  @Before
-  public void setUp() throws IOException {
-    serviceHelper.reset();
-    channelProvider = serviceHelper.createChannelProvider();
-    AddressSettings settings = AddressSettings.newBuilder()
-        .setTransportChannelProvider(channelProvider)
-        .setCredentialsProvider(NoCredentialsProvider.create())
-        .build();
-    client = AddressClient.create(settings);
+  public static void setUp() throws Exception {
+    addressSettings =
+        AddressSettings.newBuilder()
+            .setTransportChannelProvider(
+                AddressSettings.defaultHttpJsonTransportProviderBuilder()
+                    .setHttpTransport(MOCK_ADDRESSES).build()).build();
+    client =
+        AddressClient.create(addressSettings);
   }
 
   @After
-  public void tearDown() throws Exception {
+  public void cleanUp() {
+    MOCK_ADDRESSES.reset();
+  }
+
+  @AfterClass
+  public static void tearDown() throws Exception {
     client.close();
   }
 
   @Test
   @SuppressWarnings("all")
-  public void deleteAddressTest() {
+  public void deleteAddressTest() throws IOException {
     String httpErrorMessage = "httpErrorMessage1276263769";
     String targetId = "targetId-815576439";
     String kind = "kind3292052";
@@ -120,7 +112,8 @@ public class AddressClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    mockAddresses.addResponse(expectedResponse);
+    MOCK_ADDRESSES.addResponse(expectedResponse);
+    MOCK_ADDRESSES.setSerializer(((HttpJsonAddressStub) client.getStub()).getDeleteAddressMethodDescriptor());
 
     AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
 
@@ -128,22 +121,16 @@ public class AddressClientTest {
         client.deleteAddress(address);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockAddresses.getRequests();
+    List<String> actualRequests = MOCK_ADDRESSES.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    DeleteAddressHttpRequest actualRequest = (DeleteAddressHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(address, actualRequest.getAddressAsAddressName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void deleteAddressExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockAddresses.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_ADDRESSES.addException(exception);
+    MOCK_ADDRESSES.setSerializer(((HttpJsonAddressStub) client.getStub()).getDeleteAddressMethodDescriptor());
 
     try {
       AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
@@ -157,7 +144,7 @@ public class AddressClientTest {
 
   @Test
   @SuppressWarnings("all")
-  public void getAddressTest() {
+  public void getAddressTest() throws UnsupportedEncodingException {
     String address2 = "address2874543783";
     String kind = "kind3292052";
     String creationTimestamp = "creationTimestamp567396278";
@@ -178,7 +165,8 @@ public class AddressClientTest {
       .setSelfLink(selfLink)
       .setStatus(status)
       .build();
-    mockAddresses.addResponse(expectedResponse);
+    MOCK_ADDRESSES.addResponse(expectedResponse);
+    MOCK_ADDRESSES.setSerializer(((HttpJsonAddressStub) client.getStub()).getGetAddressMethodDescriptor());
 
     AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
 
@@ -186,22 +174,16 @@ public class AddressClientTest {
         client.getAddress(address);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockAddresses.getRequests();
+    List<String> actualRequests = MOCK_ADDRESSES.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    GetAddressHttpRequest actualRequest = (GetAddressHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(address, actualRequest.getAddressAsAddressName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void getAddressExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockAddresses.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_ADDRESSES.addException(exception);
+    MOCK_ADDRESSES.setSerializer(((HttpJsonAddressStub) client.getStub()).getGetAddressMethodDescriptor());
 
     try {
       AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
@@ -215,7 +197,7 @@ public class AddressClientTest {
 
   @Test
   @SuppressWarnings("all")
-  public void insertAddressTest() {
+  public void insertAddressTest() throws UnsupportedEncodingException {
     String httpErrorMessage = "httpErrorMessage1276263769";
     String targetId = "targetId-815576439";
     String kind = "kind3292052";
@@ -260,7 +242,8 @@ public class AddressClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    mockAddresses.addResponse(expectedResponse);
+    MOCK_ADDRESSES.addResponse(expectedResponse);
+    MOCK_ADDRESSES.setSerializer(((HttpJsonAddressStub) client.getStub()).getInsertAddressMethodDescriptor());
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     Address address = Address.newBuilder().build();
@@ -269,23 +252,16 @@ public class AddressClientTest {
         client.insertAddress(region, address);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockAddresses.getRequests();
+    List<String> actualRequests = MOCK_ADDRESSES.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    InsertAddressHttpRequest actualRequest = (InsertAddressHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(region, actualRequest.getRegionAsRegionName());
-    Assert.assertEquals(address, actualRequest.getAddress());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void insertAddressExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockAddresses.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_ADDRESSES.addException(exception);
+    MOCK_ADDRESSES.setSerializer(((HttpJsonAddressStub) client.getStub()).getInsertAddressMethodDescriptor());
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -300,21 +276,22 @@ public class AddressClientTest {
 
   @Test
   @SuppressWarnings("all")
-  public void listAddressesTest() {
+  public void listAddressesTest() throws UnsupportedEncodingException {
     String kind = "kind3292052";
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    Address itemsElement = new ArrayList<>();
+    Address itemsElement = Address.getDefaultInstance();
     List<Address> items = Arrays.asList(itemsElement);
     AddressList expectedResponse = AddressList.newBuilder()
       .setKind(kind)
       .setNextPageToken(nextPageToken)
       .setId(id)
       .setSelfLink(selfLink)
-      .addAllItems(items)
+      .setItems(items)
       .build();
-    mockAddresses.addResponse(expectedResponse);
+    MOCK_ADDRESSES.addResponse(expectedResponse);
+    MOCK_ADDRESSES.setSerializer(((HttpJsonAddressStub) client.getStub()).getListAddressesMethodDescriptor());
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -324,22 +301,16 @@ public class AddressClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<GeneratedMessageV3> actualRequests = mockAddresses.getRequests();
+    List<String> actualRequests = MOCK_ADDRESSES.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    ListAddressesHttpRequest actualRequest = (ListAddressesHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(region, actualRequest.getRegionAsRegionName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void listAddressesExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockAddresses.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_ADDRESSES.addException(exception);
+    MOCK_ADDRESSES.setSerializer(((HttpJsonAddressStub) client.getStub()).getListAddressesMethodDescriptor());
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");

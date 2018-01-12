@@ -1,58 +1,34 @@
 package com.google.cloud.simplecompute.v1;
 
 import static junit.framework.TestCase.fail;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.when;
-
-import com.google.api.client.http.GenericUrl;
-import com.google.api.client.http.HttpContent;
-import com.google.api.client.http.HttpRequest;
-import com.google.api.client.http.HttpRequestFactory;
-import com.google.api.client.http.HttpResponse;
-import com.google.api.client.http.HttpTransport;
-import com.google.api.client.http.LowLevelHttpRequest;
-import com.google.api.client.http.LowLevelHttpResponse;
-import com.google.api.client.json.Json;
-import com.google.api.client.testing.http.HttpTesting;
-import com.google.api.client.testing.http.MockHttpTransport;
-import com.google.api.client.testing.http.MockLowLevelHttpRequest;
-import com.google.api.client.testing.http.MockLowLevelHttpResponse;
-import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.httpjson.MockHttpLayer;
 import com.google.cloud.simplecompute.v1.stub.HttpJsonAddressStub;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.io.Writer;
+import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 public class MyAddressClientTest {
   private static AddressClient client;
-
   private static AddressSettings addressSettings;
-
+  private static final MockHttpLayer MOCK_ADDRESSES = new MockHttpLayer();
   private static final RegionName TEST_REGION =
       RegionName.of("test-project", "test-subscription");
 
-  MockHttpTransport mockHttpTransport;
+  @BeforeClass
+  public static void setUp() throws Exception {
+    addressSettings =
+        AddressSettings.newBuilder()
+            .setTransportChannelProvider(
+                AddressSettings.defaultHttpJsonTransportProviderBuilder()
+                    .setHttpTransport(MOCK_ADDRESSES).build()).build();
+    client =
+        AddressClient.create(addressSettings);
+  }
 
-  @Before
-  public void setUp() {
+  @After
+  public void cleanUp() {
+    MOCK_ADDRESSES.reset();
   }
 
   @Test
@@ -104,41 +80,11 @@ public class MyAddressClientTest {
 
     Address address = Address.newBuilder().build();
 
-    final MockLowLevelHttpResponse SUCCESS_RESPONSE = new MockLowLevelHttpResponse() {
-      @Override
-      public InputStream getContent() {
-        Writer writer = new StringWriter();
-        ((HttpJsonAddressStub) client.getStub()).getInsertAddressMethodDescriptor().writeResponse(writer, expectedResponse);
-        return new ByteArrayInputStream(writer.toString().getBytes());
-      }
-    };
-
-    MockLowLevelHttpRequest mockHttpRequest =
-        new MockLowLevelHttpRequest() {
-          @Override
-          public LowLevelHttpResponse execute() throws IOException {
-            return SUCCESS_RESPONSE;
-          }
-        };
-
-    mockHttpTransport = new MockHttpTransport.Builder().setLowLevelHttpRequest(mockHttpRequest).build();
-
-    try {
-      addressSettings =
-          AddressSettings.newBuilder()
-              .setTransportChannelProvider(
-                  AddressSettings.defaultHttpJsonTransportProviderBuilder()
-                      .setHttpTransport(mockHttpTransport).build()).build();
-      client =
-          AddressClient.create(addressSettings);
-    } catch (IOException e) {
-      fail();
-    }
+    MOCK_ADDRESSES.addResponse(expectedResponse);
+    MOCK_ADDRESSES.setSerializer(((HttpJsonAddressStub) client.getStub()).getInsertAddressMethodDescriptor());
 
     Operation actualResponse =
         client.insertAddress(TEST_REGION, address);
     Assert.assertEquals(expectedResponse, actualResponse);
-
-    client.listAddresses(TEST_REGION);
   }
 }
