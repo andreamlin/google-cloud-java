@@ -15,7 +15,7 @@
  */
 package com.google.cloud.simplecompute.v1;
 
-import com.google.api.gax.httpjson.MockHttpLayer;
+import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.rpc.ApiException;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.api.gax.rpc.ApiExceptionFactory;
@@ -27,7 +27,6 @@ import com.google.cloud.simplecompute.v1.stub.HttpJsonAddressStub;
 import com.google.common.collect.Lists;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.After;
@@ -40,7 +39,7 @@ import org.junit.Test;
 public class AddressClientTest {
   private static AddressClient client;
   private static AddressSettings addressSettings;
-  private static final MockHttpLayer MOCK_ADDRESSES = new MockHttpLayer();
+  private static final MockHttpService MOCK_ADDRESSES = new MockHttpService();
   private static final RegionName TEST_REGION =
       RegionName.of("test-project", "test-subscription");
 

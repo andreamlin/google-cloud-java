@@ -1,7 +1,7 @@
 package com.google.cloud.simplecompute.v1;
 
 import static junit.framework.TestCase.fail;
-import com.google.api.gax.httpjson.MockHttpLayer;
+import com.google.api.gax.httpjson.MockHttpService;
 import com.google.cloud.simplecompute.v1.stub.HttpJsonAddressStub;
 import org.junit.After;
 import org.junit.Assert;
@@ -11,7 +11,7 @@ import org.junit.Test;
 public class MyAddressClientTest {
   private static AddressClient client;
   private static AddressSettings addressSettings;
-  private static final MockHttpLayer MOCK_ADDRESSES = new MockHttpLayer();
+  private static final MockHttpService MOCK_ADDRESSES = new MockHttpService();
   private static final RegionName TEST_REGION =
       RegionName.of("test-project", "test-subscription");
 
