@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -383,7 +383,7 @@ public final class InsertAddressHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setRegionWithRegionName(RegionName value) {
+    public final Builder setRegion(RegionName value) {
       if (value == null) {
         return
             setProject("").
@@ -396,7 +396,7 @@ public final class InsertAddressHttpRequest implements ApiMessage {
           ;
     }
 
-    public final RegionName getRegionAsRegionName() {
+    public final RegionName getRegion() {
       return RegionName.of(
           getProject(),
           getRegion()

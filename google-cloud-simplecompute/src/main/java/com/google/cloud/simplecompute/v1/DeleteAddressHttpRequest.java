@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -385,7 +385,7 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setAddressWithAddressName(AddressName value) {
+    public final Builder setAddress(AddressName value) {
       if (value == null) {
         return
             setAddress("").
@@ -400,7 +400,7 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
           ;
     }
 
-    public final AddressName getAddressAsAddressName() {
+    public final AddressName getAddress() {
       return AddressName.of(
           getAddress(),
           getProject(),
