@@ -4,13 +4,11 @@ import com.google.api.core.ApiFuture;
 import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.common.base.Strings;
 import com.google.cloud.simplecompute.v1.*;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-import org.threeten.bp.Duration;
 
 /**
  * Use gax-java and generated message type to List Addresses in a test GCP Compute project.
@@ -95,7 +93,7 @@ public class JsonComputeExample {
     RegionName region = RegionName.of(PROJECT_NAME, REGION);
     Address address = Address.newBuilder().build();
     InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region)
         .setAddressResource(address)
         .build();
     // Do something
@@ -111,7 +109,7 @@ public class JsonComputeExample {
     RegionName region = RegionName.of(PROJECT_NAME, REGION);
     Address address = Address.newBuilder().build();
     InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region)
         .setAddressResource(address)
         .build();
     ApiFuture<Operation> future = client.insertAddressCallable().futureCall(request);
@@ -126,7 +124,7 @@ public class JsonComputeExample {
     System.out.println("Listing addresses:");
     RegionName regionName = RegionName.newBuilder().setRegion(REGION).setProject(PROJECT_NAME).build();
     ListAddressesHttpRequest listRequest = ListAddressesHttpRequest.newBuilder()
-        .setRegionWithRegionName(regionName)
+        .setRegion(regionName)
         .build();
     PagedResponseWrappers.ListAddressesPagedResponse response = client.listAddresses(listRequest);
     for (Address address : response.iterateAll()) {
