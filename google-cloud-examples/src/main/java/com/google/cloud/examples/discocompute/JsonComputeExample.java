@@ -93,7 +93,7 @@ public class JsonComputeExample {
     RegionName region = RegionName.of(PROJECT_NAME, REGION);
     Address address = Address.newBuilder().build();
     InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
-        .setRegion(region)
+        .setRegionWithRegionName(region.toString())
         .setAddressResource(address)
         .build();
     // Do something
@@ -109,7 +109,7 @@ public class JsonComputeExample {
     RegionName region = RegionName.of(PROJECT_NAME, REGION);
     Address address = Address.newBuilder().build();
     InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
-        .setRegion(region)
+        .setRegionWithRegionName(region.getRegion())
         .setAddressResource(address)
         .build();
     ApiFuture<Operation> future = client.insertAddressCallable().futureCall(request);

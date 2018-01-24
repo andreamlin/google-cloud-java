@@ -60,6 +60,19 @@ public final class AddressName implements ResourceName {
       .build();
   }
 
+  public static String format(
+      String address,
+      String project,
+      String region
+      ) {
+    return of(
+        address,
+        project,
+        region
+        )
+        .toString();
+  }
+
   public String getAddress() {
     return address;
   }

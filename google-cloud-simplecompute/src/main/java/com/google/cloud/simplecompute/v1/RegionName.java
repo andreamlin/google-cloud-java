@@ -56,6 +56,17 @@ public final class RegionName implements ResourceName {
       .build();
   }
 
+  public static String format(
+      String project,
+      String region
+      ) {
+    return of(
+        project,
+        region
+        )
+        .toString();
+  }
+
   public String getProject() {
     return project;
   }

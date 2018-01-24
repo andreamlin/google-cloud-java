@@ -480,7 +480,7 @@ public final class ListAddressesHttpRequest implements ApiMessage {
           ;
     }
 
-    public final RegionName getRegion() {
+    public final RegionName getRegionName() {
       return RegionName.of(
           getProject(),
           getRegion()

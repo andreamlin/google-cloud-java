@@ -383,20 +383,21 @@ public final class InsertAddressHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setRegion(RegionName value) {
+    public final Builder setRegionWithRegionName(String value) {
       if (value == null) {
         return
             setProject("").
             setRegion("")
             ;
       }
+      RegionName formattedName = RegionName.parse(value);
       return
-          setProject(value.getProject()).
-          setRegion(value.getRegion())
+          setProject(formattedName.getProject()).
+          setRegion(formattedName.getRegion())
           ;
     }
 
-    public final RegionName getRegion() {
+    public final RegionName getRegionName() {
       return RegionName.of(
           getProject(),
           getRegion()

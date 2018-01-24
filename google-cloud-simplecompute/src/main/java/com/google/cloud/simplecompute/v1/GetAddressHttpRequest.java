@@ -385,7 +385,7 @@ public final class GetAddressHttpRequest implements ApiMessage {
       return newBuilder;
     }
 
-    public final Builder setAddress(AddressName value) {
+    public final Builder setAddressWithAddressName(String value) {
       if (value == null) {
         return
             setAddress("").
@@ -393,14 +393,15 @@ public final class GetAddressHttpRequest implements ApiMessage {
             setRegion("")
             ;
       }
+      AddressName formattedName = AddressName.parse(value);
       return
-          setAddress(value.getAddress()).
-          setProject(value.getProject()).
-          setRegion(value.getRegion())
+          setAddress(formattedName.getAddress()).
+          setProject(formattedName.getProject()).
+          setRegion(formattedName.getRegion())
           ;
     }
 
-    public final AddressName getAddress() {
+    public final AddressName getAddressName() {
       return AddressName.of(
           getAddress(),
           getProject(),

@@ -245,7 +245,7 @@ public class AddressClient implements BackgroundResource {
 
     GetAddressHttpRequest request =
         GetAddressHttpRequest.newBuilder()
-        .setAddress(address.toString())
+        .setAddressWithAddressName(address.toString())
         .build();
     return getAddress(request);
   }
@@ -317,7 +317,7 @@ public class AddressClient implements BackgroundResource {
 
     InsertAddressHttpRequest request =
         InsertAddressHttpRequest.newBuilder()
-        .setRegion(region.toString())
+        .setRegionWithRegionName(region.toString())
         .setAddressResource(addressResource)
         .build();
     return insertAddress(request);
@@ -333,7 +333,7 @@ public class AddressClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Address address = Address.newBuilder().build();
    *   InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
-   *     .setRegion(region.toString())
+   *     .setRegionWithRegionName(region.toString())
    *     .setAddressResource(address)
    *     .build();
    *   Operation response = addressClient.insertAddress(request);
@@ -358,7 +358,7 @@ public class AddressClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Address address = Address.newBuilder().build();
    *   InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
-   *     .setRegion(region.toString())
+   *     .setRegionWithRegionName(region.toString())
    *     .setAddressResource(address)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = addressClient.insertAddressCallable().futureCall(request);
@@ -393,7 +393,7 @@ public class AddressClient implements BackgroundResource {
   public final ListAddressesPagedResponse listAddresses(RegionName region) {
     ListAddressesHttpRequest request =
         ListAddressesHttpRequest.newBuilder()
-        .setRegion(region.toString())
+        .setRegionWithRegionName(region.toString())
         .build();
     return listAddresses(request);
   }
@@ -407,7 +407,7 @@ public class AddressClient implements BackgroundResource {
    * try (AddressClient addressClient = AddressClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListAddressesHttpRequest request = ListAddressesHttpRequest.newBuilder()
-   *     .setRegion(region.toString())
+   *     .setRegionWithRegionName(region.toString())
    *     .build();
    *   for (Address element : addressClient.listAddresses(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -433,7 +433,7 @@ public class AddressClient implements BackgroundResource {
    * try (AddressClient addressClient = AddressClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListAddressesHttpRequest request = ListAddressesHttpRequest.newBuilder()
-   *     .setRegion(region.toString())
+   *     .setRegionWithRegionName(region.toString())
    *     .build();
    *   ApiFuture&lt;ListAddressesPagedResponse&gt; future = addressClient.listAddressesPagedCallable().futureCall(request);
    *   // Do something
@@ -457,7 +457,7 @@ public class AddressClient implements BackgroundResource {
    * try (AddressClient addressClient = AddressClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListAddressesHttpRequest request = ListAddressesHttpRequest.newBuilder()
-   *     .setRegion(region.toString())
+   *     .setRegionWithRegionName(region.toString())
    *     .build();
    *   while (true) {
    *     AddressList response = addressClient.listAddressesCallable().call(request);
