@@ -23,6 +23,7 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.rpc.BidiStreamingCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.pubsub.v1.stub.SubscriberStub;
+import com.google.cloud.pubsub.v1.stub.SubscriberStubSettings;
 import com.google.iam.v1.GetIamPolicyRequest;
 import com.google.iam.v1.Policy;
 import com.google.iam.v1.SetIamPolicyRequest;
@@ -170,7 +171,7 @@ public class SubscriptionAdminClient implements BackgroundResource {
    */
   protected SubscriptionAdminClient(SubscriptionAdminSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((SubscriberStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -215,7 +216,7 @@ public class SubscriptionAdminClient implements BackgroundResource {
    *     `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a
    *     letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores
    *     (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3
-   *     and 255 characters in length, and it must not start with `"goog"`.
+   *     and 255 characters in length, and it must not start with `"goog"`
    * @param topic The name of the topic from which this subscription is receiving messages. Format
    *     is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_`
    *     if the topic has been deleted.

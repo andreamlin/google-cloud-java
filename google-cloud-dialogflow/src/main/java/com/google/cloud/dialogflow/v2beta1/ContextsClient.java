@@ -21,6 +21,7 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.dialogflow.v2beta1.stub.ContextsStub;
+import com.google.cloud.dialogflow.v2beta1.stub.ContextsStubSettings;
 import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -129,7 +130,7 @@ public class ContextsClient implements BackgroundResource {
    */
   protected ContextsClient(ContextsSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((ContextsStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -409,8 +410,7 @@ public class ContextsClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param context Required. The context to update. Format: `projects/&lt;Project
-   *     ID&gt;/agent/sessions/&lt;Session ID&gt;/contexts/&lt;Context ID&gt;`.
+   * @param context Required. The context to update.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Context updateContext(Context context) {

@@ -62,6 +62,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -90,6 +91,11 @@ public class ITSystemTest {
         firestore.collection(
             String.format("java-%s-%s", testName.getMethodName(), LocalFirestoreHelper.autoId()));
     randomDoc = randomColl.document();
+  }
+
+  @After
+  public void after() throws Exception {
+    firestore.close();
   }
 
   private DocumentReference addDocument(String key, Object value, Object... fields)
@@ -461,11 +467,12 @@ public class ITSystemTest {
               public String updateCallback(Transaction transaction)
                   throws ExecutionException, InterruptedException {
                 attempts.incrementAndGet();
-                DocumentSnapshot documentSnapshot = transaction.get(documentReference).get();
+                List<DocumentSnapshot> documentSnapshots =
+                    transaction.getAll(documentReference).get();
                 latch.countDown();
                 latch.await();
                 transaction.update(
-                    documentReference, "counter", documentSnapshot.getLong("counter") + 1);
+                    documentReference, "counter", documentSnapshots.get(0).getLong("counter") + 1);
                 return "bar";
               }
             });
@@ -825,7 +832,6 @@ public class ITSystemTest {
       }
     }
   }
-
 
   private int paginateResults(Query query, List<DocumentSnapshot> results)
       throws ExecutionException, InterruptedException {
