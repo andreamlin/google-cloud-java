@@ -16,18 +16,23 @@
 package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
+import com.google.api.gax.httpjson.Struct;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.api.resourcenames.ResourceName;
 import com.google.api.resourcenames.ResourceNameType;
 import com.google.common.base.Preconditions;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import javax.annotation.Generated;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class AddressName implements ResourceName {
+public final class AddressName implements ResourceName, Struct {
   private final String address;
   private final String project;
   private final String region;
@@ -85,6 +90,21 @@ public final class AddressName implements ResourceName {
     return region;
   }
 
+
+  @Override
+  public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
+    Map<String, List<String>> fieldMap = new HashMap<>();
+    if (fieldNames.contains("address") && address != null) {
+      fieldMap.put("address", Collections.singletonList(String.valueOf(address)));
+    }
+    if (fieldNames.contains("project") && project != null) {
+      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
+    }
+    if (fieldNames.contains("region") && region != null) {
+      fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
+    }
+    return fieldMap;
+  }
 
   public static AddressName parse(String formattedString) {
     Map<String, String> matchMap =

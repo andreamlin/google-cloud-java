@@ -27,6 +27,7 @@ import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.simplecompute.v1.Address;
+import static com.google.cloud.simplecompute.v1.AddressClient.ListAddressesPagedResponse;
 import com.google.cloud.simplecompute.v1.AddressList;
 import com.google.cloud.simplecompute.v1.AddressName;
 import com.google.cloud.simplecompute.v1.AddressSettings;
@@ -35,7 +36,6 @@ import com.google.cloud.simplecompute.v1.GetAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.InsertAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.ListAddressesHttpRequest;
 import com.google.cloud.simplecompute.v1.Operation;
-import static com.google.cloud.simplecompute.v1.PagedResponseWrappers.ListAddressesPagedResponse;
 import com.google.cloud.simplecompute.v1.RegionName;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
@@ -125,12 +125,12 @@ public class HttpJsonAddressStub extends AddressStub {
   private final UnaryCallable<ListAddressesHttpRequest, AddressList> listAddressesCallable;
   private final UnaryCallable<ListAddressesHttpRequest, ListAddressesPagedResponse> listAddressesPagedCallable;
 
-  public static final HttpJsonAddressStub create(AddressSettings settings) throws IOException {
+  public static final HttpJsonAddressStub create(AddressStubSettings settings) throws IOException {
     return new HttpJsonAddressStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonAddressStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonAddressStub(AddressSettings.newBuilder().build(), clientContext);
+    return new HttpJsonAddressStub(AddressStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -138,7 +138,7 @@ public class HttpJsonAddressStub extends AddressStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonAddressStub(AddressSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonAddressStub(AddressStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteAddressHttpRequest, Operation> deleteAddressTransportSettings =
         HttpJsonCallSettings.<DeleteAddressHttpRequest, Operation>newBuilder()

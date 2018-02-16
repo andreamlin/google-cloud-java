@@ -37,9 +37,7 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
   private final String fields;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
-  private final String region;
   private final String userIp;
 
   private DeleteAddressHttpRequest() {
@@ -49,9 +47,7 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
     this.fields = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
-    this.region = null;
     this.userIp = null;
   }
 
@@ -63,9 +59,7 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
       String fields,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
-      String region,
       String userIp
       ) {
     this.access_token = access_token;
@@ -74,10 +68,13 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
     this.fields = fields;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
-    this.region = region;
     this.userIp = userIp;
+  }
+
+  @Override
+  public AddressName getResourceName() {
+    return AddressName.parse(address);
   }
 
   @Override
@@ -101,14 +98,8 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
-    }
-    if (fieldNames.contains("region") && region != null) {
-      fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
     }
     if (fieldNames.contains("userIp") && userIp != null) {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
@@ -146,16 +137,8 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
     return prettyPrint;
   }
 
-  public String getProject() {
-    return project;
-  }
-
   public String getQuotaUser() {
     return quotaUser;
-  }
-
-  public String getRegion() {
-    return region;
   }
 
   public String getUserIp() {
@@ -189,9 +172,7 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
     private String fields;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
-    private String region;
     private String userIp;
 
     Builder() {}
@@ -216,14 +197,8 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
-      }
-      if (other.getRegion() != null) {
-        this.region = other.region;
       }
       if (other.getUserIp() != null) {
         this.userIp = other.userIp;
@@ -238,9 +213,7 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
       this.fields = source.fields;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
-      this.region = source.region;
       this.userIp = source.userIp;
     }
 
@@ -298,30 +271,12 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
 
     public Builder setQuotaUser(String quotaUser) {
       this.quotaUser = quotaUser;
-      return this;
-    }
-
-    public String getRegion() {
-      return region;
-    }
-
-    public Builder setRegion(String region) {
-      this.region = region;
       return this;
     }
 
@@ -345,13 +300,7 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
 
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
-      if (region == null) {
-        missing += " region";
-      }
 
       if (!missing.isEmpty()) {
         throw new IllegalStateException("Missing required properties:" + missing);
@@ -363,9 +312,7 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
         fields,
         key,
         prettyPrint,
-        project,
         quotaUser,
-        region,
         userIp
       );
     }
@@ -378,35 +325,9 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
       newBuilder.setFields(this.fields);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
-      newBuilder.setRegion(this.region);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setAddressWithAddressName(String value) {
-      if (value == null) {
-        return
-            setAddress("").
-            setProject("").
-            setRegion("")
-            ;
-      }
-      AddressName formattedName = AddressName.parse(value);
-      return
-          setAddress(formattedName.getAddress()).
-          setProject(formattedName.getProject()).
-          setRegion(formattedName.getRegion())
-          ;
-    }
-
-    public final AddressName getAddressName() {
-      return AddressName.of(
-          getAddress(),
-          getProject(),
-          getRegion()
-          );
     }
   }
 
@@ -419,9 +340,7 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
         + "fields=" + fields + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
-        + "region=" + region + ", "
         + "userIp=" + userIp
         + "}";
   }
@@ -440,9 +359,7 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
           Objects.equals(this.fields, that.getFields()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
-          Objects.equals(this.region, that.getRegion()) &&
           Objects.equals(this.userIp, that.getUserIp())
           ;
     }
@@ -458,9 +375,7 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
       fields,
       key,
       prettyPrint,
-      project,
       quotaUser,
-      region,
       userIp
     );
   }
