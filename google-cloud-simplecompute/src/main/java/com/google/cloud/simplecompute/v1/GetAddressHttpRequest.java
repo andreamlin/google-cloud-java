@@ -73,7 +73,7 @@ public final class GetAddressHttpRequest implements ApiMessage {
   }
 
   @Override
-  public AddressName getResourceName() {
+  public AddressName resourceNamePath() {
     return AddressName.parse(address);
   }
 
@@ -109,7 +109,7 @@ public final class GetAddressHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 

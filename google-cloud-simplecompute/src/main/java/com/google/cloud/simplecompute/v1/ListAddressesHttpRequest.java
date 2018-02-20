@@ -89,7 +89,7 @@ public final class ListAddressesHttpRequest implements ApiMessage {
   }
 
   @Override
-  public RegionName getResourceName() {
+  public RegionName resourceNamePath() {
     return RegionName.parse(region);
   }
 
@@ -137,7 +137,7 @@ public final class ListAddressesHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 

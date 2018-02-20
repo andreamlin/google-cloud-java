@@ -43,7 +43,7 @@
       <artifactId>gax</artifactId>
       <version>${gax.version}</version>
       <scope>system</scope>
-      <systemPath>/usr/local/google/home/andrealin/Documents/git/veneer/gax-java/gax/build/libs/gax-1.19.1-SNAPSHOT.jar</systemPath>
+      <systemPath>/usr/local/google/home/andrealin/Documents/git/veneer/gax-java/gax/build/libs/gax-1.19.0.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
@@ -81,6 +81,11 @@
       <artifactId>gax-grpc</artifactId>
       <classifier>testlib</classifier>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.threeten</groupId>
+      <artifactId>threetenbp</artifactId>
+      <version>1.3.3</version>
     </dependency>
   </dependencies>
   <profiles>

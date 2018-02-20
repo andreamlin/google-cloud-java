@@ -77,7 +77,7 @@ public final class InsertAddressHttpRequest implements ApiMessage {
   }
 
   @Override
-  public RegionName getResourceName() {
+  public RegionName resourceNamePath() {
     return RegionName.parse(region);
   }
 
@@ -116,7 +116,7 @@ public final class InsertAddressHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public Address getRequestBody() {
+  public Address requestBody() {
     return addressResource;
   }
 

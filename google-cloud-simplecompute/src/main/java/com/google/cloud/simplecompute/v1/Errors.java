@@ -17,7 +17,7 @@ package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.Struct;
+import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
@@ -55,7 +55,7 @@ public final class Errors implements ApiMessage {
   }
 
   @Override
-  public ResourceName getResourceName() {
+  public ResourceNamePath resourceNamePath() {
     return null;
   }
 
@@ -76,7 +76,7 @@ public final class Errors implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
