@@ -77,7 +77,8 @@ public class LicensClientTest {
       .setName(name)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getLicensMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getLicensMethodDescriptor);
 
     LicenseName license = LicenseName.of("[PROJECT]", "[LICENSE]");
 

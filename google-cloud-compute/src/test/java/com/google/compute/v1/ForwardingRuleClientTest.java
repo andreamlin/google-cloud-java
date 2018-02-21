@@ -90,7 +90,8 @@ public class ForwardingRuleClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListForwardingRulesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListForwardingRulesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -168,7 +169,8 @@ public class ForwardingRuleClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteForwardingRuleMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteForwardingRuleMethodDescriptor);
 
     ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
 
@@ -232,7 +234,8 @@ public class ForwardingRuleClientTest {
       .setIPAddress(iPAddress)
       .setRegion(region.toString())
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getForwardingRuleMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getForwardingRuleMethodDescriptor);
 
     ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
 
@@ -308,7 +311,8 @@ public class ForwardingRuleClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertForwardingRuleMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertForwardingRuleMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     ForwardingRule forwardingRule = ForwardingRule.newBuilder().build();
@@ -355,7 +359,8 @@ public class ForwardingRuleClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listForwardingRulesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listForwardingRulesMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -433,7 +438,8 @@ public class ForwardingRuleClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setTargetForwardingRuleMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setTargetForwardingRuleMethodDescriptor);
 
     ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
     TargetReference targetReference = TargetReference.newBuilder().build();

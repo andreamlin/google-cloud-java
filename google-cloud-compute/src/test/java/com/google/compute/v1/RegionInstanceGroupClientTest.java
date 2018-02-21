@@ -99,7 +99,8 @@ public class RegionInstanceGroupClientTest {
       .setId(id)
       .setRegion(region.toString())
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getRegionInstanceGroupMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getRegionInstanceGroupMethodDescriptor);
 
     RegionInstanceGroupsInstanceGroupName instanceGroup = RegionInstanceGroupsInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
 
@@ -144,7 +145,8 @@ public class RegionInstanceGroupClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listRegionInstanceGroupsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listRegionInstanceGroupsMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -191,7 +193,8 @@ public class RegionInstanceGroupClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listInstancesRegionInstanceGroupsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listInstancesRegionInstanceGroupsMethodDescriptor);
 
     RegionInstanceGroupsInstanceGroupName instanceGroup = RegionInstanceGroupsInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
     RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequest = RegionInstanceGroupsListInstancesRequest.newBuilder().build();
@@ -271,7 +274,8 @@ public class RegionInstanceGroupClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setNamedPortsRegionInstanceGroupMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setNamedPortsRegionInstanceGroupMethodDescriptor);
 
     RegionInstanceGroupsInstanceGroupName instanceGroup = RegionInstanceGroupsInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
     RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequest = RegionInstanceGroupsSetNamedPortsRequest.newBuilder().build();

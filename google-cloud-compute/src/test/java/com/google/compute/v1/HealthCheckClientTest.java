@@ -118,7 +118,8 @@ public class HealthCheckClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteHealthCheckMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteHealthCheckMethodDescriptor);
 
     HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
 
@@ -174,7 +175,8 @@ public class HealthCheckClientTest {
       .setHealthyThreshold(healthyThreshold)
       .setId(id)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getHealthCheckMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getHealthCheckMethodDescriptor);
 
     HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
 
@@ -250,7 +252,8 @@ public class HealthCheckClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertHealthCheckMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertHealthCheckMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     HealthCheck healthCheck = HealthCheck.newBuilder().build();
@@ -297,7 +300,8 @@ public class HealthCheckClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listHealthChecksMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listHealthChecksMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -375,7 +379,8 @@ public class HealthCheckClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(patchHealthCheckMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(patchHealthCheckMethodDescriptor);
 
     HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
 
@@ -451,7 +456,8 @@ public class HealthCheckClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(updateHealthCheckMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(updateHealthCheckMethodDescriptor);
 
     HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
 

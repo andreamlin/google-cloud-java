@@ -86,7 +86,8 @@ public class RegionClientTest {
       .setSelfLink(selfLink)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getRegionMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getRegionMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -131,7 +132,8 @@ public class RegionClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listRegionsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listRegionsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 

@@ -88,7 +88,8 @@ public class ZoneClientTest {
       .setSelfLink(selfLink)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getZoneMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getZoneMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -133,7 +134,8 @@ public class ZoneClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listZonesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listZonesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 

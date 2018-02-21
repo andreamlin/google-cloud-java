@@ -119,7 +119,8 @@ public class RegionBackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteRegionBackendServiceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteRegionBackendServiceMethodDescriptor);
 
     RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
 
@@ -185,7 +186,8 @@ public class RegionBackendServiceClientTest {
       .setId(id)
       .setRegion(region.toString())
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getRegionBackendServiceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getRegionBackendServiceMethodDescriptor);
 
     RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
 
@@ -221,7 +223,8 @@ public class RegionBackendServiceClientTest {
     BackendServiceGroupHealth expectedResponse = BackendServiceGroupHealth.newBuilder()
       .setKind(kind)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getHealthRegionBackendServiceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getHealthRegionBackendServiceMethodDescriptor);
 
     RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
     ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
@@ -299,7 +302,8 @@ public class RegionBackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertRegionBackendServiceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertRegionBackendServiceMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     BackendService backendService = BackendService.newBuilder().build();
@@ -346,7 +350,8 @@ public class RegionBackendServiceClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listRegionBackendServicesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listRegionBackendServicesMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -424,7 +429,8 @@ public class RegionBackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(patchRegionBackendServiceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(patchRegionBackendServiceMethodDescriptor);
 
     RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
 
@@ -500,7 +506,8 @@ public class RegionBackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(updateRegionBackendServiceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(updateRegionBackendServiceMethodDescriptor);
 
     RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
 

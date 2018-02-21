@@ -87,7 +87,8 @@ public class DiskTypeClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListDiskTypesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListDiskTypesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -141,7 +142,8 @@ public class DiskTypeClientTest {
       .setValidDiskSize(validDiskSize)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getDiskTypeMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getDiskTypeMethodDescriptor);
 
     DiskTypeName diskType = DiskTypeName.of("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
 
@@ -186,7 +188,8 @@ public class DiskTypeClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listDiskTypesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listDiskTypesMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 

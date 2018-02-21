@@ -120,7 +120,8 @@ public class UrlMapClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteUrlMapMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteUrlMapMethodDescriptor);
 
     UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
 
@@ -170,7 +171,8 @@ public class UrlMapClientTest {
       .setDefaultService(defaultService)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getUrlMapMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getUrlMapMethodDescriptor);
 
     UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
 
@@ -246,7 +248,8 @@ public class UrlMapClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertUrlMapMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertUrlMapMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     UrlMap urlMap = UrlMap.newBuilder().build();
@@ -324,7 +327,8 @@ public class UrlMapClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(invalidateCacheUrlMapMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(invalidateCacheUrlMapMethodDescriptor);
 
     UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
     CacheInvalidationRule cacheInvalidationRule = CacheInvalidationRule.newBuilder().build();
@@ -371,7 +375,8 @@ public class UrlMapClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listUrlMapsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listUrlMapsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -449,7 +454,8 @@ public class UrlMapClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(patchUrlMapMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(patchUrlMapMethodDescriptor);
 
     UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
 
@@ -525,7 +531,8 @@ public class UrlMapClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(updateUrlMapMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(updateUrlMapMethodDescriptor);
 
     UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
 
@@ -558,7 +565,8 @@ public class UrlMapClientTest {
   @SuppressWarnings("all")
   public void validateUrlMapTest() {
     UrlMapsValidateResponse expectedResponse = UrlMapsValidateResponse.newBuilder().build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(validateUrlMapMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(validateUrlMapMethodDescriptor);
 
     UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
     UrlMapsValidateRequest urlMapsValidateRequest = UrlMapsValidateRequest.newBuilder().build();

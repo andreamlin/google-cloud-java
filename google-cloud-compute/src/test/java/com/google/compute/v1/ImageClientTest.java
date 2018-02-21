@@ -118,7 +118,8 @@ public class ImageClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteImageMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteImageMethodDescriptor);
 
     ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
 
@@ -194,7 +195,8 @@ public class ImageClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deprecateImageMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deprecateImageMethodDescriptor);
 
     ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
     DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
@@ -256,7 +258,8 @@ public class ImageClientTest {
       .setDiskSizeGb(diskSizeGb)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getImageMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getImageMethodDescriptor);
 
     ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
 
@@ -316,7 +319,8 @@ public class ImageClientTest {
       .setDiskSizeGb(diskSizeGb)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getFromFamilyImageMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getFromFamilyImageMethodDescriptor);
 
     FamilyName family = FamilyName.of("[PROJECT]", "[FAMILY]");
 
@@ -392,7 +396,8 @@ public class ImageClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertImageMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertImageMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Image image = Image.newBuilder().build();
@@ -439,7 +444,8 @@ public class ImageClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listImagesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listImagesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 

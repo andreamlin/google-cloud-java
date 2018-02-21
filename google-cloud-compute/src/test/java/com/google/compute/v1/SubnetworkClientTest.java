@@ -90,7 +90,8 @@ public class SubnetworkClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListSubnetworksMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListSubnetworksMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -168,7 +169,8 @@ public class SubnetworkClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteSubnetworkMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteSubnetworkMethodDescriptor);
 
     SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
 
@@ -244,7 +246,8 @@ public class SubnetworkClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(expandIpCidrRangeSubnetworkMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(expandIpCidrRangeSubnetworkMethodDescriptor);
 
     SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
     SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
@@ -300,7 +303,8 @@ public class SubnetworkClientTest {
       .setNetwork(network.toString())
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getSubnetworkMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getSubnetworkMethodDescriptor);
 
     SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
 
@@ -376,7 +380,8 @@ public class SubnetworkClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertSubnetworkMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertSubnetworkMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     Subnetwork subnetwork = Subnetwork.newBuilder().build();
@@ -423,7 +428,8 @@ public class SubnetworkClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listSubnetworksMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listSubnetworksMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 

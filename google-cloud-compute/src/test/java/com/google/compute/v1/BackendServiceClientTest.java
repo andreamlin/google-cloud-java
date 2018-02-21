@@ -92,7 +92,8 @@ public class BackendServiceClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListBackendServicesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListBackendServicesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -170,7 +171,8 @@ public class BackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteBackendServiceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
 
@@ -236,7 +238,8 @@ public class BackendServiceClientTest {
       .setId(id)
       .setRegion(region.toString())
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getBackendServiceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
 
@@ -272,7 +275,8 @@ public class BackendServiceClientTest {
     BackendServiceGroupHealth expectedResponse = BackendServiceGroupHealth.newBuilder()
       .setKind(kind)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getHealthBackendServiceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getHealthBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
     ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
@@ -350,7 +354,8 @@ public class BackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertBackendServiceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertBackendServiceMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     BackendService backendService = BackendService.newBuilder().build();
@@ -397,7 +402,8 @@ public class BackendServiceClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listBackendServicesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listBackendServicesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -475,7 +481,8 @@ public class BackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(patchBackendServiceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(patchBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
 
@@ -551,7 +558,8 @@ public class BackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(updateBackendServiceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(updateBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
 

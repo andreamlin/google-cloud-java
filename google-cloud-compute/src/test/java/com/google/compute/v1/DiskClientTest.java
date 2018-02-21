@@ -91,7 +91,8 @@ public class DiskClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListDisksMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListDisksMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -169,7 +170,8 @@ public class DiskClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(createSnapshotDiskMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(createSnapshotDiskMethodDescriptor);
 
     DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
     Snapshot snapshot = Snapshot.newBuilder().build();
@@ -247,7 +249,8 @@ public class DiskClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteDiskMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteDiskMethodDescriptor);
 
     DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
 
@@ -315,7 +318,8 @@ public class DiskClientTest {
       .setSourceImage(sourceImage)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getDiskMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getDiskMethodDescriptor);
 
     DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
 
@@ -391,7 +395,8 @@ public class DiskClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertDiskMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertDiskMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String sourceImage = "sourceImage1661056055";
@@ -440,7 +445,8 @@ public class DiskClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listDisksMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listDisksMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -518,7 +524,8 @@ public class DiskClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(resizeDiskMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(resizeDiskMethodDescriptor);
 
     DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
     DisksResizeRequest disksResizeRequest = DisksResizeRequest.newBuilder().build();

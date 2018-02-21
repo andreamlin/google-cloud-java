@@ -71,6 +71,7 @@ public class RegionOperationClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteRegionOperationTest() {
+
     MOCK_SERVICE.setSerializer(deleteRegionOperationMethodDescriptor);
 
     RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
@@ -145,7 +146,8 @@ public class RegionOperationClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getRegionOperationMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getRegionOperationMethodDescriptor);
 
     RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
 
@@ -190,7 +192,8 @@ public class RegionOperationClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listRegionOperationsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listRegionOperationsMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 

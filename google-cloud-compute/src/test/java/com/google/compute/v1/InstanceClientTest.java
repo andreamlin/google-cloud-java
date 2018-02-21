@@ -133,7 +133,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(addAccessConfigInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(addAccessConfigInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String networkInterface = "networkInterface902258792";
@@ -184,7 +185,8 @@ public class InstanceClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListInstancesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListInstancesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -262,7 +264,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(attachDiskInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(attachDiskInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     AttachedDisk attachedDisk = AttachedDisk.newBuilder().build();
@@ -340,7 +343,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
@@ -416,7 +420,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteAccessConfigInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteAccessConfigInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String networkInterface = "networkInterface902258792";
@@ -496,7 +501,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(detachDiskInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(detachDiskInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String deviceName = "deviceName-1543071020";
@@ -556,7 +562,8 @@ public class InstanceClientTest {
       .setMachineType(machineType.toString())
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
@@ -600,7 +607,8 @@ public class InstanceClientTest {
       .setStart(start2)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getSerialPortOutputInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getSerialPortOutputInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Integer port = 3446913;
@@ -680,7 +688,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertInstanceMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     Instance instance = Instance.newBuilder().build();
@@ -727,7 +736,8 @@ public class InstanceClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listInstancesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listInstancesMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -805,7 +815,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(resetInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(resetInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
@@ -881,7 +892,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setDiskAutoDeleteInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setDiskAutoDeleteInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Boolean autoDelete = false;
@@ -961,7 +973,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setMachineTypeInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setMachineTypeInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     InstancesSetMachineTypeRequest instancesSetMachineTypeRequest = InstancesSetMachineTypeRequest.newBuilder().build();
@@ -1039,7 +1052,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setMetadataInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setMetadataInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Metadata metadata = Metadata.newBuilder().build();
@@ -1117,7 +1131,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setSchedulingInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setSchedulingInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Scheduling scheduling = Scheduling.newBuilder().build();
@@ -1195,7 +1210,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setServiceAccountInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setServiceAccountInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     InstancesSetServiceAccountRequest instancesSetServiceAccountRequest = InstancesSetServiceAccountRequest.newBuilder().build();
@@ -1273,7 +1289,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setTagsInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setTagsInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Tags tags = Tags.newBuilder().build();
@@ -1351,7 +1368,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(startInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(startInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
@@ -1427,7 +1445,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(startWithEncryptionKeyInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(startWithEncryptionKeyInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequest = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
@@ -1505,7 +1524,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(stopInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(stopInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 

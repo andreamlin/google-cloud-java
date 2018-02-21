@@ -123,7 +123,8 @@ public class RegionInstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(abandonInstancesRegionInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(abandonInstancesRegionInstanceGroupManagerMethodDescriptor);
 
     RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
     RegionInstanceGroupManagersAbandonInstancesRequest regionInstanceGroupManagersAbandonInstancesRequest = RegionInstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
@@ -201,7 +202,8 @@ public class RegionInstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteRegionInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteRegionInstanceGroupManagerMethodDescriptor);
 
     RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -277,7 +279,8 @@ public class RegionInstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteInstancesRegionInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteInstancesRegionInstanceGroupManagerMethodDescriptor);
 
     RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
     RegionInstanceGroupManagersDeleteInstancesRequest regionInstanceGroupManagersDeleteInstancesRequest = RegionInstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
@@ -339,7 +342,8 @@ public class RegionInstanceGroupManagerClientTest {
       .setId(id)
       .setRegion(region.toString())
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getRegionInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getRegionInstanceGroupManagerMethodDescriptor);
 
     RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -415,7 +419,8 @@ public class RegionInstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertRegionInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertRegionInstanceGroupManagerMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     InstanceGroupManager instanceGroupManager = InstanceGroupManager.newBuilder().build();
@@ -462,7 +467,8 @@ public class RegionInstanceGroupManagerClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listRegionInstanceGroupManagersMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listRegionInstanceGroupManagersMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -497,7 +503,8 @@ public class RegionInstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void listManagedInstancesRegionInstanceGroupManagersTest() {
     RegionInstanceGroupManagersListInstancesResponse expectedResponse = RegionInstanceGroupManagersListInstancesResponse.newBuilder().build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listManagedInstancesRegionInstanceGroupManagersMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listManagedInstancesRegionInstanceGroupManagersMethodDescriptor);
 
     RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -573,7 +580,8 @@ public class RegionInstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(recreateInstancesRegionInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(recreateInstancesRegionInstanceGroupManagerMethodDescriptor);
 
     RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
     RegionInstanceGroupManagersRecreateRequest regionInstanceGroupManagersRecreateRequest = RegionInstanceGroupManagersRecreateRequest.newBuilder().build();
@@ -651,7 +659,8 @@ public class RegionInstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(resizeRegionInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(resizeRegionInstanceGroupManagerMethodDescriptor);
 
     Integer size = 3530753;
     RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
@@ -729,7 +738,8 @@ public class RegionInstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setInstanceTemplateRegionInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setInstanceTemplateRegionInstanceGroupManagerMethodDescriptor);
 
     RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
     RegionInstanceGroupManagersSetTemplateRequest regionInstanceGroupManagersSetTemplateRequest = RegionInstanceGroupManagersSetTemplateRequest.newBuilder().build();
@@ -807,7 +817,8 @@ public class RegionInstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setTargetPoolsRegionInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setTargetPoolsRegionInstanceGroupManagerMethodDescriptor);
 
     RegionInstanceGroupManagersInstanceGroupManagerName instanceGroupManager = RegionInstanceGroupManagersInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
     RegionInstanceGroupManagersSetTargetPoolsRequest regionInstanceGroupManagersSetTargetPoolsRequest = RegionInstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();

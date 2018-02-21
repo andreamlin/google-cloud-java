@@ -93,7 +93,8 @@ public class RouterClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListRoutersMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListRoutersMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -171,7 +172,8 @@ public class RouterClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteRouterMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteRouterMethodDescriptor);
 
     RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
 
@@ -221,7 +223,8 @@ public class RouterClientTest {
       .setNetwork(network.toString())
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getRouterMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getRouterMethodDescriptor);
 
     RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
 
@@ -257,7 +260,8 @@ public class RouterClientTest {
     RouterStatusResponse expectedResponse = RouterStatusResponse.newBuilder()
       .setKind(kind)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getRouterStatusRouterMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getRouterStatusRouterMethodDescriptor);
 
     RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
 
@@ -333,7 +337,8 @@ public class RouterClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertRouterMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertRouterMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     Router router = Router.newBuilder().build();
@@ -380,7 +385,8 @@ public class RouterClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listRoutersMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listRoutersMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -458,7 +464,8 @@ public class RouterClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(patchRouterMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(patchRouterMethodDescriptor);
 
     RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
 
@@ -491,7 +498,8 @@ public class RouterClientTest {
   @SuppressWarnings("all")
   public void previewRouterTest() {
     RoutersPreviewResponse expectedResponse = RoutersPreviewResponse.newBuilder().build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(previewRouterMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(previewRouterMethodDescriptor);
 
     RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
 
@@ -567,7 +575,8 @@ public class RouterClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(updateRouterMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(updateRouterMethodDescriptor);
 
     RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
 

@@ -118,7 +118,8 @@ public class RegionAutoscalerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteRegionAutoscalerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteRegionAutoscalerMethodDescriptor);
 
     RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
 
@@ -170,7 +171,8 @@ public class RegionAutoscalerClientTest {
       .setSelfLink(selfLink)
       .setTarget(target)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getRegionAutoscalerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getRegionAutoscalerMethodDescriptor);
 
     RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
 
@@ -246,7 +248,8 @@ public class RegionAutoscalerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertRegionAutoscalerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertRegionAutoscalerMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     Autoscaler autoscaler = Autoscaler.newBuilder().build();
@@ -293,7 +296,8 @@ public class RegionAutoscalerClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listRegionAutoscalersMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listRegionAutoscalersMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -371,7 +375,8 @@ public class RegionAutoscalerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(patchRegionAutoscalerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(patchRegionAutoscalerMethodDescriptor);
 
     String autoscaler = "autoscaler517258967";
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -449,7 +454,8 @@ public class RegionAutoscalerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(updateRegionAutoscalerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(updateRegionAutoscalerMethodDescriptor);
 
     String autoscaler = "autoscaler517258967";
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");

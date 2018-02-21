@@ -116,7 +116,8 @@ public class SslCertificateClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteSslCertificateMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteSslCertificateMethodDescriptor);
 
     SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
 
@@ -166,7 +167,8 @@ public class SslCertificateClientTest {
       .setId(id)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getSslCertificateMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getSslCertificateMethodDescriptor);
 
     SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
 
@@ -242,7 +244,8 @@ public class SslCertificateClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertSslCertificateMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertSslCertificateMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     SslCertificate sslCertificate = SslCertificate.newBuilder().build();
@@ -289,7 +292,8 @@ public class SslCertificateClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listSslCertificatesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listSslCertificatesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 

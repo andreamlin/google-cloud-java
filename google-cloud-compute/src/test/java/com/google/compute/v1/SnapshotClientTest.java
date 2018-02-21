@@ -115,7 +115,8 @@ public class SnapshotClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteSnapshotMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteSnapshotMethodDescriptor);
 
     SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
 
@@ -173,7 +174,8 @@ public class SnapshotClientTest {
       .setDiskSizeGb(diskSizeGb)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getSnapshotMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getSnapshotMethodDescriptor);
 
     SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
 
@@ -218,7 +220,8 @@ public class SnapshotClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listSnapshotsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listSnapshotsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 

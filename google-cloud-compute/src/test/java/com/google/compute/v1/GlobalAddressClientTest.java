@@ -116,7 +116,8 @@ public class GlobalAddressClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteGlobalAddressMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteGlobalAddressMethodDescriptor);
 
     GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
 
@@ -168,7 +169,8 @@ public class GlobalAddressClientTest {
       .setSelfLink(selfLink)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getGlobalAddressMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getGlobalAddressMethodDescriptor);
 
     GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
 
@@ -244,7 +246,8 @@ public class GlobalAddressClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertGlobalAddressMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertGlobalAddressMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Address address = Address.newBuilder().build();
@@ -291,7 +294,8 @@ public class GlobalAddressClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listGlobalAddressesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listGlobalAddressesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 

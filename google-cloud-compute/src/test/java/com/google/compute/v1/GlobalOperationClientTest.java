@@ -88,7 +88,8 @@ public class GlobalOperationClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListGlobalOperationsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListGlobalOperationsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -122,6 +123,7 @@ public class GlobalOperationClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteGlobalOperationTest() {
+
     MOCK_SERVICE.setSerializer(deleteGlobalOperationMethodDescriptor);
 
     GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
@@ -196,7 +198,8 @@ public class GlobalOperationClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getGlobalOperationMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getGlobalOperationMethodDescriptor);
 
     GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
 
@@ -241,7 +244,8 @@ public class GlobalOperationClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listGlobalOperationsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listGlobalOperationsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 

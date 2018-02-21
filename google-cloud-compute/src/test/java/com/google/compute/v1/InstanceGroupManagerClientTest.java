@@ -125,7 +125,8 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(abandonInstancesInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(abandonInstancesInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
     InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequest = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
@@ -174,7 +175,8 @@ public class InstanceGroupManagerClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListInstanceGroupManagersMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListInstanceGroupManagersMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -252,7 +254,8 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -328,7 +331,8 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteInstancesInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteInstancesInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
     InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequest = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
@@ -390,7 +394,8 @@ public class InstanceGroupManagerClientTest {
       .setId(id)
       .setRegion(region.toString())
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -466,7 +471,8 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertInstanceGroupManagerMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     InstanceGroupManager instanceGroupManager = InstanceGroupManager.newBuilder().build();
@@ -513,7 +519,8 @@ public class InstanceGroupManagerClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listInstanceGroupManagersMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listInstanceGroupManagersMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -548,7 +555,8 @@ public class InstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void listManagedInstancesInstanceGroupManagersTest() {
     InstanceGroupManagersListManagedInstancesResponse expectedResponse = InstanceGroupManagersListManagedInstancesResponse.newBuilder().build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listManagedInstancesInstanceGroupManagersMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listManagedInstancesInstanceGroupManagersMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -624,7 +632,8 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(recreateInstancesInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(recreateInstancesInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
     InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequest = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
@@ -702,7 +711,8 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(resizeInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(resizeInstanceGroupManagerMethodDescriptor);
 
     Integer size = 3530753;
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -780,7 +790,8 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setInstanceTemplateInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setInstanceTemplateInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
     InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequest = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
@@ -858,7 +869,8 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setTargetPoolsInstanceGroupManagerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setTargetPoolsInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
     InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequest = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();

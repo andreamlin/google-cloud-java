@@ -124,7 +124,8 @@ public class TargetPoolClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(addHealthCheckTargetPoolMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(addHealthCheckTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest = TargetPoolsAddHealthCheckRequest.newBuilder().build();
@@ -202,7 +203,8 @@ public class TargetPoolClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(addInstanceTargetPoolMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(addInstanceTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequest = TargetPoolsAddInstanceRequest.newBuilder().build();
@@ -251,7 +253,8 @@ public class TargetPoolClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListTargetPoolsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListTargetPoolsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -329,7 +332,8 @@ public class TargetPoolClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteTargetPoolMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
 
@@ -383,7 +387,8 @@ public class TargetPoolClientTest {
       .setBackupPool(backupPool)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getTargetPoolMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
 
@@ -419,7 +424,8 @@ public class TargetPoolClientTest {
     TargetPoolInstanceHealth expectedResponse = TargetPoolInstanceHealth.newBuilder()
       .setKind(kind)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getHealthTargetPoolMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getHealthTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     InstanceReference instanceReference = InstanceReference.newBuilder().build();
@@ -497,7 +503,8 @@ public class TargetPoolClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertTargetPoolMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertTargetPoolMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     TargetPool targetPool = TargetPool.newBuilder().build();
@@ -544,7 +551,8 @@ public class TargetPoolClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listTargetPoolsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listTargetPoolsMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -622,7 +630,8 @@ public class TargetPoolClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(removeHealthCheckTargetPoolMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(removeHealthCheckTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequest = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
@@ -700,7 +709,8 @@ public class TargetPoolClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(removeInstanceTargetPoolMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(removeInstanceTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequest = TargetPoolsRemoveInstanceRequest.newBuilder().build();
@@ -778,7 +788,8 @@ public class TargetPoolClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setBackupTargetPoolMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setBackupTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     Float failoverRatio = -8.6107481E7;

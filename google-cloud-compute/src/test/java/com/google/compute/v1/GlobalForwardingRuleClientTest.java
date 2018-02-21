@@ -117,7 +117,8 @@ public class GlobalForwardingRuleClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteGlobalForwardingRuleMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteGlobalForwardingRuleMethodDescriptor);
 
     GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
 
@@ -181,7 +182,8 @@ public class GlobalForwardingRuleClientTest {
       .setIPAddress(iPAddress)
       .setRegion(region.toString())
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getGlobalForwardingRuleMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getGlobalForwardingRuleMethodDescriptor);
 
     GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
 
@@ -257,7 +259,8 @@ public class GlobalForwardingRuleClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertGlobalForwardingRuleMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertGlobalForwardingRuleMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     ForwardingRule forwardingRule = ForwardingRule.newBuilder().build();
@@ -304,7 +307,8 @@ public class GlobalForwardingRuleClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listGlobalForwardingRulesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listGlobalForwardingRulesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -382,7 +386,8 @@ public class GlobalForwardingRuleClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setTargetGlobalForwardingRuleMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setTargetGlobalForwardingRuleMethodDescriptor);
 
     GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
     TargetReference targetReference = TargetReference.newBuilder().build();

@@ -116,7 +116,8 @@ public class InstanceTemplateClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteInstanceTemplateMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteInstanceTemplateMethodDescriptor);
 
     InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
 
@@ -162,7 +163,8 @@ public class InstanceTemplateClientTest {
       .setId(id)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getInstanceTemplateMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getInstanceTemplateMethodDescriptor);
 
     InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
 
@@ -238,7 +240,8 @@ public class InstanceTemplateClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertInstanceTemplateMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertInstanceTemplateMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     InstanceTemplate instanceTemplate = InstanceTemplate.newBuilder().build();
@@ -285,7 +288,8 @@ public class InstanceTemplateClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listInstanceTemplatesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listInstanceTemplatesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 

@@ -89,7 +89,8 @@ public class VpnTunnelClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListVpnTunnelsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListVpnTunnelsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -167,7 +168,8 @@ public class VpnTunnelClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteVpnTunnelMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteVpnTunnelMethodDescriptor);
 
     VpnTunnelName vpnTunnel = VpnTunnelName.of("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
 
@@ -231,7 +233,8 @@ public class VpnTunnelClientTest {
       .setTargetVpnGateway(targetVpnGateway.toString())
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getVpnTunnelMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getVpnTunnelMethodDescriptor);
 
     VpnTunnelName vpnTunnel = VpnTunnelName.of("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
 
@@ -307,7 +310,8 @@ public class VpnTunnelClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertVpnTunnelMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertVpnTunnelMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     VpnTunnel vpnTunnel = VpnTunnel.newBuilder().build();
@@ -354,7 +358,8 @@ public class VpnTunnelClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listVpnTunnelsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listVpnTunnelsMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 

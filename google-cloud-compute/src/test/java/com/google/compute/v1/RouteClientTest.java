@@ -116,7 +116,8 @@ public class RouteClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteRouteMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteRouteMethodDescriptor);
 
     RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
 
@@ -178,7 +179,8 @@ public class RouteClientTest {
       .setNextHopIp(nextHopIp)
       .setId(id)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getRouteMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getRouteMethodDescriptor);
 
     RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
 
@@ -254,7 +256,8 @@ public class RouteClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertRouteMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertRouteMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Route route = Route.newBuilder().build();
@@ -301,7 +304,8 @@ public class RouteClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listRoutesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listRoutesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 

@@ -89,7 +89,8 @@ public class TargetInstanceClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListTargetInstancesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListTargetInstancesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -167,7 +168,8 @@ public class TargetInstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteTargetInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteTargetInstanceMethodDescriptor);
 
     TargetInstanceName targetInstance = TargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
 
@@ -219,7 +221,8 @@ public class TargetInstanceClientTest {
       .setNatPolicy(natPolicy)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getTargetInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getTargetInstanceMethodDescriptor);
 
     TargetInstanceName targetInstance = TargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
 
@@ -295,7 +298,8 @@ public class TargetInstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertTargetInstanceMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertTargetInstanceMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     TargetInstance targetInstance = TargetInstance.newBuilder().build();
@@ -342,7 +346,8 @@ public class TargetInstanceClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listTargetInstancesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listTargetInstancesMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 

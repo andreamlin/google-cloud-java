@@ -71,6 +71,7 @@ public class ZoneOperationClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteZoneOperationTest() {
+
     MOCK_SERVICE.setSerializer(deleteZoneOperationMethodDescriptor);
 
     ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
@@ -145,7 +146,8 @@ public class ZoneOperationClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getZoneOperationMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getZoneOperationMethodDescriptor);
 
     ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
 
@@ -190,7 +192,8 @@ public class ZoneOperationClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listZoneOperationsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listZoneOperationsMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 

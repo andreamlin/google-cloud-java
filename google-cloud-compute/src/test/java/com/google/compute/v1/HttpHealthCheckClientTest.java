@@ -118,7 +118,8 @@ public class HttpHealthCheckClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteHttpHealthCheckMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteHttpHealthCheckMethodDescriptor);
 
     HttpHealthCheckName httpHealthCheck = HttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
 
@@ -178,7 +179,8 @@ public class HttpHealthCheckClientTest {
       .setId(id)
       .setRequestPath(requestPath)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getHttpHealthCheckMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getHttpHealthCheckMethodDescriptor);
 
     HttpHealthCheckName httpHealthCheck = HttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
 
@@ -254,7 +256,8 @@ public class HttpHealthCheckClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertHttpHealthCheckMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertHttpHealthCheckMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     HttpHealthCheck httpHealthCheck = HttpHealthCheck.newBuilder().build();
@@ -301,7 +304,8 @@ public class HttpHealthCheckClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listHttpHealthChecksMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listHttpHealthChecksMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -379,7 +383,8 @@ public class HttpHealthCheckClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(patchHttpHealthCheckMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(patchHttpHealthCheckMethodDescriptor);
 
     HttpHealthCheckName httpHealthCheck = HttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
 
@@ -455,7 +460,8 @@ public class HttpHealthCheckClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(updateHttpHealthCheckMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(updateHttpHealthCheckMethodDescriptor);
 
     HttpHealthCheckName httpHealthCheck = HttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
 

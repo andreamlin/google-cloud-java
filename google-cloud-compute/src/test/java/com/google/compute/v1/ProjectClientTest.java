@@ -87,7 +87,8 @@ public class ProjectClientTest {
       .setDefaultServiceAccount(defaultServiceAccount)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getProjectMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -163,7 +164,8 @@ public class ProjectClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(moveDiskProjectMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(moveDiskProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     DiskMoveRequest diskMoveRequest = DiskMoveRequest.newBuilder().build();
@@ -241,7 +243,8 @@ public class ProjectClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(moveInstanceProjectMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(moveInstanceProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     InstanceMoveRequest instanceMoveRequest = InstanceMoveRequest.newBuilder().build();
@@ -319,7 +322,8 @@ public class ProjectClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setCommonInstanceMetadataProjectMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setCommonInstanceMetadataProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Metadata metadata = Metadata.newBuilder().build();
@@ -397,7 +401,8 @@ public class ProjectClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setUsageExportBucketProjectMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setUsageExportBucketProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     UsageExportLocation usageExportLocation = UsageExportLocation.newBuilder().build();

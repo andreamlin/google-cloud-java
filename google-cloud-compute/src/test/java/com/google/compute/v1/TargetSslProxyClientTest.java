@@ -119,7 +119,8 @@ public class TargetSslProxyClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteTargetSslProxyMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
 
@@ -169,7 +170,8 @@ public class TargetSslProxyClientTest {
       .setProxyHeader(proxyHeader)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getTargetSslProxyMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
 
@@ -245,7 +247,8 @@ public class TargetSslProxyClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertTargetSslProxyMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertTargetSslProxyMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     TargetSslProxy targetSslProxy = TargetSslProxy.newBuilder().build();
@@ -292,7 +295,8 @@ public class TargetSslProxyClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listTargetSslProxiesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listTargetSslProxiesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -370,7 +374,8 @@ public class TargetSslProxyClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setBackendServiceTargetSslProxyMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setBackendServiceTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
     TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequest = TargetSslProxiesSetBackendServiceRequest.newBuilder().build();
@@ -448,7 +453,8 @@ public class TargetSslProxyClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setProxyHeaderTargetSslProxyMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setProxyHeaderTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
     TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequest = TargetSslProxiesSetProxyHeaderRequest.newBuilder().build();
@@ -526,7 +532,8 @@ public class TargetSslProxyClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setSslCertificatesTargetSslProxyMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setSslCertificatesTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
     TargetSslProxiesSetSslCertificatesRequest targetSslProxiesSetSslCertificatesRequest = TargetSslProxiesSetSslCertificatesRequest.newBuilder().build();

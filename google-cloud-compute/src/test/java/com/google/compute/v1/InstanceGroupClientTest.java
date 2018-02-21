@@ -123,7 +123,8 @@ public class InstanceGroupClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(addInstancesInstanceGroupMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(addInstancesInstanceGroupMethodDescriptor);
 
     InstanceGroupName instanceGroup = InstanceGroupName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP]");
     InstanceGroupsAddInstancesRequest instanceGroupsAddInstancesRequest = InstanceGroupsAddInstancesRequest.newBuilder().build();
@@ -172,7 +173,8 @@ public class InstanceGroupClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListInstanceGroupsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListInstanceGroupsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -250,7 +252,8 @@ public class InstanceGroupClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteInstanceGroupMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteInstanceGroupMethodDescriptor);
 
     InstanceGroupName instanceGroup = InstanceGroupName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP]");
 
@@ -308,7 +311,8 @@ public class InstanceGroupClientTest {
       .setId(id)
       .setRegion(region.toString())
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getInstanceGroupMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getInstanceGroupMethodDescriptor);
 
     InstanceGroupName instanceGroup = InstanceGroupName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP]");
 
@@ -384,7 +388,8 @@ public class InstanceGroupClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertInstanceGroupMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertInstanceGroupMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     InstanceGroup instanceGroup = InstanceGroup.newBuilder().build();
@@ -431,7 +436,8 @@ public class InstanceGroupClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listInstanceGroupsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listInstanceGroupsMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -478,7 +484,8 @@ public class InstanceGroupClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listInstancesInstanceGroupsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listInstancesInstanceGroupsMethodDescriptor);
 
     InstanceGroupName instanceGroup = InstanceGroupName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP]");
     InstanceGroupsListInstancesRequest instanceGroupsListInstancesRequest = InstanceGroupsListInstancesRequest.newBuilder().build();
@@ -558,7 +565,8 @@ public class InstanceGroupClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(removeInstancesInstanceGroupMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(removeInstancesInstanceGroupMethodDescriptor);
 
     InstanceGroupName instanceGroup = InstanceGroupName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP]");
     InstanceGroupsRemoveInstancesRequest instanceGroupsRemoveInstancesRequest = InstanceGroupsRemoveInstancesRequest.newBuilder().build();
@@ -636,7 +644,8 @@ public class InstanceGroupClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setNamedPortsInstanceGroupMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(setNamedPortsInstanceGroupMethodDescriptor);
 
     InstanceGroupName instanceGroup = InstanceGroupName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP]");
     InstanceGroupsSetNamedPortsRequest instanceGroupsSetNamedPortsRequest = InstanceGroupsSetNamedPortsRequest.newBuilder().build();

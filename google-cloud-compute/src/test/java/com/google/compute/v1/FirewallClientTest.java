@@ -118,7 +118,8 @@ public class FirewallClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteFirewallMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteFirewallMethodDescriptor);
 
     FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
 
@@ -166,7 +167,8 @@ public class FirewallClientTest {
       .setNetwork(network.toString())
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getFirewallMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getFirewallMethodDescriptor);
 
     FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
 
@@ -242,7 +244,8 @@ public class FirewallClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertFirewallMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertFirewallMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Firewall firewall = Firewall.newBuilder().build();
@@ -289,7 +292,8 @@ public class FirewallClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listFirewallsMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listFirewallsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -367,7 +371,8 @@ public class FirewallClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(patchFirewallMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(patchFirewallMethodDescriptor);
 
     FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
 
@@ -443,7 +448,8 @@ public class FirewallClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(updateFirewallMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(updateFirewallMethodDescriptor);
 
     FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
 

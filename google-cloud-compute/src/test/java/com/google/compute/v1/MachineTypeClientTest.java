@@ -87,7 +87,8 @@ public class MachineTypeClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListMachineTypesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListMachineTypesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -149,7 +150,8 @@ public class MachineTypeClientTest {
       .setId(id)
       .setImageSpaceGb(imageSpaceGb)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getMachineTypeMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getMachineTypeMethodDescriptor);
 
     MachineTypeName machineType = MachineTypeName.of("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
 
@@ -194,7 +196,8 @@ public class MachineTypeClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listMachineTypesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listMachineTypesMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 

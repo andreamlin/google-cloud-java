@@ -91,7 +91,8 @@ public class AutoscalerClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListAutoscalersMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListAutoscalersMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -169,7 +170,8 @@ public class AutoscalerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteAutoscalerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteAutoscalerMethodDescriptor);
 
     AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
 
@@ -221,7 +223,8 @@ public class AutoscalerClientTest {
       .setSelfLink(selfLink)
       .setTarget(target)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getAutoscalerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getAutoscalerMethodDescriptor);
 
     AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
 
@@ -297,7 +300,8 @@ public class AutoscalerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertAutoscalerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertAutoscalerMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     Autoscaler autoscaler = Autoscaler.newBuilder().build();
@@ -344,7 +348,8 @@ public class AutoscalerClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listAutoscalersMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listAutoscalersMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -422,7 +427,8 @@ public class AutoscalerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(patchAutoscalerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(patchAutoscalerMethodDescriptor);
 
     String autoscaler = "autoscaler517258967";
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -500,7 +506,8 @@ public class AutoscalerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(updateAutoscalerMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(updateAutoscalerMethodDescriptor);
 
     String autoscaler = "autoscaler517258967";
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");

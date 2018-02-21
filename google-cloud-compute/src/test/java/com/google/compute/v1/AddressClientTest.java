@@ -89,7 +89,8 @@ public class AddressClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListAddressesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(aggregatedListAddressesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -167,7 +168,8 @@ public class AddressClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteAddressMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteAddressMethodDescriptor);
 
     AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
 
@@ -219,7 +221,8 @@ public class AddressClientTest {
       .setSelfLink(selfLink)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getAddressMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getAddressMethodDescriptor);
 
     AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
 
@@ -295,7 +298,8 @@ public class AddressClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertAddressMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertAddressMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     Address address = Address.newBuilder().build();
@@ -342,7 +346,8 @@ public class AddressClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listAddressesMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listAddressesMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 

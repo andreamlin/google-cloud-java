@@ -117,7 +117,8 @@ public class NetworkClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteNetworkMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(deleteNetworkMethodDescriptor);
 
     NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
 
@@ -169,7 +170,8 @@ public class NetworkClientTest {
       .setGatewayIPv4(gatewayIPv4)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getNetworkMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(getNetworkMethodDescriptor);
 
     NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
 
@@ -245,7 +247,8 @@ public class NetworkClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertNetworkMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(insertNetworkMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Network network = Network.newBuilder().build();
@@ -292,7 +295,8 @@ public class NetworkClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listNetworksMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(listNetworksMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -370,7 +374,8 @@ public class NetworkClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(switchToCustomModeNetworkMethodDescriptor);
+    MOCK_SERVICE.addResponse(expectedResponse);
+    MOCK_SERVICE.setSerializer(switchToCustomModeNetworkMethodDescriptor);
 
     NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
 
