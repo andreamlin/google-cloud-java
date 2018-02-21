@@ -17,7 +17,6 @@ package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
@@ -48,11 +47,6 @@ public final class Error implements ApiMessage {
     this.errors = errors;
     ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
     this.pathParams = mapBuilder.build();
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
   }
 
   @Override

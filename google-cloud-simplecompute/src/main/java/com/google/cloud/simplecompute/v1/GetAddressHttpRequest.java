@@ -81,11 +81,6 @@ public final class GetAddressHttpRequest implements ApiMessage {
   }
 
   @Override
-  public AddressName resourceNamePath() {
-    return AddressName.parse(address);
-  }
-
-  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("access_token") && access_token != null) {

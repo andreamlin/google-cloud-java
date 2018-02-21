@@ -96,11 +96,6 @@ public final class ListAddressesHttpRequest implements ApiMessage {
   }
 
   @Override
-  public RegionName resourceNamePath() {
-    return RegionName.parse(region);
-  }
-
-  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("access_token") && access_token != null) {
