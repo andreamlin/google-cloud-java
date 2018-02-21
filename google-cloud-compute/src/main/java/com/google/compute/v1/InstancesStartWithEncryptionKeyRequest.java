@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -45,6 +47,11 @@ public final class InstancesStartWithEncryptionKeyRequest implements ApiMessage 
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("disks") && disks != null) {
@@ -55,7 +62,7 @@ public final class InstancesStartWithEncryptionKeyRequest implements ApiMessage 
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -104,7 +111,7 @@ public final class InstancesStartWithEncryptionKeyRequest implements ApiMessage 
       return disks;
     }
 
-    public Builder setDisks(List<CustomerEncryptionKeyProtectedDisk> disks) {
+    public Builder addAllDisks(List<CustomerEncryptionKeyProtectedDisk> disks) {
       this.disks = disks;
       return this;
     }
@@ -118,7 +125,7 @@ public final class InstancesStartWithEncryptionKeyRequest implements ApiMessage 
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setDisks(this.disks);
+      newBuilder.addAllDisks(this.disks);
       return newBuilder;
     }
   }

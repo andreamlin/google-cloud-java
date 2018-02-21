@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,8 @@ import com.google.compute.v1.GetRegionOperationHttpRequest;
 import com.google.compute.v1.ListRegionOperationsHttpRequest;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.OperationList;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionOperationsPagedResponse;
 import com.google.compute.v1.RegionName;
+import static com.google.compute.v1.RegionOperationClient.ListRegionOperationsPagedResponse;
 import com.google.compute.v1.RegionOperationsOperationName;
 import javax.annotation.Generated;
 

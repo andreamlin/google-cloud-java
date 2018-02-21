@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListRoutersHttpRequest;
@@ -35,14 +36,14 @@ import com.google.compute.v1.GetRouterStatusRouterHttpRequest;
 import com.google.compute.v1.InsertRouterHttpRequest;
 import com.google.compute.v1.ListRoutersHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListRoutersPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListRoutersPagedResponse;
 import com.google.compute.v1.PatchRouterHttpRequest;
 import com.google.compute.v1.PreviewRouterHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.Router;
 import com.google.compute.v1.RouterAggregatedList;
+import static com.google.compute.v1.RouterClient.AggregatedListRoutersPagedResponse;
+import static com.google.compute.v1.RouterClient.ListRoutersPagedResponse;
 import com.google.compute.v1.RouterList;
 import com.google.compute.v1.RouterName;
 import com.google.compute.v1.RouterSettings;
@@ -69,7 +70,8 @@ import javax.annotation.Generated;
 public class HttpJsonRouterStub extends RouterStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AggregatedListRoutersHttpRequest, RouterAggregatedList> aggregatedListRoutersMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AggregatedListRoutersHttpRequest, RouterAggregatedList> aggregatedListRoutersMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListRoutersHttpRequest, RouterAggregatedList>newBuilder()
           .setMethodName("compute.routers.aggregatedList")
           .setRequestInstance(AggregatedListRoutersHttpRequest.getDefaultInstance())
@@ -84,7 +86,8 @@ public class HttpJsonRouterStub extends RouterStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<DeleteRouterHttpRequest, Operation> deleteRouterMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteRouterHttpRequest, Operation> deleteRouterMethodDescriptor =
       ApiMethodDescriptor.<DeleteRouterHttpRequest, Operation>newBuilder()
           .setMethodName("compute.routers.delete")
           .setRequestInstance(DeleteRouterHttpRequest.getDefaultInstance())
@@ -98,7 +101,8 @@ public class HttpJsonRouterStub extends RouterStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetRouterHttpRequest, Router> getRouterMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetRouterHttpRequest, Router> getRouterMethodDescriptor =
       ApiMethodDescriptor.<GetRouterHttpRequest, Router>newBuilder()
           .setMethodName("compute.routers.get")
           .setRequestInstance(GetRouterHttpRequest.getDefaultInstance())
@@ -112,7 +116,8 @@ public class HttpJsonRouterStub extends RouterStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterMethodDescriptor =
       ApiMethodDescriptor.<GetRouterStatusRouterHttpRequest, RouterStatusResponse>newBuilder()
           .setMethodName("compute.routers.getRouterStatus")
           .setRequestInstance(GetRouterStatusRouterHttpRequest.getDefaultInstance())
@@ -126,7 +131,8 @@ public class HttpJsonRouterStub extends RouterStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertRouterHttpRequest, Operation> insertRouterMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertRouterHttpRequest, Operation> insertRouterMethodDescriptor =
       ApiMethodDescriptor.<InsertRouterHttpRequest, Operation>newBuilder()
           .setMethodName("compute.routers.insert")
           .setRequestInstance(InsertRouterHttpRequest.getDefaultInstance())
@@ -140,7 +146,8 @@ public class HttpJsonRouterStub extends RouterStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListRoutersHttpRequest, RouterList> listRoutersMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListRoutersHttpRequest, RouterList> listRoutersMethodDescriptor =
       ApiMethodDescriptor.<ListRoutersHttpRequest, RouterList>newBuilder()
           .setMethodName("compute.routers.list")
           .setRequestInstance(ListRoutersHttpRequest.getDefaultInstance())
@@ -155,7 +162,8 @@ public class HttpJsonRouterStub extends RouterStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<PatchRouterHttpRequest, Operation> patchRouterMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<PatchRouterHttpRequest, Operation> patchRouterMethodDescriptor =
       ApiMethodDescriptor.<PatchRouterHttpRequest, Operation>newBuilder()
           .setMethodName("compute.routers.patch")
           .setRequestInstance(PatchRouterHttpRequest.getDefaultInstance())
@@ -169,7 +177,8 @@ public class HttpJsonRouterStub extends RouterStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
           .build();
-  private static final ApiMethodDescriptor<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterMethodDescriptor =
       ApiMethodDescriptor.<PreviewRouterHttpRequest, RoutersPreviewResponse>newBuilder()
           .setMethodName("compute.routers.preview")
           .setRequestInstance(PreviewRouterHttpRequest.getDefaultInstance())
@@ -183,7 +192,8 @@ public class HttpJsonRouterStub extends RouterStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<UpdateRouterHttpRequest, Operation> updateRouterMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<UpdateRouterHttpRequest, Operation> updateRouterMethodDescriptor =
       ApiMethodDescriptor.<UpdateRouterHttpRequest, Operation>newBuilder()
           .setMethodName("compute.routers.update")
           .setRequestInstance(UpdateRouterHttpRequest.getDefaultInstance())
@@ -212,12 +222,12 @@ public class HttpJsonRouterStub extends RouterStub {
   private final UnaryCallable<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterCallable;
   private final UnaryCallable<UpdateRouterHttpRequest, Operation> updateRouterCallable;
 
-  public static final HttpJsonRouterStub create(RouterSettings settings) throws IOException {
+  public static final HttpJsonRouterStub create(RouterStubSettings settings) throws IOException {
     return new HttpJsonRouterStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonRouterStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRouterStub(RouterSettings.newBuilder().build(), clientContext);
+    return new HttpJsonRouterStub(RouterStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -225,7 +235,7 @@ public class HttpJsonRouterStub extends RouterStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonRouterStub(RouterSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonRouterStub(RouterStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AggregatedListRoutersHttpRequest, RouterAggregatedList> aggregatedListRoutersTransportSettings =
         HttpJsonCallSettings.<AggregatedListRoutersHttpRequest, RouterAggregatedList>newBuilder()

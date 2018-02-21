@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,6 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
   private final String fields;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
   private final String urlMap;
   private final UrlMap urlMapResource;
@@ -48,7 +47,6 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
     this.fields = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
     this.urlMap = null;
     this.urlMapResource = null;
@@ -62,7 +60,6 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
       String fields,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
       String urlMap,
       UrlMap urlMapResource,
@@ -73,11 +70,15 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
     this.fields = fields;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
     this.urlMap = urlMap;
     this.urlMapResource = urlMapResource;
     this.userIp = userIp;
+  }
+
+  @Override
+  public UrlMapName resourceNamePath() {
+    return UrlMapName.parse(urlMap);
   }
 
   @Override
@@ -98,9 +99,6 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
     }
@@ -118,7 +116,7 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public UrlMap getRequestBody() {
+  public UrlMap requestBody() {
     return urlMapResource;
   }
 
@@ -140,10 +138,6 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
 
   public String getPrettyPrint() {
     return prettyPrint;
-  }
-
-  public String getProject() {
-    return project;
   }
 
   public String getQuotaUser() {
@@ -188,7 +182,6 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
     private String fields;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
     private String urlMap;
     private UrlMap urlMapResource;
@@ -213,9 +206,6 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
       }
@@ -237,7 +227,6 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
       this.fields = source.fields;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
       this.urlMap = source.urlMap;
       this.urlMapResource = source.urlMapResource;
@@ -289,15 +278,6 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
@@ -342,9 +322,6 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
 
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
       if (urlMap == null) {
         missing += " urlMap";
@@ -360,7 +337,6 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
         fields,
         key,
         prettyPrint,
-        project,
         quotaUser,
         urlMap,
         urlMapResource,
@@ -375,32 +351,11 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
       newBuilder.setFields(this.fields);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
       newBuilder.setUrlMap(this.urlMap);
       newBuilder.setUrlMapResource(this.urlMapResource);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setUrlMapWithUrlMapName(UrlMapName value) {
-      if (value == null) {
-        return
-            setProject("").
-            setUrlMap("")
-            ;
-      }
-      return
-          setProject(value.getProject()).
-          setUrlMap(value.getUrlMap())
-          ;
-    }
-
-    public final UrlMapName getUrlMapAsUrlMapName() {
-      return UrlMapName.of(
-          getProject(),
-          getUrlMap()
-          );
     }
   }
 
@@ -412,7 +367,6 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
         + "fields=" + fields + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
         + "urlMap=" + urlMap + ", "
         + "urlMapResource=" + urlMapResource + ", "
@@ -433,7 +387,6 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
           Objects.equals(this.fields, that.getFields()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
           Objects.equals(this.urlMap, that.getUrlMap()) &&
           Objects.equals(this.urlMapResource, that.getUrlMapResource()) &&
@@ -451,7 +404,6 @@ public final class UpdateUrlMapHttpRequest implements ApiMessage {
       fields,
       key,
       prettyPrint,
-      project,
       quotaUser,
       urlMap,
       urlMapResource,

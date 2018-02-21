@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,6 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
   private final InstanceGroup instanceGroupResource;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
   private final String userIp;
   private final String zone;
@@ -49,7 +48,6 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
     this.instanceGroupResource = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
     this.userIp = null;
     this.zone = null;
@@ -63,7 +61,6 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
       InstanceGroup instanceGroupResource,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
       String userIp,
       String zone
@@ -74,10 +71,14 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
     this.instanceGroupResource = instanceGroupResource;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
     this.userIp = userIp;
     this.zone = zone;
+  }
+
+  @Override
+  public ZoneName resourceNamePath() {
+    return ZoneName.parse(zone);
   }
 
   @Override
@@ -101,9 +102,6 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
     }
@@ -118,7 +116,7 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public InstanceGroup getRequestBody() {
+  public InstanceGroup requestBody() {
     return instanceGroupResource;
   }
 
@@ -144,10 +142,6 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
 
   public String getPrettyPrint() {
     return prettyPrint;
-  }
-
-  public String getProject() {
-    return project;
   }
 
   public String getQuotaUser() {
@@ -189,7 +183,6 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
     private InstanceGroup instanceGroupResource;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
     private String userIp;
     private String zone;
@@ -216,9 +209,6 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
       }
@@ -238,7 +228,6 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
       this.instanceGroupResource = source.instanceGroupResource;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
       this.userIp = source.userIp;
       this.zone = source.zone;
@@ -298,15 +287,6 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
@@ -343,9 +323,6 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
 
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
 
       if (zone == null) {
@@ -361,7 +338,6 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
         instanceGroupResource,
         key,
         prettyPrint,
-        project,
         quotaUser,
         userIp,
         zone
@@ -376,31 +352,10 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
       newBuilder.setInstanceGroupResource(this.instanceGroupResource);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
       newBuilder.setUserIp(this.userIp);
       newBuilder.setZone(this.zone);
       return newBuilder;
-    }
-
-    public final Builder setZoneWithZoneName(ZoneName value) {
-      if (value == null) {
-        return
-            setProject("").
-            setZone("")
-            ;
-      }
-      return
-          setProject(value.getProject()).
-          setZone(value.getZone())
-          ;
-    }
-
-    public final ZoneName getZoneAsZoneName() {
-      return ZoneName.of(
-          getProject(),
-          getZone()
-          );
     }
   }
 
@@ -413,7 +368,6 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
         + "instanceGroupResource=" + instanceGroupResource + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
         + "userIp=" + userIp + ", "
         + "zone=" + zone
@@ -434,7 +388,6 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
           Objects.equals(this.instanceGroupResource, that.getInstanceGroupResource()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
           Objects.equals(this.userIp, that.getUserIp()) &&
           Objects.equals(this.zone, that.getZone())
@@ -452,7 +405,6 @@ public final class InsertInstanceGroupHttpRequest implements ApiMessage {
       instanceGroupResource,
       key,
       prettyPrint,
-      project,
       quotaUser,
       userIp,
       zone

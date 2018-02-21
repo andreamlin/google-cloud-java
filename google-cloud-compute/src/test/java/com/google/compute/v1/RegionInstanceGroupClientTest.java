@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,27 @@
  */
 package com.google.compute.v1;
 
-import com.google.api.gax.core.NoCredentialsProvider;
-import com.google.api.gax.core.PagedListResponse;
-import com.google.api.gax.grpc.GaxGrpcProperties;
-import com.google.api.gax.grpc.GrpcStatusCode;
-import com.google.api.gax.grpc.testing.LocalChannelProvider;
-import com.google.api.gax.grpc.testing.MockGrpcService;
-import com.google.api.gax.grpc.testing.MockServiceHelper;
-import com.google.api.gax.rpc.ApiClientHeaderProvider;
+import com.google.api.gax.httpjson.MockHttpService;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiException;
+import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
-import com.google.api.gax.rpc.StatusCode;
+import com.google.api.gax.rpc.StatusCode.Code;
+import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.common.collect.Lists;
-import static com.google.compute.v1.PagedResponseWrappers.ListInstancesRegionInstanceGroupsPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionInstanceGroupsPagedResponse;
+import static com.google.compute.v1.RegionInstanceGroupClient.ListInstancesRegionInstanceGroupsPagedResponse;
+import static com.google.compute.v1.RegionInstanceGroupClient.ListRegionInstanceGroupsPagedResponse;
+import static com.google.compute.v1.stub.HttpJsonRegionInstanceGroupStub.getRegionInstanceGroupMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonRegionInstanceGroupStub.listInstancesRegionInstanceGroupsMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonRegionInstanceGroupStub.listRegionInstanceGroupsMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonRegionInstanceGroupStub.setNamedPortsRegionInstanceGroupMethodDescriptor;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -44,120 +45,28 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class RegionInstanceGroupClientTest {
-  private static MockAddresses mockAddresses;
-  private static MockAutoscalers mockAutoscalers;
-  private static MockBackendServices mockBackendServices;
-  private static MockDiskTypes mockDiskTypes;
-  private static MockDisks mockDisks;
-  private static MockFirewalls mockFirewalls;
-  private static MockForwardingRules mockForwardingRules;
-  private static MockGlobalAddresses mockGlobalAddresses;
-  private static MockGlobalForwardingRules mockGlobalForwardingRules;
-  private static MockGlobalOperations mockGlobalOperations;
-  private static MockHealthChecks mockHealthChecks;
-  private static MockHttpHealthChecks mockHttpHealthChecks;
-  private static MockHttpsHealthChecks mockHttpsHealthChecks;
-  private static MockImages mockImages;
-  private static MockInstanceGroupManagers mockInstanceGroupManagers;
-  private static MockInstanceGroups mockInstanceGroups;
-  private static MockInstanceTemplates mockInstanceTemplates;
-  private static MockInstances mockInstances;
-  private static MockLicenses mockLicenses;
-  private static MockMachineTypes mockMachineTypes;
-  private static MockNetworks mockNetworks;
-  private static MockProjects mockProjects;
-  private static MockRegionAutoscalers mockRegionAutoscalers;
-  private static MockRegionBackendServices mockRegionBackendServices;
-  private static MockRegionInstanceGroupManagers mockRegionInstanceGroupManagers;
-  private static MockRegionInstanceGroups mockRegionInstanceGroups;
-  private static MockRegionOperations mockRegionOperations;
-  private static MockRegions mockRegions;
-  private static MockRouters mockRouters;
-  private static MockRoutes mockRoutes;
-  private static MockSnapshots mockSnapshots;
-  private static MockSslCertificates mockSslCertificates;
-  private static MockSubnetworks mockSubnetworks;
-  private static MockTargetHttpProxies mockTargetHttpProxies;
-  private static MockTargetHttpsProxies mockTargetHttpsProxies;
-  private static MockTargetInstances mockTargetInstances;
-  private static MockTargetPools mockTargetPools;
-  private static MockTargetSslProxies mockTargetSslProxies;
-  private static MockTargetVpnGateways mockTargetVpnGateways;
-  private static MockUrlMaps mockUrlMaps;
-  private static MockVpnTunnels mockVpnTunnels;
-  private static MockZoneOperations mockZoneOperations;
-  private static MockZones mockZones;
-  private static MockServiceHelper serviceHelper;
-  private RegionInstanceGroupClient client;
-  private LocalChannelProvider channelProvider;
+  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static RegionInstanceGroupClient client;
+  private static RegionInstanceGroupSettings clientSettings;
 
   @BeforeClass
-  public static void startStaticServer() {
-    mockAddresses = new MockAddresses();
-    mockAutoscalers = new MockAutoscalers();
-    mockBackendServices = new MockBackendServices();
-    mockDiskTypes = new MockDiskTypes();
-    mockDisks = new MockDisks();
-    mockFirewalls = new MockFirewalls();
-    mockForwardingRules = new MockForwardingRules();
-    mockGlobalAddresses = new MockGlobalAddresses();
-    mockGlobalForwardingRules = new MockGlobalForwardingRules();
-    mockGlobalOperations = new MockGlobalOperations();
-    mockHealthChecks = new MockHealthChecks();
-    mockHttpHealthChecks = new MockHttpHealthChecks();
-    mockHttpsHealthChecks = new MockHttpsHealthChecks();
-    mockImages = new MockImages();
-    mockInstanceGroupManagers = new MockInstanceGroupManagers();
-    mockInstanceGroups = new MockInstanceGroups();
-    mockInstanceTemplates = new MockInstanceTemplates();
-    mockInstances = new MockInstances();
-    mockLicenses = new MockLicenses();
-    mockMachineTypes = new MockMachineTypes();
-    mockNetworks = new MockNetworks();
-    mockProjects = new MockProjects();
-    mockRegionAutoscalers = new MockRegionAutoscalers();
-    mockRegionBackendServices = new MockRegionBackendServices();
-    mockRegionInstanceGroupManagers = new MockRegionInstanceGroupManagers();
-    mockRegionInstanceGroups = new MockRegionInstanceGroups();
-    mockRegionOperations = new MockRegionOperations();
-    mockRegions = new MockRegions();
-    mockRouters = new MockRouters();
-    mockRoutes = new MockRoutes();
-    mockSnapshots = new MockSnapshots();
-    mockSslCertificates = new MockSslCertificates();
-    mockSubnetworks = new MockSubnetworks();
-    mockTargetHttpProxies = new MockTargetHttpProxies();
-    mockTargetHttpsProxies = new MockTargetHttpsProxies();
-    mockTargetInstances = new MockTargetInstances();
-    mockTargetPools = new MockTargetPools();
-    mockTargetSslProxies = new MockTargetSslProxies();
-    mockTargetVpnGateways = new MockTargetVpnGateways();
-    mockUrlMaps = new MockUrlMaps();
-    mockVpnTunnels = new MockVpnTunnels();
-    mockZoneOperations = new MockZoneOperations();
-    mockZones = new MockZones();
-    serviceHelper = new MockServiceHelper("in-process-1", Arrays.<MockGrpcService>asList(mockAddresses, mockAutoscalers, mockBackendServices, mockDiskTypes, mockDisks, mockFirewalls, mockForwardingRules, mockGlobalAddresses, mockGlobalForwardingRules, mockGlobalOperations, mockHealthChecks, mockHttpHealthChecks, mockHttpsHealthChecks, mockImages, mockInstanceGroupManagers, mockInstanceGroups, mockInstanceTemplates, mockInstances, mockLicenses, mockMachineTypes, mockNetworks, mockProjects, mockRegionAutoscalers, mockRegionBackendServices, mockRegionInstanceGroupManagers, mockRegionInstanceGroups, mockRegionOperations, mockRegions, mockRouters, mockRoutes, mockSnapshots, mockSslCertificates, mockSubnetworks, mockTargetHttpProxies, mockTargetHttpsProxies, mockTargetInstances, mockTargetPools, mockTargetSslProxies, mockTargetVpnGateways, mockUrlMaps, mockVpnTunnels, mockZoneOperations, mockZones));
-    serviceHelper.start();
-  }
-
-  @AfterClass
-  public static void stopServer() {
-    serviceHelper.stop();
-  }
-
-  @Before
-  public void setUp() throws IOException {
-    serviceHelper.reset();
-    channelProvider = serviceHelper.createChannelProvider();
-    RegionInstanceGroupSettings settings = RegionInstanceGroupSettings.newBuilder()
-        .setTransportChannelProvider(channelProvider)
-        .setCredentialsProvider(NoCredentialsProvider.create())
-        .build();
-    client = RegionInstanceGroupClient.create(settings);
+  public static void setUp() throws IOException {
+    clientSettings =
+        RegionInstanceGroupSettings.newBuilder()
+           .setTransportChannelProvider(
+               RegionInstanceGroupSettings.defaultHttpJsonTransportProviderBuilder()
+                   .setHttpTransport(MOCK_SERVICE).build()).build();
+    client =
+       RegionInstanceGroupClient.create(clientSettings);
   }
 
   @After
-  public void tearDown() throws Exception {
+  public void cleanUp() {
+    MOCK_SERVICE.reset();
+  }
+
+  @AfterClass
+  public static void tearDown() throws Exception {
     client.close();
   }
 
@@ -166,31 +75,31 @@ public class RegionInstanceGroupClientTest {
   public void getRegionInstanceGroupTest() {
     String kind = "kind3292052";
     String description = "description-1724546052";
-    String network = "network1843485230";
+    NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
     String selfLink = "selfLink-1691268851";
     Integer size = 3530753;
-    String zone = "zone3744684";
-    String subnetwork = "subnetwork-1302785042";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
+    SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
     String creationTimestamp = "creationTimestamp567396278";
     String fingerprint = "fingerprint-1375934236";
     String name = "name3373707";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     InstanceGroup expectedResponse = InstanceGroup.newBuilder()
       .setKind(kind)
       .setDescription(description)
-      .setNetwork(network)
+      .setNetwork(network.toString())
       .setSelfLink(selfLink)
       .setSize(size)
-      .setZone(zone)
-      .setSubnetwork(subnetwork)
+      .setZone(zone.toString())
+      .setSubnetwork(subnetwork.toString())
       .setCreationTimestamp(creationTimestamp)
       .setFingerprint(fingerprint)
       .setName(name)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .build();
-    mockRegionInstanceGroups.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getRegionInstanceGroupMethodDescriptor);
 
     RegionInstanceGroupsInstanceGroupName instanceGroup = RegionInstanceGroupsInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
 
@@ -198,22 +107,16 @@ public class RegionInstanceGroupClientTest {
         client.getRegionInstanceGroup(instanceGroup);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockRegionInstanceGroups.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    GetRegionInstanceGroupHttpRequest actualRequest = (GetRegionInstanceGroupHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(instanceGroup, actualRequest.getInstanceGroupAsRegionInstanceGroupsInstanceGroupName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void getRegionInstanceGroupExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockRegionInstanceGroups.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(getRegionInstanceGroupMethodDescriptor);
 
     try {
       RegionInstanceGroupsInstanceGroupName instanceGroup = RegionInstanceGroupsInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
@@ -232,7 +135,7 @@ public class RegionInstanceGroupClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    InstanceGroup itemsElement = new ArrayList<>();
+    InstanceGroup itemsElement = InstanceGroup.newBuilder().build();
     List<InstanceGroup> items = Arrays.asList(itemsElement);
     RegionInstanceGroupList expectedResponse = RegionInstanceGroupList.newBuilder()
       .setKind(kind)
@@ -241,7 +144,7 @@ public class RegionInstanceGroupClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    mockRegionInstanceGroups.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listRegionInstanceGroupsMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -251,22 +154,16 @@ public class RegionInstanceGroupClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<GeneratedMessageV3> actualRequests = mockRegionInstanceGroups.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    ListRegionInstanceGroupsHttpRequest actualRequest = (ListRegionInstanceGroupsHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(region, actualRequest.getRegionAsRegionName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void listRegionInstanceGroupsExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockRegionInstanceGroups.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(listRegionInstanceGroupsMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -285,7 +182,7 @@ public class RegionInstanceGroupClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    InstanceWithNamedPorts itemsElement = new ArrayList<>();
+    InstanceWithNamedPorts itemsElement = InstanceWithNamedPorts.newBuilder().build();
     List<InstanceWithNamedPorts> items = Arrays.asList(itemsElement);
     RegionInstanceGroupsListInstances expectedResponse = RegionInstanceGroupsListInstances.newBuilder()
       .setKind(kind)
@@ -294,7 +191,7 @@ public class RegionInstanceGroupClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    mockRegionInstanceGroups.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listInstancesRegionInstanceGroupsMethodDescriptor);
 
     RegionInstanceGroupsInstanceGroupName instanceGroup = RegionInstanceGroupsInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
     RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequest = RegionInstanceGroupsListInstancesRequest.newBuilder().build();
@@ -305,23 +202,16 @@ public class RegionInstanceGroupClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<GeneratedMessageV3> actualRequests = mockRegionInstanceGroups.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    ListInstancesRegionInstanceGroupsHttpRequest actualRequest = (ListInstancesRegionInstanceGroupsHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(instanceGroup, actualRequest.getInstanceGroupAsRegionInstanceGroupsInstanceGroupName());
-    Assert.assertEquals(regionInstanceGroupsListInstancesRequest, actualRequest.getRegionInstanceGroupsListInstancesRequest());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void listInstancesRegionInstanceGroupsExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockRegionInstanceGroups.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(listInstancesRegionInstanceGroupsMethodDescriptor);
 
     try {
       RegionInstanceGroupsInstanceGroupName instanceGroup = RegionInstanceGroupsInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
@@ -345,7 +235,7 @@ public class RegionInstanceGroupClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -354,7 +244,7 @@ public class RegionInstanceGroupClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -367,7 +257,7 @@ public class RegionInstanceGroupClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone)
+      .setZone(zone.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -376,12 +266,12 @@ public class RegionInstanceGroupClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockRegionInstanceGroups.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setNamedPortsRegionInstanceGroupMethodDescriptor);
 
     RegionInstanceGroupsInstanceGroupName instanceGroup = RegionInstanceGroupsInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
     RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequest = RegionInstanceGroupsSetNamedPortsRequest.newBuilder().build();
@@ -390,23 +280,16 @@ public class RegionInstanceGroupClientTest {
         client.setNamedPortsRegionInstanceGroup(instanceGroup, regionInstanceGroupsSetNamedPortsRequest);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockRegionInstanceGroups.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    SetNamedPortsRegionInstanceGroupHttpRequest actualRequest = (SetNamedPortsRegionInstanceGroupHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(instanceGroup, actualRequest.getInstanceGroupAsRegionInstanceGroupsInstanceGroupName());
-    Assert.assertEquals(regionInstanceGroupsSetNamedPortsRequest, actualRequest.getRegionInstanceGroupsSetNamedPortsRequest());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void setNamedPortsRegionInstanceGroupExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockRegionInstanceGroups.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(setNamedPortsRegionInstanceGroupMethodDescriptor);
 
     try {
       RegionInstanceGroupsInstanceGroupName instanceGroup = RegionInstanceGroupsInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");

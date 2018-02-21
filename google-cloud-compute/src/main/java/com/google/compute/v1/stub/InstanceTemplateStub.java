@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,11 @@ import com.google.compute.v1.DeleteInstanceTemplateHttpRequest;
 import com.google.compute.v1.GetInstanceTemplateHttpRequest;
 import com.google.compute.v1.InsertInstanceTemplateHttpRequest;
 import com.google.compute.v1.InstanceTemplate;
+import static com.google.compute.v1.InstanceTemplateClient.ListInstanceTemplatesPagedResponse;
 import com.google.compute.v1.InstanceTemplateList;
 import com.google.compute.v1.InstanceTemplateName;
 import com.google.compute.v1.ListInstanceTemplatesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListInstanceTemplatesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import javax.annotation.Generated;
 

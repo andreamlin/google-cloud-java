@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.BackendService;
@@ -37,8 +38,8 @@ import com.google.compute.v1.GetRegionBackendServiceHttpRequest;
 import com.google.compute.v1.InsertRegionBackendServiceHttpRequest;
 import com.google.compute.v1.ListRegionBackendServicesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionBackendServicesPagedResponse;
 import com.google.compute.v1.PatchRegionBackendServiceHttpRequest;
+import static com.google.compute.v1.RegionBackendServiceClient.ListRegionBackendServicesPagedResponse;
 import com.google.compute.v1.RegionBackendServiceSettings;
 import com.google.compute.v1.RegionBackendServicesBackendServiceName;
 import com.google.compute.v1.RegionName;
@@ -64,7 +65,8 @@ import javax.annotation.Generated;
 public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<DeleteRegionBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionBackendServices.delete")
           .setRequestInstance(DeleteRegionBackendServiceHttpRequest.getDefaultInstance())
@@ -78,7 +80,8 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetRegionBackendServiceHttpRequest, BackendService> getRegionBackendServiceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetRegionBackendServiceHttpRequest, BackendService> getRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<GetRegionBackendServiceHttpRequest, BackendService>newBuilder()
           .setMethodName("compute.regionBackendServices.get")
           .setRequestInstance(GetRegionBackendServiceHttpRequest.getDefaultInstance())
@@ -92,7 +95,8 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthRegionBackendServiceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth>newBuilder()
           .setMethodName("compute.regionBackendServices.getHealth")
           .setRequestInstance(GetHealthRegionBackendServiceHttpRequest.getDefaultInstance())
@@ -106,7 +110,8 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<InsertRegionBackendServiceHttpRequest, Operation> insertRegionBackendServiceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertRegionBackendServiceHttpRequest, Operation> insertRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<InsertRegionBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionBackendServices.insert")
           .setRequestInstance(InsertRegionBackendServiceHttpRequest.getDefaultInstance())
@@ -120,7 +125,8 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListRegionBackendServicesHttpRequest, BackendServiceList> listRegionBackendServicesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListRegionBackendServicesHttpRequest, BackendServiceList> listRegionBackendServicesMethodDescriptor =
       ApiMethodDescriptor.<ListRegionBackendServicesHttpRequest, BackendServiceList>newBuilder()
           .setMethodName("compute.regionBackendServices.list")
           .setRequestInstance(ListRegionBackendServicesHttpRequest.getDefaultInstance())
@@ -135,7 +141,8 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<PatchRegionBackendServiceHttpRequest, Operation> patchRegionBackendServiceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<PatchRegionBackendServiceHttpRequest, Operation> patchRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<PatchRegionBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionBackendServices.patch")
           .setRequestInstance(PatchRegionBackendServiceHttpRequest.getDefaultInstance())
@@ -149,7 +156,8 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
           .build();
-  private static final ApiMethodDescriptor<UpdateRegionBackendServiceHttpRequest, Operation> updateRegionBackendServiceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<UpdateRegionBackendServiceHttpRequest, Operation> updateRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<UpdateRegionBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionBackendServices.update")
           .setRequestInstance(UpdateRegionBackendServiceHttpRequest.getDefaultInstance())
@@ -175,12 +183,12 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
   private final UnaryCallable<PatchRegionBackendServiceHttpRequest, Operation> patchRegionBackendServiceCallable;
   private final UnaryCallable<UpdateRegionBackendServiceHttpRequest, Operation> updateRegionBackendServiceCallable;
 
-  public static final HttpJsonRegionBackendServiceStub create(RegionBackendServiceSettings settings) throws IOException {
+  public static final HttpJsonRegionBackendServiceStub create(RegionBackendServiceStubSettings settings) throws IOException {
     return new HttpJsonRegionBackendServiceStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonRegionBackendServiceStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRegionBackendServiceStub(RegionBackendServiceSettings.newBuilder().build(), clientContext);
+    return new HttpJsonRegionBackendServiceStub(RegionBackendServiceStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -188,7 +196,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonRegionBackendServiceStub(RegionBackendServiceSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonRegionBackendServiceStub(RegionBackendServiceStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceTransportSettings =
         HttpJsonCallSettings.<DeleteRegionBackendServiceHttpRequest, Operation>newBuilder()

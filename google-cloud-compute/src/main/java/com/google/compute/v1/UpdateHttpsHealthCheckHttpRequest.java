@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,6 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
   private final HttpsHealthCheck httpsHealthCheckResource;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
   private final String userIp;
 
@@ -50,7 +49,6 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
     this.httpsHealthCheckResource = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
     this.userIp = null;
   }
@@ -64,7 +62,6 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
       HttpsHealthCheck httpsHealthCheckResource,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
       String userIp
       ) {
@@ -75,9 +72,13 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
     this.httpsHealthCheckResource = httpsHealthCheckResource;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
     this.userIp = userIp;
+  }
+
+  @Override
+  public HttpsHealthCheckName resourceNamePath() {
+    return HttpsHealthCheckName.parse(httpsHealthCheck);
   }
 
   @Override
@@ -104,9 +105,6 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
     }
@@ -118,7 +116,7 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public HttpsHealthCheck getRequestBody() {
+  public HttpsHealthCheck requestBody() {
     return httpsHealthCheckResource;
   }
 
@@ -148,10 +146,6 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
 
   public String getPrettyPrint() {
     return prettyPrint;
-  }
-
-  public String getProject() {
-    return project;
   }
 
   public String getQuotaUser() {
@@ -190,7 +184,6 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
     private HttpsHealthCheck httpsHealthCheckResource;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
     private String userIp;
 
@@ -219,9 +212,6 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
       }
@@ -239,7 +229,6 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
       this.httpsHealthCheckResource = source.httpsHealthCheckResource;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
       this.userIp = source.userIp;
     }
@@ -307,15 +296,6 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
@@ -346,9 +326,6 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
 
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
 
       if (!missing.isEmpty()) {
@@ -362,7 +339,6 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
         httpsHealthCheckResource,
         key,
         prettyPrint,
-        project,
         quotaUser,
         userIp
       );
@@ -377,30 +353,9 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
       newBuilder.setHttpsHealthCheckResource(this.httpsHealthCheckResource);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setHttpsHealthCheckWithHttpsHealthCheckName(HttpsHealthCheckName value) {
-      if (value == null) {
-        return
-            setHttpsHealthCheck("").
-            setProject("")
-            ;
-      }
-      return
-          setHttpsHealthCheck(value.getHttpsHealthCheck()).
-          setProject(value.getProject())
-          ;
-    }
-
-    public final HttpsHealthCheckName getHttpsHealthCheckAsHttpsHealthCheckName() {
-      return HttpsHealthCheckName.of(
-          getHttpsHealthCheck(),
-          getProject()
-          );
     }
   }
 
@@ -414,7 +369,6 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
         + "httpsHealthCheckResource=" + httpsHealthCheckResource + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
         + "userIp=" + userIp
         + "}";
@@ -435,7 +389,6 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
           Objects.equals(this.httpsHealthCheckResource, that.getHttpsHealthCheckResource()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
           Objects.equals(this.userIp, that.getUserIp())
           ;
@@ -453,7 +406,6 @@ public final class UpdateHttpsHealthCheckHttpRequest implements ApiMessage {
       httpsHealthCheckResource,
       key,
       prettyPrint,
-      project,
       quotaUser,
       userIp
     );

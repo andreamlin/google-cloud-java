@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,12 +25,12 @@ import com.google.compute.v1.GetSubnetworkHttpRequest;
 import com.google.compute.v1.InsertSubnetworkHttpRequest;
 import com.google.compute.v1.ListSubnetworksHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListSubnetworksPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListSubnetworksPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.Subnetwork;
 import com.google.compute.v1.SubnetworkAggregatedList;
+import static com.google.compute.v1.SubnetworkClient.AggregatedListSubnetworksPagedResponse;
+import static com.google.compute.v1.SubnetworkClient.ListSubnetworksPagedResponse;
 import com.google.compute.v1.SubnetworkList;
 import com.google.compute.v1.SubnetworkName;
 import com.google.compute.v1.SubnetworksExpandIpCidrRangeRequest;

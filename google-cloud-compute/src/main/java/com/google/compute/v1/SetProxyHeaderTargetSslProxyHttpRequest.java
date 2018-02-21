@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,6 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
   private final String fields;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
   private final TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequestResource;
   private final String targetSslProxy;
@@ -48,7 +47,6 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
     this.fields = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
     this.targetSslProxiesSetProxyHeaderRequestResource = null;
     this.targetSslProxy = null;
@@ -62,7 +60,6 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
       String fields,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
       TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequestResource,
       String targetSslProxy,
@@ -73,11 +70,15 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
     this.fields = fields;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
     this.targetSslProxiesSetProxyHeaderRequestResource = targetSslProxiesSetProxyHeaderRequestResource;
     this.targetSslProxy = targetSslProxy;
     this.userIp = userIp;
+  }
+
+  @Override
+  public TargetSslProxyName resourceNamePath() {
+    return TargetSslProxyName.parse(targetSslProxy);
   }
 
   @Override
@@ -98,9 +99,6 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
     }
@@ -118,7 +116,7 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
 
   @Nullable
   @Override
-  public TargetSslProxiesSetProxyHeaderRequest getRequestBody() {
+  public TargetSslProxiesSetProxyHeaderRequest requestBody() {
     return targetSslProxiesSetProxyHeaderRequestResource;
   }
 
@@ -140,10 +138,6 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
 
   public String getPrettyPrint() {
     return prettyPrint;
-  }
-
-  public String getProject() {
-    return project;
   }
 
   public String getQuotaUser() {
@@ -188,7 +182,6 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
     private String fields;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
     private TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequestResource;
     private String targetSslProxy;
@@ -213,9 +206,6 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
       }
@@ -237,7 +227,6 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
       this.fields = source.fields;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
       this.targetSslProxiesSetProxyHeaderRequestResource = source.targetSslProxiesSetProxyHeaderRequestResource;
       this.targetSslProxy = source.targetSslProxy;
@@ -289,15 +278,6 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
@@ -342,9 +322,6 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
 
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
 
       if (targetSslProxy == null) {
@@ -360,7 +337,6 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
         fields,
         key,
         prettyPrint,
-        project,
         quotaUser,
         targetSslProxiesSetProxyHeaderRequestResource,
         targetSslProxy,
@@ -375,32 +351,11 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
       newBuilder.setFields(this.fields);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
       newBuilder.setTargetSslProxiesSetProxyHeaderRequestResource(this.targetSslProxiesSetProxyHeaderRequestResource);
       newBuilder.setTargetSslProxy(this.targetSslProxy);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setTargetSslProxyWithTargetSslProxyName(TargetSslProxyName value) {
-      if (value == null) {
-        return
-            setProject("").
-            setTargetSslProxy("")
-            ;
-      }
-      return
-          setProject(value.getProject()).
-          setTargetSslProxy(value.getTargetSslProxy())
-          ;
-    }
-
-    public final TargetSslProxyName getTargetSslProxyAsTargetSslProxyName() {
-      return TargetSslProxyName.of(
-          getProject(),
-          getTargetSslProxy()
-          );
     }
   }
 
@@ -412,7 +367,6 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
         + "fields=" + fields + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
         + "targetSslProxiesSetProxyHeaderRequestResource=" + targetSslProxiesSetProxyHeaderRequestResource + ", "
         + "targetSslProxy=" + targetSslProxy + ", "
@@ -433,7 +387,6 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
           Objects.equals(this.fields, that.getFields()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
           Objects.equals(this.targetSslProxiesSetProxyHeaderRequestResource, that.getTargetSslProxiesSetProxyHeaderRequestResource()) &&
           Objects.equals(this.targetSslProxy, that.getTargetSslProxy()) &&
@@ -451,7 +404,6 @@ public final class SetProxyHeaderTargetSslProxyHttpRequest implements ApiMessage
       fields,
       key,
       prettyPrint,
-      project,
       quotaUser,
       targetSslProxiesSetProxyHeaderRequestResource,
       targetSslProxy,

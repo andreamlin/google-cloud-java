@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.GetRegionInstanceGroupHttpRequest;
@@ -34,8 +35,8 @@ import com.google.compute.v1.InstanceWithNamedPorts;
 import com.google.compute.v1.ListInstancesRegionInstanceGroupsHttpRequest;
 import com.google.compute.v1.ListRegionInstanceGroupsHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListInstancesRegionInstanceGroupsPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionInstanceGroupsPagedResponse;
+import static com.google.compute.v1.RegionInstanceGroupClient.ListInstancesRegionInstanceGroupsPagedResponse;
+import static com.google.compute.v1.RegionInstanceGroupClient.ListRegionInstanceGroupsPagedResponse;
 import com.google.compute.v1.RegionInstanceGroupList;
 import com.google.compute.v1.RegionInstanceGroupSettings;
 import com.google.compute.v1.RegionInstanceGroupsInstanceGroupName;
@@ -64,7 +65,8 @@ import javax.annotation.Generated;
 public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<GetRegionInstanceGroupHttpRequest, InstanceGroup>newBuilder()
           .setMethodName("compute.regionInstanceGroups.get")
           .setRequestInstance(GetRegionInstanceGroupHttpRequest.getDefaultInstance())
@@ -78,7 +80,8 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList> listRegionInstanceGroupsMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList> listRegionInstanceGroupsMethodDescriptor =
       ApiMethodDescriptor.<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList>newBuilder()
           .setMethodName("compute.regionInstanceGroups.list")
           .setRequestInstance(ListRegionInstanceGroupsHttpRequest.getDefaultInstance())
@@ -93,7 +96,8 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances> listInstancesRegionInstanceGroupsMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances> listInstancesRegionInstanceGroupsMethodDescriptor =
       ApiMethodDescriptor.<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances>newBuilder()
           .setMethodName("compute.regionInstanceGroups.listInstances")
           .setRequestInstance(ListInstancesRegionInstanceGroupsHttpRequest.getDefaultInstance())
@@ -108,7 +112,8 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroups.setNamedPorts")
           .setRequestInstance(SetNamedPortsRegionInstanceGroupHttpRequest.getDefaultInstance())
@@ -132,12 +137,12 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
   private final UnaryCallable<ListInstancesRegionInstanceGroupsHttpRequest, ListInstancesRegionInstanceGroupsPagedResponse> listInstancesRegionInstanceGroupsPagedCallable;
   private final UnaryCallable<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupCallable;
 
-  public static final HttpJsonRegionInstanceGroupStub create(RegionInstanceGroupSettings settings) throws IOException {
+  public static final HttpJsonRegionInstanceGroupStub create(RegionInstanceGroupStubSettings settings) throws IOException {
     return new HttpJsonRegionInstanceGroupStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonRegionInstanceGroupStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRegionInstanceGroupStub(RegionInstanceGroupSettings.newBuilder().build(), clientContext);
+    return new HttpJsonRegionInstanceGroupStub(RegionInstanceGroupStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -145,7 +150,7 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonRegionInstanceGroupStub(RegionInstanceGroupSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonRegionInstanceGroupStub(RegionInstanceGroupStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupTransportSettings =
         HttpJsonCallSettings.<GetRegionInstanceGroupHttpRequest, InstanceGroup>newBuilder()

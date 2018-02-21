@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListSnapshotsPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.SnapshotStub;
+import com.google.compute.v1.stub.SnapshotStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class SnapshotClient implements BackgroundResource {
    */
   protected SnapshotClient(SnapshotSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((SnapshotStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -177,7 +191,7 @@ public class SnapshotClient implements BackgroundResource {
 
     DeleteSnapshotHttpRequest request =
         DeleteSnapshotHttpRequest.newBuilder()
-        .setSnapshotWithSnapshotName(snapshot)
+        .setSnapshot(snapshot.toString())
         .build();
     return deleteSnapshot(request);
   }
@@ -193,7 +207,7 @@ public class SnapshotClient implements BackgroundResource {
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
    *   SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
    *   DeleteSnapshotHttpRequest request = DeleteSnapshotHttpRequest.newBuilder()
-   *     .setSnapshotWithSnapshotName(snapshot)
+   *     .setSnapshot(snapshot.toString())
    *     .build();
    *   Operation response = snapshotClient.deleteSnapshot(request);
    * }
@@ -218,7 +232,7 @@ public class SnapshotClient implements BackgroundResource {
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
    *   SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
    *   DeleteSnapshotHttpRequest request = DeleteSnapshotHttpRequest.newBuilder()
-   *     .setSnapshotWithSnapshotName(snapshot)
+   *     .setSnapshot(snapshot.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = snapshotClient.deleteSnapshotCallable().futureCall(request);
    *   // Do something
@@ -251,7 +265,7 @@ public class SnapshotClient implements BackgroundResource {
 
     GetSnapshotHttpRequest request =
         GetSnapshotHttpRequest.newBuilder()
-        .setSnapshotWithSnapshotName(snapshot)
+        .setSnapshot(snapshot.toString())
         .build();
     return getSnapshot(request);
   }
@@ -265,7 +279,7 @@ public class SnapshotClient implements BackgroundResource {
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
    *   SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
    *   GetSnapshotHttpRequest request = GetSnapshotHttpRequest.newBuilder()
-   *     .setSnapshotWithSnapshotName(snapshot)
+   *     .setSnapshot(snapshot.toString())
    *     .build();
    *   Snapshot response = snapshotClient.getSnapshot(request);
    * }
@@ -288,7 +302,7 @@ public class SnapshotClient implements BackgroundResource {
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
    *   SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
    *   GetSnapshotHttpRequest request = GetSnapshotHttpRequest.newBuilder()
-   *     .setSnapshotWithSnapshotName(snapshot)
+   *     .setSnapshot(snapshot.toString())
    *     .build();
    *   ApiFuture&lt;Snapshot&gt; future = snapshotClient.getSnapshotCallable().futureCall(request);
    *   // Do something
@@ -322,7 +336,7 @@ public class SnapshotClient implements BackgroundResource {
   public final ListSnapshotsPagedResponse listSnapshots(ProjectName project) {
     ListSnapshotsHttpRequest request =
         ListSnapshotsHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listSnapshots(request);
   }
@@ -336,7 +350,7 @@ public class SnapshotClient implements BackgroundResource {
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListSnapshotsHttpRequest request = ListSnapshotsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (Snapshot element : snapshotClient.listSnapshots(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -362,7 +376,7 @@ public class SnapshotClient implements BackgroundResource {
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListSnapshotsHttpRequest request = ListSnapshotsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListSnapshotsPagedResponse&gt; future = snapshotClient.listSnapshotsPagedCallable().futureCall(request);
    *   // Do something
@@ -386,7 +400,7 @@ public class SnapshotClient implements BackgroundResource {
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListSnapshotsHttpRequest request = ListSnapshotsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     SnapshotList response = snapshotClient.listSnapshotsCallable().call(request);
@@ -438,4 +452,91 @@ public class SnapshotClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListSnapshotsPagedResponse extends AbstractPagedListResponse<
+      ListSnapshotsHttpRequest,
+      SnapshotList,
+      Snapshot,
+      ListSnapshotsPage,
+      ListSnapshotsFixedSizeCollection> {
+
+    public static ApiFuture<ListSnapshotsPagedResponse> createAsync(
+        PageContext<ListSnapshotsHttpRequest, SnapshotList, Snapshot> context,
+        ApiFuture<SnapshotList> futureResponse) {
+      ApiFuture<ListSnapshotsPage> futurePage =
+          ListSnapshotsPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListSnapshotsPage, ListSnapshotsPagedResponse>() {
+            @Override
+            public ListSnapshotsPagedResponse apply(ListSnapshotsPage input) {
+              return new ListSnapshotsPagedResponse(input);
+            }
+          });
+    }
+
+    private ListSnapshotsPagedResponse(ListSnapshotsPage page) {
+      super(page, ListSnapshotsFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListSnapshotsPage extends AbstractPage<
+      ListSnapshotsHttpRequest,
+      SnapshotList,
+      Snapshot,
+      ListSnapshotsPage> {
+
+    private ListSnapshotsPage(
+        PageContext<ListSnapshotsHttpRequest, SnapshotList, Snapshot> context,
+        SnapshotList response) {
+      super(context, response);
+    }
+
+    private static ListSnapshotsPage createEmptyPage() {
+      return new ListSnapshotsPage(null, null);
+    }
+
+    @Override
+    protected ListSnapshotsPage createPage(
+        PageContext<ListSnapshotsHttpRequest, SnapshotList, Snapshot> context,
+        SnapshotList response) {
+      return new ListSnapshotsPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListSnapshotsPage> createPageAsync(
+        PageContext<ListSnapshotsHttpRequest, SnapshotList, Snapshot> context,
+        ApiFuture<SnapshotList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListSnapshotsFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListSnapshotsHttpRequest,
+      SnapshotList,
+      Snapshot,
+      ListSnapshotsPage,
+      ListSnapshotsFixedSizeCollection> {
+
+    private ListSnapshotsFixedSizeCollection(List<ListSnapshotsPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListSnapshotsFixedSizeCollection createEmptyCollection() {
+      return new ListSnapshotsFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListSnapshotsFixedSizeCollection createCollection(
+        List<ListSnapshotsPage> pages, int collectionSize) {
+      return new ListSnapshotsFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

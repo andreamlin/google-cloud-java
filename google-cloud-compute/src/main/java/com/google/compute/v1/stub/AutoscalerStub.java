@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,8 @@ import com.google.api.gax.rpc.UnaryCallable;
 import com.google.compute.v1.AggregatedListAutoscalersHttpRequest;
 import com.google.compute.v1.Autoscaler;
 import com.google.compute.v1.AutoscalerAggregatedList;
+import static com.google.compute.v1.AutoscalerClient.AggregatedListAutoscalersPagedResponse;
+import static com.google.compute.v1.AutoscalerClient.ListAutoscalersPagedResponse;
 import com.google.compute.v1.AutoscalerList;
 import com.google.compute.v1.AutoscalerName;
 import com.google.compute.v1.DeleteAutoscalerHttpRequest;
@@ -28,8 +30,6 @@ import com.google.compute.v1.GetAutoscalerHttpRequest;
 import com.google.compute.v1.InsertAutoscalerHttpRequest;
 import com.google.compute.v1.ListAutoscalersHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListAutoscalersPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListAutoscalersPagedResponse;
 import com.google.compute.v1.PatchAutoscalerHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.UpdateAutoscalerHttpRequest;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,13 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.Address;
 import com.google.compute.v1.AddressAggregatedList;
+import static com.google.compute.v1.AddressClient.AggregatedListAddressesPagedResponse;
+import static com.google.compute.v1.AddressClient.ListAddressesPagedResponse;
 import com.google.compute.v1.AddressList;
 import com.google.compute.v1.AddressName;
 import com.google.compute.v1.AddressSettings;
@@ -39,8 +42,6 @@ import com.google.compute.v1.GetAddressHttpRequest;
 import com.google.compute.v1.InsertAddressHttpRequest;
 import com.google.compute.v1.ListAddressesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListAddressesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListAddressesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RegionName;
 import java.io.IOException;
@@ -63,7 +64,8 @@ import javax.annotation.Generated;
 public class HttpJsonAddressStub extends AddressStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AggregatedListAddressesHttpRequest, AddressAggregatedList> aggregatedListAddressesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AggregatedListAddressesHttpRequest, AddressAggregatedList> aggregatedListAddressesMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListAddressesHttpRequest, AddressAggregatedList>newBuilder()
           .setMethodName("compute.addresses.aggregatedList")
           .setRequestInstance(AggregatedListAddressesHttpRequest.getDefaultInstance())
@@ -78,7 +80,8 @@ public class HttpJsonAddressStub extends AddressStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<DeleteAddressHttpRequest, Operation> deleteAddressMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteAddressHttpRequest, Operation> deleteAddressMethodDescriptor =
       ApiMethodDescriptor.<DeleteAddressHttpRequest, Operation>newBuilder()
           .setMethodName("compute.addresses.delete")
           .setRequestInstance(DeleteAddressHttpRequest.getDefaultInstance())
@@ -92,7 +95,8 @@ public class HttpJsonAddressStub extends AddressStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetAddressHttpRequest, Address> getAddressMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetAddressHttpRequest, Address> getAddressMethodDescriptor =
       ApiMethodDescriptor.<GetAddressHttpRequest, Address>newBuilder()
           .setMethodName("compute.addresses.get")
           .setRequestInstance(GetAddressHttpRequest.getDefaultInstance())
@@ -106,7 +110,8 @@ public class HttpJsonAddressStub extends AddressStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertAddressHttpRequest, Operation> insertAddressMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertAddressHttpRequest, Operation> insertAddressMethodDescriptor =
       ApiMethodDescriptor.<InsertAddressHttpRequest, Operation>newBuilder()
           .setMethodName("compute.addresses.insert")
           .setRequestInstance(InsertAddressHttpRequest.getDefaultInstance())
@@ -120,7 +125,8 @@ public class HttpJsonAddressStub extends AddressStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListAddressesHttpRequest, AddressList> listAddressesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListAddressesHttpRequest, AddressList> listAddressesMethodDescriptor =
       ApiMethodDescriptor.<ListAddressesHttpRequest, AddressList>newBuilder()
           .setMethodName("compute.addresses.list")
           .setRequestInstance(ListAddressesHttpRequest.getDefaultInstance())
@@ -146,12 +152,12 @@ public class HttpJsonAddressStub extends AddressStub {
   private final UnaryCallable<ListAddressesHttpRequest, AddressList> listAddressesCallable;
   private final UnaryCallable<ListAddressesHttpRequest, ListAddressesPagedResponse> listAddressesPagedCallable;
 
-  public static final HttpJsonAddressStub create(AddressSettings settings) throws IOException {
+  public static final HttpJsonAddressStub create(AddressStubSettings settings) throws IOException {
     return new HttpJsonAddressStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonAddressStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonAddressStub(AddressSettings.newBuilder().build(), clientContext);
+    return new HttpJsonAddressStub(AddressStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -159,7 +165,7 @@ public class HttpJsonAddressStub extends AddressStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonAddressStub(AddressSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonAddressStub(AddressStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AggregatedListAddressesHttpRequest, AddressAggregatedList> aggregatedListAddressesTransportSettings =
         HttpJsonCallSettings.<AggregatedListAddressesHttpRequest, AddressAggregatedList>newBuilder()

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,8 @@ import com.google.compute.v1.CreateSnapshotDiskHttpRequest;
 import com.google.compute.v1.DeleteDiskHttpRequest;
 import com.google.compute.v1.Disk;
 import com.google.compute.v1.DiskAggregatedList;
+import static com.google.compute.v1.DiskClient.AggregatedListDisksPagedResponse;
+import static com.google.compute.v1.DiskClient.ListDisksPagedResponse;
 import com.google.compute.v1.DiskList;
 import com.google.compute.v1.DiskName;
 import com.google.compute.v1.DisksResizeRequest;
@@ -30,8 +32,6 @@ import com.google.compute.v1.GetDiskHttpRequest;
 import com.google.compute.v1.InsertDiskHttpRequest;
 import com.google.compute.v1.ListDisksHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListDisksPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListDisksPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.ResizeDiskHttpRequest;
 import com.google.compute.v1.Snapshot;

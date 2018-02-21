@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetInstancesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetInstancesPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.TargetInstanceStub;
+import com.google.compute.v1.stub.TargetInstanceStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -137,7 +150,7 @@ public class TargetInstanceClient implements BackgroundResource {
    */
   protected TargetInstanceClient(TargetInstanceSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((TargetInstanceStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -177,7 +190,7 @@ public class TargetInstanceClient implements BackgroundResource {
   public final AggregatedListTargetInstancesPagedResponse aggregatedListTargetInstances(ProjectName project) {
     AggregatedListTargetInstancesHttpRequest request =
         AggregatedListTargetInstancesHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return aggregatedListTargetInstances(request);
   }
@@ -191,7 +204,7 @@ public class TargetInstanceClient implements BackgroundResource {
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListTargetInstancesHttpRequest request = AggregatedListTargetInstancesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (TargetInstance element : targetInstanceClient.aggregatedListTargetInstances(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -217,7 +230,7 @@ public class TargetInstanceClient implements BackgroundResource {
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListTargetInstancesHttpRequest request = AggregatedListTargetInstancesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;AggregatedListTargetInstancesPagedResponse&gt; future = targetInstanceClient.aggregatedListTargetInstancesPagedCallable().futureCall(request);
    *   // Do something
@@ -241,11 +254,11 @@ public class TargetInstanceClient implements BackgroundResource {
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListTargetInstancesHttpRequest request = AggregatedListTargetInstancesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     TargetInstanceAggregatedList response = targetInstanceClient.aggregatedListTargetInstancesCallable().call(request);
-   *     for (TargetInstance element : response.getItems().getTargetInstances()) {
+   *     for (TargetInstance element : response.getTargetInstances()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -283,7 +296,7 @@ public class TargetInstanceClient implements BackgroundResource {
 
     DeleteTargetInstanceHttpRequest request =
         DeleteTargetInstanceHttpRequest.newBuilder()
-        .setTargetInstanceWithTargetInstanceName(targetInstance)
+        .setTargetInstance(targetInstance.toString())
         .build();
     return deleteTargetInstance(request);
   }
@@ -297,7 +310,7 @@ public class TargetInstanceClient implements BackgroundResource {
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   TargetInstanceName targetInstance = TargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
    *   DeleteTargetInstanceHttpRequest request = DeleteTargetInstanceHttpRequest.newBuilder()
-   *     .setTargetInstanceWithTargetInstanceName(targetInstance)
+   *     .setTargetInstance(targetInstance.toString())
    *     .build();
    *   Operation response = targetInstanceClient.deleteTargetInstance(request);
    * }
@@ -320,7 +333,7 @@ public class TargetInstanceClient implements BackgroundResource {
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   TargetInstanceName targetInstance = TargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
    *   DeleteTargetInstanceHttpRequest request = DeleteTargetInstanceHttpRequest.newBuilder()
-   *     .setTargetInstanceWithTargetInstanceName(targetInstance)
+   *     .setTargetInstance(targetInstance.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetInstanceClient.deleteTargetInstanceCallable().futureCall(request);
    *   // Do something
@@ -353,7 +366,7 @@ public class TargetInstanceClient implements BackgroundResource {
 
     GetTargetInstanceHttpRequest request =
         GetTargetInstanceHttpRequest.newBuilder()
-        .setTargetInstanceWithTargetInstanceName(targetInstance)
+        .setTargetInstance(targetInstance.toString())
         .build();
     return getTargetInstance(request);
   }
@@ -367,7 +380,7 @@ public class TargetInstanceClient implements BackgroundResource {
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   TargetInstanceName targetInstance = TargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
    *   GetTargetInstanceHttpRequest request = GetTargetInstanceHttpRequest.newBuilder()
-   *     .setTargetInstanceWithTargetInstanceName(targetInstance)
+   *     .setTargetInstance(targetInstance.toString())
    *     .build();
    *   TargetInstance response = targetInstanceClient.getTargetInstance(request);
    * }
@@ -390,7 +403,7 @@ public class TargetInstanceClient implements BackgroundResource {
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   TargetInstanceName targetInstance = TargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
    *   GetTargetInstanceHttpRequest request = GetTargetInstanceHttpRequest.newBuilder()
-   *     .setTargetInstanceWithTargetInstanceName(targetInstance)
+   *     .setTargetInstance(targetInstance.toString())
    *     .build();
    *   ApiFuture&lt;TargetInstance&gt; future = targetInstanceClient.getTargetInstanceCallable().futureCall(request);
    *   // Do something
@@ -425,7 +438,7 @@ public class TargetInstanceClient implements BackgroundResource {
 
     InsertTargetInstanceHttpRequest request =
         InsertTargetInstanceHttpRequest.newBuilder()
-        .setZoneWithZoneName(zone)
+        .setZone(zone.toString())
         .setTargetInstanceResource(targetInstanceResource)
         .build();
     return insertTargetInstance(request);
@@ -441,7 +454,7 @@ public class TargetInstanceClient implements BackgroundResource {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   TargetInstance targetInstance = TargetInstance.newBuilder().build();
    *   InsertTargetInstanceHttpRequest request = InsertTargetInstanceHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .setTargetInstanceResource(targetInstance)
    *     .build();
    *   Operation response = targetInstanceClient.insertTargetInstance(request);
@@ -466,7 +479,7 @@ public class TargetInstanceClient implements BackgroundResource {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   TargetInstance targetInstance = TargetInstance.newBuilder().build();
    *   InsertTargetInstanceHttpRequest request = InsertTargetInstanceHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .setTargetInstanceResource(targetInstance)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetInstanceClient.insertTargetInstanceCallable().futureCall(request);
@@ -501,7 +514,7 @@ public class TargetInstanceClient implements BackgroundResource {
   public final ListTargetInstancesPagedResponse listTargetInstances(ZoneName zone) {
     ListTargetInstancesHttpRequest request =
         ListTargetInstancesHttpRequest.newBuilder()
-        .setZoneWithZoneName(zone)
+        .setZone(zone.toString())
         .build();
     return listTargetInstances(request);
   }
@@ -515,7 +528,7 @@ public class TargetInstanceClient implements BackgroundResource {
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListTargetInstancesHttpRequest request = ListTargetInstancesHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   for (TargetInstance element : targetInstanceClient.listTargetInstances(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -541,7 +554,7 @@ public class TargetInstanceClient implements BackgroundResource {
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListTargetInstancesHttpRequest request = ListTargetInstancesHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   ApiFuture&lt;ListTargetInstancesPagedResponse&gt; future = targetInstanceClient.listTargetInstancesPagedCallable().futureCall(request);
    *   // Do something
@@ -565,7 +578,7 @@ public class TargetInstanceClient implements BackgroundResource {
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListTargetInstancesHttpRequest request = ListTargetInstancesHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   while (true) {
    *     TargetInstanceList response = targetInstanceClient.listTargetInstancesCallable().call(request);
@@ -617,4 +630,178 @@ public class TargetInstanceClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class AggregatedListTargetInstancesPagedResponse extends AbstractPagedListResponse<
+      AggregatedListTargetInstancesHttpRequest,
+      TargetInstanceAggregatedList,
+      TargetInstance,
+      AggregatedListTargetInstancesPage,
+      AggregatedListTargetInstancesFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListTargetInstancesPagedResponse> createAsync(
+        PageContext<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, TargetInstance> context,
+        ApiFuture<TargetInstanceAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListTargetInstancesPage> futurePage =
+          AggregatedListTargetInstancesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<AggregatedListTargetInstancesPage, AggregatedListTargetInstancesPagedResponse>() {
+            @Override
+            public AggregatedListTargetInstancesPagedResponse apply(AggregatedListTargetInstancesPage input) {
+              return new AggregatedListTargetInstancesPagedResponse(input);
+            }
+          });
+    }
+
+    private AggregatedListTargetInstancesPagedResponse(AggregatedListTargetInstancesPage page) {
+      super(page, AggregatedListTargetInstancesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class AggregatedListTargetInstancesPage extends AbstractPage<
+      AggregatedListTargetInstancesHttpRequest,
+      TargetInstanceAggregatedList,
+      TargetInstance,
+      AggregatedListTargetInstancesPage> {
+
+    private AggregatedListTargetInstancesPage(
+        PageContext<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, TargetInstance> context,
+        TargetInstanceAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListTargetInstancesPage createEmptyPage() {
+      return new AggregatedListTargetInstancesPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListTargetInstancesPage createPage(
+        PageContext<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, TargetInstance> context,
+        TargetInstanceAggregatedList response) {
+      return new AggregatedListTargetInstancesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListTargetInstancesPage> createPageAsync(
+        PageContext<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, TargetInstance> context,
+        ApiFuture<TargetInstanceAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class AggregatedListTargetInstancesFixedSizeCollection extends AbstractFixedSizeCollection<
+      AggregatedListTargetInstancesHttpRequest,
+      TargetInstanceAggregatedList,
+      TargetInstance,
+      AggregatedListTargetInstancesPage,
+      AggregatedListTargetInstancesFixedSizeCollection> {
+
+    private AggregatedListTargetInstancesFixedSizeCollection(List<AggregatedListTargetInstancesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListTargetInstancesFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListTargetInstancesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListTargetInstancesFixedSizeCollection createCollection(
+        List<AggregatedListTargetInstancesPage> pages, int collectionSize) {
+      return new AggregatedListTargetInstancesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
+  public static class ListTargetInstancesPagedResponse extends AbstractPagedListResponse<
+      ListTargetInstancesHttpRequest,
+      TargetInstanceList,
+      TargetInstance,
+      ListTargetInstancesPage,
+      ListTargetInstancesFixedSizeCollection> {
+
+    public static ApiFuture<ListTargetInstancesPagedResponse> createAsync(
+        PageContext<ListTargetInstancesHttpRequest, TargetInstanceList, TargetInstance> context,
+        ApiFuture<TargetInstanceList> futureResponse) {
+      ApiFuture<ListTargetInstancesPage> futurePage =
+          ListTargetInstancesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListTargetInstancesPage, ListTargetInstancesPagedResponse>() {
+            @Override
+            public ListTargetInstancesPagedResponse apply(ListTargetInstancesPage input) {
+              return new ListTargetInstancesPagedResponse(input);
+            }
+          });
+    }
+
+    private ListTargetInstancesPagedResponse(ListTargetInstancesPage page) {
+      super(page, ListTargetInstancesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListTargetInstancesPage extends AbstractPage<
+      ListTargetInstancesHttpRequest,
+      TargetInstanceList,
+      TargetInstance,
+      ListTargetInstancesPage> {
+
+    private ListTargetInstancesPage(
+        PageContext<ListTargetInstancesHttpRequest, TargetInstanceList, TargetInstance> context,
+        TargetInstanceList response) {
+      super(context, response);
+    }
+
+    private static ListTargetInstancesPage createEmptyPage() {
+      return new ListTargetInstancesPage(null, null);
+    }
+
+    @Override
+    protected ListTargetInstancesPage createPage(
+        PageContext<ListTargetInstancesHttpRequest, TargetInstanceList, TargetInstance> context,
+        TargetInstanceList response) {
+      return new ListTargetInstancesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListTargetInstancesPage> createPageAsync(
+        PageContext<ListTargetInstancesHttpRequest, TargetInstanceList, TargetInstance> context,
+        ApiFuture<TargetInstanceList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListTargetInstancesFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListTargetInstancesHttpRequest,
+      TargetInstanceList,
+      TargetInstance,
+      ListTargetInstancesPage,
+      ListTargetInstancesFixedSizeCollection> {
+
+    private ListTargetInstancesFixedSizeCollection(List<ListTargetInstancesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListTargetInstancesFixedSizeCollection createEmptyCollection() {
+      return new ListTargetInstancesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListTargetInstancesFixedSizeCollection createCollection(
+        List<ListTargetInstancesPage> pages, int collectionSize) {
+      return new ListTargetInstancesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

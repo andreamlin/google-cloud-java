@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,6 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
   private final String forwardingRule;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
   private final TargetReference targetReferenceResource;
   private final String userIp;
@@ -49,7 +48,6 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
     this.forwardingRule = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
     this.targetReferenceResource = null;
     this.userIp = null;
@@ -63,7 +61,6 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
       String forwardingRule,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
       TargetReference targetReferenceResource,
       String userIp
@@ -74,10 +71,14 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
     this.forwardingRule = forwardingRule;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
     this.targetReferenceResource = targetReferenceResource;
     this.userIp = userIp;
+  }
+
+  @Override
+  public GlobalForwardingRulesForwardingRuleName resourceNamePath() {
+    return GlobalForwardingRulesForwardingRuleName.parse(forwardingRule);
   }
 
   @Override
@@ -101,9 +102,6 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
     }
@@ -118,7 +116,7 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
 
   @Nullable
   @Override
-  public TargetReference getRequestBody() {
+  public TargetReference requestBody() {
     return targetReferenceResource;
   }
 
@@ -144,10 +142,6 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
 
   public String getPrettyPrint() {
     return prettyPrint;
-  }
-
-  public String getProject() {
-    return project;
   }
 
   public String getQuotaUser() {
@@ -189,7 +183,6 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
     private String forwardingRule;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
     private TargetReference targetReferenceResource;
     private String userIp;
@@ -216,9 +209,6 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
       }
@@ -238,7 +228,6 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
       this.forwardingRule = source.forwardingRule;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
       this.targetReferenceResource = source.targetReferenceResource;
       this.userIp = source.userIp;
@@ -298,15 +287,6 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
@@ -345,9 +325,6 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
       }
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
 
 
@@ -361,7 +338,6 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
         forwardingRule,
         key,
         prettyPrint,
-        project,
         quotaUser,
         targetReferenceResource,
         userIp
@@ -376,31 +352,10 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
       newBuilder.setForwardingRule(this.forwardingRule);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
       newBuilder.setTargetReferenceResource(this.targetReferenceResource);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setForwardingRuleWithGlobalForwardingRulesForwardingRuleName(GlobalForwardingRulesForwardingRuleName value) {
-      if (value == null) {
-        return
-            setForwardingRule("").
-            setProject("")
-            ;
-      }
-      return
-          setForwardingRule(value.getForwardingRule()).
-          setProject(value.getProject())
-          ;
-    }
-
-    public final GlobalForwardingRulesForwardingRuleName getForwardingRuleAsGlobalForwardingRulesForwardingRuleName() {
-      return GlobalForwardingRulesForwardingRuleName.of(
-          getForwardingRule(),
-          getProject()
-          );
     }
   }
 
@@ -413,7 +368,6 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
         + "forwardingRule=" + forwardingRule + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
         + "targetReferenceResource=" + targetReferenceResource + ", "
         + "userIp=" + userIp
@@ -434,7 +388,6 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
           Objects.equals(this.forwardingRule, that.getForwardingRule()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
           Objects.equals(this.targetReferenceResource, that.getTargetReferenceResource()) &&
           Objects.equals(this.userIp, that.getUserIp())
@@ -452,7 +405,6 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
       forwardingRule,
       key,
       prettyPrint,
-      project,
       quotaUser,
       targetReferenceResource,
       userIp

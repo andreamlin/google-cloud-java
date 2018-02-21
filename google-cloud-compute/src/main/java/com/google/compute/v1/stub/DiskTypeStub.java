@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,12 +21,12 @@ import com.google.api.gax.rpc.UnaryCallable;
 import com.google.compute.v1.AggregatedListDiskTypesHttpRequest;
 import com.google.compute.v1.DiskType;
 import com.google.compute.v1.DiskTypeAggregatedList;
+import static com.google.compute.v1.DiskTypeClient.AggregatedListDiskTypesPagedResponse;
+import static com.google.compute.v1.DiskTypeClient.ListDiskTypesPagedResponse;
 import com.google.compute.v1.DiskTypeList;
 import com.google.compute.v1.DiskTypeName;
 import com.google.compute.v1.GetDiskTypeHttpRequest;
 import com.google.compute.v1.ListDiskTypesHttpRequest;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListDiskTypesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListDiskTypesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.ZoneName;
 import javax.annotation.Generated;

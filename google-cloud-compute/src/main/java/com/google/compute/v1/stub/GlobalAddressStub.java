@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,11 @@ import com.google.compute.v1.Address;
 import com.google.compute.v1.AddressList;
 import com.google.compute.v1.DeleteGlobalAddressHttpRequest;
 import com.google.compute.v1.GetGlobalAddressHttpRequest;
+import static com.google.compute.v1.GlobalAddressClient.ListGlobalAddressesPagedResponse;
 import com.google.compute.v1.GlobalAddressesAddressName;
 import com.google.compute.v1.InsertGlobalAddressHttpRequest;
 import com.google.compute.v1.ListGlobalAddressesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListGlobalAddressesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import javax.annotation.Generated;
 

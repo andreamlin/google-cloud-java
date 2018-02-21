@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,13 +26,14 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.GetRegionHttpRequest;
 import com.google.compute.v1.ListRegionsHttpRequest;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionsPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.Region;
+import static com.google.compute.v1.RegionClient.ListRegionsPagedResponse;
 import com.google.compute.v1.RegionList;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.RegionSettings;
@@ -56,7 +57,8 @@ import javax.annotation.Generated;
 public class HttpJsonRegionStub extends RegionStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<GetRegionHttpRequest, Region> getRegionMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetRegionHttpRequest, Region> getRegionMethodDescriptor =
       ApiMethodDescriptor.<GetRegionHttpRequest, Region>newBuilder()
           .setMethodName("compute.regions.get")
           .setRequestInstance(GetRegionHttpRequest.getDefaultInstance())
@@ -70,7 +72,8 @@ public class HttpJsonRegionStub extends RegionStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<ListRegionsHttpRequest, RegionList> listRegionsMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListRegionsHttpRequest, RegionList> listRegionsMethodDescriptor =
       ApiMethodDescriptor.<ListRegionsHttpRequest, RegionList>newBuilder()
           .setMethodName("compute.regions.list")
           .setRequestInstance(ListRegionsHttpRequest.getDefaultInstance())
@@ -92,12 +95,12 @@ public class HttpJsonRegionStub extends RegionStub {
   private final UnaryCallable<ListRegionsHttpRequest, RegionList> listRegionsCallable;
   private final UnaryCallable<ListRegionsHttpRequest, ListRegionsPagedResponse> listRegionsPagedCallable;
 
-  public static final HttpJsonRegionStub create(RegionSettings settings) throws IOException {
+  public static final HttpJsonRegionStub create(RegionStubSettings settings) throws IOException {
     return new HttpJsonRegionStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonRegionStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRegionStub(RegionSettings.newBuilder().build(), clientContext);
+    return new HttpJsonRegionStub(RegionStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -105,7 +108,7 @@ public class HttpJsonRegionStub extends RegionStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonRegionStub(RegionSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonRegionStub(RegionStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<GetRegionHttpRequest, Region> getRegionTransportSettings =
         HttpJsonCallSettings.<GetRegionHttpRequest, Region>newBuilder()

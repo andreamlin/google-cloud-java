@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
 import com.google.api.gax.rpc.StatusCode;
+import com.google.api.gax.rpc.StubSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -46,10 +47,9 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetInstancesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetInstancesPagedResponse;
-import com.google.compute.v1.stub.HttpJsonTargetInstanceStub;
-import com.google.compute.v1.stub.TargetInstanceStub;
+import static com.google.compute.v1.TargetInstanceClient.AggregatedListTargetInstancesPagedResponse;
+import static com.google.compute.v1.TargetInstanceClient.ListTargetInstancesPagedResponse;
+import com.google.compute.v1.stub.TargetInstanceStubSettings;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -87,90 +87,63 @@ import org.threeten.bp.Duration;
 @BetaApi
 public class TargetInstanceSettings extends ClientSettings<TargetInstanceSettings> {
   /**
-   * The default scopes of the service.
-   */
-  private static final ImmutableList<String> DEFAULT_SERVICE_SCOPES = ImmutableList.<String>builder()
-      .add("https://www.googleapis.com/auth/cloud-platform")
-      .add("https://www.googleapis.com/auth/compute")
-      .add("https://www.googleapis.com/auth/compute.readonly")
-      .add("https://www.googleapis.com/auth/devstorage.full_control")
-      .add("https://www.googleapis.com/auth/devstorage.read_only")
-      .add("https://www.googleapis.com/auth/devstorage.read_write")
-      .build();
-
-  private final PagedCallSettings<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, AggregatedListTargetInstancesPagedResponse> aggregatedListTargetInstancesSettings;
-  private final UnaryCallSettings<DeleteTargetInstanceHttpRequest, Operation> deleteTargetInstanceSettings;
-  private final UnaryCallSettings<GetTargetInstanceHttpRequest, TargetInstance> getTargetInstanceSettings;
-  private final UnaryCallSettings<InsertTargetInstanceHttpRequest, Operation> insertTargetInstanceSettings;
-  private final PagedCallSettings<ListTargetInstancesHttpRequest, TargetInstanceList, ListTargetInstancesPagedResponse> listTargetInstancesSettings;
-
-  /**
    * Returns the object with the settings used for calls to aggregatedListTargetInstances.
    */
   public PagedCallSettings<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, AggregatedListTargetInstancesPagedResponse> aggregatedListTargetInstancesSettings() {
-    return aggregatedListTargetInstancesSettings;
+    return ((TargetInstanceStubSettings) getStubSettings()).aggregatedListTargetInstancesSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to deleteTargetInstance.
    */
   public UnaryCallSettings<DeleteTargetInstanceHttpRequest, Operation> deleteTargetInstanceSettings() {
-    return deleteTargetInstanceSettings;
+    return ((TargetInstanceStubSettings) getStubSettings()).deleteTargetInstanceSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to getTargetInstance.
    */
   public UnaryCallSettings<GetTargetInstanceHttpRequest, TargetInstance> getTargetInstanceSettings() {
-    return getTargetInstanceSettings;
+    return ((TargetInstanceStubSettings) getStubSettings()).getTargetInstanceSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to insertTargetInstance.
    */
   public UnaryCallSettings<InsertTargetInstanceHttpRequest, Operation> insertTargetInstanceSettings() {
-    return insertTargetInstanceSettings;
+    return ((TargetInstanceStubSettings) getStubSettings()).insertTargetInstanceSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to listTargetInstances.
    */
   public PagedCallSettings<ListTargetInstancesHttpRequest, TargetInstanceList, ListTargetInstancesPagedResponse> listTargetInstancesSettings() {
-    return listTargetInstancesSettings;
+    return ((TargetInstanceStubSettings) getStubSettings()).listTargetInstancesSettings();
   }
 
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
-  public TargetInstanceStub createStub() throws IOException {
-    if (getTransportChannelProvider()
-        .getTransportName()
-        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
-      return HttpJsonTargetInstanceStub.create(this);
-    } else {
-      throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportChannelProvider().getTransportName());
-    }
+  public static final TargetInstanceSettings create(TargetInstanceStubSettings stub) throws IOException {
+    return new TargetInstanceSettings.Builder(stub.toBuilder()).build();
   }
 
   /**
    * Returns a builder for the default ExecutorProvider for this service.
    */
   public static InstantiatingExecutorProvider.Builder defaultExecutorProviderBuilder() {
-    return InstantiatingExecutorProvider.newBuilder();
+    return TargetInstanceStubSettings.defaultExecutorProviderBuilder();
   }
 
   /**
    * Returns the default service endpoint.
    */
-  public static String getDefaultEndpoint() {
-    return "https://www.googleapis.com/compute/v1/projects/";
-  }
-
+   public static String getDefaultEndpoint() {
+     return TargetInstanceStubSettings.getDefaultEndpoint();
+   }
   /**
    * Returns the default service port.
    */
   public static int getDefaultServicePort() {
-    return 443;
+    return TargetInstanceStubSettings.getDefaultServicePort();
   }
 
 
@@ -178,7 +151,7 @@ public class TargetInstanceSettings extends ClientSettings<TargetInstanceSetting
    * Returns the default service scopes.
    */
   public static List<String> getDefaultServiceScopes() {
-    return DEFAULT_SERVICE_SCOPES;
+    return TargetInstanceStubSettings.getDefaultServiceScopes();
   }
 
 
@@ -186,25 +159,21 @@ public class TargetInstanceSettings extends ClientSettings<TargetInstanceSetting
    * Returns a builder for the default credentials for this service.
    */
   public static GoogleCredentialsProvider.Builder defaultCredentialsProviderBuilder() {
-    return GoogleCredentialsProvider.newBuilder()
-        .setScopesToApply(DEFAULT_SERVICE_SCOPES)
-        ;
+    return TargetInstanceStubSettings.defaultCredentialsProviderBuilder();
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder();
+    return TargetInstanceStubSettings.defaultHttpJsonTransportProviderBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
-    return defaultHttpJsonTransportProviderBuilder().build();
+    return TargetInstanceStubSettings.defaultTransportChannelProvider();
   }
 
   @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
-    return ApiClientHeaderProvider.newBuilder()
-        .setGeneratedLibToken("gapic", GaxProperties.getLibraryVersion(TargetInstanceSettings.class))
-        .setTransportToken(GaxHttpJsonProperties.getHttpJsonTokenName(), GaxHttpJsonProperties.getHttpJsonVersion());
+    return TargetInstanceStubSettings.defaultApiClientHeaderProviderBuilder();
   }
 
   /**
@@ -230,234 +199,35 @@ public class TargetInstanceSettings extends ClientSettings<TargetInstanceSetting
 
   protected TargetInstanceSettings(Builder settingsBuilder) throws IOException {
     super(settingsBuilder);
-
-    aggregatedListTargetInstancesSettings = settingsBuilder.aggregatedListTargetInstancesSettings().build();
-    deleteTargetInstanceSettings = settingsBuilder.deleteTargetInstanceSettings().build();
-    getTargetInstanceSettings = settingsBuilder.getTargetInstanceSettings().build();
-    insertTargetInstanceSettings = settingsBuilder.insertTargetInstanceSettings().build();
-    listTargetInstancesSettings = settingsBuilder.listTargetInstancesSettings().build();
   }
-
-  private static final PagedListDescriptor<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, TargetInstance> AGGREGATED_LIST_TARGET_INSTANCES_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, TargetInstance>() {
-        @Override
-        public String emptyToken() {
-          return "";
-        }
-        @Override
-        public AggregatedListTargetInstancesHttpRequest injectToken(AggregatedListTargetInstancesHttpRequest payload, String token) {
-          return AggregatedListTargetInstancesHttpRequest
-            .newBuilder(payload)
-            .setPageToken(token)
-            .build();
-        }
-        @Override
-        public AggregatedListTargetInstancesHttpRequest injectPageSize(AggregatedListTargetInstancesHttpRequest payload, int pageSize) {
-          return AggregatedListTargetInstancesHttpRequest
-            .newBuilder(payload)
-            .setMaxResults(pageSize)
-            .build();
-        }
-        @Override
-        public Integer extractPageSize(AggregatedListTargetInstancesHttpRequest payload) {
-          return payload.getMaxResults();
-        }
-        @Override
-        public String extractNextToken(TargetInstanceAggregatedList payload) {
-          return payload.getNextPageToken();
-        }
-        @Override
-        public Iterable<TargetInstance> extractResources(TargetInstanceAggregatedList payload) {
-          return payload.getItems().getTargetInstances();
-        }
-      };
-
-  private static final PagedListDescriptor<ListTargetInstancesHttpRequest, TargetInstanceList, TargetInstance> LIST_TARGET_INSTANCES_PAGE_STR_DESC =
-      new PagedListDescriptor<ListTargetInstancesHttpRequest, TargetInstanceList, TargetInstance>() {
-        @Override
-        public String emptyToken() {
-          return "";
-        }
-        @Override
-        public ListTargetInstancesHttpRequest injectToken(ListTargetInstancesHttpRequest payload, String token) {
-          return ListTargetInstancesHttpRequest
-            .newBuilder(payload)
-            .setPageToken(token)
-            .build();
-        }
-        @Override
-        public ListTargetInstancesHttpRequest injectPageSize(ListTargetInstancesHttpRequest payload, int pageSize) {
-          return ListTargetInstancesHttpRequest
-            .newBuilder(payload)
-            .setMaxResults(pageSize)
-            .build();
-        }
-        @Override
-        public Integer extractPageSize(ListTargetInstancesHttpRequest payload) {
-          return payload.getMaxResults();
-        }
-        @Override
-        public String extractNextToken(TargetInstanceList payload) {
-          return payload.getNextPageToken();
-        }
-        @Override
-        public Iterable<TargetInstance> extractResources(TargetInstanceList payload) {
-          return payload.getItems();
-        }
-      };
-
-  private static final PagedListResponseFactory<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, AggregatedListTargetInstancesPagedResponse> AGGREGATED_LIST_TARGET_INSTANCES_PAGE_STR_FACT =
-      new PagedListResponseFactory<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, AggregatedListTargetInstancesPagedResponse>() {
-        @Override
-        public ApiFuture<AggregatedListTargetInstancesPagedResponse> getFuturePagedResponse(
-            UnaryCallable<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList> callable,
-            AggregatedListTargetInstancesHttpRequest request,
-            ApiCallContext context,
-            ApiFuture<TargetInstanceAggregatedList> futureResponse) {
-          PageContext<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, TargetInstance> pageContext =
-              PageContext.create(callable, AGGREGATED_LIST_TARGET_INSTANCES_PAGE_STR_DESC, request, context);
-          return AggregatedListTargetInstancesPagedResponse.createAsync(pageContext, futureResponse);
-        }
-      };
-
-  private static final PagedListResponseFactory<ListTargetInstancesHttpRequest, TargetInstanceList, ListTargetInstancesPagedResponse> LIST_TARGET_INSTANCES_PAGE_STR_FACT =
-      new PagedListResponseFactory<ListTargetInstancesHttpRequest, TargetInstanceList, ListTargetInstancesPagedResponse>() {
-        @Override
-        public ApiFuture<ListTargetInstancesPagedResponse> getFuturePagedResponse(
-            UnaryCallable<ListTargetInstancesHttpRequest, TargetInstanceList> callable,
-            ListTargetInstancesHttpRequest request,
-            ApiCallContext context,
-            ApiFuture<TargetInstanceList> futureResponse) {
-          PageContext<ListTargetInstancesHttpRequest, TargetInstanceList, TargetInstance> pageContext =
-              PageContext.create(callable, LIST_TARGET_INSTANCES_PAGE_STR_DESC, request, context);
-          return ListTargetInstancesPagedResponse.createAsync(pageContext, futureResponse);
-        }
-      };
-
 
   /**
    * Builder for TargetInstanceSettings.
    */
   public static class Builder extends ClientSettings.Builder<TargetInstanceSettings, Builder> {
-    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
-
-    private final PagedCallSettings.Builder<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, AggregatedListTargetInstancesPagedResponse> aggregatedListTargetInstancesSettings;
-    private final UnaryCallSettings.Builder<DeleteTargetInstanceHttpRequest, Operation> deleteTargetInstanceSettings;
-    private final UnaryCallSettings.Builder<GetTargetInstanceHttpRequest, TargetInstance> getTargetInstanceSettings;
-    private final UnaryCallSettings.Builder<InsertTargetInstanceHttpRequest, Operation> insertTargetInstanceSettings;
-    private final PagedCallSettings.Builder<ListTargetInstancesHttpRequest, TargetInstanceList, ListTargetInstancesPagedResponse> listTargetInstancesSettings;
-
-    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
-
-    static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
-      definitions.put(
-          "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
-      definitions.put(
-          "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
-      RETRYABLE_CODE_DEFINITIONS = definitions.build();
-    }
-
-    private static final ImmutableMap<String, RetrySettings> RETRY_PARAM_DEFINITIONS;
-
-    static {
-      ImmutableMap.Builder<String, RetrySettings> definitions = ImmutableMap.builder();
-      RetrySettings settings = null;
-      settings = RetrySettings.newBuilder()
-          .setInitialRetryDelay(Duration.ofMillis(100L))
-          .setRetryDelayMultiplier(1.3)
-          .setMaxRetryDelay(Duration.ofMillis(60000L))
-          .setInitialRpcTimeout(Duration.ofMillis(20000L))
-          .setRpcTimeoutMultiplier(1.0)
-          .setMaxRpcTimeout(Duration.ofMillis(20000L))
-          .setTotalTimeout(Duration.ofMillis(600000L))
-          .build();
-      definitions.put("default", settings);
-      RETRY_PARAM_DEFINITIONS = definitions.build();
-    }
-
-    protected Builder() {
+    protected Builder() throws IOException {
       this((ClientContext) null);
     }
 
     protected Builder(ClientContext clientContext) {
-      super(clientContext);
-
-      aggregatedListTargetInstancesSettings = PagedCallSettings.newBuilder(
-          AGGREGATED_LIST_TARGET_INSTANCES_PAGE_STR_FACT);
-
-      deleteTargetInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      getTargetInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      insertTargetInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      listTargetInstancesSettings = PagedCallSettings.newBuilder(
-          LIST_TARGET_INSTANCES_PAGE_STR_FACT);
-
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
-          aggregatedListTargetInstancesSettings,
-          deleteTargetInstanceSettings,
-          getTargetInstanceSettings,
-          insertTargetInstanceSettings,
-          listTargetInstancesSettings
-      );
-
-      initDefaults(this);
+      super(TargetInstanceStubSettings.newBuilder(clientContext));
     }
 
     private static Builder createDefault() {
-      Builder builder = new Builder((ClientContext) null);
-      builder.setTransportChannelProvider(defaultTransportChannelProvider());
-      builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
-      builder.setInternalHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
-      builder.setEndpoint(getDefaultEndpoint());
-      return initDefaults(builder);
-    }
-
-    private static Builder initDefaults(Builder builder) {
-
-      builder.aggregatedListTargetInstancesSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.deleteTargetInstanceSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.getTargetInstanceSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.insertTargetInstanceSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.listTargetInstancesSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      return builder;
+      return new Builder(TargetInstanceStubSettings.newBuilder());
     }
 
     protected Builder(TargetInstanceSettings settings) {
-      super(settings);
+      super(settings.getStubSettings().toBuilder());
+    }
 
-      aggregatedListTargetInstancesSettings = settings.aggregatedListTargetInstancesSettings.toBuilder();
-      deleteTargetInstanceSettings = settings.deleteTargetInstanceSettings.toBuilder();
-      getTargetInstanceSettings = settings.getTargetInstanceSettings.toBuilder();
-      insertTargetInstanceSettings = settings.insertTargetInstanceSettings.toBuilder();
-      listTargetInstancesSettings = settings.listTargetInstancesSettings.toBuilder();
+    protected Builder(TargetInstanceStubSettings.Builder stubSettings) {
+      super(stubSettings);
+    }
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
-          aggregatedListTargetInstancesSettings,
-          deleteTargetInstanceSettings,
-          getTargetInstanceSettings,
-          insertTargetInstanceSettings,
-          listTargetInstancesSettings
-      );
+
+    public TargetInstanceStubSettings.Builder getStubSettingsBuilder() {
+      return ((TargetInstanceStubSettings.Builder) getStubSettings());
     }
 
     /**
@@ -466,7 +236,7 @@ public class TargetInstanceSettings extends ClientSettings<TargetInstanceSetting
      * Note: This method does not support applying settings to streaming methods.
      */
     public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
-      super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
+      super.applyToAllUnaryMethods(getStubSettingsBuilder().unaryMethodSettingsBuilders(), settingsUpdater);
       return this;
     }
 
@@ -474,35 +244,35 @@ public class TargetInstanceSettings extends ClientSettings<TargetInstanceSetting
      * Returns the builder for the settings used for calls to aggregatedListTargetInstances.
      */
     public PagedCallSettings.Builder<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, AggregatedListTargetInstancesPagedResponse> aggregatedListTargetInstancesSettings() {
-      return aggregatedListTargetInstancesSettings;
+      return getStubSettingsBuilder().aggregatedListTargetInstancesSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to deleteTargetInstance.
      */
     public UnaryCallSettings.Builder<DeleteTargetInstanceHttpRequest, Operation> deleteTargetInstanceSettings() {
-      return deleteTargetInstanceSettings;
+      return getStubSettingsBuilder().deleteTargetInstanceSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to getTargetInstance.
      */
     public UnaryCallSettings.Builder<GetTargetInstanceHttpRequest, TargetInstance> getTargetInstanceSettings() {
-      return getTargetInstanceSettings;
+      return getStubSettingsBuilder().getTargetInstanceSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to insertTargetInstance.
      */
     public UnaryCallSettings.Builder<InsertTargetInstanceHttpRequest, Operation> insertTargetInstanceSettings() {
-      return insertTargetInstanceSettings;
+      return getStubSettingsBuilder().insertTargetInstanceSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to listTargetInstances.
      */
     public PagedCallSettings.Builder<ListTargetInstancesHttpRequest, TargetInstanceList, ListTargetInstancesPagedResponse> listTargetInstancesSettings() {
-      return listTargetInstancesSettings;
+      return getStubSettingsBuilder().listTargetInstancesSettings();
     }
 
     @Override

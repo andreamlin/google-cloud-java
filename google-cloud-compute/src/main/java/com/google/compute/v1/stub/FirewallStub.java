@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.compute.v1.DeleteFirewallHttpRequest;
 import com.google.compute.v1.Firewall;
+import static com.google.compute.v1.FirewallClient.ListFirewallsPagedResponse;
 import com.google.compute.v1.FirewallList;
 import com.google.compute.v1.FirewallName;
 import com.google.compute.v1.GetFirewallHttpRequest;
 import com.google.compute.v1.InsertFirewallHttpRequest;
 import com.google.compute.v1.ListFirewallsHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListFirewallsPagedResponse;
 import com.google.compute.v1.PatchFirewallHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.UpdateFirewallHttpRequest;

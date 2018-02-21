@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.Autoscaler;
@@ -34,8 +35,8 @@ import com.google.compute.v1.GetRegionAutoscalerHttpRequest;
 import com.google.compute.v1.InsertRegionAutoscalerHttpRequest;
 import com.google.compute.v1.ListRegionAutoscalersHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionAutoscalersPagedResponse;
 import com.google.compute.v1.PatchRegionAutoscalerHttpRequest;
+import static com.google.compute.v1.RegionAutoscalerClient.ListRegionAutoscalersPagedResponse;
 import com.google.compute.v1.RegionAutoscalerList;
 import com.google.compute.v1.RegionAutoscalerSettings;
 import com.google.compute.v1.RegionAutoscalersAutoscalerName;
@@ -61,7 +62,8 @@ import javax.annotation.Generated;
 public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<DeleteRegionAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionAutoscalers.delete")
           .setRequestInstance(DeleteRegionAutoscalerHttpRequest.getDefaultInstance())
@@ -75,7 +77,8 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<GetRegionAutoscalerHttpRequest, Autoscaler>newBuilder()
           .setMethodName("compute.regionAutoscalers.get")
           .setRequestInstance(GetRegionAutoscalerHttpRequest.getDefaultInstance())
@@ -89,7 +92,8 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertRegionAutoscalerHttpRequest, Operation> insertRegionAutoscalerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertRegionAutoscalerHttpRequest, Operation> insertRegionAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<InsertRegionAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionAutoscalers.insert")
           .setRequestInstance(InsertRegionAutoscalerHttpRequest.getDefaultInstance())
@@ -103,7 +107,8 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListRegionAutoscalersHttpRequest, RegionAutoscalerList> listRegionAutoscalersMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListRegionAutoscalersHttpRequest, RegionAutoscalerList> listRegionAutoscalersMethodDescriptor =
       ApiMethodDescriptor.<ListRegionAutoscalersHttpRequest, RegionAutoscalerList>newBuilder()
           .setMethodName("compute.regionAutoscalers.list")
           .setRequestInstance(ListRegionAutoscalersHttpRequest.getDefaultInstance())
@@ -118,7 +123,8 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<PatchRegionAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionAutoscalers.patch")
           .setRequestInstance(PatchRegionAutoscalerHttpRequest.getDefaultInstance())
@@ -133,7 +139,8 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
           .build();
-  private static final ApiMethodDescriptor<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<UpdateRegionAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionAutoscalers.update")
           .setRequestInstance(UpdateRegionAutoscalerHttpRequest.getDefaultInstance())
@@ -159,12 +166,12 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
   private final UnaryCallable<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerCallable;
   private final UnaryCallable<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerCallable;
 
-  public static final HttpJsonRegionAutoscalerStub create(RegionAutoscalerSettings settings) throws IOException {
+  public static final HttpJsonRegionAutoscalerStub create(RegionAutoscalerStubSettings settings) throws IOException {
     return new HttpJsonRegionAutoscalerStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonRegionAutoscalerStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRegionAutoscalerStub(RegionAutoscalerSettings.newBuilder().build(), clientContext);
+    return new HttpJsonRegionAutoscalerStub(RegionAutoscalerStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -172,7 +179,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonRegionAutoscalerStub(RegionAutoscalerSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonRegionAutoscalerStub(RegionAutoscalerStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerTransportSettings =
         HttpJsonCallSettings.<DeleteRegionAutoscalerHttpRequest, Operation>newBuilder()

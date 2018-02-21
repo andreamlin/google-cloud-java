@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -57,6 +59,11 @@ public final class UrlMapValidationResult implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("loadErrors") && loadErrors != null) {
@@ -76,7 +83,7 @@ public final class UrlMapValidationResult implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -152,7 +159,7 @@ public final class UrlMapValidationResult implements ApiMessage {
       return loadErrors;
     }
 
-    public Builder setLoadErrors(List<String> loadErrors) {
+    public Builder addAllLoadErrors(List<String> loadErrors) {
       this.loadErrors = loadErrors;
       return this;
     }
@@ -170,7 +177,7 @@ public final class UrlMapValidationResult implements ApiMessage {
       return testFailures;
     }
 
-    public Builder setTestFailures(List<TestFailure> testFailures) {
+    public Builder addAllTestFailures(List<TestFailure> testFailures) {
       this.testFailures = testFailures;
       return this;
     }
@@ -199,9 +206,9 @@ public final class UrlMapValidationResult implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setLoadErrors(this.loadErrors);
+      newBuilder.addAllLoadErrors(this.loadErrors);
       newBuilder.setLoadSucceeded(this.loadSucceeded);
-      newBuilder.setTestFailures(this.testFailures);
+      newBuilder.addAllTestFailures(this.testFailures);
       newBuilder.setTestPassed(this.testPassed);
       return newBuilder;
     }

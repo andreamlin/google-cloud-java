@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.LicensStub;
+import com.google.compute.v1.stub.LicensStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -135,7 +150,7 @@ public class LicensClient implements BackgroundResource {
    */
   protected LicensClient(LicensSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((LicensStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -174,7 +189,7 @@ public class LicensClient implements BackgroundResource {
 
     GetLicensHttpRequest request =
         GetLicensHttpRequest.newBuilder()
-        .setLicenseWithLicenseName(license)
+        .setLicense(license.toString())
         .build();
     return getLicens(request);
   }
@@ -188,7 +203,7 @@ public class LicensClient implements BackgroundResource {
    * try (LicensClient licensClient = LicensClient.create()) {
    *   LicenseName license = LicenseName.of("[PROJECT]", "[LICENSE]");
    *   GetLicensHttpRequest request = GetLicensHttpRequest.newBuilder()
-   *     .setLicenseWithLicenseName(license)
+   *     .setLicense(license.toString())
    *     .build();
    *   License response = licensClient.getLicens(request);
    * }
@@ -211,7 +226,7 @@ public class LicensClient implements BackgroundResource {
    * try (LicensClient licensClient = LicensClient.create()) {
    *   LicenseName license = LicenseName.of("[PROJECT]", "[LICENSE]");
    *   GetLicensHttpRequest request = GetLicensHttpRequest.newBuilder()
-   *     .setLicenseWithLicenseName(license)
+   *     .setLicense(license.toString())
    *     .build();
    *   ApiFuture&lt;License&gt; future = licensClient.getLicensCallable().futureCall(request);
    *   // Do something
@@ -253,5 +268,6 @@ public class LicensClient implements BackgroundResource {
   public boolean awaitTermination(long duration, TimeUnit unit) throws InterruptedException {
     return stub.awaitTermination(duration, unit);
   }
+
 
 }

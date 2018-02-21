@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListImagesPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.ImageStub;
+import com.google.compute.v1.stub.ImageStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class ImageClient implements BackgroundResource {
    */
   protected ImageClient(ImageSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((ImageStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class ImageClient implements BackgroundResource {
 
     DeleteImageHttpRequest request =
         DeleteImageHttpRequest.newBuilder()
-        .setImageWithImageName(image)
+        .setImage(image.toString())
         .build();
     return deleteImage(request);
   }
@@ -189,7 +203,7 @@ public class ImageClient implements BackgroundResource {
    * try (ImageClient imageClient = ImageClient.create()) {
    *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   DeleteImageHttpRequest request = DeleteImageHttpRequest.newBuilder()
-   *     .setImageWithImageName(image)
+   *     .setImage(image.toString())
    *     .build();
    *   Operation response = imageClient.deleteImage(request);
    * }
@@ -212,7 +226,7 @@ public class ImageClient implements BackgroundResource {
    * try (ImageClient imageClient = ImageClient.create()) {
    *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   DeleteImageHttpRequest request = DeleteImageHttpRequest.newBuilder()
-   *     .setImageWithImageName(image)
+   *     .setImage(image.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = imageClient.deleteImageCallable().futureCall(request);
    *   // Do something
@@ -249,7 +263,7 @@ public class ImageClient implements BackgroundResource {
 
     DeprecateImageHttpRequest request =
         DeprecateImageHttpRequest.newBuilder()
-        .setImageWithImageName(image)
+        .setImage(image.toString())
         .setDeprecationStatusResource(deprecationStatusResource)
         .build();
     return deprecateImage(request);
@@ -267,7 +281,7 @@ public class ImageClient implements BackgroundResource {
    *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
    *   DeprecateImageHttpRequest request = DeprecateImageHttpRequest.newBuilder()
-   *     .setImageWithImageName(image)
+   *     .setImage(image.toString())
    *     .setDeprecationStatusResource(deprecationStatus)
    *     .build();
    *   Operation response = imageClient.deprecateImage(request);
@@ -294,7 +308,7 @@ public class ImageClient implements BackgroundResource {
    *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
    *   DeprecateImageHttpRequest request = DeprecateImageHttpRequest.newBuilder()
-   *     .setImageWithImageName(image)
+   *     .setImage(image.toString())
    *     .setDeprecationStatusResource(deprecationStatus)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = imageClient.deprecateImageCallable().futureCall(request);
@@ -328,7 +342,7 @@ public class ImageClient implements BackgroundResource {
 
     GetImageHttpRequest request =
         GetImageHttpRequest.newBuilder()
-        .setImageWithImageName(image)
+        .setImage(image.toString())
         .build();
     return getImage(request);
   }
@@ -342,7 +356,7 @@ public class ImageClient implements BackgroundResource {
    * try (ImageClient imageClient = ImageClient.create()) {
    *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   GetImageHttpRequest request = GetImageHttpRequest.newBuilder()
-   *     .setImageWithImageName(image)
+   *     .setImage(image.toString())
    *     .build();
    *   Image response = imageClient.getImage(request);
    * }
@@ -365,7 +379,7 @@ public class ImageClient implements BackgroundResource {
    * try (ImageClient imageClient = ImageClient.create()) {
    *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
    *   GetImageHttpRequest request = GetImageHttpRequest.newBuilder()
-   *     .setImageWithImageName(image)
+   *     .setImage(image.toString())
    *     .build();
    *   ApiFuture&lt;Image&gt; future = imageClient.getImageCallable().futureCall(request);
    *   // Do something
@@ -398,7 +412,7 @@ public class ImageClient implements BackgroundResource {
 
     GetFromFamilyImageHttpRequest request =
         GetFromFamilyImageHttpRequest.newBuilder()
-        .setFamilyWithFamilyName(family)
+        .setFamily(family.toString())
         .build();
     return getFromFamilyImage(request);
   }
@@ -412,7 +426,7 @@ public class ImageClient implements BackgroundResource {
    * try (ImageClient imageClient = ImageClient.create()) {
    *   FamilyName family = FamilyName.of("[PROJECT]", "[FAMILY]");
    *   GetFromFamilyImageHttpRequest request = GetFromFamilyImageHttpRequest.newBuilder()
-   *     .setFamilyWithFamilyName(family)
+   *     .setFamily(family.toString())
    *     .build();
    *   Image response = imageClient.getFromFamilyImage(request);
    * }
@@ -435,7 +449,7 @@ public class ImageClient implements BackgroundResource {
    * try (ImageClient imageClient = ImageClient.create()) {
    *   FamilyName family = FamilyName.of("[PROJECT]", "[FAMILY]");
    *   GetFromFamilyImageHttpRequest request = GetFromFamilyImageHttpRequest.newBuilder()
-   *     .setFamilyWithFamilyName(family)
+   *     .setFamily(family.toString())
    *     .build();
    *   ApiFuture&lt;Image&gt; future = imageClient.getFromFamilyImageCallable().futureCall(request);
    *   // Do something
@@ -470,7 +484,7 @@ public class ImageClient implements BackgroundResource {
 
     InsertImageHttpRequest request =
         InsertImageHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setImageResource(imageResource)
         .build();
     return insertImage(request);
@@ -486,7 +500,7 @@ public class ImageClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Image image = Image.newBuilder().build();
    *   InsertImageHttpRequest request = InsertImageHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setImageResource(image)
    *     .build();
    *   Operation response = imageClient.insertImage(request);
@@ -511,7 +525,7 @@ public class ImageClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Image image = Image.newBuilder().build();
    *   InsertImageHttpRequest request = InsertImageHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setImageResource(image)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = imageClient.insertImageCallable().futureCall(request);
@@ -546,7 +560,7 @@ public class ImageClient implements BackgroundResource {
   public final ListImagesPagedResponse listImages(ProjectName project) {
     ListImagesHttpRequest request =
         ListImagesHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listImages(request);
   }
@@ -560,7 +574,7 @@ public class ImageClient implements BackgroundResource {
    * try (ImageClient imageClient = ImageClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListImagesHttpRequest request = ListImagesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (Image element : imageClient.listImages(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -586,7 +600,7 @@ public class ImageClient implements BackgroundResource {
    * try (ImageClient imageClient = ImageClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListImagesHttpRequest request = ListImagesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListImagesPagedResponse&gt; future = imageClient.listImagesPagedCallable().futureCall(request);
    *   // Do something
@@ -610,7 +624,7 @@ public class ImageClient implements BackgroundResource {
    * try (ImageClient imageClient = ImageClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListImagesHttpRequest request = ListImagesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     ImageList response = imageClient.listImagesCallable().call(request);
@@ -662,4 +676,91 @@ public class ImageClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListImagesPagedResponse extends AbstractPagedListResponse<
+      ListImagesHttpRequest,
+      ImageList,
+      Image,
+      ListImagesPage,
+      ListImagesFixedSizeCollection> {
+
+    public static ApiFuture<ListImagesPagedResponse> createAsync(
+        PageContext<ListImagesHttpRequest, ImageList, Image> context,
+        ApiFuture<ImageList> futureResponse) {
+      ApiFuture<ListImagesPage> futurePage =
+          ListImagesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListImagesPage, ListImagesPagedResponse>() {
+            @Override
+            public ListImagesPagedResponse apply(ListImagesPage input) {
+              return new ListImagesPagedResponse(input);
+            }
+          });
+    }
+
+    private ListImagesPagedResponse(ListImagesPage page) {
+      super(page, ListImagesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListImagesPage extends AbstractPage<
+      ListImagesHttpRequest,
+      ImageList,
+      Image,
+      ListImagesPage> {
+
+    private ListImagesPage(
+        PageContext<ListImagesHttpRequest, ImageList, Image> context,
+        ImageList response) {
+      super(context, response);
+    }
+
+    private static ListImagesPage createEmptyPage() {
+      return new ListImagesPage(null, null);
+    }
+
+    @Override
+    protected ListImagesPage createPage(
+        PageContext<ListImagesHttpRequest, ImageList, Image> context,
+        ImageList response) {
+      return new ListImagesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListImagesPage> createPageAsync(
+        PageContext<ListImagesHttpRequest, ImageList, Image> context,
+        ApiFuture<ImageList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListImagesFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListImagesHttpRequest,
+      ImageList,
+      Image,
+      ListImagesPage,
+      ListImagesFixedSizeCollection> {
+
+    private ListImagesFixedSizeCollection(List<ListImagesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListImagesFixedSizeCollection createEmptyCollection() {
+      return new ListImagesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListImagesFixedSizeCollection createCollection(
+        List<ListImagesPage> pages, int collectionSize) {
+      return new ListImagesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.CacheInvalidationRule;
@@ -35,11 +36,11 @@ import com.google.compute.v1.InsertUrlMapHttpRequest;
 import com.google.compute.v1.InvalidateCacheUrlMapHttpRequest;
 import com.google.compute.v1.ListUrlMapsHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListUrlMapsPagedResponse;
 import com.google.compute.v1.PatchUrlMapHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.UpdateUrlMapHttpRequest;
 import com.google.compute.v1.UrlMap;
+import static com.google.compute.v1.UrlMapClient.ListUrlMapsPagedResponse;
 import com.google.compute.v1.UrlMapList;
 import com.google.compute.v1.UrlMapName;
 import com.google.compute.v1.UrlMapSettings;
@@ -66,7 +67,8 @@ import javax.annotation.Generated;
 public class HttpJsonUrlMapStub extends UrlMapStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteUrlMapHttpRequest, Operation> deleteUrlMapMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteUrlMapHttpRequest, Operation> deleteUrlMapMethodDescriptor =
       ApiMethodDescriptor.<DeleteUrlMapHttpRequest, Operation>newBuilder()
           .setMethodName("compute.urlMaps.delete")
           .setRequestInstance(DeleteUrlMapHttpRequest.getDefaultInstance())
@@ -80,7 +82,8 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetUrlMapHttpRequest, UrlMap> getUrlMapMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetUrlMapHttpRequest, UrlMap> getUrlMapMethodDescriptor =
       ApiMethodDescriptor.<GetUrlMapHttpRequest, UrlMap>newBuilder()
           .setMethodName("compute.urlMaps.get")
           .setRequestInstance(GetUrlMapHttpRequest.getDefaultInstance())
@@ -94,7 +97,8 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertUrlMapHttpRequest, Operation> insertUrlMapMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertUrlMapHttpRequest, Operation> insertUrlMapMethodDescriptor =
       ApiMethodDescriptor.<InsertUrlMapHttpRequest, Operation>newBuilder()
           .setMethodName("compute.urlMaps.insert")
           .setRequestInstance(InsertUrlMapHttpRequest.getDefaultInstance())
@@ -108,7 +112,8 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<InvalidateCacheUrlMapHttpRequest, Operation> invalidateCacheUrlMapMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InvalidateCacheUrlMapHttpRequest, Operation> invalidateCacheUrlMapMethodDescriptor =
       ApiMethodDescriptor.<InvalidateCacheUrlMapHttpRequest, Operation>newBuilder()
           .setMethodName("compute.urlMaps.invalidateCache")
           .setRequestInstance(InvalidateCacheUrlMapHttpRequest.getDefaultInstance())
@@ -122,7 +127,8 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListUrlMapsHttpRequest, UrlMapList> listUrlMapsMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListUrlMapsHttpRequest, UrlMapList> listUrlMapsMethodDescriptor =
       ApiMethodDescriptor.<ListUrlMapsHttpRequest, UrlMapList>newBuilder()
           .setMethodName("compute.urlMaps.list")
           .setRequestInstance(ListUrlMapsHttpRequest.getDefaultInstance())
@@ -137,7 +143,8 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<PatchUrlMapHttpRequest, Operation> patchUrlMapMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<PatchUrlMapHttpRequest, Operation> patchUrlMapMethodDescriptor =
       ApiMethodDescriptor.<PatchUrlMapHttpRequest, Operation>newBuilder()
           .setMethodName("compute.urlMaps.patch")
           .setRequestInstance(PatchUrlMapHttpRequest.getDefaultInstance())
@@ -151,7 +158,8 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
           .build();
-  private static final ApiMethodDescriptor<UpdateUrlMapHttpRequest, Operation> updateUrlMapMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<UpdateUrlMapHttpRequest, Operation> updateUrlMapMethodDescriptor =
       ApiMethodDescriptor.<UpdateUrlMapHttpRequest, Operation>newBuilder()
           .setMethodName("compute.urlMaps.update")
           .setRequestInstance(UpdateUrlMapHttpRequest.getDefaultInstance())
@@ -165,7 +173,8 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PUT)
           .build();
-  private static final ApiMethodDescriptor<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapMethodDescriptor =
       ApiMethodDescriptor.<ValidateUrlMapHttpRequest, UrlMapsValidateResponse>newBuilder()
           .setMethodName("compute.urlMaps.validate")
           .setRequestInstance(ValidateUrlMapHttpRequest.getDefaultInstance())
@@ -192,12 +201,12 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
   private final UnaryCallable<UpdateUrlMapHttpRequest, Operation> updateUrlMapCallable;
   private final UnaryCallable<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapCallable;
 
-  public static final HttpJsonUrlMapStub create(UrlMapSettings settings) throws IOException {
+  public static final HttpJsonUrlMapStub create(UrlMapStubSettings settings) throws IOException {
     return new HttpJsonUrlMapStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonUrlMapStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonUrlMapStub(UrlMapSettings.newBuilder().build(), clientContext);
+    return new HttpJsonUrlMapStub(UrlMapStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -205,7 +214,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonUrlMapStub(UrlMapSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonUrlMapStub(UrlMapStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteUrlMapHttpRequest, Operation> deleteUrlMapTransportSettings =
         HttpJsonCallSettings.<DeleteUrlMapHttpRequest, Operation>newBuilder()

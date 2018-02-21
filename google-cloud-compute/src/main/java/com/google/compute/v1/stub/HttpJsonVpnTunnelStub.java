@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListVpnTunnelsHttpRequest;
@@ -34,12 +35,12 @@ import com.google.compute.v1.GetVpnTunnelHttpRequest;
 import com.google.compute.v1.InsertVpnTunnelHttpRequest;
 import com.google.compute.v1.ListVpnTunnelsHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListVpnTunnelsPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListVpnTunnelsPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.VpnTunnel;
 import com.google.compute.v1.VpnTunnelAggregatedList;
+import static com.google.compute.v1.VpnTunnelClient.AggregatedListVpnTunnelsPagedResponse;
+import static com.google.compute.v1.VpnTunnelClient.ListVpnTunnelsPagedResponse;
 import com.google.compute.v1.VpnTunnelList;
 import com.google.compute.v1.VpnTunnelName;
 import com.google.compute.v1.VpnTunnelSettings;
@@ -63,7 +64,8 @@ import javax.annotation.Generated;
 public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList> aggregatedListVpnTunnelsMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList> aggregatedListVpnTunnelsMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList>newBuilder()
           .setMethodName("compute.vpnTunnels.aggregatedList")
           .setRequestInstance(AggregatedListVpnTunnelsHttpRequest.getDefaultInstance())
@@ -78,7 +80,8 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelMethodDescriptor =
       ApiMethodDescriptor.<DeleteVpnTunnelHttpRequest, Operation>newBuilder()
           .setMethodName("compute.vpnTunnels.delete")
           .setRequestInstance(DeleteVpnTunnelHttpRequest.getDefaultInstance())
@@ -92,7 +95,8 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelMethodDescriptor =
       ApiMethodDescriptor.<GetVpnTunnelHttpRequest, VpnTunnel>newBuilder()
           .setMethodName("compute.vpnTunnels.get")
           .setRequestInstance(GetVpnTunnelHttpRequest.getDefaultInstance())
@@ -106,7 +110,8 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelMethodDescriptor =
       ApiMethodDescriptor.<InsertVpnTunnelHttpRequest, Operation>newBuilder()
           .setMethodName("compute.vpnTunnels.insert")
           .setRequestInstance(InsertVpnTunnelHttpRequest.getDefaultInstance())
@@ -120,7 +125,8 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListVpnTunnelsHttpRequest, VpnTunnelList> listVpnTunnelsMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListVpnTunnelsHttpRequest, VpnTunnelList> listVpnTunnelsMethodDescriptor =
       ApiMethodDescriptor.<ListVpnTunnelsHttpRequest, VpnTunnelList>newBuilder()
           .setMethodName("compute.vpnTunnels.list")
           .setRequestInstance(ListVpnTunnelsHttpRequest.getDefaultInstance())
@@ -146,12 +152,12 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
   private final UnaryCallable<ListVpnTunnelsHttpRequest, VpnTunnelList> listVpnTunnelsCallable;
   private final UnaryCallable<ListVpnTunnelsHttpRequest, ListVpnTunnelsPagedResponse> listVpnTunnelsPagedCallable;
 
-  public static final HttpJsonVpnTunnelStub create(VpnTunnelSettings settings) throws IOException {
+  public static final HttpJsonVpnTunnelStub create(VpnTunnelStubSettings settings) throws IOException {
     return new HttpJsonVpnTunnelStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonVpnTunnelStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonVpnTunnelStub(VpnTunnelSettings.newBuilder().build(), clientContext);
+    return new HttpJsonVpnTunnelStub(VpnTunnelStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -159,7 +165,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonVpnTunnelStub(VpnTunnelSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonVpnTunnelStub(VpnTunnelStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList> aggregatedListVpnTunnelsTransportSettings =
         HttpJsonCallSettings.<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList>newBuilder()

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListSubnetworksPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListSubnetworksPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.SubnetworkStub;
+import com.google.compute.v1.stub.SubnetworkStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -137,7 +150,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   protected SubnetworkClient(SubnetworkSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((SubnetworkStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -177,7 +190,7 @@ public class SubnetworkClient implements BackgroundResource {
   public final AggregatedListSubnetworksPagedResponse aggregatedListSubnetworks(ProjectName project) {
     AggregatedListSubnetworksHttpRequest request =
         AggregatedListSubnetworksHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return aggregatedListSubnetworks(request);
   }
@@ -191,7 +204,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListSubnetworksHttpRequest request = AggregatedListSubnetworksHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (Subnetwork element : subnetworkClient.aggregatedListSubnetworks(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -217,7 +230,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListSubnetworksHttpRequest request = AggregatedListSubnetworksHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;AggregatedListSubnetworksPagedResponse&gt; future = subnetworkClient.aggregatedListSubnetworksPagedCallable().futureCall(request);
    *   // Do something
@@ -241,11 +254,11 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListSubnetworksHttpRequest request = AggregatedListSubnetworksHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     SubnetworkAggregatedList response = subnetworkClient.aggregatedListSubnetworksCallable().call(request);
-   *     for (Subnetwork element : response.getItems().getSubnetworks()) {
+   *     for (Subnetwork element : response.getSubnetworks()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -283,7 +296,7 @@ public class SubnetworkClient implements BackgroundResource {
 
     DeleteSubnetworkHttpRequest request =
         DeleteSubnetworkHttpRequest.newBuilder()
-        .setSubnetworkWithSubnetworkName(subnetwork)
+        .setSubnetwork(subnetwork.toString())
         .build();
     return deleteSubnetwork(request);
   }
@@ -297,7 +310,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   DeleteSubnetworkHttpRequest request = DeleteSubnetworkHttpRequest.newBuilder()
-   *     .setSubnetworkWithSubnetworkName(subnetwork)
+   *     .setSubnetwork(subnetwork.toString())
    *     .build();
    *   Operation response = subnetworkClient.deleteSubnetwork(request);
    * }
@@ -320,7 +333,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   DeleteSubnetworkHttpRequest request = DeleteSubnetworkHttpRequest.newBuilder()
-   *     .setSubnetworkWithSubnetworkName(subnetwork)
+   *     .setSubnetwork(subnetwork.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = subnetworkClient.deleteSubnetworkCallable().futureCall(request);
    *   // Do something
@@ -355,7 +368,7 @@ public class SubnetworkClient implements BackgroundResource {
 
     ExpandIpCidrRangeSubnetworkHttpRequest request =
         ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
-        .setSubnetworkWithSubnetworkName(subnetwork)
+        .setSubnetwork(subnetwork.toString())
         .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequestResource)
         .build();
     return expandIpCidrRangeSubnetwork(request);
@@ -371,7 +384,7 @@ public class SubnetworkClient implements BackgroundResource {
    *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
    *   ExpandIpCidrRangeSubnetworkHttpRequest request = ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
-   *     .setSubnetworkWithSubnetworkName(subnetwork)
+   *     .setSubnetwork(subnetwork.toString())
    *     .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequest)
    *     .build();
    *   Operation response = subnetworkClient.expandIpCidrRangeSubnetwork(request);
@@ -396,7 +409,7 @@ public class SubnetworkClient implements BackgroundResource {
    *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
    *   ExpandIpCidrRangeSubnetworkHttpRequest request = ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
-   *     .setSubnetworkWithSubnetworkName(subnetwork)
+   *     .setSubnetwork(subnetwork.toString())
    *     .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = subnetworkClient.expandIpCidrRangeSubnetworkCallable().futureCall(request);
@@ -430,7 +443,7 @@ public class SubnetworkClient implements BackgroundResource {
 
     GetSubnetworkHttpRequest request =
         GetSubnetworkHttpRequest.newBuilder()
-        .setSubnetworkWithSubnetworkName(subnetwork)
+        .setSubnetwork(subnetwork.toString())
         .build();
     return getSubnetwork(request);
   }
@@ -444,7 +457,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   GetSubnetworkHttpRequest request = GetSubnetworkHttpRequest.newBuilder()
-   *     .setSubnetworkWithSubnetworkName(subnetwork)
+   *     .setSubnetwork(subnetwork.toString())
    *     .build();
    *   Subnetwork response = subnetworkClient.getSubnetwork(request);
    * }
@@ -467,7 +480,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   GetSubnetworkHttpRequest request = GetSubnetworkHttpRequest.newBuilder()
-   *     .setSubnetworkWithSubnetworkName(subnetwork)
+   *     .setSubnetwork(subnetwork.toString())
    *     .build();
    *   ApiFuture&lt;Subnetwork&gt; future = subnetworkClient.getSubnetworkCallable().futureCall(request);
    *   // Do something
@@ -502,7 +515,7 @@ public class SubnetworkClient implements BackgroundResource {
 
     InsertSubnetworkHttpRequest request =
         InsertSubnetworkHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .setSubnetworkResource(subnetworkResource)
         .build();
     return insertSubnetwork(request);
@@ -518,7 +531,7 @@ public class SubnetworkClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Subnetwork subnetwork = Subnetwork.newBuilder().build();
    *   InsertSubnetworkHttpRequest request = InsertSubnetworkHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .setSubnetworkResource(subnetwork)
    *     .build();
    *   Operation response = subnetworkClient.insertSubnetwork(request);
@@ -543,7 +556,7 @@ public class SubnetworkClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Subnetwork subnetwork = Subnetwork.newBuilder().build();
    *   InsertSubnetworkHttpRequest request = InsertSubnetworkHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .setSubnetworkResource(subnetwork)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = subnetworkClient.insertSubnetworkCallable().futureCall(request);
@@ -578,7 +591,7 @@ public class SubnetworkClient implements BackgroundResource {
   public final ListSubnetworksPagedResponse listSubnetworks(RegionName region) {
     ListSubnetworksHttpRequest request =
         ListSubnetworksHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .build();
     return listSubnetworks(request);
   }
@@ -592,7 +605,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListSubnetworksHttpRequest request = ListSubnetworksHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   for (Subnetwork element : subnetworkClient.listSubnetworks(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -618,7 +631,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListSubnetworksHttpRequest request = ListSubnetworksHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   ApiFuture&lt;ListSubnetworksPagedResponse&gt; future = subnetworkClient.listSubnetworksPagedCallable().futureCall(request);
    *   // Do something
@@ -642,7 +655,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListSubnetworksHttpRequest request = ListSubnetworksHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   while (true) {
    *     SubnetworkList response = subnetworkClient.listSubnetworksCallable().call(request);
@@ -694,4 +707,178 @@ public class SubnetworkClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class AggregatedListSubnetworksPagedResponse extends AbstractPagedListResponse<
+      AggregatedListSubnetworksHttpRequest,
+      SubnetworkAggregatedList,
+      Subnetwork,
+      AggregatedListSubnetworksPage,
+      AggregatedListSubnetworksFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListSubnetworksPagedResponse> createAsync(
+        PageContext<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, Subnetwork> context,
+        ApiFuture<SubnetworkAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListSubnetworksPage> futurePage =
+          AggregatedListSubnetworksPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<AggregatedListSubnetworksPage, AggregatedListSubnetworksPagedResponse>() {
+            @Override
+            public AggregatedListSubnetworksPagedResponse apply(AggregatedListSubnetworksPage input) {
+              return new AggregatedListSubnetworksPagedResponse(input);
+            }
+          });
+    }
+
+    private AggregatedListSubnetworksPagedResponse(AggregatedListSubnetworksPage page) {
+      super(page, AggregatedListSubnetworksFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class AggregatedListSubnetworksPage extends AbstractPage<
+      AggregatedListSubnetworksHttpRequest,
+      SubnetworkAggregatedList,
+      Subnetwork,
+      AggregatedListSubnetworksPage> {
+
+    private AggregatedListSubnetworksPage(
+        PageContext<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, Subnetwork> context,
+        SubnetworkAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListSubnetworksPage createEmptyPage() {
+      return new AggregatedListSubnetworksPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListSubnetworksPage createPage(
+        PageContext<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, Subnetwork> context,
+        SubnetworkAggregatedList response) {
+      return new AggregatedListSubnetworksPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListSubnetworksPage> createPageAsync(
+        PageContext<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, Subnetwork> context,
+        ApiFuture<SubnetworkAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class AggregatedListSubnetworksFixedSizeCollection extends AbstractFixedSizeCollection<
+      AggregatedListSubnetworksHttpRequest,
+      SubnetworkAggregatedList,
+      Subnetwork,
+      AggregatedListSubnetworksPage,
+      AggregatedListSubnetworksFixedSizeCollection> {
+
+    private AggregatedListSubnetworksFixedSizeCollection(List<AggregatedListSubnetworksPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListSubnetworksFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListSubnetworksFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListSubnetworksFixedSizeCollection createCollection(
+        List<AggregatedListSubnetworksPage> pages, int collectionSize) {
+      return new AggregatedListSubnetworksFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
+  public static class ListSubnetworksPagedResponse extends AbstractPagedListResponse<
+      ListSubnetworksHttpRequest,
+      SubnetworkList,
+      Subnetwork,
+      ListSubnetworksPage,
+      ListSubnetworksFixedSizeCollection> {
+
+    public static ApiFuture<ListSubnetworksPagedResponse> createAsync(
+        PageContext<ListSubnetworksHttpRequest, SubnetworkList, Subnetwork> context,
+        ApiFuture<SubnetworkList> futureResponse) {
+      ApiFuture<ListSubnetworksPage> futurePage =
+          ListSubnetworksPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListSubnetworksPage, ListSubnetworksPagedResponse>() {
+            @Override
+            public ListSubnetworksPagedResponse apply(ListSubnetworksPage input) {
+              return new ListSubnetworksPagedResponse(input);
+            }
+          });
+    }
+
+    private ListSubnetworksPagedResponse(ListSubnetworksPage page) {
+      super(page, ListSubnetworksFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListSubnetworksPage extends AbstractPage<
+      ListSubnetworksHttpRequest,
+      SubnetworkList,
+      Subnetwork,
+      ListSubnetworksPage> {
+
+    private ListSubnetworksPage(
+        PageContext<ListSubnetworksHttpRequest, SubnetworkList, Subnetwork> context,
+        SubnetworkList response) {
+      super(context, response);
+    }
+
+    private static ListSubnetworksPage createEmptyPage() {
+      return new ListSubnetworksPage(null, null);
+    }
+
+    @Override
+    protected ListSubnetworksPage createPage(
+        PageContext<ListSubnetworksHttpRequest, SubnetworkList, Subnetwork> context,
+        SubnetworkList response) {
+      return new ListSubnetworksPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListSubnetworksPage> createPageAsync(
+        PageContext<ListSubnetworksHttpRequest, SubnetworkList, Subnetwork> context,
+        ApiFuture<SubnetworkList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListSubnetworksFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListSubnetworksHttpRequest,
+      SubnetworkList,
+      Subnetwork,
+      ListSubnetworksPage,
+      ListSubnetworksFixedSizeCollection> {
+
+    private ListSubnetworksFixedSizeCollection(List<ListSubnetworksPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListSubnetworksFixedSizeCollection createEmptyCollection() {
+      return new ListSubnetworksFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListSubnetworksFixedSizeCollection createCollection(
+        List<ListSubnetworksPage> pages, int collectionSize) {
+      return new ListSubnetworksFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

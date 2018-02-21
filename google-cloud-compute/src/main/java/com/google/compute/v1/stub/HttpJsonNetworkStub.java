@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteNetworkHttpRequest;
@@ -33,11 +34,11 @@ import com.google.compute.v1.GetNetworkHttpRequest;
 import com.google.compute.v1.InsertNetworkHttpRequest;
 import com.google.compute.v1.ListNetworksHttpRequest;
 import com.google.compute.v1.Network;
+import static com.google.compute.v1.NetworkClient.ListNetworksPagedResponse;
 import com.google.compute.v1.NetworkList;
 import com.google.compute.v1.NetworkName;
 import com.google.compute.v1.NetworkSettings;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListNetworksPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.SwitchToCustomModeNetworkHttpRequest;
 import java.io.IOException;
@@ -60,7 +61,8 @@ import javax.annotation.Generated;
 public class HttpJsonNetworkStub extends NetworkStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteNetworkHttpRequest, Operation> deleteNetworkMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteNetworkHttpRequest, Operation> deleteNetworkMethodDescriptor =
       ApiMethodDescriptor.<DeleteNetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.networks.delete")
           .setRequestInstance(DeleteNetworkHttpRequest.getDefaultInstance())
@@ -74,7 +76,8 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetNetworkHttpRequest, Network> getNetworkMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetNetworkHttpRequest, Network> getNetworkMethodDescriptor =
       ApiMethodDescriptor.<GetNetworkHttpRequest, Network>newBuilder()
           .setMethodName("compute.networks.get")
           .setRequestInstance(GetNetworkHttpRequest.getDefaultInstance())
@@ -88,7 +91,8 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertNetworkHttpRequest, Operation> insertNetworkMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertNetworkHttpRequest, Operation> insertNetworkMethodDescriptor =
       ApiMethodDescriptor.<InsertNetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.networks.insert")
           .setRequestInstance(InsertNetworkHttpRequest.getDefaultInstance())
@@ -102,7 +106,8 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListNetworksHttpRequest, NetworkList> listNetworksMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListNetworksHttpRequest, NetworkList> listNetworksMethodDescriptor =
       ApiMethodDescriptor.<ListNetworksHttpRequest, NetworkList>newBuilder()
           .setMethodName("compute.networks.list")
           .setRequestInstance(ListNetworksHttpRequest.getDefaultInstance())
@@ -117,7 +122,8 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<SwitchToCustomModeNetworkHttpRequest, Operation> switchToCustomModeNetworkMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<SwitchToCustomModeNetworkHttpRequest, Operation> switchToCustomModeNetworkMethodDescriptor =
       ApiMethodDescriptor.<SwitchToCustomModeNetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.networks.switchToCustomMode")
           .setRequestInstance(SwitchToCustomModeNetworkHttpRequest.getDefaultInstance())
@@ -141,12 +147,12 @@ public class HttpJsonNetworkStub extends NetworkStub {
   private final UnaryCallable<ListNetworksHttpRequest, ListNetworksPagedResponse> listNetworksPagedCallable;
   private final UnaryCallable<SwitchToCustomModeNetworkHttpRequest, Operation> switchToCustomModeNetworkCallable;
 
-  public static final HttpJsonNetworkStub create(NetworkSettings settings) throws IOException {
+  public static final HttpJsonNetworkStub create(NetworkStubSettings settings) throws IOException {
     return new HttpJsonNetworkStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonNetworkStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonNetworkStub(NetworkSettings.newBuilder().build(), clientContext);
+    return new HttpJsonNetworkStub(NetworkStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -154,7 +160,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonNetworkStub(NetworkSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonNetworkStub(NetworkStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteNetworkHttpRequest, Operation> deleteNetworkTransportSettings =
         HttpJsonCallSettings.<DeleteNetworkHttpRequest, Operation>newBuilder()

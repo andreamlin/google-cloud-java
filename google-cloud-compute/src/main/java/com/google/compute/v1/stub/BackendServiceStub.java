@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,8 @@ import com.google.api.gax.rpc.UnaryCallable;
 import com.google.compute.v1.AggregatedListBackendServicesHttpRequest;
 import com.google.compute.v1.BackendService;
 import com.google.compute.v1.BackendServiceAggregatedList;
+import static com.google.compute.v1.BackendServiceClient.AggregatedListBackendServicesPagedResponse;
+import static com.google.compute.v1.BackendServiceClient.ListBackendServicesPagedResponse;
 import com.google.compute.v1.BackendServiceGroupHealth;
 import com.google.compute.v1.BackendServiceList;
 import com.google.compute.v1.BackendServiceName;
@@ -30,8 +32,6 @@ import com.google.compute.v1.GetHealthBackendServiceHttpRequest;
 import com.google.compute.v1.InsertBackendServiceHttpRequest;
 import com.google.compute.v1.ListBackendServicesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListBackendServicesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListBackendServicesPagedResponse;
 import com.google.compute.v1.PatchBackendServiceHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.ResourceGroupReference;

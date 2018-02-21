@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,6 +77,11 @@ public final class InsertTargetHttpProxyHttpRequest implements ApiMessage {
   }
 
   @Override
+  public ProjectName resourceNamePath() {
+    return ProjectName.parse(project);
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("access_token") && access_token != null) {
@@ -111,7 +116,7 @@ public final class InsertTargetHttpProxyHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public TargetHttpProxy getRequestBody() {
+  public TargetHttpProxy requestBody() {
     return targetHttpProxyResource;
   }
 
@@ -351,23 +356,6 @@ public final class InsertTargetHttpProxyHttpRequest implements ApiMessage {
       newBuilder.setTargetHttpProxyResource(this.targetHttpProxyResource);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setProjectWithProjectName(ProjectName value) {
-      if (value == null) {
-        return
-            setProject("")
-            ;
-      }
-      return
-          setProject(value.getProject())
-          ;
-    }
-
-    public final ProjectName getProjectAsProjectName() {
-      return ProjectName.of(
-          getProject()
-          );
     }
   }
 

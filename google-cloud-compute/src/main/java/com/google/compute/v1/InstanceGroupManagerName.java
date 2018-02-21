@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,22 @@
 package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
+import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.pathtemplate.PathTemplate;
-import com.google.api.resourcenames.ResourceName;
 import com.google.api.resourcenames.ResourceNameType;
 import com.google.common.base.Preconditions;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import javax.annotation.Generated;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class InstanceGroupManagerName implements ResourceName {
+public final class InstanceGroupManagerName implements ResourceNamePath {
   private final String instanceGroupManager;
   private final String project;
   private final String zone;
@@ -60,6 +64,19 @@ public final class InstanceGroupManagerName implements ResourceName {
       .build();
   }
 
+  public static String format(
+      String instanceGroupManager,
+      String project,
+      String zone
+      ) {
+    return of(
+        instanceGroupManager,
+        project,
+        zone
+        )
+        .toString();
+  }
+
   public String getInstanceGroupManager() {
     return instanceGroupManager;
   }
@@ -72,6 +89,21 @@ public final class InstanceGroupManagerName implements ResourceName {
     return zone;
   }
 
+
+  @Override
+  public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
+    Map<String, List<String>> fieldMap = new HashMap<>();
+    if (fieldNames.contains("instanceGroupManager") && instanceGroupManager != null) {
+      fieldMap.put("instanceGroupManager", Collections.singletonList(String.valueOf(instanceGroupManager)));
+    }
+    if (fieldNames.contains("project") && project != null) {
+      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
+    }
+    if (fieldNames.contains("zone") && zone != null) {
+      fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
+    }
+    return fieldMap;
+  }
 
   public static InstanceGroupManagerName parse(String formattedString) {
     Map<String, String> matchMap =

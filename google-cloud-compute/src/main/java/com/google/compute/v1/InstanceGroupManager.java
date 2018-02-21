@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -105,6 +107,11 @@ public final class InstanceGroupManager implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("baseInstanceName") && baseInstanceName != null) {
@@ -160,7 +167,7 @@ public final class InstanceGroupManager implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -434,7 +441,7 @@ public final class InstanceGroupManager implements ApiMessage {
       return namedPorts;
     }
 
-    public Builder setNamedPorts(List<NamedPort> namedPorts) {
+    public Builder addAllNamedPorts(List<NamedPort> namedPorts) {
       this.namedPorts = namedPorts;
       return this;
     }
@@ -461,7 +468,7 @@ public final class InstanceGroupManager implements ApiMessage {
       return targetPools;
     }
 
-    public Builder setTargetPools(List<String> targetPools) {
+    public Builder addAllTargetPools(List<String> targetPools) {
       this.targetPools = targetPools;
       return this;
     }
@@ -533,10 +540,10 @@ public final class InstanceGroupManager implements ApiMessage {
       newBuilder.setInstanceTemplate(this.instanceTemplate);
       newBuilder.setKind(this.kind);
       newBuilder.setName(this.name);
-      newBuilder.setNamedPorts(this.namedPorts);
+      newBuilder.addAllNamedPorts(this.namedPorts);
       newBuilder.setRegion(this.region);
       newBuilder.setSelfLink(this.selfLink);
-      newBuilder.setTargetPools(this.targetPools);
+      newBuilder.addAllTargetPools(this.targetPools);
       newBuilder.setTargetSize(this.targetSize);
       newBuilder.setZone(this.zone);
       return newBuilder;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionAutoscalersPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.RegionAutoscalerStub;
+import com.google.compute.v1.stub.RegionAutoscalerStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    */
   protected RegionAutoscalerClient(RegionAutoscalerSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((RegionAutoscalerStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
 
     DeleteRegionAutoscalerHttpRequest request =
         DeleteRegionAutoscalerHttpRequest.newBuilder()
-        .setAutoscalerWithRegionAutoscalersAutoscalerName(autoscaler)
+        .setAutoscaler(autoscaler.toString())
         .build();
     return deleteRegionAutoscaler(request);
   }
@@ -189,7 +203,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
    *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
    *   DeleteRegionAutoscalerHttpRequest request = DeleteRegionAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscalerWithRegionAutoscalersAutoscalerName(autoscaler)
+   *     .setAutoscaler(autoscaler.toString())
    *     .build();
    *   Operation response = regionAutoscalerClient.deleteRegionAutoscaler(request);
    * }
@@ -212,7 +226,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
    *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
    *   DeleteRegionAutoscalerHttpRequest request = DeleteRegionAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscalerWithRegionAutoscalersAutoscalerName(autoscaler)
+   *     .setAutoscaler(autoscaler.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionAutoscalerClient.deleteRegionAutoscalerCallable().futureCall(request);
    *   // Do something
@@ -245,7 +259,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
 
     GetRegionAutoscalerHttpRequest request =
         GetRegionAutoscalerHttpRequest.newBuilder()
-        .setAutoscalerWithRegionAutoscalersAutoscalerName(autoscaler)
+        .setAutoscaler(autoscaler.toString())
         .build();
     return getRegionAutoscaler(request);
   }
@@ -259,7 +273,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
    *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
    *   GetRegionAutoscalerHttpRequest request = GetRegionAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscalerWithRegionAutoscalersAutoscalerName(autoscaler)
+   *     .setAutoscaler(autoscaler.toString())
    *     .build();
    *   Autoscaler response = regionAutoscalerClient.getRegionAutoscaler(request);
    * }
@@ -282,7 +296,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
    *   RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
    *   GetRegionAutoscalerHttpRequest request = GetRegionAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscalerWithRegionAutoscalersAutoscalerName(autoscaler)
+   *     .setAutoscaler(autoscaler.toString())
    *     .build();
    *   ApiFuture&lt;Autoscaler&gt; future = regionAutoscalerClient.getRegionAutoscalerCallable().futureCall(request);
    *   // Do something
@@ -317,7 +331,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
 
     InsertRegionAutoscalerHttpRequest request =
         InsertRegionAutoscalerHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .setAutoscalerResource(autoscalerResource)
         .build();
     return insertRegionAutoscaler(request);
@@ -333,7 +347,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   InsertRegionAutoscalerHttpRequest request = InsertRegionAutoscalerHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .setAutoscalerResource(autoscaler)
    *     .build();
    *   Operation response = regionAutoscalerClient.insertRegionAutoscaler(request);
@@ -358,7 +372,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   InsertRegionAutoscalerHttpRequest request = InsertRegionAutoscalerHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .setAutoscalerResource(autoscaler)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionAutoscalerClient.insertRegionAutoscalerCallable().futureCall(request);
@@ -393,7 +407,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
   public final ListRegionAutoscalersPagedResponse listRegionAutoscalers(RegionName region) {
     ListRegionAutoscalersHttpRequest request =
         ListRegionAutoscalersHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .build();
     return listRegionAutoscalers(request);
   }
@@ -407,7 +421,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRegionAutoscalersHttpRequest request = ListRegionAutoscalersHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   for (Autoscaler element : regionAutoscalerClient.listRegionAutoscalers(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -433,7 +447,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRegionAutoscalersHttpRequest request = ListRegionAutoscalersHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   ApiFuture&lt;ListRegionAutoscalersPagedResponse&gt; future = regionAutoscalerClient.listRegionAutoscalersPagedCallable().futureCall(request);
    *   // Do something
@@ -457,7 +471,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRegionAutoscalersHttpRequest request = ListRegionAutoscalersHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   while (true) {
    *     RegionAutoscalerList response = regionAutoscalerClient.listRegionAutoscalersCallable().call(request);
@@ -503,7 +517,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
     PatchRegionAutoscalerHttpRequest request =
         PatchRegionAutoscalerHttpRequest.newBuilder()
         .setAutoscaler(autoscaler)
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .setAutoscalerResource(autoscalerResource)
         .build();
     return patchRegionAutoscaler(request);
@@ -519,8 +533,8 @@ public class RegionAutoscalerClient implements BackgroundResource {
    *   String autoscaler = "";
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   PatchRegionAutoscalerHttpRequest request = PatchRegionAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscaler(autoscaler)
-   *     .setRegionWithRegionName(region)
+   *     .setAutoscalerResource(autoscaler)
+   *     .setRegion(region.toString())
    *     .build();
    *   Operation response = regionAutoscalerClient.patchRegionAutoscaler(request);
    * }
@@ -544,8 +558,8 @@ public class RegionAutoscalerClient implements BackgroundResource {
    *   String autoscaler = "";
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   PatchRegionAutoscalerHttpRequest request = PatchRegionAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscaler(autoscaler)
-   *     .setRegionWithRegionName(region)
+   *     .setAutoscalerResource(autoscaler)
+   *     .setRegion(region.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionAutoscalerClient.patchRegionAutoscalerCallable().futureCall(request);
    *   // Do something
@@ -582,7 +596,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
     UpdateRegionAutoscalerHttpRequest request =
         UpdateRegionAutoscalerHttpRequest.newBuilder()
         .setAutoscaler(autoscaler)
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .setAutoscalerResource(autoscalerResource)
         .build();
     return updateRegionAutoscaler(request);
@@ -598,8 +612,8 @@ public class RegionAutoscalerClient implements BackgroundResource {
    *   String autoscaler = "";
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   UpdateRegionAutoscalerHttpRequest request = UpdateRegionAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscaler(autoscaler)
-   *     .setRegionWithRegionName(region)
+   *     .setAutoscalerResource(autoscaler)
+   *     .setRegion(region.toString())
    *     .build();
    *   Operation response = regionAutoscalerClient.updateRegionAutoscaler(request);
    * }
@@ -623,8 +637,8 @@ public class RegionAutoscalerClient implements BackgroundResource {
    *   String autoscaler = "";
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   UpdateRegionAutoscalerHttpRequest request = UpdateRegionAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscaler(autoscaler)
-   *     .setRegionWithRegionName(region)
+   *     .setAutoscalerResource(autoscaler)
+   *     .setRegion(region.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionAutoscalerClient.updateRegionAutoscalerCallable().futureCall(request);
    *   // Do something
@@ -667,4 +681,91 @@ public class RegionAutoscalerClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListRegionAutoscalersPagedResponse extends AbstractPagedListResponse<
+      ListRegionAutoscalersHttpRequest,
+      RegionAutoscalerList,
+      Autoscaler,
+      ListRegionAutoscalersPage,
+      ListRegionAutoscalersFixedSizeCollection> {
+
+    public static ApiFuture<ListRegionAutoscalersPagedResponse> createAsync(
+        PageContext<ListRegionAutoscalersHttpRequest, RegionAutoscalerList, Autoscaler> context,
+        ApiFuture<RegionAutoscalerList> futureResponse) {
+      ApiFuture<ListRegionAutoscalersPage> futurePage =
+          ListRegionAutoscalersPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListRegionAutoscalersPage, ListRegionAutoscalersPagedResponse>() {
+            @Override
+            public ListRegionAutoscalersPagedResponse apply(ListRegionAutoscalersPage input) {
+              return new ListRegionAutoscalersPagedResponse(input);
+            }
+          });
+    }
+
+    private ListRegionAutoscalersPagedResponse(ListRegionAutoscalersPage page) {
+      super(page, ListRegionAutoscalersFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListRegionAutoscalersPage extends AbstractPage<
+      ListRegionAutoscalersHttpRequest,
+      RegionAutoscalerList,
+      Autoscaler,
+      ListRegionAutoscalersPage> {
+
+    private ListRegionAutoscalersPage(
+        PageContext<ListRegionAutoscalersHttpRequest, RegionAutoscalerList, Autoscaler> context,
+        RegionAutoscalerList response) {
+      super(context, response);
+    }
+
+    private static ListRegionAutoscalersPage createEmptyPage() {
+      return new ListRegionAutoscalersPage(null, null);
+    }
+
+    @Override
+    protected ListRegionAutoscalersPage createPage(
+        PageContext<ListRegionAutoscalersHttpRequest, RegionAutoscalerList, Autoscaler> context,
+        RegionAutoscalerList response) {
+      return new ListRegionAutoscalersPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListRegionAutoscalersPage> createPageAsync(
+        PageContext<ListRegionAutoscalersHttpRequest, RegionAutoscalerList, Autoscaler> context,
+        ApiFuture<RegionAutoscalerList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListRegionAutoscalersFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListRegionAutoscalersHttpRequest,
+      RegionAutoscalerList,
+      Autoscaler,
+      ListRegionAutoscalersPage,
+      ListRegionAutoscalersFixedSizeCollection> {
+
+    private ListRegionAutoscalersFixedSizeCollection(List<ListRegionAutoscalersPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListRegionAutoscalersFixedSizeCollection createEmptyCollection() {
+      return new ListRegionAutoscalersFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListRegionAutoscalersFixedSizeCollection createCollection(
+        List<ListRegionAutoscalersPage> pages, int collectionSize) {
+      return new ListRegionAutoscalersFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

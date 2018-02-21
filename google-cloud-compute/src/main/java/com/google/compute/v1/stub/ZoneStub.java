@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,9 +20,9 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.compute.v1.GetZoneHttpRequest;
 import com.google.compute.v1.ListZonesHttpRequest;
-import static com.google.compute.v1.PagedResponseWrappers.ListZonesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.Zone;
+import static com.google.compute.v1.ZoneClient.ListZonesPagedResponse;
 import com.google.compute.v1.ZoneList;
 import com.google.compute.v1.ZoneName;
 import javax.annotation.Generated;

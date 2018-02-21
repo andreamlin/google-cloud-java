@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -85,6 +87,11 @@ public final class TargetVpnGateway implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
@@ -125,7 +132,7 @@ public final class TargetVpnGateway implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -282,7 +289,7 @@ public final class TargetVpnGateway implements ApiMessage {
       return forwardingRules;
     }
 
-    public Builder setForwardingRules(List<String> forwardingRules) {
+    public Builder addAllForwardingRules(List<String> forwardingRules) {
       this.forwardingRules = forwardingRules;
       return this;
     }
@@ -354,7 +361,7 @@ public final class TargetVpnGateway implements ApiMessage {
       return tunnels;
     }
 
-    public Builder setTunnels(List<String> tunnels) {
+    public Builder addAllTunnels(List<String> tunnels) {
       this.tunnels = tunnels;
       return this;
     }
@@ -390,7 +397,7 @@ public final class TargetVpnGateway implements ApiMessage {
       Builder newBuilder = new Builder();
       newBuilder.setCreationTimestamp(this.creationTimestamp);
       newBuilder.setDescription(this.description);
-      newBuilder.setForwardingRules(this.forwardingRules);
+      newBuilder.addAllForwardingRules(this.forwardingRules);
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
       newBuilder.setName(this.name);
@@ -398,7 +405,7 @@ public final class TargetVpnGateway implements ApiMessage {
       newBuilder.setRegion(this.region);
       newBuilder.setSelfLink(this.selfLink);
       newBuilder.setStatus(this.status);
-      newBuilder.setTunnels(this.tunnels);
+      newBuilder.addAllTunnels(this.tunnels);
       return newBuilder;
     }
   }

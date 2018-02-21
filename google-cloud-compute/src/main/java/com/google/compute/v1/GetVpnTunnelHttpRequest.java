@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,9 +36,7 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
   private final String fields;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
-  private final String region;
   private final String userIp;
   private final String vpnTunnel;
 
@@ -48,9 +46,7 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
     this.fields = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
-    this.region = null;
     this.userIp = null;
     this.vpnTunnel = null;
   }
@@ -62,9 +58,7 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
       String fields,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
-      String region,
       String userIp,
       String vpnTunnel
       ) {
@@ -73,11 +67,14 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
     this.fields = fields;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
-    this.region = region;
     this.userIp = userIp;
     this.vpnTunnel = vpnTunnel;
+  }
+
+  @Override
+  public VpnTunnelName resourceNamePath() {
+    return VpnTunnelName.parse(vpnTunnel);
   }
 
   @Override
@@ -98,14 +95,8 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
-    }
-    if (fieldNames.contains("region") && region != null) {
-      fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
     }
     if (fieldNames.contains("userIp") && userIp != null) {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
@@ -118,7 +109,7 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -142,16 +133,8 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
     return prettyPrint;
   }
 
-  public String getProject() {
-    return project;
-  }
-
   public String getQuotaUser() {
     return quotaUser;
-  }
-
-  public String getRegion() {
-    return region;
   }
 
   public String getUserIp() {
@@ -188,9 +171,7 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
     private String fields;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
-    private String region;
     private String userIp;
     private String vpnTunnel;
 
@@ -213,14 +194,8 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
-      }
-      if (other.getRegion() != null) {
-        this.region = other.region;
       }
       if (other.getUserIp() != null) {
         this.userIp = other.userIp;
@@ -237,9 +212,7 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
       this.fields = source.fields;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
-      this.region = source.region;
       this.userIp = source.userIp;
       this.vpnTunnel = source.vpnTunnel;
     }
@@ -289,30 +262,12 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
 
     public Builder setQuotaUser(String quotaUser) {
       this.quotaUser = quotaUser;
-      return this;
-    }
-
-    public String getRegion() {
-      return region;
-    }
-
-    public Builder setRegion(String region) {
-      this.region = region;
       return this;
     }
 
@@ -342,13 +297,7 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
 
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
-      if (region == null) {
-        missing += " region";
-      }
 
       if (vpnTunnel == null) {
         missing += " vpnTunnel";
@@ -362,9 +311,7 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
         fields,
         key,
         prettyPrint,
-        project,
         quotaUser,
-        region,
         userIp,
         vpnTunnel
       );
@@ -377,35 +324,10 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
       newBuilder.setFields(this.fields);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
-      newBuilder.setRegion(this.region);
       newBuilder.setUserIp(this.userIp);
       newBuilder.setVpnTunnel(this.vpnTunnel);
       return newBuilder;
-    }
-
-    public final Builder setVpnTunnelWithVpnTunnelName(VpnTunnelName value) {
-      if (value == null) {
-        return
-            setProject("").
-            setRegion("").
-            setVpnTunnel("")
-            ;
-      }
-      return
-          setProject(value.getProject()).
-          setRegion(value.getRegion()).
-          setVpnTunnel(value.getVpnTunnel())
-          ;
-    }
-
-    public final VpnTunnelName getVpnTunnelAsVpnTunnelName() {
-      return VpnTunnelName.of(
-          getProject(),
-          getRegion(),
-          getVpnTunnel()
-          );
     }
   }
 
@@ -417,9 +339,7 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
         + "fields=" + fields + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
-        + "region=" + region + ", "
         + "userIp=" + userIp + ", "
         + "vpnTunnel=" + vpnTunnel
         + "}";
@@ -438,9 +358,7 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
           Objects.equals(this.fields, that.getFields()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
-          Objects.equals(this.region, that.getRegion()) &&
           Objects.equals(this.userIp, that.getUserIp()) &&
           Objects.equals(this.vpnTunnel, that.getVpnTunnel())
           ;
@@ -456,9 +374,7 @@ public final class GetVpnTunnelHttpRequest implements ApiMessage {
       fields,
       key,
       prettyPrint,
-      project,
       quotaUser,
-      region,
       userIp,
       vpnTunnel
     );

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListFirewallsPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.FirewallStub;
+import com.google.compute.v1.stub.FirewallStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class FirewallClient implements BackgroundResource {
    */
   protected FirewallClient(FirewallSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((FirewallStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class FirewallClient implements BackgroundResource {
 
     DeleteFirewallHttpRequest request =
         DeleteFirewallHttpRequest.newBuilder()
-        .setFirewallWithFirewallName(firewall)
+        .setFirewall(firewall.toString())
         .build();
     return deleteFirewall(request);
   }
@@ -189,7 +203,7 @@ public class FirewallClient implements BackgroundResource {
    * try (FirewallClient firewallClient = FirewallClient.create()) {
    *   FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
    *   DeleteFirewallHttpRequest request = DeleteFirewallHttpRequest.newBuilder()
-   *     .setFirewallWithFirewallName(firewall)
+   *     .setFirewall(firewall.toString())
    *     .build();
    *   Operation response = firewallClient.deleteFirewall(request);
    * }
@@ -212,7 +226,7 @@ public class FirewallClient implements BackgroundResource {
    * try (FirewallClient firewallClient = FirewallClient.create()) {
    *   FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
    *   DeleteFirewallHttpRequest request = DeleteFirewallHttpRequest.newBuilder()
-   *     .setFirewallWithFirewallName(firewall)
+   *     .setFirewall(firewall.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = firewallClient.deleteFirewallCallable().futureCall(request);
    *   // Do something
@@ -245,7 +259,7 @@ public class FirewallClient implements BackgroundResource {
 
     GetFirewallHttpRequest request =
         GetFirewallHttpRequest.newBuilder()
-        .setFirewallWithFirewallName(firewall)
+        .setFirewall(firewall.toString())
         .build();
     return getFirewall(request);
   }
@@ -259,7 +273,7 @@ public class FirewallClient implements BackgroundResource {
    * try (FirewallClient firewallClient = FirewallClient.create()) {
    *   FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
    *   GetFirewallHttpRequest request = GetFirewallHttpRequest.newBuilder()
-   *     .setFirewallWithFirewallName(firewall)
+   *     .setFirewall(firewall.toString())
    *     .build();
    *   Firewall response = firewallClient.getFirewall(request);
    * }
@@ -282,7 +296,7 @@ public class FirewallClient implements BackgroundResource {
    * try (FirewallClient firewallClient = FirewallClient.create()) {
    *   FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
    *   GetFirewallHttpRequest request = GetFirewallHttpRequest.newBuilder()
-   *     .setFirewallWithFirewallName(firewall)
+   *     .setFirewall(firewall.toString())
    *     .build();
    *   ApiFuture&lt;Firewall&gt; future = firewallClient.getFirewallCallable().futureCall(request);
    *   // Do something
@@ -317,7 +331,7 @@ public class FirewallClient implements BackgroundResource {
 
     InsertFirewallHttpRequest request =
         InsertFirewallHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setFirewallResource(firewallResource)
         .build();
     return insertFirewall(request);
@@ -333,7 +347,7 @@ public class FirewallClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Firewall firewall = Firewall.newBuilder().build();
    *   InsertFirewallHttpRequest request = InsertFirewallHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setFirewallResource(firewall)
    *     .build();
    *   Operation response = firewallClient.insertFirewall(request);
@@ -358,7 +372,7 @@ public class FirewallClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Firewall firewall = Firewall.newBuilder().build();
    *   InsertFirewallHttpRequest request = InsertFirewallHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setFirewallResource(firewall)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = firewallClient.insertFirewallCallable().futureCall(request);
@@ -393,7 +407,7 @@ public class FirewallClient implements BackgroundResource {
   public final ListFirewallsPagedResponse listFirewalls(ProjectName project) {
     ListFirewallsHttpRequest request =
         ListFirewallsHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listFirewalls(request);
   }
@@ -407,7 +421,7 @@ public class FirewallClient implements BackgroundResource {
    * try (FirewallClient firewallClient = FirewallClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListFirewallsHttpRequest request = ListFirewallsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (Firewall element : firewallClient.listFirewalls(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -433,7 +447,7 @@ public class FirewallClient implements BackgroundResource {
    * try (FirewallClient firewallClient = FirewallClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListFirewallsHttpRequest request = ListFirewallsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListFirewallsPagedResponse&gt; future = firewallClient.listFirewallsPagedCallable().futureCall(request);
    *   // Do something
@@ -457,7 +471,7 @@ public class FirewallClient implements BackgroundResource {
    * try (FirewallClient firewallClient = FirewallClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListFirewallsHttpRequest request = ListFirewallsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     FirewallList response = firewallClient.listFirewallsCallable().call(request);
@@ -500,7 +514,7 @@ public class FirewallClient implements BackgroundResource {
 
     PatchFirewallHttpRequest request =
         PatchFirewallHttpRequest.newBuilder()
-        .setFirewallWithFirewallName(firewall)
+        .setFirewall(firewall.toString())
         .setFirewallResource(firewallResource)
         .build();
     return patchFirewall(request);
@@ -515,7 +529,7 @@ public class FirewallClient implements BackgroundResource {
    * try (FirewallClient firewallClient = FirewallClient.create()) {
    *   FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
    *   PatchFirewallHttpRequest request = PatchFirewallHttpRequest.newBuilder()
-   *     .setFirewallWithFirewallName(firewall)
+   *     .setFirewall(firewall.toString())
    *     .build();
    *   Operation response = firewallClient.patchFirewall(request);
    * }
@@ -538,7 +552,7 @@ public class FirewallClient implements BackgroundResource {
    * try (FirewallClient firewallClient = FirewallClient.create()) {
    *   FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
    *   PatchFirewallHttpRequest request = PatchFirewallHttpRequest.newBuilder()
-   *     .setFirewallWithFirewallName(firewall)
+   *     .setFirewall(firewall.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = firewallClient.patchFirewallCallable().futureCall(request);
    *   // Do something
@@ -572,7 +586,7 @@ public class FirewallClient implements BackgroundResource {
 
     UpdateFirewallHttpRequest request =
         UpdateFirewallHttpRequest.newBuilder()
-        .setFirewallWithFirewallName(firewall)
+        .setFirewall(firewall.toString())
         .setFirewallResource(firewallResource)
         .build();
     return updateFirewall(request);
@@ -587,7 +601,7 @@ public class FirewallClient implements BackgroundResource {
    * try (FirewallClient firewallClient = FirewallClient.create()) {
    *   FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
    *   UpdateFirewallHttpRequest request = UpdateFirewallHttpRequest.newBuilder()
-   *     .setFirewallWithFirewallName(firewall)
+   *     .setFirewall(firewall.toString())
    *     .build();
    *   Operation response = firewallClient.updateFirewall(request);
    * }
@@ -610,7 +624,7 @@ public class FirewallClient implements BackgroundResource {
    * try (FirewallClient firewallClient = FirewallClient.create()) {
    *   FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
    *   UpdateFirewallHttpRequest request = UpdateFirewallHttpRequest.newBuilder()
-   *     .setFirewallWithFirewallName(firewall)
+   *     .setFirewall(firewall.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = firewallClient.updateFirewallCallable().futureCall(request);
    *   // Do something
@@ -653,4 +667,91 @@ public class FirewallClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListFirewallsPagedResponse extends AbstractPagedListResponse<
+      ListFirewallsHttpRequest,
+      FirewallList,
+      Firewall,
+      ListFirewallsPage,
+      ListFirewallsFixedSizeCollection> {
+
+    public static ApiFuture<ListFirewallsPagedResponse> createAsync(
+        PageContext<ListFirewallsHttpRequest, FirewallList, Firewall> context,
+        ApiFuture<FirewallList> futureResponse) {
+      ApiFuture<ListFirewallsPage> futurePage =
+          ListFirewallsPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListFirewallsPage, ListFirewallsPagedResponse>() {
+            @Override
+            public ListFirewallsPagedResponse apply(ListFirewallsPage input) {
+              return new ListFirewallsPagedResponse(input);
+            }
+          });
+    }
+
+    private ListFirewallsPagedResponse(ListFirewallsPage page) {
+      super(page, ListFirewallsFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListFirewallsPage extends AbstractPage<
+      ListFirewallsHttpRequest,
+      FirewallList,
+      Firewall,
+      ListFirewallsPage> {
+
+    private ListFirewallsPage(
+        PageContext<ListFirewallsHttpRequest, FirewallList, Firewall> context,
+        FirewallList response) {
+      super(context, response);
+    }
+
+    private static ListFirewallsPage createEmptyPage() {
+      return new ListFirewallsPage(null, null);
+    }
+
+    @Override
+    protected ListFirewallsPage createPage(
+        PageContext<ListFirewallsHttpRequest, FirewallList, Firewall> context,
+        FirewallList response) {
+      return new ListFirewallsPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListFirewallsPage> createPageAsync(
+        PageContext<ListFirewallsHttpRequest, FirewallList, Firewall> context,
+        ApiFuture<FirewallList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListFirewallsFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListFirewallsHttpRequest,
+      FirewallList,
+      Firewall,
+      ListFirewallsPage,
+      ListFirewallsFixedSizeCollection> {
+
+    private ListFirewallsFixedSizeCollection(List<ListFirewallsPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListFirewallsFixedSizeCollection createEmptyCollection() {
+      return new ListFirewallsFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListFirewallsFixedSizeCollection createCollection(
+        List<ListFirewallsPage> pages, int collectionSize) {
+      return new ListFirewallsFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,11 +37,9 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
   private final String fields;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
   private final Snapshot snapshotResource;
   private final String userIp;
-  private final String zone;
 
   private CreateSnapshotDiskHttpRequest() {
     this.access_token = null;
@@ -50,11 +48,9 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
     this.fields = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
     this.snapshotResource = null;
     this.userIp = null;
-    this.zone = null;
   }
 
 
@@ -65,11 +61,9 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
       String fields,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
       Snapshot snapshotResource,
-      String userIp,
-      String zone
+      String userIp
       ) {
     this.access_token = access_token;
     this.callback = callback;
@@ -77,11 +71,14 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
     this.fields = fields;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
     this.snapshotResource = snapshotResource;
     this.userIp = userIp;
-    this.zone = zone;
+  }
+
+  @Override
+  public DiskName resourceNamePath() {
+    return DiskName.parse(disk);
   }
 
   @Override
@@ -105,9 +102,6 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
     }
@@ -117,15 +111,12 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
     if (fieldNames.contains("userIp") && userIp != null) {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
-    if (fieldNames.contains("zone") && zone != null) {
-      fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
-    }
     return fieldMap;
   }
 
   @Nullable
   @Override
-  public Snapshot getRequestBody() {
+  public Snapshot requestBody() {
     return snapshotResource;
   }
 
@@ -153,10 +144,6 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
     return prettyPrint;
   }
 
-  public String getProject() {
-    return project;
-  }
-
   public String getQuotaUser() {
     return quotaUser;
   }
@@ -167,10 +154,6 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
 
   public String getUserIp() {
     return userIp;
-  }
-
-  public String getZone() {
-    return zone;
   }
 
 
@@ -200,11 +183,9 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
     private String fields;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
     private Snapshot snapshotResource;
     private String userIp;
-    private String zone;
 
     Builder() {}
 
@@ -228,9 +209,6 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
       }
@@ -239,9 +217,6 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
       }
       if (other.getUserIp() != null) {
         this.userIp = other.userIp;
-      }
-      if (other.getZone() != null) {
-        this.zone = other.zone;
       }
       return this;
     }
@@ -253,11 +228,9 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
       this.fields = source.fields;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
       this.snapshotResource = source.snapshotResource;
       this.userIp = source.userIp;
-      this.zone = source.zone;
     }
 
     public String getAccessToken() {
@@ -314,15 +287,6 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
@@ -350,15 +314,6 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getZone() {
-      return zone;
-    }
-
-    public Builder setZone(String zone) {
-      this.zone = zone;
-      return this;
-    }
-
 
     public CreateSnapshotDiskHttpRequest build() {
       String missing = "";
@@ -370,15 +325,9 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
 
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
 
 
-      if (zone == null) {
-        missing += " zone";
-      }
       if (!missing.isEmpty()) {
         throw new IllegalStateException("Missing required properties:" + missing);
       }
@@ -389,11 +338,9 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
         fields,
         key,
         prettyPrint,
-        project,
         quotaUser,
         snapshotResource,
-        userIp,
-        zone
+        userIp
       );
     }
 
@@ -405,35 +352,10 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
       newBuilder.setFields(this.fields);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
       newBuilder.setSnapshotResource(this.snapshotResource);
       newBuilder.setUserIp(this.userIp);
-      newBuilder.setZone(this.zone);
       return newBuilder;
-    }
-
-    public final Builder setDiskWithDiskName(DiskName value) {
-      if (value == null) {
-        return
-            setDisk("").
-            setProject("").
-            setZone("")
-            ;
-      }
-      return
-          setDisk(value.getDisk()).
-          setProject(value.getProject()).
-          setZone(value.getZone())
-          ;
-    }
-
-    public final DiskName getDiskAsDiskName() {
-      return DiskName.of(
-          getDisk(),
-          getProject(),
-          getZone()
-          );
     }
   }
 
@@ -446,11 +368,9 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
         + "fields=" + fields + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
         + "snapshotResource=" + snapshotResource + ", "
-        + "userIp=" + userIp + ", "
-        + "zone=" + zone
+        + "userIp=" + userIp
         + "}";
   }
 
@@ -468,11 +388,9 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
           Objects.equals(this.fields, that.getFields()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
           Objects.equals(this.snapshotResource, that.getSnapshotResource()) &&
-          Objects.equals(this.userIp, that.getUserIp()) &&
-          Objects.equals(this.zone, that.getZone())
+          Objects.equals(this.userIp, that.getUserIp())
           ;
     }
     return false;
@@ -487,11 +405,9 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
       fields,
       key,
       prettyPrint,
-      project,
       quotaUser,
       snapshotResource,
-      userIp,
-      zone
+      userIp
     );
   }
 }

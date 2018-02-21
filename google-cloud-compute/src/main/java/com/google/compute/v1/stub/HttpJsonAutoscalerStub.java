@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,11 +26,14 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListAutoscalersHttpRequest;
 import com.google.compute.v1.Autoscaler;
 import com.google.compute.v1.AutoscalerAggregatedList;
+import static com.google.compute.v1.AutoscalerClient.AggregatedListAutoscalersPagedResponse;
+import static com.google.compute.v1.AutoscalerClient.ListAutoscalersPagedResponse;
 import com.google.compute.v1.AutoscalerList;
 import com.google.compute.v1.AutoscalerName;
 import com.google.compute.v1.AutoscalerSettings;
@@ -39,8 +42,6 @@ import com.google.compute.v1.GetAutoscalerHttpRequest;
 import com.google.compute.v1.InsertAutoscalerHttpRequest;
 import com.google.compute.v1.ListAutoscalersHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListAutoscalersPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListAutoscalersPagedResponse;
 import com.google.compute.v1.PatchAutoscalerHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.UpdateAutoscalerHttpRequest;
@@ -65,7 +66,8 @@ import javax.annotation.Generated;
 public class HttpJsonAutoscalerStub extends AutoscalerStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList> aggregatedListAutoscalersMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList> aggregatedListAutoscalersMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList>newBuilder()
           .setMethodName("compute.autoscalers.aggregatedList")
           .setRequestInstance(AggregatedListAutoscalersHttpRequest.getDefaultInstance())
@@ -80,7 +82,8 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<DeleteAutoscalerHttpRequest, Operation> deleteAutoscalerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteAutoscalerHttpRequest, Operation> deleteAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<DeleteAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.autoscalers.delete")
           .setRequestInstance(DeleteAutoscalerHttpRequest.getDefaultInstance())
@@ -94,7 +97,8 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetAutoscalerHttpRequest, Autoscaler> getAutoscalerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetAutoscalerHttpRequest, Autoscaler> getAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<GetAutoscalerHttpRequest, Autoscaler>newBuilder()
           .setMethodName("compute.autoscalers.get")
           .setRequestInstance(GetAutoscalerHttpRequest.getDefaultInstance())
@@ -108,7 +112,8 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertAutoscalerHttpRequest, Operation> insertAutoscalerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertAutoscalerHttpRequest, Operation> insertAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<InsertAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.autoscalers.insert")
           .setRequestInstance(InsertAutoscalerHttpRequest.getDefaultInstance())
@@ -122,7 +127,8 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListAutoscalersHttpRequest, AutoscalerList> listAutoscalersMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListAutoscalersHttpRequest, AutoscalerList> listAutoscalersMethodDescriptor =
       ApiMethodDescriptor.<ListAutoscalersHttpRequest, AutoscalerList>newBuilder()
           .setMethodName("compute.autoscalers.list")
           .setRequestInstance(ListAutoscalersHttpRequest.getDefaultInstance())
@@ -137,7 +143,8 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<PatchAutoscalerHttpRequest, Operation> patchAutoscalerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<PatchAutoscalerHttpRequest, Operation> patchAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<PatchAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.autoscalers.patch")
           .setRequestInstance(PatchAutoscalerHttpRequest.getDefaultInstance())
@@ -152,7 +159,8 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
           .build();
-  private static final ApiMethodDescriptor<UpdateAutoscalerHttpRequest, Operation> updateAutoscalerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<UpdateAutoscalerHttpRequest, Operation> updateAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<UpdateAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.autoscalers.update")
           .setRequestInstance(UpdateAutoscalerHttpRequest.getDefaultInstance())
@@ -180,12 +188,12 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
   private final UnaryCallable<PatchAutoscalerHttpRequest, Operation> patchAutoscalerCallable;
   private final UnaryCallable<UpdateAutoscalerHttpRequest, Operation> updateAutoscalerCallable;
 
-  public static final HttpJsonAutoscalerStub create(AutoscalerSettings settings) throws IOException {
+  public static final HttpJsonAutoscalerStub create(AutoscalerStubSettings settings) throws IOException {
     return new HttpJsonAutoscalerStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonAutoscalerStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonAutoscalerStub(AutoscalerSettings.newBuilder().build(), clientContext);
+    return new HttpJsonAutoscalerStub(AutoscalerStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -193,7 +201,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonAutoscalerStub(AutoscalerSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonAutoscalerStub(AutoscalerStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList> aggregatedListAutoscalersTransportSettings =
         HttpJsonCallSettings.<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList>newBuilder()

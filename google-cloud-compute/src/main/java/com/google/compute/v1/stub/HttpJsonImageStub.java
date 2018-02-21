@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteImageHttpRequest;
@@ -35,13 +36,13 @@ import com.google.compute.v1.FamilyName;
 import com.google.compute.v1.GetFromFamilyImageHttpRequest;
 import com.google.compute.v1.GetImageHttpRequest;
 import com.google.compute.v1.Image;
+import static com.google.compute.v1.ImageClient.ListImagesPagedResponse;
 import com.google.compute.v1.ImageList;
 import com.google.compute.v1.ImageName;
 import com.google.compute.v1.ImageSettings;
 import com.google.compute.v1.InsertImageHttpRequest;
 import com.google.compute.v1.ListImagesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListImagesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,7 +64,8 @@ import javax.annotation.Generated;
 public class HttpJsonImageStub extends ImageStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteImageHttpRequest, Operation> deleteImageMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteImageHttpRequest, Operation> deleteImageMethodDescriptor =
       ApiMethodDescriptor.<DeleteImageHttpRequest, Operation>newBuilder()
           .setMethodName("compute.images.delete")
           .setRequestInstance(DeleteImageHttpRequest.getDefaultInstance())
@@ -77,7 +79,8 @@ public class HttpJsonImageStub extends ImageStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<DeprecateImageHttpRequest, Operation> deprecateImageMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeprecateImageHttpRequest, Operation> deprecateImageMethodDescriptor =
       ApiMethodDescriptor.<DeprecateImageHttpRequest, Operation>newBuilder()
           .setMethodName("compute.images.deprecate")
           .setRequestInstance(DeprecateImageHttpRequest.getDefaultInstance())
@@ -91,7 +94,8 @@ public class HttpJsonImageStub extends ImageStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<GetImageHttpRequest, Image> getImageMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetImageHttpRequest, Image> getImageMethodDescriptor =
       ApiMethodDescriptor.<GetImageHttpRequest, Image>newBuilder()
           .setMethodName("compute.images.get")
           .setRequestInstance(GetImageHttpRequest.getDefaultInstance())
@@ -105,7 +109,8 @@ public class HttpJsonImageStub extends ImageStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<GetFromFamilyImageHttpRequest, Image> getFromFamilyImageMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetFromFamilyImageHttpRequest, Image> getFromFamilyImageMethodDescriptor =
       ApiMethodDescriptor.<GetFromFamilyImageHttpRequest, Image>newBuilder()
           .setMethodName("compute.images.getFromFamily")
           .setRequestInstance(GetFromFamilyImageHttpRequest.getDefaultInstance())
@@ -119,7 +124,8 @@ public class HttpJsonImageStub extends ImageStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertImageHttpRequest, Operation> insertImageMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertImageHttpRequest, Operation> insertImageMethodDescriptor =
       ApiMethodDescriptor.<InsertImageHttpRequest, Operation>newBuilder()
           .setMethodName("compute.images.insert")
           .setRequestInstance(InsertImageHttpRequest.getDefaultInstance())
@@ -133,7 +139,8 @@ public class HttpJsonImageStub extends ImageStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListImagesHttpRequest, ImageList> listImagesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListImagesHttpRequest, ImageList> listImagesMethodDescriptor =
       ApiMethodDescriptor.<ListImagesHttpRequest, ImageList>newBuilder()
           .setMethodName("compute.images.list")
           .setRequestInstance(ListImagesHttpRequest.getDefaultInstance())
@@ -159,12 +166,12 @@ public class HttpJsonImageStub extends ImageStub {
   private final UnaryCallable<ListImagesHttpRequest, ImageList> listImagesCallable;
   private final UnaryCallable<ListImagesHttpRequest, ListImagesPagedResponse> listImagesPagedCallable;
 
-  public static final HttpJsonImageStub create(ImageSettings settings) throws IOException {
+  public static final HttpJsonImageStub create(ImageStubSettings settings) throws IOException {
     return new HttpJsonImageStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonImageStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonImageStub(ImageSettings.newBuilder().build(), clientContext);
+    return new HttpJsonImageStub(ImageStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -172,7 +179,7 @@ public class HttpJsonImageStub extends ImageStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonImageStub(ImageSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonImageStub(ImageStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteImageHttpRequest, Operation> deleteImageTransportSettings =
         HttpJsonCallSettings.<DeleteImageHttpRequest, Operation>newBuilder()

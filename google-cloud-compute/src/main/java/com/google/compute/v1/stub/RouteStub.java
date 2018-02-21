@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +23,9 @@ import com.google.compute.v1.GetRouteHttpRequest;
 import com.google.compute.v1.InsertRouteHttpRequest;
 import com.google.compute.v1.ListRoutesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListRoutesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.Route;
+import static com.google.compute.v1.RouteClient.ListRoutesPagedResponse;
 import com.google.compute.v1.RouteList;
 import com.google.compute.v1.RouteName;
 import javax.annotation.Generated;

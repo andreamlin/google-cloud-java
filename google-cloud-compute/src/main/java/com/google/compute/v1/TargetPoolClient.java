@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetPoolsPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetPoolsPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.TargetPoolStub;
+import com.google.compute.v1.stub.TargetPoolStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -138,7 +151,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   protected TargetPoolClient(TargetPoolSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((TargetPoolStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -179,7 +192,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     AddHealthCheckTargetPoolHttpRequest request =
         AddHealthCheckTargetPoolHttpRequest.newBuilder()
-        .setTargetPoolWithTargetPoolName(targetPool)
+        .setTargetPool(targetPool.toString())
         .setTargetPoolsAddHealthCheckRequestResource(targetPoolsAddHealthCheckRequestResource)
         .build();
     return addHealthCheckTargetPool(request);
@@ -195,7 +208,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest = TargetPoolsAddHealthCheckRequest.newBuilder().build();
    *   AddHealthCheckTargetPoolHttpRequest request = AddHealthCheckTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .setTargetPoolsAddHealthCheckRequestResource(targetPoolsAddHealthCheckRequest)
    *     .build();
    *   Operation response = targetPoolClient.addHealthCheckTargetPool(request);
@@ -220,7 +233,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest = TargetPoolsAddHealthCheckRequest.newBuilder().build();
    *   AddHealthCheckTargetPoolHttpRequest request = AddHealthCheckTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .setTargetPoolsAddHealthCheckRequestResource(targetPoolsAddHealthCheckRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.addHealthCheckTargetPoolCallable().futureCall(request);
@@ -256,7 +269,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     AddInstanceTargetPoolHttpRequest request =
         AddInstanceTargetPoolHttpRequest.newBuilder()
-        .setTargetPoolWithTargetPoolName(targetPool)
+        .setTargetPool(targetPool.toString())
         .setTargetPoolsAddInstanceRequestResource(targetPoolsAddInstanceRequestResource)
         .build();
     return addInstanceTargetPool(request);
@@ -272,7 +285,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequest = TargetPoolsAddInstanceRequest.newBuilder().build();
    *   AddInstanceTargetPoolHttpRequest request = AddInstanceTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .setTargetPoolsAddInstanceRequestResource(targetPoolsAddInstanceRequest)
    *     .build();
    *   Operation response = targetPoolClient.addInstanceTargetPool(request);
@@ -297,7 +310,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequest = TargetPoolsAddInstanceRequest.newBuilder().build();
    *   AddInstanceTargetPoolHttpRequest request = AddInstanceTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .setTargetPoolsAddInstanceRequestResource(targetPoolsAddInstanceRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.addInstanceTargetPoolCallable().futureCall(request);
@@ -332,7 +345,7 @@ public class TargetPoolClient implements BackgroundResource {
   public final AggregatedListTargetPoolsPagedResponse aggregatedListTargetPools(ProjectName project) {
     AggregatedListTargetPoolsHttpRequest request =
         AggregatedListTargetPoolsHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return aggregatedListTargetPools(request);
   }
@@ -346,7 +359,7 @@ public class TargetPoolClient implements BackgroundResource {
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListTargetPoolsHttpRequest request = AggregatedListTargetPoolsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (TargetPool element : targetPoolClient.aggregatedListTargetPools(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -372,7 +385,7 @@ public class TargetPoolClient implements BackgroundResource {
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListTargetPoolsHttpRequest request = AggregatedListTargetPoolsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;AggregatedListTargetPoolsPagedResponse&gt; future = targetPoolClient.aggregatedListTargetPoolsPagedCallable().futureCall(request);
    *   // Do something
@@ -396,11 +409,11 @@ public class TargetPoolClient implements BackgroundResource {
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListTargetPoolsHttpRequest request = AggregatedListTargetPoolsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     TargetPoolAggregatedList response = targetPoolClient.aggregatedListTargetPoolsCallable().call(request);
-   *     for (TargetPool element : response.getItems().getTargetPools()) {
+   *     for (TargetPool element : response.getTargetPools()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -438,7 +451,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     DeleteTargetPoolHttpRequest request =
         DeleteTargetPoolHttpRequest.newBuilder()
-        .setTargetPoolWithTargetPoolName(targetPool)
+        .setTargetPool(targetPool.toString())
         .build();
     return deleteTargetPool(request);
   }
@@ -452,7 +465,7 @@ public class TargetPoolClient implements BackgroundResource {
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   DeleteTargetPoolHttpRequest request = DeleteTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .build();
    *   Operation response = targetPoolClient.deleteTargetPool(request);
    * }
@@ -475,7 +488,7 @@ public class TargetPoolClient implements BackgroundResource {
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   DeleteTargetPoolHttpRequest request = DeleteTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.deleteTargetPoolCallable().futureCall(request);
    *   // Do something
@@ -508,7 +521,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     GetTargetPoolHttpRequest request =
         GetTargetPoolHttpRequest.newBuilder()
-        .setTargetPoolWithTargetPoolName(targetPool)
+        .setTargetPool(targetPool.toString())
         .build();
     return getTargetPool(request);
   }
@@ -522,7 +535,7 @@ public class TargetPoolClient implements BackgroundResource {
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   GetTargetPoolHttpRequest request = GetTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .build();
    *   TargetPool response = targetPoolClient.getTargetPool(request);
    * }
@@ -545,7 +558,7 @@ public class TargetPoolClient implements BackgroundResource {
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   GetTargetPoolHttpRequest request = GetTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .build();
    *   ApiFuture&lt;TargetPool&gt; future = targetPoolClient.getTargetPoolCallable().futureCall(request);
    *   // Do something
@@ -580,7 +593,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     GetHealthTargetPoolHttpRequest request =
         GetHealthTargetPoolHttpRequest.newBuilder()
-        .setTargetPoolWithTargetPoolName(targetPool)
+        .setTargetPool(targetPool.toString())
         .setInstanceReferenceResource(instanceReferenceResource)
         .build();
     return getHealthTargetPool(request);
@@ -596,7 +609,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   InstanceReference instanceReference = InstanceReference.newBuilder().build();
    *   GetHealthTargetPoolHttpRequest request = GetHealthTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .setInstanceReferenceResource(instanceReference)
    *     .build();
    *   TargetPoolInstanceHealth response = targetPoolClient.getHealthTargetPool(request);
@@ -621,7 +634,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   InstanceReference instanceReference = InstanceReference.newBuilder().build();
    *   GetHealthTargetPoolHttpRequest request = GetHealthTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .setInstanceReferenceResource(instanceReference)
    *     .build();
    *   ApiFuture&lt;TargetPoolInstanceHealth&gt; future = targetPoolClient.getHealthTargetPoolCallable().futureCall(request);
@@ -657,7 +670,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     InsertTargetPoolHttpRequest request =
         InsertTargetPoolHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .setTargetPoolResource(targetPoolResource)
         .build();
     return insertTargetPool(request);
@@ -673,7 +686,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   TargetPool targetPool = TargetPool.newBuilder().build();
    *   InsertTargetPoolHttpRequest request = InsertTargetPoolHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .setTargetPoolResource(targetPool)
    *     .build();
    *   Operation response = targetPoolClient.insertTargetPool(request);
@@ -698,7 +711,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   TargetPool targetPool = TargetPool.newBuilder().build();
    *   InsertTargetPoolHttpRequest request = InsertTargetPoolHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .setTargetPoolResource(targetPool)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.insertTargetPoolCallable().futureCall(request);
@@ -733,7 +746,7 @@ public class TargetPoolClient implements BackgroundResource {
   public final ListTargetPoolsPagedResponse listTargetPools(RegionName region) {
     ListTargetPoolsHttpRequest request =
         ListTargetPoolsHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .build();
     return listTargetPools(request);
   }
@@ -747,7 +760,7 @@ public class TargetPoolClient implements BackgroundResource {
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListTargetPoolsHttpRequest request = ListTargetPoolsHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   for (TargetPool element : targetPoolClient.listTargetPools(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -773,7 +786,7 @@ public class TargetPoolClient implements BackgroundResource {
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListTargetPoolsHttpRequest request = ListTargetPoolsHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   ApiFuture&lt;ListTargetPoolsPagedResponse&gt; future = targetPoolClient.listTargetPoolsPagedCallable().futureCall(request);
    *   // Do something
@@ -797,7 +810,7 @@ public class TargetPoolClient implements BackgroundResource {
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListTargetPoolsHttpRequest request = ListTargetPoolsHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   while (true) {
    *     TargetPoolList response = targetPoolClient.listTargetPoolsCallable().call(request);
@@ -841,7 +854,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     RemoveHealthCheckTargetPoolHttpRequest request =
         RemoveHealthCheckTargetPoolHttpRequest.newBuilder()
-        .setTargetPoolWithTargetPoolName(targetPool)
+        .setTargetPool(targetPool.toString())
         .setTargetPoolsRemoveHealthCheckRequestResource(targetPoolsRemoveHealthCheckRequestResource)
         .build();
     return removeHealthCheckTargetPool(request);
@@ -857,7 +870,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequest = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
    *   RemoveHealthCheckTargetPoolHttpRequest request = RemoveHealthCheckTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .setTargetPoolsRemoveHealthCheckRequestResource(targetPoolsRemoveHealthCheckRequest)
    *     .build();
    *   Operation response = targetPoolClient.removeHealthCheckTargetPool(request);
@@ -882,7 +895,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequest = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
    *   RemoveHealthCheckTargetPoolHttpRequest request = RemoveHealthCheckTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .setTargetPoolsRemoveHealthCheckRequestResource(targetPoolsRemoveHealthCheckRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.removeHealthCheckTargetPoolCallable().futureCall(request);
@@ -918,7 +931,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     RemoveInstanceTargetPoolHttpRequest request =
         RemoveInstanceTargetPoolHttpRequest.newBuilder()
-        .setTargetPoolWithTargetPoolName(targetPool)
+        .setTargetPool(targetPool.toString())
         .setTargetPoolsRemoveInstanceRequestResource(targetPoolsRemoveInstanceRequestResource)
         .build();
     return removeInstanceTargetPool(request);
@@ -934,7 +947,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequest = TargetPoolsRemoveInstanceRequest.newBuilder().build();
    *   RemoveInstanceTargetPoolHttpRequest request = RemoveInstanceTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .setTargetPoolsRemoveInstanceRequestResource(targetPoolsRemoveInstanceRequest)
    *     .build();
    *   Operation response = targetPoolClient.removeInstanceTargetPool(request);
@@ -959,7 +972,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequest = TargetPoolsRemoveInstanceRequest.newBuilder().build();
    *   RemoveInstanceTargetPoolHttpRequest request = RemoveInstanceTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .setTargetPoolsRemoveInstanceRequestResource(targetPoolsRemoveInstanceRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.removeInstanceTargetPoolCallable().futureCall(request);
@@ -997,7 +1010,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     SetBackupTargetPoolHttpRequest request =
         SetBackupTargetPoolHttpRequest.newBuilder()
-        .setTargetPoolWithTargetPoolName(targetPool)
+        .setTargetPool(targetPool.toString())
         .setFailoverRatio(failoverRatio)
         .setTargetReferenceResource(targetReferenceResource)
         .build();
@@ -1015,7 +1028,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   Float failoverRatio = 0;
    *   TargetReference targetReference = TargetReference.newBuilder().build();
    *   SetBackupTargetPoolHttpRequest request = SetBackupTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .setFailoverRatio(failoverRatio)
    *     .setTargetReferenceResource(targetReference)
    *     .build();
@@ -1042,7 +1055,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   Float failoverRatio = 0;
    *   TargetReference targetReference = TargetReference.newBuilder().build();
    *   SetBackupTargetPoolHttpRequest request = SetBackupTargetPoolHttpRequest.newBuilder()
-   *     .setTargetPoolWithTargetPoolName(targetPool)
+   *     .setTargetPool(targetPool.toString())
    *     .setFailoverRatio(failoverRatio)
    *     .setTargetReferenceResource(targetReference)
    *     .build();
@@ -1087,4 +1100,178 @@ public class TargetPoolClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class AggregatedListTargetPoolsPagedResponse extends AbstractPagedListResponse<
+      AggregatedListTargetPoolsHttpRequest,
+      TargetPoolAggregatedList,
+      TargetPool,
+      AggregatedListTargetPoolsPage,
+      AggregatedListTargetPoolsFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListTargetPoolsPagedResponse> createAsync(
+        PageContext<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPool> context,
+        ApiFuture<TargetPoolAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListTargetPoolsPage> futurePage =
+          AggregatedListTargetPoolsPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<AggregatedListTargetPoolsPage, AggregatedListTargetPoolsPagedResponse>() {
+            @Override
+            public AggregatedListTargetPoolsPagedResponse apply(AggregatedListTargetPoolsPage input) {
+              return new AggregatedListTargetPoolsPagedResponse(input);
+            }
+          });
+    }
+
+    private AggregatedListTargetPoolsPagedResponse(AggregatedListTargetPoolsPage page) {
+      super(page, AggregatedListTargetPoolsFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class AggregatedListTargetPoolsPage extends AbstractPage<
+      AggregatedListTargetPoolsHttpRequest,
+      TargetPoolAggregatedList,
+      TargetPool,
+      AggregatedListTargetPoolsPage> {
+
+    private AggregatedListTargetPoolsPage(
+        PageContext<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPool> context,
+        TargetPoolAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListTargetPoolsPage createEmptyPage() {
+      return new AggregatedListTargetPoolsPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListTargetPoolsPage createPage(
+        PageContext<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPool> context,
+        TargetPoolAggregatedList response) {
+      return new AggregatedListTargetPoolsPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListTargetPoolsPage> createPageAsync(
+        PageContext<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPool> context,
+        ApiFuture<TargetPoolAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class AggregatedListTargetPoolsFixedSizeCollection extends AbstractFixedSizeCollection<
+      AggregatedListTargetPoolsHttpRequest,
+      TargetPoolAggregatedList,
+      TargetPool,
+      AggregatedListTargetPoolsPage,
+      AggregatedListTargetPoolsFixedSizeCollection> {
+
+    private AggregatedListTargetPoolsFixedSizeCollection(List<AggregatedListTargetPoolsPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListTargetPoolsFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListTargetPoolsFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListTargetPoolsFixedSizeCollection createCollection(
+        List<AggregatedListTargetPoolsPage> pages, int collectionSize) {
+      return new AggregatedListTargetPoolsFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
+  public static class ListTargetPoolsPagedResponse extends AbstractPagedListResponse<
+      ListTargetPoolsHttpRequest,
+      TargetPoolList,
+      TargetPool,
+      ListTargetPoolsPage,
+      ListTargetPoolsFixedSizeCollection> {
+
+    public static ApiFuture<ListTargetPoolsPagedResponse> createAsync(
+        PageContext<ListTargetPoolsHttpRequest, TargetPoolList, TargetPool> context,
+        ApiFuture<TargetPoolList> futureResponse) {
+      ApiFuture<ListTargetPoolsPage> futurePage =
+          ListTargetPoolsPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListTargetPoolsPage, ListTargetPoolsPagedResponse>() {
+            @Override
+            public ListTargetPoolsPagedResponse apply(ListTargetPoolsPage input) {
+              return new ListTargetPoolsPagedResponse(input);
+            }
+          });
+    }
+
+    private ListTargetPoolsPagedResponse(ListTargetPoolsPage page) {
+      super(page, ListTargetPoolsFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListTargetPoolsPage extends AbstractPage<
+      ListTargetPoolsHttpRequest,
+      TargetPoolList,
+      TargetPool,
+      ListTargetPoolsPage> {
+
+    private ListTargetPoolsPage(
+        PageContext<ListTargetPoolsHttpRequest, TargetPoolList, TargetPool> context,
+        TargetPoolList response) {
+      super(context, response);
+    }
+
+    private static ListTargetPoolsPage createEmptyPage() {
+      return new ListTargetPoolsPage(null, null);
+    }
+
+    @Override
+    protected ListTargetPoolsPage createPage(
+        PageContext<ListTargetPoolsHttpRequest, TargetPoolList, TargetPool> context,
+        TargetPoolList response) {
+      return new ListTargetPoolsPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListTargetPoolsPage> createPageAsync(
+        PageContext<ListTargetPoolsHttpRequest, TargetPoolList, TargetPool> context,
+        ApiFuture<TargetPoolList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListTargetPoolsFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListTargetPoolsHttpRequest,
+      TargetPoolList,
+      TargetPool,
+      ListTargetPoolsPage,
+      ListTargetPoolsFixedSizeCollection> {
+
+    private ListTargetPoolsFixedSizeCollection(List<ListTargetPoolsPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListTargetPoolsFixedSizeCollection createEmptyCollection() {
+      return new ListTargetPoolsFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListTargetPoolsFixedSizeCollection createCollection(
+        List<ListTargetPoolsPage> pages, int collectionSize) {
+      return new ListTargetPoolsFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

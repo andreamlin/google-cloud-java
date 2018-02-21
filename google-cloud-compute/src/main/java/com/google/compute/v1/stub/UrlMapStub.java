@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,11 +25,11 @@ import com.google.compute.v1.InsertUrlMapHttpRequest;
 import com.google.compute.v1.InvalidateCacheUrlMapHttpRequest;
 import com.google.compute.v1.ListUrlMapsHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListUrlMapsPagedResponse;
 import com.google.compute.v1.PatchUrlMapHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.UpdateUrlMapHttpRequest;
 import com.google.compute.v1.UrlMap;
+import static com.google.compute.v1.UrlMapClient.ListUrlMapsPagedResponse;
 import com.google.compute.v1.UrlMapList;
 import com.google.compute.v1.UrlMapName;
 import com.google.compute.v1.UrlMapsValidateRequest;

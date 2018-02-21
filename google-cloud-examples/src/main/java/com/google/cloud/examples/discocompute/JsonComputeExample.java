@@ -4,14 +4,11 @@ import com.google.api.core.ApiFuture;
 import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.common.base.Strings;
-import com.google.compute.v1.*;
+import com.google.cloud.simplecompute.v1.*;
 
-import com.google.compute.v1.PagedResponseWrappers.AggregatedListAddressesPagedResponse;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-import org.threeten.bp.Duration;
 
 /**
  * Use gax-java and generated message type to List Addresses in a test GCP Compute project.
@@ -49,34 +46,10 @@ public class JsonComputeExample {
     return addressClient;
   }
 
-  private static AddressClient createCredentialedClient2() throws IOException, Exception {
-    try (AddressClient addressClient = AddressClient.create()) {
-      ProjectName project = ProjectName.of("[PROJECT]");
-      AggregatedListAddressesHttpRequest request = AggregatedListAddressesHttpRequest.newBuilder()
-          .setProjectWithProjectName(project)
-          .build();
-      while (true) {
-        AddressAggregatedList response = addressClient.aggregatedListAddressesCallable()
-            .call(request);
-        AddressesScopedList scopedList = response.getItems();
-        for (Address element : scopedList.getAddresses()) {
-          // doThingsWith(element);
-        }
-        String nextPageToken = response.getNextPageToken();
-        if (!Strings.isNullOrEmpty(nextPageToken)) {
-          request = request.toBuilder().setPageToken(nextPageToken).build();
-        } else {
-          break;
-        }
-      }
-    }
-    return null;
-  }
-
   // A basic List Address example.
   private static void runExampleWithGapicGen(AddressClient client) {
     System.out.println("Running with Gapic Client.");
-    PagedResponseWrappers.ListAddressesPagedResponse listResponse = listAddresses(client);
+    AddressClient.ListAddressesPagedResponse listResponse = listAddresses(client);
     verifyListAddressWithGets(client, listResponse);
   }
 
@@ -120,7 +93,7 @@ public class JsonComputeExample {
     RegionName region = RegionName.of(PROJECT_NAME, REGION);
     Address address = Address.newBuilder().build();
     InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .setAddressResource(address)
         .build();
     // Do something
@@ -136,7 +109,7 @@ public class JsonComputeExample {
     RegionName region = RegionName.of(PROJECT_NAME, REGION);
     Address address = Address.newBuilder().build();
     InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .setAddressResource(address)
         .build();
     ApiFuture<Operation> future = client.insertAddressCallable().futureCall(request);
@@ -147,20 +120,20 @@ public class JsonComputeExample {
     System.out.format("Result of insert: %s\n", response.toString());
   }
 
-  private static PagedResponseWrappers.ListAddressesPagedResponse listAddresses(AddressClient client) {
+  private static AddressClient.ListAddressesPagedResponse listAddresses(AddressClient client) {
     System.out.println("Listing addresses:");
     RegionName regionName = RegionName.newBuilder().setRegion(REGION).setProject(PROJECT_NAME).build();
     ListAddressesHttpRequest listRequest = ListAddressesHttpRequest.newBuilder()
-        .setRegionWithRegionName(regionName)
+        .setRegion(regionName.toString())
         .build();
-    PagedResponseWrappers.ListAddressesPagedResponse response = client.listAddresses(listRequest);
+    AddressClient.ListAddressesPagedResponse response = client.listAddresses(listRequest);
     for (Address address : response.iterateAll()) {
       System.out.println("\t - " + address.toString());
     }
     return response;
   }
 
-  private static void verifyListAddressWithGets(AddressClient client, PagedResponseWrappers.ListAddressesPagedResponse listResponse) {
+  private static void verifyListAddressWithGets(AddressClient client, AddressClient.ListAddressesPagedResponse listResponse) {
     for (Address address : listResponse.iterateAll()) {
       System.out.format("Making get request for address \"%s\"...\n", address.getName());
       Address fetchedAddress = client.getAddress(AddressName.of(address.getName(), PROJECT_NAME, REGION));

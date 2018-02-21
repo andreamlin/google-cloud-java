@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,30 @@
  */
 package com.google.compute.v1;
 
-import com.google.api.gax.core.NoCredentialsProvider;
-import com.google.api.gax.core.PagedListResponse;
-import com.google.api.gax.grpc.GaxGrpcProperties;
-import com.google.api.gax.grpc.GrpcStatusCode;
-import com.google.api.gax.grpc.testing.LocalChannelProvider;
-import com.google.api.gax.grpc.testing.MockGrpcService;
-import com.google.api.gax.grpc.testing.MockServiceHelper;
-import com.google.api.gax.rpc.ApiClientHeaderProvider;
+import com.google.api.gax.httpjson.MockHttpService;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiException;
+import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
-import com.google.api.gax.rpc.StatusCode;
+import com.google.api.gax.rpc.StatusCode.Code;
+import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.common.collect.Lists;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListAutoscalersPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListAutoscalersPagedResponse;
+import static com.google.compute.v1.AutoscalerClient.AggregatedListAutoscalersPagedResponse;
+import static com.google.compute.v1.AutoscalerClient.ListAutoscalersPagedResponse;
+import static com.google.compute.v1.stub.HttpJsonAutoscalerStub.aggregatedListAutoscalersMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonAutoscalerStub.deleteAutoscalerMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonAutoscalerStub.getAutoscalerMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonAutoscalerStub.insertAutoscalerMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonAutoscalerStub.listAutoscalersMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonAutoscalerStub.patchAutoscalerMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonAutoscalerStub.updateAutoscalerMethodDescriptor;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -44,120 +48,28 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class AutoscalerClientTest {
-  private static MockAddresses mockAddresses;
-  private static MockAutoscalers mockAutoscalers;
-  private static MockBackendServices mockBackendServices;
-  private static MockDiskTypes mockDiskTypes;
-  private static MockDisks mockDisks;
-  private static MockFirewalls mockFirewalls;
-  private static MockForwardingRules mockForwardingRules;
-  private static MockGlobalAddresses mockGlobalAddresses;
-  private static MockGlobalForwardingRules mockGlobalForwardingRules;
-  private static MockGlobalOperations mockGlobalOperations;
-  private static MockHealthChecks mockHealthChecks;
-  private static MockHttpHealthChecks mockHttpHealthChecks;
-  private static MockHttpsHealthChecks mockHttpsHealthChecks;
-  private static MockImages mockImages;
-  private static MockInstanceGroupManagers mockInstanceGroupManagers;
-  private static MockInstanceGroups mockInstanceGroups;
-  private static MockInstanceTemplates mockInstanceTemplates;
-  private static MockInstances mockInstances;
-  private static MockLicenses mockLicenses;
-  private static MockMachineTypes mockMachineTypes;
-  private static MockNetworks mockNetworks;
-  private static MockProjects mockProjects;
-  private static MockRegionAutoscalers mockRegionAutoscalers;
-  private static MockRegionBackendServices mockRegionBackendServices;
-  private static MockRegionInstanceGroupManagers mockRegionInstanceGroupManagers;
-  private static MockRegionInstanceGroups mockRegionInstanceGroups;
-  private static MockRegionOperations mockRegionOperations;
-  private static MockRegions mockRegions;
-  private static MockRouters mockRouters;
-  private static MockRoutes mockRoutes;
-  private static MockSnapshots mockSnapshots;
-  private static MockSslCertificates mockSslCertificates;
-  private static MockSubnetworks mockSubnetworks;
-  private static MockTargetHttpProxies mockTargetHttpProxies;
-  private static MockTargetHttpsProxies mockTargetHttpsProxies;
-  private static MockTargetInstances mockTargetInstances;
-  private static MockTargetPools mockTargetPools;
-  private static MockTargetSslProxies mockTargetSslProxies;
-  private static MockTargetVpnGateways mockTargetVpnGateways;
-  private static MockUrlMaps mockUrlMaps;
-  private static MockVpnTunnels mockVpnTunnels;
-  private static MockZoneOperations mockZoneOperations;
-  private static MockZones mockZones;
-  private static MockServiceHelper serviceHelper;
-  private AutoscalerClient client;
-  private LocalChannelProvider channelProvider;
+  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static AutoscalerClient client;
+  private static AutoscalerSettings clientSettings;
 
   @BeforeClass
-  public static void startStaticServer() {
-    mockAddresses = new MockAddresses();
-    mockAutoscalers = new MockAutoscalers();
-    mockBackendServices = new MockBackendServices();
-    mockDiskTypes = new MockDiskTypes();
-    mockDisks = new MockDisks();
-    mockFirewalls = new MockFirewalls();
-    mockForwardingRules = new MockForwardingRules();
-    mockGlobalAddresses = new MockGlobalAddresses();
-    mockGlobalForwardingRules = new MockGlobalForwardingRules();
-    mockGlobalOperations = new MockGlobalOperations();
-    mockHealthChecks = new MockHealthChecks();
-    mockHttpHealthChecks = new MockHttpHealthChecks();
-    mockHttpsHealthChecks = new MockHttpsHealthChecks();
-    mockImages = new MockImages();
-    mockInstanceGroupManagers = new MockInstanceGroupManagers();
-    mockInstanceGroups = new MockInstanceGroups();
-    mockInstanceTemplates = new MockInstanceTemplates();
-    mockInstances = new MockInstances();
-    mockLicenses = new MockLicenses();
-    mockMachineTypes = new MockMachineTypes();
-    mockNetworks = new MockNetworks();
-    mockProjects = new MockProjects();
-    mockRegionAutoscalers = new MockRegionAutoscalers();
-    mockRegionBackendServices = new MockRegionBackendServices();
-    mockRegionInstanceGroupManagers = new MockRegionInstanceGroupManagers();
-    mockRegionInstanceGroups = new MockRegionInstanceGroups();
-    mockRegionOperations = new MockRegionOperations();
-    mockRegions = new MockRegions();
-    mockRouters = new MockRouters();
-    mockRoutes = new MockRoutes();
-    mockSnapshots = new MockSnapshots();
-    mockSslCertificates = new MockSslCertificates();
-    mockSubnetworks = new MockSubnetworks();
-    mockTargetHttpProxies = new MockTargetHttpProxies();
-    mockTargetHttpsProxies = new MockTargetHttpsProxies();
-    mockTargetInstances = new MockTargetInstances();
-    mockTargetPools = new MockTargetPools();
-    mockTargetSslProxies = new MockTargetSslProxies();
-    mockTargetVpnGateways = new MockTargetVpnGateways();
-    mockUrlMaps = new MockUrlMaps();
-    mockVpnTunnels = new MockVpnTunnels();
-    mockZoneOperations = new MockZoneOperations();
-    mockZones = new MockZones();
-    serviceHelper = new MockServiceHelper("in-process-1", Arrays.<MockGrpcService>asList(mockAddresses, mockAutoscalers, mockBackendServices, mockDiskTypes, mockDisks, mockFirewalls, mockForwardingRules, mockGlobalAddresses, mockGlobalForwardingRules, mockGlobalOperations, mockHealthChecks, mockHttpHealthChecks, mockHttpsHealthChecks, mockImages, mockInstanceGroupManagers, mockInstanceGroups, mockInstanceTemplates, mockInstances, mockLicenses, mockMachineTypes, mockNetworks, mockProjects, mockRegionAutoscalers, mockRegionBackendServices, mockRegionInstanceGroupManagers, mockRegionInstanceGroups, mockRegionOperations, mockRegions, mockRouters, mockRoutes, mockSnapshots, mockSslCertificates, mockSubnetworks, mockTargetHttpProxies, mockTargetHttpsProxies, mockTargetInstances, mockTargetPools, mockTargetSslProxies, mockTargetVpnGateways, mockUrlMaps, mockVpnTunnels, mockZoneOperations, mockZones));
-    serviceHelper.start();
-  }
-
-  @AfterClass
-  public static void stopServer() {
-    serviceHelper.stop();
-  }
-
-  @Before
-  public void setUp() throws IOException {
-    serviceHelper.reset();
-    channelProvider = serviceHelper.createChannelProvider();
-    AutoscalerSettings settings = AutoscalerSettings.newBuilder()
-        .setTransportChannelProvider(channelProvider)
-        .setCredentialsProvider(NoCredentialsProvider.create())
-        .build();
-    client = AutoscalerClient.create(settings);
+  public static void setUp() throws IOException {
+    clientSettings =
+        AutoscalerSettings.newBuilder()
+           .setTransportChannelProvider(
+               AutoscalerSettings.defaultHttpJsonTransportProviderBuilder()
+                   .setHttpTransport(MOCK_SERVICE).build()).build();
+    client =
+       AutoscalerClient.create(clientSettings);
   }
 
   @After
-  public void tearDown() throws Exception {
+  public void cleanUp() {
+    MOCK_SERVICE.reset();
+  }
+
+  @AfterClass
+  public static void tearDown() throws Exception {
     client.close();
   }
 
@@ -168,9 +80,9 @@ public class AutoscalerClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    AutoscalersScopedList autoscalers = AutoscalersScopedList.newBuilder().build();
+    Autoscaler autoscalers = Autoscaler.newBuilder().build();
     AutoscalersScopedList items = AutoscalersScopedList.newBuilder()
-      .setAutoscalers(autoscalers)
+      .addAllAutoscalers(autoscalers)
       .build();
     AutoscalerAggregatedList expectedResponse = AutoscalerAggregatedList.newBuilder()
       .setKind(kind)
@@ -179,7 +91,7 @@ public class AutoscalerClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    mockAutoscalers.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListAutoscalersMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -189,22 +101,16 @@ public class AutoscalerClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getAutoscalers().get(0), resources.get(0));
 
-    List<GeneratedMessageV3> actualRequests = mockAutoscalers.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    AggregatedListAutoscalersHttpRequest actualRequest = (AggregatedListAutoscalersHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(project, actualRequest.getProjectAsProjectName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void aggregatedListAutoscalersExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockAutoscalers.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(aggregatedListAutoscalersMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -227,7 +133,7 @@ public class AutoscalerClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -236,7 +142,7 @@ public class AutoscalerClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -249,7 +155,7 @@ public class AutoscalerClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone)
+      .setZone(zone.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -258,12 +164,12 @@ public class AutoscalerClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockAutoscalers.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteAutoscalerMethodDescriptor);
 
     AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
 
@@ -271,22 +177,16 @@ public class AutoscalerClientTest {
         client.deleteAutoscaler(autoscaler);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockAutoscalers.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    DeleteAutoscalerHttpRequest actualRequest = (DeleteAutoscalerHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(autoscaler, actualRequest.getAutoscalerAsAutoscalerName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void deleteAutoscalerExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockAutoscalers.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(deleteAutoscalerMethodDescriptor);
 
     try {
       AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
@@ -301,27 +201,27 @@ public class AutoscalerClientTest {
   @Test
   @SuppressWarnings("all")
   public void getAutoscalerTest() {
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String kind = "kind3292052";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
     String description = "description-1724546052";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String selfLink = "selfLink-1691268851";
     String target = "target-880905839";
     Autoscaler expectedResponse = Autoscaler.newBuilder()
-      .setZone(zone)
+      .setZone(zone.toString())
       .setKind(kind)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
       .setDescription(description)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setSelfLink(selfLink)
       .setTarget(target)
       .build();
-    mockAutoscalers.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getAutoscalerMethodDescriptor);
 
     AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
 
@@ -329,22 +229,16 @@ public class AutoscalerClientTest {
         client.getAutoscaler(autoscaler);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockAutoscalers.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    GetAutoscalerHttpRequest actualRequest = (GetAutoscalerHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(autoscaler, actualRequest.getAutoscalerAsAutoscalerName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void getAutoscalerExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockAutoscalers.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(getAutoscalerMethodDescriptor);
 
     try {
       AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
@@ -367,7 +261,7 @@ public class AutoscalerClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone2 = "zone2-696322977";
+    ZoneName zone2 = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -376,7 +270,7 @@ public class AutoscalerClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -389,7 +283,7 @@ public class AutoscalerClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone2)
+      .setZone(zone2.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -398,12 +292,12 @@ public class AutoscalerClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockAutoscalers.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertAutoscalerMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     Autoscaler autoscaler = Autoscaler.newBuilder().build();
@@ -412,23 +306,16 @@ public class AutoscalerClientTest {
         client.insertAutoscaler(zone, autoscaler);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockAutoscalers.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    InsertAutoscalerHttpRequest actualRequest = (InsertAutoscalerHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(zone, actualRequest.getZoneAsZoneName());
-    Assert.assertEquals(autoscaler, actualRequest.getAutoscaler());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void insertAutoscalerExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockAutoscalers.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(insertAutoscalerMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -448,7 +335,7 @@ public class AutoscalerClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    Autoscaler itemsElement = new ArrayList<>();
+    Autoscaler itemsElement = Autoscaler.newBuilder().build();
     List<Autoscaler> items = Arrays.asList(itemsElement);
     AutoscalerList expectedResponse = AutoscalerList.newBuilder()
       .setKind(kind)
@@ -457,7 +344,7 @@ public class AutoscalerClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    mockAutoscalers.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listAutoscalersMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -467,22 +354,16 @@ public class AutoscalerClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<GeneratedMessageV3> actualRequests = mockAutoscalers.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    ListAutoscalersHttpRequest actualRequest = (ListAutoscalersHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(zone, actualRequest.getZoneAsZoneName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void listAutoscalersExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockAutoscalers.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(listAutoscalersMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -505,7 +386,7 @@ public class AutoscalerClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone2 = "zone2-696322977";
+    ZoneName zone2 = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -514,7 +395,7 @@ public class AutoscalerClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -527,7 +408,7 @@ public class AutoscalerClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone2)
+      .setZone(zone2.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -536,12 +417,12 @@ public class AutoscalerClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockAutoscalers.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(patchAutoscalerMethodDescriptor);
 
     String autoscaler = "autoscaler517258967";
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -550,23 +431,16 @@ public class AutoscalerClientTest {
         client.patchAutoscaler(autoscaler, zone);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockAutoscalers.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    PatchAutoscalerHttpRequest actualRequest = (PatchAutoscalerHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(autoscaler, actualRequest.getAutoscaler());
-    Assert.assertEquals(zone, actualRequest.getZoneAsZoneName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void patchAutoscalerExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockAutoscalers.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(patchAutoscalerMethodDescriptor);
 
     try {
       String autoscaler = "autoscaler517258967";
@@ -590,7 +464,7 @@ public class AutoscalerClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone2 = "zone2-696322977";
+    ZoneName zone2 = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -599,7 +473,7 @@ public class AutoscalerClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -612,7 +486,7 @@ public class AutoscalerClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone2)
+      .setZone(zone2.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -621,12 +495,12 @@ public class AutoscalerClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockAutoscalers.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(updateAutoscalerMethodDescriptor);
 
     String autoscaler = "autoscaler517258967";
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -635,23 +509,16 @@ public class AutoscalerClientTest {
         client.updateAutoscaler(autoscaler, zone);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockAutoscalers.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    UpdateAutoscalerHttpRequest actualRequest = (UpdateAutoscalerHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(autoscaler, actualRequest.getAutoscaler());
-    Assert.assertEquals(zone, actualRequest.getZoneAsZoneName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void updateAutoscalerExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockAutoscalers.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(updateAutoscalerMethodDescriptor);
 
     try {
       String autoscaler = "autoscaler517258967";

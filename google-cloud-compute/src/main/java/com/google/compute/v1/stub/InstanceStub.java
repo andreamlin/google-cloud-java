@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,8 @@ import com.google.compute.v1.GetSerialPortOutputInstanceHttpRequest;
 import com.google.compute.v1.InsertInstanceHttpRequest;
 import com.google.compute.v1.Instance;
 import com.google.compute.v1.InstanceAggregatedList;
+import static com.google.compute.v1.InstanceClient.AggregatedListInstancesPagedResponse;
+import static com.google.compute.v1.InstanceClient.ListInstancesPagedResponse;
 import com.google.compute.v1.InstanceList;
 import com.google.compute.v1.InstanceName;
 import com.google.compute.v1.InstancesSetMachineTypeRequest;
@@ -39,8 +41,6 @@ import com.google.compute.v1.InstancesStartWithEncryptionKeyRequest;
 import com.google.compute.v1.ListInstancesHttpRequest;
 import com.google.compute.v1.Metadata;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListInstancesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListInstancesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.ResetInstanceHttpRequest;
 import com.google.compute.v1.Scheduling;

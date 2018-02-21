@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,12 +21,12 @@ import com.google.api.gax.rpc.UnaryCallable;
 import com.google.compute.v1.DeleteHttpsHealthCheckHttpRequest;
 import com.google.compute.v1.GetHttpsHealthCheckHttpRequest;
 import com.google.compute.v1.HttpsHealthCheck;
+import static com.google.compute.v1.HttpsHealthCheckClient.ListHttpsHealthChecksPagedResponse;
 import com.google.compute.v1.HttpsHealthCheckList;
 import com.google.compute.v1.HttpsHealthCheckName;
 import com.google.compute.v1.InsertHttpsHealthCheckHttpRequest;
 import com.google.compute.v1.ListHttpsHealthChecksHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListHttpsHealthChecksPagedResponse;
 import com.google.compute.v1.PatchHttpsHealthCheckHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.UpdateHttpsHealthCheckHttpRequest;

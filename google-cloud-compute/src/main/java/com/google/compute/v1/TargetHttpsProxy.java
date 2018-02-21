@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -73,6 +75,11 @@ public final class TargetHttpsProxy implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
@@ -104,7 +111,7 @@ public final class TargetHttpsProxy implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -270,7 +277,7 @@ public final class TargetHttpsProxy implements ApiMessage {
       return sslCertificates;
     }
 
-    public Builder setSslCertificates(List<String> sslCertificates) {
+    public Builder addAllSslCertificates(List<String> sslCertificates) {
       this.sslCertificates = sslCertificates;
       return this;
     }
@@ -313,7 +320,7 @@ public final class TargetHttpsProxy implements ApiMessage {
       newBuilder.setKind(this.kind);
       newBuilder.setName(this.name);
       newBuilder.setSelfLink(this.selfLink);
-      newBuilder.setSslCertificates(this.sslCertificates);
+      newBuilder.addAllSslCertificates(this.sslCertificates);
       newBuilder.setUrlMap(this.urlMap);
       return newBuilder;
     }

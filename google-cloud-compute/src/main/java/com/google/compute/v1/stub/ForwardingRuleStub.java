@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,14 +22,14 @@ import com.google.compute.v1.AggregatedListForwardingRulesHttpRequest;
 import com.google.compute.v1.DeleteForwardingRuleHttpRequest;
 import com.google.compute.v1.ForwardingRule;
 import com.google.compute.v1.ForwardingRuleAggregatedList;
+import static com.google.compute.v1.ForwardingRuleClient.AggregatedListForwardingRulesPagedResponse;
+import static com.google.compute.v1.ForwardingRuleClient.ListForwardingRulesPagedResponse;
 import com.google.compute.v1.ForwardingRuleList;
 import com.google.compute.v1.ForwardingRuleName;
 import com.google.compute.v1.GetForwardingRuleHttpRequest;
 import com.google.compute.v1.InsertForwardingRuleHttpRequest;
 import com.google.compute.v1.ListForwardingRulesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListForwardingRulesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListForwardingRulesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.SetTargetForwardingRuleHttpRequest;

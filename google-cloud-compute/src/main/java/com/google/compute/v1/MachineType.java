@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -101,6 +103,11 @@ public final class MachineType implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
@@ -153,7 +160,7 @@ public final class MachineType implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -436,7 +443,7 @@ public final class MachineType implements ApiMessage {
       return scratchDisks;
     }
 
-    public Builder setScratchDisks(List<ScratchDisks> scratchDisks) {
+    public Builder addAllScratchDisks(List<ScratchDisks> scratchDisks) {
       this.scratchDisks = scratchDisks;
       return this;
     }
@@ -508,7 +515,7 @@ public final class MachineType implements ApiMessage {
       newBuilder.setMaximumPersistentDisksSizeGb(this.maximumPersistentDisksSizeGb);
       newBuilder.setMemoryMb(this.memoryMb);
       newBuilder.setName(this.name);
-      newBuilder.setScratchDisks(this.scratchDisks);
+      newBuilder.addAllScratchDisks(this.scratchDisks);
       newBuilder.setSelfLink(this.selfLink);
       newBuilder.setZone(this.zone);
       return newBuilder;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,18 +26,19 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListDiskTypesHttpRequest;
 import com.google.compute.v1.DiskType;
 import com.google.compute.v1.DiskTypeAggregatedList;
+import static com.google.compute.v1.DiskTypeClient.AggregatedListDiskTypesPagedResponse;
+import static com.google.compute.v1.DiskTypeClient.ListDiskTypesPagedResponse;
 import com.google.compute.v1.DiskTypeList;
 import com.google.compute.v1.DiskTypeName;
 import com.google.compute.v1.DiskTypeSettings;
 import com.google.compute.v1.GetDiskTypeHttpRequest;
 import com.google.compute.v1.ListDiskTypesHttpRequest;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListDiskTypesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListDiskTypesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.ZoneName;
 import java.io.IOException;
@@ -60,7 +61,8 @@ import javax.annotation.Generated;
 public class HttpJsonDiskTypeStub extends DiskTypeStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList> aggregatedListDiskTypesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList> aggregatedListDiskTypesMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList>newBuilder()
           .setMethodName("compute.diskTypes.aggregatedList")
           .setRequestInstance(AggregatedListDiskTypesHttpRequest.getDefaultInstance())
@@ -75,7 +77,8 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<GetDiskTypeHttpRequest, DiskType> getDiskTypeMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetDiskTypeHttpRequest, DiskType> getDiskTypeMethodDescriptor =
       ApiMethodDescriptor.<GetDiskTypeHttpRequest, DiskType>newBuilder()
           .setMethodName("compute.diskTypes.get")
           .setRequestInstance(GetDiskTypeHttpRequest.getDefaultInstance())
@@ -89,7 +92,8 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<ListDiskTypesHttpRequest, DiskTypeList> listDiskTypesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListDiskTypesHttpRequest, DiskTypeList> listDiskTypesMethodDescriptor =
       ApiMethodDescriptor.<ListDiskTypesHttpRequest, DiskTypeList>newBuilder()
           .setMethodName("compute.diskTypes.list")
           .setRequestInstance(ListDiskTypesHttpRequest.getDefaultInstance())
@@ -113,12 +117,12 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
   private final UnaryCallable<ListDiskTypesHttpRequest, DiskTypeList> listDiskTypesCallable;
   private final UnaryCallable<ListDiskTypesHttpRequest, ListDiskTypesPagedResponse> listDiskTypesPagedCallable;
 
-  public static final HttpJsonDiskTypeStub create(DiskTypeSettings settings) throws IOException {
+  public static final HttpJsonDiskTypeStub create(DiskTypeStubSettings settings) throws IOException {
     return new HttpJsonDiskTypeStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonDiskTypeStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonDiskTypeStub(DiskTypeSettings.newBuilder().build(), clientContext);
+    return new HttpJsonDiskTypeStub(DiskTypeStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -126,7 +130,7 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonDiskTypeStub(DiskTypeSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonDiskTypeStub(DiskTypeStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList> aggregatedListDiskTypesTransportSettings =
         HttpJsonCallSettings.<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList>newBuilder()

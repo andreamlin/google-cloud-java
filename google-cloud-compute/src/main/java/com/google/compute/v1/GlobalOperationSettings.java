@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
 import com.google.api.gax.rpc.StatusCode;
+import com.google.api.gax.rpc.StubSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -46,10 +47,9 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListGlobalOperationsPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListGlobalOperationsPagedResponse;
-import com.google.compute.v1.stub.GlobalOperationStub;
-import com.google.compute.v1.stub.HttpJsonGlobalOperationStub;
+import static com.google.compute.v1.GlobalOperationClient.AggregatedListGlobalOperationsPagedResponse;
+import static com.google.compute.v1.GlobalOperationClient.ListGlobalOperationsPagedResponse;
+import com.google.compute.v1.stub.GlobalOperationStubSettings;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -87,82 +87,56 @@ import org.threeten.bp.Duration;
 @BetaApi
 public class GlobalOperationSettings extends ClientSettings<GlobalOperationSettings> {
   /**
-   * The default scopes of the service.
-   */
-  private static final ImmutableList<String> DEFAULT_SERVICE_SCOPES = ImmutableList.<String>builder()
-      .add("https://www.googleapis.com/auth/cloud-platform")
-      .add("https://www.googleapis.com/auth/compute")
-      .add("https://www.googleapis.com/auth/compute.readonly")
-      .add("https://www.googleapis.com/auth/devstorage.full_control")
-      .add("https://www.googleapis.com/auth/devstorage.read_only")
-      .add("https://www.googleapis.com/auth/devstorage.read_write")
-      .build();
-
-  private final PagedCallSettings<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsSettings;
-  private final UnaryCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings;
-  private final UnaryCallSettings<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings;
-  private final PagedCallSettings<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse> listGlobalOperationsSettings;
-
-  /**
    * Returns the object with the settings used for calls to aggregatedListGlobalOperations.
    */
   public PagedCallSettings<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsSettings() {
-    return aggregatedListGlobalOperationsSettings;
+    return ((GlobalOperationStubSettings) getStubSettings()).aggregatedListGlobalOperationsSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to deleteGlobalOperation.
    */
   public UnaryCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings() {
-    return deleteGlobalOperationSettings;
+    return ((GlobalOperationStubSettings) getStubSettings()).deleteGlobalOperationSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to getGlobalOperation.
    */
   public UnaryCallSettings<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings() {
-    return getGlobalOperationSettings;
+    return ((GlobalOperationStubSettings) getStubSettings()).getGlobalOperationSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to listGlobalOperations.
    */
   public PagedCallSettings<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse> listGlobalOperationsSettings() {
-    return listGlobalOperationsSettings;
+    return ((GlobalOperationStubSettings) getStubSettings()).listGlobalOperationsSettings();
   }
 
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
-  public GlobalOperationStub createStub() throws IOException {
-    if (getTransportChannelProvider()
-        .getTransportName()
-        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
-      return HttpJsonGlobalOperationStub.create(this);
-    } else {
-      throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportChannelProvider().getTransportName());
-    }
+  public static final GlobalOperationSettings create(GlobalOperationStubSettings stub) throws IOException {
+    return new GlobalOperationSettings.Builder(stub.toBuilder()).build();
   }
 
   /**
    * Returns a builder for the default ExecutorProvider for this service.
    */
   public static InstantiatingExecutorProvider.Builder defaultExecutorProviderBuilder() {
-    return InstantiatingExecutorProvider.newBuilder();
+    return GlobalOperationStubSettings.defaultExecutorProviderBuilder();
   }
 
   /**
    * Returns the default service endpoint.
    */
-  public static String getDefaultEndpoint() {
-    return "https://www.googleapis.com/compute/v1/projects/";
-  }
-
+   public static String getDefaultEndpoint() {
+     return GlobalOperationStubSettings.getDefaultEndpoint();
+   }
   /**
    * Returns the default service port.
    */
   public static int getDefaultServicePort() {
-    return 443;
+    return GlobalOperationStubSettings.getDefaultServicePort();
   }
 
 
@@ -170,7 +144,7 @@ public class GlobalOperationSettings extends ClientSettings<GlobalOperationSetti
    * Returns the default service scopes.
    */
   public static List<String> getDefaultServiceScopes() {
-    return DEFAULT_SERVICE_SCOPES;
+    return GlobalOperationStubSettings.getDefaultServiceScopes();
   }
 
 
@@ -178,25 +152,21 @@ public class GlobalOperationSettings extends ClientSettings<GlobalOperationSetti
    * Returns a builder for the default credentials for this service.
    */
   public static GoogleCredentialsProvider.Builder defaultCredentialsProviderBuilder() {
-    return GoogleCredentialsProvider.newBuilder()
-        .setScopesToApply(DEFAULT_SERVICE_SCOPES)
-        ;
+    return GlobalOperationStubSettings.defaultCredentialsProviderBuilder();
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder();
+    return GlobalOperationStubSettings.defaultHttpJsonTransportProviderBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
-    return defaultHttpJsonTransportProviderBuilder().build();
+    return GlobalOperationStubSettings.defaultTransportChannelProvider();
   }
 
   @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
-    return ApiClientHeaderProvider.newBuilder()
-        .setGeneratedLibToken("gapic", GaxProperties.getLibraryVersion(GlobalOperationSettings.class))
-        .setTransportToken(GaxHttpJsonProperties.getHttpJsonTokenName(), GaxHttpJsonProperties.getHttpJsonVersion());
+    return GlobalOperationStubSettings.defaultApiClientHeaderProviderBuilder();
   }
 
   /**
@@ -222,223 +192,35 @@ public class GlobalOperationSettings extends ClientSettings<GlobalOperationSetti
 
   protected GlobalOperationSettings(Builder settingsBuilder) throws IOException {
     super(settingsBuilder);
-
-    aggregatedListGlobalOperationsSettings = settingsBuilder.aggregatedListGlobalOperationsSettings().build();
-    deleteGlobalOperationSettings = settingsBuilder.deleteGlobalOperationSettings().build();
-    getGlobalOperationSettings = settingsBuilder.getGlobalOperationSettings().build();
-    listGlobalOperationsSettings = settingsBuilder.listGlobalOperationsSettings().build();
   }
-
-  private static final PagedListDescriptor<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, Operation> AGGREGATED_LIST_GLOBAL_OPERATIONS_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, Operation>() {
-        @Override
-        public String emptyToken() {
-          return "";
-        }
-        @Override
-        public AggregatedListGlobalOperationsHttpRequest injectToken(AggregatedListGlobalOperationsHttpRequest payload, String token) {
-          return AggregatedListGlobalOperationsHttpRequest
-            .newBuilder(payload)
-            .setPageToken(token)
-            .build();
-        }
-        @Override
-        public AggregatedListGlobalOperationsHttpRequest injectPageSize(AggregatedListGlobalOperationsHttpRequest payload, int pageSize) {
-          return AggregatedListGlobalOperationsHttpRequest
-            .newBuilder(payload)
-            .setMaxResults(pageSize)
-            .build();
-        }
-        @Override
-        public Integer extractPageSize(AggregatedListGlobalOperationsHttpRequest payload) {
-          return payload.getMaxResults();
-        }
-        @Override
-        public String extractNextToken(OperationAggregatedList payload) {
-          return payload.getNextPageToken();
-        }
-        @Override
-        public Iterable<Operation> extractResources(OperationAggregatedList payload) {
-          return payload.getItems().getOperations();
-        }
-      };
-
-  private static final PagedListDescriptor<ListGlobalOperationsHttpRequest, OperationList, Operation> LIST_GLOBAL_OPERATIONS_PAGE_STR_DESC =
-      new PagedListDescriptor<ListGlobalOperationsHttpRequest, OperationList, Operation>() {
-        @Override
-        public String emptyToken() {
-          return "";
-        }
-        @Override
-        public ListGlobalOperationsHttpRequest injectToken(ListGlobalOperationsHttpRequest payload, String token) {
-          return ListGlobalOperationsHttpRequest
-            .newBuilder(payload)
-            .setPageToken(token)
-            .build();
-        }
-        @Override
-        public ListGlobalOperationsHttpRequest injectPageSize(ListGlobalOperationsHttpRequest payload, int pageSize) {
-          return ListGlobalOperationsHttpRequest
-            .newBuilder(payload)
-            .setMaxResults(pageSize)
-            .build();
-        }
-        @Override
-        public Integer extractPageSize(ListGlobalOperationsHttpRequest payload) {
-          return payload.getMaxResults();
-        }
-        @Override
-        public String extractNextToken(OperationList payload) {
-          return payload.getNextPageToken();
-        }
-        @Override
-        public Iterable<Operation> extractResources(OperationList payload) {
-          return payload.getItems();
-        }
-      };
-
-  private static final PagedListResponseFactory<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse> AGGREGATED_LIST_GLOBAL_OPERATIONS_PAGE_STR_FACT =
-      new PagedListResponseFactory<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse>() {
-        @Override
-        public ApiFuture<AggregatedListGlobalOperationsPagedResponse> getFuturePagedResponse(
-            UnaryCallable<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> callable,
-            AggregatedListGlobalOperationsHttpRequest request,
-            ApiCallContext context,
-            ApiFuture<OperationAggregatedList> futureResponse) {
-          PageContext<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, Operation> pageContext =
-              PageContext.create(callable, AGGREGATED_LIST_GLOBAL_OPERATIONS_PAGE_STR_DESC, request, context);
-          return AggregatedListGlobalOperationsPagedResponse.createAsync(pageContext, futureResponse);
-        }
-      };
-
-  private static final PagedListResponseFactory<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse> LIST_GLOBAL_OPERATIONS_PAGE_STR_FACT =
-      new PagedListResponseFactory<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse>() {
-        @Override
-        public ApiFuture<ListGlobalOperationsPagedResponse> getFuturePagedResponse(
-            UnaryCallable<ListGlobalOperationsHttpRequest, OperationList> callable,
-            ListGlobalOperationsHttpRequest request,
-            ApiCallContext context,
-            ApiFuture<OperationList> futureResponse) {
-          PageContext<ListGlobalOperationsHttpRequest, OperationList, Operation> pageContext =
-              PageContext.create(callable, LIST_GLOBAL_OPERATIONS_PAGE_STR_DESC, request, context);
-          return ListGlobalOperationsPagedResponse.createAsync(pageContext, futureResponse);
-        }
-      };
-
 
   /**
    * Builder for GlobalOperationSettings.
    */
   public static class Builder extends ClientSettings.Builder<GlobalOperationSettings, Builder> {
-    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
-
-    private final PagedCallSettings.Builder<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsSettings;
-    private final UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings;
-    private final UnaryCallSettings.Builder<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings;
-    private final PagedCallSettings.Builder<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse> listGlobalOperationsSettings;
-
-    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
-
-    static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
-      definitions.put(
-          "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
-      definitions.put(
-          "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
-      RETRYABLE_CODE_DEFINITIONS = definitions.build();
-    }
-
-    private static final ImmutableMap<String, RetrySettings> RETRY_PARAM_DEFINITIONS;
-
-    static {
-      ImmutableMap.Builder<String, RetrySettings> definitions = ImmutableMap.builder();
-      RetrySettings settings = null;
-      settings = RetrySettings.newBuilder()
-          .setInitialRetryDelay(Duration.ofMillis(100L))
-          .setRetryDelayMultiplier(1.3)
-          .setMaxRetryDelay(Duration.ofMillis(60000L))
-          .setInitialRpcTimeout(Duration.ofMillis(20000L))
-          .setRpcTimeoutMultiplier(1.0)
-          .setMaxRpcTimeout(Duration.ofMillis(20000L))
-          .setTotalTimeout(Duration.ofMillis(600000L))
-          .build();
-      definitions.put("default", settings);
-      RETRY_PARAM_DEFINITIONS = definitions.build();
-    }
-
-    protected Builder() {
+    protected Builder() throws IOException {
       this((ClientContext) null);
     }
 
     protected Builder(ClientContext clientContext) {
-      super(clientContext);
-
-      aggregatedListGlobalOperationsSettings = PagedCallSettings.newBuilder(
-          AGGREGATED_LIST_GLOBAL_OPERATIONS_PAGE_STR_FACT);
-
-      deleteGlobalOperationSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      getGlobalOperationSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      listGlobalOperationsSettings = PagedCallSettings.newBuilder(
-          LIST_GLOBAL_OPERATIONS_PAGE_STR_FACT);
-
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
-          aggregatedListGlobalOperationsSettings,
-          deleteGlobalOperationSettings,
-          getGlobalOperationSettings,
-          listGlobalOperationsSettings
-      );
-
-      initDefaults(this);
+      super(GlobalOperationStubSettings.newBuilder(clientContext));
     }
 
     private static Builder createDefault() {
-      Builder builder = new Builder((ClientContext) null);
-      builder.setTransportChannelProvider(defaultTransportChannelProvider());
-      builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
-      builder.setInternalHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
-      builder.setEndpoint(getDefaultEndpoint());
-      return initDefaults(builder);
-    }
-
-    private static Builder initDefaults(Builder builder) {
-
-      builder.aggregatedListGlobalOperationsSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.deleteGlobalOperationSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.getGlobalOperationSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.listGlobalOperationsSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      return builder;
+      return new Builder(GlobalOperationStubSettings.newBuilder());
     }
 
     protected Builder(GlobalOperationSettings settings) {
-      super(settings);
+      super(settings.getStubSettings().toBuilder());
+    }
 
-      aggregatedListGlobalOperationsSettings = settings.aggregatedListGlobalOperationsSettings.toBuilder();
-      deleteGlobalOperationSettings = settings.deleteGlobalOperationSettings.toBuilder();
-      getGlobalOperationSettings = settings.getGlobalOperationSettings.toBuilder();
-      listGlobalOperationsSettings = settings.listGlobalOperationsSettings.toBuilder();
+    protected Builder(GlobalOperationStubSettings.Builder stubSettings) {
+      super(stubSettings);
+    }
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
-          aggregatedListGlobalOperationsSettings,
-          deleteGlobalOperationSettings,
-          getGlobalOperationSettings,
-          listGlobalOperationsSettings
-      );
+
+    public GlobalOperationStubSettings.Builder getStubSettingsBuilder() {
+      return ((GlobalOperationStubSettings.Builder) getStubSettings());
     }
 
     /**
@@ -447,7 +229,7 @@ public class GlobalOperationSettings extends ClientSettings<GlobalOperationSetti
      * Note: This method does not support applying settings to streaming methods.
      */
     public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
-      super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
+      super.applyToAllUnaryMethods(getStubSettingsBuilder().unaryMethodSettingsBuilders(), settingsUpdater);
       return this;
     }
 
@@ -455,28 +237,28 @@ public class GlobalOperationSettings extends ClientSettings<GlobalOperationSetti
      * Returns the builder for the settings used for calls to aggregatedListGlobalOperations.
      */
     public PagedCallSettings.Builder<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsSettings() {
-      return aggregatedListGlobalOperationsSettings;
+      return getStubSettingsBuilder().aggregatedListGlobalOperationsSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to deleteGlobalOperation.
      */
     public UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings() {
-      return deleteGlobalOperationSettings;
+      return getStubSettingsBuilder().deleteGlobalOperationSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to getGlobalOperation.
      */
     public UnaryCallSettings.Builder<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings() {
-      return getGlobalOperationSettings;
+      return getStubSettingsBuilder().getGlobalOperationSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to listGlobalOperations.
      */
     public PagedCallSettings.Builder<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse> listGlobalOperationsSettings() {
-      return listGlobalOperationsSettings;
+      return getStubSettingsBuilder().listGlobalOperationsSettings();
     }
 
     @Override

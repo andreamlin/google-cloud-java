@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,12 +24,12 @@ import com.google.compute.v1.GetVpnTunnelHttpRequest;
 import com.google.compute.v1.InsertVpnTunnelHttpRequest;
 import com.google.compute.v1.ListVpnTunnelsHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListVpnTunnelsPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListVpnTunnelsPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.VpnTunnel;
 import com.google.compute.v1.VpnTunnelAggregatedList;
+import static com.google.compute.v1.VpnTunnelClient.AggregatedListVpnTunnelsPagedResponse;
+import static com.google.compute.v1.VpnTunnelClient.ListVpnTunnelsPagedResponse;
 import com.google.compute.v1.VpnTunnelList;
 import com.google.compute.v1.VpnTunnelName;
 import javax.annotation.Generated;

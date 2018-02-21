@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListZoneOperationsPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.ZoneOperationStub;
+import com.google.compute.v1.stub.ZoneOperationStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class ZoneOperationClient implements BackgroundResource {
    */
   protected ZoneOperationClient(ZoneOperationSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((ZoneOperationStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class ZoneOperationClient implements BackgroundResource {
 
     DeleteZoneOperationHttpRequest request =
         DeleteZoneOperationHttpRequest.newBuilder()
-        .setOperationWithZoneOperationsOperationName(operation)
+        .setOperation(operation.toString())
         .build();
     deleteZoneOperation(request);
   }
@@ -189,7 +203,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
    *   ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
    *   DeleteZoneOperationHttpRequest request = DeleteZoneOperationHttpRequest.newBuilder()
-   *     .setOperationWithZoneOperationsOperationName(operation)
+   *     .setOperation(operation.toString())
    *     .build();
    *   zoneOperationClient.deleteZoneOperation(request);
    * }
@@ -212,7 +226,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
    *   ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
    *   DeleteZoneOperationHttpRequest request = DeleteZoneOperationHttpRequest.newBuilder()
-   *     .setOperationWithZoneOperationsOperationName(operation)
+   *     .setOperation(operation.toString())
    *     .build();
    *   ApiFuture&lt;Void&gt; future = zoneOperationClient.deleteZoneOperationCallable().futureCall(request);
    *   // Do something
@@ -245,7 +259,7 @@ public class ZoneOperationClient implements BackgroundResource {
 
     GetZoneOperationHttpRequest request =
         GetZoneOperationHttpRequest.newBuilder()
-        .setOperationWithZoneOperationsOperationName(operation)
+        .setOperation(operation.toString())
         .build();
     return getZoneOperation(request);
   }
@@ -259,7 +273,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
    *   ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
    *   GetZoneOperationHttpRequest request = GetZoneOperationHttpRequest.newBuilder()
-   *     .setOperationWithZoneOperationsOperationName(operation)
+   *     .setOperation(operation.toString())
    *     .build();
    *   Operation response = zoneOperationClient.getZoneOperation(request);
    * }
@@ -282,7 +296,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
    *   ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
    *   GetZoneOperationHttpRequest request = GetZoneOperationHttpRequest.newBuilder()
-   *     .setOperationWithZoneOperationsOperationName(operation)
+   *     .setOperation(operation.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = zoneOperationClient.getZoneOperationCallable().futureCall(request);
    *   // Do something
@@ -316,7 +330,7 @@ public class ZoneOperationClient implements BackgroundResource {
   public final ListZoneOperationsPagedResponse listZoneOperations(ZoneName zone) {
     ListZoneOperationsHttpRequest request =
         ListZoneOperationsHttpRequest.newBuilder()
-        .setZoneWithZoneName(zone)
+        .setZone(zone.toString())
         .build();
     return listZoneOperations(request);
   }
@@ -330,7 +344,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListZoneOperationsHttpRequest request = ListZoneOperationsHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   for (Operation element : zoneOperationClient.listZoneOperations(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -356,7 +370,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListZoneOperationsHttpRequest request = ListZoneOperationsHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   ApiFuture&lt;ListZoneOperationsPagedResponse&gt; future = zoneOperationClient.listZoneOperationsPagedCallable().futureCall(request);
    *   // Do something
@@ -380,7 +394,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListZoneOperationsHttpRequest request = ListZoneOperationsHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   while (true) {
    *     OperationList response = zoneOperationClient.listZoneOperationsCallable().call(request);
@@ -432,4 +446,91 @@ public class ZoneOperationClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListZoneOperationsPagedResponse extends AbstractPagedListResponse<
+      ListZoneOperationsHttpRequest,
+      OperationList,
+      Operation,
+      ListZoneOperationsPage,
+      ListZoneOperationsFixedSizeCollection> {
+
+    public static ApiFuture<ListZoneOperationsPagedResponse> createAsync(
+        PageContext<ListZoneOperationsHttpRequest, OperationList, Operation> context,
+        ApiFuture<OperationList> futureResponse) {
+      ApiFuture<ListZoneOperationsPage> futurePage =
+          ListZoneOperationsPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListZoneOperationsPage, ListZoneOperationsPagedResponse>() {
+            @Override
+            public ListZoneOperationsPagedResponse apply(ListZoneOperationsPage input) {
+              return new ListZoneOperationsPagedResponse(input);
+            }
+          });
+    }
+
+    private ListZoneOperationsPagedResponse(ListZoneOperationsPage page) {
+      super(page, ListZoneOperationsFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListZoneOperationsPage extends AbstractPage<
+      ListZoneOperationsHttpRequest,
+      OperationList,
+      Operation,
+      ListZoneOperationsPage> {
+
+    private ListZoneOperationsPage(
+        PageContext<ListZoneOperationsHttpRequest, OperationList, Operation> context,
+        OperationList response) {
+      super(context, response);
+    }
+
+    private static ListZoneOperationsPage createEmptyPage() {
+      return new ListZoneOperationsPage(null, null);
+    }
+
+    @Override
+    protected ListZoneOperationsPage createPage(
+        PageContext<ListZoneOperationsHttpRequest, OperationList, Operation> context,
+        OperationList response) {
+      return new ListZoneOperationsPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListZoneOperationsPage> createPageAsync(
+        PageContext<ListZoneOperationsHttpRequest, OperationList, Operation> context,
+        ApiFuture<OperationList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListZoneOperationsFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListZoneOperationsHttpRequest,
+      OperationList,
+      Operation,
+      ListZoneOperationsPage,
+      ListZoneOperationsFixedSizeCollection> {
+
+    private ListZoneOperationsFixedSizeCollection(List<ListZoneOperationsPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListZoneOperationsFixedSizeCollection createEmptyCollection() {
+      return new ListZoneOperationsFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListZoneOperationsFixedSizeCollection createCollection(
+        List<ListZoneOperationsPage> pages, int collectionSize) {
+      return new ListZoneOperationsFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

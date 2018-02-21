@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionOperationsPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.RegionOperationStub;
+import com.google.compute.v1.stub.RegionOperationStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class RegionOperationClient implements BackgroundResource {
    */
   protected RegionOperationClient(RegionOperationSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((RegionOperationStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class RegionOperationClient implements BackgroundResource {
 
     DeleteRegionOperationHttpRequest request =
         DeleteRegionOperationHttpRequest.newBuilder()
-        .setOperationWithRegionOperationsOperationName(operation)
+        .setOperation(operation.toString())
         .build();
     deleteRegionOperation(request);
   }
@@ -189,7 +203,7 @@ public class RegionOperationClient implements BackgroundResource {
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
    *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   DeleteRegionOperationHttpRequest request = DeleteRegionOperationHttpRequest.newBuilder()
-   *     .setOperationWithRegionOperationsOperationName(operation)
+   *     .setOperation(operation.toString())
    *     .build();
    *   regionOperationClient.deleteRegionOperation(request);
    * }
@@ -212,7 +226,7 @@ public class RegionOperationClient implements BackgroundResource {
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
    *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   DeleteRegionOperationHttpRequest request = DeleteRegionOperationHttpRequest.newBuilder()
-   *     .setOperationWithRegionOperationsOperationName(operation)
+   *     .setOperation(operation.toString())
    *     .build();
    *   ApiFuture&lt;Void&gt; future = regionOperationClient.deleteRegionOperationCallable().futureCall(request);
    *   // Do something
@@ -245,7 +259,7 @@ public class RegionOperationClient implements BackgroundResource {
 
     GetRegionOperationHttpRequest request =
         GetRegionOperationHttpRequest.newBuilder()
-        .setOperationWithRegionOperationsOperationName(operation)
+        .setOperation(operation.toString())
         .build();
     return getRegionOperation(request);
   }
@@ -259,7 +273,7 @@ public class RegionOperationClient implements BackgroundResource {
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
    *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   GetRegionOperationHttpRequest request = GetRegionOperationHttpRequest.newBuilder()
-   *     .setOperationWithRegionOperationsOperationName(operation)
+   *     .setOperation(operation.toString())
    *     .build();
    *   Operation response = regionOperationClient.getRegionOperation(request);
    * }
@@ -282,7 +296,7 @@ public class RegionOperationClient implements BackgroundResource {
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
    *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   GetRegionOperationHttpRequest request = GetRegionOperationHttpRequest.newBuilder()
-   *     .setOperationWithRegionOperationsOperationName(operation)
+   *     .setOperation(operation.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionOperationClient.getRegionOperationCallable().futureCall(request);
    *   // Do something
@@ -316,7 +330,7 @@ public class RegionOperationClient implements BackgroundResource {
   public final ListRegionOperationsPagedResponse listRegionOperations(RegionName region) {
     ListRegionOperationsHttpRequest request =
         ListRegionOperationsHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .build();
     return listRegionOperations(request);
   }
@@ -330,7 +344,7 @@ public class RegionOperationClient implements BackgroundResource {
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRegionOperationsHttpRequest request = ListRegionOperationsHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   for (Operation element : regionOperationClient.listRegionOperations(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -356,7 +370,7 @@ public class RegionOperationClient implements BackgroundResource {
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRegionOperationsHttpRequest request = ListRegionOperationsHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   ApiFuture&lt;ListRegionOperationsPagedResponse&gt; future = regionOperationClient.listRegionOperationsPagedCallable().futureCall(request);
    *   // Do something
@@ -380,7 +394,7 @@ public class RegionOperationClient implements BackgroundResource {
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRegionOperationsHttpRequest request = ListRegionOperationsHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   while (true) {
    *     OperationList response = regionOperationClient.listRegionOperationsCallable().call(request);
@@ -432,4 +446,91 @@ public class RegionOperationClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListRegionOperationsPagedResponse extends AbstractPagedListResponse<
+      ListRegionOperationsHttpRequest,
+      OperationList,
+      Operation,
+      ListRegionOperationsPage,
+      ListRegionOperationsFixedSizeCollection> {
+
+    public static ApiFuture<ListRegionOperationsPagedResponse> createAsync(
+        PageContext<ListRegionOperationsHttpRequest, OperationList, Operation> context,
+        ApiFuture<OperationList> futureResponse) {
+      ApiFuture<ListRegionOperationsPage> futurePage =
+          ListRegionOperationsPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListRegionOperationsPage, ListRegionOperationsPagedResponse>() {
+            @Override
+            public ListRegionOperationsPagedResponse apply(ListRegionOperationsPage input) {
+              return new ListRegionOperationsPagedResponse(input);
+            }
+          });
+    }
+
+    private ListRegionOperationsPagedResponse(ListRegionOperationsPage page) {
+      super(page, ListRegionOperationsFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListRegionOperationsPage extends AbstractPage<
+      ListRegionOperationsHttpRequest,
+      OperationList,
+      Operation,
+      ListRegionOperationsPage> {
+
+    private ListRegionOperationsPage(
+        PageContext<ListRegionOperationsHttpRequest, OperationList, Operation> context,
+        OperationList response) {
+      super(context, response);
+    }
+
+    private static ListRegionOperationsPage createEmptyPage() {
+      return new ListRegionOperationsPage(null, null);
+    }
+
+    @Override
+    protected ListRegionOperationsPage createPage(
+        PageContext<ListRegionOperationsHttpRequest, OperationList, Operation> context,
+        OperationList response) {
+      return new ListRegionOperationsPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListRegionOperationsPage> createPageAsync(
+        PageContext<ListRegionOperationsHttpRequest, OperationList, Operation> context,
+        ApiFuture<OperationList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListRegionOperationsFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListRegionOperationsHttpRequest,
+      OperationList,
+      Operation,
+      ListRegionOperationsPage,
+      ListRegionOperationsFixedSizeCollection> {
+
+    private ListRegionOperationsFixedSizeCollection(List<ListRegionOperationsPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListRegionOperationsFixedSizeCollection createEmptyCollection() {
+      return new ListRegionOperationsFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListRegionOperationsFixedSizeCollection createCollection(
+        List<ListRegionOperationsPage> pages, int collectionSize) {
+      return new ListRegionOperationsFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

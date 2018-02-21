@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,6 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
   private final String orderBy;
   private final String pageToken;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
   private final String region;
   private final String userIp;
@@ -55,7 +54,6 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
     this.orderBy = null;
     this.pageToken = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
     this.region = null;
     this.userIp = null;
@@ -72,7 +70,6 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
       String orderBy,
       String pageToken,
       String prettyPrint,
-      String project,
       String quotaUser,
       String region,
       String userIp
@@ -86,10 +83,14 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
     this.orderBy = orderBy;
     this.pageToken = pageToken;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
     this.region = region;
     this.userIp = userIp;
+  }
+
+  @Override
+  public RegionName resourceNamePath() {
+    return RegionName.parse(region);
   }
 
   @Override
@@ -122,9 +123,6 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
     }
@@ -139,7 +137,7 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -177,10 +175,6 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
 
   public String getPrettyPrint() {
     return prettyPrint;
-  }
-
-  public String getProject() {
-    return project;
   }
 
   public String getQuotaUser() {
@@ -225,7 +219,6 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
     private String orderBy;
     private String pageToken;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
     private String region;
     private String userIp;
@@ -261,9 +254,6 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
       }
@@ -286,7 +276,6 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
       this.orderBy = source.orderBy;
       this.pageToken = source.pageToken;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
       this.region = source.region;
       this.userIp = source.userIp;
@@ -373,15 +362,6 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
@@ -421,9 +401,6 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
 
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
       if (region == null) {
         missing += " region";
@@ -442,7 +419,6 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
         orderBy,
         pageToken,
         prettyPrint,
-        project,
         quotaUser,
         region,
         userIp
@@ -460,31 +436,10 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
       newBuilder.setOrderBy(this.orderBy);
       newBuilder.setPageToken(this.pageToken);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
       newBuilder.setRegion(this.region);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setRegionWithRegionName(RegionName value) {
-      if (value == null) {
-        return
-            setProject("").
-            setRegion("")
-            ;
-      }
-      return
-          setProject(value.getProject()).
-          setRegion(value.getRegion())
-          ;
-    }
-
-    public final RegionName getRegionAsRegionName() {
-      return RegionName.of(
-          getProject(),
-          getRegion()
-          );
     }
   }
 
@@ -500,7 +455,6 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
         + "orderBy=" + orderBy + ", "
         + "pageToken=" + pageToken + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
         + "region=" + region + ", "
         + "userIp=" + userIp
@@ -524,7 +478,6 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
           Objects.equals(this.orderBy, that.getOrderBy()) &&
           Objects.equals(this.pageToken, that.getPageToken()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
           Objects.equals(this.region, that.getRegion()) &&
           Objects.equals(this.userIp, that.getUserIp())
@@ -545,7 +498,6 @@ public final class ListVpnTunnelsHttpRequest implements ApiMessage {
       orderBy,
       pageToken,
       prettyPrint,
-      project,
       quotaUser,
       region,
       userIp

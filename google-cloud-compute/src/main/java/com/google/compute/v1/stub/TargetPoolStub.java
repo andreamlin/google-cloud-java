@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +28,6 @@ import com.google.compute.v1.InsertTargetPoolHttpRequest;
 import com.google.compute.v1.InstanceReference;
 import com.google.compute.v1.ListTargetPoolsHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetPoolsPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetPoolsPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.RemoveHealthCheckTargetPoolHttpRequest;
@@ -37,6 +35,8 @@ import com.google.compute.v1.RemoveInstanceTargetPoolHttpRequest;
 import com.google.compute.v1.SetBackupTargetPoolHttpRequest;
 import com.google.compute.v1.TargetPool;
 import com.google.compute.v1.TargetPoolAggregatedList;
+import static com.google.compute.v1.TargetPoolClient.AggregatedListTargetPoolsPagedResponse;
+import static com.google.compute.v1.TargetPoolClient.ListTargetPoolsPagedResponse;
 import com.google.compute.v1.TargetPoolInstanceHealth;
 import com.google.compute.v1.TargetPoolList;
 import com.google.compute.v1.TargetPoolName;

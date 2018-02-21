@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
 import com.google.api.gax.rpc.StatusCode;
+import com.google.api.gax.rpc.StubSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -46,9 +47,8 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import static com.google.compute.v1.PagedResponseWrappers.ListSnapshotsPagedResponse;
-import com.google.compute.v1.stub.HttpJsonSnapshotStub;
-import com.google.compute.v1.stub.SnapshotStub;
+import static com.google.compute.v1.SnapshotClient.ListSnapshotsPagedResponse;
+import com.google.compute.v1.stub.SnapshotStubSettings;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -86,74 +86,49 @@ import org.threeten.bp.Duration;
 @BetaApi
 public class SnapshotSettings extends ClientSettings<SnapshotSettings> {
   /**
-   * The default scopes of the service.
-   */
-  private static final ImmutableList<String> DEFAULT_SERVICE_SCOPES = ImmutableList.<String>builder()
-      .add("https://www.googleapis.com/auth/cloud-platform")
-      .add("https://www.googleapis.com/auth/compute")
-      .add("https://www.googleapis.com/auth/compute.readonly")
-      .add("https://www.googleapis.com/auth/devstorage.full_control")
-      .add("https://www.googleapis.com/auth/devstorage.read_only")
-      .add("https://www.googleapis.com/auth/devstorage.read_write")
-      .build();
-
-  private final UnaryCallSettings<DeleteSnapshotHttpRequest, Operation> deleteSnapshotSettings;
-  private final UnaryCallSettings<GetSnapshotHttpRequest, Snapshot> getSnapshotSettings;
-  private final PagedCallSettings<ListSnapshotsHttpRequest, SnapshotList, ListSnapshotsPagedResponse> listSnapshotsSettings;
-
-  /**
    * Returns the object with the settings used for calls to deleteSnapshot.
    */
   public UnaryCallSettings<DeleteSnapshotHttpRequest, Operation> deleteSnapshotSettings() {
-    return deleteSnapshotSettings;
+    return ((SnapshotStubSettings) getStubSettings()).deleteSnapshotSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to getSnapshot.
    */
   public UnaryCallSettings<GetSnapshotHttpRequest, Snapshot> getSnapshotSettings() {
-    return getSnapshotSettings;
+    return ((SnapshotStubSettings) getStubSettings()).getSnapshotSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to listSnapshots.
    */
   public PagedCallSettings<ListSnapshotsHttpRequest, SnapshotList, ListSnapshotsPagedResponse> listSnapshotsSettings() {
-    return listSnapshotsSettings;
+    return ((SnapshotStubSettings) getStubSettings()).listSnapshotsSettings();
   }
 
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
-  public SnapshotStub createStub() throws IOException {
-    if (getTransportChannelProvider()
-        .getTransportName()
-        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
-      return HttpJsonSnapshotStub.create(this);
-    } else {
-      throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportChannelProvider().getTransportName());
-    }
+  public static final SnapshotSettings create(SnapshotStubSettings stub) throws IOException {
+    return new SnapshotSettings.Builder(stub.toBuilder()).build();
   }
 
   /**
    * Returns a builder for the default ExecutorProvider for this service.
    */
   public static InstantiatingExecutorProvider.Builder defaultExecutorProviderBuilder() {
-    return InstantiatingExecutorProvider.newBuilder();
+    return SnapshotStubSettings.defaultExecutorProviderBuilder();
   }
 
   /**
    * Returns the default service endpoint.
    */
-  public static String getDefaultEndpoint() {
-    return "https://www.googleapis.com/compute/v1/projects/";
-  }
-
+   public static String getDefaultEndpoint() {
+     return SnapshotStubSettings.getDefaultEndpoint();
+   }
   /**
    * Returns the default service port.
    */
   public static int getDefaultServicePort() {
-    return 443;
+    return SnapshotStubSettings.getDefaultServicePort();
   }
 
 
@@ -161,7 +136,7 @@ public class SnapshotSettings extends ClientSettings<SnapshotSettings> {
    * Returns the default service scopes.
    */
   public static List<String> getDefaultServiceScopes() {
-    return DEFAULT_SERVICE_SCOPES;
+    return SnapshotStubSettings.getDefaultServiceScopes();
   }
 
 
@@ -169,25 +144,21 @@ public class SnapshotSettings extends ClientSettings<SnapshotSettings> {
    * Returns a builder for the default credentials for this service.
    */
   public static GoogleCredentialsProvider.Builder defaultCredentialsProviderBuilder() {
-    return GoogleCredentialsProvider.newBuilder()
-        .setScopesToApply(DEFAULT_SERVICE_SCOPES)
-        ;
+    return SnapshotStubSettings.defaultCredentialsProviderBuilder();
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder();
+    return SnapshotStubSettings.defaultHttpJsonTransportProviderBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
-    return defaultHttpJsonTransportProviderBuilder().build();
+    return SnapshotStubSettings.defaultTransportChannelProvider();
   }
 
   @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
-    return ApiClientHeaderProvider.newBuilder()
-        .setGeneratedLibToken("gapic", GaxProperties.getLibraryVersion(SnapshotSettings.class))
-        .setTransportToken(GaxHttpJsonProperties.getHttpJsonTokenName(), GaxHttpJsonProperties.getHttpJsonVersion());
+    return SnapshotStubSettings.defaultApiClientHeaderProviderBuilder();
   }
 
   /**
@@ -213,163 +184,35 @@ public class SnapshotSettings extends ClientSettings<SnapshotSettings> {
 
   protected SnapshotSettings(Builder settingsBuilder) throws IOException {
     super(settingsBuilder);
-
-    deleteSnapshotSettings = settingsBuilder.deleteSnapshotSettings().build();
-    getSnapshotSettings = settingsBuilder.getSnapshotSettings().build();
-    listSnapshotsSettings = settingsBuilder.listSnapshotsSettings().build();
   }
-
-  private static final PagedListDescriptor<ListSnapshotsHttpRequest, SnapshotList, Snapshot> LIST_SNAPSHOTS_PAGE_STR_DESC =
-      new PagedListDescriptor<ListSnapshotsHttpRequest, SnapshotList, Snapshot>() {
-        @Override
-        public String emptyToken() {
-          return "";
-        }
-        @Override
-        public ListSnapshotsHttpRequest injectToken(ListSnapshotsHttpRequest payload, String token) {
-          return ListSnapshotsHttpRequest
-            .newBuilder(payload)
-            .setPageToken(token)
-            .build();
-        }
-        @Override
-        public ListSnapshotsHttpRequest injectPageSize(ListSnapshotsHttpRequest payload, int pageSize) {
-          return ListSnapshotsHttpRequest
-            .newBuilder(payload)
-            .setMaxResults(pageSize)
-            .build();
-        }
-        @Override
-        public Integer extractPageSize(ListSnapshotsHttpRequest payload) {
-          return payload.getMaxResults();
-        }
-        @Override
-        public String extractNextToken(SnapshotList payload) {
-          return payload.getNextPageToken();
-        }
-        @Override
-        public Iterable<Snapshot> extractResources(SnapshotList payload) {
-          return payload.getItems();
-        }
-      };
-
-  private static final PagedListResponseFactory<ListSnapshotsHttpRequest, SnapshotList, ListSnapshotsPagedResponse> LIST_SNAPSHOTS_PAGE_STR_FACT =
-      new PagedListResponseFactory<ListSnapshotsHttpRequest, SnapshotList, ListSnapshotsPagedResponse>() {
-        @Override
-        public ApiFuture<ListSnapshotsPagedResponse> getFuturePagedResponse(
-            UnaryCallable<ListSnapshotsHttpRequest, SnapshotList> callable,
-            ListSnapshotsHttpRequest request,
-            ApiCallContext context,
-            ApiFuture<SnapshotList> futureResponse) {
-          PageContext<ListSnapshotsHttpRequest, SnapshotList, Snapshot> pageContext =
-              PageContext.create(callable, LIST_SNAPSHOTS_PAGE_STR_DESC, request, context);
-          return ListSnapshotsPagedResponse.createAsync(pageContext, futureResponse);
-        }
-      };
-
 
   /**
    * Builder for SnapshotSettings.
    */
   public static class Builder extends ClientSettings.Builder<SnapshotSettings, Builder> {
-    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
-
-    private final UnaryCallSettings.Builder<DeleteSnapshotHttpRequest, Operation> deleteSnapshotSettings;
-    private final UnaryCallSettings.Builder<GetSnapshotHttpRequest, Snapshot> getSnapshotSettings;
-    private final PagedCallSettings.Builder<ListSnapshotsHttpRequest, SnapshotList, ListSnapshotsPagedResponse> listSnapshotsSettings;
-
-    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
-
-    static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
-      definitions.put(
-          "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
-      definitions.put(
-          "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
-      RETRYABLE_CODE_DEFINITIONS = definitions.build();
-    }
-
-    private static final ImmutableMap<String, RetrySettings> RETRY_PARAM_DEFINITIONS;
-
-    static {
-      ImmutableMap.Builder<String, RetrySettings> definitions = ImmutableMap.builder();
-      RetrySettings settings = null;
-      settings = RetrySettings.newBuilder()
-          .setInitialRetryDelay(Duration.ofMillis(100L))
-          .setRetryDelayMultiplier(1.3)
-          .setMaxRetryDelay(Duration.ofMillis(60000L))
-          .setInitialRpcTimeout(Duration.ofMillis(20000L))
-          .setRpcTimeoutMultiplier(1.0)
-          .setMaxRpcTimeout(Duration.ofMillis(20000L))
-          .setTotalTimeout(Duration.ofMillis(600000L))
-          .build();
-      definitions.put("default", settings);
-      RETRY_PARAM_DEFINITIONS = definitions.build();
-    }
-
-    protected Builder() {
+    protected Builder() throws IOException {
       this((ClientContext) null);
     }
 
     protected Builder(ClientContext clientContext) {
-      super(clientContext);
-
-      deleteSnapshotSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      getSnapshotSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      listSnapshotsSettings = PagedCallSettings.newBuilder(
-          LIST_SNAPSHOTS_PAGE_STR_FACT);
-
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
-          deleteSnapshotSettings,
-          getSnapshotSettings,
-          listSnapshotsSettings
-      );
-
-      initDefaults(this);
+      super(SnapshotStubSettings.newBuilder(clientContext));
     }
 
     private static Builder createDefault() {
-      Builder builder = new Builder((ClientContext) null);
-      builder.setTransportChannelProvider(defaultTransportChannelProvider());
-      builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
-      builder.setInternalHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
-      builder.setEndpoint(getDefaultEndpoint());
-      return initDefaults(builder);
-    }
-
-    private static Builder initDefaults(Builder builder) {
-
-      builder.deleteSnapshotSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.getSnapshotSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.listSnapshotsSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      return builder;
+      return new Builder(SnapshotStubSettings.newBuilder());
     }
 
     protected Builder(SnapshotSettings settings) {
-      super(settings);
+      super(settings.getStubSettings().toBuilder());
+    }
 
-      deleteSnapshotSettings = settings.deleteSnapshotSettings.toBuilder();
-      getSnapshotSettings = settings.getSnapshotSettings.toBuilder();
-      listSnapshotsSettings = settings.listSnapshotsSettings.toBuilder();
+    protected Builder(SnapshotStubSettings.Builder stubSettings) {
+      super(stubSettings);
+    }
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
-          deleteSnapshotSettings,
-          getSnapshotSettings,
-          listSnapshotsSettings
-      );
+
+    public SnapshotStubSettings.Builder getStubSettingsBuilder() {
+      return ((SnapshotStubSettings.Builder) getStubSettings());
     }
 
     /**
@@ -378,7 +221,7 @@ public class SnapshotSettings extends ClientSettings<SnapshotSettings> {
      * Note: This method does not support applying settings to streaming methods.
      */
     public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
-      super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
+      super.applyToAllUnaryMethods(getStubSettingsBuilder().unaryMethodSettingsBuilders(), settingsUpdater);
       return this;
     }
 
@@ -386,21 +229,21 @@ public class SnapshotSettings extends ClientSettings<SnapshotSettings> {
      * Returns the builder for the settings used for calls to deleteSnapshot.
      */
     public UnaryCallSettings.Builder<DeleteSnapshotHttpRequest, Operation> deleteSnapshotSettings() {
-      return deleteSnapshotSettings;
+      return getStubSettingsBuilder().deleteSnapshotSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to getSnapshot.
      */
     public UnaryCallSettings.Builder<GetSnapshotHttpRequest, Snapshot> getSnapshotSettings() {
-      return getSnapshotSettings;
+      return getStubSettingsBuilder().getSnapshotSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to listSnapshots.
      */
     public PagedCallSettings.Builder<ListSnapshotsHttpRequest, SnapshotList, ListSnapshotsPagedResponse> listSnapshotsSettings() {
-      return listSnapshotsSettings;
+      return getStubSettingsBuilder().listSnapshotsSettings();
     }
 
     @Override

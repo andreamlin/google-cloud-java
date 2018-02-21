@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -85,6 +87,11 @@ public final class Firewall implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("allowed") && allowed != null) {
@@ -125,7 +132,7 @@ public final class Firewall implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -264,7 +271,7 @@ public final class Firewall implements ApiMessage {
       return allowed;
     }
 
-    public Builder setAllowed(List<Allowed> allowed) {
+    public Builder addAllAllowed(List<Allowed> allowed) {
       this.allowed = allowed;
       return this;
     }
@@ -336,7 +343,7 @@ public final class Firewall implements ApiMessage {
       return sourceRanges;
     }
 
-    public Builder setSourceRanges(List<String> sourceRanges) {
+    public Builder addAllSourceRanges(List<String> sourceRanges) {
       this.sourceRanges = sourceRanges;
       return this;
     }
@@ -345,7 +352,7 @@ public final class Firewall implements ApiMessage {
       return sourceTags;
     }
 
-    public Builder setSourceTags(List<String> sourceTags) {
+    public Builder addAllSourceTags(List<String> sourceTags) {
       this.sourceTags = sourceTags;
       return this;
     }
@@ -354,7 +361,7 @@ public final class Firewall implements ApiMessage {
       return targetTags;
     }
 
-    public Builder setTargetTags(List<String> targetTags) {
+    public Builder addAllTargetTags(List<String> targetTags) {
       this.targetTags = targetTags;
       return this;
     }
@@ -388,7 +395,7 @@ public final class Firewall implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setAllowed(this.allowed);
+      newBuilder.addAllAllowed(this.allowed);
       newBuilder.setCreationTimestamp(this.creationTimestamp);
       newBuilder.setDescription(this.description);
       newBuilder.setId(this.id);
@@ -396,9 +403,9 @@ public final class Firewall implements ApiMessage {
       newBuilder.setName(this.name);
       newBuilder.setNetwork(this.network);
       newBuilder.setSelfLink(this.selfLink);
-      newBuilder.setSourceRanges(this.sourceRanges);
-      newBuilder.setSourceTags(this.sourceTags);
-      newBuilder.setTargetTags(this.targetTags);
+      newBuilder.addAllSourceRanges(this.sourceRanges);
+      newBuilder.addAllSourceTags(this.sourceTags);
+      newBuilder.addAllTargetTags(this.targetTags);
       return newBuilder;
     }
   }

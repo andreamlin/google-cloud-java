@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,18 +26,19 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteInstanceTemplateHttpRequest;
 import com.google.compute.v1.GetInstanceTemplateHttpRequest;
 import com.google.compute.v1.InsertInstanceTemplateHttpRequest;
 import com.google.compute.v1.InstanceTemplate;
+import static com.google.compute.v1.InstanceTemplateClient.ListInstanceTemplatesPagedResponse;
 import com.google.compute.v1.InstanceTemplateList;
 import com.google.compute.v1.InstanceTemplateName;
 import com.google.compute.v1.InstanceTemplateSettings;
 import com.google.compute.v1.ListInstanceTemplatesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListInstanceTemplatesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -59,7 +60,8 @@ import javax.annotation.Generated;
 public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateMethodDescriptor =
       ApiMethodDescriptor.<DeleteInstanceTemplateHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instanceTemplates.delete")
           .setRequestInstance(DeleteInstanceTemplateHttpRequest.getDefaultInstance())
@@ -73,7 +75,8 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateMethodDescriptor =
       ApiMethodDescriptor.<GetInstanceTemplateHttpRequest, InstanceTemplate>newBuilder()
           .setMethodName("compute.instanceTemplates.get")
           .setRequestInstance(GetInstanceTemplateHttpRequest.getDefaultInstance())
@@ -87,7 +90,8 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateMethodDescriptor =
       ApiMethodDescriptor.<InsertInstanceTemplateHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instanceTemplates.insert")
           .setRequestInstance(InsertInstanceTemplateHttpRequest.getDefaultInstance())
@@ -101,7 +105,8 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListInstanceTemplatesHttpRequest, InstanceTemplateList> listInstanceTemplatesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListInstanceTemplatesHttpRequest, InstanceTemplateList> listInstanceTemplatesMethodDescriptor =
       ApiMethodDescriptor.<ListInstanceTemplatesHttpRequest, InstanceTemplateList>newBuilder()
           .setMethodName("compute.instanceTemplates.list")
           .setRequestInstance(ListInstanceTemplatesHttpRequest.getDefaultInstance())
@@ -125,12 +130,12 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
   private final UnaryCallable<ListInstanceTemplatesHttpRequest, InstanceTemplateList> listInstanceTemplatesCallable;
   private final UnaryCallable<ListInstanceTemplatesHttpRequest, ListInstanceTemplatesPagedResponse> listInstanceTemplatesPagedCallable;
 
-  public static final HttpJsonInstanceTemplateStub create(InstanceTemplateSettings settings) throws IOException {
+  public static final HttpJsonInstanceTemplateStub create(InstanceTemplateStubSettings settings) throws IOException {
     return new HttpJsonInstanceTemplateStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonInstanceTemplateStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonInstanceTemplateStub(InstanceTemplateSettings.newBuilder().build(), clientContext);
+    return new HttpJsonInstanceTemplateStub(InstanceTemplateStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -138,7 +143,7 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonInstanceTemplateStub(InstanceTemplateSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonInstanceTemplateStub(InstanceTemplateStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateTransportSettings =
         HttpJsonCallSettings.<DeleteInstanceTemplateHttpRequest, Operation>newBuilder()

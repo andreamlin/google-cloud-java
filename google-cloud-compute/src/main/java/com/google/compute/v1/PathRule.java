@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -49,6 +51,11 @@ public final class PathRule implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("paths") && paths != null) {
@@ -62,7 +69,7 @@ public final class PathRule implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -120,7 +127,7 @@ public final class PathRule implements ApiMessage {
       return paths;
     }
 
-    public Builder setPaths(List<String> paths) {
+    public Builder addAllPaths(List<String> paths) {
       this.paths = paths;
       return this;
     }
@@ -145,7 +152,7 @@ public final class PathRule implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setPaths(this.paths);
+      newBuilder.addAllPaths(this.paths);
       newBuilder.setService(this.service);
       return newBuilder;
     }

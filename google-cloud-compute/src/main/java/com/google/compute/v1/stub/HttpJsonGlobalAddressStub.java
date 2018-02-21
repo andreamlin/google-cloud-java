@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,18 +26,19 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.Address;
 import com.google.compute.v1.AddressList;
 import com.google.compute.v1.DeleteGlobalAddressHttpRequest;
 import com.google.compute.v1.GetGlobalAddressHttpRequest;
+import static com.google.compute.v1.GlobalAddressClient.ListGlobalAddressesPagedResponse;
 import com.google.compute.v1.GlobalAddressSettings;
 import com.google.compute.v1.GlobalAddressesAddressName;
 import com.google.compute.v1.InsertGlobalAddressHttpRequest;
 import com.google.compute.v1.ListGlobalAddressesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListGlobalAddressesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -59,7 +60,8 @@ import javax.annotation.Generated;
 public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteGlobalAddressHttpRequest, Operation> deleteGlobalAddressMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteGlobalAddressHttpRequest, Operation> deleteGlobalAddressMethodDescriptor =
       ApiMethodDescriptor.<DeleteGlobalAddressHttpRequest, Operation>newBuilder()
           .setMethodName("compute.globalAddresses.delete")
           .setRequestInstance(DeleteGlobalAddressHttpRequest.getDefaultInstance())
@@ -73,7 +75,8 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetGlobalAddressHttpRequest, Address> getGlobalAddressMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetGlobalAddressHttpRequest, Address> getGlobalAddressMethodDescriptor =
       ApiMethodDescriptor.<GetGlobalAddressHttpRequest, Address>newBuilder()
           .setMethodName("compute.globalAddresses.get")
           .setRequestInstance(GetGlobalAddressHttpRequest.getDefaultInstance())
@@ -87,7 +90,8 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertGlobalAddressHttpRequest, Operation> insertGlobalAddressMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertGlobalAddressHttpRequest, Operation> insertGlobalAddressMethodDescriptor =
       ApiMethodDescriptor.<InsertGlobalAddressHttpRequest, Operation>newBuilder()
           .setMethodName("compute.globalAddresses.insert")
           .setRequestInstance(InsertGlobalAddressHttpRequest.getDefaultInstance())
@@ -101,7 +105,8 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListGlobalAddressesHttpRequest, AddressList> listGlobalAddressesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListGlobalAddressesHttpRequest, AddressList> listGlobalAddressesMethodDescriptor =
       ApiMethodDescriptor.<ListGlobalAddressesHttpRequest, AddressList>newBuilder()
           .setMethodName("compute.globalAddresses.list")
           .setRequestInstance(ListGlobalAddressesHttpRequest.getDefaultInstance())
@@ -125,12 +130,12 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
   private final UnaryCallable<ListGlobalAddressesHttpRequest, AddressList> listGlobalAddressesCallable;
   private final UnaryCallable<ListGlobalAddressesHttpRequest, ListGlobalAddressesPagedResponse> listGlobalAddressesPagedCallable;
 
-  public static final HttpJsonGlobalAddressStub create(GlobalAddressSettings settings) throws IOException {
+  public static final HttpJsonGlobalAddressStub create(GlobalAddressStubSettings settings) throws IOException {
     return new HttpJsonGlobalAddressStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonGlobalAddressStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonGlobalAddressStub(GlobalAddressSettings.newBuilder().build(), clientContext);
+    return new HttpJsonGlobalAddressStub(GlobalAddressStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -138,7 +143,7 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonGlobalAddressStub(GlobalAddressSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonGlobalAddressStub(GlobalAddressStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteGlobalAddressHttpRequest, Operation> deleteGlobalAddressTransportSettings =
         HttpJsonCallSettings.<DeleteGlobalAddressHttpRequest, Operation>newBuilder()

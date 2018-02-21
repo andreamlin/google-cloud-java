@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -85,6 +87,11 @@ public final class UrlMap implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
@@ -125,7 +132,7 @@ public final class UrlMap implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -300,7 +307,7 @@ public final class UrlMap implements ApiMessage {
       return hostRules;
     }
 
-    public Builder setHostRules(List<HostRule> hostRules) {
+    public Builder addAllHostRules(List<HostRule> hostRules) {
       this.hostRules = hostRules;
       return this;
     }
@@ -336,7 +343,7 @@ public final class UrlMap implements ApiMessage {
       return pathMatchers;
     }
 
-    public Builder setPathMatchers(List<PathMatcher> pathMatchers) {
+    public Builder addAllPathMatchers(List<PathMatcher> pathMatchers) {
       this.pathMatchers = pathMatchers;
       return this;
     }
@@ -354,7 +361,7 @@ public final class UrlMap implements ApiMessage {
       return tests;
     }
 
-    public Builder setTests(List<UrlMapTest> tests) {
+    public Builder addAllTests(List<UrlMapTest> tests) {
       this.tests = tests;
       return this;
     }
@@ -392,13 +399,13 @@ public final class UrlMap implements ApiMessage {
       newBuilder.setDefaultService(this.defaultService);
       newBuilder.setDescription(this.description);
       newBuilder.setFingerprint(this.fingerprint);
-      newBuilder.setHostRules(this.hostRules);
+      newBuilder.addAllHostRules(this.hostRules);
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
       newBuilder.setName(this.name);
-      newBuilder.setPathMatchers(this.pathMatchers);
+      newBuilder.addAllPathMatchers(this.pathMatchers);
       newBuilder.setSelfLink(this.selfLink);
-      newBuilder.setTests(this.tests);
+      newBuilder.addAllTests(this.tests);
       return newBuilder;
     }
   }

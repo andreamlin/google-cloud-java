@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListGlobalAddressesPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.GlobalAddressStub;
+import com.google.compute.v1.stub.GlobalAddressStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class GlobalAddressClient implements BackgroundResource {
    */
   protected GlobalAddressClient(GlobalAddressSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((GlobalAddressStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class GlobalAddressClient implements BackgroundResource {
 
     DeleteGlobalAddressHttpRequest request =
         DeleteGlobalAddressHttpRequest.newBuilder()
-        .setAddressWithGlobalAddressesAddressName(address)
+        .setAddress(address.toString())
         .build();
     return deleteGlobalAddress(request);
   }
@@ -189,7 +203,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
    *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
    *   DeleteGlobalAddressHttpRequest request = DeleteGlobalAddressHttpRequest.newBuilder()
-   *     .setAddressWithGlobalAddressesAddressName(address)
+   *     .setAddress(address.toString())
    *     .build();
    *   Operation response = globalAddressClient.deleteGlobalAddress(request);
    * }
@@ -212,7 +226,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
    *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
    *   DeleteGlobalAddressHttpRequest request = DeleteGlobalAddressHttpRequest.newBuilder()
-   *     .setAddressWithGlobalAddressesAddressName(address)
+   *     .setAddress(address.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = globalAddressClient.deleteGlobalAddressCallable().futureCall(request);
    *   // Do something
@@ -245,7 +259,7 @@ public class GlobalAddressClient implements BackgroundResource {
 
     GetGlobalAddressHttpRequest request =
         GetGlobalAddressHttpRequest.newBuilder()
-        .setAddressWithGlobalAddressesAddressName(address)
+        .setAddress(address.toString())
         .build();
     return getGlobalAddress(request);
   }
@@ -259,7 +273,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
    *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
    *   GetGlobalAddressHttpRequest request = GetGlobalAddressHttpRequest.newBuilder()
-   *     .setAddressWithGlobalAddressesAddressName(address)
+   *     .setAddress(address.toString())
    *     .build();
    *   Address response = globalAddressClient.getGlobalAddress(request);
    * }
@@ -282,7 +296,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
    *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
    *   GetGlobalAddressHttpRequest request = GetGlobalAddressHttpRequest.newBuilder()
-   *     .setAddressWithGlobalAddressesAddressName(address)
+   *     .setAddress(address.toString())
    *     .build();
    *   ApiFuture&lt;Address&gt; future = globalAddressClient.getGlobalAddressCallable().futureCall(request);
    *   // Do something
@@ -317,7 +331,7 @@ public class GlobalAddressClient implements BackgroundResource {
 
     InsertGlobalAddressHttpRequest request =
         InsertGlobalAddressHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setAddressResource(addressResource)
         .build();
     return insertGlobalAddress(request);
@@ -333,7 +347,7 @@ public class GlobalAddressClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Address address = Address.newBuilder().build();
    *   InsertGlobalAddressHttpRequest request = InsertGlobalAddressHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setAddressResource(address)
    *     .build();
    *   Operation response = globalAddressClient.insertGlobalAddress(request);
@@ -358,7 +372,7 @@ public class GlobalAddressClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Address address = Address.newBuilder().build();
    *   InsertGlobalAddressHttpRequest request = InsertGlobalAddressHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setAddressResource(address)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = globalAddressClient.insertGlobalAddressCallable().futureCall(request);
@@ -393,7 +407,7 @@ public class GlobalAddressClient implements BackgroundResource {
   public final ListGlobalAddressesPagedResponse listGlobalAddresses(ProjectName project) {
     ListGlobalAddressesHttpRequest request =
         ListGlobalAddressesHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listGlobalAddresses(request);
   }
@@ -407,7 +421,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalAddressesHttpRequest request = ListGlobalAddressesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (Address element : globalAddressClient.listGlobalAddresses(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -433,7 +447,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalAddressesHttpRequest request = ListGlobalAddressesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListGlobalAddressesPagedResponse&gt; future = globalAddressClient.listGlobalAddressesPagedCallable().futureCall(request);
    *   // Do something
@@ -457,7 +471,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalAddressesHttpRequest request = ListGlobalAddressesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     AddressList response = globalAddressClient.listGlobalAddressesCallable().call(request);
@@ -509,4 +523,91 @@ public class GlobalAddressClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListGlobalAddressesPagedResponse extends AbstractPagedListResponse<
+      ListGlobalAddressesHttpRequest,
+      AddressList,
+      Address,
+      ListGlobalAddressesPage,
+      ListGlobalAddressesFixedSizeCollection> {
+
+    public static ApiFuture<ListGlobalAddressesPagedResponse> createAsync(
+        PageContext<ListGlobalAddressesHttpRequest, AddressList, Address> context,
+        ApiFuture<AddressList> futureResponse) {
+      ApiFuture<ListGlobalAddressesPage> futurePage =
+          ListGlobalAddressesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListGlobalAddressesPage, ListGlobalAddressesPagedResponse>() {
+            @Override
+            public ListGlobalAddressesPagedResponse apply(ListGlobalAddressesPage input) {
+              return new ListGlobalAddressesPagedResponse(input);
+            }
+          });
+    }
+
+    private ListGlobalAddressesPagedResponse(ListGlobalAddressesPage page) {
+      super(page, ListGlobalAddressesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListGlobalAddressesPage extends AbstractPage<
+      ListGlobalAddressesHttpRequest,
+      AddressList,
+      Address,
+      ListGlobalAddressesPage> {
+
+    private ListGlobalAddressesPage(
+        PageContext<ListGlobalAddressesHttpRequest, AddressList, Address> context,
+        AddressList response) {
+      super(context, response);
+    }
+
+    private static ListGlobalAddressesPage createEmptyPage() {
+      return new ListGlobalAddressesPage(null, null);
+    }
+
+    @Override
+    protected ListGlobalAddressesPage createPage(
+        PageContext<ListGlobalAddressesHttpRequest, AddressList, Address> context,
+        AddressList response) {
+      return new ListGlobalAddressesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListGlobalAddressesPage> createPageAsync(
+        PageContext<ListGlobalAddressesHttpRequest, AddressList, Address> context,
+        ApiFuture<AddressList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListGlobalAddressesFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListGlobalAddressesHttpRequest,
+      AddressList,
+      Address,
+      ListGlobalAddressesPage,
+      ListGlobalAddressesFixedSizeCollection> {
+
+    private ListGlobalAddressesFixedSizeCollection(List<ListGlobalAddressesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListGlobalAddressesFixedSizeCollection createEmptyCollection() {
+      return new ListGlobalAddressesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListGlobalAddressesFixedSizeCollection createCollection(
+        List<ListGlobalAddressesPage> pages, int collectionSize) {
+      return new ListGlobalAddressesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

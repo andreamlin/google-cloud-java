@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListDisksHttpRequest;
@@ -33,6 +34,8 @@ import com.google.compute.v1.CreateSnapshotDiskHttpRequest;
 import com.google.compute.v1.DeleteDiskHttpRequest;
 import com.google.compute.v1.Disk;
 import com.google.compute.v1.DiskAggregatedList;
+import static com.google.compute.v1.DiskClient.AggregatedListDisksPagedResponse;
+import static com.google.compute.v1.DiskClient.ListDisksPagedResponse;
 import com.google.compute.v1.DiskList;
 import com.google.compute.v1.DiskName;
 import com.google.compute.v1.DiskSettings;
@@ -41,8 +44,6 @@ import com.google.compute.v1.GetDiskHttpRequest;
 import com.google.compute.v1.InsertDiskHttpRequest;
 import com.google.compute.v1.ListDisksHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListDisksPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListDisksPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.ResizeDiskHttpRequest;
 import com.google.compute.v1.Snapshot;
@@ -67,7 +68,8 @@ import javax.annotation.Generated;
 public class HttpJsonDiskStub extends DiskStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AggregatedListDisksHttpRequest, DiskAggregatedList> aggregatedListDisksMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AggregatedListDisksHttpRequest, DiskAggregatedList> aggregatedListDisksMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListDisksHttpRequest, DiskAggregatedList>newBuilder()
           .setMethodName("compute.disks.aggregatedList")
           .setRequestInstance(AggregatedListDisksHttpRequest.getDefaultInstance())
@@ -82,7 +84,8 @@ public class HttpJsonDiskStub extends DiskStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<CreateSnapshotDiskHttpRequest, Operation> createSnapshotDiskMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<CreateSnapshotDiskHttpRequest, Operation> createSnapshotDiskMethodDescriptor =
       ApiMethodDescriptor.<CreateSnapshotDiskHttpRequest, Operation>newBuilder()
           .setMethodName("compute.disks.createSnapshot")
           .setRequestInstance(CreateSnapshotDiskHttpRequest.getDefaultInstance())
@@ -96,7 +99,8 @@ public class HttpJsonDiskStub extends DiskStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<DeleteDiskHttpRequest, Operation> deleteDiskMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteDiskHttpRequest, Operation> deleteDiskMethodDescriptor =
       ApiMethodDescriptor.<DeleteDiskHttpRequest, Operation>newBuilder()
           .setMethodName("compute.disks.delete")
           .setRequestInstance(DeleteDiskHttpRequest.getDefaultInstance())
@@ -110,7 +114,8 @@ public class HttpJsonDiskStub extends DiskStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetDiskHttpRequest, Disk> getDiskMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetDiskHttpRequest, Disk> getDiskMethodDescriptor =
       ApiMethodDescriptor.<GetDiskHttpRequest, Disk>newBuilder()
           .setMethodName("compute.disks.get")
           .setRequestInstance(GetDiskHttpRequest.getDefaultInstance())
@@ -124,7 +129,8 @@ public class HttpJsonDiskStub extends DiskStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertDiskHttpRequest, Operation> insertDiskMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertDiskHttpRequest, Operation> insertDiskMethodDescriptor =
       ApiMethodDescriptor.<InsertDiskHttpRequest, Operation>newBuilder()
           .setMethodName("compute.disks.insert")
           .setRequestInstance(InsertDiskHttpRequest.getDefaultInstance())
@@ -139,7 +145,8 @@ public class HttpJsonDiskStub extends DiskStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListDisksHttpRequest, DiskList> listDisksMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListDisksHttpRequest, DiskList> listDisksMethodDescriptor =
       ApiMethodDescriptor.<ListDisksHttpRequest, DiskList>newBuilder()
           .setMethodName("compute.disks.list")
           .setRequestInstance(ListDisksHttpRequest.getDefaultInstance())
@@ -154,7 +161,8 @@ public class HttpJsonDiskStub extends DiskStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<ResizeDiskHttpRequest, Operation> resizeDiskMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ResizeDiskHttpRequest, Operation> resizeDiskMethodDescriptor =
       ApiMethodDescriptor.<ResizeDiskHttpRequest, Operation>newBuilder()
           .setMethodName("compute.disks.resize")
           .setRequestInstance(ResizeDiskHttpRequest.getDefaultInstance())
@@ -181,12 +189,12 @@ public class HttpJsonDiskStub extends DiskStub {
   private final UnaryCallable<ListDisksHttpRequest, ListDisksPagedResponse> listDisksPagedCallable;
   private final UnaryCallable<ResizeDiskHttpRequest, Operation> resizeDiskCallable;
 
-  public static final HttpJsonDiskStub create(DiskSettings settings) throws IOException {
+  public static final HttpJsonDiskStub create(DiskStubSettings settings) throws IOException {
     return new HttpJsonDiskStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonDiskStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonDiskStub(DiskSettings.newBuilder().build(), clientContext);
+    return new HttpJsonDiskStub(DiskStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -194,7 +202,7 @@ public class HttpJsonDiskStub extends DiskStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonDiskStub(DiskSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonDiskStub(DiskStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AggregatedListDisksHttpRequest, DiskAggregatedList> aggregatedListDisksTransportSettings =
         HttpJsonCallSettings.<AggregatedListDisksHttpRequest, DiskAggregatedList>newBuilder()

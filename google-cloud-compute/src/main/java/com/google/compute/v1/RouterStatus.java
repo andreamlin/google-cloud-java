@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -53,6 +55,11 @@ public final class RouterStatus implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("bestRoutes") && bestRoutes != null) {
@@ -69,7 +76,7 @@ public final class RouterStatus implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -136,7 +143,7 @@ public final class RouterStatus implements ApiMessage {
       return bestRoutes;
     }
 
-    public Builder setBestRoutes(List<Route> bestRoutes) {
+    public Builder addAllBestRoutes(List<Route> bestRoutes) {
       this.bestRoutes = bestRoutes;
       return this;
     }
@@ -145,7 +152,7 @@ public final class RouterStatus implements ApiMessage {
       return bgpPeerStatus;
     }
 
-    public Builder setBgpPeerStatus(List<RouterStatusBgpPeerStatus> bgpPeerStatus) {
+    public Builder addAllBgpPeerStatus(List<RouterStatusBgpPeerStatus> bgpPeerStatus) {
       this.bgpPeerStatus = bgpPeerStatus;
       return this;
     }
@@ -172,8 +179,8 @@ public final class RouterStatus implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setBestRoutes(this.bestRoutes);
-      newBuilder.setBgpPeerStatus(this.bgpPeerStatus);
+      newBuilder.addAllBestRoutes(this.bestRoutes);
+      newBuilder.addAllBgpPeerStatus(this.bgpPeerStatus);
       newBuilder.setNetwork(this.network);
       return newBuilder;
     }

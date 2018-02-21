@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,9 +41,7 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
   private final String orderBy;
   private final String pageToken;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
-  private final String region;
   private final RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequestResource;
   private final String userIp;
 
@@ -58,9 +56,7 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
     this.orderBy = null;
     this.pageToken = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
-    this.region = null;
     this.regionInstanceGroupsListInstancesRequestResource = null;
     this.userIp = null;
   }
@@ -77,9 +73,7 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
       String orderBy,
       String pageToken,
       String prettyPrint,
-      String project,
       String quotaUser,
-      String region,
       RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequestResource,
       String userIp
       ) {
@@ -93,11 +87,14 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
     this.orderBy = orderBy;
     this.pageToken = pageToken;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
-    this.region = region;
     this.regionInstanceGroupsListInstancesRequestResource = regionInstanceGroupsListInstancesRequestResource;
     this.userIp = userIp;
+  }
+
+  @Override
+  public RegionInstanceGroupsInstanceGroupName resourceNamePath() {
+    return RegionInstanceGroupsInstanceGroupName.parse(instanceGroup);
   }
 
   @Override
@@ -133,14 +130,8 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
-    }
-    if (fieldNames.contains("region") && region != null) {
-      fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
     }
     if (fieldNames.contains("regionInstanceGroupsListInstancesRequestResource") && regionInstanceGroupsListInstancesRequestResource != null) {
       fieldMap.put("regionInstanceGroupsListInstancesRequestResource", Collections.singletonList(String.valueOf(regionInstanceGroupsListInstancesRequestResource)));
@@ -153,7 +144,7 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
 
   @Nullable
   @Override
-  public RegionInstanceGroupsListInstancesRequest getRequestBody() {
+  public RegionInstanceGroupsListInstancesRequest requestBody() {
     return regionInstanceGroupsListInstancesRequestResource;
   }
 
@@ -197,16 +188,8 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
     return prettyPrint;
   }
 
-  public String getProject() {
-    return project;
-  }
-
   public String getQuotaUser() {
     return quotaUser;
-  }
-
-  public String getRegion() {
-    return region;
   }
 
   public RegionInstanceGroupsListInstancesRequest getRegionInstanceGroupsListInstancesRequestResource() {
@@ -248,9 +231,7 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
     private String orderBy;
     private String pageToken;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
-    private String region;
     private RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequestResource;
     private String userIp;
 
@@ -288,14 +269,8 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
-      }
-      if (other.getRegion() != null) {
-        this.region = other.region;
       }
       if (other.getRegionInstanceGroupsListInstancesRequestResource() != null) {
         this.regionInstanceGroupsListInstancesRequestResource = other.regionInstanceGroupsListInstancesRequestResource;
@@ -317,9 +292,7 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
       this.orderBy = source.orderBy;
       this.pageToken = source.pageToken;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
-      this.region = source.region;
       this.regionInstanceGroupsListInstancesRequestResource = source.regionInstanceGroupsListInstancesRequestResource;
       this.userIp = source.userIp;
     }
@@ -414,30 +387,12 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
 
     public Builder setQuotaUser(String quotaUser) {
       this.quotaUser = quotaUser;
-      return this;
-    }
-
-    public String getRegion() {
-      return region;
-    }
-
-    public Builder setRegion(String region) {
-      this.region = region;
       return this;
     }
 
@@ -474,13 +429,7 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
 
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
-      if (region == null) {
-        missing += " region";
-      }
 
 
       if (!missing.isEmpty()) {
@@ -497,9 +446,7 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
         orderBy,
         pageToken,
         prettyPrint,
-        project,
         quotaUser,
-        region,
         regionInstanceGroupsListInstancesRequestResource,
         userIp
       );
@@ -517,35 +464,10 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
       newBuilder.setOrderBy(this.orderBy);
       newBuilder.setPageToken(this.pageToken);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
-      newBuilder.setRegion(this.region);
       newBuilder.setRegionInstanceGroupsListInstancesRequestResource(this.regionInstanceGroupsListInstancesRequestResource);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setInstanceGroupWithRegionInstanceGroupsInstanceGroupName(RegionInstanceGroupsInstanceGroupName value) {
-      if (value == null) {
-        return
-            setInstanceGroup("").
-            setProject("").
-            setRegion("")
-            ;
-      }
-      return
-          setInstanceGroup(value.getInstanceGroup()).
-          setProject(value.getProject()).
-          setRegion(value.getRegion())
-          ;
-    }
-
-    public final RegionInstanceGroupsInstanceGroupName getInstanceGroupAsRegionInstanceGroupsInstanceGroupName() {
-      return RegionInstanceGroupsInstanceGroupName.of(
-          getInstanceGroup(),
-          getProject(),
-          getRegion()
-          );
     }
   }
 
@@ -562,9 +484,7 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
         + "orderBy=" + orderBy + ", "
         + "pageToken=" + pageToken + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
-        + "region=" + region + ", "
         + "regionInstanceGroupsListInstancesRequestResource=" + regionInstanceGroupsListInstancesRequestResource + ", "
         + "userIp=" + userIp
         + "}";
@@ -588,9 +508,7 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
           Objects.equals(this.orderBy, that.getOrderBy()) &&
           Objects.equals(this.pageToken, that.getPageToken()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
-          Objects.equals(this.region, that.getRegion()) &&
           Objects.equals(this.regionInstanceGroupsListInstancesRequestResource, that.getRegionInstanceGroupsListInstancesRequestResource()) &&
           Objects.equals(this.userIp, that.getUserIp())
           ;
@@ -611,9 +529,7 @@ public final class ListInstancesRegionInstanceGroupsHttpRequest implements ApiMe
       orderBy,
       pageToken,
       prettyPrint,
-      project,
       quotaUser,
-      region,
       regionInstanceGroupsListInstancesRequestResource,
       userIp
     );

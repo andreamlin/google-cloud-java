@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListZonesPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.ZoneStub;
+import com.google.compute.v1.stub.ZoneStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class ZoneClient implements BackgroundResource {
    */
   protected ZoneClient(ZoneSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((ZoneStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class ZoneClient implements BackgroundResource {
 
     GetZoneHttpRequest request =
         GetZoneHttpRequest.newBuilder()
-        .setZoneWithZoneName(zone)
+        .setZone(zone.toString())
         .build();
     return getZone(request);
   }
@@ -189,7 +203,7 @@ public class ZoneClient implements BackgroundResource {
    * try (ZoneClient zoneClient = ZoneClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   GetZoneHttpRequest request = GetZoneHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   Zone response = zoneClient.getZone(request);
    * }
@@ -212,7 +226,7 @@ public class ZoneClient implements BackgroundResource {
    * try (ZoneClient zoneClient = ZoneClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   GetZoneHttpRequest request = GetZoneHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   ApiFuture&lt;Zone&gt; future = zoneClient.getZoneCallable().futureCall(request);
    *   // Do something
@@ -246,7 +260,7 @@ public class ZoneClient implements BackgroundResource {
   public final ListZonesPagedResponse listZones(ProjectName project) {
     ListZonesHttpRequest request =
         ListZonesHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listZones(request);
   }
@@ -260,7 +274,7 @@ public class ZoneClient implements BackgroundResource {
    * try (ZoneClient zoneClient = ZoneClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListZonesHttpRequest request = ListZonesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (Zone element : zoneClient.listZones(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -286,7 +300,7 @@ public class ZoneClient implements BackgroundResource {
    * try (ZoneClient zoneClient = ZoneClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListZonesHttpRequest request = ListZonesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListZonesPagedResponse&gt; future = zoneClient.listZonesPagedCallable().futureCall(request);
    *   // Do something
@@ -310,7 +324,7 @@ public class ZoneClient implements BackgroundResource {
    * try (ZoneClient zoneClient = ZoneClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListZonesHttpRequest request = ListZonesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     ZoneList response = zoneClient.listZonesCallable().call(request);
@@ -362,4 +376,91 @@ public class ZoneClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListZonesPagedResponse extends AbstractPagedListResponse<
+      ListZonesHttpRequest,
+      ZoneList,
+      Zone,
+      ListZonesPage,
+      ListZonesFixedSizeCollection> {
+
+    public static ApiFuture<ListZonesPagedResponse> createAsync(
+        PageContext<ListZonesHttpRequest, ZoneList, Zone> context,
+        ApiFuture<ZoneList> futureResponse) {
+      ApiFuture<ListZonesPage> futurePage =
+          ListZonesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListZonesPage, ListZonesPagedResponse>() {
+            @Override
+            public ListZonesPagedResponse apply(ListZonesPage input) {
+              return new ListZonesPagedResponse(input);
+            }
+          });
+    }
+
+    private ListZonesPagedResponse(ListZonesPage page) {
+      super(page, ListZonesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListZonesPage extends AbstractPage<
+      ListZonesHttpRequest,
+      ZoneList,
+      Zone,
+      ListZonesPage> {
+
+    private ListZonesPage(
+        PageContext<ListZonesHttpRequest, ZoneList, Zone> context,
+        ZoneList response) {
+      super(context, response);
+    }
+
+    private static ListZonesPage createEmptyPage() {
+      return new ListZonesPage(null, null);
+    }
+
+    @Override
+    protected ListZonesPage createPage(
+        PageContext<ListZonesHttpRequest, ZoneList, Zone> context,
+        ZoneList response) {
+      return new ListZonesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListZonesPage> createPageAsync(
+        PageContext<ListZonesHttpRequest, ZoneList, Zone> context,
+        ApiFuture<ZoneList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListZonesFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListZonesHttpRequest,
+      ZoneList,
+      Zone,
+      ListZonesPage,
+      ListZonesFixedSizeCollection> {
+
+    private ListZonesFixedSizeCollection(List<ListZonesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListZonesFixedSizeCollection createEmptyCollection() {
+      return new ListZonesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListZonesFixedSizeCollection createCollection(
+        List<ListZonesPage> pages, int collectionSize) {
+      return new ListZonesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

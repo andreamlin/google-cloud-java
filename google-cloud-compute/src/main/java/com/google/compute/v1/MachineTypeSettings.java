@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
 import com.google.api.gax.rpc.StatusCode;
+import com.google.api.gax.rpc.StubSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -46,10 +47,9 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListMachineTypesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListMachineTypesPagedResponse;
-import com.google.compute.v1.stub.HttpJsonMachineTypeStub;
-import com.google.compute.v1.stub.MachineTypeStub;
+import static com.google.compute.v1.MachineTypeClient.AggregatedListMachineTypesPagedResponse;
+import static com.google.compute.v1.MachineTypeClient.ListMachineTypesPagedResponse;
+import com.google.compute.v1.stub.MachineTypeStubSettings;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -87,74 +87,49 @@ import org.threeten.bp.Duration;
 @BetaApi
 public class MachineTypeSettings extends ClientSettings<MachineTypeSettings> {
   /**
-   * The default scopes of the service.
-   */
-  private static final ImmutableList<String> DEFAULT_SERVICE_SCOPES = ImmutableList.<String>builder()
-      .add("https://www.googleapis.com/auth/cloud-platform")
-      .add("https://www.googleapis.com/auth/compute")
-      .add("https://www.googleapis.com/auth/compute.readonly")
-      .add("https://www.googleapis.com/auth/devstorage.full_control")
-      .add("https://www.googleapis.com/auth/devstorage.read_only")
-      .add("https://www.googleapis.com/auth/devstorage.read_write")
-      .build();
-
-  private final PagedCallSettings<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, AggregatedListMachineTypesPagedResponse> aggregatedListMachineTypesSettings;
-  private final UnaryCallSettings<GetMachineTypeHttpRequest, MachineType> getMachineTypeSettings;
-  private final PagedCallSettings<ListMachineTypesHttpRequest, MachineTypeList, ListMachineTypesPagedResponse> listMachineTypesSettings;
-
-  /**
    * Returns the object with the settings used for calls to aggregatedListMachineTypes.
    */
   public PagedCallSettings<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, AggregatedListMachineTypesPagedResponse> aggregatedListMachineTypesSettings() {
-    return aggregatedListMachineTypesSettings;
+    return ((MachineTypeStubSettings) getStubSettings()).aggregatedListMachineTypesSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to getMachineType.
    */
   public UnaryCallSettings<GetMachineTypeHttpRequest, MachineType> getMachineTypeSettings() {
-    return getMachineTypeSettings;
+    return ((MachineTypeStubSettings) getStubSettings()).getMachineTypeSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to listMachineTypes.
    */
   public PagedCallSettings<ListMachineTypesHttpRequest, MachineTypeList, ListMachineTypesPagedResponse> listMachineTypesSettings() {
-    return listMachineTypesSettings;
+    return ((MachineTypeStubSettings) getStubSettings()).listMachineTypesSettings();
   }
 
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
-  public MachineTypeStub createStub() throws IOException {
-    if (getTransportChannelProvider()
-        .getTransportName()
-        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
-      return HttpJsonMachineTypeStub.create(this);
-    } else {
-      throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportChannelProvider().getTransportName());
-    }
+  public static final MachineTypeSettings create(MachineTypeStubSettings stub) throws IOException {
+    return new MachineTypeSettings.Builder(stub.toBuilder()).build();
   }
 
   /**
    * Returns a builder for the default ExecutorProvider for this service.
    */
   public static InstantiatingExecutorProvider.Builder defaultExecutorProviderBuilder() {
-    return InstantiatingExecutorProvider.newBuilder();
+    return MachineTypeStubSettings.defaultExecutorProviderBuilder();
   }
 
   /**
    * Returns the default service endpoint.
    */
-  public static String getDefaultEndpoint() {
-    return "https://www.googleapis.com/compute/v1/projects/";
-  }
-
+   public static String getDefaultEndpoint() {
+     return MachineTypeStubSettings.getDefaultEndpoint();
+   }
   /**
    * Returns the default service port.
    */
   public static int getDefaultServicePort() {
-    return 443;
+    return MachineTypeStubSettings.getDefaultServicePort();
   }
 
 
@@ -162,7 +137,7 @@ public class MachineTypeSettings extends ClientSettings<MachineTypeSettings> {
    * Returns the default service scopes.
    */
   public static List<String> getDefaultServiceScopes() {
-    return DEFAULT_SERVICE_SCOPES;
+    return MachineTypeStubSettings.getDefaultServiceScopes();
   }
 
 
@@ -170,25 +145,21 @@ public class MachineTypeSettings extends ClientSettings<MachineTypeSettings> {
    * Returns a builder for the default credentials for this service.
    */
   public static GoogleCredentialsProvider.Builder defaultCredentialsProviderBuilder() {
-    return GoogleCredentialsProvider.newBuilder()
-        .setScopesToApply(DEFAULT_SERVICE_SCOPES)
-        ;
+    return MachineTypeStubSettings.defaultCredentialsProviderBuilder();
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder();
+    return MachineTypeStubSettings.defaultHttpJsonTransportProviderBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
-    return defaultHttpJsonTransportProviderBuilder().build();
+    return MachineTypeStubSettings.defaultTransportChannelProvider();
   }
 
   @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
-    return ApiClientHeaderProvider.newBuilder()
-        .setGeneratedLibToken("gapic", GaxProperties.getLibraryVersion(MachineTypeSettings.class))
-        .setTransportToken(GaxHttpJsonProperties.getHttpJsonTokenName(), GaxHttpJsonProperties.getHttpJsonVersion());
+    return MachineTypeStubSettings.defaultApiClientHeaderProviderBuilder();
   }
 
   /**
@@ -214,212 +185,35 @@ public class MachineTypeSettings extends ClientSettings<MachineTypeSettings> {
 
   protected MachineTypeSettings(Builder settingsBuilder) throws IOException {
     super(settingsBuilder);
-
-    aggregatedListMachineTypesSettings = settingsBuilder.aggregatedListMachineTypesSettings().build();
-    getMachineTypeSettings = settingsBuilder.getMachineTypeSettings().build();
-    listMachineTypesSettings = settingsBuilder.listMachineTypesSettings().build();
   }
-
-  private static final PagedListDescriptor<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineType> AGGREGATED_LIST_MACHINE_TYPES_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineType>() {
-        @Override
-        public String emptyToken() {
-          return "";
-        }
-        @Override
-        public AggregatedListMachineTypesHttpRequest injectToken(AggregatedListMachineTypesHttpRequest payload, String token) {
-          return AggregatedListMachineTypesHttpRequest
-            .newBuilder(payload)
-            .setPageToken(token)
-            .build();
-        }
-        @Override
-        public AggregatedListMachineTypesHttpRequest injectPageSize(AggregatedListMachineTypesHttpRequest payload, int pageSize) {
-          return AggregatedListMachineTypesHttpRequest
-            .newBuilder(payload)
-            .setMaxResults(pageSize)
-            .build();
-        }
-        @Override
-        public Integer extractPageSize(AggregatedListMachineTypesHttpRequest payload) {
-          return payload.getMaxResults();
-        }
-        @Override
-        public String extractNextToken(MachineTypeAggregatedList payload) {
-          return payload.getNextPageToken();
-        }
-        @Override
-        public Iterable<MachineType> extractResources(MachineTypeAggregatedList payload) {
-          return payload.getItems().getMachineTypes();
-        }
-      };
-
-  private static final PagedListDescriptor<ListMachineTypesHttpRequest, MachineTypeList, MachineType> LIST_MACHINE_TYPES_PAGE_STR_DESC =
-      new PagedListDescriptor<ListMachineTypesHttpRequest, MachineTypeList, MachineType>() {
-        @Override
-        public String emptyToken() {
-          return "";
-        }
-        @Override
-        public ListMachineTypesHttpRequest injectToken(ListMachineTypesHttpRequest payload, String token) {
-          return ListMachineTypesHttpRequest
-            .newBuilder(payload)
-            .setPageToken(token)
-            .build();
-        }
-        @Override
-        public ListMachineTypesHttpRequest injectPageSize(ListMachineTypesHttpRequest payload, int pageSize) {
-          return ListMachineTypesHttpRequest
-            .newBuilder(payload)
-            .setMaxResults(pageSize)
-            .build();
-        }
-        @Override
-        public Integer extractPageSize(ListMachineTypesHttpRequest payload) {
-          return payload.getMaxResults();
-        }
-        @Override
-        public String extractNextToken(MachineTypeList payload) {
-          return payload.getNextPageToken();
-        }
-        @Override
-        public Iterable<MachineType> extractResources(MachineTypeList payload) {
-          return payload.getItems();
-        }
-      };
-
-  private static final PagedListResponseFactory<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, AggregatedListMachineTypesPagedResponse> AGGREGATED_LIST_MACHINE_TYPES_PAGE_STR_FACT =
-      new PagedListResponseFactory<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, AggregatedListMachineTypesPagedResponse>() {
-        @Override
-        public ApiFuture<AggregatedListMachineTypesPagedResponse> getFuturePagedResponse(
-            UnaryCallable<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList> callable,
-            AggregatedListMachineTypesHttpRequest request,
-            ApiCallContext context,
-            ApiFuture<MachineTypeAggregatedList> futureResponse) {
-          PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineType> pageContext =
-              PageContext.create(callable, AGGREGATED_LIST_MACHINE_TYPES_PAGE_STR_DESC, request, context);
-          return AggregatedListMachineTypesPagedResponse.createAsync(pageContext, futureResponse);
-        }
-      };
-
-  private static final PagedListResponseFactory<ListMachineTypesHttpRequest, MachineTypeList, ListMachineTypesPagedResponse> LIST_MACHINE_TYPES_PAGE_STR_FACT =
-      new PagedListResponseFactory<ListMachineTypesHttpRequest, MachineTypeList, ListMachineTypesPagedResponse>() {
-        @Override
-        public ApiFuture<ListMachineTypesPagedResponse> getFuturePagedResponse(
-            UnaryCallable<ListMachineTypesHttpRequest, MachineTypeList> callable,
-            ListMachineTypesHttpRequest request,
-            ApiCallContext context,
-            ApiFuture<MachineTypeList> futureResponse) {
-          PageContext<ListMachineTypesHttpRequest, MachineTypeList, MachineType> pageContext =
-              PageContext.create(callable, LIST_MACHINE_TYPES_PAGE_STR_DESC, request, context);
-          return ListMachineTypesPagedResponse.createAsync(pageContext, futureResponse);
-        }
-      };
-
 
   /**
    * Builder for MachineTypeSettings.
    */
   public static class Builder extends ClientSettings.Builder<MachineTypeSettings, Builder> {
-    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
-
-    private final PagedCallSettings.Builder<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, AggregatedListMachineTypesPagedResponse> aggregatedListMachineTypesSettings;
-    private final UnaryCallSettings.Builder<GetMachineTypeHttpRequest, MachineType> getMachineTypeSettings;
-    private final PagedCallSettings.Builder<ListMachineTypesHttpRequest, MachineTypeList, ListMachineTypesPagedResponse> listMachineTypesSettings;
-
-    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
-
-    static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
-      definitions.put(
-          "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
-      definitions.put(
-          "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
-      RETRYABLE_CODE_DEFINITIONS = definitions.build();
-    }
-
-    private static final ImmutableMap<String, RetrySettings> RETRY_PARAM_DEFINITIONS;
-
-    static {
-      ImmutableMap.Builder<String, RetrySettings> definitions = ImmutableMap.builder();
-      RetrySettings settings = null;
-      settings = RetrySettings.newBuilder()
-          .setInitialRetryDelay(Duration.ofMillis(100L))
-          .setRetryDelayMultiplier(1.3)
-          .setMaxRetryDelay(Duration.ofMillis(60000L))
-          .setInitialRpcTimeout(Duration.ofMillis(20000L))
-          .setRpcTimeoutMultiplier(1.0)
-          .setMaxRpcTimeout(Duration.ofMillis(20000L))
-          .setTotalTimeout(Duration.ofMillis(600000L))
-          .build();
-      definitions.put("default", settings);
-      RETRY_PARAM_DEFINITIONS = definitions.build();
-    }
-
-    protected Builder() {
+    protected Builder() throws IOException {
       this((ClientContext) null);
     }
 
     protected Builder(ClientContext clientContext) {
-      super(clientContext);
-
-      aggregatedListMachineTypesSettings = PagedCallSettings.newBuilder(
-          AGGREGATED_LIST_MACHINE_TYPES_PAGE_STR_FACT);
-
-      getMachineTypeSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      listMachineTypesSettings = PagedCallSettings.newBuilder(
-          LIST_MACHINE_TYPES_PAGE_STR_FACT);
-
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
-          aggregatedListMachineTypesSettings,
-          getMachineTypeSettings,
-          listMachineTypesSettings
-      );
-
-      initDefaults(this);
+      super(MachineTypeStubSettings.newBuilder(clientContext));
     }
 
     private static Builder createDefault() {
-      Builder builder = new Builder((ClientContext) null);
-      builder.setTransportChannelProvider(defaultTransportChannelProvider());
-      builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
-      builder.setInternalHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
-      builder.setEndpoint(getDefaultEndpoint());
-      return initDefaults(builder);
-    }
-
-    private static Builder initDefaults(Builder builder) {
-
-      builder.aggregatedListMachineTypesSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.getMachineTypeSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.listMachineTypesSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      return builder;
+      return new Builder(MachineTypeStubSettings.newBuilder());
     }
 
     protected Builder(MachineTypeSettings settings) {
-      super(settings);
+      super(settings.getStubSettings().toBuilder());
+    }
 
-      aggregatedListMachineTypesSettings = settings.aggregatedListMachineTypesSettings.toBuilder();
-      getMachineTypeSettings = settings.getMachineTypeSettings.toBuilder();
-      listMachineTypesSettings = settings.listMachineTypesSettings.toBuilder();
+    protected Builder(MachineTypeStubSettings.Builder stubSettings) {
+      super(stubSettings);
+    }
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
-          aggregatedListMachineTypesSettings,
-          getMachineTypeSettings,
-          listMachineTypesSettings
-      );
+
+    public MachineTypeStubSettings.Builder getStubSettingsBuilder() {
+      return ((MachineTypeStubSettings.Builder) getStubSettings());
     }
 
     /**
@@ -428,7 +222,7 @@ public class MachineTypeSettings extends ClientSettings<MachineTypeSettings> {
      * Note: This method does not support applying settings to streaming methods.
      */
     public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
-      super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
+      super.applyToAllUnaryMethods(getStubSettingsBuilder().unaryMethodSettingsBuilders(), settingsUpdater);
       return this;
     }
 
@@ -436,21 +230,21 @@ public class MachineTypeSettings extends ClientSettings<MachineTypeSettings> {
      * Returns the builder for the settings used for calls to aggregatedListMachineTypes.
      */
     public PagedCallSettings.Builder<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, AggregatedListMachineTypesPagedResponse> aggregatedListMachineTypesSettings() {
-      return aggregatedListMachineTypesSettings;
+      return getStubSettingsBuilder().aggregatedListMachineTypesSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to getMachineType.
      */
     public UnaryCallSettings.Builder<GetMachineTypeHttpRequest, MachineType> getMachineTypeSettings() {
-      return getMachineTypeSettings;
+      return getStubSettingsBuilder().getMachineTypeSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to listMachineTypes.
      */
     public PagedCallSettings.Builder<ListMachineTypesHttpRequest, MachineTypeList, ListMachineTypesPagedResponse> listMachineTypesSettings() {
-      return listMachineTypesSettings;
+      return getStubSettingsBuilder().listMachineTypesSettings();
     }
 
     @Override

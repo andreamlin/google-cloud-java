@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteZoneOperationHttpRequest;
@@ -33,8 +34,8 @@ import com.google.compute.v1.GetZoneOperationHttpRequest;
 import com.google.compute.v1.ListZoneOperationsHttpRequest;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.OperationList;
-import static com.google.compute.v1.PagedResponseWrappers.ListZoneOperationsPagedResponse;
 import com.google.compute.v1.ZoneName;
+import static com.google.compute.v1.ZoneOperationClient.ListZoneOperationsPagedResponse;
 import com.google.compute.v1.ZoneOperationSettings;
 import com.google.compute.v1.ZoneOperationsOperationName;
 import java.io.IOException;
@@ -57,7 +58,8 @@ import javax.annotation.Generated;
 public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationMethodDescriptor =
       ApiMethodDescriptor.<DeleteZoneOperationHttpRequest, Void>newBuilder()
           .setMethodName("compute.zoneOperations.delete")
           .setRequestInstance(DeleteZoneOperationHttpRequest.getDefaultInstance())
@@ -70,7 +72,8 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetZoneOperationHttpRequest, Operation> getZoneOperationMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetZoneOperationHttpRequest, Operation> getZoneOperationMethodDescriptor =
       ApiMethodDescriptor.<GetZoneOperationHttpRequest, Operation>newBuilder()
           .setMethodName("compute.zoneOperations.get")
           .setRequestInstance(GetZoneOperationHttpRequest.getDefaultInstance())
@@ -84,7 +87,8 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<ListZoneOperationsHttpRequest, OperationList> listZoneOperationsMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListZoneOperationsHttpRequest, OperationList> listZoneOperationsMethodDescriptor =
       ApiMethodDescriptor.<ListZoneOperationsHttpRequest, OperationList>newBuilder()
           .setMethodName("compute.zoneOperations.list")
           .setRequestInstance(ListZoneOperationsHttpRequest.getDefaultInstance())
@@ -107,12 +111,12 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   private final UnaryCallable<ListZoneOperationsHttpRequest, OperationList> listZoneOperationsCallable;
   private final UnaryCallable<ListZoneOperationsHttpRequest, ListZoneOperationsPagedResponse> listZoneOperationsPagedCallable;
 
-  public static final HttpJsonZoneOperationStub create(ZoneOperationSettings settings) throws IOException {
+  public static final HttpJsonZoneOperationStub create(ZoneOperationStubSettings settings) throws IOException {
     return new HttpJsonZoneOperationStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonZoneOperationStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonZoneOperationStub(ZoneOperationSettings.newBuilder().build(), clientContext);
+    return new HttpJsonZoneOperationStub(ZoneOperationStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -120,7 +124,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonZoneOperationStub(ZoneOperationSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonZoneOperationStub(ZoneOperationStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationTransportSettings =
         HttpJsonCallSettings.<DeleteZoneOperationHttpRequest, Void>newBuilder()

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListGlobalOperationsPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListGlobalOperationsPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.GlobalOperationStub;
+import com.google.compute.v1.stub.GlobalOperationStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -137,7 +150,7 @@ public class GlobalOperationClient implements BackgroundResource {
    */
   protected GlobalOperationClient(GlobalOperationSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((GlobalOperationStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -177,7 +190,7 @@ public class GlobalOperationClient implements BackgroundResource {
   public final AggregatedListGlobalOperationsPagedResponse aggregatedListGlobalOperations(ProjectName project) {
     AggregatedListGlobalOperationsHttpRequest request =
         AggregatedListGlobalOperationsHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return aggregatedListGlobalOperations(request);
   }
@@ -191,7 +204,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListGlobalOperationsHttpRequest request = AggregatedListGlobalOperationsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (Operation element : globalOperationClient.aggregatedListGlobalOperations(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -217,7 +230,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListGlobalOperationsHttpRequest request = AggregatedListGlobalOperationsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;AggregatedListGlobalOperationsPagedResponse&gt; future = globalOperationClient.aggregatedListGlobalOperationsPagedCallable().futureCall(request);
    *   // Do something
@@ -241,11 +254,11 @@ public class GlobalOperationClient implements BackgroundResource {
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListGlobalOperationsHttpRequest request = AggregatedListGlobalOperationsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     OperationAggregatedList response = globalOperationClient.aggregatedListGlobalOperationsCallable().call(request);
-   *     for (Operation element : response.getItems().getOperations()) {
+   *     for (Operation element : response.getOperations()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -283,7 +296,7 @@ public class GlobalOperationClient implements BackgroundResource {
 
     DeleteGlobalOperationHttpRequest request =
         DeleteGlobalOperationHttpRequest.newBuilder()
-        .setOperationWithGlobalOperationsOperationName(operation)
+        .setOperation(operation.toString())
         .build();
     deleteGlobalOperation(request);
   }
@@ -297,7 +310,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
    *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
    *   DeleteGlobalOperationHttpRequest request = DeleteGlobalOperationHttpRequest.newBuilder()
-   *     .setOperationWithGlobalOperationsOperationName(operation)
+   *     .setOperation(operation.toString())
    *     .build();
    *   globalOperationClient.deleteGlobalOperation(request);
    * }
@@ -320,7 +333,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
    *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
    *   DeleteGlobalOperationHttpRequest request = DeleteGlobalOperationHttpRequest.newBuilder()
-   *     .setOperationWithGlobalOperationsOperationName(operation)
+   *     .setOperation(operation.toString())
    *     .build();
    *   ApiFuture&lt;Void&gt; future = globalOperationClient.deleteGlobalOperationCallable().futureCall(request);
    *   // Do something
@@ -353,7 +366,7 @@ public class GlobalOperationClient implements BackgroundResource {
 
     GetGlobalOperationHttpRequest request =
         GetGlobalOperationHttpRequest.newBuilder()
-        .setOperationWithGlobalOperationsOperationName(operation)
+        .setOperation(operation.toString())
         .build();
     return getGlobalOperation(request);
   }
@@ -367,7 +380,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
    *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
    *   GetGlobalOperationHttpRequest request = GetGlobalOperationHttpRequest.newBuilder()
-   *     .setOperationWithGlobalOperationsOperationName(operation)
+   *     .setOperation(operation.toString())
    *     .build();
    *   Operation response = globalOperationClient.getGlobalOperation(request);
    * }
@@ -390,7 +403,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
    *   GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
    *   GetGlobalOperationHttpRequest request = GetGlobalOperationHttpRequest.newBuilder()
-   *     .setOperationWithGlobalOperationsOperationName(operation)
+   *     .setOperation(operation.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = globalOperationClient.getGlobalOperationCallable().futureCall(request);
    *   // Do something
@@ -424,7 +437,7 @@ public class GlobalOperationClient implements BackgroundResource {
   public final ListGlobalOperationsPagedResponse listGlobalOperations(ProjectName project) {
     ListGlobalOperationsHttpRequest request =
         ListGlobalOperationsHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listGlobalOperations(request);
   }
@@ -438,7 +451,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalOperationsHttpRequest request = ListGlobalOperationsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (Operation element : globalOperationClient.listGlobalOperations(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -464,7 +477,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalOperationsHttpRequest request = ListGlobalOperationsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListGlobalOperationsPagedResponse&gt; future = globalOperationClient.listGlobalOperationsPagedCallable().futureCall(request);
    *   // Do something
@@ -488,7 +501,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * try (GlobalOperationClient globalOperationClient = GlobalOperationClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListGlobalOperationsHttpRequest request = ListGlobalOperationsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     OperationList response = globalOperationClient.listGlobalOperationsCallable().call(request);
@@ -540,4 +553,178 @@ public class GlobalOperationClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class AggregatedListGlobalOperationsPagedResponse extends AbstractPagedListResponse<
+      AggregatedListGlobalOperationsHttpRequest,
+      OperationAggregatedList,
+      Operation,
+      AggregatedListGlobalOperationsPage,
+      AggregatedListGlobalOperationsFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListGlobalOperationsPagedResponse> createAsync(
+        PageContext<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, Operation> context,
+        ApiFuture<OperationAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListGlobalOperationsPage> futurePage =
+          AggregatedListGlobalOperationsPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<AggregatedListGlobalOperationsPage, AggregatedListGlobalOperationsPagedResponse>() {
+            @Override
+            public AggregatedListGlobalOperationsPagedResponse apply(AggregatedListGlobalOperationsPage input) {
+              return new AggregatedListGlobalOperationsPagedResponse(input);
+            }
+          });
+    }
+
+    private AggregatedListGlobalOperationsPagedResponse(AggregatedListGlobalOperationsPage page) {
+      super(page, AggregatedListGlobalOperationsFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class AggregatedListGlobalOperationsPage extends AbstractPage<
+      AggregatedListGlobalOperationsHttpRequest,
+      OperationAggregatedList,
+      Operation,
+      AggregatedListGlobalOperationsPage> {
+
+    private AggregatedListGlobalOperationsPage(
+        PageContext<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, Operation> context,
+        OperationAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListGlobalOperationsPage createEmptyPage() {
+      return new AggregatedListGlobalOperationsPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListGlobalOperationsPage createPage(
+        PageContext<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, Operation> context,
+        OperationAggregatedList response) {
+      return new AggregatedListGlobalOperationsPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListGlobalOperationsPage> createPageAsync(
+        PageContext<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, Operation> context,
+        ApiFuture<OperationAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class AggregatedListGlobalOperationsFixedSizeCollection extends AbstractFixedSizeCollection<
+      AggregatedListGlobalOperationsHttpRequest,
+      OperationAggregatedList,
+      Operation,
+      AggregatedListGlobalOperationsPage,
+      AggregatedListGlobalOperationsFixedSizeCollection> {
+
+    private AggregatedListGlobalOperationsFixedSizeCollection(List<AggregatedListGlobalOperationsPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListGlobalOperationsFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListGlobalOperationsFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListGlobalOperationsFixedSizeCollection createCollection(
+        List<AggregatedListGlobalOperationsPage> pages, int collectionSize) {
+      return new AggregatedListGlobalOperationsFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
+  public static class ListGlobalOperationsPagedResponse extends AbstractPagedListResponse<
+      ListGlobalOperationsHttpRequest,
+      OperationList,
+      Operation,
+      ListGlobalOperationsPage,
+      ListGlobalOperationsFixedSizeCollection> {
+
+    public static ApiFuture<ListGlobalOperationsPagedResponse> createAsync(
+        PageContext<ListGlobalOperationsHttpRequest, OperationList, Operation> context,
+        ApiFuture<OperationList> futureResponse) {
+      ApiFuture<ListGlobalOperationsPage> futurePage =
+          ListGlobalOperationsPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListGlobalOperationsPage, ListGlobalOperationsPagedResponse>() {
+            @Override
+            public ListGlobalOperationsPagedResponse apply(ListGlobalOperationsPage input) {
+              return new ListGlobalOperationsPagedResponse(input);
+            }
+          });
+    }
+
+    private ListGlobalOperationsPagedResponse(ListGlobalOperationsPage page) {
+      super(page, ListGlobalOperationsFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListGlobalOperationsPage extends AbstractPage<
+      ListGlobalOperationsHttpRequest,
+      OperationList,
+      Operation,
+      ListGlobalOperationsPage> {
+
+    private ListGlobalOperationsPage(
+        PageContext<ListGlobalOperationsHttpRequest, OperationList, Operation> context,
+        OperationList response) {
+      super(context, response);
+    }
+
+    private static ListGlobalOperationsPage createEmptyPage() {
+      return new ListGlobalOperationsPage(null, null);
+    }
+
+    @Override
+    protected ListGlobalOperationsPage createPage(
+        PageContext<ListGlobalOperationsHttpRequest, OperationList, Operation> context,
+        OperationList response) {
+      return new ListGlobalOperationsPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListGlobalOperationsPage> createPageAsync(
+        PageContext<ListGlobalOperationsHttpRequest, OperationList, Operation> context,
+        ApiFuture<OperationList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListGlobalOperationsFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListGlobalOperationsHttpRequest,
+      OperationList,
+      Operation,
+      ListGlobalOperationsPage,
+      ListGlobalOperationsFixedSizeCollection> {
+
+    private ListGlobalOperationsFixedSizeCollection(List<ListGlobalOperationsPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListGlobalOperationsFixedSizeCollection createEmptyCollection() {
+      return new ListGlobalOperationsFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListGlobalOperationsFixedSizeCollection createCollection(
+        List<ListGlobalOperationsPage> pages, int collectionSize) {
+      return new ListGlobalOperationsFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

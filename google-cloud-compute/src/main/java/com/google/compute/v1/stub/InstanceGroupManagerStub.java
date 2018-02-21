@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,8 @@ import com.google.compute.v1.GetInstanceGroupManagerHttpRequest;
 import com.google.compute.v1.InsertInstanceGroupManagerHttpRequest;
 import com.google.compute.v1.InstanceGroupManager;
 import com.google.compute.v1.InstanceGroupManagerAggregatedList;
+import static com.google.compute.v1.InstanceGroupManagerClient.AggregatedListInstanceGroupManagersPagedResponse;
+import static com.google.compute.v1.InstanceGroupManagerClient.ListInstanceGroupManagersPagedResponse;
 import com.google.compute.v1.InstanceGroupManagerList;
 import com.google.compute.v1.InstanceGroupManagerName;
 import com.google.compute.v1.InstanceGroupManagersAbandonInstancesRequest;
@@ -37,8 +39,6 @@ import com.google.compute.v1.InstanceGroupManagersSetTargetPoolsRequest;
 import com.google.compute.v1.ListInstanceGroupManagersHttpRequest;
 import com.google.compute.v1.ListManagedInstancesInstanceGroupManagersHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListInstanceGroupManagersPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListInstanceGroupManagersPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RecreateInstancesInstanceGroupManagerHttpRequest;
 import com.google.compute.v1.ResizeInstanceGroupManagerHttpRequest;

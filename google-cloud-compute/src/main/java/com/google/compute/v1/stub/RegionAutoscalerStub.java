@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,8 +24,8 @@ import com.google.compute.v1.GetRegionAutoscalerHttpRequest;
 import com.google.compute.v1.InsertRegionAutoscalerHttpRequest;
 import com.google.compute.v1.ListRegionAutoscalersHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionAutoscalersPagedResponse;
 import com.google.compute.v1.PatchRegionAutoscalerHttpRequest;
+import static com.google.compute.v1.RegionAutoscalerClient.ListRegionAutoscalersPagedResponse;
 import com.google.compute.v1.RegionAutoscalerList;
 import com.google.compute.v1.RegionAutoscalersAutoscalerName;
 import com.google.compute.v1.RegionName;

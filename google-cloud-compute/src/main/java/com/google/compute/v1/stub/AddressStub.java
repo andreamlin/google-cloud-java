@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,8 @@ import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.compute.v1.Address;
 import com.google.compute.v1.AddressAggregatedList;
+import static com.google.compute.v1.AddressClient.AggregatedListAddressesPagedResponse;
+import static com.google.compute.v1.AddressClient.ListAddressesPagedResponse;
 import com.google.compute.v1.AddressList;
 import com.google.compute.v1.AddressName;
 import com.google.compute.v1.AggregatedListAddressesHttpRequest;
@@ -28,8 +30,6 @@ import com.google.compute.v1.GetAddressHttpRequest;
 import com.google.compute.v1.InsertAddressHttpRequest;
 import com.google.compute.v1.ListAddressesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListAddressesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListAddressesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RegionName;
 import javax.annotation.Generated;

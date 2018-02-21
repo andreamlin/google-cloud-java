@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListAutoscalersPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListAutoscalersPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.AutoscalerStub;
+import com.google.compute.v1.stub.AutoscalerStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -137,7 +150,7 @@ public class AutoscalerClient implements BackgroundResource {
    */
   protected AutoscalerClient(AutoscalerSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((AutoscalerStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -177,7 +190,7 @@ public class AutoscalerClient implements BackgroundResource {
   public final AggregatedListAutoscalersPagedResponse aggregatedListAutoscalers(ProjectName project) {
     AggregatedListAutoscalersHttpRequest request =
         AggregatedListAutoscalersHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return aggregatedListAutoscalers(request);
   }
@@ -191,7 +204,7 @@ public class AutoscalerClient implements BackgroundResource {
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListAutoscalersHttpRequest request = AggregatedListAutoscalersHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (Autoscaler element : autoscalerClient.aggregatedListAutoscalers(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -217,7 +230,7 @@ public class AutoscalerClient implements BackgroundResource {
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListAutoscalersHttpRequest request = AggregatedListAutoscalersHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;AggregatedListAutoscalersPagedResponse&gt; future = autoscalerClient.aggregatedListAutoscalersPagedCallable().futureCall(request);
    *   // Do something
@@ -241,11 +254,11 @@ public class AutoscalerClient implements BackgroundResource {
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListAutoscalersHttpRequest request = AggregatedListAutoscalersHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     AutoscalerAggregatedList response = autoscalerClient.aggregatedListAutoscalersCallable().call(request);
-   *     for (Autoscaler element : response.getItems().getAutoscalers()) {
+   *     for (Autoscaler element : response.getAutoscalers()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -283,7 +296,7 @@ public class AutoscalerClient implements BackgroundResource {
 
     DeleteAutoscalerHttpRequest request =
         DeleteAutoscalerHttpRequest.newBuilder()
-        .setAutoscalerWithAutoscalerName(autoscaler)
+        .setAutoscaler(autoscaler.toString())
         .build();
     return deleteAutoscaler(request);
   }
@@ -297,7 +310,7 @@ public class AutoscalerClient implements BackgroundResource {
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
    *   DeleteAutoscalerHttpRequest request = DeleteAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscalerWithAutoscalerName(autoscaler)
+   *     .setAutoscaler(autoscaler.toString())
    *     .build();
    *   Operation response = autoscalerClient.deleteAutoscaler(request);
    * }
@@ -320,7 +333,7 @@ public class AutoscalerClient implements BackgroundResource {
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
    *   DeleteAutoscalerHttpRequest request = DeleteAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscalerWithAutoscalerName(autoscaler)
+   *     .setAutoscaler(autoscaler.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = autoscalerClient.deleteAutoscalerCallable().futureCall(request);
    *   // Do something
@@ -353,7 +366,7 @@ public class AutoscalerClient implements BackgroundResource {
 
     GetAutoscalerHttpRequest request =
         GetAutoscalerHttpRequest.newBuilder()
-        .setAutoscalerWithAutoscalerName(autoscaler)
+        .setAutoscaler(autoscaler.toString())
         .build();
     return getAutoscaler(request);
   }
@@ -367,7 +380,7 @@ public class AutoscalerClient implements BackgroundResource {
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
    *   GetAutoscalerHttpRequest request = GetAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscalerWithAutoscalerName(autoscaler)
+   *     .setAutoscaler(autoscaler.toString())
    *     .build();
    *   Autoscaler response = autoscalerClient.getAutoscaler(request);
    * }
@@ -390,7 +403,7 @@ public class AutoscalerClient implements BackgroundResource {
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   AutoscalerName autoscaler = AutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
    *   GetAutoscalerHttpRequest request = GetAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscalerWithAutoscalerName(autoscaler)
+   *     .setAutoscaler(autoscaler.toString())
    *     .build();
    *   ApiFuture&lt;Autoscaler&gt; future = autoscalerClient.getAutoscalerCallable().futureCall(request);
    *   // Do something
@@ -425,7 +438,7 @@ public class AutoscalerClient implements BackgroundResource {
 
     InsertAutoscalerHttpRequest request =
         InsertAutoscalerHttpRequest.newBuilder()
-        .setZoneWithZoneName(zone)
+        .setZone(zone.toString())
         .setAutoscalerResource(autoscalerResource)
         .build();
     return insertAutoscaler(request);
@@ -441,7 +454,7 @@ public class AutoscalerClient implements BackgroundResource {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   InsertAutoscalerHttpRequest request = InsertAutoscalerHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .setAutoscalerResource(autoscaler)
    *     .build();
    *   Operation response = autoscalerClient.insertAutoscaler(request);
@@ -466,7 +479,7 @@ public class AutoscalerClient implements BackgroundResource {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   Autoscaler autoscaler = Autoscaler.newBuilder().build();
    *   InsertAutoscalerHttpRequest request = InsertAutoscalerHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .setAutoscalerResource(autoscaler)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = autoscalerClient.insertAutoscalerCallable().futureCall(request);
@@ -501,7 +514,7 @@ public class AutoscalerClient implements BackgroundResource {
   public final ListAutoscalersPagedResponse listAutoscalers(ZoneName zone) {
     ListAutoscalersHttpRequest request =
         ListAutoscalersHttpRequest.newBuilder()
-        .setZoneWithZoneName(zone)
+        .setZone(zone.toString())
         .build();
     return listAutoscalers(request);
   }
@@ -515,7 +528,7 @@ public class AutoscalerClient implements BackgroundResource {
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListAutoscalersHttpRequest request = ListAutoscalersHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   for (Autoscaler element : autoscalerClient.listAutoscalers(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -541,7 +554,7 @@ public class AutoscalerClient implements BackgroundResource {
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListAutoscalersHttpRequest request = ListAutoscalersHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   ApiFuture&lt;ListAutoscalersPagedResponse&gt; future = autoscalerClient.listAutoscalersPagedCallable().futureCall(request);
    *   // Do something
@@ -565,7 +578,7 @@ public class AutoscalerClient implements BackgroundResource {
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListAutoscalersHttpRequest request = ListAutoscalersHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   while (true) {
    *     AutoscalerList response = autoscalerClient.listAutoscalersCallable().call(request);
@@ -611,7 +624,7 @@ public class AutoscalerClient implements BackgroundResource {
     PatchAutoscalerHttpRequest request =
         PatchAutoscalerHttpRequest.newBuilder()
         .setAutoscaler(autoscaler)
-        .setZoneWithZoneName(zone)
+        .setZone(zone.toString())
         .setAutoscalerResource(autoscalerResource)
         .build();
     return patchAutoscaler(request);
@@ -627,8 +640,8 @@ public class AutoscalerClient implements BackgroundResource {
    *   String autoscaler = "";
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   PatchAutoscalerHttpRequest request = PatchAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscaler(autoscaler)
-   *     .setZoneWithZoneName(zone)
+   *     .setAutoscalerResource(autoscaler)
+   *     .setZone(zone.toString())
    *     .build();
    *   Operation response = autoscalerClient.patchAutoscaler(request);
    * }
@@ -652,8 +665,8 @@ public class AutoscalerClient implements BackgroundResource {
    *   String autoscaler = "";
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   PatchAutoscalerHttpRequest request = PatchAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscaler(autoscaler)
-   *     .setZoneWithZoneName(zone)
+   *     .setAutoscalerResource(autoscaler)
+   *     .setZone(zone.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = autoscalerClient.patchAutoscalerCallable().futureCall(request);
    *   // Do something
@@ -690,7 +703,7 @@ public class AutoscalerClient implements BackgroundResource {
     UpdateAutoscalerHttpRequest request =
         UpdateAutoscalerHttpRequest.newBuilder()
         .setAutoscaler(autoscaler)
-        .setZoneWithZoneName(zone)
+        .setZone(zone.toString())
         .setAutoscalerResource(autoscalerResource)
         .build();
     return updateAutoscaler(request);
@@ -706,8 +719,8 @@ public class AutoscalerClient implements BackgroundResource {
    *   String autoscaler = "";
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   UpdateAutoscalerHttpRequest request = UpdateAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscaler(autoscaler)
-   *     .setZoneWithZoneName(zone)
+   *     .setAutoscalerResource(autoscaler)
+   *     .setZone(zone.toString())
    *     .build();
    *   Operation response = autoscalerClient.updateAutoscaler(request);
    * }
@@ -731,8 +744,8 @@ public class AutoscalerClient implements BackgroundResource {
    *   String autoscaler = "";
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   UpdateAutoscalerHttpRequest request = UpdateAutoscalerHttpRequest.newBuilder()
-   *     .setAutoscaler(autoscaler)
-   *     .setZoneWithZoneName(zone)
+   *     .setAutoscalerResource(autoscaler)
+   *     .setZone(zone.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = autoscalerClient.updateAutoscalerCallable().futureCall(request);
    *   // Do something
@@ -775,4 +788,178 @@ public class AutoscalerClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class AggregatedListAutoscalersPagedResponse extends AbstractPagedListResponse<
+      AggregatedListAutoscalersHttpRequest,
+      AutoscalerAggregatedList,
+      Autoscaler,
+      AggregatedListAutoscalersPage,
+      AggregatedListAutoscalersFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListAutoscalersPagedResponse> createAsync(
+        PageContext<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, Autoscaler> context,
+        ApiFuture<AutoscalerAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListAutoscalersPage> futurePage =
+          AggregatedListAutoscalersPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<AggregatedListAutoscalersPage, AggregatedListAutoscalersPagedResponse>() {
+            @Override
+            public AggregatedListAutoscalersPagedResponse apply(AggregatedListAutoscalersPage input) {
+              return new AggregatedListAutoscalersPagedResponse(input);
+            }
+          });
+    }
+
+    private AggregatedListAutoscalersPagedResponse(AggregatedListAutoscalersPage page) {
+      super(page, AggregatedListAutoscalersFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class AggregatedListAutoscalersPage extends AbstractPage<
+      AggregatedListAutoscalersHttpRequest,
+      AutoscalerAggregatedList,
+      Autoscaler,
+      AggregatedListAutoscalersPage> {
+
+    private AggregatedListAutoscalersPage(
+        PageContext<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, Autoscaler> context,
+        AutoscalerAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListAutoscalersPage createEmptyPage() {
+      return new AggregatedListAutoscalersPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListAutoscalersPage createPage(
+        PageContext<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, Autoscaler> context,
+        AutoscalerAggregatedList response) {
+      return new AggregatedListAutoscalersPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListAutoscalersPage> createPageAsync(
+        PageContext<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, Autoscaler> context,
+        ApiFuture<AutoscalerAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class AggregatedListAutoscalersFixedSizeCollection extends AbstractFixedSizeCollection<
+      AggregatedListAutoscalersHttpRequest,
+      AutoscalerAggregatedList,
+      Autoscaler,
+      AggregatedListAutoscalersPage,
+      AggregatedListAutoscalersFixedSizeCollection> {
+
+    private AggregatedListAutoscalersFixedSizeCollection(List<AggregatedListAutoscalersPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListAutoscalersFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListAutoscalersFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListAutoscalersFixedSizeCollection createCollection(
+        List<AggregatedListAutoscalersPage> pages, int collectionSize) {
+      return new AggregatedListAutoscalersFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
+  public static class ListAutoscalersPagedResponse extends AbstractPagedListResponse<
+      ListAutoscalersHttpRequest,
+      AutoscalerList,
+      Autoscaler,
+      ListAutoscalersPage,
+      ListAutoscalersFixedSizeCollection> {
+
+    public static ApiFuture<ListAutoscalersPagedResponse> createAsync(
+        PageContext<ListAutoscalersHttpRequest, AutoscalerList, Autoscaler> context,
+        ApiFuture<AutoscalerList> futureResponse) {
+      ApiFuture<ListAutoscalersPage> futurePage =
+          ListAutoscalersPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListAutoscalersPage, ListAutoscalersPagedResponse>() {
+            @Override
+            public ListAutoscalersPagedResponse apply(ListAutoscalersPage input) {
+              return new ListAutoscalersPagedResponse(input);
+            }
+          });
+    }
+
+    private ListAutoscalersPagedResponse(ListAutoscalersPage page) {
+      super(page, ListAutoscalersFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListAutoscalersPage extends AbstractPage<
+      ListAutoscalersHttpRequest,
+      AutoscalerList,
+      Autoscaler,
+      ListAutoscalersPage> {
+
+    private ListAutoscalersPage(
+        PageContext<ListAutoscalersHttpRequest, AutoscalerList, Autoscaler> context,
+        AutoscalerList response) {
+      super(context, response);
+    }
+
+    private static ListAutoscalersPage createEmptyPage() {
+      return new ListAutoscalersPage(null, null);
+    }
+
+    @Override
+    protected ListAutoscalersPage createPage(
+        PageContext<ListAutoscalersHttpRequest, AutoscalerList, Autoscaler> context,
+        AutoscalerList response) {
+      return new ListAutoscalersPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListAutoscalersPage> createPageAsync(
+        PageContext<ListAutoscalersHttpRequest, AutoscalerList, Autoscaler> context,
+        ApiFuture<AutoscalerList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListAutoscalersFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListAutoscalersHttpRequest,
+      AutoscalerList,
+      Autoscaler,
+      ListAutoscalersPage,
+      ListAutoscalersFixedSizeCollection> {
+
+    private ListAutoscalersFixedSizeCollection(List<ListAutoscalersPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListAutoscalersFixedSizeCollection createEmptyCollection() {
+      return new ListAutoscalersFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListAutoscalersFixedSizeCollection createCollection(
+        List<ListAutoscalersPage> pages, int collectionSize) {
+      return new ListAutoscalersFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

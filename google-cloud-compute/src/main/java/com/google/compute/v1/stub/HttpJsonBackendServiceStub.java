@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,11 +26,14 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListBackendServicesHttpRequest;
 import com.google.compute.v1.BackendService;
 import com.google.compute.v1.BackendServiceAggregatedList;
+import static com.google.compute.v1.BackendServiceClient.AggregatedListBackendServicesPagedResponse;
+import static com.google.compute.v1.BackendServiceClient.ListBackendServicesPagedResponse;
 import com.google.compute.v1.BackendServiceGroupHealth;
 import com.google.compute.v1.BackendServiceList;
 import com.google.compute.v1.BackendServiceName;
@@ -41,8 +44,6 @@ import com.google.compute.v1.GetHealthBackendServiceHttpRequest;
 import com.google.compute.v1.InsertBackendServiceHttpRequest;
 import com.google.compute.v1.ListBackendServicesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListBackendServicesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListBackendServicesPagedResponse;
 import com.google.compute.v1.PatchBackendServiceHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.ResourceGroupReference;
@@ -67,7 +68,8 @@ import javax.annotation.Generated;
 public class HttpJsonBackendServiceStub extends BackendServiceStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList> aggregatedListBackendServicesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList> aggregatedListBackendServicesMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList>newBuilder()
           .setMethodName("compute.backendServices.aggregatedList")
           .setRequestInstance(AggregatedListBackendServicesHttpRequest.getDefaultInstance())
@@ -82,7 +84,8 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<DeleteBackendServiceHttpRequest, Operation> deleteBackendServiceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteBackendServiceHttpRequest, Operation> deleteBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<DeleteBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.backendServices.delete")
           .setRequestInstance(DeleteBackendServiceHttpRequest.getDefaultInstance())
@@ -96,7 +99,8 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetBackendServiceHttpRequest, BackendService> getBackendServiceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetBackendServiceHttpRequest, BackendService> getBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<GetBackendServiceHttpRequest, BackendService>newBuilder()
           .setMethodName("compute.backendServices.get")
           .setRequestInstance(GetBackendServiceHttpRequest.getDefaultInstance())
@@ -110,7 +114,8 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthBackendServiceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth>newBuilder()
           .setMethodName("compute.backendServices.getHealth")
           .setRequestInstance(GetHealthBackendServiceHttpRequest.getDefaultInstance())
@@ -124,7 +129,8 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<InsertBackendServiceHttpRequest, Operation> insertBackendServiceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertBackendServiceHttpRequest, Operation> insertBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<InsertBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.backendServices.insert")
           .setRequestInstance(InsertBackendServiceHttpRequest.getDefaultInstance())
@@ -138,7 +144,8 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListBackendServicesHttpRequest, BackendServiceList> listBackendServicesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListBackendServicesHttpRequest, BackendServiceList> listBackendServicesMethodDescriptor =
       ApiMethodDescriptor.<ListBackendServicesHttpRequest, BackendServiceList>newBuilder()
           .setMethodName("compute.backendServices.list")
           .setRequestInstance(ListBackendServicesHttpRequest.getDefaultInstance())
@@ -153,7 +160,8 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<PatchBackendServiceHttpRequest, Operation> patchBackendServiceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<PatchBackendServiceHttpRequest, Operation> patchBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<PatchBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.backendServices.patch")
           .setRequestInstance(PatchBackendServiceHttpRequest.getDefaultInstance())
@@ -167,7 +175,8 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
           .build();
-  private static final ApiMethodDescriptor<UpdateBackendServiceHttpRequest, Operation> updateBackendServiceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<UpdateBackendServiceHttpRequest, Operation> updateBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<UpdateBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.backendServices.update")
           .setRequestInstance(UpdateBackendServiceHttpRequest.getDefaultInstance())
@@ -195,12 +204,12 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
   private final UnaryCallable<PatchBackendServiceHttpRequest, Operation> patchBackendServiceCallable;
   private final UnaryCallable<UpdateBackendServiceHttpRequest, Operation> updateBackendServiceCallable;
 
-  public static final HttpJsonBackendServiceStub create(BackendServiceSettings settings) throws IOException {
+  public static final HttpJsonBackendServiceStub create(BackendServiceStubSettings settings) throws IOException {
     return new HttpJsonBackendServiceStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonBackendServiceStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonBackendServiceStub(BackendServiceSettings.newBuilder().build(), clientContext);
+    return new HttpJsonBackendServiceStub(BackendServiceStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -208,7 +217,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonBackendServiceStub(BackendServiceSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonBackendServiceStub(BackendServiceStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList> aggregatedListBackendServicesTransportSettings =
         HttpJsonCallSettings.<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList>newBuilder()

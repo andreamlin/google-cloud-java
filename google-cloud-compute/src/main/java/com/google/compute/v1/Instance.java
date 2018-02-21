@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -113,6 +115,11 @@ public final class Instance implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("canIpForward") && canIpForward != null) {
@@ -174,7 +181,7 @@ public final class Instance implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -412,7 +419,7 @@ public final class Instance implements ApiMessage {
       return disks;
     }
 
-    public Builder setDisks(List<AttachedDisk> disks) {
+    public Builder addAllDisks(List<AttachedDisk> disks) {
       this.disks = disks;
       return this;
     }
@@ -466,7 +473,7 @@ public final class Instance implements ApiMessage {
       return networkInterfaces;
     }
 
-    public Builder setNetworkInterfaces(List<NetworkInterface> networkInterfaces) {
+    public Builder addAllNetworkInterfaces(List<NetworkInterface> networkInterfaces) {
       this.networkInterfaces = networkInterfaces;
       return this;
     }
@@ -493,7 +500,7 @@ public final class Instance implements ApiMessage {
       return serviceAccounts;
     }
 
-    public Builder setServiceAccounts(List<ServiceAccount> serviceAccounts) {
+    public Builder addAllServiceAccounts(List<ServiceAccount> serviceAccounts) {
       this.serviceAccounts = serviceAccounts;
       return this;
     }
@@ -581,16 +588,16 @@ public final class Instance implements ApiMessage {
       newBuilder.setCpuPlatform(this.cpuPlatform);
       newBuilder.setCreationTimestamp(this.creationTimestamp);
       newBuilder.setDescription(this.description);
-      newBuilder.setDisks(this.disks);
+      newBuilder.addAllDisks(this.disks);
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
       newBuilder.setMachineType(this.machineType);
       newBuilder.setMetadata(this.metadata);
       newBuilder.setName(this.name);
-      newBuilder.setNetworkInterfaces(this.networkInterfaces);
+      newBuilder.addAllNetworkInterfaces(this.networkInterfaces);
       newBuilder.setScheduling(this.scheduling);
       newBuilder.setSelfLink(this.selfLink);
-      newBuilder.setServiceAccounts(this.serviceAccounts);
+      newBuilder.addAllServiceAccounts(this.serviceAccounts);
       newBuilder.setStatus(this.status);
       newBuilder.setStatusMessage(this.statusMessage);
       newBuilder.setTags(this.tags);

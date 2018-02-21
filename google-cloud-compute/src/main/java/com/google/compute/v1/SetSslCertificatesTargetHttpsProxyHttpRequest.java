@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,6 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
   private final String fields;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
   private final TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequestResource;
   private final String targetHttpsProxy;
@@ -48,7 +47,6 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
     this.fields = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
     this.targetHttpsProxiesSetSslCertificatesRequestResource = null;
     this.targetHttpsProxy = null;
@@ -62,7 +60,6 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
       String fields,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
       TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequestResource,
       String targetHttpsProxy,
@@ -73,11 +70,15 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
     this.fields = fields;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
     this.targetHttpsProxiesSetSslCertificatesRequestResource = targetHttpsProxiesSetSslCertificatesRequestResource;
     this.targetHttpsProxy = targetHttpsProxy;
     this.userIp = userIp;
+  }
+
+  @Override
+  public TargetHttpsProxyName resourceNamePath() {
+    return TargetHttpsProxyName.parse(targetHttpsProxy);
   }
 
   @Override
@@ -98,9 +99,6 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
     }
@@ -118,7 +116,7 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
 
   @Nullable
   @Override
-  public TargetHttpsProxiesSetSslCertificatesRequest getRequestBody() {
+  public TargetHttpsProxiesSetSslCertificatesRequest requestBody() {
     return targetHttpsProxiesSetSslCertificatesRequestResource;
   }
 
@@ -140,10 +138,6 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
 
   public String getPrettyPrint() {
     return prettyPrint;
-  }
-
-  public String getProject() {
-    return project;
   }
 
   public String getQuotaUser() {
@@ -188,7 +182,6 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
     private String fields;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
     private TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequestResource;
     private String targetHttpsProxy;
@@ -213,9 +206,6 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
       }
@@ -237,7 +227,6 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
       this.fields = source.fields;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
       this.targetHttpsProxiesSetSslCertificatesRequestResource = source.targetHttpsProxiesSetSslCertificatesRequestResource;
       this.targetHttpsProxy = source.targetHttpsProxy;
@@ -289,15 +278,6 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
@@ -342,9 +322,6 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
 
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
 
       if (targetHttpsProxy == null) {
@@ -360,7 +337,6 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
         fields,
         key,
         prettyPrint,
-        project,
         quotaUser,
         targetHttpsProxiesSetSslCertificatesRequestResource,
         targetHttpsProxy,
@@ -375,32 +351,11 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
       newBuilder.setFields(this.fields);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
       newBuilder.setTargetHttpsProxiesSetSslCertificatesRequestResource(this.targetHttpsProxiesSetSslCertificatesRequestResource);
       newBuilder.setTargetHttpsProxy(this.targetHttpsProxy);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setTargetHttpsProxyWithTargetHttpsProxyName(TargetHttpsProxyName value) {
-      if (value == null) {
-        return
-            setProject("").
-            setTargetHttpsProxy("")
-            ;
-      }
-      return
-          setProject(value.getProject()).
-          setTargetHttpsProxy(value.getTargetHttpsProxy())
-          ;
-    }
-
-    public final TargetHttpsProxyName getTargetHttpsProxyAsTargetHttpsProxyName() {
-      return TargetHttpsProxyName.of(
-          getProject(),
-          getTargetHttpsProxy()
-          );
     }
   }
 
@@ -412,7 +367,6 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
         + "fields=" + fields + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
         + "targetHttpsProxiesSetSslCertificatesRequestResource=" + targetHttpsProxiesSetSslCertificatesRequestResource + ", "
         + "targetHttpsProxy=" + targetHttpsProxy + ", "
@@ -433,7 +387,6 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
           Objects.equals(this.fields, that.getFields()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
           Objects.equals(this.targetHttpsProxiesSetSslCertificatesRequestResource, that.getTargetHttpsProxiesSetSslCertificatesRequestResource()) &&
           Objects.equals(this.targetHttpsProxy, that.getTargetHttpsProxy()) &&
@@ -451,7 +404,6 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
       fields,
       key,
       prettyPrint,
-      project,
       quotaUser,
       targetHttpsProxiesSetSslCertificatesRequestResource,
       targetHttpsProxy,

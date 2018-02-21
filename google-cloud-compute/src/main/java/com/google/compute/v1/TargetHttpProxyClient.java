@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetHttpProxiesPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.TargetHttpProxyStub;
+import com.google.compute.v1.stub.TargetHttpProxyStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    */
   protected TargetHttpProxyClient(TargetHttpProxySettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((TargetHttpProxyStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
 
     DeleteTargetHttpProxyHttpRequest request =
         DeleteTargetHttpProxyHttpRequest.newBuilder()
-        .setTargetHttpProxyWithTargetHttpProxyName(targetHttpProxy)
+        .setTargetHttpProxy(targetHttpProxy.toString())
         .build();
     return deleteTargetHttpProxy(request);
   }
@@ -189,7 +203,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
    *   TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
    *   DeleteTargetHttpProxyHttpRequest request = DeleteTargetHttpProxyHttpRequest.newBuilder()
-   *     .setTargetHttpProxyWithTargetHttpProxyName(targetHttpProxy)
+   *     .setTargetHttpProxy(targetHttpProxy.toString())
    *     .build();
    *   Operation response = targetHttpProxyClient.deleteTargetHttpProxy(request);
    * }
@@ -212,7 +226,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
    *   TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
    *   DeleteTargetHttpProxyHttpRequest request = DeleteTargetHttpProxyHttpRequest.newBuilder()
-   *     .setTargetHttpProxyWithTargetHttpProxyName(targetHttpProxy)
+   *     .setTargetHttpProxy(targetHttpProxy.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetHttpProxyClient.deleteTargetHttpProxyCallable().futureCall(request);
    *   // Do something
@@ -245,7 +259,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
 
     GetTargetHttpProxyHttpRequest request =
         GetTargetHttpProxyHttpRequest.newBuilder()
-        .setTargetHttpProxyWithTargetHttpProxyName(targetHttpProxy)
+        .setTargetHttpProxy(targetHttpProxy.toString())
         .build();
     return getTargetHttpProxy(request);
   }
@@ -259,7 +273,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
    *   TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
    *   GetTargetHttpProxyHttpRequest request = GetTargetHttpProxyHttpRequest.newBuilder()
-   *     .setTargetHttpProxyWithTargetHttpProxyName(targetHttpProxy)
+   *     .setTargetHttpProxy(targetHttpProxy.toString())
    *     .build();
    *   TargetHttpProxy response = targetHttpProxyClient.getTargetHttpProxy(request);
    * }
@@ -282,7 +296,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
    *   TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
    *   GetTargetHttpProxyHttpRequest request = GetTargetHttpProxyHttpRequest.newBuilder()
-   *     .setTargetHttpProxyWithTargetHttpProxyName(targetHttpProxy)
+   *     .setTargetHttpProxy(targetHttpProxy.toString())
    *     .build();
    *   ApiFuture&lt;TargetHttpProxy&gt; future = targetHttpProxyClient.getTargetHttpProxyCallable().futureCall(request);
    *   // Do something
@@ -317,7 +331,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
 
     InsertTargetHttpProxyHttpRequest request =
         InsertTargetHttpProxyHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setTargetHttpProxyResource(targetHttpProxyResource)
         .build();
     return insertTargetHttpProxy(request);
@@ -333,7 +347,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   TargetHttpProxy targetHttpProxy = TargetHttpProxy.newBuilder().build();
    *   InsertTargetHttpProxyHttpRequest request = InsertTargetHttpProxyHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setTargetHttpProxyResource(targetHttpProxy)
    *     .build();
    *   Operation response = targetHttpProxyClient.insertTargetHttpProxy(request);
@@ -358,7 +372,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   TargetHttpProxy targetHttpProxy = TargetHttpProxy.newBuilder().build();
    *   InsertTargetHttpProxyHttpRequest request = InsertTargetHttpProxyHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setTargetHttpProxyResource(targetHttpProxy)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetHttpProxyClient.insertTargetHttpProxyCallable().futureCall(request);
@@ -393,7 +407,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
   public final ListTargetHttpProxiesPagedResponse listTargetHttpProxies(ProjectName project) {
     ListTargetHttpProxiesHttpRequest request =
         ListTargetHttpProxiesHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listTargetHttpProxies(request);
   }
@@ -407,7 +421,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListTargetHttpProxiesHttpRequest request = ListTargetHttpProxiesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (TargetHttpProxy element : targetHttpProxyClient.listTargetHttpProxies(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -433,7 +447,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListTargetHttpProxiesHttpRequest request = ListTargetHttpProxiesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListTargetHttpProxiesPagedResponse&gt; future = targetHttpProxyClient.listTargetHttpProxiesPagedCallable().futureCall(request);
    *   // Do something
@@ -457,7 +471,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListTargetHttpProxiesHttpRequest request = ListTargetHttpProxiesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     TargetHttpProxyList response = targetHttpProxyClient.listTargetHttpProxiesCallable().call(request);
@@ -501,7 +515,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
 
     SetUrlMapTargetHttpProxyHttpRequest request =
         SetUrlMapTargetHttpProxyHttpRequest.newBuilder()
-        .setTargetHttpProxyWithTargetHttpProxyName(targetHttpProxy)
+        .setTargetHttpProxy(targetHttpProxy.toString())
         .setUrlMapReferenceResource(urlMapReferenceResource)
         .build();
     return setUrlMapTargetHttpProxy(request);
@@ -517,7 +531,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *   TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
    *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
    *   SetUrlMapTargetHttpProxyHttpRequest request = SetUrlMapTargetHttpProxyHttpRequest.newBuilder()
-   *     .setTargetHttpProxyWithTargetHttpProxyName(targetHttpProxy)
+   *     .setTargetHttpProxy(targetHttpProxy.toString())
    *     .setUrlMapReferenceResource(urlMapReference)
    *     .build();
    *   Operation response = targetHttpProxyClient.setUrlMapTargetHttpProxy(request);
@@ -542,7 +556,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *   TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
    *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
    *   SetUrlMapTargetHttpProxyHttpRequest request = SetUrlMapTargetHttpProxyHttpRequest.newBuilder()
-   *     .setTargetHttpProxyWithTargetHttpProxyName(targetHttpProxy)
+   *     .setTargetHttpProxy(targetHttpProxy.toString())
    *     .setUrlMapReferenceResource(urlMapReference)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetHttpProxyClient.setUrlMapTargetHttpProxyCallable().futureCall(request);
@@ -586,4 +600,91 @@ public class TargetHttpProxyClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListTargetHttpProxiesPagedResponse extends AbstractPagedListResponse<
+      ListTargetHttpProxiesHttpRequest,
+      TargetHttpProxyList,
+      TargetHttpProxy,
+      ListTargetHttpProxiesPage,
+      ListTargetHttpProxiesFixedSizeCollection> {
+
+    public static ApiFuture<ListTargetHttpProxiesPagedResponse> createAsync(
+        PageContext<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList, TargetHttpProxy> context,
+        ApiFuture<TargetHttpProxyList> futureResponse) {
+      ApiFuture<ListTargetHttpProxiesPage> futurePage =
+          ListTargetHttpProxiesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListTargetHttpProxiesPage, ListTargetHttpProxiesPagedResponse>() {
+            @Override
+            public ListTargetHttpProxiesPagedResponse apply(ListTargetHttpProxiesPage input) {
+              return new ListTargetHttpProxiesPagedResponse(input);
+            }
+          });
+    }
+
+    private ListTargetHttpProxiesPagedResponse(ListTargetHttpProxiesPage page) {
+      super(page, ListTargetHttpProxiesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListTargetHttpProxiesPage extends AbstractPage<
+      ListTargetHttpProxiesHttpRequest,
+      TargetHttpProxyList,
+      TargetHttpProxy,
+      ListTargetHttpProxiesPage> {
+
+    private ListTargetHttpProxiesPage(
+        PageContext<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList, TargetHttpProxy> context,
+        TargetHttpProxyList response) {
+      super(context, response);
+    }
+
+    private static ListTargetHttpProxiesPage createEmptyPage() {
+      return new ListTargetHttpProxiesPage(null, null);
+    }
+
+    @Override
+    protected ListTargetHttpProxiesPage createPage(
+        PageContext<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList, TargetHttpProxy> context,
+        TargetHttpProxyList response) {
+      return new ListTargetHttpProxiesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListTargetHttpProxiesPage> createPageAsync(
+        PageContext<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList, TargetHttpProxy> context,
+        ApiFuture<TargetHttpProxyList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListTargetHttpProxiesFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListTargetHttpProxiesHttpRequest,
+      TargetHttpProxyList,
+      TargetHttpProxy,
+      ListTargetHttpProxiesPage,
+      ListTargetHttpProxiesFixedSizeCollection> {
+
+    private ListTargetHttpProxiesFixedSizeCollection(List<ListTargetHttpProxiesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListTargetHttpProxiesFixedSizeCollection createEmptyCollection() {
+      return new ListTargetHttpProxiesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListTargetHttpProxiesFixedSizeCollection createCollection(
+        List<ListTargetHttpProxiesPage> pages, int collectionSize) {
+      return new ListTargetHttpProxiesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

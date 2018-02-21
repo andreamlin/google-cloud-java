@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,12 +24,12 @@ import com.google.compute.v1.GetTargetVpnGatewayHttpRequest;
 import com.google.compute.v1.InsertTargetVpnGatewayHttpRequest;
 import com.google.compute.v1.ListTargetVpnGatewaysHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetVpnGatewaysPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetVpnGatewaysPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.TargetVpnGateway;
 import com.google.compute.v1.TargetVpnGatewayAggregatedList;
+import static com.google.compute.v1.TargetVpnGatewayClient.AggregatedListTargetVpnGatewaysPagedResponse;
+import static com.google.compute.v1.TargetVpnGatewayClient.ListTargetVpnGatewaysPagedResponse;
 import com.google.compute.v1.TargetVpnGatewayList;
 import com.google.compute.v1.TargetVpnGatewayName;
 import javax.annotation.Generated;

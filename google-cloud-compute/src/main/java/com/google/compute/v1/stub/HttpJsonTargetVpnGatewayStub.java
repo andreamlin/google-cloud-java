@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListTargetVpnGatewaysHttpRequest;
@@ -34,12 +35,12 @@ import com.google.compute.v1.GetTargetVpnGatewayHttpRequest;
 import com.google.compute.v1.InsertTargetVpnGatewayHttpRequest;
 import com.google.compute.v1.ListTargetVpnGatewaysHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetVpnGatewaysPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetVpnGatewaysPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.TargetVpnGateway;
 import com.google.compute.v1.TargetVpnGatewayAggregatedList;
+import static com.google.compute.v1.TargetVpnGatewayClient.AggregatedListTargetVpnGatewaysPagedResponse;
+import static com.google.compute.v1.TargetVpnGatewayClient.ListTargetVpnGatewaysPagedResponse;
 import com.google.compute.v1.TargetVpnGatewayList;
 import com.google.compute.v1.TargetVpnGatewayName;
 import com.google.compute.v1.TargetVpnGatewaySettings;
@@ -63,7 +64,8 @@ import javax.annotation.Generated;
 public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList> aggregatedListTargetVpnGatewaysMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList> aggregatedListTargetVpnGatewaysMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList>newBuilder()
           .setMethodName("compute.targetVpnGateways.aggregatedList")
           .setRequestInstance(AggregatedListTargetVpnGatewaysHttpRequest.getDefaultInstance())
@@ -78,7 +80,8 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<DeleteTargetVpnGatewayHttpRequest, Operation> deleteTargetVpnGatewayMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteTargetVpnGatewayHttpRequest, Operation> deleteTargetVpnGatewayMethodDescriptor =
       ApiMethodDescriptor.<DeleteTargetVpnGatewayHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetVpnGateways.delete")
           .setRequestInstance(DeleteTargetVpnGatewayHttpRequest.getDefaultInstance())
@@ -92,7 +95,8 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetTargetVpnGatewayHttpRequest, TargetVpnGateway> getTargetVpnGatewayMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetTargetVpnGatewayHttpRequest, TargetVpnGateway> getTargetVpnGatewayMethodDescriptor =
       ApiMethodDescriptor.<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>newBuilder()
           .setMethodName("compute.targetVpnGateways.get")
           .setRequestInstance(GetTargetVpnGatewayHttpRequest.getDefaultInstance())
@@ -106,7 +110,8 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertTargetVpnGatewayHttpRequest, Operation> insertTargetVpnGatewayMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertTargetVpnGatewayHttpRequest, Operation> insertTargetVpnGatewayMethodDescriptor =
       ApiMethodDescriptor.<InsertTargetVpnGatewayHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetVpnGateways.insert")
           .setRequestInstance(InsertTargetVpnGatewayHttpRequest.getDefaultInstance())
@@ -120,7 +125,8 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList> listTargetVpnGatewaysMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList> listTargetVpnGatewaysMethodDescriptor =
       ApiMethodDescriptor.<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList>newBuilder()
           .setMethodName("compute.targetVpnGateways.list")
           .setRequestInstance(ListTargetVpnGatewaysHttpRequest.getDefaultInstance())
@@ -146,12 +152,12 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
   private final UnaryCallable<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList> listTargetVpnGatewaysCallable;
   private final UnaryCallable<ListTargetVpnGatewaysHttpRequest, ListTargetVpnGatewaysPagedResponse> listTargetVpnGatewaysPagedCallable;
 
-  public static final HttpJsonTargetVpnGatewayStub create(TargetVpnGatewaySettings settings) throws IOException {
+  public static final HttpJsonTargetVpnGatewayStub create(TargetVpnGatewayStubSettings settings) throws IOException {
     return new HttpJsonTargetVpnGatewayStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonTargetVpnGatewayStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonTargetVpnGatewayStub(TargetVpnGatewaySettings.newBuilder().build(), clientContext);
+    return new HttpJsonTargetVpnGatewayStub(TargetVpnGatewayStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -159,7 +165,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonTargetVpnGatewayStub(TargetVpnGatewaySettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonTargetVpnGatewayStub(TargetVpnGatewayStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList> aggregatedListTargetVpnGatewaysTransportSettings =
         HttpJsonCallSettings.<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList>newBuilder()

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,6 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
   private final String fields;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
   private final TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequestResource;
   private final String targetSslProxy;
@@ -48,7 +47,6 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
     this.fields = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
     this.targetSslProxiesSetBackendServiceRequestResource = null;
     this.targetSslProxy = null;
@@ -62,7 +60,6 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
       String fields,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
       TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequestResource,
       String targetSslProxy,
@@ -73,11 +70,15 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
     this.fields = fields;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
     this.targetSslProxiesSetBackendServiceRequestResource = targetSslProxiesSetBackendServiceRequestResource;
     this.targetSslProxy = targetSslProxy;
     this.userIp = userIp;
+  }
+
+  @Override
+  public TargetSslProxyName resourceNamePath() {
+    return TargetSslProxyName.parse(targetSslProxy);
   }
 
   @Override
@@ -98,9 +99,6 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
     }
@@ -118,7 +116,7 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
 
   @Nullable
   @Override
-  public TargetSslProxiesSetBackendServiceRequest getRequestBody() {
+  public TargetSslProxiesSetBackendServiceRequest requestBody() {
     return targetSslProxiesSetBackendServiceRequestResource;
   }
 
@@ -140,10 +138,6 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
 
   public String getPrettyPrint() {
     return prettyPrint;
-  }
-
-  public String getProject() {
-    return project;
   }
 
   public String getQuotaUser() {
@@ -188,7 +182,6 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
     private String fields;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
     private TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequestResource;
     private String targetSslProxy;
@@ -213,9 +206,6 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
       }
@@ -237,7 +227,6 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
       this.fields = source.fields;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
       this.targetSslProxiesSetBackendServiceRequestResource = source.targetSslProxiesSetBackendServiceRequestResource;
       this.targetSslProxy = source.targetSslProxy;
@@ -289,15 +278,6 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
@@ -342,9 +322,6 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
 
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
 
       if (targetSslProxy == null) {
@@ -360,7 +337,6 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
         fields,
         key,
         prettyPrint,
-        project,
         quotaUser,
         targetSslProxiesSetBackendServiceRequestResource,
         targetSslProxy,
@@ -375,32 +351,11 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
       newBuilder.setFields(this.fields);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
       newBuilder.setTargetSslProxiesSetBackendServiceRequestResource(this.targetSslProxiesSetBackendServiceRequestResource);
       newBuilder.setTargetSslProxy(this.targetSslProxy);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setTargetSslProxyWithTargetSslProxyName(TargetSslProxyName value) {
-      if (value == null) {
-        return
-            setProject("").
-            setTargetSslProxy("")
-            ;
-      }
-      return
-          setProject(value.getProject()).
-          setTargetSslProxy(value.getTargetSslProxy())
-          ;
-    }
-
-    public final TargetSslProxyName getTargetSslProxyAsTargetSslProxyName() {
-      return TargetSslProxyName.of(
-          getProject(),
-          getTargetSslProxy()
-          );
     }
   }
 
@@ -412,7 +367,6 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
         + "fields=" + fields + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
         + "targetSslProxiesSetBackendServiceRequestResource=" + targetSslProxiesSetBackendServiceRequestResource + ", "
         + "targetSslProxy=" + targetSslProxy + ", "
@@ -433,7 +387,6 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
           Objects.equals(this.fields, that.getFields()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
           Objects.equals(this.targetSslProxiesSetBackendServiceRequestResource, that.getTargetSslProxiesSetBackendServiceRequestResource()) &&
           Objects.equals(this.targetSslProxy, that.getTargetSslProxy()) &&
@@ -451,7 +404,6 @@ public final class SetBackendServiceTargetSslProxyHttpRequest implements ApiMess
       fields,
       key,
       prettyPrint,
-      project,
       quotaUser,
       targetSslProxiesSetBackendServiceRequestResource,
       targetSslProxy,

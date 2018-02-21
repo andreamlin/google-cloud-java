@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,9 +37,7 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
   private final String fields;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
-  private final String region;
   private final String targetPool;
   private final TargetReference targetReferenceResource;
   private final String userIp;
@@ -51,9 +49,7 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
     this.fields = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
-    this.region = null;
     this.targetPool = null;
     this.targetReferenceResource = null;
     this.userIp = null;
@@ -67,9 +63,7 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
       String fields,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
-      String region,
       String targetPool,
       TargetReference targetReferenceResource,
       String userIp
@@ -80,12 +74,15 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
     this.fields = fields;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
-    this.region = region;
     this.targetPool = targetPool;
     this.targetReferenceResource = targetReferenceResource;
     this.userIp = userIp;
+  }
+
+  @Override
+  public TargetPoolName resourceNamePath() {
+    return TargetPoolName.parse(targetPool);
   }
 
   @Override
@@ -109,14 +106,8 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
-    }
-    if (fieldNames.contains("region") && region != null) {
-      fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
     }
     if (fieldNames.contains("targetPool") && targetPool != null) {
       fieldMap.put("targetPool", Collections.singletonList(String.valueOf(targetPool)));
@@ -132,7 +123,7 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public TargetReference getRequestBody() {
+  public TargetReference requestBody() {
     return targetReferenceResource;
   }
 
@@ -160,16 +151,8 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
     return prettyPrint;
   }
 
-  public String getProject() {
-    return project;
-  }
-
   public String getQuotaUser() {
     return quotaUser;
-  }
-
-  public String getRegion() {
-    return region;
   }
 
   public String getTargetPool() {
@@ -211,9 +194,7 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
     private String fields;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
-    private String region;
     private String targetPool;
     private TargetReference targetReferenceResource;
     private String userIp;
@@ -240,14 +221,8 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
-      }
-      if (other.getRegion() != null) {
-        this.region = other.region;
       }
       if (other.getTargetPool() != null) {
         this.targetPool = other.targetPool;
@@ -268,9 +243,7 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
       this.fields = source.fields;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
-      this.region = source.region;
       this.targetPool = source.targetPool;
       this.targetReferenceResource = source.targetReferenceResource;
       this.userIp = source.userIp;
@@ -330,30 +303,12 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
 
     public Builder setQuotaUser(String quotaUser) {
       this.quotaUser = quotaUser;
-      return this;
-    }
-
-    public String getRegion() {
-      return region;
-    }
-
-    public Builder setRegion(String region) {
-      this.region = region;
       return this;
     }
 
@@ -393,13 +348,7 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
 
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
-      if (region == null) {
-        missing += " region";
-      }
       if (targetPool == null) {
         missing += " targetPool";
       }
@@ -415,9 +364,7 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
         fields,
         key,
         prettyPrint,
-        project,
         quotaUser,
-        region,
         targetPool,
         targetReferenceResource,
         userIp
@@ -432,36 +379,11 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
       newBuilder.setFields(this.fields);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
-      newBuilder.setRegion(this.region);
       newBuilder.setTargetPool(this.targetPool);
       newBuilder.setTargetReferenceResource(this.targetReferenceResource);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setTargetPoolWithTargetPoolName(TargetPoolName value) {
-      if (value == null) {
-        return
-            setProject("").
-            setRegion("").
-            setTargetPool("")
-            ;
-      }
-      return
-          setProject(value.getProject()).
-          setRegion(value.getRegion()).
-          setTargetPool(value.getTargetPool())
-          ;
-    }
-
-    public final TargetPoolName getTargetPoolAsTargetPoolName() {
-      return TargetPoolName.of(
-          getProject(),
-          getRegion(),
-          getTargetPool()
-          );
     }
   }
 
@@ -474,9 +396,7 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
         + "fields=" + fields + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
-        + "region=" + region + ", "
         + "targetPool=" + targetPool + ", "
         + "targetReferenceResource=" + targetReferenceResource + ", "
         + "userIp=" + userIp
@@ -497,9 +417,7 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
           Objects.equals(this.fields, that.getFields()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
-          Objects.equals(this.region, that.getRegion()) &&
           Objects.equals(this.targetPool, that.getTargetPool()) &&
           Objects.equals(this.targetReferenceResource, that.getTargetReferenceResource()) &&
           Objects.equals(this.userIp, that.getUserIp())
@@ -517,9 +435,7 @@ public final class SetBackupTargetPoolHttpRequest implements ApiMessage {
       fields,
       key,
       prettyPrint,
-      project,
       quotaUser,
-      region,
       targetPool,
       targetReferenceResource,
       userIp

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListUrlMapsPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.UrlMapStub;
+import com.google.compute.v1.stub.UrlMapStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   protected UrlMapClient(UrlMapSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((UrlMapStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class UrlMapClient implements BackgroundResource {
 
     DeleteUrlMapHttpRequest request =
         DeleteUrlMapHttpRequest.newBuilder()
-        .setUrlMapWithUrlMapName(urlMap)
+        .setUrlMap(urlMap.toString())
         .build();
     return deleteUrlMap(request);
   }
@@ -189,7 +203,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   DeleteUrlMapHttpRequest request = DeleteUrlMapHttpRequest.newBuilder()
-   *     .setUrlMapWithUrlMapName(urlMap)
+   *     .setUrlMap(urlMap.toString())
    *     .build();
    *   Operation response = urlMapClient.deleteUrlMap(request);
    * }
@@ -212,7 +226,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   DeleteUrlMapHttpRequest request = DeleteUrlMapHttpRequest.newBuilder()
-   *     .setUrlMapWithUrlMapName(urlMap)
+   *     .setUrlMap(urlMap.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = urlMapClient.deleteUrlMapCallable().futureCall(request);
    *   // Do something
@@ -245,7 +259,7 @@ public class UrlMapClient implements BackgroundResource {
 
     GetUrlMapHttpRequest request =
         GetUrlMapHttpRequest.newBuilder()
-        .setUrlMapWithUrlMapName(urlMap)
+        .setUrlMap(urlMap.toString())
         .build();
     return getUrlMap(request);
   }
@@ -259,7 +273,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   GetUrlMapHttpRequest request = GetUrlMapHttpRequest.newBuilder()
-   *     .setUrlMapWithUrlMapName(urlMap)
+   *     .setUrlMap(urlMap.toString())
    *     .build();
    *   UrlMap response = urlMapClient.getUrlMap(request);
    * }
@@ -282,7 +296,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   GetUrlMapHttpRequest request = GetUrlMapHttpRequest.newBuilder()
-   *     .setUrlMapWithUrlMapName(urlMap)
+   *     .setUrlMap(urlMap.toString())
    *     .build();
    *   ApiFuture&lt;UrlMap&gt; future = urlMapClient.getUrlMapCallable().futureCall(request);
    *   // Do something
@@ -317,7 +331,7 @@ public class UrlMapClient implements BackgroundResource {
 
     InsertUrlMapHttpRequest request =
         InsertUrlMapHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setUrlMapResource(urlMapResource)
         .build();
     return insertUrlMap(request);
@@ -333,7 +347,7 @@ public class UrlMapClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   UrlMap urlMap = UrlMap.newBuilder().build();
    *   InsertUrlMapHttpRequest request = InsertUrlMapHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setUrlMapResource(urlMap)
    *     .build();
    *   Operation response = urlMapClient.insertUrlMap(request);
@@ -358,7 +372,7 @@ public class UrlMapClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   UrlMap urlMap = UrlMap.newBuilder().build();
    *   InsertUrlMapHttpRequest request = InsertUrlMapHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setUrlMapResource(urlMap)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = urlMapClient.insertUrlMapCallable().futureCall(request);
@@ -394,7 +408,7 @@ public class UrlMapClient implements BackgroundResource {
 
     InvalidateCacheUrlMapHttpRequest request =
         InvalidateCacheUrlMapHttpRequest.newBuilder()
-        .setUrlMapWithUrlMapName(urlMap)
+        .setUrlMap(urlMap.toString())
         .setCacheInvalidationRuleResource(cacheInvalidationRuleResource)
         .build();
     return invalidateCacheUrlMap(request);
@@ -410,7 +424,7 @@ public class UrlMapClient implements BackgroundResource {
    *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   CacheInvalidationRule cacheInvalidationRule = CacheInvalidationRule.newBuilder().build();
    *   InvalidateCacheUrlMapHttpRequest request = InvalidateCacheUrlMapHttpRequest.newBuilder()
-   *     .setUrlMapWithUrlMapName(urlMap)
+   *     .setUrlMap(urlMap.toString())
    *     .setCacheInvalidationRuleResource(cacheInvalidationRule)
    *     .build();
    *   Operation response = urlMapClient.invalidateCacheUrlMap(request);
@@ -435,7 +449,7 @@ public class UrlMapClient implements BackgroundResource {
    *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   CacheInvalidationRule cacheInvalidationRule = CacheInvalidationRule.newBuilder().build();
    *   InvalidateCacheUrlMapHttpRequest request = InvalidateCacheUrlMapHttpRequest.newBuilder()
-   *     .setUrlMapWithUrlMapName(urlMap)
+   *     .setUrlMap(urlMap.toString())
    *     .setCacheInvalidationRuleResource(cacheInvalidationRule)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = urlMapClient.invalidateCacheUrlMapCallable().futureCall(request);
@@ -470,7 +484,7 @@ public class UrlMapClient implements BackgroundResource {
   public final ListUrlMapsPagedResponse listUrlMaps(ProjectName project) {
     ListUrlMapsHttpRequest request =
         ListUrlMapsHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listUrlMaps(request);
   }
@@ -484,7 +498,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListUrlMapsHttpRequest request = ListUrlMapsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (UrlMap element : urlMapClient.listUrlMaps(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -510,7 +524,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListUrlMapsHttpRequest request = ListUrlMapsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListUrlMapsPagedResponse&gt; future = urlMapClient.listUrlMapsPagedCallable().futureCall(request);
    *   // Do something
@@ -534,7 +548,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListUrlMapsHttpRequest request = ListUrlMapsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     UrlMapList response = urlMapClient.listUrlMapsCallable().call(request);
@@ -577,7 +591,7 @@ public class UrlMapClient implements BackgroundResource {
 
     PatchUrlMapHttpRequest request =
         PatchUrlMapHttpRequest.newBuilder()
-        .setUrlMapWithUrlMapName(urlMap)
+        .setUrlMap(urlMap.toString())
         .setUrlMapResource(urlMapResource)
         .build();
     return patchUrlMap(request);
@@ -592,7 +606,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   PatchUrlMapHttpRequest request = PatchUrlMapHttpRequest.newBuilder()
-   *     .setUrlMapWithUrlMapName(urlMap)
+   *     .setUrlMap(urlMap.toString())
    *     .build();
    *   Operation response = urlMapClient.patchUrlMap(request);
    * }
@@ -615,7 +629,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   PatchUrlMapHttpRequest request = PatchUrlMapHttpRequest.newBuilder()
-   *     .setUrlMapWithUrlMapName(urlMap)
+   *     .setUrlMap(urlMap.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = urlMapClient.patchUrlMapCallable().futureCall(request);
    *   // Do something
@@ -649,7 +663,7 @@ public class UrlMapClient implements BackgroundResource {
 
     UpdateUrlMapHttpRequest request =
         UpdateUrlMapHttpRequest.newBuilder()
-        .setUrlMapWithUrlMapName(urlMap)
+        .setUrlMap(urlMap.toString())
         .setUrlMapResource(urlMapResource)
         .build();
     return updateUrlMap(request);
@@ -664,7 +678,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   UpdateUrlMapHttpRequest request = UpdateUrlMapHttpRequest.newBuilder()
-   *     .setUrlMapWithUrlMapName(urlMap)
+   *     .setUrlMap(urlMap.toString())
    *     .build();
    *   Operation response = urlMapClient.updateUrlMap(request);
    * }
@@ -687,7 +701,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   UpdateUrlMapHttpRequest request = UpdateUrlMapHttpRequest.newBuilder()
-   *     .setUrlMapWithUrlMapName(urlMap)
+   *     .setUrlMap(urlMap.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = urlMapClient.updateUrlMapCallable().futureCall(request);
    *   // Do something
@@ -722,7 +736,7 @@ public class UrlMapClient implements BackgroundResource {
 
     ValidateUrlMapHttpRequest request =
         ValidateUrlMapHttpRequest.newBuilder()
-        .setUrlMapWithUrlMapName(urlMap)
+        .setUrlMap(urlMap.toString())
         .setUrlMapsValidateRequestResource(urlMapsValidateRequestResource)
         .build();
     return validateUrlMap(request);
@@ -738,7 +752,7 @@ public class UrlMapClient implements BackgroundResource {
    *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   UrlMapsValidateRequest urlMapsValidateRequest = UrlMapsValidateRequest.newBuilder().build();
    *   ValidateUrlMapHttpRequest request = ValidateUrlMapHttpRequest.newBuilder()
-   *     .setUrlMapWithUrlMapName(urlMap)
+   *     .setUrlMap(urlMap.toString())
    *     .setUrlMapsValidateRequestResource(urlMapsValidateRequest)
    *     .build();
    *   UrlMapsValidateResponse response = urlMapClient.validateUrlMap(request);
@@ -763,7 +777,7 @@ public class UrlMapClient implements BackgroundResource {
    *   UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   UrlMapsValidateRequest urlMapsValidateRequest = UrlMapsValidateRequest.newBuilder().build();
    *   ValidateUrlMapHttpRequest request = ValidateUrlMapHttpRequest.newBuilder()
-   *     .setUrlMapWithUrlMapName(urlMap)
+   *     .setUrlMap(urlMap.toString())
    *     .setUrlMapsValidateRequestResource(urlMapsValidateRequest)
    *     .build();
    *   ApiFuture&lt;UrlMapsValidateResponse&gt; future = urlMapClient.validateUrlMapCallable().futureCall(request);
@@ -807,4 +821,91 @@ public class UrlMapClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListUrlMapsPagedResponse extends AbstractPagedListResponse<
+      ListUrlMapsHttpRequest,
+      UrlMapList,
+      UrlMap,
+      ListUrlMapsPage,
+      ListUrlMapsFixedSizeCollection> {
+
+    public static ApiFuture<ListUrlMapsPagedResponse> createAsync(
+        PageContext<ListUrlMapsHttpRequest, UrlMapList, UrlMap> context,
+        ApiFuture<UrlMapList> futureResponse) {
+      ApiFuture<ListUrlMapsPage> futurePage =
+          ListUrlMapsPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListUrlMapsPage, ListUrlMapsPagedResponse>() {
+            @Override
+            public ListUrlMapsPagedResponse apply(ListUrlMapsPage input) {
+              return new ListUrlMapsPagedResponse(input);
+            }
+          });
+    }
+
+    private ListUrlMapsPagedResponse(ListUrlMapsPage page) {
+      super(page, ListUrlMapsFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListUrlMapsPage extends AbstractPage<
+      ListUrlMapsHttpRequest,
+      UrlMapList,
+      UrlMap,
+      ListUrlMapsPage> {
+
+    private ListUrlMapsPage(
+        PageContext<ListUrlMapsHttpRequest, UrlMapList, UrlMap> context,
+        UrlMapList response) {
+      super(context, response);
+    }
+
+    private static ListUrlMapsPage createEmptyPage() {
+      return new ListUrlMapsPage(null, null);
+    }
+
+    @Override
+    protected ListUrlMapsPage createPage(
+        PageContext<ListUrlMapsHttpRequest, UrlMapList, UrlMap> context,
+        UrlMapList response) {
+      return new ListUrlMapsPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListUrlMapsPage> createPageAsync(
+        PageContext<ListUrlMapsHttpRequest, UrlMapList, UrlMap> context,
+        ApiFuture<UrlMapList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListUrlMapsFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListUrlMapsHttpRequest,
+      UrlMapList,
+      UrlMap,
+      ListUrlMapsPage,
+      ListUrlMapsFixedSizeCollection> {
+
+    private ListUrlMapsFixedSizeCollection(List<ListUrlMapsPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListUrlMapsFixedSizeCollection createEmptyCollection() {
+      return new ListUrlMapsFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListUrlMapsFixedSizeCollection createCollection(
+        List<ListUrlMapsPage> pages, int collectionSize) {
+      return new ListUrlMapsFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.GetLicensHttpRequest;
@@ -52,7 +53,8 @@ import javax.annotation.Generated;
 public class HttpJsonLicensStub extends LicensStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<GetLicensHttpRequest, License> getLicensMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetLicensHttpRequest, License> getLicensMethodDescriptor =
       ApiMethodDescriptor.<GetLicensHttpRequest, License>newBuilder()
           .setMethodName("compute.licenses.get")
           .setRequestInstance(GetLicensHttpRequest.getDefaultInstance())
@@ -71,12 +73,12 @@ public class HttpJsonLicensStub extends LicensStub {
 
   private final UnaryCallable<GetLicensHttpRequest, License> getLicensCallable;
 
-  public static final HttpJsonLicensStub create(LicensSettings settings) throws IOException {
+  public static final HttpJsonLicensStub create(LicensStubSettings settings) throws IOException {
     return new HttpJsonLicensStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonLicensStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonLicensStub(LicensSettings.newBuilder().build(), clientContext);
+    return new HttpJsonLicensStub(LicensStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -84,7 +86,7 @@ public class HttpJsonLicensStub extends LicensStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonLicensStub(LicensSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonLicensStub(LicensStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<GetLicensHttpRequest, License> getLicensTransportSettings =
         HttpJsonCallSettings.<GetLicensHttpRequest, License>newBuilder()

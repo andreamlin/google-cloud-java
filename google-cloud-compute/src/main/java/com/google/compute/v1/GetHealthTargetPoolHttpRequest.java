@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,9 +37,7 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
   private final InstanceReference instanceReferenceResource;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
-  private final String region;
   private final String targetPool;
   private final String userIp;
 
@@ -50,9 +48,7 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
     this.instanceReferenceResource = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
-    this.region = null;
     this.targetPool = null;
     this.userIp = null;
   }
@@ -65,9 +61,7 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
       InstanceReference instanceReferenceResource,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
-      String region,
       String targetPool,
       String userIp
       ) {
@@ -77,11 +71,14 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
     this.instanceReferenceResource = instanceReferenceResource;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
-    this.region = region;
     this.targetPool = targetPool;
     this.userIp = userIp;
+  }
+
+  @Override
+  public TargetPoolName resourceNamePath() {
+    return TargetPoolName.parse(targetPool);
   }
 
   @Override
@@ -105,14 +102,8 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
-    }
-    if (fieldNames.contains("region") && region != null) {
-      fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
     }
     if (fieldNames.contains("targetPool") && targetPool != null) {
       fieldMap.put("targetPool", Collections.singletonList(String.valueOf(targetPool)));
@@ -125,7 +116,7 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public InstanceReference getRequestBody() {
+  public InstanceReference requestBody() {
     return instanceReferenceResource;
   }
 
@@ -153,16 +144,8 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
     return prettyPrint;
   }
 
-  public String getProject() {
-    return project;
-  }
-
   public String getQuotaUser() {
     return quotaUser;
-  }
-
-  public String getRegion() {
-    return region;
   }
 
   public String getTargetPool() {
@@ -200,9 +183,7 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
     private InstanceReference instanceReferenceResource;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
-    private String region;
     private String targetPool;
     private String userIp;
 
@@ -228,14 +209,8 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
-      }
-      if (other.getRegion() != null) {
-        this.region = other.region;
       }
       if (other.getTargetPool() != null) {
         this.targetPool = other.targetPool;
@@ -253,9 +228,7 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
       this.instanceReferenceResource = source.instanceReferenceResource;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
-      this.region = source.region;
       this.targetPool = source.targetPool;
       this.userIp = source.userIp;
     }
@@ -314,30 +287,12 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
 
     public Builder setQuotaUser(String quotaUser) {
       this.quotaUser = quotaUser;
-      return this;
-    }
-
-    public String getRegion() {
-      return region;
-    }
-
-    public Builder setRegion(String region) {
-      this.region = region;
       return this;
     }
 
@@ -368,13 +323,7 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
 
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
-      if (region == null) {
-        missing += " region";
-      }
       if (targetPool == null) {
         missing += " targetPool";
       }
@@ -389,9 +338,7 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
         instanceReferenceResource,
         key,
         prettyPrint,
-        project,
         quotaUser,
-        region,
         targetPool,
         userIp
       );
@@ -405,35 +352,10 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
       newBuilder.setInstanceReferenceResource(this.instanceReferenceResource);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
-      newBuilder.setRegion(this.region);
       newBuilder.setTargetPool(this.targetPool);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setTargetPoolWithTargetPoolName(TargetPoolName value) {
-      if (value == null) {
-        return
-            setProject("").
-            setRegion("").
-            setTargetPool("")
-            ;
-      }
-      return
-          setProject(value.getProject()).
-          setRegion(value.getRegion()).
-          setTargetPool(value.getTargetPool())
-          ;
-    }
-
-    public final TargetPoolName getTargetPoolAsTargetPoolName() {
-      return TargetPoolName.of(
-          getProject(),
-          getRegion(),
-          getTargetPool()
-          );
     }
   }
 
@@ -446,9 +368,7 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
         + "instanceReferenceResource=" + instanceReferenceResource + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
-        + "region=" + region + ", "
         + "targetPool=" + targetPool + ", "
         + "userIp=" + userIp
         + "}";
@@ -468,9 +388,7 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
           Objects.equals(this.instanceReferenceResource, that.getInstanceReferenceResource()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
-          Objects.equals(this.region, that.getRegion()) &&
           Objects.equals(this.targetPool, that.getTargetPool()) &&
           Objects.equals(this.userIp, that.getUserIp())
           ;
@@ -487,9 +405,7 @@ public final class GetHealthTargetPoolHttpRequest implements ApiMessage {
       instanceReferenceResource,
       key,
       prettyPrint,
-      project,
       quotaUser,
-      region,
       targetPool,
       userIp
     );

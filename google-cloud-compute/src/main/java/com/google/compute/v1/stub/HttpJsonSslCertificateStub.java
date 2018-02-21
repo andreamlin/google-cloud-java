@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteSslCertificateHttpRequest;
@@ -33,9 +34,9 @@ import com.google.compute.v1.GetSslCertificateHttpRequest;
 import com.google.compute.v1.InsertSslCertificateHttpRequest;
 import com.google.compute.v1.ListSslCertificatesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListSslCertificatesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.SslCertificate;
+import static com.google.compute.v1.SslCertificateClient.ListSslCertificatesPagedResponse;
 import com.google.compute.v1.SslCertificateList;
 import com.google.compute.v1.SslCertificateName;
 import com.google.compute.v1.SslCertificateSettings;
@@ -59,7 +60,8 @@ import javax.annotation.Generated;
 public class HttpJsonSslCertificateStub extends SslCertificateStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateMethodDescriptor =
       ApiMethodDescriptor.<DeleteSslCertificateHttpRequest, Operation>newBuilder()
           .setMethodName("compute.sslCertificates.delete")
           .setRequestInstance(DeleteSslCertificateHttpRequest.getDefaultInstance())
@@ -73,7 +75,8 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateMethodDescriptor =
       ApiMethodDescriptor.<GetSslCertificateHttpRequest, SslCertificate>newBuilder()
           .setMethodName("compute.sslCertificates.get")
           .setRequestInstance(GetSslCertificateHttpRequest.getDefaultInstance())
@@ -87,7 +90,8 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertSslCertificateHttpRequest, Operation> insertSslCertificateMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertSslCertificateHttpRequest, Operation> insertSslCertificateMethodDescriptor =
       ApiMethodDescriptor.<InsertSslCertificateHttpRequest, Operation>newBuilder()
           .setMethodName("compute.sslCertificates.insert")
           .setRequestInstance(InsertSslCertificateHttpRequest.getDefaultInstance())
@@ -101,7 +105,8 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListSslCertificatesHttpRequest, SslCertificateList> listSslCertificatesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListSslCertificatesHttpRequest, SslCertificateList> listSslCertificatesMethodDescriptor =
       ApiMethodDescriptor.<ListSslCertificatesHttpRequest, SslCertificateList>newBuilder()
           .setMethodName("compute.sslCertificates.list")
           .setRequestInstance(ListSslCertificatesHttpRequest.getDefaultInstance())
@@ -125,12 +130,12 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
   private final UnaryCallable<ListSslCertificatesHttpRequest, SslCertificateList> listSslCertificatesCallable;
   private final UnaryCallable<ListSslCertificatesHttpRequest, ListSslCertificatesPagedResponse> listSslCertificatesPagedCallable;
 
-  public static final HttpJsonSslCertificateStub create(SslCertificateSettings settings) throws IOException {
+  public static final HttpJsonSslCertificateStub create(SslCertificateStubSettings settings) throws IOException {
     return new HttpJsonSslCertificateStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonSslCertificateStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonSslCertificateStub(SslCertificateSettings.newBuilder().build(), clientContext);
+    return new HttpJsonSslCertificateStub(SslCertificateStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -138,7 +143,7 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonSslCertificateStub(SslCertificateSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonSslCertificateStub(SslCertificateStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateTransportSettings =
         HttpJsonCallSettings.<DeleteSslCertificateHttpRequest, Operation>newBuilder()

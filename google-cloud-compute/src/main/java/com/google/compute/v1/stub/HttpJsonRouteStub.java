@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteRouteHttpRequest;
@@ -33,9 +34,9 @@ import com.google.compute.v1.GetRouteHttpRequest;
 import com.google.compute.v1.InsertRouteHttpRequest;
 import com.google.compute.v1.ListRoutesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListRoutesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.Route;
+import static com.google.compute.v1.RouteClient.ListRoutesPagedResponse;
 import com.google.compute.v1.RouteList;
 import com.google.compute.v1.RouteName;
 import com.google.compute.v1.RouteSettings;
@@ -59,7 +60,8 @@ import javax.annotation.Generated;
 public class HttpJsonRouteStub extends RouteStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteRouteHttpRequest, Operation> deleteRouteMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteRouteHttpRequest, Operation> deleteRouteMethodDescriptor =
       ApiMethodDescriptor.<DeleteRouteHttpRequest, Operation>newBuilder()
           .setMethodName("compute.routes.delete")
           .setRequestInstance(DeleteRouteHttpRequest.getDefaultInstance())
@@ -73,7 +75,8 @@ public class HttpJsonRouteStub extends RouteStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetRouteHttpRequest, Route> getRouteMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetRouteHttpRequest, Route> getRouteMethodDescriptor =
       ApiMethodDescriptor.<GetRouteHttpRequest, Route>newBuilder()
           .setMethodName("compute.routes.get")
           .setRequestInstance(GetRouteHttpRequest.getDefaultInstance())
@@ -87,7 +90,8 @@ public class HttpJsonRouteStub extends RouteStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertRouteHttpRequest, Operation> insertRouteMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertRouteHttpRequest, Operation> insertRouteMethodDescriptor =
       ApiMethodDescriptor.<InsertRouteHttpRequest, Operation>newBuilder()
           .setMethodName("compute.routes.insert")
           .setRequestInstance(InsertRouteHttpRequest.getDefaultInstance())
@@ -101,7 +105,8 @@ public class HttpJsonRouteStub extends RouteStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListRoutesHttpRequest, RouteList> listRoutesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListRoutesHttpRequest, RouteList> listRoutesMethodDescriptor =
       ApiMethodDescriptor.<ListRoutesHttpRequest, RouteList>newBuilder()
           .setMethodName("compute.routes.list")
           .setRequestInstance(ListRoutesHttpRequest.getDefaultInstance())
@@ -125,12 +130,12 @@ public class HttpJsonRouteStub extends RouteStub {
   private final UnaryCallable<ListRoutesHttpRequest, RouteList> listRoutesCallable;
   private final UnaryCallable<ListRoutesHttpRequest, ListRoutesPagedResponse> listRoutesPagedCallable;
 
-  public static final HttpJsonRouteStub create(RouteSettings settings) throws IOException {
+  public static final HttpJsonRouteStub create(RouteStubSettings settings) throws IOException {
     return new HttpJsonRouteStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonRouteStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRouteStub(RouteSettings.newBuilder().build(), clientContext);
+    return new HttpJsonRouteStub(RouteStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -138,7 +143,7 @@ public class HttpJsonRouteStub extends RouteStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonRouteStub(RouteSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonRouteStub(RouteStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteRouteHttpRequest, Operation> deleteRouteTransportSettings =
         HttpJsonCallSettings.<DeleteRouteHttpRequest, Operation>newBuilder()

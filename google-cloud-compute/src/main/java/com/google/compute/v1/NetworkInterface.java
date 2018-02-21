@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -65,6 +67,11 @@ public final class NetworkInterface implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("accessConfigs") && accessConfigs != null) {
@@ -90,7 +97,7 @@ public final class NetworkInterface implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -184,7 +191,7 @@ public final class NetworkInterface implements ApiMessage {
       return accessConfigs;
     }
 
-    public Builder setAccessConfigs(List<AccessConfig> accessConfigs) {
+    public Builder addAllAccessConfigs(List<AccessConfig> accessConfigs) {
       this.accessConfigs = accessConfigs;
       return this;
     }
@@ -253,7 +260,7 @@ public final class NetworkInterface implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setAccessConfigs(this.accessConfigs);
+      newBuilder.addAllAccessConfigs(this.accessConfigs);
       newBuilder.setKind(this.kind);
       newBuilder.setName(this.name);
       newBuilder.setNetwork(this.network);

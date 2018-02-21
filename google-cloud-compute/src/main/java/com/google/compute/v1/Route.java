@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -105,6 +107,11 @@ public final class Route implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
@@ -160,7 +167,7 @@ public final class Route implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -470,7 +477,7 @@ public final class Route implements ApiMessage {
       return tags;
     }
 
-    public Builder setTags(List<String> tags) {
+    public Builder addAllTags(List<String> tags) {
       this.tags = tags;
       return this;
     }
@@ -479,7 +486,7 @@ public final class Route implements ApiMessage {
       return warnings;
     }
 
-    public Builder setWarnings(List<Warnings> warnings) {
+    public Builder addAllWarnings(List<Warnings> warnings) {
       this.warnings = warnings;
       return this;
     }
@@ -537,8 +544,8 @@ public final class Route implements ApiMessage {
       newBuilder.setNextHopVpnTunnel(this.nextHopVpnTunnel);
       newBuilder.setPriority(this.priority);
       newBuilder.setSelfLink(this.selfLink);
-      newBuilder.setTags(this.tags);
-      newBuilder.setWarnings(this.warnings);
+      newBuilder.addAllTags(this.tags);
+      newBuilder.addAllWarnings(this.warnings);
       return newBuilder;
     }
   }

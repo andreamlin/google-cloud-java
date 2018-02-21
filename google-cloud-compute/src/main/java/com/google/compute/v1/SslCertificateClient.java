@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListSslCertificatesPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.SslCertificateStub;
+import com.google.compute.v1.stub.SslCertificateStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class SslCertificateClient implements BackgroundResource {
    */
   protected SslCertificateClient(SslCertificateSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((SslCertificateStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class SslCertificateClient implements BackgroundResource {
 
     DeleteSslCertificateHttpRequest request =
         DeleteSslCertificateHttpRequest.newBuilder()
-        .setSslCertificateWithSslCertificateName(sslCertificate)
+        .setSslCertificate(sslCertificate.toString())
         .build();
     return deleteSslCertificate(request);
   }
@@ -189,7 +203,7 @@ public class SslCertificateClient implements BackgroundResource {
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
    *   SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
    *   DeleteSslCertificateHttpRequest request = DeleteSslCertificateHttpRequest.newBuilder()
-   *     .setSslCertificateWithSslCertificateName(sslCertificate)
+   *     .setSslCertificate(sslCertificate.toString())
    *     .build();
    *   Operation response = sslCertificateClient.deleteSslCertificate(request);
    * }
@@ -212,7 +226,7 @@ public class SslCertificateClient implements BackgroundResource {
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
    *   SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
    *   DeleteSslCertificateHttpRequest request = DeleteSslCertificateHttpRequest.newBuilder()
-   *     .setSslCertificateWithSslCertificateName(sslCertificate)
+   *     .setSslCertificate(sslCertificate.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = sslCertificateClient.deleteSslCertificateCallable().futureCall(request);
    *   // Do something
@@ -245,7 +259,7 @@ public class SslCertificateClient implements BackgroundResource {
 
     GetSslCertificateHttpRequest request =
         GetSslCertificateHttpRequest.newBuilder()
-        .setSslCertificateWithSslCertificateName(sslCertificate)
+        .setSslCertificate(sslCertificate.toString())
         .build();
     return getSslCertificate(request);
   }
@@ -259,7 +273,7 @@ public class SslCertificateClient implements BackgroundResource {
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
    *   SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
    *   GetSslCertificateHttpRequest request = GetSslCertificateHttpRequest.newBuilder()
-   *     .setSslCertificateWithSslCertificateName(sslCertificate)
+   *     .setSslCertificate(sslCertificate.toString())
    *     .build();
    *   SslCertificate response = sslCertificateClient.getSslCertificate(request);
    * }
@@ -282,7 +296,7 @@ public class SslCertificateClient implements BackgroundResource {
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
    *   SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
    *   GetSslCertificateHttpRequest request = GetSslCertificateHttpRequest.newBuilder()
-   *     .setSslCertificateWithSslCertificateName(sslCertificate)
+   *     .setSslCertificate(sslCertificate.toString())
    *     .build();
    *   ApiFuture&lt;SslCertificate&gt; future = sslCertificateClient.getSslCertificateCallable().futureCall(request);
    *   // Do something
@@ -317,7 +331,7 @@ public class SslCertificateClient implements BackgroundResource {
 
     InsertSslCertificateHttpRequest request =
         InsertSslCertificateHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setSslCertificateResource(sslCertificateResource)
         .build();
     return insertSslCertificate(request);
@@ -333,7 +347,7 @@ public class SslCertificateClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   SslCertificate sslCertificate = SslCertificate.newBuilder().build();
    *   InsertSslCertificateHttpRequest request = InsertSslCertificateHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setSslCertificateResource(sslCertificate)
    *     .build();
    *   Operation response = sslCertificateClient.insertSslCertificate(request);
@@ -358,7 +372,7 @@ public class SslCertificateClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   SslCertificate sslCertificate = SslCertificate.newBuilder().build();
    *   InsertSslCertificateHttpRequest request = InsertSslCertificateHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setSslCertificateResource(sslCertificate)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = sslCertificateClient.insertSslCertificateCallable().futureCall(request);
@@ -393,7 +407,7 @@ public class SslCertificateClient implements BackgroundResource {
   public final ListSslCertificatesPagedResponse listSslCertificates(ProjectName project) {
     ListSslCertificatesHttpRequest request =
         ListSslCertificatesHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listSslCertificates(request);
   }
@@ -407,7 +421,7 @@ public class SslCertificateClient implements BackgroundResource {
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListSslCertificatesHttpRequest request = ListSslCertificatesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (SslCertificate element : sslCertificateClient.listSslCertificates(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -433,7 +447,7 @@ public class SslCertificateClient implements BackgroundResource {
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListSslCertificatesHttpRequest request = ListSslCertificatesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListSslCertificatesPagedResponse&gt; future = sslCertificateClient.listSslCertificatesPagedCallable().futureCall(request);
    *   // Do something
@@ -457,7 +471,7 @@ public class SslCertificateClient implements BackgroundResource {
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListSslCertificatesHttpRequest request = ListSslCertificatesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     SslCertificateList response = sslCertificateClient.listSslCertificatesCallable().call(request);
@@ -509,4 +523,91 @@ public class SslCertificateClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListSslCertificatesPagedResponse extends AbstractPagedListResponse<
+      ListSslCertificatesHttpRequest,
+      SslCertificateList,
+      SslCertificate,
+      ListSslCertificatesPage,
+      ListSslCertificatesFixedSizeCollection> {
+
+    public static ApiFuture<ListSslCertificatesPagedResponse> createAsync(
+        PageContext<ListSslCertificatesHttpRequest, SslCertificateList, SslCertificate> context,
+        ApiFuture<SslCertificateList> futureResponse) {
+      ApiFuture<ListSslCertificatesPage> futurePage =
+          ListSslCertificatesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListSslCertificatesPage, ListSslCertificatesPagedResponse>() {
+            @Override
+            public ListSslCertificatesPagedResponse apply(ListSslCertificatesPage input) {
+              return new ListSslCertificatesPagedResponse(input);
+            }
+          });
+    }
+
+    private ListSslCertificatesPagedResponse(ListSslCertificatesPage page) {
+      super(page, ListSslCertificatesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListSslCertificatesPage extends AbstractPage<
+      ListSslCertificatesHttpRequest,
+      SslCertificateList,
+      SslCertificate,
+      ListSslCertificatesPage> {
+
+    private ListSslCertificatesPage(
+        PageContext<ListSslCertificatesHttpRequest, SslCertificateList, SslCertificate> context,
+        SslCertificateList response) {
+      super(context, response);
+    }
+
+    private static ListSslCertificatesPage createEmptyPage() {
+      return new ListSslCertificatesPage(null, null);
+    }
+
+    @Override
+    protected ListSslCertificatesPage createPage(
+        PageContext<ListSslCertificatesHttpRequest, SslCertificateList, SslCertificate> context,
+        SslCertificateList response) {
+      return new ListSslCertificatesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListSslCertificatesPage> createPageAsync(
+        PageContext<ListSslCertificatesHttpRequest, SslCertificateList, SslCertificate> context,
+        ApiFuture<SslCertificateList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListSslCertificatesFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListSslCertificatesHttpRequest,
+      SslCertificateList,
+      SslCertificate,
+      ListSslCertificatesPage,
+      ListSslCertificatesFixedSizeCollection> {
+
+    private ListSslCertificatesFixedSizeCollection(List<ListSslCertificatesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListSslCertificatesFixedSizeCollection createEmptyCollection() {
+      return new ListSslCertificatesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListSslCertificatesFixedSizeCollection createCollection(
+        List<ListSslCertificatesPage> pages, int collectionSize) {
+      return new ListSslCertificatesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

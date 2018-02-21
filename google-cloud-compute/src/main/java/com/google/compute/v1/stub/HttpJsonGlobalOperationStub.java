@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,19 +26,20 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListGlobalOperationsHttpRequest;
 import com.google.compute.v1.DeleteGlobalOperationHttpRequest;
 import com.google.compute.v1.GetGlobalOperationHttpRequest;
+import static com.google.compute.v1.GlobalOperationClient.AggregatedListGlobalOperationsPagedResponse;
+import static com.google.compute.v1.GlobalOperationClient.ListGlobalOperationsPagedResponse;
 import com.google.compute.v1.GlobalOperationSettings;
 import com.google.compute.v1.GlobalOperationsOperationName;
 import com.google.compute.v1.ListGlobalOperationsHttpRequest;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.OperationAggregatedList;
 import com.google.compute.v1.OperationList;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListGlobalOperationsPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListGlobalOperationsPagedResponse;
 import com.google.compute.v1.ProjectName;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -60,7 +61,8 @@ import javax.annotation.Generated;
 public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> aggregatedListGlobalOperationsMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> aggregatedListGlobalOperationsMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList>newBuilder()
           .setMethodName("compute.globalOperations.aggregatedList")
           .setRequestInstance(AggregatedListGlobalOperationsHttpRequest.getDefaultInstance())
@@ -75,7 +77,8 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationMethodDescriptor =
       ApiMethodDescriptor.<DeleteGlobalOperationHttpRequest, Void>newBuilder()
           .setMethodName("compute.globalOperations.delete")
           .setRequestInstance(DeleteGlobalOperationHttpRequest.getDefaultInstance())
@@ -88,7 +91,8 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetGlobalOperationHttpRequest, Operation> getGlobalOperationMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetGlobalOperationHttpRequest, Operation> getGlobalOperationMethodDescriptor =
       ApiMethodDescriptor.<GetGlobalOperationHttpRequest, Operation>newBuilder()
           .setMethodName("compute.globalOperations.get")
           .setRequestInstance(GetGlobalOperationHttpRequest.getDefaultInstance())
@@ -102,7 +106,8 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<ListGlobalOperationsHttpRequest, OperationList> listGlobalOperationsMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListGlobalOperationsHttpRequest, OperationList> listGlobalOperationsMethodDescriptor =
       ApiMethodDescriptor.<ListGlobalOperationsHttpRequest, OperationList>newBuilder()
           .setMethodName("compute.globalOperations.list")
           .setRequestInstance(ListGlobalOperationsHttpRequest.getDefaultInstance())
@@ -127,12 +132,12 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
   private final UnaryCallable<ListGlobalOperationsHttpRequest, OperationList> listGlobalOperationsCallable;
   private final UnaryCallable<ListGlobalOperationsHttpRequest, ListGlobalOperationsPagedResponse> listGlobalOperationsPagedCallable;
 
-  public static final HttpJsonGlobalOperationStub create(GlobalOperationSettings settings) throws IOException {
+  public static final HttpJsonGlobalOperationStub create(GlobalOperationStubSettings settings) throws IOException {
     return new HttpJsonGlobalOperationStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonGlobalOperationStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonGlobalOperationStub(GlobalOperationSettings.newBuilder().build(), clientContext);
+    return new HttpJsonGlobalOperationStub(GlobalOperationStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -140,7 +145,7 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonGlobalOperationStub(GlobalOperationSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonGlobalOperationStub(GlobalOperationStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> aggregatedListGlobalOperationsTransportSettings =
         HttpJsonCallSettings.<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList>newBuilder()

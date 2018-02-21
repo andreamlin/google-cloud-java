@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionsPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.RegionStub;
+import com.google.compute.v1.stub.RegionStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class RegionClient implements BackgroundResource {
    */
   protected RegionClient(RegionSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((RegionStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class RegionClient implements BackgroundResource {
 
     GetRegionHttpRequest request =
         GetRegionHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .build();
     return getRegion(request);
   }
@@ -189,7 +203,7 @@ public class RegionClient implements BackgroundResource {
    * try (RegionClient regionClient = RegionClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   GetRegionHttpRequest request = GetRegionHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   Region response = regionClient.getRegion(request);
    * }
@@ -212,7 +226,7 @@ public class RegionClient implements BackgroundResource {
    * try (RegionClient regionClient = RegionClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   GetRegionHttpRequest request = GetRegionHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   ApiFuture&lt;Region&gt; future = regionClient.getRegionCallable().futureCall(request);
    *   // Do something
@@ -246,7 +260,7 @@ public class RegionClient implements BackgroundResource {
   public final ListRegionsPagedResponse listRegions(ProjectName project) {
     ListRegionsHttpRequest request =
         ListRegionsHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listRegions(request);
   }
@@ -260,7 +274,7 @@ public class RegionClient implements BackgroundResource {
    * try (RegionClient regionClient = RegionClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListRegionsHttpRequest request = ListRegionsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (Region element : regionClient.listRegions(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -286,7 +300,7 @@ public class RegionClient implements BackgroundResource {
    * try (RegionClient regionClient = RegionClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListRegionsHttpRequest request = ListRegionsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListRegionsPagedResponse&gt; future = regionClient.listRegionsPagedCallable().futureCall(request);
    *   // Do something
@@ -310,7 +324,7 @@ public class RegionClient implements BackgroundResource {
    * try (RegionClient regionClient = RegionClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListRegionsHttpRequest request = ListRegionsHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     RegionList response = regionClient.listRegionsCallable().call(request);
@@ -362,4 +376,91 @@ public class RegionClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListRegionsPagedResponse extends AbstractPagedListResponse<
+      ListRegionsHttpRequest,
+      RegionList,
+      Region,
+      ListRegionsPage,
+      ListRegionsFixedSizeCollection> {
+
+    public static ApiFuture<ListRegionsPagedResponse> createAsync(
+        PageContext<ListRegionsHttpRequest, RegionList, Region> context,
+        ApiFuture<RegionList> futureResponse) {
+      ApiFuture<ListRegionsPage> futurePage =
+          ListRegionsPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListRegionsPage, ListRegionsPagedResponse>() {
+            @Override
+            public ListRegionsPagedResponse apply(ListRegionsPage input) {
+              return new ListRegionsPagedResponse(input);
+            }
+          });
+    }
+
+    private ListRegionsPagedResponse(ListRegionsPage page) {
+      super(page, ListRegionsFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListRegionsPage extends AbstractPage<
+      ListRegionsHttpRequest,
+      RegionList,
+      Region,
+      ListRegionsPage> {
+
+    private ListRegionsPage(
+        PageContext<ListRegionsHttpRequest, RegionList, Region> context,
+        RegionList response) {
+      super(context, response);
+    }
+
+    private static ListRegionsPage createEmptyPage() {
+      return new ListRegionsPage(null, null);
+    }
+
+    @Override
+    protected ListRegionsPage createPage(
+        PageContext<ListRegionsHttpRequest, RegionList, Region> context,
+        RegionList response) {
+      return new ListRegionsPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListRegionsPage> createPageAsync(
+        PageContext<ListRegionsHttpRequest, RegionList, Region> context,
+        ApiFuture<RegionList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListRegionsFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListRegionsHttpRequest,
+      RegionList,
+      Region,
+      ListRegionsPage,
+      ListRegionsFixedSizeCollection> {
+
+    private ListRegionsFixedSizeCollection(List<ListRegionsPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListRegionsFixedSizeCollection createEmptyCollection() {
+      return new ListRegionsFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListRegionsFixedSizeCollection createCollection(
+        List<ListRegionsPage> pages, int collectionSize) {
+      return new ListRegionsFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

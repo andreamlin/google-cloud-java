@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -133,6 +135,11 @@ public final class Operation implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("clientOperationId") && clientOperationId != null) {
@@ -209,7 +216,7 @@ public final class Operation implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -645,7 +652,7 @@ public final class Operation implements ApiMessage {
       return warnings;
     }
 
-    public Builder setWarnings(List<Warnings> warnings) {
+    public Builder addAllWarnings(List<Warnings> warnings) {
       this.warnings = warnings;
       return this;
     }
@@ -733,7 +740,7 @@ public final class Operation implements ApiMessage {
       newBuilder.setTargetId(this.targetId);
       newBuilder.setTargetLink(this.targetLink);
       newBuilder.setUser(this.user);
-      newBuilder.setWarnings(this.warnings);
+      newBuilder.addAllWarnings(this.warnings);
       newBuilder.setZone(this.zone);
       return newBuilder;
     }

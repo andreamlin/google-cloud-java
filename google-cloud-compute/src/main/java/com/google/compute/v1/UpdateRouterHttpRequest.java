@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,9 +36,7 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
   private final String fields;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
-  private final String region;
   private final String router;
   private final Router routerResource;
   private final String userIp;
@@ -49,9 +47,7 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
     this.fields = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
-    this.region = null;
     this.router = null;
     this.routerResource = null;
     this.userIp = null;
@@ -64,9 +60,7 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
       String fields,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
-      String region,
       String router,
       Router routerResource,
       String userIp
@@ -76,12 +70,15 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
     this.fields = fields;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
-    this.region = region;
     this.router = router;
     this.routerResource = routerResource;
     this.userIp = userIp;
+  }
+
+  @Override
+  public RouterName resourceNamePath() {
+    return RouterName.parse(router);
   }
 
   @Override
@@ -102,14 +99,8 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
-    }
-    if (fieldNames.contains("region") && region != null) {
-      fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
     }
     if (fieldNames.contains("router") && router != null) {
       fieldMap.put("router", Collections.singletonList(String.valueOf(router)));
@@ -125,7 +116,7 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public Router getRequestBody() {
+  public Router requestBody() {
     return routerResource;
   }
 
@@ -149,16 +140,8 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
     return prettyPrint;
   }
 
-  public String getProject() {
-    return project;
-  }
-
   public String getQuotaUser() {
     return quotaUser;
-  }
-
-  public String getRegion() {
-    return region;
   }
 
   public String getRouter() {
@@ -199,9 +182,7 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
     private String fields;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
-    private String region;
     private String router;
     private Router routerResource;
     private String userIp;
@@ -225,14 +206,8 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
-      }
-      if (other.getRegion() != null) {
-        this.region = other.region;
       }
       if (other.getRouter() != null) {
         this.router = other.router;
@@ -252,9 +227,7 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
       this.fields = source.fields;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
-      this.region = source.region;
       this.router = source.router;
       this.routerResource = source.routerResource;
       this.userIp = source.userIp;
@@ -305,30 +278,12 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
 
     public Builder setQuotaUser(String quotaUser) {
       this.quotaUser = quotaUser;
-      return this;
-    }
-
-    public String getRegion() {
-      return region;
-    }
-
-    public Builder setRegion(String region) {
-      this.region = region;
       return this;
     }
 
@@ -367,13 +322,7 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
 
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
-      if (region == null) {
-        missing += " region";
-      }
       if (router == null) {
         missing += " router";
       }
@@ -388,9 +337,7 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
         fields,
         key,
         prettyPrint,
-        project,
         quotaUser,
-        region,
         router,
         routerResource,
         userIp
@@ -404,36 +351,11 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
       newBuilder.setFields(this.fields);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
-      newBuilder.setRegion(this.region);
       newBuilder.setRouter(this.router);
       newBuilder.setRouterResource(this.routerResource);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setRouterWithRouterName(RouterName value) {
-      if (value == null) {
-        return
-            setProject("").
-            setRegion("").
-            setRouter("")
-            ;
-      }
-      return
-          setProject(value.getProject()).
-          setRegion(value.getRegion()).
-          setRouter(value.getRouter())
-          ;
-    }
-
-    public final RouterName getRouterAsRouterName() {
-      return RouterName.of(
-          getProject(),
-          getRegion(),
-          getRouter()
-          );
     }
   }
 
@@ -445,9 +367,7 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
         + "fields=" + fields + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
-        + "region=" + region + ", "
         + "router=" + router + ", "
         + "routerResource=" + routerResource + ", "
         + "userIp=" + userIp
@@ -467,9 +387,7 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
           Objects.equals(this.fields, that.getFields()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
-          Objects.equals(this.region, that.getRegion()) &&
           Objects.equals(this.router, that.getRouter()) &&
           Objects.equals(this.routerResource, that.getRouterResource()) &&
           Objects.equals(this.userIp, that.getUserIp())
@@ -486,9 +404,7 @@ public final class UpdateRouterHttpRequest implements ApiMessage {
       fields,
       key,
       prettyPrint,
-      project,
       quotaUser,
-      region,
       router,
       routerResource,
       userIp

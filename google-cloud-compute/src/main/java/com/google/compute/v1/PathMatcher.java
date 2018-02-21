@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -57,6 +59,11 @@ public final class PathMatcher implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("defaultService") && defaultService != null) {
@@ -76,7 +83,7 @@ public final class PathMatcher implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -179,7 +186,7 @@ public final class PathMatcher implements ApiMessage {
       return pathRules;
     }
 
-    public Builder setPathRules(List<PathRule> pathRules) {
+    public Builder addAllPathRules(List<PathRule> pathRules) {
       this.pathRules = pathRules;
       return this;
     }
@@ -202,7 +209,7 @@ public final class PathMatcher implements ApiMessage {
       newBuilder.setDefaultService(this.defaultService);
       newBuilder.setDescription(this.description);
       newBuilder.setName(this.name);
-      newBuilder.setPathRules(this.pathRules);
+      newBuilder.addAllPathRules(this.pathRules);
       return newBuilder;
     }
   }

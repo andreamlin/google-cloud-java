@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,9 @@ import com.google.compute.v1.GetInstanceGroupHttpRequest;
 import com.google.compute.v1.InsertInstanceGroupHttpRequest;
 import com.google.compute.v1.InstanceGroup;
 import com.google.compute.v1.InstanceGroupAggregatedList;
+import static com.google.compute.v1.InstanceGroupClient.AggregatedListInstanceGroupsPagedResponse;
+import static com.google.compute.v1.InstanceGroupClient.ListInstanceGroupsPagedResponse;
+import static com.google.compute.v1.InstanceGroupClient.ListInstancesInstanceGroupsPagedResponse;
 import com.google.compute.v1.InstanceGroupList;
 import com.google.compute.v1.InstanceGroupName;
 import com.google.compute.v1.InstanceGroupsAddInstancesRequest;
@@ -36,9 +39,6 @@ import com.google.compute.v1.InstanceWithNamedPorts;
 import com.google.compute.v1.ListInstanceGroupsHttpRequest;
 import com.google.compute.v1.ListInstancesInstanceGroupsHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListInstanceGroupsPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListInstanceGroupsPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListInstancesInstanceGroupsPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RemoveInstancesInstanceGroupHttpRequest;
 import com.google.compute.v1.SetNamedPortsInstanceGroupHttpRequest;

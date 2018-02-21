@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetVpnGatewaysPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetVpnGatewaysPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.TargetVpnGatewayStub;
+import com.google.compute.v1.stub.TargetVpnGatewayStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -137,7 +150,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    */
   protected TargetVpnGatewayClient(TargetVpnGatewaySettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((TargetVpnGatewayStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -177,7 +190,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
   public final AggregatedListTargetVpnGatewaysPagedResponse aggregatedListTargetVpnGateways(ProjectName project) {
     AggregatedListTargetVpnGatewaysHttpRequest request =
         AggregatedListTargetVpnGatewaysHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return aggregatedListTargetVpnGateways(request);
   }
@@ -191,7 +204,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListTargetVpnGatewaysHttpRequest request = AggregatedListTargetVpnGatewaysHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (TargetVpnGateway element : targetVpnGatewayClient.aggregatedListTargetVpnGateways(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -217,7 +230,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListTargetVpnGatewaysHttpRequest request = AggregatedListTargetVpnGatewaysHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;AggregatedListTargetVpnGatewaysPagedResponse&gt; future = targetVpnGatewayClient.aggregatedListTargetVpnGatewaysPagedCallable().futureCall(request);
    *   // Do something
@@ -241,11 +254,11 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListTargetVpnGatewaysHttpRequest request = AggregatedListTargetVpnGatewaysHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     TargetVpnGatewayAggregatedList response = targetVpnGatewayClient.aggregatedListTargetVpnGatewaysCallable().call(request);
-   *     for (TargetVpnGateway element : response.getItems().getTargetVpnGateways()) {
+   *     for (TargetVpnGateway element : response.getTargetVpnGateways()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -283,7 +296,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
 
     DeleteTargetVpnGatewayHttpRequest request =
         DeleteTargetVpnGatewayHttpRequest.newBuilder()
-        .setTargetVpnGatewayWithTargetVpnGatewayName(targetVpnGateway)
+        .setTargetVpnGateway(targetVpnGateway.toString())
         .build();
     return deleteTargetVpnGateway(request);
   }
@@ -297,7 +310,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
    *   DeleteTargetVpnGatewayHttpRequest request = DeleteTargetVpnGatewayHttpRequest.newBuilder()
-   *     .setTargetVpnGatewayWithTargetVpnGatewayName(targetVpnGateway)
+   *     .setTargetVpnGateway(targetVpnGateway.toString())
    *     .build();
    *   Operation response = targetVpnGatewayClient.deleteTargetVpnGateway(request);
    * }
@@ -320,7 +333,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
    *   DeleteTargetVpnGatewayHttpRequest request = DeleteTargetVpnGatewayHttpRequest.newBuilder()
-   *     .setTargetVpnGatewayWithTargetVpnGatewayName(targetVpnGateway)
+   *     .setTargetVpnGateway(targetVpnGateway.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetVpnGatewayClient.deleteTargetVpnGatewayCallable().futureCall(request);
    *   // Do something
@@ -353,7 +366,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
 
     GetTargetVpnGatewayHttpRequest request =
         GetTargetVpnGatewayHttpRequest.newBuilder()
-        .setTargetVpnGatewayWithTargetVpnGatewayName(targetVpnGateway)
+        .setTargetVpnGateway(targetVpnGateway.toString())
         .build();
     return getTargetVpnGateway(request);
   }
@@ -367,7 +380,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
    *   GetTargetVpnGatewayHttpRequest request = GetTargetVpnGatewayHttpRequest.newBuilder()
-   *     .setTargetVpnGatewayWithTargetVpnGatewayName(targetVpnGateway)
+   *     .setTargetVpnGateway(targetVpnGateway.toString())
    *     .build();
    *   TargetVpnGateway response = targetVpnGatewayClient.getTargetVpnGateway(request);
    * }
@@ -390,7 +403,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
    *   GetTargetVpnGatewayHttpRequest request = GetTargetVpnGatewayHttpRequest.newBuilder()
-   *     .setTargetVpnGatewayWithTargetVpnGatewayName(targetVpnGateway)
+   *     .setTargetVpnGateway(targetVpnGateway.toString())
    *     .build();
    *   ApiFuture&lt;TargetVpnGateway&gt; future = targetVpnGatewayClient.getTargetVpnGatewayCallable().futureCall(request);
    *   // Do something
@@ -425,7 +438,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
 
     InsertTargetVpnGatewayHttpRequest request =
         InsertTargetVpnGatewayHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .setTargetVpnGatewayResource(targetVpnGatewayResource)
         .build();
     return insertTargetVpnGateway(request);
@@ -441,7 +454,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   TargetVpnGateway targetVpnGateway = TargetVpnGateway.newBuilder().build();
    *   InsertTargetVpnGatewayHttpRequest request = InsertTargetVpnGatewayHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .setTargetVpnGatewayResource(targetVpnGateway)
    *     .build();
    *   Operation response = targetVpnGatewayClient.insertTargetVpnGateway(request);
@@ -466,7 +479,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   TargetVpnGateway targetVpnGateway = TargetVpnGateway.newBuilder().build();
    *   InsertTargetVpnGatewayHttpRequest request = InsertTargetVpnGatewayHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .setTargetVpnGatewayResource(targetVpnGateway)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetVpnGatewayClient.insertTargetVpnGatewayCallable().futureCall(request);
@@ -501,7 +514,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
   public final ListTargetVpnGatewaysPagedResponse listTargetVpnGateways(RegionName region) {
     ListTargetVpnGatewaysHttpRequest request =
         ListTargetVpnGatewaysHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .build();
     return listTargetVpnGateways(request);
   }
@@ -515,7 +528,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListTargetVpnGatewaysHttpRequest request = ListTargetVpnGatewaysHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   for (TargetVpnGateway element : targetVpnGatewayClient.listTargetVpnGateways(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -541,7 +554,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListTargetVpnGatewaysHttpRequest request = ListTargetVpnGatewaysHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   ApiFuture&lt;ListTargetVpnGatewaysPagedResponse&gt; future = targetVpnGatewayClient.listTargetVpnGatewaysPagedCallable().futureCall(request);
    *   // Do something
@@ -565,7 +578,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListTargetVpnGatewaysHttpRequest request = ListTargetVpnGatewaysHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   while (true) {
    *     TargetVpnGatewayList response = targetVpnGatewayClient.listTargetVpnGatewaysCallable().call(request);
@@ -617,4 +630,178 @@ public class TargetVpnGatewayClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class AggregatedListTargetVpnGatewaysPagedResponse extends AbstractPagedListResponse<
+      AggregatedListTargetVpnGatewaysHttpRequest,
+      TargetVpnGatewayAggregatedList,
+      TargetVpnGateway,
+      AggregatedListTargetVpnGatewaysPage,
+      AggregatedListTargetVpnGatewaysFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListTargetVpnGatewaysPagedResponse> createAsync(
+        PageContext<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGateway> context,
+        ApiFuture<TargetVpnGatewayAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListTargetVpnGatewaysPage> futurePage =
+          AggregatedListTargetVpnGatewaysPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<AggregatedListTargetVpnGatewaysPage, AggregatedListTargetVpnGatewaysPagedResponse>() {
+            @Override
+            public AggregatedListTargetVpnGatewaysPagedResponse apply(AggregatedListTargetVpnGatewaysPage input) {
+              return new AggregatedListTargetVpnGatewaysPagedResponse(input);
+            }
+          });
+    }
+
+    private AggregatedListTargetVpnGatewaysPagedResponse(AggregatedListTargetVpnGatewaysPage page) {
+      super(page, AggregatedListTargetVpnGatewaysFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class AggregatedListTargetVpnGatewaysPage extends AbstractPage<
+      AggregatedListTargetVpnGatewaysHttpRequest,
+      TargetVpnGatewayAggregatedList,
+      TargetVpnGateway,
+      AggregatedListTargetVpnGatewaysPage> {
+
+    private AggregatedListTargetVpnGatewaysPage(
+        PageContext<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGateway> context,
+        TargetVpnGatewayAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListTargetVpnGatewaysPage createEmptyPage() {
+      return new AggregatedListTargetVpnGatewaysPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListTargetVpnGatewaysPage createPage(
+        PageContext<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGateway> context,
+        TargetVpnGatewayAggregatedList response) {
+      return new AggregatedListTargetVpnGatewaysPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListTargetVpnGatewaysPage> createPageAsync(
+        PageContext<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGateway> context,
+        ApiFuture<TargetVpnGatewayAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class AggregatedListTargetVpnGatewaysFixedSizeCollection extends AbstractFixedSizeCollection<
+      AggregatedListTargetVpnGatewaysHttpRequest,
+      TargetVpnGatewayAggregatedList,
+      TargetVpnGateway,
+      AggregatedListTargetVpnGatewaysPage,
+      AggregatedListTargetVpnGatewaysFixedSizeCollection> {
+
+    private AggregatedListTargetVpnGatewaysFixedSizeCollection(List<AggregatedListTargetVpnGatewaysPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListTargetVpnGatewaysFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListTargetVpnGatewaysFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListTargetVpnGatewaysFixedSizeCollection createCollection(
+        List<AggregatedListTargetVpnGatewaysPage> pages, int collectionSize) {
+      return new AggregatedListTargetVpnGatewaysFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
+  public static class ListTargetVpnGatewaysPagedResponse extends AbstractPagedListResponse<
+      ListTargetVpnGatewaysHttpRequest,
+      TargetVpnGatewayList,
+      TargetVpnGateway,
+      ListTargetVpnGatewaysPage,
+      ListTargetVpnGatewaysFixedSizeCollection> {
+
+    public static ApiFuture<ListTargetVpnGatewaysPagedResponse> createAsync(
+        PageContext<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList, TargetVpnGateway> context,
+        ApiFuture<TargetVpnGatewayList> futureResponse) {
+      ApiFuture<ListTargetVpnGatewaysPage> futurePage =
+          ListTargetVpnGatewaysPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListTargetVpnGatewaysPage, ListTargetVpnGatewaysPagedResponse>() {
+            @Override
+            public ListTargetVpnGatewaysPagedResponse apply(ListTargetVpnGatewaysPage input) {
+              return new ListTargetVpnGatewaysPagedResponse(input);
+            }
+          });
+    }
+
+    private ListTargetVpnGatewaysPagedResponse(ListTargetVpnGatewaysPage page) {
+      super(page, ListTargetVpnGatewaysFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListTargetVpnGatewaysPage extends AbstractPage<
+      ListTargetVpnGatewaysHttpRequest,
+      TargetVpnGatewayList,
+      TargetVpnGateway,
+      ListTargetVpnGatewaysPage> {
+
+    private ListTargetVpnGatewaysPage(
+        PageContext<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList, TargetVpnGateway> context,
+        TargetVpnGatewayList response) {
+      super(context, response);
+    }
+
+    private static ListTargetVpnGatewaysPage createEmptyPage() {
+      return new ListTargetVpnGatewaysPage(null, null);
+    }
+
+    @Override
+    protected ListTargetVpnGatewaysPage createPage(
+        PageContext<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList, TargetVpnGateway> context,
+        TargetVpnGatewayList response) {
+      return new ListTargetVpnGatewaysPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListTargetVpnGatewaysPage> createPageAsync(
+        PageContext<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList, TargetVpnGateway> context,
+        ApiFuture<TargetVpnGatewayList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListTargetVpnGatewaysFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListTargetVpnGatewaysHttpRequest,
+      TargetVpnGatewayList,
+      TargetVpnGateway,
+      ListTargetVpnGatewaysPage,
+      ListTargetVpnGatewaysFixedSizeCollection> {
+
+    private ListTargetVpnGatewaysFixedSizeCollection(List<ListTargetVpnGatewaysPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListTargetVpnGatewaysFixedSizeCollection createEmptyCollection() {
+      return new ListTargetVpnGatewaysFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListTargetVpnGatewaysFixedSizeCollection createCollection(
+        List<ListTargetVpnGatewaysPage> pages, int collectionSize) {
+      return new ListTargetVpnGatewaysFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

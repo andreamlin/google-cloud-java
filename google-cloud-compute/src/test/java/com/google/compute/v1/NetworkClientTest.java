@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,25 +15,27 @@
  */
 package com.google.compute.v1;
 
-import com.google.api.gax.core.NoCredentialsProvider;
-import com.google.api.gax.core.PagedListResponse;
-import com.google.api.gax.grpc.GaxGrpcProperties;
-import com.google.api.gax.grpc.GrpcStatusCode;
-import com.google.api.gax.grpc.testing.LocalChannelProvider;
-import com.google.api.gax.grpc.testing.MockGrpcService;
-import com.google.api.gax.grpc.testing.MockServiceHelper;
-import com.google.api.gax.rpc.ApiClientHeaderProvider;
+import com.google.api.gax.httpjson.MockHttpService;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiException;
+import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
-import com.google.api.gax.rpc.StatusCode;
+import com.google.api.gax.rpc.StatusCode.Code;
+import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.common.collect.Lists;
-import static com.google.compute.v1.PagedResponseWrappers.ListNetworksPagedResponse;
+import static com.google.compute.v1.NetworkClient.ListNetworksPagedResponse;
+import static com.google.compute.v1.stub.HttpJsonNetworkStub.deleteNetworkMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonNetworkStub.getNetworkMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonNetworkStub.insertNetworkMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonNetworkStub.listNetworksMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonNetworkStub.switchToCustomModeNetworkMethodDescriptor;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -43,120 +45,28 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class NetworkClientTest {
-  private static MockAddresses mockAddresses;
-  private static MockAutoscalers mockAutoscalers;
-  private static MockBackendServices mockBackendServices;
-  private static MockDiskTypes mockDiskTypes;
-  private static MockDisks mockDisks;
-  private static MockFirewalls mockFirewalls;
-  private static MockForwardingRules mockForwardingRules;
-  private static MockGlobalAddresses mockGlobalAddresses;
-  private static MockGlobalForwardingRules mockGlobalForwardingRules;
-  private static MockGlobalOperations mockGlobalOperations;
-  private static MockHealthChecks mockHealthChecks;
-  private static MockHttpHealthChecks mockHttpHealthChecks;
-  private static MockHttpsHealthChecks mockHttpsHealthChecks;
-  private static MockImages mockImages;
-  private static MockInstanceGroupManagers mockInstanceGroupManagers;
-  private static MockInstanceGroups mockInstanceGroups;
-  private static MockInstanceTemplates mockInstanceTemplates;
-  private static MockInstances mockInstances;
-  private static MockLicenses mockLicenses;
-  private static MockMachineTypes mockMachineTypes;
-  private static MockNetworks mockNetworks;
-  private static MockProjects mockProjects;
-  private static MockRegionAutoscalers mockRegionAutoscalers;
-  private static MockRegionBackendServices mockRegionBackendServices;
-  private static MockRegionInstanceGroupManagers mockRegionInstanceGroupManagers;
-  private static MockRegionInstanceGroups mockRegionInstanceGroups;
-  private static MockRegionOperations mockRegionOperations;
-  private static MockRegions mockRegions;
-  private static MockRouters mockRouters;
-  private static MockRoutes mockRoutes;
-  private static MockSnapshots mockSnapshots;
-  private static MockSslCertificates mockSslCertificates;
-  private static MockSubnetworks mockSubnetworks;
-  private static MockTargetHttpProxies mockTargetHttpProxies;
-  private static MockTargetHttpsProxies mockTargetHttpsProxies;
-  private static MockTargetInstances mockTargetInstances;
-  private static MockTargetPools mockTargetPools;
-  private static MockTargetSslProxies mockTargetSslProxies;
-  private static MockTargetVpnGateways mockTargetVpnGateways;
-  private static MockUrlMaps mockUrlMaps;
-  private static MockVpnTunnels mockVpnTunnels;
-  private static MockZoneOperations mockZoneOperations;
-  private static MockZones mockZones;
-  private static MockServiceHelper serviceHelper;
-  private NetworkClient client;
-  private LocalChannelProvider channelProvider;
+  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static NetworkClient client;
+  private static NetworkSettings clientSettings;
 
   @BeforeClass
-  public static void startStaticServer() {
-    mockAddresses = new MockAddresses();
-    mockAutoscalers = new MockAutoscalers();
-    mockBackendServices = new MockBackendServices();
-    mockDiskTypes = new MockDiskTypes();
-    mockDisks = new MockDisks();
-    mockFirewalls = new MockFirewalls();
-    mockForwardingRules = new MockForwardingRules();
-    mockGlobalAddresses = new MockGlobalAddresses();
-    mockGlobalForwardingRules = new MockGlobalForwardingRules();
-    mockGlobalOperations = new MockGlobalOperations();
-    mockHealthChecks = new MockHealthChecks();
-    mockHttpHealthChecks = new MockHttpHealthChecks();
-    mockHttpsHealthChecks = new MockHttpsHealthChecks();
-    mockImages = new MockImages();
-    mockInstanceGroupManagers = new MockInstanceGroupManagers();
-    mockInstanceGroups = new MockInstanceGroups();
-    mockInstanceTemplates = new MockInstanceTemplates();
-    mockInstances = new MockInstances();
-    mockLicenses = new MockLicenses();
-    mockMachineTypes = new MockMachineTypes();
-    mockNetworks = new MockNetworks();
-    mockProjects = new MockProjects();
-    mockRegionAutoscalers = new MockRegionAutoscalers();
-    mockRegionBackendServices = new MockRegionBackendServices();
-    mockRegionInstanceGroupManagers = new MockRegionInstanceGroupManagers();
-    mockRegionInstanceGroups = new MockRegionInstanceGroups();
-    mockRegionOperations = new MockRegionOperations();
-    mockRegions = new MockRegions();
-    mockRouters = new MockRouters();
-    mockRoutes = new MockRoutes();
-    mockSnapshots = new MockSnapshots();
-    mockSslCertificates = new MockSslCertificates();
-    mockSubnetworks = new MockSubnetworks();
-    mockTargetHttpProxies = new MockTargetHttpProxies();
-    mockTargetHttpsProxies = new MockTargetHttpsProxies();
-    mockTargetInstances = new MockTargetInstances();
-    mockTargetPools = new MockTargetPools();
-    mockTargetSslProxies = new MockTargetSslProxies();
-    mockTargetVpnGateways = new MockTargetVpnGateways();
-    mockUrlMaps = new MockUrlMaps();
-    mockVpnTunnels = new MockVpnTunnels();
-    mockZoneOperations = new MockZoneOperations();
-    mockZones = new MockZones();
-    serviceHelper = new MockServiceHelper("in-process-1", Arrays.<MockGrpcService>asList(mockAddresses, mockAutoscalers, mockBackendServices, mockDiskTypes, mockDisks, mockFirewalls, mockForwardingRules, mockGlobalAddresses, mockGlobalForwardingRules, mockGlobalOperations, mockHealthChecks, mockHttpHealthChecks, mockHttpsHealthChecks, mockImages, mockInstanceGroupManagers, mockInstanceGroups, mockInstanceTemplates, mockInstances, mockLicenses, mockMachineTypes, mockNetworks, mockProjects, mockRegionAutoscalers, mockRegionBackendServices, mockRegionInstanceGroupManagers, mockRegionInstanceGroups, mockRegionOperations, mockRegions, mockRouters, mockRoutes, mockSnapshots, mockSslCertificates, mockSubnetworks, mockTargetHttpProxies, mockTargetHttpsProxies, mockTargetInstances, mockTargetPools, mockTargetSslProxies, mockTargetVpnGateways, mockUrlMaps, mockVpnTunnels, mockZoneOperations, mockZones));
-    serviceHelper.start();
-  }
-
-  @AfterClass
-  public static void stopServer() {
-    serviceHelper.stop();
-  }
-
-  @Before
-  public void setUp() throws IOException {
-    serviceHelper.reset();
-    channelProvider = serviceHelper.createChannelProvider();
-    NetworkSettings settings = NetworkSettings.newBuilder()
-        .setTransportChannelProvider(channelProvider)
-        .setCredentialsProvider(NoCredentialsProvider.create())
-        .build();
-    client = NetworkClient.create(settings);
+  public static void setUp() throws IOException {
+    clientSettings =
+        NetworkSettings.newBuilder()
+           .setTransportChannelProvider(
+               NetworkSettings.defaultHttpJsonTransportProviderBuilder()
+                   .setHttpTransport(MOCK_SERVICE).build()).build();
+    client =
+       NetworkClient.create(clientSettings);
   }
 
   @After
-  public void tearDown() throws Exception {
+  public void cleanUp() {
+    MOCK_SERVICE.reset();
+  }
+
+  @AfterClass
+  public static void tearDown() throws Exception {
     client.close();
   }
 
@@ -171,7 +81,7 @@ public class NetworkClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -180,7 +90,7 @@ public class NetworkClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -193,7 +103,7 @@ public class NetworkClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone)
+      .setZone(zone.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -202,12 +112,12 @@ public class NetworkClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockNetworks.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteNetworkMethodDescriptor);
 
     NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
 
@@ -215,22 +125,16 @@ public class NetworkClientTest {
         client.deleteNetwork(network);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockNetworks.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    DeleteNetworkHttpRequest actualRequest = (DeleteNetworkHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(network, actualRequest.getNetworkAsNetworkName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void deleteNetworkExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockNetworks.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(deleteNetworkMethodDescriptor);
 
     try {
       NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
@@ -265,7 +169,7 @@ public class NetworkClientTest {
       .setGatewayIPv4(gatewayIPv4)
       .setSelfLink(selfLink)
       .build();
-    mockNetworks.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getNetworkMethodDescriptor);
 
     NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
 
@@ -273,22 +177,16 @@ public class NetworkClientTest {
         client.getNetwork(network);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockNetworks.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    GetNetworkHttpRequest actualRequest = (GetNetworkHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(network, actualRequest.getNetworkAsNetworkName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void getNetworkExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockNetworks.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(getNetworkMethodDescriptor);
 
     try {
       NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
@@ -311,7 +209,7 @@ public class NetworkClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -320,7 +218,7 @@ public class NetworkClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -333,7 +231,7 @@ public class NetworkClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone)
+      .setZone(zone.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -342,12 +240,12 @@ public class NetworkClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockNetworks.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertNetworkMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Network network = Network.newBuilder().build();
@@ -356,23 +254,16 @@ public class NetworkClientTest {
         client.insertNetwork(project, network);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockNetworks.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    InsertNetworkHttpRequest actualRequest = (InsertNetworkHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(project, actualRequest.getProjectAsProjectName());
-    Assert.assertEquals(network, actualRequest.getNetwork());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void insertNetworkExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockNetworks.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(insertNetworkMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -392,7 +283,7 @@ public class NetworkClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    Network itemsElement = new ArrayList<>();
+    Network itemsElement = Network.newBuilder().build();
     List<Network> items = Arrays.asList(itemsElement);
     NetworkList expectedResponse = NetworkList.newBuilder()
       .setKind(kind)
@@ -401,7 +292,7 @@ public class NetworkClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    mockNetworks.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listNetworksMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -411,22 +302,16 @@ public class NetworkClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<GeneratedMessageV3> actualRequests = mockNetworks.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    ListNetworksHttpRequest actualRequest = (ListNetworksHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(project, actualRequest.getProjectAsProjectName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void listNetworksExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockNetworks.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(listNetworksMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -449,7 +334,7 @@ public class NetworkClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -458,7 +343,7 @@ public class NetworkClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -471,7 +356,7 @@ public class NetworkClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone)
+      .setZone(zone.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -480,12 +365,12 @@ public class NetworkClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockNetworks.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(switchToCustomModeNetworkMethodDescriptor);
 
     NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
 
@@ -493,22 +378,16 @@ public class NetworkClientTest {
         client.switchToCustomModeNetwork(network);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockNetworks.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    SwitchToCustomModeNetworkHttpRequest actualRequest = (SwitchToCustomModeNetworkHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(network, actualRequest.getNetworkAsNetworkName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void switchToCustomModeNetworkExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockNetworks.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(switchToCustomModeNetworkMethodDescriptor);
 
     try {
       NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");

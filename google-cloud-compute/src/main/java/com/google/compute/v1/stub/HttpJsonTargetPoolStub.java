@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AddHealthCheckTargetPoolHttpRequest;
@@ -38,8 +39,6 @@ import com.google.compute.v1.InsertTargetPoolHttpRequest;
 import com.google.compute.v1.InstanceReference;
 import com.google.compute.v1.ListTargetPoolsHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetPoolsPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetPoolsPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.RemoveHealthCheckTargetPoolHttpRequest;
@@ -47,6 +46,8 @@ import com.google.compute.v1.RemoveInstanceTargetPoolHttpRequest;
 import com.google.compute.v1.SetBackupTargetPoolHttpRequest;
 import com.google.compute.v1.TargetPool;
 import com.google.compute.v1.TargetPoolAggregatedList;
+import static com.google.compute.v1.TargetPoolClient.AggregatedListTargetPoolsPagedResponse;
+import static com.google.compute.v1.TargetPoolClient.ListTargetPoolsPagedResponse;
 import com.google.compute.v1.TargetPoolInstanceHealth;
 import com.google.compute.v1.TargetPoolList;
 import com.google.compute.v1.TargetPoolName;
@@ -76,7 +77,8 @@ import javax.annotation.Generated;
 public class HttpJsonTargetPoolStub extends TargetPoolStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<AddHealthCheckTargetPoolHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetPools.addHealthCheck")
           .setRequestInstance(AddHealthCheckTargetPoolHttpRequest.getDefaultInstance())
@@ -90,7 +92,8 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<AddInstanceTargetPoolHttpRequest, Operation> addInstanceTargetPoolMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AddInstanceTargetPoolHttpRequest, Operation> addInstanceTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<AddInstanceTargetPoolHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetPools.addInstance")
           .setRequestInstance(AddInstanceTargetPoolHttpRequest.getDefaultInstance())
@@ -104,7 +107,8 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList> aggregatedListTargetPoolsMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList> aggregatedListTargetPoolsMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList>newBuilder()
           .setMethodName("compute.targetPools.aggregatedList")
           .setRequestInstance(AggregatedListTargetPoolsHttpRequest.getDefaultInstance())
@@ -119,7 +123,8 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<DeleteTargetPoolHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetPools.delete")
           .setRequestInstance(DeleteTargetPoolHttpRequest.getDefaultInstance())
@@ -133,7 +138,8 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetTargetPoolHttpRequest, TargetPool> getTargetPoolMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetTargetPoolHttpRequest, TargetPool> getTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<GetTargetPoolHttpRequest, TargetPool>newBuilder()
           .setMethodName("compute.targetPools.get")
           .setRequestInstance(GetTargetPoolHttpRequest.getDefaultInstance())
@@ -147,7 +153,8 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> getHealthTargetPoolMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth> getHealthTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth>newBuilder()
           .setMethodName("compute.targetPools.getHealth")
           .setRequestInstance(GetHealthTargetPoolHttpRequest.getDefaultInstance())
@@ -161,7 +168,8 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<InsertTargetPoolHttpRequest, Operation> insertTargetPoolMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertTargetPoolHttpRequest, Operation> insertTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<InsertTargetPoolHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetPools.insert")
           .setRequestInstance(InsertTargetPoolHttpRequest.getDefaultInstance())
@@ -175,7 +183,8 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListTargetPoolsHttpRequest, TargetPoolList> listTargetPoolsMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListTargetPoolsHttpRequest, TargetPoolList> listTargetPoolsMethodDescriptor =
       ApiMethodDescriptor.<ListTargetPoolsHttpRequest, TargetPoolList>newBuilder()
           .setMethodName("compute.targetPools.list")
           .setRequestInstance(ListTargetPoolsHttpRequest.getDefaultInstance())
@@ -190,7 +199,8 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<RemoveHealthCheckTargetPoolHttpRequest, Operation> removeHealthCheckTargetPoolMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<RemoveHealthCheckTargetPoolHttpRequest, Operation> removeHealthCheckTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<RemoveHealthCheckTargetPoolHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetPools.removeHealthCheck")
           .setRequestInstance(RemoveHealthCheckTargetPoolHttpRequest.getDefaultInstance())
@@ -204,7 +214,8 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<RemoveInstanceTargetPoolHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetPools.removeInstance")
           .setRequestInstance(RemoveInstanceTargetPoolHttpRequest.getDefaultInstance())
@@ -218,7 +229,8 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<SetBackupTargetPoolHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetPools.setBackup")
           .setRequestInstance(SetBackupTargetPoolHttpRequest.getDefaultInstance())
@@ -250,12 +262,12 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
   private final UnaryCallable<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolCallable;
   private final UnaryCallable<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolCallable;
 
-  public static final HttpJsonTargetPoolStub create(TargetPoolSettings settings) throws IOException {
+  public static final HttpJsonTargetPoolStub create(TargetPoolStubSettings settings) throws IOException {
     return new HttpJsonTargetPoolStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonTargetPoolStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonTargetPoolStub(TargetPoolSettings.newBuilder().build(), clientContext);
+    return new HttpJsonTargetPoolStub(TargetPoolStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -263,7 +275,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonTargetPoolStub(TargetPoolSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonTargetPoolStub(TargetPoolStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolTransportSettings =
         HttpJsonCallSettings.<AddHealthCheckTargetPoolHttpRequest, Operation>newBuilder()

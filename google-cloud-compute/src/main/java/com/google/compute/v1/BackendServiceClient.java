@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListBackendServicesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListBackendServicesPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.BackendServiceStub;
+import com.google.compute.v1.stub.BackendServiceStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -137,7 +150,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   protected BackendServiceClient(BackendServiceSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((BackendServiceStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -177,7 +190,7 @@ public class BackendServiceClient implements BackgroundResource {
   public final AggregatedListBackendServicesPagedResponse aggregatedListBackendServices(ProjectName project) {
     AggregatedListBackendServicesHttpRequest request =
         AggregatedListBackendServicesHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return aggregatedListBackendServices(request);
   }
@@ -191,7 +204,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListBackendServicesHttpRequest request = AggregatedListBackendServicesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (BackendService element : backendServiceClient.aggregatedListBackendServices(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -217,7 +230,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListBackendServicesHttpRequest request = AggregatedListBackendServicesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;AggregatedListBackendServicesPagedResponse&gt; future = backendServiceClient.aggregatedListBackendServicesPagedCallable().futureCall(request);
    *   // Do something
@@ -241,11 +254,11 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListBackendServicesHttpRequest request = AggregatedListBackendServicesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     BackendServiceAggregatedList response = backendServiceClient.aggregatedListBackendServicesCallable().call(request);
-   *     for (BackendService element : response.getItems().getBackendServices()) {
+   *     for (BackendService element : response.getBackendServices()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -283,7 +296,7 @@ public class BackendServiceClient implements BackgroundResource {
 
     DeleteBackendServiceHttpRequest request =
         DeleteBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService)
+        .setBackendService(backendService.toString())
         .build();
     return deleteBackendService(request);
   }
@@ -297,7 +310,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   DeleteBackendServiceHttpRequest request = DeleteBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendService(backendService.toString())
    *     .build();
    *   Operation response = backendServiceClient.deleteBackendService(request);
    * }
@@ -320,7 +333,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   DeleteBackendServiceHttpRequest request = DeleteBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendService(backendService.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = backendServiceClient.deleteBackendServiceCallable().futureCall(request);
    *   // Do something
@@ -353,7 +366,7 @@ public class BackendServiceClient implements BackgroundResource {
 
     GetBackendServiceHttpRequest request =
         GetBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService)
+        .setBackendService(backendService.toString())
         .build();
     return getBackendService(request);
   }
@@ -367,7 +380,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   GetBackendServiceHttpRequest request = GetBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendService(backendService.toString())
    *     .build();
    *   BackendService response = backendServiceClient.getBackendService(request);
    * }
@@ -390,7 +403,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   GetBackendServiceHttpRequest request = GetBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendService(backendService.toString())
    *     .build();
    *   ApiFuture&lt;BackendService&gt; future = backendServiceClient.getBackendServiceCallable().futureCall(request);
    *   // Do something
@@ -425,7 +438,7 @@ public class BackendServiceClient implements BackgroundResource {
 
     GetHealthBackendServiceHttpRequest request =
         GetHealthBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService)
+        .setBackendService(backendService.toString())
         .setResourceGroupReferenceResource(resourceGroupReferenceResource)
         .build();
     return getHealthBackendService(request);
@@ -441,7 +454,7 @@ public class BackendServiceClient implements BackgroundResource {
    *   BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
    *   GetHealthBackendServiceHttpRequest request = GetHealthBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendService(backendService.toString())
    *     .setResourceGroupReferenceResource(resourceGroupReference)
    *     .build();
    *   BackendServiceGroupHealth response = backendServiceClient.getHealthBackendService(request);
@@ -466,7 +479,7 @@ public class BackendServiceClient implements BackgroundResource {
    *   BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
    *   GetHealthBackendServiceHttpRequest request = GetHealthBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendService(backendService.toString())
    *     .setResourceGroupReferenceResource(resourceGroupReference)
    *     .build();
    *   ApiFuture&lt;BackendServiceGroupHealth&gt; future = backendServiceClient.getHealthBackendServiceCallable().futureCall(request);
@@ -502,7 +515,7 @@ public class BackendServiceClient implements BackgroundResource {
 
     InsertBackendServiceHttpRequest request =
         InsertBackendServiceHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setBackendServiceResource(backendServiceResource)
         .build();
     return insertBackendService(request);
@@ -518,7 +531,7 @@ public class BackendServiceClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   BackendService backendService = BackendService.newBuilder().build();
    *   InsertBackendServiceHttpRequest request = InsertBackendServiceHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setBackendServiceResource(backendService)
    *     .build();
    *   Operation response = backendServiceClient.insertBackendService(request);
@@ -543,7 +556,7 @@ public class BackendServiceClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   BackendService backendService = BackendService.newBuilder().build();
    *   InsertBackendServiceHttpRequest request = InsertBackendServiceHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setBackendServiceResource(backendService)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = backendServiceClient.insertBackendServiceCallable().futureCall(request);
@@ -578,7 +591,7 @@ public class BackendServiceClient implements BackgroundResource {
   public final ListBackendServicesPagedResponse listBackendServices(ProjectName project) {
     ListBackendServicesHttpRequest request =
         ListBackendServicesHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listBackendServices(request);
   }
@@ -592,7 +605,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListBackendServicesHttpRequest request = ListBackendServicesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (BackendService element : backendServiceClient.listBackendServices(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -618,7 +631,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListBackendServicesHttpRequest request = ListBackendServicesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListBackendServicesPagedResponse&gt; future = backendServiceClient.listBackendServicesPagedCallable().futureCall(request);
    *   // Do something
@@ -642,7 +655,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListBackendServicesHttpRequest request = ListBackendServicesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     BackendServiceList response = backendServiceClient.listBackendServicesCallable().call(request);
@@ -685,7 +698,7 @@ public class BackendServiceClient implements BackgroundResource {
 
     PatchBackendServiceHttpRequest request =
         PatchBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService)
+        .setBackendService(backendService.toString())
         .setBackendServiceResource(backendServiceResource)
         .build();
     return patchBackendService(request);
@@ -700,7 +713,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   PatchBackendServiceHttpRequest request = PatchBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendService(backendService.toString())
    *     .build();
    *   Operation response = backendServiceClient.patchBackendService(request);
    * }
@@ -723,7 +736,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   PatchBackendServiceHttpRequest request = PatchBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendService(backendService.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = backendServiceClient.patchBackendServiceCallable().futureCall(request);
    *   // Do something
@@ -757,7 +770,7 @@ public class BackendServiceClient implements BackgroundResource {
 
     UpdateBackendServiceHttpRequest request =
         UpdateBackendServiceHttpRequest.newBuilder()
-        .setBackendServiceWithBackendServiceName(backendService)
+        .setBackendService(backendService.toString())
         .setBackendServiceResource(backendServiceResource)
         .build();
     return updateBackendService(request);
@@ -772,7 +785,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   UpdateBackendServiceHttpRequest request = UpdateBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendService(backendService.toString())
    *     .build();
    *   Operation response = backendServiceClient.updateBackendService(request);
    * }
@@ -795,7 +808,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   UpdateBackendServiceHttpRequest request = UpdateBackendServiceHttpRequest.newBuilder()
-   *     .setBackendServiceWithBackendServiceName(backendService)
+   *     .setBackendService(backendService.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = backendServiceClient.updateBackendServiceCallable().futureCall(request);
    *   // Do something
@@ -838,4 +851,178 @@ public class BackendServiceClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class AggregatedListBackendServicesPagedResponse extends AbstractPagedListResponse<
+      AggregatedListBackendServicesHttpRequest,
+      BackendServiceAggregatedList,
+      BackendService,
+      AggregatedListBackendServicesPage,
+      AggregatedListBackendServicesFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListBackendServicesPagedResponse> createAsync(
+        PageContext<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendService> context,
+        ApiFuture<BackendServiceAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListBackendServicesPage> futurePage =
+          AggregatedListBackendServicesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<AggregatedListBackendServicesPage, AggregatedListBackendServicesPagedResponse>() {
+            @Override
+            public AggregatedListBackendServicesPagedResponse apply(AggregatedListBackendServicesPage input) {
+              return new AggregatedListBackendServicesPagedResponse(input);
+            }
+          });
+    }
+
+    private AggregatedListBackendServicesPagedResponse(AggregatedListBackendServicesPage page) {
+      super(page, AggregatedListBackendServicesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class AggregatedListBackendServicesPage extends AbstractPage<
+      AggregatedListBackendServicesHttpRequest,
+      BackendServiceAggregatedList,
+      BackendService,
+      AggregatedListBackendServicesPage> {
+
+    private AggregatedListBackendServicesPage(
+        PageContext<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendService> context,
+        BackendServiceAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListBackendServicesPage createEmptyPage() {
+      return new AggregatedListBackendServicesPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListBackendServicesPage createPage(
+        PageContext<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendService> context,
+        BackendServiceAggregatedList response) {
+      return new AggregatedListBackendServicesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListBackendServicesPage> createPageAsync(
+        PageContext<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendService> context,
+        ApiFuture<BackendServiceAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class AggregatedListBackendServicesFixedSizeCollection extends AbstractFixedSizeCollection<
+      AggregatedListBackendServicesHttpRequest,
+      BackendServiceAggregatedList,
+      BackendService,
+      AggregatedListBackendServicesPage,
+      AggregatedListBackendServicesFixedSizeCollection> {
+
+    private AggregatedListBackendServicesFixedSizeCollection(List<AggregatedListBackendServicesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListBackendServicesFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListBackendServicesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListBackendServicesFixedSizeCollection createCollection(
+        List<AggregatedListBackendServicesPage> pages, int collectionSize) {
+      return new AggregatedListBackendServicesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
+  public static class ListBackendServicesPagedResponse extends AbstractPagedListResponse<
+      ListBackendServicesHttpRequest,
+      BackendServiceList,
+      BackendService,
+      ListBackendServicesPage,
+      ListBackendServicesFixedSizeCollection> {
+
+    public static ApiFuture<ListBackendServicesPagedResponse> createAsync(
+        PageContext<ListBackendServicesHttpRequest, BackendServiceList, BackendService> context,
+        ApiFuture<BackendServiceList> futureResponse) {
+      ApiFuture<ListBackendServicesPage> futurePage =
+          ListBackendServicesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListBackendServicesPage, ListBackendServicesPagedResponse>() {
+            @Override
+            public ListBackendServicesPagedResponse apply(ListBackendServicesPage input) {
+              return new ListBackendServicesPagedResponse(input);
+            }
+          });
+    }
+
+    private ListBackendServicesPagedResponse(ListBackendServicesPage page) {
+      super(page, ListBackendServicesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListBackendServicesPage extends AbstractPage<
+      ListBackendServicesHttpRequest,
+      BackendServiceList,
+      BackendService,
+      ListBackendServicesPage> {
+
+    private ListBackendServicesPage(
+        PageContext<ListBackendServicesHttpRequest, BackendServiceList, BackendService> context,
+        BackendServiceList response) {
+      super(context, response);
+    }
+
+    private static ListBackendServicesPage createEmptyPage() {
+      return new ListBackendServicesPage(null, null);
+    }
+
+    @Override
+    protected ListBackendServicesPage createPage(
+        PageContext<ListBackendServicesHttpRequest, BackendServiceList, BackendService> context,
+        BackendServiceList response) {
+      return new ListBackendServicesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListBackendServicesPage> createPageAsync(
+        PageContext<ListBackendServicesHttpRequest, BackendServiceList, BackendService> context,
+        ApiFuture<BackendServiceList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListBackendServicesFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListBackendServicesHttpRequest,
+      BackendServiceList,
+      BackendService,
+      ListBackendServicesPage,
+      ListBackendServicesFixedSizeCollection> {
+
+    private ListBackendServicesFixedSizeCollection(List<ListBackendServicesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListBackendServicesFixedSizeCollection createEmptyCollection() {
+      return new ListBackendServicesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListBackendServicesFixedSizeCollection createCollection(
+        List<ListBackendServicesPage> pages, int collectionSize) {
+      return new ListBackendServicesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,11 +24,11 @@ import com.google.compute.v1.GetTargetInstanceHttpRequest;
 import com.google.compute.v1.InsertTargetInstanceHttpRequest;
 import com.google.compute.v1.ListTargetInstancesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetInstancesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetInstancesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.TargetInstance;
 import com.google.compute.v1.TargetInstanceAggregatedList;
+import static com.google.compute.v1.TargetInstanceClient.AggregatedListTargetInstancesPagedResponse;
+import static com.google.compute.v1.TargetInstanceClient.ListTargetInstancesPagedResponse;
 import com.google.compute.v1.TargetInstanceList;
 import com.google.compute.v1.TargetInstanceName;
 import com.google.compute.v1.ZoneName;

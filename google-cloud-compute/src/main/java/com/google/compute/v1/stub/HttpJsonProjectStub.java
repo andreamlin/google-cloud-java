@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DiskMoveRequest;
@@ -61,7 +62,8 @@ import javax.annotation.Generated;
 public class HttpJsonProjectStub extends ProjectStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<GetProjectHttpRequest, Project> getProjectMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetProjectHttpRequest, Project> getProjectMethodDescriptor =
       ApiMethodDescriptor.<GetProjectHttpRequest, Project>newBuilder()
           .setMethodName("compute.projects.get")
           .setRequestInstance(GetProjectHttpRequest.getDefaultInstance())
@@ -75,7 +77,8 @@ public class HttpJsonProjectStub extends ProjectStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<MoveDiskProjectHttpRequest, Operation> moveDiskProjectMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<MoveDiskProjectHttpRequest, Operation> moveDiskProjectMethodDescriptor =
       ApiMethodDescriptor.<MoveDiskProjectHttpRequest, Operation>newBuilder()
           .setMethodName("compute.projects.moveDisk")
           .setRequestInstance(MoveDiskProjectHttpRequest.getDefaultInstance())
@@ -89,7 +92,8 @@ public class HttpJsonProjectStub extends ProjectStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<MoveInstanceProjectHttpRequest, Operation> moveInstanceProjectMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<MoveInstanceProjectHttpRequest, Operation> moveInstanceProjectMethodDescriptor =
       ApiMethodDescriptor.<MoveInstanceProjectHttpRequest, Operation>newBuilder()
           .setMethodName("compute.projects.moveInstance")
           .setRequestInstance(MoveInstanceProjectHttpRequest.getDefaultInstance())
@@ -103,7 +107,8 @@ public class HttpJsonProjectStub extends ProjectStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<SetCommonInstanceMetadataProjectHttpRequest, Operation> setCommonInstanceMetadataProjectMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<SetCommonInstanceMetadataProjectHttpRequest, Operation> setCommonInstanceMetadataProjectMethodDescriptor =
       ApiMethodDescriptor.<SetCommonInstanceMetadataProjectHttpRequest, Operation>newBuilder()
           .setMethodName("compute.projects.setCommonInstanceMetadata")
           .setRequestInstance(SetCommonInstanceMetadataProjectHttpRequest.getDefaultInstance())
@@ -117,7 +122,8 @@ public class HttpJsonProjectStub extends ProjectStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<SetUsageExportBucketProjectHttpRequest, Operation> setUsageExportBucketProjectMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<SetUsageExportBucketProjectHttpRequest, Operation> setUsageExportBucketProjectMethodDescriptor =
       ApiMethodDescriptor.<SetUsageExportBucketProjectHttpRequest, Operation>newBuilder()
           .setMethodName("compute.projects.setUsageExportBucket")
           .setRequestInstance(SetUsageExportBucketProjectHttpRequest.getDefaultInstance())
@@ -140,12 +146,12 @@ public class HttpJsonProjectStub extends ProjectStub {
   private final UnaryCallable<SetCommonInstanceMetadataProjectHttpRequest, Operation> setCommonInstanceMetadataProjectCallable;
   private final UnaryCallable<SetUsageExportBucketProjectHttpRequest, Operation> setUsageExportBucketProjectCallable;
 
-  public static final HttpJsonProjectStub create(ProjectSettings settings) throws IOException {
+  public static final HttpJsonProjectStub create(ProjectStubSettings settings) throws IOException {
     return new HttpJsonProjectStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonProjectStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonProjectStub(ProjectSettings.newBuilder().build(), clientContext);
+    return new HttpJsonProjectStub(ProjectStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -153,7 +159,7 @@ public class HttpJsonProjectStub extends ProjectStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonProjectStub(ProjectSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonProjectStub(ProjectStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<GetProjectHttpRequest, Project> getProjectTransportSettings =
         HttpJsonCallSettings.<GetProjectHttpRequest, Project>newBuilder()

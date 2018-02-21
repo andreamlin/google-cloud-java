@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,9 +22,9 @@ import com.google.compute.v1.DeleteSnapshotHttpRequest;
 import com.google.compute.v1.GetSnapshotHttpRequest;
 import com.google.compute.v1.ListSnapshotsHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListSnapshotsPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.Snapshot;
+import static com.google.compute.v1.SnapshotClient.ListSnapshotsPagedResponse;
 import com.google.compute.v1.SnapshotList;
 import com.google.compute.v1.SnapshotName;
 import javax.annotation.Generated;

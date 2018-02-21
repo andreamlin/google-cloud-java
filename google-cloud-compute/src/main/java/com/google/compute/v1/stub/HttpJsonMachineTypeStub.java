@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListMachineTypesHttpRequest;
@@ -33,11 +34,11 @@ import com.google.compute.v1.GetMachineTypeHttpRequest;
 import com.google.compute.v1.ListMachineTypesHttpRequest;
 import com.google.compute.v1.MachineType;
 import com.google.compute.v1.MachineTypeAggregatedList;
+import static com.google.compute.v1.MachineTypeClient.AggregatedListMachineTypesPagedResponse;
+import static com.google.compute.v1.MachineTypeClient.ListMachineTypesPagedResponse;
 import com.google.compute.v1.MachineTypeList;
 import com.google.compute.v1.MachineTypeName;
 import com.google.compute.v1.MachineTypeSettings;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListMachineTypesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListMachineTypesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.ZoneName;
 import java.io.IOException;
@@ -60,7 +61,8 @@ import javax.annotation.Generated;
 public class HttpJsonMachineTypeStub extends MachineTypeStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList> aggregatedListMachineTypesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList> aggregatedListMachineTypesMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList>newBuilder()
           .setMethodName("compute.machineTypes.aggregatedList")
           .setRequestInstance(AggregatedListMachineTypesHttpRequest.getDefaultInstance())
@@ -75,7 +77,8 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<GetMachineTypeHttpRequest, MachineType> getMachineTypeMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetMachineTypeHttpRequest, MachineType> getMachineTypeMethodDescriptor =
       ApiMethodDescriptor.<GetMachineTypeHttpRequest, MachineType>newBuilder()
           .setMethodName("compute.machineTypes.get")
           .setRequestInstance(GetMachineTypeHttpRequest.getDefaultInstance())
@@ -89,7 +92,8 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<ListMachineTypesHttpRequest, MachineTypeList> listMachineTypesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListMachineTypesHttpRequest, MachineTypeList> listMachineTypesMethodDescriptor =
       ApiMethodDescriptor.<ListMachineTypesHttpRequest, MachineTypeList>newBuilder()
           .setMethodName("compute.machineTypes.list")
           .setRequestInstance(ListMachineTypesHttpRequest.getDefaultInstance())
@@ -113,12 +117,12 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
   private final UnaryCallable<ListMachineTypesHttpRequest, MachineTypeList> listMachineTypesCallable;
   private final UnaryCallable<ListMachineTypesHttpRequest, ListMachineTypesPagedResponse> listMachineTypesPagedCallable;
 
-  public static final HttpJsonMachineTypeStub create(MachineTypeSettings settings) throws IOException {
+  public static final HttpJsonMachineTypeStub create(MachineTypeStubSettings settings) throws IOException {
     return new HttpJsonMachineTypeStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonMachineTypeStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonMachineTypeStub(MachineTypeSettings.newBuilder().build(), clientContext);
+    return new HttpJsonMachineTypeStub(MachineTypeStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -126,7 +130,7 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonMachineTypeStub(MachineTypeSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonMachineTypeStub(MachineTypeStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList> aggregatedListMachineTypesTransportSettings =
         HttpJsonCallSettings.<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList>newBuilder()

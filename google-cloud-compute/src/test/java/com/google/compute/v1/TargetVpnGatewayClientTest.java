@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,28 @@
  */
 package com.google.compute.v1;
 
-import com.google.api.gax.core.NoCredentialsProvider;
-import com.google.api.gax.core.PagedListResponse;
-import com.google.api.gax.grpc.GaxGrpcProperties;
-import com.google.api.gax.grpc.GrpcStatusCode;
-import com.google.api.gax.grpc.testing.LocalChannelProvider;
-import com.google.api.gax.grpc.testing.MockGrpcService;
-import com.google.api.gax.grpc.testing.MockServiceHelper;
-import com.google.api.gax.rpc.ApiClientHeaderProvider;
+import com.google.api.gax.httpjson.MockHttpService;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiException;
+import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
-import com.google.api.gax.rpc.StatusCode;
+import com.google.api.gax.rpc.StatusCode.Code;
+import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.common.collect.Lists;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetVpnGatewaysPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetVpnGatewaysPagedResponse;
+import static com.google.compute.v1.TargetVpnGatewayClient.AggregatedListTargetVpnGatewaysPagedResponse;
+import static com.google.compute.v1.TargetVpnGatewayClient.ListTargetVpnGatewaysPagedResponse;
+import static com.google.compute.v1.stub.HttpJsonTargetVpnGatewayStub.aggregatedListTargetVpnGatewaysMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonTargetVpnGatewayStub.deleteTargetVpnGatewayMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonTargetVpnGatewayStub.getTargetVpnGatewayMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonTargetVpnGatewayStub.insertTargetVpnGatewayMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonTargetVpnGatewayStub.listTargetVpnGatewaysMethodDescriptor;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -44,120 +46,28 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class TargetVpnGatewayClientTest {
-  private static MockAddresses mockAddresses;
-  private static MockAutoscalers mockAutoscalers;
-  private static MockBackendServices mockBackendServices;
-  private static MockDiskTypes mockDiskTypes;
-  private static MockDisks mockDisks;
-  private static MockFirewalls mockFirewalls;
-  private static MockForwardingRules mockForwardingRules;
-  private static MockGlobalAddresses mockGlobalAddresses;
-  private static MockGlobalForwardingRules mockGlobalForwardingRules;
-  private static MockGlobalOperations mockGlobalOperations;
-  private static MockHealthChecks mockHealthChecks;
-  private static MockHttpHealthChecks mockHttpHealthChecks;
-  private static MockHttpsHealthChecks mockHttpsHealthChecks;
-  private static MockImages mockImages;
-  private static MockInstanceGroupManagers mockInstanceGroupManagers;
-  private static MockInstanceGroups mockInstanceGroups;
-  private static MockInstanceTemplates mockInstanceTemplates;
-  private static MockInstances mockInstances;
-  private static MockLicenses mockLicenses;
-  private static MockMachineTypes mockMachineTypes;
-  private static MockNetworks mockNetworks;
-  private static MockProjects mockProjects;
-  private static MockRegionAutoscalers mockRegionAutoscalers;
-  private static MockRegionBackendServices mockRegionBackendServices;
-  private static MockRegionInstanceGroupManagers mockRegionInstanceGroupManagers;
-  private static MockRegionInstanceGroups mockRegionInstanceGroups;
-  private static MockRegionOperations mockRegionOperations;
-  private static MockRegions mockRegions;
-  private static MockRouters mockRouters;
-  private static MockRoutes mockRoutes;
-  private static MockSnapshots mockSnapshots;
-  private static MockSslCertificates mockSslCertificates;
-  private static MockSubnetworks mockSubnetworks;
-  private static MockTargetHttpProxies mockTargetHttpProxies;
-  private static MockTargetHttpsProxies mockTargetHttpsProxies;
-  private static MockTargetInstances mockTargetInstances;
-  private static MockTargetPools mockTargetPools;
-  private static MockTargetSslProxies mockTargetSslProxies;
-  private static MockTargetVpnGateways mockTargetVpnGateways;
-  private static MockUrlMaps mockUrlMaps;
-  private static MockVpnTunnels mockVpnTunnels;
-  private static MockZoneOperations mockZoneOperations;
-  private static MockZones mockZones;
-  private static MockServiceHelper serviceHelper;
-  private TargetVpnGatewayClient client;
-  private LocalChannelProvider channelProvider;
+  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static TargetVpnGatewayClient client;
+  private static TargetVpnGatewaySettings clientSettings;
 
   @BeforeClass
-  public static void startStaticServer() {
-    mockAddresses = new MockAddresses();
-    mockAutoscalers = new MockAutoscalers();
-    mockBackendServices = new MockBackendServices();
-    mockDiskTypes = new MockDiskTypes();
-    mockDisks = new MockDisks();
-    mockFirewalls = new MockFirewalls();
-    mockForwardingRules = new MockForwardingRules();
-    mockGlobalAddresses = new MockGlobalAddresses();
-    mockGlobalForwardingRules = new MockGlobalForwardingRules();
-    mockGlobalOperations = new MockGlobalOperations();
-    mockHealthChecks = new MockHealthChecks();
-    mockHttpHealthChecks = new MockHttpHealthChecks();
-    mockHttpsHealthChecks = new MockHttpsHealthChecks();
-    mockImages = new MockImages();
-    mockInstanceGroupManagers = new MockInstanceGroupManagers();
-    mockInstanceGroups = new MockInstanceGroups();
-    mockInstanceTemplates = new MockInstanceTemplates();
-    mockInstances = new MockInstances();
-    mockLicenses = new MockLicenses();
-    mockMachineTypes = new MockMachineTypes();
-    mockNetworks = new MockNetworks();
-    mockProjects = new MockProjects();
-    mockRegionAutoscalers = new MockRegionAutoscalers();
-    mockRegionBackendServices = new MockRegionBackendServices();
-    mockRegionInstanceGroupManagers = new MockRegionInstanceGroupManagers();
-    mockRegionInstanceGroups = new MockRegionInstanceGroups();
-    mockRegionOperations = new MockRegionOperations();
-    mockRegions = new MockRegions();
-    mockRouters = new MockRouters();
-    mockRoutes = new MockRoutes();
-    mockSnapshots = new MockSnapshots();
-    mockSslCertificates = new MockSslCertificates();
-    mockSubnetworks = new MockSubnetworks();
-    mockTargetHttpProxies = new MockTargetHttpProxies();
-    mockTargetHttpsProxies = new MockTargetHttpsProxies();
-    mockTargetInstances = new MockTargetInstances();
-    mockTargetPools = new MockTargetPools();
-    mockTargetSslProxies = new MockTargetSslProxies();
-    mockTargetVpnGateways = new MockTargetVpnGateways();
-    mockUrlMaps = new MockUrlMaps();
-    mockVpnTunnels = new MockVpnTunnels();
-    mockZoneOperations = new MockZoneOperations();
-    mockZones = new MockZones();
-    serviceHelper = new MockServiceHelper("in-process-1", Arrays.<MockGrpcService>asList(mockAddresses, mockAutoscalers, mockBackendServices, mockDiskTypes, mockDisks, mockFirewalls, mockForwardingRules, mockGlobalAddresses, mockGlobalForwardingRules, mockGlobalOperations, mockHealthChecks, mockHttpHealthChecks, mockHttpsHealthChecks, mockImages, mockInstanceGroupManagers, mockInstanceGroups, mockInstanceTemplates, mockInstances, mockLicenses, mockMachineTypes, mockNetworks, mockProjects, mockRegionAutoscalers, mockRegionBackendServices, mockRegionInstanceGroupManagers, mockRegionInstanceGroups, mockRegionOperations, mockRegions, mockRouters, mockRoutes, mockSnapshots, mockSslCertificates, mockSubnetworks, mockTargetHttpProxies, mockTargetHttpsProxies, mockTargetInstances, mockTargetPools, mockTargetSslProxies, mockTargetVpnGateways, mockUrlMaps, mockVpnTunnels, mockZoneOperations, mockZones));
-    serviceHelper.start();
-  }
-
-  @AfterClass
-  public static void stopServer() {
-    serviceHelper.stop();
-  }
-
-  @Before
-  public void setUp() throws IOException {
-    serviceHelper.reset();
-    channelProvider = serviceHelper.createChannelProvider();
-    TargetVpnGatewaySettings settings = TargetVpnGatewaySettings.newBuilder()
-        .setTransportChannelProvider(channelProvider)
-        .setCredentialsProvider(NoCredentialsProvider.create())
-        .build();
-    client = TargetVpnGatewayClient.create(settings);
+  public static void setUp() throws IOException {
+    clientSettings =
+        TargetVpnGatewaySettings.newBuilder()
+           .setTransportChannelProvider(
+               TargetVpnGatewaySettings.defaultHttpJsonTransportProviderBuilder()
+                   .setHttpTransport(MOCK_SERVICE).build()).build();
+    client =
+       TargetVpnGatewayClient.create(clientSettings);
   }
 
   @After
-  public void tearDown() throws Exception {
+  public void cleanUp() {
+    MOCK_SERVICE.reset();
+  }
+
+  @AfterClass
+  public static void tearDown() throws Exception {
     client.close();
   }
 
@@ -168,9 +78,9 @@ public class TargetVpnGatewayClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    TargetVpnGatewaysScopedList targetVpnGateways = TargetVpnGatewaysScopedList.newBuilder().build();
+    TargetVpnGateway targetVpnGateways = TargetVpnGateway.newBuilder().build();
     TargetVpnGatewaysScopedList items = TargetVpnGatewaysScopedList.newBuilder()
-      .setTargetVpnGateways(targetVpnGateways)
+      .addAllTargetVpnGateways(targetVpnGateways)
       .build();
     TargetVpnGatewayAggregatedList expectedResponse = TargetVpnGatewayAggregatedList.newBuilder()
       .setKind(kind)
@@ -179,7 +89,7 @@ public class TargetVpnGatewayClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    mockTargetVpnGateways.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListTargetVpnGatewaysMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -189,22 +99,16 @@ public class TargetVpnGatewayClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getTargetVpnGateways().get(0), resources.get(0));
 
-    List<GeneratedMessageV3> actualRequests = mockTargetVpnGateways.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    AggregatedListTargetVpnGatewaysHttpRequest actualRequest = (AggregatedListTargetVpnGatewaysHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(project, actualRequest.getProjectAsProjectName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void aggregatedListTargetVpnGatewaysExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetVpnGateways.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(aggregatedListTargetVpnGatewaysMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -227,7 +131,7 @@ public class TargetVpnGatewayClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -236,7 +140,7 @@ public class TargetVpnGatewayClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -249,7 +153,7 @@ public class TargetVpnGatewayClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone)
+      .setZone(zone.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -258,12 +162,12 @@ public class TargetVpnGatewayClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockTargetVpnGateways.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteTargetVpnGatewayMethodDescriptor);
 
     TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
 
@@ -271,22 +175,16 @@ public class TargetVpnGatewayClientTest {
         client.deleteTargetVpnGateway(targetVpnGateway);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockTargetVpnGateways.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    DeleteTargetVpnGatewayHttpRequest actualRequest = (DeleteTargetVpnGatewayHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(targetVpnGateway, actualRequest.getTargetVpnGatewayAsTargetVpnGatewayName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void deleteTargetVpnGatewayExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetVpnGateways.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(deleteTargetVpnGatewayMethodDescriptor);
 
     try {
       TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
@@ -306,8 +204,8 @@ public class TargetVpnGatewayClientTest {
     String name = "name3373707";
     String description = "description-1724546052";
     String id = "id3355";
-    String region = "region-934795532";
-    String network = "network1843485230";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+    NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
     String selfLink = "selfLink-1691268851";
     String status = "status-892481550";
     TargetVpnGateway expectedResponse = TargetVpnGateway.newBuilder()
@@ -316,12 +214,12 @@ public class TargetVpnGatewayClientTest {
       .setName(name)
       .setDescription(description)
       .setId(id)
-      .setRegion(region)
-      .setNetwork(network)
+      .setRegion(region.toString())
+      .setNetwork(network.toString())
       .setSelfLink(selfLink)
       .setStatus(status)
       .build();
-    mockTargetVpnGateways.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getTargetVpnGatewayMethodDescriptor);
 
     TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
 
@@ -329,22 +227,16 @@ public class TargetVpnGatewayClientTest {
         client.getTargetVpnGateway(targetVpnGateway);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockTargetVpnGateways.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    GetTargetVpnGatewayHttpRequest actualRequest = (GetTargetVpnGatewayHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(targetVpnGateway, actualRequest.getTargetVpnGatewayAsTargetVpnGatewayName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void getTargetVpnGatewayExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetVpnGateways.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(getTargetVpnGatewayMethodDescriptor);
 
     try {
       TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
@@ -367,7 +259,7 @@ public class TargetVpnGatewayClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -376,7 +268,7 @@ public class TargetVpnGatewayClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region2 = "region2-690338393";
+    RegionName region2 = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -389,7 +281,7 @@ public class TargetVpnGatewayClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone)
+      .setZone(zone.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -398,12 +290,12 @@ public class TargetVpnGatewayClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region2)
+      .setRegion(region2.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockTargetVpnGateways.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertTargetVpnGatewayMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     TargetVpnGateway targetVpnGateway = TargetVpnGateway.newBuilder().build();
@@ -412,23 +304,16 @@ public class TargetVpnGatewayClientTest {
         client.insertTargetVpnGateway(region, targetVpnGateway);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockTargetVpnGateways.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    InsertTargetVpnGatewayHttpRequest actualRequest = (InsertTargetVpnGatewayHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(region, actualRequest.getRegionAsRegionName());
-    Assert.assertEquals(targetVpnGateway, actualRequest.getTargetVpnGateway());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void insertTargetVpnGatewayExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetVpnGateways.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(insertTargetVpnGatewayMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -448,7 +333,7 @@ public class TargetVpnGatewayClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    TargetVpnGateway itemsElement = new ArrayList<>();
+    TargetVpnGateway itemsElement = TargetVpnGateway.newBuilder().build();
     List<TargetVpnGateway> items = Arrays.asList(itemsElement);
     TargetVpnGatewayList expectedResponse = TargetVpnGatewayList.newBuilder()
       .setKind(kind)
@@ -457,7 +342,7 @@ public class TargetVpnGatewayClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    mockTargetVpnGateways.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listTargetVpnGatewaysMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -467,22 +352,16 @@ public class TargetVpnGatewayClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<GeneratedMessageV3> actualRequests = mockTargetVpnGateways.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    ListTargetVpnGatewaysHttpRequest actualRequest = (ListTargetVpnGatewaysHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(region, actualRequest.getRegionAsRegionName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void listTargetVpnGatewaysExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetVpnGateways.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(listTargetVpnGatewaysMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");

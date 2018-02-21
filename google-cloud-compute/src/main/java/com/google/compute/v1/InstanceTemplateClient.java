@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListInstanceTemplatesPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.InstanceTemplateStub;
+import com.google.compute.v1.stub.InstanceTemplateStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    */
   protected InstanceTemplateClient(InstanceTemplateSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((InstanceTemplateStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class InstanceTemplateClient implements BackgroundResource {
 
     DeleteInstanceTemplateHttpRequest request =
         DeleteInstanceTemplateHttpRequest.newBuilder()
-        .setInstanceTemplateWithInstanceTemplateName(instanceTemplate)
+        .setInstanceTemplate(instanceTemplate.toString())
         .build();
     return deleteInstanceTemplate(request);
   }
@@ -189,7 +203,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
    *   InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
    *   DeleteInstanceTemplateHttpRequest request = DeleteInstanceTemplateHttpRequest.newBuilder()
-   *     .setInstanceTemplateWithInstanceTemplateName(instanceTemplate)
+   *     .setInstanceTemplate(instanceTemplate.toString())
    *     .build();
    *   Operation response = instanceTemplateClient.deleteInstanceTemplate(request);
    * }
@@ -212,7 +226,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
    *   InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
    *   DeleteInstanceTemplateHttpRequest request = DeleteInstanceTemplateHttpRequest.newBuilder()
-   *     .setInstanceTemplateWithInstanceTemplateName(instanceTemplate)
+   *     .setInstanceTemplate(instanceTemplate.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceTemplateClient.deleteInstanceTemplateCallable().futureCall(request);
    *   // Do something
@@ -245,7 +259,7 @@ public class InstanceTemplateClient implements BackgroundResource {
 
     GetInstanceTemplateHttpRequest request =
         GetInstanceTemplateHttpRequest.newBuilder()
-        .setInstanceTemplateWithInstanceTemplateName(instanceTemplate)
+        .setInstanceTemplate(instanceTemplate.toString())
         .build();
     return getInstanceTemplate(request);
   }
@@ -259,7 +273,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
    *   InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
    *   GetInstanceTemplateHttpRequest request = GetInstanceTemplateHttpRequest.newBuilder()
-   *     .setInstanceTemplateWithInstanceTemplateName(instanceTemplate)
+   *     .setInstanceTemplate(instanceTemplate.toString())
    *     .build();
    *   InstanceTemplate response = instanceTemplateClient.getInstanceTemplate(request);
    * }
@@ -282,7 +296,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
    *   InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
    *   GetInstanceTemplateHttpRequest request = GetInstanceTemplateHttpRequest.newBuilder()
-   *     .setInstanceTemplateWithInstanceTemplateName(instanceTemplate)
+   *     .setInstanceTemplate(instanceTemplate.toString())
    *     .build();
    *   ApiFuture&lt;InstanceTemplate&gt; future = instanceTemplateClient.getInstanceTemplateCallable().futureCall(request);
    *   // Do something
@@ -317,7 +331,7 @@ public class InstanceTemplateClient implements BackgroundResource {
 
     InsertInstanceTemplateHttpRequest request =
         InsertInstanceTemplateHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setInstanceTemplateResource(instanceTemplateResource)
         .build();
     return insertInstanceTemplate(request);
@@ -333,7 +347,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   InstanceTemplate instanceTemplate = InstanceTemplate.newBuilder().build();
    *   InsertInstanceTemplateHttpRequest request = InsertInstanceTemplateHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setInstanceTemplateResource(instanceTemplate)
    *     .build();
    *   Operation response = instanceTemplateClient.insertInstanceTemplate(request);
@@ -358,7 +372,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   InstanceTemplate instanceTemplate = InstanceTemplate.newBuilder().build();
    *   InsertInstanceTemplateHttpRequest request = InsertInstanceTemplateHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setInstanceTemplateResource(instanceTemplate)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceTemplateClient.insertInstanceTemplateCallable().futureCall(request);
@@ -393,7 +407,7 @@ public class InstanceTemplateClient implements BackgroundResource {
   public final ListInstanceTemplatesPagedResponse listInstanceTemplates(ProjectName project) {
     ListInstanceTemplatesHttpRequest request =
         ListInstanceTemplatesHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listInstanceTemplates(request);
   }
@@ -407,7 +421,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListInstanceTemplatesHttpRequest request = ListInstanceTemplatesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (InstanceTemplate element : instanceTemplateClient.listInstanceTemplates(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -433,7 +447,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListInstanceTemplatesHttpRequest request = ListInstanceTemplatesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListInstanceTemplatesPagedResponse&gt; future = instanceTemplateClient.listInstanceTemplatesPagedCallable().futureCall(request);
    *   // Do something
@@ -457,7 +471,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListInstanceTemplatesHttpRequest request = ListInstanceTemplatesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     InstanceTemplateList response = instanceTemplateClient.listInstanceTemplatesCallable().call(request);
@@ -509,4 +523,91 @@ public class InstanceTemplateClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListInstanceTemplatesPagedResponse extends AbstractPagedListResponse<
+      ListInstanceTemplatesHttpRequest,
+      InstanceTemplateList,
+      InstanceTemplate,
+      ListInstanceTemplatesPage,
+      ListInstanceTemplatesFixedSizeCollection> {
+
+    public static ApiFuture<ListInstanceTemplatesPagedResponse> createAsync(
+        PageContext<ListInstanceTemplatesHttpRequest, InstanceTemplateList, InstanceTemplate> context,
+        ApiFuture<InstanceTemplateList> futureResponse) {
+      ApiFuture<ListInstanceTemplatesPage> futurePage =
+          ListInstanceTemplatesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListInstanceTemplatesPage, ListInstanceTemplatesPagedResponse>() {
+            @Override
+            public ListInstanceTemplatesPagedResponse apply(ListInstanceTemplatesPage input) {
+              return new ListInstanceTemplatesPagedResponse(input);
+            }
+          });
+    }
+
+    private ListInstanceTemplatesPagedResponse(ListInstanceTemplatesPage page) {
+      super(page, ListInstanceTemplatesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListInstanceTemplatesPage extends AbstractPage<
+      ListInstanceTemplatesHttpRequest,
+      InstanceTemplateList,
+      InstanceTemplate,
+      ListInstanceTemplatesPage> {
+
+    private ListInstanceTemplatesPage(
+        PageContext<ListInstanceTemplatesHttpRequest, InstanceTemplateList, InstanceTemplate> context,
+        InstanceTemplateList response) {
+      super(context, response);
+    }
+
+    private static ListInstanceTemplatesPage createEmptyPage() {
+      return new ListInstanceTemplatesPage(null, null);
+    }
+
+    @Override
+    protected ListInstanceTemplatesPage createPage(
+        PageContext<ListInstanceTemplatesHttpRequest, InstanceTemplateList, InstanceTemplate> context,
+        InstanceTemplateList response) {
+      return new ListInstanceTemplatesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListInstanceTemplatesPage> createPageAsync(
+        PageContext<ListInstanceTemplatesHttpRequest, InstanceTemplateList, InstanceTemplate> context,
+        ApiFuture<InstanceTemplateList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListInstanceTemplatesFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListInstanceTemplatesHttpRequest,
+      InstanceTemplateList,
+      InstanceTemplate,
+      ListInstanceTemplatesPage,
+      ListInstanceTemplatesFixedSizeCollection> {
+
+    private ListInstanceTemplatesFixedSizeCollection(List<ListInstanceTemplatesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListInstanceTemplatesFixedSizeCollection createEmptyCollection() {
+      return new ListInstanceTemplatesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListInstanceTemplatesFixedSizeCollection createCollection(
+        List<ListInstanceTemplatesPage> pages, int collectionSize) {
+      return new ListInstanceTemplatesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

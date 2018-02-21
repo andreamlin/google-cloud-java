@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,18 +26,19 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteGlobalForwardingRuleHttpRequest;
 import com.google.compute.v1.ForwardingRule;
 import com.google.compute.v1.ForwardingRuleList;
 import com.google.compute.v1.GetGlobalForwardingRuleHttpRequest;
+import static com.google.compute.v1.GlobalForwardingRuleClient.ListGlobalForwardingRulesPagedResponse;
 import com.google.compute.v1.GlobalForwardingRuleSettings;
 import com.google.compute.v1.GlobalForwardingRulesForwardingRuleName;
 import com.google.compute.v1.InsertGlobalForwardingRuleHttpRequest;
 import com.google.compute.v1.ListGlobalForwardingRulesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListGlobalForwardingRulesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.SetTargetGlobalForwardingRuleHttpRequest;
 import com.google.compute.v1.TargetReference;
@@ -61,7 +62,8 @@ import javax.annotation.Generated;
 public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteGlobalForwardingRuleHttpRequest, Operation> deleteGlobalForwardingRuleMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteGlobalForwardingRuleHttpRequest, Operation> deleteGlobalForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<DeleteGlobalForwardingRuleHttpRequest, Operation>newBuilder()
           .setMethodName("compute.globalForwardingRules.delete")
           .setRequestInstance(DeleteGlobalForwardingRuleHttpRequest.getDefaultInstance())
@@ -75,7 +77,8 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetGlobalForwardingRuleHttpRequest, ForwardingRule> getGlobalForwardingRuleMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetGlobalForwardingRuleHttpRequest, ForwardingRule> getGlobalForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<GetGlobalForwardingRuleHttpRequest, ForwardingRule>newBuilder()
           .setMethodName("compute.globalForwardingRules.get")
           .setRequestInstance(GetGlobalForwardingRuleHttpRequest.getDefaultInstance())
@@ -89,7 +92,8 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertGlobalForwardingRuleHttpRequest, Operation> insertGlobalForwardingRuleMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertGlobalForwardingRuleHttpRequest, Operation> insertGlobalForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<InsertGlobalForwardingRuleHttpRequest, Operation>newBuilder()
           .setMethodName("compute.globalForwardingRules.insert")
           .setRequestInstance(InsertGlobalForwardingRuleHttpRequest.getDefaultInstance())
@@ -103,7 +107,8 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList> listGlobalForwardingRulesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList> listGlobalForwardingRulesMethodDescriptor =
       ApiMethodDescriptor.<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList>newBuilder()
           .setMethodName("compute.globalForwardingRules.list")
           .setRequestInstance(ListGlobalForwardingRulesHttpRequest.getDefaultInstance())
@@ -118,7 +123,8 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<SetTargetGlobalForwardingRuleHttpRequest, Operation> setTargetGlobalForwardingRuleMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<SetTargetGlobalForwardingRuleHttpRequest, Operation> setTargetGlobalForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<SetTargetGlobalForwardingRuleHttpRequest, Operation>newBuilder()
           .setMethodName("compute.globalForwardingRules.setTarget")
           .setRequestInstance(SetTargetGlobalForwardingRuleHttpRequest.getDefaultInstance())
@@ -142,12 +148,12 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
   private final UnaryCallable<ListGlobalForwardingRulesHttpRequest, ListGlobalForwardingRulesPagedResponse> listGlobalForwardingRulesPagedCallable;
   private final UnaryCallable<SetTargetGlobalForwardingRuleHttpRequest, Operation> setTargetGlobalForwardingRuleCallable;
 
-  public static final HttpJsonGlobalForwardingRuleStub create(GlobalForwardingRuleSettings settings) throws IOException {
+  public static final HttpJsonGlobalForwardingRuleStub create(GlobalForwardingRuleStubSettings settings) throws IOException {
     return new HttpJsonGlobalForwardingRuleStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonGlobalForwardingRuleStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleSettings.newBuilder().build(), clientContext);
+    return new HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -155,7 +161,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteGlobalForwardingRuleHttpRequest, Operation> deleteGlobalForwardingRuleTransportSettings =
         HttpJsonCallSettings.<DeleteGlobalForwardingRuleHttpRequest, Operation>newBuilder()

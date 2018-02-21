@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,8 +27,8 @@ import com.google.compute.v1.GetRegionBackendServiceHttpRequest;
 import com.google.compute.v1.InsertRegionBackendServiceHttpRequest;
 import com.google.compute.v1.ListRegionBackendServicesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionBackendServicesPagedResponse;
 import com.google.compute.v1.PatchRegionBackendServiceHttpRequest;
+import static com.google.compute.v1.RegionBackendServiceClient.ListRegionBackendServicesPagedResponse;
 import com.google.compute.v1.RegionBackendServicesBackendServiceName;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.ResourceGroupReference;

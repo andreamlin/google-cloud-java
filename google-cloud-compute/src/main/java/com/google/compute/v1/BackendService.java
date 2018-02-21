@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -117,6 +119,11 @@ public final class BackendService implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("affinityCookieTtlSec") && affinityCookieTtlSec != null) {
@@ -181,7 +188,7 @@ public final class BackendService implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -401,7 +408,7 @@ public final class BackendService implements ApiMessage {
       return backends;
     }
 
-    public Builder setBackends(List<Backend> backends) {
+    public Builder addAllBackends(List<Backend> backends) {
       this.backends = backends;
       return this;
     }
@@ -455,7 +462,7 @@ public final class BackendService implements ApiMessage {
       return healthChecks;
     }
 
-    public Builder setHealthChecks(List<String> healthChecks) {
+    public Builder addAllHealthChecks(List<String> healthChecks) {
       this.healthChecks = healthChecks;
       return this;
     }
@@ -605,13 +612,13 @@ public final class BackendService implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setAffinityCookieTtlSec(this.affinityCookieTtlSec);
-      newBuilder.setBackends(this.backends);
+      newBuilder.addAllBackends(this.backends);
       newBuilder.setConnectionDraining(this.connectionDraining);
       newBuilder.setCreationTimestamp(this.creationTimestamp);
       newBuilder.setDescription(this.description);
       newBuilder.setEnableCDN(this.enableCDN);
       newBuilder.setFingerprint(this.fingerprint);
-      newBuilder.setHealthChecks(this.healthChecks);
+      newBuilder.addAllHealthChecks(this.healthChecks);
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
       newBuilder.setLoadBalancingScheme(this.loadBalancingScheme);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,6 @@ public final class GetLicensHttpRequest implements ApiMessage {
   private final String key;
   private final String license;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
   private final String userIp;
 
@@ -48,7 +47,6 @@ public final class GetLicensHttpRequest implements ApiMessage {
     this.key = null;
     this.license = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
     this.userIp = null;
   }
@@ -61,7 +59,6 @@ public final class GetLicensHttpRequest implements ApiMessage {
       String key,
       String license,
       String prettyPrint,
-      String project,
       String quotaUser,
       String userIp
       ) {
@@ -71,9 +68,13 @@ public final class GetLicensHttpRequest implements ApiMessage {
     this.key = key;
     this.license = license;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
     this.userIp = userIp;
+  }
+
+  @Override
+  public LicenseName resourceNamePath() {
+    return LicenseName.parse(license);
   }
 
   @Override
@@ -97,9 +98,6 @@ public final class GetLicensHttpRequest implements ApiMessage {
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
     }
@@ -111,7 +109,7 @@ public final class GetLicensHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -137,10 +135,6 @@ public final class GetLicensHttpRequest implements ApiMessage {
 
   public String getPrettyPrint() {
     return prettyPrint;
-  }
-
-  public String getProject() {
-    return project;
   }
 
   public String getQuotaUser() {
@@ -178,7 +172,6 @@ public final class GetLicensHttpRequest implements ApiMessage {
     private String key;
     private String license;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
     private String userIp;
 
@@ -204,9 +197,6 @@ public final class GetLicensHttpRequest implements ApiMessage {
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
       }
@@ -223,7 +213,6 @@ public final class GetLicensHttpRequest implements ApiMessage {
       this.key = source.key;
       this.license = source.license;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
       this.userIp = source.userIp;
     }
@@ -282,15 +271,6 @@ public final class GetLicensHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
@@ -320,9 +300,6 @@ public final class GetLicensHttpRequest implements ApiMessage {
         missing += " license";
       }
 
-      if (project == null) {
-        missing += " project";
-      }
 
 
       if (!missing.isEmpty()) {
@@ -335,7 +312,6 @@ public final class GetLicensHttpRequest implements ApiMessage {
         key,
         license,
         prettyPrint,
-        project,
         quotaUser,
         userIp
       );
@@ -349,30 +325,9 @@ public final class GetLicensHttpRequest implements ApiMessage {
       newBuilder.setKey(this.key);
       newBuilder.setLicense(this.license);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setLicenseWithLicenseName(LicenseName value) {
-      if (value == null) {
-        return
-            setLicense("").
-            setProject("")
-            ;
-      }
-      return
-          setLicense(value.getLicense()).
-          setProject(value.getProject())
-          ;
-    }
-
-    public final LicenseName getLicenseAsLicenseName() {
-      return LicenseName.of(
-          getLicense(),
-          getProject()
-          );
     }
   }
 
@@ -385,7 +340,6 @@ public final class GetLicensHttpRequest implements ApiMessage {
         + "key=" + key + ", "
         + "license=" + license + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
         + "userIp=" + userIp
         + "}";
@@ -405,7 +359,6 @@ public final class GetLicensHttpRequest implements ApiMessage {
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.license, that.getLicense()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
           Objects.equals(this.userIp, that.getUserIp())
           ;
@@ -422,7 +375,6 @@ public final class GetLicensHttpRequest implements ApiMessage {
       key,
       license,
       prettyPrint,
-      project,
       quotaUser,
       userIp
     );

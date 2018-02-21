@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
 import com.google.api.gax.rpc.StatusCode;
+import com.google.api.gax.rpc.StubSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -46,9 +47,8 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import static com.google.compute.v1.PagedResponseWrappers.ListInstanceTemplatesPagedResponse;
-import com.google.compute.v1.stub.HttpJsonInstanceTemplateStub;
-import com.google.compute.v1.stub.InstanceTemplateStub;
+import static com.google.compute.v1.InstanceTemplateClient.ListInstanceTemplatesPagedResponse;
+import com.google.compute.v1.stub.InstanceTemplateStubSettings;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -86,82 +86,56 @@ import org.threeten.bp.Duration;
 @BetaApi
 public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSettings> {
   /**
-   * The default scopes of the service.
-   */
-  private static final ImmutableList<String> DEFAULT_SERVICE_SCOPES = ImmutableList.<String>builder()
-      .add("https://www.googleapis.com/auth/cloud-platform")
-      .add("https://www.googleapis.com/auth/compute")
-      .add("https://www.googleapis.com/auth/compute.readonly")
-      .add("https://www.googleapis.com/auth/devstorage.full_control")
-      .add("https://www.googleapis.com/auth/devstorage.read_only")
-      .add("https://www.googleapis.com/auth/devstorage.read_write")
-      .build();
-
-  private final UnaryCallSettings<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateSettings;
-  private final UnaryCallSettings<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateSettings;
-  private final UnaryCallSettings<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateSettings;
-  private final PagedCallSettings<ListInstanceTemplatesHttpRequest, InstanceTemplateList, ListInstanceTemplatesPagedResponse> listInstanceTemplatesSettings;
-
-  /**
    * Returns the object with the settings used for calls to deleteInstanceTemplate.
    */
   public UnaryCallSettings<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateSettings() {
-    return deleteInstanceTemplateSettings;
+    return ((InstanceTemplateStubSettings) getStubSettings()).deleteInstanceTemplateSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to getInstanceTemplate.
    */
   public UnaryCallSettings<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateSettings() {
-    return getInstanceTemplateSettings;
+    return ((InstanceTemplateStubSettings) getStubSettings()).getInstanceTemplateSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to insertInstanceTemplate.
    */
   public UnaryCallSettings<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateSettings() {
-    return insertInstanceTemplateSettings;
+    return ((InstanceTemplateStubSettings) getStubSettings()).insertInstanceTemplateSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to listInstanceTemplates.
    */
   public PagedCallSettings<ListInstanceTemplatesHttpRequest, InstanceTemplateList, ListInstanceTemplatesPagedResponse> listInstanceTemplatesSettings() {
-    return listInstanceTemplatesSettings;
+    return ((InstanceTemplateStubSettings) getStubSettings()).listInstanceTemplatesSettings();
   }
 
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
-  public InstanceTemplateStub createStub() throws IOException {
-    if (getTransportChannelProvider()
-        .getTransportName()
-        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
-      return HttpJsonInstanceTemplateStub.create(this);
-    } else {
-      throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportChannelProvider().getTransportName());
-    }
+  public static final InstanceTemplateSettings create(InstanceTemplateStubSettings stub) throws IOException {
+    return new InstanceTemplateSettings.Builder(stub.toBuilder()).build();
   }
 
   /**
    * Returns a builder for the default ExecutorProvider for this service.
    */
   public static InstantiatingExecutorProvider.Builder defaultExecutorProviderBuilder() {
-    return InstantiatingExecutorProvider.newBuilder();
+    return InstanceTemplateStubSettings.defaultExecutorProviderBuilder();
   }
 
   /**
    * Returns the default service endpoint.
    */
-  public static String getDefaultEndpoint() {
-    return "https://www.googleapis.com/compute/v1/projects/";
-  }
-
+   public static String getDefaultEndpoint() {
+     return InstanceTemplateStubSettings.getDefaultEndpoint();
+   }
   /**
    * Returns the default service port.
    */
   public static int getDefaultServicePort() {
-    return 443;
+    return InstanceTemplateStubSettings.getDefaultServicePort();
   }
 
 
@@ -169,7 +143,7 @@ public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSet
    * Returns the default service scopes.
    */
   public static List<String> getDefaultServiceScopes() {
-    return DEFAULT_SERVICE_SCOPES;
+    return InstanceTemplateStubSettings.getDefaultServiceScopes();
   }
 
 
@@ -177,25 +151,21 @@ public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSet
    * Returns a builder for the default credentials for this service.
    */
   public static GoogleCredentialsProvider.Builder defaultCredentialsProviderBuilder() {
-    return GoogleCredentialsProvider.newBuilder()
-        .setScopesToApply(DEFAULT_SERVICE_SCOPES)
-        ;
+    return InstanceTemplateStubSettings.defaultCredentialsProviderBuilder();
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder();
+    return InstanceTemplateStubSettings.defaultHttpJsonTransportProviderBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
-    return defaultHttpJsonTransportProviderBuilder().build();
+    return InstanceTemplateStubSettings.defaultTransportChannelProvider();
   }
 
   @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
-    return ApiClientHeaderProvider.newBuilder()
-        .setGeneratedLibToken("gapic", GaxProperties.getLibraryVersion(InstanceTemplateSettings.class))
-        .setTransportToken(GaxHttpJsonProperties.getHttpJsonTokenName(), GaxHttpJsonProperties.getHttpJsonVersion());
+    return InstanceTemplateStubSettings.defaultApiClientHeaderProviderBuilder();
   }
 
   /**
@@ -221,174 +191,35 @@ public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSet
 
   protected InstanceTemplateSettings(Builder settingsBuilder) throws IOException {
     super(settingsBuilder);
-
-    deleteInstanceTemplateSettings = settingsBuilder.deleteInstanceTemplateSettings().build();
-    getInstanceTemplateSettings = settingsBuilder.getInstanceTemplateSettings().build();
-    insertInstanceTemplateSettings = settingsBuilder.insertInstanceTemplateSettings().build();
-    listInstanceTemplatesSettings = settingsBuilder.listInstanceTemplatesSettings().build();
   }
-
-  private static final PagedListDescriptor<ListInstanceTemplatesHttpRequest, InstanceTemplateList, InstanceTemplate> LIST_INSTANCE_TEMPLATES_PAGE_STR_DESC =
-      new PagedListDescriptor<ListInstanceTemplatesHttpRequest, InstanceTemplateList, InstanceTemplate>() {
-        @Override
-        public String emptyToken() {
-          return "";
-        }
-        @Override
-        public ListInstanceTemplatesHttpRequest injectToken(ListInstanceTemplatesHttpRequest payload, String token) {
-          return ListInstanceTemplatesHttpRequest
-            .newBuilder(payload)
-            .setPageToken(token)
-            .build();
-        }
-        @Override
-        public ListInstanceTemplatesHttpRequest injectPageSize(ListInstanceTemplatesHttpRequest payload, int pageSize) {
-          return ListInstanceTemplatesHttpRequest
-            .newBuilder(payload)
-            .setMaxResults(pageSize)
-            .build();
-        }
-        @Override
-        public Integer extractPageSize(ListInstanceTemplatesHttpRequest payload) {
-          return payload.getMaxResults();
-        }
-        @Override
-        public String extractNextToken(InstanceTemplateList payload) {
-          return payload.getNextPageToken();
-        }
-        @Override
-        public Iterable<InstanceTemplate> extractResources(InstanceTemplateList payload) {
-          return payload.getItems();
-        }
-      };
-
-  private static final PagedListResponseFactory<ListInstanceTemplatesHttpRequest, InstanceTemplateList, ListInstanceTemplatesPagedResponse> LIST_INSTANCE_TEMPLATES_PAGE_STR_FACT =
-      new PagedListResponseFactory<ListInstanceTemplatesHttpRequest, InstanceTemplateList, ListInstanceTemplatesPagedResponse>() {
-        @Override
-        public ApiFuture<ListInstanceTemplatesPagedResponse> getFuturePagedResponse(
-            UnaryCallable<ListInstanceTemplatesHttpRequest, InstanceTemplateList> callable,
-            ListInstanceTemplatesHttpRequest request,
-            ApiCallContext context,
-            ApiFuture<InstanceTemplateList> futureResponse) {
-          PageContext<ListInstanceTemplatesHttpRequest, InstanceTemplateList, InstanceTemplate> pageContext =
-              PageContext.create(callable, LIST_INSTANCE_TEMPLATES_PAGE_STR_DESC, request, context);
-          return ListInstanceTemplatesPagedResponse.createAsync(pageContext, futureResponse);
-        }
-      };
-
 
   /**
    * Builder for InstanceTemplateSettings.
    */
   public static class Builder extends ClientSettings.Builder<InstanceTemplateSettings, Builder> {
-    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
-
-    private final UnaryCallSettings.Builder<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateSettings;
-    private final UnaryCallSettings.Builder<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateSettings;
-    private final UnaryCallSettings.Builder<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateSettings;
-    private final PagedCallSettings.Builder<ListInstanceTemplatesHttpRequest, InstanceTemplateList, ListInstanceTemplatesPagedResponse> listInstanceTemplatesSettings;
-
-    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
-
-    static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
-      definitions.put(
-          "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
-      definitions.put(
-          "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
-      RETRYABLE_CODE_DEFINITIONS = definitions.build();
-    }
-
-    private static final ImmutableMap<String, RetrySettings> RETRY_PARAM_DEFINITIONS;
-
-    static {
-      ImmutableMap.Builder<String, RetrySettings> definitions = ImmutableMap.builder();
-      RetrySettings settings = null;
-      settings = RetrySettings.newBuilder()
-          .setInitialRetryDelay(Duration.ofMillis(100L))
-          .setRetryDelayMultiplier(1.3)
-          .setMaxRetryDelay(Duration.ofMillis(60000L))
-          .setInitialRpcTimeout(Duration.ofMillis(20000L))
-          .setRpcTimeoutMultiplier(1.0)
-          .setMaxRpcTimeout(Duration.ofMillis(20000L))
-          .setTotalTimeout(Duration.ofMillis(600000L))
-          .build();
-      definitions.put("default", settings);
-      RETRY_PARAM_DEFINITIONS = definitions.build();
-    }
-
-    protected Builder() {
+    protected Builder() throws IOException {
       this((ClientContext) null);
     }
 
     protected Builder(ClientContext clientContext) {
-      super(clientContext);
-
-      deleteInstanceTemplateSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      getInstanceTemplateSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      insertInstanceTemplateSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      listInstanceTemplatesSettings = PagedCallSettings.newBuilder(
-          LIST_INSTANCE_TEMPLATES_PAGE_STR_FACT);
-
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
-          deleteInstanceTemplateSettings,
-          getInstanceTemplateSettings,
-          insertInstanceTemplateSettings,
-          listInstanceTemplatesSettings
-      );
-
-      initDefaults(this);
+      super(InstanceTemplateStubSettings.newBuilder(clientContext));
     }
 
     private static Builder createDefault() {
-      Builder builder = new Builder((ClientContext) null);
-      builder.setTransportChannelProvider(defaultTransportChannelProvider());
-      builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
-      builder.setInternalHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
-      builder.setEndpoint(getDefaultEndpoint());
-      return initDefaults(builder);
-    }
-
-    private static Builder initDefaults(Builder builder) {
-
-      builder.deleteInstanceTemplateSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.getInstanceTemplateSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.insertInstanceTemplateSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.listInstanceTemplatesSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      return builder;
+      return new Builder(InstanceTemplateStubSettings.newBuilder());
     }
 
     protected Builder(InstanceTemplateSettings settings) {
-      super(settings);
+      super(settings.getStubSettings().toBuilder());
+    }
 
-      deleteInstanceTemplateSettings = settings.deleteInstanceTemplateSettings.toBuilder();
-      getInstanceTemplateSettings = settings.getInstanceTemplateSettings.toBuilder();
-      insertInstanceTemplateSettings = settings.insertInstanceTemplateSettings.toBuilder();
-      listInstanceTemplatesSettings = settings.listInstanceTemplatesSettings.toBuilder();
+    protected Builder(InstanceTemplateStubSettings.Builder stubSettings) {
+      super(stubSettings);
+    }
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
-          deleteInstanceTemplateSettings,
-          getInstanceTemplateSettings,
-          insertInstanceTemplateSettings,
-          listInstanceTemplatesSettings
-      );
+
+    public InstanceTemplateStubSettings.Builder getStubSettingsBuilder() {
+      return ((InstanceTemplateStubSettings.Builder) getStubSettings());
     }
 
     /**
@@ -397,7 +228,7 @@ public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSet
      * Note: This method does not support applying settings to streaming methods.
      */
     public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
-      super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
+      super.applyToAllUnaryMethods(getStubSettingsBuilder().unaryMethodSettingsBuilders(), settingsUpdater);
       return this;
     }
 
@@ -405,28 +236,28 @@ public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSet
      * Returns the builder for the settings used for calls to deleteInstanceTemplate.
      */
     public UnaryCallSettings.Builder<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateSettings() {
-      return deleteInstanceTemplateSettings;
+      return getStubSettingsBuilder().deleteInstanceTemplateSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to getInstanceTemplate.
      */
     public UnaryCallSettings.Builder<GetInstanceTemplateHttpRequest, InstanceTemplate> getInstanceTemplateSettings() {
-      return getInstanceTemplateSettings;
+      return getStubSettingsBuilder().getInstanceTemplateSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to insertInstanceTemplate.
      */
     public UnaryCallSettings.Builder<InsertInstanceTemplateHttpRequest, Operation> insertInstanceTemplateSettings() {
-      return insertInstanceTemplateSettings;
+      return getStubSettingsBuilder().insertInstanceTemplateSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to listInstanceTemplates.
      */
     public PagedCallSettings.Builder<ListInstanceTemplatesHttpRequest, InstanceTemplateList, ListInstanceTemplatesPagedResponse> listInstanceTemplatesSettings() {
-      return listInstanceTemplatesSettings;
+      return getStubSettingsBuilder().listInstanceTemplatesSettings();
     }
 
     @Override

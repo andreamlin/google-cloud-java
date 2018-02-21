@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,18 +26,19 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteHttpsHealthCheckHttpRequest;
 import com.google.compute.v1.GetHttpsHealthCheckHttpRequest;
 import com.google.compute.v1.HttpsHealthCheck;
+import static com.google.compute.v1.HttpsHealthCheckClient.ListHttpsHealthChecksPagedResponse;
 import com.google.compute.v1.HttpsHealthCheckList;
 import com.google.compute.v1.HttpsHealthCheckName;
 import com.google.compute.v1.HttpsHealthCheckSettings;
 import com.google.compute.v1.InsertHttpsHealthCheckHttpRequest;
 import com.google.compute.v1.ListHttpsHealthChecksHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListHttpsHealthChecksPagedResponse;
 import com.google.compute.v1.PatchHttpsHealthCheckHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.UpdateHttpsHealthCheckHttpRequest;
@@ -61,7 +62,8 @@ import javax.annotation.Generated;
 public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteHttpsHealthCheckHttpRequest, Operation> deleteHttpsHealthCheckMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteHttpsHealthCheckHttpRequest, Operation> deleteHttpsHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<DeleteHttpsHealthCheckHttpRequest, Operation>newBuilder()
           .setMethodName("compute.httpsHealthChecks.delete")
           .setRequestInstance(DeleteHttpsHealthCheckHttpRequest.getDefaultInstance())
@@ -75,7 +77,8 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetHttpsHealthCheckHttpRequest, HttpsHealthCheck> getHttpsHealthCheckMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetHttpsHealthCheckHttpRequest, HttpsHealthCheck> getHttpsHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<GetHttpsHealthCheckHttpRequest, HttpsHealthCheck>newBuilder()
           .setMethodName("compute.httpsHealthChecks.get")
           .setRequestInstance(GetHttpsHealthCheckHttpRequest.getDefaultInstance())
@@ -89,7 +92,8 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertHttpsHealthCheckHttpRequest, Operation> insertHttpsHealthCheckMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertHttpsHealthCheckHttpRequest, Operation> insertHttpsHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<InsertHttpsHealthCheckHttpRequest, Operation>newBuilder()
           .setMethodName("compute.httpsHealthChecks.insert")
           .setRequestInstance(InsertHttpsHealthCheckHttpRequest.getDefaultInstance())
@@ -103,7 +107,8 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListHttpsHealthChecksHttpRequest, HttpsHealthCheckList> listHttpsHealthChecksMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListHttpsHealthChecksHttpRequest, HttpsHealthCheckList> listHttpsHealthChecksMethodDescriptor =
       ApiMethodDescriptor.<ListHttpsHealthChecksHttpRequest, HttpsHealthCheckList>newBuilder()
           .setMethodName("compute.httpsHealthChecks.list")
           .setRequestInstance(ListHttpsHealthChecksHttpRequest.getDefaultInstance())
@@ -118,7 +123,8 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<PatchHttpsHealthCheckHttpRequest, Operation> patchHttpsHealthCheckMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<PatchHttpsHealthCheckHttpRequest, Operation> patchHttpsHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<PatchHttpsHealthCheckHttpRequest, Operation>newBuilder()
           .setMethodName("compute.httpsHealthChecks.patch")
           .setRequestInstance(PatchHttpsHealthCheckHttpRequest.getDefaultInstance())
@@ -132,7 +138,8 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
           .build();
-  private static final ApiMethodDescriptor<UpdateHttpsHealthCheckHttpRequest, Operation> updateHttpsHealthCheckMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<UpdateHttpsHealthCheckHttpRequest, Operation> updateHttpsHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<UpdateHttpsHealthCheckHttpRequest, Operation>newBuilder()
           .setMethodName("compute.httpsHealthChecks.update")
           .setRequestInstance(UpdateHttpsHealthCheckHttpRequest.getDefaultInstance())
@@ -157,12 +164,12 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
   private final UnaryCallable<PatchHttpsHealthCheckHttpRequest, Operation> patchHttpsHealthCheckCallable;
   private final UnaryCallable<UpdateHttpsHealthCheckHttpRequest, Operation> updateHttpsHealthCheckCallable;
 
-  public static final HttpJsonHttpsHealthCheckStub create(HttpsHealthCheckSettings settings) throws IOException {
+  public static final HttpJsonHttpsHealthCheckStub create(HttpsHealthCheckStubSettings settings) throws IOException {
     return new HttpJsonHttpsHealthCheckStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonHttpsHealthCheckStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonHttpsHealthCheckStub(HttpsHealthCheckSettings.newBuilder().build(), clientContext);
+    return new HttpJsonHttpsHealthCheckStub(HttpsHealthCheckStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -170,7 +177,7 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonHttpsHealthCheckStub(HttpsHealthCheckSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonHttpsHealthCheckStub(HttpsHealthCheckStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteHttpsHealthCheckHttpRequest, Operation> deleteHttpsHealthCheckTransportSettings =
         HttpJsonCallSettings.<DeleteHttpsHealthCheckHttpRequest, Operation>newBuilder()

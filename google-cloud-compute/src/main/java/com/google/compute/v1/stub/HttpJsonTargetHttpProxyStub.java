@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteTargetHttpProxyHttpRequest;
@@ -33,10 +34,10 @@ import com.google.compute.v1.GetTargetHttpProxyHttpRequest;
 import com.google.compute.v1.InsertTargetHttpProxyHttpRequest;
 import com.google.compute.v1.ListTargetHttpProxiesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetHttpProxiesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.SetUrlMapTargetHttpProxyHttpRequest;
 import com.google.compute.v1.TargetHttpProxy;
+import static com.google.compute.v1.TargetHttpProxyClient.ListTargetHttpProxiesPagedResponse;
 import com.google.compute.v1.TargetHttpProxyList;
 import com.google.compute.v1.TargetHttpProxyName;
 import com.google.compute.v1.TargetHttpProxySettings;
@@ -61,7 +62,8 @@ import javax.annotation.Generated;
 public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteTargetHttpProxyHttpRequest, Operation> deleteTargetHttpProxyMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteTargetHttpProxyHttpRequest, Operation> deleteTargetHttpProxyMethodDescriptor =
       ApiMethodDescriptor.<DeleteTargetHttpProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetHttpProxies.delete")
           .setRequestInstance(DeleteTargetHttpProxyHttpRequest.getDefaultInstance())
@@ -75,7 +77,8 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetTargetHttpProxyHttpRequest, TargetHttpProxy> getTargetHttpProxyMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetTargetHttpProxyHttpRequest, TargetHttpProxy> getTargetHttpProxyMethodDescriptor =
       ApiMethodDescriptor.<GetTargetHttpProxyHttpRequest, TargetHttpProxy>newBuilder()
           .setMethodName("compute.targetHttpProxies.get")
           .setRequestInstance(GetTargetHttpProxyHttpRequest.getDefaultInstance())
@@ -89,7 +92,8 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertTargetHttpProxyHttpRequest, Operation> insertTargetHttpProxyMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertTargetHttpProxyHttpRequest, Operation> insertTargetHttpProxyMethodDescriptor =
       ApiMethodDescriptor.<InsertTargetHttpProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetHttpProxies.insert")
           .setRequestInstance(InsertTargetHttpProxyHttpRequest.getDefaultInstance())
@@ -103,7 +107,8 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList> listTargetHttpProxiesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList> listTargetHttpProxiesMethodDescriptor =
       ApiMethodDescriptor.<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList>newBuilder()
           .setMethodName("compute.targetHttpProxies.list")
           .setRequestInstance(ListTargetHttpProxiesHttpRequest.getDefaultInstance())
@@ -118,7 +123,8 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<SetUrlMapTargetHttpProxyHttpRequest, Operation> setUrlMapTargetHttpProxyMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<SetUrlMapTargetHttpProxyHttpRequest, Operation> setUrlMapTargetHttpProxyMethodDescriptor =
       ApiMethodDescriptor.<SetUrlMapTargetHttpProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetHttpProxies.setUrlMap")
           .setRequestInstance(SetUrlMapTargetHttpProxyHttpRequest.getDefaultInstance())
@@ -142,12 +148,12 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
   private final UnaryCallable<ListTargetHttpProxiesHttpRequest, ListTargetHttpProxiesPagedResponse> listTargetHttpProxiesPagedCallable;
   private final UnaryCallable<SetUrlMapTargetHttpProxyHttpRequest, Operation> setUrlMapTargetHttpProxyCallable;
 
-  public static final HttpJsonTargetHttpProxyStub create(TargetHttpProxySettings settings) throws IOException {
+  public static final HttpJsonTargetHttpProxyStub create(TargetHttpProxyStubSettings settings) throws IOException {
     return new HttpJsonTargetHttpProxyStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonTargetHttpProxyStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonTargetHttpProxyStub(TargetHttpProxySettings.newBuilder().build(), clientContext);
+    return new HttpJsonTargetHttpProxyStub(TargetHttpProxyStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -155,7 +161,7 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonTargetHttpProxyStub(TargetHttpProxySettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonTargetHttpProxyStub(TargetHttpProxyStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteTargetHttpProxyHttpRequest, Operation> deleteTargetHttpProxyTransportSettings =
         HttpJsonCallSettings.<DeleteTargetHttpProxyHttpRequest, Operation>newBuilder()

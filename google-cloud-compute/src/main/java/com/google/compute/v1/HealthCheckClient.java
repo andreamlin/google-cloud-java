@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListHealthChecksPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.HealthCheckStub;
+import com.google.compute.v1.stub.HealthCheckStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class HealthCheckClient implements BackgroundResource {
    */
   protected HealthCheckClient(HealthCheckSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((HealthCheckStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class HealthCheckClient implements BackgroundResource {
 
     DeleteHealthCheckHttpRequest request =
         DeleteHealthCheckHttpRequest.newBuilder()
-        .setHealthCheckWithHealthCheckName(healthCheck)
+        .setHealthCheck(healthCheck.toString())
         .build();
     return deleteHealthCheck(request);
   }
@@ -189,7 +203,7 @@ public class HealthCheckClient implements BackgroundResource {
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
    *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   DeleteHealthCheckHttpRequest request = DeleteHealthCheckHttpRequest.newBuilder()
-   *     .setHealthCheckWithHealthCheckName(healthCheck)
+   *     .setHealthCheck(healthCheck.toString())
    *     .build();
    *   Operation response = healthCheckClient.deleteHealthCheck(request);
    * }
@@ -212,7 +226,7 @@ public class HealthCheckClient implements BackgroundResource {
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
    *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   DeleteHealthCheckHttpRequest request = DeleteHealthCheckHttpRequest.newBuilder()
-   *     .setHealthCheckWithHealthCheckName(healthCheck)
+   *     .setHealthCheck(healthCheck.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = healthCheckClient.deleteHealthCheckCallable().futureCall(request);
    *   // Do something
@@ -245,7 +259,7 @@ public class HealthCheckClient implements BackgroundResource {
 
     GetHealthCheckHttpRequest request =
         GetHealthCheckHttpRequest.newBuilder()
-        .setHealthCheckWithHealthCheckName(healthCheck)
+        .setHealthCheck(healthCheck.toString())
         .build();
     return getHealthCheck(request);
   }
@@ -259,7 +273,7 @@ public class HealthCheckClient implements BackgroundResource {
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
    *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   GetHealthCheckHttpRequest request = GetHealthCheckHttpRequest.newBuilder()
-   *     .setHealthCheckWithHealthCheckName(healthCheck)
+   *     .setHealthCheck(healthCheck.toString())
    *     .build();
    *   HealthCheck response = healthCheckClient.getHealthCheck(request);
    * }
@@ -282,7 +296,7 @@ public class HealthCheckClient implements BackgroundResource {
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
    *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   GetHealthCheckHttpRequest request = GetHealthCheckHttpRequest.newBuilder()
-   *     .setHealthCheckWithHealthCheckName(healthCheck)
+   *     .setHealthCheck(healthCheck.toString())
    *     .build();
    *   ApiFuture&lt;HealthCheck&gt; future = healthCheckClient.getHealthCheckCallable().futureCall(request);
    *   // Do something
@@ -317,7 +331,7 @@ public class HealthCheckClient implements BackgroundResource {
 
     InsertHealthCheckHttpRequest request =
         InsertHealthCheckHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setHealthCheckResource(healthCheckResource)
         .build();
     return insertHealthCheck(request);
@@ -333,7 +347,7 @@ public class HealthCheckClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   HealthCheck healthCheck = HealthCheck.newBuilder().build();
    *   InsertHealthCheckHttpRequest request = InsertHealthCheckHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setHealthCheckResource(healthCheck)
    *     .build();
    *   Operation response = healthCheckClient.insertHealthCheck(request);
@@ -358,7 +372,7 @@ public class HealthCheckClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   HealthCheck healthCheck = HealthCheck.newBuilder().build();
    *   InsertHealthCheckHttpRequest request = InsertHealthCheckHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setHealthCheckResource(healthCheck)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = healthCheckClient.insertHealthCheckCallable().futureCall(request);
@@ -393,7 +407,7 @@ public class HealthCheckClient implements BackgroundResource {
   public final ListHealthChecksPagedResponse listHealthChecks(ProjectName project) {
     ListHealthChecksHttpRequest request =
         ListHealthChecksHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listHealthChecks(request);
   }
@@ -407,7 +421,7 @@ public class HealthCheckClient implements BackgroundResource {
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListHealthChecksHttpRequest request = ListHealthChecksHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (HealthCheck element : healthCheckClient.listHealthChecks(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -433,7 +447,7 @@ public class HealthCheckClient implements BackgroundResource {
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListHealthChecksHttpRequest request = ListHealthChecksHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListHealthChecksPagedResponse&gt; future = healthCheckClient.listHealthChecksPagedCallable().futureCall(request);
    *   // Do something
@@ -457,7 +471,7 @@ public class HealthCheckClient implements BackgroundResource {
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListHealthChecksHttpRequest request = ListHealthChecksHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     HealthCheckList response = healthCheckClient.listHealthChecksCallable().call(request);
@@ -500,7 +514,7 @@ public class HealthCheckClient implements BackgroundResource {
 
     PatchHealthCheckHttpRequest request =
         PatchHealthCheckHttpRequest.newBuilder()
-        .setHealthCheckWithHealthCheckName(healthCheck)
+        .setHealthCheck(healthCheck.toString())
         .setHealthCheckResource(healthCheckResource)
         .build();
     return patchHealthCheck(request);
@@ -515,7 +529,7 @@ public class HealthCheckClient implements BackgroundResource {
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
    *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   PatchHealthCheckHttpRequest request = PatchHealthCheckHttpRequest.newBuilder()
-   *     .setHealthCheckWithHealthCheckName(healthCheck)
+   *     .setHealthCheck(healthCheck.toString())
    *     .build();
    *   Operation response = healthCheckClient.patchHealthCheck(request);
    * }
@@ -538,7 +552,7 @@ public class HealthCheckClient implements BackgroundResource {
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
    *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   PatchHealthCheckHttpRequest request = PatchHealthCheckHttpRequest.newBuilder()
-   *     .setHealthCheckWithHealthCheckName(healthCheck)
+   *     .setHealthCheck(healthCheck.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = healthCheckClient.patchHealthCheckCallable().futureCall(request);
    *   // Do something
@@ -572,7 +586,7 @@ public class HealthCheckClient implements BackgroundResource {
 
     UpdateHealthCheckHttpRequest request =
         UpdateHealthCheckHttpRequest.newBuilder()
-        .setHealthCheckWithHealthCheckName(healthCheck)
+        .setHealthCheck(healthCheck.toString())
         .setHealthCheckResource(healthCheckResource)
         .build();
     return updateHealthCheck(request);
@@ -587,7 +601,7 @@ public class HealthCheckClient implements BackgroundResource {
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
    *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   UpdateHealthCheckHttpRequest request = UpdateHealthCheckHttpRequest.newBuilder()
-   *     .setHealthCheckWithHealthCheckName(healthCheck)
+   *     .setHealthCheck(healthCheck.toString())
    *     .build();
    *   Operation response = healthCheckClient.updateHealthCheck(request);
    * }
@@ -610,7 +624,7 @@ public class HealthCheckClient implements BackgroundResource {
    * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
    *   HealthCheckName healthCheck = HealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
    *   UpdateHealthCheckHttpRequest request = UpdateHealthCheckHttpRequest.newBuilder()
-   *     .setHealthCheckWithHealthCheckName(healthCheck)
+   *     .setHealthCheck(healthCheck.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = healthCheckClient.updateHealthCheckCallable().futureCall(request);
    *   // Do something
@@ -653,4 +667,91 @@ public class HealthCheckClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListHealthChecksPagedResponse extends AbstractPagedListResponse<
+      ListHealthChecksHttpRequest,
+      HealthCheckList,
+      HealthCheck,
+      ListHealthChecksPage,
+      ListHealthChecksFixedSizeCollection> {
+
+    public static ApiFuture<ListHealthChecksPagedResponse> createAsync(
+        PageContext<ListHealthChecksHttpRequest, HealthCheckList, HealthCheck> context,
+        ApiFuture<HealthCheckList> futureResponse) {
+      ApiFuture<ListHealthChecksPage> futurePage =
+          ListHealthChecksPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListHealthChecksPage, ListHealthChecksPagedResponse>() {
+            @Override
+            public ListHealthChecksPagedResponse apply(ListHealthChecksPage input) {
+              return new ListHealthChecksPagedResponse(input);
+            }
+          });
+    }
+
+    private ListHealthChecksPagedResponse(ListHealthChecksPage page) {
+      super(page, ListHealthChecksFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListHealthChecksPage extends AbstractPage<
+      ListHealthChecksHttpRequest,
+      HealthCheckList,
+      HealthCheck,
+      ListHealthChecksPage> {
+
+    private ListHealthChecksPage(
+        PageContext<ListHealthChecksHttpRequest, HealthCheckList, HealthCheck> context,
+        HealthCheckList response) {
+      super(context, response);
+    }
+
+    private static ListHealthChecksPage createEmptyPage() {
+      return new ListHealthChecksPage(null, null);
+    }
+
+    @Override
+    protected ListHealthChecksPage createPage(
+        PageContext<ListHealthChecksHttpRequest, HealthCheckList, HealthCheck> context,
+        HealthCheckList response) {
+      return new ListHealthChecksPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListHealthChecksPage> createPageAsync(
+        PageContext<ListHealthChecksHttpRequest, HealthCheckList, HealthCheck> context,
+        ApiFuture<HealthCheckList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListHealthChecksFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListHealthChecksHttpRequest,
+      HealthCheckList,
+      HealthCheck,
+      ListHealthChecksPage,
+      ListHealthChecksFixedSizeCollection> {
+
+    private ListHealthChecksFixedSizeCollection(List<ListHealthChecksPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListHealthChecksFixedSizeCollection createEmptyCollection() {
+      return new ListHealthChecksFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListHealthChecksFixedSizeCollection createCollection(
+        List<ListHealthChecksPage> pages, int collectionSize) {
+      return new ListHealthChecksFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

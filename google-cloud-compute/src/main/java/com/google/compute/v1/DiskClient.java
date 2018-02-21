@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListDisksPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListDisksPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.DiskStub;
+import com.google.compute.v1.stub.DiskStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -138,7 +151,7 @@ public class DiskClient implements BackgroundResource {
    */
   protected DiskClient(DiskSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((DiskStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -178,7 +191,7 @@ public class DiskClient implements BackgroundResource {
   public final AggregatedListDisksPagedResponse aggregatedListDisks(ProjectName project) {
     AggregatedListDisksHttpRequest request =
         AggregatedListDisksHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return aggregatedListDisks(request);
   }
@@ -192,7 +205,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListDisksHttpRequest request = AggregatedListDisksHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (Disk element : diskClient.aggregatedListDisks(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -218,7 +231,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListDisksHttpRequest request = AggregatedListDisksHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;AggregatedListDisksPagedResponse&gt; future = diskClient.aggregatedListDisksPagedCallable().futureCall(request);
    *   // Do something
@@ -242,11 +255,11 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListDisksHttpRequest request = AggregatedListDisksHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     DiskAggregatedList response = diskClient.aggregatedListDisksCallable().call(request);
-   *     for (Disk element : response.getItems().getDisks()) {
+   *     for (Disk element : response.getDisks()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -286,7 +299,7 @@ public class DiskClient implements BackgroundResource {
 
     CreateSnapshotDiskHttpRequest request =
         CreateSnapshotDiskHttpRequest.newBuilder()
-        .setDiskWithDiskName(disk)
+        .setDisk(disk.toString())
         .setSnapshotResource(snapshotResource)
         .build();
     return createSnapshotDisk(request);
@@ -302,7 +315,7 @@ public class DiskClient implements BackgroundResource {
    *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   Snapshot snapshot = Snapshot.newBuilder().build();
    *   CreateSnapshotDiskHttpRequest request = CreateSnapshotDiskHttpRequest.newBuilder()
-   *     .setDiskWithDiskName(disk)
+   *     .setDisk(disk.toString())
    *     .setSnapshotResource(snapshot)
    *     .build();
    *   Operation response = diskClient.createSnapshotDisk(request);
@@ -327,7 +340,7 @@ public class DiskClient implements BackgroundResource {
    *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   Snapshot snapshot = Snapshot.newBuilder().build();
    *   CreateSnapshotDiskHttpRequest request = CreateSnapshotDiskHttpRequest.newBuilder()
-   *     .setDiskWithDiskName(disk)
+   *     .setDisk(disk.toString())
    *     .setSnapshotResource(snapshot)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = diskClient.createSnapshotDiskCallable().futureCall(request);
@@ -361,7 +374,7 @@ public class DiskClient implements BackgroundResource {
 
     DeleteDiskHttpRequest request =
         DeleteDiskHttpRequest.newBuilder()
-        .setDiskWithDiskName(disk)
+        .setDisk(disk.toString())
         .build();
     return deleteDisk(request);
   }
@@ -375,7 +388,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   DeleteDiskHttpRequest request = DeleteDiskHttpRequest.newBuilder()
-   *     .setDiskWithDiskName(disk)
+   *     .setDisk(disk.toString())
    *     .build();
    *   Operation response = diskClient.deleteDisk(request);
    * }
@@ -398,7 +411,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   DeleteDiskHttpRequest request = DeleteDiskHttpRequest.newBuilder()
-   *     .setDiskWithDiskName(disk)
+   *     .setDisk(disk.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = diskClient.deleteDiskCallable().futureCall(request);
    *   // Do something
@@ -431,7 +444,7 @@ public class DiskClient implements BackgroundResource {
 
     GetDiskHttpRequest request =
         GetDiskHttpRequest.newBuilder()
-        .setDiskWithDiskName(disk)
+        .setDisk(disk.toString())
         .build();
     return getDisk(request);
   }
@@ -445,7 +458,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   GetDiskHttpRequest request = GetDiskHttpRequest.newBuilder()
-   *     .setDiskWithDiskName(disk)
+   *     .setDisk(disk.toString())
    *     .build();
    *   Disk response = diskClient.getDisk(request);
    * }
@@ -468,7 +481,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   GetDiskHttpRequest request = GetDiskHttpRequest.newBuilder()
-   *     .setDiskWithDiskName(disk)
+   *     .setDisk(disk.toString())
    *     .build();
    *   ApiFuture&lt;Disk&gt; future = diskClient.getDiskCallable().futureCall(request);
    *   // Do something
@@ -505,7 +518,7 @@ public class DiskClient implements BackgroundResource {
 
     InsertDiskHttpRequest request =
         InsertDiskHttpRequest.newBuilder()
-        .setZoneWithZoneName(zone)
+        .setZone(zone.toString())
         .setSourceImage(sourceImage)
         .setDiskResource(diskResource)
         .build();
@@ -523,7 +536,7 @@ public class DiskClient implements BackgroundResource {
    *   String sourceImage = "";
    *   Disk disk = Disk.newBuilder().build();
    *   InsertDiskHttpRequest request = InsertDiskHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .setSourceImage(sourceImage)
    *     .setDiskResource(disk)
    *     .build();
@@ -550,7 +563,7 @@ public class DiskClient implements BackgroundResource {
    *   String sourceImage = "";
    *   Disk disk = Disk.newBuilder().build();
    *   InsertDiskHttpRequest request = InsertDiskHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .setSourceImage(sourceImage)
    *     .setDiskResource(disk)
    *     .build();
@@ -586,7 +599,7 @@ public class DiskClient implements BackgroundResource {
   public final ListDisksPagedResponse listDisks(ZoneName zone) {
     ListDisksHttpRequest request =
         ListDisksHttpRequest.newBuilder()
-        .setZoneWithZoneName(zone)
+        .setZone(zone.toString())
         .build();
     return listDisks(request);
   }
@@ -600,7 +613,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListDisksHttpRequest request = ListDisksHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   for (Disk element : diskClient.listDisks(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -626,7 +639,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListDisksHttpRequest request = ListDisksHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   ApiFuture&lt;ListDisksPagedResponse&gt; future = diskClient.listDisksPagedCallable().futureCall(request);
    *   // Do something
@@ -650,7 +663,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListDisksHttpRequest request = ListDisksHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   while (true) {
    *     DiskList response = diskClient.listDisksCallable().call(request);
@@ -694,7 +707,7 @@ public class DiskClient implements BackgroundResource {
 
     ResizeDiskHttpRequest request =
         ResizeDiskHttpRequest.newBuilder()
-        .setDiskWithDiskName(disk)
+        .setDisk(disk.toString())
         .setDisksResizeRequestResource(disksResizeRequestResource)
         .build();
     return resizeDisk(request);
@@ -710,7 +723,7 @@ public class DiskClient implements BackgroundResource {
    *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   DisksResizeRequest disksResizeRequest = DisksResizeRequest.newBuilder().build();
    *   ResizeDiskHttpRequest request = ResizeDiskHttpRequest.newBuilder()
-   *     .setDiskWithDiskName(disk)
+   *     .setDisk(disk.toString())
    *     .setDisksResizeRequestResource(disksResizeRequest)
    *     .build();
    *   Operation response = diskClient.resizeDisk(request);
@@ -735,7 +748,7 @@ public class DiskClient implements BackgroundResource {
    *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   DisksResizeRequest disksResizeRequest = DisksResizeRequest.newBuilder().build();
    *   ResizeDiskHttpRequest request = ResizeDiskHttpRequest.newBuilder()
-   *     .setDiskWithDiskName(disk)
+   *     .setDisk(disk.toString())
    *     .setDisksResizeRequestResource(disksResizeRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = diskClient.resizeDiskCallable().futureCall(request);
@@ -779,4 +792,178 @@ public class DiskClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class AggregatedListDisksPagedResponse extends AbstractPagedListResponse<
+      AggregatedListDisksHttpRequest,
+      DiskAggregatedList,
+      Disk,
+      AggregatedListDisksPage,
+      AggregatedListDisksFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListDisksPagedResponse> createAsync(
+        PageContext<AggregatedListDisksHttpRequest, DiskAggregatedList, Disk> context,
+        ApiFuture<DiskAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListDisksPage> futurePage =
+          AggregatedListDisksPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<AggregatedListDisksPage, AggregatedListDisksPagedResponse>() {
+            @Override
+            public AggregatedListDisksPagedResponse apply(AggregatedListDisksPage input) {
+              return new AggregatedListDisksPagedResponse(input);
+            }
+          });
+    }
+
+    private AggregatedListDisksPagedResponse(AggregatedListDisksPage page) {
+      super(page, AggregatedListDisksFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class AggregatedListDisksPage extends AbstractPage<
+      AggregatedListDisksHttpRequest,
+      DiskAggregatedList,
+      Disk,
+      AggregatedListDisksPage> {
+
+    private AggregatedListDisksPage(
+        PageContext<AggregatedListDisksHttpRequest, DiskAggregatedList, Disk> context,
+        DiskAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListDisksPage createEmptyPage() {
+      return new AggregatedListDisksPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListDisksPage createPage(
+        PageContext<AggregatedListDisksHttpRequest, DiskAggregatedList, Disk> context,
+        DiskAggregatedList response) {
+      return new AggregatedListDisksPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListDisksPage> createPageAsync(
+        PageContext<AggregatedListDisksHttpRequest, DiskAggregatedList, Disk> context,
+        ApiFuture<DiskAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class AggregatedListDisksFixedSizeCollection extends AbstractFixedSizeCollection<
+      AggregatedListDisksHttpRequest,
+      DiskAggregatedList,
+      Disk,
+      AggregatedListDisksPage,
+      AggregatedListDisksFixedSizeCollection> {
+
+    private AggregatedListDisksFixedSizeCollection(List<AggregatedListDisksPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListDisksFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListDisksFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListDisksFixedSizeCollection createCollection(
+        List<AggregatedListDisksPage> pages, int collectionSize) {
+      return new AggregatedListDisksFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
+  public static class ListDisksPagedResponse extends AbstractPagedListResponse<
+      ListDisksHttpRequest,
+      DiskList,
+      Disk,
+      ListDisksPage,
+      ListDisksFixedSizeCollection> {
+
+    public static ApiFuture<ListDisksPagedResponse> createAsync(
+        PageContext<ListDisksHttpRequest, DiskList, Disk> context,
+        ApiFuture<DiskList> futureResponse) {
+      ApiFuture<ListDisksPage> futurePage =
+          ListDisksPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListDisksPage, ListDisksPagedResponse>() {
+            @Override
+            public ListDisksPagedResponse apply(ListDisksPage input) {
+              return new ListDisksPagedResponse(input);
+            }
+          });
+    }
+
+    private ListDisksPagedResponse(ListDisksPage page) {
+      super(page, ListDisksFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListDisksPage extends AbstractPage<
+      ListDisksHttpRequest,
+      DiskList,
+      Disk,
+      ListDisksPage> {
+
+    private ListDisksPage(
+        PageContext<ListDisksHttpRequest, DiskList, Disk> context,
+        DiskList response) {
+      super(context, response);
+    }
+
+    private static ListDisksPage createEmptyPage() {
+      return new ListDisksPage(null, null);
+    }
+
+    @Override
+    protected ListDisksPage createPage(
+        PageContext<ListDisksHttpRequest, DiskList, Disk> context,
+        DiskList response) {
+      return new ListDisksPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListDisksPage> createPageAsync(
+        PageContext<ListDisksHttpRequest, DiskList, Disk> context,
+        ApiFuture<DiskList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListDisksFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListDisksHttpRequest,
+      DiskList,
+      Disk,
+      ListDisksPage,
+      ListDisksFixedSizeCollection> {
+
+    private ListDisksFixedSizeCollection(List<ListDisksPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListDisksFixedSizeCollection createEmptyCollection() {
+      return new ListDisksFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListDisksFixedSizeCollection createCollection(
+        List<ListDisksPage> pages, int collectionSize) {
+      return new ListDisksFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
 import com.google.api.gax.rpc.PagedListResponseFactory;
 import com.google.api.gax.rpc.StatusCode;
+import com.google.api.gax.rpc.StubSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -46,9 +47,8 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionBackendServicesPagedResponse;
-import com.google.compute.v1.stub.HttpJsonRegionBackendServiceStub;
-import com.google.compute.v1.stub.RegionBackendServiceStub;
+import static com.google.compute.v1.RegionBackendServiceClient.ListRegionBackendServicesPagedResponse;
+import com.google.compute.v1.stub.RegionBackendServiceStubSettings;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -86,106 +86,77 @@ import org.threeten.bp.Duration;
 @BetaApi
 public class RegionBackendServiceSettings extends ClientSettings<RegionBackendServiceSettings> {
   /**
-   * The default scopes of the service.
-   */
-  private static final ImmutableList<String> DEFAULT_SERVICE_SCOPES = ImmutableList.<String>builder()
-      .add("https://www.googleapis.com/auth/cloud-platform")
-      .add("https://www.googleapis.com/auth/compute")
-      .add("https://www.googleapis.com/auth/compute.readonly")
-      .add("https://www.googleapis.com/auth/devstorage.full_control")
-      .add("https://www.googleapis.com/auth/devstorage.read_only")
-      .add("https://www.googleapis.com/auth/devstorage.read_write")
-      .build();
-
-  private final UnaryCallSettings<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceSettings;
-  private final UnaryCallSettings<GetRegionBackendServiceHttpRequest, BackendService> getRegionBackendServiceSettings;
-  private final UnaryCallSettings<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthRegionBackendServiceSettings;
-  private final UnaryCallSettings<InsertRegionBackendServiceHttpRequest, Operation> insertRegionBackendServiceSettings;
-  private final PagedCallSettings<ListRegionBackendServicesHttpRequest, BackendServiceList, ListRegionBackendServicesPagedResponse> listRegionBackendServicesSettings;
-  private final UnaryCallSettings<PatchRegionBackendServiceHttpRequest, Operation> patchRegionBackendServiceSettings;
-  private final UnaryCallSettings<UpdateRegionBackendServiceHttpRequest, Operation> updateRegionBackendServiceSettings;
-
-  /**
    * Returns the object with the settings used for calls to deleteRegionBackendService.
    */
   public UnaryCallSettings<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceSettings() {
-    return deleteRegionBackendServiceSettings;
+    return ((RegionBackendServiceStubSettings) getStubSettings()).deleteRegionBackendServiceSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to getRegionBackendService.
    */
   public UnaryCallSettings<GetRegionBackendServiceHttpRequest, BackendService> getRegionBackendServiceSettings() {
-    return getRegionBackendServiceSettings;
+    return ((RegionBackendServiceStubSettings) getStubSettings()).getRegionBackendServiceSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to getHealthRegionBackendService.
    */
   public UnaryCallSettings<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthRegionBackendServiceSettings() {
-    return getHealthRegionBackendServiceSettings;
+    return ((RegionBackendServiceStubSettings) getStubSettings()).getHealthRegionBackendServiceSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to insertRegionBackendService.
    */
   public UnaryCallSettings<InsertRegionBackendServiceHttpRequest, Operation> insertRegionBackendServiceSettings() {
-    return insertRegionBackendServiceSettings;
+    return ((RegionBackendServiceStubSettings) getStubSettings()).insertRegionBackendServiceSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to listRegionBackendServices.
    */
   public PagedCallSettings<ListRegionBackendServicesHttpRequest, BackendServiceList, ListRegionBackendServicesPagedResponse> listRegionBackendServicesSettings() {
-    return listRegionBackendServicesSettings;
+    return ((RegionBackendServiceStubSettings) getStubSettings()).listRegionBackendServicesSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to patchRegionBackendService.
    */
   public UnaryCallSettings<PatchRegionBackendServiceHttpRequest, Operation> patchRegionBackendServiceSettings() {
-    return patchRegionBackendServiceSettings;
+    return ((RegionBackendServiceStubSettings) getStubSettings()).patchRegionBackendServiceSettings();
   }
 
   /**
    * Returns the object with the settings used for calls to updateRegionBackendService.
    */
   public UnaryCallSettings<UpdateRegionBackendServiceHttpRequest, Operation> updateRegionBackendServiceSettings() {
-    return updateRegionBackendServiceSettings;
+    return ((RegionBackendServiceStubSettings) getStubSettings()).updateRegionBackendServiceSettings();
   }
 
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
-  public RegionBackendServiceStub createStub() throws IOException {
-    if (getTransportChannelProvider()
-        .getTransportName()
-        .equals(HttpJsonTransportChannel.getHttpJsonTransportName())) {
-      return HttpJsonRegionBackendServiceStub.create(this);
-    } else {
-      throw new UnsupportedOperationException(
-          "Transport not supported: " + getTransportChannelProvider().getTransportName());
-    }
+  public static final RegionBackendServiceSettings create(RegionBackendServiceStubSettings stub) throws IOException {
+    return new RegionBackendServiceSettings.Builder(stub.toBuilder()).build();
   }
 
   /**
    * Returns a builder for the default ExecutorProvider for this service.
    */
   public static InstantiatingExecutorProvider.Builder defaultExecutorProviderBuilder() {
-    return InstantiatingExecutorProvider.newBuilder();
+    return RegionBackendServiceStubSettings.defaultExecutorProviderBuilder();
   }
 
   /**
    * Returns the default service endpoint.
    */
-  public static String getDefaultEndpoint() {
-    return "https://www.googleapis.com/compute/v1/projects/";
-  }
-
+   public static String getDefaultEndpoint() {
+     return RegionBackendServiceStubSettings.getDefaultEndpoint();
+   }
   /**
    * Returns the default service port.
    */
   public static int getDefaultServicePort() {
-    return 443;
+    return RegionBackendServiceStubSettings.getDefaultServicePort();
   }
 
 
@@ -193,7 +164,7 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
    * Returns the default service scopes.
    */
   public static List<String> getDefaultServiceScopes() {
-    return DEFAULT_SERVICE_SCOPES;
+    return RegionBackendServiceStubSettings.getDefaultServiceScopes();
   }
 
 
@@ -201,25 +172,21 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
    * Returns a builder for the default credentials for this service.
    */
   public static GoogleCredentialsProvider.Builder defaultCredentialsProviderBuilder() {
-    return GoogleCredentialsProvider.newBuilder()
-        .setScopesToApply(DEFAULT_SERVICE_SCOPES)
-        ;
+    return RegionBackendServiceStubSettings.defaultCredentialsProviderBuilder();
   }
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingHttpJsonChannelProvider.Builder defaultHttpJsonTransportProviderBuilder() {
-    return InstantiatingHttpJsonChannelProvider.newBuilder();
+    return RegionBackendServiceStubSettings.defaultHttpJsonTransportProviderBuilder();
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
-    return defaultHttpJsonTransportProviderBuilder().build();
+    return RegionBackendServiceStubSettings.defaultTransportChannelProvider();
   }
 
   @BetaApi("The surface for customizing headers is not stable yet and may change in the future.")
   public static ApiClientHeaderProvider.Builder defaultApiClientHeaderProviderBuilder() {
-    return ApiClientHeaderProvider.newBuilder()
-        .setGeneratedLibToken("gapic", GaxProperties.getLibraryVersion(RegionBackendServiceSettings.class))
-        .setTransportToken(GaxHttpJsonProperties.getHttpJsonTokenName(), GaxHttpJsonProperties.getHttpJsonVersion());
+    return RegionBackendServiceStubSettings.defaultApiClientHeaderProviderBuilder();
   }
 
   /**
@@ -245,207 +212,35 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
 
   protected RegionBackendServiceSettings(Builder settingsBuilder) throws IOException {
     super(settingsBuilder);
-
-    deleteRegionBackendServiceSettings = settingsBuilder.deleteRegionBackendServiceSettings().build();
-    getRegionBackendServiceSettings = settingsBuilder.getRegionBackendServiceSettings().build();
-    getHealthRegionBackendServiceSettings = settingsBuilder.getHealthRegionBackendServiceSettings().build();
-    insertRegionBackendServiceSettings = settingsBuilder.insertRegionBackendServiceSettings().build();
-    listRegionBackendServicesSettings = settingsBuilder.listRegionBackendServicesSettings().build();
-    patchRegionBackendServiceSettings = settingsBuilder.patchRegionBackendServiceSettings().build();
-    updateRegionBackendServiceSettings = settingsBuilder.updateRegionBackendServiceSettings().build();
   }
-
-  private static final PagedListDescriptor<ListRegionBackendServicesHttpRequest, BackendServiceList, BackendService> LIST_REGION_BACKEND_SERVICES_PAGE_STR_DESC =
-      new PagedListDescriptor<ListRegionBackendServicesHttpRequest, BackendServiceList, BackendService>() {
-        @Override
-        public String emptyToken() {
-          return "";
-        }
-        @Override
-        public ListRegionBackendServicesHttpRequest injectToken(ListRegionBackendServicesHttpRequest payload, String token) {
-          return ListRegionBackendServicesHttpRequest
-            .newBuilder(payload)
-            .setPageToken(token)
-            .build();
-        }
-        @Override
-        public ListRegionBackendServicesHttpRequest injectPageSize(ListRegionBackendServicesHttpRequest payload, int pageSize) {
-          return ListRegionBackendServicesHttpRequest
-            .newBuilder(payload)
-            .setMaxResults(pageSize)
-            .build();
-        }
-        @Override
-        public Integer extractPageSize(ListRegionBackendServicesHttpRequest payload) {
-          return payload.getMaxResults();
-        }
-        @Override
-        public String extractNextToken(BackendServiceList payload) {
-          return payload.getNextPageToken();
-        }
-        @Override
-        public Iterable<BackendService> extractResources(BackendServiceList payload) {
-          return payload.getItems();
-        }
-      };
-
-  private static final PagedListResponseFactory<ListRegionBackendServicesHttpRequest, BackendServiceList, ListRegionBackendServicesPagedResponse> LIST_REGION_BACKEND_SERVICES_PAGE_STR_FACT =
-      new PagedListResponseFactory<ListRegionBackendServicesHttpRequest, BackendServiceList, ListRegionBackendServicesPagedResponse>() {
-        @Override
-        public ApiFuture<ListRegionBackendServicesPagedResponse> getFuturePagedResponse(
-            UnaryCallable<ListRegionBackendServicesHttpRequest, BackendServiceList> callable,
-            ListRegionBackendServicesHttpRequest request,
-            ApiCallContext context,
-            ApiFuture<BackendServiceList> futureResponse) {
-          PageContext<ListRegionBackendServicesHttpRequest, BackendServiceList, BackendService> pageContext =
-              PageContext.create(callable, LIST_REGION_BACKEND_SERVICES_PAGE_STR_DESC, request, context);
-          return ListRegionBackendServicesPagedResponse.createAsync(pageContext, futureResponse);
-        }
-      };
-
 
   /**
    * Builder for RegionBackendServiceSettings.
    */
   public static class Builder extends ClientSettings.Builder<RegionBackendServiceSettings, Builder> {
-    private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
-
-    private final UnaryCallSettings.Builder<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceSettings;
-    private final UnaryCallSettings.Builder<GetRegionBackendServiceHttpRequest, BackendService> getRegionBackendServiceSettings;
-    private final UnaryCallSettings.Builder<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthRegionBackendServiceSettings;
-    private final UnaryCallSettings.Builder<InsertRegionBackendServiceHttpRequest, Operation> insertRegionBackendServiceSettings;
-    private final PagedCallSettings.Builder<ListRegionBackendServicesHttpRequest, BackendServiceList, ListRegionBackendServicesPagedResponse> listRegionBackendServicesSettings;
-    private final UnaryCallSettings.Builder<PatchRegionBackendServiceHttpRequest, Operation> patchRegionBackendServiceSettings;
-    private final UnaryCallSettings.Builder<UpdateRegionBackendServiceHttpRequest, Operation> updateRegionBackendServiceSettings;
-
-    private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
-
-    static {
-      ImmutableMap.Builder<String, ImmutableSet<StatusCode.Code>> definitions = ImmutableMap.builder();
-      definitions.put(
-          "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
-      definitions.put(
-          "non_idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
-      RETRYABLE_CODE_DEFINITIONS = definitions.build();
-    }
-
-    private static final ImmutableMap<String, RetrySettings> RETRY_PARAM_DEFINITIONS;
-
-    static {
-      ImmutableMap.Builder<String, RetrySettings> definitions = ImmutableMap.builder();
-      RetrySettings settings = null;
-      settings = RetrySettings.newBuilder()
-          .setInitialRetryDelay(Duration.ofMillis(100L))
-          .setRetryDelayMultiplier(1.3)
-          .setMaxRetryDelay(Duration.ofMillis(60000L))
-          .setInitialRpcTimeout(Duration.ofMillis(20000L))
-          .setRpcTimeoutMultiplier(1.0)
-          .setMaxRpcTimeout(Duration.ofMillis(20000L))
-          .setTotalTimeout(Duration.ofMillis(600000L))
-          .build();
-      definitions.put("default", settings);
-      RETRY_PARAM_DEFINITIONS = definitions.build();
-    }
-
-    protected Builder() {
+    protected Builder() throws IOException {
       this((ClientContext) null);
     }
 
     protected Builder(ClientContext clientContext) {
-      super(clientContext);
-
-      deleteRegionBackendServiceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      getRegionBackendServiceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      getHealthRegionBackendServiceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      insertRegionBackendServiceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      listRegionBackendServicesSettings = PagedCallSettings.newBuilder(
-          LIST_REGION_BACKEND_SERVICES_PAGE_STR_FACT);
-
-      patchRegionBackendServiceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      updateRegionBackendServiceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
-
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
-          deleteRegionBackendServiceSettings,
-          getRegionBackendServiceSettings,
-          getHealthRegionBackendServiceSettings,
-          insertRegionBackendServiceSettings,
-          listRegionBackendServicesSettings,
-          patchRegionBackendServiceSettings,
-          updateRegionBackendServiceSettings
-      );
-
-      initDefaults(this);
+      super(RegionBackendServiceStubSettings.newBuilder(clientContext));
     }
 
     private static Builder createDefault() {
-      Builder builder = new Builder((ClientContext) null);
-      builder.setTransportChannelProvider(defaultTransportChannelProvider());
-      builder.setCredentialsProvider(defaultCredentialsProviderBuilder().build());
-      builder.setInternalHeaderProvider(defaultApiClientHeaderProviderBuilder().build());
-      builder.setEndpoint(getDefaultEndpoint());
-      return initDefaults(builder);
-    }
-
-    private static Builder initDefaults(Builder builder) {
-
-      builder.deleteRegionBackendServiceSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.getRegionBackendServiceSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.getHealthRegionBackendServiceSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.insertRegionBackendServiceSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.listRegionBackendServicesSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.patchRegionBackendServiceSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      builder.updateRegionBackendServiceSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
-
-      return builder;
+      return new Builder(RegionBackendServiceStubSettings.newBuilder());
     }
 
     protected Builder(RegionBackendServiceSettings settings) {
-      super(settings);
+      super(settings.getStubSettings().toBuilder());
+    }
 
-      deleteRegionBackendServiceSettings = settings.deleteRegionBackendServiceSettings.toBuilder();
-      getRegionBackendServiceSettings = settings.getRegionBackendServiceSettings.toBuilder();
-      getHealthRegionBackendServiceSettings = settings.getHealthRegionBackendServiceSettings.toBuilder();
-      insertRegionBackendServiceSettings = settings.insertRegionBackendServiceSettings.toBuilder();
-      listRegionBackendServicesSettings = settings.listRegionBackendServicesSettings.toBuilder();
-      patchRegionBackendServiceSettings = settings.patchRegionBackendServiceSettings.toBuilder();
-      updateRegionBackendServiceSettings = settings.updateRegionBackendServiceSettings.toBuilder();
+    protected Builder(RegionBackendServiceStubSettings.Builder stubSettings) {
+      super(stubSettings);
+    }
 
-      unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
-          deleteRegionBackendServiceSettings,
-          getRegionBackendServiceSettings,
-          getHealthRegionBackendServiceSettings,
-          insertRegionBackendServiceSettings,
-          listRegionBackendServicesSettings,
-          patchRegionBackendServiceSettings,
-          updateRegionBackendServiceSettings
-      );
+
+    public RegionBackendServiceStubSettings.Builder getStubSettingsBuilder() {
+      return ((RegionBackendServiceStubSettings.Builder) getStubSettings());
     }
 
     /**
@@ -454,7 +249,7 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
      * Note: This method does not support applying settings to streaming methods.
      */
     public Builder applyToAllUnaryMethods(ApiFunction<UnaryCallSettings.Builder<?, ?>, Void> settingsUpdater) throws Exception {
-      super.applyToAllUnaryMethods(unaryMethodSettingsBuilders, settingsUpdater);
+      super.applyToAllUnaryMethods(getStubSettingsBuilder().unaryMethodSettingsBuilders(), settingsUpdater);
       return this;
     }
 
@@ -462,49 +257,49 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
      * Returns the builder for the settings used for calls to deleteRegionBackendService.
      */
     public UnaryCallSettings.Builder<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceSettings() {
-      return deleteRegionBackendServiceSettings;
+      return getStubSettingsBuilder().deleteRegionBackendServiceSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to getRegionBackendService.
      */
     public UnaryCallSettings.Builder<GetRegionBackendServiceHttpRequest, BackendService> getRegionBackendServiceSettings() {
-      return getRegionBackendServiceSettings;
+      return getStubSettingsBuilder().getRegionBackendServiceSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to getHealthRegionBackendService.
      */
     public UnaryCallSettings.Builder<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthRegionBackendServiceSettings() {
-      return getHealthRegionBackendServiceSettings;
+      return getStubSettingsBuilder().getHealthRegionBackendServiceSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to insertRegionBackendService.
      */
     public UnaryCallSettings.Builder<InsertRegionBackendServiceHttpRequest, Operation> insertRegionBackendServiceSettings() {
-      return insertRegionBackendServiceSettings;
+      return getStubSettingsBuilder().insertRegionBackendServiceSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to listRegionBackendServices.
      */
     public PagedCallSettings.Builder<ListRegionBackendServicesHttpRequest, BackendServiceList, ListRegionBackendServicesPagedResponse> listRegionBackendServicesSettings() {
-      return listRegionBackendServicesSettings;
+      return getStubSettingsBuilder().listRegionBackendServicesSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to patchRegionBackendService.
      */
     public UnaryCallSettings.Builder<PatchRegionBackendServiceHttpRequest, Operation> patchRegionBackendServiceSettings() {
-      return patchRegionBackendServiceSettings;
+      return getStubSettingsBuilder().patchRegionBackendServiceSettings();
     }
 
     /**
      * Returns the builder for the settings used for calls to updateRegionBackendService.
      */
     public UnaryCallSettings.Builder<UpdateRegionBackendServiceHttpRequest, Operation> updateRegionBackendServiceSettings() {
-      return updateRegionBackendServiceSettings;
+      return getStubSettingsBuilder().updateRegionBackendServiceSettings();
     }
 
     @Override

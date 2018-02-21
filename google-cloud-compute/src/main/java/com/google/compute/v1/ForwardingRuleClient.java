@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListForwardingRulesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListForwardingRulesPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.ForwardingRuleStub;
+import com.google.compute.v1.stub.ForwardingRuleStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -137,7 +150,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    */
   protected ForwardingRuleClient(ForwardingRuleSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((ForwardingRuleStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -177,7 +190,7 @@ public class ForwardingRuleClient implements BackgroundResource {
   public final AggregatedListForwardingRulesPagedResponse aggregatedListForwardingRules(ProjectName project) {
     AggregatedListForwardingRulesHttpRequest request =
         AggregatedListForwardingRulesHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return aggregatedListForwardingRules(request);
   }
@@ -191,7 +204,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    * try (ForwardingRuleClient forwardingRuleClient = ForwardingRuleClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListForwardingRulesHttpRequest request = AggregatedListForwardingRulesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (ForwardingRule element : forwardingRuleClient.aggregatedListForwardingRules(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -217,7 +230,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    * try (ForwardingRuleClient forwardingRuleClient = ForwardingRuleClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListForwardingRulesHttpRequest request = AggregatedListForwardingRulesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;AggregatedListForwardingRulesPagedResponse&gt; future = forwardingRuleClient.aggregatedListForwardingRulesPagedCallable().futureCall(request);
    *   // Do something
@@ -241,11 +254,11 @@ public class ForwardingRuleClient implements BackgroundResource {
    * try (ForwardingRuleClient forwardingRuleClient = ForwardingRuleClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListForwardingRulesHttpRequest request = AggregatedListForwardingRulesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     ForwardingRuleAggregatedList response = forwardingRuleClient.aggregatedListForwardingRulesCallable().call(request);
-   *     for (ForwardingRule element : response.getItems().getForwardingRules()) {
+   *     for (ForwardingRule element : response.getForwardingRules()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -283,7 +296,7 @@ public class ForwardingRuleClient implements BackgroundResource {
 
     DeleteForwardingRuleHttpRequest request =
         DeleteForwardingRuleHttpRequest.newBuilder()
-        .setForwardingRuleWithForwardingRuleName(forwardingRule)
+        .setForwardingRule(forwardingRule.toString())
         .build();
     return deleteForwardingRule(request);
   }
@@ -297,7 +310,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    * try (ForwardingRuleClient forwardingRuleClient = ForwardingRuleClient.create()) {
    *   ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
    *   DeleteForwardingRuleHttpRequest request = DeleteForwardingRuleHttpRequest.newBuilder()
-   *     .setForwardingRuleWithForwardingRuleName(forwardingRule)
+   *     .setForwardingRule(forwardingRule.toString())
    *     .build();
    *   Operation response = forwardingRuleClient.deleteForwardingRule(request);
    * }
@@ -320,7 +333,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    * try (ForwardingRuleClient forwardingRuleClient = ForwardingRuleClient.create()) {
    *   ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
    *   DeleteForwardingRuleHttpRequest request = DeleteForwardingRuleHttpRequest.newBuilder()
-   *     .setForwardingRuleWithForwardingRuleName(forwardingRule)
+   *     .setForwardingRule(forwardingRule.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = forwardingRuleClient.deleteForwardingRuleCallable().futureCall(request);
    *   // Do something
@@ -353,7 +366,7 @@ public class ForwardingRuleClient implements BackgroundResource {
 
     GetForwardingRuleHttpRequest request =
         GetForwardingRuleHttpRequest.newBuilder()
-        .setForwardingRuleWithForwardingRuleName(forwardingRule)
+        .setForwardingRule(forwardingRule.toString())
         .build();
     return getForwardingRule(request);
   }
@@ -367,7 +380,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    * try (ForwardingRuleClient forwardingRuleClient = ForwardingRuleClient.create()) {
    *   ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
    *   GetForwardingRuleHttpRequest request = GetForwardingRuleHttpRequest.newBuilder()
-   *     .setForwardingRuleWithForwardingRuleName(forwardingRule)
+   *     .setForwardingRule(forwardingRule.toString())
    *     .build();
    *   ForwardingRule response = forwardingRuleClient.getForwardingRule(request);
    * }
@@ -390,7 +403,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    * try (ForwardingRuleClient forwardingRuleClient = ForwardingRuleClient.create()) {
    *   ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
    *   GetForwardingRuleHttpRequest request = GetForwardingRuleHttpRequest.newBuilder()
-   *     .setForwardingRuleWithForwardingRuleName(forwardingRule)
+   *     .setForwardingRule(forwardingRule.toString())
    *     .build();
    *   ApiFuture&lt;ForwardingRule&gt; future = forwardingRuleClient.getForwardingRuleCallable().futureCall(request);
    *   // Do something
@@ -425,7 +438,7 @@ public class ForwardingRuleClient implements BackgroundResource {
 
     InsertForwardingRuleHttpRequest request =
         InsertForwardingRuleHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .setForwardingRuleResource(forwardingRuleResource)
         .build();
     return insertForwardingRule(request);
@@ -441,7 +454,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ForwardingRule forwardingRule = ForwardingRule.newBuilder().build();
    *   InsertForwardingRuleHttpRequest request = InsertForwardingRuleHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .setForwardingRuleResource(forwardingRule)
    *     .build();
    *   Operation response = forwardingRuleClient.insertForwardingRule(request);
@@ -466,7 +479,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ForwardingRule forwardingRule = ForwardingRule.newBuilder().build();
    *   InsertForwardingRuleHttpRequest request = InsertForwardingRuleHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .setForwardingRuleResource(forwardingRule)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = forwardingRuleClient.insertForwardingRuleCallable().futureCall(request);
@@ -501,7 +514,7 @@ public class ForwardingRuleClient implements BackgroundResource {
   public final ListForwardingRulesPagedResponse listForwardingRules(RegionName region) {
     ListForwardingRulesHttpRequest request =
         ListForwardingRulesHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .build();
     return listForwardingRules(request);
   }
@@ -515,7 +528,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    * try (ForwardingRuleClient forwardingRuleClient = ForwardingRuleClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListForwardingRulesHttpRequest request = ListForwardingRulesHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   for (ForwardingRule element : forwardingRuleClient.listForwardingRules(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -541,7 +554,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    * try (ForwardingRuleClient forwardingRuleClient = ForwardingRuleClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListForwardingRulesHttpRequest request = ListForwardingRulesHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   ApiFuture&lt;ListForwardingRulesPagedResponse&gt; future = forwardingRuleClient.listForwardingRulesPagedCallable().futureCall(request);
    *   // Do something
@@ -565,7 +578,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    * try (ForwardingRuleClient forwardingRuleClient = ForwardingRuleClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListForwardingRulesHttpRequest request = ListForwardingRulesHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   while (true) {
    *     ForwardingRuleList response = forwardingRuleClient.listForwardingRulesCallable().call(request);
@@ -609,7 +622,7 @@ public class ForwardingRuleClient implements BackgroundResource {
 
     SetTargetForwardingRuleHttpRequest request =
         SetTargetForwardingRuleHttpRequest.newBuilder()
-        .setForwardingRuleWithForwardingRuleName(forwardingRule)
+        .setForwardingRule(forwardingRule.toString())
         .setTargetReferenceResource(targetReferenceResource)
         .build();
     return setTargetForwardingRule(request);
@@ -625,7 +638,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    *   ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
    *   TargetReference targetReference = TargetReference.newBuilder().build();
    *   SetTargetForwardingRuleHttpRequest request = SetTargetForwardingRuleHttpRequest.newBuilder()
-   *     .setForwardingRuleWithForwardingRuleName(forwardingRule)
+   *     .setForwardingRule(forwardingRule.toString())
    *     .setTargetReferenceResource(targetReference)
    *     .build();
    *   Operation response = forwardingRuleClient.setTargetForwardingRule(request);
@@ -650,7 +663,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    *   ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
    *   TargetReference targetReference = TargetReference.newBuilder().build();
    *   SetTargetForwardingRuleHttpRequest request = SetTargetForwardingRuleHttpRequest.newBuilder()
-   *     .setForwardingRuleWithForwardingRuleName(forwardingRule)
+   *     .setForwardingRule(forwardingRule.toString())
    *     .setTargetReferenceResource(targetReference)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = forwardingRuleClient.setTargetForwardingRuleCallable().futureCall(request);
@@ -694,4 +707,178 @@ public class ForwardingRuleClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class AggregatedListForwardingRulesPagedResponse extends AbstractPagedListResponse<
+      AggregatedListForwardingRulesHttpRequest,
+      ForwardingRuleAggregatedList,
+      ForwardingRule,
+      AggregatedListForwardingRulesPage,
+      AggregatedListForwardingRulesFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListForwardingRulesPagedResponse> createAsync(
+        PageContext<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList, ForwardingRule> context,
+        ApiFuture<ForwardingRuleAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListForwardingRulesPage> futurePage =
+          AggregatedListForwardingRulesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<AggregatedListForwardingRulesPage, AggregatedListForwardingRulesPagedResponse>() {
+            @Override
+            public AggregatedListForwardingRulesPagedResponse apply(AggregatedListForwardingRulesPage input) {
+              return new AggregatedListForwardingRulesPagedResponse(input);
+            }
+          });
+    }
+
+    private AggregatedListForwardingRulesPagedResponse(AggregatedListForwardingRulesPage page) {
+      super(page, AggregatedListForwardingRulesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class AggregatedListForwardingRulesPage extends AbstractPage<
+      AggregatedListForwardingRulesHttpRequest,
+      ForwardingRuleAggregatedList,
+      ForwardingRule,
+      AggregatedListForwardingRulesPage> {
+
+    private AggregatedListForwardingRulesPage(
+        PageContext<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList, ForwardingRule> context,
+        ForwardingRuleAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListForwardingRulesPage createEmptyPage() {
+      return new AggregatedListForwardingRulesPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListForwardingRulesPage createPage(
+        PageContext<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList, ForwardingRule> context,
+        ForwardingRuleAggregatedList response) {
+      return new AggregatedListForwardingRulesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListForwardingRulesPage> createPageAsync(
+        PageContext<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList, ForwardingRule> context,
+        ApiFuture<ForwardingRuleAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class AggregatedListForwardingRulesFixedSizeCollection extends AbstractFixedSizeCollection<
+      AggregatedListForwardingRulesHttpRequest,
+      ForwardingRuleAggregatedList,
+      ForwardingRule,
+      AggregatedListForwardingRulesPage,
+      AggregatedListForwardingRulesFixedSizeCollection> {
+
+    private AggregatedListForwardingRulesFixedSizeCollection(List<AggregatedListForwardingRulesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListForwardingRulesFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListForwardingRulesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListForwardingRulesFixedSizeCollection createCollection(
+        List<AggregatedListForwardingRulesPage> pages, int collectionSize) {
+      return new AggregatedListForwardingRulesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
+  public static class ListForwardingRulesPagedResponse extends AbstractPagedListResponse<
+      ListForwardingRulesHttpRequest,
+      ForwardingRuleList,
+      ForwardingRule,
+      ListForwardingRulesPage,
+      ListForwardingRulesFixedSizeCollection> {
+
+    public static ApiFuture<ListForwardingRulesPagedResponse> createAsync(
+        PageContext<ListForwardingRulesHttpRequest, ForwardingRuleList, ForwardingRule> context,
+        ApiFuture<ForwardingRuleList> futureResponse) {
+      ApiFuture<ListForwardingRulesPage> futurePage =
+          ListForwardingRulesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListForwardingRulesPage, ListForwardingRulesPagedResponse>() {
+            @Override
+            public ListForwardingRulesPagedResponse apply(ListForwardingRulesPage input) {
+              return new ListForwardingRulesPagedResponse(input);
+            }
+          });
+    }
+
+    private ListForwardingRulesPagedResponse(ListForwardingRulesPage page) {
+      super(page, ListForwardingRulesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListForwardingRulesPage extends AbstractPage<
+      ListForwardingRulesHttpRequest,
+      ForwardingRuleList,
+      ForwardingRule,
+      ListForwardingRulesPage> {
+
+    private ListForwardingRulesPage(
+        PageContext<ListForwardingRulesHttpRequest, ForwardingRuleList, ForwardingRule> context,
+        ForwardingRuleList response) {
+      super(context, response);
+    }
+
+    private static ListForwardingRulesPage createEmptyPage() {
+      return new ListForwardingRulesPage(null, null);
+    }
+
+    @Override
+    protected ListForwardingRulesPage createPage(
+        PageContext<ListForwardingRulesHttpRequest, ForwardingRuleList, ForwardingRule> context,
+        ForwardingRuleList response) {
+      return new ListForwardingRulesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListForwardingRulesPage> createPageAsync(
+        PageContext<ListForwardingRulesHttpRequest, ForwardingRuleList, ForwardingRule> context,
+        ApiFuture<ForwardingRuleList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListForwardingRulesFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListForwardingRulesHttpRequest,
+      ForwardingRuleList,
+      ForwardingRule,
+      ListForwardingRulesPage,
+      ListForwardingRulesFixedSizeCollection> {
+
+    private ListForwardingRulesFixedSizeCollection(List<ListForwardingRulesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListForwardingRulesFixedSizeCollection createEmptyCollection() {
+      return new ListForwardingRulesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListForwardingRulesFixedSizeCollection createCollection(
+        List<ListForwardingRulesPage> pages, int collectionSize) {
+      return new ListForwardingRulesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListRoutersPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListRoutersPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.RouterStub;
+import com.google.compute.v1.stub.RouterStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -137,7 +150,7 @@ public class RouterClient implements BackgroundResource {
    */
   protected RouterClient(RouterSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((RouterStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -177,7 +190,7 @@ public class RouterClient implements BackgroundResource {
   public final AggregatedListRoutersPagedResponse aggregatedListRouters(ProjectName project) {
     AggregatedListRoutersHttpRequest request =
         AggregatedListRoutersHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return aggregatedListRouters(request);
   }
@@ -191,7 +204,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListRoutersHttpRequest request = AggregatedListRoutersHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (Router element : routerClient.aggregatedListRouters(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -217,7 +230,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListRoutersHttpRequest request = AggregatedListRoutersHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;AggregatedListRoutersPagedResponse&gt; future = routerClient.aggregatedListRoutersPagedCallable().futureCall(request);
    *   // Do something
@@ -241,11 +254,11 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListRoutersHttpRequest request = AggregatedListRoutersHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     RouterAggregatedList response = routerClient.aggregatedListRoutersCallable().call(request);
-   *     for (Router element : response.getItems().getRouters()) {
+   *     for (Router element : response.getRouters()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -283,7 +296,7 @@ public class RouterClient implements BackgroundResource {
 
     DeleteRouterHttpRequest request =
         DeleteRouterHttpRequest.newBuilder()
-        .setRouterWithRouterName(router)
+        .setRouter(router.toString())
         .build();
     return deleteRouter(request);
   }
@@ -297,7 +310,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
    *   DeleteRouterHttpRequest request = DeleteRouterHttpRequest.newBuilder()
-   *     .setRouterWithRouterName(router)
+   *     .setRouter(router.toString())
    *     .build();
    *   Operation response = routerClient.deleteRouter(request);
    * }
@@ -320,7 +333,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
    *   DeleteRouterHttpRequest request = DeleteRouterHttpRequest.newBuilder()
-   *     .setRouterWithRouterName(router)
+   *     .setRouter(router.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = routerClient.deleteRouterCallable().futureCall(request);
    *   // Do something
@@ -353,7 +366,7 @@ public class RouterClient implements BackgroundResource {
 
     GetRouterHttpRequest request =
         GetRouterHttpRequest.newBuilder()
-        .setRouterWithRouterName(router)
+        .setRouter(router.toString())
         .build();
     return getRouter(request);
   }
@@ -367,7 +380,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
    *   GetRouterHttpRequest request = GetRouterHttpRequest.newBuilder()
-   *     .setRouterWithRouterName(router)
+   *     .setRouter(router.toString())
    *     .build();
    *   Router response = routerClient.getRouter(request);
    * }
@@ -390,7 +403,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
    *   GetRouterHttpRequest request = GetRouterHttpRequest.newBuilder()
-   *     .setRouterWithRouterName(router)
+   *     .setRouter(router.toString())
    *     .build();
    *   ApiFuture&lt;Router&gt; future = routerClient.getRouterCallable().futureCall(request);
    *   // Do something
@@ -423,7 +436,7 @@ public class RouterClient implements BackgroundResource {
 
     GetRouterStatusRouterHttpRequest request =
         GetRouterStatusRouterHttpRequest.newBuilder()
-        .setRouterWithRouterName(router)
+        .setRouter(router.toString())
         .build();
     return getRouterStatusRouter(request);
   }
@@ -437,7 +450,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
    *   GetRouterStatusRouterHttpRequest request = GetRouterStatusRouterHttpRequest.newBuilder()
-   *     .setRouterWithRouterName(router)
+   *     .setRouter(router.toString())
    *     .build();
    *   RouterStatusResponse response = routerClient.getRouterStatusRouter(request);
    * }
@@ -460,7 +473,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
    *   GetRouterStatusRouterHttpRequest request = GetRouterStatusRouterHttpRequest.newBuilder()
-   *     .setRouterWithRouterName(router)
+   *     .setRouter(router.toString())
    *     .build();
    *   ApiFuture&lt;RouterStatusResponse&gt; future = routerClient.getRouterStatusRouterCallable().futureCall(request);
    *   // Do something
@@ -495,7 +508,7 @@ public class RouterClient implements BackgroundResource {
 
     InsertRouterHttpRequest request =
         InsertRouterHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .setRouterResource(routerResource)
         .build();
     return insertRouter(request);
@@ -511,7 +524,7 @@ public class RouterClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Router router = Router.newBuilder().build();
    *   InsertRouterHttpRequest request = InsertRouterHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .setRouterResource(router)
    *     .build();
    *   Operation response = routerClient.insertRouter(request);
@@ -536,7 +549,7 @@ public class RouterClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Router router = Router.newBuilder().build();
    *   InsertRouterHttpRequest request = InsertRouterHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .setRouterResource(router)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = routerClient.insertRouterCallable().futureCall(request);
@@ -571,7 +584,7 @@ public class RouterClient implements BackgroundResource {
   public final ListRoutersPagedResponse listRouters(RegionName region) {
     ListRoutersHttpRequest request =
         ListRoutersHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region.toString())
         .build();
     return listRouters(request);
   }
@@ -585,7 +598,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRoutersHttpRequest request = ListRoutersHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   for (Router element : routerClient.listRouters(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -611,7 +624,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRoutersHttpRequest request = ListRoutersHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   ApiFuture&lt;ListRoutersPagedResponse&gt; future = routerClient.listRoutersPagedCallable().futureCall(request);
    *   // Do something
@@ -635,7 +648,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListRoutersHttpRequest request = ListRoutersHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   while (true) {
    *     RouterList response = routerClient.listRoutersCallable().call(request);
@@ -678,7 +691,7 @@ public class RouterClient implements BackgroundResource {
 
     PatchRouterHttpRequest request =
         PatchRouterHttpRequest.newBuilder()
-        .setRouterWithRouterName(router)
+        .setRouter(router.toString())
         .setRouterResource(routerResource)
         .build();
     return patchRouter(request);
@@ -693,7 +706,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
    *   PatchRouterHttpRequest request = PatchRouterHttpRequest.newBuilder()
-   *     .setRouterWithRouterName(router)
+   *     .setRouter(router.toString())
    *     .build();
    *   Operation response = routerClient.patchRouter(request);
    * }
@@ -716,7 +729,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
    *   PatchRouterHttpRequest request = PatchRouterHttpRequest.newBuilder()
-   *     .setRouterWithRouterName(router)
+   *     .setRouter(router.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = routerClient.patchRouterCallable().futureCall(request);
    *   // Do something
@@ -750,7 +763,7 @@ public class RouterClient implements BackgroundResource {
 
     PreviewRouterHttpRequest request =
         PreviewRouterHttpRequest.newBuilder()
-        .setRouterWithRouterName(router)
+        .setRouter(router.toString())
         .setRouterResource(routerResource)
         .build();
     return previewRouter(request);
@@ -765,7 +778,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
    *   PreviewRouterHttpRequest request = PreviewRouterHttpRequest.newBuilder()
-   *     .setRouterWithRouterName(router)
+   *     .setRouter(router.toString())
    *     .build();
    *   RoutersPreviewResponse response = routerClient.previewRouter(request);
    * }
@@ -788,7 +801,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
    *   PreviewRouterHttpRequest request = PreviewRouterHttpRequest.newBuilder()
-   *     .setRouterWithRouterName(router)
+   *     .setRouter(router.toString())
    *     .build();
    *   ApiFuture&lt;RoutersPreviewResponse&gt; future = routerClient.previewRouterCallable().futureCall(request);
    *   // Do something
@@ -822,7 +835,7 @@ public class RouterClient implements BackgroundResource {
 
     UpdateRouterHttpRequest request =
         UpdateRouterHttpRequest.newBuilder()
-        .setRouterWithRouterName(router)
+        .setRouter(router.toString())
         .setRouterResource(routerResource)
         .build();
     return updateRouter(request);
@@ -837,7 +850,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
    *   UpdateRouterHttpRequest request = UpdateRouterHttpRequest.newBuilder()
-   *     .setRouterWithRouterName(router)
+   *     .setRouter(router.toString())
    *     .build();
    *   Operation response = routerClient.updateRouter(request);
    * }
@@ -860,7 +873,7 @@ public class RouterClient implements BackgroundResource {
    * try (RouterClient routerClient = RouterClient.create()) {
    *   RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
    *   UpdateRouterHttpRequest request = UpdateRouterHttpRequest.newBuilder()
-   *     .setRouterWithRouterName(router)
+   *     .setRouter(router.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = routerClient.updateRouterCallable().futureCall(request);
    *   // Do something
@@ -903,4 +916,178 @@ public class RouterClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class AggregatedListRoutersPagedResponse extends AbstractPagedListResponse<
+      AggregatedListRoutersHttpRequest,
+      RouterAggregatedList,
+      Router,
+      AggregatedListRoutersPage,
+      AggregatedListRoutersFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListRoutersPagedResponse> createAsync(
+        PageContext<AggregatedListRoutersHttpRequest, RouterAggregatedList, Router> context,
+        ApiFuture<RouterAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListRoutersPage> futurePage =
+          AggregatedListRoutersPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<AggregatedListRoutersPage, AggregatedListRoutersPagedResponse>() {
+            @Override
+            public AggregatedListRoutersPagedResponse apply(AggregatedListRoutersPage input) {
+              return new AggregatedListRoutersPagedResponse(input);
+            }
+          });
+    }
+
+    private AggregatedListRoutersPagedResponse(AggregatedListRoutersPage page) {
+      super(page, AggregatedListRoutersFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class AggregatedListRoutersPage extends AbstractPage<
+      AggregatedListRoutersHttpRequest,
+      RouterAggregatedList,
+      Router,
+      AggregatedListRoutersPage> {
+
+    private AggregatedListRoutersPage(
+        PageContext<AggregatedListRoutersHttpRequest, RouterAggregatedList, Router> context,
+        RouterAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListRoutersPage createEmptyPage() {
+      return new AggregatedListRoutersPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListRoutersPage createPage(
+        PageContext<AggregatedListRoutersHttpRequest, RouterAggregatedList, Router> context,
+        RouterAggregatedList response) {
+      return new AggregatedListRoutersPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListRoutersPage> createPageAsync(
+        PageContext<AggregatedListRoutersHttpRequest, RouterAggregatedList, Router> context,
+        ApiFuture<RouterAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class AggregatedListRoutersFixedSizeCollection extends AbstractFixedSizeCollection<
+      AggregatedListRoutersHttpRequest,
+      RouterAggregatedList,
+      Router,
+      AggregatedListRoutersPage,
+      AggregatedListRoutersFixedSizeCollection> {
+
+    private AggregatedListRoutersFixedSizeCollection(List<AggregatedListRoutersPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListRoutersFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListRoutersFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListRoutersFixedSizeCollection createCollection(
+        List<AggregatedListRoutersPage> pages, int collectionSize) {
+      return new AggregatedListRoutersFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
+  public static class ListRoutersPagedResponse extends AbstractPagedListResponse<
+      ListRoutersHttpRequest,
+      RouterList,
+      Router,
+      ListRoutersPage,
+      ListRoutersFixedSizeCollection> {
+
+    public static ApiFuture<ListRoutersPagedResponse> createAsync(
+        PageContext<ListRoutersHttpRequest, RouterList, Router> context,
+        ApiFuture<RouterList> futureResponse) {
+      ApiFuture<ListRoutersPage> futurePage =
+          ListRoutersPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListRoutersPage, ListRoutersPagedResponse>() {
+            @Override
+            public ListRoutersPagedResponse apply(ListRoutersPage input) {
+              return new ListRoutersPagedResponse(input);
+            }
+          });
+    }
+
+    private ListRoutersPagedResponse(ListRoutersPage page) {
+      super(page, ListRoutersFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListRoutersPage extends AbstractPage<
+      ListRoutersHttpRequest,
+      RouterList,
+      Router,
+      ListRoutersPage> {
+
+    private ListRoutersPage(
+        PageContext<ListRoutersHttpRequest, RouterList, Router> context,
+        RouterList response) {
+      super(context, response);
+    }
+
+    private static ListRoutersPage createEmptyPage() {
+      return new ListRoutersPage(null, null);
+    }
+
+    @Override
+    protected ListRoutersPage createPage(
+        PageContext<ListRoutersHttpRequest, RouterList, Router> context,
+        RouterList response) {
+      return new ListRoutersPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListRoutersPage> createPageAsync(
+        PageContext<ListRoutersHttpRequest, RouterList, Router> context,
+        ApiFuture<RouterList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListRoutersFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListRoutersHttpRequest,
+      RouterList,
+      Router,
+      ListRoutersPage,
+      ListRoutersFixedSizeCollection> {
+
+    private ListRoutersFixedSizeCollection(List<ListRoutersPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListRoutersFixedSizeCollection createEmptyCollection() {
+      return new ListRoutersFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListRoutersFixedSizeCollection createCollection(
+        List<ListRoutersPage> pages, int collectionSize) {
+      return new ListRoutersFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

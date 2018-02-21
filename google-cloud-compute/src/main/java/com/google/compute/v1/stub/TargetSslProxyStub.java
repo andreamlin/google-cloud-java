@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import com.google.compute.v1.GetTargetSslProxyHttpRequest;
 import com.google.compute.v1.InsertTargetSslProxyHttpRequest;
 import com.google.compute.v1.ListTargetSslProxiesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetSslProxiesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.SetBackendServiceTargetSslProxyHttpRequest;
 import com.google.compute.v1.SetProxyHeaderTargetSslProxyHttpRequest;
@@ -32,6 +31,7 @@ import com.google.compute.v1.TargetSslProxiesSetBackendServiceRequest;
 import com.google.compute.v1.TargetSslProxiesSetProxyHeaderRequest;
 import com.google.compute.v1.TargetSslProxiesSetSslCertificatesRequest;
 import com.google.compute.v1.TargetSslProxy;
+import static com.google.compute.v1.TargetSslProxyClient.ListTargetSslProxiesPagedResponse;
 import com.google.compute.v1.TargetSslProxyList;
 import com.google.compute.v1.TargetSslProxyName;
 import javax.annotation.Generated;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListMachineTypesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListMachineTypesPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.MachineTypeStub;
+import com.google.compute.v1.stub.MachineTypeStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -137,7 +150,7 @@ public class MachineTypeClient implements BackgroundResource {
    */
   protected MachineTypeClient(MachineTypeSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((MachineTypeStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -177,7 +190,7 @@ public class MachineTypeClient implements BackgroundResource {
   public final AggregatedListMachineTypesPagedResponse aggregatedListMachineTypes(ProjectName project) {
     AggregatedListMachineTypesHttpRequest request =
         AggregatedListMachineTypesHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return aggregatedListMachineTypes(request);
   }
@@ -191,7 +204,7 @@ public class MachineTypeClient implements BackgroundResource {
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListMachineTypesHttpRequest request = AggregatedListMachineTypesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (MachineType element : machineTypeClient.aggregatedListMachineTypes(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -217,7 +230,7 @@ public class MachineTypeClient implements BackgroundResource {
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListMachineTypesHttpRequest request = AggregatedListMachineTypesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;AggregatedListMachineTypesPagedResponse&gt; future = machineTypeClient.aggregatedListMachineTypesPagedCallable().futureCall(request);
    *   // Do something
@@ -241,11 +254,11 @@ public class MachineTypeClient implements BackgroundResource {
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   AggregatedListMachineTypesHttpRequest request = AggregatedListMachineTypesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     MachineTypeAggregatedList response = machineTypeClient.aggregatedListMachineTypesCallable().call(request);
-   *     for (MachineType element : response.getItems().getMachineTypes()) {
+   *     for (MachineType element : response.getMachineTypes()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -283,7 +296,7 @@ public class MachineTypeClient implements BackgroundResource {
 
     GetMachineTypeHttpRequest request =
         GetMachineTypeHttpRequest.newBuilder()
-        .setMachineTypeWithMachineTypeName(machineType)
+        .setMachineType(machineType.toString())
         .build();
     return getMachineType(request);
   }
@@ -297,7 +310,7 @@ public class MachineTypeClient implements BackgroundResource {
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
    *   MachineTypeName machineType = MachineTypeName.of("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
    *   GetMachineTypeHttpRequest request = GetMachineTypeHttpRequest.newBuilder()
-   *     .setMachineTypeWithMachineTypeName(machineType)
+   *     .setMachineType(machineType.toString())
    *     .build();
    *   MachineType response = machineTypeClient.getMachineType(request);
    * }
@@ -320,7 +333,7 @@ public class MachineTypeClient implements BackgroundResource {
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
    *   MachineTypeName machineType = MachineTypeName.of("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
    *   GetMachineTypeHttpRequest request = GetMachineTypeHttpRequest.newBuilder()
-   *     .setMachineTypeWithMachineTypeName(machineType)
+   *     .setMachineType(machineType.toString())
    *     .build();
    *   ApiFuture&lt;MachineType&gt; future = machineTypeClient.getMachineTypeCallable().futureCall(request);
    *   // Do something
@@ -354,7 +367,7 @@ public class MachineTypeClient implements BackgroundResource {
   public final ListMachineTypesPagedResponse listMachineTypes(ZoneName zone) {
     ListMachineTypesHttpRequest request =
         ListMachineTypesHttpRequest.newBuilder()
-        .setZoneWithZoneName(zone)
+        .setZone(zone.toString())
         .build();
     return listMachineTypes(request);
   }
@@ -368,7 +381,7 @@ public class MachineTypeClient implements BackgroundResource {
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListMachineTypesHttpRequest request = ListMachineTypesHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   for (MachineType element : machineTypeClient.listMachineTypes(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -394,7 +407,7 @@ public class MachineTypeClient implements BackgroundResource {
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListMachineTypesHttpRequest request = ListMachineTypesHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   ApiFuture&lt;ListMachineTypesPagedResponse&gt; future = machineTypeClient.listMachineTypesPagedCallable().futureCall(request);
    *   // Do something
@@ -418,7 +431,7 @@ public class MachineTypeClient implements BackgroundResource {
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   ListMachineTypesHttpRequest request = ListMachineTypesHttpRequest.newBuilder()
-   *     .setZoneWithZoneName(zone)
+   *     .setZone(zone.toString())
    *     .build();
    *   while (true) {
    *     MachineTypeList response = machineTypeClient.listMachineTypesCallable().call(request);
@@ -470,4 +483,178 @@ public class MachineTypeClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class AggregatedListMachineTypesPagedResponse extends AbstractPagedListResponse<
+      AggregatedListMachineTypesHttpRequest,
+      MachineTypeAggregatedList,
+      MachineType,
+      AggregatedListMachineTypesPage,
+      AggregatedListMachineTypesFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListMachineTypesPagedResponse> createAsync(
+        PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineType> context,
+        ApiFuture<MachineTypeAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListMachineTypesPage> futurePage =
+          AggregatedListMachineTypesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<AggregatedListMachineTypesPage, AggregatedListMachineTypesPagedResponse>() {
+            @Override
+            public AggregatedListMachineTypesPagedResponse apply(AggregatedListMachineTypesPage input) {
+              return new AggregatedListMachineTypesPagedResponse(input);
+            }
+          });
+    }
+
+    private AggregatedListMachineTypesPagedResponse(AggregatedListMachineTypesPage page) {
+      super(page, AggregatedListMachineTypesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class AggregatedListMachineTypesPage extends AbstractPage<
+      AggregatedListMachineTypesHttpRequest,
+      MachineTypeAggregatedList,
+      MachineType,
+      AggregatedListMachineTypesPage> {
+
+    private AggregatedListMachineTypesPage(
+        PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineType> context,
+        MachineTypeAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListMachineTypesPage createEmptyPage() {
+      return new AggregatedListMachineTypesPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListMachineTypesPage createPage(
+        PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineType> context,
+        MachineTypeAggregatedList response) {
+      return new AggregatedListMachineTypesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListMachineTypesPage> createPageAsync(
+        PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineType> context,
+        ApiFuture<MachineTypeAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class AggregatedListMachineTypesFixedSizeCollection extends AbstractFixedSizeCollection<
+      AggregatedListMachineTypesHttpRequest,
+      MachineTypeAggregatedList,
+      MachineType,
+      AggregatedListMachineTypesPage,
+      AggregatedListMachineTypesFixedSizeCollection> {
+
+    private AggregatedListMachineTypesFixedSizeCollection(List<AggregatedListMachineTypesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListMachineTypesFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListMachineTypesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListMachineTypesFixedSizeCollection createCollection(
+        List<AggregatedListMachineTypesPage> pages, int collectionSize) {
+      return new AggregatedListMachineTypesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
+  public static class ListMachineTypesPagedResponse extends AbstractPagedListResponse<
+      ListMachineTypesHttpRequest,
+      MachineTypeList,
+      MachineType,
+      ListMachineTypesPage,
+      ListMachineTypesFixedSizeCollection> {
+
+    public static ApiFuture<ListMachineTypesPagedResponse> createAsync(
+        PageContext<ListMachineTypesHttpRequest, MachineTypeList, MachineType> context,
+        ApiFuture<MachineTypeList> futureResponse) {
+      ApiFuture<ListMachineTypesPage> futurePage =
+          ListMachineTypesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListMachineTypesPage, ListMachineTypesPagedResponse>() {
+            @Override
+            public ListMachineTypesPagedResponse apply(ListMachineTypesPage input) {
+              return new ListMachineTypesPagedResponse(input);
+            }
+          });
+    }
+
+    private ListMachineTypesPagedResponse(ListMachineTypesPage page) {
+      super(page, ListMachineTypesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListMachineTypesPage extends AbstractPage<
+      ListMachineTypesHttpRequest,
+      MachineTypeList,
+      MachineType,
+      ListMachineTypesPage> {
+
+    private ListMachineTypesPage(
+        PageContext<ListMachineTypesHttpRequest, MachineTypeList, MachineType> context,
+        MachineTypeList response) {
+      super(context, response);
+    }
+
+    private static ListMachineTypesPage createEmptyPage() {
+      return new ListMachineTypesPage(null, null);
+    }
+
+    @Override
+    protected ListMachineTypesPage createPage(
+        PageContext<ListMachineTypesHttpRequest, MachineTypeList, MachineType> context,
+        MachineTypeList response) {
+      return new ListMachineTypesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListMachineTypesPage> createPageAsync(
+        PageContext<ListMachineTypesHttpRequest, MachineTypeList, MachineType> context,
+        ApiFuture<MachineTypeList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListMachineTypesFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListMachineTypesHttpRequest,
+      MachineTypeList,
+      MachineType,
+      ListMachineTypesPage,
+      ListMachineTypesFixedSizeCollection> {
+
+    private ListMachineTypesFixedSizeCollection(List<ListMachineTypesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListMachineTypesFixedSizeCollection createEmptyCollection() {
+      return new ListMachineTypesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListMachineTypesFixedSizeCollection createCollection(
+        List<ListMachineTypesPage> pages, int collectionSize) {
+      return new ListMachineTypesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

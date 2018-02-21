@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListSubnetworksHttpRequest;
@@ -35,12 +36,12 @@ import com.google.compute.v1.GetSubnetworkHttpRequest;
 import com.google.compute.v1.InsertSubnetworkHttpRequest;
 import com.google.compute.v1.ListSubnetworksHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListSubnetworksPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListSubnetworksPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.Subnetwork;
 import com.google.compute.v1.SubnetworkAggregatedList;
+import static com.google.compute.v1.SubnetworkClient.AggregatedListSubnetworksPagedResponse;
+import static com.google.compute.v1.SubnetworkClient.ListSubnetworksPagedResponse;
 import com.google.compute.v1.SubnetworkList;
 import com.google.compute.v1.SubnetworkName;
 import com.google.compute.v1.SubnetworkSettings;
@@ -65,7 +66,8 @@ import javax.annotation.Generated;
 public class HttpJsonSubnetworkStub extends SubnetworkStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList> aggregatedListSubnetworksMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList> aggregatedListSubnetworksMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList>newBuilder()
           .setMethodName("compute.subnetworks.aggregatedList")
           .setRequestInstance(AggregatedListSubnetworksHttpRequest.getDefaultInstance())
@@ -80,7 +82,8 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<DeleteSubnetworkHttpRequest, Operation> deleteSubnetworkMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteSubnetworkHttpRequest, Operation> deleteSubnetworkMethodDescriptor =
       ApiMethodDescriptor.<DeleteSubnetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.subnetworks.delete")
           .setRequestInstance(DeleteSubnetworkHttpRequest.getDefaultInstance())
@@ -94,7 +97,8 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<ExpandIpCidrRangeSubnetworkHttpRequest, Operation> expandIpCidrRangeSubnetworkMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ExpandIpCidrRangeSubnetworkHttpRequest, Operation> expandIpCidrRangeSubnetworkMethodDescriptor =
       ApiMethodDescriptor.<ExpandIpCidrRangeSubnetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.subnetworks.expandIpCidrRange")
           .setRequestInstance(ExpandIpCidrRangeSubnetworkHttpRequest.getDefaultInstance())
@@ -108,7 +112,8 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<GetSubnetworkHttpRequest, Subnetwork> getSubnetworkMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetSubnetworkHttpRequest, Subnetwork> getSubnetworkMethodDescriptor =
       ApiMethodDescriptor.<GetSubnetworkHttpRequest, Subnetwork>newBuilder()
           .setMethodName("compute.subnetworks.get")
           .setRequestInstance(GetSubnetworkHttpRequest.getDefaultInstance())
@@ -122,7 +127,8 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertSubnetworkHttpRequest, Operation> insertSubnetworkMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertSubnetworkHttpRequest, Operation> insertSubnetworkMethodDescriptor =
       ApiMethodDescriptor.<InsertSubnetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.subnetworks.insert")
           .setRequestInstance(InsertSubnetworkHttpRequest.getDefaultInstance())
@@ -136,7 +142,8 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListSubnetworksHttpRequest, SubnetworkList> listSubnetworksMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListSubnetworksHttpRequest, SubnetworkList> listSubnetworksMethodDescriptor =
       ApiMethodDescriptor.<ListSubnetworksHttpRequest, SubnetworkList>newBuilder()
           .setMethodName("compute.subnetworks.list")
           .setRequestInstance(ListSubnetworksHttpRequest.getDefaultInstance())
@@ -163,12 +170,12 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
   private final UnaryCallable<ListSubnetworksHttpRequest, SubnetworkList> listSubnetworksCallable;
   private final UnaryCallable<ListSubnetworksHttpRequest, ListSubnetworksPagedResponse> listSubnetworksPagedCallable;
 
-  public static final HttpJsonSubnetworkStub create(SubnetworkSettings settings) throws IOException {
+  public static final HttpJsonSubnetworkStub create(SubnetworkStubSettings settings) throws IOException {
     return new HttpJsonSubnetworkStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonSubnetworkStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonSubnetworkStub(SubnetworkSettings.newBuilder().build(), clientContext);
+    return new HttpJsonSubnetworkStub(SubnetworkStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -176,7 +183,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonSubnetworkStub(SubnetworkSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonSubnetworkStub(SubnetworkStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList> aggregatedListSubnetworksTransportSettings =
         HttpJsonCallSettings.<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList>newBuilder()

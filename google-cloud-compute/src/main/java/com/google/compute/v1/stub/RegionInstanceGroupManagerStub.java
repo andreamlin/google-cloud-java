@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,8 +27,8 @@ import com.google.compute.v1.InstanceGroupManager;
 import com.google.compute.v1.ListManagedInstancesRegionInstanceGroupManagersHttpRequest;
 import com.google.compute.v1.ListRegionInstanceGroupManagersHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionInstanceGroupManagersPagedResponse;
 import com.google.compute.v1.RecreateInstancesRegionInstanceGroupManagerHttpRequest;
+import static com.google.compute.v1.RegionInstanceGroupManagerClient.ListRegionInstanceGroupManagersPagedResponse;
 import com.google.compute.v1.RegionInstanceGroupManagerList;
 import com.google.compute.v1.RegionInstanceGroupManagersAbandonInstancesRequest;
 import com.google.compute.v1.RegionInstanceGroupManagersDeleteInstancesRequest;

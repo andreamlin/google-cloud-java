@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,10 +23,10 @@ import com.google.compute.v1.GetNetworkHttpRequest;
 import com.google.compute.v1.InsertNetworkHttpRequest;
 import com.google.compute.v1.ListNetworksHttpRequest;
 import com.google.compute.v1.Network;
+import static com.google.compute.v1.NetworkClient.ListNetworksPagedResponse;
 import com.google.compute.v1.NetworkList;
 import com.google.compute.v1.NetworkName;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListNetworksPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.SwitchToCustomModeNetworkHttpRequest;
 import javax.annotation.Generated;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,10 +23,10 @@ import com.google.compute.v1.GetMachineTypeHttpRequest;
 import com.google.compute.v1.ListMachineTypesHttpRequest;
 import com.google.compute.v1.MachineType;
 import com.google.compute.v1.MachineTypeAggregatedList;
+import static com.google.compute.v1.MachineTypeClient.AggregatedListMachineTypesPagedResponse;
+import static com.google.compute.v1.MachineTypeClient.ListMachineTypesPagedResponse;
 import com.google.compute.v1.MachineTypeList;
 import com.google.compute.v1.MachineTypeName;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListMachineTypesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListMachineTypesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.ZoneName;
 import javax.annotation.Generated;

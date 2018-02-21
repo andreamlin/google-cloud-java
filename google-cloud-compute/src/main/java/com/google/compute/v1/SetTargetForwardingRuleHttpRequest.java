@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,9 +37,7 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
   private final String forwardingRule;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
-  private final String region;
   private final TargetReference targetReferenceResource;
   private final String userIp;
 
@@ -50,9 +48,7 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
     this.forwardingRule = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
-    this.region = null;
     this.targetReferenceResource = null;
     this.userIp = null;
   }
@@ -65,9 +61,7 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
       String forwardingRule,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
-      String region,
       TargetReference targetReferenceResource,
       String userIp
       ) {
@@ -77,11 +71,14 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
     this.forwardingRule = forwardingRule;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
-    this.region = region;
     this.targetReferenceResource = targetReferenceResource;
     this.userIp = userIp;
+  }
+
+  @Override
+  public ForwardingRuleName resourceNamePath() {
+    return ForwardingRuleName.parse(forwardingRule);
   }
 
   @Override
@@ -105,14 +102,8 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
-    }
-    if (fieldNames.contains("region") && region != null) {
-      fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
     }
     if (fieldNames.contains("targetReferenceResource") && targetReferenceResource != null) {
       fieldMap.put("targetReferenceResource", Collections.singletonList(String.valueOf(targetReferenceResource)));
@@ -125,7 +116,7 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public TargetReference getRequestBody() {
+  public TargetReference requestBody() {
     return targetReferenceResource;
   }
 
@@ -153,16 +144,8 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
     return prettyPrint;
   }
 
-  public String getProject() {
-    return project;
-  }
-
   public String getQuotaUser() {
     return quotaUser;
-  }
-
-  public String getRegion() {
-    return region;
   }
 
   public TargetReference getTargetReferenceResource() {
@@ -200,9 +183,7 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
     private String forwardingRule;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
-    private String region;
     private TargetReference targetReferenceResource;
     private String userIp;
 
@@ -228,14 +209,8 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
-      }
-      if (other.getRegion() != null) {
-        this.region = other.region;
       }
       if (other.getTargetReferenceResource() != null) {
         this.targetReferenceResource = other.targetReferenceResource;
@@ -253,9 +228,7 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
       this.forwardingRule = source.forwardingRule;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
-      this.region = source.region;
       this.targetReferenceResource = source.targetReferenceResource;
       this.userIp = source.userIp;
     }
@@ -314,30 +287,12 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
 
     public Builder setQuotaUser(String quotaUser) {
       this.quotaUser = quotaUser;
-      return this;
-    }
-
-    public String getRegion() {
-      return region;
-    }
-
-    public Builder setRegion(String region) {
-      this.region = region;
       return this;
     }
 
@@ -370,13 +325,7 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
       }
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
-      if (region == null) {
-        missing += " region";
-      }
 
 
       if (!missing.isEmpty()) {
@@ -389,9 +338,7 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
         forwardingRule,
         key,
         prettyPrint,
-        project,
         quotaUser,
-        region,
         targetReferenceResource,
         userIp
       );
@@ -405,35 +352,10 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
       newBuilder.setForwardingRule(this.forwardingRule);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
-      newBuilder.setRegion(this.region);
       newBuilder.setTargetReferenceResource(this.targetReferenceResource);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
-    }
-
-    public final Builder setForwardingRuleWithForwardingRuleName(ForwardingRuleName value) {
-      if (value == null) {
-        return
-            setForwardingRule("").
-            setProject("").
-            setRegion("")
-            ;
-      }
-      return
-          setForwardingRule(value.getForwardingRule()).
-          setProject(value.getProject()).
-          setRegion(value.getRegion())
-          ;
-    }
-
-    public final ForwardingRuleName getForwardingRuleAsForwardingRuleName() {
-      return ForwardingRuleName.of(
-          getForwardingRule(),
-          getProject(),
-          getRegion()
-          );
     }
   }
 
@@ -446,9 +368,7 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
         + "forwardingRule=" + forwardingRule + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
-        + "region=" + region + ", "
         + "targetReferenceResource=" + targetReferenceResource + ", "
         + "userIp=" + userIp
         + "}";
@@ -468,9 +388,7 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
           Objects.equals(this.forwardingRule, that.getForwardingRule()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
-          Objects.equals(this.region, that.getRegion()) &&
           Objects.equals(this.targetReferenceResource, that.getTargetReferenceResource()) &&
           Objects.equals(this.userIp, that.getUserIp())
           ;
@@ -487,9 +405,7 @@ public final class SetTargetForwardingRuleHttpRequest implements ApiMessage {
       forwardingRule,
       key,
       prettyPrint,
-      project,
       quotaUser,
-      region,
       targetReferenceResource,
       userIp
     );

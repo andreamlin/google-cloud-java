@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,22 @@
 package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
+import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.pathtemplate.PathTemplate;
-import com.google.api.resourcenames.ResourceName;
 import com.google.api.resourcenames.ResourceNameType;
 import com.google.common.base.Preconditions;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import javax.annotation.Generated;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class ProjectName implements ResourceName {
+public final class ProjectName implements ResourceNamePath {
   private final String project;
   private static final PathTemplate PATH_TEMPLATE =
         PathTemplate.createWithoutUrlEncoding("projects/{project}");
@@ -52,10 +56,28 @@ public final class ProjectName implements ResourceName {
       .build();
   }
 
+  public static String format(
+      String project
+      ) {
+    return of(
+        project
+        )
+        .toString();
+  }
+
   public String getProject() {
     return project;
   }
 
+
+  @Override
+  public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
+    Map<String, List<String>> fieldMap = new HashMap<>();
+    if (fieldNames.contains("project") && project != null) {
+      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
+    }
+    return fieldMap;
+  }
 
   public static ProjectName parse(String formattedString) {
     Map<String, String> matchMap =

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,15 +26,16 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteSnapshotHttpRequest;
 import com.google.compute.v1.GetSnapshotHttpRequest;
 import com.google.compute.v1.ListSnapshotsHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListSnapshotsPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.Snapshot;
+import static com.google.compute.v1.SnapshotClient.ListSnapshotsPagedResponse;
 import com.google.compute.v1.SnapshotList;
 import com.google.compute.v1.SnapshotName;
 import com.google.compute.v1.SnapshotSettings;
@@ -58,7 +59,8 @@ import javax.annotation.Generated;
 public class HttpJsonSnapshotStub extends SnapshotStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteSnapshotHttpRequest, Operation> deleteSnapshotMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteSnapshotHttpRequest, Operation> deleteSnapshotMethodDescriptor =
       ApiMethodDescriptor.<DeleteSnapshotHttpRequest, Operation>newBuilder()
           .setMethodName("compute.snapshots.delete")
           .setRequestInstance(DeleteSnapshotHttpRequest.getDefaultInstance())
@@ -72,7 +74,8 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetSnapshotHttpRequest, Snapshot> getSnapshotMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetSnapshotHttpRequest, Snapshot> getSnapshotMethodDescriptor =
       ApiMethodDescriptor.<GetSnapshotHttpRequest, Snapshot>newBuilder()
           .setMethodName("compute.snapshots.get")
           .setRequestInstance(GetSnapshotHttpRequest.getDefaultInstance())
@@ -86,7 +89,8 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<ListSnapshotsHttpRequest, SnapshotList> listSnapshotsMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListSnapshotsHttpRequest, SnapshotList> listSnapshotsMethodDescriptor =
       ApiMethodDescriptor.<ListSnapshotsHttpRequest, SnapshotList>newBuilder()
           .setMethodName("compute.snapshots.list")
           .setRequestInstance(ListSnapshotsHttpRequest.getDefaultInstance())
@@ -109,12 +113,12 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
   private final UnaryCallable<ListSnapshotsHttpRequest, SnapshotList> listSnapshotsCallable;
   private final UnaryCallable<ListSnapshotsHttpRequest, ListSnapshotsPagedResponse> listSnapshotsPagedCallable;
 
-  public static final HttpJsonSnapshotStub create(SnapshotSettings settings) throws IOException {
+  public static final HttpJsonSnapshotStub create(SnapshotStubSettings settings) throws IOException {
     return new HttpJsonSnapshotStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonSnapshotStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonSnapshotStub(SnapshotSettings.newBuilder().build(), clientContext);
+    return new HttpJsonSnapshotStub(SnapshotStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -122,7 +126,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonSnapshotStub(SnapshotSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonSnapshotStub(SnapshotStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteSnapshotHttpRequest, Operation> deleteSnapshotTransportSettings =
         HttpJsonCallSettings.<DeleteSnapshotHttpRequest, Operation>newBuilder()

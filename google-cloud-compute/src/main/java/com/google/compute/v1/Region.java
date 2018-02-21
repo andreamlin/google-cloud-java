@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -81,6 +83,11 @@ public final class Region implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
@@ -118,7 +125,7 @@ public final class Region implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -302,7 +309,7 @@ public final class Region implements ApiMessage {
       return quotas;
     }
 
-    public Builder setQuotas(List<Quota> quotas) {
+    public Builder addAllQuotas(List<Quota> quotas) {
       this.quotas = quotas;
       return this;
     }
@@ -329,7 +336,7 @@ public final class Region implements ApiMessage {
       return zones;
     }
 
-    public Builder setZones(List<String> zones) {
+    public Builder addAllZones(List<String> zones) {
       this.zones = zones;
       return this;
     }
@@ -367,10 +374,10 @@ public final class Region implements ApiMessage {
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
       newBuilder.setName(this.name);
-      newBuilder.setQuotas(this.quotas);
+      newBuilder.addAllQuotas(this.quotas);
       newBuilder.setSelfLink(this.selfLink);
       newBuilder.setStatus(this.status);
-      newBuilder.setZones(this.zones);
+      newBuilder.addAllZones(this.zones);
       return newBuilder;
     }
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListTargetInstancesHttpRequest;
@@ -34,11 +35,11 @@ import com.google.compute.v1.GetTargetInstanceHttpRequest;
 import com.google.compute.v1.InsertTargetInstanceHttpRequest;
 import com.google.compute.v1.ListTargetInstancesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetInstancesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetInstancesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.TargetInstance;
 import com.google.compute.v1.TargetInstanceAggregatedList;
+import static com.google.compute.v1.TargetInstanceClient.AggregatedListTargetInstancesPagedResponse;
+import static com.google.compute.v1.TargetInstanceClient.ListTargetInstancesPagedResponse;
 import com.google.compute.v1.TargetInstanceList;
 import com.google.compute.v1.TargetInstanceName;
 import com.google.compute.v1.TargetInstanceSettings;
@@ -63,7 +64,8 @@ import javax.annotation.Generated;
 public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList> aggregatedListTargetInstancesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList> aggregatedListTargetInstancesMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList>newBuilder()
           .setMethodName("compute.targetInstances.aggregatedList")
           .setRequestInstance(AggregatedListTargetInstancesHttpRequest.getDefaultInstance())
@@ -78,7 +80,8 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<DeleteTargetInstanceHttpRequest, Operation> deleteTargetInstanceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteTargetInstanceHttpRequest, Operation> deleteTargetInstanceMethodDescriptor =
       ApiMethodDescriptor.<DeleteTargetInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetInstances.delete")
           .setRequestInstance(DeleteTargetInstanceHttpRequest.getDefaultInstance())
@@ -92,7 +95,8 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetTargetInstanceHttpRequest, TargetInstance> getTargetInstanceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetTargetInstanceHttpRequest, TargetInstance> getTargetInstanceMethodDescriptor =
       ApiMethodDescriptor.<GetTargetInstanceHttpRequest, TargetInstance>newBuilder()
           .setMethodName("compute.targetInstances.get")
           .setRequestInstance(GetTargetInstanceHttpRequest.getDefaultInstance())
@@ -106,7 +110,8 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertTargetInstanceHttpRequest, Operation> insertTargetInstanceMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertTargetInstanceHttpRequest, Operation> insertTargetInstanceMethodDescriptor =
       ApiMethodDescriptor.<InsertTargetInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetInstances.insert")
           .setRequestInstance(InsertTargetInstanceHttpRequest.getDefaultInstance())
@@ -120,7 +125,8 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListTargetInstancesHttpRequest, TargetInstanceList> listTargetInstancesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListTargetInstancesHttpRequest, TargetInstanceList> listTargetInstancesMethodDescriptor =
       ApiMethodDescriptor.<ListTargetInstancesHttpRequest, TargetInstanceList>newBuilder()
           .setMethodName("compute.targetInstances.list")
           .setRequestInstance(ListTargetInstancesHttpRequest.getDefaultInstance())
@@ -146,12 +152,12 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
   private final UnaryCallable<ListTargetInstancesHttpRequest, TargetInstanceList> listTargetInstancesCallable;
   private final UnaryCallable<ListTargetInstancesHttpRequest, ListTargetInstancesPagedResponse> listTargetInstancesPagedCallable;
 
-  public static final HttpJsonTargetInstanceStub create(TargetInstanceSettings settings) throws IOException {
+  public static final HttpJsonTargetInstanceStub create(TargetInstanceStubSettings settings) throws IOException {
     return new HttpJsonTargetInstanceStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonTargetInstanceStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonTargetInstanceStub(TargetInstanceSettings.newBuilder().build(), clientContext);
+    return new HttpJsonTargetInstanceStub(TargetInstanceStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -159,7 +165,7 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonTargetInstanceStub(TargetInstanceSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonTargetInstanceStub(TargetInstanceStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList> aggregatedListTargetInstancesTransportSettings =
         HttpJsonCallSettings.<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList>newBuilder()

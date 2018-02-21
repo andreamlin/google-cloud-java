@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,10 +23,10 @@ import com.google.compute.v1.GetTargetHttpProxyHttpRequest;
 import com.google.compute.v1.InsertTargetHttpProxyHttpRequest;
 import com.google.compute.v1.ListTargetHttpProxiesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetHttpProxiesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.SetUrlMapTargetHttpProxyHttpRequest;
 import com.google.compute.v1.TargetHttpProxy;
+import static com.google.compute.v1.TargetHttpProxyClient.ListTargetHttpProxiesPagedResponse;
 import com.google.compute.v1.TargetHttpProxyList;
 import com.google.compute.v1.TargetHttpProxyName;
 import com.google.compute.v1.UrlMapReference;

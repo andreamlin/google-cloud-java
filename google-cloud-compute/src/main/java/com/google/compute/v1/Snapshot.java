@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ResourceNamePath;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableList;
 import java.io.Serializable;
 import java.util.Collections;
@@ -101,6 +103,11 @@ public final class Snapshot implements ApiMessage {
   }
 
   @Override
+  public ResourceNamePath resourceNamePath() {
+    return null;
+  }
+
+  @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
@@ -153,7 +160,7 @@ public final class Snapshot implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -373,7 +380,7 @@ public final class Snapshot implements ApiMessage {
       return licenses;
     }
 
-    public Builder setLicenses(List<String> licenses) {
+    public Builder addAllLicenses(List<String> licenses) {
       this.licenses = licenses;
       return this;
     }
@@ -501,7 +508,7 @@ public final class Snapshot implements ApiMessage {
       newBuilder.setDiskSizeGb(this.diskSizeGb);
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
-      newBuilder.setLicenses(this.licenses);
+      newBuilder.addAllLicenses(this.licenses);
       newBuilder.setName(this.name);
       newBuilder.setSelfLink(this.selfLink);
       newBuilder.setSnapshotEncryptionKey(this.snapshotEncryptionKey);

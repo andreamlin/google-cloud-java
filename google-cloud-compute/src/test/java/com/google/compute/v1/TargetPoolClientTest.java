@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,34 @@
  */
 package com.google.compute.v1;
 
-import com.google.api.gax.core.NoCredentialsProvider;
-import com.google.api.gax.core.PagedListResponse;
-import com.google.api.gax.grpc.GaxGrpcProperties;
-import com.google.api.gax.grpc.GrpcStatusCode;
-import com.google.api.gax.grpc.testing.LocalChannelProvider;
-import com.google.api.gax.grpc.testing.MockGrpcService;
-import com.google.api.gax.grpc.testing.MockServiceHelper;
-import com.google.api.gax.rpc.ApiClientHeaderProvider;
+import com.google.api.gax.httpjson.MockHttpService;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiException;
+import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
-import com.google.api.gax.rpc.StatusCode;
+import com.google.api.gax.rpc.StatusCode.Code;
+import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.common.collect.Lists;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListTargetPoolsPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListTargetPoolsPagedResponse;
+import static com.google.compute.v1.TargetPoolClient.AggregatedListTargetPoolsPagedResponse;
+import static com.google.compute.v1.TargetPoolClient.ListTargetPoolsPagedResponse;
+import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.addHealthCheckTargetPoolMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.addInstanceTargetPoolMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.aggregatedListTargetPoolsMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.deleteTargetPoolMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.getHealthTargetPoolMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.getTargetPoolMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.insertTargetPoolMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.listTargetPoolsMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.removeHealthCheckTargetPoolMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.removeInstanceTargetPoolMethodDescriptor;
+import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.setBackupTargetPoolMethodDescriptor;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -44,120 +52,28 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class TargetPoolClientTest {
-  private static MockAddresses mockAddresses;
-  private static MockAutoscalers mockAutoscalers;
-  private static MockBackendServices mockBackendServices;
-  private static MockDiskTypes mockDiskTypes;
-  private static MockDisks mockDisks;
-  private static MockFirewalls mockFirewalls;
-  private static MockForwardingRules mockForwardingRules;
-  private static MockGlobalAddresses mockGlobalAddresses;
-  private static MockGlobalForwardingRules mockGlobalForwardingRules;
-  private static MockGlobalOperations mockGlobalOperations;
-  private static MockHealthChecks mockHealthChecks;
-  private static MockHttpHealthChecks mockHttpHealthChecks;
-  private static MockHttpsHealthChecks mockHttpsHealthChecks;
-  private static MockImages mockImages;
-  private static MockInstanceGroupManagers mockInstanceGroupManagers;
-  private static MockInstanceGroups mockInstanceGroups;
-  private static MockInstanceTemplates mockInstanceTemplates;
-  private static MockInstances mockInstances;
-  private static MockLicenses mockLicenses;
-  private static MockMachineTypes mockMachineTypes;
-  private static MockNetworks mockNetworks;
-  private static MockProjects mockProjects;
-  private static MockRegionAutoscalers mockRegionAutoscalers;
-  private static MockRegionBackendServices mockRegionBackendServices;
-  private static MockRegionInstanceGroupManagers mockRegionInstanceGroupManagers;
-  private static MockRegionInstanceGroups mockRegionInstanceGroups;
-  private static MockRegionOperations mockRegionOperations;
-  private static MockRegions mockRegions;
-  private static MockRouters mockRouters;
-  private static MockRoutes mockRoutes;
-  private static MockSnapshots mockSnapshots;
-  private static MockSslCertificates mockSslCertificates;
-  private static MockSubnetworks mockSubnetworks;
-  private static MockTargetHttpProxies mockTargetHttpProxies;
-  private static MockTargetHttpsProxies mockTargetHttpsProxies;
-  private static MockTargetInstances mockTargetInstances;
-  private static MockTargetPools mockTargetPools;
-  private static MockTargetSslProxies mockTargetSslProxies;
-  private static MockTargetVpnGateways mockTargetVpnGateways;
-  private static MockUrlMaps mockUrlMaps;
-  private static MockVpnTunnels mockVpnTunnels;
-  private static MockZoneOperations mockZoneOperations;
-  private static MockZones mockZones;
-  private static MockServiceHelper serviceHelper;
-  private TargetPoolClient client;
-  private LocalChannelProvider channelProvider;
+  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static TargetPoolClient client;
+  private static TargetPoolSettings clientSettings;
 
   @BeforeClass
-  public static void startStaticServer() {
-    mockAddresses = new MockAddresses();
-    mockAutoscalers = new MockAutoscalers();
-    mockBackendServices = new MockBackendServices();
-    mockDiskTypes = new MockDiskTypes();
-    mockDisks = new MockDisks();
-    mockFirewalls = new MockFirewalls();
-    mockForwardingRules = new MockForwardingRules();
-    mockGlobalAddresses = new MockGlobalAddresses();
-    mockGlobalForwardingRules = new MockGlobalForwardingRules();
-    mockGlobalOperations = new MockGlobalOperations();
-    mockHealthChecks = new MockHealthChecks();
-    mockHttpHealthChecks = new MockHttpHealthChecks();
-    mockHttpsHealthChecks = new MockHttpsHealthChecks();
-    mockImages = new MockImages();
-    mockInstanceGroupManagers = new MockInstanceGroupManagers();
-    mockInstanceGroups = new MockInstanceGroups();
-    mockInstanceTemplates = new MockInstanceTemplates();
-    mockInstances = new MockInstances();
-    mockLicenses = new MockLicenses();
-    mockMachineTypes = new MockMachineTypes();
-    mockNetworks = new MockNetworks();
-    mockProjects = new MockProjects();
-    mockRegionAutoscalers = new MockRegionAutoscalers();
-    mockRegionBackendServices = new MockRegionBackendServices();
-    mockRegionInstanceGroupManagers = new MockRegionInstanceGroupManagers();
-    mockRegionInstanceGroups = new MockRegionInstanceGroups();
-    mockRegionOperations = new MockRegionOperations();
-    mockRegions = new MockRegions();
-    mockRouters = new MockRouters();
-    mockRoutes = new MockRoutes();
-    mockSnapshots = new MockSnapshots();
-    mockSslCertificates = new MockSslCertificates();
-    mockSubnetworks = new MockSubnetworks();
-    mockTargetHttpProxies = new MockTargetHttpProxies();
-    mockTargetHttpsProxies = new MockTargetHttpsProxies();
-    mockTargetInstances = new MockTargetInstances();
-    mockTargetPools = new MockTargetPools();
-    mockTargetSslProxies = new MockTargetSslProxies();
-    mockTargetVpnGateways = new MockTargetVpnGateways();
-    mockUrlMaps = new MockUrlMaps();
-    mockVpnTunnels = new MockVpnTunnels();
-    mockZoneOperations = new MockZoneOperations();
-    mockZones = new MockZones();
-    serviceHelper = new MockServiceHelper("in-process-1", Arrays.<MockGrpcService>asList(mockAddresses, mockAutoscalers, mockBackendServices, mockDiskTypes, mockDisks, mockFirewalls, mockForwardingRules, mockGlobalAddresses, mockGlobalForwardingRules, mockGlobalOperations, mockHealthChecks, mockHttpHealthChecks, mockHttpsHealthChecks, mockImages, mockInstanceGroupManagers, mockInstanceGroups, mockInstanceTemplates, mockInstances, mockLicenses, mockMachineTypes, mockNetworks, mockProjects, mockRegionAutoscalers, mockRegionBackendServices, mockRegionInstanceGroupManagers, mockRegionInstanceGroups, mockRegionOperations, mockRegions, mockRouters, mockRoutes, mockSnapshots, mockSslCertificates, mockSubnetworks, mockTargetHttpProxies, mockTargetHttpsProxies, mockTargetInstances, mockTargetPools, mockTargetSslProxies, mockTargetVpnGateways, mockUrlMaps, mockVpnTunnels, mockZoneOperations, mockZones));
-    serviceHelper.start();
-  }
-
-  @AfterClass
-  public static void stopServer() {
-    serviceHelper.stop();
-  }
-
-  @Before
-  public void setUp() throws IOException {
-    serviceHelper.reset();
-    channelProvider = serviceHelper.createChannelProvider();
-    TargetPoolSettings settings = TargetPoolSettings.newBuilder()
-        .setTransportChannelProvider(channelProvider)
-        .setCredentialsProvider(NoCredentialsProvider.create())
-        .build();
-    client = TargetPoolClient.create(settings);
+  public static void setUp() throws IOException {
+    clientSettings =
+        TargetPoolSettings.newBuilder()
+           .setTransportChannelProvider(
+               TargetPoolSettings.defaultHttpJsonTransportProviderBuilder()
+                   .setHttpTransport(MOCK_SERVICE).build()).build();
+    client =
+       TargetPoolClient.create(clientSettings);
   }
 
   @After
-  public void tearDown() throws Exception {
+  public void cleanUp() {
+    MOCK_SERVICE.reset();
+  }
+
+  @AfterClass
+  public static void tearDown() throws Exception {
     client.close();
   }
 
@@ -172,7 +88,7 @@ public class TargetPoolClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -181,7 +97,7 @@ public class TargetPoolClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -194,7 +110,7 @@ public class TargetPoolClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone)
+      .setZone(zone.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -203,12 +119,12 @@ public class TargetPoolClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockTargetPools.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(addHealthCheckTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest = TargetPoolsAddHealthCheckRequest.newBuilder().build();
@@ -217,23 +133,16 @@ public class TargetPoolClientTest {
         client.addHealthCheckTargetPool(targetPool, targetPoolsAddHealthCheckRequest);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockTargetPools.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    AddHealthCheckTargetPoolHttpRequest actualRequest = (AddHealthCheckTargetPoolHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(targetPool, actualRequest.getTargetPoolAsTargetPoolName());
-    Assert.assertEquals(targetPoolsAddHealthCheckRequest, actualRequest.getTargetPoolsAddHealthCheckRequest());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void addHealthCheckTargetPoolExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetPools.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(addHealthCheckTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
@@ -257,7 +166,7 @@ public class TargetPoolClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -266,7 +175,7 @@ public class TargetPoolClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -279,7 +188,7 @@ public class TargetPoolClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone)
+      .setZone(zone.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -288,12 +197,12 @@ public class TargetPoolClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockTargetPools.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(addInstanceTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequest = TargetPoolsAddInstanceRequest.newBuilder().build();
@@ -302,23 +211,16 @@ public class TargetPoolClientTest {
         client.addInstanceTargetPool(targetPool, targetPoolsAddInstanceRequest);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockTargetPools.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    AddInstanceTargetPoolHttpRequest actualRequest = (AddInstanceTargetPoolHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(targetPool, actualRequest.getTargetPoolAsTargetPoolName());
-    Assert.assertEquals(targetPoolsAddInstanceRequest, actualRequest.getTargetPoolsAddInstanceRequest());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void addInstanceTargetPoolExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetPools.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(addInstanceTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
@@ -338,9 +240,9 @@ public class TargetPoolClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    TargetPoolsScopedList targetPools = TargetPoolsScopedList.newBuilder().build();
+    TargetPool targetPools = TargetPool.newBuilder().build();
     TargetPoolsScopedList items = TargetPoolsScopedList.newBuilder()
-      .setTargetPools(targetPools)
+      .addAllTargetPools(targetPools)
       .build();
     TargetPoolAggregatedList expectedResponse = TargetPoolAggregatedList.newBuilder()
       .setKind(kind)
@@ -349,7 +251,7 @@ public class TargetPoolClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    mockTargetPools.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(aggregatedListTargetPoolsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -359,22 +261,16 @@ public class TargetPoolClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getTargetPools().get(0), resources.get(0));
 
-    List<GeneratedMessageV3> actualRequests = mockTargetPools.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    AggregatedListTargetPoolsHttpRequest actualRequest = (AggregatedListTargetPoolsHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(project, actualRequest.getProjectAsProjectName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void aggregatedListTargetPoolsExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetPools.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(aggregatedListTargetPoolsMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -397,7 +293,7 @@ public class TargetPoolClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -406,7 +302,7 @@ public class TargetPoolClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -419,7 +315,7 @@ public class TargetPoolClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone)
+      .setZone(zone.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -428,12 +324,12 @@ public class TargetPoolClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockTargetPools.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(deleteTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
 
@@ -441,22 +337,16 @@ public class TargetPoolClientTest {
         client.deleteTargetPool(targetPool);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockTargetPools.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    DeleteTargetPoolHttpRequest actualRequest = (DeleteTargetPoolHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(targetPool, actualRequest.getTargetPoolAsTargetPoolName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void deleteTargetPoolExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetPools.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(deleteTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
@@ -478,7 +368,7 @@ public class TargetPoolClientTest {
     String description = "description-1724546052";
     Float failoverRatio = -8.6107481E7;
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String backupPool = "backupPool1119626361";
     String selfLink = "selfLink-1691268851";
     TargetPool expectedResponse = TargetPool.newBuilder()
@@ -489,11 +379,11 @@ public class TargetPoolClientTest {
       .setDescription(description)
       .setFailoverRatio(failoverRatio)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setBackupPool(backupPool)
       .setSelfLink(selfLink)
       .build();
-    mockTargetPools.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
 
@@ -501,22 +391,16 @@ public class TargetPoolClientTest {
         client.getTargetPool(targetPool);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockTargetPools.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    GetTargetPoolHttpRequest actualRequest = (GetTargetPoolHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(targetPool, actualRequest.getTargetPoolAsTargetPoolName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void getTargetPoolExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetPools.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(getTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
@@ -535,7 +419,7 @@ public class TargetPoolClientTest {
     TargetPoolInstanceHealth expectedResponse = TargetPoolInstanceHealth.newBuilder()
       .setKind(kind)
       .build();
-    mockTargetPools.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(getHealthTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     InstanceReference instanceReference = InstanceReference.newBuilder().build();
@@ -544,23 +428,16 @@ public class TargetPoolClientTest {
         client.getHealthTargetPool(targetPool, instanceReference);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockTargetPools.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    GetHealthTargetPoolHttpRequest actualRequest = (GetHealthTargetPoolHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(targetPool, actualRequest.getTargetPoolAsTargetPoolName());
-    Assert.assertEquals(instanceReference, actualRequest.getInstanceReference());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void getHealthTargetPoolExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetPools.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(getHealthTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
@@ -584,7 +461,7 @@ public class TargetPoolClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -593,7 +470,7 @@ public class TargetPoolClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region2 = "region2-690338393";
+    RegionName region2 = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -606,7 +483,7 @@ public class TargetPoolClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone)
+      .setZone(zone.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -615,12 +492,12 @@ public class TargetPoolClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region2)
+      .setRegion(region2.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockTargetPools.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(insertTargetPoolMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     TargetPool targetPool = TargetPool.newBuilder().build();
@@ -629,23 +506,16 @@ public class TargetPoolClientTest {
         client.insertTargetPool(region, targetPool);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockTargetPools.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    InsertTargetPoolHttpRequest actualRequest = (InsertTargetPoolHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(region, actualRequest.getRegionAsRegionName());
-    Assert.assertEquals(targetPool, actualRequest.getTargetPool());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void insertTargetPoolExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetPools.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(insertTargetPoolMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -665,7 +535,7 @@ public class TargetPoolClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    TargetPool itemsElement = new ArrayList<>();
+    TargetPool itemsElement = TargetPool.newBuilder().build();
     List<TargetPool> items = Arrays.asList(itemsElement);
     TargetPoolList expectedResponse = TargetPoolList.newBuilder()
       .setKind(kind)
@@ -674,7 +544,7 @@ public class TargetPoolClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    mockTargetPools.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(listTargetPoolsMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -684,22 +554,16 @@ public class TargetPoolClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<GeneratedMessageV3> actualRequests = mockTargetPools.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    ListTargetPoolsHttpRequest actualRequest = (ListTargetPoolsHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(region, actualRequest.getRegionAsRegionName());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void listTargetPoolsExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetPools.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(listTargetPoolsMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -722,7 +586,7 @@ public class TargetPoolClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -731,7 +595,7 @@ public class TargetPoolClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -744,7 +608,7 @@ public class TargetPoolClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone)
+      .setZone(zone.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -753,12 +617,12 @@ public class TargetPoolClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockTargetPools.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(removeHealthCheckTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequest = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
@@ -767,23 +631,16 @@ public class TargetPoolClientTest {
         client.removeHealthCheckTargetPool(targetPool, targetPoolsRemoveHealthCheckRequest);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockTargetPools.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    RemoveHealthCheckTargetPoolHttpRequest actualRequest = (RemoveHealthCheckTargetPoolHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(targetPool, actualRequest.getTargetPoolAsTargetPoolName());
-    Assert.assertEquals(targetPoolsRemoveHealthCheckRequest, actualRequest.getTargetPoolsRemoveHealthCheckRequest());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void removeHealthCheckTargetPoolExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetPools.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(removeHealthCheckTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
@@ -807,7 +664,7 @@ public class TargetPoolClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -816,7 +673,7 @@ public class TargetPoolClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -829,7 +686,7 @@ public class TargetPoolClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone)
+      .setZone(zone.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -838,12 +695,12 @@ public class TargetPoolClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockTargetPools.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(removeInstanceTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequest = TargetPoolsRemoveInstanceRequest.newBuilder().build();
@@ -852,23 +709,16 @@ public class TargetPoolClientTest {
         client.removeInstanceTargetPool(targetPool, targetPoolsRemoveInstanceRequest);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockTargetPools.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    RemoveInstanceTargetPoolHttpRequest actualRequest = (RemoveInstanceTargetPoolHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(targetPool, actualRequest.getTargetPoolAsTargetPoolName());
-    Assert.assertEquals(targetPoolsRemoveInstanceRequest, actualRequest.getTargetPoolsRemoveInstanceRequest());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void removeInstanceTargetPoolExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetPools.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(removeInstanceTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
@@ -892,7 +742,7 @@ public class TargetPoolClientTest {
     String selfLink = "selfLink-1691268851";
     String insertTime = "insertTime-103148397";
     Integer httpErrorStatusCode = 1386087020;
-    String zone = "zone3744684";
+    ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String targetLink = "targetLink-2084812312";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -901,7 +751,7 @@ public class TargetPoolClientTest {
     String startTime = "startTime-1573145462";
     String endTime = "endTime1725551537";
     String id = "id3355";
-    String region = "region-934795532";
+    RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String clientOperationId = "clientOperationId-239630617";
     String user = "user3599307";
     String status = "status-892481550";
@@ -914,7 +764,7 @@ public class TargetPoolClientTest {
       .setSelfLink(selfLink)
       .setInsertTime(insertTime)
       .setHttpErrorStatusCode(httpErrorStatusCode)
-      .setZone(zone)
+      .setZone(zone.toString())
       .setTargetLink(targetLink)
       .setCreationTimestamp(creationTimestamp)
       .setName(name)
@@ -923,12 +773,12 @@ public class TargetPoolClientTest {
       .setStartTime(startTime)
       .setEndTime(endTime)
       .setId(id)
-      .setRegion(region)
+      .setRegion(region.toString())
       .setClientOperationId(clientOperationId)
       .setUser(user)
       .setStatus(status)
       .build();
-    mockTargetPools.addResponse(expectedResponse);
+    MOCK_SERVICE.addResponse(expectedResponse);MOCK_SERVICE.setSerializer(setBackupTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     Float failoverRatio = -8.6107481E7;
@@ -938,24 +788,16 @@ public class TargetPoolClientTest {
         client.setBackupTargetPool(targetPool, failoverRatio, targetReference);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<GeneratedMessageV3> actualRequests = mockTargetPools.getRequests();
+    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
-    SetBackupTargetPoolHttpRequest actualRequest = (SetBackupTargetPoolHttpRequest)actualRequests.get(0);
-
-    Assert.assertEquals(targetPool, actualRequest.getTargetPoolAsTargetPoolName());
-    Assert.assertEquals(failoverRatio, actualRequest.getFailoverRatio());
-    Assert.assertEquals(targetReference, actualRequest.getTargetReference());
-    Assert.assertTrue(
-        channelProvider.isHeaderSent(
-            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
-            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
   }
 
   @Test
   @SuppressWarnings("all")
   public void setBackupTargetPoolExceptionTest() throws Exception {
-    StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-    mockTargetPools.addException(exception);
+    ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    MOCK_SERVICE.addException(exception);
+    MOCK_SERVICE.setSerializer(setBackupTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");

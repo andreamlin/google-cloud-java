@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AbandonInstancesRegionInstanceGroupManagerHttpRequest;
@@ -37,8 +38,8 @@ import com.google.compute.v1.InstanceGroupManager;
 import com.google.compute.v1.ListManagedInstancesRegionInstanceGroupManagersHttpRequest;
 import com.google.compute.v1.ListRegionInstanceGroupManagersHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionInstanceGroupManagersPagedResponse;
 import com.google.compute.v1.RecreateInstancesRegionInstanceGroupManagerHttpRequest;
+import static com.google.compute.v1.RegionInstanceGroupManagerClient.ListRegionInstanceGroupManagersPagedResponse;
 import com.google.compute.v1.RegionInstanceGroupManagerList;
 import com.google.compute.v1.RegionInstanceGroupManagerSettings;
 import com.google.compute.v1.RegionInstanceGroupManagersAbandonInstancesRequest;
@@ -72,7 +73,8 @@ import javax.annotation.Generated;
 public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupManagerStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation> abandonInstancesRegionInstanceGroupManagerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation> abandonInstancesRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.abandonInstances")
           .setRequestInstance(AbandonInstancesRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
@@ -86,7 +88,8 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<DeleteRegionInstanceGroupManagerHttpRequest, Operation> deleteRegionInstanceGroupManagerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteRegionInstanceGroupManagerHttpRequest, Operation> deleteRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<DeleteRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.delete")
           .setRequestInstance(DeleteRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
@@ -100,7 +103,8 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation> deleteInstancesRegionInstanceGroupManagerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation> deleteInstancesRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.deleteInstances")
           .setRequestInstance(DeleteInstancesRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
@@ -114,7 +118,8 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager> getRegionInstanceGroupManagerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager> getRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.get")
           .setRequestInstance(GetRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
@@ -128,7 +133,8 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertRegionInstanceGroupManagerHttpRequest, Operation> insertRegionInstanceGroupManagerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertRegionInstanceGroupManagerHttpRequest, Operation> insertRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<InsertRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.insert")
           .setRequestInstance(InsertRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
@@ -142,7 +148,8 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagerList> listRegionInstanceGroupManagersMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagerList> listRegionInstanceGroupManagersMethodDescriptor =
       ApiMethodDescriptor.<ListRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagerList>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.list")
           .setRequestInstance(ListRegionInstanceGroupManagersHttpRequest.getDefaultInstance())
@@ -157,7 +164,8 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<ListManagedInstancesRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagersListInstancesResponse> listManagedInstancesRegionInstanceGroupManagersMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListManagedInstancesRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagersListInstancesResponse> listManagedInstancesRegionInstanceGroupManagersMethodDescriptor =
       ApiMethodDescriptor.<ListManagedInstancesRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagersListInstancesResponse>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.listManagedInstances")
           .setRequestInstance(ListManagedInstancesRegionInstanceGroupManagersHttpRequest.getDefaultInstance())
@@ -172,7 +180,8 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation> recreateInstancesRegionInstanceGroupManagerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation> recreateInstancesRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.recreateInstances")
           .setRequestInstance(RecreateInstancesRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
@@ -186,7 +195,8 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ResizeRegionInstanceGroupManagerHttpRequest, Operation> resizeRegionInstanceGroupManagerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ResizeRegionInstanceGroupManagerHttpRequest, Operation> resizeRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<ResizeRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.resize")
           .setRequestInstance(ResizeRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
@@ -201,7 +211,8 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateRegionInstanceGroupManagerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.setInstanceTemplate")
           .setRequestInstance(SetInstanceTemplateRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
@@ -215,7 +226,8 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation> setTargetPoolsRegionInstanceGroupManagerMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation> setTargetPoolsRegionInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroupManagers.setTargetPools")
           .setRequestInstance(SetTargetPoolsRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
@@ -245,12 +257,12 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
   private final UnaryCallable<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateRegionInstanceGroupManagerCallable;
   private final UnaryCallable<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation> setTargetPoolsRegionInstanceGroupManagerCallable;
 
-  public static final HttpJsonRegionInstanceGroupManagerStub create(RegionInstanceGroupManagerSettings settings) throws IOException {
+  public static final HttpJsonRegionInstanceGroupManagerStub create(RegionInstanceGroupManagerStubSettings settings) throws IOException {
     return new HttpJsonRegionInstanceGroupManagerStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonRegionInstanceGroupManagerStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonRegionInstanceGroupManagerStub(RegionInstanceGroupManagerSettings.newBuilder().build(), clientContext);
+    return new HttpJsonRegionInstanceGroupManagerStub(RegionInstanceGroupManagerStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -258,7 +270,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonRegionInstanceGroupManagerStub(RegionInstanceGroupManagerSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonRegionInstanceGroupManagerStub(RegionInstanceGroupManagerStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation> abandonInstancesRegionInstanceGroupManagerTransportSettings =
         HttpJsonCallSettings.<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation>newBuilder()

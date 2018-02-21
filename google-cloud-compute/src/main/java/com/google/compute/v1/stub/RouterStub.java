@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,14 +25,14 @@ import com.google.compute.v1.GetRouterStatusRouterHttpRequest;
 import com.google.compute.v1.InsertRouterHttpRequest;
 import com.google.compute.v1.ListRoutersHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListRoutersPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListRoutersPagedResponse;
 import com.google.compute.v1.PatchRouterHttpRequest;
 import com.google.compute.v1.PreviewRouterHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.Router;
 import com.google.compute.v1.RouterAggregatedList;
+import static com.google.compute.v1.RouterClient.AggregatedListRoutersPagedResponse;
+import static com.google.compute.v1.RouterClient.ListRoutersPagedResponse;
 import com.google.compute.v1.RouterList;
 import com.google.compute.v1.RouterName;
 import com.google.compute.v1.RouterStatusResponse;

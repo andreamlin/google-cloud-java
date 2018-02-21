@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.ProjectStub;
+import com.google.compute.v1.stub.ProjectStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -135,7 +150,7 @@ public class ProjectClient implements BackgroundResource {
    */
   protected ProjectClient(ProjectSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((ProjectStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -174,7 +189,7 @@ public class ProjectClient implements BackgroundResource {
 
     GetProjectHttpRequest request =
         GetProjectHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return getProject(request);
   }
@@ -188,7 +203,7 @@ public class ProjectClient implements BackgroundResource {
    * try (ProjectClient projectClient = ProjectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   GetProjectHttpRequest request = GetProjectHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   Project response = projectClient.getProject(request);
    * }
@@ -211,7 +226,7 @@ public class ProjectClient implements BackgroundResource {
    * try (ProjectClient projectClient = ProjectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   GetProjectHttpRequest request = GetProjectHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;Project&gt; future = projectClient.getProjectCallable().futureCall(request);
    *   // Do something
@@ -246,7 +261,7 @@ public class ProjectClient implements BackgroundResource {
 
     MoveDiskProjectHttpRequest request =
         MoveDiskProjectHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setDiskMoveRequestResource(diskMoveRequestResource)
         .build();
     return moveDiskProject(request);
@@ -262,7 +277,7 @@ public class ProjectClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   DiskMoveRequest diskMoveRequest = DiskMoveRequest.newBuilder().build();
    *   MoveDiskProjectHttpRequest request = MoveDiskProjectHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setDiskMoveRequestResource(diskMoveRequest)
    *     .build();
    *   Operation response = projectClient.moveDiskProject(request);
@@ -287,7 +302,7 @@ public class ProjectClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   DiskMoveRequest diskMoveRequest = DiskMoveRequest.newBuilder().build();
    *   MoveDiskProjectHttpRequest request = MoveDiskProjectHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setDiskMoveRequestResource(diskMoveRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = projectClient.moveDiskProjectCallable().futureCall(request);
@@ -323,7 +338,7 @@ public class ProjectClient implements BackgroundResource {
 
     MoveInstanceProjectHttpRequest request =
         MoveInstanceProjectHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setInstanceMoveRequestResource(instanceMoveRequestResource)
         .build();
     return moveInstanceProject(request);
@@ -339,7 +354,7 @@ public class ProjectClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   InstanceMoveRequest instanceMoveRequest = InstanceMoveRequest.newBuilder().build();
    *   MoveInstanceProjectHttpRequest request = MoveInstanceProjectHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setInstanceMoveRequestResource(instanceMoveRequest)
    *     .build();
    *   Operation response = projectClient.moveInstanceProject(request);
@@ -364,7 +379,7 @@ public class ProjectClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   InstanceMoveRequest instanceMoveRequest = InstanceMoveRequest.newBuilder().build();
    *   MoveInstanceProjectHttpRequest request = MoveInstanceProjectHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setInstanceMoveRequestResource(instanceMoveRequest)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = projectClient.moveInstanceProjectCallable().futureCall(request);
@@ -400,7 +415,7 @@ public class ProjectClient implements BackgroundResource {
 
     SetCommonInstanceMetadataProjectHttpRequest request =
         SetCommonInstanceMetadataProjectHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setMetadataResource(metadataResource)
         .build();
     return setCommonInstanceMetadataProject(request);
@@ -416,7 +431,7 @@ public class ProjectClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Metadata metadata = Metadata.newBuilder().build();
    *   SetCommonInstanceMetadataProjectHttpRequest request = SetCommonInstanceMetadataProjectHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setMetadataResource(metadata)
    *     .build();
    *   Operation response = projectClient.setCommonInstanceMetadataProject(request);
@@ -441,7 +456,7 @@ public class ProjectClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Metadata metadata = Metadata.newBuilder().build();
    *   SetCommonInstanceMetadataProjectHttpRequest request = SetCommonInstanceMetadataProjectHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setMetadataResource(metadata)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = projectClient.setCommonInstanceMetadataProjectCallable().futureCall(request);
@@ -477,7 +492,7 @@ public class ProjectClient implements BackgroundResource {
 
     SetUsageExportBucketProjectHttpRequest request =
         SetUsageExportBucketProjectHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setUsageExportLocationResource(usageExportLocationResource)
         .build();
     return setUsageExportBucketProject(request);
@@ -493,7 +508,7 @@ public class ProjectClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   UsageExportLocation usageExportLocation = UsageExportLocation.newBuilder().build();
    *   SetUsageExportBucketProjectHttpRequest request = SetUsageExportBucketProjectHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setUsageExportLocationResource(usageExportLocation)
    *     .build();
    *   Operation response = projectClient.setUsageExportBucketProject(request);
@@ -518,7 +533,7 @@ public class ProjectClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   UsageExportLocation usageExportLocation = UsageExportLocation.newBuilder().build();
    *   SetUsageExportBucketProjectHttpRequest request = SetUsageExportBucketProjectHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setUsageExportLocationResource(usageExportLocation)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = projectClient.setUsageExportBucketProjectCallable().futureCall(request);
@@ -561,5 +576,6 @@ public class ProjectClient implements BackgroundResource {
   public boolean awaitTermination(long duration, TimeUnit unit) throws InterruptedException {
     return stub.awaitTermination(duration, unit);
   }
+
 
 }

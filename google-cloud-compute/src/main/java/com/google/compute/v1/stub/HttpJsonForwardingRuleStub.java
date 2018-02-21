@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,12 +26,15 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListForwardingRulesHttpRequest;
 import com.google.compute.v1.DeleteForwardingRuleHttpRequest;
 import com.google.compute.v1.ForwardingRule;
 import com.google.compute.v1.ForwardingRuleAggregatedList;
+import static com.google.compute.v1.ForwardingRuleClient.AggregatedListForwardingRulesPagedResponse;
+import static com.google.compute.v1.ForwardingRuleClient.ListForwardingRulesPagedResponse;
 import com.google.compute.v1.ForwardingRuleList;
 import com.google.compute.v1.ForwardingRuleName;
 import com.google.compute.v1.ForwardingRuleSettings;
@@ -39,8 +42,6 @@ import com.google.compute.v1.GetForwardingRuleHttpRequest;
 import com.google.compute.v1.InsertForwardingRuleHttpRequest;
 import com.google.compute.v1.ListForwardingRulesHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.AggregatedListForwardingRulesPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListForwardingRulesPagedResponse;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.SetTargetForwardingRuleHttpRequest;
@@ -65,7 +66,8 @@ import javax.annotation.Generated;
 public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList> aggregatedListForwardingRulesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList> aggregatedListForwardingRulesMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList>newBuilder()
           .setMethodName("compute.forwardingRules.aggregatedList")
           .setRequestInstance(AggregatedListForwardingRulesHttpRequest.getDefaultInstance())
@@ -80,7 +82,8 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<DeleteForwardingRuleHttpRequest, Operation> deleteForwardingRuleMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteForwardingRuleHttpRequest, Operation> deleteForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<DeleteForwardingRuleHttpRequest, Operation>newBuilder()
           .setMethodName("compute.forwardingRules.delete")
           .setRequestInstance(DeleteForwardingRuleHttpRequest.getDefaultInstance())
@@ -94,7 +97,8 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetForwardingRuleHttpRequest, ForwardingRule> getForwardingRuleMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetForwardingRuleHttpRequest, ForwardingRule> getForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<GetForwardingRuleHttpRequest, ForwardingRule>newBuilder()
           .setMethodName("compute.forwardingRules.get")
           .setRequestInstance(GetForwardingRuleHttpRequest.getDefaultInstance())
@@ -108,7 +112,8 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertForwardingRuleHttpRequest, Operation> insertForwardingRuleMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertForwardingRuleHttpRequest, Operation> insertForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<InsertForwardingRuleHttpRequest, Operation>newBuilder()
           .setMethodName("compute.forwardingRules.insert")
           .setRequestInstance(InsertForwardingRuleHttpRequest.getDefaultInstance())
@@ -122,7 +127,8 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListForwardingRulesHttpRequest, ForwardingRuleList> listForwardingRulesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListForwardingRulesHttpRequest, ForwardingRuleList> listForwardingRulesMethodDescriptor =
       ApiMethodDescriptor.<ListForwardingRulesHttpRequest, ForwardingRuleList>newBuilder()
           .setMethodName("compute.forwardingRules.list")
           .setRequestInstance(ListForwardingRulesHttpRequest.getDefaultInstance())
@@ -137,7 +143,8 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<SetTargetForwardingRuleHttpRequest, Operation>newBuilder()
           .setMethodName("compute.forwardingRules.setTarget")
           .setRequestInstance(SetTargetForwardingRuleHttpRequest.getDefaultInstance())
@@ -163,12 +170,12 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
   private final UnaryCallable<ListForwardingRulesHttpRequest, ListForwardingRulesPagedResponse> listForwardingRulesPagedCallable;
   private final UnaryCallable<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleCallable;
 
-  public static final HttpJsonForwardingRuleStub create(ForwardingRuleSettings settings) throws IOException {
+  public static final HttpJsonForwardingRuleStub create(ForwardingRuleStubSettings settings) throws IOException {
     return new HttpJsonForwardingRuleStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonForwardingRuleStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonForwardingRuleStub(ForwardingRuleSettings.newBuilder().build(), clientContext);
+    return new HttpJsonForwardingRuleStub(ForwardingRuleStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -176,7 +183,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonForwardingRuleStub(ForwardingRuleSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonForwardingRuleStub(ForwardingRuleStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList> aggregatedListForwardingRulesTransportSettings =
         HttpJsonCallSettings.<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList>newBuilder()

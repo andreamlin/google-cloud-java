@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListNetworksPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.NetworkStub;
+import com.google.compute.v1.stub.NetworkStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class NetworkClient implements BackgroundResource {
    */
   protected NetworkClient(NetworkSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((NetworkStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class NetworkClient implements BackgroundResource {
 
     DeleteNetworkHttpRequest request =
         DeleteNetworkHttpRequest.newBuilder()
-        .setNetworkWithNetworkName(network)
+        .setNetwork(network.toString())
         .build();
     return deleteNetwork(request);
   }
@@ -189,7 +203,7 @@ public class NetworkClient implements BackgroundResource {
    * try (NetworkClient networkClient = NetworkClient.create()) {
    *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   DeleteNetworkHttpRequest request = DeleteNetworkHttpRequest.newBuilder()
-   *     .setNetworkWithNetworkName(network)
+   *     .setNetwork(network.toString())
    *     .build();
    *   Operation response = networkClient.deleteNetwork(request);
    * }
@@ -212,7 +226,7 @@ public class NetworkClient implements BackgroundResource {
    * try (NetworkClient networkClient = NetworkClient.create()) {
    *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   DeleteNetworkHttpRequest request = DeleteNetworkHttpRequest.newBuilder()
-   *     .setNetworkWithNetworkName(network)
+   *     .setNetwork(network.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = networkClient.deleteNetworkCallable().futureCall(request);
    *   // Do something
@@ -245,7 +259,7 @@ public class NetworkClient implements BackgroundResource {
 
     GetNetworkHttpRequest request =
         GetNetworkHttpRequest.newBuilder()
-        .setNetworkWithNetworkName(network)
+        .setNetwork(network.toString())
         .build();
     return getNetwork(request);
   }
@@ -259,7 +273,7 @@ public class NetworkClient implements BackgroundResource {
    * try (NetworkClient networkClient = NetworkClient.create()) {
    *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   GetNetworkHttpRequest request = GetNetworkHttpRequest.newBuilder()
-   *     .setNetworkWithNetworkName(network)
+   *     .setNetwork(network.toString())
    *     .build();
    *   Network response = networkClient.getNetwork(request);
    * }
@@ -282,7 +296,7 @@ public class NetworkClient implements BackgroundResource {
    * try (NetworkClient networkClient = NetworkClient.create()) {
    *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   GetNetworkHttpRequest request = GetNetworkHttpRequest.newBuilder()
-   *     .setNetworkWithNetworkName(network)
+   *     .setNetwork(network.toString())
    *     .build();
    *   ApiFuture&lt;Network&gt; future = networkClient.getNetworkCallable().futureCall(request);
    *   // Do something
@@ -317,7 +331,7 @@ public class NetworkClient implements BackgroundResource {
 
     InsertNetworkHttpRequest request =
         InsertNetworkHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setNetworkResource(networkResource)
         .build();
     return insertNetwork(request);
@@ -333,7 +347,7 @@ public class NetworkClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Network network = Network.newBuilder().build();
    *   InsertNetworkHttpRequest request = InsertNetworkHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setNetworkResource(network)
    *     .build();
    *   Operation response = networkClient.insertNetwork(request);
@@ -358,7 +372,7 @@ public class NetworkClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Network network = Network.newBuilder().build();
    *   InsertNetworkHttpRequest request = InsertNetworkHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setNetworkResource(network)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = networkClient.insertNetworkCallable().futureCall(request);
@@ -393,7 +407,7 @@ public class NetworkClient implements BackgroundResource {
   public final ListNetworksPagedResponse listNetworks(ProjectName project) {
     ListNetworksHttpRequest request =
         ListNetworksHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listNetworks(request);
   }
@@ -407,7 +421,7 @@ public class NetworkClient implements BackgroundResource {
    * try (NetworkClient networkClient = NetworkClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListNetworksHttpRequest request = ListNetworksHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (Network element : networkClient.listNetworks(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -433,7 +447,7 @@ public class NetworkClient implements BackgroundResource {
    * try (NetworkClient networkClient = NetworkClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListNetworksHttpRequest request = ListNetworksHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListNetworksPagedResponse&gt; future = networkClient.listNetworksPagedCallable().futureCall(request);
    *   // Do something
@@ -457,7 +471,7 @@ public class NetworkClient implements BackgroundResource {
    * try (NetworkClient networkClient = NetworkClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListNetworksHttpRequest request = ListNetworksHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     NetworkList response = networkClient.listNetworksCallable().call(request);
@@ -499,7 +513,7 @@ public class NetworkClient implements BackgroundResource {
 
     SwitchToCustomModeNetworkHttpRequest request =
         SwitchToCustomModeNetworkHttpRequest.newBuilder()
-        .setNetworkWithNetworkName(network)
+        .setNetwork(network.toString())
         .build();
     return switchToCustomModeNetwork(request);
   }
@@ -513,7 +527,7 @@ public class NetworkClient implements BackgroundResource {
    * try (NetworkClient networkClient = NetworkClient.create()) {
    *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   SwitchToCustomModeNetworkHttpRequest request = SwitchToCustomModeNetworkHttpRequest.newBuilder()
-   *     .setNetworkWithNetworkName(network)
+   *     .setNetwork(network.toString())
    *     .build();
    *   Operation response = networkClient.switchToCustomModeNetwork(request);
    * }
@@ -536,7 +550,7 @@ public class NetworkClient implements BackgroundResource {
    * try (NetworkClient networkClient = NetworkClient.create()) {
    *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
    *   SwitchToCustomModeNetworkHttpRequest request = SwitchToCustomModeNetworkHttpRequest.newBuilder()
-   *     .setNetworkWithNetworkName(network)
+   *     .setNetwork(network.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = networkClient.switchToCustomModeNetworkCallable().futureCall(request);
    *   // Do something
@@ -579,4 +593,91 @@ public class NetworkClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListNetworksPagedResponse extends AbstractPagedListResponse<
+      ListNetworksHttpRequest,
+      NetworkList,
+      Network,
+      ListNetworksPage,
+      ListNetworksFixedSizeCollection> {
+
+    public static ApiFuture<ListNetworksPagedResponse> createAsync(
+        PageContext<ListNetworksHttpRequest, NetworkList, Network> context,
+        ApiFuture<NetworkList> futureResponse) {
+      ApiFuture<ListNetworksPage> futurePage =
+          ListNetworksPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListNetworksPage, ListNetworksPagedResponse>() {
+            @Override
+            public ListNetworksPagedResponse apply(ListNetworksPage input) {
+              return new ListNetworksPagedResponse(input);
+            }
+          });
+    }
+
+    private ListNetworksPagedResponse(ListNetworksPage page) {
+      super(page, ListNetworksFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListNetworksPage extends AbstractPage<
+      ListNetworksHttpRequest,
+      NetworkList,
+      Network,
+      ListNetworksPage> {
+
+    private ListNetworksPage(
+        PageContext<ListNetworksHttpRequest, NetworkList, Network> context,
+        NetworkList response) {
+      super(context, response);
+    }
+
+    private static ListNetworksPage createEmptyPage() {
+      return new ListNetworksPage(null, null);
+    }
+
+    @Override
+    protected ListNetworksPage createPage(
+        PageContext<ListNetworksHttpRequest, NetworkList, Network> context,
+        NetworkList response) {
+      return new ListNetworksPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListNetworksPage> createPageAsync(
+        PageContext<ListNetworksHttpRequest, NetworkList, Network> context,
+        ApiFuture<NetworkList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListNetworksFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListNetworksHttpRequest,
+      NetworkList,
+      Network,
+      ListNetworksPage,
+      ListNetworksFixedSizeCollection> {
+
+    private ListNetworksFixedSizeCollection(List<ListNetworksPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListNetworksFixedSizeCollection createEmptyCollection() {
+      return new ListNetworksFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListNetworksFixedSizeCollection createCollection(
+        List<ListNetworksPage> pages, int collectionSize) {
+      return new ListNetworksFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

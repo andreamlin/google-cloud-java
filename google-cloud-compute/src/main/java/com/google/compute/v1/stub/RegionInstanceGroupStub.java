@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,8 +24,8 @@ import com.google.compute.v1.InstanceWithNamedPorts;
 import com.google.compute.v1.ListInstancesRegionInstanceGroupsHttpRequest;
 import com.google.compute.v1.ListRegionInstanceGroupsHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListInstancesRegionInstanceGroupsPagedResponse;
-import static com.google.compute.v1.PagedResponseWrappers.ListRegionInstanceGroupsPagedResponse;
+import static com.google.compute.v1.RegionInstanceGroupClient.ListInstancesRegionInstanceGroupsPagedResponse;
+import static com.google.compute.v1.RegionInstanceGroupClient.ListRegionInstanceGroupsPagedResponse;
 import com.google.compute.v1.RegionInstanceGroupList;
 import com.google.compute.v1.RegionInstanceGroupsInstanceGroupName;
 import com.google.compute.v1.RegionInstanceGroupsListInstances;

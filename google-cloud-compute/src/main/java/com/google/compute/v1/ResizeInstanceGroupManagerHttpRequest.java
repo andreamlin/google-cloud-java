@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,11 +37,9 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
   private final String instanceGroupManager;
   private final String key;
   private final String prettyPrint;
-  private final String project;
   private final String quotaUser;
   private final Integer size;
   private final String userIp;
-  private final String zone;
 
   private ResizeInstanceGroupManagerHttpRequest() {
     this.access_token = null;
@@ -50,11 +48,9 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
     this.instanceGroupManager = null;
     this.key = null;
     this.prettyPrint = null;
-    this.project = null;
     this.quotaUser = null;
     this.size = null;
     this.userIp = null;
-    this.zone = null;
   }
 
 
@@ -65,11 +61,9 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
       String instanceGroupManager,
       String key,
       String prettyPrint,
-      String project,
       String quotaUser,
       Integer size,
-      String userIp,
-      String zone
+      String userIp
       ) {
     this.access_token = access_token;
     this.callback = callback;
@@ -77,11 +71,14 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
     this.instanceGroupManager = instanceGroupManager;
     this.key = key;
     this.prettyPrint = prettyPrint;
-    this.project = project;
     this.quotaUser = quotaUser;
     this.size = size;
     this.userIp = userIp;
-    this.zone = zone;
+  }
+
+  @Override
+  public InstanceGroupManagerName resourceNamePath() {
+    return InstanceGroupManagerName.parse(instanceGroupManager);
   }
 
   @Override
@@ -105,9 +102,6 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
     }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
     }
@@ -117,15 +111,12 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
     if (fieldNames.contains("userIp") && userIp != null) {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
-    if (fieldNames.contains("zone") && zone != null) {
-      fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
-    }
     return fieldMap;
   }
 
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage requestBody() {
     return null;
   }
 
@@ -153,10 +144,6 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
     return prettyPrint;
   }
 
-  public String getProject() {
-    return project;
-  }
-
   public String getQuotaUser() {
     return quotaUser;
   }
@@ -167,10 +154,6 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
 
   public String getUserIp() {
     return userIp;
-  }
-
-  public String getZone() {
-    return zone;
   }
 
 
@@ -200,11 +183,9 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
     private String instanceGroupManager;
     private String key;
     private String prettyPrint;
-    private String project;
     private String quotaUser;
     private Integer size;
     private String userIp;
-    private String zone;
 
     Builder() {}
 
@@ -228,9 +209,6 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
       }
-      if (other.getProject() != null) {
-        this.project = other.project;
-      }
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
       }
@@ -239,9 +217,6 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
       }
       if (other.getUserIp() != null) {
         this.userIp = other.userIp;
-      }
-      if (other.getZone() != null) {
-        this.zone = other.zone;
       }
       return this;
     }
@@ -253,11 +228,9 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
       this.instanceGroupManager = source.instanceGroupManager;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
-      this.project = source.project;
       this.quotaUser = source.quotaUser;
       this.size = source.size;
       this.userIp = source.userIp;
-      this.zone = source.zone;
     }
 
     public String getAccessToken() {
@@ -314,15 +287,6 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getProject() {
-      return project;
-    }
-
-    public Builder setProject(String project) {
-      this.project = project;
-      return this;
-    }
-
     public String getQuotaUser() {
       return quotaUser;
     }
@@ -350,15 +314,6 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getZone() {
-      return zone;
-    }
-
-    public Builder setZone(String zone) {
-      this.zone = zone;
-      return this;
-    }
-
 
     public ResizeInstanceGroupManagerHttpRequest build() {
       String missing = "";
@@ -370,17 +325,11 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
       }
 
 
-      if (project == null) {
-        missing += " project";
-      }
 
       if (size == null) {
         missing += " size";
       }
 
-      if (zone == null) {
-        missing += " zone";
-      }
       if (!missing.isEmpty()) {
         throw new IllegalStateException("Missing required properties:" + missing);
       }
@@ -391,11 +340,9 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
         instanceGroupManager,
         key,
         prettyPrint,
-        project,
         quotaUser,
         size,
-        userIp,
-        zone
+        userIp
       );
     }
 
@@ -407,35 +354,10 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
       newBuilder.setInstanceGroupManager(this.instanceGroupManager);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
-      newBuilder.setProject(this.project);
       newBuilder.setQuotaUser(this.quotaUser);
       newBuilder.setSize(this.size);
       newBuilder.setUserIp(this.userIp);
-      newBuilder.setZone(this.zone);
       return newBuilder;
-    }
-
-    public final Builder setInstanceGroupManagerWithInstanceGroupManagerName(InstanceGroupManagerName value) {
-      if (value == null) {
-        return
-            setInstanceGroupManager("").
-            setProject("").
-            setZone("")
-            ;
-      }
-      return
-          setInstanceGroupManager(value.getInstanceGroupManager()).
-          setProject(value.getProject()).
-          setZone(value.getZone())
-          ;
-    }
-
-    public final InstanceGroupManagerName getInstanceGroupManagerAsInstanceGroupManagerName() {
-      return InstanceGroupManagerName.of(
-          getInstanceGroupManager(),
-          getProject(),
-          getZone()
-          );
     }
   }
 
@@ -448,11 +370,9 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
         + "instanceGroupManager=" + instanceGroupManager + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
-        + "project=" + project + ", "
         + "quotaUser=" + quotaUser + ", "
         + "size=" + size + ", "
-        + "userIp=" + userIp + ", "
-        + "zone=" + zone
+        + "userIp=" + userIp
         + "}";
   }
 
@@ -470,11 +390,9 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
           Objects.equals(this.instanceGroupManager, that.getInstanceGroupManager()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
-          Objects.equals(this.project, that.getProject()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
           Objects.equals(this.size, that.getSize()) &&
-          Objects.equals(this.userIp, that.getUserIp()) &&
-          Objects.equals(this.zone, that.getZone())
+          Objects.equals(this.userIp, that.getUserIp())
           ;
     }
     return false;
@@ -489,11 +407,9 @@ public final class ResizeInstanceGroupManagerHttpRequest implements ApiMessage {
       instanceGroupManager,
       key,
       prettyPrint,
-      project,
       quotaUser,
       size,
-      userIp,
-      zone
+      userIp
     );
   }
 }

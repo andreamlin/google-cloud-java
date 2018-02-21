@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.compute.v1.PagedResponseWrappers.ListRoutesPagedResponse;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.compute.v1.stub.RouteStub;
+import com.google.compute.v1.stub.RouteStubSettings;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class RouteClient implements BackgroundResource {
    */
   protected RouteClient(RouteSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((RouteStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,7 @@ public class RouteClient implements BackgroundResource {
 
     DeleteRouteHttpRequest request =
         DeleteRouteHttpRequest.newBuilder()
-        .setRouteWithRouteName(route)
+        .setRoute(route.toString())
         .build();
     return deleteRoute(request);
   }
@@ -189,7 +203,7 @@ public class RouteClient implements BackgroundResource {
    * try (RouteClient routeClient = RouteClient.create()) {
    *   RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
    *   DeleteRouteHttpRequest request = DeleteRouteHttpRequest.newBuilder()
-   *     .setRouteWithRouteName(route)
+   *     .setRoute(route.toString())
    *     .build();
    *   Operation response = routeClient.deleteRoute(request);
    * }
@@ -212,7 +226,7 @@ public class RouteClient implements BackgroundResource {
    * try (RouteClient routeClient = RouteClient.create()) {
    *   RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
    *   DeleteRouteHttpRequest request = DeleteRouteHttpRequest.newBuilder()
-   *     .setRouteWithRouteName(route)
+   *     .setRoute(route.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = routeClient.deleteRouteCallable().futureCall(request);
    *   // Do something
@@ -245,7 +259,7 @@ public class RouteClient implements BackgroundResource {
 
     GetRouteHttpRequest request =
         GetRouteHttpRequest.newBuilder()
-        .setRouteWithRouteName(route)
+        .setRoute(route.toString())
         .build();
     return getRoute(request);
   }
@@ -259,7 +273,7 @@ public class RouteClient implements BackgroundResource {
    * try (RouteClient routeClient = RouteClient.create()) {
    *   RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
    *   GetRouteHttpRequest request = GetRouteHttpRequest.newBuilder()
-   *     .setRouteWithRouteName(route)
+   *     .setRoute(route.toString())
    *     .build();
    *   Route response = routeClient.getRoute(request);
    * }
@@ -282,7 +296,7 @@ public class RouteClient implements BackgroundResource {
    * try (RouteClient routeClient = RouteClient.create()) {
    *   RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
    *   GetRouteHttpRequest request = GetRouteHttpRequest.newBuilder()
-   *     .setRouteWithRouteName(route)
+   *     .setRoute(route.toString())
    *     .build();
    *   ApiFuture&lt;Route&gt; future = routeClient.getRouteCallable().futureCall(request);
    *   // Do something
@@ -321,7 +335,7 @@ public class RouteClient implements BackgroundResource {
 
     InsertRouteHttpRequest request =
         InsertRouteHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .setRouteResource(routeResource)
         .build();
     return insertRoute(request);
@@ -337,7 +351,7 @@ public class RouteClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Route route = Route.newBuilder().build();
    *   InsertRouteHttpRequest request = InsertRouteHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setRouteResource(route)
    *     .build();
    *   Operation response = routeClient.insertRoute(request);
@@ -362,7 +376,7 @@ public class RouteClient implements BackgroundResource {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Route route = Route.newBuilder().build();
    *   InsertRouteHttpRequest request = InsertRouteHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .setRouteResource(route)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = routeClient.insertRouteCallable().futureCall(request);
@@ -397,7 +411,7 @@ public class RouteClient implements BackgroundResource {
   public final ListRoutesPagedResponse listRoutes(ProjectName project) {
     ListRoutesHttpRequest request =
         ListRoutesHttpRequest.newBuilder()
-        .setProjectWithProjectName(project)
+        .setProject(project.toString())
         .build();
     return listRoutes(request);
   }
@@ -411,7 +425,7 @@ public class RouteClient implements BackgroundResource {
    * try (RouteClient routeClient = RouteClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListRoutesHttpRequest request = ListRoutesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   for (Route element : routeClient.listRoutes(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -437,7 +451,7 @@ public class RouteClient implements BackgroundResource {
    * try (RouteClient routeClient = RouteClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListRoutesHttpRequest request = ListRoutesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   ApiFuture&lt;ListRoutesPagedResponse&gt; future = routeClient.listRoutesPagedCallable().futureCall(request);
    *   // Do something
@@ -461,7 +475,7 @@ public class RouteClient implements BackgroundResource {
    * try (RouteClient routeClient = RouteClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ListRoutesHttpRequest request = ListRoutesHttpRequest.newBuilder()
-   *     .setProjectWithProjectName(project)
+   *     .setProject(project.toString())
    *     .build();
    *   while (true) {
    *     RouteList response = routeClient.listRoutesCallable().call(request);
@@ -513,4 +527,91 @@ public class RouteClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListRoutesPagedResponse extends AbstractPagedListResponse<
+      ListRoutesHttpRequest,
+      RouteList,
+      Route,
+      ListRoutesPage,
+      ListRoutesFixedSizeCollection> {
+
+    public static ApiFuture<ListRoutesPagedResponse> createAsync(
+        PageContext<ListRoutesHttpRequest, RouteList, Route> context,
+        ApiFuture<RouteList> futureResponse) {
+      ApiFuture<ListRoutesPage> futurePage =
+          ListRoutesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListRoutesPage, ListRoutesPagedResponse>() {
+            @Override
+            public ListRoutesPagedResponse apply(ListRoutesPage input) {
+              return new ListRoutesPagedResponse(input);
+            }
+          });
+    }
+
+    private ListRoutesPagedResponse(ListRoutesPage page) {
+      super(page, ListRoutesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListRoutesPage extends AbstractPage<
+      ListRoutesHttpRequest,
+      RouteList,
+      Route,
+      ListRoutesPage> {
+
+    private ListRoutesPage(
+        PageContext<ListRoutesHttpRequest, RouteList, Route> context,
+        RouteList response) {
+      super(context, response);
+    }
+
+    private static ListRoutesPage createEmptyPage() {
+      return new ListRoutesPage(null, null);
+    }
+
+    @Override
+    protected ListRoutesPage createPage(
+        PageContext<ListRoutesHttpRequest, RouteList, Route> context,
+        RouteList response) {
+      return new ListRoutesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListRoutesPage> createPageAsync(
+        PageContext<ListRoutesHttpRequest, RouteList, Route> context,
+        ApiFuture<RouteList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListRoutesFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListRoutesHttpRequest,
+      RouteList,
+      Route,
+      ListRoutesPage,
+      ListRoutesFixedSizeCollection> {
+
+    private ListRoutesFixedSizeCollection(List<ListRoutesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListRoutesFixedSizeCollection createEmptyCollection() {
+      return new ListRoutesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListRoutesFixedSizeCollection createCollection(
+        List<ListRoutesPage> pages, int collectionSize) {
+      return new ListRoutesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

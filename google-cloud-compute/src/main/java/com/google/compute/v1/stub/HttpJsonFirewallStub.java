@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,12 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteFirewallHttpRequest;
 import com.google.compute.v1.Firewall;
+import static com.google.compute.v1.FirewallClient.ListFirewallsPagedResponse;
 import com.google.compute.v1.FirewallList;
 import com.google.compute.v1.FirewallName;
 import com.google.compute.v1.FirewallSettings;
@@ -37,7 +39,6 @@ import com.google.compute.v1.GetFirewallHttpRequest;
 import com.google.compute.v1.InsertFirewallHttpRequest;
 import com.google.compute.v1.ListFirewallsHttpRequest;
 import com.google.compute.v1.Operation;
-import static com.google.compute.v1.PagedResponseWrappers.ListFirewallsPagedResponse;
 import com.google.compute.v1.PatchFirewallHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.UpdateFirewallHttpRequest;
@@ -61,7 +62,8 @@ import javax.annotation.Generated;
 public class HttpJsonFirewallStub extends FirewallStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteFirewallHttpRequest, Operation> deleteFirewallMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteFirewallHttpRequest, Operation> deleteFirewallMethodDescriptor =
       ApiMethodDescriptor.<DeleteFirewallHttpRequest, Operation>newBuilder()
           .setMethodName("compute.firewalls.delete")
           .setRequestInstance(DeleteFirewallHttpRequest.getDefaultInstance())
@@ -75,7 +77,8 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.DELETE)
           .build();
-  private static final ApiMethodDescriptor<GetFirewallHttpRequest, Firewall> getFirewallMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetFirewallHttpRequest, Firewall> getFirewallMethodDescriptor =
       ApiMethodDescriptor.<GetFirewallHttpRequest, Firewall>newBuilder()
           .setMethodName("compute.firewalls.get")
           .setRequestInstance(GetFirewallHttpRequest.getDefaultInstance())
@@ -89,7 +92,8 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<InsertFirewallHttpRequest, Operation> insertFirewallMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertFirewallHttpRequest, Operation> insertFirewallMethodDescriptor =
       ApiMethodDescriptor.<InsertFirewallHttpRequest, Operation>newBuilder()
           .setMethodName("compute.firewalls.insert")
           .setRequestInstance(InsertFirewallHttpRequest.getDefaultInstance())
@@ -103,7 +107,8 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.POST)
           .build();
-  private static final ApiMethodDescriptor<ListFirewallsHttpRequest, FirewallList> listFirewallsMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListFirewallsHttpRequest, FirewallList> listFirewallsMethodDescriptor =
       ApiMethodDescriptor.<ListFirewallsHttpRequest, FirewallList>newBuilder()
           .setMethodName("compute.firewalls.list")
           .setRequestInstance(ListFirewallsHttpRequest.getDefaultInstance())
@@ -118,7 +123,8 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.GET)
           .build();
-  private static final ApiMethodDescriptor<PatchFirewallHttpRequest, Operation> patchFirewallMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<PatchFirewallHttpRequest, Operation> patchFirewallMethodDescriptor =
       ApiMethodDescriptor.<PatchFirewallHttpRequest, Operation>newBuilder()
           .setMethodName("compute.firewalls.patch")
           .setRequestInstance(PatchFirewallHttpRequest.getDefaultInstance())
@@ -132,7 +138,8 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
           .setHttpMethod(HttpMethods.PATCH)
           .build();
-  private static final ApiMethodDescriptor<UpdateFirewallHttpRequest, Operation> updateFirewallMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<UpdateFirewallHttpRequest, Operation> updateFirewallMethodDescriptor =
       ApiMethodDescriptor.<UpdateFirewallHttpRequest, Operation>newBuilder()
           .setMethodName("compute.firewalls.update")
           .setRequestInstance(UpdateFirewallHttpRequest.getDefaultInstance())
@@ -157,12 +164,12 @@ public class HttpJsonFirewallStub extends FirewallStub {
   private final UnaryCallable<PatchFirewallHttpRequest, Operation> patchFirewallCallable;
   private final UnaryCallable<UpdateFirewallHttpRequest, Operation> updateFirewallCallable;
 
-  public static final HttpJsonFirewallStub create(FirewallSettings settings) throws IOException {
+  public static final HttpJsonFirewallStub create(FirewallStubSettings settings) throws IOException {
     return new HttpJsonFirewallStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonFirewallStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonFirewallStub(FirewallSettings.newBuilder().build(), clientContext);
+    return new HttpJsonFirewallStub(FirewallStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -170,7 +177,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonFirewallStub(FirewallSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonFirewallStub(FirewallStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteFirewallHttpRequest, Operation> deleteFirewallTransportSettings =
         HttpJsonCallSettings.<DeleteFirewallHttpRequest, Operation>newBuilder()
