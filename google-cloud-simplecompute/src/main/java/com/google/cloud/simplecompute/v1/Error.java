@@ -19,7 +19,7 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
 import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -34,9 +34,11 @@ import javax.annotation.Nullable;
 @BetaApi
 public final class Error implements ApiMessage {
   private final List<Errors> errors;
+  private final Map<String, String> pathParams;
 
   private Error() {
     this.errors = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -44,6 +46,8 @@ public final class Error implements ApiMessage {
       List<Errors> errors
       ) {
     this.errors = errors;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -58,6 +62,11 @@ public final class Error implements ApiMessage {
       fieldMap.put("errors", Collections.singletonList(String.valueOf(errors)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable
