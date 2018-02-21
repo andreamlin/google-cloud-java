@@ -105,7 +105,7 @@ public class GlobalOperationStubSettings extends StubSettings<GlobalOperationStu
       .build();
 
   private final PagedCallSettings<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsSettings;
-  private final UnaryCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings;
+  private final UnaryCallSettings<DeleteGlobalOperationHttpRequest, java.lang.Void> deleteGlobalOperationSettings;
   private final UnaryCallSettings<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings;
   private final PagedCallSettings<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse> listGlobalOperationsSettings;
 
@@ -119,7 +119,7 @@ public class GlobalOperationStubSettings extends StubSettings<GlobalOperationStu
   /**
    * Returns the object with the settings used for calls to deleteGlobalOperation.
    */
-  public UnaryCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings() {
+  public UnaryCallSettings<DeleteGlobalOperationHttpRequest, java.lang.Void> deleteGlobalOperationSettings() {
     return deleteGlobalOperationSettings;
   }
 
@@ -339,7 +339,7 @@ public class GlobalOperationStubSettings extends StubSettings<GlobalOperationStu
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final PagedCallSettings.Builder<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsSettings;
-    private final UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings;
+    private final UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, java.lang.Void> deleteGlobalOperationSettings;
     private final UnaryCallSettings.Builder<GetGlobalOperationHttpRequest, Operation> getGlobalOperationSettings;
     private final PagedCallSettings.Builder<ListGlobalOperationsHttpRequest, OperationList, ListGlobalOperationsPagedResponse> listGlobalOperationsSettings;
 
@@ -471,7 +471,7 @@ public class GlobalOperationStubSettings extends StubSettings<GlobalOperationStu
     /**
      * Returns the builder for the settings used for calls to deleteGlobalOperation.
      */
-    public UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings() {
+    public UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, java.lang.Void> deleteGlobalOperationSettings() {
       return deleteGlobalOperationSettings;
     }
 

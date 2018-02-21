@@ -235,7 +235,7 @@ public class RegionOperationClient implements BackgroundResource {
    * </code></pre>
    */
   @BetaApi
-  public final UnaryCallable<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationCallable() {
+  public final UnaryCallable<DeleteRegionOperationHttpRequest, java.lang.Void> deleteRegionOperationCallable() {
     return stub.deleteRegionOperationCallable();
   }
 

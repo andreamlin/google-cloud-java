@@ -88,7 +88,7 @@ public class ZoneOperationSettings extends ClientSettings<ZoneOperationSettings>
   /**
    * Returns the object with the settings used for calls to deleteZoneOperation.
    */
-  public UnaryCallSettings<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationSettings() {
+  public UnaryCallSettings<DeleteZoneOperationHttpRequest, java.lang.Void> deleteZoneOperationSettings() {
     return ((ZoneOperationStubSettings) getStubSettings()).deleteZoneOperationSettings();
   }
 
@@ -228,7 +228,7 @@ public class ZoneOperationSettings extends ClientSettings<ZoneOperationSettings>
     /**
      * Returns the builder for the settings used for calls to deleteZoneOperation.
      */
-    public UnaryCallSettings.Builder<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationSettings() {
+    public UnaryCallSettings.Builder<DeleteZoneOperationHttpRequest, java.lang.Void> deleteZoneOperationSettings() {
       return getStubSettingsBuilder().deleteZoneOperationSettings();
     }
 

@@ -101,14 +101,14 @@ public class RegionOperationStubSettings extends StubSettings<RegionOperationStu
       .add("https://www.googleapis.com/auth/devstorage.read_write")
       .build();
 
-  private final UnaryCallSettings<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationSettings;
+  private final UnaryCallSettings<DeleteRegionOperationHttpRequest, java.lang.Void> deleteRegionOperationSettings;
   private final UnaryCallSettings<GetRegionOperationHttpRequest, Operation> getRegionOperationSettings;
   private final PagedCallSettings<ListRegionOperationsHttpRequest, OperationList, ListRegionOperationsPagedResponse> listRegionOperationsSettings;
 
   /**
    * Returns the object with the settings used for calls to deleteRegionOperation.
    */
-  public UnaryCallSettings<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationSettings() {
+  public UnaryCallSettings<DeleteRegionOperationHttpRequest, java.lang.Void> deleteRegionOperationSettings() {
     return deleteRegionOperationSettings;
   }
 
@@ -278,7 +278,7 @@ public class RegionOperationStubSettings extends StubSettings<RegionOperationStu
   public static class Builder extends StubSettings.Builder<RegionOperationStubSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationSettings;
+    private final UnaryCallSettings.Builder<DeleteRegionOperationHttpRequest, java.lang.Void> deleteRegionOperationSettings;
     private final UnaryCallSettings.Builder<GetRegionOperationHttpRequest, Operation> getRegionOperationSettings;
     private final PagedCallSettings.Builder<ListRegionOperationsHttpRequest, OperationList, ListRegionOperationsPagedResponse> listRegionOperationsSettings;
 
@@ -393,7 +393,7 @@ public class RegionOperationStubSettings extends StubSettings<RegionOperationStu
     /**
      * Returns the builder for the settings used for calls to deleteRegionOperation.
      */
-    public UnaryCallSettings.Builder<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationSettings() {
+    public UnaryCallSettings.Builder<DeleteRegionOperationHttpRequest, java.lang.Void> deleteRegionOperationSettings() {
       return deleteRegionOperationSettings;
     }
 

@@ -235,7 +235,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * </code></pre>
    */
   @BetaApi
-  public final UnaryCallable<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationCallable() {
+  public final UnaryCallable<DeleteZoneOperationHttpRequest, java.lang.Void> deleteZoneOperationCallable() {
     return stub.deleteZoneOperationCallable();
   }
 

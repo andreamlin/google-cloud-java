@@ -40,7 +40,7 @@ public abstract class RegionOperationStub implements BackgroundResource {
 
 
   @BetaApi
-  public UnaryCallable<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationCallable() {
+  public UnaryCallable<DeleteRegionOperationHttpRequest, java.lang.Void> deleteRegionOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteRegionOperationCallable()");
   }
 

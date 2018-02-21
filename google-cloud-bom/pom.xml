@@ -4,7 +4,7 @@
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-bom</artifactId>
   <packaging>pom</packaging>
-  <version>0.32.1-alpha-SNAPSHOT</version>
+  <version>0.34.1-alpha-SNAPSHOT</version>
   <name>Google Cloud Java BOM</name>
   <url>https://github.com/GoogleCloudPlatform/google-cloud-java/tree/master/google-cloud-bom</url>
   <description>
@@ -127,27 +127,26 @@
     <api-client.version>1.23.0</api-client.version>
 
     <api-common.version>1.2.0</api-common.version>
-    <gax.version>1.16.0</gax.version>
-    <gax-grpc.version>1.16.0</gax-grpc.version>
-    <gax-httpjson.version>0.33.0</gax-httpjson.version>
-    <generated-proto-beta.version>0.1.26</generated-proto-beta.version>
-    <generated-proto-ga.version>1.0.2</generated-proto-ga.version>
+    <gax.version>1.19.0</gax.version>
+    <gax-grpc.version>1.19.0</gax-grpc.version>
+    <gax-httpjson.version>0.36.0</gax-httpjson.version>
+    <generated-proto-beta.version>0.1.29</generated-proto-beta.version>
+    <generated-proto-ga.version>1.0.5</generated-proto-ga.version>
     <google.auth.version>0.9.0</google.auth.version>
-    <grpc.version>1.7.0</grpc.version>
-    <nettyssl.version>2.0.6.Final</nettyssl.version>
+    <grpc.version>1.9.0</grpc.version>
+    <nettyssl.version>2.0.7.Final</nettyssl.version>
     <guava.version>20.0</guava.version>
     <http-client.version>1.23.0</http-client.version>
-    <protobuf.version>3.4.0</protobuf.version>
-    <opencensus.version>0.9.1</opencensus.version>
+    <protobuf.version>3.5.1</protobuf.version>
+    <opencensus.version>0.11.1</opencensus.version>
 
-    <cloud.version>0.32.1-alpha-SNAPSHOT</cloud.version>
-    <compute.version>0.32.1-alpha-SNAPSHOT</compute.version>
-    <core.version>1.14.1-SNAPSHOT</core.version>
-    <core-http.version>1.14.1-SNAPSHOT</core-http.version>
-    <core-grpc.version>1.14.1-SNAPSHOT</core-grpc.version>
-    <examples.version>0.32.1-alpha-SNAPSHOT</examples.version>
-    <language.version>1.14.1-SNAPSHOT</language.version>
-    <testing.version>0.32.1-alpha-SNAPSHOT</testing.version>
+    <cloud.version>0.34.1-alpha-SNAPSHOT</cloud.version>
+    <compute.version>0.34.1-alpha-SNAPSHOT</compute.version>
+    <core.version>1.16.1-SNAPSHOT</core.version>
+    <core-http.version>1.16.1-SNAPSHOT</core-http.version>
+    <core-grpc.version>1.16.1-SNAPSHOT</core-grpc.version>
+    <examples.version>0.34.1-alpha-SNAPSHOT</examples.version>
+    <testing.version>0.34.1-alpha-SNAPSHOT</testing.version>
   </properties>
   <dependencyManagement>
     <dependencies>
