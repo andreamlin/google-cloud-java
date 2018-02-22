@@ -93,7 +93,7 @@ public final class Firewall implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("allowed") && allowed != null) {
-      fieldMap.put("allowed", Collections.singletonList(String.valueOf(allowed)));
+      fieldMap.put("allowed", allowed);
     }
     if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
       fieldMap.put("creationTimestamp", Collections.singletonList(String.valueOf(creationTimestamp)));
@@ -117,13 +117,13 @@ public final class Firewall implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("sourceRanges") && sourceRanges != null) {
-      fieldMap.put("sourceRanges", Collections.singletonList(String.valueOf(sourceRanges)));
+      fieldMap.put("sourceRanges", sourceRanges);
     }
     if (fieldNames.contains("sourceTags") && sourceTags != null) {
-      fieldMap.put("sourceTags", Collections.singletonList(String.valueOf(sourceTags)));
+      fieldMap.put("sourceTags", sourceTags);
     }
     if (fieldNames.contains("targetTags") && targetTags != null) {
-      fieldMap.put("targetTags", Collections.singletonList(String.valueOf(targetTags)));
+      fieldMap.put("targetTags", targetTags);
     }
     return fieldMap;
   }
@@ -275,7 +275,12 @@ public final class Firewall implements ApiMessage {
     }
 
     public Builder addAllAllowed(List<Allowed> allowed) {
-      this.allowed = allowed;
+      this.allowed.addAll(allowed);
+      return this;
+    }
+
+    public Builder addAllowed(Allowed allowed) {
+      this.allowed.add(allowed);
       return this;
     }
 
@@ -347,7 +352,12 @@ public final class Firewall implements ApiMessage {
     }
 
     public Builder addAllSourceRanges(List<String> sourceRanges) {
-      this.sourceRanges = sourceRanges;
+      this.sourceRanges.addAll(sourceRanges);
+      return this;
+    }
+
+    public Builder addSourceRanges(String sourceRanges) {
+      this.sourceRanges.add(sourceRanges);
       return this;
     }
 
@@ -356,7 +366,12 @@ public final class Firewall implements ApiMessage {
     }
 
     public Builder addAllSourceTags(List<String> sourceTags) {
-      this.sourceTags = sourceTags;
+      this.sourceTags.addAll(sourceTags);
+      return this;
+    }
+
+    public Builder addSourceTags(String sourceTags) {
+      this.sourceTags.add(sourceTags);
       return this;
     }
 
@@ -365,7 +380,12 @@ public final class Firewall implements ApiMessage {
     }
 
     public Builder addAllTargetTags(List<String> targetTags) {
-      this.targetTags = targetTags;
+      this.targetTags.addAll(targetTags);
+      return this;
+    }
+
+    public Builder addTargetTags(String targetTags) {
+      this.targetTags.add(targetTags);
       return this;
     }
 

@@ -64,7 +64,7 @@ public final class HostRule implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("hosts") && hosts != null) {
-      fieldMap.put("hosts", Collections.singletonList(String.valueOf(hosts)));
+      fieldMap.put("hosts", hosts);
     }
     if (fieldNames.contains("pathMatcher") && pathMatcher != null) {
       fieldMap.put("pathMatcher", Collections.singletonList(String.valueOf(pathMatcher)));
@@ -156,7 +156,12 @@ public final class HostRule implements ApiMessage {
     }
 
     public Builder addAllHosts(List<String> hosts) {
-      this.hosts = hosts;
+      this.hosts.addAll(hosts);
+      return this;
+    }
+
+    public Builder addHosts(String hosts) {
+      this.hosts.add(hosts);
       return this;
     }
 

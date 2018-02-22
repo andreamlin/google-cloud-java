@@ -73,7 +73,7 @@ public final class NetworkInterface implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("accessConfigs") && accessConfigs != null) {
-      fieldMap.put("accessConfigs", Collections.singletonList(String.valueOf(accessConfigs)));
+      fieldMap.put("accessConfigs", accessConfigs);
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -195,7 +195,12 @@ public final class NetworkInterface implements ApiMessage {
     }
 
     public Builder addAllAccessConfigs(List<AccessConfig> accessConfigs) {
-      this.accessConfigs = accessConfigs;
+      this.accessConfigs.addAll(accessConfigs);
+      return this;
+    }
+
+    public Builder addAccessConfigs(AccessConfig accessConfigs) {
+      this.accessConfigs.add(accessConfigs);
       return this;
     }
 

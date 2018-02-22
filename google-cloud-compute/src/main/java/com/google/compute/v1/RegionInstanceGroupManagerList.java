@@ -72,7 +72,7 @@ public final class RegionInstanceGroupManagerList implements ApiMessage {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
     }
     if (fieldNames.contains("items") && items != null) {
-      fieldMap.put("items", Collections.singletonList(String.valueOf(items)));
+      fieldMap.put("items", items);
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -188,7 +188,12 @@ public final class RegionInstanceGroupManagerList implements ApiMessage {
     }
 
     public Builder addAllItems(List<InstanceGroupManager> items) {
-      this.items = items;
+      this.items.addAll(items);
+      return this;
+    }
+
+    public Builder addItems(InstanceGroupManager items) {
+      this.items.add(items);
       return this;
     }
 

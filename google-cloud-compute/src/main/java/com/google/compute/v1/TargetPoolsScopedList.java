@@ -57,7 +57,7 @@ public final class TargetPoolsScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("targetPools") && targetPools != null) {
-      fieldMap.put("targetPools", Collections.singletonList(String.valueOf(targetPools)));
+      fieldMap.put("targetPools", targetPools);
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -131,7 +131,12 @@ public final class TargetPoolsScopedList implements ApiMessage {
     }
 
     public Builder addAllTargetPools(List<TargetPool> targetPools) {
-      this.targetPools = targetPools;
+      this.targetPools.addAll(targetPools);
+      return this;
+    }
+
+    public Builder addTargetPools(TargetPool targetPools) {
+      this.targetPools.add(targetPools);
       return this;
     }
 

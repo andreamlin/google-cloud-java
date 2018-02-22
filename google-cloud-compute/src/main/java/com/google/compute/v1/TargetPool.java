@@ -109,13 +109,13 @@ public final class TargetPool implements ApiMessage {
       fieldMap.put("failoverRatio", Collections.singletonList(String.valueOf(failoverRatio)));
     }
     if (fieldNames.contains("healthChecks") && healthChecks != null) {
-      fieldMap.put("healthChecks", Collections.singletonList(String.valueOf(healthChecks)));
+      fieldMap.put("healthChecks", healthChecks);
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
     }
     if (fieldNames.contains("instances") && instances != null) {
-      fieldMap.put("instances", Collections.singletonList(String.valueOf(instances)));
+      fieldMap.put("instances", instances);
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -327,7 +327,12 @@ public final class TargetPool implements ApiMessage {
     }
 
     public Builder addAllHealthChecks(List<String> healthChecks) {
-      this.healthChecks = healthChecks;
+      this.healthChecks.addAll(healthChecks);
+      return this;
+    }
+
+    public Builder addHealthChecks(String healthChecks) {
+      this.healthChecks.add(healthChecks);
       return this;
     }
 
@@ -345,7 +350,12 @@ public final class TargetPool implements ApiMessage {
     }
 
     public Builder addAllInstances(List<String> instances) {
-      this.instances = instances;
+      this.instances.addAll(instances);
+      return this;
+    }
+
+    public Builder addInstances(String instances) {
+      this.instances.add(instances);
       return this;
     }
 

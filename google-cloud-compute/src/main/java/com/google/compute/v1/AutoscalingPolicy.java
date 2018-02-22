@@ -79,7 +79,7 @@ public final class AutoscalingPolicy implements ApiMessage {
       fieldMap.put("cpuUtilization", Collections.singletonList(String.valueOf(cpuUtilization)));
     }
     if (fieldNames.contains("customMetricUtilizations") && customMetricUtilizations != null) {
-      fieldMap.put("customMetricUtilizations", Collections.singletonList(String.valueOf(customMetricUtilizations)));
+      fieldMap.put("customMetricUtilizations", customMetricUtilizations);
     }
     if (fieldNames.contains("loadBalancingUtilization") && loadBalancingUtilization != null) {
       fieldMap.put("loadBalancingUtilization", Collections.singletonList(String.valueOf(loadBalancingUtilization)));
@@ -213,7 +213,12 @@ public final class AutoscalingPolicy implements ApiMessage {
     }
 
     public Builder addAllCustomMetricUtilizations(List<AutoscalingPolicyCustomMetricUtilization> customMetricUtilizations) {
-      this.customMetricUtilizations = customMetricUtilizations;
+      this.customMetricUtilizations.addAll(customMetricUtilizations);
+      return this;
+    }
+
+    public Builder addCustomMetricUtilizations(AutoscalingPolicyCustomMetricUtilization customMetricUtilizations) {
+      this.customMetricUtilizations.add(customMetricUtilizations);
       return this;
     }
 

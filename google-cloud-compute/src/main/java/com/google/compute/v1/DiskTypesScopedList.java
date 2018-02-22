@@ -57,7 +57,7 @@ public final class DiskTypesScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("diskTypes") && diskTypes != null) {
-      fieldMap.put("diskTypes", Collections.singletonList(String.valueOf(diskTypes)));
+      fieldMap.put("diskTypes", diskTypes);
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -131,7 +131,12 @@ public final class DiskTypesScopedList implements ApiMessage {
     }
 
     public Builder addAllDiskTypes(List<DiskType> diskTypes) {
-      this.diskTypes = diskTypes;
+      this.diskTypes.addAll(diskTypes);
+      return this;
+    }
+
+    public Builder addDiskTypes(DiskType diskTypes) {
+      this.diskTypes.add(diskTypes);
       return this;
     }
 

@@ -20,12 +20,15 @@ import com.google.api.gax.httpjson.ApiMessage;
 import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -57,7 +60,7 @@ public final class AddressesScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("addresses") && addresses != null) {
-      fieldMap.put("addresses", Collections.singletonList(String.valueOf(addresses)));
+      fieldMap.put("addresses", addresses.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -131,7 +134,12 @@ public final class AddressesScopedList implements ApiMessage {
     }
 
     public Builder addAllAddresses(List<Address> addresses) {
-      this.addresses = addresses;
+      this.addresses.addAll(addresses);
+      return this;
+    }
+
+    public Builder addAddresses(Address addresses) {
+      this.addresses.add(addresses);
       return this;
     }
 

@@ -116,7 +116,7 @@ public final class Network implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("subnetworks") && subnetworks != null) {
-      fieldMap.put("subnetworks", Collections.singletonList(String.valueOf(subnetworks)));
+      fieldMap.put("subnetworks", subnetworks);
     }
     return fieldMap;
   }
@@ -340,7 +340,12 @@ public final class Network implements ApiMessage {
     }
 
     public Builder addAllSubnetworks(List<String> subnetworks) {
-      this.subnetworks = subnetworks;
+      this.subnetworks.addAll(subnetworks);
+      return this;
+    }
+
+    public Builder addSubnetworks(String subnetworks) {
+      this.subnetworks.add(subnetworks);
       return this;
     }
 

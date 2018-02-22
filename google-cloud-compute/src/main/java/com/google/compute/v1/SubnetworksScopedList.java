@@ -57,7 +57,7 @@ public final class SubnetworksScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("subnetworks") && subnetworks != null) {
-      fieldMap.put("subnetworks", Collections.singletonList(String.valueOf(subnetworks)));
+      fieldMap.put("subnetworks", subnetworks);
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -131,7 +131,12 @@ public final class SubnetworksScopedList implements ApiMessage {
     }
 
     public Builder addAllSubnetworks(List<Subnetwork> subnetworks) {
-      this.subnetworks = subnetworks;
+      this.subnetworks.addAll(subnetworks);
+      return this;
+    }
+
+    public Builder addSubnetworks(Subnetwork subnetworks) {
+      this.subnetworks.add(subnetworks);
       return this;
     }
 

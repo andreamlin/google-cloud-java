@@ -57,7 +57,7 @@ public final class InstanceGroupsScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("instanceGroups") && instanceGroups != null) {
-      fieldMap.put("instanceGroups", Collections.singletonList(String.valueOf(instanceGroups)));
+      fieldMap.put("instanceGroups", instanceGroups);
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -131,7 +131,12 @@ public final class InstanceGroupsScopedList implements ApiMessage {
     }
 
     public Builder addAllInstanceGroups(List<InstanceGroup> instanceGroups) {
-      this.instanceGroups = instanceGroups;
+      this.instanceGroups.addAll(instanceGroups);
+      return this;
+    }
+
+    public Builder addInstanceGroups(InstanceGroup instanceGroups) {
+      this.instanceGroups.add(instanceGroups);
       return this;
     }
 

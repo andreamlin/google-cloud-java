@@ -61,10 +61,10 @@ public final class RouterStatus implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("bestRoutes") && bestRoutes != null) {
-      fieldMap.put("bestRoutes", Collections.singletonList(String.valueOf(bestRoutes)));
+      fieldMap.put("bestRoutes", bestRoutes);
     }
     if (fieldNames.contains("bgpPeerStatus") && bgpPeerStatus != null) {
-      fieldMap.put("bgpPeerStatus", Collections.singletonList(String.valueOf(bgpPeerStatus)));
+      fieldMap.put("bgpPeerStatus", bgpPeerStatus);
     }
     if (fieldNames.contains("network") && network != null) {
       fieldMap.put("network", Collections.singletonList(String.valueOf(network)));
@@ -147,7 +147,12 @@ public final class RouterStatus implements ApiMessage {
     }
 
     public Builder addAllBestRoutes(List<Route> bestRoutes) {
-      this.bestRoutes = bestRoutes;
+      this.bestRoutes.addAll(bestRoutes);
+      return this;
+    }
+
+    public Builder addBestRoutes(Route bestRoutes) {
+      this.bestRoutes.add(bestRoutes);
       return this;
     }
 
@@ -156,7 +161,12 @@ public final class RouterStatus implements ApiMessage {
     }
 
     public Builder addAllBgpPeerStatus(List<RouterStatusBgpPeerStatus> bgpPeerStatus) {
-      this.bgpPeerStatus = bgpPeerStatus;
+      this.bgpPeerStatus.addAll(bgpPeerStatus);
+      return this;
+    }
+
+    public Builder addBgpPeerStatus(RouterStatusBgpPeerStatus bgpPeerStatus) {
+      this.bgpPeerStatus.add(bgpPeerStatus);
       return this;
     }
 

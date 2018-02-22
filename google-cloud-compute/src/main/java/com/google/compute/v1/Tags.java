@@ -60,7 +60,7 @@ public final class Tags implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("items") && items != null) {
-      fieldMap.put("items", Collections.singletonList(String.valueOf(items)));
+      fieldMap.put("items", items);
     }
     return fieldMap;
   }
@@ -140,7 +140,12 @@ public final class Tags implements ApiMessage {
     }
 
     public Builder addAllItems(List<String> items) {
-      this.items = items;
+      this.items.addAll(items);
+      return this;
+    }
+
+    public Builder addItems(String items) {
+      this.items.add(items);
       return this;
     }
 

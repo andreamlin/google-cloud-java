@@ -57,7 +57,7 @@ public final class AutoscalersScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("autoscalers") && autoscalers != null) {
-      fieldMap.put("autoscalers", Collections.singletonList(String.valueOf(autoscalers)));
+      fieldMap.put("autoscalers", autoscalers);
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -131,7 +131,12 @@ public final class AutoscalersScopedList implements ApiMessage {
     }
 
     public Builder addAllAutoscalers(List<Autoscaler> autoscalers) {
-      this.autoscalers = autoscalers;
+      this.autoscalers.addAll(autoscalers);
+      return this;
+    }
+
+    public Builder addAutoscalers(Autoscaler autoscalers) {
+      this.autoscalers.add(autoscalers);
       return this;
     }
 

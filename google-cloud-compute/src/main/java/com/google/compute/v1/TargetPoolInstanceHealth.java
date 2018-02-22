@@ -57,7 +57,7 @@ public final class TargetPoolInstanceHealth implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("healthStatus") && healthStatus != null) {
-      fieldMap.put("healthStatus", Collections.singletonList(String.valueOf(healthStatus)));
+      fieldMap.put("healthStatus", healthStatus);
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -131,7 +131,12 @@ public final class TargetPoolInstanceHealth implements ApiMessage {
     }
 
     public Builder addAllHealthStatus(List<HealthStatus> healthStatus) {
-      this.healthStatus = healthStatus;
+      this.healthStatus.addAll(healthStatus);
+      return this;
+    }
+
+    public Builder addHealthStatus(HealthStatus healthStatus) {
+      this.healthStatus.add(healthStatus);
       return this;
     }
 

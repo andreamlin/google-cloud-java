@@ -135,7 +135,7 @@ public final class VpnTunnel implements ApiMessage {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
     }
     if (fieldNames.contains("localTrafficSelector") && localTrafficSelector != null) {
-      fieldMap.put("localTrafficSelector", Collections.singletonList(String.valueOf(localTrafficSelector)));
+      fieldMap.put("localTrafficSelector", localTrafficSelector);
     }
     if (fieldNames.contains("name") && name != null) {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
@@ -147,7 +147,7 @@ public final class VpnTunnel implements ApiMessage {
       fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
     }
     if (fieldNames.contains("remoteTrafficSelector") && remoteTrafficSelector != null) {
-      fieldMap.put("remoteTrafficSelector", Collections.singletonList(String.valueOf(remoteTrafficSelector)));
+      fieldMap.put("remoteTrafficSelector", remoteTrafficSelector);
     }
     if (fieldNames.contains("router") && router != null) {
       fieldMap.put("router", Collections.singletonList(String.valueOf(router)));
@@ -425,7 +425,12 @@ public final class VpnTunnel implements ApiMessage {
     }
 
     public Builder addAllLocalTrafficSelector(List<String> localTrafficSelector) {
-      this.localTrafficSelector = localTrafficSelector;
+      this.localTrafficSelector.addAll(localTrafficSelector);
+      return this;
+    }
+
+    public Builder addLocalTrafficSelector(String localTrafficSelector) {
+      this.localTrafficSelector.add(localTrafficSelector);
       return this;
     }
 
@@ -461,7 +466,12 @@ public final class VpnTunnel implements ApiMessage {
     }
 
     public Builder addAllRemoteTrafficSelector(List<String> remoteTrafficSelector) {
-      this.remoteTrafficSelector = remoteTrafficSelector;
+      this.remoteTrafficSelector.addAll(remoteTrafficSelector);
+      return this;
+    }
+
+    public Builder addRemoteTrafficSelector(String remoteTrafficSelector) {
+      this.remoteTrafficSelector.add(remoteTrafficSelector);
       return this;
     }
 

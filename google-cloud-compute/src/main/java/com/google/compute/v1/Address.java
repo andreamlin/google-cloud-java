@@ -116,7 +116,7 @@ public final class Address implements ApiMessage {
       fieldMap.put("status", Collections.singletonList(String.valueOf(status)));
     }
     if (fieldNames.contains("users") && users != null) {
-      fieldMap.put("users", Collections.singletonList(String.valueOf(users)));
+      fieldMap.put("users", users);
     }
     return fieldMap;
   }
@@ -340,7 +340,12 @@ public final class Address implements ApiMessage {
     }
 
     public Builder addAllUsers(List<String> users) {
-      this.users = users;
+      this.users.addAll(users);
+      return this;
+    }
+
+    public Builder addUsers(String users) {
+      this.users.add(users);
       return this;
     }
 

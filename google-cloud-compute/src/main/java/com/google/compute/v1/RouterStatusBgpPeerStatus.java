@@ -89,7 +89,7 @@ public final class RouterStatusBgpPeerStatus implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("advertisedRoutes") && advertisedRoutes != null) {
-      fieldMap.put("advertisedRoutes", Collections.singletonList(String.valueOf(advertisedRoutes)));
+      fieldMap.put("advertisedRoutes", advertisedRoutes);
     }
     if (fieldNames.contains("ipAddress") && ipAddress != null) {
       fieldMap.put("ipAddress", Collections.singletonList(String.valueOf(ipAddress)));
@@ -259,7 +259,12 @@ public final class RouterStatusBgpPeerStatus implements ApiMessage {
     }
 
     public Builder addAllAdvertisedRoutes(List<Route> advertisedRoutes) {
-      this.advertisedRoutes = advertisedRoutes;
+      this.advertisedRoutes.addAll(advertisedRoutes);
+      return this;
+    }
+
+    public Builder addAdvertisedRoutes(Route advertisedRoutes) {
+      this.advertisedRoutes.add(advertisedRoutes);
       return this;
     }
 

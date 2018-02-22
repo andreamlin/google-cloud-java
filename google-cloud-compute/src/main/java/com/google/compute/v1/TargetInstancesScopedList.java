@@ -57,7 +57,7 @@ public final class TargetInstancesScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("targetInstances") && targetInstances != null) {
-      fieldMap.put("targetInstances", Collections.singletonList(String.valueOf(targetInstances)));
+      fieldMap.put("targetInstances", targetInstances);
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -131,7 +131,12 @@ public final class TargetInstancesScopedList implements ApiMessage {
     }
 
     public Builder addAllTargetInstances(List<TargetInstance> targetInstances) {
-      this.targetInstances = targetInstances;
+      this.targetInstances.addAll(targetInstances);
+      return this;
+    }
+
+    public Builder addTargetInstances(TargetInstance targetInstances) {
+      this.targetInstances.add(targetInstances);
       return this;
     }
 

@@ -158,7 +158,7 @@ public final class Disk implements ApiMessage {
       fieldMap.put("lastDetachTimestamp", Collections.singletonList(String.valueOf(lastDetachTimestamp)));
     }
     if (fieldNames.contains("licenses") && licenses != null) {
-      fieldMap.put("licenses", Collections.singletonList(String.valueOf(licenses)));
+      fieldMap.put("licenses", licenses);
     }
     if (fieldNames.contains("name") && name != null) {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
@@ -197,7 +197,7 @@ public final class Disk implements ApiMessage {
       fieldMap.put("type", Collections.singletonList(String.valueOf(type)));
     }
     if (fieldNames.contains("users") && users != null) {
-      fieldMap.put("users", Collections.singletonList(String.valueOf(users)));
+      fieldMap.put("users", users);
     }
     if (fieldNames.contains("zone") && zone != null) {
       fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
@@ -514,7 +514,12 @@ public final class Disk implements ApiMessage {
     }
 
     public Builder addAllLicenses(List<String> licenses) {
-      this.licenses = licenses;
+      this.licenses.addAll(licenses);
+      return this;
+    }
+
+    public Builder addLicenses(String licenses) {
+      this.licenses.add(licenses);
       return this;
     }
 
@@ -631,7 +636,12 @@ public final class Disk implements ApiMessage {
     }
 
     public Builder addAllUsers(List<String> users) {
-      this.users = users;
+      this.users.addAll(users);
+      return this;
+    }
+
+    public Builder addUsers(String users) {
+      this.users.add(users);
       return this;
     }
 

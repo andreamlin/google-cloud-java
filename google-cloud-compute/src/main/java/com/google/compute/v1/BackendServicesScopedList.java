@@ -57,7 +57,7 @@ public final class BackendServicesScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("backendServices") && backendServices != null) {
-      fieldMap.put("backendServices", Collections.singletonList(String.valueOf(backendServices)));
+      fieldMap.put("backendServices", backendServices);
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -131,7 +131,12 @@ public final class BackendServicesScopedList implements ApiMessage {
     }
 
     public Builder addAllBackendServices(List<BackendService> backendServices) {
-      this.backendServices = backendServices;
+      this.backendServices.addAll(backendServices);
+      return this;
+    }
+
+    public Builder addBackendServices(BackendService backendServices) {
+      this.backendServices.add(backendServices);
       return this;
     }
 

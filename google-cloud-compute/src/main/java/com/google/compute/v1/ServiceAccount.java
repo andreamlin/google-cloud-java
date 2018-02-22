@@ -60,7 +60,7 @@ public final class ServiceAccount implements ApiMessage {
       fieldMap.put("email", Collections.singletonList(String.valueOf(email)));
     }
     if (fieldNames.contains("scopes") && scopes != null) {
-      fieldMap.put("scopes", Collections.singletonList(String.valueOf(scopes)));
+      fieldMap.put("scopes", scopes);
     }
     return fieldMap;
   }
@@ -140,7 +140,12 @@ public final class ServiceAccount implements ApiMessage {
     }
 
     public Builder addAllScopes(List<String> scopes) {
-      this.scopes = scopes;
+      this.scopes.addAll(scopes);
+      return this;
+    }
+
+    public Builder addScopes(String scopes) {
+      this.scopes.add(scopes);
       return this;
     }
 

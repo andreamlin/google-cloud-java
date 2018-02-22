@@ -105,7 +105,7 @@ public final class UrlMap implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("hostRules") && hostRules != null) {
-      fieldMap.put("hostRules", Collections.singletonList(String.valueOf(hostRules)));
+      fieldMap.put("hostRules", hostRules);
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -117,13 +117,13 @@ public final class UrlMap implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("pathMatchers") && pathMatchers != null) {
-      fieldMap.put("pathMatchers", Collections.singletonList(String.valueOf(pathMatchers)));
+      fieldMap.put("pathMatchers", pathMatchers);
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("tests") && tests != null) {
-      fieldMap.put("tests", Collections.singletonList(String.valueOf(tests)));
+      fieldMap.put("tests", tests);
     }
     return fieldMap;
   }
@@ -311,7 +311,12 @@ public final class UrlMap implements ApiMessage {
     }
 
     public Builder addAllHostRules(List<HostRule> hostRules) {
-      this.hostRules = hostRules;
+      this.hostRules.addAll(hostRules);
+      return this;
+    }
+
+    public Builder addHostRules(HostRule hostRules) {
+      this.hostRules.add(hostRules);
       return this;
     }
 
@@ -347,7 +352,12 @@ public final class UrlMap implements ApiMessage {
     }
 
     public Builder addAllPathMatchers(List<PathMatcher> pathMatchers) {
-      this.pathMatchers = pathMatchers;
+      this.pathMatchers.addAll(pathMatchers);
+      return this;
+    }
+
+    public Builder addPathMatchers(PathMatcher pathMatchers) {
+      this.pathMatchers.add(pathMatchers);
       return this;
     }
 
@@ -365,7 +375,12 @@ public final class UrlMap implements ApiMessage {
     }
 
     public Builder addAllTests(List<UrlMapTest> tests) {
-      this.tests = tests;
+      this.tests.addAll(tests);
+      return this;
+    }
+
+    public Builder addTests(UrlMapTest tests) {
+      this.tests.add(tests);
       return this;
     }
 

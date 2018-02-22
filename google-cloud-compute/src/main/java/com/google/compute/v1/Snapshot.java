@@ -124,7 +124,7 @@ public final class Snapshot implements ApiMessage {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
     }
     if (fieldNames.contains("licenses") && licenses != null) {
-      fieldMap.put("licenses", Collections.singletonList(String.valueOf(licenses)));
+      fieldMap.put("licenses", licenses);
     }
     if (fieldNames.contains("name") && name != null) {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
@@ -384,7 +384,12 @@ public final class Snapshot implements ApiMessage {
     }
 
     public Builder addAllLicenses(List<String> licenses) {
-      this.licenses = licenses;
+      this.licenses.addAll(licenses);
+      return this;
+    }
+
+    public Builder addLicenses(String licenses) {
+      this.licenses.add(licenses);
       return this;
     }
 

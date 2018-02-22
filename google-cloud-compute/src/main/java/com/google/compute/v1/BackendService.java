@@ -128,7 +128,7 @@ public final class BackendService implements ApiMessage {
       fieldMap.put("affinityCookieTtlSec", Collections.singletonList(String.valueOf(affinityCookieTtlSec)));
     }
     if (fieldNames.contains("backends") && backends != null) {
-      fieldMap.put("backends", Collections.singletonList(String.valueOf(backends)));
+      fieldMap.put("backends", backends);
     }
     if (fieldNames.contains("connectionDraining") && connectionDraining != null) {
       fieldMap.put("connectionDraining", Collections.singletonList(String.valueOf(connectionDraining)));
@@ -146,7 +146,7 @@ public final class BackendService implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("healthChecks") && healthChecks != null) {
-      fieldMap.put("healthChecks", Collections.singletonList(String.valueOf(healthChecks)));
+      fieldMap.put("healthChecks", healthChecks);
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -412,7 +412,12 @@ public final class BackendService implements ApiMessage {
     }
 
     public Builder addAllBackends(List<Backend> backends) {
-      this.backends = backends;
+      this.backends.addAll(backends);
+      return this;
+    }
+
+    public Builder addBackends(Backend backends) {
+      this.backends.add(backends);
       return this;
     }
 
@@ -466,7 +471,12 @@ public final class BackendService implements ApiMessage {
     }
 
     public Builder addAllHealthChecks(List<String> healthChecks) {
-      this.healthChecks = healthChecks;
+      this.healthChecks.addAll(healthChecks);
+      return this;
+    }
+
+    public Builder addHealthChecks(String healthChecks) {
+      this.healthChecks.add(healthChecks);
       return this;
     }
 

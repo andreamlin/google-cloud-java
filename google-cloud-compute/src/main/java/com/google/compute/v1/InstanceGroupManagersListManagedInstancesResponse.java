@@ -53,7 +53,7 @@ public final class InstanceGroupManagersListManagedInstancesResponse implements 
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("managedInstances") && managedInstances != null) {
-      fieldMap.put("managedInstances", Collections.singletonList(String.valueOf(managedInstances)));
+      fieldMap.put("managedInstances", managedInstances);
     }
     return fieldMap;
   }
@@ -115,7 +115,12 @@ public final class InstanceGroupManagersListManagedInstancesResponse implements 
     }
 
     public Builder addAllManagedInstances(List<ManagedInstance> managedInstances) {
-      this.managedInstances = managedInstances;
+      this.managedInstances.addAll(managedInstances);
+      return this;
+    }
+
+    public Builder addManagedInstances(ManagedInstance managedInstances) {
+      this.managedInstances.add(managedInstances);
       return this;
     }
 

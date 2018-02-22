@@ -64,7 +64,7 @@ public final class Metadata implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("items") && items != null) {
-      fieldMap.put("items", Collections.singletonList(String.valueOf(items)));
+      fieldMap.put("items", items);
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -156,7 +156,12 @@ public final class Metadata implements ApiMessage {
     }
 
     public Builder addAllItems(List<Items> items) {
-      this.items = items;
+      this.items.addAll(items);
+      return this;
+    }
+
+    public Builder addItems(Items items) {
+      this.items.add(items);
       return this;
     }
 

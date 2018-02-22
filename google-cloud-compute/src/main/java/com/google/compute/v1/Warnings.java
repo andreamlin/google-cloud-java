@@ -64,7 +64,7 @@ public final class Warnings implements ApiMessage {
       fieldMap.put("code", Collections.singletonList(String.valueOf(code)));
     }
     if (fieldNames.contains("data") && data != null) {
-      fieldMap.put("data", Collections.singletonList(String.valueOf(data)));
+      fieldMap.put("data", data);
     }
     if (fieldNames.contains("message") && message != null) {
       fieldMap.put("message", Collections.singletonList(String.valueOf(message)));
@@ -156,7 +156,12 @@ public final class Warnings implements ApiMessage {
     }
 
     public Builder addAllData(List<Data> data) {
-      this.data = data;
+      this.data.addAll(data);
+      return this;
+    }
+
+    public Builder addData(Data data) {
+      this.data.add(data);
       return this;
     }
 

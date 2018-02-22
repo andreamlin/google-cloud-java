@@ -57,7 +57,7 @@ public final class VpnTunnelsScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("vpnTunnels") && vpnTunnels != null) {
-      fieldMap.put("vpnTunnels", Collections.singletonList(String.valueOf(vpnTunnels)));
+      fieldMap.put("vpnTunnels", vpnTunnels);
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -131,7 +131,12 @@ public final class VpnTunnelsScopedList implements ApiMessage {
     }
 
     public Builder addAllVpnTunnels(List<VpnTunnel> vpnTunnels) {
-      this.vpnTunnels = vpnTunnels;
+      this.vpnTunnels.addAll(vpnTunnels);
+      return this;
+    }
+
+    public Builder addVpnTunnels(VpnTunnel vpnTunnels) {
+      this.vpnTunnels.add(vpnTunnels);
       return this;
     }
 

@@ -133,7 +133,7 @@ public final class Instance implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("disks") && disks != null) {
-      fieldMap.put("disks", Collections.singletonList(String.valueOf(disks)));
+      fieldMap.put("disks", disks);
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -151,7 +151,7 @@ public final class Instance implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("networkInterfaces") && networkInterfaces != null) {
-      fieldMap.put("networkInterfaces", Collections.singletonList(String.valueOf(networkInterfaces)));
+      fieldMap.put("networkInterfaces", networkInterfaces);
     }
     if (fieldNames.contains("scheduling") && scheduling != null) {
       fieldMap.put("scheduling", Collections.singletonList(String.valueOf(scheduling)));
@@ -160,7 +160,7 @@ public final class Instance implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("serviceAccounts") && serviceAccounts != null) {
-      fieldMap.put("serviceAccounts", Collections.singletonList(String.valueOf(serviceAccounts)));
+      fieldMap.put("serviceAccounts", serviceAccounts);
     }
     if (fieldNames.contains("status") && status != null) {
       fieldMap.put("status", Collections.singletonList(String.valueOf(status)));
@@ -423,7 +423,12 @@ public final class Instance implements ApiMessage {
     }
 
     public Builder addAllDisks(List<AttachedDisk> disks) {
-      this.disks = disks;
+      this.disks.addAll(disks);
+      return this;
+    }
+
+    public Builder addDisks(AttachedDisk disks) {
+      this.disks.add(disks);
       return this;
     }
 
@@ -477,7 +482,12 @@ public final class Instance implements ApiMessage {
     }
 
     public Builder addAllNetworkInterfaces(List<NetworkInterface> networkInterfaces) {
-      this.networkInterfaces = networkInterfaces;
+      this.networkInterfaces.addAll(networkInterfaces);
+      return this;
+    }
+
+    public Builder addNetworkInterfaces(NetworkInterface networkInterfaces) {
+      this.networkInterfaces.add(networkInterfaces);
       return this;
     }
 
@@ -504,7 +514,12 @@ public final class Instance implements ApiMessage {
     }
 
     public Builder addAllServiceAccounts(List<ServiceAccount> serviceAccounts) {
-      this.serviceAccounts = serviceAccounts;
+      this.serviceAccounts.addAll(serviceAccounts);
+      return this;
+    }
+
+    public Builder addServiceAccounts(ServiceAccount serviceAccounts) {
+      this.serviceAccounts.add(serviceAccounts);
       return this;
     }
 

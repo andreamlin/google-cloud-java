@@ -65,13 +65,13 @@ public final class UrlMapValidationResult implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("loadErrors") && loadErrors != null) {
-      fieldMap.put("loadErrors", Collections.singletonList(String.valueOf(loadErrors)));
+      fieldMap.put("loadErrors", loadErrors);
     }
     if (fieldNames.contains("loadSucceeded") && loadSucceeded != null) {
       fieldMap.put("loadSucceeded", Collections.singletonList(String.valueOf(loadSucceeded)));
     }
     if (fieldNames.contains("testFailures") && testFailures != null) {
-      fieldMap.put("testFailures", Collections.singletonList(String.valueOf(testFailures)));
+      fieldMap.put("testFailures", testFailures);
     }
     if (fieldNames.contains("testPassed") && testPassed != null) {
       fieldMap.put("testPassed", Collections.singletonList(String.valueOf(testPassed)));
@@ -163,7 +163,12 @@ public final class UrlMapValidationResult implements ApiMessage {
     }
 
     public Builder addAllLoadErrors(List<String> loadErrors) {
-      this.loadErrors = loadErrors;
+      this.loadErrors.addAll(loadErrors);
+      return this;
+    }
+
+    public Builder addLoadErrors(String loadErrors) {
+      this.loadErrors.add(loadErrors);
       return this;
     }
 
@@ -181,7 +186,12 @@ public final class UrlMapValidationResult implements ApiMessage {
     }
 
     public Builder addAllTestFailures(List<TestFailure> testFailures) {
-      this.testFailures = testFailures;
+      this.testFailures.addAll(testFailures);
+      return this;
+    }
+
+    public Builder addTestFailures(TestFailure testFailures) {
+      this.testFailures.add(testFailures);
       return this;
     }
 

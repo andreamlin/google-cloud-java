@@ -143,7 +143,7 @@ public final class InstanceGroupManager implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("namedPorts") && namedPorts != null) {
-      fieldMap.put("namedPorts", Collections.singletonList(String.valueOf(namedPorts)));
+      fieldMap.put("namedPorts", namedPorts);
     }
     if (fieldNames.contains("region") && region != null) {
       fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
@@ -152,7 +152,7 @@ public final class InstanceGroupManager implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("targetPools") && targetPools != null) {
-      fieldMap.put("targetPools", Collections.singletonList(String.valueOf(targetPools)));
+      fieldMap.put("targetPools", targetPools);
     }
     if (fieldNames.contains("targetSize") && targetSize != null) {
       fieldMap.put("targetSize", Collections.singletonList(String.valueOf(targetSize)));
@@ -445,7 +445,12 @@ public final class InstanceGroupManager implements ApiMessage {
     }
 
     public Builder addAllNamedPorts(List<NamedPort> namedPorts) {
-      this.namedPorts = namedPorts;
+      this.namedPorts.addAll(namedPorts);
+      return this;
+    }
+
+    public Builder addNamedPorts(NamedPort namedPorts) {
+      this.namedPorts.add(namedPorts);
       return this;
     }
 
@@ -472,7 +477,12 @@ public final class InstanceGroupManager implements ApiMessage {
     }
 
     public Builder addAllTargetPools(List<String> targetPools) {
-      this.targetPools = targetPools;
+      this.targetPools.addAll(targetPools);
+      return this;
+    }
+
+    public Builder addTargetPools(String targetPools) {
+      this.targetPools.add(targetPools);
       return this;
     }
 

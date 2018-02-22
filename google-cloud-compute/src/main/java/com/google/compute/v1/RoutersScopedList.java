@@ -57,7 +57,7 @@ public final class RoutersScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("routers") && routers != null) {
-      fieldMap.put("routers", Collections.singletonList(String.valueOf(routers)));
+      fieldMap.put("routers", routers);
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -131,7 +131,12 @@ public final class RoutersScopedList implements ApiMessage {
     }
 
     public Builder addAllRouters(List<Router> routers) {
-      this.routers = routers;
+      this.routers.addAll(routers);
+      return this;
+    }
+
+    public Builder addRouters(Router routers) {
+      this.routers.add(routers);
       return this;
     }
 

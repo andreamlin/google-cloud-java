@@ -57,7 +57,7 @@ public final class ForwardingRulesScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("forwardingRules") && forwardingRules != null) {
-      fieldMap.put("forwardingRules", Collections.singletonList(String.valueOf(forwardingRules)));
+      fieldMap.put("forwardingRules", forwardingRules);
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -131,7 +131,12 @@ public final class ForwardingRulesScopedList implements ApiMessage {
     }
 
     public Builder addAllForwardingRules(List<ForwardingRule> forwardingRules) {
-      this.forwardingRules = forwardingRules;
+      this.forwardingRules.addAll(forwardingRules);
+      return this;
+    }
+
+    public Builder addForwardingRules(ForwardingRule forwardingRules) {
+      this.forwardingRules.add(forwardingRules);
       return this;
     }
 

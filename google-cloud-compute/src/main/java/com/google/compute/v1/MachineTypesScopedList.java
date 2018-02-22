@@ -57,7 +57,7 @@ public final class MachineTypesScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("machineTypes") && machineTypes != null) {
-      fieldMap.put("machineTypes", Collections.singletonList(String.valueOf(machineTypes)));
+      fieldMap.put("machineTypes", machineTypes);
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -131,7 +131,12 @@ public final class MachineTypesScopedList implements ApiMessage {
     }
 
     public Builder addAllMachineTypes(List<MachineType> machineTypes) {
-      this.machineTypes = machineTypes;
+      this.machineTypes.addAll(machineTypes);
+      return this;
+    }
+
+    public Builder addMachineTypes(MachineType machineTypes) {
+      this.machineTypes.add(machineTypes);
       return this;
     }
 

@@ -143,7 +143,7 @@ public final class Image implements ApiMessage {
       fieldMap.put("family", Collections.singletonList(String.valueOf(family)));
     }
     if (fieldNames.contains("guestOsFeatures") && guestOsFeatures != null) {
-      fieldMap.put("guestOsFeatures", Collections.singletonList(String.valueOf(guestOsFeatures)));
+      fieldMap.put("guestOsFeatures", guestOsFeatures);
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -155,7 +155,7 @@ public final class Image implements ApiMessage {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
     }
     if (fieldNames.contains("licenses") && licenses != null) {
-      fieldMap.put("licenses", Collections.singletonList(String.valueOf(licenses)));
+      fieldMap.put("licenses", licenses);
     }
     if (fieldNames.contains("name") && name != null) {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
@@ -457,7 +457,12 @@ public final class Image implements ApiMessage {
     }
 
     public Builder addAllGuestOsFeatures(List<GuestOsFeature> guestOsFeatures) {
-      this.guestOsFeatures = guestOsFeatures;
+      this.guestOsFeatures.addAll(guestOsFeatures);
+      return this;
+    }
+
+    public Builder addGuestOsFeatures(GuestOsFeature guestOsFeatures) {
+      this.guestOsFeatures.add(guestOsFeatures);
       return this;
     }
 
@@ -493,7 +498,12 @@ public final class Image implements ApiMessage {
     }
 
     public Builder addAllLicenses(List<String> licenses) {
-      this.licenses = licenses;
+      this.licenses.addAll(licenses);
+      return this;
+    }
+
+    public Builder addLicenses(String licenses) {
+      this.licenses.add(licenses);
       return this;
     }
 

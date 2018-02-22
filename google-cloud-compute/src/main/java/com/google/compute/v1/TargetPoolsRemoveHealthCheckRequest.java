@@ -53,7 +53,7 @@ public final class TargetPoolsRemoveHealthCheckRequest implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("healthChecks") && healthChecks != null) {
-      fieldMap.put("healthChecks", Collections.singletonList(String.valueOf(healthChecks)));
+      fieldMap.put("healthChecks", healthChecks);
     }
     return fieldMap;
   }
@@ -115,7 +115,12 @@ public final class TargetPoolsRemoveHealthCheckRequest implements ApiMessage {
     }
 
     public Builder addAllHealthChecks(List<HealthCheckReference> healthChecks) {
-      this.healthChecks = healthChecks;
+      this.healthChecks.addAll(healthChecks);
+      return this;
+    }
+
+    public Builder addHealthChecks(HealthCheckReference healthChecks) {
+      this.healthChecks.add(healthChecks);
       return this;
     }
 

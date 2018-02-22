@@ -57,7 +57,7 @@ public final class PathRule implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("paths") && paths != null) {
-      fieldMap.put("paths", Collections.singletonList(String.valueOf(paths)));
+      fieldMap.put("paths", paths);
     }
     if (fieldNames.contains("service") && service != null) {
       fieldMap.put("service", Collections.singletonList(String.valueOf(service)));
@@ -131,7 +131,12 @@ public final class PathRule implements ApiMessage {
     }
 
     public Builder addAllPaths(List<String> paths) {
-      this.paths = paths;
+      this.paths.addAll(paths);
+      return this;
+    }
+
+    public Builder addPaths(String paths) {
+      this.paths.add(paths);
       return this;
     }
 

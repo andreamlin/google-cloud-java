@@ -146,7 +146,7 @@ public final class ForwardingRule implements ApiMessage {
       fieldMap.put("portRange", Collections.singletonList(String.valueOf(portRange)));
     }
     if (fieldNames.contains("ports") && ports != null) {
-      fieldMap.put("ports", Collections.singletonList(String.valueOf(ports)));
+      fieldMap.put("ports", ports);
     }
     if (fieldNames.contains("region") && region != null) {
       fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
@@ -454,7 +454,12 @@ public final class ForwardingRule implements ApiMessage {
     }
 
     public Builder addAllPorts(List<String> ports) {
-      this.ports = ports;
+      this.ports.addAll(ports);
+      return this;
+    }
+
+    public Builder addPorts(String ports) {
+      this.ports.add(ports);
       return this;
     }
 

@@ -96,7 +96,7 @@ public final class Router implements ApiMessage {
       fieldMap.put("bgp", Collections.singletonList(String.valueOf(bgp)));
     }
     if (fieldNames.contains("bgpPeers") && bgpPeers != null) {
-      fieldMap.put("bgpPeers", Collections.singletonList(String.valueOf(bgpPeers)));
+      fieldMap.put("bgpPeers", bgpPeers);
     }
     if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
       fieldMap.put("creationTimestamp", Collections.singletonList(String.valueOf(creationTimestamp)));
@@ -108,7 +108,7 @@ public final class Router implements ApiMessage {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
     }
     if (fieldNames.contains("interfaces") && interfaces != null) {
-      fieldMap.put("interfaces", Collections.singletonList(String.valueOf(interfaces)));
+      fieldMap.put("interfaces", interfaces);
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -284,7 +284,12 @@ public final class Router implements ApiMessage {
     }
 
     public Builder addAllBgpPeers(List<RouterBgpPeer> bgpPeers) {
-      this.bgpPeers = bgpPeers;
+      this.bgpPeers.addAll(bgpPeers);
+      return this;
+    }
+
+    public Builder addBgpPeers(RouterBgpPeer bgpPeers) {
+      this.bgpPeers.add(bgpPeers);
       return this;
     }
 
@@ -320,7 +325,12 @@ public final class Router implements ApiMessage {
     }
 
     public Builder addAllInterfaces(List<RouterInterface> interfaces) {
-      this.interfaces = interfaces;
+      this.interfaces.addAll(interfaces);
+      return this;
+    }
+
+    public Builder addInterfaces(RouterInterface interfaces) {
+      this.interfaces.add(interfaces);
       return this;
     }
 

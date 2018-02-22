@@ -60,7 +60,7 @@ public final class RegionInstanceGroupsSetNamedPortsRequest implements ApiMessag
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("namedPorts") && namedPorts != null) {
-      fieldMap.put("namedPorts", Collections.singletonList(String.valueOf(namedPorts)));
+      fieldMap.put("namedPorts", namedPorts);
     }
     return fieldMap;
   }
@@ -140,7 +140,12 @@ public final class RegionInstanceGroupsSetNamedPortsRequest implements ApiMessag
     }
 
     public Builder addAllNamedPorts(List<NamedPort> namedPorts) {
-      this.namedPorts = namedPorts;
+      this.namedPorts.addAll(namedPorts);
+      return this;
+    }
+
+    public Builder addNamedPorts(NamedPort namedPorts) {
+      this.namedPorts.add(namedPorts);
       return this;
     }
 

@@ -53,7 +53,7 @@ public final class InstanceGroupManagersRecreateInstancesRequest implements ApiM
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("instances") && instances != null) {
-      fieldMap.put("instances", Collections.singletonList(String.valueOf(instances)));
+      fieldMap.put("instances", instances);
     }
     return fieldMap;
   }
@@ -115,7 +115,12 @@ public final class InstanceGroupManagersRecreateInstancesRequest implements ApiM
     }
 
     public Builder addAllInstances(List<String> instances) {
-      this.instances = instances;
+      this.instances.addAll(instances);
+      return this;
+    }
+
+    public Builder addInstances(String instances) {
+      this.instances.add(instances);
       return this;
     }
 

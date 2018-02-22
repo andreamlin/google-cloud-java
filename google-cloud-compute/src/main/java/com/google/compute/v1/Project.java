@@ -105,7 +105,7 @@ public final class Project implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("enabledFeatures") && enabledFeatures != null) {
-      fieldMap.put("enabledFeatures", Collections.singletonList(String.valueOf(enabledFeatures)));
+      fieldMap.put("enabledFeatures", enabledFeatures);
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -117,7 +117,7 @@ public final class Project implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("quotas") && quotas != null) {
-      fieldMap.put("quotas", Collections.singletonList(String.valueOf(quotas)));
+      fieldMap.put("quotas", quotas);
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
@@ -311,7 +311,12 @@ public final class Project implements ApiMessage {
     }
 
     public Builder addAllEnabledFeatures(List<String> enabledFeatures) {
-      this.enabledFeatures = enabledFeatures;
+      this.enabledFeatures.addAll(enabledFeatures);
+      return this;
+    }
+
+    public Builder addEnabledFeatures(String enabledFeatures) {
+      this.enabledFeatures.add(enabledFeatures);
       return this;
     }
 
@@ -347,7 +352,12 @@ public final class Project implements ApiMessage {
     }
 
     public Builder addAllQuotas(List<Quota> quotas) {
-      this.quotas = quotas;
+      this.quotas.addAll(quotas);
+      return this;
+    }
+
+    public Builder addQuotas(Quota quotas) {
+      this.quotas.add(quotas);
       return this;
     }
 

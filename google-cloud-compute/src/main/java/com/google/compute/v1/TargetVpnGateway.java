@@ -99,7 +99,7 @@ public final class TargetVpnGateway implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("forwardingRules") && forwardingRules != null) {
-      fieldMap.put("forwardingRules", Collections.singletonList(String.valueOf(forwardingRules)));
+      fieldMap.put("forwardingRules", forwardingRules);
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -123,7 +123,7 @@ public final class TargetVpnGateway implements ApiMessage {
       fieldMap.put("status", Collections.singletonList(String.valueOf(status)));
     }
     if (fieldNames.contains("tunnels") && tunnels != null) {
-      fieldMap.put("tunnels", Collections.singletonList(String.valueOf(tunnels)));
+      fieldMap.put("tunnels", tunnels);
     }
     return fieldMap;
   }
@@ -293,7 +293,12 @@ public final class TargetVpnGateway implements ApiMessage {
     }
 
     public Builder addAllForwardingRules(List<String> forwardingRules) {
-      this.forwardingRules = forwardingRules;
+      this.forwardingRules.addAll(forwardingRules);
+      return this;
+    }
+
+    public Builder addForwardingRules(String forwardingRules) {
+      this.forwardingRules.add(forwardingRules);
       return this;
     }
 
@@ -365,7 +370,12 @@ public final class TargetVpnGateway implements ApiMessage {
     }
 
     public Builder addAllTunnels(List<String> tunnels) {
-      this.tunnels = tunnels;
+      this.tunnels.addAll(tunnels);
+      return this;
+    }
+
+    public Builder addTunnels(String tunnels) {
+      this.tunnels.add(tunnels);
       return this;
     }
 

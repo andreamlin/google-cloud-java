@@ -155,10 +155,10 @@ public final class Route implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("tags") && tags != null) {
-      fieldMap.put("tags", Collections.singletonList(String.valueOf(tags)));
+      fieldMap.put("tags", tags);
     }
     if (fieldNames.contains("warnings") && warnings != null) {
-      fieldMap.put("warnings", Collections.singletonList(String.valueOf(warnings)));
+      fieldMap.put("warnings", warnings);
     }
     return fieldMap;
   }
@@ -481,7 +481,12 @@ public final class Route implements ApiMessage {
     }
 
     public Builder addAllTags(List<String> tags) {
-      this.tags = tags;
+      this.tags.addAll(tags);
+      return this;
+    }
+
+    public Builder addTags(String tags) {
+      this.tags.add(tags);
       return this;
     }
 
@@ -490,7 +495,12 @@ public final class Route implements ApiMessage {
     }
 
     public Builder addAllWarnings(List<Warnings> warnings) {
-      this.warnings = warnings;
+      this.warnings.addAll(warnings);
+      return this;
+    }
+
+    public Builder addWarnings(Warnings warnings) {
+      this.warnings.add(warnings);
       return this;
     }
 

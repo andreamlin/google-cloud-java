@@ -74,7 +74,7 @@ public final class PathMatcher implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("pathRules") && pathRules != null) {
-      fieldMap.put("pathRules", Collections.singletonList(String.valueOf(pathRules)));
+      fieldMap.put("pathRules", pathRules);
     }
     return fieldMap;
   }
@@ -190,7 +190,12 @@ public final class PathMatcher implements ApiMessage {
     }
 
     public Builder addAllPathRules(List<PathRule> pathRules) {
-      this.pathRules = pathRules;
+      this.pathRules.addAll(pathRules);
+      return this;
+    }
+
+    public Builder addPathRules(PathRule pathRules) {
+      this.pathRules.add(pathRules);
       return this;
     }
 

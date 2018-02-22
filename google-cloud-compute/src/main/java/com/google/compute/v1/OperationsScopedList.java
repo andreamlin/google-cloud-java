@@ -57,7 +57,7 @@ public final class OperationsScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("operations") && operations != null) {
-      fieldMap.put("operations", Collections.singletonList(String.valueOf(operations)));
+      fieldMap.put("operations", operations);
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -131,7 +131,12 @@ public final class OperationsScopedList implements ApiMessage {
     }
 
     public Builder addAllOperations(List<Operation> operations) {
-      this.operations = operations;
+      this.operations.addAll(operations);
+      return this;
+    }
+
+    public Builder addOperations(Operation operations) {
+      this.operations.add(operations);
       return this;
     }
 

@@ -64,7 +64,7 @@ public final class InstanceWithNamedPorts implements ApiMessage {
       fieldMap.put("instance", Collections.singletonList(String.valueOf(instance)));
     }
     if (fieldNames.contains("namedPorts") && namedPorts != null) {
-      fieldMap.put("namedPorts", Collections.singletonList(String.valueOf(namedPorts)));
+      fieldMap.put("namedPorts", namedPorts);
     }
     if (fieldNames.contains("status") && status != null) {
       fieldMap.put("status", Collections.singletonList(String.valueOf(status)));
@@ -156,7 +156,12 @@ public final class InstanceWithNamedPorts implements ApiMessage {
     }
 
     public Builder addAllNamedPorts(List<NamedPort> namedPorts) {
-      this.namedPorts = namedPorts;
+      this.namedPorts.addAll(namedPorts);
+      return this;
+    }
+
+    public Builder addNamedPorts(NamedPort namedPorts) {
+      this.namedPorts.add(namedPorts);
       return this;
     }
 

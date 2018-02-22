@@ -204,7 +204,7 @@ public final class Operation implements ApiMessage {
       fieldMap.put("user", Collections.singletonList(String.valueOf(user)));
     }
     if (fieldNames.contains("warnings") && warnings != null) {
-      fieldMap.put("warnings", Collections.singletonList(String.valueOf(warnings)));
+      fieldMap.put("warnings", warnings);
     }
     if (fieldNames.contains("zone") && zone != null) {
       fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
@@ -656,7 +656,12 @@ public final class Operation implements ApiMessage {
     }
 
     public Builder addAllWarnings(List<Warnings> warnings) {
-      this.warnings = warnings;
+      this.warnings.addAll(warnings);
+      return this;
+    }
+
+    public Builder addWarnings(Warnings warnings) {
+      this.warnings.add(warnings);
       return this;
     }
 

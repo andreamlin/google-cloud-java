@@ -60,7 +60,7 @@ public final class InstanceGroupManagersSetTargetPoolsRequest implements ApiMess
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("targetPools") && targetPools != null) {
-      fieldMap.put("targetPools", Collections.singletonList(String.valueOf(targetPools)));
+      fieldMap.put("targetPools", targetPools);
     }
     return fieldMap;
   }
@@ -140,7 +140,12 @@ public final class InstanceGroupManagersSetTargetPoolsRequest implements ApiMess
     }
 
     public Builder addAllTargetPools(List<String> targetPools) {
-      this.targetPools = targetPools;
+      this.targetPools.addAll(targetPools);
+      return this;
+    }
+
+    public Builder addTargetPools(String targetPools) {
+      this.targetPools.add(targetPools);
       return this;
     }
 

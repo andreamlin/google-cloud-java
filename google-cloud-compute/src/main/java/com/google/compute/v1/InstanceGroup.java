@@ -119,7 +119,7 @@ public final class InstanceGroup implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("namedPorts") && namedPorts != null) {
-      fieldMap.put("namedPorts", Collections.singletonList(String.valueOf(namedPorts)));
+      fieldMap.put("namedPorts", namedPorts);
     }
     if (fieldNames.contains("network") && network != null) {
       fieldMap.put("network", Collections.singletonList(String.valueOf(network)));
@@ -361,7 +361,12 @@ public final class InstanceGroup implements ApiMessage {
     }
 
     public Builder addAllNamedPorts(List<NamedPort> namedPorts) {
-      this.namedPorts = namedPorts;
+      this.namedPorts.addAll(namedPorts);
+      return this;
+    }
+
+    public Builder addNamedPorts(NamedPort namedPorts) {
+      this.namedPorts.add(namedPorts);
       return this;
     }
 

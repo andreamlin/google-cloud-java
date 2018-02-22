@@ -57,7 +57,7 @@ public final class InstanceGroupManagersScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("instanceGroupManagers") && instanceGroupManagers != null) {
-      fieldMap.put("instanceGroupManagers", Collections.singletonList(String.valueOf(instanceGroupManagers)));
+      fieldMap.put("instanceGroupManagers", instanceGroupManagers);
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -131,7 +131,12 @@ public final class InstanceGroupManagersScopedList implements ApiMessage {
     }
 
     public Builder addAllInstanceGroupManagers(List<InstanceGroupManager> instanceGroupManagers) {
-      this.instanceGroupManagers = instanceGroupManagers;
+      this.instanceGroupManagers.addAll(instanceGroupManagers);
+      return this;
+    }
+
+    public Builder addInstanceGroupManagers(InstanceGroupManager instanceGroupManagers) {
+      this.instanceGroupManagers.add(instanceGroupManagers);
       return this;
     }
 

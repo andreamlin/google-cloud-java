@@ -145,7 +145,7 @@ public final class MachineType implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("scratchDisks") && scratchDisks != null) {
-      fieldMap.put("scratchDisks", Collections.singletonList(String.valueOf(scratchDisks)));
+      fieldMap.put("scratchDisks", scratchDisks);
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
@@ -447,7 +447,12 @@ public final class MachineType implements ApiMessage {
     }
 
     public Builder addAllScratchDisks(List<ScratchDisks> scratchDisks) {
-      this.scratchDisks = scratchDisks;
+      this.scratchDisks.addAll(scratchDisks);
+      return this;
+    }
+
+    public Builder addScratchDisks(ScratchDisks scratchDisks) {
+      this.scratchDisks.add(scratchDisks);
       return this;
     }
 

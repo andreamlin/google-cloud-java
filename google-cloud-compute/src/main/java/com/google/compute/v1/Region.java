@@ -107,7 +107,7 @@ public final class Region implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("quotas") && quotas != null) {
-      fieldMap.put("quotas", Collections.singletonList(String.valueOf(quotas)));
+      fieldMap.put("quotas", quotas);
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
@@ -116,7 +116,7 @@ public final class Region implements ApiMessage {
       fieldMap.put("status", Collections.singletonList(String.valueOf(status)));
     }
     if (fieldNames.contains("zones") && zones != null) {
-      fieldMap.put("zones", Collections.singletonList(String.valueOf(zones)));
+      fieldMap.put("zones", zones);
     }
     return fieldMap;
   }
@@ -313,7 +313,12 @@ public final class Region implements ApiMessage {
     }
 
     public Builder addAllQuotas(List<Quota> quotas) {
-      this.quotas = quotas;
+      this.quotas.addAll(quotas);
+      return this;
+    }
+
+    public Builder addQuotas(Quota quotas) {
+      this.quotas.add(quotas);
       return this;
     }
 
@@ -340,7 +345,12 @@ public final class Region implements ApiMessage {
     }
 
     public Builder addAllZones(List<String> zones) {
-      this.zones = zones;
+      this.zones.addAll(zones);
+      return this;
+    }
+
+    public Builder addZones(String zones) {
+      this.zones.add(zones);
       return this;
     }
 

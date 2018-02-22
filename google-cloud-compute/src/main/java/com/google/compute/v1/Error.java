@@ -53,7 +53,7 @@ public final class Error implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("errors") && errors != null) {
-      fieldMap.put("errors", Collections.singletonList(String.valueOf(errors)));
+      fieldMap.put("errors", errors);
     }
     return fieldMap;
   }
@@ -115,7 +115,12 @@ public final class Error implements ApiMessage {
     }
 
     public Builder addAllErrors(List<Errors> errors) {
-      this.errors = errors;
+      this.errors.addAll(errors);
+      return this;
+    }
+
+    public Builder addErrors(Errors errors) {
+      this.errors.add(errors);
       return this;
     }
 

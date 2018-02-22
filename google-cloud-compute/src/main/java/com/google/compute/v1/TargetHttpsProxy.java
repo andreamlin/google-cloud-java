@@ -99,7 +99,7 @@ public final class TargetHttpsProxy implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("sslCertificates") && sslCertificates != null) {
-      fieldMap.put("sslCertificates", Collections.singletonList(String.valueOf(sslCertificates)));
+      fieldMap.put("sslCertificates", sslCertificates);
     }
     if (fieldNames.contains("urlMap") && urlMap != null) {
       fieldMap.put("urlMap", Collections.singletonList(String.valueOf(urlMap)));
@@ -281,7 +281,12 @@ public final class TargetHttpsProxy implements ApiMessage {
     }
 
     public Builder addAllSslCertificates(List<String> sslCertificates) {
-      this.sslCertificates = sslCertificates;
+      this.sslCertificates.addAll(sslCertificates);
+      return this;
+    }
+
+    public Builder addSslCertificates(String sslCertificates) {
+      this.sslCertificates.add(sslCertificates);
       return this;
     }
 

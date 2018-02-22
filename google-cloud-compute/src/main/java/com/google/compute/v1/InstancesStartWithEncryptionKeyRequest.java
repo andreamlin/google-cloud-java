@@ -53,7 +53,7 @@ public final class InstancesStartWithEncryptionKeyRequest implements ApiMessage 
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("disks") && disks != null) {
-      fieldMap.put("disks", Collections.singletonList(String.valueOf(disks)));
+      fieldMap.put("disks", disks);
     }
     return fieldMap;
   }
@@ -115,7 +115,12 @@ public final class InstancesStartWithEncryptionKeyRequest implements ApiMessage 
     }
 
     public Builder addAllDisks(List<CustomerEncryptionKeyProtectedDisk> disks) {
-      this.disks = disks;
+      this.disks.addAll(disks);
+      return this;
+    }
+
+    public Builder addDisks(CustomerEncryptionKeyProtectedDisk disks) {
+      this.disks.add(disks);
       return this;
     }
 

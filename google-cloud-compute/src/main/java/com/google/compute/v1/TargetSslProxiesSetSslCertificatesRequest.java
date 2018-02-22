@@ -53,7 +53,7 @@ public final class TargetSslProxiesSetSslCertificatesRequest implements ApiMessa
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("sslCertificates") && sslCertificates != null) {
-      fieldMap.put("sslCertificates", Collections.singletonList(String.valueOf(sslCertificates)));
+      fieldMap.put("sslCertificates", sslCertificates);
     }
     return fieldMap;
   }
@@ -115,7 +115,12 @@ public final class TargetSslProxiesSetSslCertificatesRequest implements ApiMessa
     }
 
     public Builder addAllSslCertificates(List<String> sslCertificates) {
-      this.sslCertificates = sslCertificates;
+      this.sslCertificates.addAll(sslCertificates);
+      return this;
+    }
+
+    public Builder addSslCertificates(String sslCertificates) {
+      this.sslCertificates.add(sslCertificates);
       return this;
     }
 

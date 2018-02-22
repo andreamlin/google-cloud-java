@@ -60,7 +60,7 @@ public final class Allowed implements ApiMessage {
       fieldMap.put("iPProtocol", Collections.singletonList(String.valueOf(iPProtocol)));
     }
     if (fieldNames.contains("ports") && ports != null) {
-      fieldMap.put("ports", Collections.singletonList(String.valueOf(ports)));
+      fieldMap.put("ports", ports);
     }
     return fieldMap;
   }
@@ -140,7 +140,12 @@ public final class Allowed implements ApiMessage {
     }
 
     public Builder addAllPorts(List<String> ports) {
-      this.ports = ports;
+      this.ports.addAll(ports);
+      return this;
+    }
+
+    public Builder addPorts(String ports) {
+      this.ports.add(ports);
       return this;
     }
 
