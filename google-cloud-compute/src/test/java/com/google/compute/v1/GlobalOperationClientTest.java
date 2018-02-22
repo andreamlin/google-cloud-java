@@ -77,7 +77,8 @@ public class GlobalOperationClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    Operation operations = Operation.newBuilder().build();
+    Operation operationsElement = Operation.newBuilder().build();
+    List<Operation> operations = Arrays.asList(operationsElement);
     OperationsScopedList items = OperationsScopedList.newBuilder()
       .addAllOperations(operations)
       .build();

@@ -162,7 +162,8 @@ public class InstanceGroupClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    InstanceGroup instanceGroups = InstanceGroup.newBuilder().build();
+    InstanceGroup instanceGroupsElement = InstanceGroup.newBuilder().build();
+    List<InstanceGroup> instanceGroups = Arrays.asList(instanceGroupsElement);
     InstanceGroupsScopedList items = InstanceGroupsScopedList.newBuilder()
       .addAllInstanceGroups(instanceGroups)
       .build();

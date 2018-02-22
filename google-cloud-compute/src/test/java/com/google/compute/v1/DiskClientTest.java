@@ -80,7 +80,8 @@ public class DiskClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    Disk disks = Disk.newBuilder().build();
+    Disk disksElement = Disk.newBuilder().build();
+    List<Disk> disks = Arrays.asList(disksElement);
     DisksScopedList items = DisksScopedList.newBuilder()
       .addAllDisks(disks)
       .build();

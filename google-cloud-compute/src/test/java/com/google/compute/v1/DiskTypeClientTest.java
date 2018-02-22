@@ -76,7 +76,8 @@ public class DiskTypeClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    DiskType diskTypes = DiskType.newBuilder().build();
+    DiskType diskTypesElement = DiskType.newBuilder().build();
+    List<DiskType> diskTypes = Arrays.asList(diskTypesElement);
     DiskTypesScopedList items = DiskTypesScopedList.newBuilder()
       .addAllDiskTypes(diskTypes)
       .build();

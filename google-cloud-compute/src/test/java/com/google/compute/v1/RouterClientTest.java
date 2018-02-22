@@ -82,7 +82,8 @@ public class RouterClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    Router routers = Router.newBuilder().build();
+    Router routersElement = Router.newBuilder().build();
+    List<Router> routers = Arrays.asList(routersElement);
     RoutersScopedList items = RoutersScopedList.newBuilder()
       .addAllRouters(routers)
       .build();

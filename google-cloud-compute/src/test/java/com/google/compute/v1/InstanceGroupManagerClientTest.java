@@ -164,7 +164,8 @@ public class InstanceGroupManagerClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    InstanceGroupManager instanceGroupManagers = InstanceGroupManager.newBuilder().build();
+    InstanceGroupManager instanceGroupManagersElement = InstanceGroupManager.newBuilder().build();
+    List<InstanceGroupManager> instanceGroupManagers = Arrays.asList(instanceGroupManagersElement);
     InstanceGroupManagersScopedList items = InstanceGroupManagersScopedList.newBuilder()
       .addAllInstanceGroupManagers(instanceGroupManagers)
       .build();

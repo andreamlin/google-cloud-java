@@ -242,7 +242,8 @@ public class TargetPoolClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    TargetPool targetPools = TargetPool.newBuilder().build();
+    TargetPool targetPoolsElement = TargetPool.newBuilder().build();
+    List<TargetPool> targetPools = Arrays.asList(targetPoolsElement);
     TargetPoolsScopedList items = TargetPoolsScopedList.newBuilder()
       .addAllTargetPools(targetPools)
       .build();

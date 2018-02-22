@@ -81,7 +81,8 @@ public class BackendServiceClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    BackendService backendServices = BackendService.newBuilder().build();
+    BackendService backendServicesElement = BackendService.newBuilder().build();
+    List<BackendService> backendServices = Arrays.asList(backendServicesElement);
     BackendServicesScopedList items = BackendServicesScopedList.newBuilder()
       .addAllBackendServices(backendServices)
       .build();

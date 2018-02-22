@@ -78,7 +78,8 @@ public class TargetInstanceClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    TargetInstance targetInstances = TargetInstance.newBuilder().build();
+    TargetInstance targetInstancesElement = TargetInstance.newBuilder().build();
+    List<TargetInstance> targetInstances = Arrays.asList(targetInstancesElement);
     TargetInstancesScopedList items = TargetInstancesScopedList.newBuilder()
       .addAllTargetInstances(targetInstances)
       .build();

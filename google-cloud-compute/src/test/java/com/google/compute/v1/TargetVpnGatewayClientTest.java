@@ -78,7 +78,8 @@ public class TargetVpnGatewayClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    TargetVpnGateway targetVpnGateways = TargetVpnGateway.newBuilder().build();
+    TargetVpnGateway targetVpnGatewaysElement = TargetVpnGateway.newBuilder().build();
+    List<TargetVpnGateway> targetVpnGateways = Arrays.asList(targetVpnGatewaysElement);
     TargetVpnGatewaysScopedList items = TargetVpnGatewaysScopedList.newBuilder()
       .addAllTargetVpnGateways(targetVpnGateways)
       .build();

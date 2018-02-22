@@ -78,7 +78,8 @@ public class VpnTunnelClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    VpnTunnel vpnTunnels = VpnTunnel.newBuilder().build();
+    VpnTunnel vpnTunnelsElement = VpnTunnel.newBuilder().build();
+    List<VpnTunnel> vpnTunnels = Arrays.asList(vpnTunnelsElement);
     VpnTunnelsScopedList items = VpnTunnelsScopedList.newBuilder()
       .addAllVpnTunnels(vpnTunnels)
       .build();

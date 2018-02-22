@@ -78,7 +78,8 @@ public class AddressClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    Address addresses = Address.newBuilder().build();
+    Address addressesElement = Address.newBuilder().build();
+    List<Address> addresses = Arrays.asList(addressesElement);
     AddressesScopedList items = AddressesScopedList.newBuilder()
       .addAllAddresses(addresses)
       .build();

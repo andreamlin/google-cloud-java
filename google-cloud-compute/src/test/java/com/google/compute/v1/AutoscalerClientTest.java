@@ -80,7 +80,8 @@ public class AutoscalerClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    Autoscaler autoscalers = Autoscaler.newBuilder().build();
+    Autoscaler autoscalersElement = Autoscaler.newBuilder().build();
+    List<Autoscaler> autoscalers = Arrays.asList(autoscalersElement);
     AutoscalersScopedList items = AutoscalersScopedList.newBuilder()
       .addAllAutoscalers(autoscalers)
       .build();

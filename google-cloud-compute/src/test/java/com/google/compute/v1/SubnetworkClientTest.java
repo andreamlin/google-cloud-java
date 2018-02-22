@@ -79,7 +79,8 @@ public class SubnetworkClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    Subnetwork subnetworks = Subnetwork.newBuilder().build();
+    Subnetwork subnetworksElement = Subnetwork.newBuilder().build();
+    List<Subnetwork> subnetworks = Arrays.asList(subnetworksElement);
     SubnetworksScopedList items = SubnetworksScopedList.newBuilder()
       .addAllSubnetworks(subnetworks)
       .build();

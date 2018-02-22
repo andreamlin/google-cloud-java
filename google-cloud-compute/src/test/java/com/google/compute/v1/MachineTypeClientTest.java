@@ -76,7 +76,8 @@ public class MachineTypeClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    MachineType machineTypes = MachineType.newBuilder().build();
+    MachineType machineTypesElement = MachineType.newBuilder().build();
+    List<MachineType> machineTypes = Arrays.asList(machineTypesElement);
     MachineTypesScopedList items = MachineTypesScopedList.newBuilder()
       .addAllMachineTypes(machineTypes)
       .build();

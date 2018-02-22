@@ -79,7 +79,8 @@ public class ForwardingRuleClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    ForwardingRule forwardingRules = ForwardingRule.newBuilder().build();
+    ForwardingRule forwardingRulesElement = ForwardingRule.newBuilder().build();
+    List<ForwardingRule> forwardingRules = Arrays.asList(forwardingRulesElement);
     ForwardingRulesScopedList items = ForwardingRulesScopedList.newBuilder()
       .addAllForwardingRules(forwardingRules)
       .build();

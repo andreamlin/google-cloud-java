@@ -174,7 +174,8 @@ public class InstanceClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    Instance instances = Instance.newBuilder().build();
+    Instance instancesElement = Instance.newBuilder().build();
+    List<Instance> instances = Arrays.asList(instancesElement);
     InstancesScopedList items = InstancesScopedList.newBuilder()
       .addAllInstances(instances)
       .build();
