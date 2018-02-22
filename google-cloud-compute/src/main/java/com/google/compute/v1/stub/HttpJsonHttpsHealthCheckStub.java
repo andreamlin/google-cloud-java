@@ -69,9 +69,6 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setRequestInstance(DeleteHttpsHealthCheckHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/httpsHealthChecks/{httpsHealthCheck}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "httpsHealthCheck",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -84,9 +81,6 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setRequestInstance(GetHttpsHealthCheckHttpRequest.getDefaultInstance())
           .setResponseInstance(HttpsHealthCheck.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/httpsHealthChecks/{httpsHealthCheck}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "httpsHealthCheck",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -99,9 +93,6 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setRequestInstance(InsertHttpsHealthCheckHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/httpsHealthChecks")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -114,9 +105,6 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setRequestInstance(ListHttpsHealthChecksHttpRequest.getDefaultInstance())
           .setResponseInstance(HttpsHealthCheckList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/httpsHealthChecks")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -130,9 +118,6 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setRequestInstance(PatchHttpsHealthCheckHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/httpsHealthChecks/{httpsHealthCheck}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "httpsHealthCheck",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -145,9 +130,6 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setRequestInstance(UpdateHttpsHealthCheckHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/httpsHealthChecks/{httpsHealthCheck}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "httpsHealthCheck",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())

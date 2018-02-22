@@ -116,13 +116,13 @@ public final class InsertBackendServiceHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public BackendService requestBody() {
+  public BackendService getApiMessageRequestBody() {
     return backendServiceResource;
   }
 

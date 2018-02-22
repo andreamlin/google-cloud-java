@@ -67,9 +67,6 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
           .setRequestInstance(DeleteGlobalAddressHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/addresses/{address}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "address",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -82,9 +79,6 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
           .setRequestInstance(GetGlobalAddressHttpRequest.getDefaultInstance())
           .setResponseInstance(Address.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/addresses/{address}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "address",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -97,9 +91,6 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
           .setRequestInstance(InsertGlobalAddressHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/addresses")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -112,9 +103,6 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
           .setRequestInstance(ListGlobalAddressesHttpRequest.getDefaultInstance())
           .setResponseInstance(AddressList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/addresses")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

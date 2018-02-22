@@ -75,9 +75,6 @@ public class HttpJsonDiskStub extends DiskStub {
           .setRequestInstance(AggregatedListDisksHttpRequest.getDefaultInstance())
           .setResponseInstance(DiskAggregatedList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/aggregated/disks")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -91,9 +88,6 @@ public class HttpJsonDiskStub extends DiskStub {
           .setRequestInstance(CreateSnapshotDiskHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}/createSnapshot")
-          .setPathParams(Sets.<String>newHashSet(
-                            "disk",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -106,9 +100,6 @@ public class HttpJsonDiskStub extends DiskStub {
           .setRequestInstance(DeleteDiskHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "disk",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -121,9 +112,6 @@ public class HttpJsonDiskStub extends DiskStub {
           .setRequestInstance(GetDiskHttpRequest.getDefaultInstance())
           .setResponseInstance(Disk.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "disk",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -136,9 +124,6 @@ public class HttpJsonDiskStub extends DiskStub {
           .setRequestInstance(InsertDiskHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/disks")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "sourceImage"
                              ))
@@ -152,9 +137,6 @@ public class HttpJsonDiskStub extends DiskStub {
           .setRequestInstance(ListDisksHttpRequest.getDefaultInstance())
           .setResponseInstance(DiskList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/disks")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -168,9 +150,6 @@ public class HttpJsonDiskStub extends DiskStub {
           .setRequestInstance(ResizeDiskHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}/resize")
-          .setPathParams(Sets.<String>newHashSet(
-                            "disk",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())

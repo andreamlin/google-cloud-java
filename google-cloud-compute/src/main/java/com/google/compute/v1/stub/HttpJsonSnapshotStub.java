@@ -66,9 +66,6 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
           .setRequestInstance(DeleteSnapshotHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/snapshots/{snapshot}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "snapshot"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -81,9 +78,6 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
           .setRequestInstance(GetSnapshotHttpRequest.getDefaultInstance())
           .setResponseInstance(Snapshot.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/snapshots/{snapshot}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "snapshot"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -96,9 +90,6 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
           .setRequestInstance(ListSnapshotsHttpRequest.getDefaultInstance())
           .setResponseInstance(SnapshotList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/snapshots")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

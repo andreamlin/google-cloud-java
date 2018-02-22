@@ -80,9 +80,6 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setRequestInstance(AbandonInstancesRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/abandonInstances")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroupManager",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -95,9 +92,6 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setRequestInstance(DeleteRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroupManager",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -110,9 +104,6 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setRequestInstance(DeleteInstancesRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/deleteInstances")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroupManager",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -125,9 +116,6 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setRequestInstance(GetRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
           .setResponseInstance(InstanceGroupManager.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroupManager",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -140,9 +128,6 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setRequestInstance(InsertRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroupManagers")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -155,9 +140,6 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setRequestInstance(ListRegionInstanceGroupManagersHttpRequest.getDefaultInstance())
           .setResponseInstance(RegionInstanceGroupManagerList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroupManagers")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -171,9 +153,6 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setRequestInstance(ListManagedInstancesRegionInstanceGroupManagersHttpRequest.getDefaultInstance())
           .setResponseInstance(RegionInstanceGroupManagersListInstancesResponse.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listManagedInstances")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroupManager",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "order_by",    "pageToken"
                              ))
@@ -187,9 +166,6 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setRequestInstance(RecreateInstancesRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/recreateInstances")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroupManager",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -202,9 +178,6 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setRequestInstance(ResizeRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resize")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroupManager",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "size"
                              ))
@@ -218,9 +191,6 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setRequestInstance(SetInstanceTemplateRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroupManager",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -233,9 +203,6 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
           .setRequestInstance(SetTargetPoolsRegionInstanceGroupManagerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setTargetPools")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroupManager",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())

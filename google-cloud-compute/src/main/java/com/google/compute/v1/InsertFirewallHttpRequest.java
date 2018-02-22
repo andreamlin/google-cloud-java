@@ -116,13 +116,13 @@ public final class InsertFirewallHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public Firewall requestBody() {
+  public Firewall getApiMessageRequestBody() {
     return firewallResource;
   }
 

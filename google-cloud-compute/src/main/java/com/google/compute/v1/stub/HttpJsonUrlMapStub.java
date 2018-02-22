@@ -74,9 +74,6 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setRequestInstance(DeleteUrlMapHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/urlMaps/{urlMap}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "urlMap"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -89,9 +86,6 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setRequestInstance(GetUrlMapHttpRequest.getDefaultInstance())
           .setResponseInstance(UrlMap.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/urlMaps/{urlMap}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "urlMap"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -104,9 +98,6 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setRequestInstance(InsertUrlMapHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/urlMaps")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -119,9 +110,6 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setRequestInstance(InvalidateCacheUrlMapHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/urlMaps/{urlMap}/invalidateCache")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "urlMap"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -134,9 +122,6 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setRequestInstance(ListUrlMapsHttpRequest.getDefaultInstance())
           .setResponseInstance(UrlMapList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/urlMaps")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -150,9 +135,6 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setRequestInstance(PatchUrlMapHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/urlMaps/{urlMap}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "urlMap"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -165,9 +147,6 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setRequestInstance(UpdateUrlMapHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/urlMaps/{urlMap}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "urlMap"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -180,9 +159,6 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setRequestInstance(ValidateUrlMapHttpRequest.getDefaultInstance())
           .setResponseInstance(UrlMapsValidateResponse.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/urlMaps/{urlMap}/validate")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "urlMap"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())

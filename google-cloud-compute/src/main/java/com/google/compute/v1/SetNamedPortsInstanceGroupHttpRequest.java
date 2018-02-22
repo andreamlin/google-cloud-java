@@ -118,13 +118,13 @@ public final class SetNamedPortsInstanceGroupHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public InstanceGroupsSetNamedPortsRequest requestBody() {
+  public InstanceGroupsSetNamedPortsRequest getApiMessageRequestBody() {
     return instanceGroupsSetNamedPortsRequestResource;
   }
 

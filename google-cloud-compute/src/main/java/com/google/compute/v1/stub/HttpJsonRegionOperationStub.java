@@ -64,9 +64,6 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
           .setMethodName("compute.regionOperations.delete")
           .setRequestInstance(DeleteRegionOperationHttpRequest.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/operations/{operation}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "operation",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -79,9 +76,6 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
           .setRequestInstance(GetRegionOperationHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/operations/{operation}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "operation",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -94,9 +88,6 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
           .setRequestInstance(ListRegionOperationsHttpRequest.getDefaultInstance())
           .setResponseInstance(OperationList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/operations")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

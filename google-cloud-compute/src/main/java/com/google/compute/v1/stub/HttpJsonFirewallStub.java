@@ -69,9 +69,6 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setRequestInstance(DeleteFirewallHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "firewall",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -84,9 +81,6 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setRequestInstance(GetFirewallHttpRequest.getDefaultInstance())
           .setResponseInstance(Firewall.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "firewall",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -99,9 +93,6 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setRequestInstance(InsertFirewallHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/firewalls")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -114,9 +105,6 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setRequestInstance(ListFirewallsHttpRequest.getDefaultInstance())
           .setResponseInstance(FirewallList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/firewalls")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -130,9 +118,6 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setRequestInstance(PatchFirewallHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "firewall",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -145,9 +130,6 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setRequestInstance(UpdateFirewallHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "firewall",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())

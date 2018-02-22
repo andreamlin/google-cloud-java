@@ -118,13 +118,13 @@ public final class SetMetadataInstanceHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public Metadata requestBody() {
+  public Metadata getApiMessageRequestBody() {
     return metadataResource;
   }
 

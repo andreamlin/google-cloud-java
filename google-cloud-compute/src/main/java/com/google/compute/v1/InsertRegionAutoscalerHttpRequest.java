@@ -117,13 +117,13 @@ public final class InsertRegionAutoscalerHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public Autoscaler requestBody() {
+  public Autoscaler getApiMessageRequestBody() {
     return autoscalerResource;
   }
 

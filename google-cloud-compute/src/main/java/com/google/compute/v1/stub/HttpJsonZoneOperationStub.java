@@ -64,9 +64,6 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
           .setMethodName("compute.zoneOperations.delete")
           .setRequestInstance(DeleteZoneOperationHttpRequest.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/operations/{operation}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "operation",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -79,9 +76,6 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
           .setRequestInstance(GetZoneOperationHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/operations/{operation}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "operation",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -94,9 +88,6 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
           .setRequestInstance(ListZoneOperationsHttpRequest.getDefaultInstance())
           .setResponseInstance(OperationList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/operations")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

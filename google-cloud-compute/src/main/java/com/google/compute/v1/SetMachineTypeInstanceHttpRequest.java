@@ -118,13 +118,13 @@ public final class SetMachineTypeInstanceHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public InstancesSetMachineTypeRequest requestBody() {
+  public InstancesSetMachineTypeRequest getApiMessageRequestBody() {
     return instancesSetMachineTypeRequestResource;
   }
 

@@ -60,9 +60,6 @@ public class HttpJsonLicensStub extends LicensStub {
           .setRequestInstance(GetLicensHttpRequest.getDefaultInstance())
           .setResponseInstance(License.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/licenses/{license}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "license",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())

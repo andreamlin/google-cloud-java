@@ -84,9 +84,6 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setRequestInstance(AddHealthCheckTargetPoolHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/addHealthCheck")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "targetPool"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -99,9 +96,6 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setRequestInstance(AddInstanceTargetPoolHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/addInstance")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "targetPool"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -114,9 +108,6 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setRequestInstance(AggregatedListTargetPoolsHttpRequest.getDefaultInstance())
           .setResponseInstance(TargetPoolAggregatedList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/aggregated/targetPools")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -130,9 +121,6 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setRequestInstance(DeleteTargetPoolHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "targetPool"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -145,9 +133,6 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setRequestInstance(GetTargetPoolHttpRequest.getDefaultInstance())
           .setResponseInstance(TargetPool.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "targetPool"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -160,9 +145,6 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setRequestInstance(GetHealthTargetPoolHttpRequest.getDefaultInstance())
           .setResponseInstance(TargetPoolInstanceHealth.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/getHealth")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "targetPool"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -175,9 +157,6 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setRequestInstance(InsertTargetPoolHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/targetPools")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -190,9 +169,6 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setRequestInstance(ListTargetPoolsHttpRequest.getDefaultInstance())
           .setResponseInstance(TargetPoolList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/targetPools")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -206,9 +182,6 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setRequestInstance(RemoveHealthCheckTargetPoolHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/removeHealthCheck")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "targetPool"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -221,9 +194,6 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setRequestInstance(RemoveInstanceTargetPoolHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/removeInstance")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "targetPool"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -236,9 +206,6 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setRequestInstance(SetBackupTargetPoolHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/targetPools/{targetPool}/setBackup")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "targetPool"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "failoverRatio"
                              ))

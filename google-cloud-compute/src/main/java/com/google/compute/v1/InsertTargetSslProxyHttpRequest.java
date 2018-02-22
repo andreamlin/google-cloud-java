@@ -116,13 +116,13 @@ public final class InsertTargetSslProxyHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public TargetSslProxy requestBody() {
+  public TargetSslProxy getApiMessageRequestBody() {
     return targetSslProxyResource;
   }
 

@@ -73,13 +73,13 @@ public final class RouterInterface implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public ApiMessage requestBody() {
+  public ApiMessage getApiMessageRequestBody() {
     return null;
   }
 

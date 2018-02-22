@@ -118,13 +118,13 @@ public final class StartWithEncryptionKeyInstanceHttpRequest implements ApiMessa
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public InstancesStartWithEncryptionKeyRequest requestBody() {
+  public InstancesStartWithEncryptionKeyRequest getApiMessageRequestBody() {
     return instancesStartWithEncryptionKeyRequestResource;
   }
 

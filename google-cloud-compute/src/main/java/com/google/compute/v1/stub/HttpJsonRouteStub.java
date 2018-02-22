@@ -67,9 +67,6 @@ public class HttpJsonRouteStub extends RouteStub {
           .setRequestInstance(DeleteRouteHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/routes/{route}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "route"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -82,9 +79,6 @@ public class HttpJsonRouteStub extends RouteStub {
           .setRequestInstance(GetRouteHttpRequest.getDefaultInstance())
           .setResponseInstance(Route.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/routes/{route}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "route"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -97,9 +91,6 @@ public class HttpJsonRouteStub extends RouteStub {
           .setRequestInstance(InsertRouteHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/routes")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -112,9 +103,6 @@ public class HttpJsonRouteStub extends RouteStub {
           .setRequestInstance(ListRoutesHttpRequest.getDefaultInstance())
           .setResponseInstance(RouteList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/routes")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

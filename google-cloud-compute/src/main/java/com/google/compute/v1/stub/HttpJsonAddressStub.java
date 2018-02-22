@@ -71,9 +71,6 @@ public class HttpJsonAddressStub extends AddressStub {
           .setRequestInstance(AggregatedListAddressesHttpRequest.getDefaultInstance())
           .setResponseInstance(AddressAggregatedList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/aggregated/addresses")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -87,9 +84,6 @@ public class HttpJsonAddressStub extends AddressStub {
           .setRequestInstance(DeleteAddressHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/addresses/{address}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "address",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -102,9 +96,6 @@ public class HttpJsonAddressStub extends AddressStub {
           .setRequestInstance(GetAddressHttpRequest.getDefaultInstance())
           .setResponseInstance(Address.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/addresses/{address}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "address",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -117,9 +108,6 @@ public class HttpJsonAddressStub extends AddressStub {
           .setRequestInstance(InsertAddressHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/addresses")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -132,9 +120,6 @@ public class HttpJsonAddressStub extends AddressStub {
           .setRequestInstance(ListAddressesHttpRequest.getDefaultInstance())
           .setResponseInstance(AddressList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/addresses")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

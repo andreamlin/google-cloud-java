@@ -69,9 +69,6 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setRequestInstance(DeleteTargetHttpProxyHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/targetHttpProxies/{targetHttpProxy}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "targetHttpProxy"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -84,9 +81,6 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setRequestInstance(GetTargetHttpProxyHttpRequest.getDefaultInstance())
           .setResponseInstance(TargetHttpProxy.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/targetHttpProxies/{targetHttpProxy}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "targetHttpProxy"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -99,9 +93,6 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setRequestInstance(InsertTargetHttpProxyHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/targetHttpProxies")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -114,9 +105,6 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setRequestInstance(ListTargetHttpProxiesHttpRequest.getDefaultInstance())
           .setResponseInstance(TargetHttpProxyList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/targetHttpProxies")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -130,9 +118,6 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setRequestInstance(SetUrlMapTargetHttpProxyHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/targetHttpProxies/{targetHttpProxy}/setUrlMap")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "targetHttpProxy"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())

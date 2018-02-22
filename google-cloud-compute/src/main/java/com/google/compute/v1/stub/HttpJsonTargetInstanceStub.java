@@ -71,9 +71,6 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
           .setRequestInstance(AggregatedListTargetInstancesHttpRequest.getDefaultInstance())
           .setResponseInstance(TargetInstanceAggregatedList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/aggregated/targetInstances")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -87,9 +84,6 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
           .setRequestInstance(DeleteTargetInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/targetInstances/{targetInstance}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "targetInstance",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -102,9 +96,6 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
           .setRequestInstance(GetTargetInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(TargetInstance.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/targetInstances/{targetInstance}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "targetInstance",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -117,9 +108,6 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
           .setRequestInstance(InsertTargetInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/targetInstances")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -132,9 +120,6 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
           .setRequestInstance(ListTargetInstancesHttpRequest.getDefaultInstance())
           .setResponseInstance(TargetInstanceList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/targetInstances")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

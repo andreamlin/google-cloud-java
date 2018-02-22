@@ -67,9 +67,6 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
           .setRequestInstance(DeleteInstanceTemplateHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/instanceTemplates/{instanceTemplate}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceTemplate",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -82,9 +79,6 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
           .setRequestInstance(GetInstanceTemplateHttpRequest.getDefaultInstance())
           .setResponseInstance(InstanceTemplate.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/instanceTemplates/{instanceTemplate}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceTemplate",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -97,9 +91,6 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
           .setRequestInstance(InsertInstanceTemplateHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/instanceTemplates")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -112,9 +103,6 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
           .setRequestInstance(ListInstanceTemplatesHttpRequest.getDefaultInstance())
           .setResponseInstance(InstanceTemplateList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/instanceTemplates")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

@@ -117,13 +117,13 @@ public final class SetTargetGlobalForwardingRuleHttpRequest implements ApiMessag
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public TargetReference requestBody() {
+  public TargetReference getApiMessageRequestBody() {
     return targetReferenceResource;
   }
 

@@ -73,9 +73,6 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setRequestInstance(DeleteTargetSslProxyHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/targetSslProxies/{targetSslProxy}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "targetSslProxy"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -88,9 +85,6 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setRequestInstance(GetTargetSslProxyHttpRequest.getDefaultInstance())
           .setResponseInstance(TargetSslProxy.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/targetSslProxies/{targetSslProxy}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "targetSslProxy"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -103,9 +97,6 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setRequestInstance(InsertTargetSslProxyHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/targetSslProxies")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -118,9 +109,6 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setRequestInstance(ListTargetSslProxiesHttpRequest.getDefaultInstance())
           .setResponseInstance(TargetSslProxyList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/targetSslProxies")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -134,9 +122,6 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setRequestInstance(SetBackendServiceTargetSslProxyHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/targetSslProxies/{targetSslProxy}/setBackendService")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "targetSslProxy"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -149,9 +134,6 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setRequestInstance(SetProxyHeaderTargetSslProxyHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/targetSslProxies/{targetSslProxy}/setProxyHeader")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "targetSslProxy"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -164,9 +146,6 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setRequestInstance(SetSslCertificatesTargetSslProxyHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/targetSslProxies/{targetSslProxy}/setSslCertificates")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "targetSslProxy"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())

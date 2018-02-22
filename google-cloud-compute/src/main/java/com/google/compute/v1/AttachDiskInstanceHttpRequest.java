@@ -118,13 +118,13 @@ public final class AttachDiskInstanceHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public AttachedDisk requestBody() {
+  public AttachedDisk getApiMessageRequestBody() {
     return attachedDiskResource;
   }
 

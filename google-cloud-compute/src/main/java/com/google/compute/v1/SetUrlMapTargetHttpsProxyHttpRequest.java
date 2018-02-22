@@ -117,13 +117,13 @@ public final class SetUrlMapTargetHttpsProxyHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public UrlMapReference requestBody() {
+  public UrlMapReference getApiMessageRequestBody() {
     return urlMapReferenceResource;
   }
 

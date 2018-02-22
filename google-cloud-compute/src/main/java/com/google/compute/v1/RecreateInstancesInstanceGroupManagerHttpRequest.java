@@ -118,13 +118,13 @@ public final class RecreateInstancesInstanceGroupManagerHttpRequest implements A
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public InstanceGroupManagersRecreateInstancesRequest requestBody() {
+  public InstanceGroupManagersRecreateInstancesRequest getApiMessageRequestBody() {
     return instanceGroupManagersRecreateInstancesRequestResource;
   }
 

@@ -71,9 +71,6 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
           .setRequestInstance(AggregatedListVpnTunnelsHttpRequest.getDefaultInstance())
           .setResponseInstance(VpnTunnelAggregatedList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/aggregated/vpnTunnels")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -87,9 +84,6 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
           .setRequestInstance(DeleteVpnTunnelHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/vpnTunnels/{vpnTunnel}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "vpnTunnel"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -102,9 +96,6 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
           .setRequestInstance(GetVpnTunnelHttpRequest.getDefaultInstance())
           .setResponseInstance(VpnTunnel.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/vpnTunnels/{vpnTunnel}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "vpnTunnel"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -117,9 +108,6 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
           .setRequestInstance(InsertVpnTunnelHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/vpnTunnels")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -132,9 +120,6 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
           .setRequestInstance(ListVpnTunnelsHttpRequest.getDefaultInstance())
           .setResponseInstance(VpnTunnelList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/vpnTunnels")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

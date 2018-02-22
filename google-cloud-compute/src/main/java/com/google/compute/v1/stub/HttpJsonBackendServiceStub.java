@@ -75,9 +75,6 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setRequestInstance(AggregatedListBackendServicesHttpRequest.getDefaultInstance())
           .setResponseInstance(BackendServiceAggregatedList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/aggregated/backendServices")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -91,9 +88,6 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setRequestInstance(DeleteBackendServiceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "backendService",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -106,9 +100,6 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setRequestInstance(GetBackendServiceHttpRequest.getDefaultInstance())
           .setResponseInstance(BackendService.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "backendService",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -121,9 +112,6 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setRequestInstance(GetHealthBackendServiceHttpRequest.getDefaultInstance())
           .setResponseInstance(BackendServiceGroupHealth.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/backendServices/{backendService}/getHealth")
-          .setPathParams(Sets.<String>newHashSet(
-                            "backendService",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -136,9 +124,6 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setRequestInstance(InsertBackendServiceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/backendServices")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -151,9 +136,6 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setRequestInstance(ListBackendServicesHttpRequest.getDefaultInstance())
           .setResponseInstance(BackendServiceList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/backendServices")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -167,9 +149,6 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setRequestInstance(PatchBackendServiceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "backendService",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -182,9 +161,6 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setRequestInstance(UpdateBackendServiceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "backendService",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())

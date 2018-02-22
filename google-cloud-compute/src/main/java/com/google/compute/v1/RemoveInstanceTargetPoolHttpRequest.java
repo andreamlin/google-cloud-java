@@ -118,13 +118,13 @@ public final class RemoveInstanceTargetPoolHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public TargetPoolsRemoveInstanceRequest requestBody() {
+  public TargetPoolsRemoveInstanceRequest getApiMessageRequestBody() {
     return targetPoolsRemoveInstanceRequestResource;
   }
 

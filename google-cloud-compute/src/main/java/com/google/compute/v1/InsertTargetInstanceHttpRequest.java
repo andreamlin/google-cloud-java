@@ -117,13 +117,13 @@ public final class InsertTargetInstanceHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public TargetInstance requestBody() {
+  public TargetInstance getApiMessageRequestBody() {
     return targetInstanceResource;
   }
 

@@ -116,13 +116,13 @@ public final class InsertUrlMapHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public UrlMap requestBody() {
+  public UrlMap getApiMessageRequestBody() {
     return urlMapResource;
   }
 

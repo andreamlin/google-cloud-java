@@ -118,13 +118,13 @@ public final class ResizeDiskHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public DisksResizeRequest requestBody() {
+  public DisksResizeRequest getApiMessageRequestBody() {
     return disksResizeRequestResource;
   }
 

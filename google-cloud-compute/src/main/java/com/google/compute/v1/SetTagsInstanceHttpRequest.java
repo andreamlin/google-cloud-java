@@ -118,13 +118,13 @@ public final class SetTagsInstanceHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public Tags requestBody() {
+  public Tags getApiMessageRequestBody() {
     return tagsResource;
   }
 

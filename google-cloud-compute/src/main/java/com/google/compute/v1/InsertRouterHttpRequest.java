@@ -117,13 +117,13 @@ public final class InsertRouterHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public Router requestBody() {
+  public Router getApiMessageRequestBody() {
     return routerResource;
   }
 

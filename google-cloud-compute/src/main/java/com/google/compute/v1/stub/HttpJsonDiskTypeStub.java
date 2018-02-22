@@ -68,9 +68,6 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
           .setRequestInstance(AggregatedListDiskTypesHttpRequest.getDefaultInstance())
           .setResponseInstance(DiskTypeAggregatedList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/aggregated/diskTypes")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -84,9 +81,6 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
           .setRequestInstance(GetDiskTypeHttpRequest.getDefaultInstance())
           .setResponseInstance(DiskType.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/diskTypes/{diskType}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "diskType",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -99,9 +93,6 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
           .setRequestInstance(ListDiskTypesHttpRequest.getDefaultInstance())
           .setResponseInstance(DiskTypeList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/diskTypes")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

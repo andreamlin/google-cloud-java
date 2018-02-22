@@ -73,9 +73,6 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setRequestInstance(AggregatedListSubnetworksHttpRequest.getDefaultInstance())
           .setResponseInstance(SubnetworkAggregatedList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/aggregated/subnetworks")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -89,9 +86,6 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setRequestInstance(DeleteSubnetworkHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/subnetworks/{subnetwork}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "subnetwork"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -104,9 +98,6 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setRequestInstance(ExpandIpCidrRangeSubnetworkHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/subnetworks/{subnetwork}/expandIpCidrRange")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "subnetwork"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -119,9 +110,6 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setRequestInstance(GetSubnetworkHttpRequest.getDefaultInstance())
           .setResponseInstance(Subnetwork.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/subnetworks/{subnetwork}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "subnetwork"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -134,9 +122,6 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setRequestInstance(InsertSubnetworkHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/subnetworks")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -149,9 +134,6 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setRequestInstance(ListSubnetworksHttpRequest.getDefaultInstance())
           .setResponseInstance(SubnetworkList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/subnetworks")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

@@ -117,13 +117,13 @@ public final class InsertSubnetworkHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public Subnetwork requestBody() {
+  public Subnetwork getApiMessageRequestBody() {
     return subnetworkResource;
   }
 

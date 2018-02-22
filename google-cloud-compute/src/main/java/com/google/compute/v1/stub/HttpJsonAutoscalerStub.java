@@ -73,9 +73,6 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setRequestInstance(AggregatedListAutoscalersHttpRequest.getDefaultInstance())
           .setResponseInstance(AutoscalerAggregatedList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/aggregated/autoscalers")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -89,9 +86,6 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setRequestInstance(DeleteAutoscalerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers/{autoscaler}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "autoscaler",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -104,9 +98,6 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setRequestInstance(GetAutoscalerHttpRequest.getDefaultInstance())
           .setResponseInstance(Autoscaler.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers/{autoscaler}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "autoscaler",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -119,9 +110,6 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setRequestInstance(InsertAutoscalerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -134,9 +122,6 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setRequestInstance(ListAutoscalersHttpRequest.getDefaultInstance())
           .setResponseInstance(AutoscalerList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -150,9 +135,6 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setRequestInstance(PatchAutoscalerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "autoscaler"
                              ))
@@ -166,9 +148,6 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setRequestInstance(UpdateAutoscalerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "autoscaler"
                              ))

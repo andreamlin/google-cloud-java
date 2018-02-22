@@ -146,13 +146,13 @@ public final class ListInstancesInstanceGroupsHttpRequest implements ApiMessage 
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public InstanceGroupsListInstancesRequest requestBody() {
+  public InstanceGroupsListInstancesRequest getApiMessageRequestBody() {
     return instanceGroupsListInstancesRequestResource;
   }
 

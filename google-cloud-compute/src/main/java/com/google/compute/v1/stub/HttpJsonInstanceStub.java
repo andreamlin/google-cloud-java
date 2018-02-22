@@ -95,9 +95,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(AddAccessConfigInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/addAccessConfig")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "networkInterface"
                              ))
@@ -111,9 +108,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(AggregatedListInstancesHttpRequest.getDefaultInstance())
           .setResponseInstance(InstanceAggregatedList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/aggregated/instances")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -127,9 +121,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(AttachDiskInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/attachDisk")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -142,9 +133,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(DeleteInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -157,9 +145,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(DeleteAccessConfigInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/deleteAccessConfig")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "accessConfig",    "networkInterface"
                              ))
@@ -173,9 +158,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(DetachDiskInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/detachDisk")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "deviceName"
                              ))
@@ -189,9 +171,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(GetInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Instance.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -204,9 +183,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(GetSerialPortOutputInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(SerialPortOutput.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/serialPort")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "port",    "start"
                              ))
@@ -220,9 +196,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(InsertInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -235,9 +208,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(ListInstancesHttpRequest.getDefaultInstance())
           .setResponseInstance(InstanceList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -251,9 +221,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(ResetInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/reset")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -266,9 +233,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(SetDiskAutoDeleteInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/setDiskAutoDelete")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "autoDelete",    "deviceName"
                              ))
@@ -282,9 +246,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(SetMachineTypeInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/setMachineType")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -297,9 +258,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(SetMetadataInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/setMetadata")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -312,9 +270,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(SetSchedulingInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/setScheduling")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -327,9 +282,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(SetServiceAccountInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/setServiceAccount")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -342,9 +294,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(SetTagsInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/setTags")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -357,9 +306,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(StartInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/start")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -372,9 +318,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(StartWithEncryptionKeyInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/startWithEncryptionKey")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -387,9 +330,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setRequestInstance(StopInstanceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/stop")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instance",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())

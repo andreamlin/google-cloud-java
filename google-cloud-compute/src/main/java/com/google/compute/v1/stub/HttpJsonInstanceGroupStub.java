@@ -82,9 +82,6 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setRequestInstance(AddInstancesInstanceGroupHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroups/{instanceGroup}/addInstances")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroup",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -97,9 +94,6 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setRequestInstance(AggregatedListInstanceGroupsHttpRequest.getDefaultInstance())
           .setResponseInstance(InstanceGroupAggregatedList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/aggregated/instanceGroups")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -113,9 +107,6 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setRequestInstance(DeleteInstanceGroupHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroups/{instanceGroup}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroup",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -128,9 +119,6 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setRequestInstance(GetInstanceGroupHttpRequest.getDefaultInstance())
           .setResponseInstance(InstanceGroup.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroups/{instanceGroup}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroup",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -143,9 +131,6 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setRequestInstance(InsertInstanceGroupHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroups")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -158,9 +143,6 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setRequestInstance(ListInstanceGroupsHttpRequest.getDefaultInstance())
           .setResponseInstance(InstanceGroupList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroups")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -174,9 +156,6 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setRequestInstance(ListInstancesInstanceGroupsHttpRequest.getDefaultInstance())
           .setResponseInstance(InstanceGroupsListInstances.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroups/{instanceGroup}/listInstances")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroup",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -190,9 +169,6 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setRequestInstance(RemoveInstancesInstanceGroupHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroups/{instanceGroup}/removeInstances")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroup",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -205,9 +181,6 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setRequestInstance(SetNamedPortsInstanceGroupHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroups/{instanceGroup}/setNamedPorts")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroup",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())

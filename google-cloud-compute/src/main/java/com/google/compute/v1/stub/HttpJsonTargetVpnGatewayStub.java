@@ -71,9 +71,6 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setRequestInstance(AggregatedListTargetVpnGatewaysHttpRequest.getDefaultInstance())
           .setResponseInstance(TargetVpnGatewayAggregatedList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/aggregated/targetVpnGateways")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -87,9 +84,6 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setRequestInstance(DeleteTargetVpnGatewayHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "targetVpnGateway"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -102,9 +96,6 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setRequestInstance(GetTargetVpnGatewayHttpRequest.getDefaultInstance())
           .setResponseInstance(TargetVpnGateway.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region",    "targetVpnGateway"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -117,9 +108,6 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setRequestInstance(InsertTargetVpnGatewayHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -132,9 +120,6 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setRequestInstance(ListTargetVpnGatewaysHttpRequest.getDefaultInstance())
           .setResponseInstance(TargetVpnGatewayList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

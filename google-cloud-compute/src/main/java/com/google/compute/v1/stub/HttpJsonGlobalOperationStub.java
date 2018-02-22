@@ -68,9 +68,6 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
           .setRequestInstance(AggregatedListGlobalOperationsHttpRequest.getDefaultInstance())
           .setResponseInstance(OperationAggregatedList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/aggregated/operations")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -83,9 +80,6 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
           .setMethodName("compute.globalOperations.delete")
           .setRequestInstance(DeleteGlobalOperationHttpRequest.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/operations/{operation}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "operation",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -98,9 +92,6 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
           .setRequestInstance(GetGlobalOperationHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/operations/{operation}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "operation",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -113,9 +104,6 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
           .setRequestInstance(ListGlobalOperationsHttpRequest.getDefaultInstance())
           .setResponseInstance(OperationList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/operations")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

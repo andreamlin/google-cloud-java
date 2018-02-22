@@ -118,13 +118,13 @@ public final class SetTargetPoolsRegionInstanceGroupManagerHttpRequest implement
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public RegionInstanceGroupManagersSetTargetPoolsRequest requestBody() {
+  public RegionInstanceGroupManagersSetTargetPoolsRequest getApiMessageRequestBody() {
     return regionInstanceGroupManagersSetTargetPoolsRequestResource;
   }
 

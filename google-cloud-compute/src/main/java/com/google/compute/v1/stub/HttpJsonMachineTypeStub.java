@@ -68,9 +68,6 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
           .setRequestInstance(AggregatedListMachineTypesHttpRequest.getDefaultInstance())
           .setResponseInstance(MachineTypeAggregatedList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/aggregated/machineTypes")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -84,9 +81,6 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
           .setRequestInstance(GetMachineTypeHttpRequest.getDefaultInstance())
           .setResponseInstance(MachineType.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/machineTypes/{machineType}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "machineType",    "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -99,9 +93,6 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
           .setRequestInstance(ListMachineTypesHttpRequest.getDefaultInstance())
           .setResponseInstance(MachineTypeList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/machineTypes")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "zone"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

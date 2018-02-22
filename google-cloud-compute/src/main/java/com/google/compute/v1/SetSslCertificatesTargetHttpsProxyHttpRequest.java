@@ -117,13 +117,13 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
   }
 
   @Override
-  public Map<String, String> pathParams() {
+  public Map<String, String> getApiMessagePathParams() {
     return pathParams;
   }
 
   @Nullable
   @Override
-  public TargetHttpsProxiesSetSslCertificatesRequest requestBody() {
+  public TargetHttpsProxiesSetSslCertificatesRequest getApiMessageRequestBody() {
     return targetHttpsProxiesSetSslCertificatesRequestResource;
   }
 

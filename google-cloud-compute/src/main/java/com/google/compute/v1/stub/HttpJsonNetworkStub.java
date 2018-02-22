@@ -68,9 +68,6 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setRequestInstance(DeleteNetworkHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/networks/{network}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "network",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -83,9 +80,6 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setRequestInstance(GetNetworkHttpRequest.getDefaultInstance())
           .setResponseInstance(Network.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/networks/{network}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "network",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -98,9 +92,6 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setRequestInstance(InsertNetworkHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/networks")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -113,9 +104,6 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setRequestInstance(ListNetworksHttpRequest.getDefaultInstance())
           .setResponseInstance(NetworkList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/networks")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -129,9 +117,6 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setRequestInstance(SwitchToCustomModeNetworkHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/networks/{network}/switchToCustomMode")
-          .setPathParams(Sets.<String>newHashSet(
-                            "network",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())

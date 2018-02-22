@@ -64,9 +64,6 @@ public class HttpJsonRegionStub extends RegionStub {
           .setRequestInstance(GetRegionHttpRequest.getDefaultInstance())
           .setResponseInstance(Region.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -79,9 +76,6 @@ public class HttpJsonRegionStub extends RegionStub {
           .setRequestInstance(ListRegionsHttpRequest.getDefaultInstance())
           .setResponseInstance(RegionList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))

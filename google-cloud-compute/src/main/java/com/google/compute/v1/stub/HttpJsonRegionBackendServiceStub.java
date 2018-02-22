@@ -72,9 +72,6 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setRequestInstance(DeleteRegionBackendServiceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "backendService",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -87,9 +84,6 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setRequestInstance(GetRegionBackendServiceHttpRequest.getDefaultInstance())
           .setResponseInstance(BackendService.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "backendService",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -102,9 +96,6 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setRequestInstance(GetHealthRegionBackendServiceHttpRequest.getDefaultInstance())
           .setResponseInstance(BackendServiceGroupHealth.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}/getHealth")
-          .setPathParams(Sets.<String>newHashSet(
-                            "backendService",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -117,9 +108,6 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setRequestInstance(InsertRegionBackendServiceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/backendServices")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -132,9 +120,6 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setRequestInstance(ListRegionBackendServicesHttpRequest.getDefaultInstance())
           .setResponseInstance(BackendServiceList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/backendServices")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -148,9 +133,6 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setRequestInstance(PatchRegionBackendServiceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "backendService",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -163,9 +145,6 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setRequestInstance(UpdateRegionBackendServiceHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "backendService",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())

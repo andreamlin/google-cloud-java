@@ -72,9 +72,6 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
           .setRequestInstance(GetRegionInstanceGroupHttpRequest.getDefaultInstance())
           .setResponseInstance(InstanceGroup.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroups/{instanceGroup}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroup",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -87,9 +84,6 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
           .setRequestInstance(ListRegionInstanceGroupsHttpRequest.getDefaultInstance())
           .setResponseInstance(RegionInstanceGroupList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroups")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -103,9 +97,6 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
           .setRequestInstance(ListInstancesRegionInstanceGroupsHttpRequest.getDefaultInstance())
           .setResponseInstance(RegionInstanceGroupsListInstances.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroups/{instanceGroup}/listInstances")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroup",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -119,9 +110,6 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
           .setRequestInstance(SetNamedPortsRegionInstanceGroupHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroups/{instanceGroup}/setNamedPorts")
-          .setPathParams(Sets.<String>newHashSet(
-                            "instanceGroup",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())

@@ -69,9 +69,6 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
           .setRequestInstance(DeleteRegionAutoscalerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/autoscalers/{autoscaler}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "autoscaler",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -84,9 +81,6 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
           .setRequestInstance(GetRegionAutoscalerHttpRequest.getDefaultInstance())
           .setResponseInstance(Autoscaler.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/autoscalers/{autoscaler}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "autoscaler",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -99,9 +93,6 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
           .setRequestInstance(InsertRegionAutoscalerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/autoscalers")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -114,9 +105,6 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
           .setRequestInstance(ListRegionAutoscalersHttpRequest.getDefaultInstance())
           .setResponseInstance(RegionAutoscalerList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/autoscalers")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -130,9 +118,6 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
           .setRequestInstance(PatchRegionAutoscalerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/autoscalers")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "autoscaler"
                              ))
@@ -146,9 +131,6 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
           .setRequestInstance(UpdateRegionAutoscalerHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/autoscalers")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "autoscaler"
                              ))

@@ -69,9 +69,6 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
           .setRequestInstance(DeleteGlobalForwardingRuleHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/forwardingRules/{forwardingRule}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "forwardingRule",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -84,9 +81,6 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
           .setRequestInstance(GetGlobalForwardingRuleHttpRequest.getDefaultInstance())
           .setResponseInstance(ForwardingRule.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/forwardingRules/{forwardingRule}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "forwardingRule",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -99,9 +93,6 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
           .setRequestInstance(InsertGlobalForwardingRuleHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/forwardingRules")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
@@ -114,9 +105,6 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
           .setRequestInstance(ListGlobalForwardingRulesHttpRequest.getDefaultInstance())
           .setResponseInstance(ForwardingRuleList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/forwardingRules")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
@@ -130,9 +118,6 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
           .setRequestInstance(SetTargetGlobalForwardingRuleHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/forwardingRules/{forwardingRule}/setTarget")
-          .setPathParams(Sets.<String>newHashSet(
-                            "forwardingRule",    "project"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
           .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
