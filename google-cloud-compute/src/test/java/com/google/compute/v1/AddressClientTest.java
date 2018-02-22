@@ -99,7 +99,7 @@ public class AddressClientTest {
 
     List<Address> resources = Lists.newArrayList(pagedListResponse.iterateAll());
     Assert.assertEquals(1, resources.size());
-    Assert.assertEquals(expectedResponse.getAddresses().get(0), resources.get(0));
+    Assert.assertEquals(expectedResponse.getItems().getAddresses().get(0), resources.get(0));
 
     List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
