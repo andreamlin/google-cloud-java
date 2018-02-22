@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -65,13 +66,13 @@ public final class UrlMapValidationResult implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("loadErrors") && loadErrors != null) {
-      fieldMap.put("loadErrors", loadErrors);
+      fieldMap.put("loadErrors", loadErrors.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("loadSucceeded") && loadSucceeded != null) {
       fieldMap.put("loadSucceeded", Collections.singletonList(String.valueOf(loadSucceeded)));
     }
     if (fieldNames.contains("testFailures") && testFailures != null) {
-      fieldMap.put("testFailures", testFailures);
+      fieldMap.put("testFailures", testFailures.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("testPassed") && testPassed != null) {
       fieldMap.put("testPassed", Collections.singletonList(String.valueOf(testPassed)));

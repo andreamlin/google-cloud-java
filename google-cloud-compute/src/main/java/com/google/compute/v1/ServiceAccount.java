@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -60,7 +61,7 @@ public final class ServiceAccount implements ApiMessage {
       fieldMap.put("email", Collections.singletonList(String.valueOf(email)));
     }
     if (fieldNames.contains("scopes") && scopes != null) {
-      fieldMap.put("scopes", scopes);
+      fieldMap.put("scopes", scopes.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     return fieldMap;
   }

@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -99,7 +100,7 @@ public final class TargetHttpsProxy implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("sslCertificates") && sslCertificates != null) {
-      fieldMap.put("sslCertificates", sslCertificates);
+      fieldMap.put("sslCertificates", sslCertificates.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("urlMap") && urlMap != null) {
       fieldMap.put("urlMap", Collections.singletonList(String.valueOf(urlMap)));

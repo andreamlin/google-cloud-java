@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -53,7 +54,7 @@ public final class InstanceGroupManagersListManagedInstancesResponse implements 
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("managedInstances") && managedInstances != null) {
-      fieldMap.put("managedInstances", managedInstances);
+      fieldMap.put("managedInstances", managedInstances.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     return fieldMap;
   }

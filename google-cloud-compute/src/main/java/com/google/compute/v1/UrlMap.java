@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -105,7 +106,7 @@ public final class UrlMap implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("hostRules") && hostRules != null) {
-      fieldMap.put("hostRules", hostRules);
+      fieldMap.put("hostRules", hostRules.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -117,13 +118,13 @@ public final class UrlMap implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("pathMatchers") && pathMatchers != null) {
-      fieldMap.put("pathMatchers", pathMatchers);
+      fieldMap.put("pathMatchers", pathMatchers.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("tests") && tests != null) {
-      fieldMap.put("tests", tests);
+      fieldMap.put("tests", tests.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     return fieldMap;
   }

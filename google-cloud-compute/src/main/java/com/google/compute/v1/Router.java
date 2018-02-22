@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -96,7 +97,7 @@ public final class Router implements ApiMessage {
       fieldMap.put("bgp", Collections.singletonList(String.valueOf(bgp)));
     }
     if (fieldNames.contains("bgpPeers") && bgpPeers != null) {
-      fieldMap.put("bgpPeers", bgpPeers);
+      fieldMap.put("bgpPeers", bgpPeers.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
       fieldMap.put("creationTimestamp", Collections.singletonList(String.valueOf(creationTimestamp)));
@@ -108,7 +109,7 @@ public final class Router implements ApiMessage {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
     }
     if (fieldNames.contains("interfaces") && interfaces != null) {
-      fieldMap.put("interfaces", interfaces);
+      fieldMap.put("interfaces", interfaces.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));

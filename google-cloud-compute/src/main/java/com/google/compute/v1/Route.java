@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -155,10 +156,10 @@ public final class Route implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("tags") && tags != null) {
-      fieldMap.put("tags", tags);
+      fieldMap.put("tags", tags.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("warnings") && warnings != null) {
-      fieldMap.put("warnings", warnings);
+      fieldMap.put("warnings", warnings.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     return fieldMap;
   }

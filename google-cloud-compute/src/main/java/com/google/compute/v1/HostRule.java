@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -64,7 +65,7 @@ public final class HostRule implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("hosts") && hosts != null) {
-      fieldMap.put("hosts", hosts);
+      fieldMap.put("hosts", hosts.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("pathMatcher") && pathMatcher != null) {
       fieldMap.put("pathMatcher", Collections.singletonList(String.valueOf(pathMatcher)));

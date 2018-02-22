@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -93,7 +94,7 @@ public final class Firewall implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("allowed") && allowed != null) {
-      fieldMap.put("allowed", allowed);
+      fieldMap.put("allowed", allowed.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
       fieldMap.put("creationTimestamp", Collections.singletonList(String.valueOf(creationTimestamp)));
@@ -117,13 +118,13 @@ public final class Firewall implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("sourceRanges") && sourceRanges != null) {
-      fieldMap.put("sourceRanges", sourceRanges);
+      fieldMap.put("sourceRanges", sourceRanges.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("sourceTags") && sourceTags != null) {
-      fieldMap.put("sourceTags", sourceTags);
+      fieldMap.put("sourceTags", sourceTags.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("targetTags") && targetTags != null) {
-      fieldMap.put("targetTags", targetTags);
+      fieldMap.put("targetTags", targetTags.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     return fieldMap;
   }

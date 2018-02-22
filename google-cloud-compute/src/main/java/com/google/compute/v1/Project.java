@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -105,7 +106,7 @@ public final class Project implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("enabledFeatures") && enabledFeatures != null) {
-      fieldMap.put("enabledFeatures", enabledFeatures);
+      fieldMap.put("enabledFeatures", enabledFeatures.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -117,7 +118,7 @@ public final class Project implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("quotas") && quotas != null) {
-      fieldMap.put("quotas", quotas);
+      fieldMap.put("quotas", quotas.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));

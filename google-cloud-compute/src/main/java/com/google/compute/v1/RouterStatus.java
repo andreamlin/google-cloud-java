@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -61,10 +62,10 @@ public final class RouterStatus implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("bestRoutes") && bestRoutes != null) {
-      fieldMap.put("bestRoutes", bestRoutes);
+      fieldMap.put("bestRoutes", bestRoutes.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("bgpPeerStatus") && bgpPeerStatus != null) {
-      fieldMap.put("bgpPeerStatus", bgpPeerStatus);
+      fieldMap.put("bgpPeerStatus", bgpPeerStatus.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("network") && network != null) {
       fieldMap.put("network", Collections.singletonList(String.valueOf(network)));

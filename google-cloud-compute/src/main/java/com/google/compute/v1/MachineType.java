@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -145,7 +146,7 @@ public final class MachineType implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("scratchDisks") && scratchDisks != null) {
-      fieldMap.put("scratchDisks", scratchDisks);
+      fieldMap.put("scratchDisks", scratchDisks.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));

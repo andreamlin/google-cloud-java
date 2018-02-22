@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -143,7 +144,7 @@ public final class InstanceGroupManager implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("namedPorts") && namedPorts != null) {
-      fieldMap.put("namedPorts", namedPorts);
+      fieldMap.put("namedPorts", namedPorts.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("region") && region != null) {
       fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
@@ -152,7 +153,7 @@ public final class InstanceGroupManager implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("targetPools") && targetPools != null) {
-      fieldMap.put("targetPools", targetPools);
+      fieldMap.put("targetPools", targetPools.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("targetSize") && targetSize != null) {
       fieldMap.put("targetSize", Collections.singletonList(String.valueOf(targetSize)));

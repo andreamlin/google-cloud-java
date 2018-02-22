@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -99,7 +100,7 @@ public final class TargetVpnGateway implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("forwardingRules") && forwardingRules != null) {
-      fieldMap.put("forwardingRules", forwardingRules);
+      fieldMap.put("forwardingRules", forwardingRules.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -123,7 +124,7 @@ public final class TargetVpnGateway implements ApiMessage {
       fieldMap.put("status", Collections.singletonList(String.valueOf(status)));
     }
     if (fieldNames.contains("tunnels") && tunnels != null) {
-      fieldMap.put("tunnels", tunnels);
+      fieldMap.put("tunnels", tunnels.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     return fieldMap;
   }

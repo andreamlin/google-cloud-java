@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -91,7 +92,7 @@ public final class InstanceProperties implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("disks") && disks != null) {
-      fieldMap.put("disks", disks);
+      fieldMap.put("disks", disks.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("machineType") && machineType != null) {
       fieldMap.put("machineType", Collections.singletonList(String.valueOf(machineType)));
@@ -100,13 +101,13 @@ public final class InstanceProperties implements ApiMessage {
       fieldMap.put("metadata", Collections.singletonList(String.valueOf(metadata)));
     }
     if (fieldNames.contains("networkInterfaces") && networkInterfaces != null) {
-      fieldMap.put("networkInterfaces", networkInterfaces);
+      fieldMap.put("networkInterfaces", networkInterfaces.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("scheduling") && scheduling != null) {
       fieldMap.put("scheduling", Collections.singletonList(String.valueOf(scheduling)));
     }
     if (fieldNames.contains("serviceAccounts") && serviceAccounts != null) {
-      fieldMap.put("serviceAccounts", serviceAccounts);
+      fieldMap.put("serviceAccounts", serviceAccounts.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("tags") && tags != null) {
       fieldMap.put("tags", Collections.singletonList(String.valueOf(tags)));

@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -116,7 +117,7 @@ public final class Network implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("subnetworks") && subnetworks != null) {
-      fieldMap.put("subnetworks", subnetworks);
+      fieldMap.put("subnetworks", subnetworks.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     return fieldMap;
   }

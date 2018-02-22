@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -109,13 +110,13 @@ public final class TargetPool implements ApiMessage {
       fieldMap.put("failoverRatio", Collections.singletonList(String.valueOf(failoverRatio)));
     }
     if (fieldNames.contains("healthChecks") && healthChecks != null) {
-      fieldMap.put("healthChecks", healthChecks);
+      fieldMap.put("healthChecks", healthChecks.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
     }
     if (fieldNames.contains("instances") && instances != null) {
-      fieldMap.put("instances", instances);
+      fieldMap.put("instances", instances.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));

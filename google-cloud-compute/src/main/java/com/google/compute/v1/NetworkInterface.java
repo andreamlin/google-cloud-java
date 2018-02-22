@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -73,7 +74,7 @@ public final class NetworkInterface implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("accessConfigs") && accessConfigs != null) {
-      fieldMap.put("accessConfigs", accessConfigs);
+      fieldMap.put("accessConfigs", accessConfigs.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));

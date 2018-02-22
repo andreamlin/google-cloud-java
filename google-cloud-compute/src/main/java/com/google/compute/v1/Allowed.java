@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -60,7 +61,7 @@ public final class Allowed implements ApiMessage {
       fieldMap.put("iPProtocol", Collections.singletonList(String.valueOf(iPProtocol)));
     }
     if (fieldNames.contains("ports") && ports != null) {
-      fieldMap.put("ports", ports);
+      fieldMap.put("ports", ports.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     return fieldMap;
   }

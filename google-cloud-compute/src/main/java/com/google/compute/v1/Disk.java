@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -158,7 +159,7 @@ public final class Disk implements ApiMessage {
       fieldMap.put("lastDetachTimestamp", Collections.singletonList(String.valueOf(lastDetachTimestamp)));
     }
     if (fieldNames.contains("licenses") && licenses != null) {
-      fieldMap.put("licenses", licenses);
+      fieldMap.put("licenses", licenses.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("name") && name != null) {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
@@ -197,7 +198,7 @@ public final class Disk implements ApiMessage {
       fieldMap.put("type", Collections.singletonList(String.valueOf(type)));
     }
     if (fieldNames.contains("users") && users != null) {
-      fieldMap.put("users", users);
+      fieldMap.put("users", users.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("zone") && zone != null) {
       fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));

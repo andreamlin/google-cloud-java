@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -128,7 +129,7 @@ public final class BackendService implements ApiMessage {
       fieldMap.put("affinityCookieTtlSec", Collections.singletonList(String.valueOf(affinityCookieTtlSec)));
     }
     if (fieldNames.contains("backends") && backends != null) {
-      fieldMap.put("backends", backends);
+      fieldMap.put("backends", backends.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("connectionDraining") && connectionDraining != null) {
       fieldMap.put("connectionDraining", Collections.singletonList(String.valueOf(connectionDraining)));
@@ -146,7 +147,7 @@ public final class BackendService implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("healthChecks") && healthChecks != null) {
-      fieldMap.put("healthChecks", healthChecks);
+      fieldMap.put("healthChecks", healthChecks.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));

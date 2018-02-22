@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -74,7 +75,7 @@ public final class PathMatcher implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("pathRules") && pathRules != null) {
-      fieldMap.put("pathRules", pathRules);
+      fieldMap.put("pathRules", pathRules.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     return fieldMap;
   }

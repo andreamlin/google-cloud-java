@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -146,7 +147,7 @@ public final class ForwardingRule implements ApiMessage {
       fieldMap.put("portRange", Collections.singletonList(String.valueOf(portRange)));
     }
     if (fieldNames.contains("ports") && ports != null) {
-      fieldMap.put("ports", ports);
+      fieldMap.put("ports", ports.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("region") && region != null) {
       fieldMap.put("region", Collections.singletonList(String.valueOf(region)));

@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -135,7 +136,7 @@ public final class VpnTunnel implements ApiMessage {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
     }
     if (fieldNames.contains("localTrafficSelector") && localTrafficSelector != null) {
-      fieldMap.put("localTrafficSelector", localTrafficSelector);
+      fieldMap.put("localTrafficSelector", localTrafficSelector.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("name") && name != null) {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
@@ -147,7 +148,7 @@ public final class VpnTunnel implements ApiMessage {
       fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
     }
     if (fieldNames.contains("remoteTrafficSelector") && remoteTrafficSelector != null) {
-      fieldMap.put("remoteTrafficSelector", remoteTrafficSelector);
+      fieldMap.put("remoteTrafficSelector", remoteTrafficSelector.stream().map(item -> item.toString()).collect(Collectors.toList()));
     }
     if (fieldNames.contains("router") && router != null) {
       fieldMap.put("router", Collections.singletonList(String.valueOf(router)));
