@@ -17,7 +17,7 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,6 +40,7 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
   private final TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequestResource;
   private final String targetHttpsProxy;
   private final String userIp;
+  private final Map<String, String> pathParams;
 
   private SetSslCertificatesTargetHttpsProxyHttpRequest() {
     this.access_token = null;
@@ -51,6 +52,7 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
     this.targetHttpsProxiesSetSslCertificatesRequestResource = null;
     this.targetHttpsProxy = null;
     this.userIp = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -74,11 +76,11 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
     this.targetHttpsProxiesSetSslCertificatesRequestResource = targetHttpsProxiesSetSslCertificatesRequestResource;
     this.targetHttpsProxy = targetHttpsProxy;
     this.userIp = userIp;
-  }
-
-  @Override
-  public TargetHttpsProxyName resourceNamePath() {
-    return TargetHttpsProxyName.parse(targetHttpsProxy);
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    TargetHttpsProxyName resourceName = TargetHttpsProxyName.parse(targetHttpsProxy);
+    mapBuilder.put("project", resourceName.getProject());
+    mapBuilder.put("targetHttpsProxy", resourceName.getTargetHttpsProxy());
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -112,6 +114,11 @@ public final class SetSslCertificatesTargetHttpsProxyHttpRequest implements ApiM
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

@@ -17,7 +17,7 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,6 +40,7 @@ public final class GetHealthRegionBackendServiceHttpRequest implements ApiMessag
   private final String quotaUser;
   private final ResourceGroupReference resourceGroupReferenceResource;
   private final String userIp;
+  private final Map<String, String> pathParams;
 
   private GetHealthRegionBackendServiceHttpRequest() {
     this.access_token = null;
@@ -51,6 +52,7 @@ public final class GetHealthRegionBackendServiceHttpRequest implements ApiMessag
     this.quotaUser = null;
     this.resourceGroupReferenceResource = null;
     this.userIp = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -74,11 +76,12 @@ public final class GetHealthRegionBackendServiceHttpRequest implements ApiMessag
     this.quotaUser = quotaUser;
     this.resourceGroupReferenceResource = resourceGroupReferenceResource;
     this.userIp = userIp;
-  }
-
-  @Override
-  public RegionBackendServicesBackendServiceName resourceNamePath() {
-    return RegionBackendServicesBackendServiceName.parse(backendService);
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    RegionBackendServicesBackendServiceName resourceName = RegionBackendServicesBackendServiceName.parse(backendService);
+    mapBuilder.put("backendService", resourceName.getBackendService());
+    mapBuilder.put("project", resourceName.getProject());
+    mapBuilder.put("region", resourceName.getRegion());
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -112,6 +115,11 @@ public final class GetHealthRegionBackendServiceHttpRequest implements ApiMessag
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

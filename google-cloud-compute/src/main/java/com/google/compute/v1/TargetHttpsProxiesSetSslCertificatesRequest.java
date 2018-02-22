@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -34,9 +33,11 @@ import javax.annotation.Nullable;
 @BetaApi
 public final class TargetHttpsProxiesSetSslCertificatesRequest implements ApiMessage {
   private final List<String> sslCertificates;
+  private final Map<String, String> pathParams;
 
   private TargetHttpsProxiesSetSslCertificatesRequest() {
     this.sslCertificates = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -44,11 +45,8 @@ public final class TargetHttpsProxiesSetSslCertificatesRequest implements ApiMes
       List<String> sslCertificates
       ) {
     this.sslCertificates = sslCertificates;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -58,6 +56,11 @@ public final class TargetHttpsProxiesSetSslCertificatesRequest implements ApiMes
       fieldMap.put("sslCertificates", Collections.singletonList(String.valueOf(sslCertificates)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

@@ -17,7 +17,7 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,6 +40,7 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
   private final String quotaUser;
   private final Snapshot snapshotResource;
   private final String userIp;
+  private final Map<String, String> pathParams;
 
   private CreateSnapshotDiskHttpRequest() {
     this.access_token = null;
@@ -51,6 +52,7 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
     this.quotaUser = null;
     this.snapshotResource = null;
     this.userIp = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -74,11 +76,12 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
     this.quotaUser = quotaUser;
     this.snapshotResource = snapshotResource;
     this.userIp = userIp;
-  }
-
-  @Override
-  public DiskName resourceNamePath() {
-    return DiskName.parse(disk);
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    DiskName resourceName = DiskName.parse(disk);
+    mapBuilder.put("disk", resourceName.getDisk());
+    mapBuilder.put("project", resourceName.getProject());
+    mapBuilder.put("zone", resourceName.getZone());
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -112,6 +115,11 @@ public final class CreateSnapshotDiskHttpRequest implements ApiMessage {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

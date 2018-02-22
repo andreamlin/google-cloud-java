@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -41,6 +40,7 @@ public final class SslCertificate implements ApiMessage {
   private final String name;
   private final String privateKey;
   private final String selfLink;
+  private final Map<String, String> pathParams;
 
   private SslCertificate() {
     this.certificate = null;
@@ -51,6 +51,7 @@ public final class SslCertificate implements ApiMessage {
     this.name = null;
     this.privateKey = null;
     this.selfLink = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -72,11 +73,8 @@ public final class SslCertificate implements ApiMessage {
     this.name = name;
     this.privateKey = privateKey;
     this.selfLink = selfLink;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -107,6 +105,11 @@ public final class SslCertificate implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

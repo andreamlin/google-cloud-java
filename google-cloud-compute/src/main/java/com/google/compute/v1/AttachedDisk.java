@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -45,6 +44,7 @@ public final class AttachedDisk implements ApiMessage {
   private final String mode;
   private final String source;
   private final String type;
+  private final Map<String, String> pathParams;
 
   private AttachedDisk() {
     this.autoDelete = null;
@@ -59,6 +59,7 @@ public final class AttachedDisk implements ApiMessage {
     this.mode = null;
     this.source = null;
     this.type = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -88,11 +89,8 @@ public final class AttachedDisk implements ApiMessage {
     this.mode = mode;
     this.source = source;
     this.type = type;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -135,6 +133,11 @@ public final class AttachedDisk implements ApiMessage {
       fieldMap.put("type", Collections.singletonList(String.valueOf(type)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

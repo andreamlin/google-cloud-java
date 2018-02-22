@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -35,10 +34,12 @@ import javax.annotation.Nullable;
 public final class CacheInvalidationRule implements ApiMessage {
   private final String host;
   private final String path;
+  private final Map<String, String> pathParams;
 
   private CacheInvalidationRule() {
     this.host = null;
     this.path = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -48,11 +49,8 @@ public final class CacheInvalidationRule implements ApiMessage {
       ) {
     this.host = host;
     this.path = path;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -65,6 +63,11 @@ public final class CacheInvalidationRule implements ApiMessage {
       fieldMap.put("path", Collections.singletonList(String.valueOf(path)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -37,12 +36,14 @@ public final class UrlMapValidationResult implements ApiMessage {
   private final Boolean loadSucceeded;
   private final List<TestFailure> testFailures;
   private final Boolean testPassed;
+  private final Map<String, String> pathParams;
 
   private UrlMapValidationResult() {
     this.loadErrors = null;
     this.loadSucceeded = null;
     this.testFailures = null;
     this.testPassed = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -56,11 +57,8 @@ public final class UrlMapValidationResult implements ApiMessage {
     this.loadSucceeded = loadSucceeded;
     this.testFailures = testFailures;
     this.testPassed = testPassed;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -79,6 +77,11 @@ public final class UrlMapValidationResult implements ApiMessage {
       fieldMap.put("testPassed", Collections.singletonList(String.valueOf(testPassed)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

@@ -16,8 +16,8 @@
 package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.pathtemplate.PathTemplate;
+import com.google.api.resourcenames.ResourceName;
 import com.google.api.resourcenames.ResourceNameType;
 import com.google.common.base.Preconditions;
 import java.io.IOException;
@@ -31,7 +31,7 @@ import javax.annotation.Generated;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class RouteName implements ResourceNamePath {
+public final class RouteName implements ResourceName {
   private final String project;
   private final String route;
   private static final PathTemplate PATH_TEMPLATE =
@@ -79,18 +79,6 @@ public final class RouteName implements ResourceNamePath {
     return route;
   }
 
-
-  @Override
-  public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
-    Map<String, List<String>> fieldMap = new HashMap<>();
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
-    if (fieldNames.contains("route") && route != null) {
-      fieldMap.put("route", Collections.singletonList(String.valueOf(route)));
-    }
-    return fieldMap;
-  }
 
   public static RouteName parse(String formattedString) {
     Map<String, String> matchMap =

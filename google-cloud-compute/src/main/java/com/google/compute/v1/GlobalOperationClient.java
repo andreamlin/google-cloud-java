@@ -342,7 +342,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * </code></pre>
    */
   @BetaApi
-  public final UnaryCallable<DeleteGlobalOperationHttpRequest, java.lang.Void> deleteGlobalOperationCallable() {
+  public final UnaryCallable<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationCallable() {
     return stub.deleteGlobalOperationCallable();
   }
 

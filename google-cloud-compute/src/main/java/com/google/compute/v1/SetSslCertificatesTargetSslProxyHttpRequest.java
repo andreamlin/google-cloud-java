@@ -17,7 +17,7 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,6 +40,7 @@ public final class SetSslCertificatesTargetSslProxyHttpRequest implements ApiMes
   private final TargetSslProxiesSetSslCertificatesRequest targetSslProxiesSetSslCertificatesRequestResource;
   private final String targetSslProxy;
   private final String userIp;
+  private final Map<String, String> pathParams;
 
   private SetSslCertificatesTargetSslProxyHttpRequest() {
     this.access_token = null;
@@ -51,6 +52,7 @@ public final class SetSslCertificatesTargetSslProxyHttpRequest implements ApiMes
     this.targetSslProxiesSetSslCertificatesRequestResource = null;
     this.targetSslProxy = null;
     this.userIp = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -74,11 +76,11 @@ public final class SetSslCertificatesTargetSslProxyHttpRequest implements ApiMes
     this.targetSslProxiesSetSslCertificatesRequestResource = targetSslProxiesSetSslCertificatesRequestResource;
     this.targetSslProxy = targetSslProxy;
     this.userIp = userIp;
-  }
-
-  @Override
-  public TargetSslProxyName resourceNamePath() {
-    return TargetSslProxyName.parse(targetSslProxy);
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    TargetSslProxyName resourceName = TargetSslProxyName.parse(targetSslProxy);
+    mapBuilder.put("project", resourceName.getProject());
+    mapBuilder.put("targetSslProxy", resourceName.getTargetSslProxy());
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -112,6 +114,11 @@ public final class SetSslCertificatesTargetSslProxyHttpRequest implements ApiMes
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

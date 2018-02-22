@@ -16,8 +16,8 @@
 package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.pathtemplate.PathTemplate;
+import com.google.api.resourcenames.ResourceName;
 import com.google.api.resourcenames.ResourceNameType;
 import com.google.common.base.Preconditions;
 import java.io.IOException;
@@ -31,7 +31,7 @@ import javax.annotation.Generated;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class AutoscalerName implements ResourceNamePath {
+public final class AutoscalerName implements ResourceName {
   private final String autoscaler;
   private final String project;
   private final String zone;
@@ -89,21 +89,6 @@ public final class AutoscalerName implements ResourceNamePath {
     return zone;
   }
 
-
-  @Override
-  public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
-    Map<String, List<String>> fieldMap = new HashMap<>();
-    if (fieldNames.contains("autoscaler") && autoscaler != null) {
-      fieldMap.put("autoscaler", Collections.singletonList(String.valueOf(autoscaler)));
-    }
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
-    if (fieldNames.contains("zone") && zone != null) {
-      fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
-    }
-    return fieldMap;
-  }
 
   public static AutoscalerName parse(String formattedString) {
     Map<String, String> matchMap =

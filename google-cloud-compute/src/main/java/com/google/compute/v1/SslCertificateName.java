@@ -16,8 +16,8 @@
 package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.pathtemplate.PathTemplate;
+import com.google.api.resourcenames.ResourceName;
 import com.google.api.resourcenames.ResourceNameType;
 import com.google.common.base.Preconditions;
 import java.io.IOException;
@@ -31,7 +31,7 @@ import javax.annotation.Generated;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class SslCertificateName implements ResourceNamePath {
+public final class SslCertificateName implements ResourceName {
   private final String project;
   private final String sslCertificate;
   private static final PathTemplate PATH_TEMPLATE =
@@ -79,18 +79,6 @@ public final class SslCertificateName implements ResourceNamePath {
     return sslCertificate;
   }
 
-
-  @Override
-  public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
-    Map<String, List<String>> fieldMap = new HashMap<>();
-    if (fieldNames.contains("project") && project != null) {
-      fieldMap.put("project", Collections.singletonList(String.valueOf(project)));
-    }
-    if (fieldNames.contains("sslCertificate") && sslCertificate != null) {
-      fieldMap.put("sslCertificate", Collections.singletonList(String.valueOf(sslCertificate)));
-    }
-    return fieldMap;
-  }
 
   public static SslCertificateName parse(String formattedString) {
     Map<String, String> matchMap =

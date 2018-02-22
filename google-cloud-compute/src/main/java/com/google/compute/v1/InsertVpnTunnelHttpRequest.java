@@ -17,7 +17,7 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,6 +40,7 @@ public final class InsertVpnTunnelHttpRequest implements ApiMessage {
   private final String region;
   private final String userIp;
   private final VpnTunnel vpnTunnelResource;
+  private final Map<String, String> pathParams;
 
   private InsertVpnTunnelHttpRequest() {
     this.access_token = null;
@@ -51,6 +52,7 @@ public final class InsertVpnTunnelHttpRequest implements ApiMessage {
     this.region = null;
     this.userIp = null;
     this.vpnTunnelResource = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -74,11 +76,11 @@ public final class InsertVpnTunnelHttpRequest implements ApiMessage {
     this.region = region;
     this.userIp = userIp;
     this.vpnTunnelResource = vpnTunnelResource;
-  }
-
-  @Override
-  public RegionName resourceNamePath() {
-    return RegionName.parse(region);
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    RegionName resourceName = RegionName.parse(region);
+    mapBuilder.put("project", resourceName.getProject());
+    mapBuilder.put("region", resourceName.getRegion());
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -112,6 +114,11 @@ public final class InsertVpnTunnelHttpRequest implements ApiMessage {
       fieldMap.put("vpnTunnelResource", Collections.singletonList(String.valueOf(vpnTunnelResource)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

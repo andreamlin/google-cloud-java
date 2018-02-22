@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -38,6 +37,7 @@ public final class DeprecationStatus implements ApiMessage {
   private final String obsolete;
   private final String replacement;
   private final String state;
+  private final Map<String, String> pathParams;
 
   private DeprecationStatus() {
     this.deleted = null;
@@ -45,6 +45,7 @@ public final class DeprecationStatus implements ApiMessage {
     this.obsolete = null;
     this.replacement = null;
     this.state = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -60,11 +61,8 @@ public final class DeprecationStatus implements ApiMessage {
     this.obsolete = obsolete;
     this.replacement = replacement;
     this.state = state;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -86,6 +84,11 @@ public final class DeprecationStatus implements ApiMessage {
       fieldMap.put("state", Collections.singletonList(String.valueOf(state)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

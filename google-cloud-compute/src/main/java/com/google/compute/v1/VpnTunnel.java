@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -50,6 +49,7 @@ public final class VpnTunnel implements ApiMessage {
   private final String sharedSecretHash;
   private final String status;
   private final String targetVpnGateway;
+  private final Map<String, String> pathParams;
 
   private VpnTunnel() {
     this.creationTimestamp = null;
@@ -69,6 +69,7 @@ public final class VpnTunnel implements ApiMessage {
     this.sharedSecretHash = null;
     this.status = null;
     this.targetVpnGateway = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -108,11 +109,8 @@ public final class VpnTunnel implements ApiMessage {
     this.sharedSecretHash = sharedSecretHash;
     this.status = status;
     this.targetVpnGateway = targetVpnGateway;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -170,6 +168,11 @@ public final class VpnTunnel implements ApiMessage {
       fieldMap.put("targetVpnGateway", Collections.singletonList(String.valueOf(targetVpnGateway)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

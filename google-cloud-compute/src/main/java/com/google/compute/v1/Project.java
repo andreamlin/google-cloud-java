@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -44,6 +43,7 @@ public final class Project implements ApiMessage {
   private final List<Quota> quotas;
   private final String selfLink;
   private final UsageExportLocation usageExportLocation;
+  private final Map<String, String> pathParams;
 
   private Project() {
     this.commonInstanceMetadata = null;
@@ -57,6 +57,7 @@ public final class Project implements ApiMessage {
     this.quotas = null;
     this.selfLink = null;
     this.usageExportLocation = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -84,11 +85,8 @@ public final class Project implements ApiMessage {
     this.quotas = quotas;
     this.selfLink = selfLink;
     this.usageExportLocation = usageExportLocation;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -128,6 +126,11 @@ public final class Project implements ApiMessage {
       fieldMap.put("usageExportLocation", Collections.singletonList(String.valueOf(usageExportLocation)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

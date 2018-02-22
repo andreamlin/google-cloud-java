@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -37,12 +36,14 @@ public final class HealthStatus implements ApiMessage {
   private final String instance;
   private final String ipAddress;
   private final Integer port;
+  private final Map<String, String> pathParams;
 
   private HealthStatus() {
     this.healthState = null;
     this.instance = null;
     this.ipAddress = null;
     this.port = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -56,11 +57,8 @@ public final class HealthStatus implements ApiMessage {
     this.instance = instance;
     this.ipAddress = ipAddress;
     this.port = port;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -79,6 +77,11 @@ public final class HealthStatus implements ApiMessage {
       fieldMap.put("port", Collections.singletonList(String.valueOf(port)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

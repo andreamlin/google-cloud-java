@@ -17,7 +17,7 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,6 +40,7 @@ public final class SetUrlMapTargetHttpProxyHttpRequest implements ApiMessage {
   private final String targetHttpProxy;
   private final UrlMapReference urlMapReferenceResource;
   private final String userIp;
+  private final Map<String, String> pathParams;
 
   private SetUrlMapTargetHttpProxyHttpRequest() {
     this.access_token = null;
@@ -51,6 +52,7 @@ public final class SetUrlMapTargetHttpProxyHttpRequest implements ApiMessage {
     this.targetHttpProxy = null;
     this.urlMapReferenceResource = null;
     this.userIp = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -74,11 +76,11 @@ public final class SetUrlMapTargetHttpProxyHttpRequest implements ApiMessage {
     this.targetHttpProxy = targetHttpProxy;
     this.urlMapReferenceResource = urlMapReferenceResource;
     this.userIp = userIp;
-  }
-
-  @Override
-  public TargetHttpProxyName resourceNamePath() {
-    return TargetHttpProxyName.parse(targetHttpProxy);
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    TargetHttpProxyName resourceName = TargetHttpProxyName.parse(targetHttpProxy);
+    mapBuilder.put("project", resourceName.getProject());
+    mapBuilder.put("targetHttpProxy", resourceName.getTargetHttpProxy());
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -112,6 +114,11 @@ public final class SetUrlMapTargetHttpProxyHttpRequest implements ApiMessage {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

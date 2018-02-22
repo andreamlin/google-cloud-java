@@ -17,7 +17,7 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -39,6 +39,7 @@ public final class DeleteSslCertificateHttpRequest implements ApiMessage {
   private final String quotaUser;
   private final String sslCertificate;
   private final String userIp;
+  private final Map<String, String> pathParams;
 
   private DeleteSslCertificateHttpRequest() {
     this.access_token = null;
@@ -49,6 +50,7 @@ public final class DeleteSslCertificateHttpRequest implements ApiMessage {
     this.quotaUser = null;
     this.sslCertificate = null;
     this.userIp = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -70,11 +72,11 @@ public final class DeleteSslCertificateHttpRequest implements ApiMessage {
     this.quotaUser = quotaUser;
     this.sslCertificate = sslCertificate;
     this.userIp = userIp;
-  }
-
-  @Override
-  public SslCertificateName resourceNamePath() {
-    return SslCertificateName.parse(sslCertificate);
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    SslCertificateName resourceName = SslCertificateName.parse(sslCertificate);
+    mapBuilder.put("project", resourceName.getProject());
+    mapBuilder.put("sslCertificate", resourceName.getSslCertificate());
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -105,6 +107,11 @@ public final class DeleteSslCertificateHttpRequest implements ApiMessage {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

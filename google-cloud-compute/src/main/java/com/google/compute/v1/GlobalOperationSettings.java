@@ -96,7 +96,7 @@ public class GlobalOperationSettings extends ClientSettings<GlobalOperationSetti
   /**
    * Returns the object with the settings used for calls to deleteGlobalOperation.
    */
-  public UnaryCallSettings<DeleteGlobalOperationHttpRequest, java.lang.Void> deleteGlobalOperationSettings() {
+  public UnaryCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings() {
     return ((GlobalOperationStubSettings) getStubSettings()).deleteGlobalOperationSettings();
   }
 
@@ -243,7 +243,7 @@ public class GlobalOperationSettings extends ClientSettings<GlobalOperationSetti
     /**
      * Returns the builder for the settings used for calls to deleteGlobalOperation.
      */
-    public UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, java.lang.Void> deleteGlobalOperationSettings() {
+    public UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings() {
       return getStubSettingsBuilder().deleteGlobalOperationSettings();
     }
 

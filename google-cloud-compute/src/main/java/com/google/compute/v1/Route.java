@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -49,6 +48,7 @@ public final class Route implements ApiMessage {
   private final String selfLink;
   private final List<String> tags;
   private final List<Warnings> warnings;
+  private final Map<String, String> pathParams;
 
   private Route() {
     this.creationTimestamp = null;
@@ -67,6 +67,7 @@ public final class Route implements ApiMessage {
     this.selfLink = null;
     this.tags = null;
     this.warnings = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -104,11 +105,8 @@ public final class Route implements ApiMessage {
     this.selfLink = selfLink;
     this.tags = tags;
     this.warnings = warnings;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -163,6 +161,11 @@ public final class Route implements ApiMessage {
       fieldMap.put("warnings", Collections.singletonList(String.valueOf(warnings)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

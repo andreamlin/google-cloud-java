@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -41,6 +40,7 @@ public final class TargetHttpsProxy implements ApiMessage {
   private final String selfLink;
   private final List<String> sslCertificates;
   private final String urlMap;
+  private final Map<String, String> pathParams;
 
   private TargetHttpsProxy() {
     this.creationTimestamp = null;
@@ -51,6 +51,7 @@ public final class TargetHttpsProxy implements ApiMessage {
     this.selfLink = null;
     this.sslCertificates = null;
     this.urlMap = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -72,11 +73,8 @@ public final class TargetHttpsProxy implements ApiMessage {
     this.selfLink = selfLink;
     this.sslCertificates = sslCertificates;
     this.urlMap = urlMap;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -107,6 +105,11 @@ public final class TargetHttpsProxy implements ApiMessage {
       fieldMap.put("urlMap", Collections.singletonList(String.valueOf(urlMap)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

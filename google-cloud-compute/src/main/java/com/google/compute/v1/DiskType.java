@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -43,6 +42,7 @@ public final class DiskType implements ApiMessage {
   private final String selfLink;
   private final String validDiskSize;
   private final String zone;
+  private final Map<String, String> pathParams;
 
   private DiskType() {
     this.creationTimestamp = null;
@@ -55,6 +55,7 @@ public final class DiskType implements ApiMessage {
     this.selfLink = null;
     this.validDiskSize = null;
     this.zone = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -80,11 +81,8 @@ public final class DiskType implements ApiMessage {
     this.selfLink = selfLink;
     this.validDiskSize = validDiskSize;
     this.zone = zone;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -121,6 +119,11 @@ public final class DiskType implements ApiMessage {
       fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

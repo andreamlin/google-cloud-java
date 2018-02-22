@@ -17,7 +17,7 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,6 +40,7 @@ public final class AddInstanceTargetPoolHttpRequest implements ApiMessage {
   private final String targetPool;
   private final TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequestResource;
   private final String userIp;
+  private final Map<String, String> pathParams;
 
   private AddInstanceTargetPoolHttpRequest() {
     this.access_token = null;
@@ -51,6 +52,7 @@ public final class AddInstanceTargetPoolHttpRequest implements ApiMessage {
     this.targetPool = null;
     this.targetPoolsAddInstanceRequestResource = null;
     this.userIp = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -74,11 +76,12 @@ public final class AddInstanceTargetPoolHttpRequest implements ApiMessage {
     this.targetPool = targetPool;
     this.targetPoolsAddInstanceRequestResource = targetPoolsAddInstanceRequestResource;
     this.userIp = userIp;
-  }
-
-  @Override
-  public TargetPoolName resourceNamePath() {
-    return TargetPoolName.parse(targetPool);
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    TargetPoolName resourceName = TargetPoolName.parse(targetPool);
+    mapBuilder.put("project", resourceName.getProject());
+    mapBuilder.put("region", resourceName.getRegion());
+    mapBuilder.put("targetPool", resourceName.getTargetPool());
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -112,6 +115,11 @@ public final class AddInstanceTargetPoolHttpRequest implements ApiMessage {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

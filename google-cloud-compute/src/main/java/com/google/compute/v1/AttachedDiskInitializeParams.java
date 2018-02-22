@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -38,6 +37,7 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
   private final String diskType;
   private final String sourceImage;
   private final CustomerEncryptionKey sourceImageEncryptionKey;
+  private final Map<String, String> pathParams;
 
   private AttachedDiskInitializeParams() {
     this.diskName = null;
@@ -45,6 +45,7 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
     this.diskType = null;
     this.sourceImage = null;
     this.sourceImageEncryptionKey = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -60,11 +61,8 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
     this.diskType = diskType;
     this.sourceImage = sourceImage;
     this.sourceImageEncryptionKey = sourceImageEncryptionKey;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -86,6 +84,11 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
       fieldMap.put("sourceImageEncryptionKey", Collections.singletonList(String.valueOf(sourceImageEncryptionKey)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

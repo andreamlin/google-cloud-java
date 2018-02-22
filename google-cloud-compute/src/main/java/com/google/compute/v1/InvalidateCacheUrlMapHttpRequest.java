@@ -17,7 +17,7 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,6 +40,7 @@ public final class InvalidateCacheUrlMapHttpRequest implements ApiMessage {
   private final String quotaUser;
   private final String urlMap;
   private final String userIp;
+  private final Map<String, String> pathParams;
 
   private InvalidateCacheUrlMapHttpRequest() {
     this.access_token = null;
@@ -51,6 +52,7 @@ public final class InvalidateCacheUrlMapHttpRequest implements ApiMessage {
     this.quotaUser = null;
     this.urlMap = null;
     this.userIp = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -74,11 +76,11 @@ public final class InvalidateCacheUrlMapHttpRequest implements ApiMessage {
     this.quotaUser = quotaUser;
     this.urlMap = urlMap;
     this.userIp = userIp;
-  }
-
-  @Override
-  public UrlMapName resourceNamePath() {
-    return UrlMapName.parse(urlMap);
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    UrlMapName resourceName = UrlMapName.parse(urlMap);
+    mapBuilder.put("project", resourceName.getProject());
+    mapBuilder.put("urlMap", resourceName.getUrlMap());
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -112,6 +114,11 @@ public final class InvalidateCacheUrlMapHttpRequest implements ApiMessage {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -39,6 +38,7 @@ public final class AutoscalingPolicy implements ApiMessage {
   private final AutoscalingPolicyLoadBalancingUtilization loadBalancingUtilization;
   private final Integer maxNumReplicas;
   private final Integer minNumReplicas;
+  private final Map<String, String> pathParams;
 
   private AutoscalingPolicy() {
     this.coolDownPeriodSec = null;
@@ -47,6 +47,7 @@ public final class AutoscalingPolicy implements ApiMessage {
     this.loadBalancingUtilization = null;
     this.maxNumReplicas = null;
     this.minNumReplicas = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -64,11 +65,8 @@ public final class AutoscalingPolicy implements ApiMessage {
     this.loadBalancingUtilization = loadBalancingUtilization;
     this.maxNumReplicas = maxNumReplicas;
     this.minNumReplicas = minNumReplicas;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -93,6 +91,11 @@ public final class AutoscalingPolicy implements ApiMessage {
       fieldMap.put("minNumReplicas", Collections.singletonList(String.valueOf(minNumReplicas)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

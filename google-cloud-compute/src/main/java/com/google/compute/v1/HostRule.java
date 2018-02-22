@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -36,11 +35,13 @@ public final class HostRule implements ApiMessage {
   private final String description;
   private final List<String> hosts;
   private final String pathMatcher;
+  private final Map<String, String> pathParams;
 
   private HostRule() {
     this.description = null;
     this.hosts = null;
     this.pathMatcher = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -52,11 +53,8 @@ public final class HostRule implements ApiMessage {
     this.description = description;
     this.hosts = hosts;
     this.pathMatcher = pathMatcher;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -72,6 +70,11 @@ public final class HostRule implements ApiMessage {
       fieldMap.put("pathMatcher", Collections.singletonList(String.valueOf(pathMatcher)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

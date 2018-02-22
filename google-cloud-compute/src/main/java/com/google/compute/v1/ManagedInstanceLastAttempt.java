@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -34,9 +33,11 @@ import javax.annotation.Nullable;
 @BetaApi
 public final class ManagedInstanceLastAttempt implements ApiMessage {
   private final Errors errors;
+  private final Map<String, String> pathParams;
 
   private ManagedInstanceLastAttempt() {
     this.errors = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -44,11 +45,8 @@ public final class ManagedInstanceLastAttempt implements ApiMessage {
       Errors errors
       ) {
     this.errors = errors;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -58,6 +56,11 @@ public final class ManagedInstanceLastAttempt implements ApiMessage {
       fieldMap.put("errors", Collections.singletonList(String.valueOf(errors)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

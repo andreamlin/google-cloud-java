@@ -59,8 +59,8 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
   @VisibleForTesting
-  public static final ApiMethodDescriptor<DeleteZoneOperationHttpRequest, java.lang.Void> deleteZoneOperationMethodDescriptor =
-      ApiMethodDescriptor.<DeleteZoneOperationHttpRequest, java.lang.Void>newBuilder()
+  public static final ApiMethodDescriptor<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationMethodDescriptor =
+      ApiMethodDescriptor.<DeleteZoneOperationHttpRequest, Void>newBuilder()
           .setMethodName("compute.zoneOperations.delete")
           .setRequestInstance(DeleteZoneOperationHttpRequest.getDefaultInstance())
           .setEndpointPathTemplate("{project}/zones/{zone}/operations/{operation}")
@@ -106,7 +106,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
 
   private final BackgroundResource backgroundResources;
 
-  private final UnaryCallable<DeleteZoneOperationHttpRequest, java.lang.Void> deleteZoneOperationCallable;
+  private final UnaryCallable<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationCallable;
   private final UnaryCallable<GetZoneOperationHttpRequest, Operation> getZoneOperationCallable;
   private final UnaryCallable<ListZoneOperationsHttpRequest, OperationList> listZoneOperationsCallable;
   private final UnaryCallable<ListZoneOperationsHttpRequest, ListZoneOperationsPagedResponse> listZoneOperationsPagedCallable;
@@ -126,8 +126,8 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
    */
   protected HttpJsonZoneOperationStub(ZoneOperationStubSettings settings, ClientContext clientContext) throws IOException {
 
-    HttpJsonCallSettings<DeleteZoneOperationHttpRequest, java.lang.Void> deleteZoneOperationTransportSettings =
-        HttpJsonCallSettings.<DeleteZoneOperationHttpRequest, java.lang.Void>newBuilder()
+    HttpJsonCallSettings<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationTransportSettings =
+        HttpJsonCallSettings.<DeleteZoneOperationHttpRequest, Void>newBuilder()
             .setMethodDescriptor(deleteZoneOperationMethodDescriptor)
             .build();
     HttpJsonCallSettings<GetZoneOperationHttpRequest, Operation> getZoneOperationTransportSettings =
@@ -148,7 +148,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteZoneOperationHttpRequest, java.lang.Void> deleteZoneOperationCallable() {
+  public UnaryCallable<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationCallable() {
     return deleteZoneOperationCallable;
   }
 

@@ -17,7 +17,7 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,6 +40,7 @@ public final class SetNamedPortsRegionInstanceGroupHttpRequest implements ApiMes
   private final String quotaUser;
   private final RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequestResource;
   private final String userIp;
+  private final Map<String, String> pathParams;
 
   private SetNamedPortsRegionInstanceGroupHttpRequest() {
     this.access_token = null;
@@ -51,6 +52,7 @@ public final class SetNamedPortsRegionInstanceGroupHttpRequest implements ApiMes
     this.quotaUser = null;
     this.regionInstanceGroupsSetNamedPortsRequestResource = null;
     this.userIp = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -74,11 +76,12 @@ public final class SetNamedPortsRegionInstanceGroupHttpRequest implements ApiMes
     this.quotaUser = quotaUser;
     this.regionInstanceGroupsSetNamedPortsRequestResource = regionInstanceGroupsSetNamedPortsRequestResource;
     this.userIp = userIp;
-  }
-
-  @Override
-  public RegionInstanceGroupsInstanceGroupName resourceNamePath() {
-    return RegionInstanceGroupsInstanceGroupName.parse(instanceGroup);
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    RegionInstanceGroupsInstanceGroupName resourceName = RegionInstanceGroupsInstanceGroupName.parse(instanceGroup);
+    mapBuilder.put("instanceGroup", resourceName.getInstanceGroup());
+    mapBuilder.put("project", resourceName.getProject());
+    mapBuilder.put("region", resourceName.getRegion());
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -112,6 +115,11 @@ public final class SetNamedPortsRegionInstanceGroupHttpRequest implements ApiMes
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

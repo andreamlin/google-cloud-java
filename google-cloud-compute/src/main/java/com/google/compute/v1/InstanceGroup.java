@@ -17,9 +17,8 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNamePath;
 import com.google.api.resourcenames.ResourceName;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -46,6 +45,7 @@ public final class InstanceGroup implements ApiMessage {
   private final Integer size;
   private final String subnetwork;
   private final String zone;
+  private final Map<String, String> pathParams;
 
   private InstanceGroup() {
     this.creationTimestamp = null;
@@ -61,6 +61,7 @@ public final class InstanceGroup implements ApiMessage {
     this.size = null;
     this.subnetwork = null;
     this.zone = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -92,11 +93,8 @@ public final class InstanceGroup implements ApiMessage {
     this.size = size;
     this.subnetwork = subnetwork;
     this.zone = zone;
-  }
-
-  @Override
-  public ResourceNamePath resourceNamePath() {
-    return null;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -142,6 +140,11 @@ public final class InstanceGroup implements ApiMessage {
       fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

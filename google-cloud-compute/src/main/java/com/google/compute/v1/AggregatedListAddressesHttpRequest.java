@@ -17,7 +17,7 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -43,6 +43,7 @@ public final class AggregatedListAddressesHttpRequest implements ApiMessage {
   private final String project;
   private final String quotaUser;
   private final String userIp;
+  private final Map<String, String> pathParams;
 
   private AggregatedListAddressesHttpRequest() {
     this.access_token = null;
@@ -57,6 +58,7 @@ public final class AggregatedListAddressesHttpRequest implements ApiMessage {
     this.project = null;
     this.quotaUser = null;
     this.userIp = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -86,11 +88,10 @@ public final class AggregatedListAddressesHttpRequest implements ApiMessage {
     this.project = project;
     this.quotaUser = quotaUser;
     this.userIp = userIp;
-  }
-
-  @Override
-  public ProjectName resourceNamePath() {
-    return ProjectName.parse(project);
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    ProjectName resourceName = ProjectName.parse(project);
+    mapBuilder.put("project", resourceName.getProject());
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -133,6 +134,11 @@ public final class AggregatedListAddressesHttpRequest implements ApiMessage {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable

@@ -78,8 +78,8 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
           .setHttpMethod(HttpMethods.GET)
           .build();
   @VisibleForTesting
-  public static final ApiMethodDescriptor<DeleteGlobalOperationHttpRequest, java.lang.Void> deleteGlobalOperationMethodDescriptor =
-      ApiMethodDescriptor.<DeleteGlobalOperationHttpRequest, java.lang.Void>newBuilder()
+  public static final ApiMethodDescriptor<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationMethodDescriptor =
+      ApiMethodDescriptor.<DeleteGlobalOperationHttpRequest, Void>newBuilder()
           .setMethodName("compute.globalOperations.delete")
           .setRequestInstance(DeleteGlobalOperationHttpRequest.getDefaultInstance())
           .setEndpointPathTemplate("{project}/global/operations/{operation}")
@@ -127,7 +127,7 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
 
   private final UnaryCallable<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> aggregatedListGlobalOperationsCallable;
   private final UnaryCallable<AggregatedListGlobalOperationsHttpRequest, AggregatedListGlobalOperationsPagedResponse> aggregatedListGlobalOperationsPagedCallable;
-  private final UnaryCallable<DeleteGlobalOperationHttpRequest, java.lang.Void> deleteGlobalOperationCallable;
+  private final UnaryCallable<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationCallable;
   private final UnaryCallable<GetGlobalOperationHttpRequest, Operation> getGlobalOperationCallable;
   private final UnaryCallable<ListGlobalOperationsHttpRequest, OperationList> listGlobalOperationsCallable;
   private final UnaryCallable<ListGlobalOperationsHttpRequest, ListGlobalOperationsPagedResponse> listGlobalOperationsPagedCallable;
@@ -151,8 +151,8 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
         HttpJsonCallSettings.<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList>newBuilder()
             .setMethodDescriptor(aggregatedListGlobalOperationsMethodDescriptor)
             .build();
-    HttpJsonCallSettings<DeleteGlobalOperationHttpRequest, java.lang.Void> deleteGlobalOperationTransportSettings =
-        HttpJsonCallSettings.<DeleteGlobalOperationHttpRequest, java.lang.Void>newBuilder()
+    HttpJsonCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationTransportSettings =
+        HttpJsonCallSettings.<DeleteGlobalOperationHttpRequest, Void>newBuilder()
             .setMethodDescriptor(deleteGlobalOperationMethodDescriptor)
             .build();
     HttpJsonCallSettings<GetGlobalOperationHttpRequest, Operation> getGlobalOperationTransportSettings =
@@ -185,7 +185,7 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteGlobalOperationHttpRequest, java.lang.Void> deleteGlobalOperationCallable() {
+  public UnaryCallable<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationCallable() {
     return deleteGlobalOperationCallable;
   }
 

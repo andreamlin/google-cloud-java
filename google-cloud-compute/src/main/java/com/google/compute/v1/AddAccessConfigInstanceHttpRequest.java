@@ -17,7 +17,7 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -41,6 +41,7 @@ public final class AddAccessConfigInstanceHttpRequest implements ApiMessage {
   private final String prettyPrint;
   private final String quotaUser;
   private final String userIp;
+  private final Map<String, String> pathParams;
 
   private AddAccessConfigInstanceHttpRequest() {
     this.accessConfigResource = null;
@@ -53,6 +54,7 @@ public final class AddAccessConfigInstanceHttpRequest implements ApiMessage {
     this.prettyPrint = null;
     this.quotaUser = null;
     this.userIp = null;
+    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -78,11 +80,12 @@ public final class AddAccessConfigInstanceHttpRequest implements ApiMessage {
     this.prettyPrint = prettyPrint;
     this.quotaUser = quotaUser;
     this.userIp = userIp;
-  }
-
-  @Override
-  public InstanceName resourceNamePath() {
-    return InstanceName.parse(instance);
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    InstanceName resourceName = InstanceName.parse(instance);
+    mapBuilder.put("instance", resourceName.getInstance());
+    mapBuilder.put("project", resourceName.getProject());
+    mapBuilder.put("zone", resourceName.getZone());
+    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -119,6 +122,11 @@ public final class AddAccessConfigInstanceHttpRequest implements ApiMessage {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public Map<String, String> pathParams() {
+    return pathParams;
   }
 
   @Nullable
