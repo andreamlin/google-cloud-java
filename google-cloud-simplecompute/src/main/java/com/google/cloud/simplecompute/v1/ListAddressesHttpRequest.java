@@ -43,7 +43,6 @@ public final class ListAddressesHttpRequest implements ApiMessage {
   private final String quotaUser;
   private final String region;
   private final String userIp;
-  private final Map<String, String> pathParams;
 
   private ListAddressesHttpRequest() {
     this.access_token = null;
@@ -58,7 +57,6 @@ public final class ListAddressesHttpRequest implements ApiMessage {
     this.quotaUser = null;
     this.region = null;
     this.userIp = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -92,7 +90,6 @@ public final class ListAddressesHttpRequest implements ApiMessage {
     RegionName resourceName = RegionName.parse(region);
     mapBuilder.put("project", resourceName.getProject());
     mapBuilder.put("region", resourceName.getRegion());
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -135,11 +132,6 @@ public final class ListAddressesHttpRequest implements ApiMessage {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
     return fieldMap;
-  }
-
-  @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
   }
 
   @Nullable

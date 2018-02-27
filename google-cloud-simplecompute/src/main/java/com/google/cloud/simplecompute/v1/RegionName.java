@@ -16,8 +16,8 @@
 package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
+import com.google.api.gax.httpjson.ResourceNameStruct;
 import com.google.api.pathtemplate.PathTemplate;
-import com.google.api.resourcenames.ResourceName;
 import com.google.api.resourcenames.ResourceNameType;
 import com.google.common.base.Preconditions;
 import java.io.IOException;
@@ -31,7 +31,7 @@ import javax.annotation.Generated;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class RegionName implements ResourceName {
+public final class RegionName implements ResourceNameStruct {
   private final String project;
   private final String region;
   private static final PathTemplate PATH_TEMPLATE =
@@ -79,6 +79,19 @@ public final class RegionName implements ResourceName {
     return region;
   }
 
+
+  @Override
+  public Map<String, String> getFieldValues() {
+    Map<String, String> fieldMap = new HashMap<>();
+    fieldMap.put("project", project);
+    fieldMap.put("region", region);
+    return fieldMap;
+  }
+
+  @Override
+  public RegionName parseFrom(String formattedString) {
+    return RegionName.parse(formattedString);
+  }
 
   public static RegionName parse(String formattedString) {
     Map<String, String> matchMap =

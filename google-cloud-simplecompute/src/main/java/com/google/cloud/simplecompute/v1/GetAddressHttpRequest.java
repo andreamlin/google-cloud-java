@@ -39,7 +39,6 @@ public final class GetAddressHttpRequest implements ApiMessage {
   private final String prettyPrint;
   private final String quotaUser;
   private final String userIp;
-  private final Map<String, String> pathParams;
 
   private GetAddressHttpRequest() {
     this.access_token = null;
@@ -50,7 +49,6 @@ public final class GetAddressHttpRequest implements ApiMessage {
     this.prettyPrint = null;
     this.quotaUser = null;
     this.userIp = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -77,7 +75,6 @@ public final class GetAddressHttpRequest implements ApiMessage {
     mapBuilder.put("address", resourceName.getAddress());
     mapBuilder.put("project", resourceName.getProject());
     mapBuilder.put("region", resourceName.getRegion());
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -108,11 +105,6 @@ public final class GetAddressHttpRequest implements ApiMessage {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
     return fieldMap;
-  }
-
-  @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
   }
 
   @Nullable

@@ -17,7 +17,7 @@ package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
+import com.google.api.gax.httpjson.ResourceNameStruct;
 import com.google.common.collect.ImmutableMap;
 import java.io.Serializable;
 import java.util.Collections;
@@ -42,7 +42,6 @@ public final class Address implements ApiMessage {
   private final String selfLink;
   private final String status;
   private final List<String> users;
-  private final Map<String, String> pathParams;
 
   private Address() {
     this.address = null;
@@ -55,7 +54,6 @@ public final class Address implements ApiMessage {
     this.selfLink = null;
     this.status = null;
     this.users = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -82,7 +80,6 @@ public final class Address implements ApiMessage {
     this.status = status;
     this.users = users;
     ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -119,11 +116,6 @@ public final class Address implements ApiMessage {
       fieldMap.put("users", Collections.singletonList(String.valueOf(users)));
     }
     return fieldMap;
-  }
-
-  @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
   }
 
   @Nullable

@@ -15,6 +15,7 @@
     <version>0.32.1-alpha-SNAPSHOT</version>
   </parent>
   <properties>
+    <api-common.version>1.2.0</api-common.version>
     <site.installationModule>google-cloud-simplecompute</site.installationModule>
   </properties>
   <dependencies>
@@ -72,15 +73,15 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.google.api.grpc</groupId>
-      <artifactId>grpc-google-iam-v1</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>com.google.api</groupId>
       <artifactId>gax-grpc</artifactId>
       <classifier>testlib</classifier>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.api</groupId>
+      <artifactId>api-common</artifactId>
+      <version>${api-common.version}</version>
     </dependency>
     <dependency>
       <groupId>org.threeten</groupId>

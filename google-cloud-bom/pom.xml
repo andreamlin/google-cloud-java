@@ -144,7 +144,7 @@
     <bigtable.version>0.34.1-beta-SNAPSHOT</bigtable.version>
     <bigquery.version>0.34.1-beta-SNAPSHOT</bigquery.version>
     <bigquerydatatransfer.version>0.34.1-beta-SNAPSHOT</bigquerydatatransfer.version>
-    <compute.version>0.34.1-alpha-SNAPSHOT</compute.version>
+    <simplecompute.version>0.34.1-alpha-SNAPSHOT</simplecompute.version>
     <container.version>0.34.1-beta-SNAPSHOT</container.version>
     <contrib.version>0.34.1-alpha-SNAPSHOT</contrib.version>
     <core.version>1.16.1-SNAPSHOT</core.version>
@@ -261,19 +261,14 @@
 
       <dependency>
         <groupId>com.google.cloud</groupId>
-        <artifactId>google-cloud-compute</artifactId>
-        <version>${compute.version}</version>
+        <artifactId>google-cloud-simplecompute</artifactId>
+        <version>${simplecompute.version}</version>
       </dependency>
       <dependency>
         <groupId>com.google.cloud</groupId>
-        <artifactId>google-cloud-compute</artifactId>
-        <version>${compute.version}</version>
+        <artifactId>google-cloud-simplecompute</artifactId>
+        <version>${simplecompute.version}</version>
         <type>test-jar</type>
-      </dependency>
-      <dependency>
-        <groupId>com.google.apis</groupId>
-        <artifactId>google-api-services-compute</artifactId>
-        <version>v1-rev103-1.21.0</version>
       </dependency>
 
       <dependency>
