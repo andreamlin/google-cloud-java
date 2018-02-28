@@ -27,6 +27,7 @@ import com.google.cloud.simplecompute.v1.GetAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.InsertAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.ListAddressesHttpRequest;
 import com.google.cloud.simplecompute.v1.Operation;
+import com.google.cloud.simplecompute.v1.PatchAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.RegionName;
 import javax.annotation.Generated;
 
@@ -64,6 +65,11 @@ public abstract class AddressStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<ListAddressesHttpRequest, AddressList> listAddressesCallable() {
     throw new UnsupportedOperationException("Not implemented: listAddressesCallable()");
+  }
+
+  @BetaApi
+  public UnaryCallable<PatchAddressHttpRequest, Operation> patchAddressCallable() {
+    throw new UnsupportedOperationException("Not implemented: patchAddressCallable()");
   }
 
 }

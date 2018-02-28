@@ -22,10 +22,12 @@ import com.google.common.collect.ImmutableMap;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -51,7 +53,6 @@ public final class Warnings implements ApiMessage {
     this.code = code;
     this.data = data;
     this.message = message;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
   }
 
   @Override
@@ -61,7 +62,11 @@ public final class Warnings implements ApiMessage {
       fieldMap.put("code", Collections.singletonList(String.valueOf(code)));
     }
     if (fieldNames.contains("data") && data != null) {
-      fieldMap.put("data", Collections.singletonList(String.valueOf(data)));
+      List<String> stringList = new LinkedList<>();
+      for (Data item : data) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("data", stringList);
     }
     if (fieldNames.contains("message") && message != null) {
       fieldMap.put("message", Collections.singletonList(String.valueOf(message)));
@@ -161,8 +166,16 @@ public final class Warnings implements ApiMessage {
       return data;
     }
 
-    public Builder setData(List<Data> data) {
-      this.data = data;
+    public Builder addAllData(List<Data> data) {
+      if (this.data == null) {
+        this.data = new LinkedList<>();
+      }
+      this.data.addAll(data);
+      return this;
+    }
+
+    public Builder addData(Data data) {
+      this.data.add(data);
       return this;
     }
 
@@ -189,7 +202,7 @@ public final class Warnings implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setCode(this.code);
-      newBuilder.setData(this.data);
+      newBuilder.addAllData(this.data);
       newBuilder.setMessage(this.message);
       return newBuilder;
     }

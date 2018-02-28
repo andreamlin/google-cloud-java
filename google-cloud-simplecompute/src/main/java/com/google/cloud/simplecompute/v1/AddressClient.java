@@ -367,8 +367,8 @@ public class AddressClient implements BackgroundResource {
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   Address address = Address.newBuilder().build();
-   *   Operation response = addressClient.insertAddress(region, address);
+   *   Address addressResource = Address.newBuilder().build();
+   *   Operation response = addressClient.insertAddress(region, addressResource);
    * }
    * </code></pre>
    *
@@ -395,8 +395,8 @@ public class AddressClient implements BackgroundResource {
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   Address address = Address.newBuilder().build();
-   *   Operation response = addressClient.insertAddress(region.toString(), address);
+   *   Address addressResource = Address.newBuilder().build();
+   *   Operation response = addressClient.insertAddress(region.toString(), addressResource);
    * }
    * </code></pre>
    *
@@ -423,10 +423,10 @@ public class AddressClient implements BackgroundResource {
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   Address address = Address.newBuilder().build();
+   *   Address addressResource = Address.newBuilder().build();
    *   InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
    *     .setRegion(region.toString())
-   *     .setAddressResource(address)
+   *     .setAddressResource(addressResource)
    *     .build();
    *   Operation response = addressClient.insertAddress(request);
    * }
@@ -448,10 +448,10 @@ public class AddressClient implements BackgroundResource {
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   Address address = Address.newBuilder().build();
+   *   Address addressResource = Address.newBuilder().build();
    *   InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
    *     .setRegion(region.toString())
-   *     .setAddressResource(address)
+   *     .setAddressResource(addressResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = addressClient.insertAddressCallable().futureCall(request);
    *   // Do something
@@ -595,6 +595,121 @@ public class AddressClient implements BackgroundResource {
   @BetaApi
   public final UnaryCallable<ListAddressesHttpRequest, AddressList> listAddressesCallable() {
     return stub.listAddressesCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates an address in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   String address = "";
+   *   Address addressResource = Address.newBuilder().build();
+   *   Operation response = addressClient.patchAddress(region, address, addressResource);
+   * }
+   * </code></pre>
+   *
+   * @param region Name of the region for this request.
+   * @param address Name of the address to patch.
+   * @param addressResource A reserved address resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation patchAddress(RegionName region, String address, Address addressResource) {
+
+    PatchAddressHttpRequest request =
+        PatchAddressHttpRequest.newBuilder()
+        .setRegion(region == null ? null : region.toString())
+        .setAddress(address)
+        .setAddressResource(addressResource)
+        .build();
+    return patchAddress(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates an address in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   String address = "";
+   *   Address addressResource = Address.newBuilder().build();
+   *   Operation response = addressClient.patchAddress(region.toString(), address, addressResource);
+   * }
+   * </code></pre>
+   *
+   * @param region Name of the region for this request.
+   * @param address Name of the address to patch.
+   * @param addressResource A reserved address resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation patchAddress(String region, String address, Address addressResource) {
+
+    PatchAddressHttpRequest request =
+        PatchAddressHttpRequest.newBuilder()
+        .setRegion(region)
+        .setAddress(address)
+        .setAddressResource(addressResource)
+        .build();
+    return patchAddress(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates an address in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   String address = "";
+   *   Address addressResource = Address.newBuilder().build();
+   *   PatchAddressHttpRequest request = PatchAddressHttpRequest.newBuilder()
+   *     .setRegion(region.toString())
+   *     .setAddress(address)
+   *     .setAddressResource(addressResource)
+   *     .build();
+   *   Operation response = addressClient.patchAddress(request);
+   * }
+   * </code></pre>
+   *
+   * @param request The request object containing all of the parameters for the API call.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation patchAddress(PatchAddressHttpRequest request) {
+    return patchAddressCallable().call(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates an address in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   String address = "";
+   *   Address addressResource = Address.newBuilder().build();
+   *   PatchAddressHttpRequest request = PatchAddressHttpRequest.newBuilder()
+   *     .setRegion(region.toString())
+   *     .setAddress(address)
+   *     .setAddressResource(addressResource)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = addressClient.patchAddressCallable().futureCall(request);
+   *   // Do something
+   *   Operation response = future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi
+  public final UnaryCallable<PatchAddressHttpRequest, Operation> patchAddressCallable() {
+    return stub.patchAddressCallable();
   }
 
   @Override

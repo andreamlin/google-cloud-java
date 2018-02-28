@@ -31,61 +31,57 @@ import javax.annotation.Nullable;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class ListAddressesHttpRequest implements ApiMessage {
+public final class PatchAddressHttpRequest implements ApiMessage {
   private final String access_token;
+  private final String address;
+  private final Address addressResource;
   private final String callback;
   private final String fields;
-  private final String filter;
   private final String key;
-  private final Integer maxResults;
-  private final String orderBy;
-  private final String pageToken;
   private final String prettyPrint;
   private final String quotaUser;
   private final String region;
+  private final String requestId;
   private final String userIp;
 
-  private ListAddressesHttpRequest() {
+  private PatchAddressHttpRequest() {
     this.access_token = null;
+    this.address = null;
+    this.addressResource = null;
     this.callback = null;
     this.fields = null;
-    this.filter = null;
     this.key = null;
-    this.maxResults = null;
-    this.orderBy = null;
-    this.pageToken = null;
     this.prettyPrint = null;
     this.quotaUser = null;
     this.region = null;
+    this.requestId = null;
     this.userIp = null;
   }
 
 
-  private ListAddressesHttpRequest(
+  private PatchAddressHttpRequest(
       String access_token,
+      String address,
+      Address addressResource,
       String callback,
       String fields,
-      String filter,
       String key,
-      Integer maxResults,
-      String orderBy,
-      String pageToken,
       String prettyPrint,
       String quotaUser,
       String region,
+      String requestId,
       String userIp
       ) {
     this.access_token = access_token;
+    this.address = address;
+    this.addressResource = addressResource;
     this.callback = callback;
     this.fields = fields;
-    this.filter = filter;
     this.key = key;
-    this.maxResults = maxResults;
-    this.orderBy = orderBy;
-    this.pageToken = pageToken;
     this.prettyPrint = prettyPrint;
     this.quotaUser = quotaUser;
     this.region = region;
+    this.requestId = requestId;
     this.userIp = userIp;
   }
 
@@ -95,26 +91,20 @@ public final class ListAddressesHttpRequest implements ApiMessage {
     if (fieldNames.contains("access_token") && access_token != null) {
       fieldMap.put("access_token", Collections.singletonList(String.valueOf(access_token)));
     }
+    if (fieldNames.contains("address") && address != null) {
+      fieldMap.put("address", Collections.singletonList(String.valueOf(address)));
+    }
+    if (fieldNames.contains("addressResource") && addressResource != null) {
+      fieldMap.put("addressResource", Collections.singletonList(String.valueOf(addressResource)));
+    }
     if (fieldNames.contains("callback") && callback != null) {
       fieldMap.put("callback", Collections.singletonList(String.valueOf(callback)));
     }
     if (fieldNames.contains("fields") && fields != null) {
       fieldMap.put("fields", Collections.singletonList(String.valueOf(fields)));
     }
-    if (fieldNames.contains("filter") && filter != null) {
-      fieldMap.put("filter", Collections.singletonList(String.valueOf(filter)));
-    }
     if (fieldNames.contains("key") && key != null) {
       fieldMap.put("key", Collections.singletonList(String.valueOf(key)));
-    }
-    if (fieldNames.contains("maxResults") && maxResults != null) {
-      fieldMap.put("maxResults", Collections.singletonList(String.valueOf(maxResults)));
-    }
-    if (fieldNames.contains("orderBy") && orderBy != null) {
-      fieldMap.put("orderBy", Collections.singletonList(String.valueOf(orderBy)));
-    }
-    if (fieldNames.contains("pageToken") && pageToken != null) {
-      fieldMap.put("pageToken", Collections.singletonList(String.valueOf(pageToken)));
     }
     if (fieldNames.contains("prettyPrint") && prettyPrint != null) {
       fieldMap.put("prettyPrint", Collections.singletonList(String.valueOf(prettyPrint)));
@@ -124,6 +114,9 @@ public final class ListAddressesHttpRequest implements ApiMessage {
     }
     if (fieldNames.contains("region") && region != null) {
       fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
+    }
+    if (fieldNames.contains("requestId") && requestId != null) {
+      fieldMap.put("requestId", Collections.singletonList(String.valueOf(requestId)));
     }
     if (fieldNames.contains("userIp") && userIp != null) {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
@@ -136,26 +129,20 @@ public final class ListAddressesHttpRequest implements ApiMessage {
     if (fieldName.equals("access_token")) {
       return String.valueOf(access_token);
     }
+    if (fieldName.equals("address")) {
+      return String.valueOf(address);
+    }
+    if (fieldName.equals("addressResource")) {
+      return String.valueOf(addressResource);
+    }
     if (fieldName.equals("callback")) {
       return String.valueOf(callback);
     }
     if (fieldName.equals("fields")) {
       return String.valueOf(fields);
     }
-    if (fieldName.equals("filter")) {
-      return String.valueOf(filter);
-    }
     if (fieldName.equals("key")) {
       return String.valueOf(key);
-    }
-    if (fieldName.equals("maxResults")) {
-      return String.valueOf(maxResults);
-    }
-    if (fieldName.equals("orderBy")) {
-      return String.valueOf(orderBy);
-    }
-    if (fieldName.equals("pageToken")) {
-      return String.valueOf(pageToken);
     }
     if (fieldName.equals("prettyPrint")) {
       return String.valueOf(prettyPrint);
@@ -166,20 +153,31 @@ public final class ListAddressesHttpRequest implements ApiMessage {
     if (fieldName.equals("region")) {
       return String.valueOf(region);
     }
+    if (fieldName.equals("requestId")) {
+      return String.valueOf(requestId);
+    }
     if (fieldName.equals("userIp")) {
       return String.valueOf(userIp);
     }
-    throw new IOException(String.format("Field '%s' not found in ListAddressesHttpRequest fields", fieldName));
+    throw new IOException(String.format("Field '%s' not found in PatchAddressHttpRequest fields", fieldName));
   }
 
   @Nullable
   @Override
-  public ApiMessage getApiMessageRequestBody() {
-    return null;
+  public Address getApiMessageRequestBody() {
+    return addressResource;
   }
 
   public String getAccessToken() {
     return access_token;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+
+  public Address getAddressResource() {
+    return addressResource;
   }
 
   public String getCallback() {
@@ -190,24 +188,8 @@ public final class ListAddressesHttpRequest implements ApiMessage {
     return fields;
   }
 
-  public String getFilter() {
-    return filter;
-  }
-
   public String getKey() {
     return key;
-  }
-
-  public Integer getMaxResults() {
-    return maxResults;
-  }
-
-  public String getOrderBy() {
-    return orderBy;
-  }
-
-  public String getPageToken() {
-    return pageToken;
   }
 
   public String getPrettyPrint() {
@@ -222,6 +204,10 @@ public final class ListAddressesHttpRequest implements ApiMessage {
     return region;
   }
 
+  public String getRequestId() {
+    return requestId;
+  }
+
   public String getUserIp() {
     return userIp;
   }
@@ -230,7 +216,7 @@ public final class ListAddressesHttpRequest implements ApiMessage {
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(ListAddressesHttpRequest prototype) {
+  public static Builder newBuilder(PatchAddressHttpRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -238,34 +224,39 @@ public final class ListAddressesHttpRequest implements ApiMessage {
         ? new Builder() : new Builder().mergeFrom(this);
   }
 
-  public static ListAddressesHttpRequest getDefaultInstance() {
+  public static PatchAddressHttpRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
-  private static final ListAddressesHttpRequest DEFAULT_INSTANCE;
+  private static final PatchAddressHttpRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new ListAddressesHttpRequest();
+    DEFAULT_INSTANCE = new PatchAddressHttpRequest();
   }
 
   public static class Builder {
     private String access_token;
+    private String address;
+    private Address addressResource;
     private String callback;
     private String fields;
-    private String filter;
     private String key;
-    private Integer maxResults;
-    private String orderBy;
-    private String pageToken;
     private String prettyPrint;
     private String quotaUser;
     private String region;
+    private String requestId;
     private String userIp;
 
     Builder() {}
 
-    public Builder mergeFrom(ListAddressesHttpRequest other) {
-      if (other == ListAddressesHttpRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(PatchAddressHttpRequest other) {
+      if (other == PatchAddressHttpRequest.getDefaultInstance()) return this;
       if (other.getAccessToken() != null) {
         this.access_token = other.access_token;
+      }
+      if (other.getAddress() != null) {
+        this.address = other.address;
+      }
+      if (other.getAddressResource() != null) {
+        this.addressResource = other.addressResource;
       }
       if (other.getCallback() != null) {
         this.callback = other.callback;
@@ -273,20 +264,8 @@ public final class ListAddressesHttpRequest implements ApiMessage {
       if (other.getFields() != null) {
         this.fields = other.fields;
       }
-      if (other.getFilter() != null) {
-        this.filter = other.filter;
-      }
       if (other.getKey() != null) {
         this.key = other.key;
-      }
-      if (other.getMaxResults() != null) {
-        this.maxResults = other.maxResults;
-      }
-      if (other.getOrderBy() != null) {
-        this.orderBy = other.orderBy;
-      }
-      if (other.getPageToken() != null) {
-        this.pageToken = other.pageToken;
       }
       if (other.getPrettyPrint() != null) {
         this.prettyPrint = other.prettyPrint;
@@ -297,24 +276,26 @@ public final class ListAddressesHttpRequest implements ApiMessage {
       if (other.getRegion() != null) {
         this.region = other.region;
       }
+      if (other.getRequestId() != null) {
+        this.requestId = other.requestId;
+      }
       if (other.getUserIp() != null) {
         this.userIp = other.userIp;
       }
       return this;
     }
 
-    Builder(ListAddressesHttpRequest source) {
+    Builder(PatchAddressHttpRequest source) {
       this.access_token = source.access_token;
+      this.address = source.address;
+      this.addressResource = source.addressResource;
       this.callback = source.callback;
       this.fields = source.fields;
-      this.filter = source.filter;
       this.key = source.key;
-      this.maxResults = source.maxResults;
-      this.orderBy = source.orderBy;
-      this.pageToken = source.pageToken;
       this.prettyPrint = source.prettyPrint;
       this.quotaUser = source.quotaUser;
       this.region = source.region;
+      this.requestId = source.requestId;
       this.userIp = source.userIp;
     }
 
@@ -324,6 +305,24 @@ public final class ListAddressesHttpRequest implements ApiMessage {
 
     public Builder setAccessToken(String access_token) {
       this.access_token = access_token;
+      return this;
+    }
+
+    public String getAddress() {
+      return address;
+    }
+
+    public Builder setAddress(String address) {
+      this.address = address;
+      return this;
+    }
+
+    public Address getAddressResource() {
+      return addressResource;
+    }
+
+    public Builder setAddressResource(Address addressResource) {
+      this.addressResource = addressResource;
       return this;
     }
 
@@ -345,48 +344,12 @@ public final class ListAddressesHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getFilter() {
-      return filter;
-    }
-
-    public Builder setFilter(String filter) {
-      this.filter = filter;
-      return this;
-    }
-
     public String getKey() {
       return key;
     }
 
     public Builder setKey(String key) {
       this.key = key;
-      return this;
-    }
-
-    public Integer getMaxResults() {
-      return maxResults;
-    }
-
-    public Builder setMaxResults(Integer maxResults) {
-      this.maxResults = maxResults;
-      return this;
-    }
-
-    public String getOrderBy() {
-      return orderBy;
-    }
-
-    public Builder setOrderBy(String orderBy) {
-      this.orderBy = orderBy;
-      return this;
-    }
-
-    public String getPageToken() {
-      return pageToken;
-    }
-
-    public Builder setPageToken(String pageToken) {
-      this.pageToken = pageToken;
       return this;
     }
 
@@ -417,6 +380,15 @@ public final class ListAddressesHttpRequest implements ApiMessage {
       return this;
     }
 
+    public String getRequestId() {
+      return requestId;
+    }
+
+    public Builder setRequestId(String requestId) {
+      this.requestId = requestId;
+      return this;
+    }
+
     public String getUserIp() {
       return userIp;
     }
@@ -427,10 +399,8 @@ public final class ListAddressesHttpRequest implements ApiMessage {
     }
 
 
-    public ListAddressesHttpRequest build() {
+    public PatchAddressHttpRequest build() {
       String missing = "";
-
-
 
 
 
@@ -443,21 +413,21 @@ public final class ListAddressesHttpRequest implements ApiMessage {
         missing += " region";
       }
 
+
       if (!missing.isEmpty()) {
         throw new IllegalStateException("Missing required properties:" + missing);
       }
-      return new ListAddressesHttpRequest(
+      return new PatchAddressHttpRequest(
         access_token,
+        address,
+        addressResource,
         callback,
         fields,
-        filter,
         key,
-        maxResults,
-        orderBy,
-        pageToken,
         prettyPrint,
         quotaUser,
         region,
+        requestId,
         userIp
       );
     }
@@ -465,16 +435,15 @@ public final class ListAddressesHttpRequest implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setAccessToken(this.access_token);
+      newBuilder.setAddress(this.address);
+      newBuilder.setAddressResource(this.addressResource);
       newBuilder.setCallback(this.callback);
       newBuilder.setFields(this.fields);
-      newBuilder.setFilter(this.filter);
       newBuilder.setKey(this.key);
-      newBuilder.setMaxResults(this.maxResults);
-      newBuilder.setOrderBy(this.orderBy);
-      newBuilder.setPageToken(this.pageToken);
       newBuilder.setPrettyPrint(this.prettyPrint);
       newBuilder.setQuotaUser(this.quotaUser);
       newBuilder.setRegion(this.region);
+      newBuilder.setRequestId(this.requestId);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
     }
@@ -482,18 +451,17 @@ public final class ListAddressesHttpRequest implements ApiMessage {
 
   @Override
   public String toString() {
-    return "ListAddressesHttpRequest{"
+    return "PatchAddressHttpRequest{"
         + "access_token=" + access_token + ", "
+        + "address=" + address + ", "
+        + "addressResource=" + addressResource + ", "
         + "callback=" + callback + ", "
         + "fields=" + fields + ", "
-        + "filter=" + filter + ", "
         + "key=" + key + ", "
-        + "maxResults=" + maxResults + ", "
-        + "orderBy=" + orderBy + ", "
-        + "pageToken=" + pageToken + ", "
         + "prettyPrint=" + prettyPrint + ", "
         + "quotaUser=" + quotaUser + ", "
         + "region=" + region + ", "
+        + "requestId=" + requestId + ", "
         + "userIp=" + userIp
         + "}";
   }
@@ -503,20 +471,19 @@ public final class ListAddressesHttpRequest implements ApiMessage {
     if (o == this) {
       return true;
     }
-    if (o instanceof ListAddressesHttpRequest) {
-      ListAddressesHttpRequest that = (ListAddressesHttpRequest) o;
+    if (o instanceof PatchAddressHttpRequest) {
+      PatchAddressHttpRequest that = (PatchAddressHttpRequest) o;
       return
           Objects.equals(this.access_token, that.getAccessToken()) &&
+          Objects.equals(this.address, that.getAddress()) &&
+          Objects.equals(this.addressResource, that.getAddressResource()) &&
           Objects.equals(this.callback, that.getCallback()) &&
           Objects.equals(this.fields, that.getFields()) &&
-          Objects.equals(this.filter, that.getFilter()) &&
           Objects.equals(this.key, that.getKey()) &&
-          Objects.equals(this.maxResults, that.getMaxResults()) &&
-          Objects.equals(this.orderBy, that.getOrderBy()) &&
-          Objects.equals(this.pageToken, that.getPageToken()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
           Objects.equals(this.region, that.getRegion()) &&
+          Objects.equals(this.requestId, that.getRequestId()) &&
           Objects.equals(this.userIp, that.getUserIp())
           ;
     }
@@ -527,16 +494,15 @@ public final class ListAddressesHttpRequest implements ApiMessage {
   public int hashCode() {
     return Objects.hash(
       access_token,
+      address,
+      addressResource,
       callback,
       fields,
-      filter,
       key,
-      maxResults,
-      orderBy,
-      pageToken,
       prettyPrint,
       quotaUser,
       region,
+      requestId,
       userIp
     );
   }

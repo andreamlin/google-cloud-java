@@ -76,7 +76,7 @@ import org.threeten.bp.Duration;
  * <code>
  * AddressSettings.Builder addressSettingsBuilder =
  *     AddressSettings.newBuilder();
- * addressSettingsBuilder.deleteAddressSettings().getRetrySettingsBuilder()
+ * addressSettingsBuilder.deleteAddressSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * AddressSettings addressSettings = addressSettingsBuilder.build();
  * </code>
@@ -111,6 +111,13 @@ public class AddressSettings extends ClientSettings<AddressSettings> {
    */
   public PagedCallSettings<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse> listAddressesSettings() {
     return ((AddressStubSettings) getStubSettings()).listAddressesSettings();
+  }
+
+  /**
+   * Returns the object with the settings used for calls to patchAddress.
+   */
+  public UnaryCallSettings<PatchAddressHttpRequest, Operation> patchAddressSettings() {
+    return ((AddressStubSettings) getStubSettings()).patchAddressSettings();
   }
 
 
@@ -258,6 +265,13 @@ public class AddressSettings extends ClientSettings<AddressSettings> {
      */
     public PagedCallSettings.Builder<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse> listAddressesSettings() {
       return getStubSettingsBuilder().listAddressesSettings();
+    }
+
+    /**
+     * Returns the builder for the settings used for calls to patchAddress.
+     */
+    public UnaryCallSettings.Builder<PatchAddressHttpRequest, Operation> patchAddressSettings() {
+      return getStubSettingsBuilder().patchAddressSettings();
     }
 
     @Override

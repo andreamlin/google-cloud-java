@@ -50,6 +50,7 @@ import com.google.cloud.simplecompute.v1.GetAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.InsertAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.ListAddressesHttpRequest;
 import com.google.cloud.simplecompute.v1.Operation;
+import com.google.cloud.simplecompute.v1.PatchAddressHttpRequest;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -82,7 +83,7 @@ import org.threeten.bp.Duration;
  * <code>
  * AddressStubSettings.Builder addressSettingsBuilder =
  *     AddressStubSettings.newBuilder();
- * addressSettingsBuilder.deleteAddressSettings().getRetrySettingsBuilder()
+ * addressSettingsBuilder.deleteAddressSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * AddressStubSettings addressSettings = addressSettingsBuilder.build();
  * </code>
@@ -107,6 +108,7 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
   private final UnaryCallSettings<GetAddressHttpRequest, Address> getAddressSettings;
   private final UnaryCallSettings<InsertAddressHttpRequest, Operation> insertAddressSettings;
   private final PagedCallSettings<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse> listAddressesSettings;
+  private final UnaryCallSettings<PatchAddressHttpRequest, Operation> patchAddressSettings;
 
   /**
    * Returns the object with the settings used for calls to deleteAddress.
@@ -134,6 +136,13 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
    */
   public PagedCallSettings<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse> listAddressesSettings() {
     return listAddressesSettings;
+  }
+
+  /**
+   * Returns the object with the settings used for calls to patchAddress.
+   */
+  public UnaryCallSettings<PatchAddressHttpRequest, Operation> patchAddressSettings() {
+    return patchAddressSettings;
   }
 
 
@@ -232,6 +241,7 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
     getAddressSettings = settingsBuilder.getAddressSettings().build();
     insertAddressSettings = settingsBuilder.insertAddressSettings().build();
     listAddressesSettings = settingsBuilder.listAddressesSettings().build();
+    patchAddressSettings = settingsBuilder.patchAddressSettings().build();
   }
 
   private static final PagedListDescriptor<ListAddressesHttpRequest, AddressList, Address> LIST_ADDRESSES_PAGE_STR_DESC =
@@ -293,6 +303,7 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
     private final UnaryCallSettings.Builder<GetAddressHttpRequest, Address> getAddressSettings;
     private final UnaryCallSettings.Builder<InsertAddressHttpRequest, Operation> insertAddressSettings;
     private final PagedCallSettings.Builder<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse> listAddressesSettings;
+    private final UnaryCallSettings.Builder<PatchAddressHttpRequest, Operation> patchAddressSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
@@ -341,11 +352,14 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
       listAddressesSettings = PagedCallSettings.newBuilder(
           LIST_ADDRESSES_PAGE_STR_FACT);
 
+      patchAddressSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
       unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           deleteAddressSettings,
           getAddressSettings,
           insertAddressSettings,
-          listAddressesSettings
+          listAddressesSettings,
+          patchAddressSettings
       );
 
       initDefaults(this);
@@ -378,6 +392,10 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
 
+      builder.patchAddressSettings()
+          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+
       return builder;
     }
 
@@ -388,12 +406,14 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
       getAddressSettings = settings.getAddressSettings.toBuilder();
       insertAddressSettings = settings.insertAddressSettings.toBuilder();
       listAddressesSettings = settings.listAddressesSettings.toBuilder();
+      patchAddressSettings = settings.patchAddressSettings.toBuilder();
 
       unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
           deleteAddressSettings,
           getAddressSettings,
           insertAddressSettings,
-          listAddressesSettings
+          listAddressesSettings,
+          patchAddressSettings
       );
     }
 
@@ -437,6 +457,13 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
      */
     public PagedCallSettings.Builder<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse> listAddressesSettings() {
       return listAddressesSettings;
+    }
+
+    /**
+     * Returns the builder for the settings used for calls to patchAddress.
+     */
+    public UnaryCallSettings.Builder<PatchAddressHttpRequest, Operation> patchAddressSettings() {
+      return patchAddressSettings;
     }
 
     @Override

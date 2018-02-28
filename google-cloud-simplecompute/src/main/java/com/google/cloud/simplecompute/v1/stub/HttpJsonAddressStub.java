@@ -36,7 +36,9 @@ import com.google.cloud.simplecompute.v1.GetAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.InsertAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.ListAddressesHttpRequest;
 import com.google.cloud.simplecompute.v1.Operation;
+import com.google.cloud.simplecompute.v1.PatchAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.RegionName;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import java.io.IOException;
@@ -59,7 +61,8 @@ import javax.annotation.Generated;
 public class HttpJsonAddressStub extends AddressStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteAddressHttpRequest, Operation> deleteAddressMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<DeleteAddressHttpRequest, Operation> deleteAddressMethodDescriptor =
       ApiMethodDescriptor.<DeleteAddressHttpRequest, Operation>newBuilder()
           .setMethodName("compute.addresses.delete")
           .setRequestInstance(DeleteAddressHttpRequest.getDefaultInstance())
@@ -73,7 +76,8 @@ public class HttpJsonAddressStub extends AddressStub {
           .setHttpMethod(HttpMethods.DELETE)
           .setResourceNameField("address")
           .build();
-  private static final ApiMethodDescriptor<GetAddressHttpRequest, Address> getAddressMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<GetAddressHttpRequest, Address> getAddressMethodDescriptor =
       ApiMethodDescriptor.<GetAddressHttpRequest, Address>newBuilder()
           .setMethodName("compute.addresses.get")
           .setRequestInstance(GetAddressHttpRequest.getDefaultInstance())
@@ -87,7 +91,8 @@ public class HttpJsonAddressStub extends AddressStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("address")
           .build();
-  private static final ApiMethodDescriptor<InsertAddressHttpRequest, Operation> insertAddressMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<InsertAddressHttpRequest, Operation> insertAddressMethodDescriptor =
       ApiMethodDescriptor.<InsertAddressHttpRequest, Operation>newBuilder()
           .setMethodName("compute.addresses.insert")
           .setRequestInstance(InsertAddressHttpRequest.getDefaultInstance())
@@ -101,7 +106,8 @@ public class HttpJsonAddressStub extends AddressStub {
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("region")
           .build();
-  private static final ApiMethodDescriptor<ListAddressesHttpRequest, AddressList> listAddressesMethodDescriptor =
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<ListAddressesHttpRequest, AddressList> listAddressesMethodDescriptor =
       ApiMethodDescriptor.<ListAddressesHttpRequest, AddressList>newBuilder()
           .setMethodName("compute.addresses.list")
           .setRequestInstance(ListAddressesHttpRequest.getDefaultInstance())
@@ -116,6 +122,22 @@ public class HttpJsonAddressStub extends AddressStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("region")
           .build();
+  @VisibleForTesting
+  public static final ApiMethodDescriptor<PatchAddressHttpRequest, Operation> patchAddressMethodDescriptor =
+      ApiMethodDescriptor.<PatchAddressHttpRequest, Operation>newBuilder()
+          .setMethodName("compute.addresses.patch")
+          .setRequestInstance(PatchAddressHttpRequest.getDefaultInstance())
+          .setResponseInstance(Operation.getDefaultInstance())
+          .setEndpointPathTemplate("{project}/regions/{region}/addresses")
+          .setQueryParams(Sets.<String>newHashSet(
+                             "address",    "requestId"
+                             ))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.of(
+                                                                      "project", "region"
+                                                                      )))
+          .setHttpMethod(HttpMethods.PATCH)
+          .setResourceNameField("region")
+          .build();
 
   private final BackgroundResource backgroundResources;
 
@@ -124,6 +146,7 @@ public class HttpJsonAddressStub extends AddressStub {
   private final UnaryCallable<InsertAddressHttpRequest, Operation> insertAddressCallable;
   private final UnaryCallable<ListAddressesHttpRequest, AddressList> listAddressesCallable;
   private final UnaryCallable<ListAddressesHttpRequest, ListAddressesPagedResponse> listAddressesPagedCallable;
+  private final UnaryCallable<PatchAddressHttpRequest, Operation> patchAddressCallable;
 
   public static final HttpJsonAddressStub create(AddressStubSettings settings) throws IOException {
     return new HttpJsonAddressStub(settings, ClientContext.create(settings));
@@ -156,12 +179,17 @@ public class HttpJsonAddressStub extends AddressStub {
         HttpJsonCallSettings.<ListAddressesHttpRequest, AddressList>newBuilder()
             .setMethodDescriptor(listAddressesMethodDescriptor)
             .build();
+    HttpJsonCallSettings<PatchAddressHttpRequest, Operation> patchAddressTransportSettings =
+        HttpJsonCallSettings.<PatchAddressHttpRequest, Operation>newBuilder()
+            .setMethodDescriptor(patchAddressMethodDescriptor)
+            .build();
 
     this.deleteAddressCallable = HttpJsonCallableFactory.createUnaryCallable(deleteAddressTransportSettings,settings.deleteAddressSettings(), clientContext);
     this.getAddressCallable = HttpJsonCallableFactory.createUnaryCallable(getAddressTransportSettings,settings.getAddressSettings(), clientContext);
     this.insertAddressCallable = HttpJsonCallableFactory.createUnaryCallable(insertAddressTransportSettings,settings.insertAddressSettings(), clientContext);
     this.listAddressesCallable = HttpJsonCallableFactory.createUnaryCallable(listAddressesTransportSettings,settings.listAddressesSettings(), clientContext);
     this.listAddressesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listAddressesTransportSettings,settings.listAddressesSettings(), clientContext);
+    this.patchAddressCallable = HttpJsonCallableFactory.createUnaryCallable(patchAddressTransportSettings,settings.patchAddressSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }
@@ -189,6 +217,11 @@ public class HttpJsonAddressStub extends AddressStub {
   @BetaApi
   public UnaryCallable<ListAddressesHttpRequest, AddressList> listAddressesCallable() {
     return listAddressesCallable;
+  }
+
+  @BetaApi
+  public UnaryCallable<PatchAddressHttpRequest, Operation> patchAddressCallable() {
+    return patchAddressCallable;
   }
 
   @Override

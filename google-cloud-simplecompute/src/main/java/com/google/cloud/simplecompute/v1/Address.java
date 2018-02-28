@@ -22,10 +22,12 @@ import com.google.common.collect.ImmutableMap;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -79,7 +81,6 @@ public final class Address implements ApiMessage {
     this.selfLink = selfLink;
     this.status = status;
     this.users = users;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
   }
 
   @Override
@@ -113,7 +114,11 @@ public final class Address implements ApiMessage {
       fieldMap.put("status", Collections.singletonList(String.valueOf(status)));
     }
     if (fieldNames.contains("users") && users != null) {
-      fieldMap.put("users", Collections.singletonList(String.valueOf(users)));
+      List<String> stringList = new LinkedList<>();
+      for (String item : users) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("users", stringList);
     }
     return fieldMap;
   }
@@ -366,8 +371,16 @@ public final class Address implements ApiMessage {
       return users;
     }
 
-    public Builder setUsers(List<String> users) {
-      this.users = users;
+    public Builder addAllUsers(List<String> users) {
+      if (this.users == null) {
+        this.users = new LinkedList<>();
+      }
+      this.users.addAll(users);
+      return this;
+    }
+
+    public Builder addUsers(String users) {
+      this.users.add(users);
       return this;
     }
 
@@ -407,7 +420,7 @@ public final class Address implements ApiMessage {
       newBuilder.setRegion(this.region);
       newBuilder.setSelfLink(this.selfLink);
       newBuilder.setStatus(this.status);
-      newBuilder.setUsers(this.users);
+      newBuilder.addAllUsers(this.users);
       return newBuilder;
     }
   }

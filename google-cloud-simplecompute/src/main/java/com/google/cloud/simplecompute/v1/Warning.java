@@ -33,25 +33,25 @@ import javax.annotation.Nullable;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class Errors implements ApiMessage {
+public final class Warning implements ApiMessage {
   private final String code;
-  private final String location;
+  private final List<Data> data;
   private final String message;
 
-  private Errors() {
+  private Warning() {
     this.code = null;
-    this.location = null;
+    this.data = null;
     this.message = null;
   }
 
 
-  private Errors(
+  private Warning(
       String code,
-      String location,
+      List<Data> data,
       String message
       ) {
     this.code = code;
-    this.location = location;
+    this.data = data;
     this.message = message;
   }
 
@@ -61,8 +61,12 @@ public final class Errors implements ApiMessage {
     if (fieldNames.contains("code") && code != null) {
       fieldMap.put("code", Collections.singletonList(String.valueOf(code)));
     }
-    if (fieldNames.contains("location") && location != null) {
-      fieldMap.put("location", Collections.singletonList(String.valueOf(location)));
+    if (fieldNames.contains("data") && data != null) {
+      List<String> stringList = new LinkedList<>();
+      for (Data item : data) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("data", stringList);
     }
     if (fieldNames.contains("message") && message != null) {
       fieldMap.put("message", Collections.singletonList(String.valueOf(message)));
@@ -75,13 +79,13 @@ public final class Errors implements ApiMessage {
     if (fieldName.equals("code")) {
       return String.valueOf(code);
     }
-    if (fieldName.equals("location")) {
-      return String.valueOf(location);
+    if (fieldName.equals("data")) {
+      return String.valueOf(data);
     }
     if (fieldName.equals("message")) {
       return String.valueOf(message);
     }
-    throw new IOException(String.format("Field '%s' not found in Errors fields", fieldName));
+    throw new IOException(String.format("Field '%s' not found in Warning fields", fieldName));
   }
 
   @Nullable
@@ -94,8 +98,8 @@ public final class Errors implements ApiMessage {
     return code;
   }
 
-  public String getLocation() {
-    return location;
+  public List<Data> getData() {
+    return data;
   }
 
   public String getMessage() {
@@ -106,7 +110,7 @@ public final class Errors implements ApiMessage {
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(Errors prototype) {
+  public static Builder newBuilder(Warning prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -114,28 +118,28 @@ public final class Errors implements ApiMessage {
         ? new Builder() : new Builder().mergeFrom(this);
   }
 
-  public static Errors getDefaultInstance() {
+  public static Warning getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
-  private static final Errors DEFAULT_INSTANCE;
+  private static final Warning DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new Errors();
+    DEFAULT_INSTANCE = new Warning();
   }
 
   public static class Builder {
     private String code;
-    private String location;
+    private List<Data> data;
     private String message;
 
     Builder() {}
 
-    public Builder mergeFrom(Errors other) {
-      if (other == Errors.getDefaultInstance()) return this;
+    public Builder mergeFrom(Warning other) {
+      if (other == Warning.getDefaultInstance()) return this;
       if (other.getCode() != null) {
         this.code = other.code;
       }
-      if (other.getLocation() != null) {
-        this.location = other.location;
+      if (other.getData() != null) {
+        this.data = other.data;
       }
       if (other.getMessage() != null) {
         this.message = other.message;
@@ -143,9 +147,9 @@ public final class Errors implements ApiMessage {
       return this;
     }
 
-    Builder(Errors source) {
+    Builder(Warning source) {
       this.code = source.code;
-      this.location = source.location;
+      this.data = source.data;
       this.message = source.message;
     }
 
@@ -158,12 +162,20 @@ public final class Errors implements ApiMessage {
       return this;
     }
 
-    public String getLocation() {
-      return location;
+    public List<Data> getData() {
+      return data;
     }
 
-    public Builder setLocation(String location) {
-      this.location = location;
+    public Builder addAllData(List<Data> data) {
+      if (this.data == null) {
+        this.data = new LinkedList<>();
+      }
+      this.data.addAll(data);
+      return this;
+    }
+
+    public Builder addData(Data data) {
+      this.data.add(data);
       return this;
     }
 
@@ -177,12 +189,12 @@ public final class Errors implements ApiMessage {
     }
 
 
-    public Errors build() {
+    public Warning build() {
 
 
-      return new Errors(
+      return new Warning(
         code,
-        location,
+        data,
         message
       );
     }
@@ -190,7 +202,7 @@ public final class Errors implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setCode(this.code);
-      newBuilder.setLocation(this.location);
+      newBuilder.addAllData(this.data);
       newBuilder.setMessage(this.message);
       return newBuilder;
     }
@@ -198,9 +210,9 @@ public final class Errors implements ApiMessage {
 
   @Override
   public String toString() {
-    return "Errors{"
+    return "Warning{"
         + "code=" + code + ", "
-        + "location=" + location + ", "
+        + "data=" + data + ", "
         + "message=" + message
         + "}";
   }
@@ -210,11 +222,11 @@ public final class Errors implements ApiMessage {
     if (o == this) {
       return true;
     }
-    if (o instanceof Errors) {
-      Errors that = (Errors) o;
+    if (o instanceof Warning) {
+      Warning that = (Warning) o;
       return
           Objects.equals(this.code, that.getCode()) &&
-          Objects.equals(this.location, that.getLocation()) &&
+          Objects.equals(this.data, that.getData()) &&
           Objects.equals(this.message, that.getMessage())
           ;
     }
@@ -225,7 +237,7 @@ public final class Errors implements ApiMessage {
   public int hashCode() {
     return Objects.hash(
       code,
-      location,
+      data,
       message
     );
   }

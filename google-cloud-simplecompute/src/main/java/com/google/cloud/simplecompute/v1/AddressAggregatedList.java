@@ -33,34 +33,38 @@ import javax.annotation.Nullable;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class AddressList implements ApiMessage {
+public final class AddressAggregatedList implements ApiMessage {
   private final String id;
-  private final List<Address> items;
+  private final AddressesScopedList items;
   private final String kind;
   private final String nextPageToken;
   private final String selfLink;
+  private final Warning warning;
 
-  private AddressList() {
+  private AddressAggregatedList() {
     this.id = null;
     this.items = null;
     this.kind = null;
     this.nextPageToken = null;
     this.selfLink = null;
+    this.warning = null;
   }
 
 
-  private AddressList(
+  private AddressAggregatedList(
       String id,
-      List<Address> items,
+      AddressesScopedList items,
       String kind,
       String nextPageToken,
-      String selfLink
+      String selfLink,
+      Warning warning
       ) {
     this.id = id;
     this.items = items;
     this.kind = kind;
     this.nextPageToken = nextPageToken;
     this.selfLink = selfLink;
+    this.warning = warning;
   }
 
   @Override
@@ -70,11 +74,7 @@ public final class AddressList implements ApiMessage {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
     }
     if (fieldNames.contains("items") && items != null) {
-      List<String> stringList = new LinkedList<>();
-      for (Address item : items) {
-        stringList.add(item.toString());
-      }
-      fieldMap.put("items", stringList);
+      fieldMap.put("items", Collections.singletonList(String.valueOf(items)));
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -84,6 +84,9 @@ public final class AddressList implements ApiMessage {
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
+    }
+    if (fieldNames.contains("warning") && warning != null) {
+      fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
     }
     return fieldMap;
   }
@@ -105,7 +108,10 @@ public final class AddressList implements ApiMessage {
     if (fieldName.equals("selfLink")) {
       return String.valueOf(selfLink);
     }
-    throw new IOException(String.format("Field '%s' not found in AddressList fields", fieldName));
+    if (fieldName.equals("warning")) {
+      return String.valueOf(warning);
+    }
+    throw new IOException(String.format("Field '%s' not found in AddressAggregatedList fields", fieldName));
   }
 
   @Nullable
@@ -118,7 +124,7 @@ public final class AddressList implements ApiMessage {
     return id;
   }
 
-  public List<Address> getItems() {
+  public AddressesScopedList getItems() {
     return items;
   }
 
@@ -134,11 +140,15 @@ public final class AddressList implements ApiMessage {
     return selfLink;
   }
 
+  public Warning getWarning() {
+    return warning;
+  }
+
 
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(AddressList prototype) {
+  public static Builder newBuilder(AddressAggregatedList prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -146,25 +156,26 @@ public final class AddressList implements ApiMessage {
         ? new Builder() : new Builder().mergeFrom(this);
   }
 
-  public static AddressList getDefaultInstance() {
+  public static AddressAggregatedList getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
-  private static final AddressList DEFAULT_INSTANCE;
+  private static final AddressAggregatedList DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new AddressList();
+    DEFAULT_INSTANCE = new AddressAggregatedList();
   }
 
   public static class Builder {
     private String id;
-    private List<Address> items;
+    private AddressesScopedList items;
     private String kind;
     private String nextPageToken;
     private String selfLink;
+    private Warning warning;
 
     Builder() {}
 
-    public Builder mergeFrom(AddressList other) {
-      if (other == AddressList.getDefaultInstance()) return this;
+    public Builder mergeFrom(AddressAggregatedList other) {
+      if (other == AddressAggregatedList.getDefaultInstance()) return this;
       if (other.getId() != null) {
         this.id = other.id;
       }
@@ -180,15 +191,19 @@ public final class AddressList implements ApiMessage {
       if (other.getSelfLink() != null) {
         this.selfLink = other.selfLink;
       }
+      if (other.getWarning() != null) {
+        this.warning = other.warning;
+      }
       return this;
     }
 
-    Builder(AddressList source) {
+    Builder(AddressAggregatedList source) {
       this.id = source.id;
       this.items = source.items;
       this.kind = source.kind;
       this.nextPageToken = source.nextPageToken;
       this.selfLink = source.selfLink;
+      this.warning = source.warning;
     }
 
     public String getId() {
@@ -200,20 +215,12 @@ public final class AddressList implements ApiMessage {
       return this;
     }
 
-    public List<Address> getItems() {
+    public AddressesScopedList getItems() {
       return items;
     }
 
-    public Builder addAllItems(List<Address> items) {
-      if (this.items == null) {
-        this.items = new LinkedList<>();
-      }
-      this.items.addAll(items);
-      return this;
-    }
-
-    public Builder addItems(Address items) {
-      this.items.add(items);
+    public Builder setItems(AddressesScopedList items) {
+      this.items = items;
       return this;
     }
 
@@ -244,40 +251,53 @@ public final class AddressList implements ApiMessage {
       return this;
     }
 
+    public Warning getWarning() {
+      return warning;
+    }
 
-    public AddressList build() {
+    public Builder setWarning(Warning warning) {
+      this.warning = warning;
+      return this;
+    }
+
+
+    public AddressAggregatedList build() {
 
 
 
 
-      return new AddressList(
+
+      return new AddressAggregatedList(
         id,
         items,
         kind,
         nextPageToken,
-        selfLink
+        selfLink,
+        warning
       );
     }
 
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setId(this.id);
-      newBuilder.addAllItems(this.items);
+      newBuilder.setItems(this.items);
       newBuilder.setKind(this.kind);
       newBuilder.setNextPageToken(this.nextPageToken);
       newBuilder.setSelfLink(this.selfLink);
+      newBuilder.setWarning(this.warning);
       return newBuilder;
     }
   }
 
   @Override
   public String toString() {
-    return "AddressList{"
+    return "AddressAggregatedList{"
         + "id=" + id + ", "
         + "items=" + items + ", "
         + "kind=" + kind + ", "
         + "nextPageToken=" + nextPageToken + ", "
-        + "selfLink=" + selfLink
+        + "selfLink=" + selfLink + ", "
+        + "warning=" + warning
         + "}";
   }
 
@@ -286,14 +306,15 @@ public final class AddressList implements ApiMessage {
     if (o == this) {
       return true;
     }
-    if (o instanceof AddressList) {
-      AddressList that = (AddressList) o;
+    if (o instanceof AddressAggregatedList) {
+      AddressAggregatedList that = (AddressAggregatedList) o;
       return
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.items, that.getItems()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.nextPageToken, that.getNextPageToken()) &&
-          Objects.equals(this.selfLink, that.getSelfLink())
+          Objects.equals(this.selfLink, that.getSelfLink()) &&
+          Objects.equals(this.warning, that.getWarning())
           ;
     }
     return false;
@@ -306,7 +327,8 @@ public final class AddressList implements ApiMessage {
       items,
       kind,
       nextPageToken,
-      selfLink
+      selfLink,
+      warning
     );
   }
 }
