@@ -19,7 +19,7 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
 import com.google.api.gax.httpjson.ResourceNameStruct;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -116,6 +116,41 @@ public final class Address implements ApiMessage {
       fieldMap.put("users", Collections.singletonList(String.valueOf(users)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public String getFieldStringValue(String fieldName) throws IOException {
+    if (fieldName.equals("address")) {
+      return String.valueOf(address);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("region")) {
+      return String.valueOf(region);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("status")) {
+      return String.valueOf(status);
+    }
+    if (fieldName.equals("users")) {
+      return String.valueOf(users);
+    }
+    throw new IOException(String.format("Field '%s' not found in Address fields", fieldName));
   }
 
   @Nullable

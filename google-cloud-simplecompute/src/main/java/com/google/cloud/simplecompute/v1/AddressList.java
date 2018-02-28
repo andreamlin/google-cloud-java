@@ -19,7 +19,7 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
 import com.google.api.gax.httpjson.ResourceNameStruct;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -81,6 +81,26 @@ public final class AddressList implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public String getFieldStringValue(String fieldName) throws IOException {
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("items")) {
+      return String.valueOf(items);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("nextPageToken")) {
+      return String.valueOf(nextPageToken);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    throw new IOException(String.format("Field '%s' not found in AddressList fields", fieldName));
   }
 
   @Nullable

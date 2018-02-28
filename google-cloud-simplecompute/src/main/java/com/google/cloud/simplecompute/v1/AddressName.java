@@ -29,7 +29,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import javax.annotation.Generated;
-import javax.annotation.Nullable;
 
 @Generated("by GAPIC")
 @BetaApi
@@ -40,11 +39,11 @@ public final class AddressName implements ResourceNameStruct {
   private static final PathTemplate PATH_TEMPLATE =
         PathTemplate.createWithoutUrlEncoding("projects/{project}/regions/{region}/addresses/{address}");
 
+  private volatile Map<String, String> fieldValuesMap;
+
   public static Builder newBuilder() {
     return new Builder();
   }
-
-  private volatile Map<String, String> fieldMap;
 
   public Builder toBuilder() {
     return new Builder(this);
@@ -95,17 +94,20 @@ public final class AddressName implements ResourceNameStruct {
 
 
   @Override
-  public Map<String, String> getFieldValues() {
-    if (fieldMap != null) {
-      return fieldMap;
+  public Map<String, String> getFieldValuesMap() {
+    if (fieldValuesMap != null) {
+      return fieldValuesMap;
     }
     ImmutableMap.Builder<String, String> fieldMapBuilder = ImmutableMap.builder();
     fieldMapBuilder.put("address", address);
     fieldMapBuilder.put("project", project);
     fieldMapBuilder.put("region", region);
+    fieldValuesMap = fieldMapBuilder.build();
+    return fieldValuesMap;
+  }
 
-    fieldMap = fieldMapBuilder.build();
-    return fieldMap;
+  public String getFieldValue(String fieldName) {
+    return getFieldValuesMap().get(fieldName);
   }
 
   @Override

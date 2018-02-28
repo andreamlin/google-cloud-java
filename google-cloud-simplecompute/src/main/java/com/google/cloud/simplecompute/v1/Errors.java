@@ -19,7 +19,7 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
 import com.google.api.gax.httpjson.ResourceNameStruct;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -67,6 +67,20 @@ public final class Errors implements ApiMessage {
       fieldMap.put("message", Collections.singletonList(String.valueOf(message)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public String getFieldStringValue(String fieldName) throws IOException {
+    if (fieldName.equals("code")) {
+      return String.valueOf(code);
+    }
+    if (fieldName.equals("location")) {
+      return String.valueOf(location);
+    }
+    if (fieldName.equals("message")) {
+      return String.valueOf(message);
+    }
+    throw new IOException(String.format("Field '%s' not found in Errors fields", fieldName));
   }
 
   @Nullable

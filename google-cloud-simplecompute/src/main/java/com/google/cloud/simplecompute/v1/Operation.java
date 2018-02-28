@@ -19,7 +19,7 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
 import com.google.api.gax.httpjson.ResourceNameStruct;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -207,6 +207,80 @@ public final class Operation implements ApiMessage {
       fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
     }
     return fieldMap;
+  }
+
+  @Override
+  public String getFieldStringValue(String fieldName) throws IOException {
+    if (fieldName.equals("clientOperationId")) {
+      return String.valueOf(clientOperationId);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("endTime")) {
+      return String.valueOf(endTime);
+    }
+    if (fieldName.equals("error")) {
+      return String.valueOf(error);
+    }
+    if (fieldName.equals("httpErrorMessage")) {
+      return String.valueOf(httpErrorMessage);
+    }
+    if (fieldName.equals("httpErrorStatusCode")) {
+      return String.valueOf(httpErrorStatusCode);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("insertTime")) {
+      return String.valueOf(insertTime);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("operationType")) {
+      return String.valueOf(operationType);
+    }
+    if (fieldName.equals("progress")) {
+      return String.valueOf(progress);
+    }
+    if (fieldName.equals("region")) {
+      return String.valueOf(region);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("startTime")) {
+      return String.valueOf(startTime);
+    }
+    if (fieldName.equals("status")) {
+      return String.valueOf(status);
+    }
+    if (fieldName.equals("statusMessage")) {
+      return String.valueOf(statusMessage);
+    }
+    if (fieldName.equals("targetId")) {
+      return String.valueOf(targetId);
+    }
+    if (fieldName.equals("targetLink")) {
+      return String.valueOf(targetLink);
+    }
+    if (fieldName.equals("user")) {
+      return String.valueOf(user);
+    }
+    if (fieldName.equals("warnings")) {
+      return String.valueOf(warnings);
+    }
+    if (fieldName.equals("zone")) {
+      return String.valueOf(zone);
+    }
+    throw new IOException(String.format("Field '%s' not found in Operation fields", fieldName));
   }
 
   @Nullable
