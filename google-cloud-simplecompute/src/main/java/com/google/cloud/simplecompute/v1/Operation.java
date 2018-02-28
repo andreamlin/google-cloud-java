@@ -22,12 +22,10 @@ import com.google.common.collect.ImmutableMap;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -133,6 +131,7 @@ public final class Operation implements ApiMessage {
     this.user = user;
     this.warnings = warnings;
     this.zone = zone;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
   }
 
   @Override
@@ -202,11 +201,7 @@ public final class Operation implements ApiMessage {
       fieldMap.put("user", Collections.singletonList(String.valueOf(user)));
     }
     if (fieldNames.contains("warnings") && warnings != null) {
-      List<String> stringList = new LinkedList<>();
-      for (Warnings item : warnings) {
-        stringList.add(item.toString());
-      }
-      fieldMap.put("warnings", stringList);
+      fieldMap.put("warnings", Collections.singletonList(String.valueOf(warnings)));
     }
     if (fieldNames.contains("zone") && zone != null) {
       fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
@@ -726,16 +721,8 @@ public final class Operation implements ApiMessage {
       return warnings;
     }
 
-    public Builder addAllWarnings(List<Warnings> warnings) {
-      if (this.warnings == null) {
-        this.warnings = new LinkedList<>();
-      }
-      this.warnings.addAll(warnings);
-      return this;
-    }
-
-    public Builder addWarnings(Warnings warnings) {
-      this.warnings.add(warnings);
+    public Builder setWarnings(List<Warnings> warnings) {
+      this.warnings = warnings;
       return this;
     }
 
@@ -822,7 +809,7 @@ public final class Operation implements ApiMessage {
       newBuilder.setTargetId(this.targetId);
       newBuilder.setTargetLink(this.targetLink);
       newBuilder.setUser(this.user);
-      newBuilder.addAllWarnings(this.warnings);
+      newBuilder.setWarnings(this.warnings);
       newBuilder.setZone(this.zone);
       return newBuilder;
     }

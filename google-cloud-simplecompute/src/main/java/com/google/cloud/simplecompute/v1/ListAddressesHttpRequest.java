@@ -21,7 +21,6 @@ import com.google.common.collect.ImmutableMap;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -87,6 +86,10 @@ public final class ListAddressesHttpRequest implements ApiMessage {
     this.quotaUser = quotaUser;
     this.region = region;
     this.userIp = userIp;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
+    RegionName resourceName = RegionName.parse(region);
+    mapBuilder.put("project", resourceName.getProject());
+    mapBuilder.put("region", resourceName.getRegion());
   }
 
   @Override

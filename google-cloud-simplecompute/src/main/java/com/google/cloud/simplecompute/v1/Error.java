@@ -22,12 +22,10 @@ import com.google.common.collect.ImmutableMap;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -45,17 +43,14 @@ public final class Error implements ApiMessage {
       List<Errors> errors
       ) {
     this.errors = errors;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
   }
 
   @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("errors") && errors != null) {
-      List<String> stringList = new LinkedList<>();
-      for (Errors item : errors) {
-        stringList.add(item.toString());
-      }
-      fieldMap.put("errors", stringList);
+      fieldMap.put("errors", Collections.singletonList(String.valueOf(errors)));
     }
     return fieldMap;
   }
@@ -119,16 +114,8 @@ public final class Error implements ApiMessage {
       return errors;
     }
 
-    public Builder addAllErrors(List<Errors> errors) {
-      if (this.errors == null) {
-        this.errors = new LinkedList<>();
-      }
-      this.errors.addAll(errors);
-      return this;
-    }
-
-    public Builder addErrors(Errors errors) {
-      this.errors.add(errors);
+    public Builder setErrors(List<Errors> errors) {
+      this.errors = errors;
       return this;
     }
 
@@ -141,7 +128,7 @@ public final class Error implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.addAllErrors(this.errors);
+      newBuilder.setErrors(this.errors);
       return newBuilder;
     }
   }

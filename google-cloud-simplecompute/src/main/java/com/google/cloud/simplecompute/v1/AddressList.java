@@ -22,12 +22,10 @@ import com.google.common.collect.ImmutableMap;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -61,6 +59,7 @@ public final class AddressList implements ApiMessage {
     this.kind = kind;
     this.nextPageToken = nextPageToken;
     this.selfLink = selfLink;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
   }
 
   @Override
@@ -70,11 +69,7 @@ public final class AddressList implements ApiMessage {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
     }
     if (fieldNames.contains("items") && items != null) {
-      List<String> stringList = new LinkedList<>();
-      for (Address item : items) {
-        stringList.add(item.toString());
-      }
-      fieldMap.put("items", stringList);
+      fieldMap.put("items", Collections.singletonList(String.valueOf(items)));
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -204,16 +199,8 @@ public final class AddressList implements ApiMessage {
       return items;
     }
 
-    public Builder addAllItems(List<Address> items) {
-      if (this.items == null) {
-        this.items = new LinkedList<>();
-      }
-      this.items.addAll(items);
-      return this;
-    }
-
-    public Builder addItems(Address items) {
-      this.items.add(items);
+    public Builder setItems(List<Address> items) {
+      this.items = items;
       return this;
     }
 
@@ -262,7 +249,7 @@ public final class AddressList implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setId(this.id);
-      newBuilder.addAllItems(this.items);
+      newBuilder.setItems(this.items);
       newBuilder.setKind(this.kind);
       newBuilder.setNextPageToken(this.nextPageToken);
       newBuilder.setSelfLink(this.selfLink);

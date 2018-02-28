@@ -85,13 +85,16 @@ public final class RegionName implements ResourceNameStruct {
 
   @Override
   public Map<String, String> getFieldValuesMap() {
-    if (fieldValuesMap != null) {
-      return fieldValuesMap;
+    if (fieldValuesMap == null) {
+      synchronized (this) {
+        if (fieldValuesMap == null) {
+          ImmutableMap.Builder<String, String> fieldMapBuilder = ImmutableMap.builder();
+          fieldMapBuilder.put("project", project);
+          fieldMapBuilder.put("region", region);
+          fieldValuesMap = fieldMapBuilder.build();
+        }
+      }
     }
-    ImmutableMap.Builder<String, String> fieldMapBuilder = ImmutableMap.builder();
-    fieldMapBuilder.put("project", project);
-    fieldMapBuilder.put("region", region);
-    fieldValuesMap = fieldMapBuilder.build();
     return fieldValuesMap;
   }
 
