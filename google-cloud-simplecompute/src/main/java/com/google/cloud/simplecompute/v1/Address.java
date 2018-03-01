@@ -118,7 +118,7 @@ public final class Address implements ApiMessage {
   }
 
   @Override
-  public String getFieldStringValue(String fieldName) throws IOException {
+  public String getFieldStringValue(String fieldName) {
     if (fieldName.equals("address")) {
       return String.valueOf(address);
     }
@@ -149,7 +149,7 @@ public final class Address implements ApiMessage {
     if (fieldName.equals("users")) {
       return String.valueOf(users);
     }
-    throw new IOException(String.format("Field '%s' not found in Address fields", fieldName));
+    return null;
   }
 
   @Nullable

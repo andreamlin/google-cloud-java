@@ -209,7 +209,7 @@ public final class Operation implements ApiMessage {
   }
 
   @Override
-  public String getFieldStringValue(String fieldName) throws IOException {
+  public String getFieldStringValue(String fieldName) {
     if (fieldName.equals("clientOperationId")) {
       return String.valueOf(clientOperationId);
     }
@@ -279,7 +279,7 @@ public final class Operation implements ApiMessage {
     if (fieldName.equals("zone")) {
       return String.valueOf(zone);
     }
-    throw new IOException(String.format("Field '%s' not found in Operation fields", fieldName));
+    return null;
   }
 
   @Nullable

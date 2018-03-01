@@ -108,7 +108,7 @@ public final class GetAddressHttpRequest implements ApiMessage {
   }
 
   @Override
-  public String getFieldStringValue(String fieldName) throws IOException {
+  public String getFieldStringValue(String fieldName) {
     if (fieldName.equals("access_token")) {
       return String.valueOf(access_token);
     }
@@ -133,7 +133,7 @@ public final class GetAddressHttpRequest implements ApiMessage {
     if (fieldName.equals("userIp")) {
       return String.valueOf(userIp);
     }
-    throw new IOException(String.format("Field '%s' not found in GetAddressHttpRequest fields", fieldName));
+    return null;
   }
 
   @Nullable

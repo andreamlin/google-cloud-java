@@ -83,7 +83,7 @@ public final class AddressList implements ApiMessage {
   }
 
   @Override
-  public String getFieldStringValue(String fieldName) throws IOException {
+  public String getFieldStringValue(String fieldName) {
     if (fieldName.equals("id")) {
       return String.valueOf(id);
     }
@@ -99,7 +99,7 @@ public final class AddressList implements ApiMessage {
     if (fieldName.equals("selfLink")) {
       return String.valueOf(selfLink);
     }
-    throw new IOException(String.format("Field '%s' not found in AddressList fields", fieldName));
+    return null;
   }
 
   @Nullable

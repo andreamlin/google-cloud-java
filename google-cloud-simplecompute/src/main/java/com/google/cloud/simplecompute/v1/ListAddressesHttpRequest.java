@@ -135,7 +135,7 @@ public final class ListAddressesHttpRequest implements ApiMessage {
   }
 
   @Override
-  public String getFieldStringValue(String fieldName) throws IOException {
+  public String getFieldStringValue(String fieldName) {
     if (fieldName.equals("access_token")) {
       return String.valueOf(access_token);
     }
@@ -172,7 +172,7 @@ public final class ListAddressesHttpRequest implements ApiMessage {
     if (fieldName.equals("userIp")) {
       return String.valueOf(userIp);
     }
-    throw new IOException(String.format("Field '%s' not found in ListAddressesHttpRequest fields", fieldName));
+    return null;
   }
 
   @Nullable

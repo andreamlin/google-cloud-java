@@ -62,14 +62,14 @@ public final class Data implements ApiMessage {
   }
 
   @Override
-  public String getFieldStringValue(String fieldName) throws IOException {
+  public String getFieldStringValue(String fieldName) {
     if (fieldName.equals("key")) {
       return String.valueOf(key);
     }
     if (fieldName.equals("value")) {
       return String.valueOf(value);
     }
-    throw new IOException(String.format("Field '%s' not found in Data fields", fieldName));
+    return null;
   }
 
   @Nullable

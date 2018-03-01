@@ -55,11 +55,11 @@ public final class Error implements ApiMessage {
   }
 
   @Override
-  public String getFieldStringValue(String fieldName) throws IOException {
+  public String getFieldStringValue(String fieldName) {
     if (fieldName.equals("errors")) {
       return String.valueOf(errors);
     }
-    throw new IOException(String.format("Field '%s' not found in Error fields", fieldName));
+    return null;
   }
 
   @Nullable

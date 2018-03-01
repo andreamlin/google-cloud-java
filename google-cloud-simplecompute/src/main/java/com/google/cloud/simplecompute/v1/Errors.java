@@ -69,7 +69,7 @@ public final class Errors implements ApiMessage {
   }
 
   @Override
-  public String getFieldStringValue(String fieldName) throws IOException {
+  public String getFieldStringValue(String fieldName) {
     if (fieldName.equals("code")) {
       return String.valueOf(code);
     }
@@ -79,7 +79,7 @@ public final class Errors implements ApiMessage {
     if (fieldName.equals("message")) {
       return String.valueOf(message);
     }
-    throw new IOException(String.format("Field '%s' not found in Errors fields", fieldName));
+    return null;
   }
 
   @Nullable
