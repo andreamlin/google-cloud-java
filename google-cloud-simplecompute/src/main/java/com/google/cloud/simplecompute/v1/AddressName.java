@@ -16,9 +16,8 @@
 package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
-import com.google.api.gax.httpjson.ResourceNameStruct;
 import com.google.api.pathtemplate.PathTemplate;
-import com.google.api.resourcenames.ResourceNameType;
+import com.google.api.resourcenames.ResourceName;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import java.io.IOException;
@@ -32,7 +31,7 @@ import javax.annotation.Generated;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class AddressName implements ResourceNameStruct {
+public final class AddressName implements ResourceName {
   private final String address;
   private final String project;
   private final String region;
@@ -130,11 +129,6 @@ public final class AddressName implements ResourceNameStruct {
 
   public static boolean isParsableFrom(String formattedString) {
     return PATH_TEMPLATE.matches(formattedString);
-  }
-
-  @Override
-  public ResourceNameType getType() {
-    return AddressNameType.instance();
   }
 
   public static class Builder {

@@ -17,7 +17,6 @@ package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.gax.httpjson.ResourceNameStruct;
 import com.google.common.collect.ImmutableMap;
 import java.io.IOException;
 import java.util.Collections;

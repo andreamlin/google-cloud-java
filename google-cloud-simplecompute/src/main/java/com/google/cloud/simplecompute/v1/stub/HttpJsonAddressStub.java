@@ -67,9 +67,7 @@ public class HttpJsonAddressStub extends AddressStub {
           .setEndpointPathTemplate("{project}/regions/{region}/addresses/{address}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(AddressName.of(
-                                                                      "address", "project", "region"
-                                                                      )))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(new AddressNameFactory()))
           .setHttpMethod(HttpMethods.DELETE)
           .setResourceNameField("address")
           .build();
@@ -81,9 +79,7 @@ public class HttpJsonAddressStub extends AddressStub {
           .setEndpointPathTemplate("{project}/regions/{region}/addresses/{address}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(AddressName.of(
-                                                                      "address", "project", "region"
-                                                                      )))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(new AddressNameFactory()))
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("address")
           .build();
@@ -95,9 +91,7 @@ public class HttpJsonAddressStub extends AddressStub {
           .setEndpointPathTemplate("{project}/regions/{region}/addresses")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.of(
-                                                                      "project", "region"
-                                                                      )))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(new RegionNameFactory()))
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("region")
           .build();
@@ -110,9 +104,7 @@ public class HttpJsonAddressStub extends AddressStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.of(
-                                                                      "project", "region"
-                                                                      )))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(new RegionNameFactory()))
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("region")
           .build();
