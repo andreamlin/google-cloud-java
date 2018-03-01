@@ -116,7 +116,7 @@ public final class AddressName implements ResourceName {
 
   public static ResourceNameFactory<AddressName> newFactory() {
     return new ResourceNameFactory<AddressName>() {
-      public AddressName parseFrom(String formattedString) {return AddressName.parse(formattedString);}
+      public AddressName parse(String formattedString) {return AddressName.parse(formattedString);}
     };
   }
 

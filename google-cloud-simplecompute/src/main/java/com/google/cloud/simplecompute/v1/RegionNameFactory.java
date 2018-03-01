@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 @BetaApi
 public final class RegionNameFactory implements ResourceNameFactory {
   @Override
-  public RegionName parseFrom(String formattedString) {
+  public RegionName parse(String formattedString) {
     return RegionName.parse(formattedString);
   }
 }

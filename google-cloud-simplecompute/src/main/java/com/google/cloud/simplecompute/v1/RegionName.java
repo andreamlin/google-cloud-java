@@ -105,7 +105,7 @@ public final class RegionName implements ResourceName {
 
   public static ResourceNameFactory<RegionName> newFactory() {
     return new ResourceNameFactory<RegionName>() {
-      public RegionName parseFrom(String formattedString) {return RegionName.parse(formattedString);}
+      public RegionName parse(String formattedString) {return RegionName.parse(formattedString);}
     };
   }
 

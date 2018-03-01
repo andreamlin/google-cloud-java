@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 @BetaApi
 public final class AddressNameFactory implements ResourceNameFactory {
   @Override
-  public AddressName parseFrom(String formattedString) {
+  public AddressName parse(String formattedString) {
     return AddressName.parse(formattedString);
   }
 }
