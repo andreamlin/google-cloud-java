@@ -18,6 +18,7 @@ package com.google.cloud.simplecompute.v1;
 import com.google.api.core.BetaApi;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.api.resourcenames.ResourceName;
+import com.google.api.resourcenames.ResourceNameFactory;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import java.io.IOException;
@@ -101,9 +102,11 @@ public final class RegionName implements ResourceName {
     return getFieldValuesMap().get(fieldName);
   }
 
-  @Override
-  public RegionName parseFrom(String formattedString) {
-    return RegionName.parse(formattedString);
+
+  public static ResourceNameFactory<RegionName> newFactory() {
+    return new ResourceNameFactory<RegionName>() {
+      public RegionName parseFrom(String formattedString) {return RegionName.parse(formattedString);}
+    };
   }
 
   public static RegionName parse(String formattedString) {

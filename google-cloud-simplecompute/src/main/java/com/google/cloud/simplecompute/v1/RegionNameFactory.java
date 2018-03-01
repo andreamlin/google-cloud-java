@@ -15,7 +15,9 @@
  */
 package com.google.cloud.simplecompute.v1;
 
+import com.google.api.core.BetaApi;
 import com.google.api.resourcenames.ResourceNameFactory;
+import javax.annotation.Generated;
 
 @Generated("by GAPIC")
 @BetaApi
