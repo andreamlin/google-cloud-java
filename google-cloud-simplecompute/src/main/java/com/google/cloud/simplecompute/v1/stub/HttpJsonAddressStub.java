@@ -30,7 +30,6 @@ import com.google.cloud.simplecompute.v1.Address;
 import static com.google.cloud.simplecompute.v1.AddressClient.ListAddressesPagedResponse;
 import com.google.cloud.simplecompute.v1.AddressList;
 import com.google.cloud.simplecompute.v1.AddressName;
-import com.google.cloud.simplecompute.v1.AddressNameFactory;
 import com.google.cloud.simplecompute.v1.AddressSettings;
 import com.google.cloud.simplecompute.v1.DeleteAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.GetAddressHttpRequest;
@@ -38,7 +37,6 @@ import com.google.cloud.simplecompute.v1.InsertAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.ListAddressesHttpRequest;
 import com.google.cloud.simplecompute.v1.Operation;
 import com.google.cloud.simplecompute.v1.RegionName;
-import com.google.cloud.simplecompute.v1.RegionNameFactory;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import java.io.IOException;
@@ -69,7 +67,7 @@ public class HttpJsonAddressStub extends AddressStub {
           .setEndpointPathTemplate("{project}/regions/{region}/addresses/{address}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(new AddressNameFactory()))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(Address.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
           .setResourceNameField("address")
           .build();
@@ -81,7 +79,7 @@ public class HttpJsonAddressStub extends AddressStub {
           .setEndpointPathTemplate("{project}/regions/{region}/addresses/{address}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(new AddressNameFactory()))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(Address.newFactory()))
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("address")
           .build();
@@ -93,7 +91,7 @@ public class HttpJsonAddressStub extends AddressStub {
           .setEndpointPathTemplate("{project}/regions/{region}/addresses")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(new RegionNameFactory()))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(Region.newFactory()))
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("region")
           .build();
@@ -106,7 +104,7 @@ public class HttpJsonAddressStub extends AddressStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(new RegionNameFactory()))
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(Region.newFactory()))
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("region")
           .build();
