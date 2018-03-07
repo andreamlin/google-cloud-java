@@ -47,16 +47,18 @@
     <dependency>
       <groupId>com.google.api</groupId>
       <artifactId>gax-httpjson</artifactId>
-      <version>${gax-httpjson.version}</version>
-      <scope>system</scope>
-      <systemPath>/usr/local/google/home/andrealin/Documents/git/veneer/gax-java/gax-httpjson/build/libs/gax-httpjson-0.36.0.jar</systemPath>
+      <version>0.36.0</version>
     </dependency>
     <dependency>
       <groupId>com.google.api</groupId>
       <artifactId>gax</artifactId>
       <version>${gax.version}</version>
-      <scope>system</scope>
-      <systemPath>/usr/local/google/home/andrealin/Documents/git/veneer/gax-java/gax/build/libs/gax-1.19.0.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>com.google.api</groupId>
+      <artifactId>gax</artifactId>
+      <version>${gax.version}</version>
+      <classifier>testlib</classifier>
     </dependency>
 
 
