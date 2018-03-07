@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -51,7 +49,6 @@ public final class Instance implements ApiMessage {
   private final String statusMessage;
   private final Tags tags;
   private final String zone;
-  private final Map<String, String> pathParams;
 
   private Instance() {
     this.canIpForward = null;
@@ -72,7 +69,6 @@ public final class Instance implements ApiMessage {
     this.statusMessage = null;
     this.tags = null;
     this.zone = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -114,8 +110,6 @@ public final class Instance implements ApiMessage {
     this.statusMessage = statusMessage;
     this.tags = tags;
     this.zone = zone;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -134,7 +128,11 @@ public final class Instance implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("disks") && disks != null) {
-      fieldMap.put("disks", disks.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (AttachedDisk item : disks) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("disks", stringList);
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -152,7 +150,11 @@ public final class Instance implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("networkInterfaces") && networkInterfaces != null) {
-      fieldMap.put("networkInterfaces", networkInterfaces.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (NetworkInterface item : networkInterfaces) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("networkInterfaces", stringList);
     }
     if (fieldNames.contains("scheduling") && scheduling != null) {
       fieldMap.put("scheduling", Collections.singletonList(String.valueOf(scheduling)));
@@ -161,7 +163,11 @@ public final class Instance implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("serviceAccounts") && serviceAccounts != null) {
-      fieldMap.put("serviceAccounts", serviceAccounts.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (ServiceAccount item : serviceAccounts) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("serviceAccounts", stringList);
     }
     if (fieldNames.contains("status") && status != null) {
       fieldMap.put("status", Collections.singletonList(String.valueOf(status)));
@@ -179,8 +185,62 @@ public final class Instance implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("canIpForward")) {
+      return String.valueOf(canIpForward);
+    }
+    if (fieldName.equals("cpuPlatform")) {
+      return String.valueOf(cpuPlatform);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("disks")) {
+      return String.valueOf(disks);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("machineType")) {
+      return String.valueOf(machineType);
+    }
+    if (fieldName.equals("metadata")) {
+      return String.valueOf(metadata);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("networkInterfaces")) {
+      return String.valueOf(networkInterfaces);
+    }
+    if (fieldName.equals("scheduling")) {
+      return String.valueOf(scheduling);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("serviceAccounts")) {
+      return String.valueOf(serviceAccounts);
+    }
+    if (fieldName.equals("status")) {
+      return String.valueOf(status);
+    }
+    if (fieldName.equals("statusMessage")) {
+      return String.valueOf(statusMessage);
+    }
+    if (fieldName.equals("tags")) {
+      return String.valueOf(tags);
+    }
+    if (fieldName.equals("zone")) {
+      return String.valueOf(zone);
+    }
+    return null;
   }
 
   @Nullable
@@ -424,6 +484,9 @@ public final class Instance implements ApiMessage {
     }
 
     public Builder addAllDisks(List<AttachedDisk> disks) {
+      if (this.disks == null) {
+        this.disks = new LinkedList<>();
+      }
       this.disks.addAll(disks);
       return this;
     }
@@ -483,6 +546,9 @@ public final class Instance implements ApiMessage {
     }
 
     public Builder addAllNetworkInterfaces(List<NetworkInterface> networkInterfaces) {
+      if (this.networkInterfaces == null) {
+        this.networkInterfaces = new LinkedList<>();
+      }
       this.networkInterfaces.addAll(networkInterfaces);
       return this;
     }
@@ -515,6 +581,9 @@ public final class Instance implements ApiMessage {
     }
 
     public Builder addAllServiceAccounts(List<ServiceAccount> serviceAccounts) {
+      if (this.serviceAccounts == null) {
+        this.serviceAccounts = new LinkedList<>();
+      }
       this.serviceAccounts.addAll(serviceAccounts);
       return this;
     }

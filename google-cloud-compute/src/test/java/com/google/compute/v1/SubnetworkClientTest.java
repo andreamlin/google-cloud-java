@@ -47,7 +47,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class SubnetworkClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static SubnetworkClient client;
   private static SubnetworkSettings clientSettings;
 
@@ -57,14 +57,14 @@ public class SubnetworkClientTest {
         SubnetworkSettings.newBuilder()
            .setTransportChannelProvider(
                SubnetworkSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        SubnetworkClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -91,8 +91,8 @@ public class SubnetworkClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(aggregatedListSubnetworksMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(aggregatedListSubnetworksMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -102,7 +102,7 @@ public class SubnetworkClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().getSubnetworks().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -110,8 +110,8 @@ public class SubnetworkClientTest {
   @SuppressWarnings("all")
   public void aggregatedListSubnetworksExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(aggregatedListSubnetworksMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(aggregatedListSubnetworksMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -170,8 +170,8 @@ public class SubnetworkClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteSubnetworkMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteSubnetworkMethodDescriptor);
 
     SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
 
@@ -179,7 +179,7 @@ public class SubnetworkClientTest {
         client.deleteSubnetwork(subnetwork);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -187,8 +187,8 @@ public class SubnetworkClientTest {
   @SuppressWarnings("all")
   public void deleteSubnetworkExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteSubnetworkMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteSubnetworkMethodDescriptor);
 
     try {
       SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
@@ -247,17 +247,17 @@ public class SubnetworkClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(expandIpCidrRangeSubnetworkMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(expandIpCidrRangeSubnetworkMethodDescriptor);
 
     SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
-    SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
+    SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.expandIpCidrRangeSubnetwork(subnetwork, subnetworksExpandIpCidrRangeRequest);
+        client.expandIpCidrRangeSubnetwork(subnetwork, subnetworksExpandIpCidrRangeRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -265,14 +265,14 @@ public class SubnetworkClientTest {
   @SuppressWarnings("all")
   public void expandIpCidrRangeSubnetworkExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(expandIpCidrRangeSubnetworkMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(expandIpCidrRangeSubnetworkMethodDescriptor);
 
     try {
       SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
-      SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
+      SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
 
-      client.expandIpCidrRangeSubnetwork(subnetwork, subnetworksExpandIpCidrRangeRequest);
+      client.expandIpCidrRangeSubnetwork(subnetwork, subnetworksExpandIpCidrRangeRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -304,8 +304,8 @@ public class SubnetworkClientTest {
       .setNetwork(network.toString())
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getSubnetworkMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getSubnetworkMethodDescriptor);
 
     SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
 
@@ -313,7 +313,7 @@ public class SubnetworkClientTest {
         client.getSubnetwork(subnetwork);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -321,8 +321,8 @@ public class SubnetworkClientTest {
   @SuppressWarnings("all")
   public void getSubnetworkExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getSubnetworkMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getSubnetworkMethodDescriptor);
 
     try {
       SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
@@ -381,17 +381,17 @@ public class SubnetworkClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertSubnetworkMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertSubnetworkMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-    Subnetwork subnetwork = Subnetwork.newBuilder().build();
+    Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
 
     Operation actualResponse =
-        client.insertSubnetwork(region, subnetwork);
+        client.insertSubnetwork(region, subnetworkResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -399,14 +399,14 @@ public class SubnetworkClientTest {
   @SuppressWarnings("all")
   public void insertSubnetworkExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertSubnetworkMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertSubnetworkMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-      Subnetwork subnetwork = Subnetwork.newBuilder().build();
+      Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
 
-      client.insertSubnetwork(region, subnetwork);
+      client.insertSubnetwork(region, subnetworkResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -429,8 +429,8 @@ public class SubnetworkClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listSubnetworksMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listSubnetworksMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -440,7 +440,7 @@ public class SubnetworkClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -448,8 +448,8 @@ public class SubnetworkClientTest {
   @SuppressWarnings("all")
   public void listSubnetworksExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listSubnetworksMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listSubnetworksMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");

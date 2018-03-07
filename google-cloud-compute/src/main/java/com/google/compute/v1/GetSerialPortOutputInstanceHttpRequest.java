@@ -18,9 +18,9 @@ package com.google.compute.v1;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -41,7 +41,6 @@ public final class GetSerialPortOutputInstanceHttpRequest implements ApiMessage 
   private final String quotaUser;
   private final String start;
   private final String userIp;
-  private final Map<String, String> pathParams;
 
   private GetSerialPortOutputInstanceHttpRequest() {
     this.access_token = null;
@@ -54,7 +53,6 @@ public final class GetSerialPortOutputInstanceHttpRequest implements ApiMessage 
     this.quotaUser = null;
     this.start = null;
     this.userIp = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -80,12 +78,6 @@ public final class GetSerialPortOutputInstanceHttpRequest implements ApiMessage 
     this.quotaUser = quotaUser;
     this.start = start;
     this.userIp = userIp;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    InstanceName resourceName = InstanceName.parse(instance);
-    mapBuilder.put("instance", resourceName.getInstance());
-    mapBuilder.put("project", resourceName.getProject());
-    mapBuilder.put("zone", resourceName.getZone());
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -125,8 +117,38 @@ public final class GetSerialPortOutputInstanceHttpRequest implements ApiMessage 
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("access_token")) {
+      return String.valueOf(access_token);
+    }
+    if (fieldName.equals("callback")) {
+      return String.valueOf(callback);
+    }
+    if (fieldName.equals("fields")) {
+      return String.valueOf(fields);
+    }
+    if (fieldName.equals("instance")) {
+      return String.valueOf(instance);
+    }
+    if (fieldName.equals("key")) {
+      return String.valueOf(key);
+    }
+    if (fieldName.equals("port")) {
+      return String.valueOf(port);
+    }
+    if (fieldName.equals("prettyPrint")) {
+      return String.valueOf(prettyPrint);
+    }
+    if (fieldName.equals("quotaUser")) {
+      return String.valueOf(quotaUser);
+    }
+    if (fieldName.equals("start")) {
+      return String.valueOf(start);
+    }
+    if (fieldName.equals("userIp")) {
+      return String.valueOf(userIp);
+    }
+    return null;
   }
 
   @Nullable

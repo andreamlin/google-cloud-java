@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -43,7 +41,6 @@ public final class Region implements ApiMessage {
   private final String selfLink;
   private final String status;
   private final List<String> zones;
-  private final Map<String, String> pathParams;
 
   private Region() {
     this.creationTimestamp = null;
@@ -56,7 +53,6 @@ public final class Region implements ApiMessage {
     this.selfLink = null;
     this.status = null;
     this.zones = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -82,8 +78,6 @@ public final class Region implements ApiMessage {
     this.selfLink = selfLink;
     this.status = status;
     this.zones = zones;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -108,7 +102,11 @@ public final class Region implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("quotas") && quotas != null) {
-      fieldMap.put("quotas", quotas.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (Quota item : quotas) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("quotas", stringList);
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
@@ -117,14 +115,48 @@ public final class Region implements ApiMessage {
       fieldMap.put("status", Collections.singletonList(String.valueOf(status)));
     }
     if (fieldNames.contains("zones") && zones != null) {
-      fieldMap.put("zones", zones.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : zones) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("zones", stringList);
     }
     return fieldMap;
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("deprecated")) {
+      return String.valueOf(deprecated);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("quotas")) {
+      return String.valueOf(quotas);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("status")) {
+      return String.valueOf(status);
+    }
+    if (fieldName.equals("zones")) {
+      return String.valueOf(zones);
+    }
+    return null;
   }
 
   @Nullable
@@ -314,6 +346,9 @@ public final class Region implements ApiMessage {
     }
 
     public Builder addAllQuotas(List<Quota> quotas) {
+      if (this.quotas == null) {
+        this.quotas = new LinkedList<>();
+      }
       this.quotas.addAll(quotas);
       return this;
     }
@@ -346,6 +381,9 @@ public final class Region implements ApiMessage {
     }
 
     public Builder addAllZones(List<String> zones) {
+      if (this.zones == null) {
+        this.zones = new LinkedList<>();
+      }
       this.zones.addAll(zones);
       return this;
     }

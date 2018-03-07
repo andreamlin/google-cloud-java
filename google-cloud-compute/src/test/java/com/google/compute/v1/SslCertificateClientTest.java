@@ -44,7 +44,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class SslCertificateClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static SslCertificateClient client;
   private static SslCertificateSettings clientSettings;
 
@@ -54,14 +54,14 @@ public class SslCertificateClientTest {
         SslCertificateSettings.newBuilder()
            .setTransportChannelProvider(
                SslCertificateSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        SslCertificateClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -116,8 +116,8 @@ public class SslCertificateClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteSslCertificateMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteSslCertificateMethodDescriptor);
 
     SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
 
@@ -125,7 +125,7 @@ public class SslCertificateClientTest {
         client.deleteSslCertificate(sslCertificate);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -133,8 +133,8 @@ public class SslCertificateClientTest {
   @SuppressWarnings("all")
   public void deleteSslCertificateExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteSslCertificateMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteSslCertificateMethodDescriptor);
 
     try {
       SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
@@ -167,8 +167,8 @@ public class SslCertificateClientTest {
       .setId(id)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getSslCertificateMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getSslCertificateMethodDescriptor);
 
     SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
 
@@ -176,7 +176,7 @@ public class SslCertificateClientTest {
         client.getSslCertificate(sslCertificate);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -184,8 +184,8 @@ public class SslCertificateClientTest {
   @SuppressWarnings("all")
   public void getSslCertificateExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getSslCertificateMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getSslCertificateMethodDescriptor);
 
     try {
       SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
@@ -244,17 +244,17 @@ public class SslCertificateClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertSslCertificateMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertSslCertificateMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
-    SslCertificate sslCertificate = SslCertificate.newBuilder().build();
+    SslCertificate sslCertificateResource = SslCertificate.newBuilder().build();
 
     Operation actualResponse =
-        client.insertSslCertificate(project, sslCertificate);
+        client.insertSslCertificate(project, sslCertificateResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -262,14 +262,14 @@ public class SslCertificateClientTest {
   @SuppressWarnings("all")
   public void insertSslCertificateExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertSslCertificateMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertSslCertificateMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
-      SslCertificate sslCertificate = SslCertificate.newBuilder().build();
+      SslCertificate sslCertificateResource = SslCertificate.newBuilder().build();
 
-      client.insertSslCertificate(project, sslCertificate);
+      client.insertSslCertificate(project, sslCertificateResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -292,8 +292,8 @@ public class SslCertificateClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listSslCertificatesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listSslCertificatesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -303,7 +303,7 @@ public class SslCertificateClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -311,8 +311,8 @@ public class SslCertificateClientTest {
   @SuppressWarnings("all")
   public void listSslCertificatesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listSslCertificatesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listSslCertificatesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

@@ -18,9 +18,9 @@ package com.google.compute.v1;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -39,7 +39,6 @@ public final class GetTargetHttpProxyHttpRequest implements ApiMessage {
   private final String quotaUser;
   private final String targetHttpProxy;
   private final String userIp;
-  private final Map<String, String> pathParams;
 
   private GetTargetHttpProxyHttpRequest() {
     this.access_token = null;
@@ -50,7 +49,6 @@ public final class GetTargetHttpProxyHttpRequest implements ApiMessage {
     this.quotaUser = null;
     this.targetHttpProxy = null;
     this.userIp = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -72,11 +70,6 @@ public final class GetTargetHttpProxyHttpRequest implements ApiMessage {
     this.quotaUser = quotaUser;
     this.targetHttpProxy = targetHttpProxy;
     this.userIp = userIp;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    TargetHttpProxyName resourceName = TargetHttpProxyName.parse(targetHttpProxy);
-    mapBuilder.put("project", resourceName.getProject());
-    mapBuilder.put("targetHttpProxy", resourceName.getTargetHttpProxy());
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -110,8 +103,32 @@ public final class GetTargetHttpProxyHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("access_token")) {
+      return String.valueOf(access_token);
+    }
+    if (fieldName.equals("callback")) {
+      return String.valueOf(callback);
+    }
+    if (fieldName.equals("fields")) {
+      return String.valueOf(fields);
+    }
+    if (fieldName.equals("key")) {
+      return String.valueOf(key);
+    }
+    if (fieldName.equals("prettyPrint")) {
+      return String.valueOf(prettyPrint);
+    }
+    if (fieldName.equals("quotaUser")) {
+      return String.valueOf(quotaUser);
+    }
+    if (fieldName.equals("targetHttpProxy")) {
+      return String.valueOf(targetHttpProxy);
+    }
+    if (fieldName.equals("userIp")) {
+      return String.valueOf(userIp);
+    }
+    return null;
   }
 
   @Nullable

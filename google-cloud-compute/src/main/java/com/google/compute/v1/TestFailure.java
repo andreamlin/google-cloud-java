@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -37,14 +35,12 @@ public final class TestFailure implements ApiMessage {
   private final String expectedService;
   private final String host;
   private final String path;
-  private final Map<String, String> pathParams;
 
   private TestFailure() {
     this.actualService = null;
     this.expectedService = null;
     this.host = null;
     this.path = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -58,8 +54,6 @@ public final class TestFailure implements ApiMessage {
     this.expectedService = expectedService;
     this.host = host;
     this.path = path;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -81,8 +75,20 @@ public final class TestFailure implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("actualService")) {
+      return String.valueOf(actualService);
+    }
+    if (fieldName.equals("expectedService")) {
+      return String.valueOf(expectedService);
+    }
+    if (fieldName.equals("host")) {
+      return String.valueOf(host);
+    }
+    if (fieldName.equals("path")) {
+      return String.valueOf(path);
+    }
+    return null;
   }
 
   @Nullable

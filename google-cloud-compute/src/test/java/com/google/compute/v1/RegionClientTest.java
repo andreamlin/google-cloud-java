@@ -42,7 +42,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class RegionClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static RegionClient client;
   private static RegionSettings clientSettings;
 
@@ -52,14 +52,14 @@ public class RegionClientTest {
         RegionSettings.newBuilder()
            .setTransportChannelProvider(
                RegionSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        RegionClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -86,8 +86,8 @@ public class RegionClientTest {
       .setSelfLink(selfLink)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getRegionMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getRegionMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -95,7 +95,7 @@ public class RegionClientTest {
         client.getRegion(region);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -103,8 +103,8 @@ public class RegionClientTest {
   @SuppressWarnings("all")
   public void getRegionExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getRegionMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getRegionMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -132,8 +132,8 @@ public class RegionClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listRegionsMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listRegionsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -143,7 +143,7 @@ public class RegionClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -151,8 +151,8 @@ public class RegionClientTest {
   @SuppressWarnings("all")
   public void listRegionsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listRegionsMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listRegionsMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

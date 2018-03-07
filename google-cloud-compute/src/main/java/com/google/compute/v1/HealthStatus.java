@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -37,14 +35,12 @@ public final class HealthStatus implements ApiMessage {
   private final String instance;
   private final String ipAddress;
   private final Integer port;
-  private final Map<String, String> pathParams;
 
   private HealthStatus() {
     this.healthState = null;
     this.instance = null;
     this.ipAddress = null;
     this.port = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -58,8 +54,6 @@ public final class HealthStatus implements ApiMessage {
     this.instance = instance;
     this.ipAddress = ipAddress;
     this.port = port;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -81,8 +75,20 @@ public final class HealthStatus implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("healthState")) {
+      return String.valueOf(healthState);
+    }
+    if (fieldName.equals("instance")) {
+      return String.valueOf(instance);
+    }
+    if (fieldName.equals("ipAddress")) {
+      return String.valueOf(ipAddress);
+    }
+    if (fieldName.equals("port")) {
+      return String.valueOf(port);
+    }
+    return null;
   }
 
   @Nullable

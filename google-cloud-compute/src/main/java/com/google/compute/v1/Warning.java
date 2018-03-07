@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -36,13 +34,11 @@ public final class Warning implements ApiMessage {
   private final String code;
   private final List<Data> data;
   private final String message;
-  private final Map<String, String> pathParams;
 
   private Warning() {
     this.code = null;
     this.data = null;
     this.message = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -54,8 +50,6 @@ public final class Warning implements ApiMessage {
     this.code = code;
     this.data = data;
     this.message = message;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -65,7 +59,11 @@ public final class Warning implements ApiMessage {
       fieldMap.put("code", Collections.singletonList(String.valueOf(code)));
     }
     if (fieldNames.contains("data") && data != null) {
-      fieldMap.put("data", data.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (Data item : data) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("data", stringList);
     }
     if (fieldNames.contains("message") && message != null) {
       fieldMap.put("message", Collections.singletonList(String.valueOf(message)));
@@ -74,8 +72,17 @@ public final class Warning implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("code")) {
+      return String.valueOf(code);
+    }
+    if (fieldName.equals("data")) {
+      return String.valueOf(data);
+    }
+    if (fieldName.equals("message")) {
+      return String.valueOf(message);
+    }
+    return null;
   }
 
   @Nullable
@@ -157,6 +164,9 @@ public final class Warning implements ApiMessage {
     }
 
     public Builder addAllData(List<Data> data) {
+      if (this.data == null) {
+        this.data = new LinkedList<>();
+      }
       this.data.addAll(data);
       return this;
     }

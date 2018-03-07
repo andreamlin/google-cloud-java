@@ -18,9 +18,9 @@ package com.google.compute.v1;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -40,7 +40,6 @@ public final class GetHealthBackendServiceHttpRequest implements ApiMessage {
   private final String quotaUser;
   private final ResourceGroupReference resourceGroupReferenceResource;
   private final String userIp;
-  private final Map<String, String> pathParams;
 
   private GetHealthBackendServiceHttpRequest() {
     this.access_token = null;
@@ -52,7 +51,6 @@ public final class GetHealthBackendServiceHttpRequest implements ApiMessage {
     this.quotaUser = null;
     this.resourceGroupReferenceResource = null;
     this.userIp = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -76,11 +74,6 @@ public final class GetHealthBackendServiceHttpRequest implements ApiMessage {
     this.quotaUser = quotaUser;
     this.resourceGroupReferenceResource = resourceGroupReferenceResource;
     this.userIp = userIp;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    BackendServiceName resourceName = BackendServiceName.parse(backendService);
-    mapBuilder.put("backendService", resourceName.getBackendService());
-    mapBuilder.put("project", resourceName.getProject());
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -117,8 +110,35 @@ public final class GetHealthBackendServiceHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("access_token")) {
+      return String.valueOf(access_token);
+    }
+    if (fieldName.equals("backendService")) {
+      return String.valueOf(backendService);
+    }
+    if (fieldName.equals("callback")) {
+      return String.valueOf(callback);
+    }
+    if (fieldName.equals("fields")) {
+      return String.valueOf(fields);
+    }
+    if (fieldName.equals("key")) {
+      return String.valueOf(key);
+    }
+    if (fieldName.equals("prettyPrint")) {
+      return String.valueOf(prettyPrint);
+    }
+    if (fieldName.equals("quotaUser")) {
+      return String.valueOf(quotaUser);
+    }
+    if (fieldName.equals("resourceGroupReferenceResource")) {
+      return String.valueOf(resourceGroupReferenceResource);
+    }
+    if (fieldName.equals("userIp")) {
+      return String.valueOf(userIp);
+    }
+    return null;
   }
 
   @Nullable

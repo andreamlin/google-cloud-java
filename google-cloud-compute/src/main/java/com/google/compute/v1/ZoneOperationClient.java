@@ -53,7 +53,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
- *   ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
+ *   ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
  *   zoneOperationClient.deleteZoneOperation(operation);
  * }
  * </code>
@@ -176,7 +176,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
-   *   ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
+   *   ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
    *   zoneOperationClient.deleteZoneOperation(operation);
    * }
    * </code></pre>
@@ -185,11 +185,11 @@ public class ZoneOperationClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final void deleteZoneOperation(ZoneOperationsOperationName operation) {
+  public final void deleteZoneOperation(ProjectZoneOperationName operation) {
 
     DeleteZoneOperationHttpRequest request =
         DeleteZoneOperationHttpRequest.newBuilder()
-        .setOperation(operation.toString())
+        .setOperation(operation == null ? null : operation.toString())
         .build();
     deleteZoneOperation(request);
   }
@@ -201,7 +201,32 @@ public class ZoneOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
-   *   ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
+   *   ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
+   *   zoneOperationClient.deleteZoneOperation(operation.toString());
+   * }
+   * </code></pre>
+   *
+   * @param operation Name of the Operations resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final void deleteZoneOperation(String operation) {
+
+    DeleteZoneOperationHttpRequest request =
+        DeleteZoneOperationHttpRequest.newBuilder()
+        .setOperation(operation)
+        .build();
+    deleteZoneOperation(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified zone-specific Operations resource.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
+   *   ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
    *   DeleteZoneOperationHttpRequest request = DeleteZoneOperationHttpRequest.newBuilder()
    *     .setOperation(operation.toString())
    *     .build();
@@ -224,7 +249,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
-   *   ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
+   *   ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
    *   DeleteZoneOperationHttpRequest request = DeleteZoneOperationHttpRequest.newBuilder()
    *     .setOperation(operation.toString())
    *     .build();
@@ -246,7 +271,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
-   *   ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
+   *   ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
    *   Operation response = zoneOperationClient.getZoneOperation(operation);
    * }
    * </code></pre>
@@ -255,11 +280,11 @@ public class ZoneOperationClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation getZoneOperation(ZoneOperationsOperationName operation) {
+  public final Operation getZoneOperation(ProjectZoneOperationName operation) {
 
     GetZoneOperationHttpRequest request =
         GetZoneOperationHttpRequest.newBuilder()
-        .setOperation(operation.toString())
+        .setOperation(operation == null ? null : operation.toString())
         .build();
     return getZoneOperation(request);
   }
@@ -271,7 +296,32 @@ public class ZoneOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
-   *   ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
+   *   ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
+   *   Operation response = zoneOperationClient.getZoneOperation(operation.toString());
+   * }
+   * </code></pre>
+   *
+   * @param operation Name of the Operations resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation getZoneOperation(String operation) {
+
+    GetZoneOperationHttpRequest request =
+        GetZoneOperationHttpRequest.newBuilder()
+        .setOperation(operation)
+        .build();
+    return getZoneOperation(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the specified zone-specific Operations resource.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
+   *   ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
    *   GetZoneOperationHttpRequest request = GetZoneOperationHttpRequest.newBuilder()
    *     .setOperation(operation.toString())
    *     .build();
@@ -294,7 +344,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
-   *   ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
+   *   ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
    *   GetZoneOperationHttpRequest request = GetZoneOperationHttpRequest.newBuilder()
    *     .setOperation(operation.toString())
    *     .build();
@@ -330,7 +380,33 @@ public class ZoneOperationClient implements BackgroundResource {
   public final ListZoneOperationsPagedResponse listZoneOperations(ZoneName zone) {
     ListZoneOperationsHttpRequest request =
         ListZoneOperationsHttpRequest.newBuilder()
-        .setZone(zone.toString())
+        .setZone(zone == null ? null : zone.toString())
+        .build();
+    return listZoneOperations(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves a list of Operation resources contained within the specified zone.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ZoneOperationClient zoneOperationClient = ZoneOperationClient.create()) {
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
+   *   for (Operation element : zoneOperationClient.listZoneOperations(zone.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param zone Name of the zone for request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListZoneOperationsPagedResponse listZoneOperations(String zone) {
+    ListZoneOperationsHttpRequest request =
+        ListZoneOperationsHttpRequest.newBuilder()
+        .setZone(zone)
         .build();
     return listZoneOperations(request);
   }

@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteFirewallHttpRequest;
@@ -62,7 +62,7 @@ import javax.annotation.Generated;
 public class HttpJsonFirewallStub extends FirewallStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteFirewallHttpRequest, Operation> deleteFirewallMethodDescriptor =
       ApiMethodDescriptor.<DeleteFirewallHttpRequest, Operation>newBuilder()
           .setMethodName("compute.firewalls.delete")
@@ -71,10 +71,11 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(FirewallName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("firewall")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetFirewallHttpRequest, Firewall> getFirewallMethodDescriptor =
       ApiMethodDescriptor.<GetFirewallHttpRequest, Firewall>newBuilder()
           .setMethodName("compute.firewalls.get")
@@ -83,10 +84,11 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(FirewallName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("firewall")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertFirewallHttpRequest, Operation> insertFirewallMethodDescriptor =
       ApiMethodDescriptor.<InsertFirewallHttpRequest, Operation>newBuilder()
           .setMethodName("compute.firewalls.insert")
@@ -95,10 +97,11 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setEndpointPathTemplate("{project}/global/firewalls")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListFirewallsHttpRequest, FirewallList> listFirewallsMethodDescriptor =
       ApiMethodDescriptor.<ListFirewallsHttpRequest, FirewallList>newBuilder()
           .setMethodName("compute.firewalls.list")
@@ -108,10 +111,11 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<PatchFirewallHttpRequest, Operation> patchFirewallMethodDescriptor =
       ApiMethodDescriptor.<PatchFirewallHttpRequest, Operation>newBuilder()
           .setMethodName("compute.firewalls.patch")
@@ -120,10 +124,11 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(FirewallName.newFactory()))
           .setHttpMethod(HttpMethods.PATCH)
+          .setResourceNameField("firewall")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<UpdateFirewallHttpRequest, Operation> updateFirewallMethodDescriptor =
       ApiMethodDescriptor.<UpdateFirewallHttpRequest, Operation>newBuilder()
           .setMethodName("compute.firewalls.update")
@@ -132,8 +137,9 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setEndpointPathTemplate("{project}/global/firewalls/{firewall}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(FirewallName.newFactory()))
           .setHttpMethod(HttpMethods.PUT)
+          .setResourceNameField("firewall")
           .build();
 
   private final BackgroundResource backgroundResources;

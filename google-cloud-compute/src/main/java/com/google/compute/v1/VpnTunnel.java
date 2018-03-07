@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -50,7 +48,6 @@ public final class VpnTunnel implements ApiMessage {
   private final String sharedSecretHash;
   private final String status;
   private final String targetVpnGateway;
-  private final Map<String, String> pathParams;
 
   private VpnTunnel() {
     this.creationTimestamp = null;
@@ -70,7 +67,6 @@ public final class VpnTunnel implements ApiMessage {
     this.sharedSecretHash = null;
     this.status = null;
     this.targetVpnGateway = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -110,8 +106,6 @@ public final class VpnTunnel implements ApiMessage {
     this.sharedSecretHash = sharedSecretHash;
     this.status = status;
     this.targetVpnGateway = targetVpnGateway;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -136,7 +130,11 @@ public final class VpnTunnel implements ApiMessage {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
     }
     if (fieldNames.contains("localTrafficSelector") && localTrafficSelector != null) {
-      fieldMap.put("localTrafficSelector", localTrafficSelector.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : localTrafficSelector) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("localTrafficSelector", stringList);
     }
     if (fieldNames.contains("name") && name != null) {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
@@ -148,7 +146,11 @@ public final class VpnTunnel implements ApiMessage {
       fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
     }
     if (fieldNames.contains("remoteTrafficSelector") && remoteTrafficSelector != null) {
-      fieldMap.put("remoteTrafficSelector", remoteTrafficSelector.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : remoteTrafficSelector) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("remoteTrafficSelector", stringList);
     }
     if (fieldNames.contains("router") && router != null) {
       fieldMap.put("router", Collections.singletonList(String.valueOf(router)));
@@ -172,8 +174,59 @@ public final class VpnTunnel implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("detailedStatus")) {
+      return String.valueOf(detailedStatus);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("ikeVersion")) {
+      return String.valueOf(ikeVersion);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("localTrafficSelector")) {
+      return String.valueOf(localTrafficSelector);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("peerIp")) {
+      return String.valueOf(peerIp);
+    }
+    if (fieldName.equals("region")) {
+      return String.valueOf(region);
+    }
+    if (fieldName.equals("remoteTrafficSelector")) {
+      return String.valueOf(remoteTrafficSelector);
+    }
+    if (fieldName.equals("router")) {
+      return String.valueOf(router);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("sharedSecret")) {
+      return String.valueOf(sharedSecret);
+    }
+    if (fieldName.equals("sharedSecretHash")) {
+      return String.valueOf(sharedSecretHash);
+    }
+    if (fieldName.equals("status")) {
+      return String.valueOf(status);
+    }
+    if (fieldName.equals("targetVpnGateway")) {
+      return String.valueOf(targetVpnGateway);
+    }
+    return null;
   }
 
   @Nullable
@@ -426,6 +479,9 @@ public final class VpnTunnel implements ApiMessage {
     }
 
     public Builder addAllLocalTrafficSelector(List<String> localTrafficSelector) {
+      if (this.localTrafficSelector == null) {
+        this.localTrafficSelector = new LinkedList<>();
+      }
       this.localTrafficSelector.addAll(localTrafficSelector);
       return this;
     }
@@ -467,6 +523,9 @@ public final class VpnTunnel implements ApiMessage {
     }
 
     public Builder addAllRemoteTrafficSelector(List<String> remoteTrafficSelector) {
+      if (this.remoteTrafficSelector == null) {
+        this.remoteTrafficSelector = new LinkedList<>();
+      }
       this.remoteTrafficSelector.addAll(remoteTrafficSelector);
       return this;
     }

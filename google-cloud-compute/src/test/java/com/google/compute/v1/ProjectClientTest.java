@@ -43,7 +43,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class ProjectClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static ProjectClient client;
   private static ProjectSettings clientSettings;
 
@@ -53,14 +53,14 @@ public class ProjectClientTest {
         ProjectSettings.newBuilder()
            .setTransportChannelProvider(
                ProjectSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        ProjectClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -87,8 +87,8 @@ public class ProjectClientTest {
       .setDefaultServiceAccount(defaultServiceAccount)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getProjectMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -96,7 +96,7 @@ public class ProjectClientTest {
         client.getProject(project);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -104,8 +104,8 @@ public class ProjectClientTest {
   @SuppressWarnings("all")
   public void getProjectExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getProjectMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getProjectMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -164,17 +164,17 @@ public class ProjectClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(moveDiskProjectMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(moveDiskProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
-    DiskMoveRequest diskMoveRequest = DiskMoveRequest.newBuilder().build();
+    DiskMoveRequest diskMoveRequestResource = DiskMoveRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.moveDiskProject(project, diskMoveRequest);
+        client.moveDiskProject(project, diskMoveRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -182,14 +182,14 @@ public class ProjectClientTest {
   @SuppressWarnings("all")
   public void moveDiskProjectExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(moveDiskProjectMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(moveDiskProjectMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
-      DiskMoveRequest diskMoveRequest = DiskMoveRequest.newBuilder().build();
+      DiskMoveRequest diskMoveRequestResource = DiskMoveRequest.newBuilder().build();
 
-      client.moveDiskProject(project, diskMoveRequest);
+      client.moveDiskProject(project, diskMoveRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -243,17 +243,17 @@ public class ProjectClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(moveInstanceProjectMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(moveInstanceProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
-    InstanceMoveRequest instanceMoveRequest = InstanceMoveRequest.newBuilder().build();
+    InstanceMoveRequest instanceMoveRequestResource = InstanceMoveRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.moveInstanceProject(project, instanceMoveRequest);
+        client.moveInstanceProject(project, instanceMoveRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -261,14 +261,14 @@ public class ProjectClientTest {
   @SuppressWarnings("all")
   public void moveInstanceProjectExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(moveInstanceProjectMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(moveInstanceProjectMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
-      InstanceMoveRequest instanceMoveRequest = InstanceMoveRequest.newBuilder().build();
+      InstanceMoveRequest instanceMoveRequestResource = InstanceMoveRequest.newBuilder().build();
 
-      client.moveInstanceProject(project, instanceMoveRequest);
+      client.moveInstanceProject(project, instanceMoveRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -322,17 +322,17 @@ public class ProjectClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setCommonInstanceMetadataProjectMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setCommonInstanceMetadataProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
-    Metadata metadata = Metadata.newBuilder().build();
+    Metadata metadataResource = Metadata.newBuilder().build();
 
     Operation actualResponse =
-        client.setCommonInstanceMetadataProject(project, metadata);
+        client.setCommonInstanceMetadataProject(project, metadataResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -340,14 +340,14 @@ public class ProjectClientTest {
   @SuppressWarnings("all")
   public void setCommonInstanceMetadataProjectExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setCommonInstanceMetadataProjectMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setCommonInstanceMetadataProjectMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
-      Metadata metadata = Metadata.newBuilder().build();
+      Metadata metadataResource = Metadata.newBuilder().build();
 
-      client.setCommonInstanceMetadataProject(project, metadata);
+      client.setCommonInstanceMetadataProject(project, metadataResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -401,17 +401,17 @@ public class ProjectClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setUsageExportBucketProjectMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setUsageExportBucketProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
-    UsageExportLocation usageExportLocation = UsageExportLocation.newBuilder().build();
+    UsageExportLocation usageExportLocationResource = UsageExportLocation.newBuilder().build();
 
     Operation actualResponse =
-        client.setUsageExportBucketProject(project, usageExportLocation);
+        client.setUsageExportBucketProject(project, usageExportLocationResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -419,14 +419,14 @@ public class ProjectClientTest {
   @SuppressWarnings("all")
   public void setUsageExportBucketProjectExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setUsageExportBucketProjectMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setUsageExportBucketProjectMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
-      UsageExportLocation usageExportLocation = UsageExportLocation.newBuilder().build();
+      UsageExportLocation usageExportLocationResource = UsageExportLocation.newBuilder().build();
 
-      client.setUsageExportBucketProject(project, usageExportLocation);
+      client.setUsageExportBucketProject(project, usageExportLocationResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception

@@ -52,27 +52,29 @@ The easy way to get started is to add the umbrella package which pulls in all of
 dependencies. Note that even though the version of the umbrella package is Alpha, the individual clients are
 at different support levels (Alpha, Beta, and GA).
 
+[//]: # ({x-version-update-start:google-cloud:released})
 If you are using Maven, add this to your pom.xml file
 ```xml
 <dependency>
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud</artifactId>
-  <version>0.35.0-alpha</version>
+  <version>0.38.0-alpha</version>
 </dependency>
 ```
 If you are using Gradle, add this to your dependencies
 ```Groovy
-compile 'com.google.cloud:google-cloud:0.33.0-alpha'
+compile 'com.google.cloud:google-cloud:0.38.0-alpha'
 ```
 If you are using SBT, add this to your dependencies
 ```Scala
-libraryDependencies += "com.google.cloud" % "google-cloud" % "0.33.0-alpha"
+libraryDependencies += "com.google.cloud" % "google-cloud" % "0.38.0-alpha"
 ```
+[//]: # ({x-version-update-end})
 
 It also works just as well to declare a dependency only on the specific clients that you need. See the README of
 each client for instructions.
 
-For running on Google App Engine, see [more instructions here](./APPENGINE.md).
+These client libraries can be used on App Engine standard for Java 8 runtime, App Engine flexible (including the Compat runtime).  Most of the libraries do not work on the App Engine standard for Java 7 runtime, however, Datastore, Storage, and Bigquery should work.
 
 If you are running into problems with version conflicts, see [Version Management](#version-management).
 
@@ -175,7 +177,7 @@ Credentials in the following locations (in order):
 Troubleshooting
 ---------------
 
-To get help, follow the instructions in the [shared Troubleshooting document](https://github.com/GoogleCloudPlatform/gcloud-common/blob/master/troubleshooting/readme.md#troubleshooting).
+To get help, follow the instructions in the [Troubleshooting document](https://github.com/GoogleCloudPlatform/google-cloud-java/blob/master/TROUBLESHOOTING.md).
 
 Using a proxy
 -------------
@@ -268,26 +270,29 @@ we're working towards their release candidate. We will address issues and reques
 a higher priority.
 
 **Alpha**: Libraries defined at an Alpha quality level are still a work-in-progress and
-are more likely to get backwards-incompatible updates.
+are more likely to get backwards-incompatible updates. Additionally, it's possible for Alpha
+libraries to get deprecated and deleted before ever being promoted to Beta or GA.
 
 Version Management
 ------------------
 
 The easiest way to solve version conflicts is to use google-cloud's BOM. In Maven, add the following to your POM:
 
+[//]: # ({x-version-update-start:google-cloud-bom:released})
 ```xml
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>com.google.cloud</groupId>
         <artifactId>google-cloud-bom</artifactId>
-        <version>0.35.0-alpha</version>
+        <version>0.38.0-alpha</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
 ```
+[//]: # ({x-version-update-end})
 
 This BOM is only available starting at version 0.32.0-alpha. If you are having problems with prior versions of
 google-cloud, use the following table as a reference to make sure that your versions are compatible. Definitions:

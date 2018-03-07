@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteImageHttpRequest;
@@ -64,7 +64,7 @@ import javax.annotation.Generated;
 public class HttpJsonImageStub extends ImageStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteImageHttpRequest, Operation> deleteImageMethodDescriptor =
       ApiMethodDescriptor.<DeleteImageHttpRequest, Operation>newBuilder()
           .setMethodName("compute.images.delete")
@@ -73,10 +73,11 @@ public class HttpJsonImageStub extends ImageStub {
           .setEndpointPathTemplate("{project}/global/images/{image}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ImageName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("image")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeprecateImageHttpRequest, Operation> deprecateImageMethodDescriptor =
       ApiMethodDescriptor.<DeprecateImageHttpRequest, Operation>newBuilder()
           .setMethodName("compute.images.deprecate")
@@ -85,10 +86,11 @@ public class HttpJsonImageStub extends ImageStub {
           .setEndpointPathTemplate("{project}/global/images/{image}/deprecate")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ImageName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("image")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetImageHttpRequest, Image> getImageMethodDescriptor =
       ApiMethodDescriptor.<GetImageHttpRequest, Image>newBuilder()
           .setMethodName("compute.images.get")
@@ -97,10 +99,11 @@ public class HttpJsonImageStub extends ImageStub {
           .setEndpointPathTemplate("{project}/global/images/{image}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ImageName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("image")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetFromFamilyImageHttpRequest, Image> getFromFamilyImageMethodDescriptor =
       ApiMethodDescriptor.<GetFromFamilyImageHttpRequest, Image>newBuilder()
           .setMethodName("compute.images.getFromFamily")
@@ -109,10 +112,11 @@ public class HttpJsonImageStub extends ImageStub {
           .setEndpointPathTemplate("{project}/global/images/family/{family}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(FamilyName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("family")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertImageHttpRequest, Operation> insertImageMethodDescriptor =
       ApiMethodDescriptor.<InsertImageHttpRequest, Operation>newBuilder()
           .setMethodName("compute.images.insert")
@@ -121,10 +125,11 @@ public class HttpJsonImageStub extends ImageStub {
           .setEndpointPathTemplate("{project}/global/images")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListImagesHttpRequest, ImageList> listImagesMethodDescriptor =
       ApiMethodDescriptor.<ListImagesHttpRequest, ImageList>newBuilder()
           .setMethodName("compute.images.list")
@@ -134,8 +139,9 @@ public class HttpJsonImageStub extends ImageStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
 
   private final BackgroundResource backgroundResources;

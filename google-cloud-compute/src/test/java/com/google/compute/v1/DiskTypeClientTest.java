@@ -44,7 +44,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class DiskTypeClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static DiskTypeClient client;
   private static DiskTypeSettings clientSettings;
 
@@ -54,14 +54,14 @@ public class DiskTypeClientTest {
         DiskTypeSettings.newBuilder()
            .setTransportChannelProvider(
                DiskTypeSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        DiskTypeClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -88,8 +88,8 @@ public class DiskTypeClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(aggregatedListDiskTypesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(aggregatedListDiskTypesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -99,7 +99,7 @@ public class DiskTypeClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().getDiskTypes().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -107,8 +107,8 @@ public class DiskTypeClientTest {
   @SuppressWarnings("all")
   public void aggregatedListDiskTypesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(aggregatedListDiskTypesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(aggregatedListDiskTypesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -143,8 +143,8 @@ public class DiskTypeClientTest {
       .setValidDiskSize(validDiskSize)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getDiskTypeMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getDiskTypeMethodDescriptor);
 
     DiskTypeName diskType = DiskTypeName.of("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
 
@@ -152,7 +152,7 @@ public class DiskTypeClientTest {
         client.getDiskType(diskType);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -160,8 +160,8 @@ public class DiskTypeClientTest {
   @SuppressWarnings("all")
   public void getDiskTypeExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getDiskTypeMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getDiskTypeMethodDescriptor);
 
     try {
       DiskTypeName diskType = DiskTypeName.of("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
@@ -189,8 +189,8 @@ public class DiskTypeClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listDiskTypesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listDiskTypesMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -200,7 +200,7 @@ public class DiskTypeClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -208,8 +208,8 @@ public class DiskTypeClientTest {
   @SuppressWarnings("all")
   public void listDiskTypesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listDiskTypesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listDiskTypesMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");

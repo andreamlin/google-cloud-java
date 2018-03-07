@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListSubnetworksHttpRequest;
@@ -66,7 +66,7 @@ import javax.annotation.Generated;
 public class HttpJsonSubnetworkStub extends SubnetworkStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList> aggregatedListSubnetworksMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList>newBuilder()
           .setMethodName("compute.subnetworks.aggregatedList")
@@ -76,10 +76,11 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteSubnetworkHttpRequest, Operation> deleteSubnetworkMethodDescriptor =
       ApiMethodDescriptor.<DeleteSubnetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.subnetworks.delete")
@@ -88,10 +89,11 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setEndpointPathTemplate("{project}/regions/{region}/subnetworks/{subnetwork}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(SubnetworkName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("subnetwork")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ExpandIpCidrRangeSubnetworkHttpRequest, Operation> expandIpCidrRangeSubnetworkMethodDescriptor =
       ApiMethodDescriptor.<ExpandIpCidrRangeSubnetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.subnetworks.expandIpCidrRange")
@@ -100,10 +102,11 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setEndpointPathTemplate("{project}/regions/{region}/subnetworks/{subnetwork}/expandIpCidrRange")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(SubnetworkName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("subnetwork")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetSubnetworkHttpRequest, Subnetwork> getSubnetworkMethodDescriptor =
       ApiMethodDescriptor.<GetSubnetworkHttpRequest, Subnetwork>newBuilder()
           .setMethodName("compute.subnetworks.get")
@@ -112,10 +115,11 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setEndpointPathTemplate("{project}/regions/{region}/subnetworks/{subnetwork}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(SubnetworkName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("subnetwork")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertSubnetworkHttpRequest, Operation> insertSubnetworkMethodDescriptor =
       ApiMethodDescriptor.<InsertSubnetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.subnetworks.insert")
@@ -124,10 +128,11 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setEndpointPathTemplate("{project}/regions/{region}/subnetworks")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("region")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListSubnetworksHttpRequest, SubnetworkList> listSubnetworksMethodDescriptor =
       ApiMethodDescriptor.<ListSubnetworksHttpRequest, SubnetworkList>newBuilder()
           .setMethodName("compute.subnetworks.list")
@@ -137,8 +142,9 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("region")
           .build();
 
   private final BackgroundResource backgroundResources;

@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -36,13 +34,11 @@ public final class HostRule implements ApiMessage {
   private final String description;
   private final List<String> hosts;
   private final String pathMatcher;
-  private final Map<String, String> pathParams;
 
   private HostRule() {
     this.description = null;
     this.hosts = null;
     this.pathMatcher = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -54,8 +50,6 @@ public final class HostRule implements ApiMessage {
     this.description = description;
     this.hosts = hosts;
     this.pathMatcher = pathMatcher;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -65,7 +59,11 @@ public final class HostRule implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("hosts") && hosts != null) {
-      fieldMap.put("hosts", hosts.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : hosts) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("hosts", stringList);
     }
     if (fieldNames.contains("pathMatcher") && pathMatcher != null) {
       fieldMap.put("pathMatcher", Collections.singletonList(String.valueOf(pathMatcher)));
@@ -74,8 +72,17 @@ public final class HostRule implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("hosts")) {
+      return String.valueOf(hosts);
+    }
+    if (fieldName.equals("pathMatcher")) {
+      return String.valueOf(pathMatcher);
+    }
+    return null;
   }
 
   @Nullable
@@ -157,6 +164,9 @@ public final class HostRule implements ApiMessage {
     }
 
     public Builder addAllHosts(List<String> hosts) {
+      if (this.hosts == null) {
+        this.hosts = new LinkedList<>();
+      }
       this.hosts.addAll(hosts);
       return this;
     }

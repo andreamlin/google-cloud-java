@@ -45,7 +45,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class GlobalOperationClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static GlobalOperationClient client;
   private static GlobalOperationSettings clientSettings;
 
@@ -55,14 +55,14 @@ public class GlobalOperationClientTest {
         GlobalOperationSettings.newBuilder()
            .setTransportChannelProvider(
                GlobalOperationSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        GlobalOperationClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -89,8 +89,8 @@ public class GlobalOperationClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(aggregatedListGlobalOperationsMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(aggregatedListGlobalOperationsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -100,7 +100,7 @@ public class GlobalOperationClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().getOperations().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -108,8 +108,8 @@ public class GlobalOperationClientTest {
   @SuppressWarnings("all")
   public void aggregatedListGlobalOperationsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(aggregatedListGlobalOperationsMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(aggregatedListGlobalOperationsMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -125,13 +125,13 @@ public class GlobalOperationClientTest {
   @SuppressWarnings("all")
   public void deleteGlobalOperationTest() {
 
-    MOCK_SERVICE.setSerializer(deleteGlobalOperationMethodDescriptor);
+    mockService.setSerializer(deleteGlobalOperationMethodDescriptor);
 
-    GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
+    OperationName operation = OperationName.of("[PROJECT]", "[OPERATION]");
 
     client.deleteGlobalOperation(operation);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -139,11 +139,11 @@ public class GlobalOperationClientTest {
   @SuppressWarnings("all")
   public void deleteGlobalOperationExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteGlobalOperationMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteGlobalOperationMethodDescriptor);
 
     try {
-      GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
+      OperationName operation = OperationName.of("[PROJECT]", "[OPERATION]");
 
       client.deleteGlobalOperation(operation);
       Assert.fail("No exception raised");
@@ -199,16 +199,16 @@ public class GlobalOperationClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getGlobalOperationMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getGlobalOperationMethodDescriptor);
 
-    GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
+    OperationName operation = OperationName.of("[PROJECT]", "[OPERATION]");
 
     Operation actualResponse =
         client.getGlobalOperation(operation);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -216,11 +216,11 @@ public class GlobalOperationClientTest {
   @SuppressWarnings("all")
   public void getGlobalOperationExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getGlobalOperationMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getGlobalOperationMethodDescriptor);
 
     try {
-      GlobalOperationsOperationName operation = GlobalOperationsOperationName.of("[PROJECT]", "[OPERATION]");
+      OperationName operation = OperationName.of("[PROJECT]", "[OPERATION]");
 
       client.getGlobalOperation(operation);
       Assert.fail("No exception raised");
@@ -245,8 +245,8 @@ public class GlobalOperationClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listGlobalOperationsMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listGlobalOperationsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -256,7 +256,7 @@ public class GlobalOperationClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -264,8 +264,8 @@ public class GlobalOperationClientTest {
   @SuppressWarnings("all")
   public void listGlobalOperationsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listGlobalOperationsMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listGlobalOperationsMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

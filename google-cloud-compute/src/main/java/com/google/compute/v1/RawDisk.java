@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -36,13 +34,11 @@ public final class RawDisk implements ApiMessage {
   private final String containerType;
   private final String sha1Checksum;
   private final String source;
-  private final Map<String, String> pathParams;
 
   private RawDisk() {
     this.containerType = null;
     this.sha1Checksum = null;
     this.source = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -54,8 +50,6 @@ public final class RawDisk implements ApiMessage {
     this.containerType = containerType;
     this.sha1Checksum = sha1Checksum;
     this.source = source;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -74,8 +68,17 @@ public final class RawDisk implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("containerType")) {
+      return String.valueOf(containerType);
+    }
+    if (fieldName.equals("sha1Checksum")) {
+      return String.valueOf(sha1Checksum);
+    }
+    if (fieldName.equals("source")) {
+      return String.valueOf(source);
+    }
+    return null;
   }
 
   @Nullable

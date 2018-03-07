@@ -14,22 +14,25 @@ Examples for google-cloud (Java idiomatic client for [Google Cloud Platform][clo
 
 Quickstart
 ----------
+
+[//]: # ({x-version-update-start:google-cloud-examples:released})
 If you are using Maven, add this to your pom.xml file
 ```xml
 <dependency>
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-examples</artifactId>
-  <version>0.35.0-alpha</version>
+  <version>0.38.0-alpha</version>
 </dependency>
 ```
 If you are using Gradle, add this to your dependencies
 ```Groovy
-compile 'com.google.cloud:google-cloud-examples:0.35.0-alpha'
+compile 'com.google.cloud:google-cloud-examples:0.38.0-alpha'
 ```
 If you are using SBT, add this to your dependencies
 ```Scala
-libraryDependencies += "com.google.cloud" % "google-cloud-examples" % "0.35.0-alpha"
+libraryDependencies += "com.google.cloud" % "google-cloud-examples" % "0.38.0-alpha"
 ```
+[//]: # ({x-version-update-end})
 
 To run examples from your command line:
 

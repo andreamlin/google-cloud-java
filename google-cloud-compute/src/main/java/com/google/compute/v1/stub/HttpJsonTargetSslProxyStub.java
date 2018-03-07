@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteTargetSslProxyHttpRequest;
@@ -66,7 +66,7 @@ import javax.annotation.Generated;
 public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxyMethodDescriptor =
       ApiMethodDescriptor.<DeleteTargetSslProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetSslProxies.delete")
@@ -75,10 +75,11 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setEndpointPathTemplate("{project}/global/targetSslProxies/{targetSslProxy}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(TargetSslProxyName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("targetSslProxy")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetTargetSslProxyHttpRequest, TargetSslProxy> getTargetSslProxyMethodDescriptor =
       ApiMethodDescriptor.<GetTargetSslProxyHttpRequest, TargetSslProxy>newBuilder()
           .setMethodName("compute.targetSslProxies.get")
@@ -87,10 +88,11 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setEndpointPathTemplate("{project}/global/targetSslProxies/{targetSslProxy}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(TargetSslProxyName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("targetSslProxy")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertTargetSslProxyHttpRequest, Operation> insertTargetSslProxyMethodDescriptor =
       ApiMethodDescriptor.<InsertTargetSslProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetSslProxies.insert")
@@ -99,10 +101,11 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setEndpointPathTemplate("{project}/global/targetSslProxies")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListTargetSslProxiesHttpRequest, TargetSslProxyList> listTargetSslProxiesMethodDescriptor =
       ApiMethodDescriptor.<ListTargetSslProxiesHttpRequest, TargetSslProxyList>newBuilder()
           .setMethodName("compute.targetSslProxies.list")
@@ -112,10 +115,11 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SetBackendServiceTargetSslProxyHttpRequest, Operation> setBackendServiceTargetSslProxyMethodDescriptor =
       ApiMethodDescriptor.<SetBackendServiceTargetSslProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetSslProxies.setBackendService")
@@ -124,10 +128,11 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setEndpointPathTemplate("{project}/global/targetSslProxies/{targetSslProxy}/setBackendService")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(TargetSslProxyName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("targetSslProxy")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SetProxyHeaderTargetSslProxyHttpRequest, Operation> setProxyHeaderTargetSslProxyMethodDescriptor =
       ApiMethodDescriptor.<SetProxyHeaderTargetSslProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetSslProxies.setProxyHeader")
@@ -136,10 +141,11 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setEndpointPathTemplate("{project}/global/targetSslProxies/{targetSslProxy}/setProxyHeader")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(TargetSslProxyName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("targetSslProxy")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SetSslCertificatesTargetSslProxyHttpRequest, Operation> setSslCertificatesTargetSslProxyMethodDescriptor =
       ApiMethodDescriptor.<SetSslCertificatesTargetSslProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetSslProxies.setSslCertificates")
@@ -148,8 +154,9 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setEndpointPathTemplate("{project}/global/targetSslProxies/{targetSslProxy}/setSslCertificates")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(TargetSslProxyName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("targetSslProxy")
           .build();
 
   private final BackgroundResource backgroundResources;

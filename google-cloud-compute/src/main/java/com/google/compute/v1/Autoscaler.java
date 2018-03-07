@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -43,7 +41,6 @@ public final class Autoscaler implements ApiMessage {
   private final String selfLink;
   private final String target;
   private final String zone;
-  private final Map<String, String> pathParams;
 
   private Autoscaler() {
     this.autoscalingPolicy = null;
@@ -56,7 +53,6 @@ public final class Autoscaler implements ApiMessage {
     this.selfLink = null;
     this.target = null;
     this.zone = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -82,8 +78,6 @@ public final class Autoscaler implements ApiMessage {
     this.selfLink = selfLink;
     this.target = target;
     this.zone = zone;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -123,8 +117,38 @@ public final class Autoscaler implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("autoscalingPolicy")) {
+      return String.valueOf(autoscalingPolicy);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("region")) {
+      return String.valueOf(region);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("target")) {
+      return String.valueOf(target);
+    }
+    if (fieldName.equals("zone")) {
+      return String.valueOf(zone);
+    }
+    return null;
   }
 
   @Nullable

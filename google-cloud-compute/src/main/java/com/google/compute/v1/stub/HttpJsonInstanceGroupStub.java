@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AddInstancesInstanceGroupHttpRequest;
@@ -75,7 +75,7 @@ import javax.annotation.Generated;
 public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<AddInstancesInstanceGroupHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instanceGroups.addInstances")
@@ -84,10 +84,11 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroups/{instanceGroup}/addInstances")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceGroupName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instanceGroup")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList> aggregatedListInstanceGroupsMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList>newBuilder()
           .setMethodName("compute.instanceGroups.aggregatedList")
@@ -97,10 +98,11 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteInstanceGroupHttpRequest, Operation> deleteInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<DeleteInstanceGroupHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instanceGroups.delete")
@@ -109,10 +111,11 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroups/{instanceGroup}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceGroupName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("instanceGroup")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<GetInstanceGroupHttpRequest, InstanceGroup>newBuilder()
           .setMethodName("compute.instanceGroups.get")
@@ -121,10 +124,11 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroups/{instanceGroup}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceGroupName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("instanceGroup")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertInstanceGroupHttpRequest, Operation> insertInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<InsertInstanceGroupHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instanceGroups.insert")
@@ -133,10 +137,11 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroups")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ZoneName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("zone")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListInstanceGroupsHttpRequest, InstanceGroupList> listInstanceGroupsMethodDescriptor =
       ApiMethodDescriptor.<ListInstanceGroupsHttpRequest, InstanceGroupList>newBuilder()
           .setMethodName("compute.instanceGroups.list")
@@ -146,10 +151,11 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ZoneName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("zone")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListInstancesInstanceGroupsHttpRequest, InstanceGroupsListInstances> listInstancesInstanceGroupsMethodDescriptor =
       ApiMethodDescriptor.<ListInstancesInstanceGroupsHttpRequest, InstanceGroupsListInstances>newBuilder()
           .setMethodName("compute.instanceGroups.listInstances")
@@ -159,10 +165,11 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceGroupName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instanceGroup")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<RemoveInstancesInstanceGroupHttpRequest, Operation> removeInstancesInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<RemoveInstancesInstanceGroupHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instanceGroups.removeInstances")
@@ -171,10 +178,11 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroups/{instanceGroup}/removeInstances")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceGroupName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instanceGroup")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SetNamedPortsInstanceGroupHttpRequest, Operation> setNamedPortsInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<SetNamedPortsInstanceGroupHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instanceGroups.setNamedPorts")
@@ -183,8 +191,9 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instanceGroups/{instanceGroup}/setNamedPorts")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceGroupName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instanceGroup")
           .build();
 
   private final BackgroundResource backgroundResources;

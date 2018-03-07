@@ -18,9 +18,9 @@ package com.google.compute.v1;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -41,7 +41,6 @@ public final class UpdateAutoscalerHttpRequest implements ApiMessage {
   private final String quotaUser;
   private final String userIp;
   private final String zone;
-  private final Map<String, String> pathParams;
 
   private UpdateAutoscalerHttpRequest() {
     this.access_token = null;
@@ -54,7 +53,6 @@ public final class UpdateAutoscalerHttpRequest implements ApiMessage {
     this.quotaUser = null;
     this.userIp = null;
     this.zone = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -80,11 +78,6 @@ public final class UpdateAutoscalerHttpRequest implements ApiMessage {
     this.quotaUser = quotaUser;
     this.userIp = userIp;
     this.zone = zone;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    ZoneName resourceName = ZoneName.parse(zone);
-    mapBuilder.put("project", resourceName.getProject());
-    mapBuilder.put("zone", resourceName.getZone());
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -124,8 +117,38 @@ public final class UpdateAutoscalerHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("access_token")) {
+      return String.valueOf(access_token);
+    }
+    if (fieldName.equals("autoscaler")) {
+      return String.valueOf(autoscaler);
+    }
+    if (fieldName.equals("autoscalerResource")) {
+      return String.valueOf(autoscalerResource);
+    }
+    if (fieldName.equals("callback")) {
+      return String.valueOf(callback);
+    }
+    if (fieldName.equals("fields")) {
+      return String.valueOf(fields);
+    }
+    if (fieldName.equals("key")) {
+      return String.valueOf(key);
+    }
+    if (fieldName.equals("prettyPrint")) {
+      return String.valueOf(prettyPrint);
+    }
+    if (fieldName.equals("quotaUser")) {
+      return String.valueOf(quotaUser);
+    }
+    if (fieldName.equals("userIp")) {
+      return String.valueOf(userIp);
+    }
+    if (fieldName.equals("zone")) {
+      return String.valueOf(zone);
+    }
+    return null;
   }
 
   @Nullable

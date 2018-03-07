@@ -44,7 +44,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class MachineTypeClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static MachineTypeClient client;
   private static MachineTypeSettings clientSettings;
 
@@ -54,14 +54,14 @@ public class MachineTypeClientTest {
         MachineTypeSettings.newBuilder()
            .setTransportChannelProvider(
                MachineTypeSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        MachineTypeClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -88,8 +88,8 @@ public class MachineTypeClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(aggregatedListMachineTypesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(aggregatedListMachineTypesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -99,7 +99,7 @@ public class MachineTypeClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().getMachineTypes().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -107,8 +107,8 @@ public class MachineTypeClientTest {
   @SuppressWarnings("all")
   public void aggregatedListMachineTypesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(aggregatedListMachineTypesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(aggregatedListMachineTypesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -151,8 +151,8 @@ public class MachineTypeClientTest {
       .setId(id)
       .setImageSpaceGb(imageSpaceGb)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getMachineTypeMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getMachineTypeMethodDescriptor);
 
     MachineTypeName machineType = MachineTypeName.of("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
 
@@ -160,7 +160,7 @@ public class MachineTypeClientTest {
         client.getMachineType(machineType);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -168,8 +168,8 @@ public class MachineTypeClientTest {
   @SuppressWarnings("all")
   public void getMachineTypeExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getMachineTypeMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getMachineTypeMethodDescriptor);
 
     try {
       MachineTypeName machineType = MachineTypeName.of("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
@@ -197,8 +197,8 @@ public class MachineTypeClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listMachineTypesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listMachineTypesMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -208,7 +208,7 @@ public class MachineTypeClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -216,8 +216,8 @@ public class MachineTypeClientTest {
   @SuppressWarnings("all")
   public void listMachineTypesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listMachineTypesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listMachineTypesMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");

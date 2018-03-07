@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -35,12 +33,10 @@ import javax.annotation.Nullable;
 public final class InstanceGroupsSetNamedPortsRequest implements ApiMessage {
   private final String fingerprint;
   private final List<NamedPort> namedPorts;
-  private final Map<String, String> pathParams;
 
   private InstanceGroupsSetNamedPortsRequest() {
     this.fingerprint = null;
     this.namedPorts = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -50,8 +46,6 @@ public final class InstanceGroupsSetNamedPortsRequest implements ApiMessage {
       ) {
     this.fingerprint = fingerprint;
     this.namedPorts = namedPorts;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -61,14 +55,24 @@ public final class InstanceGroupsSetNamedPortsRequest implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("namedPorts") && namedPorts != null) {
-      fieldMap.put("namedPorts", namedPorts.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (NamedPort item : namedPorts) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("namedPorts", stringList);
     }
     return fieldMap;
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("fingerprint")) {
+      return String.valueOf(fingerprint);
+    }
+    if (fieldName.equals("namedPorts")) {
+      return String.valueOf(namedPorts);
+    }
+    return null;
   }
 
   @Nullable
@@ -141,6 +145,9 @@ public final class InstanceGroupsSetNamedPortsRequest implements ApiMessage {
     }
 
     public Builder addAllNamedPorts(List<NamedPort> namedPorts) {
+      if (this.namedPorts == null) {
+        this.namedPorts = new LinkedList<>();
+      }
       this.namedPorts.addAll(namedPorts);
       return this;
     }

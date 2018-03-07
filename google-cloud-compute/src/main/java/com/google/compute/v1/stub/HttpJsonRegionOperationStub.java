@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteRegionOperationHttpRequest;
@@ -34,10 +34,10 @@ import com.google.compute.v1.GetRegionOperationHttpRequest;
 import com.google.compute.v1.ListRegionOperationsHttpRequest;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.OperationList;
+import com.google.compute.v1.ProjectRegionOperationName;
 import com.google.compute.v1.RegionName;
 import static com.google.compute.v1.RegionOperationClient.ListRegionOperationsPagedResponse;
 import com.google.compute.v1.RegionOperationSettings;
-import com.google.compute.v1.RegionOperationsOperationName;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,7 +58,7 @@ import javax.annotation.Generated;
 public class HttpJsonRegionOperationStub extends RegionOperationStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationMethodDescriptor =
       ApiMethodDescriptor.<DeleteRegionOperationHttpRequest, Void>newBuilder()
           .setMethodName("compute.regionOperations.delete")
@@ -66,10 +66,11 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
           .setEndpointPathTemplate("{project}/regions/{region}/operations/{operation}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectRegionOperationName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("operation")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetRegionOperationHttpRequest, Operation> getRegionOperationMethodDescriptor =
       ApiMethodDescriptor.<GetRegionOperationHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionOperations.get")
@@ -78,10 +79,11 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
           .setEndpointPathTemplate("{project}/regions/{region}/operations/{operation}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectRegionOperationName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("operation")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListRegionOperationsHttpRequest, OperationList> listRegionOperationsMethodDescriptor =
       ApiMethodDescriptor.<ListRegionOperationsHttpRequest, OperationList>newBuilder()
           .setMethodName("compute.regionOperations.list")
@@ -91,8 +93,9 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("region")
           .build();
 
   private final BackgroundResource backgroundResources;

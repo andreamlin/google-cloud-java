@@ -54,8 +54,8 @@ import javax.annotation.Generated;
  * <code>
  * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
  *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
- *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest = TargetPoolsAddHealthCheckRequest.newBuilder().build();
- *   Operation response = targetPoolClient.addHealthCheckTargetPool(targetPool, targetPoolsAddHealthCheckRequest);
+ *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequestResource = TargetPoolsAddHealthCheckRequest.newBuilder().build();
+ *   Operation response = targetPoolClient.addHealthCheckTargetPool(targetPool, targetPoolsAddHealthCheckRequestResource);
  * }
  * </code>
  * </pre>
@@ -178,8 +178,8 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest = TargetPoolsAddHealthCheckRequest.newBuilder().build();
-   *   Operation response = targetPoolClient.addHealthCheckTargetPool(targetPool, targetPoolsAddHealthCheckRequest);
+   *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequestResource = TargetPoolsAddHealthCheckRequest.newBuilder().build();
+   *   Operation response = targetPoolClient.addHealthCheckTargetPool(targetPool, targetPoolsAddHealthCheckRequestResource);
    * }
    * </code></pre>
    *
@@ -192,7 +192,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     AddHealthCheckTargetPoolHttpRequest request =
         AddHealthCheckTargetPoolHttpRequest.newBuilder()
-        .setTargetPool(targetPool.toString())
+        .setTargetPool(targetPool == null ? null : targetPool.toString())
         .setTargetPoolsAddHealthCheckRequestResource(targetPoolsAddHealthCheckRequestResource)
         .build();
     return addHealthCheckTargetPool(request);
@@ -206,10 +206,38 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest = TargetPoolsAddHealthCheckRequest.newBuilder().build();
+   *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequestResource = TargetPoolsAddHealthCheckRequest.newBuilder().build();
+   *   Operation response = targetPoolClient.addHealthCheckTargetPool(targetPool.toString(), targetPoolsAddHealthCheckRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param targetPool Name of the target pool to add a health check to.
+   * @param targetPoolsAddHealthCheckRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation addHealthCheckTargetPool(String targetPool, TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequestResource) {
+
+    AddHealthCheckTargetPoolHttpRequest request =
+        AddHealthCheckTargetPoolHttpRequest.newBuilder()
+        .setTargetPool(targetPool)
+        .setTargetPoolsAddHealthCheckRequestResource(targetPoolsAddHealthCheckRequestResource)
+        .build();
+    return addHealthCheckTargetPool(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Adds health check URLs to a target pool.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
+   *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequestResource = TargetPoolsAddHealthCheckRequest.newBuilder().build();
    *   AddHealthCheckTargetPoolHttpRequest request = AddHealthCheckTargetPoolHttpRequest.newBuilder()
    *     .setTargetPool(targetPool.toString())
-   *     .setTargetPoolsAddHealthCheckRequestResource(targetPoolsAddHealthCheckRequest)
+   *     .setTargetPoolsAddHealthCheckRequestResource(targetPoolsAddHealthCheckRequestResource)
    *     .build();
    *   Operation response = targetPoolClient.addHealthCheckTargetPool(request);
    * }
@@ -231,10 +259,10 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequest = TargetPoolsAddHealthCheckRequest.newBuilder().build();
+   *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequestResource = TargetPoolsAddHealthCheckRequest.newBuilder().build();
    *   AddHealthCheckTargetPoolHttpRequest request = AddHealthCheckTargetPoolHttpRequest.newBuilder()
    *     .setTargetPool(targetPool.toString())
-   *     .setTargetPoolsAddHealthCheckRequestResource(targetPoolsAddHealthCheckRequest)
+   *     .setTargetPoolsAddHealthCheckRequestResource(targetPoolsAddHealthCheckRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.addHealthCheckTargetPoolCallable().futureCall(request);
    *   // Do something
@@ -255,8 +283,8 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequest = TargetPoolsAddInstanceRequest.newBuilder().build();
-   *   Operation response = targetPoolClient.addInstanceTargetPool(targetPool, targetPoolsAddInstanceRequest);
+   *   TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequestResource = TargetPoolsAddInstanceRequest.newBuilder().build();
+   *   Operation response = targetPoolClient.addInstanceTargetPool(targetPool, targetPoolsAddInstanceRequestResource);
    * }
    * </code></pre>
    *
@@ -269,7 +297,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     AddInstanceTargetPoolHttpRequest request =
         AddInstanceTargetPoolHttpRequest.newBuilder()
-        .setTargetPool(targetPool.toString())
+        .setTargetPool(targetPool == null ? null : targetPool.toString())
         .setTargetPoolsAddInstanceRequestResource(targetPoolsAddInstanceRequestResource)
         .build();
     return addInstanceTargetPool(request);
@@ -283,10 +311,38 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequest = TargetPoolsAddInstanceRequest.newBuilder().build();
+   *   TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequestResource = TargetPoolsAddInstanceRequest.newBuilder().build();
+   *   Operation response = targetPoolClient.addInstanceTargetPool(targetPool.toString(), targetPoolsAddInstanceRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param targetPool Name of the TargetPool resource to add instances to.
+   * @param targetPoolsAddInstanceRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation addInstanceTargetPool(String targetPool, TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequestResource) {
+
+    AddInstanceTargetPoolHttpRequest request =
+        AddInstanceTargetPoolHttpRequest.newBuilder()
+        .setTargetPool(targetPool)
+        .setTargetPoolsAddInstanceRequestResource(targetPoolsAddInstanceRequestResource)
+        .build();
+    return addInstanceTargetPool(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Adds an instance to a target pool.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
+   *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequestResource = TargetPoolsAddInstanceRequest.newBuilder().build();
    *   AddInstanceTargetPoolHttpRequest request = AddInstanceTargetPoolHttpRequest.newBuilder()
    *     .setTargetPool(targetPool.toString())
-   *     .setTargetPoolsAddInstanceRequestResource(targetPoolsAddInstanceRequest)
+   *     .setTargetPoolsAddInstanceRequestResource(targetPoolsAddInstanceRequestResource)
    *     .build();
    *   Operation response = targetPoolClient.addInstanceTargetPool(request);
    * }
@@ -308,10 +364,10 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequest = TargetPoolsAddInstanceRequest.newBuilder().build();
+   *   TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequestResource = TargetPoolsAddInstanceRequest.newBuilder().build();
    *   AddInstanceTargetPoolHttpRequest request = AddInstanceTargetPoolHttpRequest.newBuilder()
    *     .setTargetPool(targetPool.toString())
-   *     .setTargetPoolsAddInstanceRequestResource(targetPoolsAddInstanceRequest)
+   *     .setTargetPoolsAddInstanceRequestResource(targetPoolsAddInstanceRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.addInstanceTargetPoolCallable().futureCall(request);
    *   // Do something
@@ -345,7 +401,33 @@ public class TargetPoolClient implements BackgroundResource {
   public final AggregatedListTargetPoolsPagedResponse aggregatedListTargetPools(ProjectName project) {
     AggregatedListTargetPoolsHttpRequest request =
         AggregatedListTargetPoolsHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return aggregatedListTargetPools(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves an aggregated list of target pools.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (TargetPool element : targetPoolClient.aggregatedListTargetPools(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListTargetPoolsPagedResponse aggregatedListTargetPools(String project) {
+    AggregatedListTargetPoolsHttpRequest request =
+        AggregatedListTargetPoolsHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return aggregatedListTargetPools(request);
   }
@@ -451,7 +533,32 @@ public class TargetPoolClient implements BackgroundResource {
 
     DeleteTargetPoolHttpRequest request =
         DeleteTargetPoolHttpRequest.newBuilder()
-        .setTargetPool(targetPool.toString())
+        .setTargetPool(targetPool == null ? null : targetPool.toString())
+        .build();
+    return deleteTargetPool(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified target pool.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
+   *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   Operation response = targetPoolClient.deleteTargetPool(targetPool.toString());
+   * }
+   * </code></pre>
+   *
+   * @param targetPool Name of the TargetPool resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteTargetPool(String targetPool) {
+
+    DeleteTargetPoolHttpRequest request =
+        DeleteTargetPoolHttpRequest.newBuilder()
+        .setTargetPool(targetPool)
         .build();
     return deleteTargetPool(request);
   }
@@ -521,7 +628,32 @@ public class TargetPoolClient implements BackgroundResource {
 
     GetTargetPoolHttpRequest request =
         GetTargetPoolHttpRequest.newBuilder()
-        .setTargetPool(targetPool.toString())
+        .setTargetPool(targetPool == null ? null : targetPool.toString())
+        .build();
+    return getTargetPool(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified target pool. Get a list of available target pools by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
+   *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPool response = targetPoolClient.getTargetPool(targetPool.toString());
+   * }
+   * </code></pre>
+   *
+   * @param targetPool Name of the TargetPool resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final TargetPool getTargetPool(String targetPool) {
+
+    GetTargetPoolHttpRequest request =
+        GetTargetPoolHttpRequest.newBuilder()
+        .setTargetPool(targetPool)
         .build();
     return getTargetPool(request);
   }
@@ -579,8 +711,8 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   InstanceReference instanceReference = InstanceReference.newBuilder().build();
-   *   TargetPoolInstanceHealth response = targetPoolClient.getHealthTargetPool(targetPool, instanceReference);
+   *   InstanceReference instanceReferenceResource = InstanceReference.newBuilder().build();
+   *   TargetPoolInstanceHealth response = targetPoolClient.getHealthTargetPool(targetPool, instanceReferenceResource);
    * }
    * </code></pre>
    *
@@ -593,7 +725,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     GetHealthTargetPoolHttpRequest request =
         GetHealthTargetPoolHttpRequest.newBuilder()
-        .setTargetPool(targetPool.toString())
+        .setTargetPool(targetPool == null ? null : targetPool.toString())
         .setInstanceReferenceResource(instanceReferenceResource)
         .build();
     return getHealthTargetPool(request);
@@ -607,10 +739,38 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   InstanceReference instanceReference = InstanceReference.newBuilder().build();
+   *   InstanceReference instanceReferenceResource = InstanceReference.newBuilder().build();
+   *   TargetPoolInstanceHealth response = targetPoolClient.getHealthTargetPool(targetPool.toString(), instanceReferenceResource);
+   * }
+   * </code></pre>
+   *
+   * @param targetPool Name of the TargetPool resource to which the queried instance belongs.
+   * @param instanceReferenceResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final TargetPoolInstanceHealth getHealthTargetPool(String targetPool, InstanceReference instanceReferenceResource) {
+
+    GetHealthTargetPoolHttpRequest request =
+        GetHealthTargetPoolHttpRequest.newBuilder()
+        .setTargetPool(targetPool)
+        .setInstanceReferenceResource(instanceReferenceResource)
+        .build();
+    return getHealthTargetPool(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Gets the most recent health check results for each IP for the instance that is referenced by the given target pool.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
+   *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   InstanceReference instanceReferenceResource = InstanceReference.newBuilder().build();
    *   GetHealthTargetPoolHttpRequest request = GetHealthTargetPoolHttpRequest.newBuilder()
    *     .setTargetPool(targetPool.toString())
-   *     .setInstanceReferenceResource(instanceReference)
+   *     .setInstanceReferenceResource(instanceReferenceResource)
    *     .build();
    *   TargetPoolInstanceHealth response = targetPoolClient.getHealthTargetPool(request);
    * }
@@ -632,10 +792,10 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   InstanceReference instanceReference = InstanceReference.newBuilder().build();
+   *   InstanceReference instanceReferenceResource = InstanceReference.newBuilder().build();
    *   GetHealthTargetPoolHttpRequest request = GetHealthTargetPoolHttpRequest.newBuilder()
    *     .setTargetPool(targetPool.toString())
-   *     .setInstanceReferenceResource(instanceReference)
+   *     .setInstanceReferenceResource(instanceReferenceResource)
    *     .build();
    *   ApiFuture&lt;TargetPoolInstanceHealth&gt; future = targetPoolClient.getHealthTargetPoolCallable().futureCall(request);
    *   // Do something
@@ -656,8 +816,8 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   TargetPool targetPool = TargetPool.newBuilder().build();
-   *   Operation response = targetPoolClient.insertTargetPool(region, targetPool);
+   *   TargetPool targetPoolResource = TargetPool.newBuilder().build();
+   *   Operation response = targetPoolClient.insertTargetPool(region, targetPoolResource);
    * }
    * </code></pre>
    *
@@ -670,7 +830,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     InsertTargetPoolHttpRequest request =
         InsertTargetPoolHttpRequest.newBuilder()
-        .setRegion(region.toString())
+        .setRegion(region == null ? null : region.toString())
         .setTargetPoolResource(targetPoolResource)
         .build();
     return insertTargetPool(request);
@@ -684,10 +844,38 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   TargetPool targetPool = TargetPool.newBuilder().build();
+   *   TargetPool targetPoolResource = TargetPool.newBuilder().build();
+   *   Operation response = targetPoolClient.insertTargetPool(region.toString(), targetPoolResource);
+   * }
+   * </code></pre>
+   *
+   * @param region Name of the region scoping this request.
+   * @param targetPoolResource A TargetPool resource. This resource defines a pool of instances, associated HttpHealthCheck resources, and the fallback target pool.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertTargetPool(String region, TargetPool targetPoolResource) {
+
+    InsertTargetPoolHttpRequest request =
+        InsertTargetPoolHttpRequest.newBuilder()
+        .setRegion(region)
+        .setTargetPoolResource(targetPoolResource)
+        .build();
+    return insertTargetPool(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a target pool in the specified project and region using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   TargetPool targetPoolResource = TargetPool.newBuilder().build();
    *   InsertTargetPoolHttpRequest request = InsertTargetPoolHttpRequest.newBuilder()
    *     .setRegion(region.toString())
-   *     .setTargetPoolResource(targetPool)
+   *     .setTargetPoolResource(targetPoolResource)
    *     .build();
    *   Operation response = targetPoolClient.insertTargetPool(request);
    * }
@@ -709,10 +897,10 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   TargetPool targetPool = TargetPool.newBuilder().build();
+   *   TargetPool targetPoolResource = TargetPool.newBuilder().build();
    *   InsertTargetPoolHttpRequest request = InsertTargetPoolHttpRequest.newBuilder()
    *     .setRegion(region.toString())
-   *     .setTargetPoolResource(targetPool)
+   *     .setTargetPoolResource(targetPoolResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.insertTargetPoolCallable().futureCall(request);
    *   // Do something
@@ -746,7 +934,33 @@ public class TargetPoolClient implements BackgroundResource {
   public final ListTargetPoolsPagedResponse listTargetPools(RegionName region) {
     ListTargetPoolsHttpRequest request =
         ListTargetPoolsHttpRequest.newBuilder()
-        .setRegion(region.toString())
+        .setRegion(region == null ? null : region.toString())
+        .build();
+    return listTargetPools(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves a list of target pools available to the specified project and region.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   for (TargetPool element : targetPoolClient.listTargetPools(region.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param region Name of the region scoping this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListTargetPoolsPagedResponse listTargetPools(String region) {
+    ListTargetPoolsHttpRequest request =
+        ListTargetPoolsHttpRequest.newBuilder()
+        .setRegion(region)
         .build();
     return listTargetPools(request);
   }
@@ -840,8 +1054,8 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequest = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
-   *   Operation response = targetPoolClient.removeHealthCheckTargetPool(targetPool, targetPoolsRemoveHealthCheckRequest);
+   *   TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequestResource = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
+   *   Operation response = targetPoolClient.removeHealthCheckTargetPool(targetPool, targetPoolsRemoveHealthCheckRequestResource);
    * }
    * </code></pre>
    *
@@ -854,7 +1068,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     RemoveHealthCheckTargetPoolHttpRequest request =
         RemoveHealthCheckTargetPoolHttpRequest.newBuilder()
-        .setTargetPool(targetPool.toString())
+        .setTargetPool(targetPool == null ? null : targetPool.toString())
         .setTargetPoolsRemoveHealthCheckRequestResource(targetPoolsRemoveHealthCheckRequestResource)
         .build();
     return removeHealthCheckTargetPool(request);
@@ -868,10 +1082,38 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequest = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
+   *   TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequestResource = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
+   *   Operation response = targetPoolClient.removeHealthCheckTargetPool(targetPool.toString(), targetPoolsRemoveHealthCheckRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param targetPool Name of the target pool to remove health checks from.
+   * @param targetPoolsRemoveHealthCheckRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation removeHealthCheckTargetPool(String targetPool, TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequestResource) {
+
+    RemoveHealthCheckTargetPoolHttpRequest request =
+        RemoveHealthCheckTargetPoolHttpRequest.newBuilder()
+        .setTargetPool(targetPool)
+        .setTargetPoolsRemoveHealthCheckRequestResource(targetPoolsRemoveHealthCheckRequestResource)
+        .build();
+    return removeHealthCheckTargetPool(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Removes health check URL from a target pool.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
+   *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequestResource = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
    *   RemoveHealthCheckTargetPoolHttpRequest request = RemoveHealthCheckTargetPoolHttpRequest.newBuilder()
    *     .setTargetPool(targetPool.toString())
-   *     .setTargetPoolsRemoveHealthCheckRequestResource(targetPoolsRemoveHealthCheckRequest)
+   *     .setTargetPoolsRemoveHealthCheckRequestResource(targetPoolsRemoveHealthCheckRequestResource)
    *     .build();
    *   Operation response = targetPoolClient.removeHealthCheckTargetPool(request);
    * }
@@ -893,10 +1135,10 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequest = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
+   *   TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequestResource = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
    *   RemoveHealthCheckTargetPoolHttpRequest request = RemoveHealthCheckTargetPoolHttpRequest.newBuilder()
    *     .setTargetPool(targetPool.toString())
-   *     .setTargetPoolsRemoveHealthCheckRequestResource(targetPoolsRemoveHealthCheckRequest)
+   *     .setTargetPoolsRemoveHealthCheckRequestResource(targetPoolsRemoveHealthCheckRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.removeHealthCheckTargetPoolCallable().futureCall(request);
    *   // Do something
@@ -917,8 +1159,8 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequest = TargetPoolsRemoveInstanceRequest.newBuilder().build();
-   *   Operation response = targetPoolClient.removeInstanceTargetPool(targetPool, targetPoolsRemoveInstanceRequest);
+   *   TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequestResource = TargetPoolsRemoveInstanceRequest.newBuilder().build();
+   *   Operation response = targetPoolClient.removeInstanceTargetPool(targetPool, targetPoolsRemoveInstanceRequestResource);
    * }
    * </code></pre>
    *
@@ -931,7 +1173,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     RemoveInstanceTargetPoolHttpRequest request =
         RemoveInstanceTargetPoolHttpRequest.newBuilder()
-        .setTargetPool(targetPool.toString())
+        .setTargetPool(targetPool == null ? null : targetPool.toString())
         .setTargetPoolsRemoveInstanceRequestResource(targetPoolsRemoveInstanceRequestResource)
         .build();
     return removeInstanceTargetPool(request);
@@ -945,10 +1187,38 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequest = TargetPoolsRemoveInstanceRequest.newBuilder().build();
+   *   TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequestResource = TargetPoolsRemoveInstanceRequest.newBuilder().build();
+   *   Operation response = targetPoolClient.removeInstanceTargetPool(targetPool.toString(), targetPoolsRemoveInstanceRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param targetPool Name of the TargetPool resource to remove instances from.
+   * @param targetPoolsRemoveInstanceRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation removeInstanceTargetPool(String targetPool, TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequestResource) {
+
+    RemoveInstanceTargetPoolHttpRequest request =
+        RemoveInstanceTargetPoolHttpRequest.newBuilder()
+        .setTargetPool(targetPool)
+        .setTargetPoolsRemoveInstanceRequestResource(targetPoolsRemoveInstanceRequestResource)
+        .build();
+    return removeInstanceTargetPool(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Removes instance URL from a target pool.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
+   *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequestResource = TargetPoolsRemoveInstanceRequest.newBuilder().build();
    *   RemoveInstanceTargetPoolHttpRequest request = RemoveInstanceTargetPoolHttpRequest.newBuilder()
    *     .setTargetPool(targetPool.toString())
-   *     .setTargetPoolsRemoveInstanceRequestResource(targetPoolsRemoveInstanceRequest)
+   *     .setTargetPoolsRemoveInstanceRequestResource(targetPoolsRemoveInstanceRequestResource)
    *     .build();
    *   Operation response = targetPoolClient.removeInstanceTargetPool(request);
    * }
@@ -970,10 +1240,10 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-   *   TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequest = TargetPoolsRemoveInstanceRequest.newBuilder().build();
+   *   TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequestResource = TargetPoolsRemoveInstanceRequest.newBuilder().build();
    *   RemoveInstanceTargetPoolHttpRequest request = RemoveInstanceTargetPoolHttpRequest.newBuilder()
    *     .setTargetPool(targetPool.toString())
-   *     .setTargetPoolsRemoveInstanceRequestResource(targetPoolsRemoveInstanceRequest)
+   *     .setTargetPoolsRemoveInstanceRequestResource(targetPoolsRemoveInstanceRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.removeInstanceTargetPoolCallable().futureCall(request);
    *   // Do something
@@ -995,8 +1265,8 @@ public class TargetPoolClient implements BackgroundResource {
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   Float failoverRatio = 0;
-   *   TargetReference targetReference = TargetReference.newBuilder().build();
-   *   Operation response = targetPoolClient.setBackupTargetPool(targetPool, failoverRatio, targetReference);
+   *   TargetReference targetReferenceResource = TargetReference.newBuilder().build();
+   *   Operation response = targetPoolClient.setBackupTargetPool(targetPool, failoverRatio, targetReferenceResource);
    * }
    * </code></pre>
    *
@@ -1010,7 +1280,7 @@ public class TargetPoolClient implements BackgroundResource {
 
     SetBackupTargetPoolHttpRequest request =
         SetBackupTargetPoolHttpRequest.newBuilder()
-        .setTargetPool(targetPool.toString())
+        .setTargetPool(targetPool == null ? null : targetPool.toString())
         .setFailoverRatio(failoverRatio)
         .setTargetReferenceResource(targetReferenceResource)
         .build();
@@ -1026,11 +1296,42 @@ public class TargetPoolClient implements BackgroundResource {
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   Float failoverRatio = 0;
-   *   TargetReference targetReference = TargetReference.newBuilder().build();
+   *   TargetReference targetReferenceResource = TargetReference.newBuilder().build();
+   *   Operation response = targetPoolClient.setBackupTargetPool(targetPool.toString(), failoverRatio, targetReferenceResource);
+   * }
+   * </code></pre>
+   *
+   * @param targetPool Name of the TargetPool resource to set a backup pool for.
+   * @param failoverRatio New failoverRatio value for the target pool.
+   * @param targetReferenceResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation setBackupTargetPool(String targetPool, Float failoverRatio, TargetReference targetReferenceResource) {
+
+    SetBackupTargetPoolHttpRequest request =
+        SetBackupTargetPoolHttpRequest.newBuilder()
+        .setTargetPool(targetPool)
+        .setFailoverRatio(failoverRatio)
+        .setTargetReferenceResource(targetReferenceResource)
+        .build();
+    return setBackupTargetPool(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Changes a backup target pool's configurations.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
+   *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
+   *   Float failoverRatio = 0;
+   *   TargetReference targetReferenceResource = TargetReference.newBuilder().build();
    *   SetBackupTargetPoolHttpRequest request = SetBackupTargetPoolHttpRequest.newBuilder()
    *     .setTargetPool(targetPool.toString())
    *     .setFailoverRatio(failoverRatio)
-   *     .setTargetReferenceResource(targetReference)
+   *     .setTargetReferenceResource(targetReferenceResource)
    *     .build();
    *   Operation response = targetPoolClient.setBackupTargetPool(request);
    * }
@@ -1053,11 +1354,11 @@ public class TargetPoolClient implements BackgroundResource {
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
    *   Float failoverRatio = 0;
-   *   TargetReference targetReference = TargetReference.newBuilder().build();
+   *   TargetReference targetReferenceResource = TargetReference.newBuilder().build();
    *   SetBackupTargetPoolHttpRequest request = SetBackupTargetPoolHttpRequest.newBuilder()
    *     .setTargetPool(targetPool.toString())
    *     .setFailoverRatio(failoverRatio)
-   *     .setTargetReferenceResource(targetReference)
+   *     .setTargetReferenceResource(targetReferenceResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetPoolClient.setBackupTargetPoolCallable().futureCall(request);
    *   // Do something

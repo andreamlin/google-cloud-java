@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -34,11 +32,9 @@ import javax.annotation.Nullable;
 @BetaApi
 public final class TargetPoolsAddInstanceRequest implements ApiMessage {
   private final List<InstanceReference> instances;
-  private final Map<String, String> pathParams;
 
   private TargetPoolsAddInstanceRequest() {
     this.instances = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -46,22 +42,27 @@ public final class TargetPoolsAddInstanceRequest implements ApiMessage {
       List<InstanceReference> instances
       ) {
     this.instances = instances;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("instances") && instances != null) {
-      fieldMap.put("instances", instances.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (InstanceReference item : instances) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("instances", stringList);
     }
     return fieldMap;
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("instances")) {
+      return String.valueOf(instances);
+    }
+    return null;
   }
 
   @Nullable
@@ -116,6 +117,9 @@ public final class TargetPoolsAddInstanceRequest implements ApiMessage {
     }
 
     public Builder addAllInstances(List<InstanceReference> instances) {
+      if (this.instances == null) {
+        this.instances = new LinkedList<>();
+      }
       this.instances.addAll(instances);
       return this;
     }

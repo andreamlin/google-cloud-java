@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -38,7 +36,6 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
   private final String diskType;
   private final String sourceImage;
   private final CustomerEncryptionKey sourceImageEncryptionKey;
-  private final Map<String, String> pathParams;
 
   private AttachedDiskInitializeParams() {
     this.diskName = null;
@@ -46,7 +43,6 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
     this.diskType = null;
     this.sourceImage = null;
     this.sourceImageEncryptionKey = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -62,8 +58,6 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
     this.diskType = diskType;
     this.sourceImage = sourceImage;
     this.sourceImageEncryptionKey = sourceImageEncryptionKey;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -88,8 +82,23 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("diskName")) {
+      return String.valueOf(diskName);
+    }
+    if (fieldName.equals("diskSizeGb")) {
+      return String.valueOf(diskSizeGb);
+    }
+    if (fieldName.equals("diskType")) {
+      return String.valueOf(diskType);
+    }
+    if (fieldName.equals("sourceImage")) {
+      return String.valueOf(sourceImage);
+    }
+    if (fieldName.equals("sourceImageEncryptionKey")) {
+      return String.valueOf(sourceImageEncryptionKey);
+    }
+    return null;
   }
 
   @Nullable

@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -36,13 +34,11 @@ public final class AutoscalingPolicyCustomMetricUtilization implements ApiMessag
   private final String metric;
   private final Double utilizationTarget;
   private final String utilizationTargetType;
-  private final Map<String, String> pathParams;
 
   private AutoscalingPolicyCustomMetricUtilization() {
     this.metric = null;
     this.utilizationTarget = null;
     this.utilizationTargetType = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -54,8 +50,6 @@ public final class AutoscalingPolicyCustomMetricUtilization implements ApiMessag
     this.metric = metric;
     this.utilizationTarget = utilizationTarget;
     this.utilizationTargetType = utilizationTargetType;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -74,8 +68,17 @@ public final class AutoscalingPolicyCustomMetricUtilization implements ApiMessag
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("metric")) {
+      return String.valueOf(metric);
+    }
+    if (fieldName.equals("utilizationTarget")) {
+      return String.valueOf(utilizationTarget);
+    }
+    if (fieldName.equals("utilizationTargetType")) {
+      return String.valueOf(utilizationTargetType);
+    }
+    return null;
   }
 
   @Nullable

@@ -189,7 +189,32 @@ public class SslCertificateClient implements BackgroundResource {
 
     DeleteSslCertificateHttpRequest request =
         DeleteSslCertificateHttpRequest.newBuilder()
-        .setSslCertificate(sslCertificate.toString())
+        .setSslCertificate(sslCertificate == null ? null : sslCertificate.toString())
+        .build();
+    return deleteSslCertificate(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified SslCertificate resource.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
+   *   SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   Operation response = sslCertificateClient.deleteSslCertificate(sslCertificate.toString());
+   * }
+   * </code></pre>
+   *
+   * @param sslCertificate Name of the SslCertificate resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteSslCertificate(String sslCertificate) {
+
+    DeleteSslCertificateHttpRequest request =
+        DeleteSslCertificateHttpRequest.newBuilder()
+        .setSslCertificate(sslCertificate)
         .build();
     return deleteSslCertificate(request);
   }
@@ -259,7 +284,32 @@ public class SslCertificateClient implements BackgroundResource {
 
     GetSslCertificateHttpRequest request =
         GetSslCertificateHttpRequest.newBuilder()
-        .setSslCertificate(sslCertificate.toString())
+        .setSslCertificate(sslCertificate == null ? null : sslCertificate.toString())
+        .build();
+    return getSslCertificate(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified SslCertificate resource. Get a list of available SSL certificates by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
+   *   SslCertificateName sslCertificate = SslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   SslCertificate response = sslCertificateClient.getSslCertificate(sslCertificate.toString());
+   * }
+   * </code></pre>
+   *
+   * @param sslCertificate Name of the SslCertificate resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final SslCertificate getSslCertificate(String sslCertificate) {
+
+    GetSslCertificateHttpRequest request =
+        GetSslCertificateHttpRequest.newBuilder()
+        .setSslCertificate(sslCertificate)
         .build();
     return getSslCertificate(request);
   }
@@ -317,8 +367,8 @@ public class SslCertificateClient implements BackgroundResource {
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   SslCertificate sslCertificate = SslCertificate.newBuilder().build();
-   *   Operation response = sslCertificateClient.insertSslCertificate(project, sslCertificate);
+   *   SslCertificate sslCertificateResource = SslCertificate.newBuilder().build();
+   *   Operation response = sslCertificateClient.insertSslCertificate(project, sslCertificateResource);
    * }
    * </code></pre>
    *
@@ -331,7 +381,7 @@ public class SslCertificateClient implements BackgroundResource {
 
     InsertSslCertificateHttpRequest request =
         InsertSslCertificateHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
         .setSslCertificateResource(sslCertificateResource)
         .build();
     return insertSslCertificate(request);
@@ -345,10 +395,38 @@ public class SslCertificateClient implements BackgroundResource {
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   SslCertificate sslCertificate = SslCertificate.newBuilder().build();
+   *   SslCertificate sslCertificateResource = SslCertificate.newBuilder().build();
+   *   Operation response = sslCertificateClient.insertSslCertificate(project.toString(), sslCertificateResource);
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @param sslCertificateResource An SslCertificate resource. This resource provides a mechanism to upload an SSL key and certificate to the load balancer to serve secure connections from the user.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertSslCertificate(String project, SslCertificate sslCertificateResource) {
+
+    InsertSslCertificateHttpRequest request =
+        InsertSslCertificateHttpRequest.newBuilder()
+        .setProject(project)
+        .setSslCertificateResource(sslCertificateResource)
+        .build();
+    return insertSslCertificate(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a SslCertificate resource in the specified project using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   SslCertificate sslCertificateResource = SslCertificate.newBuilder().build();
    *   InsertSslCertificateHttpRequest request = InsertSslCertificateHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setSslCertificateResource(sslCertificate)
+   *     .setSslCertificateResource(sslCertificateResource)
    *     .build();
    *   Operation response = sslCertificateClient.insertSslCertificate(request);
    * }
@@ -370,10 +448,10 @@ public class SslCertificateClient implements BackgroundResource {
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   SslCertificate sslCertificate = SslCertificate.newBuilder().build();
+   *   SslCertificate sslCertificateResource = SslCertificate.newBuilder().build();
    *   InsertSslCertificateHttpRequest request = InsertSslCertificateHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setSslCertificateResource(sslCertificate)
+   *     .setSslCertificateResource(sslCertificateResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = sslCertificateClient.insertSslCertificateCallable().futureCall(request);
    *   // Do something
@@ -407,7 +485,33 @@ public class SslCertificateClient implements BackgroundResource {
   public final ListSslCertificatesPagedResponse listSslCertificates(ProjectName project) {
     ListSslCertificatesHttpRequest request =
         ListSslCertificatesHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return listSslCertificates(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of SslCertificate resources available to the specified project.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (SslCertificate element : sslCertificateClient.listSslCertificates(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListSslCertificatesPagedResponse listSslCertificates(String project) {
+    ListSslCertificatesHttpRequest request =
+        ListSslCertificatesHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return listSslCertificates(request);
   }

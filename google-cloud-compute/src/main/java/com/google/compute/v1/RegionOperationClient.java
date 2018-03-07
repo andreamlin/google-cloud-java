@@ -53,7 +53,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
- *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
+ *   ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
  *   regionOperationClient.deleteRegionOperation(operation);
  * }
  * </code>
@@ -176,7 +176,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
+   *   ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   regionOperationClient.deleteRegionOperation(operation);
    * }
    * </code></pre>
@@ -185,11 +185,11 @@ public class RegionOperationClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final void deleteRegionOperation(RegionOperationsOperationName operation) {
+  public final void deleteRegionOperation(ProjectRegionOperationName operation) {
 
     DeleteRegionOperationHttpRequest request =
         DeleteRegionOperationHttpRequest.newBuilder()
-        .setOperation(operation.toString())
+        .setOperation(operation == null ? null : operation.toString())
         .build();
     deleteRegionOperation(request);
   }
@@ -201,7 +201,32 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
+   *   ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
+   *   regionOperationClient.deleteRegionOperation(operation.toString());
+   * }
+   * </code></pre>
+   *
+   * @param operation Name of the Operations resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final void deleteRegionOperation(String operation) {
+
+    DeleteRegionOperationHttpRequest request =
+        DeleteRegionOperationHttpRequest.newBuilder()
+        .setOperation(operation)
+        .build();
+    deleteRegionOperation(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified region-specific Operations resource.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
+   *   ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   DeleteRegionOperationHttpRequest request = DeleteRegionOperationHttpRequest.newBuilder()
    *     .setOperation(operation.toString())
    *     .build();
@@ -224,7 +249,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
+   *   ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   DeleteRegionOperationHttpRequest request = DeleteRegionOperationHttpRequest.newBuilder()
    *     .setOperation(operation.toString())
    *     .build();
@@ -246,7 +271,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
+   *   ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   Operation response = regionOperationClient.getRegionOperation(operation);
    * }
    * </code></pre>
@@ -255,11 +280,11 @@ public class RegionOperationClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation getRegionOperation(RegionOperationsOperationName operation) {
+  public final Operation getRegionOperation(ProjectRegionOperationName operation) {
 
     GetRegionOperationHttpRequest request =
         GetRegionOperationHttpRequest.newBuilder()
-        .setOperation(operation.toString())
+        .setOperation(operation == null ? null : operation.toString())
         .build();
     return getRegionOperation(request);
   }
@@ -271,7 +296,32 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
+   *   ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
+   *   Operation response = regionOperationClient.getRegionOperation(operation.toString());
+   * }
+   * </code></pre>
+   *
+   * @param operation Name of the Operations resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation getRegionOperation(String operation) {
+
+    GetRegionOperationHttpRequest request =
+        GetRegionOperationHttpRequest.newBuilder()
+        .setOperation(operation)
+        .build();
+    return getRegionOperation(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the specified region-specific Operations resource.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
+   *   ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   GetRegionOperationHttpRequest request = GetRegionOperationHttpRequest.newBuilder()
    *     .setOperation(operation.toString())
    *     .build();
@@ -294,7 +344,7 @@ public class RegionOperationClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
-   *   RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
+   *   ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
    *   GetRegionOperationHttpRequest request = GetRegionOperationHttpRequest.newBuilder()
    *     .setOperation(operation.toString())
    *     .build();
@@ -330,7 +380,33 @@ public class RegionOperationClient implements BackgroundResource {
   public final ListRegionOperationsPagedResponse listRegionOperations(RegionName region) {
     ListRegionOperationsHttpRequest request =
         ListRegionOperationsHttpRequest.newBuilder()
-        .setRegion(region.toString())
+        .setRegion(region == null ? null : region.toString())
+        .build();
+    return listRegionOperations(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves a list of Operation resources contained within the specified region.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (RegionOperationClient regionOperationClient = RegionOperationClient.create()) {
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   for (Operation element : regionOperationClient.listRegionOperations(region.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param region Name of the region for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListRegionOperationsPagedResponse listRegionOperations(String region) {
+    ListRegionOperationsHttpRequest request =
+        ListRegionOperationsHttpRequest.newBuilder()
+        .setRegion(region)
         .build();
     return listRegionOperations(request);
   }

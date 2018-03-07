@@ -39,7 +39,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class LicensClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static LicensClient client;
   private static LicensSettings clientSettings;
 
@@ -49,14 +49,14 @@ public class LicensClientTest {
         LicensSettings.newBuilder()
            .setTransportChannelProvider(
                LicensSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        LicensClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -77,8 +77,8 @@ public class LicensClientTest {
       .setName(name)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getLicensMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getLicensMethodDescriptor);
 
     LicenseName license = LicenseName.of("[PROJECT]", "[LICENSE]");
 
@@ -86,7 +86,7 @@ public class LicensClientTest {
         client.getLicens(license);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -94,8 +94,8 @@ public class LicensClientTest {
   @SuppressWarnings("all")
   public void getLicensExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getLicensMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getLicensMethodDescriptor);
 
     try {
       LicenseName license = LicenseName.of("[PROJECT]", "[LICENSE]");

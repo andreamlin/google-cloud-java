@@ -53,7 +53,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class InstanceGroupManagerClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static InstanceGroupManagerClient client;
   private static InstanceGroupManagerSettings clientSettings;
 
@@ -63,14 +63,14 @@ public class InstanceGroupManagerClientTest {
         InstanceGroupManagerSettings.newBuilder()
            .setTransportChannelProvider(
                InstanceGroupManagerSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        InstanceGroupManagerClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -125,17 +125,17 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(abandonInstancesInstanceGroupManagerMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(abandonInstancesInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-    InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequest = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
+    InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.abandonInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersAbandonInstancesRequest);
+        client.abandonInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersAbandonInstancesRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -143,14 +143,14 @@ public class InstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void abandonInstancesInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(abandonInstancesInstanceGroupManagerMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(abandonInstancesInstanceGroupManagerMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-      InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequest = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
+      InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
 
-      client.abandonInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersAbandonInstancesRequest);
+      client.abandonInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersAbandonInstancesRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -176,8 +176,8 @@ public class InstanceGroupManagerClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(aggregatedListInstanceGroupManagersMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(aggregatedListInstanceGroupManagersMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -187,7 +187,7 @@ public class InstanceGroupManagerClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().getInstanceGroupManagers().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -195,8 +195,8 @@ public class InstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void aggregatedListInstanceGroupManagersExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(aggregatedListInstanceGroupManagersMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(aggregatedListInstanceGroupManagersMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -255,8 +255,8 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteInstanceGroupManagerMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -264,7 +264,7 @@ public class InstanceGroupManagerClientTest {
         client.deleteInstanceGroupManager(instanceGroupManager);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -272,8 +272,8 @@ public class InstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void deleteInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteInstanceGroupManagerMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteInstanceGroupManagerMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -332,17 +332,17 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteInstancesInstanceGroupManagerMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteInstancesInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-    InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequest = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
+    InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequestResource = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.deleteInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersDeleteInstancesRequest);
+        client.deleteInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersDeleteInstancesRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -350,14 +350,14 @@ public class InstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void deleteInstancesInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteInstancesInstanceGroupManagerMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteInstancesInstanceGroupManagerMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-      InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequest = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
+      InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequestResource = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
 
-      client.deleteInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersDeleteInstancesRequest);
+      client.deleteInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersDeleteInstancesRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -395,8 +395,8 @@ public class InstanceGroupManagerClientTest {
       .setId(id)
       .setRegion(region.toString())
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getInstanceGroupManagerMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -404,7 +404,7 @@ public class InstanceGroupManagerClientTest {
         client.getInstanceGroupManager(instanceGroupManager);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -412,8 +412,8 @@ public class InstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void getInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getInstanceGroupManagerMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getInstanceGroupManagerMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -472,17 +472,17 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertInstanceGroupManagerMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertInstanceGroupManagerMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
-    InstanceGroupManager instanceGroupManager = InstanceGroupManager.newBuilder().build();
+    InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
 
     Operation actualResponse =
-        client.insertInstanceGroupManager(zone, instanceGroupManager);
+        client.insertInstanceGroupManager(zone, instanceGroupManagerResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -490,14 +490,14 @@ public class InstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void insertInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertInstanceGroupManagerMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertInstanceGroupManagerMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
-      InstanceGroupManager instanceGroupManager = InstanceGroupManager.newBuilder().build();
+      InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
 
-      client.insertInstanceGroupManager(zone, instanceGroupManager);
+      client.insertInstanceGroupManager(zone, instanceGroupManagerResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -520,8 +520,8 @@ public class InstanceGroupManagerClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listInstanceGroupManagersMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listInstanceGroupManagersMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -531,7 +531,7 @@ public class InstanceGroupManagerClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -539,8 +539,8 @@ public class InstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void listInstanceGroupManagersExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listInstanceGroupManagersMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listInstanceGroupManagersMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -556,8 +556,8 @@ public class InstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void listManagedInstancesInstanceGroupManagersTest() {
     InstanceGroupManagersListManagedInstancesResponse expectedResponse = InstanceGroupManagersListManagedInstancesResponse.newBuilder().build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listManagedInstancesInstanceGroupManagersMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listManagedInstancesInstanceGroupManagersMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -565,7 +565,7 @@ public class InstanceGroupManagerClientTest {
         client.listManagedInstancesInstanceGroupManagers(instanceGroupManager);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -573,8 +573,8 @@ public class InstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void listManagedInstancesInstanceGroupManagersExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listManagedInstancesInstanceGroupManagersMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listManagedInstancesInstanceGroupManagersMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -633,17 +633,17 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(recreateInstancesInstanceGroupManagerMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(recreateInstancesInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-    InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequest = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
+    InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequestResource = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.recreateInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersRecreateInstancesRequest);
+        client.recreateInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersRecreateInstancesRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -651,14 +651,14 @@ public class InstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void recreateInstancesInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(recreateInstancesInstanceGroupManagerMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(recreateInstancesInstanceGroupManagerMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-      InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequest = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
+      InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequestResource = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
 
-      client.recreateInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersRecreateInstancesRequest);
+      client.recreateInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersRecreateInstancesRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -712,8 +712,8 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(resizeInstanceGroupManagerMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(resizeInstanceGroupManagerMethodDescriptor);
 
     Integer size = 3530753;
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -722,7 +722,7 @@ public class InstanceGroupManagerClientTest {
         client.resizeInstanceGroupManager(size, instanceGroupManager);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -730,8 +730,8 @@ public class InstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void resizeInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(resizeInstanceGroupManagerMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(resizeInstanceGroupManagerMethodDescriptor);
 
     try {
       Integer size = 3530753;
@@ -791,17 +791,17 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setInstanceTemplateInstanceGroupManagerMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setInstanceTemplateInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-    InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequest = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
+    InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequestResource = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.setInstanceTemplateInstanceGroupManager(instanceGroupManager, instanceGroupManagersSetInstanceTemplateRequest);
+        client.setInstanceTemplateInstanceGroupManager(instanceGroupManager, instanceGroupManagersSetInstanceTemplateRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -809,14 +809,14 @@ public class InstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void setInstanceTemplateInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setInstanceTemplateInstanceGroupManagerMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setInstanceTemplateInstanceGroupManagerMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-      InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequest = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
+      InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequestResource = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
 
-      client.setInstanceTemplateInstanceGroupManager(instanceGroupManager, instanceGroupManagersSetInstanceTemplateRequest);
+      client.setInstanceTemplateInstanceGroupManager(instanceGroupManager, instanceGroupManagersSetInstanceTemplateRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -870,17 +870,17 @@ public class InstanceGroupManagerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setTargetPoolsInstanceGroupManagerMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setTargetPoolsInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-    InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequest = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
+    InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequestResource = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.setTargetPoolsInstanceGroupManager(instanceGroupManager, instanceGroupManagersSetTargetPoolsRequest);
+        client.setTargetPoolsInstanceGroupManager(instanceGroupManager, instanceGroupManagersSetTargetPoolsRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -888,14 +888,14 @@ public class InstanceGroupManagerClientTest {
   @SuppressWarnings("all")
   public void setTargetPoolsInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setTargetPoolsInstanceGroupManagerMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setTargetPoolsInstanceGroupManagerMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-      InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequest = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
+      InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequestResource = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
 
-      client.setTargetPoolsInstanceGroupManager(instanceGroupManager, instanceGroupManagersSetTargetPoolsRequest);
+      client.setTargetPoolsInstanceGroupManager(instanceGroupManager, instanceGroupManagersSetTargetPoolsRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception

@@ -189,7 +189,32 @@ public class ProjectClient implements BackgroundResource {
 
     GetProjectHttpRequest request =
         GetProjectHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return getProject(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified Project resource.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ProjectClient projectClient = ProjectClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   Project response = projectClient.getProject(project.toString());
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Project getProject(String project) {
+
+    GetProjectHttpRequest request =
+        GetProjectHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return getProject(request);
   }
@@ -247,8 +272,8 @@ public class ProjectClient implements BackgroundResource {
    * <pre><code>
    * try (ProjectClient projectClient = ProjectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   DiskMoveRequest diskMoveRequest = DiskMoveRequest.newBuilder().build();
-   *   Operation response = projectClient.moveDiskProject(project, diskMoveRequest);
+   *   DiskMoveRequest diskMoveRequestResource = DiskMoveRequest.newBuilder().build();
+   *   Operation response = projectClient.moveDiskProject(project, diskMoveRequestResource);
    * }
    * </code></pre>
    *
@@ -261,7 +286,7 @@ public class ProjectClient implements BackgroundResource {
 
     MoveDiskProjectHttpRequest request =
         MoveDiskProjectHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
         .setDiskMoveRequestResource(diskMoveRequestResource)
         .build();
     return moveDiskProject(request);
@@ -275,10 +300,38 @@ public class ProjectClient implements BackgroundResource {
    * <pre><code>
    * try (ProjectClient projectClient = ProjectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   DiskMoveRequest diskMoveRequest = DiskMoveRequest.newBuilder().build();
+   *   DiskMoveRequest diskMoveRequestResource = DiskMoveRequest.newBuilder().build();
+   *   Operation response = projectClient.moveDiskProject(project.toString(), diskMoveRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @param diskMoveRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation moveDiskProject(String project, DiskMoveRequest diskMoveRequestResource) {
+
+    MoveDiskProjectHttpRequest request =
+        MoveDiskProjectHttpRequest.newBuilder()
+        .setProject(project)
+        .setDiskMoveRequestResource(diskMoveRequestResource)
+        .build();
+    return moveDiskProject(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Moves a persistent disk from one zone to another.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ProjectClient projectClient = ProjectClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   DiskMoveRequest diskMoveRequestResource = DiskMoveRequest.newBuilder().build();
    *   MoveDiskProjectHttpRequest request = MoveDiskProjectHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setDiskMoveRequestResource(diskMoveRequest)
+   *     .setDiskMoveRequestResource(diskMoveRequestResource)
    *     .build();
    *   Operation response = projectClient.moveDiskProject(request);
    * }
@@ -300,10 +353,10 @@ public class ProjectClient implements BackgroundResource {
    * <pre><code>
    * try (ProjectClient projectClient = ProjectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   DiskMoveRequest diskMoveRequest = DiskMoveRequest.newBuilder().build();
+   *   DiskMoveRequest diskMoveRequestResource = DiskMoveRequest.newBuilder().build();
    *   MoveDiskProjectHttpRequest request = MoveDiskProjectHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setDiskMoveRequestResource(diskMoveRequest)
+   *     .setDiskMoveRequestResource(diskMoveRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = projectClient.moveDiskProjectCallable().futureCall(request);
    *   // Do something
@@ -324,8 +377,8 @@ public class ProjectClient implements BackgroundResource {
    * <pre><code>
    * try (ProjectClient projectClient = ProjectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   InstanceMoveRequest instanceMoveRequest = InstanceMoveRequest.newBuilder().build();
-   *   Operation response = projectClient.moveInstanceProject(project, instanceMoveRequest);
+   *   InstanceMoveRequest instanceMoveRequestResource = InstanceMoveRequest.newBuilder().build();
+   *   Operation response = projectClient.moveInstanceProject(project, instanceMoveRequestResource);
    * }
    * </code></pre>
    *
@@ -338,7 +391,7 @@ public class ProjectClient implements BackgroundResource {
 
     MoveInstanceProjectHttpRequest request =
         MoveInstanceProjectHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
         .setInstanceMoveRequestResource(instanceMoveRequestResource)
         .build();
     return moveInstanceProject(request);
@@ -352,10 +405,38 @@ public class ProjectClient implements BackgroundResource {
    * <pre><code>
    * try (ProjectClient projectClient = ProjectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   InstanceMoveRequest instanceMoveRequest = InstanceMoveRequest.newBuilder().build();
+   *   InstanceMoveRequest instanceMoveRequestResource = InstanceMoveRequest.newBuilder().build();
+   *   Operation response = projectClient.moveInstanceProject(project.toString(), instanceMoveRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @param instanceMoveRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation moveInstanceProject(String project, InstanceMoveRequest instanceMoveRequestResource) {
+
+    MoveInstanceProjectHttpRequest request =
+        MoveInstanceProjectHttpRequest.newBuilder()
+        .setProject(project)
+        .setInstanceMoveRequestResource(instanceMoveRequestResource)
+        .build();
+    return moveInstanceProject(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Moves an instance and its attached persistent disks from one zone to another.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ProjectClient projectClient = ProjectClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   InstanceMoveRequest instanceMoveRequestResource = InstanceMoveRequest.newBuilder().build();
    *   MoveInstanceProjectHttpRequest request = MoveInstanceProjectHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setInstanceMoveRequestResource(instanceMoveRequest)
+   *     .setInstanceMoveRequestResource(instanceMoveRequestResource)
    *     .build();
    *   Operation response = projectClient.moveInstanceProject(request);
    * }
@@ -377,10 +458,10 @@ public class ProjectClient implements BackgroundResource {
    * <pre><code>
    * try (ProjectClient projectClient = ProjectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   InstanceMoveRequest instanceMoveRequest = InstanceMoveRequest.newBuilder().build();
+   *   InstanceMoveRequest instanceMoveRequestResource = InstanceMoveRequest.newBuilder().build();
    *   MoveInstanceProjectHttpRequest request = MoveInstanceProjectHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setInstanceMoveRequestResource(instanceMoveRequest)
+   *     .setInstanceMoveRequestResource(instanceMoveRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = projectClient.moveInstanceProjectCallable().futureCall(request);
    *   // Do something
@@ -401,8 +482,8 @@ public class ProjectClient implements BackgroundResource {
    * <pre><code>
    * try (ProjectClient projectClient = ProjectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Metadata metadata = Metadata.newBuilder().build();
-   *   Operation response = projectClient.setCommonInstanceMetadataProject(project, metadata);
+   *   Metadata metadataResource = Metadata.newBuilder().build();
+   *   Operation response = projectClient.setCommonInstanceMetadataProject(project, metadataResource);
    * }
    * </code></pre>
    *
@@ -415,7 +496,7 @@ public class ProjectClient implements BackgroundResource {
 
     SetCommonInstanceMetadataProjectHttpRequest request =
         SetCommonInstanceMetadataProjectHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
         .setMetadataResource(metadataResource)
         .build();
     return setCommonInstanceMetadataProject(request);
@@ -429,10 +510,38 @@ public class ProjectClient implements BackgroundResource {
    * <pre><code>
    * try (ProjectClient projectClient = ProjectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Metadata metadata = Metadata.newBuilder().build();
+   *   Metadata metadataResource = Metadata.newBuilder().build();
+   *   Operation response = projectClient.setCommonInstanceMetadataProject(project.toString(), metadataResource);
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @param metadataResource A metadata key/value entry.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation setCommonInstanceMetadataProject(String project, Metadata metadataResource) {
+
+    SetCommonInstanceMetadataProjectHttpRequest request =
+        SetCommonInstanceMetadataProjectHttpRequest.newBuilder()
+        .setProject(project)
+        .setMetadataResource(metadataResource)
+        .build();
+    return setCommonInstanceMetadataProject(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Sets metadata common to all instances within the specified project using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ProjectClient projectClient = ProjectClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   Metadata metadataResource = Metadata.newBuilder().build();
    *   SetCommonInstanceMetadataProjectHttpRequest request = SetCommonInstanceMetadataProjectHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setMetadataResource(metadata)
+   *     .setMetadataResource(metadataResource)
    *     .build();
    *   Operation response = projectClient.setCommonInstanceMetadataProject(request);
    * }
@@ -454,10 +563,10 @@ public class ProjectClient implements BackgroundResource {
    * <pre><code>
    * try (ProjectClient projectClient = ProjectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Metadata metadata = Metadata.newBuilder().build();
+   *   Metadata metadataResource = Metadata.newBuilder().build();
    *   SetCommonInstanceMetadataProjectHttpRequest request = SetCommonInstanceMetadataProjectHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setMetadataResource(metadata)
+   *     .setMetadataResource(metadataResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = projectClient.setCommonInstanceMetadataProjectCallable().futureCall(request);
    *   // Do something
@@ -478,8 +587,8 @@ public class ProjectClient implements BackgroundResource {
    * <pre><code>
    * try (ProjectClient projectClient = ProjectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   UsageExportLocation usageExportLocation = UsageExportLocation.newBuilder().build();
-   *   Operation response = projectClient.setUsageExportBucketProject(project, usageExportLocation);
+   *   UsageExportLocation usageExportLocationResource = UsageExportLocation.newBuilder().build();
+   *   Operation response = projectClient.setUsageExportBucketProject(project, usageExportLocationResource);
    * }
    * </code></pre>
    *
@@ -492,7 +601,7 @@ public class ProjectClient implements BackgroundResource {
 
     SetUsageExportBucketProjectHttpRequest request =
         SetUsageExportBucketProjectHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
         .setUsageExportLocationResource(usageExportLocationResource)
         .build();
     return setUsageExportBucketProject(request);
@@ -506,10 +615,38 @@ public class ProjectClient implements BackgroundResource {
    * <pre><code>
    * try (ProjectClient projectClient = ProjectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   UsageExportLocation usageExportLocation = UsageExportLocation.newBuilder().build();
+   *   UsageExportLocation usageExportLocationResource = UsageExportLocation.newBuilder().build();
+   *   Operation response = projectClient.setUsageExportBucketProject(project.toString(), usageExportLocationResource);
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @param usageExportLocationResource The location in Cloud Storage and naming method of the daily usage report. Contains bucket_name and report_name prefix.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation setUsageExportBucketProject(String project, UsageExportLocation usageExportLocationResource) {
+
+    SetUsageExportBucketProjectHttpRequest request =
+        SetUsageExportBucketProjectHttpRequest.newBuilder()
+        .setProject(project)
+        .setUsageExportLocationResource(usageExportLocationResource)
+        .build();
+    return setUsageExportBucketProject(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Enables the usage export feature and sets the usage export bucket where reports are stored. If you provide an empty request body using this method, the usage export feature will be disabled.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ProjectClient projectClient = ProjectClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   UsageExportLocation usageExportLocationResource = UsageExportLocation.newBuilder().build();
    *   SetUsageExportBucketProjectHttpRequest request = SetUsageExportBucketProjectHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setUsageExportLocationResource(usageExportLocation)
+   *     .setUsageExportLocationResource(usageExportLocationResource)
    *     .build();
    *   Operation response = projectClient.setUsageExportBucketProject(request);
    * }
@@ -531,10 +668,10 @@ public class ProjectClient implements BackgroundResource {
    * <pre><code>
    * try (ProjectClient projectClient = ProjectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   UsageExportLocation usageExportLocation = UsageExportLocation.newBuilder().build();
+   *   UsageExportLocation usageExportLocationResource = UsageExportLocation.newBuilder().build();
    *   SetUsageExportBucketProjectHttpRequest request = SetUsageExportBucketProjectHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setUsageExportLocationResource(usageExportLocation)
+   *     .setUsageExportLocationResource(usageExportLocationResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = projectClient.setUsageExportBucketProjectCallable().futureCall(request);
    *   // Do something

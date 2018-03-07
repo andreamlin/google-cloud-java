@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.GetRegionInstanceGroupHttpRequest;
@@ -35,11 +35,11 @@ import com.google.compute.v1.InstanceWithNamedPorts;
 import com.google.compute.v1.ListInstancesRegionInstanceGroupsHttpRequest;
 import com.google.compute.v1.ListRegionInstanceGroupsHttpRequest;
 import com.google.compute.v1.Operation;
+import com.google.compute.v1.ProjectRegionInstanceGroupName;
 import static com.google.compute.v1.RegionInstanceGroupClient.ListInstancesRegionInstanceGroupsPagedResponse;
 import static com.google.compute.v1.RegionInstanceGroupClient.ListRegionInstanceGroupsPagedResponse;
 import com.google.compute.v1.RegionInstanceGroupList;
 import com.google.compute.v1.RegionInstanceGroupSettings;
-import com.google.compute.v1.RegionInstanceGroupsInstanceGroupName;
 import com.google.compute.v1.RegionInstanceGroupsListInstances;
 import com.google.compute.v1.RegionInstanceGroupsListInstancesRequest;
 import com.google.compute.v1.RegionInstanceGroupsSetNamedPortsRequest;
@@ -65,7 +65,7 @@ import javax.annotation.Generated;
 public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<GetRegionInstanceGroupHttpRequest, InstanceGroup>newBuilder()
           .setMethodName("compute.regionInstanceGroups.get")
@@ -74,10 +74,11 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroups/{instanceGroup}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectRegionInstanceGroupName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("instanceGroup")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList> listRegionInstanceGroupsMethodDescriptor =
       ApiMethodDescriptor.<ListRegionInstanceGroupsHttpRequest, RegionInstanceGroupList>newBuilder()
           .setMethodName("compute.regionInstanceGroups.list")
@@ -87,10 +88,11 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("region")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances> listInstancesRegionInstanceGroupsMethodDescriptor =
       ApiMethodDescriptor.<ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances>newBuilder()
           .setMethodName("compute.regionInstanceGroups.listInstances")
@@ -100,10 +102,11 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectRegionInstanceGroupName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instanceGroup")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionInstanceGroups.setNamedPorts")
@@ -112,8 +115,9 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
           .setEndpointPathTemplate("{project}/regions/{region}/instanceGroups/{instanceGroup}/setNamedPorts")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectRegionInstanceGroupName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instanceGroup")
           .build();
 
   private final BackgroundResource backgroundResources;

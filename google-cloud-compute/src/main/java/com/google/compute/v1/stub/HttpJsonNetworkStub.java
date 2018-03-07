@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteNetworkHttpRequest;
@@ -61,7 +61,7 @@ import javax.annotation.Generated;
 public class HttpJsonNetworkStub extends NetworkStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteNetworkHttpRequest, Operation> deleteNetworkMethodDescriptor =
       ApiMethodDescriptor.<DeleteNetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.networks.delete")
@@ -70,10 +70,11 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setEndpointPathTemplate("{project}/global/networks/{network}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(NetworkName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("network")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetNetworkHttpRequest, Network> getNetworkMethodDescriptor =
       ApiMethodDescriptor.<GetNetworkHttpRequest, Network>newBuilder()
           .setMethodName("compute.networks.get")
@@ -82,10 +83,11 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setEndpointPathTemplate("{project}/global/networks/{network}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(NetworkName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("network")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertNetworkHttpRequest, Operation> insertNetworkMethodDescriptor =
       ApiMethodDescriptor.<InsertNetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.networks.insert")
@@ -94,10 +96,11 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setEndpointPathTemplate("{project}/global/networks")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListNetworksHttpRequest, NetworkList> listNetworksMethodDescriptor =
       ApiMethodDescriptor.<ListNetworksHttpRequest, NetworkList>newBuilder()
           .setMethodName("compute.networks.list")
@@ -107,10 +110,11 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SwitchToCustomModeNetworkHttpRequest, Operation> switchToCustomModeNetworkMethodDescriptor =
       ApiMethodDescriptor.<SwitchToCustomModeNetworkHttpRequest, Operation>newBuilder()
           .setMethodName("compute.networks.switchToCustomMode")
@@ -119,8 +123,9 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setEndpointPathTemplate("{project}/global/networks/{network}/switchToCustomMode")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(NetworkName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("network")
           .build();
 
   private final BackgroundResource backgroundResources;

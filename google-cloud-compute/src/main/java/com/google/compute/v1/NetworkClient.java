@@ -189,7 +189,32 @@ public class NetworkClient implements BackgroundResource {
 
     DeleteNetworkHttpRequest request =
         DeleteNetworkHttpRequest.newBuilder()
-        .setNetwork(network.toString())
+        .setNetwork(network == null ? null : network.toString())
+        .build();
+    return deleteNetwork(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified network.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (NetworkClient networkClient = NetworkClient.create()) {
+   *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
+   *   Operation response = networkClient.deleteNetwork(network.toString());
+   * }
+   * </code></pre>
+   *
+   * @param network Name of the network to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteNetwork(String network) {
+
+    DeleteNetworkHttpRequest request =
+        DeleteNetworkHttpRequest.newBuilder()
+        .setNetwork(network)
         .build();
     return deleteNetwork(request);
   }
@@ -259,7 +284,32 @@ public class NetworkClient implements BackgroundResource {
 
     GetNetworkHttpRequest request =
         GetNetworkHttpRequest.newBuilder()
-        .setNetwork(network.toString())
+        .setNetwork(network == null ? null : network.toString())
+        .build();
+    return getNetwork(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified network. Get a list of available networks by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (NetworkClient networkClient = NetworkClient.create()) {
+   *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
+   *   Network response = networkClient.getNetwork(network.toString());
+   * }
+   * </code></pre>
+   *
+   * @param network Name of the network to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Network getNetwork(String network) {
+
+    GetNetworkHttpRequest request =
+        GetNetworkHttpRequest.newBuilder()
+        .setNetwork(network)
         .build();
     return getNetwork(request);
   }
@@ -317,8 +367,8 @@ public class NetworkClient implements BackgroundResource {
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Network network = Network.newBuilder().build();
-   *   Operation response = networkClient.insertNetwork(project, network);
+   *   Network networkResource = Network.newBuilder().build();
+   *   Operation response = networkClient.insertNetwork(project, networkResource);
    * }
    * </code></pre>
    *
@@ -331,7 +381,7 @@ public class NetworkClient implements BackgroundResource {
 
     InsertNetworkHttpRequest request =
         InsertNetworkHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
         .setNetworkResource(networkResource)
         .build();
     return insertNetwork(request);
@@ -345,10 +395,38 @@ public class NetworkClient implements BackgroundResource {
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Network network = Network.newBuilder().build();
+   *   Network networkResource = Network.newBuilder().build();
+   *   Operation response = networkClient.insertNetwork(project.toString(), networkResource);
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @param networkResource Represents a Network resource. Read Networks and Firewalls for more information.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertNetwork(String project, Network networkResource) {
+
+    InsertNetworkHttpRequest request =
+        InsertNetworkHttpRequest.newBuilder()
+        .setProject(project)
+        .setNetworkResource(networkResource)
+        .build();
+    return insertNetwork(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a network in the specified project using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (NetworkClient networkClient = NetworkClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   Network networkResource = Network.newBuilder().build();
    *   InsertNetworkHttpRequest request = InsertNetworkHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setNetworkResource(network)
+   *     .setNetworkResource(networkResource)
    *     .build();
    *   Operation response = networkClient.insertNetwork(request);
    * }
@@ -370,10 +448,10 @@ public class NetworkClient implements BackgroundResource {
    * <pre><code>
    * try (NetworkClient networkClient = NetworkClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Network network = Network.newBuilder().build();
+   *   Network networkResource = Network.newBuilder().build();
    *   InsertNetworkHttpRequest request = InsertNetworkHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setNetworkResource(network)
+   *     .setNetworkResource(networkResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = networkClient.insertNetworkCallable().futureCall(request);
    *   // Do something
@@ -407,7 +485,33 @@ public class NetworkClient implements BackgroundResource {
   public final ListNetworksPagedResponse listNetworks(ProjectName project) {
     ListNetworksHttpRequest request =
         ListNetworksHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return listNetworks(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of networks available to the specified project.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (NetworkClient networkClient = NetworkClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (Network element : networkClient.listNetworks(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListNetworksPagedResponse listNetworks(String project) {
+    ListNetworksHttpRequest request =
+        ListNetworksHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return listNetworks(request);
   }
@@ -513,7 +617,32 @@ public class NetworkClient implements BackgroundResource {
 
     SwitchToCustomModeNetworkHttpRequest request =
         SwitchToCustomModeNetworkHttpRequest.newBuilder()
-        .setNetwork(network.toString())
+        .setNetwork(network == null ? null : network.toString())
+        .build();
+    return switchToCustomModeNetwork(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Switches the network mode from auto subnet mode to custom subnet mode.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (NetworkClient networkClient = NetworkClient.create()) {
+   *   NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
+   *   Operation response = networkClient.switchToCustomModeNetwork(network.toString());
+   * }
+   * </code></pre>
+   *
+   * @param network Name of the network to be updated.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation switchToCustomModeNetwork(String network) {
+
+    SwitchToCustomModeNetworkHttpRequest request =
+        SwitchToCustomModeNetworkHttpRequest.newBuilder()
+        .setNetwork(network)
         .build();
     return switchToCustomModeNetwork(request);
   }

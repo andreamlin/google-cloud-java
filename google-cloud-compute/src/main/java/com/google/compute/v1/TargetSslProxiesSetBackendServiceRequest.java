@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -34,11 +32,9 @@ import javax.annotation.Nullable;
 @BetaApi
 public final class TargetSslProxiesSetBackendServiceRequest implements ApiMessage {
   private final String service;
-  private final Map<String, String> pathParams;
 
   private TargetSslProxiesSetBackendServiceRequest() {
     this.service = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -46,8 +42,6 @@ public final class TargetSslProxiesSetBackendServiceRequest implements ApiMessag
       String service
       ) {
     this.service = service;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -60,8 +54,11 @@ public final class TargetSslProxiesSetBackendServiceRequest implements ApiMessag
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("service")) {
+      return String.valueOf(service);
+    }
+    return null;
   }
 
   @Nullable

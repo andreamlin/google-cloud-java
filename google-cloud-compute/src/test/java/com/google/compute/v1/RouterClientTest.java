@@ -50,7 +50,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class RouterClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static RouterClient client;
   private static RouterSettings clientSettings;
 
@@ -60,14 +60,14 @@ public class RouterClientTest {
         RouterSettings.newBuilder()
            .setTransportChannelProvider(
                RouterSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        RouterClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -94,8 +94,8 @@ public class RouterClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(aggregatedListRoutersMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(aggregatedListRoutersMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -105,7 +105,7 @@ public class RouterClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().getRouters().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -113,8 +113,8 @@ public class RouterClientTest {
   @SuppressWarnings("all")
   public void aggregatedListRoutersExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(aggregatedListRoutersMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(aggregatedListRoutersMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -173,8 +173,8 @@ public class RouterClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteRouterMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteRouterMethodDescriptor);
 
     RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
 
@@ -182,7 +182,7 @@ public class RouterClientTest {
         client.deleteRouter(router);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -190,8 +190,8 @@ public class RouterClientTest {
   @SuppressWarnings("all")
   public void deleteRouterExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteRouterMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteRouterMethodDescriptor);
 
     try {
       RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
@@ -224,8 +224,8 @@ public class RouterClientTest {
       .setNetwork(network.toString())
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getRouterMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getRouterMethodDescriptor);
 
     RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
 
@@ -233,7 +233,7 @@ public class RouterClientTest {
         client.getRouter(router);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -241,8 +241,8 @@ public class RouterClientTest {
   @SuppressWarnings("all")
   public void getRouterExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getRouterMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getRouterMethodDescriptor);
 
     try {
       RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
@@ -261,8 +261,8 @@ public class RouterClientTest {
     RouterStatusResponse expectedResponse = RouterStatusResponse.newBuilder()
       .setKind(kind)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getRouterStatusRouterMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getRouterStatusRouterMethodDescriptor);
 
     RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
 
@@ -270,7 +270,7 @@ public class RouterClientTest {
         client.getRouterStatusRouter(router);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -278,8 +278,8 @@ public class RouterClientTest {
   @SuppressWarnings("all")
   public void getRouterStatusRouterExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getRouterStatusRouterMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getRouterStatusRouterMethodDescriptor);
 
     try {
       RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
@@ -338,17 +338,17 @@ public class RouterClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertRouterMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertRouterMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-    Router router = Router.newBuilder().build();
+    Router routerResource = Router.newBuilder().build();
 
     Operation actualResponse =
-        client.insertRouter(region, router);
+        client.insertRouter(region, routerResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -356,14 +356,14 @@ public class RouterClientTest {
   @SuppressWarnings("all")
   public void insertRouterExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertRouterMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertRouterMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-      Router router = Router.newBuilder().build();
+      Router routerResource = Router.newBuilder().build();
 
-      client.insertRouter(region, router);
+      client.insertRouter(region, routerResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -386,8 +386,8 @@ public class RouterClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listRoutersMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listRoutersMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -397,7 +397,7 @@ public class RouterClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -405,8 +405,8 @@ public class RouterClientTest {
   @SuppressWarnings("all")
   public void listRoutersExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listRoutersMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listRoutersMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -465,16 +465,17 @@ public class RouterClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(patchRouterMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(patchRouterMethodDescriptor);
 
     RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
+    Router routerResource = Router.newBuilder().build();
 
     Operation actualResponse =
-        client.patchRouter(router);
+        client.patchRouter(router, routerResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -482,13 +483,14 @@ public class RouterClientTest {
   @SuppressWarnings("all")
   public void patchRouterExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(patchRouterMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(patchRouterMethodDescriptor);
 
     try {
       RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
+      Router routerResource = Router.newBuilder().build();
 
-      client.patchRouter(router);
+      client.patchRouter(router, routerResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -499,16 +501,17 @@ public class RouterClientTest {
   @SuppressWarnings("all")
   public void previewRouterTest() {
     RoutersPreviewResponse expectedResponse = RoutersPreviewResponse.newBuilder().build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(previewRouterMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(previewRouterMethodDescriptor);
 
     RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
+    Router routerResource = Router.newBuilder().build();
 
     RoutersPreviewResponse actualResponse =
-        client.previewRouter(router);
+        client.previewRouter(router, routerResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -516,13 +519,14 @@ public class RouterClientTest {
   @SuppressWarnings("all")
   public void previewRouterExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(previewRouterMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(previewRouterMethodDescriptor);
 
     try {
       RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
+      Router routerResource = Router.newBuilder().build();
 
-      client.previewRouter(router);
+      client.previewRouter(router, routerResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -576,16 +580,17 @@ public class RouterClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(updateRouterMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(updateRouterMethodDescriptor);
 
     RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
+    Router routerResource = Router.newBuilder().build();
 
     Operation actualResponse =
-        client.updateRouter(router);
+        client.updateRouter(router, routerResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -593,13 +598,14 @@ public class RouterClientTest {
   @SuppressWarnings("all")
   public void updateRouterExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(updateRouterMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(updateRouterMethodDescriptor);
 
     try {
       RouterName router = RouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
+      Router routerResource = Router.newBuilder().build();
 
-      client.updateRouter(router);
+      client.updateRouter(router, routerResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception

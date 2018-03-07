@@ -46,7 +46,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class TargetVpnGatewayClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static TargetVpnGatewayClient client;
   private static TargetVpnGatewaySettings clientSettings;
 
@@ -56,14 +56,14 @@ public class TargetVpnGatewayClientTest {
         TargetVpnGatewaySettings.newBuilder()
            .setTransportChannelProvider(
                TargetVpnGatewaySettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        TargetVpnGatewayClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -90,8 +90,8 @@ public class TargetVpnGatewayClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(aggregatedListTargetVpnGatewaysMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(aggregatedListTargetVpnGatewaysMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -101,7 +101,7 @@ public class TargetVpnGatewayClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().getTargetVpnGateways().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -109,8 +109,8 @@ public class TargetVpnGatewayClientTest {
   @SuppressWarnings("all")
   public void aggregatedListTargetVpnGatewaysExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(aggregatedListTargetVpnGatewaysMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(aggregatedListTargetVpnGatewaysMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -169,8 +169,8 @@ public class TargetVpnGatewayClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteTargetVpnGatewayMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteTargetVpnGatewayMethodDescriptor);
 
     TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
 
@@ -178,7 +178,7 @@ public class TargetVpnGatewayClientTest {
         client.deleteTargetVpnGateway(targetVpnGateway);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -186,8 +186,8 @@ public class TargetVpnGatewayClientTest {
   @SuppressWarnings("all")
   public void deleteTargetVpnGatewayExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteTargetVpnGatewayMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteTargetVpnGatewayMethodDescriptor);
 
     try {
       TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
@@ -222,8 +222,8 @@ public class TargetVpnGatewayClientTest {
       .setSelfLink(selfLink)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getTargetVpnGatewayMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getTargetVpnGatewayMethodDescriptor);
 
     TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
 
@@ -231,7 +231,7 @@ public class TargetVpnGatewayClientTest {
         client.getTargetVpnGateway(targetVpnGateway);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -239,8 +239,8 @@ public class TargetVpnGatewayClientTest {
   @SuppressWarnings("all")
   public void getTargetVpnGatewayExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getTargetVpnGatewayMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getTargetVpnGatewayMethodDescriptor);
 
     try {
       TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
@@ -299,17 +299,17 @@ public class TargetVpnGatewayClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertTargetVpnGatewayMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertTargetVpnGatewayMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-    TargetVpnGateway targetVpnGateway = TargetVpnGateway.newBuilder().build();
+    TargetVpnGateway targetVpnGatewayResource = TargetVpnGateway.newBuilder().build();
 
     Operation actualResponse =
-        client.insertTargetVpnGateway(region, targetVpnGateway);
+        client.insertTargetVpnGateway(region, targetVpnGatewayResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -317,14 +317,14 @@ public class TargetVpnGatewayClientTest {
   @SuppressWarnings("all")
   public void insertTargetVpnGatewayExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertTargetVpnGatewayMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertTargetVpnGatewayMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-      TargetVpnGateway targetVpnGateway = TargetVpnGateway.newBuilder().build();
+      TargetVpnGateway targetVpnGatewayResource = TargetVpnGateway.newBuilder().build();
 
-      client.insertTargetVpnGateway(region, targetVpnGateway);
+      client.insertTargetVpnGateway(region, targetVpnGatewayResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -347,8 +347,8 @@ public class TargetVpnGatewayClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listTargetVpnGatewaysMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listTargetVpnGatewaysMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -358,7 +358,7 @@ public class TargetVpnGatewayClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -366,8 +366,8 @@ public class TargetVpnGatewayClientTest {
   @SuppressWarnings("all")
   public void listTargetVpnGatewaysExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listTargetVpnGatewaysMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listTargetVpnGatewaysMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");

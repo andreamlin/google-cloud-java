@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -39,7 +37,6 @@ public final class AutoscalingPolicy implements ApiMessage {
   private final AutoscalingPolicyLoadBalancingUtilization loadBalancingUtilization;
   private final Integer maxNumReplicas;
   private final Integer minNumReplicas;
-  private final Map<String, String> pathParams;
 
   private AutoscalingPolicy() {
     this.coolDownPeriodSec = null;
@@ -48,7 +45,6 @@ public final class AutoscalingPolicy implements ApiMessage {
     this.loadBalancingUtilization = null;
     this.maxNumReplicas = null;
     this.minNumReplicas = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -66,8 +62,6 @@ public final class AutoscalingPolicy implements ApiMessage {
     this.loadBalancingUtilization = loadBalancingUtilization;
     this.maxNumReplicas = maxNumReplicas;
     this.minNumReplicas = minNumReplicas;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -80,7 +74,11 @@ public final class AutoscalingPolicy implements ApiMessage {
       fieldMap.put("cpuUtilization", Collections.singletonList(String.valueOf(cpuUtilization)));
     }
     if (fieldNames.contains("customMetricUtilizations") && customMetricUtilizations != null) {
-      fieldMap.put("customMetricUtilizations", customMetricUtilizations.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (AutoscalingPolicyCustomMetricUtilization item : customMetricUtilizations) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("customMetricUtilizations", stringList);
     }
     if (fieldNames.contains("loadBalancingUtilization") && loadBalancingUtilization != null) {
       fieldMap.put("loadBalancingUtilization", Collections.singletonList(String.valueOf(loadBalancingUtilization)));
@@ -95,8 +93,26 @@ public final class AutoscalingPolicy implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("coolDownPeriodSec")) {
+      return String.valueOf(coolDownPeriodSec);
+    }
+    if (fieldName.equals("cpuUtilization")) {
+      return String.valueOf(cpuUtilization);
+    }
+    if (fieldName.equals("customMetricUtilizations")) {
+      return String.valueOf(customMetricUtilizations);
+    }
+    if (fieldName.equals("loadBalancingUtilization")) {
+      return String.valueOf(loadBalancingUtilization);
+    }
+    if (fieldName.equals("maxNumReplicas")) {
+      return String.valueOf(maxNumReplicas);
+    }
+    if (fieldName.equals("minNumReplicas")) {
+      return String.valueOf(minNumReplicas);
+    }
+    return null;
   }
 
   @Nullable
@@ -214,6 +230,9 @@ public final class AutoscalingPolicy implements ApiMessage {
     }
 
     public Builder addAllCustomMetricUtilizations(List<AutoscalingPolicyCustomMetricUtilization> customMetricUtilizations) {
+      if (this.customMetricUtilizations == null) {
+        this.customMetricUtilizations = new LinkedList<>();
+      }
       this.customMetricUtilizations.addAll(customMetricUtilizations);
       return this;
     }

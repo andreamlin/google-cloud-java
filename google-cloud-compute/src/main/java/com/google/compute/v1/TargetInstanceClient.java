@@ -190,7 +190,33 @@ public class TargetInstanceClient implements BackgroundResource {
   public final AggregatedListTargetInstancesPagedResponse aggregatedListTargetInstances(ProjectName project) {
     AggregatedListTargetInstancesHttpRequest request =
         AggregatedListTargetInstancesHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return aggregatedListTargetInstances(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves an aggregated list of target instances.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (TargetInstance element : targetInstanceClient.aggregatedListTargetInstances(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListTargetInstancesPagedResponse aggregatedListTargetInstances(String project) {
+    AggregatedListTargetInstancesHttpRequest request =
+        AggregatedListTargetInstancesHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return aggregatedListTargetInstances(request);
   }
@@ -296,7 +322,32 @@ public class TargetInstanceClient implements BackgroundResource {
 
     DeleteTargetInstanceHttpRequest request =
         DeleteTargetInstanceHttpRequest.newBuilder()
-        .setTargetInstance(targetInstance.toString())
+        .setTargetInstance(targetInstance == null ? null : targetInstance.toString())
+        .build();
+    return deleteTargetInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified TargetInstance resource.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
+   *   TargetInstanceName targetInstance = TargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
+   *   Operation response = targetInstanceClient.deleteTargetInstance(targetInstance.toString());
+   * }
+   * </code></pre>
+   *
+   * @param targetInstance Name of the TargetInstance resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteTargetInstance(String targetInstance) {
+
+    DeleteTargetInstanceHttpRequest request =
+        DeleteTargetInstanceHttpRequest.newBuilder()
+        .setTargetInstance(targetInstance)
         .build();
     return deleteTargetInstance(request);
   }
@@ -366,7 +417,32 @@ public class TargetInstanceClient implements BackgroundResource {
 
     GetTargetInstanceHttpRequest request =
         GetTargetInstanceHttpRequest.newBuilder()
-        .setTargetInstance(targetInstance.toString())
+        .setTargetInstance(targetInstance == null ? null : targetInstance.toString())
+        .build();
+    return getTargetInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified TargetInstance resource. Get a list of available target instances by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
+   *   TargetInstanceName targetInstance = TargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
+   *   TargetInstance response = targetInstanceClient.getTargetInstance(targetInstance.toString());
+   * }
+   * </code></pre>
+   *
+   * @param targetInstance Name of the TargetInstance resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final TargetInstance getTargetInstance(String targetInstance) {
+
+    GetTargetInstanceHttpRequest request =
+        GetTargetInstanceHttpRequest.newBuilder()
+        .setTargetInstance(targetInstance)
         .build();
     return getTargetInstance(request);
   }
@@ -424,8 +500,8 @@ public class TargetInstanceClient implements BackgroundResource {
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
-   *   TargetInstance targetInstance = TargetInstance.newBuilder().build();
-   *   Operation response = targetInstanceClient.insertTargetInstance(zone, targetInstance);
+   *   TargetInstance targetInstanceResource = TargetInstance.newBuilder().build();
+   *   Operation response = targetInstanceClient.insertTargetInstance(zone, targetInstanceResource);
    * }
    * </code></pre>
    *
@@ -438,7 +514,7 @@ public class TargetInstanceClient implements BackgroundResource {
 
     InsertTargetInstanceHttpRequest request =
         InsertTargetInstanceHttpRequest.newBuilder()
-        .setZone(zone.toString())
+        .setZone(zone == null ? null : zone.toString())
         .setTargetInstanceResource(targetInstanceResource)
         .build();
     return insertTargetInstance(request);
@@ -452,10 +528,38 @@ public class TargetInstanceClient implements BackgroundResource {
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
-   *   TargetInstance targetInstance = TargetInstance.newBuilder().build();
+   *   TargetInstance targetInstanceResource = TargetInstance.newBuilder().build();
+   *   Operation response = targetInstanceClient.insertTargetInstance(zone.toString(), targetInstanceResource);
+   * }
+   * </code></pre>
+   *
+   * @param zone Name of the zone scoping this request.
+   * @param targetInstanceResource A TargetInstance resource. This resource defines an endpoint instance that terminates traffic of certain protocols.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertTargetInstance(String zone, TargetInstance targetInstanceResource) {
+
+    InsertTargetInstanceHttpRequest request =
+        InsertTargetInstanceHttpRequest.newBuilder()
+        .setZone(zone)
+        .setTargetInstanceResource(targetInstanceResource)
+        .build();
+    return insertTargetInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a TargetInstance resource in the specified project and zone using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
+   *   TargetInstance targetInstanceResource = TargetInstance.newBuilder().build();
    *   InsertTargetInstanceHttpRequest request = InsertTargetInstanceHttpRequest.newBuilder()
    *     .setZone(zone.toString())
-   *     .setTargetInstanceResource(targetInstance)
+   *     .setTargetInstanceResource(targetInstanceResource)
    *     .build();
    *   Operation response = targetInstanceClient.insertTargetInstance(request);
    * }
@@ -477,10 +581,10 @@ public class TargetInstanceClient implements BackgroundResource {
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
-   *   TargetInstance targetInstance = TargetInstance.newBuilder().build();
+   *   TargetInstance targetInstanceResource = TargetInstance.newBuilder().build();
    *   InsertTargetInstanceHttpRequest request = InsertTargetInstanceHttpRequest.newBuilder()
    *     .setZone(zone.toString())
-   *     .setTargetInstanceResource(targetInstance)
+   *     .setTargetInstanceResource(targetInstanceResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetInstanceClient.insertTargetInstanceCallable().futureCall(request);
    *   // Do something
@@ -514,7 +618,33 @@ public class TargetInstanceClient implements BackgroundResource {
   public final ListTargetInstancesPagedResponse listTargetInstances(ZoneName zone) {
     ListTargetInstancesHttpRequest request =
         ListTargetInstancesHttpRequest.newBuilder()
-        .setZone(zone.toString())
+        .setZone(zone == null ? null : zone.toString())
+        .build();
+    return listTargetInstances(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves a list of TargetInstance resources available to the specified project and zone.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
+   *   for (TargetInstance element : targetInstanceClient.listTargetInstances(zone.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param zone Name of the zone scoping this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListTargetInstancesPagedResponse listTargetInstances(String zone) {
+    ListTargetInstancesHttpRequest request =
+        ListTargetInstancesHttpRequest.newBuilder()
+        .setZone(zone)
         .build();
     return listTargetInstances(request);
   }

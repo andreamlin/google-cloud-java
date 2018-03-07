@@ -43,7 +43,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class RegionOperationClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static RegionOperationClient client;
   private static RegionOperationSettings clientSettings;
 
@@ -53,14 +53,14 @@ public class RegionOperationClientTest {
         RegionOperationSettings.newBuilder()
            .setTransportChannelProvider(
                RegionOperationSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        RegionOperationClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -72,13 +72,13 @@ public class RegionOperationClientTest {
   @SuppressWarnings("all")
   public void deleteRegionOperationTest() {
 
-    MOCK_SERVICE.setSerializer(deleteRegionOperationMethodDescriptor);
+    mockService.setSerializer(deleteRegionOperationMethodDescriptor);
 
-    RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
+    ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
 
     client.deleteRegionOperation(operation);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -86,11 +86,11 @@ public class RegionOperationClientTest {
   @SuppressWarnings("all")
   public void deleteRegionOperationExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteRegionOperationMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteRegionOperationMethodDescriptor);
 
     try {
-      RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
+      ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
 
       client.deleteRegionOperation(operation);
       Assert.fail("No exception raised");
@@ -146,16 +146,16 @@ public class RegionOperationClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getRegionOperationMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getRegionOperationMethodDescriptor);
 
-    RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
+    ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
 
     Operation actualResponse =
         client.getRegionOperation(operation);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -163,11 +163,11 @@ public class RegionOperationClientTest {
   @SuppressWarnings("all")
   public void getRegionOperationExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getRegionOperationMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getRegionOperationMethodDescriptor);
 
     try {
-      RegionOperationsOperationName operation = RegionOperationsOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
+      ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
 
       client.getRegionOperation(operation);
       Assert.fail("No exception raised");
@@ -192,8 +192,8 @@ public class RegionOperationClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listRegionOperationsMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listRegionOperationsMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -203,7 +203,7 @@ public class RegionOperationClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -211,8 +211,8 @@ public class RegionOperationClientTest {
   @SuppressWarnings("all")
   public void listRegionOperationsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listRegionOperationsMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listRegionOperationsMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");

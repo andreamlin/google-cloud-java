@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -52,7 +50,6 @@ public final class BackendService implements ApiMessage {
   private final String selfLink;
   private final String sessionAffinity;
   private final Integer timeoutSec;
-  private final Map<String, String> pathParams;
 
   private BackendService() {
     this.affinityCookieTtlSec = null;
@@ -74,7 +71,6 @@ public final class BackendService implements ApiMessage {
     this.selfLink = null;
     this.sessionAffinity = null;
     this.timeoutSec = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -118,8 +114,6 @@ public final class BackendService implements ApiMessage {
     this.selfLink = selfLink;
     this.sessionAffinity = sessionAffinity;
     this.timeoutSec = timeoutSec;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -129,7 +123,11 @@ public final class BackendService implements ApiMessage {
       fieldMap.put("affinityCookieTtlSec", Collections.singletonList(String.valueOf(affinityCookieTtlSec)));
     }
     if (fieldNames.contains("backends") && backends != null) {
-      fieldMap.put("backends", backends.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (Backend item : backends) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("backends", stringList);
     }
     if (fieldNames.contains("connectionDraining") && connectionDraining != null) {
       fieldMap.put("connectionDraining", Collections.singletonList(String.valueOf(connectionDraining)));
@@ -147,7 +145,11 @@ public final class BackendService implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("healthChecks") && healthChecks != null) {
-      fieldMap.put("healthChecks", healthChecks.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : healthChecks) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("healthChecks", stringList);
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -186,8 +188,65 @@ public final class BackendService implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("affinityCookieTtlSec")) {
+      return String.valueOf(affinityCookieTtlSec);
+    }
+    if (fieldName.equals("backends")) {
+      return String.valueOf(backends);
+    }
+    if (fieldName.equals("connectionDraining")) {
+      return String.valueOf(connectionDraining);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("enableCDN")) {
+      return String.valueOf(enableCDN);
+    }
+    if (fieldName.equals("fingerprint")) {
+      return String.valueOf(fingerprint);
+    }
+    if (fieldName.equals("healthChecks")) {
+      return String.valueOf(healthChecks);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("loadBalancingScheme")) {
+      return String.valueOf(loadBalancingScheme);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("port")) {
+      return String.valueOf(port);
+    }
+    if (fieldName.equals("portName")) {
+      return String.valueOf(portName);
+    }
+    if (fieldName.equals("protocol")) {
+      return String.valueOf(protocol);
+    }
+    if (fieldName.equals("region")) {
+      return String.valueOf(region);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("sessionAffinity")) {
+      return String.valueOf(sessionAffinity);
+    }
+    if (fieldName.equals("timeoutSec")) {
+      return String.valueOf(timeoutSec);
+    }
+    return null;
   }
 
   @Nullable
@@ -413,6 +472,9 @@ public final class BackendService implements ApiMessage {
     }
 
     public Builder addAllBackends(List<Backend> backends) {
+      if (this.backends == null) {
+        this.backends = new LinkedList<>();
+      }
       this.backends.addAll(backends);
       return this;
     }
@@ -472,6 +534,9 @@ public final class BackendService implements ApiMessage {
     }
 
     public Builder addAllHealthChecks(List<String> healthChecks) {
+      if (this.healthChecks == null) {
+        this.healthChecks = new LinkedList<>();
+      }
       this.healthChecks.addAll(healthChecks);
       return this;
     }

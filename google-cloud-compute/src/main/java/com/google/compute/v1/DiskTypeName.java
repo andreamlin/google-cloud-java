@@ -18,8 +18,9 @@ package com.google.compute.v1;
 import com.google.api.core.BetaApi;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.api.resourcenames.ResourceName;
-import com.google.api.resourcenames.ResourceNameType;
+import com.google.api.resourcenames.ResourceNameFactory;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableMap;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
@@ -37,6 +38,8 @@ public final class DiskTypeName implements ResourceName {
   private final String zone;
   private static final PathTemplate PATH_TEMPLATE =
         PathTemplate.createWithoutUrlEncoding("projects/{project}/zones/{zone}/diskTypes/{diskType}");
+
+  private volatile Map<String, String> fieldValuesMap;
 
   public static Builder newBuilder() {
     return new Builder();
@@ -90,6 +93,33 @@ public final class DiskTypeName implements ResourceName {
   }
 
 
+  @Override
+  public Map<String, String> getFieldValuesMap() {
+    if (fieldValuesMap == null) {
+      synchronized (this) {
+        if (fieldValuesMap == null) {
+          ImmutableMap.Builder<String, String> fieldMapBuilder = ImmutableMap.builder();
+          fieldMapBuilder.put("diskType", diskType);
+          fieldMapBuilder.put("project", project);
+          fieldMapBuilder.put("zone", zone);
+          fieldValuesMap = fieldMapBuilder.build();
+        }
+      }
+    }
+    return fieldValuesMap;
+  }
+
+  public String getFieldValue(String fieldName) {
+    return getFieldValuesMap().get(fieldName);
+  }
+
+
+  public static ResourceNameFactory<DiskTypeName> newFactory() {
+    return new ResourceNameFactory<DiskTypeName>() {
+      public DiskTypeName parse(String formattedString) {return DiskTypeName.parse(formattedString);}
+    };
+  }
+
   public static DiskTypeName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "DiskTypeName.parse: formattedString not in valid format");
@@ -102,11 +132,6 @@ public final class DiskTypeName implements ResourceName {
 
   public static boolean isParsableFrom(String formattedString) {
     return PATH_TEMPLATE.matches(formattedString);
-  }
-
-  @Override
-  public ResourceNameType getType() {
-    return DiskTypeNameType.instance();
   }
 
   public static class Builder {

@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -34,11 +32,9 @@ import javax.annotation.Nullable;
 @BetaApi
 public final class Error implements ApiMessage {
   private final List<Errors> errors;
-  private final Map<String, String> pathParams;
 
   private Error() {
     this.errors = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -46,22 +42,27 @@ public final class Error implements ApiMessage {
       List<Errors> errors
       ) {
     this.errors = errors;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("errors") && errors != null) {
-      fieldMap.put("errors", errors.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (Errors item : errors) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("errors", stringList);
     }
     return fieldMap;
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("errors")) {
+      return String.valueOf(errors);
+    }
+    return null;
   }
 
   @Nullable
@@ -116,6 +117,9 @@ public final class Error implements ApiMessage {
     }
 
     public Builder addAllErrors(List<Errors> errors) {
+      if (this.errors == null) {
+        this.errors = new LinkedList<>();
+      }
       this.errors.addAll(errors);
       return this;
     }

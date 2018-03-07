@@ -189,7 +189,32 @@ public class ImageClient implements BackgroundResource {
 
     DeleteImageHttpRequest request =
         DeleteImageHttpRequest.newBuilder()
-        .setImage(image.toString())
+        .setImage(image == null ? null : image.toString())
+        .build();
+    return deleteImage(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified image.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ImageClient imageClient = ImageClient.create()) {
+   *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
+   *   Operation response = imageClient.deleteImage(image.toString());
+   * }
+   * </code></pre>
+   *
+   * @param image Name of the image resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteImage(String image) {
+
+    DeleteImageHttpRequest request =
+        DeleteImageHttpRequest.newBuilder()
+        .setImage(image)
         .build();
     return deleteImage(request);
   }
@@ -249,8 +274,8 @@ public class ImageClient implements BackgroundResource {
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
    *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
-   *   DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
-   *   Operation response = imageClient.deprecateImage(image, deprecationStatus);
+   *   DeprecationStatus deprecationStatusResource = DeprecationStatus.newBuilder().build();
+   *   Operation response = imageClient.deprecateImage(image, deprecationStatusResource);
    * }
    * </code></pre>
    *
@@ -263,7 +288,7 @@ public class ImageClient implements BackgroundResource {
 
     DeprecateImageHttpRequest request =
         DeprecateImageHttpRequest.newBuilder()
-        .setImage(image.toString())
+        .setImage(image == null ? null : image.toString())
         .setDeprecationStatusResource(deprecationStatusResource)
         .build();
     return deprecateImage(request);
@@ -279,10 +304,40 @@ public class ImageClient implements BackgroundResource {
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
    *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
-   *   DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
+   *   DeprecationStatus deprecationStatusResource = DeprecationStatus.newBuilder().build();
+   *   Operation response = imageClient.deprecateImage(image.toString(), deprecationStatusResource);
+   * }
+   * </code></pre>
+   *
+   * @param image Image name.
+   * @param deprecationStatusResource Deprecation status for a public resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deprecateImage(String image, DeprecationStatus deprecationStatusResource) {
+
+    DeprecateImageHttpRequest request =
+        DeprecateImageHttpRequest.newBuilder()
+        .setImage(image)
+        .setDeprecationStatusResource(deprecationStatusResource)
+        .build();
+    return deprecateImage(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Sets the deprecation status of an image.
+   *
+   * If an empty request body is given, clears the deprecation status instead.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ImageClient imageClient = ImageClient.create()) {
+   *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
+   *   DeprecationStatus deprecationStatusResource = DeprecationStatus.newBuilder().build();
    *   DeprecateImageHttpRequest request = DeprecateImageHttpRequest.newBuilder()
    *     .setImage(image.toString())
-   *     .setDeprecationStatusResource(deprecationStatus)
+   *     .setDeprecationStatusResource(deprecationStatusResource)
    *     .build();
    *   Operation response = imageClient.deprecateImage(request);
    * }
@@ -306,10 +361,10 @@ public class ImageClient implements BackgroundResource {
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
    *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
-   *   DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
+   *   DeprecationStatus deprecationStatusResource = DeprecationStatus.newBuilder().build();
    *   DeprecateImageHttpRequest request = DeprecateImageHttpRequest.newBuilder()
    *     .setImage(image.toString())
-   *     .setDeprecationStatusResource(deprecationStatus)
+   *     .setDeprecationStatusResource(deprecationStatusResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = imageClient.deprecateImageCallable().futureCall(request);
    *   // Do something
@@ -342,7 +397,32 @@ public class ImageClient implements BackgroundResource {
 
     GetImageHttpRequest request =
         GetImageHttpRequest.newBuilder()
-        .setImage(image.toString())
+        .setImage(image == null ? null : image.toString())
+        .build();
+    return getImage(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified image. Get a list of available images by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ImageClient imageClient = ImageClient.create()) {
+   *   ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
+   *   Image response = imageClient.getImage(image.toString());
+   * }
+   * </code></pre>
+   *
+   * @param image Name of the image resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Image getImage(String image) {
+
+    GetImageHttpRequest request =
+        GetImageHttpRequest.newBuilder()
+        .setImage(image)
         .build();
     return getImage(request);
   }
@@ -412,7 +492,32 @@ public class ImageClient implements BackgroundResource {
 
     GetFromFamilyImageHttpRequest request =
         GetFromFamilyImageHttpRequest.newBuilder()
-        .setFamily(family.toString())
+        .setFamily(family == null ? null : family.toString())
+        .build();
+    return getFromFamilyImage(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the latest image that is part of an image family and is not deprecated.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ImageClient imageClient = ImageClient.create()) {
+   *   FamilyName family = FamilyName.of("[PROJECT]", "[FAMILY]");
+   *   Image response = imageClient.getFromFamilyImage(family.toString());
+   * }
+   * </code></pre>
+   *
+   * @param family Name of the image family to search for.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Image getFromFamilyImage(String family) {
+
+    GetFromFamilyImageHttpRequest request =
+        GetFromFamilyImageHttpRequest.newBuilder()
+        .setFamily(family)
         .build();
     return getFromFamilyImage(request);
   }
@@ -470,8 +575,8 @@ public class ImageClient implements BackgroundResource {
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Image image = Image.newBuilder().build();
-   *   Operation response = imageClient.insertImage(project, image);
+   *   Image imageResource = Image.newBuilder().build();
+   *   Operation response = imageClient.insertImage(project, imageResource);
    * }
    * </code></pre>
    *
@@ -484,7 +589,7 @@ public class ImageClient implements BackgroundResource {
 
     InsertImageHttpRequest request =
         InsertImageHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
         .setImageResource(imageResource)
         .build();
     return insertImage(request);
@@ -498,10 +603,38 @@ public class ImageClient implements BackgroundResource {
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Image image = Image.newBuilder().build();
+   *   Image imageResource = Image.newBuilder().build();
+   *   Operation response = imageClient.insertImage(project.toString(), imageResource);
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @param imageResource An Image resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertImage(String project, Image imageResource) {
+
+    InsertImageHttpRequest request =
+        InsertImageHttpRequest.newBuilder()
+        .setProject(project)
+        .setImageResource(imageResource)
+        .build();
+    return insertImage(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates an image in the specified project using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ImageClient imageClient = ImageClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   Image imageResource = Image.newBuilder().build();
    *   InsertImageHttpRequest request = InsertImageHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setImageResource(image)
+   *     .setImageResource(imageResource)
    *     .build();
    *   Operation response = imageClient.insertImage(request);
    * }
@@ -523,10 +656,10 @@ public class ImageClient implements BackgroundResource {
    * <pre><code>
    * try (ImageClient imageClient = ImageClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Image image = Image.newBuilder().build();
+   *   Image imageResource = Image.newBuilder().build();
    *   InsertImageHttpRequest request = InsertImageHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setImageResource(image)
+   *     .setImageResource(imageResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = imageClient.insertImageCallable().futureCall(request);
    *   // Do something
@@ -560,7 +693,33 @@ public class ImageClient implements BackgroundResource {
   public final ListImagesPagedResponse listImages(ProjectName project) {
     ListImagesHttpRequest request =
         ListImagesHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return listImages(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of private images available to the specified project. Private images are images you create that belong to your project. This method does not get any images that belong to other projects, including publicly-available images, like Debian 8. If you want to get a list of publicly-available images, use this method to make a request to the respective image project, such as debian-cloud or windows-cloud.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ImageClient imageClient = ImageClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (Image element : imageClient.listImages(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListImagesPagedResponse listImages(String project) {
+    ListImagesHttpRequest request =
+        ListImagesHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return listImages(request);
   }

@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -38,7 +36,6 @@ public final class SSLHealthCheck implements ApiMessage {
   private final String proxyHeader;
   private final String request;
   private final String response;
-  private final Map<String, String> pathParams;
 
   private SSLHealthCheck() {
     this.port = null;
@@ -46,7 +43,6 @@ public final class SSLHealthCheck implements ApiMessage {
     this.proxyHeader = null;
     this.request = null;
     this.response = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -62,8 +58,6 @@ public final class SSLHealthCheck implements ApiMessage {
     this.proxyHeader = proxyHeader;
     this.request = request;
     this.response = response;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -88,8 +82,23 @@ public final class SSLHealthCheck implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("port")) {
+      return String.valueOf(port);
+    }
+    if (fieldName.equals("portName")) {
+      return String.valueOf(portName);
+    }
+    if (fieldName.equals("proxyHeader")) {
+      return String.valueOf(proxyHeader);
+    }
+    if (fieldName.equals("request")) {
+      return String.valueOf(request);
+    }
+    if (fieldName.equals("response")) {
+      return String.valueOf(response);
+    }
+    return null;
   }
 
   @Nullable

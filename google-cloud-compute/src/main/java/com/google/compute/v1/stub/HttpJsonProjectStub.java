@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DiskMoveRequest;
@@ -62,7 +62,7 @@ import javax.annotation.Generated;
 public class HttpJsonProjectStub extends ProjectStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetProjectHttpRequest, Project> getProjectMethodDescriptor =
       ApiMethodDescriptor.<GetProjectHttpRequest, Project>newBuilder()
           .setMethodName("compute.projects.get")
@@ -71,10 +71,11 @@ public class HttpJsonProjectStub extends ProjectStub {
           .setEndpointPathTemplate("{project}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<MoveDiskProjectHttpRequest, Operation> moveDiskProjectMethodDescriptor =
       ApiMethodDescriptor.<MoveDiskProjectHttpRequest, Operation>newBuilder()
           .setMethodName("compute.projects.moveDisk")
@@ -83,10 +84,11 @@ public class HttpJsonProjectStub extends ProjectStub {
           .setEndpointPathTemplate("{project}/moveDisk")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<MoveInstanceProjectHttpRequest, Operation> moveInstanceProjectMethodDescriptor =
       ApiMethodDescriptor.<MoveInstanceProjectHttpRequest, Operation>newBuilder()
           .setMethodName("compute.projects.moveInstance")
@@ -95,10 +97,11 @@ public class HttpJsonProjectStub extends ProjectStub {
           .setEndpointPathTemplate("{project}/moveInstance")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SetCommonInstanceMetadataProjectHttpRequest, Operation> setCommonInstanceMetadataProjectMethodDescriptor =
       ApiMethodDescriptor.<SetCommonInstanceMetadataProjectHttpRequest, Operation>newBuilder()
           .setMethodName("compute.projects.setCommonInstanceMetadata")
@@ -107,10 +110,11 @@ public class HttpJsonProjectStub extends ProjectStub {
           .setEndpointPathTemplate("{project}/setCommonInstanceMetadata")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SetUsageExportBucketProjectHttpRequest, Operation> setUsageExportBucketProjectMethodDescriptor =
       ApiMethodDescriptor.<SetUsageExportBucketProjectHttpRequest, Operation>newBuilder()
           .setMethodName("compute.projects.setUsageExportBucket")
@@ -119,8 +123,9 @@ public class HttpJsonProjectStub extends ProjectStub {
           .setEndpointPathTemplate("{project}/setUsageExportBucket")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("project")
           .build();
 
   private final BackgroundResource backgroundResources;

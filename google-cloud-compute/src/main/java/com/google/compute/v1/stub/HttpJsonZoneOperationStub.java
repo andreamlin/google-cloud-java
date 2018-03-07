@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteZoneOperationHttpRequest;
@@ -34,10 +34,10 @@ import com.google.compute.v1.GetZoneOperationHttpRequest;
 import com.google.compute.v1.ListZoneOperationsHttpRequest;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.OperationList;
+import com.google.compute.v1.ProjectZoneOperationName;
 import com.google.compute.v1.ZoneName;
 import static com.google.compute.v1.ZoneOperationClient.ListZoneOperationsPagedResponse;
 import com.google.compute.v1.ZoneOperationSettings;
-import com.google.compute.v1.ZoneOperationsOperationName;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,7 +58,7 @@ import javax.annotation.Generated;
 public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationMethodDescriptor =
       ApiMethodDescriptor.<DeleteZoneOperationHttpRequest, Void>newBuilder()
           .setMethodName("compute.zoneOperations.delete")
@@ -66,10 +66,11 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/operations/{operation}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectZoneOperationName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("operation")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetZoneOperationHttpRequest, Operation> getZoneOperationMethodDescriptor =
       ApiMethodDescriptor.<GetZoneOperationHttpRequest, Operation>newBuilder()
           .setMethodName("compute.zoneOperations.get")
@@ -78,10 +79,11 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/operations/{operation}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectZoneOperationName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("operation")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListZoneOperationsHttpRequest, OperationList> listZoneOperationsMethodDescriptor =
       ApiMethodDescriptor.<ListZoneOperationsHttpRequest, OperationList>newBuilder()
           .setMethodName("compute.zoneOperations.list")
@@ -91,8 +93,9 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ZoneName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("zone")
           .build();
 
   private final BackgroundResource backgroundResources;

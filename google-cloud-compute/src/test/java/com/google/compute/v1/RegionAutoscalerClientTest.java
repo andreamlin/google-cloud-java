@@ -46,7 +46,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class RegionAutoscalerClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static RegionAutoscalerClient client;
   private static RegionAutoscalerSettings clientSettings;
 
@@ -56,14 +56,14 @@ public class RegionAutoscalerClientTest {
         RegionAutoscalerSettings.newBuilder()
            .setTransportChannelProvider(
                RegionAutoscalerSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        RegionAutoscalerClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -118,16 +118,16 @@ public class RegionAutoscalerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteRegionAutoscalerMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteRegionAutoscalerMethodDescriptor);
 
-    RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
+    ProjectRegionAutoscalerName autoscaler = ProjectRegionAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
 
     Operation actualResponse =
         client.deleteRegionAutoscaler(autoscaler);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -135,11 +135,11 @@ public class RegionAutoscalerClientTest {
   @SuppressWarnings("all")
   public void deleteRegionAutoscalerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteRegionAutoscalerMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteRegionAutoscalerMethodDescriptor);
 
     try {
-      RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
+      ProjectRegionAutoscalerName autoscaler = ProjectRegionAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
 
       client.deleteRegionAutoscaler(autoscaler);
       Assert.fail("No exception raised");
@@ -171,16 +171,16 @@ public class RegionAutoscalerClientTest {
       .setSelfLink(selfLink)
       .setTarget(target)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getRegionAutoscalerMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getRegionAutoscalerMethodDescriptor);
 
-    RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
+    ProjectRegionAutoscalerName autoscaler = ProjectRegionAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
 
     Autoscaler actualResponse =
         client.getRegionAutoscaler(autoscaler);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -188,11 +188,11 @@ public class RegionAutoscalerClientTest {
   @SuppressWarnings("all")
   public void getRegionAutoscalerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getRegionAutoscalerMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getRegionAutoscalerMethodDescriptor);
 
     try {
-      RegionAutoscalersAutoscalerName autoscaler = RegionAutoscalersAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
+      ProjectRegionAutoscalerName autoscaler = ProjectRegionAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
 
       client.getRegionAutoscaler(autoscaler);
       Assert.fail("No exception raised");
@@ -248,17 +248,17 @@ public class RegionAutoscalerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertRegionAutoscalerMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertRegionAutoscalerMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-    Autoscaler autoscaler = Autoscaler.newBuilder().build();
+    Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
 
     Operation actualResponse =
-        client.insertRegionAutoscaler(region, autoscaler);
+        client.insertRegionAutoscaler(region, autoscalerResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -266,14 +266,14 @@ public class RegionAutoscalerClientTest {
   @SuppressWarnings("all")
   public void insertRegionAutoscalerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertRegionAutoscalerMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertRegionAutoscalerMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-      Autoscaler autoscaler = Autoscaler.newBuilder().build();
+      Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
 
-      client.insertRegionAutoscaler(region, autoscaler);
+      client.insertRegionAutoscaler(region, autoscalerResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -296,8 +296,8 @@ public class RegionAutoscalerClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listRegionAutoscalersMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listRegionAutoscalersMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -307,7 +307,7 @@ public class RegionAutoscalerClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -315,8 +315,8 @@ public class RegionAutoscalerClientTest {
   @SuppressWarnings("all")
   public void listRegionAutoscalersExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listRegionAutoscalersMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listRegionAutoscalersMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -375,17 +375,18 @@ public class RegionAutoscalerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(patchRegionAutoscalerMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(patchRegionAutoscalerMethodDescriptor);
 
     String autoscaler = "autoscaler517258967";
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+    Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
 
     Operation actualResponse =
-        client.patchRegionAutoscaler(autoscaler, region);
+        client.patchRegionAutoscaler(autoscaler, region, autoscalerResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -393,14 +394,15 @@ public class RegionAutoscalerClientTest {
   @SuppressWarnings("all")
   public void patchRegionAutoscalerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(patchRegionAutoscalerMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(patchRegionAutoscalerMethodDescriptor);
 
     try {
       String autoscaler = "autoscaler517258967";
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+      Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
 
-      client.patchRegionAutoscaler(autoscaler, region);
+      client.patchRegionAutoscaler(autoscaler, region, autoscalerResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -454,17 +456,18 @@ public class RegionAutoscalerClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(updateRegionAutoscalerMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(updateRegionAutoscalerMethodDescriptor);
 
     String autoscaler = "autoscaler517258967";
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+    Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
 
     Operation actualResponse =
-        client.updateRegionAutoscaler(autoscaler, region);
+        client.updateRegionAutoscaler(autoscaler, region, autoscalerResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -472,14 +475,15 @@ public class RegionAutoscalerClientTest {
   @SuppressWarnings("all")
   public void updateRegionAutoscalerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(updateRegionAutoscalerMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(updateRegionAutoscalerMethodDescriptor);
 
     try {
       String autoscaler = "autoscaler517258967";
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+      Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
 
-      client.updateRegionAutoscaler(autoscaler, region);
+      client.updateRegionAutoscaler(autoscaler, region, autoscalerResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception

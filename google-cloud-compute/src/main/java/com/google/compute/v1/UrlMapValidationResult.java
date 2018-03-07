@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -37,14 +35,12 @@ public final class UrlMapValidationResult implements ApiMessage {
   private final Boolean loadSucceeded;
   private final List<TestFailure> testFailures;
   private final Boolean testPassed;
-  private final Map<String, String> pathParams;
 
   private UrlMapValidationResult() {
     this.loadErrors = null;
     this.loadSucceeded = null;
     this.testFailures = null;
     this.testPassed = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -58,21 +54,27 @@ public final class UrlMapValidationResult implements ApiMessage {
     this.loadSucceeded = loadSucceeded;
     this.testFailures = testFailures;
     this.testPassed = testPassed;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("loadErrors") && loadErrors != null) {
-      fieldMap.put("loadErrors", loadErrors.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : loadErrors) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("loadErrors", stringList);
     }
     if (fieldNames.contains("loadSucceeded") && loadSucceeded != null) {
       fieldMap.put("loadSucceeded", Collections.singletonList(String.valueOf(loadSucceeded)));
     }
     if (fieldNames.contains("testFailures") && testFailures != null) {
-      fieldMap.put("testFailures", testFailures.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (TestFailure item : testFailures) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("testFailures", stringList);
     }
     if (fieldNames.contains("testPassed") && testPassed != null) {
       fieldMap.put("testPassed", Collections.singletonList(String.valueOf(testPassed)));
@@ -81,8 +83,20 @@ public final class UrlMapValidationResult implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("loadErrors")) {
+      return String.valueOf(loadErrors);
+    }
+    if (fieldName.equals("loadSucceeded")) {
+      return String.valueOf(loadSucceeded);
+    }
+    if (fieldName.equals("testFailures")) {
+      return String.valueOf(testFailures);
+    }
+    if (fieldName.equals("testPassed")) {
+      return String.valueOf(testPassed);
+    }
+    return null;
   }
 
   @Nullable
@@ -164,6 +178,9 @@ public final class UrlMapValidationResult implements ApiMessage {
     }
 
     public Builder addAllLoadErrors(List<String> loadErrors) {
+      if (this.loadErrors == null) {
+        this.loadErrors = new LinkedList<>();
+      }
       this.loadErrors.addAll(loadErrors);
       return this;
     }
@@ -187,6 +204,9 @@ public final class UrlMapValidationResult implements ApiMessage {
     }
 
     public Builder addAllTestFailures(List<TestFailure> testFailures) {
+      if (this.testFailures == null) {
+        this.testFailures = new LinkedList<>();
+      }
       this.testFailures.addAll(testFailures);
       return this;
     }

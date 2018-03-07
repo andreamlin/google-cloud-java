@@ -61,7 +61,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class InstanceClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static InstanceClient client;
   private static InstanceSettings clientSettings;
 
@@ -71,14 +71,14 @@ public class InstanceClientTest {
         InstanceSettings.newBuilder()
            .setTransportChannelProvider(
                InstanceSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        InstanceClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -133,18 +133,18 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(addAccessConfigInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(addAccessConfigInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String networkInterface = "networkInterface902258792";
-    AccessConfig accessConfig = AccessConfig.newBuilder().build();
+    AccessConfig accessConfigResource = AccessConfig.newBuilder().build();
 
     Operation actualResponse =
-        client.addAccessConfigInstance(instance, networkInterface, accessConfig);
+        client.addAccessConfigInstance(instance, networkInterface, accessConfigResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -152,15 +152,15 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void addAccessConfigInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(addAccessConfigInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(addAccessConfigInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
       String networkInterface = "networkInterface902258792";
-      AccessConfig accessConfig = AccessConfig.newBuilder().build();
+      AccessConfig accessConfigResource = AccessConfig.newBuilder().build();
 
-      client.addAccessConfigInstance(instance, networkInterface, accessConfig);
+      client.addAccessConfigInstance(instance, networkInterface, accessConfigResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -186,8 +186,8 @@ public class InstanceClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(aggregatedListInstancesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(aggregatedListInstancesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -197,7 +197,7 @@ public class InstanceClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().getInstances().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -205,8 +205,8 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void aggregatedListInstancesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(aggregatedListInstancesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(aggregatedListInstancesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -265,17 +265,17 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(attachDiskInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(attachDiskInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    AttachedDisk attachedDisk = AttachedDisk.newBuilder().build();
+    AttachedDisk attachedDiskResource = AttachedDisk.newBuilder().build();
 
     Operation actualResponse =
-        client.attachDiskInstance(instance, attachedDisk);
+        client.attachDiskInstance(instance, attachedDiskResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -283,14 +283,14 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void attachDiskInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(attachDiskInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(attachDiskInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      AttachedDisk attachedDisk = AttachedDisk.newBuilder().build();
+      AttachedDisk attachedDiskResource = AttachedDisk.newBuilder().build();
 
-      client.attachDiskInstance(instance, attachedDisk);
+      client.attachDiskInstance(instance, attachedDiskResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -344,8 +344,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
@@ -353,7 +353,7 @@ public class InstanceClientTest {
         client.deleteInstance(instance);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -361,8 +361,8 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void deleteInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -421,8 +421,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteAccessConfigInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteAccessConfigInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String networkInterface = "networkInterface902258792";
@@ -432,7 +432,7 @@ public class InstanceClientTest {
         client.deleteAccessConfigInstance(instance, networkInterface, accessConfig);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -440,8 +440,8 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void deleteAccessConfigInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteAccessConfigInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteAccessConfigInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -502,8 +502,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(detachDiskInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(detachDiskInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String deviceName = "deviceName-1543071020";
@@ -512,7 +512,7 @@ public class InstanceClientTest {
         client.detachDiskInstance(instance, deviceName);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -520,8 +520,8 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void detachDiskInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(detachDiskInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(detachDiskInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -563,8 +563,8 @@ public class InstanceClientTest {
       .setMachineType(machineType.toString())
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
@@ -572,7 +572,7 @@ public class InstanceClientTest {
         client.getInstance(instance);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -580,8 +580,8 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void getInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -608,8 +608,8 @@ public class InstanceClientTest {
       .setStart(start2)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getSerialPortOutputInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getSerialPortOutputInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Integer port = 3446913;
@@ -619,7 +619,7 @@ public class InstanceClientTest {
         client.getSerialPortOutputInstance(instance, port, start);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -627,8 +627,8 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void getSerialPortOutputInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getSerialPortOutputInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getSerialPortOutputInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -689,17 +689,17 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertInstanceMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
-    Instance instance = Instance.newBuilder().build();
+    Instance instanceResource = Instance.newBuilder().build();
 
     Operation actualResponse =
-        client.insertInstance(zone, instance);
+        client.insertInstance(zone, instanceResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -707,14 +707,14 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void insertInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertInstanceMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
-      Instance instance = Instance.newBuilder().build();
+      Instance instanceResource = Instance.newBuilder().build();
 
-      client.insertInstance(zone, instance);
+      client.insertInstance(zone, instanceResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -737,8 +737,8 @@ public class InstanceClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listInstancesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listInstancesMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -748,7 +748,7 @@ public class InstanceClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -756,8 +756,8 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void listInstancesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listInstancesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listInstancesMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -816,8 +816,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(resetInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(resetInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
@@ -825,7 +825,7 @@ public class InstanceClientTest {
         client.resetInstance(instance);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -833,8 +833,8 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void resetInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(resetInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(resetInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -893,8 +893,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setDiskAutoDeleteInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setDiskAutoDeleteInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Boolean autoDelete = false;
@@ -904,7 +904,7 @@ public class InstanceClientTest {
         client.setDiskAutoDeleteInstance(instance, autoDelete, deviceName);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -912,8 +912,8 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void setDiskAutoDeleteInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setDiskAutoDeleteInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setDiskAutoDeleteInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -974,17 +974,17 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setMachineTypeInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setMachineTypeInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    InstancesSetMachineTypeRequest instancesSetMachineTypeRequest = InstancesSetMachineTypeRequest.newBuilder().build();
+    InstancesSetMachineTypeRequest instancesSetMachineTypeRequestResource = InstancesSetMachineTypeRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.setMachineTypeInstance(instance, instancesSetMachineTypeRequest);
+        client.setMachineTypeInstance(instance, instancesSetMachineTypeRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -992,14 +992,14 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void setMachineTypeInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setMachineTypeInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setMachineTypeInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      InstancesSetMachineTypeRequest instancesSetMachineTypeRequest = InstancesSetMachineTypeRequest.newBuilder().build();
+      InstancesSetMachineTypeRequest instancesSetMachineTypeRequestResource = InstancesSetMachineTypeRequest.newBuilder().build();
 
-      client.setMachineTypeInstance(instance, instancesSetMachineTypeRequest);
+      client.setMachineTypeInstance(instance, instancesSetMachineTypeRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1053,17 +1053,17 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setMetadataInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setMetadataInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    Metadata metadata = Metadata.newBuilder().build();
+    Metadata metadataResource = Metadata.newBuilder().build();
 
     Operation actualResponse =
-        client.setMetadataInstance(instance, metadata);
+        client.setMetadataInstance(instance, metadataResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -1071,14 +1071,14 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void setMetadataInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setMetadataInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setMetadataInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      Metadata metadata = Metadata.newBuilder().build();
+      Metadata metadataResource = Metadata.newBuilder().build();
 
-      client.setMetadataInstance(instance, metadata);
+      client.setMetadataInstance(instance, metadataResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1132,17 +1132,17 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setSchedulingInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setSchedulingInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    Scheduling scheduling = Scheduling.newBuilder().build();
+    Scheduling schedulingResource = Scheduling.newBuilder().build();
 
     Operation actualResponse =
-        client.setSchedulingInstance(instance, scheduling);
+        client.setSchedulingInstance(instance, schedulingResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -1150,14 +1150,14 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void setSchedulingInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setSchedulingInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setSchedulingInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      Scheduling scheduling = Scheduling.newBuilder().build();
+      Scheduling schedulingResource = Scheduling.newBuilder().build();
 
-      client.setSchedulingInstance(instance, scheduling);
+      client.setSchedulingInstance(instance, schedulingResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1211,17 +1211,17 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setServiceAccountInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setServiceAccountInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    InstancesSetServiceAccountRequest instancesSetServiceAccountRequest = InstancesSetServiceAccountRequest.newBuilder().build();
+    InstancesSetServiceAccountRequest instancesSetServiceAccountRequestResource = InstancesSetServiceAccountRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.setServiceAccountInstance(instance, instancesSetServiceAccountRequest);
+        client.setServiceAccountInstance(instance, instancesSetServiceAccountRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -1229,14 +1229,14 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void setServiceAccountInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setServiceAccountInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setServiceAccountInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      InstancesSetServiceAccountRequest instancesSetServiceAccountRequest = InstancesSetServiceAccountRequest.newBuilder().build();
+      InstancesSetServiceAccountRequest instancesSetServiceAccountRequestResource = InstancesSetServiceAccountRequest.newBuilder().build();
 
-      client.setServiceAccountInstance(instance, instancesSetServiceAccountRequest);
+      client.setServiceAccountInstance(instance, instancesSetServiceAccountRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1290,17 +1290,17 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setTagsInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setTagsInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    Tags tags = Tags.newBuilder().build();
+    Tags tagsResource = Tags.newBuilder().build();
 
     Operation actualResponse =
-        client.setTagsInstance(instance, tags);
+        client.setTagsInstance(instance, tagsResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -1308,14 +1308,14 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void setTagsInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setTagsInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setTagsInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      Tags tags = Tags.newBuilder().build();
+      Tags tagsResource = Tags.newBuilder().build();
 
-      client.setTagsInstance(instance, tags);
+      client.setTagsInstance(instance, tagsResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1369,8 +1369,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(startInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(startInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
@@ -1378,7 +1378,7 @@ public class InstanceClientTest {
         client.startInstance(instance);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -1386,8 +1386,8 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void startInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(startInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(startInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -1446,17 +1446,17 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(startWithEncryptionKeyInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(startWithEncryptionKeyInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequest = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
+    InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequestResource = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.startWithEncryptionKeyInstance(instance, instancesStartWithEncryptionKeyRequest);
+        client.startWithEncryptionKeyInstance(instance, instancesStartWithEncryptionKeyRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -1464,14 +1464,14 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void startWithEncryptionKeyInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(startWithEncryptionKeyInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(startWithEncryptionKeyInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequest = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
+      InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequestResource = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
 
-      client.startWithEncryptionKeyInstance(instance, instancesStartWithEncryptionKeyRequest);
+      client.startWithEncryptionKeyInstance(instance, instancesStartWithEncryptionKeyRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1525,8 +1525,8 @@ public class InstanceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(stopInstanceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(stopInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
@@ -1534,7 +1534,7 @@ public class InstanceClientTest {
         client.stopInstance(instance);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -1542,8 +1542,8 @@ public class InstanceClientTest {
   @SuppressWarnings("all")
   public void stopInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(stopInstanceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(stopInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");

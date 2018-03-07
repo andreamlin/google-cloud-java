@@ -47,7 +47,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class TargetSslProxyClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static TargetSslProxyClient client;
   private static TargetSslProxySettings clientSettings;
 
@@ -57,14 +57,14 @@ public class TargetSslProxyClientTest {
         TargetSslProxySettings.newBuilder()
            .setTransportChannelProvider(
                TargetSslProxySettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        TargetSslProxyClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -119,8 +119,8 @@ public class TargetSslProxyClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteTargetSslProxyMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
 
@@ -128,7 +128,7 @@ public class TargetSslProxyClientTest {
         client.deleteTargetSslProxy(targetSslProxy);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -136,8 +136,8 @@ public class TargetSslProxyClientTest {
   @SuppressWarnings("all")
   public void deleteTargetSslProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteTargetSslProxyMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteTargetSslProxyMethodDescriptor);
 
     try {
       TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
@@ -170,8 +170,8 @@ public class TargetSslProxyClientTest {
       .setProxyHeader(proxyHeader)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getTargetSslProxyMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
 
@@ -179,7 +179,7 @@ public class TargetSslProxyClientTest {
         client.getTargetSslProxy(targetSslProxy);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -187,8 +187,8 @@ public class TargetSslProxyClientTest {
   @SuppressWarnings("all")
   public void getTargetSslProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getTargetSslProxyMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getTargetSslProxyMethodDescriptor);
 
     try {
       TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
@@ -247,17 +247,17 @@ public class TargetSslProxyClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertTargetSslProxyMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertTargetSslProxyMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
-    TargetSslProxy targetSslProxy = TargetSslProxy.newBuilder().build();
+    TargetSslProxy targetSslProxyResource = TargetSslProxy.newBuilder().build();
 
     Operation actualResponse =
-        client.insertTargetSslProxy(project, targetSslProxy);
+        client.insertTargetSslProxy(project, targetSslProxyResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -265,14 +265,14 @@ public class TargetSslProxyClientTest {
   @SuppressWarnings("all")
   public void insertTargetSslProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertTargetSslProxyMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertTargetSslProxyMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
-      TargetSslProxy targetSslProxy = TargetSslProxy.newBuilder().build();
+      TargetSslProxy targetSslProxyResource = TargetSslProxy.newBuilder().build();
 
-      client.insertTargetSslProxy(project, targetSslProxy);
+      client.insertTargetSslProxy(project, targetSslProxyResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -295,8 +295,8 @@ public class TargetSslProxyClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listTargetSslProxiesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listTargetSslProxiesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -306,7 +306,7 @@ public class TargetSslProxyClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -314,8 +314,8 @@ public class TargetSslProxyClientTest {
   @SuppressWarnings("all")
   public void listTargetSslProxiesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listTargetSslProxiesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listTargetSslProxiesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -374,17 +374,17 @@ public class TargetSslProxyClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setBackendServiceTargetSslProxyMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setBackendServiceTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
-    TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequest = TargetSslProxiesSetBackendServiceRequest.newBuilder().build();
+    TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequestResource = TargetSslProxiesSetBackendServiceRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.setBackendServiceTargetSslProxy(targetSslProxy, targetSslProxiesSetBackendServiceRequest);
+        client.setBackendServiceTargetSslProxy(targetSslProxy, targetSslProxiesSetBackendServiceRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -392,14 +392,14 @@ public class TargetSslProxyClientTest {
   @SuppressWarnings("all")
   public void setBackendServiceTargetSslProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setBackendServiceTargetSslProxyMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setBackendServiceTargetSslProxyMethodDescriptor);
 
     try {
       TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
-      TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequest = TargetSslProxiesSetBackendServiceRequest.newBuilder().build();
+      TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequestResource = TargetSslProxiesSetBackendServiceRequest.newBuilder().build();
 
-      client.setBackendServiceTargetSslProxy(targetSslProxy, targetSslProxiesSetBackendServiceRequest);
+      client.setBackendServiceTargetSslProxy(targetSslProxy, targetSslProxiesSetBackendServiceRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -453,17 +453,17 @@ public class TargetSslProxyClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setProxyHeaderTargetSslProxyMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setProxyHeaderTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
-    TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequest = TargetSslProxiesSetProxyHeaderRequest.newBuilder().build();
+    TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequestResource = TargetSslProxiesSetProxyHeaderRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.setProxyHeaderTargetSslProxy(targetSslProxy, targetSslProxiesSetProxyHeaderRequest);
+        client.setProxyHeaderTargetSslProxy(targetSslProxy, targetSslProxiesSetProxyHeaderRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -471,14 +471,14 @@ public class TargetSslProxyClientTest {
   @SuppressWarnings("all")
   public void setProxyHeaderTargetSslProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setProxyHeaderTargetSslProxyMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setProxyHeaderTargetSslProxyMethodDescriptor);
 
     try {
       TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
-      TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequest = TargetSslProxiesSetProxyHeaderRequest.newBuilder().build();
+      TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequestResource = TargetSslProxiesSetProxyHeaderRequest.newBuilder().build();
 
-      client.setProxyHeaderTargetSslProxy(targetSslProxy, targetSslProxiesSetProxyHeaderRequest);
+      client.setProxyHeaderTargetSslProxy(targetSslProxy, targetSslProxiesSetProxyHeaderRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -532,17 +532,17 @@ public class TargetSslProxyClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setSslCertificatesTargetSslProxyMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setSslCertificatesTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
-    TargetSslProxiesSetSslCertificatesRequest targetSslProxiesSetSslCertificatesRequest = TargetSslProxiesSetSslCertificatesRequest.newBuilder().build();
+    TargetSslProxiesSetSslCertificatesRequest targetSslProxiesSetSslCertificatesRequestResource = TargetSslProxiesSetSslCertificatesRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.setSslCertificatesTargetSslProxy(targetSslProxy, targetSslProxiesSetSslCertificatesRequest);
+        client.setSslCertificatesTargetSslProxy(targetSslProxy, targetSslProxiesSetSslCertificatesRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -550,14 +550,14 @@ public class TargetSslProxyClientTest {
   @SuppressWarnings("all")
   public void setSslCertificatesTargetSslProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setSslCertificatesTargetSslProxyMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setSslCertificatesTargetSslProxyMethodDescriptor);
 
     try {
       TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
-      TargetSslProxiesSetSslCertificatesRequest targetSslProxiesSetSslCertificatesRequest = TargetSslProxiesSetSslCertificatesRequest.newBuilder().build();
+      TargetSslProxiesSetSslCertificatesRequest targetSslProxiesSetSslCertificatesRequestResource = TargetSslProxiesSetSslCertificatesRequest.newBuilder().build();
 
-      client.setSslCertificatesTargetSslProxy(targetSslProxy, targetSslProxiesSetSslCertificatesRequest);
+      client.setSslCertificatesTargetSslProxy(targetSslProxy, targetSslProxiesSetSslCertificatesRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception

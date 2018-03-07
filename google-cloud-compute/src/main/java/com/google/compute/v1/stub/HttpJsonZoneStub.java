@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.GetZoneHttpRequest;
@@ -57,7 +57,7 @@ import javax.annotation.Generated;
 public class HttpJsonZoneStub extends ZoneStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetZoneHttpRequest, Zone> getZoneMethodDescriptor =
       ApiMethodDescriptor.<GetZoneHttpRequest, Zone>newBuilder()
           .setMethodName("compute.zones.get")
@@ -66,10 +66,11 @@ public class HttpJsonZoneStub extends ZoneStub {
           .setEndpointPathTemplate("{project}/zones/{zone}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ZoneName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("zone")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListZonesHttpRequest, ZoneList> listZonesMethodDescriptor =
       ApiMethodDescriptor.<ListZonesHttpRequest, ZoneList>newBuilder()
           .setMethodName("compute.zones.list")
@@ -79,8 +80,9 @@ public class HttpJsonZoneStub extends ZoneStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
 
   private final BackgroundResource backgroundResources;

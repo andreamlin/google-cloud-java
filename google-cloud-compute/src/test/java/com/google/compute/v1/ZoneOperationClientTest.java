@@ -43,7 +43,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class ZoneOperationClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static ZoneOperationClient client;
   private static ZoneOperationSettings clientSettings;
 
@@ -53,14 +53,14 @@ public class ZoneOperationClientTest {
         ZoneOperationSettings.newBuilder()
            .setTransportChannelProvider(
                ZoneOperationSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        ZoneOperationClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -72,13 +72,13 @@ public class ZoneOperationClientTest {
   @SuppressWarnings("all")
   public void deleteZoneOperationTest() {
 
-    MOCK_SERVICE.setSerializer(deleteZoneOperationMethodDescriptor);
+    mockService.setSerializer(deleteZoneOperationMethodDescriptor);
 
-    ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
+    ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
 
     client.deleteZoneOperation(operation);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -86,11 +86,11 @@ public class ZoneOperationClientTest {
   @SuppressWarnings("all")
   public void deleteZoneOperationExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteZoneOperationMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteZoneOperationMethodDescriptor);
 
     try {
-      ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
+      ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
 
       client.deleteZoneOperation(operation);
       Assert.fail("No exception raised");
@@ -146,16 +146,16 @@ public class ZoneOperationClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getZoneOperationMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getZoneOperationMethodDescriptor);
 
-    ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
+    ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
 
     Operation actualResponse =
         client.getZoneOperation(operation);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -163,11 +163,11 @@ public class ZoneOperationClientTest {
   @SuppressWarnings("all")
   public void getZoneOperationExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getZoneOperationMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getZoneOperationMethodDescriptor);
 
     try {
-      ZoneOperationsOperationName operation = ZoneOperationsOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
+      ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
 
       client.getZoneOperation(operation);
       Assert.fail("No exception raised");
@@ -192,8 +192,8 @@ public class ZoneOperationClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listZoneOperationsMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listZoneOperationsMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -203,7 +203,7 @@ public class ZoneOperationClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -211,8 +211,8 @@ public class ZoneOperationClientTest {
   @SuppressWarnings("all")
   public void listZoneOperationsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listZoneOperationsMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listZoneOperationsMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");

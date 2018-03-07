@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -34,11 +32,9 @@ import javax.annotation.Nullable;
 @BetaApi
 public final class RegionInstanceGroupManagersListInstancesResponse implements ApiMessage {
   private final List<ManagedInstance> managedInstances;
-  private final Map<String, String> pathParams;
 
   private RegionInstanceGroupManagersListInstancesResponse() {
     this.managedInstances = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -46,22 +42,27 @@ public final class RegionInstanceGroupManagersListInstancesResponse implements A
       List<ManagedInstance> managedInstances
       ) {
     this.managedInstances = managedInstances;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("managedInstances") && managedInstances != null) {
-      fieldMap.put("managedInstances", managedInstances.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (ManagedInstance item : managedInstances) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("managedInstances", stringList);
     }
     return fieldMap;
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("managedInstances")) {
+      return String.valueOf(managedInstances);
+    }
+    return null;
   }
 
   @Nullable
@@ -116,6 +117,9 @@ public final class RegionInstanceGroupManagersListInstancesResponse implements A
     }
 
     public Builder addAllManagedInstances(List<ManagedInstance> managedInstances) {
+      if (this.managedInstances == null) {
+        this.managedInstances = new LinkedList<>();
+      }
       this.managedInstances.addAll(managedInstances);
       return this;
     }

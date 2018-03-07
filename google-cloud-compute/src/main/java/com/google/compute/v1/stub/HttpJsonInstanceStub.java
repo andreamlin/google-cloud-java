@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AccessConfig;
@@ -88,7 +88,7 @@ import javax.annotation.Generated;
 public class HttpJsonInstanceStub extends InstanceStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<AddAccessConfigInstanceHttpRequest, Operation> addAccessConfigInstanceMethodDescriptor =
       ApiMethodDescriptor.<AddAccessConfigInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.addAccessConfig")
@@ -98,10 +98,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "networkInterface"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<AggregatedListInstancesHttpRequest, InstanceAggregatedList> aggregatedListInstancesMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListInstancesHttpRequest, InstanceAggregatedList>newBuilder()
           .setMethodName("compute.instances.aggregatedList")
@@ -111,10 +112,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<AttachDiskInstanceHttpRequest, Operation> attachDiskInstanceMethodDescriptor =
       ApiMethodDescriptor.<AttachDiskInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.attachDisk")
@@ -123,10 +125,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/attachDisk")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteInstanceHttpRequest, Operation> deleteInstanceMethodDescriptor =
       ApiMethodDescriptor.<DeleteInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.delete")
@@ -135,10 +138,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteAccessConfigInstanceHttpRequest, Operation> deleteAccessConfigInstanceMethodDescriptor =
       ApiMethodDescriptor.<DeleteAccessConfigInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.deleteAccessConfig")
@@ -148,10 +152,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "accessConfig",    "networkInterface"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DetachDiskInstanceHttpRequest, Operation> detachDiskInstanceMethodDescriptor =
       ApiMethodDescriptor.<DetachDiskInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.detachDisk")
@@ -161,10 +166,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "deviceName"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetInstanceHttpRequest, Instance> getInstanceMethodDescriptor =
       ApiMethodDescriptor.<GetInstanceHttpRequest, Instance>newBuilder()
           .setMethodName("compute.instances.get")
@@ -173,10 +179,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput> getSerialPortOutputInstanceMethodDescriptor =
       ApiMethodDescriptor.<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput>newBuilder()
           .setMethodName("compute.instances.getSerialPortOutput")
@@ -186,10 +193,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "port",    "start"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertInstanceHttpRequest, Operation> insertInstanceMethodDescriptor =
       ApiMethodDescriptor.<InsertInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.insert")
@@ -198,10 +206,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instances")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ZoneName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("zone")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListInstancesHttpRequest, InstanceList> listInstancesMethodDescriptor =
       ApiMethodDescriptor.<ListInstancesHttpRequest, InstanceList>newBuilder()
           .setMethodName("compute.instances.list")
@@ -211,10 +220,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ZoneName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("zone")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ResetInstanceHttpRequest, Operation> resetInstanceMethodDescriptor =
       ApiMethodDescriptor.<ResetInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.reset")
@@ -223,10 +233,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/reset")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SetDiskAutoDeleteInstanceHttpRequest, Operation> setDiskAutoDeleteInstanceMethodDescriptor =
       ApiMethodDescriptor.<SetDiskAutoDeleteInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.setDiskAutoDelete")
@@ -236,10 +247,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "autoDelete",    "deviceName"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SetMachineTypeInstanceHttpRequest, Operation> setMachineTypeInstanceMethodDescriptor =
       ApiMethodDescriptor.<SetMachineTypeInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.setMachineType")
@@ -248,10 +260,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/setMachineType")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SetMetadataInstanceHttpRequest, Operation> setMetadataInstanceMethodDescriptor =
       ApiMethodDescriptor.<SetMetadataInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.setMetadata")
@@ -260,10 +273,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/setMetadata")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SetSchedulingInstanceHttpRequest, Operation> setSchedulingInstanceMethodDescriptor =
       ApiMethodDescriptor.<SetSchedulingInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.setScheduling")
@@ -272,10 +286,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/setScheduling")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SetServiceAccountInstanceHttpRequest, Operation> setServiceAccountInstanceMethodDescriptor =
       ApiMethodDescriptor.<SetServiceAccountInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.setServiceAccount")
@@ -284,10 +299,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/setServiceAccount")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SetTagsInstanceHttpRequest, Operation> setTagsInstanceMethodDescriptor =
       ApiMethodDescriptor.<SetTagsInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.setTags")
@@ -296,10 +312,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/setTags")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<StartInstanceHttpRequest, Operation> startInstanceMethodDescriptor =
       ApiMethodDescriptor.<StartInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.start")
@@ -308,10 +325,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/start")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<StartWithEncryptionKeyInstanceHttpRequest, Operation> startWithEncryptionKeyInstanceMethodDescriptor =
       ApiMethodDescriptor.<StartWithEncryptionKeyInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.startWithEncryptionKey")
@@ -320,10 +338,11 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/startWithEncryptionKey")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instance")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<StopInstanceHttpRequest, Operation> stopInstanceMethodDescriptor =
       ApiMethodDescriptor.<StopInstanceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.instances.stop")
@@ -332,8 +351,9 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/instances/{instance}/stop")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(InstanceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("instance")
           .build();
 
   private final BackgroundResource backgroundResources;

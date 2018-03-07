@@ -190,7 +190,33 @@ public class SubnetworkClient implements BackgroundResource {
   public final AggregatedListSubnetworksPagedResponse aggregatedListSubnetworks(ProjectName project) {
     AggregatedListSubnetworksHttpRequest request =
         AggregatedListSubnetworksHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return aggregatedListSubnetworks(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves an aggregated list of subnetworks.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (Subnetwork element : subnetworkClient.aggregatedListSubnetworks(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListSubnetworksPagedResponse aggregatedListSubnetworks(String project) {
+    AggregatedListSubnetworksHttpRequest request =
+        AggregatedListSubnetworksHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return aggregatedListSubnetworks(request);
   }
@@ -296,7 +322,32 @@ public class SubnetworkClient implements BackgroundResource {
 
     DeleteSubnetworkHttpRequest request =
         DeleteSubnetworkHttpRequest.newBuilder()
-        .setSubnetwork(subnetwork.toString())
+        .setSubnetwork(subnetwork == null ? null : subnetwork.toString())
+        .build();
+    return deleteSubnetwork(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified subnetwork.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
+   *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   Operation response = subnetworkClient.deleteSubnetwork(subnetwork.toString());
+   * }
+   * </code></pre>
+   *
+   * @param subnetwork Name of the Subnetwork resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteSubnetwork(String subnetwork) {
+
+    DeleteSubnetworkHttpRequest request =
+        DeleteSubnetworkHttpRequest.newBuilder()
+        .setSubnetwork(subnetwork)
         .build();
     return deleteSubnetwork(request);
   }
@@ -354,8 +405,8 @@ public class SubnetworkClient implements BackgroundResource {
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
-   *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
-   *   Operation response = subnetworkClient.expandIpCidrRangeSubnetwork(subnetwork, subnetworksExpandIpCidrRangeRequest);
+   *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
+   *   Operation response = subnetworkClient.expandIpCidrRangeSubnetwork(subnetwork, subnetworksExpandIpCidrRangeRequestResource);
    * }
    * </code></pre>
    *
@@ -368,7 +419,7 @@ public class SubnetworkClient implements BackgroundResource {
 
     ExpandIpCidrRangeSubnetworkHttpRequest request =
         ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
-        .setSubnetwork(subnetwork.toString())
+        .setSubnetwork(subnetwork == null ? null : subnetwork.toString())
         .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequestResource)
         .build();
     return expandIpCidrRangeSubnetwork(request);
@@ -382,10 +433,38 @@ public class SubnetworkClient implements BackgroundResource {
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
-   *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
+   *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
+   *   Operation response = subnetworkClient.expandIpCidrRangeSubnetwork(subnetwork.toString(), subnetworksExpandIpCidrRangeRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param subnetwork Name of the Subnetwork resource to update.
+   * @param subnetworksExpandIpCidrRangeRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation expandIpCidrRangeSubnetwork(String subnetwork, SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource) {
+
+    ExpandIpCidrRangeSubnetworkHttpRequest request =
+        ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
+        .setSubnetwork(subnetwork)
+        .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequestResource)
+        .build();
+    return expandIpCidrRangeSubnetwork(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Expands the IP CIDR range of the subnetwork to a specified value.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
+   *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
    *   ExpandIpCidrRangeSubnetworkHttpRequest request = ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
    *     .setSubnetwork(subnetwork.toString())
-   *     .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequest)
+   *     .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequestResource)
    *     .build();
    *   Operation response = subnetworkClient.expandIpCidrRangeSubnetwork(request);
    * }
@@ -407,10 +486,10 @@ public class SubnetworkClient implements BackgroundResource {
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
-   *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequest = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
+   *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
    *   ExpandIpCidrRangeSubnetworkHttpRequest request = ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
    *     .setSubnetwork(subnetwork.toString())
-   *     .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequest)
+   *     .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = subnetworkClient.expandIpCidrRangeSubnetworkCallable().futureCall(request);
    *   // Do something
@@ -443,7 +522,32 @@ public class SubnetworkClient implements BackgroundResource {
 
     GetSubnetworkHttpRequest request =
         GetSubnetworkHttpRequest.newBuilder()
-        .setSubnetwork(subnetwork.toString())
+        .setSubnetwork(subnetwork == null ? null : subnetwork.toString())
+        .build();
+    return getSubnetwork(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified subnetwork. Get a list of available subnetworks list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
+   *   SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   Subnetwork response = subnetworkClient.getSubnetwork(subnetwork.toString());
+   * }
+   * </code></pre>
+   *
+   * @param subnetwork Name of the Subnetwork resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Subnetwork getSubnetwork(String subnetwork) {
+
+    GetSubnetworkHttpRequest request =
+        GetSubnetworkHttpRequest.newBuilder()
+        .setSubnetwork(subnetwork)
         .build();
     return getSubnetwork(request);
   }
@@ -501,8 +605,8 @@ public class SubnetworkClient implements BackgroundResource {
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   Subnetwork subnetwork = Subnetwork.newBuilder().build();
-   *   Operation response = subnetworkClient.insertSubnetwork(region, subnetwork);
+   *   Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
+   *   Operation response = subnetworkClient.insertSubnetwork(region, subnetworkResource);
    * }
    * </code></pre>
    *
@@ -515,7 +619,7 @@ public class SubnetworkClient implements BackgroundResource {
 
     InsertSubnetworkHttpRequest request =
         InsertSubnetworkHttpRequest.newBuilder()
-        .setRegion(region.toString())
+        .setRegion(region == null ? null : region.toString())
         .setSubnetworkResource(subnetworkResource)
         .build();
     return insertSubnetwork(request);
@@ -529,10 +633,38 @@ public class SubnetworkClient implements BackgroundResource {
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   Subnetwork subnetwork = Subnetwork.newBuilder().build();
+   *   Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
+   *   Operation response = subnetworkClient.insertSubnetwork(region.toString(), subnetworkResource);
+   * }
+   * </code></pre>
+   *
+   * @param region Name of the region scoping this request.
+   * @param subnetworkResource A Subnetwork resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertSubnetwork(String region, Subnetwork subnetworkResource) {
+
+    InsertSubnetworkHttpRequest request =
+        InsertSubnetworkHttpRequest.newBuilder()
+        .setRegion(region)
+        .setSubnetworkResource(subnetworkResource)
+        .build();
+    return insertSubnetwork(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a subnetwork in the specified project using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
    *   InsertSubnetworkHttpRequest request = InsertSubnetworkHttpRequest.newBuilder()
    *     .setRegion(region.toString())
-   *     .setSubnetworkResource(subnetwork)
+   *     .setSubnetworkResource(subnetworkResource)
    *     .build();
    *   Operation response = subnetworkClient.insertSubnetwork(request);
    * }
@@ -554,10 +686,10 @@ public class SubnetworkClient implements BackgroundResource {
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   Subnetwork subnetwork = Subnetwork.newBuilder().build();
+   *   Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
    *   InsertSubnetworkHttpRequest request = InsertSubnetworkHttpRequest.newBuilder()
    *     .setRegion(region.toString())
-   *     .setSubnetworkResource(subnetwork)
+   *     .setSubnetworkResource(subnetworkResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = subnetworkClient.insertSubnetworkCallable().futureCall(request);
    *   // Do something
@@ -591,7 +723,33 @@ public class SubnetworkClient implements BackgroundResource {
   public final ListSubnetworksPagedResponse listSubnetworks(RegionName region) {
     ListSubnetworksHttpRequest request =
         ListSubnetworksHttpRequest.newBuilder()
-        .setRegion(region.toString())
+        .setRegion(region == null ? null : region.toString())
+        .build();
+    return listSubnetworks(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves a list of subnetworks available to the specified project.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   for (Subnetwork element : subnetworkClient.listSubnetworks(region.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param region Name of the region scoping this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListSubnetworksPagedResponse listSubnetworks(String region) {
+    ListSubnetworksHttpRequest request =
+        ListSubnetworksHttpRequest.newBuilder()
+        .setRegion(region)
         .build();
     return listSubnetworks(request);
   }

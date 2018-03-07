@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -42,7 +40,6 @@ public final class Backend implements ApiMessage {
   private final Integer maxRate;
   private final Float maxRatePerInstance;
   private final Float maxUtilization;
-  private final Map<String, String> pathParams;
 
   private Backend() {
     this.balancingMode = null;
@@ -54,7 +51,6 @@ public final class Backend implements ApiMessage {
     this.maxRate = null;
     this.maxRatePerInstance = null;
     this.maxUtilization = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -78,8 +74,6 @@ public final class Backend implements ApiMessage {
     this.maxRate = maxRate;
     this.maxRatePerInstance = maxRatePerInstance;
     this.maxUtilization = maxUtilization;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -116,8 +110,35 @@ public final class Backend implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("balancingMode")) {
+      return String.valueOf(balancingMode);
+    }
+    if (fieldName.equals("capacityScaler")) {
+      return String.valueOf(capacityScaler);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("group")) {
+      return String.valueOf(group);
+    }
+    if (fieldName.equals("maxConnections")) {
+      return String.valueOf(maxConnections);
+    }
+    if (fieldName.equals("maxConnectionsPerInstance")) {
+      return String.valueOf(maxConnectionsPerInstance);
+    }
+    if (fieldName.equals("maxRate")) {
+      return String.valueOf(maxRate);
+    }
+    if (fieldName.equals("maxRatePerInstance")) {
+      return String.valueOf(maxRatePerInstance);
+    }
+    if (fieldName.equals("maxUtilization")) {
+      return String.valueOf(maxUtilization);
+    }
+    return null;
   }
 
   @Nullable

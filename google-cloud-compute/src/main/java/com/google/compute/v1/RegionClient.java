@@ -189,7 +189,32 @@ public class RegionClient implements BackgroundResource {
 
     GetRegionHttpRequest request =
         GetRegionHttpRequest.newBuilder()
-        .setRegion(region.toString())
+        .setRegion(region == null ? null : region.toString())
+        .build();
+    return getRegion(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified Region resource. Get a list of available regions by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (RegionClient regionClient = RegionClient.create()) {
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   Region response = regionClient.getRegion(region.toString());
+   * }
+   * </code></pre>
+   *
+   * @param region Name of the region resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Region getRegion(String region) {
+
+    GetRegionHttpRequest request =
+        GetRegionHttpRequest.newBuilder()
+        .setRegion(region)
         .build();
     return getRegion(request);
   }
@@ -260,7 +285,33 @@ public class RegionClient implements BackgroundResource {
   public final ListRegionsPagedResponse listRegions(ProjectName project) {
     ListRegionsHttpRequest request =
         ListRegionsHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return listRegions(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of region resources available to the specified project.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (RegionClient regionClient = RegionClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (Region element : regionClient.listRegions(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListRegionsPagedResponse listRegions(String project) {
+    ListRegionsHttpRequest request =
+        ListRegionsHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return listRegions(request);
   }

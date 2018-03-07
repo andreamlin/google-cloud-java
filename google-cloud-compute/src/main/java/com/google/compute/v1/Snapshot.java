@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -48,7 +46,6 @@ public final class Snapshot implements ApiMessage {
   private final String status;
   private final String storageBytes;
   private final String storageBytesStatus;
-  private final Map<String, String> pathParams;
 
   private Snapshot() {
     this.creationTimestamp = null;
@@ -66,7 +63,6 @@ public final class Snapshot implements ApiMessage {
     this.status = null;
     this.storageBytes = null;
     this.storageBytesStatus = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -102,8 +98,6 @@ public final class Snapshot implements ApiMessage {
     this.status = status;
     this.storageBytes = storageBytes;
     this.storageBytesStatus = storageBytesStatus;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -125,7 +119,11 @@ public final class Snapshot implements ApiMessage {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
     }
     if (fieldNames.contains("licenses") && licenses != null) {
-      fieldMap.put("licenses", licenses.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : licenses) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("licenses", stringList);
     }
     if (fieldNames.contains("name") && name != null) {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
@@ -158,8 +156,53 @@ public final class Snapshot implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("diskSizeGb")) {
+      return String.valueOf(diskSizeGb);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("licenses")) {
+      return String.valueOf(licenses);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("snapshotEncryptionKey")) {
+      return String.valueOf(snapshotEncryptionKey);
+    }
+    if (fieldName.equals("sourceDisk")) {
+      return String.valueOf(sourceDisk);
+    }
+    if (fieldName.equals("sourceDiskEncryptionKey")) {
+      return String.valueOf(sourceDiskEncryptionKey);
+    }
+    if (fieldName.equals("sourceDiskId")) {
+      return String.valueOf(sourceDiskId);
+    }
+    if (fieldName.equals("status")) {
+      return String.valueOf(status);
+    }
+    if (fieldName.equals("storageBytes")) {
+      return String.valueOf(storageBytes);
+    }
+    if (fieldName.equals("storageBytesStatus")) {
+      return String.valueOf(storageBytesStatus);
+    }
+    return null;
   }
 
   @Nullable
@@ -385,6 +428,9 @@ public final class Snapshot implements ApiMessage {
     }
 
     public Builder addAllLicenses(List<String> licenses) {
+      if (this.licenses == null) {
+        this.licenses = new LinkedList<>();
+      }
       this.licenses.addAll(licenses);
       return this;
     }

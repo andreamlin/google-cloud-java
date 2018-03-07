@@ -46,7 +46,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class FirewallClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static FirewallClient client;
   private static FirewallSettings clientSettings;
 
@@ -56,14 +56,14 @@ public class FirewallClientTest {
         FirewallSettings.newBuilder()
            .setTransportChannelProvider(
                FirewallSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        FirewallClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -118,8 +118,8 @@ public class FirewallClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteFirewallMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteFirewallMethodDescriptor);
 
     FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
 
@@ -127,7 +127,7 @@ public class FirewallClientTest {
         client.deleteFirewall(firewall);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -135,8 +135,8 @@ public class FirewallClientTest {
   @SuppressWarnings("all")
   public void deleteFirewallExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteFirewallMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteFirewallMethodDescriptor);
 
     try {
       FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
@@ -167,8 +167,8 @@ public class FirewallClientTest {
       .setNetwork(network.toString())
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getFirewallMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getFirewallMethodDescriptor);
 
     FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
 
@@ -176,7 +176,7 @@ public class FirewallClientTest {
         client.getFirewall(firewall);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -184,8 +184,8 @@ public class FirewallClientTest {
   @SuppressWarnings("all")
   public void getFirewallExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getFirewallMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getFirewallMethodDescriptor);
 
     try {
       FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
@@ -244,17 +244,17 @@ public class FirewallClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertFirewallMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertFirewallMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
-    Firewall firewall = Firewall.newBuilder().build();
+    Firewall firewallResource = Firewall.newBuilder().build();
 
     Operation actualResponse =
-        client.insertFirewall(project, firewall);
+        client.insertFirewall(project, firewallResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -262,14 +262,14 @@ public class FirewallClientTest {
   @SuppressWarnings("all")
   public void insertFirewallExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertFirewallMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertFirewallMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
-      Firewall firewall = Firewall.newBuilder().build();
+      Firewall firewallResource = Firewall.newBuilder().build();
 
-      client.insertFirewall(project, firewall);
+      client.insertFirewall(project, firewallResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -292,8 +292,8 @@ public class FirewallClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listFirewallsMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listFirewallsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -303,7 +303,7 @@ public class FirewallClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -311,8 +311,8 @@ public class FirewallClientTest {
   @SuppressWarnings("all")
   public void listFirewallsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listFirewallsMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listFirewallsMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -371,16 +371,17 @@ public class FirewallClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(patchFirewallMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(patchFirewallMethodDescriptor);
 
     FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
+    Firewall firewallResource = Firewall.newBuilder().build();
 
     Operation actualResponse =
-        client.patchFirewall(firewall);
+        client.patchFirewall(firewall, firewallResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -388,13 +389,14 @@ public class FirewallClientTest {
   @SuppressWarnings("all")
   public void patchFirewallExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(patchFirewallMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(patchFirewallMethodDescriptor);
 
     try {
       FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
+      Firewall firewallResource = Firewall.newBuilder().build();
 
-      client.patchFirewall(firewall);
+      client.patchFirewall(firewall, firewallResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -448,16 +450,17 @@ public class FirewallClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(updateFirewallMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(updateFirewallMethodDescriptor);
 
     FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
+    Firewall firewallResource = Firewall.newBuilder().build();
 
     Operation actualResponse =
-        client.updateFirewall(firewall);
+        client.updateFirewall(firewall, firewallResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -465,13 +468,14 @@ public class FirewallClientTest {
   @SuppressWarnings("all")
   public void updateFirewallExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(updateFirewallMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(updateFirewallMethodDescriptor);
 
     try {
       FirewallName firewall = FirewallName.of("[PROJECT]", "[FIREWALL]");
+      Firewall firewallResource = Firewall.newBuilder().build();
 
-      client.updateFirewall(firewall);
+      client.updateFirewall(firewall, firewallResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception

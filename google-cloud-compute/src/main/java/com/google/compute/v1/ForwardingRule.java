@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -49,7 +47,6 @@ public final class ForwardingRule implements ApiMessage {
   private final String selfLink;
   private final String subnetwork;
   private final String target;
-  private final Map<String, String> pathParams;
 
   private ForwardingRule() {
     this.backendService = null;
@@ -68,7 +65,6 @@ public final class ForwardingRule implements ApiMessage {
     this.selfLink = null;
     this.subnetwork = null;
     this.target = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -106,8 +102,6 @@ public final class ForwardingRule implements ApiMessage {
     this.selfLink = selfLink;
     this.subnetwork = subnetwork;
     this.target = target;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -147,7 +141,11 @@ public final class ForwardingRule implements ApiMessage {
       fieldMap.put("portRange", Collections.singletonList(String.valueOf(portRange)));
     }
     if (fieldNames.contains("ports") && ports != null) {
-      fieldMap.put("ports", ports.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : ports) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("ports", stringList);
     }
     if (fieldNames.contains("region") && region != null) {
       fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
@@ -165,8 +163,56 @@ public final class ForwardingRule implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("backendService")) {
+      return String.valueOf(backendService);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("iPAddress")) {
+      return String.valueOf(iPAddress);
+    }
+    if (fieldName.equals("iPProtocol")) {
+      return String.valueOf(iPProtocol);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("loadBalancingScheme")) {
+      return String.valueOf(loadBalancingScheme);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("network")) {
+      return String.valueOf(network);
+    }
+    if (fieldName.equals("portRange")) {
+      return String.valueOf(portRange);
+    }
+    if (fieldName.equals("ports")) {
+      return String.valueOf(ports);
+    }
+    if (fieldName.equals("region")) {
+      return String.valueOf(region);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("subnetwork")) {
+      return String.valueOf(subnetwork);
+    }
+    if (fieldName.equals("target")) {
+      return String.valueOf(target);
+    }
+    return null;
   }
 
   @Nullable
@@ -455,6 +501,9 @@ public final class ForwardingRule implements ApiMessage {
     }
 
     public Builder addAllPorts(List<String> ports) {
+      if (this.ports == null) {
+        this.ports = new LinkedList<>();
+      }
       this.ports.addAll(ports);
       return this;
     }

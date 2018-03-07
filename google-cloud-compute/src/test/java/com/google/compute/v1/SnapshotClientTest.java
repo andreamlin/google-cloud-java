@@ -43,7 +43,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class SnapshotClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static SnapshotClient client;
   private static SnapshotSettings clientSettings;
 
@@ -53,14 +53,14 @@ public class SnapshotClientTest {
         SnapshotSettings.newBuilder()
            .setTransportChannelProvider(
                SnapshotSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        SnapshotClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -115,8 +115,8 @@ public class SnapshotClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteSnapshotMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteSnapshotMethodDescriptor);
 
     SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
 
@@ -124,7 +124,7 @@ public class SnapshotClientTest {
         client.deleteSnapshot(snapshot);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -132,8 +132,8 @@ public class SnapshotClientTest {
   @SuppressWarnings("all")
   public void deleteSnapshotExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteSnapshotMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteSnapshotMethodDescriptor);
 
     try {
       SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
@@ -174,8 +174,8 @@ public class SnapshotClientTest {
       .setDiskSizeGb(diskSizeGb)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getSnapshotMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getSnapshotMethodDescriptor);
 
     SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
 
@@ -183,7 +183,7 @@ public class SnapshotClientTest {
         client.getSnapshot(snapshot);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -191,8 +191,8 @@ public class SnapshotClientTest {
   @SuppressWarnings("all")
   public void getSnapshotExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getSnapshotMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getSnapshotMethodDescriptor);
 
     try {
       SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
@@ -220,8 +220,8 @@ public class SnapshotClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listSnapshotsMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listSnapshotsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -231,7 +231,7 @@ public class SnapshotClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -239,8 +239,8 @@ public class SnapshotClientTest {
   @SuppressWarnings("all")
   public void listSnapshotsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listSnapshotsMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listSnapshotsMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

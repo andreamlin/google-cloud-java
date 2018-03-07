@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListGlobalOperationsHttpRequest;
@@ -35,11 +35,11 @@ import com.google.compute.v1.GetGlobalOperationHttpRequest;
 import static com.google.compute.v1.GlobalOperationClient.AggregatedListGlobalOperationsPagedResponse;
 import static com.google.compute.v1.GlobalOperationClient.ListGlobalOperationsPagedResponse;
 import com.google.compute.v1.GlobalOperationSettings;
-import com.google.compute.v1.GlobalOperationsOperationName;
 import com.google.compute.v1.ListGlobalOperationsHttpRequest;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.OperationAggregatedList;
 import com.google.compute.v1.OperationList;
+import com.google.compute.v1.OperationName;
 import com.google.compute.v1.ProjectName;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,7 +61,7 @@ import javax.annotation.Generated;
 public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> aggregatedListGlobalOperationsMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList>newBuilder()
           .setMethodName("compute.globalOperations.aggregatedList")
@@ -71,10 +71,11 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationMethodDescriptor =
       ApiMethodDescriptor.<DeleteGlobalOperationHttpRequest, Void>newBuilder()
           .setMethodName("compute.globalOperations.delete")
@@ -82,10 +83,11 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
           .setEndpointPathTemplate("{project}/global/operations/{operation}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(OperationName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("operation")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetGlobalOperationHttpRequest, Operation> getGlobalOperationMethodDescriptor =
       ApiMethodDescriptor.<GetGlobalOperationHttpRequest, Operation>newBuilder()
           .setMethodName("compute.globalOperations.get")
@@ -94,10 +96,11 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
           .setEndpointPathTemplate("{project}/global/operations/{operation}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(OperationName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("operation")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListGlobalOperationsHttpRequest, OperationList> listGlobalOperationsMethodDescriptor =
       ApiMethodDescriptor.<ListGlobalOperationsHttpRequest, OperationList>newBuilder()
           .setMethodName("compute.globalOperations.list")
@@ -107,8 +110,9 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
 
   private final BackgroundResource backgroundResources;

@@ -23,11 +23,11 @@ import com.google.compute.v1.DeleteGlobalOperationHttpRequest;
 import com.google.compute.v1.GetGlobalOperationHttpRequest;
 import static com.google.compute.v1.GlobalOperationClient.AggregatedListGlobalOperationsPagedResponse;
 import static com.google.compute.v1.GlobalOperationClient.ListGlobalOperationsPagedResponse;
-import com.google.compute.v1.GlobalOperationsOperationName;
 import com.google.compute.v1.ListGlobalOperationsHttpRequest;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.OperationAggregatedList;
 import com.google.compute.v1.OperationList;
+import com.google.compute.v1.OperationName;
 import com.google.compute.v1.ProjectName;
 import javax.annotation.Generated;
 

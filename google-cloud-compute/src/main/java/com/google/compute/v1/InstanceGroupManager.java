@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -49,7 +47,6 @@ public final class InstanceGroupManager implements ApiMessage {
   private final List<String> targetPools;
   private final Integer targetSize;
   private final String zone;
-  private final Map<String, String> pathParams;
 
   private InstanceGroupManager() {
     this.baseInstanceName = null;
@@ -68,7 +65,6 @@ public final class InstanceGroupManager implements ApiMessage {
     this.targetPools = null;
     this.targetSize = null;
     this.zone = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -106,8 +102,6 @@ public final class InstanceGroupManager implements ApiMessage {
     this.targetPools = targetPools;
     this.targetSize = targetSize;
     this.zone = zone;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -144,7 +138,11 @@ public final class InstanceGroupManager implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("namedPorts") && namedPorts != null) {
-      fieldMap.put("namedPorts", namedPorts.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (NamedPort item : namedPorts) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("namedPorts", stringList);
     }
     if (fieldNames.contains("region") && region != null) {
       fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
@@ -153,7 +151,11 @@ public final class InstanceGroupManager implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("targetPools") && targetPools != null) {
-      fieldMap.put("targetPools", targetPools.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : targetPools) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("targetPools", stringList);
     }
     if (fieldNames.contains("targetSize") && targetSize != null) {
       fieldMap.put("targetSize", Collections.singletonList(String.valueOf(targetSize)));
@@ -165,8 +167,56 @@ public final class InstanceGroupManager implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("baseInstanceName")) {
+      return String.valueOf(baseInstanceName);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("currentActions")) {
+      return String.valueOf(currentActions);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("fingerprint")) {
+      return String.valueOf(fingerprint);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("instanceGroup")) {
+      return String.valueOf(instanceGroup);
+    }
+    if (fieldName.equals("instanceTemplate")) {
+      return String.valueOf(instanceTemplate);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("namedPorts")) {
+      return String.valueOf(namedPorts);
+    }
+    if (fieldName.equals("region")) {
+      return String.valueOf(region);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("targetPools")) {
+      return String.valueOf(targetPools);
+    }
+    if (fieldName.equals("targetSize")) {
+      return String.valueOf(targetSize);
+    }
+    if (fieldName.equals("zone")) {
+      return String.valueOf(zone);
+    }
+    return null;
   }
 
   @Nullable
@@ -446,6 +496,9 @@ public final class InstanceGroupManager implements ApiMessage {
     }
 
     public Builder addAllNamedPorts(List<NamedPort> namedPorts) {
+      if (this.namedPorts == null) {
+        this.namedPorts = new LinkedList<>();
+      }
       this.namedPorts.addAll(namedPorts);
       return this;
     }
@@ -478,6 +531,9 @@ public final class InstanceGroupManager implements ApiMessage {
     }
 
     public Builder addAllTargetPools(List<String> targetPools) {
+      if (this.targetPools == null) {
+        this.targetPools = new LinkedList<>();
+      }
       this.targetPools.addAll(targetPools);
       return this;
     }

@@ -23,9 +23,9 @@ import com.google.compute.v1.GetZoneOperationHttpRequest;
 import com.google.compute.v1.ListZoneOperationsHttpRequest;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.OperationList;
+import com.google.compute.v1.ProjectZoneOperationName;
 import com.google.compute.v1.ZoneName;
 import static com.google.compute.v1.ZoneOperationClient.ListZoneOperationsPagedResponse;
-import com.google.compute.v1.ZoneOperationsOperationName;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

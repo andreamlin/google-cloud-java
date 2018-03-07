@@ -45,7 +45,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class GlobalForwardingRuleClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static GlobalForwardingRuleClient client;
   private static GlobalForwardingRuleSettings clientSettings;
 
@@ -55,14 +55,14 @@ public class GlobalForwardingRuleClientTest {
         GlobalForwardingRuleSettings.newBuilder()
            .setTransportChannelProvider(
                GlobalForwardingRuleSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        GlobalForwardingRuleClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -117,16 +117,16 @@ public class GlobalForwardingRuleClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteGlobalForwardingRuleMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteGlobalForwardingRuleMethodDescriptor);
 
-    GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
+    ProjectForwardingRuleName forwardingRule = ProjectForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
 
     Operation actualResponse =
         client.deleteGlobalForwardingRule(forwardingRule);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -134,11 +134,11 @@ public class GlobalForwardingRuleClientTest {
   @SuppressWarnings("all")
   public void deleteGlobalForwardingRuleExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteGlobalForwardingRuleMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteGlobalForwardingRuleMethodDescriptor);
 
     try {
-      GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
+      ProjectForwardingRuleName forwardingRule = ProjectForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
 
       client.deleteGlobalForwardingRule(forwardingRule);
       Assert.fail("No exception raised");
@@ -153,7 +153,7 @@ public class GlobalForwardingRuleClientTest {
     String portRange = "portRange217518079";
     String kind = "kind3292052";
     String iPProtocol = "iPProtocol323774237";
-    RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+    ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
     String description = "description-1724546052";
     String loadBalancingScheme = "loadBalancingScheme1974502980";
     NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
@@ -182,16 +182,16 @@ public class GlobalForwardingRuleClientTest {
       .setIPAddress(iPAddress)
       .setRegion(region.toString())
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getGlobalForwardingRuleMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getGlobalForwardingRuleMethodDescriptor);
 
-    GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
+    ProjectForwardingRuleName forwardingRule = ProjectForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
 
     ForwardingRule actualResponse =
         client.getGlobalForwardingRule(forwardingRule);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -199,11 +199,11 @@ public class GlobalForwardingRuleClientTest {
   @SuppressWarnings("all")
   public void getGlobalForwardingRuleExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getGlobalForwardingRuleMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getGlobalForwardingRuleMethodDescriptor);
 
     try {
-      GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
+      ProjectForwardingRuleName forwardingRule = ProjectForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
 
       client.getGlobalForwardingRule(forwardingRule);
       Assert.fail("No exception raised");
@@ -259,17 +259,17 @@ public class GlobalForwardingRuleClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertGlobalForwardingRuleMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertGlobalForwardingRuleMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
-    ForwardingRule forwardingRule = ForwardingRule.newBuilder().build();
+    ForwardingRule forwardingRuleResource = ForwardingRule.newBuilder().build();
 
     Operation actualResponse =
-        client.insertGlobalForwardingRule(project, forwardingRule);
+        client.insertGlobalForwardingRule(project, forwardingRuleResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -277,14 +277,14 @@ public class GlobalForwardingRuleClientTest {
   @SuppressWarnings("all")
   public void insertGlobalForwardingRuleExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertGlobalForwardingRuleMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertGlobalForwardingRuleMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
-      ForwardingRule forwardingRule = ForwardingRule.newBuilder().build();
+      ForwardingRule forwardingRuleResource = ForwardingRule.newBuilder().build();
 
-      client.insertGlobalForwardingRule(project, forwardingRule);
+      client.insertGlobalForwardingRule(project, forwardingRuleResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -307,8 +307,8 @@ public class GlobalForwardingRuleClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listGlobalForwardingRulesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listGlobalForwardingRulesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -318,7 +318,7 @@ public class GlobalForwardingRuleClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -326,8 +326,8 @@ public class GlobalForwardingRuleClientTest {
   @SuppressWarnings("all")
   public void listGlobalForwardingRulesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listGlobalForwardingRulesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listGlobalForwardingRulesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -386,17 +386,17 @@ public class GlobalForwardingRuleClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setTargetGlobalForwardingRuleMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setTargetGlobalForwardingRuleMethodDescriptor);
 
-    GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
-    TargetReference targetReference = TargetReference.newBuilder().build();
+    ProjectForwardingRuleName forwardingRule = ProjectForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
+    TargetReference targetReferenceResource = TargetReference.newBuilder().build();
 
     Operation actualResponse =
-        client.setTargetGlobalForwardingRule(forwardingRule, targetReference);
+        client.setTargetGlobalForwardingRule(forwardingRule, targetReferenceResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -404,14 +404,14 @@ public class GlobalForwardingRuleClientTest {
   @SuppressWarnings("all")
   public void setTargetGlobalForwardingRuleExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setTargetGlobalForwardingRuleMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setTargetGlobalForwardingRuleMethodDescriptor);
 
     try {
-      GlobalForwardingRulesForwardingRuleName forwardingRule = GlobalForwardingRulesForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
-      TargetReference targetReference = TargetReference.newBuilder().build();
+      ProjectForwardingRuleName forwardingRule = ProjectForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
+      TargetReference targetReferenceResource = TargetReference.newBuilder().build();
 
-      client.setTargetGlobalForwardingRule(forwardingRule, targetReference);
+      client.setTargetGlobalForwardingRule(forwardingRule, targetReferenceResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception

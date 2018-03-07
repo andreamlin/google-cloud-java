@@ -18,8 +18,9 @@ package com.google.compute.v1;
 import com.google.api.core.BetaApi;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.api.resourcenames.ResourceName;
-import com.google.api.resourcenames.ResourceNameType;
+import com.google.api.resourcenames.ResourceNameFactory;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableMap;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
@@ -37,6 +38,8 @@ public final class AutoscalerName implements ResourceName {
   private final String zone;
   private static final PathTemplate PATH_TEMPLATE =
         PathTemplate.createWithoutUrlEncoding("projects/{project}/zones/{zone}/autoscalers/{autoscaler}");
+
+  private volatile Map<String, String> fieldValuesMap;
 
   public static Builder newBuilder() {
     return new Builder();
@@ -90,6 +93,33 @@ public final class AutoscalerName implements ResourceName {
   }
 
 
+  @Override
+  public Map<String, String> getFieldValuesMap() {
+    if (fieldValuesMap == null) {
+      synchronized (this) {
+        if (fieldValuesMap == null) {
+          ImmutableMap.Builder<String, String> fieldMapBuilder = ImmutableMap.builder();
+          fieldMapBuilder.put("autoscaler", autoscaler);
+          fieldMapBuilder.put("project", project);
+          fieldMapBuilder.put("zone", zone);
+          fieldValuesMap = fieldMapBuilder.build();
+        }
+      }
+    }
+    return fieldValuesMap;
+  }
+
+  public String getFieldValue(String fieldName) {
+    return getFieldValuesMap().get(fieldName);
+  }
+
+
+  public static ResourceNameFactory<AutoscalerName> newFactory() {
+    return new ResourceNameFactory<AutoscalerName>() {
+      public AutoscalerName parse(String formattedString) {return AutoscalerName.parse(formattedString);}
+    };
+  }
+
   public static AutoscalerName parse(String formattedString) {
     Map<String, String> matchMap =
         PATH_TEMPLATE.validatedMatch(formattedString, "AutoscalerName.parse: formattedString not in valid format");
@@ -102,11 +132,6 @@ public final class AutoscalerName implements ResourceName {
 
   public static boolean isParsableFrom(String formattedString) {
     return PATH_TEMPLATE.matches(formattedString);
-  }
-
-  @Override
-  public ResourceNameType getType() {
-    return AutoscalerNameType.instance();
   }
 
   public static class Builder {

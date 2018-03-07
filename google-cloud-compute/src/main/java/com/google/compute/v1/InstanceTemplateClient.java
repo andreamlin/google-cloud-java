@@ -189,7 +189,32 @@ public class InstanceTemplateClient implements BackgroundResource {
 
     DeleteInstanceTemplateHttpRequest request =
         DeleteInstanceTemplateHttpRequest.newBuilder()
-        .setInstanceTemplate(instanceTemplate.toString())
+        .setInstanceTemplate(instanceTemplate == null ? null : instanceTemplate.toString())
+        .build();
+    return deleteInstanceTemplate(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified instance template. If you delete an instance template that is being referenced from another instance group, the instance group will not be able to create or recreate virtual machine instances. Deleting an instance template is permanent and cannot be undone.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
+   *   InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
+   *   Operation response = instanceTemplateClient.deleteInstanceTemplate(instanceTemplate.toString());
+   * }
+   * </code></pre>
+   *
+   * @param instanceTemplate The name of the instance template to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteInstanceTemplate(String instanceTemplate) {
+
+    DeleteInstanceTemplateHttpRequest request =
+        DeleteInstanceTemplateHttpRequest.newBuilder()
+        .setInstanceTemplate(instanceTemplate)
         .build();
     return deleteInstanceTemplate(request);
   }
@@ -259,7 +284,32 @@ public class InstanceTemplateClient implements BackgroundResource {
 
     GetInstanceTemplateHttpRequest request =
         GetInstanceTemplateHttpRequest.newBuilder()
-        .setInstanceTemplate(instanceTemplate.toString())
+        .setInstanceTemplate(instanceTemplate == null ? null : instanceTemplate.toString())
+        .build();
+    return getInstanceTemplate(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified instance template. Get a list of available instance templates by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
+   *   InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
+   *   InstanceTemplate response = instanceTemplateClient.getInstanceTemplate(instanceTemplate.toString());
+   * }
+   * </code></pre>
+   *
+   * @param instanceTemplate The name of the instance template.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final InstanceTemplate getInstanceTemplate(String instanceTemplate) {
+
+    GetInstanceTemplateHttpRequest request =
+        GetInstanceTemplateHttpRequest.newBuilder()
+        .setInstanceTemplate(instanceTemplate)
         .build();
     return getInstanceTemplate(request);
   }
@@ -317,8 +367,8 @@ public class InstanceTemplateClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   InstanceTemplate instanceTemplate = InstanceTemplate.newBuilder().build();
-   *   Operation response = instanceTemplateClient.insertInstanceTemplate(project, instanceTemplate);
+   *   InstanceTemplate instanceTemplateResource = InstanceTemplate.newBuilder().build();
+   *   Operation response = instanceTemplateClient.insertInstanceTemplate(project, instanceTemplateResource);
    * }
    * </code></pre>
    *
@@ -331,7 +381,7 @@ public class InstanceTemplateClient implements BackgroundResource {
 
     InsertInstanceTemplateHttpRequest request =
         InsertInstanceTemplateHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
         .setInstanceTemplateResource(instanceTemplateResource)
         .build();
     return insertInstanceTemplate(request);
@@ -345,10 +395,38 @@ public class InstanceTemplateClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   InstanceTemplate instanceTemplate = InstanceTemplate.newBuilder().build();
+   *   InstanceTemplate instanceTemplateResource = InstanceTemplate.newBuilder().build();
+   *   Operation response = instanceTemplateClient.insertInstanceTemplate(project.toString(), instanceTemplateResource);
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @param instanceTemplateResource An Instance Template resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertInstanceTemplate(String project, InstanceTemplate instanceTemplateResource) {
+
+    InsertInstanceTemplateHttpRequest request =
+        InsertInstanceTemplateHttpRequest.newBuilder()
+        .setProject(project)
+        .setInstanceTemplateResource(instanceTemplateResource)
+        .build();
+    return insertInstanceTemplate(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates an instance template in the specified project using the data that is included in the request. If you are creating a new template to update an existing instance group, your new instance template must use the same network or, if applicable, the same subnetwork as the original template.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   InstanceTemplate instanceTemplateResource = InstanceTemplate.newBuilder().build();
    *   InsertInstanceTemplateHttpRequest request = InsertInstanceTemplateHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setInstanceTemplateResource(instanceTemplate)
+   *     .setInstanceTemplateResource(instanceTemplateResource)
    *     .build();
    *   Operation response = instanceTemplateClient.insertInstanceTemplate(request);
    * }
@@ -370,10 +448,10 @@ public class InstanceTemplateClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   InstanceTemplate instanceTemplate = InstanceTemplate.newBuilder().build();
+   *   InstanceTemplate instanceTemplateResource = InstanceTemplate.newBuilder().build();
    *   InsertInstanceTemplateHttpRequest request = InsertInstanceTemplateHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setInstanceTemplateResource(instanceTemplate)
+   *     .setInstanceTemplateResource(instanceTemplateResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceTemplateClient.insertInstanceTemplateCallable().futureCall(request);
    *   // Do something
@@ -407,7 +485,33 @@ public class InstanceTemplateClient implements BackgroundResource {
   public final ListInstanceTemplatesPagedResponse listInstanceTemplates(ProjectName project) {
     ListInstanceTemplatesHttpRequest request =
         ListInstanceTemplatesHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return listInstanceTemplates(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves a list of instance templates that are contained within the specified project and zone.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (InstanceTemplate element : instanceTemplateClient.listInstanceTemplates(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListInstanceTemplatesPagedResponse listInstanceTemplates(String project) {
+    ListInstanceTemplatesHttpRequest request =
+        ListInstanceTemplatesHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return listInstanceTemplates(request);
   }

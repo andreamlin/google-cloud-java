@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.BackendService;
@@ -39,9 +39,9 @@ import com.google.compute.v1.InsertRegionBackendServiceHttpRequest;
 import com.google.compute.v1.ListRegionBackendServicesHttpRequest;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.PatchRegionBackendServiceHttpRequest;
+import com.google.compute.v1.ProjectRegionBackendServiceName;
 import static com.google.compute.v1.RegionBackendServiceClient.ListRegionBackendServicesPagedResponse;
 import com.google.compute.v1.RegionBackendServiceSettings;
-import com.google.compute.v1.RegionBackendServicesBackendServiceName;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.ResourceGroupReference;
 import com.google.compute.v1.UpdateRegionBackendServiceHttpRequest;
@@ -65,7 +65,7 @@ import javax.annotation.Generated;
 public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<DeleteRegionBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionBackendServices.delete")
@@ -74,10 +74,11 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectRegionBackendServiceName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("backendService")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetRegionBackendServiceHttpRequest, BackendService> getRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<GetRegionBackendServiceHttpRequest, BackendService>newBuilder()
           .setMethodName("compute.regionBackendServices.get")
@@ -86,10 +87,11 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectRegionBackendServiceName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("backendService")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth>newBuilder()
           .setMethodName("compute.regionBackendServices.getHealth")
@@ -98,10 +100,11 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}/getHealth")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectRegionBackendServiceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("backendService")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertRegionBackendServiceHttpRequest, Operation> insertRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<InsertRegionBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionBackendServices.insert")
@@ -110,10 +113,11 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setEndpointPathTemplate("{project}/regions/{region}/backendServices")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("region")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListRegionBackendServicesHttpRequest, BackendServiceList> listRegionBackendServicesMethodDescriptor =
       ApiMethodDescriptor.<ListRegionBackendServicesHttpRequest, BackendServiceList>newBuilder()
           .setMethodName("compute.regionBackendServices.list")
@@ -123,10 +127,11 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("region")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<PatchRegionBackendServiceHttpRequest, Operation> patchRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<PatchRegionBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionBackendServices.patch")
@@ -135,10 +140,11 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectRegionBackendServiceName.newFactory()))
           .setHttpMethod(HttpMethods.PATCH)
+          .setResourceNameField("backendService")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<UpdateRegionBackendServiceHttpRequest, Operation> updateRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<UpdateRegionBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.regionBackendServices.update")
@@ -147,8 +153,9 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setEndpointPathTemplate("{project}/regions/{region}/backendServices/{backendService}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectRegionBackendServiceName.newFactory()))
           .setHttpMethod(HttpMethods.PUT)
+          .setResourceNameField("backendService")
           .build();
 
   private final BackgroundResource backgroundResources;

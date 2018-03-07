@@ -54,8 +54,8 @@ import javax.annotation.Generated;
  * <code>
  * try (DiskClient diskClient = DiskClient.create()) {
  *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
- *   Snapshot snapshot = Snapshot.newBuilder().build();
- *   Operation response = diskClient.createSnapshotDisk(disk, snapshot);
+ *   Snapshot snapshotResource = Snapshot.newBuilder().build();
+ *   Operation response = diskClient.createSnapshotDisk(disk, snapshotResource);
  * }
  * </code>
  * </pre>
@@ -191,7 +191,33 @@ public class DiskClient implements BackgroundResource {
   public final AggregatedListDisksPagedResponse aggregatedListDisks(ProjectName project) {
     AggregatedListDisksHttpRequest request =
         AggregatedListDisksHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return aggregatedListDisks(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves an aggregated list of persistent disks.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (DiskClient diskClient = DiskClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (Disk element : diskClient.aggregatedListDisks(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListDisksPagedResponse aggregatedListDisks(String project) {
+    AggregatedListDisksHttpRequest request =
+        AggregatedListDisksHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return aggregatedListDisks(request);
   }
@@ -285,8 +311,8 @@ public class DiskClient implements BackgroundResource {
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
    *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
-   *   Snapshot snapshot = Snapshot.newBuilder().build();
-   *   Operation response = diskClient.createSnapshotDisk(disk, snapshot);
+   *   Snapshot snapshotResource = Snapshot.newBuilder().build();
+   *   Operation response = diskClient.createSnapshotDisk(disk, snapshotResource);
    * }
    * </code></pre>
    *
@@ -299,7 +325,7 @@ public class DiskClient implements BackgroundResource {
 
     CreateSnapshotDiskHttpRequest request =
         CreateSnapshotDiskHttpRequest.newBuilder()
-        .setDisk(disk.toString())
+        .setDisk(disk == null ? null : disk.toString())
         .setSnapshotResource(snapshotResource)
         .build();
     return createSnapshotDisk(request);
@@ -313,10 +339,38 @@ public class DiskClient implements BackgroundResource {
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
    *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
-   *   Snapshot snapshot = Snapshot.newBuilder().build();
+   *   Snapshot snapshotResource = Snapshot.newBuilder().build();
+   *   Operation response = diskClient.createSnapshotDisk(disk.toString(), snapshotResource);
+   * }
+   * </code></pre>
+   *
+   * @param disk Name of the persistent disk to snapshot.
+   * @param snapshotResource A persistent disk snapshot resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation createSnapshotDisk(String disk, Snapshot snapshotResource) {
+
+    CreateSnapshotDiskHttpRequest request =
+        CreateSnapshotDiskHttpRequest.newBuilder()
+        .setDisk(disk)
+        .setSnapshotResource(snapshotResource)
+        .build();
+    return createSnapshotDisk(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a snapshot of a specified persistent disk.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (DiskClient diskClient = DiskClient.create()) {
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
+   *   Snapshot snapshotResource = Snapshot.newBuilder().build();
    *   CreateSnapshotDiskHttpRequest request = CreateSnapshotDiskHttpRequest.newBuilder()
    *     .setDisk(disk.toString())
-   *     .setSnapshotResource(snapshot)
+   *     .setSnapshotResource(snapshotResource)
    *     .build();
    *   Operation response = diskClient.createSnapshotDisk(request);
    * }
@@ -338,10 +392,10 @@ public class DiskClient implements BackgroundResource {
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
    *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
-   *   Snapshot snapshot = Snapshot.newBuilder().build();
+   *   Snapshot snapshotResource = Snapshot.newBuilder().build();
    *   CreateSnapshotDiskHttpRequest request = CreateSnapshotDiskHttpRequest.newBuilder()
    *     .setDisk(disk.toString())
-   *     .setSnapshotResource(snapshot)
+   *     .setSnapshotResource(snapshotResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = diskClient.createSnapshotDiskCallable().futureCall(request);
    *   // Do something
@@ -374,7 +428,32 @@ public class DiskClient implements BackgroundResource {
 
     DeleteDiskHttpRequest request =
         DeleteDiskHttpRequest.newBuilder()
-        .setDisk(disk.toString())
+        .setDisk(disk == null ? null : disk.toString())
+        .build();
+    return deleteDisk(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified persistent disk. Deleting a disk removes its data permanently and is irreversible. However, deleting a disk does not delete any snapshots previously made from the disk. You must separately delete snapshots.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (DiskClient diskClient = DiskClient.create()) {
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
+   *   Operation response = diskClient.deleteDisk(disk.toString());
+   * }
+   * </code></pre>
+   *
+   * @param disk Name of the persistent disk to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteDisk(String disk) {
+
+    DeleteDiskHttpRequest request =
+        DeleteDiskHttpRequest.newBuilder()
+        .setDisk(disk)
         .build();
     return deleteDisk(request);
   }
@@ -444,7 +523,32 @@ public class DiskClient implements BackgroundResource {
 
     GetDiskHttpRequest request =
         GetDiskHttpRequest.newBuilder()
-        .setDisk(disk.toString())
+        .setDisk(disk == null ? null : disk.toString())
+        .build();
+    return getDisk(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns a specified persistent disk. Get a list of available persistent disks by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (DiskClient diskClient = DiskClient.create()) {
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
+   *   Disk response = diskClient.getDisk(disk.toString());
+   * }
+   * </code></pre>
+   *
+   * @param disk Name of the persistent disk to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Disk getDisk(String disk) {
+
+    GetDiskHttpRequest request =
+        GetDiskHttpRequest.newBuilder()
+        .setDisk(disk)
         .build();
     return getDisk(request);
   }
@@ -503,8 +607,8 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   String sourceImage = "";
-   *   Disk disk = Disk.newBuilder().build();
-   *   Operation response = diskClient.insertDisk(zone, sourceImage, disk);
+   *   Disk diskResource = Disk.newBuilder().build();
+   *   Operation response = diskClient.insertDisk(zone, sourceImage, diskResource);
    * }
    * </code></pre>
    *
@@ -518,7 +622,7 @@ public class DiskClient implements BackgroundResource {
 
     InsertDiskHttpRequest request =
         InsertDiskHttpRequest.newBuilder()
-        .setZone(zone.toString())
+        .setZone(zone == null ? null : zone.toString())
         .setSourceImage(sourceImage)
         .setDiskResource(diskResource)
         .build();
@@ -534,11 +638,42 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   String sourceImage = "";
-   *   Disk disk = Disk.newBuilder().build();
+   *   Disk diskResource = Disk.newBuilder().build();
+   *   Operation response = diskClient.insertDisk(zone.toString(), sourceImage, diskResource);
+   * }
+   * </code></pre>
+   *
+   * @param zone The name of the zone for this request.
+   * @param sourceImage Optional. Source image to restore onto a disk.
+   * @param diskResource A Disk resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertDisk(String zone, String sourceImage, Disk diskResource) {
+
+    InsertDiskHttpRequest request =
+        InsertDiskHttpRequest.newBuilder()
+        .setZone(zone)
+        .setSourceImage(sourceImage)
+        .setDiskResource(diskResource)
+        .build();
+    return insertDisk(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a persistent disk in the specified project using the data in the request. You can create a disk with a sourceImage, a sourceSnapshot, or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (DiskClient diskClient = DiskClient.create()) {
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
+   *   String sourceImage = "";
+   *   Disk diskResource = Disk.newBuilder().build();
    *   InsertDiskHttpRequest request = InsertDiskHttpRequest.newBuilder()
    *     .setZone(zone.toString())
    *     .setSourceImage(sourceImage)
-   *     .setDiskResource(disk)
+   *     .setDiskResource(diskResource)
    *     .build();
    *   Operation response = diskClient.insertDisk(request);
    * }
@@ -561,11 +696,11 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
    *   String sourceImage = "";
-   *   Disk disk = Disk.newBuilder().build();
+   *   Disk diskResource = Disk.newBuilder().build();
    *   InsertDiskHttpRequest request = InsertDiskHttpRequest.newBuilder()
    *     .setZone(zone.toString())
    *     .setSourceImage(sourceImage)
-   *     .setDiskResource(disk)
+   *     .setDiskResource(diskResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = diskClient.insertDiskCallable().futureCall(request);
    *   // Do something
@@ -599,7 +734,33 @@ public class DiskClient implements BackgroundResource {
   public final ListDisksPagedResponse listDisks(ZoneName zone) {
     ListDisksHttpRequest request =
         ListDisksHttpRequest.newBuilder()
-        .setZone(zone.toString())
+        .setZone(zone == null ? null : zone.toString())
+        .build();
+    return listDisks(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves a list of persistent disks contained within the specified zone.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (DiskClient diskClient = DiskClient.create()) {
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
+   *   for (Disk element : diskClient.listDisks(zone.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param zone The name of the zone for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListDisksPagedResponse listDisks(String zone) {
+    ListDisksHttpRequest request =
+        ListDisksHttpRequest.newBuilder()
+        .setZone(zone)
         .build();
     return listDisks(request);
   }
@@ -693,8 +854,8 @@ public class DiskClient implements BackgroundResource {
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
    *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
-   *   DisksResizeRequest disksResizeRequest = DisksResizeRequest.newBuilder().build();
-   *   Operation response = diskClient.resizeDisk(disk, disksResizeRequest);
+   *   DisksResizeRequest disksResizeRequestResource = DisksResizeRequest.newBuilder().build();
+   *   Operation response = diskClient.resizeDisk(disk, disksResizeRequestResource);
    * }
    * </code></pre>
    *
@@ -707,7 +868,7 @@ public class DiskClient implements BackgroundResource {
 
     ResizeDiskHttpRequest request =
         ResizeDiskHttpRequest.newBuilder()
-        .setDisk(disk.toString())
+        .setDisk(disk == null ? null : disk.toString())
         .setDisksResizeRequestResource(disksResizeRequestResource)
         .build();
     return resizeDisk(request);
@@ -721,10 +882,38 @@ public class DiskClient implements BackgroundResource {
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
    *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
-   *   DisksResizeRequest disksResizeRequest = DisksResizeRequest.newBuilder().build();
+   *   DisksResizeRequest disksResizeRequestResource = DisksResizeRequest.newBuilder().build();
+   *   Operation response = diskClient.resizeDisk(disk.toString(), disksResizeRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param disk The name of the persistent disk.
+   * @param disksResizeRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation resizeDisk(String disk, DisksResizeRequest disksResizeRequestResource) {
+
+    ResizeDiskHttpRequest request =
+        ResizeDiskHttpRequest.newBuilder()
+        .setDisk(disk)
+        .setDisksResizeRequestResource(disksResizeRequestResource)
+        .build();
+    return resizeDisk(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Resizes the specified persistent disk.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (DiskClient diskClient = DiskClient.create()) {
+   *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DisksResizeRequest disksResizeRequestResource = DisksResizeRequest.newBuilder().build();
    *   ResizeDiskHttpRequest request = ResizeDiskHttpRequest.newBuilder()
    *     .setDisk(disk.toString())
-   *     .setDisksResizeRequestResource(disksResizeRequest)
+   *     .setDisksResizeRequestResource(disksResizeRequestResource)
    *     .build();
    *   Operation response = diskClient.resizeDisk(request);
    * }
@@ -746,10 +935,10 @@ public class DiskClient implements BackgroundResource {
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
    *   DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
-   *   DisksResizeRequest disksResizeRequest = DisksResizeRequest.newBuilder().build();
+   *   DisksResizeRequest disksResizeRequestResource = DisksResizeRequest.newBuilder().build();
    *   ResizeDiskHttpRequest request = ResizeDiskHttpRequest.newBuilder()
    *     .setDisk(disk.toString())
-   *     .setDisksResizeRequestResource(disksResizeRequest)
+   *     .setDisksResizeRequestResource(disksResizeRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = diskClient.resizeDiskCallable().futureCall(request);
    *   // Do something

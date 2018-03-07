@@ -189,7 +189,32 @@ public class TargetHttpsProxyClient implements BackgroundResource {
 
     DeleteTargetHttpsProxyHttpRequest request =
         DeleteTargetHttpsProxyHttpRequest.newBuilder()
-        .setTargetHttpsProxy(targetHttpsProxy.toString())
+        .setTargetHttpsProxy(targetHttpsProxy == null ? null : targetHttpsProxy.toString())
+        .build();
+    return deleteTargetHttpsProxy(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified TargetHttpsProxy resource.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   Operation response = targetHttpsProxyClient.deleteTargetHttpsProxy(targetHttpsProxy.toString());
+   * }
+   * </code></pre>
+   *
+   * @param targetHttpsProxy Name of the TargetHttpsProxy resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteTargetHttpsProxy(String targetHttpsProxy) {
+
+    DeleteTargetHttpsProxyHttpRequest request =
+        DeleteTargetHttpsProxyHttpRequest.newBuilder()
+        .setTargetHttpsProxy(targetHttpsProxy)
         .build();
     return deleteTargetHttpsProxy(request);
   }
@@ -259,7 +284,32 @@ public class TargetHttpsProxyClient implements BackgroundResource {
 
     GetTargetHttpsProxyHttpRequest request =
         GetTargetHttpsProxyHttpRequest.newBuilder()
-        .setTargetHttpsProxy(targetHttpsProxy.toString())
+        .setTargetHttpsProxy(targetHttpsProxy == null ? null : targetHttpsProxy.toString())
+        .build();
+    return getTargetHttpsProxy(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified TargetHttpsProxy resource. Get a list of available target HTTPS proxies by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   TargetHttpsProxy response = targetHttpsProxyClient.getTargetHttpsProxy(targetHttpsProxy.toString());
+   * }
+   * </code></pre>
+   *
+   * @param targetHttpsProxy Name of the TargetHttpsProxy resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final TargetHttpsProxy getTargetHttpsProxy(String targetHttpsProxy) {
+
+    GetTargetHttpsProxyHttpRequest request =
+        GetTargetHttpsProxyHttpRequest.newBuilder()
+        .setTargetHttpsProxy(targetHttpsProxy)
         .build();
     return getTargetHttpsProxy(request);
   }
@@ -317,8 +367,8 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   TargetHttpsProxy targetHttpsProxy = TargetHttpsProxy.newBuilder().build();
-   *   Operation response = targetHttpsProxyClient.insertTargetHttpsProxy(project, targetHttpsProxy);
+   *   TargetHttpsProxy targetHttpsProxyResource = TargetHttpsProxy.newBuilder().build();
+   *   Operation response = targetHttpsProxyClient.insertTargetHttpsProxy(project, targetHttpsProxyResource);
    * }
    * </code></pre>
    *
@@ -331,7 +381,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
 
     InsertTargetHttpsProxyHttpRequest request =
         InsertTargetHttpsProxyHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
         .setTargetHttpsProxyResource(targetHttpsProxyResource)
         .build();
     return insertTargetHttpsProxy(request);
@@ -345,10 +395,38 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   TargetHttpsProxy targetHttpsProxy = TargetHttpsProxy.newBuilder().build();
+   *   TargetHttpsProxy targetHttpsProxyResource = TargetHttpsProxy.newBuilder().build();
+   *   Operation response = targetHttpsProxyClient.insertTargetHttpsProxy(project.toString(), targetHttpsProxyResource);
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @param targetHttpsProxyResource A TargetHttpsProxy resource. This resource defines an HTTPS proxy.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertTargetHttpsProxy(String project, TargetHttpsProxy targetHttpsProxyResource) {
+
+    InsertTargetHttpsProxyHttpRequest request =
+        InsertTargetHttpsProxyHttpRequest.newBuilder()
+        .setProject(project)
+        .setTargetHttpsProxyResource(targetHttpsProxyResource)
+        .build();
+    return insertTargetHttpsProxy(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a TargetHttpsProxy resource in the specified project using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   TargetHttpsProxy targetHttpsProxyResource = TargetHttpsProxy.newBuilder().build();
    *   InsertTargetHttpsProxyHttpRequest request = InsertTargetHttpsProxyHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setTargetHttpsProxyResource(targetHttpsProxy)
+   *     .setTargetHttpsProxyResource(targetHttpsProxyResource)
    *     .build();
    *   Operation response = targetHttpsProxyClient.insertTargetHttpsProxy(request);
    * }
@@ -370,10 +448,10 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   TargetHttpsProxy targetHttpsProxy = TargetHttpsProxy.newBuilder().build();
+   *   TargetHttpsProxy targetHttpsProxyResource = TargetHttpsProxy.newBuilder().build();
    *   InsertTargetHttpsProxyHttpRequest request = InsertTargetHttpsProxyHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setTargetHttpsProxyResource(targetHttpsProxy)
+   *     .setTargetHttpsProxyResource(targetHttpsProxyResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetHttpsProxyClient.insertTargetHttpsProxyCallable().futureCall(request);
    *   // Do something
@@ -407,7 +485,33 @@ public class TargetHttpsProxyClient implements BackgroundResource {
   public final ListTargetHttpsProxiesPagedResponse listTargetHttpsProxies(ProjectName project) {
     ListTargetHttpsProxiesHttpRequest request =
         ListTargetHttpsProxiesHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return listTargetHttpsProxies(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of TargetHttpsProxy resources available to the specified project.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (TargetHttpsProxy element : targetHttpsProxyClient.listTargetHttpsProxies(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListTargetHttpsProxiesPagedResponse listTargetHttpsProxies(String project) {
+    ListTargetHttpsProxiesHttpRequest request =
+        ListTargetHttpsProxiesHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return listTargetHttpsProxies(request);
   }
@@ -501,8 +605,8 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
    *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
-   *   TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequest = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
-   *   Operation response = targetHttpsProxyClient.setSslCertificatesTargetHttpsProxy(targetHttpsProxy, targetHttpsProxiesSetSslCertificatesRequest);
+   *   TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequestResource = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
+   *   Operation response = targetHttpsProxyClient.setSslCertificatesTargetHttpsProxy(targetHttpsProxy, targetHttpsProxiesSetSslCertificatesRequestResource);
    * }
    * </code></pre>
    *
@@ -515,7 +619,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
 
     SetSslCertificatesTargetHttpsProxyHttpRequest request =
         SetSslCertificatesTargetHttpsProxyHttpRequest.newBuilder()
-        .setTargetHttpsProxy(targetHttpsProxy.toString())
+        .setTargetHttpsProxy(targetHttpsProxy == null ? null : targetHttpsProxy.toString())
         .setTargetHttpsProxiesSetSslCertificatesRequestResource(targetHttpsProxiesSetSslCertificatesRequestResource)
         .build();
     return setSslCertificatesTargetHttpsProxy(request);
@@ -529,10 +633,38 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
    *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
-   *   TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequest = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
+   *   TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequestResource = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
+   *   Operation response = targetHttpsProxyClient.setSslCertificatesTargetHttpsProxy(targetHttpsProxy.toString(), targetHttpsProxiesSetSslCertificatesRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param targetHttpsProxy Name of the TargetHttpsProxy resource to set an SslCertificates resource for.
+   * @param targetHttpsProxiesSetSslCertificatesRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation setSslCertificatesTargetHttpsProxy(String targetHttpsProxy, TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequestResource) {
+
+    SetSslCertificatesTargetHttpsProxyHttpRequest request =
+        SetSslCertificatesTargetHttpsProxyHttpRequest.newBuilder()
+        .setTargetHttpsProxy(targetHttpsProxy)
+        .setTargetHttpsProxiesSetSslCertificatesRequestResource(targetHttpsProxiesSetSslCertificatesRequestResource)
+        .build();
+    return setSslCertificatesTargetHttpsProxy(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Replaces SslCertificates for TargetHttpsProxy.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequestResource = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
    *   SetSslCertificatesTargetHttpsProxyHttpRequest request = SetSslCertificatesTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxy(targetHttpsProxy.toString())
-   *     .setTargetHttpsProxiesSetSslCertificatesRequestResource(targetHttpsProxiesSetSslCertificatesRequest)
+   *     .setTargetHttpsProxiesSetSslCertificatesRequestResource(targetHttpsProxiesSetSslCertificatesRequestResource)
    *     .build();
    *   Operation response = targetHttpsProxyClient.setSslCertificatesTargetHttpsProxy(request);
    * }
@@ -554,10 +686,10 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
    *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
-   *   TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequest = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
+   *   TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequestResource = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
    *   SetSslCertificatesTargetHttpsProxyHttpRequest request = SetSslCertificatesTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxy(targetHttpsProxy.toString())
-   *     .setTargetHttpsProxiesSetSslCertificatesRequestResource(targetHttpsProxiesSetSslCertificatesRequest)
+   *     .setTargetHttpsProxiesSetSslCertificatesRequestResource(targetHttpsProxiesSetSslCertificatesRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetHttpsProxyClient.setSslCertificatesTargetHttpsProxyCallable().futureCall(request);
    *   // Do something
@@ -578,8 +710,8 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
    *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
-   *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
-   *   Operation response = targetHttpsProxyClient.setUrlMapTargetHttpsProxy(targetHttpsProxy, urlMapReference);
+   *   UrlMapReference urlMapReferenceResource = UrlMapReference.newBuilder().build();
+   *   Operation response = targetHttpsProxyClient.setUrlMapTargetHttpsProxy(targetHttpsProxy, urlMapReferenceResource);
    * }
    * </code></pre>
    *
@@ -592,7 +724,7 @@ public class TargetHttpsProxyClient implements BackgroundResource {
 
     SetUrlMapTargetHttpsProxyHttpRequest request =
         SetUrlMapTargetHttpsProxyHttpRequest.newBuilder()
-        .setTargetHttpsProxy(targetHttpsProxy.toString())
+        .setTargetHttpsProxy(targetHttpsProxy == null ? null : targetHttpsProxy.toString())
         .setUrlMapReferenceResource(urlMapReferenceResource)
         .build();
     return setUrlMapTargetHttpsProxy(request);
@@ -606,10 +738,38 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
    *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
-   *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
+   *   UrlMapReference urlMapReferenceResource = UrlMapReference.newBuilder().build();
+   *   Operation response = targetHttpsProxyClient.setUrlMapTargetHttpsProxy(targetHttpsProxy.toString(), urlMapReferenceResource);
+   * }
+   * </code></pre>
+   *
+   * @param targetHttpsProxy Name of the TargetHttpsProxy resource whose URL map is to be set.
+   * @param urlMapReferenceResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation setUrlMapTargetHttpsProxy(String targetHttpsProxy, UrlMapReference urlMapReferenceResource) {
+
+    SetUrlMapTargetHttpsProxyHttpRequest request =
+        SetUrlMapTargetHttpsProxyHttpRequest.newBuilder()
+        .setTargetHttpsProxy(targetHttpsProxy)
+        .setUrlMapReferenceResource(urlMapReferenceResource)
+        .build();
+    return setUrlMapTargetHttpsProxy(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Changes the URL map for TargetHttpsProxy.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
+   *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
+   *   UrlMapReference urlMapReferenceResource = UrlMapReference.newBuilder().build();
    *   SetUrlMapTargetHttpsProxyHttpRequest request = SetUrlMapTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxy(targetHttpsProxy.toString())
-   *     .setUrlMapReferenceResource(urlMapReference)
+   *     .setUrlMapReferenceResource(urlMapReferenceResource)
    *     .build();
    *   Operation response = targetHttpsProxyClient.setUrlMapTargetHttpsProxy(request);
    * }
@@ -631,10 +791,10 @@ public class TargetHttpsProxyClient implements BackgroundResource {
    * <pre><code>
    * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
    *   TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
-   *   UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
+   *   UrlMapReference urlMapReferenceResource = UrlMapReference.newBuilder().build();
    *   SetUrlMapTargetHttpsProxyHttpRequest request = SetUrlMapTargetHttpsProxyHttpRequest.newBuilder()
    *     .setTargetHttpsProxy(targetHttpsProxy.toString())
-   *     .setUrlMapReferenceResource(urlMapReference)
+   *     .setUrlMapReferenceResource(urlMapReferenceResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetHttpsProxyClient.setUrlMapTargetHttpsProxyCallable().futureCall(request);
    *   // Do something

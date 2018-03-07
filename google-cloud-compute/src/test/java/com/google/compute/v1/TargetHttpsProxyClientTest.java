@@ -46,7 +46,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class TargetHttpsProxyClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static TargetHttpsProxyClient client;
   private static TargetHttpsProxySettings clientSettings;
 
@@ -56,14 +56,14 @@ public class TargetHttpsProxyClientTest {
         TargetHttpsProxySettings.newBuilder()
            .setTransportChannelProvider(
                TargetHttpsProxySettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        TargetHttpsProxyClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -118,8 +118,8 @@ public class TargetHttpsProxyClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteTargetHttpsProxyMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteTargetHttpsProxyMethodDescriptor);
 
     TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
 
@@ -127,7 +127,7 @@ public class TargetHttpsProxyClientTest {
         client.deleteTargetHttpsProxy(targetHttpsProxy);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -135,8 +135,8 @@ public class TargetHttpsProxyClientTest {
   @SuppressWarnings("all")
   public void deleteTargetHttpsProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteTargetHttpsProxyMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteTargetHttpsProxyMethodDescriptor);
 
     try {
       TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
@@ -167,8 +167,8 @@ public class TargetHttpsProxyClientTest {
       .setId(id)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getTargetHttpsProxyMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getTargetHttpsProxyMethodDescriptor);
 
     TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
 
@@ -176,7 +176,7 @@ public class TargetHttpsProxyClientTest {
         client.getTargetHttpsProxy(targetHttpsProxy);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -184,8 +184,8 @@ public class TargetHttpsProxyClientTest {
   @SuppressWarnings("all")
   public void getTargetHttpsProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getTargetHttpsProxyMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getTargetHttpsProxyMethodDescriptor);
 
     try {
       TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
@@ -244,17 +244,17 @@ public class TargetHttpsProxyClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertTargetHttpsProxyMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertTargetHttpsProxyMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
-    TargetHttpsProxy targetHttpsProxy = TargetHttpsProxy.newBuilder().build();
+    TargetHttpsProxy targetHttpsProxyResource = TargetHttpsProxy.newBuilder().build();
 
     Operation actualResponse =
-        client.insertTargetHttpsProxy(project, targetHttpsProxy);
+        client.insertTargetHttpsProxy(project, targetHttpsProxyResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -262,14 +262,14 @@ public class TargetHttpsProxyClientTest {
   @SuppressWarnings("all")
   public void insertTargetHttpsProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertTargetHttpsProxyMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertTargetHttpsProxyMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
-      TargetHttpsProxy targetHttpsProxy = TargetHttpsProxy.newBuilder().build();
+      TargetHttpsProxy targetHttpsProxyResource = TargetHttpsProxy.newBuilder().build();
 
-      client.insertTargetHttpsProxy(project, targetHttpsProxy);
+      client.insertTargetHttpsProxy(project, targetHttpsProxyResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -292,8 +292,8 @@ public class TargetHttpsProxyClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listTargetHttpsProxiesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listTargetHttpsProxiesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -303,7 +303,7 @@ public class TargetHttpsProxyClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -311,8 +311,8 @@ public class TargetHttpsProxyClientTest {
   @SuppressWarnings("all")
   public void listTargetHttpsProxiesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listTargetHttpsProxiesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listTargetHttpsProxiesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -371,17 +371,17 @@ public class TargetHttpsProxyClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setSslCertificatesTargetHttpsProxyMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setSslCertificatesTargetHttpsProxyMethodDescriptor);
 
     TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
-    TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequest = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
+    TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequestResource = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.setSslCertificatesTargetHttpsProxy(targetHttpsProxy, targetHttpsProxiesSetSslCertificatesRequest);
+        client.setSslCertificatesTargetHttpsProxy(targetHttpsProxy, targetHttpsProxiesSetSslCertificatesRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -389,14 +389,14 @@ public class TargetHttpsProxyClientTest {
   @SuppressWarnings("all")
   public void setSslCertificatesTargetHttpsProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setSslCertificatesTargetHttpsProxyMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setSslCertificatesTargetHttpsProxyMethodDescriptor);
 
     try {
       TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
-      TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequest = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
+      TargetHttpsProxiesSetSslCertificatesRequest targetHttpsProxiesSetSslCertificatesRequestResource = TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
 
-      client.setSslCertificatesTargetHttpsProxy(targetHttpsProxy, targetHttpsProxiesSetSslCertificatesRequest);
+      client.setSslCertificatesTargetHttpsProxy(targetHttpsProxy, targetHttpsProxiesSetSslCertificatesRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -450,17 +450,17 @@ public class TargetHttpsProxyClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(setUrlMapTargetHttpsProxyMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(setUrlMapTargetHttpsProxyMethodDescriptor);
 
     TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
-    UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
+    UrlMapReference urlMapReferenceResource = UrlMapReference.newBuilder().build();
 
     Operation actualResponse =
-        client.setUrlMapTargetHttpsProxy(targetHttpsProxy, urlMapReference);
+        client.setUrlMapTargetHttpsProxy(targetHttpsProxy, urlMapReferenceResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -468,14 +468,14 @@ public class TargetHttpsProxyClientTest {
   @SuppressWarnings("all")
   public void setUrlMapTargetHttpsProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(setUrlMapTargetHttpsProxyMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(setUrlMapTargetHttpsProxyMethodDescriptor);
 
     try {
       TargetHttpsProxyName targetHttpsProxy = TargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
-      UrlMapReference urlMapReference = UrlMapReference.newBuilder().build();
+      UrlMapReference urlMapReferenceResource = UrlMapReference.newBuilder().build();
 
-      client.setUrlMapTargetHttpsProxy(targetHttpsProxy, urlMapReference);
+      client.setUrlMapTargetHttpsProxy(targetHttpsProxy, urlMapReferenceResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception

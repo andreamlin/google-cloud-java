@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -43,7 +41,6 @@ public final class Address implements ApiMessage {
   private final String selfLink;
   private final String status;
   private final List<String> users;
-  private final Map<String, String> pathParams;
 
   private Address() {
     this.address = null;
@@ -56,7 +53,6 @@ public final class Address implements ApiMessage {
     this.selfLink = null;
     this.status = null;
     this.users = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -82,8 +78,6 @@ public final class Address implements ApiMessage {
     this.selfLink = selfLink;
     this.status = status;
     this.users = users;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -117,14 +111,48 @@ public final class Address implements ApiMessage {
       fieldMap.put("status", Collections.singletonList(String.valueOf(status)));
     }
     if (fieldNames.contains("users") && users != null) {
-      fieldMap.put("users", users.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : users) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("users", stringList);
     }
     return fieldMap;
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("address")) {
+      return String.valueOf(address);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("region")) {
+      return String.valueOf(region);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("status")) {
+      return String.valueOf(status);
+    }
+    if (fieldName.equals("users")) {
+      return String.valueOf(users);
+    }
+    return null;
   }
 
   @Nullable
@@ -341,6 +369,9 @@ public final class Address implements ApiMessage {
     }
 
     public Builder addAllUsers(List<String> users) {
+      if (this.users == null) {
+        this.users = new LinkedList<>();
+      }
       this.users.addAll(users);
       return this;
     }

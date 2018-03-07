@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -35,12 +33,10 @@ import javax.annotation.Nullable;
 public final class PathRule implements ApiMessage {
   private final List<String> paths;
   private final String service;
-  private final Map<String, String> pathParams;
 
   private PathRule() {
     this.paths = null;
     this.service = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -50,15 +46,17 @@ public final class PathRule implements ApiMessage {
       ) {
     this.paths = paths;
     this.service = service;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("paths") && paths != null) {
-      fieldMap.put("paths", paths.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : paths) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("paths", stringList);
     }
     if (fieldNames.contains("service") && service != null) {
       fieldMap.put("service", Collections.singletonList(String.valueOf(service)));
@@ -67,8 +65,14 @@ public final class PathRule implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("paths")) {
+      return String.valueOf(paths);
+    }
+    if (fieldName.equals("service")) {
+      return String.valueOf(service);
+    }
+    return null;
   }
 
   @Nullable
@@ -132,6 +136,9 @@ public final class PathRule implements ApiMessage {
     }
 
     public Builder addAllPaths(List<String> paths) {
+      if (this.paths == null) {
+        this.paths = new LinkedList<>();
+      }
       this.paths.addAll(paths);
       return this;
     }

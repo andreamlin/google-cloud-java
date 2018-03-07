@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -42,7 +40,6 @@ public final class TargetSslProxy implements ApiMessage {
   private final String selfLink;
   private final String service;
   private final List<String> sslCertificates;
-  private final Map<String, String> pathParams;
 
   private TargetSslProxy() {
     this.creationTimestamp = null;
@@ -54,7 +51,6 @@ public final class TargetSslProxy implements ApiMessage {
     this.selfLink = null;
     this.service = null;
     this.sslCertificates = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -78,8 +74,6 @@ public final class TargetSslProxy implements ApiMessage {
     this.selfLink = selfLink;
     this.service = service;
     this.sslCertificates = sslCertificates;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -110,14 +104,45 @@ public final class TargetSslProxy implements ApiMessage {
       fieldMap.put("service", Collections.singletonList(String.valueOf(service)));
     }
     if (fieldNames.contains("sslCertificates") && sslCertificates != null) {
-      fieldMap.put("sslCertificates", sslCertificates.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : sslCertificates) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("sslCertificates", stringList);
     }
     return fieldMap;
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("proxyHeader")) {
+      return String.valueOf(proxyHeader);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("service")) {
+      return String.valueOf(service);
+    }
+    if (fieldName.equals("sslCertificates")) {
+      return String.valueOf(sslCertificates);
+    }
+    return null;
   }
 
   @Nullable
@@ -316,6 +341,9 @@ public final class TargetSslProxy implements ApiMessage {
     }
 
     public Builder addAllSslCertificates(List<String> sslCertificates) {
+      if (this.sslCertificates == null) {
+        this.sslCertificates = new LinkedList<>();
+      }
       this.sslCertificates.addAll(sslCertificates);
       return this;
     }

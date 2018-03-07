@@ -17,22 +17,25 @@ Java idiomatic client for [Google Cloud DNS][cloud-dns].
 
 Quickstart
 ----------
+
+[//]: # ({x-version-update-start:google-cloud-dns:released})
 If you are using Maven, add this to your pom.xml file
 ```xml
 <dependency>
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-dns</artifactId>
-  <version>0.35.0-alpha</version>
+  <version>0.38.0-alpha</version>
 </dependency>
 ```
 If you are using Gradle, add this to your dependencies
 ```Groovy
-compile 'com.google.cloud:google-cloud-dns:0.35.0-alpha'
+compile 'com.google.cloud:google-cloud-dns:0.38.0-alpha'
 ```
 If you are using SBT, add this to your dependencies
 ```Scala
-libraryDependencies += "com.google.cloud" % "google-cloud-dns" % "0.35.0-alpha"
+libraryDependencies += "com.google.cloud" % "google-cloud-dns" % "0.38.0-alpha"
 ```
+[//]: # ({x-version-update-end})
 
 Example Application
 -------------------

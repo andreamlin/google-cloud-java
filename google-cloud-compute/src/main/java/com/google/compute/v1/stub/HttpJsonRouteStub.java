@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteRouteHttpRequest;
@@ -60,7 +60,7 @@ import javax.annotation.Generated;
 public class HttpJsonRouteStub extends RouteStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteRouteHttpRequest, Operation> deleteRouteMethodDescriptor =
       ApiMethodDescriptor.<DeleteRouteHttpRequest, Operation>newBuilder()
           .setMethodName("compute.routes.delete")
@@ -69,10 +69,11 @@ public class HttpJsonRouteStub extends RouteStub {
           .setEndpointPathTemplate("{project}/global/routes/{route}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RouteName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("route")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetRouteHttpRequest, Route> getRouteMethodDescriptor =
       ApiMethodDescriptor.<GetRouteHttpRequest, Route>newBuilder()
           .setMethodName("compute.routes.get")
@@ -81,10 +82,11 @@ public class HttpJsonRouteStub extends RouteStub {
           .setEndpointPathTemplate("{project}/global/routes/{route}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RouteName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("route")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertRouteHttpRequest, Operation> insertRouteMethodDescriptor =
       ApiMethodDescriptor.<InsertRouteHttpRequest, Operation>newBuilder()
           .setMethodName("compute.routes.insert")
@@ -93,10 +95,11 @@ public class HttpJsonRouteStub extends RouteStub {
           .setEndpointPathTemplate("{project}/global/routes")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListRoutesHttpRequest, RouteList> listRoutesMethodDescriptor =
       ApiMethodDescriptor.<ListRoutesHttpRequest, RouteList>newBuilder()
           .setMethodName("compute.routes.list")
@@ -106,8 +109,9 @@ public class HttpJsonRouteStub extends RouteStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
 
   private final BackgroundResource backgroundResources;

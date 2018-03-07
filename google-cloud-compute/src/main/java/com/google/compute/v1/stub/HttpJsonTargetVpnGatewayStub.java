@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListTargetVpnGatewaysHttpRequest;
@@ -64,7 +64,7 @@ import javax.annotation.Generated;
 public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList> aggregatedListTargetVpnGatewaysMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList>newBuilder()
           .setMethodName("compute.targetVpnGateways.aggregatedList")
@@ -74,10 +74,11 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteTargetVpnGatewayHttpRequest, Operation> deleteTargetVpnGatewayMethodDescriptor =
       ApiMethodDescriptor.<DeleteTargetVpnGatewayHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetVpnGateways.delete")
@@ -86,10 +87,11 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(TargetVpnGatewayName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("targetVpnGateway")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetTargetVpnGatewayHttpRequest, TargetVpnGateway> getTargetVpnGatewayMethodDescriptor =
       ApiMethodDescriptor.<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>newBuilder()
           .setMethodName("compute.targetVpnGateways.get")
@@ -98,10 +100,11 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(TargetVpnGatewayName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("targetVpnGateway")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertTargetVpnGatewayHttpRequest, Operation> insertTargetVpnGatewayMethodDescriptor =
       ApiMethodDescriptor.<InsertTargetVpnGatewayHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetVpnGateways.insert")
@@ -110,10 +113,11 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setEndpointPathTemplate("{project}/regions/{region}/targetVpnGateways")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("region")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList> listTargetVpnGatewaysMethodDescriptor =
       ApiMethodDescriptor.<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList>newBuilder()
           .setMethodName("compute.targetVpnGateways.list")
@@ -123,8 +127,9 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("region")
           .build();
 
   private final BackgroundResource backgroundResources;

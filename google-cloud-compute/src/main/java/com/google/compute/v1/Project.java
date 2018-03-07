@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -44,7 +42,6 @@ public final class Project implements ApiMessage {
   private final List<Quota> quotas;
   private final String selfLink;
   private final UsageExportLocation usageExportLocation;
-  private final Map<String, String> pathParams;
 
   private Project() {
     this.commonInstanceMetadata = null;
@@ -58,7 +55,6 @@ public final class Project implements ApiMessage {
     this.quotas = null;
     this.selfLink = null;
     this.usageExportLocation = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -86,8 +82,6 @@ public final class Project implements ApiMessage {
     this.quotas = quotas;
     this.selfLink = selfLink;
     this.usageExportLocation = usageExportLocation;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -106,7 +100,11 @@ public final class Project implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("enabledFeatures") && enabledFeatures != null) {
-      fieldMap.put("enabledFeatures", enabledFeatures.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : enabledFeatures) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("enabledFeatures", stringList);
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -118,7 +116,11 @@ public final class Project implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("quotas") && quotas != null) {
-      fieldMap.put("quotas", quotas.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (Quota item : quotas) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("quotas", stringList);
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
@@ -130,8 +132,41 @@ public final class Project implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("commonInstanceMetadata")) {
+      return String.valueOf(commonInstanceMetadata);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("defaultServiceAccount")) {
+      return String.valueOf(defaultServiceAccount);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("enabledFeatures")) {
+      return String.valueOf(enabledFeatures);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("quotas")) {
+      return String.valueOf(quotas);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("usageExportLocation")) {
+      return String.valueOf(usageExportLocation);
+    }
+    return null;
   }
 
   @Nullable
@@ -312,6 +347,9 @@ public final class Project implements ApiMessage {
     }
 
     public Builder addAllEnabledFeatures(List<String> enabledFeatures) {
+      if (this.enabledFeatures == null) {
+        this.enabledFeatures = new LinkedList<>();
+      }
       this.enabledFeatures.addAll(enabledFeatures);
       return this;
     }
@@ -353,6 +391,9 @@ public final class Project implements ApiMessage {
     }
 
     public Builder addAllQuotas(List<Quota> quotas) {
+      if (this.quotas == null) {
+        this.quotas = new LinkedList<>();
+      }
       this.quotas.addAll(quotas);
       return this;
     }

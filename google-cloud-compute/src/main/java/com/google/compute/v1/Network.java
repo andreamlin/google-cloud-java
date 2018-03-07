@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -43,7 +41,6 @@ public final class Network implements ApiMessage {
   private final String name;
   private final String selfLink;
   private final List<String> subnetworks;
-  private final Map<String, String> pathParams;
 
   private Network() {
     this.autoCreateSubnetworks = null;
@@ -56,7 +53,6 @@ public final class Network implements ApiMessage {
     this.name = null;
     this.selfLink = null;
     this.subnetworks = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -82,8 +78,6 @@ public final class Network implements ApiMessage {
     this.name = name;
     this.selfLink = selfLink;
     this.subnetworks = subnetworks;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -117,14 +111,48 @@ public final class Network implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("subnetworks") && subnetworks != null) {
-      fieldMap.put("subnetworks", subnetworks.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : subnetworks) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("subnetworks", stringList);
     }
     return fieldMap;
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("autoCreateSubnetworks")) {
+      return String.valueOf(autoCreateSubnetworks);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("gatewayIPv4")) {
+      return String.valueOf(gatewayIPv4);
+    }
+    if (fieldName.equals("iPv4Range")) {
+      return String.valueOf(iPv4Range);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("subnetworks")) {
+      return String.valueOf(subnetworks);
+    }
+    return null;
   }
 
   @Nullable
@@ -341,6 +369,9 @@ public final class Network implements ApiMessage {
     }
 
     public Builder addAllSubnetworks(List<String> subnetworks) {
+      if (this.subnetworks == null) {
+        this.subnetworks = new LinkedList<>();
+      }
       this.subnetworks.addAll(subnetworks);
       return this;
     }

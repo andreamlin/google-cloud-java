@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -45,7 +43,6 @@ public final class AttachedDisk implements ApiMessage {
   private final String mode;
   private final String source;
   private final String type;
-  private final Map<String, String> pathParams;
 
   private AttachedDisk() {
     this.autoDelete = null;
@@ -60,7 +57,6 @@ public final class AttachedDisk implements ApiMessage {
     this.mode = null;
     this.source = null;
     this.type = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -90,8 +86,6 @@ public final class AttachedDisk implements ApiMessage {
     this.mode = mode;
     this.source = source;
     this.type = type;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -122,7 +116,11 @@ public final class AttachedDisk implements ApiMessage {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
     }
     if (fieldNames.contains("licenses") && licenses != null) {
-      fieldMap.put("licenses", licenses.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : licenses) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("licenses", stringList);
     }
     if (fieldNames.contains("mode") && mode != null) {
       fieldMap.put("mode", Collections.singletonList(String.valueOf(mode)));
@@ -137,8 +135,44 @@ public final class AttachedDisk implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("autoDelete")) {
+      return String.valueOf(autoDelete);
+    }
+    if (fieldName.equals("boot")) {
+      return String.valueOf(boot);
+    }
+    if (fieldName.equals("deviceName")) {
+      return String.valueOf(deviceName);
+    }
+    if (fieldName.equals("diskEncryptionKey")) {
+      return String.valueOf(diskEncryptionKey);
+    }
+    if (fieldName.equals("index")) {
+      return String.valueOf(index);
+    }
+    if (fieldName.equals("initializeParams")) {
+      return String.valueOf(initializeParams);
+    }
+    if (fieldName.equals("interface2")) {
+      return String.valueOf(interface2);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("licenses")) {
+      return String.valueOf(licenses);
+    }
+    if (fieldName.equals("mode")) {
+      return String.valueOf(mode);
+    }
+    if (fieldName.equals("source")) {
+      return String.valueOf(source);
+    }
+    if (fieldName.equals("type")) {
+      return String.valueOf(type);
+    }
+    return null;
   }
 
   @Nullable
@@ -364,6 +398,9 @@ public final class AttachedDisk implements ApiMessage {
     }
 
     public Builder addAllLicenses(List<String> licenses) {
+      if (this.licenses == null) {
+        this.licenses = new LinkedList<>();
+      }
       this.licenses.addAll(licenses);
       return this;
     }

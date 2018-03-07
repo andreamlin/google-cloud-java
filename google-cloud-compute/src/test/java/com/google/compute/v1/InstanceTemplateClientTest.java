@@ -44,7 +44,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class InstanceTemplateClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static InstanceTemplateClient client;
   private static InstanceTemplateSettings clientSettings;
 
@@ -54,14 +54,14 @@ public class InstanceTemplateClientTest {
         InstanceTemplateSettings.newBuilder()
            .setTransportChannelProvider(
                InstanceTemplateSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        InstanceTemplateClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -116,8 +116,8 @@ public class InstanceTemplateClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteInstanceTemplateMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteInstanceTemplateMethodDescriptor);
 
     InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
 
@@ -125,7 +125,7 @@ public class InstanceTemplateClientTest {
         client.deleteInstanceTemplate(instanceTemplate);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -133,8 +133,8 @@ public class InstanceTemplateClientTest {
   @SuppressWarnings("all")
   public void deleteInstanceTemplateExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteInstanceTemplateMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteInstanceTemplateMethodDescriptor);
 
     try {
       InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
@@ -163,8 +163,8 @@ public class InstanceTemplateClientTest {
       .setId(id)
       .setSelfLink(selfLink)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getInstanceTemplateMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getInstanceTemplateMethodDescriptor);
 
     InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
 
@@ -172,7 +172,7 @@ public class InstanceTemplateClientTest {
         client.getInstanceTemplate(instanceTemplate);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -180,8 +180,8 @@ public class InstanceTemplateClientTest {
   @SuppressWarnings("all")
   public void getInstanceTemplateExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getInstanceTemplateMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getInstanceTemplateMethodDescriptor);
 
     try {
       InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
@@ -240,17 +240,17 @@ public class InstanceTemplateClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertInstanceTemplateMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertInstanceTemplateMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
-    InstanceTemplate instanceTemplate = InstanceTemplate.newBuilder().build();
+    InstanceTemplate instanceTemplateResource = InstanceTemplate.newBuilder().build();
 
     Operation actualResponse =
-        client.insertInstanceTemplate(project, instanceTemplate);
+        client.insertInstanceTemplate(project, instanceTemplateResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -258,14 +258,14 @@ public class InstanceTemplateClientTest {
   @SuppressWarnings("all")
   public void insertInstanceTemplateExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertInstanceTemplateMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertInstanceTemplateMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
-      InstanceTemplate instanceTemplate = InstanceTemplate.newBuilder().build();
+      InstanceTemplate instanceTemplateResource = InstanceTemplate.newBuilder().build();
 
-      client.insertInstanceTemplate(project, instanceTemplate);
+      client.insertInstanceTemplate(project, instanceTemplateResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -288,8 +288,8 @@ public class InstanceTemplateClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listInstanceTemplatesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listInstanceTemplatesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -299,7 +299,7 @@ public class InstanceTemplateClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -307,8 +307,8 @@ public class InstanceTemplateClientTest {
   @SuppressWarnings("all")
   public void listInstanceTemplatesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listInstanceTemplatesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listInstanceTemplatesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

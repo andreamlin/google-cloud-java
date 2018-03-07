@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListDisksHttpRequest;
@@ -68,7 +68,7 @@ import javax.annotation.Generated;
 public class HttpJsonDiskStub extends DiskStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<AggregatedListDisksHttpRequest, DiskAggregatedList> aggregatedListDisksMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListDisksHttpRequest, DiskAggregatedList>newBuilder()
           .setMethodName("compute.disks.aggregatedList")
@@ -78,10 +78,11 @@ public class HttpJsonDiskStub extends DiskStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<CreateSnapshotDiskHttpRequest, Operation> createSnapshotDiskMethodDescriptor =
       ApiMethodDescriptor.<CreateSnapshotDiskHttpRequest, Operation>newBuilder()
           .setMethodName("compute.disks.createSnapshot")
@@ -90,10 +91,11 @@ public class HttpJsonDiskStub extends DiskStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}/createSnapshot")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(DiskName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("disk")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteDiskHttpRequest, Operation> deleteDiskMethodDescriptor =
       ApiMethodDescriptor.<DeleteDiskHttpRequest, Operation>newBuilder()
           .setMethodName("compute.disks.delete")
@@ -102,10 +104,11 @@ public class HttpJsonDiskStub extends DiskStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(DiskName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("disk")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetDiskHttpRequest, Disk> getDiskMethodDescriptor =
       ApiMethodDescriptor.<GetDiskHttpRequest, Disk>newBuilder()
           .setMethodName("compute.disks.get")
@@ -114,10 +117,11 @@ public class HttpJsonDiskStub extends DiskStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(DiskName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("disk")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertDiskHttpRequest, Operation> insertDiskMethodDescriptor =
       ApiMethodDescriptor.<InsertDiskHttpRequest, Operation>newBuilder()
           .setMethodName("compute.disks.insert")
@@ -127,10 +131,11 @@ public class HttpJsonDiskStub extends DiskStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "sourceImage"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ZoneName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("zone")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListDisksHttpRequest, DiskList> listDisksMethodDescriptor =
       ApiMethodDescriptor.<ListDisksHttpRequest, DiskList>newBuilder()
           .setMethodName("compute.disks.list")
@@ -140,10 +145,11 @@ public class HttpJsonDiskStub extends DiskStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ZoneName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("zone")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ResizeDiskHttpRequest, Operation> resizeDiskMethodDescriptor =
       ApiMethodDescriptor.<ResizeDiskHttpRequest, Operation>newBuilder()
           .setMethodName("compute.disks.resize")
@@ -152,8 +158,9 @@ public class HttpJsonDiskStub extends DiskStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/disks/{disk}/resize")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(DiskName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("disk")
           .build();
 
   private final BackgroundResource backgroundResources;

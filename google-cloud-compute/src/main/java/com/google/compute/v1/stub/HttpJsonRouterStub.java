@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListRoutersHttpRequest;
@@ -70,7 +70,7 @@ import javax.annotation.Generated;
 public class HttpJsonRouterStub extends RouterStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<AggregatedListRoutersHttpRequest, RouterAggregatedList> aggregatedListRoutersMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListRoutersHttpRequest, RouterAggregatedList>newBuilder()
           .setMethodName("compute.routers.aggregatedList")
@@ -80,10 +80,11 @@ public class HttpJsonRouterStub extends RouterStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteRouterHttpRequest, Operation> deleteRouterMethodDescriptor =
       ApiMethodDescriptor.<DeleteRouterHttpRequest, Operation>newBuilder()
           .setMethodName("compute.routers.delete")
@@ -92,10 +93,11 @@ public class HttpJsonRouterStub extends RouterStub {
           .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RouterName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("router")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetRouterHttpRequest, Router> getRouterMethodDescriptor =
       ApiMethodDescriptor.<GetRouterHttpRequest, Router>newBuilder()
           .setMethodName("compute.routers.get")
@@ -104,10 +106,11 @@ public class HttpJsonRouterStub extends RouterStub {
           .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RouterName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("router")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetRouterStatusRouterHttpRequest, RouterStatusResponse> getRouterStatusRouterMethodDescriptor =
       ApiMethodDescriptor.<GetRouterStatusRouterHttpRequest, RouterStatusResponse>newBuilder()
           .setMethodName("compute.routers.getRouterStatus")
@@ -116,10 +119,11 @@ public class HttpJsonRouterStub extends RouterStub {
           .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}/getRouterStatus")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RouterName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("router")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertRouterHttpRequest, Operation> insertRouterMethodDescriptor =
       ApiMethodDescriptor.<InsertRouterHttpRequest, Operation>newBuilder()
           .setMethodName("compute.routers.insert")
@@ -128,10 +132,11 @@ public class HttpJsonRouterStub extends RouterStub {
           .setEndpointPathTemplate("{project}/regions/{region}/routers")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("region")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListRoutersHttpRequest, RouterList> listRoutersMethodDescriptor =
       ApiMethodDescriptor.<ListRoutersHttpRequest, RouterList>newBuilder()
           .setMethodName("compute.routers.list")
@@ -141,10 +146,11 @@ public class HttpJsonRouterStub extends RouterStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("region")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<PatchRouterHttpRequest, Operation> patchRouterMethodDescriptor =
       ApiMethodDescriptor.<PatchRouterHttpRequest, Operation>newBuilder()
           .setMethodName("compute.routers.patch")
@@ -153,10 +159,11 @@ public class HttpJsonRouterStub extends RouterStub {
           .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RouterName.newFactory()))
           .setHttpMethod(HttpMethods.PATCH)
+          .setResourceNameField("router")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterMethodDescriptor =
       ApiMethodDescriptor.<PreviewRouterHttpRequest, RoutersPreviewResponse>newBuilder()
           .setMethodName("compute.routers.preview")
@@ -165,10 +172,11 @@ public class HttpJsonRouterStub extends RouterStub {
           .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}/preview")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RouterName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("router")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<UpdateRouterHttpRequest, Operation> updateRouterMethodDescriptor =
       ApiMethodDescriptor.<UpdateRouterHttpRequest, Operation>newBuilder()
           .setMethodName("compute.routers.update")
@@ -177,8 +185,9 @@ public class HttpJsonRouterStub extends RouterStub {
           .setEndpointPathTemplate("{project}/regions/{region}/routers/{router}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RouterName.newFactory()))
           .setHttpMethod(HttpMethods.PUT)
+          .setResourceNameField("router")
           .build();
 
   private final BackgroundResource backgroundResources;

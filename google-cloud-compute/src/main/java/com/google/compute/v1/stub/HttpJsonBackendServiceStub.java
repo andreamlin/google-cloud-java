@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListBackendServicesHttpRequest;
@@ -68,7 +68,7 @@ import javax.annotation.Generated;
 public class HttpJsonBackendServiceStub extends BackendServiceStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList> aggregatedListBackendServicesMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList>newBuilder()
           .setMethodName("compute.backendServices.aggregatedList")
@@ -78,10 +78,11 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteBackendServiceHttpRequest, Operation> deleteBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<DeleteBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.backendServices.delete")
@@ -90,10 +91,11 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(BackendServiceName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("backendService")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetBackendServiceHttpRequest, BackendService> getBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<GetBackendServiceHttpRequest, BackendService>newBuilder()
           .setMethodName("compute.backendServices.get")
@@ -102,10 +104,11 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(BackendServiceName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("backendService")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth> getHealthBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth>newBuilder()
           .setMethodName("compute.backendServices.getHealth")
@@ -114,10 +117,11 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setEndpointPathTemplate("{project}/global/backendServices/{backendService}/getHealth")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(BackendServiceName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("backendService")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertBackendServiceHttpRequest, Operation> insertBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<InsertBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.backendServices.insert")
@@ -126,10 +130,11 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setEndpointPathTemplate("{project}/global/backendServices")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListBackendServicesHttpRequest, BackendServiceList> listBackendServicesMethodDescriptor =
       ApiMethodDescriptor.<ListBackendServicesHttpRequest, BackendServiceList>newBuilder()
           .setMethodName("compute.backendServices.list")
@@ -139,10 +144,11 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<PatchBackendServiceHttpRequest, Operation> patchBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<PatchBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.backendServices.patch")
@@ -151,10 +157,11 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(BackendServiceName.newFactory()))
           .setHttpMethod(HttpMethods.PATCH)
+          .setResourceNameField("backendService")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<UpdateBackendServiceHttpRequest, Operation> updateBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<UpdateBackendServiceHttpRequest, Operation>newBuilder()
           .setMethodName("compute.backendServices.update")
@@ -163,8 +170,9 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setEndpointPathTemplate("{project}/global/backendServices/{backendService}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(BackendServiceName.newFactory()))
           .setHttpMethod(HttpMethods.PUT)
+          .setResourceNameField("backendService")
           .build();
 
   private final BackgroundResource backgroundResources;

@@ -189,7 +189,32 @@ public class ZoneClient implements BackgroundResource {
 
     GetZoneHttpRequest request =
         GetZoneHttpRequest.newBuilder()
-        .setZone(zone.toString())
+        .setZone(zone == null ? null : zone.toString())
+        .build();
+    return getZone(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified Zone resource. Get a list of available zones by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ZoneClient zoneClient = ZoneClient.create()) {
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
+   *   Zone response = zoneClient.getZone(zone.toString());
+   * }
+   * </code></pre>
+   *
+   * @param zone Name of the zone resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Zone getZone(String zone) {
+
+    GetZoneHttpRequest request =
+        GetZoneHttpRequest.newBuilder()
+        .setZone(zone)
         .build();
     return getZone(request);
   }
@@ -260,7 +285,33 @@ public class ZoneClient implements BackgroundResource {
   public final ListZonesPagedResponse listZones(ProjectName project) {
     ListZonesHttpRequest request =
         ListZonesHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return listZones(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of Zone resources available to the specified project.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (ZoneClient zoneClient = ZoneClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (Zone element : zoneClient.listZones(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListZonesPagedResponse listZones(String project) {
+    ListZonesHttpRequest request =
+        ListZonesHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return listZones(request);
   }

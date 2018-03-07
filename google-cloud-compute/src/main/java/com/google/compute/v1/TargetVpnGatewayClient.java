@@ -190,7 +190,33 @@ public class TargetVpnGatewayClient implements BackgroundResource {
   public final AggregatedListTargetVpnGatewaysPagedResponse aggregatedListTargetVpnGateways(ProjectName project) {
     AggregatedListTargetVpnGatewaysHttpRequest request =
         AggregatedListTargetVpnGatewaysHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return aggregatedListTargetVpnGateways(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves an aggregated list of target VPN gateways.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (TargetVpnGateway element : targetVpnGatewayClient.aggregatedListTargetVpnGateways(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListTargetVpnGatewaysPagedResponse aggregatedListTargetVpnGateways(String project) {
+    AggregatedListTargetVpnGatewaysHttpRequest request =
+        AggregatedListTargetVpnGatewaysHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return aggregatedListTargetVpnGateways(request);
   }
@@ -296,7 +322,32 @@ public class TargetVpnGatewayClient implements BackgroundResource {
 
     DeleteTargetVpnGatewayHttpRequest request =
         DeleteTargetVpnGatewayHttpRequest.newBuilder()
-        .setTargetVpnGateway(targetVpnGateway.toString())
+        .setTargetVpnGateway(targetVpnGateway == null ? null : targetVpnGateway.toString())
+        .build();
+    return deleteTargetVpnGateway(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified target VPN gateway.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
+   *   TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
+   *   Operation response = targetVpnGatewayClient.deleteTargetVpnGateway(targetVpnGateway.toString());
+   * }
+   * </code></pre>
+   *
+   * @param targetVpnGateway Name of the target VPN gateway to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteTargetVpnGateway(String targetVpnGateway) {
+
+    DeleteTargetVpnGatewayHttpRequest request =
+        DeleteTargetVpnGatewayHttpRequest.newBuilder()
+        .setTargetVpnGateway(targetVpnGateway)
         .build();
     return deleteTargetVpnGateway(request);
   }
@@ -366,7 +417,32 @@ public class TargetVpnGatewayClient implements BackgroundResource {
 
     GetTargetVpnGatewayHttpRequest request =
         GetTargetVpnGatewayHttpRequest.newBuilder()
-        .setTargetVpnGateway(targetVpnGateway.toString())
+        .setTargetVpnGateway(targetVpnGateway == null ? null : targetVpnGateway.toString())
+        .build();
+    return getTargetVpnGateway(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified target VPN gateway. Get a list of available target VPN gateways by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
+   *   TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
+   *   TargetVpnGateway response = targetVpnGatewayClient.getTargetVpnGateway(targetVpnGateway.toString());
+   * }
+   * </code></pre>
+   *
+   * @param targetVpnGateway Name of the target VPN gateway to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final TargetVpnGateway getTargetVpnGateway(String targetVpnGateway) {
+
+    GetTargetVpnGatewayHttpRequest request =
+        GetTargetVpnGatewayHttpRequest.newBuilder()
+        .setTargetVpnGateway(targetVpnGateway)
         .build();
     return getTargetVpnGateway(request);
   }
@@ -424,8 +500,8 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   TargetVpnGateway targetVpnGateway = TargetVpnGateway.newBuilder().build();
-   *   Operation response = targetVpnGatewayClient.insertTargetVpnGateway(region, targetVpnGateway);
+   *   TargetVpnGateway targetVpnGatewayResource = TargetVpnGateway.newBuilder().build();
+   *   Operation response = targetVpnGatewayClient.insertTargetVpnGateway(region, targetVpnGatewayResource);
    * }
    * </code></pre>
    *
@@ -438,7 +514,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
 
     InsertTargetVpnGatewayHttpRequest request =
         InsertTargetVpnGatewayHttpRequest.newBuilder()
-        .setRegion(region.toString())
+        .setRegion(region == null ? null : region.toString())
         .setTargetVpnGatewayResource(targetVpnGatewayResource)
         .build();
     return insertTargetVpnGateway(request);
@@ -452,10 +528,38 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   TargetVpnGateway targetVpnGateway = TargetVpnGateway.newBuilder().build();
+   *   TargetVpnGateway targetVpnGatewayResource = TargetVpnGateway.newBuilder().build();
+   *   Operation response = targetVpnGatewayClient.insertTargetVpnGateway(region.toString(), targetVpnGatewayResource);
+   * }
+   * </code></pre>
+   *
+   * @param region Name of the region for this request.
+   * @param targetVpnGatewayResource Represents a Target VPN gateway resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertTargetVpnGateway(String region, TargetVpnGateway targetVpnGatewayResource) {
+
+    InsertTargetVpnGatewayHttpRequest request =
+        InsertTargetVpnGatewayHttpRequest.newBuilder()
+        .setRegion(region)
+        .setTargetVpnGatewayResource(targetVpnGatewayResource)
+        .build();
+    return insertTargetVpnGateway(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a target VPN gateway in the specified project and region using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   TargetVpnGateway targetVpnGatewayResource = TargetVpnGateway.newBuilder().build();
    *   InsertTargetVpnGatewayHttpRequest request = InsertTargetVpnGatewayHttpRequest.newBuilder()
    *     .setRegion(region.toString())
-   *     .setTargetVpnGatewayResource(targetVpnGateway)
+   *     .setTargetVpnGatewayResource(targetVpnGatewayResource)
    *     .build();
    *   Operation response = targetVpnGatewayClient.insertTargetVpnGateway(request);
    * }
@@ -477,10 +581,10 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   TargetVpnGateway targetVpnGateway = TargetVpnGateway.newBuilder().build();
+   *   TargetVpnGateway targetVpnGatewayResource = TargetVpnGateway.newBuilder().build();
    *   InsertTargetVpnGatewayHttpRequest request = InsertTargetVpnGatewayHttpRequest.newBuilder()
    *     .setRegion(region.toString())
-   *     .setTargetVpnGatewayResource(targetVpnGateway)
+   *     .setTargetVpnGatewayResource(targetVpnGatewayResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetVpnGatewayClient.insertTargetVpnGatewayCallable().futureCall(request);
    *   // Do something
@@ -514,7 +618,33 @@ public class TargetVpnGatewayClient implements BackgroundResource {
   public final ListTargetVpnGatewaysPagedResponse listTargetVpnGateways(RegionName region) {
     ListTargetVpnGatewaysHttpRequest request =
         ListTargetVpnGatewaysHttpRequest.newBuilder()
-        .setRegion(region.toString())
+        .setRegion(region == null ? null : region.toString())
+        .build();
+    return listTargetVpnGateways(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves a list of target VPN gateways available to the specified project and region.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   for (TargetVpnGateway element : targetVpnGatewayClient.listTargetVpnGateways(region.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param region Name of the region for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListTargetVpnGatewaysPagedResponse listTargetVpnGateways(String region) {
+    ListTargetVpnGatewaysHttpRequest request =
+        ListTargetVpnGatewaysHttpRequest.newBuilder()
+        .setRegion(region)
         .build();
     return listTargetVpnGateways(request);
   }

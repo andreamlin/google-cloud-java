@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -44,7 +42,6 @@ public final class UrlMap implements ApiMessage {
   private final List<PathMatcher> pathMatchers;
   private final String selfLink;
   private final List<UrlMapTest> tests;
-  private final Map<String, String> pathParams;
 
   private UrlMap() {
     this.creationTimestamp = null;
@@ -58,7 +55,6 @@ public final class UrlMap implements ApiMessage {
     this.pathMatchers = null;
     this.selfLink = null;
     this.tests = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -86,8 +82,6 @@ public final class UrlMap implements ApiMessage {
     this.pathMatchers = pathMatchers;
     this.selfLink = selfLink;
     this.tests = tests;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -106,7 +100,11 @@ public final class UrlMap implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("hostRules") && hostRules != null) {
-      fieldMap.put("hostRules", hostRules.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (HostRule item : hostRules) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("hostRules", stringList);
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -118,20 +116,61 @@ public final class UrlMap implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("pathMatchers") && pathMatchers != null) {
-      fieldMap.put("pathMatchers", pathMatchers.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (PathMatcher item : pathMatchers) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("pathMatchers", stringList);
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("tests") && tests != null) {
-      fieldMap.put("tests", tests.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (UrlMapTest item : tests) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("tests", stringList);
     }
     return fieldMap;
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("defaultService")) {
+      return String.valueOf(defaultService);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("fingerprint")) {
+      return String.valueOf(fingerprint);
+    }
+    if (fieldName.equals("hostRules")) {
+      return String.valueOf(hostRules);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("pathMatchers")) {
+      return String.valueOf(pathMatchers);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("tests")) {
+      return String.valueOf(tests);
+    }
+    return null;
   }
 
   @Nullable
@@ -312,6 +351,9 @@ public final class UrlMap implements ApiMessage {
     }
 
     public Builder addAllHostRules(List<HostRule> hostRules) {
+      if (this.hostRules == null) {
+        this.hostRules = new LinkedList<>();
+      }
       this.hostRules.addAll(hostRules);
       return this;
     }
@@ -353,6 +395,9 @@ public final class UrlMap implements ApiMessage {
     }
 
     public Builder addAllPathMatchers(List<PathMatcher> pathMatchers) {
+      if (this.pathMatchers == null) {
+        this.pathMatchers = new LinkedList<>();
+      }
       this.pathMatchers.addAll(pathMatchers);
       return this;
     }
@@ -376,6 +421,9 @@ public final class UrlMap implements ApiMessage {
     }
 
     public Builder addAllTests(List<UrlMapTest> tests) {
+      if (this.tests == null) {
+        this.tests = new LinkedList<>();
+      }
       this.tests.addAll(tests);
       return this;
     }

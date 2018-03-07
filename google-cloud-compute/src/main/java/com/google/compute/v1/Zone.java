@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -42,7 +40,6 @@ public final class Zone implements ApiMessage {
   private final String region;
   private final String selfLink;
   private final String status;
-  private final Map<String, String> pathParams;
 
   private Zone() {
     this.creationTimestamp = null;
@@ -54,7 +51,6 @@ public final class Zone implements ApiMessage {
     this.region = null;
     this.selfLink = null;
     this.status = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -78,8 +74,6 @@ public final class Zone implements ApiMessage {
     this.region = region;
     this.selfLink = selfLink;
     this.status = status;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -116,8 +110,35 @@ public final class Zone implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("deprecated")) {
+      return String.valueOf(deprecated);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("region")) {
+      return String.valueOf(region);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("status")) {
+      return String.valueOf(status);
+    }
+    return null;
   }
 
   @Nullable

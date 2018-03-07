@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -44,7 +42,6 @@ public final class Firewall implements ApiMessage {
   private final List<String> sourceRanges;
   private final List<String> sourceTags;
   private final List<String> targetTags;
-  private final Map<String, String> pathParams;
 
   private Firewall() {
     this.allowed = null;
@@ -58,7 +55,6 @@ public final class Firewall implements ApiMessage {
     this.sourceRanges = null;
     this.sourceTags = null;
     this.targetTags = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -86,15 +82,17 @@ public final class Firewall implements ApiMessage {
     this.sourceRanges = sourceRanges;
     this.sourceTags = sourceTags;
     this.targetTags = targetTags;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("allowed") && allowed != null) {
-      fieldMap.put("allowed", allowed.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (Allowed item : allowed) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("allowed", stringList);
     }
     if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
       fieldMap.put("creationTimestamp", Collections.singletonList(String.valueOf(creationTimestamp)));
@@ -118,20 +116,65 @@ public final class Firewall implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("sourceRanges") && sourceRanges != null) {
-      fieldMap.put("sourceRanges", sourceRanges.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : sourceRanges) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("sourceRanges", stringList);
     }
     if (fieldNames.contains("sourceTags") && sourceTags != null) {
-      fieldMap.put("sourceTags", sourceTags.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : sourceTags) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("sourceTags", stringList);
     }
     if (fieldNames.contains("targetTags") && targetTags != null) {
-      fieldMap.put("targetTags", targetTags.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : targetTags) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("targetTags", stringList);
     }
     return fieldMap;
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("allowed")) {
+      return String.valueOf(allowed);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("network")) {
+      return String.valueOf(network);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("sourceRanges")) {
+      return String.valueOf(sourceRanges);
+    }
+    if (fieldName.equals("sourceTags")) {
+      return String.valueOf(sourceTags);
+    }
+    if (fieldName.equals("targetTags")) {
+      return String.valueOf(targetTags);
+    }
+    return null;
   }
 
   @Nullable
@@ -276,6 +319,9 @@ public final class Firewall implements ApiMessage {
     }
 
     public Builder addAllAllowed(List<Allowed> allowed) {
+      if (this.allowed == null) {
+        this.allowed = new LinkedList<>();
+      }
       this.allowed.addAll(allowed);
       return this;
     }
@@ -353,6 +399,9 @@ public final class Firewall implements ApiMessage {
     }
 
     public Builder addAllSourceRanges(List<String> sourceRanges) {
+      if (this.sourceRanges == null) {
+        this.sourceRanges = new LinkedList<>();
+      }
       this.sourceRanges.addAll(sourceRanges);
       return this;
     }
@@ -367,6 +416,9 @@ public final class Firewall implements ApiMessage {
     }
 
     public Builder addAllSourceTags(List<String> sourceTags) {
+      if (this.sourceTags == null) {
+        this.sourceTags = new LinkedList<>();
+      }
       this.sourceTags.addAll(sourceTags);
       return this;
     }
@@ -381,6 +433,9 @@ public final class Firewall implements ApiMessage {
     }
 
     public Builder addAllTargetTags(List<String> targetTags) {
+      if (this.targetTags == null) {
+        this.targetTags = new LinkedList<>();
+      }
       this.targetTags.addAll(targetTags);
       return this;
     }

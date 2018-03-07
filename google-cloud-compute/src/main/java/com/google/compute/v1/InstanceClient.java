@@ -55,8 +55,8 @@ import javax.annotation.Generated;
  * try (InstanceClient instanceClient = InstanceClient.create()) {
  *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
  *   String networkInterface = "";
- *   AccessConfig accessConfig = AccessConfig.newBuilder().build();
- *   Operation response = instanceClient.addAccessConfigInstance(instance, networkInterface, accessConfig);
+ *   AccessConfig accessConfigResource = AccessConfig.newBuilder().build();
+ *   Operation response = instanceClient.addAccessConfigInstance(instance, networkInterface, accessConfigResource);
  * }
  * </code>
  * </pre>
@@ -180,8 +180,8 @@ public class InstanceClient implements BackgroundResource {
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   String networkInterface = "";
-   *   AccessConfig accessConfig = AccessConfig.newBuilder().build();
-   *   Operation response = instanceClient.addAccessConfigInstance(instance, networkInterface, accessConfig);
+   *   AccessConfig accessConfigResource = AccessConfig.newBuilder().build();
+   *   Operation response = instanceClient.addAccessConfigInstance(instance, networkInterface, accessConfigResource);
    * }
    * </code></pre>
    *
@@ -195,7 +195,7 @@ public class InstanceClient implements BackgroundResource {
 
     AddAccessConfigInstanceHttpRequest request =
         AddAccessConfigInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
         .setNetworkInterface(networkInterface)
         .setAccessConfigResource(accessConfigResource)
         .build();
@@ -211,11 +211,42 @@ public class InstanceClient implements BackgroundResource {
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   String networkInterface = "";
-   *   AccessConfig accessConfig = AccessConfig.newBuilder().build();
+   *   AccessConfig accessConfigResource = AccessConfig.newBuilder().build();
+   *   Operation response = instanceClient.addAccessConfigInstance(instance.toString(), networkInterface, accessConfigResource);
+   * }
+   * </code></pre>
+   *
+   * @param instance The instance name for this request.
+   * @param networkInterface The name of the network interface to add to this instance.
+   * @param accessConfigResource An access configuration attached to an instance's network interface. Only one access config per instance is supported.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation addAccessConfigInstance(String instance, String networkInterface, AccessConfig accessConfigResource) {
+
+    AddAccessConfigInstanceHttpRequest request =
+        AddAccessConfigInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
+        .setNetworkInterface(networkInterface)
+        .setAccessConfigResource(accessConfigResource)
+        .build();
+    return addAccessConfigInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Adds an access config to an instance's network interface.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   String networkInterface = "";
+   *   AccessConfig accessConfigResource = AccessConfig.newBuilder().build();
    *   AddAccessConfigInstanceHttpRequest request = AddAccessConfigInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
    *     .setNetworkInterface(networkInterface)
-   *     .setAccessConfigResource(accessConfig)
+   *     .setAccessConfigResource(accessConfigResource)
    *     .build();
    *   Operation response = instanceClient.addAccessConfigInstance(request);
    * }
@@ -238,11 +269,11 @@ public class InstanceClient implements BackgroundResource {
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
    *   String networkInterface = "";
-   *   AccessConfig accessConfig = AccessConfig.newBuilder().build();
+   *   AccessConfig accessConfigResource = AccessConfig.newBuilder().build();
    *   AddAccessConfigInstanceHttpRequest request = AddAccessConfigInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
    *     .setNetworkInterface(networkInterface)
-   *     .setAccessConfigResource(accessConfig)
+   *     .setAccessConfigResource(accessConfigResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.addAccessConfigInstanceCallable().futureCall(request);
    *   // Do something
@@ -276,7 +307,33 @@ public class InstanceClient implements BackgroundResource {
   public final AggregatedListInstancesPagedResponse aggregatedListInstances(ProjectName project) {
     AggregatedListInstancesHttpRequest request =
         AggregatedListInstancesHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return aggregatedListInstances(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves aggregated list of instances.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (Instance element : instanceClient.aggregatedListInstances(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListInstancesPagedResponse aggregatedListInstances(String project) {
+    AggregatedListInstancesHttpRequest request =
+        AggregatedListInstancesHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return aggregatedListInstances(request);
   }
@@ -370,8 +427,8 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   AttachedDisk attachedDisk = AttachedDisk.newBuilder().build();
-   *   Operation response = instanceClient.attachDiskInstance(instance, attachedDisk);
+   *   AttachedDisk attachedDiskResource = AttachedDisk.newBuilder().build();
+   *   Operation response = instanceClient.attachDiskInstance(instance, attachedDiskResource);
    * }
    * </code></pre>
    *
@@ -384,7 +441,7 @@ public class InstanceClient implements BackgroundResource {
 
     AttachDiskInstanceHttpRequest request =
         AttachDiskInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
         .setAttachedDiskResource(attachedDiskResource)
         .build();
     return attachDiskInstance(request);
@@ -398,10 +455,38 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   AttachedDisk attachedDisk = AttachedDisk.newBuilder().build();
+   *   AttachedDisk attachedDiskResource = AttachedDisk.newBuilder().build();
+   *   Operation response = instanceClient.attachDiskInstance(instance.toString(), attachedDiskResource);
+   * }
+   * </code></pre>
+   *
+   * @param instance The instance name for this request.
+   * @param attachedDiskResource An instance-attached disk resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation attachDiskInstance(String instance, AttachedDisk attachedDiskResource) {
+
+    AttachDiskInstanceHttpRequest request =
+        AttachDiskInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
+        .setAttachedDiskResource(attachedDiskResource)
+        .build();
+    return attachDiskInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Attaches a Disk resource to an instance.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   AttachedDisk attachedDiskResource = AttachedDisk.newBuilder().build();
    *   AttachDiskInstanceHttpRequest request = AttachDiskInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
-   *     .setAttachedDiskResource(attachedDisk)
+   *     .setAttachedDiskResource(attachedDiskResource)
    *     .build();
    *   Operation response = instanceClient.attachDiskInstance(request);
    * }
@@ -423,10 +508,10 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   AttachedDisk attachedDisk = AttachedDisk.newBuilder().build();
+   *   AttachedDisk attachedDiskResource = AttachedDisk.newBuilder().build();
    *   AttachDiskInstanceHttpRequest request = AttachDiskInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
-   *     .setAttachedDiskResource(attachedDisk)
+   *     .setAttachedDiskResource(attachedDiskResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.attachDiskInstanceCallable().futureCall(request);
    *   // Do something
@@ -459,7 +544,32 @@ public class InstanceClient implements BackgroundResource {
 
     DeleteInstanceHttpRequest request =
         DeleteInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
+        .build();
+    return deleteInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified Instance resource. For more information, see Stopping or Deleting an Instance.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   Operation response = instanceClient.deleteInstance(instance.toString());
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteInstance(String instance) {
+
+    DeleteInstanceHttpRequest request =
+        DeleteInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
         .build();
     return deleteInstance(request);
   }
@@ -533,7 +643,38 @@ public class InstanceClient implements BackgroundResource {
 
     DeleteAccessConfigInstanceHttpRequest request =
         DeleteAccessConfigInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
+        .setNetworkInterface(networkInterface)
+        .setAccessConfig(accessConfig)
+        .build();
+    return deleteAccessConfigInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes an access config from an instance's network interface.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   String networkInterface = "";
+   *   String accessConfig = "";
+   *   Operation response = instanceClient.deleteAccessConfigInstance(instance.toString(), networkInterface, accessConfig);
+   * }
+   * </code></pre>
+   *
+   * @param instance The instance name for this request.
+   * @param networkInterface The name of the network interface.
+   * @param accessConfig The name of the access config to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteAccessConfigInstance(String instance, String networkInterface, String accessConfig) {
+
+    DeleteAccessConfigInstanceHttpRequest request =
+        DeleteAccessConfigInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
         .setNetworkInterface(networkInterface)
         .setAccessConfig(accessConfig)
         .build();
@@ -615,7 +756,35 @@ public class InstanceClient implements BackgroundResource {
 
     DetachDiskInstanceHttpRequest request =
         DetachDiskInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
+        .setDeviceName(deviceName)
+        .build();
+    return detachDiskInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Detaches a disk from an instance.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   String deviceName = "";
+   *   Operation response = instanceClient.detachDiskInstance(instance.toString(), deviceName);
+   * }
+   * </code></pre>
+   *
+   * @param instance Instance name.
+   * @param deviceName Disk device name to detach.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation detachDiskInstance(String instance, String deviceName) {
+
+    DetachDiskInstanceHttpRequest request =
+        DetachDiskInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
         .setDeviceName(deviceName)
         .build();
     return detachDiskInstance(request);
@@ -690,7 +859,32 @@ public class InstanceClient implements BackgroundResource {
 
     GetInstanceHttpRequest request =
         GetInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
+        .build();
+    return getInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified Instance resource. Get a list of available instances by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   Instance response = instanceClient.getInstance(instance.toString());
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Instance getInstance(String instance) {
+
+    GetInstanceHttpRequest request =
+        GetInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
         .build();
     return getInstance(request);
   }
@@ -764,7 +958,38 @@ public class InstanceClient implements BackgroundResource {
 
     GetSerialPortOutputInstanceHttpRequest request =
         GetSerialPortOutputInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
+        .setPort(port)
+        .setStart(start)
+        .build();
+    return getSerialPortOutputInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified instance's serial port output.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   Integer port = 0;
+   *   String start = "";
+   *   SerialPortOutput response = instanceClient.getSerialPortOutputInstance(instance.toString(), port, start);
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance scoping this request.
+   * @param port Specifies which COM or serial port to retrieve data from.
+   * @param start For the initial request, leave this field unspecified. For subsequent calls, this field should be set to the next value that was returned in the previous call.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final SerialPortOutput getSerialPortOutputInstance(String instance, Integer port, String start) {
+
+    GetSerialPortOutputInstanceHttpRequest request =
+        GetSerialPortOutputInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
         .setPort(port)
         .setStart(start)
         .build();
@@ -832,8 +1057,8 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
-   *   Instance instance = Instance.newBuilder().build();
-   *   Operation response = instanceClient.insertInstance(zone, instance);
+   *   Instance instanceResource = Instance.newBuilder().build();
+   *   Operation response = instanceClient.insertInstance(zone, instanceResource);
    * }
    * </code></pre>
    *
@@ -846,7 +1071,7 @@ public class InstanceClient implements BackgroundResource {
 
     InsertInstanceHttpRequest request =
         InsertInstanceHttpRequest.newBuilder()
-        .setZone(zone.toString())
+        .setZone(zone == null ? null : zone.toString())
         .setInstanceResource(instanceResource)
         .build();
     return insertInstance(request);
@@ -860,10 +1085,38 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
-   *   Instance instance = Instance.newBuilder().build();
+   *   Instance instanceResource = Instance.newBuilder().build();
+   *   Operation response = instanceClient.insertInstance(zone.toString(), instanceResource);
+   * }
+   * </code></pre>
+   *
+   * @param zone The name of the zone for this request.
+   * @param instanceResource An Instance resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertInstance(String zone, Instance instanceResource) {
+
+    InsertInstanceHttpRequest request =
+        InsertInstanceHttpRequest.newBuilder()
+        .setZone(zone)
+        .setInstanceResource(instanceResource)
+        .build();
+    return insertInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates an instance resource in the specified project using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
+   *   Instance instanceResource = Instance.newBuilder().build();
    *   InsertInstanceHttpRequest request = InsertInstanceHttpRequest.newBuilder()
    *     .setZone(zone.toString())
-   *     .setInstanceResource(instance)
+   *     .setInstanceResource(instanceResource)
    *     .build();
    *   Operation response = instanceClient.insertInstance(request);
    * }
@@ -885,10 +1138,10 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
-   *   Instance instance = Instance.newBuilder().build();
+   *   Instance instanceResource = Instance.newBuilder().build();
    *   InsertInstanceHttpRequest request = InsertInstanceHttpRequest.newBuilder()
    *     .setZone(zone.toString())
-   *     .setInstanceResource(instance)
+   *     .setInstanceResource(instanceResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.insertInstanceCallable().futureCall(request);
    *   // Do something
@@ -922,7 +1175,33 @@ public class InstanceClient implements BackgroundResource {
   public final ListInstancesPagedResponse listInstances(ZoneName zone) {
     ListInstancesHttpRequest request =
         ListInstancesHttpRequest.newBuilder()
-        .setZone(zone.toString())
+        .setZone(zone == null ? null : zone.toString())
+        .build();
+    return listInstances(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of instances contained within the specified zone.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
+   *   for (Instance element : instanceClient.listInstances(zone.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param zone The name of the zone for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListInstancesPagedResponse listInstances(String zone) {
+    ListInstancesHttpRequest request =
+        ListInstancesHttpRequest.newBuilder()
+        .setZone(zone)
         .build();
     return listInstances(request);
   }
@@ -1028,7 +1307,32 @@ public class InstanceClient implements BackgroundResource {
 
     ResetInstanceHttpRequest request =
         ResetInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
+        .build();
+    return resetInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Performs a hard reset on the instance.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   Operation response = instanceClient.resetInstance(instance.toString());
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance scoping this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation resetInstance(String instance) {
+
+    ResetInstanceHttpRequest request =
+        ResetInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
         .build();
     return resetInstance(request);
   }
@@ -1102,7 +1406,38 @@ public class InstanceClient implements BackgroundResource {
 
     SetDiskAutoDeleteInstanceHttpRequest request =
         SetDiskAutoDeleteInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
+        .setAutoDelete(autoDelete)
+        .setDeviceName(deviceName)
+        .build();
+    return setDiskAutoDeleteInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Sets the auto-delete flag for a disk attached to an instance.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   Boolean autoDelete = false;
+   *   String deviceName = "";
+   *   Operation response = instanceClient.setDiskAutoDeleteInstance(instance.toString(), autoDelete, deviceName);
+   * }
+   * </code></pre>
+   *
+   * @param instance The instance name.
+   * @param autoDelete Whether to auto-delete the disk when the instance is deleted.
+   * @param deviceName The device name of the disk to modify.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation setDiskAutoDeleteInstance(String instance, Boolean autoDelete, String deviceName) {
+
+    SetDiskAutoDeleteInstanceHttpRequest request =
+        SetDiskAutoDeleteInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
         .setAutoDelete(autoDelete)
         .setDeviceName(deviceName)
         .build();
@@ -1170,8 +1505,8 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   InstancesSetMachineTypeRequest instancesSetMachineTypeRequest = InstancesSetMachineTypeRequest.newBuilder().build();
-   *   Operation response = instanceClient.setMachineTypeInstance(instance, instancesSetMachineTypeRequest);
+   *   InstancesSetMachineTypeRequest instancesSetMachineTypeRequestResource = InstancesSetMachineTypeRequest.newBuilder().build();
+   *   Operation response = instanceClient.setMachineTypeInstance(instance, instancesSetMachineTypeRequestResource);
    * }
    * </code></pre>
    *
@@ -1184,7 +1519,7 @@ public class InstanceClient implements BackgroundResource {
 
     SetMachineTypeInstanceHttpRequest request =
         SetMachineTypeInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
         .setInstancesSetMachineTypeRequestResource(instancesSetMachineTypeRequestResource)
         .build();
     return setMachineTypeInstance(request);
@@ -1198,10 +1533,38 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   InstancesSetMachineTypeRequest instancesSetMachineTypeRequest = InstancesSetMachineTypeRequest.newBuilder().build();
+   *   InstancesSetMachineTypeRequest instancesSetMachineTypeRequestResource = InstancesSetMachineTypeRequest.newBuilder().build();
+   *   Operation response = instanceClient.setMachineTypeInstance(instance.toString(), instancesSetMachineTypeRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance scoping this request.
+   * @param instancesSetMachineTypeRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation setMachineTypeInstance(String instance, InstancesSetMachineTypeRequest instancesSetMachineTypeRequestResource) {
+
+    SetMachineTypeInstanceHttpRequest request =
+        SetMachineTypeInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
+        .setInstancesSetMachineTypeRequestResource(instancesSetMachineTypeRequestResource)
+        .build();
+    return setMachineTypeInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Changes the machine type for a stopped instance to the machine type specified in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstancesSetMachineTypeRequest instancesSetMachineTypeRequestResource = InstancesSetMachineTypeRequest.newBuilder().build();
    *   SetMachineTypeInstanceHttpRequest request = SetMachineTypeInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
-   *     .setInstancesSetMachineTypeRequestResource(instancesSetMachineTypeRequest)
+   *     .setInstancesSetMachineTypeRequestResource(instancesSetMachineTypeRequestResource)
    *     .build();
    *   Operation response = instanceClient.setMachineTypeInstance(request);
    * }
@@ -1223,10 +1586,10 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   InstancesSetMachineTypeRequest instancesSetMachineTypeRequest = InstancesSetMachineTypeRequest.newBuilder().build();
+   *   InstancesSetMachineTypeRequest instancesSetMachineTypeRequestResource = InstancesSetMachineTypeRequest.newBuilder().build();
    *   SetMachineTypeInstanceHttpRequest request = SetMachineTypeInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
-   *     .setInstancesSetMachineTypeRequestResource(instancesSetMachineTypeRequest)
+   *     .setInstancesSetMachineTypeRequestResource(instancesSetMachineTypeRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.setMachineTypeInstanceCallable().futureCall(request);
    *   // Do something
@@ -1247,8 +1610,8 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   Metadata metadata = Metadata.newBuilder().build();
-   *   Operation response = instanceClient.setMetadataInstance(instance, metadata);
+   *   Metadata metadataResource = Metadata.newBuilder().build();
+   *   Operation response = instanceClient.setMetadataInstance(instance, metadataResource);
    * }
    * </code></pre>
    *
@@ -1261,7 +1624,7 @@ public class InstanceClient implements BackgroundResource {
 
     SetMetadataInstanceHttpRequest request =
         SetMetadataInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
         .setMetadataResource(metadataResource)
         .build();
     return setMetadataInstance(request);
@@ -1275,10 +1638,38 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   Metadata metadata = Metadata.newBuilder().build();
+   *   Metadata metadataResource = Metadata.newBuilder().build();
+   *   Operation response = instanceClient.setMetadataInstance(instance.toString(), metadataResource);
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance scoping this request.
+   * @param metadataResource A metadata key/value entry.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation setMetadataInstance(String instance, Metadata metadataResource) {
+
+    SetMetadataInstanceHttpRequest request =
+        SetMetadataInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
+        .setMetadataResource(metadataResource)
+        .build();
+    return setMetadataInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Sets metadata for the specified instance to the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   Metadata metadataResource = Metadata.newBuilder().build();
    *   SetMetadataInstanceHttpRequest request = SetMetadataInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
-   *     .setMetadataResource(metadata)
+   *     .setMetadataResource(metadataResource)
    *     .build();
    *   Operation response = instanceClient.setMetadataInstance(request);
    * }
@@ -1300,10 +1691,10 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   Metadata metadata = Metadata.newBuilder().build();
+   *   Metadata metadataResource = Metadata.newBuilder().build();
    *   SetMetadataInstanceHttpRequest request = SetMetadataInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
-   *     .setMetadataResource(metadata)
+   *     .setMetadataResource(metadataResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.setMetadataInstanceCallable().futureCall(request);
    *   // Do something
@@ -1324,8 +1715,8 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   Scheduling scheduling = Scheduling.newBuilder().build();
-   *   Operation response = instanceClient.setSchedulingInstance(instance, scheduling);
+   *   Scheduling schedulingResource = Scheduling.newBuilder().build();
+   *   Operation response = instanceClient.setSchedulingInstance(instance, schedulingResource);
    * }
    * </code></pre>
    *
@@ -1338,7 +1729,7 @@ public class InstanceClient implements BackgroundResource {
 
     SetSchedulingInstanceHttpRequest request =
         SetSchedulingInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
         .setSchedulingResource(schedulingResource)
         .build();
     return setSchedulingInstance(request);
@@ -1352,10 +1743,38 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   Scheduling scheduling = Scheduling.newBuilder().build();
+   *   Scheduling schedulingResource = Scheduling.newBuilder().build();
+   *   Operation response = instanceClient.setSchedulingInstance(instance.toString(), schedulingResource);
+   * }
+   * </code></pre>
+   *
+   * @param instance Instance name.
+   * @param schedulingResource Sets the scheduling options for an Instance.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation setSchedulingInstance(String instance, Scheduling schedulingResource) {
+
+    SetSchedulingInstanceHttpRequest request =
+        SetSchedulingInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
+        .setSchedulingResource(schedulingResource)
+        .build();
+    return setSchedulingInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Sets an instance's scheduling options.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   Scheduling schedulingResource = Scheduling.newBuilder().build();
    *   SetSchedulingInstanceHttpRequest request = SetSchedulingInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
-   *     .setSchedulingResource(scheduling)
+   *     .setSchedulingResource(schedulingResource)
    *     .build();
    *   Operation response = instanceClient.setSchedulingInstance(request);
    * }
@@ -1377,10 +1796,10 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   Scheduling scheduling = Scheduling.newBuilder().build();
+   *   Scheduling schedulingResource = Scheduling.newBuilder().build();
    *   SetSchedulingInstanceHttpRequest request = SetSchedulingInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
-   *     .setSchedulingResource(scheduling)
+   *     .setSchedulingResource(schedulingResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.setSchedulingInstanceCallable().futureCall(request);
    *   // Do something
@@ -1401,8 +1820,8 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   InstancesSetServiceAccountRequest instancesSetServiceAccountRequest = InstancesSetServiceAccountRequest.newBuilder().build();
-   *   Operation response = instanceClient.setServiceAccountInstance(instance, instancesSetServiceAccountRequest);
+   *   InstancesSetServiceAccountRequest instancesSetServiceAccountRequestResource = InstancesSetServiceAccountRequest.newBuilder().build();
+   *   Operation response = instanceClient.setServiceAccountInstance(instance, instancesSetServiceAccountRequestResource);
    * }
    * </code></pre>
    *
@@ -1415,7 +1834,7 @@ public class InstanceClient implements BackgroundResource {
 
     SetServiceAccountInstanceHttpRequest request =
         SetServiceAccountInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
         .setInstancesSetServiceAccountRequestResource(instancesSetServiceAccountRequestResource)
         .build();
     return setServiceAccountInstance(request);
@@ -1429,10 +1848,38 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   InstancesSetServiceAccountRequest instancesSetServiceAccountRequest = InstancesSetServiceAccountRequest.newBuilder().build();
+   *   InstancesSetServiceAccountRequest instancesSetServiceAccountRequestResource = InstancesSetServiceAccountRequest.newBuilder().build();
+   *   Operation response = instanceClient.setServiceAccountInstance(instance.toString(), instancesSetServiceAccountRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance resource to start.
+   * @param instancesSetServiceAccountRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation setServiceAccountInstance(String instance, InstancesSetServiceAccountRequest instancesSetServiceAccountRequestResource) {
+
+    SetServiceAccountInstanceHttpRequest request =
+        SetServiceAccountInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
+        .setInstancesSetServiceAccountRequestResource(instancesSetServiceAccountRequestResource)
+        .build();
+    return setServiceAccountInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Sets the service account on the instance.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstancesSetServiceAccountRequest instancesSetServiceAccountRequestResource = InstancesSetServiceAccountRequest.newBuilder().build();
    *   SetServiceAccountInstanceHttpRequest request = SetServiceAccountInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
-   *     .setInstancesSetServiceAccountRequestResource(instancesSetServiceAccountRequest)
+   *     .setInstancesSetServiceAccountRequestResource(instancesSetServiceAccountRequestResource)
    *     .build();
    *   Operation response = instanceClient.setServiceAccountInstance(request);
    * }
@@ -1454,10 +1901,10 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   InstancesSetServiceAccountRequest instancesSetServiceAccountRequest = InstancesSetServiceAccountRequest.newBuilder().build();
+   *   InstancesSetServiceAccountRequest instancesSetServiceAccountRequestResource = InstancesSetServiceAccountRequest.newBuilder().build();
    *   SetServiceAccountInstanceHttpRequest request = SetServiceAccountInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
-   *     .setInstancesSetServiceAccountRequestResource(instancesSetServiceAccountRequest)
+   *     .setInstancesSetServiceAccountRequestResource(instancesSetServiceAccountRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.setServiceAccountInstanceCallable().futureCall(request);
    *   // Do something
@@ -1478,8 +1925,8 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   Tags tags = Tags.newBuilder().build();
-   *   Operation response = instanceClient.setTagsInstance(instance, tags);
+   *   Tags tagsResource = Tags.newBuilder().build();
+   *   Operation response = instanceClient.setTagsInstance(instance, tagsResource);
    * }
    * </code></pre>
    *
@@ -1492,7 +1939,7 @@ public class InstanceClient implements BackgroundResource {
 
     SetTagsInstanceHttpRequest request =
         SetTagsInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
         .setTagsResource(tagsResource)
         .build();
     return setTagsInstance(request);
@@ -1506,10 +1953,38 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   Tags tags = Tags.newBuilder().build();
+   *   Tags tagsResource = Tags.newBuilder().build();
+   *   Operation response = instanceClient.setTagsInstance(instance.toString(), tagsResource);
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance scoping this request.
+   * @param tagsResource A set of instance tags.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation setTagsInstance(String instance, Tags tagsResource) {
+
+    SetTagsInstanceHttpRequest request =
+        SetTagsInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
+        .setTagsResource(tagsResource)
+        .build();
+    return setTagsInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Sets tags for the specified instance to the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   Tags tagsResource = Tags.newBuilder().build();
    *   SetTagsInstanceHttpRequest request = SetTagsInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
-   *     .setTagsResource(tags)
+   *     .setTagsResource(tagsResource)
    *     .build();
    *   Operation response = instanceClient.setTagsInstance(request);
    * }
@@ -1531,10 +2006,10 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   Tags tags = Tags.newBuilder().build();
+   *   Tags tagsResource = Tags.newBuilder().build();
    *   SetTagsInstanceHttpRequest request = SetTagsInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
-   *     .setTagsResource(tags)
+   *     .setTagsResource(tagsResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.setTagsInstanceCallable().futureCall(request);
    *   // Do something
@@ -1567,7 +2042,32 @@ public class InstanceClient implements BackgroundResource {
 
     StartInstanceHttpRequest request =
         StartInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
+        .build();
+    return startInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Starts an instance that was stopped using the using the instances().stop method. For more information, see Restart an instance.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   Operation response = instanceClient.startInstance(instance.toString());
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance resource to start.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation startInstance(String instance) {
+
+    StartInstanceHttpRequest request =
+        StartInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
         .build();
     return startInstance(request);
   }
@@ -1625,8 +2125,8 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequest = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
-   *   Operation response = instanceClient.startWithEncryptionKeyInstance(instance, instancesStartWithEncryptionKeyRequest);
+   *   InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequestResource = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
+   *   Operation response = instanceClient.startWithEncryptionKeyInstance(instance, instancesStartWithEncryptionKeyRequestResource);
    * }
    * </code></pre>
    *
@@ -1639,7 +2139,7 @@ public class InstanceClient implements BackgroundResource {
 
     StartWithEncryptionKeyInstanceHttpRequest request =
         StartWithEncryptionKeyInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
         .setInstancesStartWithEncryptionKeyRequestResource(instancesStartWithEncryptionKeyRequestResource)
         .build();
     return startWithEncryptionKeyInstance(request);
@@ -1653,10 +2153,38 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequest = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
+   *   InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequestResource = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
+   *   Operation response = instanceClient.startWithEncryptionKeyInstance(instance.toString(), instancesStartWithEncryptionKeyRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance resource to start.
+   * @param instancesStartWithEncryptionKeyRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation startWithEncryptionKeyInstance(String instance, InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequestResource) {
+
+    StartWithEncryptionKeyInstanceHttpRequest request =
+        StartWithEncryptionKeyInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
+        .setInstancesStartWithEncryptionKeyRequestResource(instancesStartWithEncryptionKeyRequestResource)
+        .build();
+    return startWithEncryptionKeyInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Starts an instance that was stopped using the using the instances().stop method. For more information, see Restart an instance.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequestResource = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
    *   StartWithEncryptionKeyInstanceHttpRequest request = StartWithEncryptionKeyInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
-   *     .setInstancesStartWithEncryptionKeyRequestResource(instancesStartWithEncryptionKeyRequest)
+   *     .setInstancesStartWithEncryptionKeyRequestResource(instancesStartWithEncryptionKeyRequestResource)
    *     .build();
    *   Operation response = instanceClient.startWithEncryptionKeyInstance(request);
    * }
@@ -1678,10 +2206,10 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-   *   InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequest = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
+   *   InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequestResource = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
    *   StartWithEncryptionKeyInstanceHttpRequest request = StartWithEncryptionKeyInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
-   *     .setInstancesStartWithEncryptionKeyRequestResource(instancesStartWithEncryptionKeyRequest)
+   *     .setInstancesStartWithEncryptionKeyRequestResource(instancesStartWithEncryptionKeyRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceClient.startWithEncryptionKeyInstanceCallable().futureCall(request);
    *   // Do something
@@ -1714,7 +2242,32 @@ public class InstanceClient implements BackgroundResource {
 
     StopInstanceHttpRequest request =
         StopInstanceHttpRequest.newBuilder()
-        .setInstance(instance.toString())
+        .setInstance(instance == null ? null : instance.toString())
+        .build();
+    return stopInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Stops a running instance, shutting it down cleanly, and allows you to restart the instance at a later time. Stopped instances do not incur per-minute, virtual machine usage charges while they are stopped, but any resources that the virtual machine is using, such as persistent disks and static IP addresses, will continue to be charged until they are deleted. For more information, see Stopping an instance.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   Operation response = instanceClient.stopInstance(instance.toString());
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance resource to stop.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation stopInstance(String instance) {
+
+    StopInstanceHttpRequest request =
+        StopInstanceHttpRequest.newBuilder()
+        .setInstance(instance)
         .build();
     return stopInstance(request);
   }

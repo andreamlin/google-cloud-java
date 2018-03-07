@@ -23,10 +23,10 @@ import com.google.compute.v1.AddressList;
 import com.google.compute.v1.DeleteGlobalAddressHttpRequest;
 import com.google.compute.v1.GetGlobalAddressHttpRequest;
 import static com.google.compute.v1.GlobalAddressClient.ListGlobalAddressesPagedResponse;
-import com.google.compute.v1.GlobalAddressesAddressName;
 import com.google.compute.v1.InsertGlobalAddressHttpRequest;
 import com.google.compute.v1.ListGlobalAddressesHttpRequest;
 import com.google.compute.v1.Operation;
+import com.google.compute.v1.ProjectAddressName;
 import com.google.compute.v1.ProjectName;
 import javax.annotation.Generated;
 

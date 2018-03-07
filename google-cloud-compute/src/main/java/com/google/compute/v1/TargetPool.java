@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -45,7 +43,6 @@ public final class TargetPool implements ApiMessage {
   private final String region;
   private final String selfLink;
   private final String sessionAffinity;
-  private final Map<String, String> pathParams;
 
   private TargetPool() {
     this.backupPool = null;
@@ -60,7 +57,6 @@ public final class TargetPool implements ApiMessage {
     this.region = null;
     this.selfLink = null;
     this.sessionAffinity = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -90,8 +86,6 @@ public final class TargetPool implements ApiMessage {
     this.region = region;
     this.selfLink = selfLink;
     this.sessionAffinity = sessionAffinity;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -110,13 +104,21 @@ public final class TargetPool implements ApiMessage {
       fieldMap.put("failoverRatio", Collections.singletonList(String.valueOf(failoverRatio)));
     }
     if (fieldNames.contains("healthChecks") && healthChecks != null) {
-      fieldMap.put("healthChecks", healthChecks.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : healthChecks) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("healthChecks", stringList);
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
     }
     if (fieldNames.contains("instances") && instances != null) {
-      fieldMap.put("instances", instances.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : instances) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("instances", stringList);
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -137,8 +139,44 @@ public final class TargetPool implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("backupPool")) {
+      return String.valueOf(backupPool);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("failoverRatio")) {
+      return String.valueOf(failoverRatio);
+    }
+    if (fieldName.equals("healthChecks")) {
+      return String.valueOf(healthChecks);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("instances")) {
+      return String.valueOf(instances);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("region")) {
+      return String.valueOf(region);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("sessionAffinity")) {
+      return String.valueOf(sessionAffinity);
+    }
+    return null;
   }
 
   @Nullable
@@ -328,6 +366,9 @@ public final class TargetPool implements ApiMessage {
     }
 
     public Builder addAllHealthChecks(List<String> healthChecks) {
+      if (this.healthChecks == null) {
+        this.healthChecks = new LinkedList<>();
+      }
       this.healthChecks.addAll(healthChecks);
       return this;
     }
@@ -351,6 +392,9 @@ public final class TargetPool implements ApiMessage {
     }
 
     public Builder addAllInstances(List<String> instances) {
+      if (this.instances == null) {
+        this.instances = new LinkedList<>();
+      }
       this.instances.addAll(instances);
       return this;
     }

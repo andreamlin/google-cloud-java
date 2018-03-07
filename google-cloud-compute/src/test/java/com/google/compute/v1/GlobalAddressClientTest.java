@@ -44,7 +44,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class GlobalAddressClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static GlobalAddressClient client;
   private static GlobalAddressSettings clientSettings;
 
@@ -54,14 +54,14 @@ public class GlobalAddressClientTest {
         GlobalAddressSettings.newBuilder()
            .setTransportChannelProvider(
                GlobalAddressSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        GlobalAddressClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -116,16 +116,16 @@ public class GlobalAddressClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteGlobalAddressMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteGlobalAddressMethodDescriptor);
 
-    GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
+    ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
 
     Operation actualResponse =
         client.deleteGlobalAddress(address);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -133,11 +133,11 @@ public class GlobalAddressClientTest {
   @SuppressWarnings("all")
   public void deleteGlobalAddressExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteGlobalAddressMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteGlobalAddressMethodDescriptor);
 
     try {
-      GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
+      ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
 
       client.deleteGlobalAddress(address);
       Assert.fail("No exception raised");
@@ -149,7 +149,7 @@ public class GlobalAddressClientTest {
   @Test
   @SuppressWarnings("all")
   public void getGlobalAddressTest() {
-    GlobalAddressesAddressName address2 = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
+    ProjectAddressName address2 = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
     String kind = "kind3292052";
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
@@ -169,16 +169,16 @@ public class GlobalAddressClientTest {
       .setSelfLink(selfLink)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getGlobalAddressMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getGlobalAddressMethodDescriptor);
 
-    GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
+    ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
 
     Address actualResponse =
         client.getGlobalAddress(address);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -186,11 +186,11 @@ public class GlobalAddressClientTest {
   @SuppressWarnings("all")
   public void getGlobalAddressExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getGlobalAddressMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getGlobalAddressMethodDescriptor);
 
     try {
-      GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
+      ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
 
       client.getGlobalAddress(address);
       Assert.fail("No exception raised");
@@ -246,17 +246,17 @@ public class GlobalAddressClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertGlobalAddressMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertGlobalAddressMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
-    Address address = Address.newBuilder().build();
+    Address addressResource = Address.newBuilder().build();
 
     Operation actualResponse =
-        client.insertGlobalAddress(project, address);
+        client.insertGlobalAddress(project, addressResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -264,14 +264,14 @@ public class GlobalAddressClientTest {
   @SuppressWarnings("all")
   public void insertGlobalAddressExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertGlobalAddressMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertGlobalAddressMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
-      Address address = Address.newBuilder().build();
+      Address addressResource = Address.newBuilder().build();
 
-      client.insertGlobalAddress(project, address);
+      client.insertGlobalAddress(project, addressResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -294,8 +294,8 @@ public class GlobalAddressClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listGlobalAddressesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listGlobalAddressesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -305,7 +305,7 @@ public class GlobalAddressClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -313,8 +313,8 @@ public class GlobalAddressClientTest {
   @SuppressWarnings("all")
   public void listGlobalAddressesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listGlobalAddressesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listGlobalAddressesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

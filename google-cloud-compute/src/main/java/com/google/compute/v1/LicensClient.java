@@ -189,7 +189,32 @@ public class LicensClient implements BackgroundResource {
 
     GetLicensHttpRequest request =
         GetLicensHttpRequest.newBuilder()
-        .setLicense(license.toString())
+        .setLicense(license == null ? null : license.toString())
+        .build();
+    return getLicens(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified License resource. Get a list of available licenses by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (LicensClient licensClient = LicensClient.create()) {
+   *   LicenseName license = LicenseName.of("[PROJECT]", "[LICENSE]");
+   *   License response = licensClient.getLicens(license.toString());
+   * }
+   * </code></pre>
+   *
+   * @param license Name of the License resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final License getLicens(String license) {
+
+    GetLicensHttpRequest request =
+        GetLicensHttpRequest.newBuilder()
+        .setLicense(license)
         .build();
     return getLicens(request);
   }

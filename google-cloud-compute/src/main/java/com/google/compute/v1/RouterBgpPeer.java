@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -39,7 +37,6 @@ public final class RouterBgpPeer implements ApiMessage {
   private final String name;
   private final Integer peerAsn;
   private final String peerIpAddress;
-  private final Map<String, String> pathParams;
 
   private RouterBgpPeer() {
     this.advertisedRoutePriority = null;
@@ -48,7 +45,6 @@ public final class RouterBgpPeer implements ApiMessage {
     this.name = null;
     this.peerAsn = null;
     this.peerIpAddress = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -66,8 +62,6 @@ public final class RouterBgpPeer implements ApiMessage {
     this.name = name;
     this.peerAsn = peerAsn;
     this.peerIpAddress = peerIpAddress;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -95,8 +89,26 @@ public final class RouterBgpPeer implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("advertisedRoutePriority")) {
+      return String.valueOf(advertisedRoutePriority);
+    }
+    if (fieldName.equals("interfaceName")) {
+      return String.valueOf(interfaceName);
+    }
+    if (fieldName.equals("ipAddress")) {
+      return String.valueOf(ipAddress);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("peerAsn")) {
+      return String.valueOf(peerAsn);
+    }
+    if (fieldName.equals("peerIpAddress")) {
+      return String.valueOf(peerIpAddress);
+    }
+    return null;
   }
 
   @Nullable

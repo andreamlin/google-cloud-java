@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -35,12 +33,10 @@ import javax.annotation.Nullable;
 public final class InstancesSetServiceAccountRequest implements ApiMessage {
   private final String email;
   private final List<String> scopes;
-  private final Map<String, String> pathParams;
 
   private InstancesSetServiceAccountRequest() {
     this.email = null;
     this.scopes = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -50,8 +46,6 @@ public final class InstancesSetServiceAccountRequest implements ApiMessage {
       ) {
     this.email = email;
     this.scopes = scopes;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -61,14 +55,24 @@ public final class InstancesSetServiceAccountRequest implements ApiMessage {
       fieldMap.put("email", Collections.singletonList(String.valueOf(email)));
     }
     if (fieldNames.contains("scopes") && scopes != null) {
-      fieldMap.put("scopes", scopes.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : scopes) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("scopes", stringList);
     }
     return fieldMap;
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("email")) {
+      return String.valueOf(email);
+    }
+    if (fieldName.equals("scopes")) {
+      return String.valueOf(scopes);
+    }
+    return null;
   }
 
   @Nullable
@@ -141,6 +145,9 @@ public final class InstancesSetServiceAccountRequest implements ApiMessage {
     }
 
     public Builder addAllScopes(List<String> scopes) {
+      if (this.scopes == null) {
+        this.scopes = new LinkedList<>();
+      }
       this.scopes.addAll(scopes);
       return this;
     }

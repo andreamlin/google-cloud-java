@@ -189,7 +189,32 @@ public class HttpHealthCheckClient implements BackgroundResource {
 
     DeleteHttpHealthCheckHttpRequest request =
         DeleteHttpHealthCheckHttpRequest.newBuilder()
-        .setHttpHealthCheck(httpHealthCheck.toString())
+        .setHttpHealthCheck(httpHealthCheck == null ? null : httpHealthCheck.toString())
+        .build();
+    return deleteHttpHealthCheck(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified HttpHealthCheck resource.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
+   *   HttpHealthCheckName httpHealthCheck = HttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
+   *   Operation response = httpHealthCheckClient.deleteHttpHealthCheck(httpHealthCheck.toString());
+   * }
+   * </code></pre>
+   *
+   * @param httpHealthCheck Name of the HttpHealthCheck resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteHttpHealthCheck(String httpHealthCheck) {
+
+    DeleteHttpHealthCheckHttpRequest request =
+        DeleteHttpHealthCheckHttpRequest.newBuilder()
+        .setHttpHealthCheck(httpHealthCheck)
         .build();
     return deleteHttpHealthCheck(request);
   }
@@ -259,7 +284,32 @@ public class HttpHealthCheckClient implements BackgroundResource {
 
     GetHttpHealthCheckHttpRequest request =
         GetHttpHealthCheckHttpRequest.newBuilder()
-        .setHttpHealthCheck(httpHealthCheck.toString())
+        .setHttpHealthCheck(httpHealthCheck == null ? null : httpHealthCheck.toString())
+        .build();
+    return getHttpHealthCheck(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified HttpHealthCheck resource. Get a list of available HTTP health checks by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
+   *   HttpHealthCheckName httpHealthCheck = HttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
+   *   HttpHealthCheck response = httpHealthCheckClient.getHttpHealthCheck(httpHealthCheck.toString());
+   * }
+   * </code></pre>
+   *
+   * @param httpHealthCheck Name of the HttpHealthCheck resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final HttpHealthCheck getHttpHealthCheck(String httpHealthCheck) {
+
+    GetHttpHealthCheckHttpRequest request =
+        GetHttpHealthCheckHttpRequest.newBuilder()
+        .setHttpHealthCheck(httpHealthCheck)
         .build();
     return getHttpHealthCheck(request);
   }
@@ -317,8 +367,8 @@ public class HttpHealthCheckClient implements BackgroundResource {
    * <pre><code>
    * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   HttpHealthCheck httpHealthCheck = HttpHealthCheck.newBuilder().build();
-   *   Operation response = httpHealthCheckClient.insertHttpHealthCheck(project, httpHealthCheck);
+   *   HttpHealthCheck httpHealthCheckResource = HttpHealthCheck.newBuilder().build();
+   *   Operation response = httpHealthCheckClient.insertHttpHealthCheck(project, httpHealthCheckResource);
    * }
    * </code></pre>
    *
@@ -331,7 +381,7 @@ public class HttpHealthCheckClient implements BackgroundResource {
 
     InsertHttpHealthCheckHttpRequest request =
         InsertHttpHealthCheckHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
         .setHttpHealthCheckResource(httpHealthCheckResource)
         .build();
     return insertHttpHealthCheck(request);
@@ -345,10 +395,38 @@ public class HttpHealthCheckClient implements BackgroundResource {
    * <pre><code>
    * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   HttpHealthCheck httpHealthCheck = HttpHealthCheck.newBuilder().build();
+   *   HttpHealthCheck httpHealthCheckResource = HttpHealthCheck.newBuilder().build();
+   *   Operation response = httpHealthCheckClient.insertHttpHealthCheck(project.toString(), httpHealthCheckResource);
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @param httpHealthCheckResource An HttpHealthCheck resource. This resource defines a template for how individual instances should be checked for health, via HTTP.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertHttpHealthCheck(String project, HttpHealthCheck httpHealthCheckResource) {
+
+    InsertHttpHealthCheckHttpRequest request =
+        InsertHttpHealthCheckHttpRequest.newBuilder()
+        .setProject(project)
+        .setHttpHealthCheckResource(httpHealthCheckResource)
+        .build();
+    return insertHttpHealthCheck(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a HttpHealthCheck resource in the specified project using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   HttpHealthCheck httpHealthCheckResource = HttpHealthCheck.newBuilder().build();
    *   InsertHttpHealthCheckHttpRequest request = InsertHttpHealthCheckHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setHttpHealthCheckResource(httpHealthCheck)
+   *     .setHttpHealthCheckResource(httpHealthCheckResource)
    *     .build();
    *   Operation response = httpHealthCheckClient.insertHttpHealthCheck(request);
    * }
@@ -370,10 +448,10 @@ public class HttpHealthCheckClient implements BackgroundResource {
    * <pre><code>
    * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   HttpHealthCheck httpHealthCheck = HttpHealthCheck.newBuilder().build();
+   *   HttpHealthCheck httpHealthCheckResource = HttpHealthCheck.newBuilder().build();
    *   InsertHttpHealthCheckHttpRequest request = InsertHttpHealthCheckHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setHttpHealthCheckResource(httpHealthCheck)
+   *     .setHttpHealthCheckResource(httpHealthCheckResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = httpHealthCheckClient.insertHttpHealthCheckCallable().futureCall(request);
    *   // Do something
@@ -407,7 +485,33 @@ public class HttpHealthCheckClient implements BackgroundResource {
   public final ListHttpHealthChecksPagedResponse listHttpHealthChecks(ProjectName project) {
     ListHttpHealthChecksHttpRequest request =
         ListHttpHealthChecksHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return listHttpHealthChecks(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of HttpHealthCheck resources available to the specified project.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (HttpHealthCheck element : httpHealthCheckClient.listHttpHealthChecks(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListHttpHealthChecksPagedResponse listHttpHealthChecks(String project) {
+    ListHttpHealthChecksHttpRequest request =
+        ListHttpHealthChecksHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return listHttpHealthChecks(request);
   }
@@ -501,7 +605,8 @@ public class HttpHealthCheckClient implements BackgroundResource {
    * <pre><code>
    * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
    *   HttpHealthCheckName httpHealthCheck = HttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
-   *   Operation response = httpHealthCheckClient.patchHttpHealthCheck(httpHealthCheck);
+   *   HttpHealthCheck httpHealthCheckResource = HttpHealthCheck.newBuilder().build();
+   *   Operation response = httpHealthCheckClient.patchHttpHealthCheck(httpHealthCheck, httpHealthCheckResource);
    * }
    * </code></pre>
    *
@@ -514,7 +619,7 @@ public class HttpHealthCheckClient implements BackgroundResource {
 
     PatchHttpHealthCheckHttpRequest request =
         PatchHttpHealthCheckHttpRequest.newBuilder()
-        .setHttpHealthCheck(httpHealthCheck.toString())
+        .setHttpHealthCheck(httpHealthCheck == null ? null : httpHealthCheck.toString())
         .setHttpHealthCheckResource(httpHealthCheckResource)
         .build();
     return patchHttpHealthCheck(request);
@@ -528,8 +633,38 @@ public class HttpHealthCheckClient implements BackgroundResource {
    * <pre><code>
    * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
    *   HttpHealthCheckName httpHealthCheck = HttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
+   *   HttpHealthCheck httpHealthCheckResource = HttpHealthCheck.newBuilder().build();
+   *   Operation response = httpHealthCheckClient.patchHttpHealthCheck(httpHealthCheck.toString(), httpHealthCheckResource);
+   * }
+   * </code></pre>
+   *
+   * @param httpHealthCheck Name of the HttpHealthCheck resource to update.
+   * @param httpHealthCheckResource An HttpHealthCheck resource. This resource defines a template for how individual instances should be checked for health, via HTTP.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation patchHttpHealthCheck(String httpHealthCheck, HttpHealthCheck httpHealthCheckResource) {
+
+    PatchHttpHealthCheckHttpRequest request =
+        PatchHttpHealthCheckHttpRequest.newBuilder()
+        .setHttpHealthCheck(httpHealthCheck)
+        .setHttpHealthCheckResource(httpHealthCheckResource)
+        .build();
+    return patchHttpHealthCheck(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates a HttpHealthCheck resource in the specified project using the data included in the request. This method supports patch semantics.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
+   *   HttpHealthCheckName httpHealthCheck = HttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
+   *   HttpHealthCheck httpHealthCheckResource = HttpHealthCheck.newBuilder().build();
    *   PatchHttpHealthCheckHttpRequest request = PatchHttpHealthCheckHttpRequest.newBuilder()
    *     .setHttpHealthCheck(httpHealthCheck.toString())
+   *     .setHttpHealthCheckResource(httpHealthCheckResource)
    *     .build();
    *   Operation response = httpHealthCheckClient.patchHttpHealthCheck(request);
    * }
@@ -551,8 +686,10 @@ public class HttpHealthCheckClient implements BackgroundResource {
    * <pre><code>
    * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
    *   HttpHealthCheckName httpHealthCheck = HttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
+   *   HttpHealthCheck httpHealthCheckResource = HttpHealthCheck.newBuilder().build();
    *   PatchHttpHealthCheckHttpRequest request = PatchHttpHealthCheckHttpRequest.newBuilder()
    *     .setHttpHealthCheck(httpHealthCheck.toString())
+   *     .setHttpHealthCheckResource(httpHealthCheckResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = httpHealthCheckClient.patchHttpHealthCheckCallable().futureCall(request);
    *   // Do something
@@ -573,7 +710,8 @@ public class HttpHealthCheckClient implements BackgroundResource {
    * <pre><code>
    * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
    *   HttpHealthCheckName httpHealthCheck = HttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
-   *   Operation response = httpHealthCheckClient.updateHttpHealthCheck(httpHealthCheck);
+   *   HttpHealthCheck httpHealthCheckResource = HttpHealthCheck.newBuilder().build();
+   *   Operation response = httpHealthCheckClient.updateHttpHealthCheck(httpHealthCheck, httpHealthCheckResource);
    * }
    * </code></pre>
    *
@@ -586,7 +724,7 @@ public class HttpHealthCheckClient implements BackgroundResource {
 
     UpdateHttpHealthCheckHttpRequest request =
         UpdateHttpHealthCheckHttpRequest.newBuilder()
-        .setHttpHealthCheck(httpHealthCheck.toString())
+        .setHttpHealthCheck(httpHealthCheck == null ? null : httpHealthCheck.toString())
         .setHttpHealthCheckResource(httpHealthCheckResource)
         .build();
     return updateHttpHealthCheck(request);
@@ -600,8 +738,38 @@ public class HttpHealthCheckClient implements BackgroundResource {
    * <pre><code>
    * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
    *   HttpHealthCheckName httpHealthCheck = HttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
+   *   HttpHealthCheck httpHealthCheckResource = HttpHealthCheck.newBuilder().build();
+   *   Operation response = httpHealthCheckClient.updateHttpHealthCheck(httpHealthCheck.toString(), httpHealthCheckResource);
+   * }
+   * </code></pre>
+   *
+   * @param httpHealthCheck Name of the HttpHealthCheck resource to update.
+   * @param httpHealthCheckResource An HttpHealthCheck resource. This resource defines a template for how individual instances should be checked for health, via HTTP.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation updateHttpHealthCheck(String httpHealthCheck, HttpHealthCheck httpHealthCheckResource) {
+
+    UpdateHttpHealthCheckHttpRequest request =
+        UpdateHttpHealthCheckHttpRequest.newBuilder()
+        .setHttpHealthCheck(httpHealthCheck)
+        .setHttpHealthCheckResource(httpHealthCheckResource)
+        .build();
+    return updateHttpHealthCheck(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates a HttpHealthCheck resource in the specified project using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
+   *   HttpHealthCheckName httpHealthCheck = HttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
+   *   HttpHealthCheck httpHealthCheckResource = HttpHealthCheck.newBuilder().build();
    *   UpdateHttpHealthCheckHttpRequest request = UpdateHttpHealthCheckHttpRequest.newBuilder()
    *     .setHttpHealthCheck(httpHealthCheck.toString())
+   *     .setHttpHealthCheckResource(httpHealthCheckResource)
    *     .build();
    *   Operation response = httpHealthCheckClient.updateHttpHealthCheck(request);
    * }
@@ -623,8 +791,10 @@ public class HttpHealthCheckClient implements BackgroundResource {
    * <pre><code>
    * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
    *   HttpHealthCheckName httpHealthCheck = HttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
+   *   HttpHealthCheck httpHealthCheckResource = HttpHealthCheck.newBuilder().build();
    *   UpdateHttpHealthCheckHttpRequest request = UpdateHttpHealthCheckHttpRequest.newBuilder()
    *     .setHttpHealthCheck(httpHealthCheck.toString())
+   *     .setHttpHealthCheckResource(httpHealthCheckResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = httpHealthCheckClient.updateHttpHealthCheckCallable().futureCall(request);
    *   // Do something

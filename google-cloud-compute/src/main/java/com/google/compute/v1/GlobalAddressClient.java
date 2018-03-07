@@ -53,7 +53,7 @@ import javax.annotation.Generated;
  * <pre>
  * <code>
  * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
- *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
+ *   ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
  *   Operation response = globalAddressClient.deleteGlobalAddress(address);
  * }
  * </code>
@@ -176,7 +176,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
+   *   ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
    *   Operation response = globalAddressClient.deleteGlobalAddress(address);
    * }
    * </code></pre>
@@ -185,11 +185,11 @@ public class GlobalAddressClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Operation deleteGlobalAddress(GlobalAddressesAddressName address) {
+  public final Operation deleteGlobalAddress(ProjectAddressName address) {
 
     DeleteGlobalAddressHttpRequest request =
         DeleteGlobalAddressHttpRequest.newBuilder()
-        .setAddress(address.toString())
+        .setAddress(address == null ? null : address.toString())
         .build();
     return deleteGlobalAddress(request);
   }
@@ -201,7 +201,32 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
+   *   ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
+   *   Operation response = globalAddressClient.deleteGlobalAddress(address.toString());
+   * }
+   * </code></pre>
+   *
+   * @param address Name of the address resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteGlobalAddress(String address) {
+
+    DeleteGlobalAddressHttpRequest request =
+        DeleteGlobalAddressHttpRequest.newBuilder()
+        .setAddress(address)
+        .build();
+    return deleteGlobalAddress(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified address resource.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
+   *   ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
    *   DeleteGlobalAddressHttpRequest request = DeleteGlobalAddressHttpRequest.newBuilder()
    *     .setAddress(address.toString())
    *     .build();
@@ -224,7 +249,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
+   *   ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
    *   DeleteGlobalAddressHttpRequest request = DeleteGlobalAddressHttpRequest.newBuilder()
    *     .setAddress(address.toString())
    *     .build();
@@ -246,7 +271,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
+   *   ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
    *   Address response = globalAddressClient.getGlobalAddress(address);
    * }
    * </code></pre>
@@ -255,11 +280,11 @@ public class GlobalAddressClient implements BackgroundResource {
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
-  public final Address getGlobalAddress(GlobalAddressesAddressName address) {
+  public final Address getGlobalAddress(ProjectAddressName address) {
 
     GetGlobalAddressHttpRequest request =
         GetGlobalAddressHttpRequest.newBuilder()
-        .setAddress(address.toString())
+        .setAddress(address == null ? null : address.toString())
         .build();
     return getGlobalAddress(request);
   }
@@ -271,7 +296,32 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
+   *   ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
+   *   Address response = globalAddressClient.getGlobalAddress(address.toString());
+   * }
+   * </code></pre>
+   *
+   * @param address Name of the address resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Address getGlobalAddress(String address) {
+
+    GetGlobalAddressHttpRequest request =
+        GetGlobalAddressHttpRequest.newBuilder()
+        .setAddress(address)
+        .build();
+    return getGlobalAddress(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified address resource. Get a list of available addresses by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
+   *   ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
    *   GetGlobalAddressHttpRequest request = GetGlobalAddressHttpRequest.newBuilder()
    *     .setAddress(address.toString())
    *     .build();
@@ -294,7 +344,7 @@ public class GlobalAddressClient implements BackgroundResource {
    * Sample code:
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
-   *   GlobalAddressesAddressName address = GlobalAddressesAddressName.of("[PROJECT]", "[ADDRESS]");
+   *   ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
    *   GetGlobalAddressHttpRequest request = GetGlobalAddressHttpRequest.newBuilder()
    *     .setAddress(address.toString())
    *     .build();
@@ -317,8 +367,8 @@ public class GlobalAddressClient implements BackgroundResource {
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Address address = Address.newBuilder().build();
-   *   Operation response = globalAddressClient.insertGlobalAddress(project, address);
+   *   Address addressResource = Address.newBuilder().build();
+   *   Operation response = globalAddressClient.insertGlobalAddress(project, addressResource);
    * }
    * </code></pre>
    *
@@ -331,7 +381,7 @@ public class GlobalAddressClient implements BackgroundResource {
 
     InsertGlobalAddressHttpRequest request =
         InsertGlobalAddressHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
         .setAddressResource(addressResource)
         .build();
     return insertGlobalAddress(request);
@@ -345,10 +395,38 @@ public class GlobalAddressClient implements BackgroundResource {
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Address address = Address.newBuilder().build();
+   *   Address addressResource = Address.newBuilder().build();
+   *   Operation response = globalAddressClient.insertGlobalAddress(project.toString(), addressResource);
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @param addressResource A reserved address resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertGlobalAddress(String project, Address addressResource) {
+
+    InsertGlobalAddressHttpRequest request =
+        InsertGlobalAddressHttpRequest.newBuilder()
+        .setProject(project)
+        .setAddressResource(addressResource)
+        .build();
+    return insertGlobalAddress(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates an address resource in the specified project using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   Address addressResource = Address.newBuilder().build();
    *   InsertGlobalAddressHttpRequest request = InsertGlobalAddressHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setAddressResource(address)
+   *     .setAddressResource(addressResource)
    *     .build();
    *   Operation response = globalAddressClient.insertGlobalAddress(request);
    * }
@@ -370,10 +448,10 @@ public class GlobalAddressClient implements BackgroundResource {
    * <pre><code>
    * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Address address = Address.newBuilder().build();
+   *   Address addressResource = Address.newBuilder().build();
    *   InsertGlobalAddressHttpRequest request = InsertGlobalAddressHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setAddressResource(address)
+   *     .setAddressResource(addressResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = globalAddressClient.insertGlobalAddressCallable().futureCall(request);
    *   // Do something
@@ -407,7 +485,33 @@ public class GlobalAddressClient implements BackgroundResource {
   public final ListGlobalAddressesPagedResponse listGlobalAddresses(ProjectName project) {
     ListGlobalAddressesHttpRequest request =
         ListGlobalAddressesHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return listGlobalAddresses(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves a list of global addresses.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (Address element : globalAddressClient.listGlobalAddresses(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListGlobalAddressesPagedResponse listGlobalAddresses(String project) {
+    ListGlobalAddressesHttpRequest request =
+        ListGlobalAddressesHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return listGlobalAddresses(request);
   }

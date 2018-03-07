@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -35,12 +33,10 @@ import javax.annotation.Nullable;
 public final class ForwardingRulesScopedList implements ApiMessage {
   private final List<ForwardingRule> forwardingRules;
   private final Warning warning;
-  private final Map<String, String> pathParams;
 
   private ForwardingRulesScopedList() {
     this.forwardingRules = null;
     this.warning = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -50,15 +46,17 @@ public final class ForwardingRulesScopedList implements ApiMessage {
       ) {
     this.forwardingRules = forwardingRules;
     this.warning = warning;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("forwardingRules") && forwardingRules != null) {
-      fieldMap.put("forwardingRules", forwardingRules.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (ForwardingRule item : forwardingRules) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("forwardingRules", stringList);
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -67,8 +65,14 @@ public final class ForwardingRulesScopedList implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("forwardingRules")) {
+      return String.valueOf(forwardingRules);
+    }
+    if (fieldName.equals("warning")) {
+      return String.valueOf(warning);
+    }
+    return null;
   }
 
   @Nullable
@@ -132,6 +136,9 @@ public final class ForwardingRulesScopedList implements ApiMessage {
     }
 
     public Builder addAllForwardingRules(List<ForwardingRule> forwardingRules) {
+      if (this.forwardingRules == null) {
+        this.forwardingRules = new LinkedList<>();
+      }
       this.forwardingRules.addAll(forwardingRules);
       return this;
     }

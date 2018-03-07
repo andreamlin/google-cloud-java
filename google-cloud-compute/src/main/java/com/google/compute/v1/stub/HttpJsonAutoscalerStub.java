@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.AggregatedListAutoscalersHttpRequest;
@@ -66,7 +66,7 @@ import javax.annotation.Generated;
 public class HttpJsonAutoscalerStub extends AutoscalerStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList> aggregatedListAutoscalersMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList>newBuilder()
           .setMethodName("compute.autoscalers.aggregatedList")
@@ -76,10 +76,11 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteAutoscalerHttpRequest, Operation> deleteAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<DeleteAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.autoscalers.delete")
@@ -88,10 +89,11 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers/{autoscaler}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(AutoscalerName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("autoscaler")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetAutoscalerHttpRequest, Autoscaler> getAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<GetAutoscalerHttpRequest, Autoscaler>newBuilder()
           .setMethodName("compute.autoscalers.get")
@@ -100,10 +102,11 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers/{autoscaler}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(AutoscalerName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("autoscaler")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertAutoscalerHttpRequest, Operation> insertAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<InsertAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.autoscalers.insert")
@@ -112,10 +115,11 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setEndpointPathTemplate("{project}/zones/{zone}/autoscalers")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ZoneName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("zone")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListAutoscalersHttpRequest, AutoscalerList> listAutoscalersMethodDescriptor =
       ApiMethodDescriptor.<ListAutoscalersHttpRequest, AutoscalerList>newBuilder()
           .setMethodName("compute.autoscalers.list")
@@ -125,10 +129,11 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ZoneName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("zone")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<PatchAutoscalerHttpRequest, Operation> patchAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<PatchAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.autoscalers.patch")
@@ -138,10 +143,11 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "autoscaler"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ZoneName.newFactory()))
           .setHttpMethod(HttpMethods.PATCH)
+          .setResourceNameField("zone")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<UpdateAutoscalerHttpRequest, Operation> updateAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<UpdateAutoscalerHttpRequest, Operation>newBuilder()
           .setMethodName("compute.autoscalers.update")
@@ -151,8 +157,9 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "autoscaler"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ZoneName.newFactory()))
           .setHttpMethod(HttpMethods.PUT)
+          .setResourceNameField("zone")
           .build();
 
   private final BackgroundResource backgroundResources;

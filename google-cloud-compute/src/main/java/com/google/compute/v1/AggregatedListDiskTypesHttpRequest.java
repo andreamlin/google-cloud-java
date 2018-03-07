@@ -18,9 +18,9 @@ package com.google.compute.v1;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -43,7 +43,6 @@ public final class AggregatedListDiskTypesHttpRequest implements ApiMessage {
   private final String project;
   private final String quotaUser;
   private final String userIp;
-  private final Map<String, String> pathParams;
 
   private AggregatedListDiskTypesHttpRequest() {
     this.access_token = null;
@@ -58,7 +57,6 @@ public final class AggregatedListDiskTypesHttpRequest implements ApiMessage {
     this.project = null;
     this.quotaUser = null;
     this.userIp = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -88,10 +86,6 @@ public final class AggregatedListDiskTypesHttpRequest implements ApiMessage {
     this.project = project;
     this.quotaUser = quotaUser;
     this.userIp = userIp;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    ProjectName resourceName = ProjectName.parse(project);
-    mapBuilder.put("project", resourceName.getProject());
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -137,8 +131,44 @@ public final class AggregatedListDiskTypesHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("access_token")) {
+      return String.valueOf(access_token);
+    }
+    if (fieldName.equals("callback")) {
+      return String.valueOf(callback);
+    }
+    if (fieldName.equals("fields")) {
+      return String.valueOf(fields);
+    }
+    if (fieldName.equals("filter")) {
+      return String.valueOf(filter);
+    }
+    if (fieldName.equals("key")) {
+      return String.valueOf(key);
+    }
+    if (fieldName.equals("maxResults")) {
+      return String.valueOf(maxResults);
+    }
+    if (fieldName.equals("orderBy")) {
+      return String.valueOf(orderBy);
+    }
+    if (fieldName.equals("pageToken")) {
+      return String.valueOf(pageToken);
+    }
+    if (fieldName.equals("prettyPrint")) {
+      return String.valueOf(prettyPrint);
+    }
+    if (fieldName.equals("project")) {
+      return String.valueOf(project);
+    }
+    if (fieldName.equals("quotaUser")) {
+      return String.valueOf(quotaUser);
+    }
+    if (fieldName.equals("userIp")) {
+      return String.valueOf(userIp);
+    }
+    return null;
   }
 
   @Nullable

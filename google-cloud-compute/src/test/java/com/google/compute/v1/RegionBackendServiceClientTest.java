@@ -47,7 +47,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class RegionBackendServiceClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static RegionBackendServiceClient client;
   private static RegionBackendServiceSettings clientSettings;
 
@@ -57,14 +57,14 @@ public class RegionBackendServiceClientTest {
         RegionBackendServiceSettings.newBuilder()
            .setTransportChannelProvider(
                RegionBackendServiceSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        RegionBackendServiceClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -119,16 +119,16 @@ public class RegionBackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteRegionBackendServiceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteRegionBackendServiceMethodDescriptor);
 
-    RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+    ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
 
     Operation actualResponse =
         client.deleteRegionBackendService(backendService);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -136,11 +136,11 @@ public class RegionBackendServiceClientTest {
   @SuppressWarnings("all")
   public void deleteRegionBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteRegionBackendServiceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteRegionBackendServiceMethodDescriptor);
 
     try {
-      RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+      ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
 
       client.deleteRegionBackendService(backendService);
       Assert.fail("No exception raised");
@@ -186,16 +186,16 @@ public class RegionBackendServiceClientTest {
       .setId(id)
       .setRegion(region.toString())
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getRegionBackendServiceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getRegionBackendServiceMethodDescriptor);
 
-    RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+    ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
 
     BackendService actualResponse =
         client.getRegionBackendService(backendService);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -203,11 +203,11 @@ public class RegionBackendServiceClientTest {
   @SuppressWarnings("all")
   public void getRegionBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getRegionBackendServiceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getRegionBackendServiceMethodDescriptor);
 
     try {
-      RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+      ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
 
       client.getRegionBackendService(backendService);
       Assert.fail("No exception raised");
@@ -223,17 +223,17 @@ public class RegionBackendServiceClientTest {
     BackendServiceGroupHealth expectedResponse = BackendServiceGroupHealth.newBuilder()
       .setKind(kind)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getHealthRegionBackendServiceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getHealthRegionBackendServiceMethodDescriptor);
 
-    RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
-    ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
+    ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+    ResourceGroupReference resourceGroupReferenceResource = ResourceGroupReference.newBuilder().build();
 
     BackendServiceGroupHealth actualResponse =
-        client.getHealthRegionBackendService(backendService, resourceGroupReference);
+        client.getHealthRegionBackendService(backendService, resourceGroupReferenceResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -241,14 +241,14 @@ public class RegionBackendServiceClientTest {
   @SuppressWarnings("all")
   public void getHealthRegionBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getHealthRegionBackendServiceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getHealthRegionBackendServiceMethodDescriptor);
 
     try {
-      RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
-      ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
+      ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+      ResourceGroupReference resourceGroupReferenceResource = ResourceGroupReference.newBuilder().build();
 
-      client.getHealthRegionBackendService(backendService, resourceGroupReference);
+      client.getHealthRegionBackendService(backendService, resourceGroupReferenceResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -302,17 +302,17 @@ public class RegionBackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertRegionBackendServiceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertRegionBackendServiceMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-    BackendService backendService = BackendService.newBuilder().build();
+    BackendService backendServiceResource = BackendService.newBuilder().build();
 
     Operation actualResponse =
-        client.insertRegionBackendService(region, backendService);
+        client.insertRegionBackendService(region, backendServiceResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -320,14 +320,14 @@ public class RegionBackendServiceClientTest {
   @SuppressWarnings("all")
   public void insertRegionBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertRegionBackendServiceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertRegionBackendServiceMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-      BackendService backendService = BackendService.newBuilder().build();
+      BackendService backendServiceResource = BackendService.newBuilder().build();
 
-      client.insertRegionBackendService(region, backendService);
+      client.insertRegionBackendService(region, backendServiceResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -350,8 +350,8 @@ public class RegionBackendServiceClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listRegionBackendServicesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listRegionBackendServicesMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -361,7 +361,7 @@ public class RegionBackendServiceClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -369,8 +369,8 @@ public class RegionBackendServiceClientTest {
   @SuppressWarnings("all")
   public void listRegionBackendServicesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listRegionBackendServicesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listRegionBackendServicesMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -429,16 +429,17 @@ public class RegionBackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(patchRegionBackendServiceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(patchRegionBackendServiceMethodDescriptor);
 
-    RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+    ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+    BackendService backendServiceResource = BackendService.newBuilder().build();
 
     Operation actualResponse =
-        client.patchRegionBackendService(backendService);
+        client.patchRegionBackendService(backendService, backendServiceResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -446,13 +447,14 @@ public class RegionBackendServiceClientTest {
   @SuppressWarnings("all")
   public void patchRegionBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(patchRegionBackendServiceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(patchRegionBackendServiceMethodDescriptor);
 
     try {
-      RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+      ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+      BackendService backendServiceResource = BackendService.newBuilder().build();
 
-      client.patchRegionBackendService(backendService);
+      client.patchRegionBackendService(backendService, backendServiceResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -506,16 +508,17 @@ public class RegionBackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(updateRegionBackendServiceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(updateRegionBackendServiceMethodDescriptor);
 
-    RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+    ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+    BackendService backendServiceResource = BackendService.newBuilder().build();
 
     Operation actualResponse =
-        client.updateRegionBackendService(backendService);
+        client.updateRegionBackendService(backendService, backendServiceResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -523,13 +526,14 @@ public class RegionBackendServiceClientTest {
   @SuppressWarnings("all")
   public void updateRegionBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(updateRegionBackendServiceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(updateRegionBackendServiceMethodDescriptor);
 
     try {
-      RegionBackendServicesBackendServiceName backendService = RegionBackendServicesBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+      ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+      BackendService backendServiceResource = BackendService.newBuilder().build();
 
-      client.updateRegionBackendService(backendService);
+      client.updateRegionBackendService(backendService, backendServiceResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception

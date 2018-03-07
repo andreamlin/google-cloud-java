@@ -14,22 +14,25 @@ This module provides common functionality required by service-specific modules o
 
 Quickstart
 ----------
+
+[//]: # ({x-version-update-start:google-cloud-core:released})
 If you are using Maven, add this to your pom.xml file
 ```xml
 <dependency>
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-core</artifactId>
-  <version>1.17.0</version>
+  <version>1.20.0</version>
 </dependency>
 ```
 If you are using Gradle, add this to your dependencies
 ```Groovy
-compile 'com.google.cloud:google-cloud-core:1.17.0'
+compile 'com.google.cloud:google-cloud-core:1.20.0'
 ```
 If you are using SBT, add this to your dependencies
 ```Scala
-libraryDependencies += "com.google.cloud" % "google-cloud-core" % "1.17.0"
+libraryDependencies += "com.google.cloud" % "google-cloud-core" % "1.20.0"
 ```
+[//]: # ({x-version-update-end})
 
 Troubleshooting
 ---------------

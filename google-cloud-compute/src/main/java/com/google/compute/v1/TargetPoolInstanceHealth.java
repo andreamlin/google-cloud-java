@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -35,12 +33,10 @@ import javax.annotation.Nullable;
 public final class TargetPoolInstanceHealth implements ApiMessage {
   private final List<HealthStatus> healthStatus;
   private final String kind;
-  private final Map<String, String> pathParams;
 
   private TargetPoolInstanceHealth() {
     this.healthStatus = null;
     this.kind = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -50,15 +46,17 @@ public final class TargetPoolInstanceHealth implements ApiMessage {
       ) {
     this.healthStatus = healthStatus;
     this.kind = kind;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("healthStatus") && healthStatus != null) {
-      fieldMap.put("healthStatus", healthStatus.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (HealthStatus item : healthStatus) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("healthStatus", stringList);
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -67,8 +65,14 @@ public final class TargetPoolInstanceHealth implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("healthStatus")) {
+      return String.valueOf(healthStatus);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    return null;
   }
 
   @Nullable
@@ -132,6 +136,9 @@ public final class TargetPoolInstanceHealth implements ApiMessage {
     }
 
     public Builder addAllHealthStatus(List<HealthStatus> healthStatus) {
+      if (this.healthStatus == null) {
+        this.healthStatus = new LinkedList<>();
+      }
       this.healthStatus.addAll(healthStatus);
       return this;
     }

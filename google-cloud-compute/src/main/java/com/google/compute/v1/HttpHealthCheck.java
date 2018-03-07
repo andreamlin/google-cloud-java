@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -46,7 +44,6 @@ public final class HttpHealthCheck implements ApiMessage {
   private final String selfLink;
   private final Integer timeoutSec;
   private final Integer unhealthyThreshold;
-  private final Map<String, String> pathParams;
 
   private HttpHealthCheck() {
     this.checkIntervalSec = null;
@@ -62,7 +59,6 @@ public final class HttpHealthCheck implements ApiMessage {
     this.selfLink = null;
     this.timeoutSec = null;
     this.unhealthyThreshold = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -94,8 +90,6 @@ public final class HttpHealthCheck implements ApiMessage {
     this.selfLink = selfLink;
     this.timeoutSec = timeoutSec;
     this.unhealthyThreshold = unhealthyThreshold;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -144,8 +138,47 @@ public final class HttpHealthCheck implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("checkIntervalSec")) {
+      return String.valueOf(checkIntervalSec);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("healthyThreshold")) {
+      return String.valueOf(healthyThreshold);
+    }
+    if (fieldName.equals("host")) {
+      return String.valueOf(host);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("port")) {
+      return String.valueOf(port);
+    }
+    if (fieldName.equals("requestPath")) {
+      return String.valueOf(requestPath);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("timeoutSec")) {
+      return String.valueOf(timeoutSec);
+    }
+    if (fieldName.equals("unhealthyThreshold")) {
+      return String.valueOf(unhealthyThreshold);
+    }
+    return null;
   }
 
   @Nullable

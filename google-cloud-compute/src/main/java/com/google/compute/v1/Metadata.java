@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -36,13 +34,11 @@ public final class Metadata implements ApiMessage {
   private final String fingerprint;
   private final List<Items> items;
   private final String kind;
-  private final Map<String, String> pathParams;
 
   private Metadata() {
     this.fingerprint = null;
     this.items = null;
     this.kind = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -54,8 +50,6 @@ public final class Metadata implements ApiMessage {
     this.fingerprint = fingerprint;
     this.items = items;
     this.kind = kind;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -65,7 +59,11 @@ public final class Metadata implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("items") && items != null) {
-      fieldMap.put("items", items.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (Items item : items) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("items", stringList);
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -74,8 +72,17 @@ public final class Metadata implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("fingerprint")) {
+      return String.valueOf(fingerprint);
+    }
+    if (fieldName.equals("items")) {
+      return String.valueOf(items);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    return null;
   }
 
   @Nullable
@@ -157,6 +164,9 @@ public final class Metadata implements ApiMessage {
     }
 
     public Builder addAllItems(List<Items> items) {
+      if (this.items == null) {
+        this.items = new LinkedList<>();
+      }
       this.items.addAll(items);
       return this;
     }

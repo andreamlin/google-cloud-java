@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -48,7 +46,6 @@ public final class MachineType implements ApiMessage {
   private final List<ScratchDisks> scratchDisks;
   private final String selfLink;
   private final String zone;
-  private final Map<String, String> pathParams;
 
   private MachineType() {
     this.creationTimestamp = null;
@@ -66,7 +63,6 @@ public final class MachineType implements ApiMessage {
     this.scratchDisks = null;
     this.selfLink = null;
     this.zone = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -102,8 +98,6 @@ public final class MachineType implements ApiMessage {
     this.scratchDisks = scratchDisks;
     this.selfLink = selfLink;
     this.zone = zone;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -146,7 +140,11 @@ public final class MachineType implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("scratchDisks") && scratchDisks != null) {
-      fieldMap.put("scratchDisks", scratchDisks.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (ScratchDisks item : scratchDisks) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("scratchDisks", stringList);
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
@@ -158,8 +156,53 @@ public final class MachineType implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("deprecated")) {
+      return String.valueOf(deprecated);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("guestCpus")) {
+      return String.valueOf(guestCpus);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("imageSpaceGb")) {
+      return String.valueOf(imageSpaceGb);
+    }
+    if (fieldName.equals("isSharedCpu")) {
+      return String.valueOf(isSharedCpu);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("maximumPersistentDisks")) {
+      return String.valueOf(maximumPersistentDisks);
+    }
+    if (fieldName.equals("maximumPersistentDisksSizeGb")) {
+      return String.valueOf(maximumPersistentDisksSizeGb);
+    }
+    if (fieldName.equals("memoryMb")) {
+      return String.valueOf(memoryMb);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("scratchDisks")) {
+      return String.valueOf(scratchDisks);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("zone")) {
+      return String.valueOf(zone);
+    }
+    return null;
   }
 
   @Nullable
@@ -448,6 +491,9 @@ public final class MachineType implements ApiMessage {
     }
 
     public Builder addAllScratchDisks(List<ScratchDisks> scratchDisks) {
+      if (this.scratchDisks == null) {
+        this.scratchDisks = new LinkedList<>();
+      }
       this.scratchDisks.addAll(scratchDisks);
       return this;
     }

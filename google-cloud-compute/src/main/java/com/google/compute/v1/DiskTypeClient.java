@@ -190,7 +190,33 @@ public class DiskTypeClient implements BackgroundResource {
   public final AggregatedListDiskTypesPagedResponse aggregatedListDiskTypes(ProjectName project) {
     AggregatedListDiskTypesHttpRequest request =
         AggregatedListDiskTypesHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return aggregatedListDiskTypes(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves an aggregated list of disk types.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (DiskType element : diskTypeClient.aggregatedListDiskTypes(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListDiskTypesPagedResponse aggregatedListDiskTypes(String project) {
+    AggregatedListDiskTypesHttpRequest request =
+        AggregatedListDiskTypesHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return aggregatedListDiskTypes(request);
   }
@@ -296,7 +322,32 @@ public class DiskTypeClient implements BackgroundResource {
 
     GetDiskTypeHttpRequest request =
         GetDiskTypeHttpRequest.newBuilder()
-        .setDiskType(diskType.toString())
+        .setDiskType(diskType == null ? null : diskType.toString())
+        .build();
+    return getDiskType(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified disk type. Get a list of available disk types by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
+   *   DiskTypeName diskType = DiskTypeName.of("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
+   *   DiskType response = diskTypeClient.getDiskType(diskType.toString());
+   * }
+   * </code></pre>
+   *
+   * @param diskType Name of the disk type to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final DiskType getDiskType(String diskType) {
+
+    GetDiskTypeHttpRequest request =
+        GetDiskTypeHttpRequest.newBuilder()
+        .setDiskType(diskType)
         .build();
     return getDiskType(request);
   }
@@ -367,7 +418,33 @@ public class DiskTypeClient implements BackgroundResource {
   public final ListDiskTypesPagedResponse listDiskTypes(ZoneName zone) {
     ListDiskTypesHttpRequest request =
         ListDiskTypesHttpRequest.newBuilder()
-        .setZone(zone.toString())
+        .setZone(zone == null ? null : zone.toString())
+        .build();
+    return listDiskTypes(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves a list of disk types available to the specified project.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (DiskTypeClient diskTypeClient = DiskTypeClient.create()) {
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
+   *   for (DiskType element : diskTypeClient.listDiskTypes(zone.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param zone The name of the zone for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListDiskTypesPagedResponse listDiskTypes(String zone) {
+    ListDiskTypesHttpRequest request =
+        ListDiskTypesHttpRequest.newBuilder()
+        .setZone(zone)
         .build();
     return listDiskTypes(request);
   }

@@ -191,7 +191,34 @@ public class SnapshotClient implements BackgroundResource {
 
     DeleteSnapshotHttpRequest request =
         DeleteSnapshotHttpRequest.newBuilder()
-        .setSnapshot(snapshot.toString())
+        .setSnapshot(snapshot == null ? null : snapshot.toString())
+        .build();
+    return deleteSnapshot(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified Snapshot resource. Keep in mind that deleting a single snapshot might not necessarily delete all the data on that snapshot. If any data on the snapshot that is marked for deletion is needed for subsequent snapshots, the data will be moved to the next corresponding snapshot.
+   *
+   * For more information, see Deleting snaphots.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
+   *   SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
+   *   Operation response = snapshotClient.deleteSnapshot(snapshot.toString());
+   * }
+   * </code></pre>
+   *
+   * @param snapshot Name of the Snapshot resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteSnapshot(String snapshot) {
+
+    DeleteSnapshotHttpRequest request =
+        DeleteSnapshotHttpRequest.newBuilder()
+        .setSnapshot(snapshot)
         .build();
     return deleteSnapshot(request);
   }
@@ -265,7 +292,32 @@ public class SnapshotClient implements BackgroundResource {
 
     GetSnapshotHttpRequest request =
         GetSnapshotHttpRequest.newBuilder()
-        .setSnapshot(snapshot.toString())
+        .setSnapshot(snapshot == null ? null : snapshot.toString())
+        .build();
+    return getSnapshot(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified Snapshot resource. Get a list of available snapshots by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
+   *   SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
+   *   Snapshot response = snapshotClient.getSnapshot(snapshot.toString());
+   * }
+   * </code></pre>
+   *
+   * @param snapshot Name of the Snapshot resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Snapshot getSnapshot(String snapshot) {
+
+    GetSnapshotHttpRequest request =
+        GetSnapshotHttpRequest.newBuilder()
+        .setSnapshot(snapshot)
         .build();
     return getSnapshot(request);
   }
@@ -336,7 +388,33 @@ public class SnapshotClient implements BackgroundResource {
   public final ListSnapshotsPagedResponse listSnapshots(ProjectName project) {
     ListSnapshotsHttpRequest request =
         ListSnapshotsHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return listSnapshots(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of Snapshot resources contained within the specified project.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (Snapshot element : snapshotClient.listSnapshots(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListSnapshotsPagedResponse listSnapshots(String project) {
+    ListSnapshotsHttpRequest request =
+        ListSnapshotsHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return listSnapshots(request);
   }

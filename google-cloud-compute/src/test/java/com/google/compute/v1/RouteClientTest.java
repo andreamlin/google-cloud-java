@@ -44,7 +44,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class RouteClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static RouteClient client;
   private static RouteSettings clientSettings;
 
@@ -54,14 +54,14 @@ public class RouteClientTest {
         RouteSettings.newBuilder()
            .setTransportChannelProvider(
                RouteSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        RouteClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -116,8 +116,8 @@ public class RouteClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteRouteMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteRouteMethodDescriptor);
 
     RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
 
@@ -125,7 +125,7 @@ public class RouteClientTest {
         client.deleteRoute(route);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -133,8 +133,8 @@ public class RouteClientTest {
   @SuppressWarnings("all")
   public void deleteRouteExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteRouteMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteRouteMethodDescriptor);
 
     try {
       RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
@@ -179,8 +179,8 @@ public class RouteClientTest {
       .setNextHopIp(nextHopIp)
       .setId(id)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getRouteMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getRouteMethodDescriptor);
 
     RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
 
@@ -188,7 +188,7 @@ public class RouteClientTest {
         client.getRoute(route);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -196,8 +196,8 @@ public class RouteClientTest {
   @SuppressWarnings("all")
   public void getRouteExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getRouteMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getRouteMethodDescriptor);
 
     try {
       RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
@@ -256,17 +256,17 @@ public class RouteClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertRouteMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertRouteMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
-    Route route = Route.newBuilder().build();
+    Route routeResource = Route.newBuilder().build();
 
     Operation actualResponse =
-        client.insertRoute(project, route);
+        client.insertRoute(project, routeResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -274,14 +274,14 @@ public class RouteClientTest {
   @SuppressWarnings("all")
   public void insertRouteExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertRouteMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertRouteMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
-      Route route = Route.newBuilder().build();
+      Route routeResource = Route.newBuilder().build();
 
-      client.insertRoute(project, route);
+      client.insertRoute(project, routeResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -304,8 +304,8 @@ public class RouteClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listRoutesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listRoutesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -315,7 +315,7 @@ public class RouteClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -323,8 +323,8 @@ public class RouteClientTest {
   @SuppressWarnings("all")
   public void listRoutesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listRoutesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listRoutesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

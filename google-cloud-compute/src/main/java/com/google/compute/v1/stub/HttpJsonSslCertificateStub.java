@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteSslCertificateHttpRequest;
@@ -60,7 +60,7 @@ import javax.annotation.Generated;
 public class HttpJsonSslCertificateStub extends SslCertificateStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateMethodDescriptor =
       ApiMethodDescriptor.<DeleteSslCertificateHttpRequest, Operation>newBuilder()
           .setMethodName("compute.sslCertificates.delete")
@@ -69,10 +69,11 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
           .setEndpointPathTemplate("{project}/global/sslCertificates/{sslCertificate}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(SslCertificateName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("sslCertificate")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateMethodDescriptor =
       ApiMethodDescriptor.<GetSslCertificateHttpRequest, SslCertificate>newBuilder()
           .setMethodName("compute.sslCertificates.get")
@@ -81,10 +82,11 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
           .setEndpointPathTemplate("{project}/global/sslCertificates/{sslCertificate}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(SslCertificateName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("sslCertificate")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertSslCertificateHttpRequest, Operation> insertSslCertificateMethodDescriptor =
       ApiMethodDescriptor.<InsertSslCertificateHttpRequest, Operation>newBuilder()
           .setMethodName("compute.sslCertificates.insert")
@@ -93,10 +95,11 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
           .setEndpointPathTemplate("{project}/global/sslCertificates")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListSslCertificatesHttpRequest, SslCertificateList> listSslCertificatesMethodDescriptor =
       ApiMethodDescriptor.<ListSslCertificatesHttpRequest, SslCertificateList>newBuilder()
           .setMethodName("compute.sslCertificates.list")
@@ -106,8 +109,9 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
 
   private final BackgroundResource backgroundResources;

@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -38,7 +36,6 @@ public final class SerialPortOutput implements ApiMessage {
   private final String next;
   private final String selfLink;
   private final String start;
-  private final Map<String, String> pathParams;
 
   private SerialPortOutput() {
     this.contents = null;
@@ -46,7 +43,6 @@ public final class SerialPortOutput implements ApiMessage {
     this.next = null;
     this.selfLink = null;
     this.start = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -62,8 +58,6 @@ public final class SerialPortOutput implements ApiMessage {
     this.next = next;
     this.selfLink = selfLink;
     this.start = start;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -88,8 +82,23 @@ public final class SerialPortOutput implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("contents")) {
+      return String.valueOf(contents);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("next")) {
+      return String.valueOf(next);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("start")) {
+      return String.valueOf(start);
+    }
+    return null;
   }
 
   @Nullable

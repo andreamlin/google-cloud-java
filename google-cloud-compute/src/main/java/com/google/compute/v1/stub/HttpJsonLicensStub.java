@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.GetLicensHttpRequest;
@@ -53,7 +53,7 @@ import javax.annotation.Generated;
 public class HttpJsonLicensStub extends LicensStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetLicensHttpRequest, License> getLicensMethodDescriptor =
       ApiMethodDescriptor.<GetLicensHttpRequest, License>newBuilder()
           .setMethodName("compute.licenses.get")
@@ -62,8 +62,9 @@ public class HttpJsonLicensStub extends LicensStub {
           .setEndpointPathTemplate("{project}/global/licenses/{license}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(LicenseName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("license")
           .build();
 
   private final BackgroundResource backgroundResources;

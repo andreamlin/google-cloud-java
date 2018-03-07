@@ -18,9 +18,9 @@ package com.google.compute.v1;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -40,7 +40,6 @@ public final class InsertRouterHttpRequest implements ApiMessage {
   private final String region;
   private final Router routerResource;
   private final String userIp;
-  private final Map<String, String> pathParams;
 
   private InsertRouterHttpRequest() {
     this.access_token = null;
@@ -52,7 +51,6 @@ public final class InsertRouterHttpRequest implements ApiMessage {
     this.region = null;
     this.routerResource = null;
     this.userIp = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -76,11 +74,6 @@ public final class InsertRouterHttpRequest implements ApiMessage {
     this.region = region;
     this.routerResource = routerResource;
     this.userIp = userIp;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    RegionName resourceName = RegionName.parse(region);
-    mapBuilder.put("project", resourceName.getProject());
-    mapBuilder.put("region", resourceName.getRegion());
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -117,8 +110,35 @@ public final class InsertRouterHttpRequest implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("access_token")) {
+      return String.valueOf(access_token);
+    }
+    if (fieldName.equals("callback")) {
+      return String.valueOf(callback);
+    }
+    if (fieldName.equals("fields")) {
+      return String.valueOf(fields);
+    }
+    if (fieldName.equals("key")) {
+      return String.valueOf(key);
+    }
+    if (fieldName.equals("prettyPrint")) {
+      return String.valueOf(prettyPrint);
+    }
+    if (fieldName.equals("quotaUser")) {
+      return String.valueOf(quotaUser);
+    }
+    if (fieldName.equals("region")) {
+      return String.valueOf(region);
+    }
+    if (fieldName.equals("routerResource")) {
+      return String.valueOf(routerResource);
+    }
+    if (fieldName.equals("userIp")) {
+      return String.valueOf(userIp);
+    }
+    return null;
   }
 
   @Nullable

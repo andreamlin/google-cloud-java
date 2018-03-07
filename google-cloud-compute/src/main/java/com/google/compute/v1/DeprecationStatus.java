@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -38,7 +36,6 @@ public final class DeprecationStatus implements ApiMessage {
   private final String obsolete;
   private final String replacement;
   private final String state;
-  private final Map<String, String> pathParams;
 
   private DeprecationStatus() {
     this.deleted = null;
@@ -46,7 +43,6 @@ public final class DeprecationStatus implements ApiMessage {
     this.obsolete = null;
     this.replacement = null;
     this.state = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -62,8 +58,6 @@ public final class DeprecationStatus implements ApiMessage {
     this.obsolete = obsolete;
     this.replacement = replacement;
     this.state = state;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -88,8 +82,23 @@ public final class DeprecationStatus implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("deleted")) {
+      return String.valueOf(deleted);
+    }
+    if (fieldName.equals("deprecated")) {
+      return String.valueOf(deprecated);
+    }
+    if (fieldName.equals("obsolete")) {
+      return String.valueOf(obsolete);
+    }
+    if (fieldName.equals("replacement")) {
+      return String.valueOf(replacement);
+    }
+    if (fieldName.equals("state")) {
+      return String.valueOf(state);
+    }
+    return null;
   }
 
   @Nullable

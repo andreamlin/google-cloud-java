@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -41,7 +39,6 @@ public final class InstanceGroupManagerActionsSummary implements ApiMessage {
   private final Integer recreating;
   private final Integer refreshing;
   private final Integer restarting;
-  private final Map<String, String> pathParams;
 
   private InstanceGroupManagerActionsSummary() {
     this.abandoning = null;
@@ -52,7 +49,6 @@ public final class InstanceGroupManagerActionsSummary implements ApiMessage {
     this.recreating = null;
     this.refreshing = null;
     this.restarting = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -74,8 +70,6 @@ public final class InstanceGroupManagerActionsSummary implements ApiMessage {
     this.recreating = recreating;
     this.refreshing = refreshing;
     this.restarting = restarting;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -109,8 +103,32 @@ public final class InstanceGroupManagerActionsSummary implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("abandoning")) {
+      return String.valueOf(abandoning);
+    }
+    if (fieldName.equals("creating")) {
+      return String.valueOf(creating);
+    }
+    if (fieldName.equals("creatingWithoutRetries")) {
+      return String.valueOf(creatingWithoutRetries);
+    }
+    if (fieldName.equals("deleting")) {
+      return String.valueOf(deleting);
+    }
+    if (fieldName.equals("none")) {
+      return String.valueOf(none);
+    }
+    if (fieldName.equals("recreating")) {
+      return String.valueOf(recreating);
+    }
+    if (fieldName.equals("refreshing")) {
+      return String.valueOf(refreshing);
+    }
+    if (fieldName.equals("restarting")) {
+      return String.valueOf(restarting);
+    }
+    return null;
   }
 
   @Nullable

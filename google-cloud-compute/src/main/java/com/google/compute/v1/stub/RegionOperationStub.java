@@ -23,9 +23,9 @@ import com.google.compute.v1.GetRegionOperationHttpRequest;
 import com.google.compute.v1.ListRegionOperationsHttpRequest;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.OperationList;
+import com.google.compute.v1.ProjectRegionOperationName;
 import com.google.compute.v1.RegionName;
 import static com.google.compute.v1.RegionOperationClient.ListRegionOperationsPagedResponse;
-import com.google.compute.v1.RegionOperationsOperationName;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

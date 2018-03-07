@@ -46,7 +46,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class ImageClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static ImageClient client;
   private static ImageSettings clientSettings;
 
@@ -56,14 +56,14 @@ public class ImageClientTest {
         ImageSettings.newBuilder()
            .setTransportChannelProvider(
                ImageSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        ImageClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -118,8 +118,8 @@ public class ImageClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteImageMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteImageMethodDescriptor);
 
     ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
 
@@ -127,7 +127,7 @@ public class ImageClientTest {
         client.deleteImage(image);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -135,8 +135,8 @@ public class ImageClientTest {
   @SuppressWarnings("all")
   public void deleteImageExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteImageMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteImageMethodDescriptor);
 
     try {
       ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
@@ -195,17 +195,17 @@ public class ImageClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deprecateImageMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deprecateImageMethodDescriptor);
 
     ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
-    DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
+    DeprecationStatus deprecationStatusResource = DeprecationStatus.newBuilder().build();
 
     Operation actualResponse =
-        client.deprecateImage(image, deprecationStatus);
+        client.deprecateImage(image, deprecationStatusResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -213,14 +213,14 @@ public class ImageClientTest {
   @SuppressWarnings("all")
   public void deprecateImageExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deprecateImageMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deprecateImageMethodDescriptor);
 
     try {
       ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
-      DeprecationStatus deprecationStatus = DeprecationStatus.newBuilder().build();
+      DeprecationStatus deprecationStatusResource = DeprecationStatus.newBuilder().build();
 
-      client.deprecateImage(image, deprecationStatus);
+      client.deprecateImage(image, deprecationStatusResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -258,8 +258,8 @@ public class ImageClientTest {
       .setDiskSizeGb(diskSizeGb)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getImageMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getImageMethodDescriptor);
 
     ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
 
@@ -267,7 +267,7 @@ public class ImageClientTest {
         client.getImage(image);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -275,8 +275,8 @@ public class ImageClientTest {
   @SuppressWarnings("all")
   public void getImageExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getImageMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getImageMethodDescriptor);
 
     try {
       ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
@@ -319,8 +319,8 @@ public class ImageClientTest {
       .setDiskSizeGb(diskSizeGb)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getFromFamilyImageMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getFromFamilyImageMethodDescriptor);
 
     FamilyName family = FamilyName.of("[PROJECT]", "[FAMILY]");
 
@@ -328,7 +328,7 @@ public class ImageClientTest {
         client.getFromFamilyImage(family);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -336,8 +336,8 @@ public class ImageClientTest {
   @SuppressWarnings("all")
   public void getFromFamilyImageExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getFromFamilyImageMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getFromFamilyImageMethodDescriptor);
 
     try {
       FamilyName family = FamilyName.of("[PROJECT]", "[FAMILY]");
@@ -396,17 +396,17 @@ public class ImageClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertImageMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertImageMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
-    Image image = Image.newBuilder().build();
+    Image imageResource = Image.newBuilder().build();
 
     Operation actualResponse =
-        client.insertImage(project, image);
+        client.insertImage(project, imageResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -414,14 +414,14 @@ public class ImageClientTest {
   @SuppressWarnings("all")
   public void insertImageExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertImageMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertImageMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
-      Image image = Image.newBuilder().build();
+      Image imageResource = Image.newBuilder().build();
 
-      client.insertImage(project, image);
+      client.insertImage(project, imageResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -444,8 +444,8 @@ public class ImageClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listImagesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listImagesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -455,7 +455,7 @@ public class ImageClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -463,8 +463,8 @@ public class ImageClientTest {
   @SuppressWarnings("all")
   public void listImagesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listImagesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listImagesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

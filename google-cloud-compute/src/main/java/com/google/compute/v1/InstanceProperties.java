@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -42,7 +40,6 @@ public final class InstanceProperties implements ApiMessage {
   private final Scheduling scheduling;
   private final List<ServiceAccount> serviceAccounts;
   private final Tags tags;
-  private final Map<String, String> pathParams;
 
   private InstanceProperties() {
     this.canIpForward = null;
@@ -54,7 +51,6 @@ public final class InstanceProperties implements ApiMessage {
     this.scheduling = null;
     this.serviceAccounts = null;
     this.tags = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -78,8 +74,6 @@ public final class InstanceProperties implements ApiMessage {
     this.scheduling = scheduling;
     this.serviceAccounts = serviceAccounts;
     this.tags = tags;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -92,7 +86,11 @@ public final class InstanceProperties implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("disks") && disks != null) {
-      fieldMap.put("disks", disks.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (AttachedDisk item : disks) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("disks", stringList);
     }
     if (fieldNames.contains("machineType") && machineType != null) {
       fieldMap.put("machineType", Collections.singletonList(String.valueOf(machineType)));
@@ -101,13 +99,21 @@ public final class InstanceProperties implements ApiMessage {
       fieldMap.put("metadata", Collections.singletonList(String.valueOf(metadata)));
     }
     if (fieldNames.contains("networkInterfaces") && networkInterfaces != null) {
-      fieldMap.put("networkInterfaces", networkInterfaces.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (NetworkInterface item : networkInterfaces) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("networkInterfaces", stringList);
     }
     if (fieldNames.contains("scheduling") && scheduling != null) {
       fieldMap.put("scheduling", Collections.singletonList(String.valueOf(scheduling)));
     }
     if (fieldNames.contains("serviceAccounts") && serviceAccounts != null) {
-      fieldMap.put("serviceAccounts", serviceAccounts.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (ServiceAccount item : serviceAccounts) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("serviceAccounts", stringList);
     }
     if (fieldNames.contains("tags") && tags != null) {
       fieldMap.put("tags", Collections.singletonList(String.valueOf(tags)));
@@ -116,8 +122,35 @@ public final class InstanceProperties implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("canIpForward")) {
+      return String.valueOf(canIpForward);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("disks")) {
+      return String.valueOf(disks);
+    }
+    if (fieldName.equals("machineType")) {
+      return String.valueOf(machineType);
+    }
+    if (fieldName.equals("metadata")) {
+      return String.valueOf(metadata);
+    }
+    if (fieldName.equals("networkInterfaces")) {
+      return String.valueOf(networkInterfaces);
+    }
+    if (fieldName.equals("scheduling")) {
+      return String.valueOf(scheduling);
+    }
+    if (fieldName.equals("serviceAccounts")) {
+      return String.valueOf(serviceAccounts);
+    }
+    if (fieldName.equals("tags")) {
+      return String.valueOf(tags);
+    }
+    return null;
   }
 
   @Nullable
@@ -262,6 +295,9 @@ public final class InstanceProperties implements ApiMessage {
     }
 
     public Builder addAllDisks(List<AttachedDisk> disks) {
+      if (this.disks == null) {
+        this.disks = new LinkedList<>();
+      }
       this.disks.addAll(disks);
       return this;
     }
@@ -294,6 +330,9 @@ public final class InstanceProperties implements ApiMessage {
     }
 
     public Builder addAllNetworkInterfaces(List<NetworkInterface> networkInterfaces) {
+      if (this.networkInterfaces == null) {
+        this.networkInterfaces = new LinkedList<>();
+      }
       this.networkInterfaces.addAll(networkInterfaces);
       return this;
     }
@@ -317,6 +356,9 @@ public final class InstanceProperties implements ApiMessage {
     }
 
     public Builder addAllServiceAccounts(List<ServiceAccount> serviceAccounts) {
+      if (this.serviceAccounts == null) {
+        this.serviceAccounts = new LinkedList<>();
+      }
       this.serviceAccounts.addAll(serviceAccounts);
       return this;
     }

@@ -190,7 +190,33 @@ public class MachineTypeClient implements BackgroundResource {
   public final AggregatedListMachineTypesPagedResponse aggregatedListMachineTypes(ProjectName project) {
     AggregatedListMachineTypesHttpRequest request =
         AggregatedListMachineTypesHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return aggregatedListMachineTypes(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves an aggregated list of machine types.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (MachineType element : machineTypeClient.aggregatedListMachineTypes(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListMachineTypesPagedResponse aggregatedListMachineTypes(String project) {
+    AggregatedListMachineTypesHttpRequest request =
+        AggregatedListMachineTypesHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return aggregatedListMachineTypes(request);
   }
@@ -296,7 +322,32 @@ public class MachineTypeClient implements BackgroundResource {
 
     GetMachineTypeHttpRequest request =
         GetMachineTypeHttpRequest.newBuilder()
-        .setMachineType(machineType.toString())
+        .setMachineType(machineType == null ? null : machineType.toString())
+        .build();
+    return getMachineType(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified machine type. Get a list of available machine types by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
+   *   MachineTypeName machineType = MachineTypeName.of("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
+   *   MachineType response = machineTypeClient.getMachineType(machineType.toString());
+   * }
+   * </code></pre>
+   *
+   * @param machineType Name of the machine type to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final MachineType getMachineType(String machineType) {
+
+    GetMachineTypeHttpRequest request =
+        GetMachineTypeHttpRequest.newBuilder()
+        .setMachineType(machineType)
         .build();
     return getMachineType(request);
   }
@@ -367,7 +418,33 @@ public class MachineTypeClient implements BackgroundResource {
   public final ListMachineTypesPagedResponse listMachineTypes(ZoneName zone) {
     ListMachineTypesHttpRequest request =
         ListMachineTypesHttpRequest.newBuilder()
-        .setZone(zone.toString())
+        .setZone(zone == null ? null : zone.toString())
+        .build();
+    return listMachineTypes(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves a list of machine types available to the specified project.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
+   *   for (MachineType element : machineTypeClient.listMachineTypes(zone.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param zone The name of the zone for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListMachineTypesPagedResponse listMachineTypes(String zone) {
+    ListMachineTypesHttpRequest request =
+        ListMachineTypesHttpRequest.newBuilder()
+        .setZone(zone)
         .build();
     return listMachineTypes(request);
   }

@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteTargetHttpProxyHttpRequest;
@@ -62,7 +62,7 @@ import javax.annotation.Generated;
 public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteTargetHttpProxyHttpRequest, Operation> deleteTargetHttpProxyMethodDescriptor =
       ApiMethodDescriptor.<DeleteTargetHttpProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetHttpProxies.delete")
@@ -71,10 +71,11 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setEndpointPathTemplate("{project}/global/targetHttpProxies/{targetHttpProxy}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(TargetHttpProxyName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("targetHttpProxy")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetTargetHttpProxyHttpRequest, TargetHttpProxy> getTargetHttpProxyMethodDescriptor =
       ApiMethodDescriptor.<GetTargetHttpProxyHttpRequest, TargetHttpProxy>newBuilder()
           .setMethodName("compute.targetHttpProxies.get")
@@ -83,10 +84,11 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setEndpointPathTemplate("{project}/global/targetHttpProxies/{targetHttpProxy}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(TargetHttpProxyName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("targetHttpProxy")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertTargetHttpProxyHttpRequest, Operation> insertTargetHttpProxyMethodDescriptor =
       ApiMethodDescriptor.<InsertTargetHttpProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetHttpProxies.insert")
@@ -95,10 +97,11 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setEndpointPathTemplate("{project}/global/targetHttpProxies")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList> listTargetHttpProxiesMethodDescriptor =
       ApiMethodDescriptor.<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList>newBuilder()
           .setMethodName("compute.targetHttpProxies.list")
@@ -108,10 +111,11 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<SetUrlMapTargetHttpProxyHttpRequest, Operation> setUrlMapTargetHttpProxyMethodDescriptor =
       ApiMethodDescriptor.<SetUrlMapTargetHttpProxyHttpRequest, Operation>newBuilder()
           .setMethodName("compute.targetHttpProxies.setUrlMap")
@@ -120,8 +124,9 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setEndpointPathTemplate("{project}/targetHttpProxies/{targetHttpProxy}/setUrlMap")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(TargetHttpProxyName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("targetHttpProxy")
           .build();
 
   private final BackgroundResource backgroundResources;

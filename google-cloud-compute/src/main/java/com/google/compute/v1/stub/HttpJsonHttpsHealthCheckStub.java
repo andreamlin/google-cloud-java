@@ -17,6 +17,7 @@ package com.google.compute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
@@ -26,7 +27,6 @@ import com.google.api.gax.httpjson.HttpJsonCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.compute.v1.DeleteHttpsHealthCheckHttpRequest;
@@ -62,7 +62,7 @@ import javax.annotation.Generated;
 public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<DeleteHttpsHealthCheckHttpRequest, Operation> deleteHttpsHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<DeleteHttpsHealthCheckHttpRequest, Operation>newBuilder()
           .setMethodName("compute.httpsHealthChecks.delete")
@@ -71,10 +71,11 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setEndpointPathTemplate("{project}/global/httpsHealthChecks/{httpsHealthCheck}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(HttpsHealthCheckName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("httpsHealthCheck")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<GetHttpsHealthCheckHttpRequest, HttpsHealthCheck> getHttpsHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<GetHttpsHealthCheckHttpRequest, HttpsHealthCheck>newBuilder()
           .setMethodName("compute.httpsHealthChecks.get")
@@ -83,10 +84,11 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setEndpointPathTemplate("{project}/global/httpsHealthChecks/{httpsHealthCheck}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(HttpsHealthCheckName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("httpsHealthCheck")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<InsertHttpsHealthCheckHttpRequest, Operation> insertHttpsHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<InsertHttpsHealthCheckHttpRequest, Operation>newBuilder()
           .setMethodName("compute.httpsHealthChecks.insert")
@@ -95,10 +97,11 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setEndpointPathTemplate("{project}/global/httpsHealthChecks")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<ListHttpsHealthChecksHttpRequest, HttpsHealthCheckList> listHttpsHealthChecksMethodDescriptor =
       ApiMethodDescriptor.<ListHttpsHealthChecksHttpRequest, HttpsHealthCheckList>newBuilder()
           .setMethodName("compute.httpsHealthChecks.list")
@@ -108,10 +111,11 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(ProjectName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("project")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<PatchHttpsHealthCheckHttpRequest, Operation> patchHttpsHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<PatchHttpsHealthCheckHttpRequest, Operation>newBuilder()
           .setMethodName("compute.httpsHealthChecks.patch")
@@ -120,10 +124,11 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setEndpointPathTemplate("{project}/global/httpsHealthChecks/{httpsHealthCheck}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(HttpsHealthCheckName.newFactory()))
           .setHttpMethod(HttpMethods.PATCH)
+          .setResourceNameField("httpsHealthCheck")
           .build();
-  @VisibleForTesting
+  @InternalApi
   public static final ApiMethodDescriptor<UpdateHttpsHealthCheckHttpRequest, Operation> updateHttpsHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<UpdateHttpsHealthCheckHttpRequest, Operation>newBuilder()
           .setMethodName("compute.httpsHealthChecks.update")
@@ -132,8 +137,9 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
           .setEndpointPathTemplate("{project}/global/httpsHealthChecks/{httpsHealthCheck}")
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(HttpsHealthCheckName.newFactory()))
           .setHttpMethod(HttpMethods.PUT)
+          .setResourceNameField("httpsHealthCheck")
           .build();
 
   private final BackgroundResource backgroundResources;

@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -49,7 +47,6 @@ public final class Route implements ApiMessage {
   private final String selfLink;
   private final List<String> tags;
   private final List<Warnings> warnings;
-  private final Map<String, String> pathParams;
 
   private Route() {
     this.creationTimestamp = null;
@@ -68,7 +65,6 @@ public final class Route implements ApiMessage {
     this.selfLink = null;
     this.tags = null;
     this.warnings = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -106,8 +102,6 @@ public final class Route implements ApiMessage {
     this.selfLink = selfLink;
     this.tags = tags;
     this.warnings = warnings;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
@@ -156,17 +150,73 @@ public final class Route implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("tags") && tags != null) {
-      fieldMap.put("tags", tags.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (String item : tags) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("tags", stringList);
     }
     if (fieldNames.contains("warnings") && warnings != null) {
-      fieldMap.put("warnings", warnings.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (Warnings item : warnings) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("warnings", stringList);
     }
     return fieldMap;
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("destRange")) {
+      return String.valueOf(destRange);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("network")) {
+      return String.valueOf(network);
+    }
+    if (fieldName.equals("nextHopGateway")) {
+      return String.valueOf(nextHopGateway);
+    }
+    if (fieldName.equals("nextHopInstance")) {
+      return String.valueOf(nextHopInstance);
+    }
+    if (fieldName.equals("nextHopIp")) {
+      return String.valueOf(nextHopIp);
+    }
+    if (fieldName.equals("nextHopNetwork")) {
+      return String.valueOf(nextHopNetwork);
+    }
+    if (fieldName.equals("nextHopVpnTunnel")) {
+      return String.valueOf(nextHopVpnTunnel);
+    }
+    if (fieldName.equals("priority")) {
+      return String.valueOf(priority);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("tags")) {
+      return String.valueOf(tags);
+    }
+    if (fieldName.equals("warnings")) {
+      return String.valueOf(warnings);
+    }
+    return null;
   }
 
   @Nullable
@@ -482,6 +532,9 @@ public final class Route implements ApiMessage {
     }
 
     public Builder addAllTags(List<String> tags) {
+      if (this.tags == null) {
+        this.tags = new LinkedList<>();
+      }
       this.tags.addAll(tags);
       return this;
     }
@@ -496,6 +549,9 @@ public final class Route implements ApiMessage {
     }
 
     public Builder addAllWarnings(List<Warnings> warnings) {
+      if (this.warnings == null) {
+        this.warnings = new LinkedList<>();
+      }
       this.warnings.addAll(warnings);
       return this;
     }

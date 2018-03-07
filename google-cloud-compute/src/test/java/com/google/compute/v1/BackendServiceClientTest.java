@@ -49,7 +49,7 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class BackendServiceClientTest {
-  private static final MockHttpService MOCK_SERVICE = new MockHttpService();
+  private static final MockHttpService mockService = new MockHttpService();
   private static BackendServiceClient client;
   private static BackendServiceSettings clientSettings;
 
@@ -59,14 +59,14 @@ public class BackendServiceClientTest {
         BackendServiceSettings.newBuilder()
            .setTransportChannelProvider(
                BackendServiceSettings.defaultHttpJsonTransportProviderBuilder()
-                   .setHttpTransport(MOCK_SERVICE).build()).build();
+                   .setHttpTransport(mockService).build()).build();
     client =
        BackendServiceClient.create(clientSettings);
   }
 
   @After
   public void cleanUp() {
-    MOCK_SERVICE.reset();
+    mockService.reset();
   }
 
   @AfterClass
@@ -93,8 +93,8 @@ public class BackendServiceClientTest {
       .setSelfLink(selfLink)
       .setItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(aggregatedListBackendServicesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(aggregatedListBackendServicesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -104,7 +104,7 @@ public class BackendServiceClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().getBackendServices().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -112,8 +112,8 @@ public class BackendServiceClientTest {
   @SuppressWarnings("all")
   public void aggregatedListBackendServicesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(aggregatedListBackendServicesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(aggregatedListBackendServicesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -172,8 +172,8 @@ public class BackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(deleteBackendServiceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(deleteBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
 
@@ -181,7 +181,7 @@ public class BackendServiceClientTest {
         client.deleteBackendService(backendService);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -189,8 +189,8 @@ public class BackendServiceClientTest {
   @SuppressWarnings("all")
   public void deleteBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(deleteBackendServiceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(deleteBackendServiceMethodDescriptor);
 
     try {
       BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
@@ -239,8 +239,8 @@ public class BackendServiceClientTest {
       .setId(id)
       .setRegion(region.toString())
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getBackendServiceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
 
@@ -248,7 +248,7 @@ public class BackendServiceClientTest {
         client.getBackendService(backendService);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -256,8 +256,8 @@ public class BackendServiceClientTest {
   @SuppressWarnings("all")
   public void getBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getBackendServiceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getBackendServiceMethodDescriptor);
 
     try {
       BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
@@ -276,17 +276,17 @@ public class BackendServiceClientTest {
     BackendServiceGroupHealth expectedResponse = BackendServiceGroupHealth.newBuilder()
       .setKind(kind)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(getHealthBackendServiceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(getHealthBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
-    ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
+    ResourceGroupReference resourceGroupReferenceResource = ResourceGroupReference.newBuilder().build();
 
     BackendServiceGroupHealth actualResponse =
-        client.getHealthBackendService(backendService, resourceGroupReference);
+        client.getHealthBackendService(backendService, resourceGroupReferenceResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -294,14 +294,14 @@ public class BackendServiceClientTest {
   @SuppressWarnings("all")
   public void getHealthBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(getHealthBackendServiceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(getHealthBackendServiceMethodDescriptor);
 
     try {
       BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
-      ResourceGroupReference resourceGroupReference = ResourceGroupReference.newBuilder().build();
+      ResourceGroupReference resourceGroupReferenceResource = ResourceGroupReference.newBuilder().build();
 
-      client.getHealthBackendService(backendService, resourceGroupReference);
+      client.getHealthBackendService(backendService, resourceGroupReferenceResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -355,17 +355,17 @@ public class BackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(insertBackendServiceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(insertBackendServiceMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
-    BackendService backendService = BackendService.newBuilder().build();
+    BackendService backendServiceResource = BackendService.newBuilder().build();
 
     Operation actualResponse =
-        client.insertBackendService(project, backendService);
+        client.insertBackendService(project, backendServiceResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -373,14 +373,14 @@ public class BackendServiceClientTest {
   @SuppressWarnings("all")
   public void insertBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(insertBackendServiceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(insertBackendServiceMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
-      BackendService backendService = BackendService.newBuilder().build();
+      BackendService backendServiceResource = BackendService.newBuilder().build();
 
-      client.insertBackendService(project, backendService);
+      client.insertBackendService(project, backendServiceResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -403,8 +403,8 @@ public class BackendServiceClientTest {
       .setSelfLink(selfLink)
       .addAllItems(items)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(listBackendServicesMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(listBackendServicesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -414,7 +414,7 @@ public class BackendServiceClientTest {
     Assert.assertEquals(1, resources.size());
     Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -422,8 +422,8 @@ public class BackendServiceClientTest {
   @SuppressWarnings("all")
   public void listBackendServicesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(listBackendServicesMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(listBackendServicesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -482,16 +482,17 @@ public class BackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(patchBackendServiceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(patchBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
+    BackendService backendServiceResource = BackendService.newBuilder().build();
 
     Operation actualResponse =
-        client.patchBackendService(backendService);
+        client.patchBackendService(backendService, backendServiceResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -499,13 +500,14 @@ public class BackendServiceClientTest {
   @SuppressWarnings("all")
   public void patchBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(patchBackendServiceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(patchBackendServiceMethodDescriptor);
 
     try {
       BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
+      BackendService backendServiceResource = BackendService.newBuilder().build();
 
-      client.patchBackendService(backendService);
+      client.patchBackendService(backendService, backendServiceResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -559,16 +561,17 @@ public class BackendServiceClientTest {
       .setUser(user)
       .setStatus(status)
       .build();
-    MOCK_SERVICE.addResponse(expectedResponse);
-    MOCK_SERVICE.setSerializer(updateBackendServiceMethodDescriptor);
+    mockService.addResponse(expectedResponse);
+    mockService.setSerializer(updateBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
+    BackendService backendServiceResource = BackendService.newBuilder().build();
 
     Operation actualResponse =
-        client.updateBackendService(backendService);
+        client.updateBackendService(backendService, backendServiceResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
-    List<String> actualRequests = MOCK_SERVICE.getRequestPaths();
+    List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
   }
 
@@ -576,13 +579,14 @@ public class BackendServiceClientTest {
   @SuppressWarnings("all")
   public void updateBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
-    MOCK_SERVICE.addException(exception);
-    MOCK_SERVICE.setSerializer(updateBackendServiceMethodDescriptor);
+    mockService.addException(exception);
+    mockService.setSerializer(updateBackendServiceMethodDescriptor);
 
     try {
       BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
+      BackendService backendServiceResource = BackendService.newBuilder().build();
 
-      client.updateBackendService(backendService);
+      client.updateBackendService(backendService, backendServiceResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception

@@ -189,7 +189,32 @@ public class RouteClient implements BackgroundResource {
 
     DeleteRouteHttpRequest request =
         DeleteRouteHttpRequest.newBuilder()
-        .setRoute(route.toString())
+        .setRoute(route == null ? null : route.toString())
+        .build();
+    return deleteRoute(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified Route resource.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (RouteClient routeClient = RouteClient.create()) {
+   *   RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
+   *   Operation response = routeClient.deleteRoute(route.toString());
+   * }
+   * </code></pre>
+   *
+   * @param route Name of the Route resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteRoute(String route) {
+
+    DeleteRouteHttpRequest request =
+        DeleteRouteHttpRequest.newBuilder()
+        .setRoute(route)
         .build();
     return deleteRoute(request);
   }
@@ -259,7 +284,32 @@ public class RouteClient implements BackgroundResource {
 
     GetRouteHttpRequest request =
         GetRouteHttpRequest.newBuilder()
-        .setRoute(route.toString())
+        .setRoute(route == null ? null : route.toString())
+        .build();
+    return getRoute(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified Route resource. Get a list of available routes by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (RouteClient routeClient = RouteClient.create()) {
+   *   RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
+   *   Route response = routeClient.getRoute(route.toString());
+   * }
+   * </code></pre>
+   *
+   * @param route Name of the Route resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Route getRoute(String route) {
+
+    GetRouteHttpRequest request =
+        GetRouteHttpRequest.newBuilder()
+        .setRoute(route)
         .build();
     return getRoute(request);
   }
@@ -317,8 +367,8 @@ public class RouteClient implements BackgroundResource {
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Route route = Route.newBuilder().build();
-   *   Operation response = routeClient.insertRoute(project, route);
+   *   Route routeResource = Route.newBuilder().build();
+   *   Operation response = routeClient.insertRoute(project, routeResource);
    * }
    * </code></pre>
    *
@@ -335,7 +385,7 @@ public class RouteClient implements BackgroundResource {
 
     InsertRouteHttpRequest request =
         InsertRouteHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
         .setRouteResource(routeResource)
         .build();
     return insertRoute(request);
@@ -349,10 +399,42 @@ public class RouteClient implements BackgroundResource {
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Route route = Route.newBuilder().build();
+   *   Route routeResource = Route.newBuilder().build();
+   *   Operation response = routeClient.insertRoute(project.toString(), routeResource);
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @param routeResource Represents a Route resource. A route specifies how certain packets should be handled by the network. Routes are associated with instances by tags and the set of routes for a particular instance is called its routing table.
+   *
+   * For each packet leaving a instance, the system searches that instance's routing table for a single best matching route. Routes match packets by destination IP address, preferring smaller or more specific ranges over larger ones. If there is a tie, the system selects the route with the smallest priority value. If there is still a tie, it uses the layer three and four packet headers to select just one of the remaining matching routes. The packet is then forwarded as specified by the nextHop field of the winning route - either to another instance destination, a instance gateway or a Google Compute Engine-operated gateway.
+   *
+   * Packets that do not match any route in the sending instance's routing table are dropped.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertRoute(String project, Route routeResource) {
+
+    InsertRouteHttpRequest request =
+        InsertRouteHttpRequest.newBuilder()
+        .setProject(project)
+        .setRouteResource(routeResource)
+        .build();
+    return insertRoute(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a Route resource in the specified project using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (RouteClient routeClient = RouteClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   Route routeResource = Route.newBuilder().build();
    *   InsertRouteHttpRequest request = InsertRouteHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setRouteResource(route)
+   *     .setRouteResource(routeResource)
    *     .build();
    *   Operation response = routeClient.insertRoute(request);
    * }
@@ -374,10 +456,10 @@ public class RouteClient implements BackgroundResource {
    * <pre><code>
    * try (RouteClient routeClient = RouteClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   Route route = Route.newBuilder().build();
+   *   Route routeResource = Route.newBuilder().build();
    *   InsertRouteHttpRequest request = InsertRouteHttpRequest.newBuilder()
    *     .setProject(project.toString())
-   *     .setRouteResource(route)
+   *     .setRouteResource(routeResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = routeClient.insertRouteCallable().futureCall(request);
    *   // Do something
@@ -411,7 +493,33 @@ public class RouteClient implements BackgroundResource {
   public final ListRoutesPagedResponse listRoutes(ProjectName project) {
     ListRoutesHttpRequest request =
         ListRoutesHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return listRoutes(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of Route resources available to the specified project.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (RouteClient routeClient = RouteClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (Route element : routeClient.listRoutes(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListRoutesPagedResponse listRoutes(String project) {
+    ListRoutesHttpRequest request =
+        ListRoutesHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return listRoutes(request);
   }

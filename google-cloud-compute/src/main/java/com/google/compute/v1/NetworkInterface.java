@@ -17,16 +17,14 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.api.resourcenames.ResourceName;
 import com.google.common.collect.ImmutableMap;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -39,7 +37,6 @@ public final class NetworkInterface implements ApiMessage {
   private final String network;
   private final String networkIP;
   private final String subnetwork;
-  private final Map<String, String> pathParams;
 
   private NetworkInterface() {
     this.accessConfigs = null;
@@ -48,7 +45,6 @@ public final class NetworkInterface implements ApiMessage {
     this.network = null;
     this.networkIP = null;
     this.subnetwork = null;
-    this.pathParams = ImmutableMap.of();
   }
 
 
@@ -66,15 +62,17 @@ public final class NetworkInterface implements ApiMessage {
     this.network = network;
     this.networkIP = networkIP;
     this.subnetwork = subnetwork;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    this.pathParams = mapBuilder.build();
   }
 
   @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("accessConfigs") && accessConfigs != null) {
-      fieldMap.put("accessConfigs", accessConfigs.stream().map(item -> item.toString()).collect(Collectors.toList()));
+      List<String> stringList = new LinkedList<>();
+      for (AccessConfig item : accessConfigs) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("accessConfigs", stringList);
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -95,8 +93,26 @@ public final class NetworkInterface implements ApiMessage {
   }
 
   @Override
-  public Map<String, String> getApiMessagePathParams() {
-    return pathParams;
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("accessConfigs")) {
+      return String.valueOf(accessConfigs);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("network")) {
+      return String.valueOf(network);
+    }
+    if (fieldName.equals("networkIP")) {
+      return String.valueOf(networkIP);
+    }
+    if (fieldName.equals("subnetwork")) {
+      return String.valueOf(subnetwork);
+    }
+    return null;
   }
 
   @Nullable
@@ -196,6 +212,9 @@ public final class NetworkInterface implements ApiMessage {
     }
 
     public Builder addAllAccessConfigs(List<AccessConfig> accessConfigs) {
+      if (this.accessConfigs == null) {
+        this.accessConfigs = new LinkedList<>();
+      }
       this.accessConfigs.addAll(accessConfigs);
       return this;
     }

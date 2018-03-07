@@ -54,8 +54,8 @@ import javax.annotation.Generated;
  * <code>
  * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
  *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
- *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequest = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
- *   Operation response = instanceGroupManagerClient.abandonInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersAbandonInstancesRequest);
+ *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
+ *   Operation response = instanceGroupManagerClient.abandonInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersAbandonInstancesRequestResource);
  * }
  * </code>
  * </pre>
@@ -178,8 +178,8 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequest = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.abandonInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersAbandonInstancesRequest);
+   *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
+   *   Operation response = instanceGroupManagerClient.abandonInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersAbandonInstancesRequestResource);
    * }
    * </code></pre>
    *
@@ -192,7 +192,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
 
     AbandonInstancesInstanceGroupManagerHttpRequest request =
         AbandonInstancesInstanceGroupManagerHttpRequest.newBuilder()
-        .setInstanceGroupManager(instanceGroupManager.toString())
+        .setInstanceGroupManager(instanceGroupManager == null ? null : instanceGroupManager.toString())
         .setInstanceGroupManagersAbandonInstancesRequestResource(instanceGroupManagersAbandonInstancesRequestResource)
         .build();
     return abandonInstancesInstanceGroupManager(request);
@@ -206,10 +206,38 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequest = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
+   *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
+   *   Operation response = instanceGroupManagerClient.abandonInstancesInstanceGroupManager(instanceGroupManager.toString(), instanceGroupManagersAbandonInstancesRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param instanceGroupManager The name of the managed instance group.
+   * @param instanceGroupManagersAbandonInstancesRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation abandonInstancesInstanceGroupManager(String instanceGroupManager, InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource) {
+
+    AbandonInstancesInstanceGroupManagerHttpRequest request =
+        AbandonInstancesInstanceGroupManagerHttpRequest.newBuilder()
+        .setInstanceGroupManager(instanceGroupManager)
+        .setInstanceGroupManagersAbandonInstancesRequestResource(instanceGroupManagersAbandonInstancesRequestResource)
+        .build();
+    return abandonInstancesInstanceGroupManager(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Schedules a group action to remove the specified instances from the managed instance group. Abandoning an instance does not delete the instance, but it does remove the instance from any target pools that are applied by the managed instance group. This method reduces the targetSize of the managed instance group by the number of instances that you abandon. This operation is marked as DONE when the action is scheduled even if the instances have not yet been removed from the group. You must separately verify the status of the abandoning action with the listmanagedinstances method.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
    *   AbandonInstancesInstanceGroupManagerHttpRequest request = AbandonInstancesInstanceGroupManagerHttpRequest.newBuilder()
    *     .setInstanceGroupManager(instanceGroupManager.toString())
-   *     .setInstanceGroupManagersAbandonInstancesRequestResource(instanceGroupManagersAbandonInstancesRequest)
+   *     .setInstanceGroupManagersAbandonInstancesRequestResource(instanceGroupManagersAbandonInstancesRequestResource)
    *     .build();
    *   Operation response = instanceGroupManagerClient.abandonInstancesInstanceGroupManager(request);
    * }
@@ -231,10 +259,10 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequest = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
+   *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
    *   AbandonInstancesInstanceGroupManagerHttpRequest request = AbandonInstancesInstanceGroupManagerHttpRequest.newBuilder()
    *     .setInstanceGroupManager(instanceGroupManager.toString())
-   *     .setInstanceGroupManagersAbandonInstancesRequestResource(instanceGroupManagersAbandonInstancesRequest)
+   *     .setInstanceGroupManagersAbandonInstancesRequestResource(instanceGroupManagersAbandonInstancesRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.abandonInstancesInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
@@ -268,7 +296,33 @@ public class InstanceGroupManagerClient implements BackgroundResource {
   public final AggregatedListInstanceGroupManagersPagedResponse aggregatedListInstanceGroupManagers(ProjectName project) {
     AggregatedListInstanceGroupManagersHttpRequest request =
         AggregatedListInstanceGroupManagersHttpRequest.newBuilder()
-        .setProject(project.toString())
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return aggregatedListInstanceGroupManagers(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of managed instance groups and groups them by zone.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (InstanceGroupManager element : instanceGroupManagerClient.aggregatedListInstanceGroupManagers(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListInstanceGroupManagersPagedResponse aggregatedListInstanceGroupManagers(String project) {
+    AggregatedListInstanceGroupManagersHttpRequest request =
+        AggregatedListInstanceGroupManagersHttpRequest.newBuilder()
+        .setProject(project)
         .build();
     return aggregatedListInstanceGroupManagers(request);
   }
@@ -374,7 +428,32 @@ public class InstanceGroupManagerClient implements BackgroundResource {
 
     DeleteInstanceGroupManagerHttpRequest request =
         DeleteInstanceGroupManagerHttpRequest.newBuilder()
-        .setInstanceGroupManager(instanceGroupManager.toString())
+        .setInstanceGroupManager(instanceGroupManager == null ? null : instanceGroupManager.toString())
+        .build();
+    return deleteInstanceGroupManager(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified managed instance group and all of the instances in that group. Note that the instance group must not belong to a backend service. Read  Deleting an instance group for more information.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   Operation response = instanceGroupManagerClient.deleteInstanceGroupManager(instanceGroupManager.toString());
+   * }
+   * </code></pre>
+   *
+   * @param instanceGroupManager The name of the managed instance group to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteInstanceGroupManager(String instanceGroupManager) {
+
+    DeleteInstanceGroupManagerHttpRequest request =
+        DeleteInstanceGroupManagerHttpRequest.newBuilder()
+        .setInstanceGroupManager(instanceGroupManager)
         .build();
     return deleteInstanceGroupManager(request);
   }
@@ -432,8 +511,8 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequest = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.deleteInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersDeleteInstancesRequest);
+   *   InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequestResource = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
+   *   Operation response = instanceGroupManagerClient.deleteInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersDeleteInstancesRequestResource);
    * }
    * </code></pre>
    *
@@ -446,7 +525,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
 
     DeleteInstancesInstanceGroupManagerHttpRequest request =
         DeleteInstancesInstanceGroupManagerHttpRequest.newBuilder()
-        .setInstanceGroupManager(instanceGroupManager.toString())
+        .setInstanceGroupManager(instanceGroupManager == null ? null : instanceGroupManager.toString())
         .setInstanceGroupManagersDeleteInstancesRequestResource(instanceGroupManagersDeleteInstancesRequestResource)
         .build();
     return deleteInstancesInstanceGroupManager(request);
@@ -460,10 +539,38 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequest = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
+   *   InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequestResource = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
+   *   Operation response = instanceGroupManagerClient.deleteInstancesInstanceGroupManager(instanceGroupManager.toString(), instanceGroupManagersDeleteInstancesRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param instanceGroupManager The name of the managed instance group.
+   * @param instanceGroupManagersDeleteInstancesRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteInstancesInstanceGroupManager(String instanceGroupManager, InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequestResource) {
+
+    DeleteInstancesInstanceGroupManagerHttpRequest request =
+        DeleteInstancesInstanceGroupManagerHttpRequest.newBuilder()
+        .setInstanceGroupManager(instanceGroupManager)
+        .setInstanceGroupManagersDeleteInstancesRequestResource(instanceGroupManagersDeleteInstancesRequestResource)
+        .build();
+    return deleteInstancesInstanceGroupManager(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Schedules a group action to delete the specified instances in the managed instance group. The instances are also removed from any target pools of which they were a member. This method reduces the targetSize of the managed instance group by the number of instances that you delete. This operation is marked as DONE when the action is scheduled even if the instances are still being deleted. You must separately verify the status of the deleting action with the listmanagedinstances method.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequestResource = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
    *   DeleteInstancesInstanceGroupManagerHttpRequest request = DeleteInstancesInstanceGroupManagerHttpRequest.newBuilder()
    *     .setInstanceGroupManager(instanceGroupManager.toString())
-   *     .setInstanceGroupManagersDeleteInstancesRequestResource(instanceGroupManagersDeleteInstancesRequest)
+   *     .setInstanceGroupManagersDeleteInstancesRequestResource(instanceGroupManagersDeleteInstancesRequestResource)
    *     .build();
    *   Operation response = instanceGroupManagerClient.deleteInstancesInstanceGroupManager(request);
    * }
@@ -485,10 +592,10 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequest = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
+   *   InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequestResource = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
    *   DeleteInstancesInstanceGroupManagerHttpRequest request = DeleteInstancesInstanceGroupManagerHttpRequest.newBuilder()
    *     .setInstanceGroupManager(instanceGroupManager.toString())
-   *     .setInstanceGroupManagersDeleteInstancesRequestResource(instanceGroupManagersDeleteInstancesRequest)
+   *     .setInstanceGroupManagersDeleteInstancesRequestResource(instanceGroupManagersDeleteInstancesRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.deleteInstancesInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
@@ -521,7 +628,32 @@ public class InstanceGroupManagerClient implements BackgroundResource {
 
     GetInstanceGroupManagerHttpRequest request =
         GetInstanceGroupManagerHttpRequest.newBuilder()
-        .setInstanceGroupManager(instanceGroupManager.toString())
+        .setInstanceGroupManager(instanceGroupManager == null ? null : instanceGroupManager.toString())
+        .build();
+    return getInstanceGroupManager(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns all of the details about the specified managed instance group. Get a list of available managed instance groups by making a list() request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManager response = instanceGroupManagerClient.getInstanceGroupManager(instanceGroupManager.toString());
+   * }
+   * </code></pre>
+   *
+   * @param instanceGroupManager The name of the managed instance group.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final InstanceGroupManager getInstanceGroupManager(String instanceGroupManager) {
+
+    GetInstanceGroupManagerHttpRequest request =
+        GetInstanceGroupManagerHttpRequest.newBuilder()
+        .setInstanceGroupManager(instanceGroupManager)
         .build();
     return getInstanceGroupManager(request);
   }
@@ -579,8 +711,8 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
-   *   InstanceGroupManager instanceGroupManager = InstanceGroupManager.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.insertInstanceGroupManager(zone, instanceGroupManager);
+   *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
+   *   Operation response = instanceGroupManagerClient.insertInstanceGroupManager(zone, instanceGroupManagerResource);
    * }
    * </code></pre>
    *
@@ -593,7 +725,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
 
     InsertInstanceGroupManagerHttpRequest request =
         InsertInstanceGroupManagerHttpRequest.newBuilder()
-        .setZone(zone.toString())
+        .setZone(zone == null ? null : zone.toString())
         .setInstanceGroupManagerResource(instanceGroupManagerResource)
         .build();
     return insertInstanceGroupManager(request);
@@ -607,10 +739,38 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
-   *   InstanceGroupManager instanceGroupManager = InstanceGroupManager.newBuilder().build();
+   *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
+   *   Operation response = instanceGroupManagerClient.insertInstanceGroupManager(zone.toString(), instanceGroupManagerResource);
+   * }
+   * </code></pre>
+   *
+   * @param zone The name of the zone where you want to create the managed instance group.
+   * @param instanceGroupManagerResource An Instance Group Manager resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertInstanceGroupManager(String zone, InstanceGroupManager instanceGroupManagerResource) {
+
+    InsertInstanceGroupManagerHttpRequest request =
+        InsertInstanceGroupManagerHttpRequest.newBuilder()
+        .setZone(zone)
+        .setInstanceGroupManagerResource(instanceGroupManagerResource)
+        .build();
+    return insertInstanceGroupManager(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a managed instance group using the information that you specify in the request. After the group is created, it schedules an action to create instances in the group using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
+   *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
    *   InsertInstanceGroupManagerHttpRequest request = InsertInstanceGroupManagerHttpRequest.newBuilder()
    *     .setZone(zone.toString())
-   *     .setInstanceGroupManagerResource(instanceGroupManager)
+   *     .setInstanceGroupManagerResource(instanceGroupManagerResource)
    *     .build();
    *   Operation response = instanceGroupManagerClient.insertInstanceGroupManager(request);
    * }
@@ -632,10 +792,10 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
-   *   InstanceGroupManager instanceGroupManager = InstanceGroupManager.newBuilder().build();
+   *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
    *   InsertInstanceGroupManagerHttpRequest request = InsertInstanceGroupManagerHttpRequest.newBuilder()
    *     .setZone(zone.toString())
-   *     .setInstanceGroupManagerResource(instanceGroupManager)
+   *     .setInstanceGroupManagerResource(instanceGroupManagerResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.insertInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
@@ -669,7 +829,33 @@ public class InstanceGroupManagerClient implements BackgroundResource {
   public final ListInstanceGroupManagersPagedResponse listInstanceGroupManagers(ZoneName zone) {
     ListInstanceGroupManagersHttpRequest request =
         ListInstanceGroupManagersHttpRequest.newBuilder()
-        .setZone(zone.toString())
+        .setZone(zone == null ? null : zone.toString())
+        .build();
+    return listInstanceGroupManagers(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves a list of managed instance groups that are contained within the specified project and zone.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
+   *   for (InstanceGroupManager element : instanceGroupManagerClient.listInstanceGroupManagers(zone.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param zone The name of the zone where the managed instance group is located.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListInstanceGroupManagersPagedResponse listInstanceGroupManagers(String zone) {
+    ListInstanceGroupManagersHttpRequest request =
+        ListInstanceGroupManagersHttpRequest.newBuilder()
+        .setZone(zone)
         .build();
     return listInstanceGroupManagers(request);
   }
@@ -775,7 +961,32 @@ public class InstanceGroupManagerClient implements BackgroundResource {
 
     ListManagedInstancesInstanceGroupManagersHttpRequest request =
         ListManagedInstancesInstanceGroupManagersHttpRequest.newBuilder()
-        .setInstanceGroupManager(instanceGroupManager.toString())
+        .setInstanceGroupManager(instanceGroupManager == null ? null : instanceGroupManager.toString())
+        .build();
+    return listManagedInstancesInstanceGroupManagers(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Lists all of the instances in the managed instance group. Each instance in the list has a currentAction, which indicates the action that the managed instance group is performing on the instance. For example, if the group is still creating an instance, the currentAction is CREATING. If a previous action failed, the list displays the errors for that failed action.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagersListManagedInstancesResponse response = instanceGroupManagerClient.listManagedInstancesInstanceGroupManagers(instanceGroupManager.toString());
+   * }
+   * </code></pre>
+   *
+   * @param instanceGroupManager The name of the managed instance group.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final InstanceGroupManagersListManagedInstancesResponse listManagedInstancesInstanceGroupManagers(String instanceGroupManager) {
+
+    ListManagedInstancesInstanceGroupManagersHttpRequest request =
+        ListManagedInstancesInstanceGroupManagersHttpRequest.newBuilder()
+        .setInstanceGroupManager(instanceGroupManager)
         .build();
     return listManagedInstancesInstanceGroupManagers(request);
   }
@@ -833,8 +1044,8 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequest = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.recreateInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersRecreateInstancesRequest);
+   *   InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequestResource = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
+   *   Operation response = instanceGroupManagerClient.recreateInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersRecreateInstancesRequestResource);
    * }
    * </code></pre>
    *
@@ -847,7 +1058,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
 
     RecreateInstancesInstanceGroupManagerHttpRequest request =
         RecreateInstancesInstanceGroupManagerHttpRequest.newBuilder()
-        .setInstanceGroupManager(instanceGroupManager.toString())
+        .setInstanceGroupManager(instanceGroupManager == null ? null : instanceGroupManager.toString())
         .setInstanceGroupManagersRecreateInstancesRequestResource(instanceGroupManagersRecreateInstancesRequestResource)
         .build();
     return recreateInstancesInstanceGroupManager(request);
@@ -861,10 +1072,38 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequest = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
+   *   InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequestResource = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
+   *   Operation response = instanceGroupManagerClient.recreateInstancesInstanceGroupManager(instanceGroupManager.toString(), instanceGroupManagersRecreateInstancesRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param instanceGroupManager The name of the managed instance group.
+   * @param instanceGroupManagersRecreateInstancesRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation recreateInstancesInstanceGroupManager(String instanceGroupManager, InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequestResource) {
+
+    RecreateInstancesInstanceGroupManagerHttpRequest request =
+        RecreateInstancesInstanceGroupManagerHttpRequest.newBuilder()
+        .setInstanceGroupManager(instanceGroupManager)
+        .setInstanceGroupManagersRecreateInstancesRequestResource(instanceGroupManagersRecreateInstancesRequestResource)
+        .build();
+    return recreateInstancesInstanceGroupManager(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Schedules a group action to recreate the specified instances in the managed instance group. The instances are deleted and recreated using the current instance template for the managed instance group. This operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated. You must separately verify the status of the recreating action with the listmanagedinstances method.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequestResource = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
    *   RecreateInstancesInstanceGroupManagerHttpRequest request = RecreateInstancesInstanceGroupManagerHttpRequest.newBuilder()
    *     .setInstanceGroupManager(instanceGroupManager.toString())
-   *     .setInstanceGroupManagersRecreateInstancesRequestResource(instanceGroupManagersRecreateInstancesRequest)
+   *     .setInstanceGroupManagersRecreateInstancesRequestResource(instanceGroupManagersRecreateInstancesRequestResource)
    *     .build();
    *   Operation response = instanceGroupManagerClient.recreateInstancesInstanceGroupManager(request);
    * }
@@ -886,10 +1125,10 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequest = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
+   *   InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequestResource = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
    *   RecreateInstancesInstanceGroupManagerHttpRequest request = RecreateInstancesInstanceGroupManagerHttpRequest.newBuilder()
    *     .setInstanceGroupManager(instanceGroupManager.toString())
-   *     .setInstanceGroupManagersRecreateInstancesRequestResource(instanceGroupManagersRecreateInstancesRequest)
+   *     .setInstanceGroupManagersRecreateInstancesRequestResource(instanceGroupManagersRecreateInstancesRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.recreateInstancesInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
@@ -925,7 +1164,35 @@ public class InstanceGroupManagerClient implements BackgroundResource {
     ResizeInstanceGroupManagerHttpRequest request =
         ResizeInstanceGroupManagerHttpRequest.newBuilder()
         .setSize(size)
-        .setInstanceGroupManager(instanceGroupManager.toString())
+        .setInstanceGroupManager(instanceGroupManager == null ? null : instanceGroupManager.toString())
+        .build();
+    return resizeInstanceGroupManager(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Resizes the managed instance group. If you increase the size, the group creates new instances using the current instance template. If you decrease the size, the group deletes instances. The resize operation is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any instances. You must separately verify the status of the creating or deleting actions with the listmanagedinstances method.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   Integer size = 0;
+   *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   Operation response = instanceGroupManagerClient.resizeInstanceGroupManager(size, instanceGroupManager.toString());
+   * }
+   * </code></pre>
+   *
+   * @param size The number of running instances that the managed instance group should maintain at any given time. The group automatically adds or removes instances to maintain the number of instances specified by this parameter.
+   * @param instanceGroupManager The name of the managed instance group.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation resizeInstanceGroupManager(Integer size, String instanceGroupManager) {
+
+    ResizeInstanceGroupManagerHttpRequest request =
+        ResizeInstanceGroupManagerHttpRequest.newBuilder()
+        .setSize(size)
+        .setInstanceGroupManager(instanceGroupManager)
         .build();
     return resizeInstanceGroupManager(request);
   }
@@ -987,8 +1254,8 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequest = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.setInstanceTemplateInstanceGroupManager(instanceGroupManager, instanceGroupManagersSetInstanceTemplateRequest);
+   *   InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequestResource = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
+   *   Operation response = instanceGroupManagerClient.setInstanceTemplateInstanceGroupManager(instanceGroupManager, instanceGroupManagersSetInstanceTemplateRequestResource);
    * }
    * </code></pre>
    *
@@ -1001,7 +1268,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
 
     SetInstanceTemplateInstanceGroupManagerHttpRequest request =
         SetInstanceTemplateInstanceGroupManagerHttpRequest.newBuilder()
-        .setInstanceGroupManager(instanceGroupManager.toString())
+        .setInstanceGroupManager(instanceGroupManager == null ? null : instanceGroupManager.toString())
         .setInstanceGroupManagersSetInstanceTemplateRequestResource(instanceGroupManagersSetInstanceTemplateRequestResource)
         .build();
     return setInstanceTemplateInstanceGroupManager(request);
@@ -1015,10 +1282,38 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequest = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
+   *   InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequestResource = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
+   *   Operation response = instanceGroupManagerClient.setInstanceTemplateInstanceGroupManager(instanceGroupManager.toString(), instanceGroupManagersSetInstanceTemplateRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param instanceGroupManager The name of the managed instance group.
+   * @param instanceGroupManagersSetInstanceTemplateRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation setInstanceTemplateInstanceGroupManager(String instanceGroupManager, InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequestResource) {
+
+    SetInstanceTemplateInstanceGroupManagerHttpRequest request =
+        SetInstanceTemplateInstanceGroupManagerHttpRequest.newBuilder()
+        .setInstanceGroupManager(instanceGroupManager)
+        .setInstanceGroupManagersSetInstanceTemplateRequestResource(instanceGroupManagersSetInstanceTemplateRequestResource)
+        .build();
+    return setInstanceTemplateInstanceGroupManager(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Specifies the instance template to use when creating new instances in this group. The templates for existing instances in the group do not change unless you recreate them.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequestResource = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
    *   SetInstanceTemplateInstanceGroupManagerHttpRequest request = SetInstanceTemplateInstanceGroupManagerHttpRequest.newBuilder()
    *     .setInstanceGroupManager(instanceGroupManager.toString())
-   *     .setInstanceGroupManagersSetInstanceTemplateRequestResource(instanceGroupManagersSetInstanceTemplateRequest)
+   *     .setInstanceGroupManagersSetInstanceTemplateRequestResource(instanceGroupManagersSetInstanceTemplateRequestResource)
    *     .build();
    *   Operation response = instanceGroupManagerClient.setInstanceTemplateInstanceGroupManager(request);
    * }
@@ -1040,10 +1335,10 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequest = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
+   *   InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequestResource = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
    *   SetInstanceTemplateInstanceGroupManagerHttpRequest request = SetInstanceTemplateInstanceGroupManagerHttpRequest.newBuilder()
    *     .setInstanceGroupManager(instanceGroupManager.toString())
-   *     .setInstanceGroupManagersSetInstanceTemplateRequestResource(instanceGroupManagersSetInstanceTemplateRequest)
+   *     .setInstanceGroupManagersSetInstanceTemplateRequestResource(instanceGroupManagersSetInstanceTemplateRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.setInstanceTemplateInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
@@ -1064,8 +1359,8 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequest = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.setTargetPoolsInstanceGroupManager(instanceGroupManager, instanceGroupManagersSetTargetPoolsRequest);
+   *   InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequestResource = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
+   *   Operation response = instanceGroupManagerClient.setTargetPoolsInstanceGroupManager(instanceGroupManager, instanceGroupManagersSetTargetPoolsRequestResource);
    * }
    * </code></pre>
    *
@@ -1078,7 +1373,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
 
     SetTargetPoolsInstanceGroupManagerHttpRequest request =
         SetTargetPoolsInstanceGroupManagerHttpRequest.newBuilder()
-        .setInstanceGroupManager(instanceGroupManager.toString())
+        .setInstanceGroupManager(instanceGroupManager == null ? null : instanceGroupManager.toString())
         .setInstanceGroupManagersSetTargetPoolsRequestResource(instanceGroupManagersSetTargetPoolsRequestResource)
         .build();
     return setTargetPoolsInstanceGroupManager(request);
@@ -1092,10 +1387,38 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequest = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
+   *   InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequestResource = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
+   *   Operation response = instanceGroupManagerClient.setTargetPoolsInstanceGroupManager(instanceGroupManager.toString(), instanceGroupManagersSetTargetPoolsRequestResource);
+   * }
+   * </code></pre>
+   *
+   * @param instanceGroupManager The name of the managed instance group.
+   * @param instanceGroupManagersSetTargetPoolsRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation setTargetPoolsInstanceGroupManager(String instanceGroupManager, InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequestResource) {
+
+    SetTargetPoolsInstanceGroupManagerHttpRequest request =
+        SetTargetPoolsInstanceGroupManagerHttpRequest.newBuilder()
+        .setInstanceGroupManager(instanceGroupManager)
+        .setInstanceGroupManagersSetTargetPoolsRequestResource(instanceGroupManagersSetTargetPoolsRequestResource)
+        .build();
+    return setTargetPoolsInstanceGroupManager(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Modifies the target pools to which all instances in this managed instance group are assigned. The target pools automatically apply to all of the instances in the managed instance group. This operation is marked DONE when you make the request even if the instances have not yet been added to their target pools. The change might take some time to apply to all of the instances in the group depending on the size of the group.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequestResource = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
    *   SetTargetPoolsInstanceGroupManagerHttpRequest request = SetTargetPoolsInstanceGroupManagerHttpRequest.newBuilder()
    *     .setInstanceGroupManager(instanceGroupManager.toString())
-   *     .setInstanceGroupManagersSetTargetPoolsRequestResource(instanceGroupManagersSetTargetPoolsRequest)
+   *     .setInstanceGroupManagersSetTargetPoolsRequestResource(instanceGroupManagersSetTargetPoolsRequestResource)
    *     .build();
    *   Operation response = instanceGroupManagerClient.setTargetPoolsInstanceGroupManager(request);
    * }
@@ -1117,10 +1440,10 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequest = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
+   *   InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequestResource = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
    *   SetTargetPoolsInstanceGroupManagerHttpRequest request = SetTargetPoolsInstanceGroupManagerHttpRequest.newBuilder()
    *     .setInstanceGroupManager(instanceGroupManager.toString())
-   *     .setInstanceGroupManagersSetTargetPoolsRequestResource(instanceGroupManagersSetTargetPoolsRequest)
+   *     .setInstanceGroupManagersSetTargetPoolsRequestResource(instanceGroupManagersSetTargetPoolsRequestResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.setTargetPoolsInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
