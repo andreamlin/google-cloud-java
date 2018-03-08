@@ -124,7 +124,7 @@ public class GlobalOperationClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteGlobalOperationTest() {
-
+    mockService.addNullResponse();
     mockService.setSerializer(deleteGlobalOperationMethodDescriptor);
 
     OperationName operation = OperationName.of("[PROJECT]", "[OPERATION]");

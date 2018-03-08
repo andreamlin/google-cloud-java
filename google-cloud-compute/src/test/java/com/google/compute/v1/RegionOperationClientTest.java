@@ -71,7 +71,7 @@ public class RegionOperationClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteRegionOperationTest() {
-
+    mockService.addNullResponse();
     mockService.setSerializer(deleteRegionOperationMethodDescriptor);
 
     ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");

@@ -71,7 +71,7 @@ public class ZoneOperationClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteZoneOperationTest() {
-
+    mockService.addNullResponse();
     mockService.setSerializer(deleteZoneOperationMethodDescriptor);
 
     ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
