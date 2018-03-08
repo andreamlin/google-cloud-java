@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google Inc. All Rights Reserved.
+ * Copyright 2017 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,6 +59,14 @@ public final class Precondition {
     return new Precondition(null, updateTime);
   }
 
+  boolean isEmpty() {
+    return exists == null && updateTime == null;
+  }
+
+  boolean hasExists() {
+    return exists != null;
+  }
+
   com.google.firestore.v1beta1.Precondition toPb() {
     com.google.firestore.v1beta1.Precondition.Builder precondition =
         com.google.firestore.v1beta1.Precondition.newBuilder();
@@ -77,15 +85,21 @@ public final class Precondition {
     return precondition.build();
   }
 
+  /**
+   * Returns true if this Precondition is equal to the provided object.
+   *
+   * @param obj The object to compare against.
+   * @return Whether this Precondition is equal to the provided object.
+   */
   @Override
-  public boolean equals(Object o) {
-    if (this == o) {
+  public boolean equals(Object obj) {
+    if (this == obj) {
       return true;
     }
-    if (o == null || getClass() != o.getClass()) {
+    if (obj == null || getClass() != obj.getClass()) {
       return false;
     }
-    Precondition that = (Precondition) o;
+    Precondition that = (Precondition) obj;
     return Objects.equals(exists, that.exists) && Objects.equals(updateTime, that.updateTime);
   }
 

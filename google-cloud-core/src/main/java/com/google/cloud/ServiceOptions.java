@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Google Inc. All Rights Reserved.
+ * Copyright 2015 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -452,7 +452,13 @@ public abstract class ServiceOptions<ServiceT extends Service<OptionsT>,
             .setReadTimeout(500)
             .setHeaders(new HttpHeaders().set("Metadata-Flavor", "Google"));
     HttpResponse response = request.execute();
-    return response.parseAsString();
+    return headerContainsMetadataFlavor(response) ? response.parseAsString() : null;
+  }
+
+  @InternalApi("Visible for testing")
+  static boolean headerContainsMetadataFlavor(HttpResponse response) {
+    String metadataFlavorValue = response.getHeaders().getFirstHeaderStringValue("Metadata-Flavor");
+    return "Google".equals(metadataFlavorValue);
   }
 
   protected static String getServiceAccountProjectId() {

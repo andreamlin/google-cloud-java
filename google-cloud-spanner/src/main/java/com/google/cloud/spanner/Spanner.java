@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google Inc. All Rights Reserved.
+ * Copyright 2017 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,17 @@ public interface Spanner extends Service<SpannerOptions> {
    * the database.
    */
   DatabaseClient getDatabaseClient(DatabaseId db);
+
+  /**
+   * Returns a {@code BatchClient} to do batch operations on Cloud Spanner databases. Batch client
+   * is useful when one wants to read/query a large amount of data from Cloud
+   * Spanner across multiple processes, even across different machines. It allows to create
+   * partitions of Cloud Spanner database and then read/query over each partition independently
+   * yet at the same snapshot.
+   *
+   * <p> For all other use cases, {@code DatabaseClient} is more appropriate and performant.
+   */
+  BatchClient getBatchClient(DatabaseId db);
 
   /**
    * Closes all the clients associated with this instance and frees up all the resources. This

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google Inc. All Rights Reserved.
+ * Copyright 2017 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 package com.google.cloud.firestore;
 
+import com.google.cloud.firestore.UserDataConverter.EncodingOptions;
 import com.google.common.base.Preconditions;
 import java.util.ArrayList;
 import java.util.List;
@@ -118,15 +119,37 @@ public final class SetOptions {
     return new SetOptions(true, fields);
   }
 
+  /** Returns the EncodingOptions to use for a set() call. */
+  EncodingOptions getEncodingOptions() {
+    if (!merge) {
+      return UserDataConverter.NO_DELETES;
+    } else if (fieldMask == null) {
+      return UserDataConverter.ALLOW_ALL_DELETES;
+    } else {
+      return new EncodingOptions() {
+        @Override
+        public boolean allowDelete(FieldPath fieldPath) {
+          return fieldMask.contains(fieldPath);
+        }
+      };
+    }
+  }
+
+  /**
+   * Returns true if this SetOptions is equal to the provided object.
+   *
+   * @param obj The object to compare against.
+   * @return Whether this SetOptions is equal to the provided object.
+   */
   @Override
-  public boolean equals(Object o) {
-    if (this == o) {
+  public boolean equals(Object obj) {
+    if (this == obj) {
       return true;
     }
-    if (o == null || getClass() != o.getClass()) {
+    if (obj == null || getClass() != obj.getClass()) {
       return false;
     }
-    SetOptions that = (SetOptions) o;
+    SetOptions that = (SetOptions) obj;
     return merge == that.merge && Objects.equals(fieldMask, that.fieldMask);
   }
 
