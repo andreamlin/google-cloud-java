@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.UrlMapClient.ListUrlMapsPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonUrlMapStub.deleteUrlMapMethodDescriptor;
@@ -32,6 +35,7 @@ import static com.google.compute.v1.stub.HttpJsonUrlMapStub.listUrlMapsMethodDes
 import static com.google.compute.v1.stub.HttpJsonUrlMapStub.patchUrlMapMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonUrlMapStub.updateUrlMapMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonUrlMapStub.validateUrlMapMethodDescriptor;
+import com.google.compute.v1.stub.UrlMapStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -48,7 +52,19 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class UrlMapClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              deleteUrlMapMethodDescriptor,
+              getUrlMapMethodDescriptor,
+              insertUrlMapMethodDescriptor,
+              invalidateCacheUrlMapMethodDescriptor,
+              listUrlMapsMethodDescriptor,
+              patchUrlMapMethodDescriptor,
+              updateUrlMapMethodDescriptor,
+              validateUrlMapMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, UrlMapStubSettings.getDefaultEndpoint());
   private static UrlMapClient client;
   private static UrlMapSettings clientSettings;
 
@@ -121,7 +137,6 @@ public class UrlMapClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteUrlMapMethodDescriptor);
 
     UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
 
@@ -138,7 +153,6 @@ public class UrlMapClientTest {
   public void deleteUrlMapExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteUrlMapMethodDescriptor);
 
     try {
       UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
@@ -172,7 +186,6 @@ public class UrlMapClientTest {
       .setSelfLink(selfLink)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getUrlMapMethodDescriptor);
 
     UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
 
@@ -189,7 +202,6 @@ public class UrlMapClientTest {
   public void getUrlMapExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getUrlMapMethodDescriptor);
 
     try {
       UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
@@ -249,7 +261,6 @@ public class UrlMapClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertUrlMapMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     UrlMap urlMapResource = UrlMap.newBuilder().build();
@@ -267,7 +278,6 @@ public class UrlMapClientTest {
   public void insertUrlMapExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertUrlMapMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -328,7 +338,6 @@ public class UrlMapClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(invalidateCacheUrlMapMethodDescriptor);
 
     UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
     CacheInvalidationRule cacheInvalidationRuleResource = CacheInvalidationRule.newBuilder().build();
@@ -346,7 +355,6 @@ public class UrlMapClientTest {
   public void invalidateCacheUrlMapExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(invalidateCacheUrlMapMethodDescriptor);
 
     try {
       UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
@@ -376,7 +384,6 @@ public class UrlMapClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listUrlMapsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -395,7 +402,6 @@ public class UrlMapClientTest {
   public void listUrlMapsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listUrlMapsMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -455,7 +461,6 @@ public class UrlMapClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(patchUrlMapMethodDescriptor);
 
     UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
     UrlMap urlMapResource = UrlMap.newBuilder().build();
@@ -473,7 +478,6 @@ public class UrlMapClientTest {
   public void patchUrlMapExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(patchUrlMapMethodDescriptor);
 
     try {
       UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
@@ -534,7 +538,6 @@ public class UrlMapClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(updateUrlMapMethodDescriptor);
 
     UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
     UrlMap urlMapResource = UrlMap.newBuilder().build();
@@ -552,7 +555,6 @@ public class UrlMapClientTest {
   public void updateUrlMapExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(updateUrlMapMethodDescriptor);
 
     try {
       UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
@@ -570,7 +572,6 @@ public class UrlMapClientTest {
   public void validateUrlMapTest() {
     UrlMapsValidateResponse expectedResponse = UrlMapsValidateResponse.newBuilder().build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(validateUrlMapMethodDescriptor);
 
     UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");
     UrlMapsValidateRequest urlMapsValidateRequestResource = UrlMapsValidateRequest.newBuilder().build();
@@ -588,7 +589,6 @@ public class UrlMapClientTest {
   public void validateUrlMapExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(validateUrlMapMethodDescriptor);
 
     try {
       UrlMapName urlMap = UrlMapName.of("[PROJECT]", "[URL_MAP]");

@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,8 +24,10 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.GlobalForwardingRuleClient.ListGlobalForwardingRulesPagedResponse;
+import com.google.compute.v1.stub.GlobalForwardingRuleStubSettings;
 import static com.google.compute.v1.stub.HttpJsonGlobalForwardingRuleStub.deleteGlobalForwardingRuleMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonGlobalForwardingRuleStub.getGlobalForwardingRuleMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonGlobalForwardingRuleStub.insertGlobalForwardingRuleMethodDescriptor;
@@ -45,7 +49,16 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class GlobalForwardingRuleClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              deleteGlobalForwardingRuleMethodDescriptor,
+              getGlobalForwardingRuleMethodDescriptor,
+              insertGlobalForwardingRuleMethodDescriptor,
+              listGlobalForwardingRulesMethodDescriptor,
+              setTargetGlobalForwardingRuleMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, GlobalForwardingRuleStubSettings.getDefaultEndpoint());
   private static GlobalForwardingRuleClient client;
   private static GlobalForwardingRuleSettings clientSettings;
 
@@ -118,7 +131,6 @@ public class GlobalForwardingRuleClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteGlobalForwardingRuleMethodDescriptor);
 
     ProjectForwardingRuleName forwardingRule = ProjectForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
 
@@ -135,7 +147,6 @@ public class GlobalForwardingRuleClientTest {
   public void deleteGlobalForwardingRuleExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteGlobalForwardingRuleMethodDescriptor);
 
     try {
       ProjectForwardingRuleName forwardingRule = ProjectForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
@@ -183,7 +194,6 @@ public class GlobalForwardingRuleClientTest {
       .setRegion(region.toString())
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getGlobalForwardingRuleMethodDescriptor);
 
     ProjectForwardingRuleName forwardingRule = ProjectForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
 
@@ -200,7 +210,6 @@ public class GlobalForwardingRuleClientTest {
   public void getGlobalForwardingRuleExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getGlobalForwardingRuleMethodDescriptor);
 
     try {
       ProjectForwardingRuleName forwardingRule = ProjectForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
@@ -260,7 +269,6 @@ public class GlobalForwardingRuleClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertGlobalForwardingRuleMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     ForwardingRule forwardingRuleResource = ForwardingRule.newBuilder().build();
@@ -278,7 +286,6 @@ public class GlobalForwardingRuleClientTest {
   public void insertGlobalForwardingRuleExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertGlobalForwardingRuleMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -308,7 +315,6 @@ public class GlobalForwardingRuleClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listGlobalForwardingRulesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -327,7 +333,6 @@ public class GlobalForwardingRuleClientTest {
   public void listGlobalForwardingRulesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listGlobalForwardingRulesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -387,7 +392,6 @@ public class GlobalForwardingRuleClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setTargetGlobalForwardingRuleMethodDescriptor);
 
     ProjectForwardingRuleName forwardingRule = ProjectForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
     TargetReference targetReferenceResource = TargetReference.newBuilder().build();
@@ -405,7 +409,6 @@ public class GlobalForwardingRuleClientTest {
   public void setTargetGlobalForwardingRuleExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setTargetGlobalForwardingRuleMethodDescriptor);
 
     try {
       ProjectForwardingRuleName forwardingRule = ProjectForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");

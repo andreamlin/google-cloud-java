@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,10 +24,12 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.RegionClient.ListRegionsPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonRegionStub.getRegionMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonRegionStub.listRegionsMethodDescriptor;
+import com.google.compute.v1.stub.RegionStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -42,7 +46,13 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class RegionClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              getRegionMethodDescriptor,
+              listRegionsMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, RegionStubSettings.getDefaultEndpoint());
   private static RegionClient client;
   private static RegionSettings clientSettings;
 
@@ -87,7 +97,6 @@ public class RegionClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getRegionMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -104,7 +113,6 @@ public class RegionClientTest {
   public void getRegionExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getRegionMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -133,7 +141,6 @@ public class RegionClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listRegionsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -152,7 +159,6 @@ public class RegionClientTest {
   public void listRegionsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listRegionsMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

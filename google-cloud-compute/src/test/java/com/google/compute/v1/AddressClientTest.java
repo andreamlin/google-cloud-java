@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,9 +24,11 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.AddressClient.AggregatedListAddressesPagedResponse;
 import static com.google.compute.v1.AddressClient.ListAddressesPagedResponse;
+import com.google.compute.v1.stub.AddressStubSettings;
 import static com.google.compute.v1.stub.HttpJsonAddressStub.aggregatedListAddressesMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonAddressStub.deleteAddressMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonAddressStub.getAddressMethodDescriptor;
@@ -46,7 +50,16 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class AddressClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              aggregatedListAddressesMethodDescriptor,
+              deleteAddressMethodDescriptor,
+              getAddressMethodDescriptor,
+              insertAddressMethodDescriptor,
+              listAddressesMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, AddressStubSettings.getDefaultEndpoint());
   private static AddressClient client;
   private static AddressSettings clientSettings;
 
@@ -91,7 +104,6 @@ public class AddressClientTest {
       .setItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(aggregatedListAddressesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -110,7 +122,6 @@ public class AddressClientTest {
   public void aggregatedListAddressesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(aggregatedListAddressesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -170,7 +181,6 @@ public class AddressClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteAddressMethodDescriptor);
 
     AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
 
@@ -187,7 +197,6 @@ public class AddressClientTest {
   public void deleteAddressExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteAddressMethodDescriptor);
 
     try {
       AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
@@ -223,7 +232,6 @@ public class AddressClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getAddressMethodDescriptor);
 
     AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
 
@@ -240,7 +248,6 @@ public class AddressClientTest {
   public void getAddressExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getAddressMethodDescriptor);
 
     try {
       AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
@@ -300,7 +307,6 @@ public class AddressClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertAddressMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     Address addressResource = Address.newBuilder().build();
@@ -318,7 +324,6 @@ public class AddressClientTest {
   public void insertAddressExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertAddressMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -348,7 +353,6 @@ public class AddressClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listAddressesMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -367,7 +371,6 @@ public class AddressClientTest {
   public void listAddressesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listAddressesMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");

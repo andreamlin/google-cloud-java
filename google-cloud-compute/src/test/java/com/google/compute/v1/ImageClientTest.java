@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.ImageClient.ListImagesPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonImageStub.deleteImageMethodDescriptor;
@@ -30,6 +33,7 @@ import static com.google.compute.v1.stub.HttpJsonImageStub.getFromFamilyImageMet
 import static com.google.compute.v1.stub.HttpJsonImageStub.getImageMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonImageStub.insertImageMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonImageStub.listImagesMethodDescriptor;
+import com.google.compute.v1.stub.ImageStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -46,7 +50,17 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class ImageClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              deleteImageMethodDescriptor,
+              deprecateImageMethodDescriptor,
+              getImageMethodDescriptor,
+              getFromFamilyImageMethodDescriptor,
+              insertImageMethodDescriptor,
+              listImagesMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, ImageStubSettings.getDefaultEndpoint());
   private static ImageClient client;
   private static ImageSettings clientSettings;
 
@@ -119,7 +133,6 @@ public class ImageClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteImageMethodDescriptor);
 
     ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
 
@@ -136,7 +149,6 @@ public class ImageClientTest {
   public void deleteImageExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteImageMethodDescriptor);
 
     try {
       ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
@@ -196,7 +208,6 @@ public class ImageClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deprecateImageMethodDescriptor);
 
     ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
     DeprecationStatus deprecationStatusResource = DeprecationStatus.newBuilder().build();
@@ -214,7 +225,6 @@ public class ImageClientTest {
   public void deprecateImageExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deprecateImageMethodDescriptor);
 
     try {
       ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
@@ -259,7 +269,6 @@ public class ImageClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getImageMethodDescriptor);
 
     ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
 
@@ -276,7 +285,6 @@ public class ImageClientTest {
   public void getImageExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getImageMethodDescriptor);
 
     try {
       ImageName image = ImageName.of("[PROJECT]", "[IMAGE]");
@@ -320,7 +328,6 @@ public class ImageClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getFromFamilyImageMethodDescriptor);
 
     FamilyName family = FamilyName.of("[PROJECT]", "[FAMILY]");
 
@@ -337,7 +344,6 @@ public class ImageClientTest {
   public void getFromFamilyImageExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getFromFamilyImageMethodDescriptor);
 
     try {
       FamilyName family = FamilyName.of("[PROJECT]", "[FAMILY]");
@@ -397,7 +403,6 @@ public class ImageClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertImageMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Image imageResource = Image.newBuilder().build();
@@ -415,7 +420,6 @@ public class ImageClientTest {
   public void insertImageExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertImageMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -445,7 +449,6 @@ public class ImageClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listImagesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -464,7 +467,6 @@ public class ImageClientTest {
   public void listImagesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listImagesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

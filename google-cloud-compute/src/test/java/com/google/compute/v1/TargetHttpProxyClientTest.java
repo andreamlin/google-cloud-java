@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.TargetHttpProxyClient.ListTargetHttpProxiesPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonTargetHttpProxyStub.deleteTargetHttpProxyMethodDescriptor;
@@ -29,6 +32,7 @@ import static com.google.compute.v1.stub.HttpJsonTargetHttpProxyStub.getTargetHt
 import static com.google.compute.v1.stub.HttpJsonTargetHttpProxyStub.insertTargetHttpProxyMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonTargetHttpProxyStub.listTargetHttpProxiesMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonTargetHttpProxyStub.setUrlMapTargetHttpProxyMethodDescriptor;
+import com.google.compute.v1.stub.TargetHttpProxyStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -45,7 +49,16 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class TargetHttpProxyClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              deleteTargetHttpProxyMethodDescriptor,
+              getTargetHttpProxyMethodDescriptor,
+              insertTargetHttpProxyMethodDescriptor,
+              listTargetHttpProxiesMethodDescriptor,
+              setUrlMapTargetHttpProxyMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, TargetHttpProxyStubSettings.getDefaultEndpoint());
   private static TargetHttpProxyClient client;
   private static TargetHttpProxySettings clientSettings;
 
@@ -118,7 +131,6 @@ public class TargetHttpProxyClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteTargetHttpProxyMethodDescriptor);
 
     TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
 
@@ -135,7 +147,6 @@ public class TargetHttpProxyClientTest {
   public void deleteTargetHttpProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteTargetHttpProxyMethodDescriptor);
 
     try {
       TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
@@ -167,7 +178,6 @@ public class TargetHttpProxyClientTest {
       .setSelfLink(selfLink)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getTargetHttpProxyMethodDescriptor);
 
     TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
 
@@ -184,7 +194,6 @@ public class TargetHttpProxyClientTest {
   public void getTargetHttpProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getTargetHttpProxyMethodDescriptor);
 
     try {
       TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
@@ -244,7 +253,6 @@ public class TargetHttpProxyClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertTargetHttpProxyMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     TargetHttpProxy targetHttpProxyResource = TargetHttpProxy.newBuilder().build();
@@ -262,7 +270,6 @@ public class TargetHttpProxyClientTest {
   public void insertTargetHttpProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertTargetHttpProxyMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -292,7 +299,6 @@ public class TargetHttpProxyClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listTargetHttpProxiesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -311,7 +317,6 @@ public class TargetHttpProxyClientTest {
   public void listTargetHttpProxiesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listTargetHttpProxiesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -371,7 +376,6 @@ public class TargetHttpProxyClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setUrlMapTargetHttpProxyMethodDescriptor);
 
     TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
     UrlMapReference urlMapReferenceResource = UrlMapReference.newBuilder().build();
@@ -389,7 +393,6 @@ public class TargetHttpProxyClientTest {
   public void setUrlMapTargetHttpProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setUrlMapTargetHttpProxyMethodDescriptor);
 
     try {
       TargetHttpProxyName targetHttpProxy = TargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");

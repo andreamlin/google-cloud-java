@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,9 +24,11 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.ForwardingRuleClient.AggregatedListForwardingRulesPagedResponse;
 import static com.google.compute.v1.ForwardingRuleClient.ListForwardingRulesPagedResponse;
+import com.google.compute.v1.stub.ForwardingRuleStubSettings;
 import static com.google.compute.v1.stub.HttpJsonForwardingRuleStub.aggregatedListForwardingRulesMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonForwardingRuleStub.deleteForwardingRuleMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonForwardingRuleStub.getForwardingRuleMethodDescriptor;
@@ -47,7 +51,17 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class ForwardingRuleClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              aggregatedListForwardingRulesMethodDescriptor,
+              deleteForwardingRuleMethodDescriptor,
+              getForwardingRuleMethodDescriptor,
+              insertForwardingRuleMethodDescriptor,
+              listForwardingRulesMethodDescriptor,
+              setTargetForwardingRuleMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, ForwardingRuleStubSettings.getDefaultEndpoint());
   private static ForwardingRuleClient client;
   private static ForwardingRuleSettings clientSettings;
 
@@ -92,7 +106,6 @@ public class ForwardingRuleClientTest {
       .setItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(aggregatedListForwardingRulesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -111,7 +124,6 @@ public class ForwardingRuleClientTest {
   public void aggregatedListForwardingRulesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(aggregatedListForwardingRulesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -171,7 +183,6 @@ public class ForwardingRuleClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteForwardingRuleMethodDescriptor);
 
     ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
 
@@ -188,7 +199,6 @@ public class ForwardingRuleClientTest {
   public void deleteForwardingRuleExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteForwardingRuleMethodDescriptor);
 
     try {
       ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
@@ -236,7 +246,6 @@ public class ForwardingRuleClientTest {
       .setRegion(region.toString())
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getForwardingRuleMethodDescriptor);
 
     ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
 
@@ -253,7 +262,6 @@ public class ForwardingRuleClientTest {
   public void getForwardingRuleExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getForwardingRuleMethodDescriptor);
 
     try {
       ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
@@ -313,7 +321,6 @@ public class ForwardingRuleClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertForwardingRuleMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     ForwardingRule forwardingRuleResource = ForwardingRule.newBuilder().build();
@@ -331,7 +338,6 @@ public class ForwardingRuleClientTest {
   public void insertForwardingRuleExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertForwardingRuleMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -361,7 +367,6 @@ public class ForwardingRuleClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listForwardingRulesMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -380,7 +385,6 @@ public class ForwardingRuleClientTest {
   public void listForwardingRulesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listForwardingRulesMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -440,7 +444,6 @@ public class ForwardingRuleClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setTargetForwardingRuleMethodDescriptor);
 
     ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
     TargetReference targetReferenceResource = TargetReference.newBuilder().build();
@@ -458,7 +461,6 @@ public class ForwardingRuleClientTest {
   public void setTargetForwardingRuleExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setTargetForwardingRuleMethodDescriptor);
 
     try {
       ForwardingRuleName forwardingRule = ForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");

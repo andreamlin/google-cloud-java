@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.RegionAutoscalerClient.ListRegionAutoscalersPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonRegionAutoscalerStub.deleteRegionAutoscalerMethodDescriptor;
@@ -30,6 +33,7 @@ import static com.google.compute.v1.stub.HttpJsonRegionAutoscalerStub.insertRegi
 import static com.google.compute.v1.stub.HttpJsonRegionAutoscalerStub.listRegionAutoscalersMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonRegionAutoscalerStub.patchRegionAutoscalerMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonRegionAutoscalerStub.updateRegionAutoscalerMethodDescriptor;
+import com.google.compute.v1.stub.RegionAutoscalerStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -46,7 +50,17 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class RegionAutoscalerClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              deleteRegionAutoscalerMethodDescriptor,
+              getRegionAutoscalerMethodDescriptor,
+              insertRegionAutoscalerMethodDescriptor,
+              listRegionAutoscalersMethodDescriptor,
+              patchRegionAutoscalerMethodDescriptor,
+              updateRegionAutoscalerMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, RegionAutoscalerStubSettings.getDefaultEndpoint());
   private static RegionAutoscalerClient client;
   private static RegionAutoscalerSettings clientSettings;
 
@@ -119,7 +133,6 @@ public class RegionAutoscalerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteRegionAutoscalerMethodDescriptor);
 
     ProjectRegionAutoscalerName autoscaler = ProjectRegionAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
 
@@ -136,7 +149,6 @@ public class RegionAutoscalerClientTest {
   public void deleteRegionAutoscalerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteRegionAutoscalerMethodDescriptor);
 
     try {
       ProjectRegionAutoscalerName autoscaler = ProjectRegionAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
@@ -172,7 +184,6 @@ public class RegionAutoscalerClientTest {
       .setTarget(target)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getRegionAutoscalerMethodDescriptor);
 
     ProjectRegionAutoscalerName autoscaler = ProjectRegionAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
 
@@ -189,7 +200,6 @@ public class RegionAutoscalerClientTest {
   public void getRegionAutoscalerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getRegionAutoscalerMethodDescriptor);
 
     try {
       ProjectRegionAutoscalerName autoscaler = ProjectRegionAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
@@ -249,7 +259,6 @@ public class RegionAutoscalerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertRegionAutoscalerMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
@@ -267,7 +276,6 @@ public class RegionAutoscalerClientTest {
   public void insertRegionAutoscalerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertRegionAutoscalerMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -297,7 +305,6 @@ public class RegionAutoscalerClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listRegionAutoscalersMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -316,7 +323,6 @@ public class RegionAutoscalerClientTest {
   public void listRegionAutoscalersExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listRegionAutoscalersMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -376,7 +382,6 @@ public class RegionAutoscalerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(patchRegionAutoscalerMethodDescriptor);
 
     String autoscaler = "autoscaler517258967";
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -395,7 +400,6 @@ public class RegionAutoscalerClientTest {
   public void patchRegionAutoscalerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(patchRegionAutoscalerMethodDescriptor);
 
     try {
       String autoscaler = "autoscaler517258967";
@@ -457,7 +461,6 @@ public class RegionAutoscalerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(updateRegionAutoscalerMethodDescriptor);
 
     String autoscaler = "autoscaler517258967";
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -476,7 +479,6 @@ public class RegionAutoscalerClientTest {
   public void updateRegionAutoscalerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(updateRegionAutoscalerMethodDescriptor);
 
     try {
       String autoscaler = "autoscaler517258967";

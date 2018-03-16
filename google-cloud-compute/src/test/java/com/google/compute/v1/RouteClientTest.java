@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,12 +24,14 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.RouteClient.ListRoutesPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonRouteStub.deleteRouteMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonRouteStub.getRouteMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonRouteStub.insertRouteMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonRouteStub.listRoutesMethodDescriptor;
+import com.google.compute.v1.stub.RouteStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -44,7 +48,15 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class RouteClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              deleteRouteMethodDescriptor,
+              getRouteMethodDescriptor,
+              insertRouteMethodDescriptor,
+              listRoutesMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, RouteStubSettings.getDefaultEndpoint());
   private static RouteClient client;
   private static RouteSettings clientSettings;
 
@@ -117,7 +129,6 @@ public class RouteClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteRouteMethodDescriptor);
 
     RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
 
@@ -134,7 +145,6 @@ public class RouteClientTest {
   public void deleteRouteExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteRouteMethodDescriptor);
 
     try {
       RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
@@ -180,7 +190,6 @@ public class RouteClientTest {
       .setId(id)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getRouteMethodDescriptor);
 
     RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
 
@@ -197,7 +206,6 @@ public class RouteClientTest {
   public void getRouteExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getRouteMethodDescriptor);
 
     try {
       RouteName route = RouteName.of("[PROJECT]", "[ROUTE]");
@@ -257,7 +265,6 @@ public class RouteClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertRouteMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Route routeResource = Route.newBuilder().build();
@@ -275,7 +282,6 @@ public class RouteClientTest {
   public void insertRouteExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertRouteMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -305,7 +311,6 @@ public class RouteClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listRoutesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -324,7 +329,6 @@ public class RouteClientTest {
   public void listRoutesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listRoutesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

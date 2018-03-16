@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.RegionInstanceGroupManagerClient.ListRegionInstanceGroupManagersPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonRegionInstanceGroupManagerStub.abandonInstancesRegionInstanceGroupManagerMethodDescriptor;
@@ -35,6 +38,7 @@ import static com.google.compute.v1.stub.HttpJsonRegionInstanceGroupManagerStub.
 import static com.google.compute.v1.stub.HttpJsonRegionInstanceGroupManagerStub.resizeRegionInstanceGroupManagerMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonRegionInstanceGroupManagerStub.setInstanceTemplateRegionInstanceGroupManagerMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonRegionInstanceGroupManagerStub.setTargetPoolsRegionInstanceGroupManagerMethodDescriptor;
+import com.google.compute.v1.stub.RegionInstanceGroupManagerStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -51,7 +55,22 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class RegionInstanceGroupManagerClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              abandonInstancesRegionInstanceGroupManagerMethodDescriptor,
+              deleteRegionInstanceGroupManagerMethodDescriptor,
+              deleteInstancesRegionInstanceGroupManagerMethodDescriptor,
+              getRegionInstanceGroupManagerMethodDescriptor,
+              insertRegionInstanceGroupManagerMethodDescriptor,
+              listRegionInstanceGroupManagersMethodDescriptor,
+              listManagedInstancesRegionInstanceGroupManagersMethodDescriptor,
+              recreateInstancesRegionInstanceGroupManagerMethodDescriptor,
+              resizeRegionInstanceGroupManagerMethodDescriptor,
+              setInstanceTemplateRegionInstanceGroupManagerMethodDescriptor,
+              setTargetPoolsRegionInstanceGroupManagerMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, RegionInstanceGroupManagerStubSettings.getDefaultEndpoint());
   private static RegionInstanceGroupManagerClient client;
   private static RegionInstanceGroupManagerSettings clientSettings;
 
@@ -124,7 +143,6 @@ public class RegionInstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(abandonInstancesRegionInstanceGroupManagerMethodDescriptor);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
     RegionInstanceGroupManagersAbandonInstancesRequest regionInstanceGroupManagersAbandonInstancesRequestResource = RegionInstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
@@ -142,7 +160,6 @@ public class RegionInstanceGroupManagerClientTest {
   public void abandonInstancesRegionInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(abandonInstancesRegionInstanceGroupManagerMethodDescriptor);
 
     try {
       ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
@@ -203,7 +220,6 @@ public class RegionInstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteRegionInstanceGroupManagerMethodDescriptor);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -220,7 +236,6 @@ public class RegionInstanceGroupManagerClientTest {
   public void deleteRegionInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteRegionInstanceGroupManagerMethodDescriptor);
 
     try {
       ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
@@ -280,7 +295,6 @@ public class RegionInstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteInstancesRegionInstanceGroupManagerMethodDescriptor);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
     RegionInstanceGroupManagersDeleteInstancesRequest regionInstanceGroupManagersDeleteInstancesRequestResource = RegionInstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
@@ -298,7 +312,6 @@ public class RegionInstanceGroupManagerClientTest {
   public void deleteInstancesRegionInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteInstancesRegionInstanceGroupManagerMethodDescriptor);
 
     try {
       ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
@@ -343,7 +356,6 @@ public class RegionInstanceGroupManagerClientTest {
       .setRegion(region.toString())
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getRegionInstanceGroupManagerMethodDescriptor);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -360,7 +372,6 @@ public class RegionInstanceGroupManagerClientTest {
   public void getRegionInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getRegionInstanceGroupManagerMethodDescriptor);
 
     try {
       ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
@@ -420,7 +431,6 @@ public class RegionInstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertRegionInstanceGroupManagerMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
@@ -438,7 +448,6 @@ public class RegionInstanceGroupManagerClientTest {
   public void insertRegionInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertRegionInstanceGroupManagerMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -468,7 +477,6 @@ public class RegionInstanceGroupManagerClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listRegionInstanceGroupManagersMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -487,7 +495,6 @@ public class RegionInstanceGroupManagerClientTest {
   public void listRegionInstanceGroupManagersExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listRegionInstanceGroupManagersMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -504,7 +511,6 @@ public class RegionInstanceGroupManagerClientTest {
   public void listManagedInstancesRegionInstanceGroupManagersTest() {
     RegionInstanceGroupManagersListInstancesResponse expectedResponse = RegionInstanceGroupManagersListInstancesResponse.newBuilder().build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listManagedInstancesRegionInstanceGroupManagersMethodDescriptor);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -521,7 +527,6 @@ public class RegionInstanceGroupManagerClientTest {
   public void listManagedInstancesRegionInstanceGroupManagersExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listManagedInstancesRegionInstanceGroupManagersMethodDescriptor);
 
     try {
       ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
@@ -581,7 +586,6 @@ public class RegionInstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(recreateInstancesRegionInstanceGroupManagerMethodDescriptor);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
     RegionInstanceGroupManagersRecreateRequest regionInstanceGroupManagersRecreateRequestResource = RegionInstanceGroupManagersRecreateRequest.newBuilder().build();
@@ -599,7 +603,6 @@ public class RegionInstanceGroupManagerClientTest {
   public void recreateInstancesRegionInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(recreateInstancesRegionInstanceGroupManagerMethodDescriptor);
 
     try {
       ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
@@ -660,7 +663,6 @@ public class RegionInstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(resizeRegionInstanceGroupManagerMethodDescriptor);
 
     Integer size = 3530753;
     ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
@@ -678,7 +680,6 @@ public class RegionInstanceGroupManagerClientTest {
   public void resizeRegionInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(resizeRegionInstanceGroupManagerMethodDescriptor);
 
     try {
       Integer size = 3530753;
@@ -739,7 +740,6 @@ public class RegionInstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setInstanceTemplateRegionInstanceGroupManagerMethodDescriptor);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
     RegionInstanceGroupManagersSetTemplateRequest regionInstanceGroupManagersSetTemplateRequestResource = RegionInstanceGroupManagersSetTemplateRequest.newBuilder().build();
@@ -757,7 +757,6 @@ public class RegionInstanceGroupManagerClientTest {
   public void setInstanceTemplateRegionInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setInstanceTemplateRegionInstanceGroupManagerMethodDescriptor);
 
     try {
       ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
@@ -818,7 +817,6 @@ public class RegionInstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setTargetPoolsRegionInstanceGroupManagerMethodDescriptor);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
     RegionInstanceGroupManagersSetTargetPoolsRequest regionInstanceGroupManagersSetTargetPoolsRequestResource = RegionInstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
@@ -836,7 +834,6 @@ public class RegionInstanceGroupManagerClientTest {
   public void setTargetPoolsRegionInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setTargetPoolsRegionInstanceGroupManagerMethodDescriptor);
 
     try {
       ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");

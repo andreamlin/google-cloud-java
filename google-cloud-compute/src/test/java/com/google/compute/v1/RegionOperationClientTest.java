@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,11 +24,13 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.RegionOperationClient.ListRegionOperationsPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonRegionOperationStub.deleteRegionOperationMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonRegionOperationStub.getRegionOperationMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonRegionOperationStub.listRegionOperationsMethodDescriptor;
+import com.google.compute.v1.stub.RegionOperationStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -43,7 +47,13 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class RegionOperationClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              getRegionOperationMethodDescriptor,
+              listRegionOperationsMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, RegionOperationStubSettings.getDefaultEndpoint());
   private static RegionOperationClient client;
   private static RegionOperationSettings clientSettings;
 
@@ -72,7 +82,6 @@ public class RegionOperationClientTest {
   @SuppressWarnings("all")
   public void deleteRegionOperationTest() {
     mockService.addNullResponse();
-    mockService.setSerializer(deleteRegionOperationMethodDescriptor);
 
     ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
 
@@ -87,7 +96,6 @@ public class RegionOperationClientTest {
   public void deleteRegionOperationExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteRegionOperationMethodDescriptor);
 
     try {
       ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
@@ -147,7 +155,6 @@ public class RegionOperationClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getRegionOperationMethodDescriptor);
 
     ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
 
@@ -164,7 +171,6 @@ public class RegionOperationClientTest {
   public void getRegionOperationExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getRegionOperationMethodDescriptor);
 
     try {
       ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
@@ -193,7 +199,6 @@ public class RegionOperationClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listRegionOperationsMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -212,7 +217,6 @@ public class RegionOperationClientTest {
   public void listRegionOperationsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listRegionOperationsMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");

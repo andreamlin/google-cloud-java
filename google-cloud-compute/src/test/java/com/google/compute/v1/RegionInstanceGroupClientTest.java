@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.RegionInstanceGroupClient.ListInstancesRegionInstanceGroupsPagedResponse;
 import static com.google.compute.v1.RegionInstanceGroupClient.ListRegionInstanceGroupsPagedResponse;
@@ -29,6 +32,7 @@ import static com.google.compute.v1.stub.HttpJsonRegionInstanceGroupStub.getRegi
 import static com.google.compute.v1.stub.HttpJsonRegionInstanceGroupStub.listInstancesRegionInstanceGroupsMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonRegionInstanceGroupStub.listRegionInstanceGroupsMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonRegionInstanceGroupStub.setNamedPortsRegionInstanceGroupMethodDescriptor;
+import com.google.compute.v1.stub.RegionInstanceGroupStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -45,7 +49,15 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class RegionInstanceGroupClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              getRegionInstanceGroupMethodDescriptor,
+              listRegionInstanceGroupsMethodDescriptor,
+              listInstancesRegionInstanceGroupsMethodDescriptor,
+              setNamedPortsRegionInstanceGroupMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, RegionInstanceGroupStubSettings.getDefaultEndpoint());
   private static RegionInstanceGroupClient client;
   private static RegionInstanceGroupSettings clientSettings;
 
@@ -100,7 +112,6 @@ public class RegionInstanceGroupClientTest {
       .setRegion(region.toString())
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getRegionInstanceGroupMethodDescriptor);
 
     ProjectRegionInstanceGroupName instanceGroup = ProjectRegionInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
 
@@ -117,7 +128,6 @@ public class RegionInstanceGroupClientTest {
   public void getRegionInstanceGroupExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getRegionInstanceGroupMethodDescriptor);
 
     try {
       ProjectRegionInstanceGroupName instanceGroup = ProjectRegionInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
@@ -146,7 +156,6 @@ public class RegionInstanceGroupClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listRegionInstanceGroupsMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -165,7 +174,6 @@ public class RegionInstanceGroupClientTest {
   public void listRegionInstanceGroupsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listRegionInstanceGroupsMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -194,7 +202,6 @@ public class RegionInstanceGroupClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listInstancesRegionInstanceGroupsMethodDescriptor);
 
     ProjectRegionInstanceGroupName instanceGroup = ProjectRegionInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
     RegionInstanceGroupsListInstancesRequest regionInstanceGroupsListInstancesRequestResource = RegionInstanceGroupsListInstancesRequest.newBuilder().build();
@@ -214,7 +221,6 @@ public class RegionInstanceGroupClientTest {
   public void listInstancesRegionInstanceGroupsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listInstancesRegionInstanceGroupsMethodDescriptor);
 
     try {
       ProjectRegionInstanceGroupName instanceGroup = ProjectRegionInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
@@ -275,7 +281,6 @@ public class RegionInstanceGroupClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setNamedPortsRegionInstanceGroupMethodDescriptor);
 
     ProjectRegionInstanceGroupName instanceGroup = ProjectRegionInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
     RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequestResource = RegionInstanceGroupsSetNamedPortsRequest.newBuilder().build();
@@ -293,7 +298,6 @@ public class RegionInstanceGroupClientTest {
   public void setNamedPortsRegionInstanceGroupExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setNamedPortsRegionInstanceGroupMethodDescriptor);
 
     try {
       ProjectRegionInstanceGroupName instanceGroup = ProjectRegionInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");

@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,11 +24,13 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.ZoneOperationClient.ListZoneOperationsPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonZoneOperationStub.deleteZoneOperationMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonZoneOperationStub.getZoneOperationMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonZoneOperationStub.listZoneOperationsMethodDescriptor;
+import com.google.compute.v1.stub.ZoneOperationStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -43,7 +47,13 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class ZoneOperationClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              getZoneOperationMethodDescriptor,
+              listZoneOperationsMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, ZoneOperationStubSettings.getDefaultEndpoint());
   private static ZoneOperationClient client;
   private static ZoneOperationSettings clientSettings;
 
@@ -72,7 +82,6 @@ public class ZoneOperationClientTest {
   @SuppressWarnings("all")
   public void deleteZoneOperationTest() {
     mockService.addNullResponse();
-    mockService.setSerializer(deleteZoneOperationMethodDescriptor);
 
     ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
 
@@ -87,7 +96,6 @@ public class ZoneOperationClientTest {
   public void deleteZoneOperationExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteZoneOperationMethodDescriptor);
 
     try {
       ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
@@ -147,7 +155,6 @@ public class ZoneOperationClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getZoneOperationMethodDescriptor);
 
     ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
 
@@ -164,7 +171,6 @@ public class ZoneOperationClientTest {
   public void getZoneOperationExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getZoneOperationMethodDescriptor);
 
     try {
       ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
@@ -193,7 +199,6 @@ public class ZoneOperationClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listZoneOperationsMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -212,7 +217,6 @@ public class ZoneOperationClientTest {
   public void listZoneOperationsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listZoneOperationsMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");

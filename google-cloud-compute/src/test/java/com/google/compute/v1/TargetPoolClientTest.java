@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.TargetPoolClient.AggregatedListTargetPoolsPagedResponse;
 import static com.google.compute.v1.TargetPoolClient.ListTargetPoolsPagedResponse;
@@ -36,6 +39,7 @@ import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.listTargetPoolsM
 import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.removeHealthCheckTargetPoolMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.removeInstanceTargetPoolMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonTargetPoolStub.setBackupTargetPoolMethodDescriptor;
+import com.google.compute.v1.stub.TargetPoolStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -52,7 +56,22 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class TargetPoolClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              addHealthCheckTargetPoolMethodDescriptor,
+              addInstanceTargetPoolMethodDescriptor,
+              aggregatedListTargetPoolsMethodDescriptor,
+              deleteTargetPoolMethodDescriptor,
+              getTargetPoolMethodDescriptor,
+              getHealthTargetPoolMethodDescriptor,
+              insertTargetPoolMethodDescriptor,
+              listTargetPoolsMethodDescriptor,
+              removeHealthCheckTargetPoolMethodDescriptor,
+              removeInstanceTargetPoolMethodDescriptor,
+              setBackupTargetPoolMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, TargetPoolStubSettings.getDefaultEndpoint());
   private static TargetPoolClient client;
   private static TargetPoolSettings clientSettings;
 
@@ -125,7 +144,6 @@ public class TargetPoolClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(addHealthCheckTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequestResource = TargetPoolsAddHealthCheckRequest.newBuilder().build();
@@ -143,7 +161,6 @@ public class TargetPoolClientTest {
   public void addHealthCheckTargetPoolExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(addHealthCheckTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
@@ -204,7 +221,6 @@ public class TargetPoolClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(addInstanceTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequestResource = TargetPoolsAddInstanceRequest.newBuilder().build();
@@ -222,7 +238,6 @@ public class TargetPoolClientTest {
   public void addInstanceTargetPoolExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(addInstanceTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
@@ -255,7 +270,6 @@ public class TargetPoolClientTest {
       .setItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(aggregatedListTargetPoolsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -274,7 +288,6 @@ public class TargetPoolClientTest {
   public void aggregatedListTargetPoolsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(aggregatedListTargetPoolsMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -334,7 +347,6 @@ public class TargetPoolClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
 
@@ -351,7 +363,6 @@ public class TargetPoolClientTest {
   public void deleteTargetPoolExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
@@ -389,7 +400,6 @@ public class TargetPoolClientTest {
       .setSelfLink(selfLink)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
 
@@ -406,7 +416,6 @@ public class TargetPoolClientTest {
   public void getTargetPoolExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
@@ -426,7 +435,6 @@ public class TargetPoolClientTest {
       .setKind(kind)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getHealthTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     InstanceReference instanceReferenceResource = InstanceReference.newBuilder().build();
@@ -444,7 +452,6 @@ public class TargetPoolClientTest {
   public void getHealthTargetPoolExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getHealthTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
@@ -505,7 +512,6 @@ public class TargetPoolClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertTargetPoolMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     TargetPool targetPoolResource = TargetPool.newBuilder().build();
@@ -523,7 +529,6 @@ public class TargetPoolClientTest {
   public void insertTargetPoolExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertTargetPoolMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -553,7 +558,6 @@ public class TargetPoolClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listTargetPoolsMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -572,7 +576,6 @@ public class TargetPoolClientTest {
   public void listTargetPoolsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listTargetPoolsMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -632,7 +635,6 @@ public class TargetPoolClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(removeHealthCheckTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequestResource = TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
@@ -650,7 +652,6 @@ public class TargetPoolClientTest {
   public void removeHealthCheckTargetPoolExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(removeHealthCheckTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
@@ -711,7 +712,6 @@ public class TargetPoolClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(removeInstanceTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequestResource = TargetPoolsRemoveInstanceRequest.newBuilder().build();
@@ -729,7 +729,6 @@ public class TargetPoolClientTest {
   public void removeInstanceTargetPoolExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(removeInstanceTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
@@ -790,7 +789,6 @@ public class TargetPoolClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setBackupTargetPoolMethodDescriptor);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     Float failoverRatio = -8.6107481E7F;
@@ -809,7 +807,6 @@ public class TargetPoolClientTest {
   public void setBackupTargetPoolExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setBackupTargetPoolMethodDescriptor);
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");

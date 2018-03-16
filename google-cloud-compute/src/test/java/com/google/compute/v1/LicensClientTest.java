@@ -15,14 +15,18 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.rpc.ApiException;
 import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.stub.HttpJsonLicensStub.getLicensMethodDescriptor;
+import com.google.compute.v1.stub.LicensStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -39,7 +43,12 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class LicensClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              getLicensMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, LicensStubSettings.getDefaultEndpoint());
   private static LicensClient client;
   private static LicensSettings clientSettings;
 
@@ -78,7 +87,6 @@ public class LicensClientTest {
       .setSelfLink(selfLink)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getLicensMethodDescriptor);
 
     LicenseName license = LicenseName.of("[PROJECT]", "[LICENSE]");
 
@@ -95,7 +103,6 @@ public class LicensClientTest {
   public void getLicensExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getLicensMethodDescriptor);
 
     try {
       LicenseName license = LicenseName.of("[PROJECT]", "[LICENSE]");

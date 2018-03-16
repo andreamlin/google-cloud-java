@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,9 +24,11 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.BackendServiceClient.AggregatedListBackendServicesPagedResponse;
 import static com.google.compute.v1.BackendServiceClient.ListBackendServicesPagedResponse;
+import com.google.compute.v1.stub.BackendServiceStubSettings;
 import static com.google.compute.v1.stub.HttpJsonBackendServiceStub.aggregatedListBackendServicesMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonBackendServiceStub.deleteBackendServiceMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonBackendServiceStub.getBackendServiceMethodDescriptor;
@@ -49,7 +53,19 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class BackendServiceClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              aggregatedListBackendServicesMethodDescriptor,
+              deleteBackendServiceMethodDescriptor,
+              getBackendServiceMethodDescriptor,
+              getHealthBackendServiceMethodDescriptor,
+              insertBackendServiceMethodDescriptor,
+              listBackendServicesMethodDescriptor,
+              patchBackendServiceMethodDescriptor,
+              updateBackendServiceMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, BackendServiceStubSettings.getDefaultEndpoint());
   private static BackendServiceClient client;
   private static BackendServiceSettings clientSettings;
 
@@ -94,7 +110,6 @@ public class BackendServiceClientTest {
       .setItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(aggregatedListBackendServicesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -113,7 +128,6 @@ public class BackendServiceClientTest {
   public void aggregatedListBackendServicesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(aggregatedListBackendServicesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -173,7 +187,6 @@ public class BackendServiceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
 
@@ -190,7 +203,6 @@ public class BackendServiceClientTest {
   public void deleteBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteBackendServiceMethodDescriptor);
 
     try {
       BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
@@ -240,7 +252,6 @@ public class BackendServiceClientTest {
       .setRegion(region.toString())
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
 
@@ -257,7 +268,6 @@ public class BackendServiceClientTest {
   public void getBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getBackendServiceMethodDescriptor);
 
     try {
       BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
@@ -277,7 +287,6 @@ public class BackendServiceClientTest {
       .setKind(kind)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getHealthBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
     ResourceGroupReference resourceGroupReferenceResource = ResourceGroupReference.newBuilder().build();
@@ -295,7 +304,6 @@ public class BackendServiceClientTest {
   public void getHealthBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getHealthBackendServiceMethodDescriptor);
 
     try {
       BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
@@ -356,7 +364,6 @@ public class BackendServiceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertBackendServiceMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     BackendService backendServiceResource = BackendService.newBuilder().build();
@@ -374,7 +381,6 @@ public class BackendServiceClientTest {
   public void insertBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertBackendServiceMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -404,7 +410,6 @@ public class BackendServiceClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listBackendServicesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -423,7 +428,6 @@ public class BackendServiceClientTest {
   public void listBackendServicesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listBackendServicesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -483,7 +487,6 @@ public class BackendServiceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(patchBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
     BackendService backendServiceResource = BackendService.newBuilder().build();
@@ -501,7 +504,6 @@ public class BackendServiceClientTest {
   public void patchBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(patchBackendServiceMethodDescriptor);
 
     try {
       BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
@@ -562,7 +564,6 @@ public class BackendServiceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(updateBackendServiceMethodDescriptor);
 
     BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
     BackendService backendServiceResource = BackendService.newBuilder().build();
@@ -580,7 +581,6 @@ public class BackendServiceClientTest {
   public void updateBackendServiceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(updateBackendServiceMethodDescriptor);
 
     try {
       BackendServiceName backendService = BackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");

@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,10 +24,12 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.ZoneClient.ListZonesPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonZoneStub.getZoneMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonZoneStub.listZonesMethodDescriptor;
+import com.google.compute.v1.stub.ZoneStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -42,7 +46,13 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class ZoneClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              getZoneMethodDescriptor,
+              listZonesMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, ZoneStubSettings.getDefaultEndpoint());
   private static ZoneClient client;
   private static ZoneSettings clientSettings;
 
@@ -89,7 +99,6 @@ public class ZoneClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getZoneMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -106,7 +115,6 @@ public class ZoneClientTest {
   public void getZoneExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getZoneMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -135,7 +143,6 @@ public class ZoneClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listZonesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -154,7 +161,6 @@ public class ZoneClientTest {
   public void listZonesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listZonesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

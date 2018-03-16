@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.SubnetworkClient.AggregatedListSubnetworksPagedResponse;
 import static com.google.compute.v1.SubnetworkClient.ListSubnetworksPagedResponse;
@@ -31,6 +34,7 @@ import static com.google.compute.v1.stub.HttpJsonSubnetworkStub.expandIpCidrRang
 import static com.google.compute.v1.stub.HttpJsonSubnetworkStub.getSubnetworkMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonSubnetworkStub.insertSubnetworkMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonSubnetworkStub.listSubnetworksMethodDescriptor;
+import com.google.compute.v1.stub.SubnetworkStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -47,7 +51,17 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class SubnetworkClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              aggregatedListSubnetworksMethodDescriptor,
+              deleteSubnetworkMethodDescriptor,
+              expandIpCidrRangeSubnetworkMethodDescriptor,
+              getSubnetworkMethodDescriptor,
+              insertSubnetworkMethodDescriptor,
+              listSubnetworksMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, SubnetworkStubSettings.getDefaultEndpoint());
   private static SubnetworkClient client;
   private static SubnetworkSettings clientSettings;
 
@@ -92,7 +106,6 @@ public class SubnetworkClientTest {
       .setItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(aggregatedListSubnetworksMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -111,7 +124,6 @@ public class SubnetworkClientTest {
   public void aggregatedListSubnetworksExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(aggregatedListSubnetworksMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -171,7 +183,6 @@ public class SubnetworkClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteSubnetworkMethodDescriptor);
 
     SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
 
@@ -188,7 +199,6 @@ public class SubnetworkClientTest {
   public void deleteSubnetworkExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteSubnetworkMethodDescriptor);
 
     try {
       SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
@@ -248,7 +258,6 @@ public class SubnetworkClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(expandIpCidrRangeSubnetworkMethodDescriptor);
 
     SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
     SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
@@ -266,7 +275,6 @@ public class SubnetworkClientTest {
   public void expandIpCidrRangeSubnetworkExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(expandIpCidrRangeSubnetworkMethodDescriptor);
 
     try {
       SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
@@ -305,7 +313,6 @@ public class SubnetworkClientTest {
       .setSelfLink(selfLink)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getSubnetworkMethodDescriptor);
 
     SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
 
@@ -322,7 +329,6 @@ public class SubnetworkClientTest {
   public void getSubnetworkExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getSubnetworkMethodDescriptor);
 
     try {
       SubnetworkName subnetwork = SubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
@@ -382,7 +388,6 @@ public class SubnetworkClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertSubnetworkMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
@@ -400,7 +405,6 @@ public class SubnetworkClientTest {
   public void insertSubnetworkExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertSubnetworkMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -430,7 +434,6 @@ public class SubnetworkClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listSubnetworksMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -449,7 +452,6 @@ public class SubnetworkClientTest {
   public void listSubnetworksExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listSubnetworksMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");

@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.TargetInstanceClient.AggregatedListTargetInstancesPagedResponse;
 import static com.google.compute.v1.TargetInstanceClient.ListTargetInstancesPagedResponse;
@@ -30,6 +33,7 @@ import static com.google.compute.v1.stub.HttpJsonTargetInstanceStub.deleteTarget
 import static com.google.compute.v1.stub.HttpJsonTargetInstanceStub.getTargetInstanceMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonTargetInstanceStub.insertTargetInstanceMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonTargetInstanceStub.listTargetInstancesMethodDescriptor;
+import com.google.compute.v1.stub.TargetInstanceStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -46,7 +50,16 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class TargetInstanceClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              aggregatedListTargetInstancesMethodDescriptor,
+              deleteTargetInstanceMethodDescriptor,
+              getTargetInstanceMethodDescriptor,
+              insertTargetInstanceMethodDescriptor,
+              listTargetInstancesMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, TargetInstanceStubSettings.getDefaultEndpoint());
   private static TargetInstanceClient client;
   private static TargetInstanceSettings clientSettings;
 
@@ -91,7 +104,6 @@ public class TargetInstanceClientTest {
       .setItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(aggregatedListTargetInstancesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -110,7 +122,6 @@ public class TargetInstanceClientTest {
   public void aggregatedListTargetInstancesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(aggregatedListTargetInstancesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -170,7 +181,6 @@ public class TargetInstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteTargetInstanceMethodDescriptor);
 
     TargetInstanceName targetInstance = TargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
 
@@ -187,7 +197,6 @@ public class TargetInstanceClientTest {
   public void deleteTargetInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteTargetInstanceMethodDescriptor);
 
     try {
       TargetInstanceName targetInstance = TargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
@@ -223,7 +232,6 @@ public class TargetInstanceClientTest {
       .setSelfLink(selfLink)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getTargetInstanceMethodDescriptor);
 
     TargetInstanceName targetInstance = TargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
 
@@ -240,7 +248,6 @@ public class TargetInstanceClientTest {
   public void getTargetInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getTargetInstanceMethodDescriptor);
 
     try {
       TargetInstanceName targetInstance = TargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
@@ -300,7 +307,6 @@ public class TargetInstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertTargetInstanceMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     TargetInstance targetInstanceResource = TargetInstance.newBuilder().build();
@@ -318,7 +324,6 @@ public class TargetInstanceClientTest {
   public void insertTargetInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertTargetInstanceMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -348,7 +353,6 @@ public class TargetInstanceClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listTargetInstancesMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -367,7 +371,6 @@ public class TargetInstanceClientTest {
   public void listTargetInstancesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listTargetInstancesMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");

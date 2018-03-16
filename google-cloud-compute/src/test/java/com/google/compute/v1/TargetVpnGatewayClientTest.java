@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.TargetVpnGatewayClient.AggregatedListTargetVpnGatewaysPagedResponse;
 import static com.google.compute.v1.TargetVpnGatewayClient.ListTargetVpnGatewaysPagedResponse;
@@ -30,6 +33,7 @@ import static com.google.compute.v1.stub.HttpJsonTargetVpnGatewayStub.deleteTarg
 import static com.google.compute.v1.stub.HttpJsonTargetVpnGatewayStub.getTargetVpnGatewayMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonTargetVpnGatewayStub.insertTargetVpnGatewayMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonTargetVpnGatewayStub.listTargetVpnGatewaysMethodDescriptor;
+import com.google.compute.v1.stub.TargetVpnGatewayStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -46,7 +50,16 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class TargetVpnGatewayClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              aggregatedListTargetVpnGatewaysMethodDescriptor,
+              deleteTargetVpnGatewayMethodDescriptor,
+              getTargetVpnGatewayMethodDescriptor,
+              insertTargetVpnGatewayMethodDescriptor,
+              listTargetVpnGatewaysMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, TargetVpnGatewayStubSettings.getDefaultEndpoint());
   private static TargetVpnGatewayClient client;
   private static TargetVpnGatewaySettings clientSettings;
 
@@ -91,7 +104,6 @@ public class TargetVpnGatewayClientTest {
       .setItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(aggregatedListTargetVpnGatewaysMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -110,7 +122,6 @@ public class TargetVpnGatewayClientTest {
   public void aggregatedListTargetVpnGatewaysExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(aggregatedListTargetVpnGatewaysMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -170,7 +181,6 @@ public class TargetVpnGatewayClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteTargetVpnGatewayMethodDescriptor);
 
     TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
 
@@ -187,7 +197,6 @@ public class TargetVpnGatewayClientTest {
   public void deleteTargetVpnGatewayExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteTargetVpnGatewayMethodDescriptor);
 
     try {
       TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
@@ -223,7 +232,6 @@ public class TargetVpnGatewayClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getTargetVpnGatewayMethodDescriptor);
 
     TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
 
@@ -240,7 +248,6 @@ public class TargetVpnGatewayClientTest {
   public void getTargetVpnGatewayExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getTargetVpnGatewayMethodDescriptor);
 
     try {
       TargetVpnGatewayName targetVpnGateway = TargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
@@ -300,7 +307,6 @@ public class TargetVpnGatewayClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertTargetVpnGatewayMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     TargetVpnGateway targetVpnGatewayResource = TargetVpnGateway.newBuilder().build();
@@ -318,7 +324,6 @@ public class TargetVpnGatewayClientTest {
   public void insertTargetVpnGatewayExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertTargetVpnGatewayMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -348,7 +353,6 @@ public class TargetVpnGatewayClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listTargetVpnGatewaysMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -367,7 +371,6 @@ public class TargetVpnGatewayClientTest {
   public void listTargetVpnGatewaysExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listTargetVpnGatewaysMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");

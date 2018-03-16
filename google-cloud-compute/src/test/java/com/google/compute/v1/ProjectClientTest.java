@@ -15,18 +15,22 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.rpc.ApiException;
 import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.stub.HttpJsonProjectStub.getProjectMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonProjectStub.moveDiskProjectMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonProjectStub.moveInstanceProjectMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonProjectStub.setCommonInstanceMetadataProjectMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonProjectStub.setUsageExportBucketProjectMethodDescriptor;
+import com.google.compute.v1.stub.ProjectStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -43,7 +47,16 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class ProjectClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              getProjectMethodDescriptor,
+              moveDiskProjectMethodDescriptor,
+              moveInstanceProjectMethodDescriptor,
+              setCommonInstanceMetadataProjectMethodDescriptor,
+              setUsageExportBucketProjectMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, ProjectStubSettings.getDefaultEndpoint());
   private static ProjectClient client;
   private static ProjectSettings clientSettings;
 
@@ -88,7 +101,6 @@ public class ProjectClientTest {
       .setSelfLink(selfLink)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -105,7 +117,6 @@ public class ProjectClientTest {
   public void getProjectExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getProjectMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -165,7 +176,6 @@ public class ProjectClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(moveDiskProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     DiskMoveRequest diskMoveRequestResource = DiskMoveRequest.newBuilder().build();
@@ -183,7 +193,6 @@ public class ProjectClientTest {
   public void moveDiskProjectExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(moveDiskProjectMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -244,7 +253,6 @@ public class ProjectClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(moveInstanceProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     InstanceMoveRequest instanceMoveRequestResource = InstanceMoveRequest.newBuilder().build();
@@ -262,7 +270,6 @@ public class ProjectClientTest {
   public void moveInstanceProjectExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(moveInstanceProjectMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -323,7 +330,6 @@ public class ProjectClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setCommonInstanceMetadataProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Metadata metadataResource = Metadata.newBuilder().build();
@@ -341,7 +347,6 @@ public class ProjectClientTest {
   public void setCommonInstanceMetadataProjectExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setCommonInstanceMetadataProjectMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -402,7 +407,6 @@ public class ProjectClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setUsageExportBucketProjectMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     UsageExportLocation usageExportLocationResource = UsageExportLocation.newBuilder().build();
@@ -420,7 +424,6 @@ public class ProjectClientTest {
   public void setUsageExportBucketProjectExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setUsageExportBucketProjectMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,9 +24,11 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.DiskClient.AggregatedListDisksPagedResponse;
 import static com.google.compute.v1.DiskClient.ListDisksPagedResponse;
+import com.google.compute.v1.stub.DiskStubSettings;
 import static com.google.compute.v1.stub.HttpJsonDiskStub.aggregatedListDisksMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonDiskStub.createSnapshotDiskMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonDiskStub.deleteDiskMethodDescriptor;
@@ -48,7 +52,18 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class DiskClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              aggregatedListDisksMethodDescriptor,
+              createSnapshotDiskMethodDescriptor,
+              deleteDiskMethodDescriptor,
+              getDiskMethodDescriptor,
+              insertDiskMethodDescriptor,
+              listDisksMethodDescriptor,
+              resizeDiskMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, DiskStubSettings.getDefaultEndpoint());
   private static DiskClient client;
   private static DiskSettings clientSettings;
 
@@ -93,7 +108,6 @@ public class DiskClientTest {
       .setItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(aggregatedListDisksMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -112,7 +126,6 @@ public class DiskClientTest {
   public void aggregatedListDisksExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(aggregatedListDisksMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -172,7 +185,6 @@ public class DiskClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(createSnapshotDiskMethodDescriptor);
 
     DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
     Snapshot snapshotResource = Snapshot.newBuilder().build();
@@ -190,7 +202,6 @@ public class DiskClientTest {
   public void createSnapshotDiskExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(createSnapshotDiskMethodDescriptor);
 
     try {
       DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
@@ -251,7 +262,6 @@ public class DiskClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteDiskMethodDescriptor);
 
     DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
 
@@ -268,7 +278,6 @@ public class DiskClientTest {
   public void deleteDiskExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteDiskMethodDescriptor);
 
     try {
       DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
@@ -320,7 +329,6 @@ public class DiskClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getDiskMethodDescriptor);
 
     DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
 
@@ -337,7 +345,6 @@ public class DiskClientTest {
   public void getDiskExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getDiskMethodDescriptor);
 
     try {
       DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
@@ -397,7 +404,6 @@ public class DiskClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertDiskMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     String sourceImage = "sourceImage1661056055";
@@ -416,7 +422,6 @@ public class DiskClientTest {
   public void insertDiskExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertDiskMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -447,7 +452,6 @@ public class DiskClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listDisksMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -466,7 +470,6 @@ public class DiskClientTest {
   public void listDisksExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listDisksMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -526,7 +529,6 @@ public class DiskClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(resizeDiskMethodDescriptor);
 
     DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
     DisksResizeRequest disksResizeRequestResource = DisksResizeRequest.newBuilder().build();
@@ -544,7 +546,6 @@ public class DiskClientTest {
   public void resizeDiskExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(resizeDiskMethodDescriptor);
 
     try {
       DiskName disk = DiskName.of("[PROJECT]", "[ZONE]", "[DISK]");

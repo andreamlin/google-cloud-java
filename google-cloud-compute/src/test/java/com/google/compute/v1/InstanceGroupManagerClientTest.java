@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.InstanceGroupManagerClient.AggregatedListInstanceGroupManagersPagedResponse;
 import static com.google.compute.v1.InstanceGroupManagerClient.ListInstanceGroupManagersPagedResponse;
@@ -37,6 +40,7 @@ import static com.google.compute.v1.stub.HttpJsonInstanceGroupManagerStub.recrea
 import static com.google.compute.v1.stub.HttpJsonInstanceGroupManagerStub.resizeInstanceGroupManagerMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonInstanceGroupManagerStub.setInstanceTemplateInstanceGroupManagerMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonInstanceGroupManagerStub.setTargetPoolsInstanceGroupManagerMethodDescriptor;
+import com.google.compute.v1.stub.InstanceGroupManagerStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -53,7 +57,23 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class InstanceGroupManagerClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              abandonInstancesInstanceGroupManagerMethodDescriptor,
+              aggregatedListInstanceGroupManagersMethodDescriptor,
+              deleteInstanceGroupManagerMethodDescriptor,
+              deleteInstancesInstanceGroupManagerMethodDescriptor,
+              getInstanceGroupManagerMethodDescriptor,
+              insertInstanceGroupManagerMethodDescriptor,
+              listInstanceGroupManagersMethodDescriptor,
+              listManagedInstancesInstanceGroupManagersMethodDescriptor,
+              recreateInstancesInstanceGroupManagerMethodDescriptor,
+              resizeInstanceGroupManagerMethodDescriptor,
+              setInstanceTemplateInstanceGroupManagerMethodDescriptor,
+              setTargetPoolsInstanceGroupManagerMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, InstanceGroupManagerStubSettings.getDefaultEndpoint());
   private static InstanceGroupManagerClient client;
   private static InstanceGroupManagerSettings clientSettings;
 
@@ -126,7 +146,6 @@ public class InstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(abandonInstancesInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
     InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
@@ -144,7 +163,6 @@ public class InstanceGroupManagerClientTest {
   public void abandonInstancesInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(abandonInstancesInstanceGroupManagerMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -177,7 +195,6 @@ public class InstanceGroupManagerClientTest {
       .setItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(aggregatedListInstanceGroupManagersMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -196,7 +213,6 @@ public class InstanceGroupManagerClientTest {
   public void aggregatedListInstanceGroupManagersExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(aggregatedListInstanceGroupManagersMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -256,7 +272,6 @@ public class InstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -273,7 +288,6 @@ public class InstanceGroupManagerClientTest {
   public void deleteInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteInstanceGroupManagerMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -333,7 +347,6 @@ public class InstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteInstancesInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
     InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequestResource = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
@@ -351,7 +364,6 @@ public class InstanceGroupManagerClientTest {
   public void deleteInstancesInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteInstancesInstanceGroupManagerMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -396,7 +408,6 @@ public class InstanceGroupManagerClientTest {
       .setRegion(region.toString())
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -413,7 +424,6 @@ public class InstanceGroupManagerClientTest {
   public void getInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getInstanceGroupManagerMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -473,7 +483,6 @@ public class InstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertInstanceGroupManagerMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
@@ -491,7 +500,6 @@ public class InstanceGroupManagerClientTest {
   public void insertInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertInstanceGroupManagerMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -521,7 +529,6 @@ public class InstanceGroupManagerClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listInstanceGroupManagersMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -540,7 +547,6 @@ public class InstanceGroupManagerClientTest {
   public void listInstanceGroupManagersExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listInstanceGroupManagersMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -557,7 +563,6 @@ public class InstanceGroupManagerClientTest {
   public void listManagedInstancesInstanceGroupManagersTest() {
     InstanceGroupManagersListManagedInstancesResponse expectedResponse = InstanceGroupManagersListManagedInstancesResponse.newBuilder().build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listManagedInstancesInstanceGroupManagersMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
 
@@ -574,7 +579,6 @@ public class InstanceGroupManagerClientTest {
   public void listManagedInstancesInstanceGroupManagersExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listManagedInstancesInstanceGroupManagersMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -634,7 +638,6 @@ public class InstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(recreateInstancesInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
     InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequestResource = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
@@ -652,7 +655,6 @@ public class InstanceGroupManagerClientTest {
   public void recreateInstancesInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(recreateInstancesInstanceGroupManagerMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -713,7 +715,6 @@ public class InstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(resizeInstanceGroupManagerMethodDescriptor);
 
     Integer size = 3530753;
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -731,7 +732,6 @@ public class InstanceGroupManagerClientTest {
   public void resizeInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(resizeInstanceGroupManagerMethodDescriptor);
 
     try {
       Integer size = 3530753;
@@ -792,7 +792,6 @@ public class InstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setInstanceTemplateInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
     InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequestResource = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
@@ -810,7 +809,6 @@ public class InstanceGroupManagerClientTest {
   public void setInstanceTemplateInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setInstanceTemplateInstanceGroupManagerMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
@@ -871,7 +869,6 @@ public class InstanceGroupManagerClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setTargetPoolsInstanceGroupManagerMethodDescriptor);
 
     InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
     InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequestResource = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
@@ -889,7 +886,6 @@ public class InstanceGroupManagerClientTest {
   public void setTargetPoolsInstanceGroupManagerExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setTargetPoolsInstanceGroupManagerMethodDescriptor);
 
     try {
       InstanceGroupManagerName instanceGroupManager = InstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");

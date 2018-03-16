@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.InstanceClient.AggregatedListInstancesPagedResponse;
 import static com.google.compute.v1.InstanceClient.ListInstancesPagedResponse;
@@ -45,6 +48,7 @@ import static com.google.compute.v1.stub.HttpJsonInstanceStub.setTagsInstanceMet
 import static com.google.compute.v1.stub.HttpJsonInstanceStub.startInstanceMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonInstanceStub.startWithEncryptionKeyInstanceMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonInstanceStub.stopInstanceMethodDescriptor;
+import com.google.compute.v1.stub.InstanceStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -61,7 +65,31 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class InstanceClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              addAccessConfigInstanceMethodDescriptor,
+              aggregatedListInstancesMethodDescriptor,
+              attachDiskInstanceMethodDescriptor,
+              deleteInstanceMethodDescriptor,
+              deleteAccessConfigInstanceMethodDescriptor,
+              detachDiskInstanceMethodDescriptor,
+              getInstanceMethodDescriptor,
+              getSerialPortOutputInstanceMethodDescriptor,
+              insertInstanceMethodDescriptor,
+              listInstancesMethodDescriptor,
+              resetInstanceMethodDescriptor,
+              setDiskAutoDeleteInstanceMethodDescriptor,
+              setMachineTypeInstanceMethodDescriptor,
+              setMetadataInstanceMethodDescriptor,
+              setSchedulingInstanceMethodDescriptor,
+              setServiceAccountInstanceMethodDescriptor,
+              setTagsInstanceMethodDescriptor,
+              startInstanceMethodDescriptor,
+              startWithEncryptionKeyInstanceMethodDescriptor,
+              stopInstanceMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, InstanceStubSettings.getDefaultEndpoint());
   private static InstanceClient client;
   private static InstanceSettings clientSettings;
 
@@ -134,7 +162,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(addAccessConfigInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String networkInterface = "networkInterface902258792";
@@ -153,7 +180,6 @@ public class InstanceClientTest {
   public void addAccessConfigInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(addAccessConfigInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -187,7 +213,6 @@ public class InstanceClientTest {
       .setItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(aggregatedListInstancesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -206,7 +231,6 @@ public class InstanceClientTest {
   public void aggregatedListInstancesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(aggregatedListInstancesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -266,7 +290,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(attachDiskInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     AttachedDisk attachedDiskResource = AttachedDisk.newBuilder().build();
@@ -284,7 +307,6 @@ public class InstanceClientTest {
   public void attachDiskInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(attachDiskInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -345,7 +367,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
@@ -362,7 +383,6 @@ public class InstanceClientTest {
   public void deleteInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -422,7 +442,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteAccessConfigInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String networkInterface = "networkInterface902258792";
@@ -441,7 +460,6 @@ public class InstanceClientTest {
   public void deleteAccessConfigInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteAccessConfigInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -503,7 +521,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(detachDiskInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String deviceName = "deviceName-1543071020";
@@ -521,7 +538,6 @@ public class InstanceClientTest {
   public void detachDiskInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(detachDiskInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -564,7 +580,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
@@ -581,7 +596,6 @@ public class InstanceClientTest {
   public void getInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -609,7 +623,6 @@ public class InstanceClientTest {
       .setSelfLink(selfLink)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getSerialPortOutputInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Integer port = 3446913;
@@ -628,7 +641,6 @@ public class InstanceClientTest {
   public void getSerialPortOutputInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getSerialPortOutputInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -690,7 +702,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertInstanceMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
     Instance instanceResource = Instance.newBuilder().build();
@@ -708,7 +719,6 @@ public class InstanceClientTest {
   public void insertInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertInstanceMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -738,7 +748,6 @@ public class InstanceClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listInstancesMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -757,7 +766,6 @@ public class InstanceClientTest {
   public void listInstancesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listInstancesMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
@@ -817,7 +825,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(resetInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
@@ -834,7 +841,6 @@ public class InstanceClientTest {
   public void resetInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(resetInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -894,7 +900,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setDiskAutoDeleteInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Boolean autoDelete = false;
@@ -913,7 +918,6 @@ public class InstanceClientTest {
   public void setDiskAutoDeleteInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setDiskAutoDeleteInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -975,7 +979,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setMachineTypeInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     InstancesSetMachineTypeRequest instancesSetMachineTypeRequestResource = InstancesSetMachineTypeRequest.newBuilder().build();
@@ -993,7 +996,6 @@ public class InstanceClientTest {
   public void setMachineTypeInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setMachineTypeInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -1054,7 +1056,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setMetadataInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Metadata metadataResource = Metadata.newBuilder().build();
@@ -1072,7 +1073,6 @@ public class InstanceClientTest {
   public void setMetadataInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setMetadataInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -1133,7 +1133,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setSchedulingInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Scheduling schedulingResource = Scheduling.newBuilder().build();
@@ -1151,7 +1150,6 @@ public class InstanceClientTest {
   public void setSchedulingInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setSchedulingInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -1212,7 +1210,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setServiceAccountInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     InstancesSetServiceAccountRequest instancesSetServiceAccountRequestResource = InstancesSetServiceAccountRequest.newBuilder().build();
@@ -1230,7 +1227,6 @@ public class InstanceClientTest {
   public void setServiceAccountInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setServiceAccountInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -1291,7 +1287,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setTagsInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Tags tagsResource = Tags.newBuilder().build();
@@ -1309,7 +1304,6 @@ public class InstanceClientTest {
   public void setTagsInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setTagsInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -1370,7 +1364,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(startInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
@@ -1387,7 +1380,6 @@ public class InstanceClientTest {
   public void startInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(startInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -1447,7 +1439,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(startWithEncryptionKeyInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequestResource = InstancesStartWithEncryptionKeyRequest.newBuilder().build();
@@ -1465,7 +1456,6 @@ public class InstanceClientTest {
   public void startWithEncryptionKeyInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(startWithEncryptionKeyInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -1526,7 +1516,6 @@ public class InstanceClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(stopInstanceMethodDescriptor);
 
     InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
@@ -1543,7 +1532,6 @@ public class InstanceClientTest {
   public void stopInstanceExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(stopInstanceMethodDescriptor);
 
     try {
       InstanceName instance = InstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");

@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,9 +24,11 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.GlobalOperationClient.AggregatedListGlobalOperationsPagedResponse;
 import static com.google.compute.v1.GlobalOperationClient.ListGlobalOperationsPagedResponse;
+import com.google.compute.v1.stub.GlobalOperationStubSettings;
 import static com.google.compute.v1.stub.HttpJsonGlobalOperationStub.aggregatedListGlobalOperationsMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonGlobalOperationStub.deleteGlobalOperationMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonGlobalOperationStub.getGlobalOperationMethodDescriptor;
@@ -45,7 +49,14 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class GlobalOperationClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              aggregatedListGlobalOperationsMethodDescriptor,
+              getGlobalOperationMethodDescriptor,
+              listGlobalOperationsMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, GlobalOperationStubSettings.getDefaultEndpoint());
   private static GlobalOperationClient client;
   private static GlobalOperationSettings clientSettings;
 
@@ -90,7 +101,6 @@ public class GlobalOperationClientTest {
       .setItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(aggregatedListGlobalOperationsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -109,7 +119,6 @@ public class GlobalOperationClientTest {
   public void aggregatedListGlobalOperationsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(aggregatedListGlobalOperationsMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -125,7 +134,6 @@ public class GlobalOperationClientTest {
   @SuppressWarnings("all")
   public void deleteGlobalOperationTest() {
     mockService.addNullResponse();
-    mockService.setSerializer(deleteGlobalOperationMethodDescriptor);
 
     OperationName operation = OperationName.of("[PROJECT]", "[OPERATION]");
 
@@ -140,7 +148,6 @@ public class GlobalOperationClientTest {
   public void deleteGlobalOperationExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteGlobalOperationMethodDescriptor);
 
     try {
       OperationName operation = OperationName.of("[PROJECT]", "[OPERATION]");
@@ -200,7 +207,6 @@ public class GlobalOperationClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getGlobalOperationMethodDescriptor);
 
     OperationName operation = OperationName.of("[PROJECT]", "[OPERATION]");
 
@@ -217,7 +223,6 @@ public class GlobalOperationClientTest {
   public void getGlobalOperationExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getGlobalOperationMethodDescriptor);
 
     try {
       OperationName operation = OperationName.of("[PROJECT]", "[OPERATION]");
@@ -246,7 +251,6 @@ public class GlobalOperationClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listGlobalOperationsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -265,7 +269,6 @@ public class GlobalOperationClientTest {
   public void listGlobalOperationsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listGlobalOperationsMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

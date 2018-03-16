@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.HttpsHealthCheckClient.ListHttpsHealthChecksPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonHttpsHealthCheckStub.deleteHttpsHealthCheckMethodDescriptor;
@@ -30,6 +33,7 @@ import static com.google.compute.v1.stub.HttpJsonHttpsHealthCheckStub.insertHttp
 import static com.google.compute.v1.stub.HttpJsonHttpsHealthCheckStub.listHttpsHealthChecksMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonHttpsHealthCheckStub.patchHttpsHealthCheckMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonHttpsHealthCheckStub.updateHttpsHealthCheckMethodDescriptor;
+import com.google.compute.v1.stub.HttpsHealthCheckStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -46,7 +50,17 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class HttpsHealthCheckClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              deleteHttpsHealthCheckMethodDescriptor,
+              getHttpsHealthCheckMethodDescriptor,
+              insertHttpsHealthCheckMethodDescriptor,
+              listHttpsHealthChecksMethodDescriptor,
+              patchHttpsHealthCheckMethodDescriptor,
+              updateHttpsHealthCheckMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, HttpsHealthCheckStubSettings.getDefaultEndpoint());
   private static HttpsHealthCheckClient client;
   private static HttpsHealthCheckSettings clientSettings;
 
@@ -119,7 +133,6 @@ public class HttpsHealthCheckClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteHttpsHealthCheckMethodDescriptor);
 
     HttpsHealthCheckName httpsHealthCheck = HttpsHealthCheckName.of("[PROJECT]", "[HTTPS_HEALTH_CHECK]");
 
@@ -136,7 +149,6 @@ public class HttpsHealthCheckClientTest {
   public void deleteHttpsHealthCheckExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteHttpsHealthCheckMethodDescriptor);
 
     try {
       HttpsHealthCheckName httpsHealthCheck = HttpsHealthCheckName.of("[PROJECT]", "[HTTPS_HEALTH_CHECK]");
@@ -180,7 +192,6 @@ public class HttpsHealthCheckClientTest {
       .setRequestPath(requestPath)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getHttpsHealthCheckMethodDescriptor);
 
     HttpsHealthCheckName httpsHealthCheck = HttpsHealthCheckName.of("[PROJECT]", "[HTTPS_HEALTH_CHECK]");
 
@@ -197,7 +208,6 @@ public class HttpsHealthCheckClientTest {
   public void getHttpsHealthCheckExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getHttpsHealthCheckMethodDescriptor);
 
     try {
       HttpsHealthCheckName httpsHealthCheck = HttpsHealthCheckName.of("[PROJECT]", "[HTTPS_HEALTH_CHECK]");
@@ -257,7 +267,6 @@ public class HttpsHealthCheckClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertHttpsHealthCheckMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     HttpsHealthCheck httpsHealthCheckResource = HttpsHealthCheck.newBuilder().build();
@@ -275,7 +284,6 @@ public class HttpsHealthCheckClientTest {
   public void insertHttpsHealthCheckExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertHttpsHealthCheckMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -305,7 +313,6 @@ public class HttpsHealthCheckClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listHttpsHealthChecksMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -324,7 +331,6 @@ public class HttpsHealthCheckClientTest {
   public void listHttpsHealthChecksExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listHttpsHealthChecksMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -384,7 +390,6 @@ public class HttpsHealthCheckClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(patchHttpsHealthCheckMethodDescriptor);
 
     HttpsHealthCheckName httpsHealthCheck = HttpsHealthCheckName.of("[PROJECT]", "[HTTPS_HEALTH_CHECK]");
     HttpsHealthCheck httpsHealthCheckResource = HttpsHealthCheck.newBuilder().build();
@@ -402,7 +407,6 @@ public class HttpsHealthCheckClientTest {
   public void patchHttpsHealthCheckExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(patchHttpsHealthCheckMethodDescriptor);
 
     try {
       HttpsHealthCheckName httpsHealthCheck = HttpsHealthCheckName.of("[PROJECT]", "[HTTPS_HEALTH_CHECK]");
@@ -463,7 +467,6 @@ public class HttpsHealthCheckClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(updateHttpsHealthCheckMethodDescriptor);
 
     HttpsHealthCheckName httpsHealthCheck = HttpsHealthCheckName.of("[PROJECT]", "[HTTPS_HEALTH_CHECK]");
     HttpsHealthCheck httpsHealthCheckResource = HttpsHealthCheck.newBuilder().build();
@@ -481,7 +484,6 @@ public class HttpsHealthCheckClientTest {
   public void updateHttpsHealthCheckExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(updateHttpsHealthCheckMethodDescriptor);
 
     try {
       HttpsHealthCheckName httpsHealthCheck = HttpsHealthCheckName.of("[PROJECT]", "[HTTPS_HEALTH_CHECK]");

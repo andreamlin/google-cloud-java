@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,12 +24,14 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.InstanceTemplateClient.ListInstanceTemplatesPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonInstanceTemplateStub.deleteInstanceTemplateMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonInstanceTemplateStub.getInstanceTemplateMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonInstanceTemplateStub.insertInstanceTemplateMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonInstanceTemplateStub.listInstanceTemplatesMethodDescriptor;
+import com.google.compute.v1.stub.InstanceTemplateStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -44,7 +48,15 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class InstanceTemplateClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              deleteInstanceTemplateMethodDescriptor,
+              getInstanceTemplateMethodDescriptor,
+              insertInstanceTemplateMethodDescriptor,
+              listInstanceTemplatesMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, InstanceTemplateStubSettings.getDefaultEndpoint());
   private static InstanceTemplateClient client;
   private static InstanceTemplateSettings clientSettings;
 
@@ -117,7 +129,6 @@ public class InstanceTemplateClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteInstanceTemplateMethodDescriptor);
 
     InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
 
@@ -134,7 +145,6 @@ public class InstanceTemplateClientTest {
   public void deleteInstanceTemplateExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteInstanceTemplateMethodDescriptor);
 
     try {
       InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
@@ -164,7 +174,6 @@ public class InstanceTemplateClientTest {
       .setSelfLink(selfLink)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getInstanceTemplateMethodDescriptor);
 
     InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
 
@@ -181,7 +190,6 @@ public class InstanceTemplateClientTest {
   public void getInstanceTemplateExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getInstanceTemplateMethodDescriptor);
 
     try {
       InstanceTemplateName instanceTemplate = InstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
@@ -241,7 +249,6 @@ public class InstanceTemplateClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertInstanceTemplateMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     InstanceTemplate instanceTemplateResource = InstanceTemplate.newBuilder().build();
@@ -259,7 +266,6 @@ public class InstanceTemplateClientTest {
   public void insertInstanceTemplateExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertInstanceTemplateMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -289,7 +295,6 @@ public class InstanceTemplateClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listInstanceTemplatesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -308,7 +313,6 @@ public class InstanceTemplateClientTest {
   public void listInstanceTemplatesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listInstanceTemplatesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

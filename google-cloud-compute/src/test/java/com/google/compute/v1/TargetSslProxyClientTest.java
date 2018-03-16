@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.TargetSslProxyClient.ListTargetSslProxiesPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonTargetSslProxyStub.deleteTargetSslProxyMethodDescriptor;
@@ -31,6 +34,7 @@ import static com.google.compute.v1.stub.HttpJsonTargetSslProxyStub.listTargetSs
 import static com.google.compute.v1.stub.HttpJsonTargetSslProxyStub.setBackendServiceTargetSslProxyMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonTargetSslProxyStub.setProxyHeaderTargetSslProxyMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonTargetSslProxyStub.setSslCertificatesTargetSslProxyMethodDescriptor;
+import com.google.compute.v1.stub.TargetSslProxyStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -47,7 +51,18 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class TargetSslProxyClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              deleteTargetSslProxyMethodDescriptor,
+              getTargetSslProxyMethodDescriptor,
+              insertTargetSslProxyMethodDescriptor,
+              listTargetSslProxiesMethodDescriptor,
+              setBackendServiceTargetSslProxyMethodDescriptor,
+              setProxyHeaderTargetSslProxyMethodDescriptor,
+              setSslCertificatesTargetSslProxyMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, TargetSslProxyStubSettings.getDefaultEndpoint());
   private static TargetSslProxyClient client;
   private static TargetSslProxySettings clientSettings;
 
@@ -120,7 +135,6 @@ public class TargetSslProxyClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
 
@@ -137,7 +151,6 @@ public class TargetSslProxyClientTest {
   public void deleteTargetSslProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteTargetSslProxyMethodDescriptor);
 
     try {
       TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
@@ -171,7 +184,6 @@ public class TargetSslProxyClientTest {
       .setSelfLink(selfLink)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
 
@@ -188,7 +200,6 @@ public class TargetSslProxyClientTest {
   public void getTargetSslProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getTargetSslProxyMethodDescriptor);
 
     try {
       TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
@@ -248,7 +259,6 @@ public class TargetSslProxyClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertTargetSslProxyMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     TargetSslProxy targetSslProxyResource = TargetSslProxy.newBuilder().build();
@@ -266,7 +276,6 @@ public class TargetSslProxyClientTest {
   public void insertTargetSslProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertTargetSslProxyMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -296,7 +305,6 @@ public class TargetSslProxyClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listTargetSslProxiesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -315,7 +323,6 @@ public class TargetSslProxyClientTest {
   public void listTargetSslProxiesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listTargetSslProxiesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -375,7 +382,6 @@ public class TargetSslProxyClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setBackendServiceTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
     TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequestResource = TargetSslProxiesSetBackendServiceRequest.newBuilder().build();
@@ -393,7 +399,6 @@ public class TargetSslProxyClientTest {
   public void setBackendServiceTargetSslProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setBackendServiceTargetSslProxyMethodDescriptor);
 
     try {
       TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
@@ -454,7 +459,6 @@ public class TargetSslProxyClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setProxyHeaderTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
     TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequestResource = TargetSslProxiesSetProxyHeaderRequest.newBuilder().build();
@@ -472,7 +476,6 @@ public class TargetSslProxyClientTest {
   public void setProxyHeaderTargetSslProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setProxyHeaderTargetSslProxyMethodDescriptor);
 
     try {
       TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
@@ -533,7 +536,6 @@ public class TargetSslProxyClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(setSslCertificatesTargetSslProxyMethodDescriptor);
 
     TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
     TargetSslProxiesSetSslCertificatesRequest targetSslProxiesSetSslCertificatesRequestResource = TargetSslProxiesSetSslCertificatesRequest.newBuilder().build();
@@ -551,7 +553,6 @@ public class TargetSslProxyClientTest {
   public void setSslCertificatesTargetSslProxyExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(setSslCertificatesTargetSslProxyMethodDescriptor);
 
     try {
       TargetSslProxyName targetSslProxy = TargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");

@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,12 +24,14 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.MachineTypeClient.AggregatedListMachineTypesPagedResponse;
 import static com.google.compute.v1.MachineTypeClient.ListMachineTypesPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonMachineTypeStub.aggregatedListMachineTypesMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonMachineTypeStub.getMachineTypeMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonMachineTypeStub.listMachineTypesMethodDescriptor;
+import com.google.compute.v1.stub.MachineTypeStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -44,7 +48,14 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class MachineTypeClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              aggregatedListMachineTypesMethodDescriptor,
+              getMachineTypeMethodDescriptor,
+              listMachineTypesMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, MachineTypeStubSettings.getDefaultEndpoint());
   private static MachineTypeClient client;
   private static MachineTypeSettings clientSettings;
 
@@ -89,7 +100,6 @@ public class MachineTypeClientTest {
       .setItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(aggregatedListMachineTypesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -108,7 +118,6 @@ public class MachineTypeClientTest {
   public void aggregatedListMachineTypesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(aggregatedListMachineTypesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -152,7 +161,6 @@ public class MachineTypeClientTest {
       .setImageSpaceGb(imageSpaceGb)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getMachineTypeMethodDescriptor);
 
     MachineTypeName machineType = MachineTypeName.of("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
 
@@ -169,7 +177,6 @@ public class MachineTypeClientTest {
   public void getMachineTypeExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getMachineTypeMethodDescriptor);
 
     try {
       MachineTypeName machineType = MachineTypeName.of("[PROJECT]", "[ZONE]", "[MACHINE_TYPE]");
@@ -198,7 +205,6 @@ public class MachineTypeClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listMachineTypesMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -217,7 +223,6 @@ public class MachineTypeClientTest {
   public void listMachineTypesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listMachineTypesMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");

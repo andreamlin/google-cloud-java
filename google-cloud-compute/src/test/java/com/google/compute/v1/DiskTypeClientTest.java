@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,9 +24,11 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.DiskTypeClient.AggregatedListDiskTypesPagedResponse;
 import static com.google.compute.v1.DiskTypeClient.ListDiskTypesPagedResponse;
+import com.google.compute.v1.stub.DiskTypeStubSettings;
 import static com.google.compute.v1.stub.HttpJsonDiskTypeStub.aggregatedListDiskTypesMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonDiskTypeStub.getDiskTypeMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonDiskTypeStub.listDiskTypesMethodDescriptor;
@@ -44,7 +48,14 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class DiskTypeClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              aggregatedListDiskTypesMethodDescriptor,
+              getDiskTypeMethodDescriptor,
+              listDiskTypesMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, DiskTypeStubSettings.getDefaultEndpoint());
   private static DiskTypeClient client;
   private static DiskTypeSettings clientSettings;
 
@@ -89,7 +100,6 @@ public class DiskTypeClientTest {
       .setItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(aggregatedListDiskTypesMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -108,7 +118,6 @@ public class DiskTypeClientTest {
   public void aggregatedListDiskTypesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(aggregatedListDiskTypesMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -144,7 +153,6 @@ public class DiskTypeClientTest {
       .setSelfLink(selfLink)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getDiskTypeMethodDescriptor);
 
     DiskTypeName diskType = DiskTypeName.of("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
 
@@ -161,7 +169,6 @@ public class DiskTypeClientTest {
   public void getDiskTypeExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getDiskTypeMethodDescriptor);
 
     try {
       DiskTypeName diskType = DiskTypeName.of("[PROJECT]", "[ZONE]", "[DISK_TYPE]");
@@ -190,7 +197,6 @@ public class DiskTypeClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listDiskTypesMethodDescriptor);
 
     ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");
 
@@ -209,7 +215,6 @@ public class DiskTypeClientTest {
   public void listDiskTypesExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listDiskTypesMethodDescriptor);
 
     try {
       ZoneName zone = ZoneName.of("[PROJECT]", "[ZONE]");

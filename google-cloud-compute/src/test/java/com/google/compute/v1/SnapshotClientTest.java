@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,11 +24,13 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.SnapshotClient.ListSnapshotsPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonSnapshotStub.deleteSnapshotMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonSnapshotStub.getSnapshotMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonSnapshotStub.listSnapshotsMethodDescriptor;
+import com.google.compute.v1.stub.SnapshotStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -43,7 +47,14 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class SnapshotClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              deleteSnapshotMethodDescriptor,
+              getSnapshotMethodDescriptor,
+              listSnapshotsMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, SnapshotStubSettings.getDefaultEndpoint());
   private static SnapshotClient client;
   private static SnapshotSettings clientSettings;
 
@@ -116,7 +127,6 @@ public class SnapshotClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteSnapshotMethodDescriptor);
 
     SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
 
@@ -133,7 +143,6 @@ public class SnapshotClientTest {
   public void deleteSnapshotExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteSnapshotMethodDescriptor);
 
     try {
       SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
@@ -175,7 +184,6 @@ public class SnapshotClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getSnapshotMethodDescriptor);
 
     SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
 
@@ -192,7 +200,6 @@ public class SnapshotClientTest {
   public void getSnapshotExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getSnapshotMethodDescriptor);
 
     try {
       SnapshotName snapshot = SnapshotName.of("[PROJECT]", "[SNAPSHOT]");
@@ -221,7 +228,6 @@ public class SnapshotClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listSnapshotsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -240,7 +246,6 @@ public class SnapshotClientTest {
   public void listSnapshotsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listSnapshotsMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");

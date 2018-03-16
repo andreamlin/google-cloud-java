@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.NetworkClient.ListNetworksPagedResponse;
 import static com.google.compute.v1.stub.HttpJsonNetworkStub.deleteNetworkMethodDescriptor;
@@ -29,6 +32,7 @@ import static com.google.compute.v1.stub.HttpJsonNetworkStub.getNetworkMethodDes
 import static com.google.compute.v1.stub.HttpJsonNetworkStub.insertNetworkMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonNetworkStub.listNetworksMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonNetworkStub.switchToCustomModeNetworkMethodDescriptor;
+import com.google.compute.v1.stub.NetworkStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -45,7 +49,16 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class NetworkClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              deleteNetworkMethodDescriptor,
+              getNetworkMethodDescriptor,
+              insertNetworkMethodDescriptor,
+              listNetworksMethodDescriptor,
+              switchToCustomModeNetworkMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, NetworkStubSettings.getDefaultEndpoint());
   private static NetworkClient client;
   private static NetworkSettings clientSettings;
 
@@ -118,7 +131,6 @@ public class NetworkClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteNetworkMethodDescriptor);
 
     NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
 
@@ -135,7 +147,6 @@ public class NetworkClientTest {
   public void deleteNetworkExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteNetworkMethodDescriptor);
 
     try {
       NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
@@ -171,7 +182,6 @@ public class NetworkClientTest {
       .setSelfLink(selfLink)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getNetworkMethodDescriptor);
 
     NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
 
@@ -188,7 +198,6 @@ public class NetworkClientTest {
   public void getNetworkExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getNetworkMethodDescriptor);
 
     try {
       NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
@@ -248,7 +257,6 @@ public class NetworkClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertNetworkMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Network networkResource = Network.newBuilder().build();
@@ -266,7 +274,6 @@ public class NetworkClientTest {
   public void insertNetworkExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertNetworkMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -296,7 +303,6 @@ public class NetworkClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listNetworksMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -315,7 +321,6 @@ public class NetworkClientTest {
   public void listNetworksExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listNetworksMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -375,7 +380,6 @@ public class NetworkClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(switchToCustomModeNetworkMethodDescriptor);
 
     NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");
 
@@ -392,7 +396,6 @@ public class NetworkClientTest {
   public void switchToCustomModeNetworkExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(switchToCustomModeNetworkMethodDescriptor);
 
     try {
       NetworkName network = NetworkName.of("[PROJECT]", "[NETWORK]");

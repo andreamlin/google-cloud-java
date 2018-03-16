@@ -15,6 +15,8 @@
  */
 package com.google.compute.v1;
 
+import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.MockHttpService;
 import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiException;
@@ -22,6 +24,7 @@ import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import static com.google.compute.v1.VpnTunnelClient.AggregatedListVpnTunnelsPagedResponse;
 import static com.google.compute.v1.VpnTunnelClient.ListVpnTunnelsPagedResponse;
@@ -30,6 +33,7 @@ import static com.google.compute.v1.stub.HttpJsonVpnTunnelStub.deleteVpnTunnelMe
 import static com.google.compute.v1.stub.HttpJsonVpnTunnelStub.getVpnTunnelMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonVpnTunnelStub.insertVpnTunnelMethodDescriptor;
 import static com.google.compute.v1.stub.HttpJsonVpnTunnelStub.listVpnTunnelsMethodDescriptor;
+import com.google.compute.v1.stub.VpnTunnelStubSettings;
 import com.google.protobuf.GeneratedMessageV3;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -46,7 +50,16 @@ import org.junit.Test;
 
 @javax.annotation.Generated("by GAPIC")
 public class VpnTunnelClientTest {
-  private static final MockHttpService mockService = new MockHttpService();
+  private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
+      = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
+              aggregatedListVpnTunnelsMethodDescriptor,
+              deleteVpnTunnelMethodDescriptor,
+              getVpnTunnelMethodDescriptor,
+              insertVpnTunnelMethodDescriptor,
+              listVpnTunnelsMethodDescriptor
+          ));
+  private static final MockHttpService mockService
+      = new MockHttpService(METHOD_DESCRIPTORS, VpnTunnelStubSettings.getDefaultEndpoint());
   private static VpnTunnelClient client;
   private static VpnTunnelSettings clientSettings;
 
@@ -91,7 +104,6 @@ public class VpnTunnelClientTest {
       .setItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(aggregatedListVpnTunnelsMethodDescriptor);
 
     ProjectName project = ProjectName.of("[PROJECT]");
 
@@ -110,7 +122,6 @@ public class VpnTunnelClientTest {
   public void aggregatedListVpnTunnelsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(aggregatedListVpnTunnelsMethodDescriptor);
 
     try {
       ProjectName project = ProjectName.of("[PROJECT]");
@@ -170,7 +181,6 @@ public class VpnTunnelClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(deleteVpnTunnelMethodDescriptor);
 
     VpnTunnelName vpnTunnel = VpnTunnelName.of("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
 
@@ -187,7 +197,6 @@ public class VpnTunnelClientTest {
   public void deleteVpnTunnelExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(deleteVpnTunnelMethodDescriptor);
 
     try {
       VpnTunnelName vpnTunnel = VpnTunnelName.of("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
@@ -235,7 +244,6 @@ public class VpnTunnelClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(getVpnTunnelMethodDescriptor);
 
     VpnTunnelName vpnTunnel = VpnTunnelName.of("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
 
@@ -252,7 +260,6 @@ public class VpnTunnelClientTest {
   public void getVpnTunnelExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(getVpnTunnelMethodDescriptor);
 
     try {
       VpnTunnelName vpnTunnel = VpnTunnelName.of("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
@@ -312,7 +319,6 @@ public class VpnTunnelClientTest {
       .setStatus(status)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(insertVpnTunnelMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     VpnTunnel vpnTunnelResource = VpnTunnel.newBuilder().build();
@@ -330,7 +336,6 @@ public class VpnTunnelClientTest {
   public void insertVpnTunnelExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(insertVpnTunnelMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
@@ -360,7 +365,6 @@ public class VpnTunnelClientTest {
       .addAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
-    mockService.setSerializer(listVpnTunnelsMethodDescriptor);
 
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
 
@@ -379,7 +383,6 @@ public class VpnTunnelClientTest {
   public void listVpnTunnelsExceptionTest() throws Exception {
     ApiException exception = ApiExceptionFactory.createException(new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
     mockService.addException(exception);
-    mockService.setSerializer(listVpnTunnelsMethodDescriptor);
 
     try {
       RegionName region = RegionName.of("[PROJECT]", "[REGION]");
