@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,29 @@
  */
 package com.google.cloud.simplecompute.v1;
 
+import com.google.api.core.ApiFunction;
+import com.google.api.core.ApiFuture;
+import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.paging.AbstractFixedSizeCollection;
+import com.google.api.gax.paging.AbstractPage;
+import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.paging.FixedSizeCollection;
+import com.google.api.gax.paging.Page;
+import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.rpc.ApiExceptions;
+import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
-import static com.google.cloud.simplecompute.v1.PagedResponseWrappers.ListAddressesPagedResponse;
 import com.google.cloud.simplecompute.v1.stub.AddressStub;
+import com.google.cloud.simplecompute.v1.stub.AddressStubSettings;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +150,7 @@ public class AddressClient implements BackgroundResource {
    */
   protected AddressClient(AddressSettings settings) throws IOException {
     this.settings = settings;
-    this.stub = settings.createStub();
+    this.stub = ((AddressStubSettings) settings.getStubSettings()).createStub();
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -175,7 +189,32 @@ public class AddressClient implements BackgroundResource {
 
     DeleteAddressHttpRequest request =
         DeleteAddressHttpRequest.newBuilder()
-        .setAddressWithAddressName(address)
+        .setAddress(address == null ? null : address.toString())
+        .build();
+    return deleteAddress(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified address resource.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
+   *   Operation response = addressClient.deleteAddress(address.toString());
+   * }
+   * </code></pre>
+   *
+   * @param address Name of the address resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation deleteAddress(String address) {
+
+    DeleteAddressHttpRequest request =
+        DeleteAddressHttpRequest.newBuilder()
+        .setAddress(address)
         .build();
     return deleteAddress(request);
   }
@@ -189,7 +228,7 @@ public class AddressClient implements BackgroundResource {
    * try (AddressClient addressClient = AddressClient.create()) {
    *   AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
    *   DeleteAddressHttpRequest request = DeleteAddressHttpRequest.newBuilder()
-   *     .setAddressWithAddressName(address)
+   *     .setAddress(address.toString())
    *     .build();
    *   Operation response = addressClient.deleteAddress(request);
    * }
@@ -212,7 +251,7 @@ public class AddressClient implements BackgroundResource {
    * try (AddressClient addressClient = AddressClient.create()) {
    *   AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
    *   DeleteAddressHttpRequest request = DeleteAddressHttpRequest.newBuilder()
-   *     .setAddressWithAddressName(address)
+   *     .setAddress(address.toString())
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = addressClient.deleteAddressCallable().futureCall(request);
    *   // Do something
@@ -245,7 +284,32 @@ public class AddressClient implements BackgroundResource {
 
     GetAddressHttpRequest request =
         GetAddressHttpRequest.newBuilder()
-        .setAddressWithAddressName(address)
+        .setAddress(address == null ? null : address.toString())
+        .build();
+    return getAddress(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified address resource.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
+   *   Address response = addressClient.getAddress(address.toString());
+   * }
+   * </code></pre>
+   *
+   * @param address Name of the address resource to return.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Address getAddress(String address) {
+
+    GetAddressHttpRequest request =
+        GetAddressHttpRequest.newBuilder()
+        .setAddress(address)
         .build();
     return getAddress(request);
   }
@@ -259,7 +323,7 @@ public class AddressClient implements BackgroundResource {
    * try (AddressClient addressClient = AddressClient.create()) {
    *   AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
    *   GetAddressHttpRequest request = GetAddressHttpRequest.newBuilder()
-   *     .setAddressWithAddressName(address)
+   *     .setAddress(address.toString())
    *     .build();
    *   Address response = addressClient.getAddress(request);
    * }
@@ -282,7 +346,7 @@ public class AddressClient implements BackgroundResource {
    * try (AddressClient addressClient = AddressClient.create()) {
    *   AddressName address = AddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
    *   GetAddressHttpRequest request = GetAddressHttpRequest.newBuilder()
-   *     .setAddressWithAddressName(address)
+   *     .setAddress(address.toString())
    *     .build();
    *   ApiFuture&lt;Address&gt; future = addressClient.getAddressCallable().futureCall(request);
    *   // Do something
@@ -317,7 +381,35 @@ public class AddressClient implements BackgroundResource {
 
     InsertAddressHttpRequest request =
         InsertAddressHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region == null ? null : region.toString())
+        .setAddressResource(addressResource)
+        .build();
+    return insertAddress(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates an address resource in the specified project using the data included in the request.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   Address address = Address.newBuilder().build();
+   *   Operation response = addressClient.insertAddress(region.toString(), address);
+   * }
+   * </code></pre>
+   *
+   * @param region Name of the region for this request.
+   * @param addressResource A reserved address resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation insertAddress(String region, Address addressResource) {
+
+    InsertAddressHttpRequest request =
+        InsertAddressHttpRequest.newBuilder()
+        .setRegion(region)
         .setAddressResource(addressResource)
         .build();
     return insertAddress(request);
@@ -333,7 +425,7 @@ public class AddressClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Address address = Address.newBuilder().build();
    *   InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .setAddressResource(address)
    *     .build();
    *   Operation response = addressClient.insertAddress(request);
@@ -358,7 +450,7 @@ public class AddressClient implements BackgroundResource {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   Address address = Address.newBuilder().build();
    *   InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .setAddressResource(address)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = addressClient.insertAddressCallable().futureCall(request);
@@ -393,7 +485,33 @@ public class AddressClient implements BackgroundResource {
   public final ListAddressesPagedResponse listAddresses(RegionName region) {
     ListAddressesHttpRequest request =
         ListAddressesHttpRequest.newBuilder()
-        .setRegionWithRegionName(region)
+        .setRegion(region == null ? null : region.toString())
+        .build();
+    return listAddresses(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves a list of addresses contained within the specified region.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   for (Address element : addressClient.listAddresses(region.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param region Name of the region for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final ListAddressesPagedResponse listAddresses(String region) {
+    ListAddressesHttpRequest request =
+        ListAddressesHttpRequest.newBuilder()
+        .setRegion(region)
         .build();
     return listAddresses(request);
   }
@@ -407,7 +525,7 @@ public class AddressClient implements BackgroundResource {
    * try (AddressClient addressClient = AddressClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListAddressesHttpRequest request = ListAddressesHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   for (Address element : addressClient.listAddresses(request).iterateAll()) {
    *     // doThingsWith(element);
@@ -433,7 +551,7 @@ public class AddressClient implements BackgroundResource {
    * try (AddressClient addressClient = AddressClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListAddressesHttpRequest request = ListAddressesHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   ApiFuture&lt;ListAddressesPagedResponse&gt; future = addressClient.listAddressesPagedCallable().futureCall(request);
    *   // Do something
@@ -457,11 +575,11 @@ public class AddressClient implements BackgroundResource {
    * try (AddressClient addressClient = AddressClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
    *   ListAddressesHttpRequest request = ListAddressesHttpRequest.newBuilder()
-   *     .setRegionWithRegionName(region)
+   *     .setRegion(region.toString())
    *     .build();
    *   while (true) {
    *     AddressList response = addressClient.listAddressesCallable().call(request);
-   *     for (Address element : response.getItems()) {
+   *     for (Address element : response.getItemsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -509,4 +627,91 @@ public class AddressClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class ListAddressesPagedResponse extends AbstractPagedListResponse<
+      ListAddressesHttpRequest,
+      AddressList,
+      Address,
+      ListAddressesPage,
+      ListAddressesFixedSizeCollection> {
+
+    public static ApiFuture<ListAddressesPagedResponse> createAsync(
+        PageContext<ListAddressesHttpRequest, AddressList, Address> context,
+        ApiFuture<AddressList> futureResponse) {
+      ApiFuture<ListAddressesPage> futurePage =
+          ListAddressesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<ListAddressesPage, ListAddressesPagedResponse>() {
+            @Override
+            public ListAddressesPagedResponse apply(ListAddressesPage input) {
+              return new ListAddressesPagedResponse(input);
+            }
+          });
+    }
+
+    private ListAddressesPagedResponse(ListAddressesPage page) {
+      super(page, ListAddressesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class ListAddressesPage extends AbstractPage<
+      ListAddressesHttpRequest,
+      AddressList,
+      Address,
+      ListAddressesPage> {
+
+    private ListAddressesPage(
+        PageContext<ListAddressesHttpRequest, AddressList, Address> context,
+        AddressList response) {
+      super(context, response);
+    }
+
+    private static ListAddressesPage createEmptyPage() {
+      return new ListAddressesPage(null, null);
+    }
+
+    @Override
+    protected ListAddressesPage createPage(
+        PageContext<ListAddressesHttpRequest, AddressList, Address> context,
+        AddressList response) {
+      return new ListAddressesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<ListAddressesPage> createPageAsync(
+        PageContext<ListAddressesHttpRequest, AddressList, Address> context,
+        ApiFuture<AddressList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class ListAddressesFixedSizeCollection extends AbstractFixedSizeCollection<
+      ListAddressesHttpRequest,
+      AddressList,
+      Address,
+      ListAddressesPage,
+      ListAddressesFixedSizeCollection> {
+
+    private ListAddressesFixedSizeCollection(List<ListAddressesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static ListAddressesFixedSizeCollection createEmptyCollection() {
+      return new ListAddressesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected ListAddressesFixedSizeCollection createCollection(
+        List<ListAddressesPage> pages, int collectionSize) {
+      return new ListAddressesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
 }

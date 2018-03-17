@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,7 @@ package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
-import java.io.Serializable;
+import com.google.common.collect.ImmutableMap;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -58,6 +57,7 @@ public final class AddressList implements ApiMessage {
     this.kind = kind;
     this.nextPageToken = nextPageToken;
     this.selfLink = selfLink;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
   }
 
   @Override
@@ -81,9 +81,29 @@ public final class AddressList implements ApiMessage {
     return fieldMap;
   }
 
+  @Override
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("items")) {
+      return String.valueOf(items);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("nextPageToken")) {
+      return String.valueOf(nextPageToken);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    return null;
+  }
+
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage getApiMessageRequestBody() {
     return null;
   }
 
@@ -91,7 +111,7 @@ public final class AddressList implements ApiMessage {
     return id;
   }
 
-  public List<Address> getItems() {
+  public List<Address> getItemsList() {
     return items;
   }
 
@@ -141,7 +161,7 @@ public final class AddressList implements ApiMessage {
       if (other.getId() != null) {
         this.id = other.id;
       }
-      if (other.getItems() != null) {
+      if (other.getItemsList() != null) {
         this.items = other.items;
       }
       if (other.getKind() != null) {
@@ -173,11 +193,11 @@ public final class AddressList implements ApiMessage {
       return this;
     }
 
-    public List<Address> getItems() {
+    public List<Address> getItemsList() {
       return items;
     }
 
-    public Builder setItems(List<Address> items) {
+    public Builder addAllItems(List<Address> items) {
       this.items = items;
       return this;
     }
@@ -227,7 +247,7 @@ public final class AddressList implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setId(this.id);
-      newBuilder.setItems(this.items);
+      newBuilder.addAllItems(this.items);
       newBuilder.setKind(this.kind);
       newBuilder.setNextPageToken(this.nextPageToken);
       newBuilder.setSelfLink(this.selfLink);
@@ -255,7 +275,7 @@ public final class AddressList implements ApiMessage {
       AddressList that = (AddressList) o;
       return
           Objects.equals(this.id, that.getId()) &&
-          Objects.equals(this.items, that.getItems()) &&
+          Objects.equals(this.items, that.getItemsList()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.nextPageToken, that.getNextPageToken()) &&
           Objects.equals(this.selfLink, that.getSelfLink())

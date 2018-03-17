@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,7 @@ package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
-import java.io.Serializable;
+import com.google.common.collect.ImmutableMap;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -78,6 +77,7 @@ public final class Address implements ApiMessage {
     this.selfLink = selfLink;
     this.status = status;
     this.users = users;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
   }
 
   @Override
@@ -116,9 +116,44 @@ public final class Address implements ApiMessage {
     return fieldMap;
   }
 
+  @Override
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("address")) {
+      return String.valueOf(address);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("region")) {
+      return String.valueOf(region);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("status")) {
+      return String.valueOf(status);
+    }
+    if (fieldName.equals("users")) {
+      return String.valueOf(users);
+    }
+    return null;
+  }
+
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage getApiMessageRequestBody() {
     return null;
   }
 
@@ -158,7 +193,7 @@ public final class Address implements ApiMessage {
     return status;
   }
 
-  public List<String> getUsers() {
+  public List<String> getUsersList() {
     return users;
   }
 
@@ -225,7 +260,7 @@ public final class Address implements ApiMessage {
       if (other.getStatus() != null) {
         this.status = other.status;
       }
-      if (other.getUsers() != null) {
+      if (other.getUsersList() != null) {
         this.users = other.users;
       }
       return this;
@@ -325,11 +360,11 @@ public final class Address implements ApiMessage {
       return this;
     }
 
-    public List<String> getUsers() {
+    public List<String> getUsersList() {
       return users;
     }
 
-    public Builder setUsers(List<String> users) {
+    public Builder addAllUsers(List<String> users) {
       this.users = users;
       return this;
     }
@@ -370,7 +405,7 @@ public final class Address implements ApiMessage {
       newBuilder.setRegion(this.region);
       newBuilder.setSelfLink(this.selfLink);
       newBuilder.setStatus(this.status);
-      newBuilder.setUsers(this.users);
+      newBuilder.addAllUsers(this.users);
       return newBuilder;
     }
   }
@@ -408,7 +443,7 @@ public final class Address implements ApiMessage {
           Objects.equals(this.region, that.getRegion()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
           Objects.equals(this.status, that.getStatus()) &&
-          Objects.equals(this.users, that.getUsers())
+          Objects.equals(this.users, that.getUsersList())
           ;
     }
     return false;

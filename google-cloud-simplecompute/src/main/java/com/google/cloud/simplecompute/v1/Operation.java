@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,7 @@ package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
-import java.io.Serializable;
+import com.google.common.collect.ImmutableMap;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -130,6 +129,7 @@ public final class Operation implements ApiMessage {
     this.user = user;
     this.warnings = warnings;
     this.zone = zone;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
   }
 
   @Override
@@ -207,9 +207,83 @@ public final class Operation implements ApiMessage {
     return fieldMap;
   }
 
+  @Override
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("clientOperationId")) {
+      return String.valueOf(clientOperationId);
+    }
+    if (fieldName.equals("creationTimestamp")) {
+      return String.valueOf(creationTimestamp);
+    }
+    if (fieldName.equals("description")) {
+      return String.valueOf(description);
+    }
+    if (fieldName.equals("endTime")) {
+      return String.valueOf(endTime);
+    }
+    if (fieldName.equals("error")) {
+      return String.valueOf(error);
+    }
+    if (fieldName.equals("httpErrorMessage")) {
+      return String.valueOf(httpErrorMessage);
+    }
+    if (fieldName.equals("httpErrorStatusCode")) {
+      return String.valueOf(httpErrorStatusCode);
+    }
+    if (fieldName.equals("id")) {
+      return String.valueOf(id);
+    }
+    if (fieldName.equals("insertTime")) {
+      return String.valueOf(insertTime);
+    }
+    if (fieldName.equals("kind")) {
+      return String.valueOf(kind);
+    }
+    if (fieldName.equals("name")) {
+      return String.valueOf(name);
+    }
+    if (fieldName.equals("operationType")) {
+      return String.valueOf(operationType);
+    }
+    if (fieldName.equals("progress")) {
+      return String.valueOf(progress);
+    }
+    if (fieldName.equals("region")) {
+      return String.valueOf(region);
+    }
+    if (fieldName.equals("selfLink")) {
+      return String.valueOf(selfLink);
+    }
+    if (fieldName.equals("startTime")) {
+      return String.valueOf(startTime);
+    }
+    if (fieldName.equals("status")) {
+      return String.valueOf(status);
+    }
+    if (fieldName.equals("statusMessage")) {
+      return String.valueOf(statusMessage);
+    }
+    if (fieldName.equals("targetId")) {
+      return String.valueOf(targetId);
+    }
+    if (fieldName.equals("targetLink")) {
+      return String.valueOf(targetLink);
+    }
+    if (fieldName.equals("user")) {
+      return String.valueOf(user);
+    }
+    if (fieldName.equals("warnings")) {
+      return String.valueOf(warnings);
+    }
+    if (fieldName.equals("zone")) {
+      return String.valueOf(zone);
+    }
+    return null;
+  }
+
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage getApiMessageRequestBody() {
     return null;
   }
 
@@ -297,7 +371,7 @@ public final class Operation implements ApiMessage {
     return user;
   }
 
-  public List<Warnings> getWarnings() {
+  public List<Warnings> getWarningsList() {
     return warnings;
   }
 
@@ -417,7 +491,7 @@ public final class Operation implements ApiMessage {
       if (other.getUser() != null) {
         this.user = other.user;
       }
-      if (other.getWarnings() != null) {
+      if (other.getWarningsList() != null) {
         this.warnings = other.warnings;
       }
       if (other.getZone() != null) {
@@ -641,11 +715,11 @@ public final class Operation implements ApiMessage {
       return this;
     }
 
-    public List<Warnings> getWarnings() {
+    public List<Warnings> getWarningsList() {
       return warnings;
     }
 
-    public Builder setWarnings(List<Warnings> warnings) {
+    public Builder addAllWarnings(List<Warnings> warnings) {
       this.warnings = warnings;
       return this;
     }
@@ -733,7 +807,7 @@ public final class Operation implements ApiMessage {
       newBuilder.setTargetId(this.targetId);
       newBuilder.setTargetLink(this.targetLink);
       newBuilder.setUser(this.user);
-      newBuilder.setWarnings(this.warnings);
+      newBuilder.addAllWarnings(this.warnings);
       newBuilder.setZone(this.zone);
       return newBuilder;
     }
@@ -797,7 +871,7 @@ public final class Operation implements ApiMessage {
           Objects.equals(this.targetId, that.getTargetId()) &&
           Objects.equals(this.targetLink, that.getTargetLink()) &&
           Objects.equals(this.user, that.getUser()) &&
-          Objects.equals(this.warnings, that.getWarnings()) &&
+          Objects.equals(this.warnings, that.getWarningsList()) &&
           Objects.equals(this.zone, that.getZone())
           ;
     }

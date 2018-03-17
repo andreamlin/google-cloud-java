@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,7 @@ package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
-import java.io.Serializable;
+import com.google.common.collect.ImmutableMap;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -50,6 +49,7 @@ public final class Warnings implements ApiMessage {
     this.code = code;
     this.data = data;
     this.message = message;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
   }
 
   @Override
@@ -67,9 +67,23 @@ public final class Warnings implements ApiMessage {
     return fieldMap;
   }
 
+  @Override
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("code")) {
+      return String.valueOf(code);
+    }
+    if (fieldName.equals("data")) {
+      return String.valueOf(data);
+    }
+    if (fieldName.equals("message")) {
+      return String.valueOf(message);
+    }
+    return null;
+  }
+
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage getApiMessageRequestBody() {
     return null;
   }
 
@@ -77,7 +91,7 @@ public final class Warnings implements ApiMessage {
     return code;
   }
 
-  public List<Data> getData() {
+  public List<Data> getDataList() {
     return data;
   }
 
@@ -117,7 +131,7 @@ public final class Warnings implements ApiMessage {
       if (other.getCode() != null) {
         this.code = other.code;
       }
-      if (other.getData() != null) {
+      if (other.getDataList() != null) {
         this.data = other.data;
       }
       if (other.getMessage() != null) {
@@ -141,11 +155,11 @@ public final class Warnings implements ApiMessage {
       return this;
     }
 
-    public List<Data> getData() {
+    public List<Data> getDataList() {
       return data;
     }
 
-    public Builder setData(List<Data> data) {
+    public Builder addAllData(List<Data> data) {
       this.data = data;
       return this;
     }
@@ -173,7 +187,7 @@ public final class Warnings implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setCode(this.code);
-      newBuilder.setData(this.data);
+      newBuilder.addAllData(this.data);
       newBuilder.setMessage(this.message);
       return newBuilder;
     }
@@ -197,7 +211,7 @@ public final class Warnings implements ApiMessage {
       Warnings that = (Warnings) o;
       return
           Objects.equals(this.code, that.getCode()) &&
-          Objects.equals(this.data, that.getData()) &&
+          Objects.equals(this.data, that.getDataList()) &&
           Objects.equals(this.message, that.getMessage())
           ;
     }

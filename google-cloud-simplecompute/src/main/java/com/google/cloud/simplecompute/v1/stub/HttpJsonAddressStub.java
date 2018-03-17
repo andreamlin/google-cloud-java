@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@ package com.google.cloud.simplecompute.v1.stub;
 
 import com.google.api.client.http.HttpMethods;
 import com.google.api.core.BetaApi;
+import com.google.api.core.InternalApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.BackgroundResourceAggregation;
-import com.google.api.gax.httpjson.ApiMessage;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
@@ -28,6 +28,7 @@ import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.simplecompute.v1.Address;
+import static com.google.cloud.simplecompute.v1.AddressClient.ListAddressesPagedResponse;
 import com.google.cloud.simplecompute.v1.AddressList;
 import com.google.cloud.simplecompute.v1.AddressName;
 import com.google.cloud.simplecompute.v1.AddressSettings;
@@ -36,9 +37,7 @@ import com.google.cloud.simplecompute.v1.GetAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.InsertAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.ListAddressesHttpRequest;
 import com.google.cloud.simplecompute.v1.Operation;
-import static com.google.cloud.simplecompute.v1.PagedResponseWrappers.ListAddressesPagedResponse;
 import com.google.cloud.simplecompute.v1.RegionName;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import java.io.IOException;
@@ -61,79 +60,59 @@ import javax.annotation.Generated;
 public class HttpJsonAddressStub extends AddressStub {
   private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
 
-  private static final ApiMethodDescriptor<DeleteAddressHttpRequest, Operation> deleteAddressMethodDescriptor =
+  @InternalApi
+  public static final ApiMethodDescriptor<DeleteAddressHttpRequest, Operation> deleteAddressMethodDescriptor =
       ApiMethodDescriptor.<DeleteAddressHttpRequest, Operation>newBuilder()
           .setMethodName("compute.addresses.delete")
           .setRequestInstance(DeleteAddressHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/addresses/{address}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "address",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter<DeleteAddressHttpRequest>())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(AddressName.newFactory()))
           .setHttpMethod(HttpMethods.DELETE)
+          .setResourceNameField("address")
           .build();
-  @VisibleForTesting
-  public ApiMethodDescriptor<DeleteAddressHttpRequest, Operation> getDeleteAddressMethodDescriptor() {
-    return deleteAddressMethodDescriptor;
-  }
-  private static final ApiMethodDescriptor<GetAddressHttpRequest, Address> getAddressMethodDescriptor =
+  @InternalApi
+  public static final ApiMethodDescriptor<GetAddressHttpRequest, Address> getAddressMethodDescriptor =
       ApiMethodDescriptor.<GetAddressHttpRequest, Address>newBuilder()
           .setMethodName("compute.addresses.get")
           .setRequestInstance(GetAddressHttpRequest.getDefaultInstance())
           .setResponseInstance(Address.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/addresses/{address}")
-          .setPathParams(Sets.<String>newHashSet(
-                            "address",    "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(AddressName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("address")
           .build();
-  @VisibleForTesting
-  public ApiMethodDescriptor<GetAddressHttpRequest, Address> getGetAddressMethodDescriptor() {
-    return getAddressMethodDescriptor;
-  }
-  private static final ApiMethodDescriptor<InsertAddressHttpRequest, Operation> insertAddressMethodDescriptor =
+  @InternalApi
+  public static final ApiMethodDescriptor<InsertAddressHttpRequest, Operation> insertAddressMethodDescriptor =
       ApiMethodDescriptor.<InsertAddressHttpRequest, Operation>newBuilder()
           .setMethodName("compute.addresses.insert")
           .setRequestInstance(InsertAddressHttpRequest.getDefaultInstance())
           .setResponseInstance(Operation.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/addresses")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.newFactory()))
           .setHttpMethod(HttpMethods.POST)
+          .setResourceNameField("region")
           .build();
-  @VisibleForTesting
-  public ApiMethodDescriptor<InsertAddressHttpRequest, Operation> getInsertAddressMethodDescriptor() {
-    return insertAddressMethodDescriptor;
-  }
-  private static final ApiMethodDescriptor<ListAddressesHttpRequest, AddressList> listAddressesMethodDescriptor =
+  @InternalApi
+  public static final ApiMethodDescriptor<ListAddressesHttpRequest, AddressList> listAddressesMethodDescriptor =
       ApiMethodDescriptor.<ListAddressesHttpRequest, AddressList>newBuilder()
           .setMethodName("compute.addresses.list")
           .setRequestInstance(ListAddressesHttpRequest.getDefaultInstance())
           .setResponseInstance(AddressList.getDefaultInstance())
           .setEndpointPathTemplate("{project}/regions/{region}/addresses")
-          .setPathParams(Sets.<String>newHashSet(
-                            "project",    "region"
-                            ))
           .setQueryParams(Sets.<String>newHashSet(
                              "filter",    "maxResults",    "orderBy",    "pageToken"
                              ))
-          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter())
+          .setHttpRequestFormatter(new ApiMessageHttpRequestFormatter(RegionName.newFactory()))
           .setHttpMethod(HttpMethods.GET)
+          .setResourceNameField("region")
           .build();
-  @VisibleForTesting
-  public ApiMethodDescriptor<ListAddressesHttpRequest, AddressList> getListAddressesMethodDescriptor() {
-    return listAddressesMethodDescriptor;
-  }
 
   private final BackgroundResource backgroundResources;
 
@@ -143,12 +122,12 @@ public class HttpJsonAddressStub extends AddressStub {
   private final UnaryCallable<ListAddressesHttpRequest, AddressList> listAddressesCallable;
   private final UnaryCallable<ListAddressesHttpRequest, ListAddressesPagedResponse> listAddressesPagedCallable;
 
-  public static final HttpJsonAddressStub create(AddressSettings settings) throws IOException {
+  public static final HttpJsonAddressStub create(AddressStubSettings settings) throws IOException {
     return new HttpJsonAddressStub(settings, ClientContext.create(settings));
   }
 
   public static final HttpJsonAddressStub create(ClientContext clientContext) throws IOException {
-    return new HttpJsonAddressStub(AddressSettings.newBuilder().build(), clientContext);
+    return new HttpJsonAddressStub(AddressStubSettings.newBuilder().build(), clientContext);
   }
 
   /**
@@ -156,23 +135,23 @@ public class HttpJsonAddressStub extends AddressStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonAddressStub(AddressSettings settings, ClientContext clientContext) throws IOException {
+  protected HttpJsonAddressStub(AddressStubSettings settings, ClientContext clientContext) throws IOException {
 
     HttpJsonCallSettings<DeleteAddressHttpRequest, Operation> deleteAddressTransportSettings =
         HttpJsonCallSettings.<DeleteAddressHttpRequest, Operation>newBuilder()
-            .setMethodDescriptor(getDeleteAddressMethodDescriptor())
+            .setMethodDescriptor(deleteAddressMethodDescriptor)
             .build();
     HttpJsonCallSettings<GetAddressHttpRequest, Address> getAddressTransportSettings =
         HttpJsonCallSettings.<GetAddressHttpRequest, Address>newBuilder()
-            .setMethodDescriptor(getGetAddressMethodDescriptor())
+            .setMethodDescriptor(getAddressMethodDescriptor)
             .build();
     HttpJsonCallSettings<InsertAddressHttpRequest, Operation> insertAddressTransportSettings =
         HttpJsonCallSettings.<InsertAddressHttpRequest, Operation>newBuilder()
-            .setMethodDescriptor(getInsertAddressMethodDescriptor())
+            .setMethodDescriptor(insertAddressMethodDescriptor)
             .build();
     HttpJsonCallSettings<ListAddressesHttpRequest, AddressList> listAddressesTransportSettings =
         HttpJsonCallSettings.<ListAddressesHttpRequest, AddressList>newBuilder()
-            .setMethodDescriptor(getListAddressesMethodDescriptor())
+            .setMethodDescriptor(listAddressesMethodDescriptor)
             .build();
 
     this.deleteAddressCallable = HttpJsonCallableFactory.createUnaryCallable(deleteAddressTransportSettings,settings.deleteAddressSettings(), clientContext);

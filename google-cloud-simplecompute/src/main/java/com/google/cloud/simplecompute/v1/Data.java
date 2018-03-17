@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,7 @@ package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
-import java.io.Serializable;
+import com.google.common.collect.ImmutableMap;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -46,6 +45,7 @@ public final class Data implements ApiMessage {
       ) {
     this.key = key;
     this.value = value;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
   }
 
   @Override
@@ -60,9 +60,20 @@ public final class Data implements ApiMessage {
     return fieldMap;
   }
 
+  @Override
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("key")) {
+      return String.valueOf(key);
+    }
+    if (fieldName.equals("value")) {
+      return String.valueOf(value);
+    }
+    return null;
+  }
+
   @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public ApiMessage getApiMessageRequestBody() {
     return null;
   }
 

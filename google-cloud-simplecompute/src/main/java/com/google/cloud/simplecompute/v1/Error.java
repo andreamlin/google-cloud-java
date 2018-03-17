@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,7 @@ package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
-import java.io.Serializable;
+import com.google.common.collect.ImmutableMap;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -42,6 +41,7 @@ public final class Error implements ApiMessage {
       List<Errors> errors
       ) {
     this.errors = errors;
+    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
   }
 
   @Override
@@ -53,13 +53,21 @@ public final class Error implements ApiMessage {
     return fieldMap;
   }
 
-  @Nullable
   @Override
-  public ApiMessage getRequestBody() {
+  public String getFieldStringValue(String fieldName) {
+    if (fieldName.equals("errors")) {
+      return String.valueOf(errors);
+    }
     return null;
   }
 
-  public List<Errors> getErrors() {
+  @Nullable
+  @Override
+  public ApiMessage getApiMessageRequestBody() {
+    return null;
+  }
+
+  public List<Errors> getErrorsList() {
     return errors;
   }
 
@@ -90,7 +98,7 @@ public final class Error implements ApiMessage {
 
     public Builder mergeFrom(Error other) {
       if (other == Error.getDefaultInstance()) return this;
-      if (other.getErrors() != null) {
+      if (other.getErrorsList() != null) {
         this.errors = other.errors;
       }
       return this;
@@ -100,11 +108,11 @@ public final class Error implements ApiMessage {
       this.errors = source.errors;
     }
 
-    public List<Errors> getErrors() {
+    public List<Errors> getErrorsList() {
       return errors;
     }
 
-    public Builder setErrors(List<Errors> errors) {
+    public Builder addAllErrors(List<Errors> errors) {
       this.errors = errors;
       return this;
     }
@@ -118,7 +126,7 @@ public final class Error implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setErrors(this.errors);
+      newBuilder.addAllErrors(this.errors);
       return newBuilder;
     }
   }
@@ -138,7 +146,7 @@ public final class Error implements ApiMessage {
     if (o instanceof Error) {
       Error that = (Error) o;
       return
-          Objects.equals(this.errors, that.getErrors())
+          Objects.equals(this.errors, that.getErrorsList())
           ;
     }
     return false;

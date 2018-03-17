@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,11 +18,16 @@ package com.google.cloud.simplecompute.v1;
 import com.google.api.core.BetaApi;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.api.resourcenames.ResourceName;
-import com.google.api.resourcenames.ResourceNameType;
+import com.google.api.resourcenames.ResourceNameFactory;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableMap;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import javax.annotation.Generated;
 
 @Generated("by GAPIC")
@@ -32,6 +37,8 @@ public final class RegionName implements ResourceName {
   private final String region;
   private static final PathTemplate PATH_TEMPLATE =
         PathTemplate.createWithoutUrlEncoding("projects/{project}/regions/{region}");
+
+  private volatile Map<String, String> fieldValuesMap;
 
   public static Builder newBuilder() {
     return new Builder();
@@ -56,6 +63,17 @@ public final class RegionName implements ResourceName {
       .build();
   }
 
+  public static String format(
+      String project,
+      String region
+      ) {
+    return of(
+        project,
+        region
+        )
+        .toString();
+  }
+
   public String getProject() {
     return project;
   }
@@ -64,6 +82,32 @@ public final class RegionName implements ResourceName {
     return region;
   }
 
+
+  @Override
+  public Map<String, String> getFieldValuesMap() {
+    if (fieldValuesMap == null) {
+      synchronized (this) {
+        if (fieldValuesMap == null) {
+          ImmutableMap.Builder<String, String> fieldMapBuilder = ImmutableMap.builder();
+          fieldMapBuilder.put("project", project);
+          fieldMapBuilder.put("region", region);
+          fieldValuesMap = fieldMapBuilder.build();
+        }
+      }
+    }
+    return fieldValuesMap;
+  }
+
+  public String getFieldValue(String fieldName) {
+    return getFieldValuesMap().get(fieldName);
+  }
+
+
+  public static ResourceNameFactory<RegionName> newFactory() {
+    return new ResourceNameFactory<RegionName>() {
+      public RegionName parse(String formattedString) {return RegionName.parse(formattedString);}
+    };
+  }
 
   public static RegionName parse(String formattedString) {
     Map<String, String> matchMap =
@@ -76,11 +120,6 @@ public final class RegionName implements ResourceName {
 
   public static boolean isParsableFrom(String formattedString) {
     return PATH_TEMPLATE.matches(formattedString);
-  }
-
-  @Override
-  public ResourceNameType getType() {
-    return RegionNameType.instance();
   }
 
   public static class Builder {
