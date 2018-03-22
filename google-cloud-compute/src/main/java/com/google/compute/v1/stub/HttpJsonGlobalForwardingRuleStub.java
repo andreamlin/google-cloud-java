@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -60,8 +61,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteGlobalForwardingRuleHttpRequest, Operation> deleteGlobalForwardingRuleMethodDescriptor =
       ApiMethodDescriptor.<DeleteGlobalForwardingRuleHttpRequest, Operation>newBuilder()
@@ -128,7 +127,6 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("forwardingRule")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteGlobalForwardingRuleHttpRequest, Operation> deleteGlobalForwardingRuleCallable;
@@ -138,6 +136,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
   private final UnaryCallable<ListGlobalForwardingRulesHttpRequest, ListGlobalForwardingRulesPagedResponse> listGlobalForwardingRulesPagedCallable;
   private final UnaryCallable<SetTargetGlobalForwardingRuleHttpRequest, Operation> setTargetGlobalForwardingRuleCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonGlobalForwardingRuleStub create(GlobalForwardingRuleStubSettings settings) throws IOException {
     return new HttpJsonGlobalForwardingRuleStub(settings, ClientContext.create(settings));
   }
@@ -146,12 +145,26 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
     return new HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonGlobalForwardingRuleStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonGlobalForwardingRuleStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonGlobalForwardingRuleCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonGlobalForwardingRuleStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteGlobalForwardingRuleHttpRequest, Operation> deleteGlobalForwardingRuleTransportSettings =
         HttpJsonCallSettings.<DeleteGlobalForwardingRuleHttpRequest, Operation>newBuilder()
@@ -174,12 +187,12 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
             .setMethodDescriptor(setTargetGlobalForwardingRuleMethodDescriptor)
             .build();
 
-    this.deleteGlobalForwardingRuleCallable = HttpJsonCallableFactory.createUnaryCallable(deleteGlobalForwardingRuleTransportSettings,settings.deleteGlobalForwardingRuleSettings(), clientContext);
-    this.getGlobalForwardingRuleCallable = HttpJsonCallableFactory.createUnaryCallable(getGlobalForwardingRuleTransportSettings,settings.getGlobalForwardingRuleSettings(), clientContext);
-    this.insertGlobalForwardingRuleCallable = HttpJsonCallableFactory.createUnaryCallable(insertGlobalForwardingRuleTransportSettings,settings.insertGlobalForwardingRuleSettings(), clientContext);
-    this.listGlobalForwardingRulesCallable = HttpJsonCallableFactory.createUnaryCallable(listGlobalForwardingRulesTransportSettings,settings.listGlobalForwardingRulesSettings(), clientContext);
-    this.listGlobalForwardingRulesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listGlobalForwardingRulesTransportSettings,settings.listGlobalForwardingRulesSettings(), clientContext);
-    this.setTargetGlobalForwardingRuleCallable = HttpJsonCallableFactory.createUnaryCallable(setTargetGlobalForwardingRuleTransportSettings,settings.setTargetGlobalForwardingRuleSettings(), clientContext);
+    this.deleteGlobalForwardingRuleCallable = callableFactory.createUnaryCallable(deleteGlobalForwardingRuleTransportSettings,settings.deleteGlobalForwardingRuleSettings(), clientContext);
+    this.getGlobalForwardingRuleCallable = callableFactory.createUnaryCallable(getGlobalForwardingRuleTransportSettings,settings.getGlobalForwardingRuleSettings(), clientContext);
+    this.insertGlobalForwardingRuleCallable = callableFactory.createUnaryCallable(insertGlobalForwardingRuleTransportSettings,settings.insertGlobalForwardingRuleSettings(), clientContext);
+    this.listGlobalForwardingRulesCallable = callableFactory.createUnaryCallable(listGlobalForwardingRulesTransportSettings,settings.listGlobalForwardingRulesSettings(), clientContext);
+    this.listGlobalForwardingRulesPagedCallable = callableFactory.createPagedCallable(listGlobalForwardingRulesTransportSettings,settings.listGlobalForwardingRulesSettings(), clientContext);
+    this.setTargetGlobalForwardingRuleCallable = callableFactory.createUnaryCallable(setTargetGlobalForwardingRuleTransportSettings,settings.setTargetGlobalForwardingRuleSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

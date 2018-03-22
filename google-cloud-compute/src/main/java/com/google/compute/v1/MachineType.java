@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -140,11 +142,11 @@ public final class MachineType implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("scratchDisks") && scratchDisks != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (ScratchDisks item : scratchDisks) {
         stringList.add(item.toString());
       }
-      fieldMap.put("scratchDisks", stringList);
+      fieldMap.put("scratchDisks", stringList.build());
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
@@ -215,7 +217,7 @@ public final class MachineType implements ApiMessage {
     return creationTimestamp;
   }
 
-  public DeprecationStatus getDeprecated() {
+  public DeprecationStatus getDeprecationStatus() {
     return deprecated;
   }
 
@@ -259,7 +261,7 @@ public final class MachineType implements ApiMessage {
     return name;
   }
 
-  public List<ScratchDisks> getScratchDisks() {
+  public List<ScratchDisks> getScratchDisksList() {
     return scratchDisks;
   }
 
@@ -315,7 +317,7 @@ public final class MachineType implements ApiMessage {
       if (other.getCreationTimestamp() != null) {
         this.creationTimestamp = other.creationTimestamp;
       }
-      if (other.getDeprecated() != null) {
+      if (other.getDeprecationStatus() != null) {
         this.deprecated = other.deprecated;
       }
       if (other.getDescription() != null) {
@@ -348,7 +350,7 @@ public final class MachineType implements ApiMessage {
       if (other.getName() != null) {
         this.name = other.name;
       }
-      if (other.getScratchDisks() != null) {
+      if (other.getScratchDisksList() != null) {
         this.scratchDisks = other.scratchDisks;
       }
       if (other.getSelfLink() != null) {
@@ -387,11 +389,11 @@ public final class MachineType implements ApiMessage {
       return this;
     }
 
-    public DeprecationStatus getDeprecated() {
+    public DeprecationStatus getDeprecationStatus() {
       return deprecated;
     }
 
-    public Builder setDeprecated(DeprecationStatus deprecated) {
+    public Builder setDeprecationStatus(DeprecationStatus deprecated) {
       this.deprecated = deprecated;
       return this;
     }
@@ -486,13 +488,13 @@ public final class MachineType implements ApiMessage {
       return this;
     }
 
-    public List<ScratchDisks> getScratchDisks() {
+    public List<ScratchDisks> getScratchDisksList() {
       return scratchDisks;
     }
 
     public Builder addAllScratchDisks(List<ScratchDisks> scratchDisks) {
       if (this.scratchDisks == null) {
-        this.scratchDisks = new LinkedList<>();
+        this.scratchDisks = new ArrayList<>(scratchDisks.size());
       }
       this.scratchDisks.addAll(scratchDisks);
       return this;
@@ -559,7 +561,7 @@ public final class MachineType implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setCreationTimestamp(this.creationTimestamp);
-      newBuilder.setDeprecated(this.deprecated);
+      newBuilder.setDeprecationStatus(this.deprecated);
       newBuilder.setDescription(this.description);
       newBuilder.setGuestCpus(this.guestCpus);
       newBuilder.setId(this.id);
@@ -607,7 +609,7 @@ public final class MachineType implements ApiMessage {
       MachineType that = (MachineType) o;
       return
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
-          Objects.equals(this.deprecated, that.getDeprecated()) &&
+          Objects.equals(this.deprecated, that.getDeprecationStatus()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.guestCpus, that.getGuestCpus()) &&
           Objects.equals(this.id, that.getId()) &&
@@ -618,7 +620,7 @@ public final class MachineType implements ApiMessage {
           Objects.equals(this.maximumPersistentDisksSizeGb, that.getMaximumPersistentDisksSizeGb()) &&
           Objects.equals(this.memoryMb, that.getMemoryMb()) &&
           Objects.equals(this.name, that.getName()) &&
-          Objects.equals(this.scratchDisks, that.getScratchDisks()) &&
+          Objects.equals(this.scratchDisks, that.getScratchDisksList()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
           Objects.equals(this.zone, that.getZone())
           ;

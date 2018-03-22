@@ -264,7 +264,7 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
         }
         @Override
         public Iterable<SslCertificate> extractResources(SslCertificateList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

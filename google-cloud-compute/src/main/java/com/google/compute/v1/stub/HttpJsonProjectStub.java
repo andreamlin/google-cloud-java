@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -60,8 +61,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonProjectStub extends ProjectStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<GetProjectHttpRequest, Project> getProjectMethodDescriptor =
       ApiMethodDescriptor.<GetProjectHttpRequest, Project>newBuilder()
@@ -127,7 +126,6 @@ public class HttpJsonProjectStub extends ProjectStub {
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("project")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<GetProjectHttpRequest, Project> getProjectCallable;
@@ -136,6 +134,7 @@ public class HttpJsonProjectStub extends ProjectStub {
   private final UnaryCallable<SetCommonInstanceMetadataProjectHttpRequest, Operation> setCommonInstanceMetadataProjectCallable;
   private final UnaryCallable<SetUsageExportBucketProjectHttpRequest, Operation> setUsageExportBucketProjectCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonProjectStub create(ProjectStubSettings settings) throws IOException {
     return new HttpJsonProjectStub(settings, ClientContext.create(settings));
   }
@@ -144,12 +143,26 @@ public class HttpJsonProjectStub extends ProjectStub {
     return new HttpJsonProjectStub(ProjectStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonProjectStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonProjectStub(ProjectSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonProjectStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonProjectStub(ProjectStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonProjectCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonProjectStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonProjectStub(ProjectStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<GetProjectHttpRequest, Project> getProjectTransportSettings =
         HttpJsonCallSettings.<GetProjectHttpRequest, Project>newBuilder()
@@ -172,11 +185,11 @@ public class HttpJsonProjectStub extends ProjectStub {
             .setMethodDescriptor(setUsageExportBucketProjectMethodDescriptor)
             .build();
 
-    this.getProjectCallable = HttpJsonCallableFactory.createUnaryCallable(getProjectTransportSettings,settings.getProjectSettings(), clientContext);
-    this.moveDiskProjectCallable = HttpJsonCallableFactory.createUnaryCallable(moveDiskProjectTransportSettings,settings.moveDiskProjectSettings(), clientContext);
-    this.moveInstanceProjectCallable = HttpJsonCallableFactory.createUnaryCallable(moveInstanceProjectTransportSettings,settings.moveInstanceProjectSettings(), clientContext);
-    this.setCommonInstanceMetadataProjectCallable = HttpJsonCallableFactory.createUnaryCallable(setCommonInstanceMetadataProjectTransportSettings,settings.setCommonInstanceMetadataProjectSettings(), clientContext);
-    this.setUsageExportBucketProjectCallable = HttpJsonCallableFactory.createUnaryCallable(setUsageExportBucketProjectTransportSettings,settings.setUsageExportBucketProjectSettings(), clientContext);
+    this.getProjectCallable = callableFactory.createUnaryCallable(getProjectTransportSettings,settings.getProjectSettings(), clientContext);
+    this.moveDiskProjectCallable = callableFactory.createUnaryCallable(moveDiskProjectTransportSettings,settings.moveDiskProjectSettings(), clientContext);
+    this.moveInstanceProjectCallable = callableFactory.createUnaryCallable(moveInstanceProjectTransportSettings,settings.moveInstanceProjectSettings(), clientContext);
+    this.setCommonInstanceMetadataProjectCallable = callableFactory.createUnaryCallable(setCommonInstanceMetadataProjectTransportSettings,settings.setCommonInstanceMetadataProjectSettings(), clientContext);
+    this.setUsageExportBucketProjectCallable = callableFactory.createUnaryCallable(setUsageExportBucketProjectTransportSettings,settings.setUsageExportBucketProjectSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

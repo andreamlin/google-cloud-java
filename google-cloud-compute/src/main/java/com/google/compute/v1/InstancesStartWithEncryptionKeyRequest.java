@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -48,11 +50,11 @@ public final class InstancesStartWithEncryptionKeyRequest implements ApiMessage 
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("disks") && disks != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (CustomerEncryptionKeyProtectedDisk item : disks) {
         stringList.add(item.toString());
       }
-      fieldMap.put("disks", stringList);
+      fieldMap.put("disks", stringList.build());
     }
     return fieldMap;
   }
@@ -71,7 +73,7 @@ public final class InstancesStartWithEncryptionKeyRequest implements ApiMessage 
     return null;
   }
 
-  public List<CustomerEncryptionKeyProtectedDisk> getDisks() {
+  public List<CustomerEncryptionKeyProtectedDisk> getDisksList() {
     return disks;
   }
 
@@ -102,7 +104,7 @@ public final class InstancesStartWithEncryptionKeyRequest implements ApiMessage 
 
     public Builder mergeFrom(InstancesStartWithEncryptionKeyRequest other) {
       if (other == InstancesStartWithEncryptionKeyRequest.getDefaultInstance()) return this;
-      if (other.getDisks() != null) {
+      if (other.getDisksList() != null) {
         this.disks = other.disks;
       }
       return this;
@@ -112,13 +114,13 @@ public final class InstancesStartWithEncryptionKeyRequest implements ApiMessage 
       this.disks = source.disks;
     }
 
-    public List<CustomerEncryptionKeyProtectedDisk> getDisks() {
+    public List<CustomerEncryptionKeyProtectedDisk> getDisksList() {
       return disks;
     }
 
     public Builder addAllDisks(List<CustomerEncryptionKeyProtectedDisk> disks) {
       if (this.disks == null) {
-        this.disks = new LinkedList<>();
+        this.disks = new ArrayList<>(disks.size());
       }
       this.disks.addAll(disks);
       return this;
@@ -158,7 +160,7 @@ public final class InstancesStartWithEncryptionKeyRequest implements ApiMessage 
     if (o instanceof InstancesStartWithEncryptionKeyRequest) {
       InstancesStartWithEncryptionKeyRequest that = (InstancesStartWithEncryptionKeyRequest) o;
       return
-          Objects.equals(this.disks, that.getDisks())
+          Objects.equals(this.disks, that.getDisksList())
           ;
     }
     return false;

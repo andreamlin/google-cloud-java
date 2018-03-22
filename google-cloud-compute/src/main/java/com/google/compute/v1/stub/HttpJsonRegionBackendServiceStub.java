@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -63,8 +64,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceMethodDescriptor =
       ApiMethodDescriptor.<DeleteRegionBackendServiceHttpRequest, Operation>newBuilder()
@@ -157,7 +156,6 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
           .setHttpMethod(HttpMethods.PUT)
           .setResourceNameField("backendService")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceCallable;
@@ -169,6 +167,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
   private final UnaryCallable<PatchRegionBackendServiceHttpRequest, Operation> patchRegionBackendServiceCallable;
   private final UnaryCallable<UpdateRegionBackendServiceHttpRequest, Operation> updateRegionBackendServiceCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonRegionBackendServiceStub create(RegionBackendServiceStubSettings settings) throws IOException {
     return new HttpJsonRegionBackendServiceStub(settings, ClientContext.create(settings));
   }
@@ -177,12 +176,26 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
     return new HttpJsonRegionBackendServiceStub(RegionBackendServiceStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonRegionBackendServiceStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonRegionBackendServiceStub(RegionBackendServiceSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonRegionBackendServiceStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonRegionBackendServiceStub(RegionBackendServiceStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonRegionBackendServiceCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonRegionBackendServiceStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonRegionBackendServiceStub(RegionBackendServiceStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceTransportSettings =
         HttpJsonCallSettings.<DeleteRegionBackendServiceHttpRequest, Operation>newBuilder()
@@ -213,14 +226,14 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
             .setMethodDescriptor(updateRegionBackendServiceMethodDescriptor)
             .build();
 
-    this.deleteRegionBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(deleteRegionBackendServiceTransportSettings,settings.deleteRegionBackendServiceSettings(), clientContext);
-    this.getRegionBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(getRegionBackendServiceTransportSettings,settings.getRegionBackendServiceSettings(), clientContext);
-    this.getHealthRegionBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(getHealthRegionBackendServiceTransportSettings,settings.getHealthRegionBackendServiceSettings(), clientContext);
-    this.insertRegionBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(insertRegionBackendServiceTransportSettings,settings.insertRegionBackendServiceSettings(), clientContext);
-    this.listRegionBackendServicesCallable = HttpJsonCallableFactory.createUnaryCallable(listRegionBackendServicesTransportSettings,settings.listRegionBackendServicesSettings(), clientContext);
-    this.listRegionBackendServicesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listRegionBackendServicesTransportSettings,settings.listRegionBackendServicesSettings(), clientContext);
-    this.patchRegionBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(patchRegionBackendServiceTransportSettings,settings.patchRegionBackendServiceSettings(), clientContext);
-    this.updateRegionBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(updateRegionBackendServiceTransportSettings,settings.updateRegionBackendServiceSettings(), clientContext);
+    this.deleteRegionBackendServiceCallable = callableFactory.createUnaryCallable(deleteRegionBackendServiceTransportSettings,settings.deleteRegionBackendServiceSettings(), clientContext);
+    this.getRegionBackendServiceCallable = callableFactory.createUnaryCallable(getRegionBackendServiceTransportSettings,settings.getRegionBackendServiceSettings(), clientContext);
+    this.getHealthRegionBackendServiceCallable = callableFactory.createUnaryCallable(getHealthRegionBackendServiceTransportSettings,settings.getHealthRegionBackendServiceSettings(), clientContext);
+    this.insertRegionBackendServiceCallable = callableFactory.createUnaryCallable(insertRegionBackendServiceTransportSettings,settings.insertRegionBackendServiceSettings(), clientContext);
+    this.listRegionBackendServicesCallable = callableFactory.createUnaryCallable(listRegionBackendServicesTransportSettings,settings.listRegionBackendServicesSettings(), clientContext);
+    this.listRegionBackendServicesPagedCallable = callableFactory.createPagedCallable(listRegionBackendServicesTransportSettings,settings.listRegionBackendServicesSettings(), clientContext);
+    this.patchRegionBackendServiceCallable = callableFactory.createUnaryCallable(patchRegionBackendServiceTransportSettings,settings.patchRegionBackendServiceSettings(), clientContext);
+    this.updateRegionBackendServiceCallable = callableFactory.createUnaryCallable(updateRegionBackendServiceTransportSettings,settings.updateRegionBackendServiceSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

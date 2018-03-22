@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -60,8 +61,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerMethodDescriptor =
       ApiMethodDescriptor.<DeleteRegionAutoscalerHttpRequest, Operation>newBuilder()
@@ -143,7 +142,6 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
           .setHttpMethod(HttpMethods.PUT)
           .setResourceNameField("region")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerCallable;
@@ -154,6 +152,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
   private final UnaryCallable<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerCallable;
   private final UnaryCallable<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonRegionAutoscalerStub create(RegionAutoscalerStubSettings settings) throws IOException {
     return new HttpJsonRegionAutoscalerStub(settings, ClientContext.create(settings));
   }
@@ -162,12 +161,26 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
     return new HttpJsonRegionAutoscalerStub(RegionAutoscalerStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonRegionAutoscalerStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonRegionAutoscalerStub(RegionAutoscalerSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonRegionAutoscalerStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonRegionAutoscalerStub(RegionAutoscalerStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonRegionAutoscalerCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonRegionAutoscalerStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonRegionAutoscalerStub(RegionAutoscalerStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerTransportSettings =
         HttpJsonCallSettings.<DeleteRegionAutoscalerHttpRequest, Operation>newBuilder()
@@ -194,13 +207,13 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
             .setMethodDescriptor(updateRegionAutoscalerMethodDescriptor)
             .build();
 
-    this.deleteRegionAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(deleteRegionAutoscalerTransportSettings,settings.deleteRegionAutoscalerSettings(), clientContext);
-    this.getRegionAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(getRegionAutoscalerTransportSettings,settings.getRegionAutoscalerSettings(), clientContext);
-    this.insertRegionAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(insertRegionAutoscalerTransportSettings,settings.insertRegionAutoscalerSettings(), clientContext);
-    this.listRegionAutoscalersCallable = HttpJsonCallableFactory.createUnaryCallable(listRegionAutoscalersTransportSettings,settings.listRegionAutoscalersSettings(), clientContext);
-    this.listRegionAutoscalersPagedCallable = HttpJsonCallableFactory.createPagedCallable(listRegionAutoscalersTransportSettings,settings.listRegionAutoscalersSettings(), clientContext);
-    this.patchRegionAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(patchRegionAutoscalerTransportSettings,settings.patchRegionAutoscalerSettings(), clientContext);
-    this.updateRegionAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(updateRegionAutoscalerTransportSettings,settings.updateRegionAutoscalerSettings(), clientContext);
+    this.deleteRegionAutoscalerCallable = callableFactory.createUnaryCallable(deleteRegionAutoscalerTransportSettings,settings.deleteRegionAutoscalerSettings(), clientContext);
+    this.getRegionAutoscalerCallable = callableFactory.createUnaryCallable(getRegionAutoscalerTransportSettings,settings.getRegionAutoscalerSettings(), clientContext);
+    this.insertRegionAutoscalerCallable = callableFactory.createUnaryCallable(insertRegionAutoscalerTransportSettings,settings.insertRegionAutoscalerSettings(), clientContext);
+    this.listRegionAutoscalersCallable = callableFactory.createUnaryCallable(listRegionAutoscalersTransportSettings,settings.listRegionAutoscalersSettings(), clientContext);
+    this.listRegionAutoscalersPagedCallable = callableFactory.createPagedCallable(listRegionAutoscalersTransportSettings,settings.listRegionAutoscalersSettings(), clientContext);
+    this.patchRegionAutoscalerCallable = callableFactory.createUnaryCallable(patchRegionAutoscalerTransportSettings,settings.patchRegionAutoscalerSettings(), clientContext);
+    this.updateRegionAutoscalerCallable = callableFactory.createUnaryCallable(updateRegionAutoscalerTransportSettings,settings.updateRegionAutoscalerSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

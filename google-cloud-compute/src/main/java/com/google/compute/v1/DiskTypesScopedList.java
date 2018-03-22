@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,11 +54,11 @@ public final class DiskTypesScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("diskTypes") && diskTypes != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (DiskType item : diskTypes) {
         stringList.add(item.toString());
       }
-      fieldMap.put("diskTypes", stringList);
+      fieldMap.put("diskTypes", stringList.build());
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -81,7 +83,7 @@ public final class DiskTypesScopedList implements ApiMessage {
     return null;
   }
 
-  public List<DiskType> getDiskTypes() {
+  public List<DiskType> getDiskTypesList() {
     return diskTypes;
   }
 
@@ -117,7 +119,7 @@ public final class DiskTypesScopedList implements ApiMessage {
 
     public Builder mergeFrom(DiskTypesScopedList other) {
       if (other == DiskTypesScopedList.getDefaultInstance()) return this;
-      if (other.getDiskTypes() != null) {
+      if (other.getDiskTypesList() != null) {
         this.diskTypes = other.diskTypes;
       }
       if (other.getWarning() != null) {
@@ -131,13 +133,13 @@ public final class DiskTypesScopedList implements ApiMessage {
       this.warning = source.warning;
     }
 
-    public List<DiskType> getDiskTypes() {
+    public List<DiskType> getDiskTypesList() {
       return diskTypes;
     }
 
     public Builder addAllDiskTypes(List<DiskType> diskTypes) {
       if (this.diskTypes == null) {
-        this.diskTypes = new LinkedList<>();
+        this.diskTypes = new ArrayList<>(diskTypes.size());
       }
       this.diskTypes.addAll(diskTypes);
       return this;
@@ -190,7 +192,7 @@ public final class DiskTypesScopedList implements ApiMessage {
     if (o instanceof DiskTypesScopedList) {
       DiskTypesScopedList that = (DiskTypesScopedList) o;
       return
-          Objects.equals(this.diskTypes, that.getDiskTypes()) &&
+          Objects.equals(this.diskTypes, that.getDiskTypesList()) &&
           Objects.equals(this.warning, that.getWarning())
           ;
     }

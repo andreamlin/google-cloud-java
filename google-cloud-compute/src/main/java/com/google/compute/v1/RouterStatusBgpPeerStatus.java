@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -84,11 +86,11 @@ public final class RouterStatusBgpPeerStatus implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("advertisedRoutes") && advertisedRoutes != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Route item : advertisedRoutes) {
         stringList.add(item.toString());
       }
-      fieldMap.put("advertisedRoutes", stringList);
+      fieldMap.put("advertisedRoutes", stringList.build());
     }
     if (fieldNames.contains("ipAddress") && ipAddress != null) {
       fieldMap.put("ipAddress", Collections.singletonList(String.valueOf(ipAddress)));
@@ -161,7 +163,7 @@ public final class RouterStatusBgpPeerStatus implements ApiMessage {
     return null;
   }
 
-  public List<Route> getAdvertisedRoutes() {
+  public List<Route> getAdvertisedRoutesList() {
     return advertisedRoutes;
   }
 
@@ -237,7 +239,7 @@ public final class RouterStatusBgpPeerStatus implements ApiMessage {
 
     public Builder mergeFrom(RouterStatusBgpPeerStatus other) {
       if (other == RouterStatusBgpPeerStatus.getDefaultInstance()) return this;
-      if (other.getAdvertisedRoutes() != null) {
+      if (other.getAdvertisedRoutesList() != null) {
         this.advertisedRoutes = other.advertisedRoutes;
       }
       if (other.getIpAddress() != null) {
@@ -283,13 +285,13 @@ public final class RouterStatusBgpPeerStatus implements ApiMessage {
       this.uptimeSeconds = source.uptimeSeconds;
     }
 
-    public List<Route> getAdvertisedRoutes() {
+    public List<Route> getAdvertisedRoutesList() {
       return advertisedRoutes;
     }
 
     public Builder addAllAdvertisedRoutes(List<Route> advertisedRoutes) {
       if (this.advertisedRoutes == null) {
-        this.advertisedRoutes = new LinkedList<>();
+        this.advertisedRoutes = new ArrayList<>(advertisedRoutes.size());
       }
       this.advertisedRoutes.addAll(advertisedRoutes);
       return this;
@@ -446,7 +448,7 @@ public final class RouterStatusBgpPeerStatus implements ApiMessage {
     if (o instanceof RouterStatusBgpPeerStatus) {
       RouterStatusBgpPeerStatus that = (RouterStatusBgpPeerStatus) o;
       return
-          Objects.equals(this.advertisedRoutes, that.getAdvertisedRoutes()) &&
+          Objects.equals(this.advertisedRoutes, that.getAdvertisedRoutesList()) &&
           Objects.equals(this.ipAddress, that.getIpAddress()) &&
           Objects.equals(this.linkedVpnTunnel, that.getLinkedVpnTunnel()) &&
           Objects.equals(this.name, that.getName()) &&

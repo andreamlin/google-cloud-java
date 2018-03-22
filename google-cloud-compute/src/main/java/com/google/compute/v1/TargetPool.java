@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -104,21 +106,21 @@ public final class TargetPool implements ApiMessage {
       fieldMap.put("failoverRatio", Collections.singletonList(String.valueOf(failoverRatio)));
     }
     if (fieldNames.contains("healthChecks") && healthChecks != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : healthChecks) {
         stringList.add(item.toString());
       }
-      fieldMap.put("healthChecks", stringList);
+      fieldMap.put("healthChecks", stringList.build());
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
     }
     if (fieldNames.contains("instances") && instances != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : instances) {
         stringList.add(item.toString());
       }
-      fieldMap.put("instances", stringList);
+      fieldMap.put("instances", stringList.build());
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -201,7 +203,7 @@ public final class TargetPool implements ApiMessage {
     return failoverRatio;
   }
 
-  public List<String> getHealthChecks() {
+  public List<String> getHealthChecksList() {
     return healthChecks;
   }
 
@@ -209,7 +211,7 @@ public final class TargetPool implements ApiMessage {
     return id;
   }
 
-  public List<String> getInstances() {
+  public List<String> getInstancesList() {
     return instances;
   }
 
@@ -283,13 +285,13 @@ public final class TargetPool implements ApiMessage {
       if (other.getFailoverRatio() != null) {
         this.failoverRatio = other.failoverRatio;
       }
-      if (other.getHealthChecks() != null) {
+      if (other.getHealthChecksList() != null) {
         this.healthChecks = other.healthChecks;
       }
       if (other.getId() != null) {
         this.id = other.id;
       }
-      if (other.getInstances() != null) {
+      if (other.getInstancesList() != null) {
         this.instances = other.instances;
       }
       if (other.getKind() != null) {
@@ -361,13 +363,13 @@ public final class TargetPool implements ApiMessage {
       return this;
     }
 
-    public List<String> getHealthChecks() {
+    public List<String> getHealthChecksList() {
       return healthChecks;
     }
 
     public Builder addAllHealthChecks(List<String> healthChecks) {
       if (this.healthChecks == null) {
-        this.healthChecks = new LinkedList<>();
+        this.healthChecks = new ArrayList<>(healthChecks.size());
       }
       this.healthChecks.addAll(healthChecks);
       return this;
@@ -387,13 +389,13 @@ public final class TargetPool implements ApiMessage {
       return this;
     }
 
-    public List<String> getInstances() {
+    public List<String> getInstancesList() {
       return instances;
     }
 
     public Builder addAllInstances(List<String> instances) {
       if (this.instances == null) {
-        this.instances = new LinkedList<>();
+        this.instances = new ArrayList<>(instances.size());
       }
       this.instances.addAll(instances);
       return this;
@@ -526,9 +528,9 @@ public final class TargetPool implements ApiMessage {
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.failoverRatio, that.getFailoverRatio()) &&
-          Objects.equals(this.healthChecks, that.getHealthChecks()) &&
+          Objects.equals(this.healthChecks, that.getHealthChecksList()) &&
           Objects.equals(this.id, that.getId()) &&
-          Objects.equals(this.instances, that.getInstances()) &&
+          Objects.equals(this.instances, that.getInstancesList()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.name, that.getName()) &&
           Objects.equals(this.region, that.getRegion()) &&

@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -59,11 +61,11 @@ public final class HostRule implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("hosts") && hosts != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : hosts) {
         stringList.add(item.toString());
       }
-      fieldMap.put("hosts", stringList);
+      fieldMap.put("hosts", stringList.build());
     }
     if (fieldNames.contains("pathMatcher") && pathMatcher != null) {
       fieldMap.put("pathMatcher", Collections.singletonList(String.valueOf(pathMatcher)));
@@ -95,7 +97,7 @@ public final class HostRule implements ApiMessage {
     return description;
   }
 
-  public List<String> getHosts() {
+  public List<String> getHostsList() {
     return hosts;
   }
 
@@ -135,7 +137,7 @@ public final class HostRule implements ApiMessage {
       if (other.getDescription() != null) {
         this.description = other.description;
       }
-      if (other.getHosts() != null) {
+      if (other.getHostsList() != null) {
         this.hosts = other.hosts;
       }
       if (other.getPathMatcher() != null) {
@@ -159,13 +161,13 @@ public final class HostRule implements ApiMessage {
       return this;
     }
 
-    public List<String> getHosts() {
+    public List<String> getHostsList() {
       return hosts;
     }
 
     public Builder addAllHosts(List<String> hosts) {
       if (this.hosts == null) {
-        this.hosts = new LinkedList<>();
+        this.hosts = new ArrayList<>(hosts.size());
       }
       this.hosts.addAll(hosts);
       return this;
@@ -223,7 +225,7 @@ public final class HostRule implements ApiMessage {
       HostRule that = (HostRule) o;
       return
           Objects.equals(this.description, that.getDescription()) &&
-          Objects.equals(this.hosts, that.getHosts()) &&
+          Objects.equals(this.hosts, that.getHostsList()) &&
           Objects.equals(this.pathMatcher, that.getPathMatcher())
           ;
     }

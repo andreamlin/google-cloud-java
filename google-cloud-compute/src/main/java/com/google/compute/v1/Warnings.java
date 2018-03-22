@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -59,11 +61,11 @@ public final class Warnings implements ApiMessage {
       fieldMap.put("code", Collections.singletonList(String.valueOf(code)));
     }
     if (fieldNames.contains("data") && data != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Data item : data) {
         stringList.add(item.toString());
       }
-      fieldMap.put("data", stringList);
+      fieldMap.put("data", stringList.build());
     }
     if (fieldNames.contains("message") && message != null) {
       fieldMap.put("message", Collections.singletonList(String.valueOf(message)));
@@ -95,7 +97,7 @@ public final class Warnings implements ApiMessage {
     return code;
   }
 
-  public List<Data> getData() {
+  public List<Data> getDataList() {
     return data;
   }
 
@@ -135,7 +137,7 @@ public final class Warnings implements ApiMessage {
       if (other.getCode() != null) {
         this.code = other.code;
       }
-      if (other.getData() != null) {
+      if (other.getDataList() != null) {
         this.data = other.data;
       }
       if (other.getMessage() != null) {
@@ -159,13 +161,13 @@ public final class Warnings implements ApiMessage {
       return this;
     }
 
-    public List<Data> getData() {
+    public List<Data> getDataList() {
       return data;
     }
 
     public Builder addAllData(List<Data> data) {
       if (this.data == null) {
-        this.data = new LinkedList<>();
+        this.data = new ArrayList<>(data.size());
       }
       this.data.addAll(data);
       return this;
@@ -223,7 +225,7 @@ public final class Warnings implements ApiMessage {
       Warnings that = (Warnings) o;
       return
           Objects.equals(this.code, that.getCode()) &&
-          Objects.equals(this.data, that.getData()) &&
+          Objects.equals(this.data, that.getDataList()) &&
           Objects.equals(this.message, that.getMessage())
           ;
     }

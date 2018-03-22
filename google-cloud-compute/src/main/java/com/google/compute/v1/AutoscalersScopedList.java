@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,11 +54,11 @@ public final class AutoscalersScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("autoscalers") && autoscalers != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Autoscaler item : autoscalers) {
         stringList.add(item.toString());
       }
-      fieldMap.put("autoscalers", stringList);
+      fieldMap.put("autoscalers", stringList.build());
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -81,7 +83,7 @@ public final class AutoscalersScopedList implements ApiMessage {
     return null;
   }
 
-  public List<Autoscaler> getAutoscalers() {
+  public List<Autoscaler> getAutoscalersList() {
     return autoscalers;
   }
 
@@ -117,7 +119,7 @@ public final class AutoscalersScopedList implements ApiMessage {
 
     public Builder mergeFrom(AutoscalersScopedList other) {
       if (other == AutoscalersScopedList.getDefaultInstance()) return this;
-      if (other.getAutoscalers() != null) {
+      if (other.getAutoscalersList() != null) {
         this.autoscalers = other.autoscalers;
       }
       if (other.getWarning() != null) {
@@ -131,13 +133,13 @@ public final class AutoscalersScopedList implements ApiMessage {
       this.warning = source.warning;
     }
 
-    public List<Autoscaler> getAutoscalers() {
+    public List<Autoscaler> getAutoscalersList() {
       return autoscalers;
     }
 
     public Builder addAllAutoscalers(List<Autoscaler> autoscalers) {
       if (this.autoscalers == null) {
-        this.autoscalers = new LinkedList<>();
+        this.autoscalers = new ArrayList<>(autoscalers.size());
       }
       this.autoscalers.addAll(autoscalers);
       return this;
@@ -190,7 +192,7 @@ public final class AutoscalersScopedList implements ApiMessage {
     if (o instanceof AutoscalersScopedList) {
       AutoscalersScopedList that = (AutoscalersScopedList) o;
       return
-          Objects.equals(this.autoscalers, that.getAutoscalers()) &&
+          Objects.equals(this.autoscalers, that.getAutoscalersList()) &&
           Objects.equals(this.warning, that.getWarning())
           ;
     }

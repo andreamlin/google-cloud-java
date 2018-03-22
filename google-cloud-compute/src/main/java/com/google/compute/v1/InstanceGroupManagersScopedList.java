@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,11 +54,11 @@ public final class InstanceGroupManagersScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("instanceGroupManagers") && instanceGroupManagers != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (InstanceGroupManager item : instanceGroupManagers) {
         stringList.add(item.toString());
       }
-      fieldMap.put("instanceGroupManagers", stringList);
+      fieldMap.put("instanceGroupManagers", stringList.build());
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -81,7 +83,7 @@ public final class InstanceGroupManagersScopedList implements ApiMessage {
     return null;
   }
 
-  public List<InstanceGroupManager> getInstanceGroupManagers() {
+  public List<InstanceGroupManager> getInstanceGroupManagersList() {
     return instanceGroupManagers;
   }
 
@@ -117,7 +119,7 @@ public final class InstanceGroupManagersScopedList implements ApiMessage {
 
     public Builder mergeFrom(InstanceGroupManagersScopedList other) {
       if (other == InstanceGroupManagersScopedList.getDefaultInstance()) return this;
-      if (other.getInstanceGroupManagers() != null) {
+      if (other.getInstanceGroupManagersList() != null) {
         this.instanceGroupManagers = other.instanceGroupManagers;
       }
       if (other.getWarning() != null) {
@@ -131,13 +133,13 @@ public final class InstanceGroupManagersScopedList implements ApiMessage {
       this.warning = source.warning;
     }
 
-    public List<InstanceGroupManager> getInstanceGroupManagers() {
+    public List<InstanceGroupManager> getInstanceGroupManagersList() {
       return instanceGroupManagers;
     }
 
     public Builder addAllInstanceGroupManagers(List<InstanceGroupManager> instanceGroupManagers) {
       if (this.instanceGroupManagers == null) {
-        this.instanceGroupManagers = new LinkedList<>();
+        this.instanceGroupManagers = new ArrayList<>(instanceGroupManagers.size());
       }
       this.instanceGroupManagers.addAll(instanceGroupManagers);
       return this;
@@ -190,7 +192,7 @@ public final class InstanceGroupManagersScopedList implements ApiMessage {
     if (o instanceof InstanceGroupManagersScopedList) {
       InstanceGroupManagersScopedList that = (InstanceGroupManagersScopedList) o;
       return
-          Objects.equals(this.instanceGroupManagers, that.getInstanceGroupManagers()) &&
+          Objects.equals(this.instanceGroupManagers, that.getInstanceGroupManagersList()) &&
           Objects.equals(this.warning, that.getWarning())
           ;
     }

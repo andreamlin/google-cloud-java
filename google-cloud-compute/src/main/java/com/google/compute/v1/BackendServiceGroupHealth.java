@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,11 +54,11 @@ public final class BackendServiceGroupHealth implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("healthStatus") && healthStatus != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (HealthStatus item : healthStatus) {
         stringList.add(item.toString());
       }
-      fieldMap.put("healthStatus", stringList);
+      fieldMap.put("healthStatus", stringList.build());
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -81,7 +83,7 @@ public final class BackendServiceGroupHealth implements ApiMessage {
     return null;
   }
 
-  public List<HealthStatus> getHealthStatus() {
+  public List<HealthStatus> getHealthStatusList() {
     return healthStatus;
   }
 
@@ -117,7 +119,7 @@ public final class BackendServiceGroupHealth implements ApiMessage {
 
     public Builder mergeFrom(BackendServiceGroupHealth other) {
       if (other == BackendServiceGroupHealth.getDefaultInstance()) return this;
-      if (other.getHealthStatus() != null) {
+      if (other.getHealthStatusList() != null) {
         this.healthStatus = other.healthStatus;
       }
       if (other.getKind() != null) {
@@ -131,13 +133,13 @@ public final class BackendServiceGroupHealth implements ApiMessage {
       this.kind = source.kind;
     }
 
-    public List<HealthStatus> getHealthStatus() {
+    public List<HealthStatus> getHealthStatusList() {
       return healthStatus;
     }
 
     public Builder addAllHealthStatus(List<HealthStatus> healthStatus) {
       if (this.healthStatus == null) {
-        this.healthStatus = new LinkedList<>();
+        this.healthStatus = new ArrayList<>(healthStatus.size());
       }
       this.healthStatus.addAll(healthStatus);
       return this;
@@ -190,7 +192,7 @@ public final class BackendServiceGroupHealth implements ApiMessage {
     if (o instanceof BackendServiceGroupHealth) {
       BackendServiceGroupHealth that = (BackendServiceGroupHealth) o;
       return
-          Objects.equals(this.healthStatus, that.getHealthStatus()) &&
+          Objects.equals(this.healthStatus, that.getHealthStatusList()) &&
           Objects.equals(this.kind, that.getKind())
           ;
     }

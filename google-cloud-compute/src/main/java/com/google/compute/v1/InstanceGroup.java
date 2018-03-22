@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -114,11 +116,11 @@ public final class InstanceGroup implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("namedPorts") && namedPorts != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (NamedPort item : namedPorts) {
         stringList.add(item.toString());
       }
-      fieldMap.put("namedPorts", stringList);
+      fieldMap.put("namedPorts", stringList.build());
     }
     if (fieldNames.contains("network") && network != null) {
       fieldMap.put("network", Collections.singletonList(String.valueOf(network)));
@@ -215,7 +217,7 @@ public final class InstanceGroup implements ApiMessage {
     return name;
   }
 
-  public List<NamedPort> getNamedPorts() {
+  public List<NamedPort> getNamedPortsList() {
     return namedPorts;
   }
 
@@ -300,7 +302,7 @@ public final class InstanceGroup implements ApiMessage {
       if (other.getName() != null) {
         this.name = other.name;
       }
-      if (other.getNamedPorts() != null) {
+      if (other.getNamedPortsList() != null) {
         this.namedPorts = other.namedPorts;
       }
       if (other.getNetwork() != null) {
@@ -394,13 +396,13 @@ public final class InstanceGroup implements ApiMessage {
       return this;
     }
 
-    public List<NamedPort> getNamedPorts() {
+    public List<NamedPort> getNamedPortsList() {
       return namedPorts;
     }
 
     public Builder addAllNamedPorts(List<NamedPort> namedPorts) {
       if (this.namedPorts == null) {
-        this.namedPorts = new LinkedList<>();
+        this.namedPorts = new ArrayList<>(namedPorts.size());
       }
       this.namedPorts.addAll(namedPorts);
       return this;
@@ -548,7 +550,7 @@ public final class InstanceGroup implements ApiMessage {
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.name, that.getName()) &&
-          Objects.equals(this.namedPorts, that.getNamedPorts()) &&
+          Objects.equals(this.namedPorts, that.getNamedPortsList()) &&
           Objects.equals(this.network, that.getNetwork()) &&
           Objects.equals(this.region, that.getRegion()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&

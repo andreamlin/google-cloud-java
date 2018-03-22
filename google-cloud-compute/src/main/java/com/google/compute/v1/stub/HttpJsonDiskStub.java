@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -66,8 +67,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonDiskStub extends DiskStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AggregatedListDisksHttpRequest, DiskAggregatedList> aggregatedListDisksMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListDisksHttpRequest, DiskAggregatedList>newBuilder()
@@ -162,7 +161,6 @@ public class HttpJsonDiskStub extends DiskStub {
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("disk")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AggregatedListDisksHttpRequest, DiskAggregatedList> aggregatedListDisksCallable;
@@ -175,6 +173,7 @@ public class HttpJsonDiskStub extends DiskStub {
   private final UnaryCallable<ListDisksHttpRequest, ListDisksPagedResponse> listDisksPagedCallable;
   private final UnaryCallable<ResizeDiskHttpRequest, Operation> resizeDiskCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonDiskStub create(DiskStubSettings settings) throws IOException {
     return new HttpJsonDiskStub(settings, ClientContext.create(settings));
   }
@@ -183,12 +182,26 @@ public class HttpJsonDiskStub extends DiskStub {
     return new HttpJsonDiskStub(DiskStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonDiskStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonDiskStub(DiskSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonDiskStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonDiskStub(DiskStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonDiskCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonDiskStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonDiskStub(DiskStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListDisksHttpRequest, DiskAggregatedList> aggregatedListDisksTransportSettings =
         HttpJsonCallSettings.<AggregatedListDisksHttpRequest, DiskAggregatedList>newBuilder()
@@ -219,15 +232,15 @@ public class HttpJsonDiskStub extends DiskStub {
             .setMethodDescriptor(resizeDiskMethodDescriptor)
             .build();
 
-    this.aggregatedListDisksCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListDisksTransportSettings,settings.aggregatedListDisksSettings(), clientContext);
-    this.aggregatedListDisksPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListDisksTransportSettings,settings.aggregatedListDisksSettings(), clientContext);
-    this.createSnapshotDiskCallable = HttpJsonCallableFactory.createUnaryCallable(createSnapshotDiskTransportSettings,settings.createSnapshotDiskSettings(), clientContext);
-    this.deleteDiskCallable = HttpJsonCallableFactory.createUnaryCallable(deleteDiskTransportSettings,settings.deleteDiskSettings(), clientContext);
-    this.getDiskCallable = HttpJsonCallableFactory.createUnaryCallable(getDiskTransportSettings,settings.getDiskSettings(), clientContext);
-    this.insertDiskCallable = HttpJsonCallableFactory.createUnaryCallable(insertDiskTransportSettings,settings.insertDiskSettings(), clientContext);
-    this.listDisksCallable = HttpJsonCallableFactory.createUnaryCallable(listDisksTransportSettings,settings.listDisksSettings(), clientContext);
-    this.listDisksPagedCallable = HttpJsonCallableFactory.createPagedCallable(listDisksTransportSettings,settings.listDisksSettings(), clientContext);
-    this.resizeDiskCallable = HttpJsonCallableFactory.createUnaryCallable(resizeDiskTransportSettings,settings.resizeDiskSettings(), clientContext);
+    this.aggregatedListDisksCallable = callableFactory.createUnaryCallable(aggregatedListDisksTransportSettings,settings.aggregatedListDisksSettings(), clientContext);
+    this.aggregatedListDisksPagedCallable = callableFactory.createPagedCallable(aggregatedListDisksTransportSettings,settings.aggregatedListDisksSettings(), clientContext);
+    this.createSnapshotDiskCallable = callableFactory.createUnaryCallable(createSnapshotDiskTransportSettings,settings.createSnapshotDiskSettings(), clientContext);
+    this.deleteDiskCallable = callableFactory.createUnaryCallable(deleteDiskTransportSettings,settings.deleteDiskSettings(), clientContext);
+    this.getDiskCallable = callableFactory.createUnaryCallable(getDiskTransportSettings,settings.getDiskSettings(), clientContext);
+    this.insertDiskCallable = callableFactory.createUnaryCallable(insertDiskTransportSettings,settings.insertDiskSettings(), clientContext);
+    this.listDisksCallable = callableFactory.createUnaryCallable(listDisksTransportSettings,settings.listDisksSettings(), clientContext);
+    this.listDisksPagedCallable = callableFactory.createPagedCallable(listDisksTransportSettings,settings.listDisksSettings(), clientContext);
+    this.resizeDiskCallable = callableFactory.createUnaryCallable(resizeDiskTransportSettings,settings.resizeDiskSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

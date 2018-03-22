@@ -284,7 +284,7 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
         }
         @Override
         public Iterable<Image> extractResources(ImageList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

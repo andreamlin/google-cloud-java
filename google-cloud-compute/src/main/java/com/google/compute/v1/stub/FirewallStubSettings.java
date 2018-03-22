@@ -284,7 +284,7 @@ public class FirewallStubSettings extends StubSettings<FirewallStubSettings> {
         }
         @Override
         public Iterable<Firewall> extractResources(FirewallList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

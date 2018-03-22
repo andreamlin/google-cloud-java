@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -62,8 +63,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList> aggregatedListTargetInstancesMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList>newBuilder()
@@ -131,7 +130,6 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("zone")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList> aggregatedListTargetInstancesCallable;
@@ -142,6 +140,7 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
   private final UnaryCallable<ListTargetInstancesHttpRequest, TargetInstanceList> listTargetInstancesCallable;
   private final UnaryCallable<ListTargetInstancesHttpRequest, ListTargetInstancesPagedResponse> listTargetInstancesPagedCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonTargetInstanceStub create(TargetInstanceStubSettings settings) throws IOException {
     return new HttpJsonTargetInstanceStub(settings, ClientContext.create(settings));
   }
@@ -150,12 +149,26 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
     return new HttpJsonTargetInstanceStub(TargetInstanceStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonTargetInstanceStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonTargetInstanceStub(TargetInstanceSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonTargetInstanceStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonTargetInstanceStub(TargetInstanceStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonTargetInstanceCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonTargetInstanceStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonTargetInstanceStub(TargetInstanceStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList> aggregatedListTargetInstancesTransportSettings =
         HttpJsonCallSettings.<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList>newBuilder()
@@ -178,13 +191,13 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
             .setMethodDescriptor(listTargetInstancesMethodDescriptor)
             .build();
 
-    this.aggregatedListTargetInstancesCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListTargetInstancesTransportSettings,settings.aggregatedListTargetInstancesSettings(), clientContext);
-    this.aggregatedListTargetInstancesPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListTargetInstancesTransportSettings,settings.aggregatedListTargetInstancesSettings(), clientContext);
-    this.deleteTargetInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(deleteTargetInstanceTransportSettings,settings.deleteTargetInstanceSettings(), clientContext);
-    this.getTargetInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(getTargetInstanceTransportSettings,settings.getTargetInstanceSettings(), clientContext);
-    this.insertTargetInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(insertTargetInstanceTransportSettings,settings.insertTargetInstanceSettings(), clientContext);
-    this.listTargetInstancesCallable = HttpJsonCallableFactory.createUnaryCallable(listTargetInstancesTransportSettings,settings.listTargetInstancesSettings(), clientContext);
-    this.listTargetInstancesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listTargetInstancesTransportSettings,settings.listTargetInstancesSettings(), clientContext);
+    this.aggregatedListTargetInstancesCallable = callableFactory.createUnaryCallable(aggregatedListTargetInstancesTransportSettings,settings.aggregatedListTargetInstancesSettings(), clientContext);
+    this.aggregatedListTargetInstancesPagedCallable = callableFactory.createPagedCallable(aggregatedListTargetInstancesTransportSettings,settings.aggregatedListTargetInstancesSettings(), clientContext);
+    this.deleteTargetInstanceCallable = callableFactory.createUnaryCallable(deleteTargetInstanceTransportSettings,settings.deleteTargetInstanceSettings(), clientContext);
+    this.getTargetInstanceCallable = callableFactory.createUnaryCallable(getTargetInstanceTransportSettings,settings.getTargetInstanceSettings(), clientContext);
+    this.insertTargetInstanceCallable = callableFactory.createUnaryCallable(insertTargetInstanceTransportSettings,settings.insertTargetInstanceSettings(), clientContext);
+    this.listTargetInstancesCallable = callableFactory.createUnaryCallable(listTargetInstancesTransportSettings,settings.listTargetInstancesSettings(), clientContext);
+    this.listTargetInstancesPagedCallable = callableFactory.createPagedCallable(listTargetInstancesTransportSettings,settings.listTargetInstancesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

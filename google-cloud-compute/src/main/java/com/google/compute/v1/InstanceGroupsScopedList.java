@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,11 +54,11 @@ public final class InstanceGroupsScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("instanceGroups") && instanceGroups != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (InstanceGroup item : instanceGroups) {
         stringList.add(item.toString());
       }
-      fieldMap.put("instanceGroups", stringList);
+      fieldMap.put("instanceGroups", stringList.build());
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -81,7 +83,7 @@ public final class InstanceGroupsScopedList implements ApiMessage {
     return null;
   }
 
-  public List<InstanceGroup> getInstanceGroups() {
+  public List<InstanceGroup> getInstanceGroupsList() {
     return instanceGroups;
   }
 
@@ -117,7 +119,7 @@ public final class InstanceGroupsScopedList implements ApiMessage {
 
     public Builder mergeFrom(InstanceGroupsScopedList other) {
       if (other == InstanceGroupsScopedList.getDefaultInstance()) return this;
-      if (other.getInstanceGroups() != null) {
+      if (other.getInstanceGroupsList() != null) {
         this.instanceGroups = other.instanceGroups;
       }
       if (other.getWarning() != null) {
@@ -131,13 +133,13 @@ public final class InstanceGroupsScopedList implements ApiMessage {
       this.warning = source.warning;
     }
 
-    public List<InstanceGroup> getInstanceGroups() {
+    public List<InstanceGroup> getInstanceGroupsList() {
       return instanceGroups;
     }
 
     public Builder addAllInstanceGroups(List<InstanceGroup> instanceGroups) {
       if (this.instanceGroups == null) {
-        this.instanceGroups = new LinkedList<>();
+        this.instanceGroups = new ArrayList<>(instanceGroups.size());
       }
       this.instanceGroups.addAll(instanceGroups);
       return this;
@@ -190,7 +192,7 @@ public final class InstanceGroupsScopedList implements ApiMessage {
     if (o instanceof InstanceGroupsScopedList) {
       InstanceGroupsScopedList that = (InstanceGroupsScopedList) o;
       return
-          Objects.equals(this.instanceGroups, that.getInstanceGroups()) &&
+          Objects.equals(this.instanceGroups, that.getInstanceGroupsList()) &&
           Objects.equals(this.warning, that.getWarning())
           ;
     }

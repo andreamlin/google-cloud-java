@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -48,11 +50,11 @@ public final class InstanceGroupManagersListManagedInstancesResponse implements 
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("managedInstances") && managedInstances != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (ManagedInstance item : managedInstances) {
         stringList.add(item.toString());
       }
-      fieldMap.put("managedInstances", stringList);
+      fieldMap.put("managedInstances", stringList.build());
     }
     return fieldMap;
   }
@@ -71,7 +73,7 @@ public final class InstanceGroupManagersListManagedInstancesResponse implements 
     return null;
   }
 
-  public List<ManagedInstance> getManagedInstances() {
+  public List<ManagedInstance> getManagedInstancesList() {
     return managedInstances;
   }
 
@@ -102,7 +104,7 @@ public final class InstanceGroupManagersListManagedInstancesResponse implements 
 
     public Builder mergeFrom(InstanceGroupManagersListManagedInstancesResponse other) {
       if (other == InstanceGroupManagersListManagedInstancesResponse.getDefaultInstance()) return this;
-      if (other.getManagedInstances() != null) {
+      if (other.getManagedInstancesList() != null) {
         this.managedInstances = other.managedInstances;
       }
       return this;
@@ -112,13 +114,13 @@ public final class InstanceGroupManagersListManagedInstancesResponse implements 
       this.managedInstances = source.managedInstances;
     }
 
-    public List<ManagedInstance> getManagedInstances() {
+    public List<ManagedInstance> getManagedInstancesList() {
       return managedInstances;
     }
 
     public Builder addAllManagedInstances(List<ManagedInstance> managedInstances) {
       if (this.managedInstances == null) {
-        this.managedInstances = new LinkedList<>();
+        this.managedInstances = new ArrayList<>(managedInstances.size());
       }
       this.managedInstances.addAll(managedInstances);
       return this;
@@ -158,7 +160,7 @@ public final class InstanceGroupManagersListManagedInstancesResponse implements 
     if (o instanceof InstanceGroupManagersListManagedInstancesResponse) {
       InstanceGroupManagersListManagedInstancesResponse that = (InstanceGroupManagersListManagedInstancesResponse) o;
       return
-          Objects.equals(this.managedInstances, that.getManagedInstances())
+          Objects.equals(this.managedInstances, that.getManagedInstancesList())
           ;
     }
     return false;

@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -48,11 +50,11 @@ public final class Error implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("errors") && errors != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Errors item : errors) {
         stringList.add(item.toString());
       }
-      fieldMap.put("errors", stringList);
+      fieldMap.put("errors", stringList.build());
     }
     return fieldMap;
   }
@@ -71,7 +73,7 @@ public final class Error implements ApiMessage {
     return null;
   }
 
-  public List<Errors> getErrors() {
+  public List<Errors> getErrorsList() {
     return errors;
   }
 
@@ -102,7 +104,7 @@ public final class Error implements ApiMessage {
 
     public Builder mergeFrom(Error other) {
       if (other == Error.getDefaultInstance()) return this;
-      if (other.getErrors() != null) {
+      if (other.getErrorsList() != null) {
         this.errors = other.errors;
       }
       return this;
@@ -112,13 +114,13 @@ public final class Error implements ApiMessage {
       this.errors = source.errors;
     }
 
-    public List<Errors> getErrors() {
+    public List<Errors> getErrorsList() {
       return errors;
     }
 
     public Builder addAllErrors(List<Errors> errors) {
       if (this.errors == null) {
-        this.errors = new LinkedList<>();
+        this.errors = new ArrayList<>(errors.size());
       }
       this.errors.addAll(errors);
       return this;
@@ -158,7 +160,7 @@ public final class Error implements ApiMessage {
     if (o instanceof Error) {
       Error that = (Error) o;
       return
-          Objects.equals(this.errors, that.getErrors())
+          Objects.equals(this.errors, that.getErrorsList())
           ;
     }
     return false;

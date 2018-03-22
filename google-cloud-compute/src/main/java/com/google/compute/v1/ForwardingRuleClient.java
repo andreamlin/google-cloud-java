@@ -25,7 +25,6 @@ import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
 import com.google.api.gax.paging.FixedSizeCollection;
 import com.google.api.gax.paging.Page;
-import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiExceptions;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -284,7 +283,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     ForwardingRuleAggregatedList response = forwardingRuleClient.aggregatedListForwardingRulesCallable().call(request);
-   *     for (ForwardingRule element : response.getForwardingRules()) {
+   *     for (ForwardingRule element : response.getForwardingRulesList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -712,7 +711,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     ForwardingRuleList response = forwardingRuleClient.listForwardingRulesCallable().call(request);
-   *     for (ForwardingRule element : response.getItems()) {
+   *     for (ForwardingRule element : response.getItemsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

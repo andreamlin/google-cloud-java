@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -59,8 +60,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonDiskTypeStub extends DiskTypeStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList> aggregatedListDiskTypesMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList>newBuilder()
@@ -102,7 +101,6 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("zone")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList> aggregatedListDiskTypesCallable;
@@ -111,6 +109,7 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
   private final UnaryCallable<ListDiskTypesHttpRequest, DiskTypeList> listDiskTypesCallable;
   private final UnaryCallable<ListDiskTypesHttpRequest, ListDiskTypesPagedResponse> listDiskTypesPagedCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonDiskTypeStub create(DiskTypeStubSettings settings) throws IOException {
     return new HttpJsonDiskTypeStub(settings, ClientContext.create(settings));
   }
@@ -119,12 +118,26 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
     return new HttpJsonDiskTypeStub(DiskTypeStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonDiskTypeStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonDiskTypeStub(DiskTypeSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonDiskTypeStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonDiskTypeStub(DiskTypeStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonDiskTypeCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonDiskTypeStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonDiskTypeStub(DiskTypeStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList> aggregatedListDiskTypesTransportSettings =
         HttpJsonCallSettings.<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList>newBuilder()
@@ -139,11 +152,11 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
             .setMethodDescriptor(listDiskTypesMethodDescriptor)
             .build();
 
-    this.aggregatedListDiskTypesCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListDiskTypesTransportSettings,settings.aggregatedListDiskTypesSettings(), clientContext);
-    this.aggregatedListDiskTypesPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListDiskTypesTransportSettings,settings.aggregatedListDiskTypesSettings(), clientContext);
-    this.getDiskTypeCallable = HttpJsonCallableFactory.createUnaryCallable(getDiskTypeTransportSettings,settings.getDiskTypeSettings(), clientContext);
-    this.listDiskTypesCallable = HttpJsonCallableFactory.createUnaryCallable(listDiskTypesTransportSettings,settings.listDiskTypesSettings(), clientContext);
-    this.listDiskTypesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listDiskTypesTransportSettings,settings.listDiskTypesSettings(), clientContext);
+    this.aggregatedListDiskTypesCallable = callableFactory.createUnaryCallable(aggregatedListDiskTypesTransportSettings,settings.aggregatedListDiskTypesSettings(), clientContext);
+    this.aggregatedListDiskTypesPagedCallable = callableFactory.createPagedCallable(aggregatedListDiskTypesTransportSettings,settings.aggregatedListDiskTypesSettings(), clientContext);
+    this.getDiskTypeCallable = callableFactory.createUnaryCallable(getDiskTypeTransportSettings,settings.getDiskTypeSettings(), clientContext);
+    this.listDiskTypesCallable = callableFactory.createUnaryCallable(listDiskTypesTransportSettings,settings.listDiskTypesSettings(), clientContext);
+    this.listDiskTypesPagedCallable = callableFactory.createPagedCallable(listDiskTypesTransportSettings,settings.listDiskTypesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

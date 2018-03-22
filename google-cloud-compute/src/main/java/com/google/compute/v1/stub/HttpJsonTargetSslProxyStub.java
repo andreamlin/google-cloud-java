@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -64,8 +65,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxyMethodDescriptor =
       ApiMethodDescriptor.<DeleteTargetSslProxyHttpRequest, Operation>newBuilder()
@@ -158,7 +157,6 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("targetSslProxy")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxyCallable;
@@ -170,6 +168,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
   private final UnaryCallable<SetProxyHeaderTargetSslProxyHttpRequest, Operation> setProxyHeaderTargetSslProxyCallable;
   private final UnaryCallable<SetSslCertificatesTargetSslProxyHttpRequest, Operation> setSslCertificatesTargetSslProxyCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonTargetSslProxyStub create(TargetSslProxyStubSettings settings) throws IOException {
     return new HttpJsonTargetSslProxyStub(settings, ClientContext.create(settings));
   }
@@ -178,12 +177,26 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
     return new HttpJsonTargetSslProxyStub(TargetSslProxyStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonTargetSslProxyStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonTargetSslProxyStub(TargetSslProxySettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonTargetSslProxyStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonTargetSslProxyStub(TargetSslProxyStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonTargetSslProxyCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonTargetSslProxyStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonTargetSslProxyStub(TargetSslProxyStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxyTransportSettings =
         HttpJsonCallSettings.<DeleteTargetSslProxyHttpRequest, Operation>newBuilder()
@@ -214,14 +227,14 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
             .setMethodDescriptor(setSslCertificatesTargetSslProxyMethodDescriptor)
             .build();
 
-    this.deleteTargetSslProxyCallable = HttpJsonCallableFactory.createUnaryCallable(deleteTargetSslProxyTransportSettings,settings.deleteTargetSslProxySettings(), clientContext);
-    this.getTargetSslProxyCallable = HttpJsonCallableFactory.createUnaryCallable(getTargetSslProxyTransportSettings,settings.getTargetSslProxySettings(), clientContext);
-    this.insertTargetSslProxyCallable = HttpJsonCallableFactory.createUnaryCallable(insertTargetSslProxyTransportSettings,settings.insertTargetSslProxySettings(), clientContext);
-    this.listTargetSslProxiesCallable = HttpJsonCallableFactory.createUnaryCallable(listTargetSslProxiesTransportSettings,settings.listTargetSslProxiesSettings(), clientContext);
-    this.listTargetSslProxiesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listTargetSslProxiesTransportSettings,settings.listTargetSslProxiesSettings(), clientContext);
-    this.setBackendServiceTargetSslProxyCallable = HttpJsonCallableFactory.createUnaryCallable(setBackendServiceTargetSslProxyTransportSettings,settings.setBackendServiceTargetSslProxySettings(), clientContext);
-    this.setProxyHeaderTargetSslProxyCallable = HttpJsonCallableFactory.createUnaryCallable(setProxyHeaderTargetSslProxyTransportSettings,settings.setProxyHeaderTargetSslProxySettings(), clientContext);
-    this.setSslCertificatesTargetSslProxyCallable = HttpJsonCallableFactory.createUnaryCallable(setSslCertificatesTargetSslProxyTransportSettings,settings.setSslCertificatesTargetSslProxySettings(), clientContext);
+    this.deleteTargetSslProxyCallable = callableFactory.createUnaryCallable(deleteTargetSslProxyTransportSettings,settings.deleteTargetSslProxySettings(), clientContext);
+    this.getTargetSslProxyCallable = callableFactory.createUnaryCallable(getTargetSslProxyTransportSettings,settings.getTargetSslProxySettings(), clientContext);
+    this.insertTargetSslProxyCallable = callableFactory.createUnaryCallable(insertTargetSslProxyTransportSettings,settings.insertTargetSslProxySettings(), clientContext);
+    this.listTargetSslProxiesCallable = callableFactory.createUnaryCallable(listTargetSslProxiesTransportSettings,settings.listTargetSslProxiesSettings(), clientContext);
+    this.listTargetSslProxiesPagedCallable = callableFactory.createPagedCallable(listTargetSslProxiesTransportSettings,settings.listTargetSslProxiesSettings(), clientContext);
+    this.setBackendServiceTargetSslProxyCallable = callableFactory.createUnaryCallable(setBackendServiceTargetSslProxyTransportSettings,settings.setBackendServiceTargetSslProxySettings(), clientContext);
+    this.setProxyHeaderTargetSslProxyCallable = callableFactory.createUnaryCallable(setProxyHeaderTargetSslProxyTransportSettings,settings.setProxyHeaderTargetSslProxySettings(), clientContext);
+    this.setSslCertificatesTargetSslProxyCallable = callableFactory.createUnaryCallable(setSslCertificatesTargetSslProxyTransportSettings,settings.setSslCertificatesTargetSslProxySettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

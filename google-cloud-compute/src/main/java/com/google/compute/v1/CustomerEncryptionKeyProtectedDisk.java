@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -77,7 +79,7 @@ public final class CustomerEncryptionKeyProtectedDisk implements ApiMessage {
     return null;
   }
 
-  public CustomerEncryptionKey getDiskEncryptionKey() {
+  public CustomerEncryptionKey getCustomerEncryptionKey() {
     return diskEncryptionKey;
   }
 
@@ -113,7 +115,7 @@ public final class CustomerEncryptionKeyProtectedDisk implements ApiMessage {
 
     public Builder mergeFrom(CustomerEncryptionKeyProtectedDisk other) {
       if (other == CustomerEncryptionKeyProtectedDisk.getDefaultInstance()) return this;
-      if (other.getDiskEncryptionKey() != null) {
+      if (other.getCustomerEncryptionKey() != null) {
         this.diskEncryptionKey = other.diskEncryptionKey;
       }
       if (other.getSource() != null) {
@@ -127,11 +129,11 @@ public final class CustomerEncryptionKeyProtectedDisk implements ApiMessage {
       this.source = source.source;
     }
 
-    public CustomerEncryptionKey getDiskEncryptionKey() {
+    public CustomerEncryptionKey getCustomerEncryptionKey() {
       return diskEncryptionKey;
     }
 
-    public Builder setDiskEncryptionKey(CustomerEncryptionKey diskEncryptionKey) {
+    public Builder setCustomerEncryptionKey(CustomerEncryptionKey diskEncryptionKey) {
       this.diskEncryptionKey = diskEncryptionKey;
       return this;
     }
@@ -156,7 +158,7 @@ public final class CustomerEncryptionKeyProtectedDisk implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setDiskEncryptionKey(this.diskEncryptionKey);
+      newBuilder.setCustomerEncryptionKey(this.diskEncryptionKey);
       newBuilder.setSource(this.source);
       return newBuilder;
     }
@@ -178,7 +180,7 @@ public final class CustomerEncryptionKeyProtectedDisk implements ApiMessage {
     if (o instanceof CustomerEncryptionKeyProtectedDisk) {
       CustomerEncryptionKeyProtectedDisk that = (CustomerEncryptionKeyProtectedDisk) o;
       return
-          Objects.equals(this.diskEncryptionKey, that.getDiskEncryptionKey()) &&
+          Objects.equals(this.diskEncryptionKey, that.getCustomerEncryptionKey()) &&
           Objects.equals(this.source, that.getSource())
           ;
     }

@@ -295,7 +295,7 @@ public class RegionBackendServiceStubSettings extends StubSettings<RegionBackend
         }
         @Override
         public Iterable<BackendService> extractResources(BackendServiceList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

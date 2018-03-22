@@ -254,7 +254,7 @@ public class SnapshotStubSettings extends StubSettings<SnapshotStubSettings> {
         }
         @Override
         public Iterable<Snapshot> extractResources(SnapshotList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

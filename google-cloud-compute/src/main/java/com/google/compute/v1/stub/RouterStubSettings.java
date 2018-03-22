@@ -318,7 +318,7 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
         }
         @Override
         public Iterable<Router> extractResources(RouterAggregatedList payload) {
-          return payload.getItems().getRouters();
+          return payload.getItems().getRoutersList();
         }
       };
 
@@ -352,7 +352,7 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
         }
         @Override
         public Iterable<Router> extractResources(RouterList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

@@ -427,7 +427,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
         }
         @Override
         public Iterable<Instance> extractResources(InstanceAggregatedList payload) {
-          return payload.getItems().getInstances();
+          return payload.getItems().getInstancesList();
         }
       };
 
@@ -461,7 +461,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
         }
         @Override
         public Iterable<Instance> extractResources(InstanceList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

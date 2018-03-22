@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -55,11 +57,11 @@ public final class InstanceGroupsSetNamedPortsRequest implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("namedPorts") && namedPorts != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (NamedPort item : namedPorts) {
         stringList.add(item.toString());
       }
-      fieldMap.put("namedPorts", stringList);
+      fieldMap.put("namedPorts", stringList.build());
     }
     return fieldMap;
   }
@@ -85,7 +87,7 @@ public final class InstanceGroupsSetNamedPortsRequest implements ApiMessage {
     return fingerprint;
   }
 
-  public List<NamedPort> getNamedPorts() {
+  public List<NamedPort> getNamedPortsList() {
     return namedPorts;
   }
 
@@ -120,7 +122,7 @@ public final class InstanceGroupsSetNamedPortsRequest implements ApiMessage {
       if (other.getFingerprint() != null) {
         this.fingerprint = other.fingerprint;
       }
-      if (other.getNamedPorts() != null) {
+      if (other.getNamedPortsList() != null) {
         this.namedPorts = other.namedPorts;
       }
       return this;
@@ -140,13 +142,13 @@ public final class InstanceGroupsSetNamedPortsRequest implements ApiMessage {
       return this;
     }
 
-    public List<NamedPort> getNamedPorts() {
+    public List<NamedPort> getNamedPortsList() {
       return namedPorts;
     }
 
     public Builder addAllNamedPorts(List<NamedPort> namedPorts) {
       if (this.namedPorts == null) {
-        this.namedPorts = new LinkedList<>();
+        this.namedPorts = new ArrayList<>(namedPorts.size());
       }
       this.namedPorts.addAll(namedPorts);
       return this;
@@ -191,7 +193,7 @@ public final class InstanceGroupsSetNamedPortsRequest implements ApiMessage {
       InstanceGroupsSetNamedPortsRequest that = (InstanceGroupsSetNamedPortsRequest) o;
       return
           Objects.equals(this.fingerprint, that.getFingerprint()) &&
-          Objects.equals(this.namedPorts, that.getNamedPorts())
+          Objects.equals(this.namedPorts, that.getNamedPortsList())
           ;
     }
     return false;

@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -60,8 +61,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonHealthCheckStub extends HealthCheckStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteHealthCheckHttpRequest, Operation> deleteHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<DeleteHealthCheckHttpRequest, Operation>newBuilder()
@@ -141,7 +140,6 @@ public class HttpJsonHealthCheckStub extends HealthCheckStub {
           .setHttpMethod(HttpMethods.PUT)
           .setResourceNameField("healthCheck")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteHealthCheckHttpRequest, Operation> deleteHealthCheckCallable;
@@ -152,6 +150,7 @@ public class HttpJsonHealthCheckStub extends HealthCheckStub {
   private final UnaryCallable<PatchHealthCheckHttpRequest, Operation> patchHealthCheckCallable;
   private final UnaryCallable<UpdateHealthCheckHttpRequest, Operation> updateHealthCheckCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonHealthCheckStub create(HealthCheckStubSettings settings) throws IOException {
     return new HttpJsonHealthCheckStub(settings, ClientContext.create(settings));
   }
@@ -160,12 +159,26 @@ public class HttpJsonHealthCheckStub extends HealthCheckStub {
     return new HttpJsonHealthCheckStub(HealthCheckStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonHealthCheckStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonHealthCheckStub(HealthCheckSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonHealthCheckStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonHealthCheckStub(HealthCheckStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonHealthCheckCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonHealthCheckStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonHealthCheckStub(HealthCheckStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteHealthCheckHttpRequest, Operation> deleteHealthCheckTransportSettings =
         HttpJsonCallSettings.<DeleteHealthCheckHttpRequest, Operation>newBuilder()
@@ -192,13 +205,13 @@ public class HttpJsonHealthCheckStub extends HealthCheckStub {
             .setMethodDescriptor(updateHealthCheckMethodDescriptor)
             .build();
 
-    this.deleteHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(deleteHealthCheckTransportSettings,settings.deleteHealthCheckSettings(), clientContext);
-    this.getHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(getHealthCheckTransportSettings,settings.getHealthCheckSettings(), clientContext);
-    this.insertHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(insertHealthCheckTransportSettings,settings.insertHealthCheckSettings(), clientContext);
-    this.listHealthChecksCallable = HttpJsonCallableFactory.createUnaryCallable(listHealthChecksTransportSettings,settings.listHealthChecksSettings(), clientContext);
-    this.listHealthChecksPagedCallable = HttpJsonCallableFactory.createPagedCallable(listHealthChecksTransportSettings,settings.listHealthChecksSettings(), clientContext);
-    this.patchHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(patchHealthCheckTransportSettings,settings.patchHealthCheckSettings(), clientContext);
-    this.updateHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(updateHealthCheckTransportSettings,settings.updateHealthCheckSettings(), clientContext);
+    this.deleteHealthCheckCallable = callableFactory.createUnaryCallable(deleteHealthCheckTransportSettings,settings.deleteHealthCheckSettings(), clientContext);
+    this.getHealthCheckCallable = callableFactory.createUnaryCallable(getHealthCheckTransportSettings,settings.getHealthCheckSettings(), clientContext);
+    this.insertHealthCheckCallable = callableFactory.createUnaryCallable(insertHealthCheckTransportSettings,settings.insertHealthCheckSettings(), clientContext);
+    this.listHealthChecksCallable = callableFactory.createUnaryCallable(listHealthChecksTransportSettings,settings.listHealthChecksSettings(), clientContext);
+    this.listHealthChecksPagedCallable = callableFactory.createPagedCallable(listHealthChecksTransportSettings,settings.listHealthChecksSettings(), clientContext);
+    this.patchHealthCheckCallable = callableFactory.createUnaryCallable(patchHealthCheckTransportSettings,settings.patchHealthCheckSettings(), clientContext);
+    this.updateHealthCheckCallable = callableFactory.createUnaryCallable(updateHealthCheckTransportSettings,settings.updateHealthCheckSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

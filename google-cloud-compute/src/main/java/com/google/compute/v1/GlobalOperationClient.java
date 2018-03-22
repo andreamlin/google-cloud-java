@@ -25,7 +25,6 @@ import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
 import com.google.api.gax.paging.FixedSizeCollection;
 import com.google.api.gax.paging.Page;
-import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiExceptions;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -284,7 +283,7 @@ public class GlobalOperationClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     OperationAggregatedList response = globalOperationClient.aggregatedListGlobalOperationsCallable().call(request);
-   *     for (Operation element : response.getOperations()) {
+   *     for (Operation element : response.getOperationsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -607,7 +606,7 @@ public class GlobalOperationClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     OperationList response = globalOperationClient.listGlobalOperationsCallable().call(request);
-   *     for (Operation element : response.getItems()) {
+   *     for (Operation element : response.getItemsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

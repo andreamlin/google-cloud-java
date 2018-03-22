@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -75,8 +76,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AbandonInstancesInstanceGroupManagerHttpRequest, Operation> abandonInstancesInstanceGroupManagerMethodDescriptor =
       ApiMethodDescriptor.<AbandonInstancesInstanceGroupManagerHttpRequest, Operation>newBuilder()
@@ -237,7 +236,6 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("instanceGroupManager")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AbandonInstancesInstanceGroupManagerHttpRequest, Operation> abandonInstancesInstanceGroupManagerCallable;
@@ -255,6 +253,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
   private final UnaryCallable<SetInstanceTemplateInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateInstanceGroupManagerCallable;
   private final UnaryCallable<SetTargetPoolsInstanceGroupManagerHttpRequest, Operation> setTargetPoolsInstanceGroupManagerCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonInstanceGroupManagerStub create(InstanceGroupManagerStubSettings settings) throws IOException {
     return new HttpJsonInstanceGroupManagerStub(settings, ClientContext.create(settings));
   }
@@ -263,12 +262,26 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
     return new HttpJsonInstanceGroupManagerStub(InstanceGroupManagerStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonInstanceGroupManagerStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonInstanceGroupManagerStub(InstanceGroupManagerSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonInstanceGroupManagerStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonInstanceGroupManagerStub(InstanceGroupManagerStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonInstanceGroupManagerCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonInstanceGroupManagerStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonInstanceGroupManagerStub(InstanceGroupManagerStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AbandonInstancesInstanceGroupManagerHttpRequest, Operation> abandonInstancesInstanceGroupManagerTransportSettings =
         HttpJsonCallSettings.<AbandonInstancesInstanceGroupManagerHttpRequest, Operation>newBuilder()
@@ -319,20 +332,20 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
             .setMethodDescriptor(setTargetPoolsInstanceGroupManagerMethodDescriptor)
             .build();
 
-    this.abandonInstancesInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(abandonInstancesInstanceGroupManagerTransportSettings,settings.abandonInstancesInstanceGroupManagerSettings(), clientContext);
-    this.aggregatedListInstanceGroupManagersCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListInstanceGroupManagersTransportSettings,settings.aggregatedListInstanceGroupManagersSettings(), clientContext);
-    this.aggregatedListInstanceGroupManagersPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListInstanceGroupManagersTransportSettings,settings.aggregatedListInstanceGroupManagersSettings(), clientContext);
-    this.deleteInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(deleteInstanceGroupManagerTransportSettings,settings.deleteInstanceGroupManagerSettings(), clientContext);
-    this.deleteInstancesInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(deleteInstancesInstanceGroupManagerTransportSettings,settings.deleteInstancesInstanceGroupManagerSettings(), clientContext);
-    this.getInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(getInstanceGroupManagerTransportSettings,settings.getInstanceGroupManagerSettings(), clientContext);
-    this.insertInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(insertInstanceGroupManagerTransportSettings,settings.insertInstanceGroupManagerSettings(), clientContext);
-    this.listInstanceGroupManagersCallable = HttpJsonCallableFactory.createUnaryCallable(listInstanceGroupManagersTransportSettings,settings.listInstanceGroupManagersSettings(), clientContext);
-    this.listInstanceGroupManagersPagedCallable = HttpJsonCallableFactory.createPagedCallable(listInstanceGroupManagersTransportSettings,settings.listInstanceGroupManagersSettings(), clientContext);
-    this.listManagedInstancesInstanceGroupManagersCallable = HttpJsonCallableFactory.createUnaryCallable(listManagedInstancesInstanceGroupManagersTransportSettings,settings.listManagedInstancesInstanceGroupManagersSettings(), clientContext);
-    this.recreateInstancesInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(recreateInstancesInstanceGroupManagerTransportSettings,settings.recreateInstancesInstanceGroupManagerSettings(), clientContext);
-    this.resizeInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(resizeInstanceGroupManagerTransportSettings,settings.resizeInstanceGroupManagerSettings(), clientContext);
-    this.setInstanceTemplateInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(setInstanceTemplateInstanceGroupManagerTransportSettings,settings.setInstanceTemplateInstanceGroupManagerSettings(), clientContext);
-    this.setTargetPoolsInstanceGroupManagerCallable = HttpJsonCallableFactory.createUnaryCallable(setTargetPoolsInstanceGroupManagerTransportSettings,settings.setTargetPoolsInstanceGroupManagerSettings(), clientContext);
+    this.abandonInstancesInstanceGroupManagerCallable = callableFactory.createUnaryCallable(abandonInstancesInstanceGroupManagerTransportSettings,settings.abandonInstancesInstanceGroupManagerSettings(), clientContext);
+    this.aggregatedListInstanceGroupManagersCallable = callableFactory.createUnaryCallable(aggregatedListInstanceGroupManagersTransportSettings,settings.aggregatedListInstanceGroupManagersSettings(), clientContext);
+    this.aggregatedListInstanceGroupManagersPagedCallable = callableFactory.createPagedCallable(aggregatedListInstanceGroupManagersTransportSettings,settings.aggregatedListInstanceGroupManagersSettings(), clientContext);
+    this.deleteInstanceGroupManagerCallable = callableFactory.createUnaryCallable(deleteInstanceGroupManagerTransportSettings,settings.deleteInstanceGroupManagerSettings(), clientContext);
+    this.deleteInstancesInstanceGroupManagerCallable = callableFactory.createUnaryCallable(deleteInstancesInstanceGroupManagerTransportSettings,settings.deleteInstancesInstanceGroupManagerSettings(), clientContext);
+    this.getInstanceGroupManagerCallable = callableFactory.createUnaryCallable(getInstanceGroupManagerTransportSettings,settings.getInstanceGroupManagerSettings(), clientContext);
+    this.insertInstanceGroupManagerCallable = callableFactory.createUnaryCallable(insertInstanceGroupManagerTransportSettings,settings.insertInstanceGroupManagerSettings(), clientContext);
+    this.listInstanceGroupManagersCallable = callableFactory.createUnaryCallable(listInstanceGroupManagersTransportSettings,settings.listInstanceGroupManagersSettings(), clientContext);
+    this.listInstanceGroupManagersPagedCallable = callableFactory.createPagedCallable(listInstanceGroupManagersTransportSettings,settings.listInstanceGroupManagersSettings(), clientContext);
+    this.listManagedInstancesInstanceGroupManagersCallable = callableFactory.createUnaryCallable(listManagedInstancesInstanceGroupManagersTransportSettings,settings.listManagedInstancesInstanceGroupManagersSettings(), clientContext);
+    this.recreateInstancesInstanceGroupManagerCallable = callableFactory.createUnaryCallable(recreateInstancesInstanceGroupManagerTransportSettings,settings.recreateInstancesInstanceGroupManagerSettings(), clientContext);
+    this.resizeInstanceGroupManagerCallable = callableFactory.createUnaryCallable(resizeInstanceGroupManagerTransportSettings,settings.resizeInstanceGroupManagerSettings(), clientContext);
+    this.setInstanceTemplateInstanceGroupManagerCallable = callableFactory.createUnaryCallable(setInstanceTemplateInstanceGroupManagerTransportSettings,settings.setInstanceTemplateInstanceGroupManagerSettings(), clientContext);
+    this.setTargetPoolsInstanceGroupManagerCallable = callableFactory.createUnaryCallable(setTargetPoolsInstanceGroupManagerTransportSettings,settings.setTargetPoolsInstanceGroupManagerSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

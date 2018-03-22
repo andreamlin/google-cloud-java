@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,11 +54,11 @@ public final class RoutersScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("routers") && routers != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Router item : routers) {
         stringList.add(item.toString());
       }
-      fieldMap.put("routers", stringList);
+      fieldMap.put("routers", stringList.build());
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -81,7 +83,7 @@ public final class RoutersScopedList implements ApiMessage {
     return null;
   }
 
-  public List<Router> getRouters() {
+  public List<Router> getRoutersList() {
     return routers;
   }
 
@@ -117,7 +119,7 @@ public final class RoutersScopedList implements ApiMessage {
 
     public Builder mergeFrom(RoutersScopedList other) {
       if (other == RoutersScopedList.getDefaultInstance()) return this;
-      if (other.getRouters() != null) {
+      if (other.getRoutersList() != null) {
         this.routers = other.routers;
       }
       if (other.getWarning() != null) {
@@ -131,13 +133,13 @@ public final class RoutersScopedList implements ApiMessage {
       this.warning = source.warning;
     }
 
-    public List<Router> getRouters() {
+    public List<Router> getRoutersList() {
       return routers;
     }
 
     public Builder addAllRouters(List<Router> routers) {
       if (this.routers == null) {
-        this.routers = new LinkedList<>();
+        this.routers = new ArrayList<>(routers.size());
       }
       this.routers.addAll(routers);
       return this;
@@ -190,7 +192,7 @@ public final class RoutersScopedList implements ApiMessage {
     if (o instanceof RoutersScopedList) {
       RoutersScopedList that = (RoutersScopedList) o;
       return
-          Objects.equals(this.routers, that.getRouters()) &&
+          Objects.equals(this.routers, that.getRoutersList()) &&
           Objects.equals(this.warning, that.getWarning())
           ;
     }

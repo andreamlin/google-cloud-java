@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,11 +54,11 @@ public final class ForwardingRulesScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("forwardingRules") && forwardingRules != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (ForwardingRule item : forwardingRules) {
         stringList.add(item.toString());
       }
-      fieldMap.put("forwardingRules", stringList);
+      fieldMap.put("forwardingRules", stringList.build());
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -81,7 +83,7 @@ public final class ForwardingRulesScopedList implements ApiMessage {
     return null;
   }
 
-  public List<ForwardingRule> getForwardingRules() {
+  public List<ForwardingRule> getForwardingRulesList() {
     return forwardingRules;
   }
 
@@ -117,7 +119,7 @@ public final class ForwardingRulesScopedList implements ApiMessage {
 
     public Builder mergeFrom(ForwardingRulesScopedList other) {
       if (other == ForwardingRulesScopedList.getDefaultInstance()) return this;
-      if (other.getForwardingRules() != null) {
+      if (other.getForwardingRulesList() != null) {
         this.forwardingRules = other.forwardingRules;
       }
       if (other.getWarning() != null) {
@@ -131,13 +133,13 @@ public final class ForwardingRulesScopedList implements ApiMessage {
       this.warning = source.warning;
     }
 
-    public List<ForwardingRule> getForwardingRules() {
+    public List<ForwardingRule> getForwardingRulesList() {
       return forwardingRules;
     }
 
     public Builder addAllForwardingRules(List<ForwardingRule> forwardingRules) {
       if (this.forwardingRules == null) {
-        this.forwardingRules = new LinkedList<>();
+        this.forwardingRules = new ArrayList<>(forwardingRules.size());
       }
       this.forwardingRules.addAll(forwardingRules);
       return this;
@@ -190,7 +192,7 @@ public final class ForwardingRulesScopedList implements ApiMessage {
     if (o instanceof ForwardingRulesScopedList) {
       ForwardingRulesScopedList that = (ForwardingRulesScopedList) o;
       return
-          Objects.equals(this.forwardingRules, that.getForwardingRules()) &&
+          Objects.equals(this.forwardingRules, that.getForwardingRulesList()) &&
           Objects.equals(this.warning, that.getWarning())
           ;
     }

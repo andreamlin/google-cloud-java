@@ -253,7 +253,7 @@ public class RegionOperationStubSettings extends StubSettings<RegionOperationStu
         }
         @Override
         public Iterable<Operation> extractResources(OperationList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

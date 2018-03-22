@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -67,11 +69,11 @@ public final class SubnetworkList implements ApiMessage {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
     }
     if (fieldNames.contains("items") && items != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Subnetwork item : items) {
         stringList.add(item.toString());
       }
-      fieldMap.put("items", stringList);
+      fieldMap.put("items", stringList.build());
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -115,7 +117,7 @@ public final class SubnetworkList implements ApiMessage {
     return id;
   }
 
-  public List<Subnetwork> getItems() {
+  public List<Subnetwork> getItemsList() {
     return items;
   }
 
@@ -165,7 +167,7 @@ public final class SubnetworkList implements ApiMessage {
       if (other.getId() != null) {
         this.id = other.id;
       }
-      if (other.getItems() != null) {
+      if (other.getItemsList() != null) {
         this.items = other.items;
       }
       if (other.getKind() != null) {
@@ -197,13 +199,13 @@ public final class SubnetworkList implements ApiMessage {
       return this;
     }
 
-    public List<Subnetwork> getItems() {
+    public List<Subnetwork> getItemsList() {
       return items;
     }
 
     public Builder addAllItems(List<Subnetwork> items) {
       if (this.items == null) {
-        this.items = new LinkedList<>();
+        this.items = new ArrayList<>(items.size());
       }
       this.items.addAll(items);
       return this;
@@ -287,7 +289,7 @@ public final class SubnetworkList implements ApiMessage {
       SubnetworkList that = (SubnetworkList) o;
       return
           Objects.equals(this.id, that.getId()) &&
-          Objects.equals(this.items, that.getItems()) &&
+          Objects.equals(this.items, that.getItemsList()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.nextPageToken, that.getNextPageToken()) &&
           Objects.equals(this.selfLink, that.getSelfLink())

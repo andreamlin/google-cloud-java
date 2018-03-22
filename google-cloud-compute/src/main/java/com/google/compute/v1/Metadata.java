@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -59,11 +61,11 @@ public final class Metadata implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("items") && items != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Items item : items) {
         stringList.add(item.toString());
       }
-      fieldMap.put("items", stringList);
+      fieldMap.put("items", stringList.build());
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -95,7 +97,7 @@ public final class Metadata implements ApiMessage {
     return fingerprint;
   }
 
-  public List<Items> getItems() {
+  public List<Items> getItemsList() {
     return items;
   }
 
@@ -135,7 +137,7 @@ public final class Metadata implements ApiMessage {
       if (other.getFingerprint() != null) {
         this.fingerprint = other.fingerprint;
       }
-      if (other.getItems() != null) {
+      if (other.getItemsList() != null) {
         this.items = other.items;
       }
       if (other.getKind() != null) {
@@ -159,13 +161,13 @@ public final class Metadata implements ApiMessage {
       return this;
     }
 
-    public List<Items> getItems() {
+    public List<Items> getItemsList() {
       return items;
     }
 
     public Builder addAllItems(List<Items> items) {
       if (this.items == null) {
-        this.items = new LinkedList<>();
+        this.items = new ArrayList<>(items.size());
       }
       this.items.addAll(items);
       return this;
@@ -223,7 +225,7 @@ public final class Metadata implements ApiMessage {
       Metadata that = (Metadata) o;
       return
           Objects.equals(this.fingerprint, that.getFingerprint()) &&
-          Objects.equals(this.items, that.getItems()) &&
+          Objects.equals(this.items, that.getItemsList()) &&
           Objects.equals(this.kind, that.getKind())
           ;
     }

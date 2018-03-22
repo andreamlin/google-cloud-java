@@ -243,7 +243,7 @@ public class ZoneStubSettings extends StubSettings<ZoneStubSettings> {
         }
         @Override
         public Iterable<Zone> extractResources(ZoneList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

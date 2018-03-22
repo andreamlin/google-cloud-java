@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,11 +54,11 @@ public final class TargetInstancesScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("targetInstances") && targetInstances != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (TargetInstance item : targetInstances) {
         stringList.add(item.toString());
       }
-      fieldMap.put("targetInstances", stringList);
+      fieldMap.put("targetInstances", stringList.build());
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -81,7 +83,7 @@ public final class TargetInstancesScopedList implements ApiMessage {
     return null;
   }
 
-  public List<TargetInstance> getTargetInstances() {
+  public List<TargetInstance> getTargetInstancesList() {
     return targetInstances;
   }
 
@@ -117,7 +119,7 @@ public final class TargetInstancesScopedList implements ApiMessage {
 
     public Builder mergeFrom(TargetInstancesScopedList other) {
       if (other == TargetInstancesScopedList.getDefaultInstance()) return this;
-      if (other.getTargetInstances() != null) {
+      if (other.getTargetInstancesList() != null) {
         this.targetInstances = other.targetInstances;
       }
       if (other.getWarning() != null) {
@@ -131,13 +133,13 @@ public final class TargetInstancesScopedList implements ApiMessage {
       this.warning = source.warning;
     }
 
-    public List<TargetInstance> getTargetInstances() {
+    public List<TargetInstance> getTargetInstancesList() {
       return targetInstances;
     }
 
     public Builder addAllTargetInstances(List<TargetInstance> targetInstances) {
       if (this.targetInstances == null) {
-        this.targetInstances = new LinkedList<>();
+        this.targetInstances = new ArrayList<>(targetInstances.size());
       }
       this.targetInstances.addAll(targetInstances);
       return this;
@@ -190,7 +192,7 @@ public final class TargetInstancesScopedList implements ApiMessage {
     if (o instanceof TargetInstancesScopedList) {
       TargetInstancesScopedList that = (TargetInstancesScopedList) o;
       return
-          Objects.equals(this.targetInstances, that.getTargetInstances()) &&
+          Objects.equals(this.targetInstances, that.getTargetInstancesList()) &&
           Objects.equals(this.warning, that.getWarning())
           ;
     }

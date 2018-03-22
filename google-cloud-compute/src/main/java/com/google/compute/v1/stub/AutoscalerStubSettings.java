@@ -296,7 +296,7 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
         }
         @Override
         public Iterable<Autoscaler> extractResources(AutoscalerAggregatedList payload) {
-          return payload.getItems().getAutoscalers();
+          return payload.getItems().getAutoscalersList();
         }
       };
 
@@ -330,7 +330,7 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
         }
         @Override
         public Iterable<Autoscaler> extractResources(AutoscalerList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

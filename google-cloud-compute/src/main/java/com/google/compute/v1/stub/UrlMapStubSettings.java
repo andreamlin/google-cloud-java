@@ -305,7 +305,7 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
         }
         @Override
         public Iterable<UrlMap> extractResources(UrlMapList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

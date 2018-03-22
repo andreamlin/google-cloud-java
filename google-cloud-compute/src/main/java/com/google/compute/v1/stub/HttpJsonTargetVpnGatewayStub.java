@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -62,8 +63,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList> aggregatedListTargetVpnGatewaysMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList>newBuilder()
@@ -131,7 +130,6 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("region")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList> aggregatedListTargetVpnGatewaysCallable;
@@ -142,6 +140,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
   private final UnaryCallable<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList> listTargetVpnGatewaysCallable;
   private final UnaryCallable<ListTargetVpnGatewaysHttpRequest, ListTargetVpnGatewaysPagedResponse> listTargetVpnGatewaysPagedCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonTargetVpnGatewayStub create(TargetVpnGatewayStubSettings settings) throws IOException {
     return new HttpJsonTargetVpnGatewayStub(settings, ClientContext.create(settings));
   }
@@ -150,12 +149,26 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
     return new HttpJsonTargetVpnGatewayStub(TargetVpnGatewayStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonTargetVpnGatewayStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonTargetVpnGatewayStub(TargetVpnGatewaySettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonTargetVpnGatewayStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonTargetVpnGatewayStub(TargetVpnGatewayStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonTargetVpnGatewayCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonTargetVpnGatewayStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonTargetVpnGatewayStub(TargetVpnGatewayStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList> aggregatedListTargetVpnGatewaysTransportSettings =
         HttpJsonCallSettings.<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList>newBuilder()
@@ -178,13 +191,13 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
             .setMethodDescriptor(listTargetVpnGatewaysMethodDescriptor)
             .build();
 
-    this.aggregatedListTargetVpnGatewaysCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListTargetVpnGatewaysTransportSettings,settings.aggregatedListTargetVpnGatewaysSettings(), clientContext);
-    this.aggregatedListTargetVpnGatewaysPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListTargetVpnGatewaysTransportSettings,settings.aggregatedListTargetVpnGatewaysSettings(), clientContext);
-    this.deleteTargetVpnGatewayCallable = HttpJsonCallableFactory.createUnaryCallable(deleteTargetVpnGatewayTransportSettings,settings.deleteTargetVpnGatewaySettings(), clientContext);
-    this.getTargetVpnGatewayCallable = HttpJsonCallableFactory.createUnaryCallable(getTargetVpnGatewayTransportSettings,settings.getTargetVpnGatewaySettings(), clientContext);
-    this.insertTargetVpnGatewayCallable = HttpJsonCallableFactory.createUnaryCallable(insertTargetVpnGatewayTransportSettings,settings.insertTargetVpnGatewaySettings(), clientContext);
-    this.listTargetVpnGatewaysCallable = HttpJsonCallableFactory.createUnaryCallable(listTargetVpnGatewaysTransportSettings,settings.listTargetVpnGatewaysSettings(), clientContext);
-    this.listTargetVpnGatewaysPagedCallable = HttpJsonCallableFactory.createPagedCallable(listTargetVpnGatewaysTransportSettings,settings.listTargetVpnGatewaysSettings(), clientContext);
+    this.aggregatedListTargetVpnGatewaysCallable = callableFactory.createUnaryCallable(aggregatedListTargetVpnGatewaysTransportSettings,settings.aggregatedListTargetVpnGatewaysSettings(), clientContext);
+    this.aggregatedListTargetVpnGatewaysPagedCallable = callableFactory.createPagedCallable(aggregatedListTargetVpnGatewaysTransportSettings,settings.aggregatedListTargetVpnGatewaysSettings(), clientContext);
+    this.deleteTargetVpnGatewayCallable = callableFactory.createUnaryCallable(deleteTargetVpnGatewayTransportSettings,settings.deleteTargetVpnGatewaySettings(), clientContext);
+    this.getTargetVpnGatewayCallable = callableFactory.createUnaryCallable(getTargetVpnGatewayTransportSettings,settings.getTargetVpnGatewaySettings(), clientContext);
+    this.insertTargetVpnGatewayCallable = callableFactory.createUnaryCallable(insertTargetVpnGatewayTransportSettings,settings.insertTargetVpnGatewaySettings(), clientContext);
+    this.listTargetVpnGatewaysCallable = callableFactory.createUnaryCallable(listTargetVpnGatewaysTransportSettings,settings.listTargetVpnGatewaysSettings(), clientContext);
+    this.listTargetVpnGatewaysPagedCallable = callableFactory.createPagedCallable(listTargetVpnGatewaysTransportSettings,settings.listTargetVpnGatewaysSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

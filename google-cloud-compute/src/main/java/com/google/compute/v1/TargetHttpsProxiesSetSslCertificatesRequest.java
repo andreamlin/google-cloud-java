@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -48,11 +50,11 @@ public final class TargetHttpsProxiesSetSslCertificatesRequest implements ApiMes
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("sslCertificates") && sslCertificates != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : sslCertificates) {
         stringList.add(item.toString());
       }
-      fieldMap.put("sslCertificates", stringList);
+      fieldMap.put("sslCertificates", stringList.build());
     }
     return fieldMap;
   }
@@ -71,7 +73,7 @@ public final class TargetHttpsProxiesSetSslCertificatesRequest implements ApiMes
     return null;
   }
 
-  public List<String> getSslCertificates() {
+  public List<String> getSslCertificatesList() {
     return sslCertificates;
   }
 
@@ -102,7 +104,7 @@ public final class TargetHttpsProxiesSetSslCertificatesRequest implements ApiMes
 
     public Builder mergeFrom(TargetHttpsProxiesSetSslCertificatesRequest other) {
       if (other == TargetHttpsProxiesSetSslCertificatesRequest.getDefaultInstance()) return this;
-      if (other.getSslCertificates() != null) {
+      if (other.getSslCertificatesList() != null) {
         this.sslCertificates = other.sslCertificates;
       }
       return this;
@@ -112,13 +114,13 @@ public final class TargetHttpsProxiesSetSslCertificatesRequest implements ApiMes
       this.sslCertificates = source.sslCertificates;
     }
 
-    public List<String> getSslCertificates() {
+    public List<String> getSslCertificatesList() {
       return sslCertificates;
     }
 
     public Builder addAllSslCertificates(List<String> sslCertificates) {
       if (this.sslCertificates == null) {
-        this.sslCertificates = new LinkedList<>();
+        this.sslCertificates = new ArrayList<>(sslCertificates.size());
       }
       this.sslCertificates.addAll(sslCertificates);
       return this;
@@ -158,7 +160,7 @@ public final class TargetHttpsProxiesSetSslCertificatesRequest implements ApiMes
     if (o instanceof TargetHttpsProxiesSetSslCertificatesRequest) {
       TargetHttpsProxiesSetSslCertificatesRequest that = (TargetHttpsProxiesSetSslCertificatesRequest) o;
       return
-          Objects.equals(this.sslCertificates, that.getSslCertificates())
+          Objects.equals(this.sslCertificates, that.getSslCertificatesList())
           ;
     }
     return false;

@@ -274,7 +274,7 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
         }
         @Override
         public Iterable<Network> extractResources(NetworkList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

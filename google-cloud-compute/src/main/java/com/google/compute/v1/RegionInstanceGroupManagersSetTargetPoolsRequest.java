@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -55,11 +57,11 @@ public final class RegionInstanceGroupManagersSetTargetPoolsRequest implements A
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("targetPools") && targetPools != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : targetPools) {
         stringList.add(item.toString());
       }
-      fieldMap.put("targetPools", stringList);
+      fieldMap.put("targetPools", stringList.build());
     }
     return fieldMap;
   }
@@ -85,7 +87,7 @@ public final class RegionInstanceGroupManagersSetTargetPoolsRequest implements A
     return fingerprint;
   }
 
-  public List<String> getTargetPools() {
+  public List<String> getTargetPoolsList() {
     return targetPools;
   }
 
@@ -120,7 +122,7 @@ public final class RegionInstanceGroupManagersSetTargetPoolsRequest implements A
       if (other.getFingerprint() != null) {
         this.fingerprint = other.fingerprint;
       }
-      if (other.getTargetPools() != null) {
+      if (other.getTargetPoolsList() != null) {
         this.targetPools = other.targetPools;
       }
       return this;
@@ -140,13 +142,13 @@ public final class RegionInstanceGroupManagersSetTargetPoolsRequest implements A
       return this;
     }
 
-    public List<String> getTargetPools() {
+    public List<String> getTargetPoolsList() {
       return targetPools;
     }
 
     public Builder addAllTargetPools(List<String> targetPools) {
       if (this.targetPools == null) {
-        this.targetPools = new LinkedList<>();
+        this.targetPools = new ArrayList<>(targetPools.size());
       }
       this.targetPools.addAll(targetPools);
       return this;
@@ -191,7 +193,7 @@ public final class RegionInstanceGroupManagersSetTargetPoolsRequest implements A
       RegionInstanceGroupManagersSetTargetPoolsRequest that = (RegionInstanceGroupManagersSetTargetPoolsRequest) o;
       return
           Objects.equals(this.fingerprint, that.getFingerprint()) &&
-          Objects.equals(this.targetPools, that.getTargetPools())
+          Objects.equals(this.targetPools, that.getTargetPoolsList())
           ;
     }
     return false;

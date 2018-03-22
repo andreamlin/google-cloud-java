@@ -307,7 +307,7 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
         }
         @Override
         public Iterable<BackendService> extractResources(BackendServiceAggregatedList payload) {
-          return payload.getItems().getBackendServices();
+          return payload.getItems().getBackendServicesList();
         }
       };
 
@@ -341,7 +341,7 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
         }
         @Override
         public Iterable<BackendService> extractResources(BackendServiceList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

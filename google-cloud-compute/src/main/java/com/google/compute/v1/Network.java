@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -111,11 +113,11 @@ public final class Network implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("subnetworks") && subnetworks != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : subnetworks) {
         stringList.add(item.toString());
       }
-      fieldMap.put("subnetworks", stringList);
+      fieldMap.put("subnetworks", stringList.build());
     }
     return fieldMap;
   }
@@ -197,7 +199,7 @@ public final class Network implements ApiMessage {
     return selfLink;
   }
 
-  public List<String> getSubnetworks() {
+  public List<String> getSubnetworksList() {
     return subnetworks;
   }
 
@@ -264,7 +266,7 @@ public final class Network implements ApiMessage {
       if (other.getSelfLink() != null) {
         this.selfLink = other.selfLink;
       }
-      if (other.getSubnetworks() != null) {
+      if (other.getSubnetworksList() != null) {
         this.subnetworks = other.subnetworks;
       }
       return this;
@@ -364,13 +366,13 @@ public final class Network implements ApiMessage {
       return this;
     }
 
-    public List<String> getSubnetworks() {
+    public List<String> getSubnetworksList() {
       return subnetworks;
     }
 
     public Builder addAllSubnetworks(List<String> subnetworks) {
       if (this.subnetworks == null) {
-        this.subnetworks = new LinkedList<>();
+        this.subnetworks = new ArrayList<>(subnetworks.size());
       }
       this.subnetworks.addAll(subnetworks);
       return this;
@@ -455,7 +457,7 @@ public final class Network implements ApiMessage {
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.name, that.getName()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
-          Objects.equals(this.subnetworks, that.getSubnetworks())
+          Objects.equals(this.subnetworks, that.getSubnetworksList())
           ;
     }
     return false;

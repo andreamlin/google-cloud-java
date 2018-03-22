@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -58,8 +59,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonSslCertificateStub extends SslCertificateStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateMethodDescriptor =
       ApiMethodDescriptor.<DeleteSslCertificateHttpRequest, Operation>newBuilder()
@@ -113,7 +112,6 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("project")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateCallable;
@@ -122,6 +120,7 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
   private final UnaryCallable<ListSslCertificatesHttpRequest, SslCertificateList> listSslCertificatesCallable;
   private final UnaryCallable<ListSslCertificatesHttpRequest, ListSslCertificatesPagedResponse> listSslCertificatesPagedCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonSslCertificateStub create(SslCertificateStubSettings settings) throws IOException {
     return new HttpJsonSslCertificateStub(settings, ClientContext.create(settings));
   }
@@ -130,12 +129,26 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
     return new HttpJsonSslCertificateStub(SslCertificateStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonSslCertificateStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonSslCertificateStub(SslCertificateSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonSslCertificateStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonSslCertificateStub(SslCertificateStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonSslCertificateCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonSslCertificateStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonSslCertificateStub(SslCertificateStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateTransportSettings =
         HttpJsonCallSettings.<DeleteSslCertificateHttpRequest, Operation>newBuilder()
@@ -154,11 +167,11 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
             .setMethodDescriptor(listSslCertificatesMethodDescriptor)
             .build();
 
-    this.deleteSslCertificateCallable = HttpJsonCallableFactory.createUnaryCallable(deleteSslCertificateTransportSettings,settings.deleteSslCertificateSettings(), clientContext);
-    this.getSslCertificateCallable = HttpJsonCallableFactory.createUnaryCallable(getSslCertificateTransportSettings,settings.getSslCertificateSettings(), clientContext);
-    this.insertSslCertificateCallable = HttpJsonCallableFactory.createUnaryCallable(insertSslCertificateTransportSettings,settings.insertSslCertificateSettings(), clientContext);
-    this.listSslCertificatesCallable = HttpJsonCallableFactory.createUnaryCallable(listSslCertificatesTransportSettings,settings.listSslCertificatesSettings(), clientContext);
-    this.listSslCertificatesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listSslCertificatesTransportSettings,settings.listSslCertificatesSettings(), clientContext);
+    this.deleteSslCertificateCallable = callableFactory.createUnaryCallable(deleteSslCertificateTransportSettings,settings.deleteSslCertificateSettings(), clientContext);
+    this.getSslCertificateCallable = callableFactory.createUnaryCallable(getSslCertificateTransportSettings,settings.getSslCertificateSettings(), clientContext);
+    this.insertSslCertificateCallable = callableFactory.createUnaryCallable(insertSslCertificateTransportSettings,settings.insertSslCertificateSettings(), clientContext);
+    this.listSslCertificatesCallable = callableFactory.createUnaryCallable(listSslCertificatesTransportSettings,settings.listSslCertificatesSettings(), clientContext);
+    this.listSslCertificatesPagedCallable = callableFactory.createPagedCallable(listSslCertificatesTransportSettings,settings.listSslCertificatesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

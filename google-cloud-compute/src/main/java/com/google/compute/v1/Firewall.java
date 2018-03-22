@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -88,11 +90,11 @@ public final class Firewall implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("allowed") && allowed != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Allowed item : allowed) {
         stringList.add(item.toString());
       }
-      fieldMap.put("allowed", stringList);
+      fieldMap.put("allowed", stringList.build());
     }
     if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
       fieldMap.put("creationTimestamp", Collections.singletonList(String.valueOf(creationTimestamp)));
@@ -116,25 +118,25 @@ public final class Firewall implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("sourceRanges") && sourceRanges != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : sourceRanges) {
         stringList.add(item.toString());
       }
-      fieldMap.put("sourceRanges", stringList);
+      fieldMap.put("sourceRanges", stringList.build());
     }
     if (fieldNames.contains("sourceTags") && sourceTags != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : sourceTags) {
         stringList.add(item.toString());
       }
-      fieldMap.put("sourceTags", stringList);
+      fieldMap.put("sourceTags", stringList.build());
     }
     if (fieldNames.contains("targetTags") && targetTags != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : targetTags) {
         stringList.add(item.toString());
       }
-      fieldMap.put("targetTags", stringList);
+      fieldMap.put("targetTags", stringList.build());
     }
     return fieldMap;
   }
@@ -183,7 +185,7 @@ public final class Firewall implements ApiMessage {
     return null;
   }
 
-  public List<Allowed> getAllowed() {
+  public List<Allowed> getAllowedList() {
     return allowed;
   }
 
@@ -215,15 +217,15 @@ public final class Firewall implements ApiMessage {
     return selfLink;
   }
 
-  public List<String> getSourceRanges() {
+  public List<String> getSourceRangesList() {
     return sourceRanges;
   }
 
-  public List<String> getSourceTags() {
+  public List<String> getSourceTagsList() {
     return sourceTags;
   }
 
-  public List<String> getTargetTags() {
+  public List<String> getTargetTagsList() {
     return targetTags;
   }
 
@@ -264,7 +266,7 @@ public final class Firewall implements ApiMessage {
 
     public Builder mergeFrom(Firewall other) {
       if (other == Firewall.getDefaultInstance()) return this;
-      if (other.getAllowed() != null) {
+      if (other.getAllowedList() != null) {
         this.allowed = other.allowed;
       }
       if (other.getCreationTimestamp() != null) {
@@ -288,13 +290,13 @@ public final class Firewall implements ApiMessage {
       if (other.getSelfLink() != null) {
         this.selfLink = other.selfLink;
       }
-      if (other.getSourceRanges() != null) {
+      if (other.getSourceRangesList() != null) {
         this.sourceRanges = other.sourceRanges;
       }
-      if (other.getSourceTags() != null) {
+      if (other.getSourceTagsList() != null) {
         this.sourceTags = other.sourceTags;
       }
-      if (other.getTargetTags() != null) {
+      if (other.getTargetTagsList() != null) {
         this.targetTags = other.targetTags;
       }
       return this;
@@ -314,13 +316,13 @@ public final class Firewall implements ApiMessage {
       this.targetTags = source.targetTags;
     }
 
-    public List<Allowed> getAllowed() {
+    public List<Allowed> getAllowedList() {
       return allowed;
     }
 
     public Builder addAllAllowed(List<Allowed> allowed) {
       if (this.allowed == null) {
-        this.allowed = new LinkedList<>();
+        this.allowed = new ArrayList<>(allowed.size());
       }
       this.allowed.addAll(allowed);
       return this;
@@ -394,13 +396,13 @@ public final class Firewall implements ApiMessage {
       return this;
     }
 
-    public List<String> getSourceRanges() {
+    public List<String> getSourceRangesList() {
       return sourceRanges;
     }
 
     public Builder addAllSourceRanges(List<String> sourceRanges) {
       if (this.sourceRanges == null) {
-        this.sourceRanges = new LinkedList<>();
+        this.sourceRanges = new ArrayList<>(sourceRanges.size());
       }
       this.sourceRanges.addAll(sourceRanges);
       return this;
@@ -411,13 +413,13 @@ public final class Firewall implements ApiMessage {
       return this;
     }
 
-    public List<String> getSourceTags() {
+    public List<String> getSourceTagsList() {
       return sourceTags;
     }
 
     public Builder addAllSourceTags(List<String> sourceTags) {
       if (this.sourceTags == null) {
-        this.sourceTags = new LinkedList<>();
+        this.sourceTags = new ArrayList<>(sourceTags.size());
       }
       this.sourceTags.addAll(sourceTags);
       return this;
@@ -428,13 +430,13 @@ public final class Firewall implements ApiMessage {
       return this;
     }
 
-    public List<String> getTargetTags() {
+    public List<String> getTargetTagsList() {
       return targetTags;
     }
 
     public Builder addAllTargetTags(List<String> targetTags) {
       if (this.targetTags == null) {
-        this.targetTags = new LinkedList<>();
+        this.targetTags = new ArrayList<>(targetTags.size());
       }
       this.targetTags.addAll(targetTags);
       return this;
@@ -514,7 +516,7 @@ public final class Firewall implements ApiMessage {
     if (o instanceof Firewall) {
       Firewall that = (Firewall) o;
       return
-          Objects.equals(this.allowed, that.getAllowed()) &&
+          Objects.equals(this.allowed, that.getAllowedList()) &&
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.id, that.getId()) &&
@@ -522,9 +524,9 @@ public final class Firewall implements ApiMessage {
           Objects.equals(this.name, that.getName()) &&
           Objects.equals(this.network, that.getNetwork()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
-          Objects.equals(this.sourceRanges, that.getSourceRanges()) &&
-          Objects.equals(this.sourceTags, that.getSourceTags()) &&
-          Objects.equals(this.targetTags, that.getTargetTags())
+          Objects.equals(this.sourceRanges, that.getSourceRangesList()) &&
+          Objects.equals(this.sourceTags, that.getSourceTagsList()) &&
+          Objects.equals(this.targetTags, that.getTargetTagsList())
           ;
     }
     return false;

@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -116,11 +118,11 @@ public final class AttachedDisk implements ApiMessage {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
     }
     if (fieldNames.contains("licenses") && licenses != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : licenses) {
         stringList.add(item.toString());
       }
-      fieldMap.put("licenses", stringList);
+      fieldMap.put("licenses", stringList.build());
     }
     if (fieldNames.contains("mode") && mode != null) {
       fieldMap.put("mode", Collections.singletonList(String.valueOf(mode)));
@@ -193,7 +195,7 @@ public final class AttachedDisk implements ApiMessage {
     return deviceName;
   }
 
-  public CustomerEncryptionKey getDiskEncryptionKey() {
+  public CustomerEncryptionKey getCustomerEncryptionKey() {
     return diskEncryptionKey;
   }
 
@@ -201,7 +203,7 @@ public final class AttachedDisk implements ApiMessage {
     return index;
   }
 
-  public AttachedDiskInitializeParams getInitializeParams() {
+  public AttachedDiskInitializeParams getAttachedDiskInitializeParams() {
     return initializeParams;
   }
 
@@ -213,7 +215,7 @@ public final class AttachedDisk implements ApiMessage {
     return kind;
   }
 
-  public List<String> getLicenses() {
+  public List<String> getLicensesList() {
     return licenses;
   }
 
@@ -276,13 +278,13 @@ public final class AttachedDisk implements ApiMessage {
       if (other.getDeviceName() != null) {
         this.deviceName = other.deviceName;
       }
-      if (other.getDiskEncryptionKey() != null) {
+      if (other.getCustomerEncryptionKey() != null) {
         this.diskEncryptionKey = other.diskEncryptionKey;
       }
       if (other.getIndex() != null) {
         this.index = other.index;
       }
-      if (other.getInitializeParams() != null) {
+      if (other.getAttachedDiskInitializeParams() != null) {
         this.initializeParams = other.initializeParams;
       }
       if (other.getInterface() != null) {
@@ -291,7 +293,7 @@ public final class AttachedDisk implements ApiMessage {
       if (other.getKind() != null) {
         this.kind = other.kind;
       }
-      if (other.getLicenses() != null) {
+      if (other.getLicensesList() != null) {
         this.licenses = other.licenses;
       }
       if (other.getMode() != null) {
@@ -348,11 +350,11 @@ public final class AttachedDisk implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getDiskEncryptionKey() {
+    public CustomerEncryptionKey getCustomerEncryptionKey() {
       return diskEncryptionKey;
     }
 
-    public Builder setDiskEncryptionKey(CustomerEncryptionKey diskEncryptionKey) {
+    public Builder setCustomerEncryptionKey(CustomerEncryptionKey diskEncryptionKey) {
       this.diskEncryptionKey = diskEncryptionKey;
       return this;
     }
@@ -366,11 +368,11 @@ public final class AttachedDisk implements ApiMessage {
       return this;
     }
 
-    public AttachedDiskInitializeParams getInitializeParams() {
+    public AttachedDiskInitializeParams getAttachedDiskInitializeParams() {
       return initializeParams;
     }
 
-    public Builder setInitializeParams(AttachedDiskInitializeParams initializeParams) {
+    public Builder setAttachedDiskInitializeParams(AttachedDiskInitializeParams initializeParams) {
       this.initializeParams = initializeParams;
       return this;
     }
@@ -393,13 +395,13 @@ public final class AttachedDisk implements ApiMessage {
       return this;
     }
 
-    public List<String> getLicenses() {
+    public List<String> getLicensesList() {
       return licenses;
     }
 
     public Builder addAllLicenses(List<String> licenses) {
       if (this.licenses == null) {
-        this.licenses = new LinkedList<>();
+        this.licenses = new ArrayList<>(licenses.size());
       }
       this.licenses.addAll(licenses);
       return this;
@@ -471,9 +473,9 @@ public final class AttachedDisk implements ApiMessage {
       newBuilder.setAutoDelete(this.autoDelete);
       newBuilder.setBoot(this.boot);
       newBuilder.setDeviceName(this.deviceName);
-      newBuilder.setDiskEncryptionKey(this.diskEncryptionKey);
+      newBuilder.setCustomerEncryptionKey(this.diskEncryptionKey);
       newBuilder.setIndex(this.index);
-      newBuilder.setInitializeParams(this.initializeParams);
+      newBuilder.setAttachedDiskInitializeParams(this.initializeParams);
       newBuilder.setInterface(this.interface2);
       newBuilder.setKind(this.kind);
       newBuilder.addAllLicenses(this.licenses);
@@ -513,12 +515,12 @@ public final class AttachedDisk implements ApiMessage {
           Objects.equals(this.autoDelete, that.getAutoDelete()) &&
           Objects.equals(this.boot, that.getBoot()) &&
           Objects.equals(this.deviceName, that.getDeviceName()) &&
-          Objects.equals(this.diskEncryptionKey, that.getDiskEncryptionKey()) &&
+          Objects.equals(this.diskEncryptionKey, that.getCustomerEncryptionKey()) &&
           Objects.equals(this.index, that.getIndex()) &&
-          Objects.equals(this.initializeParams, that.getInitializeParams()) &&
+          Objects.equals(this.initializeParams, that.getAttachedDiskInitializeParams()) &&
           Objects.equals(this.interface2, that.getInterface()) &&
           Objects.equals(this.kind, that.getKind()) &&
-          Objects.equals(this.licenses, that.getLicenses()) &&
+          Objects.equals(this.licenses, that.getLicensesList()) &&
           Objects.equals(this.mode, that.getMode()) &&
           Objects.equals(this.source, that.getSource()) &&
           Objects.equals(this.type, that.getType())

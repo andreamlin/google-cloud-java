@@ -25,7 +25,6 @@ import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
 import com.google.api.gax.paging.FixedSizeCollection;
 import com.google.api.gax.paging.Page;
-import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiExceptions;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -284,7 +283,7 @@ public class TargetInstanceClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     TargetInstanceAggregatedList response = targetInstanceClient.aggregatedListTargetInstancesCallable().call(request);
-   *     for (TargetInstance element : response.getTargetInstances()) {
+   *     for (TargetInstance element : response.getTargetInstancesList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -712,7 +711,7 @@ public class TargetInstanceClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     TargetInstanceList response = targetInstanceClient.listTargetInstancesCallable().call(request);
-   *     for (TargetInstance element : response.getItems()) {
+   *     for (TargetInstance element : response.getItemsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

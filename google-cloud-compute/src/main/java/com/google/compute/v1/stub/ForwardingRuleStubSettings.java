@@ -286,7 +286,7 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
         }
         @Override
         public Iterable<ForwardingRule> extractResources(ForwardingRuleAggregatedList payload) {
-          return payload.getItems().getForwardingRules();
+          return payload.getItems().getForwardingRulesList();
         }
       };
 
@@ -320,7 +320,7 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
         }
         @Override
         public Iterable<ForwardingRule> extractResources(ForwardingRuleList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

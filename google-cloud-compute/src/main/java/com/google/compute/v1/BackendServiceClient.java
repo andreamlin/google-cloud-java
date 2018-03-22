@@ -25,7 +25,6 @@ import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
 import com.google.api.gax.paging.FixedSizeCollection;
 import com.google.api.gax.paging.Page;
-import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiExceptions;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -284,7 +283,7 @@ public class BackendServiceClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     BackendServiceAggregatedList response = backendServiceClient.aggregatedListBackendServicesCallable().call(request);
-   *     for (BackendService element : response.getBackendServices()) {
+   *     for (BackendService element : response.getBackendServicesList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -817,7 +816,7 @@ public class BackendServiceClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     BackendServiceList response = backendServiceClient.listBackendServicesCallable().call(request);
-   *     for (BackendService element : response.getItems()) {
+   *     for (BackendService element : response.getItemsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

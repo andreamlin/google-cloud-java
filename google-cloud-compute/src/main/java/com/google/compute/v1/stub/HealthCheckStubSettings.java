@@ -284,7 +284,7 @@ public class HealthCheckStubSettings extends StubSettings<HealthCheckStubSetting
         }
         @Override
         public Iterable<HealthCheck> extractResources(HealthCheckList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

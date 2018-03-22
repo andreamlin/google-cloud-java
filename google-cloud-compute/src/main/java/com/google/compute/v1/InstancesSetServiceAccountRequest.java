@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -55,11 +57,11 @@ public final class InstancesSetServiceAccountRequest implements ApiMessage {
       fieldMap.put("email", Collections.singletonList(String.valueOf(email)));
     }
     if (fieldNames.contains("scopes") && scopes != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : scopes) {
         stringList.add(item.toString());
       }
-      fieldMap.put("scopes", stringList);
+      fieldMap.put("scopes", stringList.build());
     }
     return fieldMap;
   }
@@ -85,7 +87,7 @@ public final class InstancesSetServiceAccountRequest implements ApiMessage {
     return email;
   }
 
-  public List<String> getScopes() {
+  public List<String> getScopesList() {
     return scopes;
   }
 
@@ -120,7 +122,7 @@ public final class InstancesSetServiceAccountRequest implements ApiMessage {
       if (other.getEmail() != null) {
         this.email = other.email;
       }
-      if (other.getScopes() != null) {
+      if (other.getScopesList() != null) {
         this.scopes = other.scopes;
       }
       return this;
@@ -140,13 +142,13 @@ public final class InstancesSetServiceAccountRequest implements ApiMessage {
       return this;
     }
 
-    public List<String> getScopes() {
+    public List<String> getScopesList() {
       return scopes;
     }
 
     public Builder addAllScopes(List<String> scopes) {
       if (this.scopes == null) {
-        this.scopes = new LinkedList<>();
+        this.scopes = new ArrayList<>(scopes.size());
       }
       this.scopes.addAll(scopes);
       return this;
@@ -191,7 +193,7 @@ public final class InstancesSetServiceAccountRequest implements ApiMessage {
       InstancesSetServiceAccountRequest that = (InstancesSetServiceAccountRequest) o;
       return
           Objects.equals(this.email, that.getEmail()) &&
-          Objects.equals(this.scopes, that.getScopes())
+          Objects.equals(this.scopes, that.getScopesList())
           ;
     }
     return false;

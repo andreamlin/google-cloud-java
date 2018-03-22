@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -48,11 +50,11 @@ public final class TargetPoolsRemoveHealthCheckRequest implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("healthChecks") && healthChecks != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (HealthCheckReference item : healthChecks) {
         stringList.add(item.toString());
       }
-      fieldMap.put("healthChecks", stringList);
+      fieldMap.put("healthChecks", stringList.build());
     }
     return fieldMap;
   }
@@ -71,7 +73,7 @@ public final class TargetPoolsRemoveHealthCheckRequest implements ApiMessage {
     return null;
   }
 
-  public List<HealthCheckReference> getHealthChecks() {
+  public List<HealthCheckReference> getHealthChecksList() {
     return healthChecks;
   }
 
@@ -102,7 +104,7 @@ public final class TargetPoolsRemoveHealthCheckRequest implements ApiMessage {
 
     public Builder mergeFrom(TargetPoolsRemoveHealthCheckRequest other) {
       if (other == TargetPoolsRemoveHealthCheckRequest.getDefaultInstance()) return this;
-      if (other.getHealthChecks() != null) {
+      if (other.getHealthChecksList() != null) {
         this.healthChecks = other.healthChecks;
       }
       return this;
@@ -112,13 +114,13 @@ public final class TargetPoolsRemoveHealthCheckRequest implements ApiMessage {
       this.healthChecks = source.healthChecks;
     }
 
-    public List<HealthCheckReference> getHealthChecks() {
+    public List<HealthCheckReference> getHealthChecksList() {
       return healthChecks;
     }
 
     public Builder addAllHealthChecks(List<HealthCheckReference> healthChecks) {
       if (this.healthChecks == null) {
-        this.healthChecks = new LinkedList<>();
+        this.healthChecks = new ArrayList<>(healthChecks.size());
       }
       this.healthChecks.addAll(healthChecks);
       return this;
@@ -158,7 +160,7 @@ public final class TargetPoolsRemoveHealthCheckRequest implements ApiMessage {
     if (o instanceof TargetPoolsRemoveHealthCheckRequest) {
       TargetPoolsRemoveHealthCheckRequest that = (TargetPoolsRemoveHealthCheckRequest) o;
       return
-          Objects.equals(this.healthChecks, that.getHealthChecks())
+          Objects.equals(this.healthChecks, that.getHealthChecksList())
           ;
     }
     return false;

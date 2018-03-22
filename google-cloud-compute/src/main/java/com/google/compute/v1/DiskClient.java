@@ -25,7 +25,6 @@ import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
 import com.google.api.gax.paging.FixedSizeCollection;
 import com.google.api.gax.paging.Page;
-import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiExceptions;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -285,7 +284,7 @@ public class DiskClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     DiskAggregatedList response = diskClient.aggregatedListDisksCallable().call(request);
-   *     for (Disk element : response.getDisks()) {
+   *     for (Disk element : response.getDisksList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -828,7 +827,7 @@ public class DiskClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     DiskList response = diskClient.listDisksCallable().call(request);
-   *     for (Disk element : response.getItems()) {
+   *     for (Disk element : response.getItemsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -104,11 +106,11 @@ public final class TargetSslProxy implements ApiMessage {
       fieldMap.put("service", Collections.singletonList(String.valueOf(service)));
     }
     if (fieldNames.contains("sslCertificates") && sslCertificates != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : sslCertificates) {
         stringList.add(item.toString());
       }
-      fieldMap.put("sslCertificates", stringList);
+      fieldMap.put("sslCertificates", stringList.build());
     }
     return fieldMap;
   }
@@ -183,7 +185,7 @@ public final class TargetSslProxy implements ApiMessage {
     return service;
   }
 
-  public List<String> getSslCertificates() {
+  public List<String> getSslCertificatesList() {
     return sslCertificates;
   }
 
@@ -246,7 +248,7 @@ public final class TargetSslProxy implements ApiMessage {
       if (other.getService() != null) {
         this.service = other.service;
       }
-      if (other.getSslCertificates() != null) {
+      if (other.getSslCertificatesList() != null) {
         this.sslCertificates = other.sslCertificates;
       }
       return this;
@@ -336,13 +338,13 @@ public final class TargetSslProxy implements ApiMessage {
       return this;
     }
 
-    public List<String> getSslCertificates() {
+    public List<String> getSslCertificatesList() {
       return sslCertificates;
     }
 
     public Builder addAllSslCertificates(List<String> sslCertificates) {
       if (this.sslCertificates == null) {
-        this.sslCertificates = new LinkedList<>();
+        this.sslCertificates = new ArrayList<>(sslCertificates.size());
       }
       this.sslCertificates.addAll(sslCertificates);
       return this;
@@ -422,7 +424,7 @@ public final class TargetSslProxy implements ApiMessage {
           Objects.equals(this.proxyHeader, that.getProxyHeader()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
           Objects.equals(this.service, that.getService()) &&
-          Objects.equals(this.sslCertificates, that.getSslCertificates())
+          Objects.equals(this.sslCertificates, that.getSslCertificatesList())
           ;
     }
     return false;

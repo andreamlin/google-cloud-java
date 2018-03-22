@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -58,8 +59,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateMethodDescriptor =
       ApiMethodDescriptor.<DeleteInstanceTemplateHttpRequest, Operation>newBuilder()
@@ -113,7 +112,6 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("project")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateCallable;
@@ -122,6 +120,7 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
   private final UnaryCallable<ListInstanceTemplatesHttpRequest, InstanceTemplateList> listInstanceTemplatesCallable;
   private final UnaryCallable<ListInstanceTemplatesHttpRequest, ListInstanceTemplatesPagedResponse> listInstanceTemplatesPagedCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonInstanceTemplateStub create(InstanceTemplateStubSettings settings) throws IOException {
     return new HttpJsonInstanceTemplateStub(settings, ClientContext.create(settings));
   }
@@ -130,12 +129,26 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
     return new HttpJsonInstanceTemplateStub(InstanceTemplateStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonInstanceTemplateStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonInstanceTemplateStub(InstanceTemplateSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonInstanceTemplateStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonInstanceTemplateStub(InstanceTemplateStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonInstanceTemplateCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonInstanceTemplateStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonInstanceTemplateStub(InstanceTemplateStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteInstanceTemplateHttpRequest, Operation> deleteInstanceTemplateTransportSettings =
         HttpJsonCallSettings.<DeleteInstanceTemplateHttpRequest, Operation>newBuilder()
@@ -154,11 +167,11 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
             .setMethodDescriptor(listInstanceTemplatesMethodDescriptor)
             .build();
 
-    this.deleteInstanceTemplateCallable = HttpJsonCallableFactory.createUnaryCallable(deleteInstanceTemplateTransportSettings,settings.deleteInstanceTemplateSettings(), clientContext);
-    this.getInstanceTemplateCallable = HttpJsonCallableFactory.createUnaryCallable(getInstanceTemplateTransportSettings,settings.getInstanceTemplateSettings(), clientContext);
-    this.insertInstanceTemplateCallable = HttpJsonCallableFactory.createUnaryCallable(insertInstanceTemplateTransportSettings,settings.insertInstanceTemplateSettings(), clientContext);
-    this.listInstanceTemplatesCallable = HttpJsonCallableFactory.createUnaryCallable(listInstanceTemplatesTransportSettings,settings.listInstanceTemplatesSettings(), clientContext);
-    this.listInstanceTemplatesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listInstanceTemplatesTransportSettings,settings.listInstanceTemplatesSettings(), clientContext);
+    this.deleteInstanceTemplateCallable = callableFactory.createUnaryCallable(deleteInstanceTemplateTransportSettings,settings.deleteInstanceTemplateSettings(), clientContext);
+    this.getInstanceTemplateCallable = callableFactory.createUnaryCallable(getInstanceTemplateTransportSettings,settings.getInstanceTemplateSettings(), clientContext);
+    this.insertInstanceTemplateCallable = callableFactory.createUnaryCallable(insertInstanceTemplateTransportSettings,settings.insertInstanceTemplateSettings(), clientContext);
+    this.listInstanceTemplatesCallable = callableFactory.createUnaryCallable(listInstanceTemplatesTransportSettings,settings.listInstanceTemplatesSettings(), clientContext);
+    this.listInstanceTemplatesPagedCallable = callableFactory.createPagedCallable(listInstanceTemplatesTransportSettings,settings.listInstanceTemplatesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,11 +54,11 @@ public final class VpnTunnelsScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("vpnTunnels") && vpnTunnels != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (VpnTunnel item : vpnTunnels) {
         stringList.add(item.toString());
       }
-      fieldMap.put("vpnTunnels", stringList);
+      fieldMap.put("vpnTunnels", stringList.build());
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -81,7 +83,7 @@ public final class VpnTunnelsScopedList implements ApiMessage {
     return null;
   }
 
-  public List<VpnTunnel> getVpnTunnels() {
+  public List<VpnTunnel> getVpnTunnelsList() {
     return vpnTunnels;
   }
 
@@ -117,7 +119,7 @@ public final class VpnTunnelsScopedList implements ApiMessage {
 
     public Builder mergeFrom(VpnTunnelsScopedList other) {
       if (other == VpnTunnelsScopedList.getDefaultInstance()) return this;
-      if (other.getVpnTunnels() != null) {
+      if (other.getVpnTunnelsList() != null) {
         this.vpnTunnels = other.vpnTunnels;
       }
       if (other.getWarning() != null) {
@@ -131,13 +133,13 @@ public final class VpnTunnelsScopedList implements ApiMessage {
       this.warning = source.warning;
     }
 
-    public List<VpnTunnel> getVpnTunnels() {
+    public List<VpnTunnel> getVpnTunnelsList() {
       return vpnTunnels;
     }
 
     public Builder addAllVpnTunnels(List<VpnTunnel> vpnTunnels) {
       if (this.vpnTunnels == null) {
-        this.vpnTunnels = new LinkedList<>();
+        this.vpnTunnels = new ArrayList<>(vpnTunnels.size());
       }
       this.vpnTunnels.addAll(vpnTunnels);
       return this;
@@ -190,7 +192,7 @@ public final class VpnTunnelsScopedList implements ApiMessage {
     if (o instanceof VpnTunnelsScopedList) {
       VpnTunnelsScopedList that = (VpnTunnelsScopedList) o;
       return
-          Objects.equals(this.vpnTunnels, that.getVpnTunnels()) &&
+          Objects.equals(this.vpnTunnels, that.getVpnTunnelsList()) &&
           Objects.equals(this.warning, that.getWarning())
           ;
     }

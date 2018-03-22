@@ -264,7 +264,7 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
         }
         @Override
         public Iterable<Address> extractResources(AddressList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

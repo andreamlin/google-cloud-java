@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -123,11 +125,11 @@ public final class BackendService implements ApiMessage {
       fieldMap.put("affinityCookieTtlSec", Collections.singletonList(String.valueOf(affinityCookieTtlSec)));
     }
     if (fieldNames.contains("backends") && backends != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Backend item : backends) {
         stringList.add(item.toString());
       }
-      fieldMap.put("backends", stringList);
+      fieldMap.put("backends", stringList.build());
     }
     if (fieldNames.contains("connectionDraining") && connectionDraining != null) {
       fieldMap.put("connectionDraining", Collections.singletonList(String.valueOf(connectionDraining)));
@@ -145,11 +147,11 @@ public final class BackendService implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("healthChecks") && healthChecks != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : healthChecks) {
         stringList.add(item.toString());
       }
-      fieldMap.put("healthChecks", stringList);
+      fieldMap.put("healthChecks", stringList.build());
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -259,7 +261,7 @@ public final class BackendService implements ApiMessage {
     return affinityCookieTtlSec;
   }
 
-  public List<Backend> getBackends() {
+  public List<Backend> getBackendsList() {
     return backends;
   }
 
@@ -283,7 +285,7 @@ public final class BackendService implements ApiMessage {
     return fingerprint;
   }
 
-  public List<String> getHealthChecks() {
+  public List<String> getHealthChecksList() {
     return healthChecks;
   }
 
@@ -379,7 +381,7 @@ public final class BackendService implements ApiMessage {
       if (other.getAffinityCookieTtlSec() != null) {
         this.affinityCookieTtlSec = other.affinityCookieTtlSec;
       }
-      if (other.getBackends() != null) {
+      if (other.getBackendsList() != null) {
         this.backends = other.backends;
       }
       if (other.getConnectionDraining() != null) {
@@ -397,7 +399,7 @@ public final class BackendService implements ApiMessage {
       if (other.getFingerprint() != null) {
         this.fingerprint = other.fingerprint;
       }
-      if (other.getHealthChecks() != null) {
+      if (other.getHealthChecksList() != null) {
         this.healthChecks = other.healthChecks;
       }
       if (other.getId() != null) {
@@ -467,13 +469,13 @@ public final class BackendService implements ApiMessage {
       return this;
     }
 
-    public List<Backend> getBackends() {
+    public List<Backend> getBackendsList() {
       return backends;
     }
 
     public Builder addAllBackends(List<Backend> backends) {
       if (this.backends == null) {
-        this.backends = new LinkedList<>();
+        this.backends = new ArrayList<>(backends.size());
       }
       this.backends.addAll(backends);
       return this;
@@ -529,13 +531,13 @@ public final class BackendService implements ApiMessage {
       return this;
     }
 
-    public List<String> getHealthChecks() {
+    public List<String> getHealthChecksList() {
       return healthChecks;
     }
 
     public Builder addAllHealthChecks(List<String> healthChecks) {
       if (this.healthChecks == null) {
-        this.healthChecks = new LinkedList<>();
+        this.healthChecks = new ArrayList<>(healthChecks.size());
       }
       this.healthChecks.addAll(healthChecks);
       return this;
@@ -747,13 +749,13 @@ public final class BackendService implements ApiMessage {
       BackendService that = (BackendService) o;
       return
           Objects.equals(this.affinityCookieTtlSec, that.getAffinityCookieTtlSec()) &&
-          Objects.equals(this.backends, that.getBackends()) &&
+          Objects.equals(this.backends, that.getBackendsList()) &&
           Objects.equals(this.connectionDraining, that.getConnectionDraining()) &&
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.enableCDN, that.getEnableCDN()) &&
           Objects.equals(this.fingerprint, that.getFingerprint()) &&
-          Objects.equals(this.healthChecks, that.getHealthChecks()) &&
+          Objects.equals(this.healthChecks, that.getHealthChecksList()) &&
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.loadBalancingScheme, that.getLoadBalancingScheme()) &&

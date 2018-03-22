@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -75,8 +76,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonTargetPoolStub extends TargetPoolStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolMethodDescriptor =
       ApiMethodDescriptor.<AddHealthCheckTargetPoolHttpRequest, Operation>newBuilder()
@@ -223,7 +222,6 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("targetPool")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolCallable;
@@ -240,6 +238,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
   private final UnaryCallable<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolCallable;
   private final UnaryCallable<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonTargetPoolStub create(TargetPoolStubSettings settings) throws IOException {
     return new HttpJsonTargetPoolStub(settings, ClientContext.create(settings));
   }
@@ -248,12 +247,26 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
     return new HttpJsonTargetPoolStub(TargetPoolStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonTargetPoolStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonTargetPoolStub(TargetPoolSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonTargetPoolStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonTargetPoolStub(TargetPoolStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonTargetPoolCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonTargetPoolStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonTargetPoolStub(TargetPoolStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolTransportSettings =
         HttpJsonCallSettings.<AddHealthCheckTargetPoolHttpRequest, Operation>newBuilder()
@@ -300,19 +313,19 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
             .setMethodDescriptor(setBackupTargetPoolMethodDescriptor)
             .build();
 
-    this.addHealthCheckTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(addHealthCheckTargetPoolTransportSettings,settings.addHealthCheckTargetPoolSettings(), clientContext);
-    this.addInstanceTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(addInstanceTargetPoolTransportSettings,settings.addInstanceTargetPoolSettings(), clientContext);
-    this.aggregatedListTargetPoolsCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListTargetPoolsTransportSettings,settings.aggregatedListTargetPoolsSettings(), clientContext);
-    this.aggregatedListTargetPoolsPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListTargetPoolsTransportSettings,settings.aggregatedListTargetPoolsSettings(), clientContext);
-    this.deleteTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(deleteTargetPoolTransportSettings,settings.deleteTargetPoolSettings(), clientContext);
-    this.getTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(getTargetPoolTransportSettings,settings.getTargetPoolSettings(), clientContext);
-    this.getHealthTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(getHealthTargetPoolTransportSettings,settings.getHealthTargetPoolSettings(), clientContext);
-    this.insertTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(insertTargetPoolTransportSettings,settings.insertTargetPoolSettings(), clientContext);
-    this.listTargetPoolsCallable = HttpJsonCallableFactory.createUnaryCallable(listTargetPoolsTransportSettings,settings.listTargetPoolsSettings(), clientContext);
-    this.listTargetPoolsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listTargetPoolsTransportSettings,settings.listTargetPoolsSettings(), clientContext);
-    this.removeHealthCheckTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(removeHealthCheckTargetPoolTransportSettings,settings.removeHealthCheckTargetPoolSettings(), clientContext);
-    this.removeInstanceTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(removeInstanceTargetPoolTransportSettings,settings.removeInstanceTargetPoolSettings(), clientContext);
-    this.setBackupTargetPoolCallable = HttpJsonCallableFactory.createUnaryCallable(setBackupTargetPoolTransportSettings,settings.setBackupTargetPoolSettings(), clientContext);
+    this.addHealthCheckTargetPoolCallable = callableFactory.createUnaryCallable(addHealthCheckTargetPoolTransportSettings,settings.addHealthCheckTargetPoolSettings(), clientContext);
+    this.addInstanceTargetPoolCallable = callableFactory.createUnaryCallable(addInstanceTargetPoolTransportSettings,settings.addInstanceTargetPoolSettings(), clientContext);
+    this.aggregatedListTargetPoolsCallable = callableFactory.createUnaryCallable(aggregatedListTargetPoolsTransportSettings,settings.aggregatedListTargetPoolsSettings(), clientContext);
+    this.aggregatedListTargetPoolsPagedCallable = callableFactory.createPagedCallable(aggregatedListTargetPoolsTransportSettings,settings.aggregatedListTargetPoolsSettings(), clientContext);
+    this.deleteTargetPoolCallable = callableFactory.createUnaryCallable(deleteTargetPoolTransportSettings,settings.deleteTargetPoolSettings(), clientContext);
+    this.getTargetPoolCallable = callableFactory.createUnaryCallable(getTargetPoolTransportSettings,settings.getTargetPoolSettings(), clientContext);
+    this.getHealthTargetPoolCallable = callableFactory.createUnaryCallable(getHealthTargetPoolTransportSettings,settings.getHealthTargetPoolSettings(), clientContext);
+    this.insertTargetPoolCallable = callableFactory.createUnaryCallable(insertTargetPoolTransportSettings,settings.insertTargetPoolSettings(), clientContext);
+    this.listTargetPoolsCallable = callableFactory.createUnaryCallable(listTargetPoolsTransportSettings,settings.listTargetPoolsSettings(), clientContext);
+    this.listTargetPoolsPagedCallable = callableFactory.createPagedCallable(listTargetPoolsTransportSettings,settings.listTargetPoolsSettings(), clientContext);
+    this.removeHealthCheckTargetPoolCallable = callableFactory.createUnaryCallable(removeHealthCheckTargetPoolTransportSettings,settings.removeHealthCheckTargetPoolSettings(), clientContext);
+    this.removeInstanceTargetPoolCallable = callableFactory.createUnaryCallable(removeInstanceTargetPoolTransportSettings,settings.removeInstanceTargetPoolSettings(), clientContext);
+    this.setBackupTargetPoolCallable = callableFactory.createUnaryCallable(setBackupTargetPoolTransportSettings,settings.setBackupTargetPoolSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

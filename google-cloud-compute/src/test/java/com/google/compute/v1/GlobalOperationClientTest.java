@@ -17,8 +17,7 @@ package com.google.compute.v1;
 
 import com.google.api.gax.httpjson.ApiMessage;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
-import com.google.api.gax.httpjson.MockHttpService;
-import com.google.api.gax.paging.PagedListResponse;
+import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiException;
 import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
@@ -52,6 +51,7 @@ public class GlobalOperationClientTest {
   private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
       = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
               aggregatedListGlobalOperationsMethodDescriptor,
+              deleteGlobalOperationMethodDescriptor,
               getGlobalOperationMethodDescriptor,
               listGlobalOperationsMethodDescriptor
           ));
@@ -108,7 +108,7 @@ public class GlobalOperationClientTest {
 
     List<Operation> resources = Lists.newArrayList(pagedListResponse.iterateAll());
     Assert.assertEquals(1, resources.size());
-    Assert.assertEquals(expectedResponse.getItems().getOperations().get(0), resources.get(0));
+    Assert.assertEquals(expectedResponse.getItems().getOperationsList().get(0), resources.get(0));
 
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
@@ -133,7 +133,7 @@ public class GlobalOperationClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteGlobalOperationTest() {
-    mockService.addNullResponse();
+
 
     OperationName operation = OperationName.of("[PROJECT]", "[OPERATION]");
 
@@ -258,7 +258,7 @@ public class GlobalOperationClientTest {
 
     List<Operation> resources = Lists.newArrayList(pagedListResponse.iterateAll());
     Assert.assertEquals(1, resources.size());
-    Assert.assertEquals(expectedResponse.getItems().get(0), resources.get(0));
+    Assert.assertEquals(expectedResponse.getItemsList().get(0), resources.get(0));
 
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());

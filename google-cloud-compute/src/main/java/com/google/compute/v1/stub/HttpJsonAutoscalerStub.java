@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -64,8 +65,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonAutoscalerStub extends AutoscalerStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList> aggregatedListAutoscalersMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList>newBuilder()
@@ -161,7 +160,6 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           .setHttpMethod(HttpMethods.PUT)
           .setResourceNameField("zone")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList> aggregatedListAutoscalersCallable;
@@ -174,6 +172,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
   private final UnaryCallable<PatchAutoscalerHttpRequest, Operation> patchAutoscalerCallable;
   private final UnaryCallable<UpdateAutoscalerHttpRequest, Operation> updateAutoscalerCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonAutoscalerStub create(AutoscalerStubSettings settings) throws IOException {
     return new HttpJsonAutoscalerStub(settings, ClientContext.create(settings));
   }
@@ -182,12 +181,26 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
     return new HttpJsonAutoscalerStub(AutoscalerStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonAutoscalerStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonAutoscalerStub(AutoscalerSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonAutoscalerStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonAutoscalerStub(AutoscalerStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonAutoscalerCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonAutoscalerStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonAutoscalerStub(AutoscalerStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList> aggregatedListAutoscalersTransportSettings =
         HttpJsonCallSettings.<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList>newBuilder()
@@ -218,15 +231,15 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
             .setMethodDescriptor(updateAutoscalerMethodDescriptor)
             .build();
 
-    this.aggregatedListAutoscalersCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListAutoscalersTransportSettings,settings.aggregatedListAutoscalersSettings(), clientContext);
-    this.aggregatedListAutoscalersPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListAutoscalersTransportSettings,settings.aggregatedListAutoscalersSettings(), clientContext);
-    this.deleteAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(deleteAutoscalerTransportSettings,settings.deleteAutoscalerSettings(), clientContext);
-    this.getAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(getAutoscalerTransportSettings,settings.getAutoscalerSettings(), clientContext);
-    this.insertAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(insertAutoscalerTransportSettings,settings.insertAutoscalerSettings(), clientContext);
-    this.listAutoscalersCallable = HttpJsonCallableFactory.createUnaryCallable(listAutoscalersTransportSettings,settings.listAutoscalersSettings(), clientContext);
-    this.listAutoscalersPagedCallable = HttpJsonCallableFactory.createPagedCallable(listAutoscalersTransportSettings,settings.listAutoscalersSettings(), clientContext);
-    this.patchAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(patchAutoscalerTransportSettings,settings.patchAutoscalerSettings(), clientContext);
-    this.updateAutoscalerCallable = HttpJsonCallableFactory.createUnaryCallable(updateAutoscalerTransportSettings,settings.updateAutoscalerSettings(), clientContext);
+    this.aggregatedListAutoscalersCallable = callableFactory.createUnaryCallable(aggregatedListAutoscalersTransportSettings,settings.aggregatedListAutoscalersSettings(), clientContext);
+    this.aggregatedListAutoscalersPagedCallable = callableFactory.createPagedCallable(aggregatedListAutoscalersTransportSettings,settings.aggregatedListAutoscalersSettings(), clientContext);
+    this.deleteAutoscalerCallable = callableFactory.createUnaryCallable(deleteAutoscalerTransportSettings,settings.deleteAutoscalerSettings(), clientContext);
+    this.getAutoscalerCallable = callableFactory.createUnaryCallable(getAutoscalerTransportSettings,settings.getAutoscalerSettings(), clientContext);
+    this.insertAutoscalerCallable = callableFactory.createUnaryCallable(insertAutoscalerTransportSettings,settings.insertAutoscalerSettings(), clientContext);
+    this.listAutoscalersCallable = callableFactory.createUnaryCallable(listAutoscalersTransportSettings,settings.listAutoscalersSettings(), clientContext);
+    this.listAutoscalersPagedCallable = callableFactory.createPagedCallable(listAutoscalersTransportSettings,settings.listAutoscalersSettings(), clientContext);
+    this.patchAutoscalerCallable = callableFactory.createUnaryCallable(patchAutoscalerTransportSettings,settings.patchAutoscalerSettings(), clientContext);
+    this.updateAutoscalerCallable = callableFactory.createUnaryCallable(updateAutoscalerTransportSettings,settings.updateAutoscalerSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

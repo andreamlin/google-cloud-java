@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -138,11 +140,11 @@ public final class Image implements ApiMessage {
       fieldMap.put("family", Collections.singletonList(String.valueOf(family)));
     }
     if (fieldNames.contains("guestOsFeatures") && guestOsFeatures != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (GuestOsFeature item : guestOsFeatures) {
         stringList.add(item.toString());
       }
-      fieldMap.put("guestOsFeatures", stringList);
+      fieldMap.put("guestOsFeatures", stringList.build());
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -154,11 +156,11 @@ public final class Image implements ApiMessage {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
     }
     if (fieldNames.contains("licenses") && licenses != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : licenses) {
         stringList.add(item.toString());
       }
-      fieldMap.put("licenses", stringList);
+      fieldMap.put("licenses", stringList.build());
     }
     if (fieldNames.contains("name") && name != null) {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
@@ -263,7 +265,7 @@ public final class Image implements ApiMessage {
     return creationTimestamp;
   }
 
-  public DeprecationStatus getDeprecated() {
+  public DeprecationStatus getDeprecationStatus() {
     return deprecated;
   }
 
@@ -279,7 +281,7 @@ public final class Image implements ApiMessage {
     return family;
   }
 
-  public List<GuestOsFeature> getGuestOsFeatures() {
+  public List<GuestOsFeature> getGuestOsFeaturesList() {
     return guestOsFeatures;
   }
 
@@ -287,7 +289,7 @@ public final class Image implements ApiMessage {
     return id;
   }
 
-  public CustomerEncryptionKey getImageEncryptionKey() {
+  public CustomerEncryptionKey getCustomerEncryptionKey() {
     return imageEncryptionKey;
   }
 
@@ -295,7 +297,7 @@ public final class Image implements ApiMessage {
     return kind;
   }
 
-  public List<String> getLicenses() {
+  public List<String> getLicensesList() {
     return licenses;
   }
 
@@ -315,7 +317,7 @@ public final class Image implements ApiMessage {
     return sourceDisk;
   }
 
-  public CustomerEncryptionKey getSourceDiskEncryptionKey() {
+  public CustomerEncryptionKey getCustomerEncryptionKey() {
     return sourceDiskEncryptionKey;
   }
 
@@ -382,7 +384,7 @@ public final class Image implements ApiMessage {
       if (other.getCreationTimestamp() != null) {
         this.creationTimestamp = other.creationTimestamp;
       }
-      if (other.getDeprecated() != null) {
+      if (other.getDeprecationStatus() != null) {
         this.deprecated = other.deprecated;
       }
       if (other.getDescription() != null) {
@@ -394,19 +396,19 @@ public final class Image implements ApiMessage {
       if (other.getFamily() != null) {
         this.family = other.family;
       }
-      if (other.getGuestOsFeatures() != null) {
+      if (other.getGuestOsFeaturesList() != null) {
         this.guestOsFeatures = other.guestOsFeatures;
       }
       if (other.getId() != null) {
         this.id = other.id;
       }
-      if (other.getImageEncryptionKey() != null) {
+      if (other.getCustomerEncryptionKey() != null) {
         this.imageEncryptionKey = other.imageEncryptionKey;
       }
       if (other.getKind() != null) {
         this.kind = other.kind;
       }
-      if (other.getLicenses() != null) {
+      if (other.getLicensesList() != null) {
         this.licenses = other.licenses;
       }
       if (other.getName() != null) {
@@ -421,7 +423,7 @@ public final class Image implements ApiMessage {
       if (other.getSourceDisk() != null) {
         this.sourceDisk = other.sourceDisk;
       }
-      if (other.getSourceDiskEncryptionKey() != null) {
+      if (other.getCustomerEncryptionKey() != null) {
         this.sourceDiskEncryptionKey = other.sourceDiskEncryptionKey;
       }
       if (other.getSourceDiskId() != null) {
@@ -476,11 +478,11 @@ public final class Image implements ApiMessage {
       return this;
     }
 
-    public DeprecationStatus getDeprecated() {
+    public DeprecationStatus getDeprecationStatus() {
       return deprecated;
     }
 
-    public Builder setDeprecated(DeprecationStatus deprecated) {
+    public Builder setDeprecationStatus(DeprecationStatus deprecated) {
       this.deprecated = deprecated;
       return this;
     }
@@ -512,13 +514,13 @@ public final class Image implements ApiMessage {
       return this;
     }
 
-    public List<GuestOsFeature> getGuestOsFeatures() {
+    public List<GuestOsFeature> getGuestOsFeaturesList() {
       return guestOsFeatures;
     }
 
     public Builder addAllGuestOsFeatures(List<GuestOsFeature> guestOsFeatures) {
       if (this.guestOsFeatures == null) {
-        this.guestOsFeatures = new LinkedList<>();
+        this.guestOsFeatures = new ArrayList<>(guestOsFeatures.size());
       }
       this.guestOsFeatures.addAll(guestOsFeatures);
       return this;
@@ -538,11 +540,11 @@ public final class Image implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getImageEncryptionKey() {
+    public CustomerEncryptionKey getCustomerEncryptionKey() {
       return imageEncryptionKey;
     }
 
-    public Builder setImageEncryptionKey(CustomerEncryptionKey imageEncryptionKey) {
+    public Builder setCustomerEncryptionKey(CustomerEncryptionKey imageEncryptionKey) {
       this.imageEncryptionKey = imageEncryptionKey;
       return this;
     }
@@ -556,13 +558,13 @@ public final class Image implements ApiMessage {
       return this;
     }
 
-    public List<String> getLicenses() {
+    public List<String> getLicensesList() {
       return licenses;
     }
 
     public Builder addAllLicenses(List<String> licenses) {
       if (this.licenses == null) {
-        this.licenses = new LinkedList<>();
+        this.licenses = new ArrayList<>(licenses.size());
       }
       this.licenses.addAll(licenses);
       return this;
@@ -609,11 +611,11 @@ public final class Image implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getSourceDiskEncryptionKey() {
+    public CustomerEncryptionKey getCustomerEncryptionKey() {
       return sourceDiskEncryptionKey;
     }
 
-    public Builder setSourceDiskEncryptionKey(CustomerEncryptionKey sourceDiskEncryptionKey) {
+    public Builder setCustomerEncryptionKey(CustomerEncryptionKey sourceDiskEncryptionKey) {
       this.sourceDiskEncryptionKey = sourceDiskEncryptionKey;
       return this;
     }
@@ -692,20 +694,20 @@ public final class Image implements ApiMessage {
       Builder newBuilder = new Builder();
       newBuilder.setArchiveSizeBytes(this.archiveSizeBytes);
       newBuilder.setCreationTimestamp(this.creationTimestamp);
-      newBuilder.setDeprecated(this.deprecated);
+      newBuilder.setDeprecationStatus(this.deprecated);
       newBuilder.setDescription(this.description);
       newBuilder.setDiskSizeGb(this.diskSizeGb);
       newBuilder.setFamily(this.family);
       newBuilder.addAllGuestOsFeatures(this.guestOsFeatures);
       newBuilder.setId(this.id);
-      newBuilder.setImageEncryptionKey(this.imageEncryptionKey);
+      newBuilder.setCustomerEncryptionKey(this.imageEncryptionKey);
       newBuilder.setKind(this.kind);
       newBuilder.addAllLicenses(this.licenses);
       newBuilder.setName(this.name);
       newBuilder.setRawDisk(this.rawDisk);
       newBuilder.setSelfLink(this.selfLink);
       newBuilder.setSourceDisk(this.sourceDisk);
-      newBuilder.setSourceDiskEncryptionKey(this.sourceDiskEncryptionKey);
+      newBuilder.setCustomerEncryptionKey(this.sourceDiskEncryptionKey);
       newBuilder.setSourceDiskId(this.sourceDiskId);
       newBuilder.setSourceType(this.sourceType);
       newBuilder.setStatus(this.status);
@@ -748,20 +750,20 @@ public final class Image implements ApiMessage {
       return
           Objects.equals(this.archiveSizeBytes, that.getArchiveSizeBytes()) &&
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
-          Objects.equals(this.deprecated, that.getDeprecated()) &&
+          Objects.equals(this.deprecated, that.getDeprecationStatus()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.diskSizeGb, that.getDiskSizeGb()) &&
           Objects.equals(this.family, that.getFamily()) &&
-          Objects.equals(this.guestOsFeatures, that.getGuestOsFeatures()) &&
+          Objects.equals(this.guestOsFeatures, that.getGuestOsFeaturesList()) &&
           Objects.equals(this.id, that.getId()) &&
-          Objects.equals(this.imageEncryptionKey, that.getImageEncryptionKey()) &&
+          Objects.equals(this.imageEncryptionKey, that.getCustomerEncryptionKey()) &&
           Objects.equals(this.kind, that.getKind()) &&
-          Objects.equals(this.licenses, that.getLicenses()) &&
+          Objects.equals(this.licenses, that.getLicensesList()) &&
           Objects.equals(this.name, that.getName()) &&
           Objects.equals(this.rawDisk, that.getRawDisk()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
           Objects.equals(this.sourceDisk, that.getSourceDisk()) &&
-          Objects.equals(this.sourceDiskEncryptionKey, that.getSourceDiskEncryptionKey()) &&
+          Objects.equals(this.sourceDiskEncryptionKey, that.getCustomerEncryptionKey()) &&
           Objects.equals(this.sourceDiskId, that.getSourceDiskId()) &&
           Objects.equals(this.sourceType, that.getSourceType()) &&
           Objects.equals(this.status, that.getStatus())

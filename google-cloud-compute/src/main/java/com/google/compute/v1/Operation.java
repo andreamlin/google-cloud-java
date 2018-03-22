@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -199,11 +201,11 @@ public final class Operation implements ApiMessage {
       fieldMap.put("user", Collections.singletonList(String.valueOf(user)));
     }
     if (fieldNames.contains("warnings") && warnings != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Warnings item : warnings) {
         stringList.add(item.toString());
       }
-      fieldMap.put("warnings", stringList);
+      fieldMap.put("warnings", stringList.build());
     }
     if (fieldNames.contains("zone") && zone != null) {
       fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
@@ -375,7 +377,7 @@ public final class Operation implements ApiMessage {
     return user;
   }
 
-  public List<Warnings> getWarnings() {
+  public List<Warnings> getWarningsList() {
     return warnings;
   }
 
@@ -495,7 +497,7 @@ public final class Operation implements ApiMessage {
       if (other.getUser() != null) {
         this.user = other.user;
       }
-      if (other.getWarnings() != null) {
+      if (other.getWarningsList() != null) {
         this.warnings = other.warnings;
       }
       if (other.getZone() != null) {
@@ -719,13 +721,13 @@ public final class Operation implements ApiMessage {
       return this;
     }
 
-    public List<Warnings> getWarnings() {
+    public List<Warnings> getWarningsList() {
       return warnings;
     }
 
     public Builder addAllWarnings(List<Warnings> warnings) {
       if (this.warnings == null) {
-        this.warnings = new LinkedList<>();
+        this.warnings = new ArrayList<>(warnings.size());
       }
       this.warnings.addAll(warnings);
       return this;
@@ -883,7 +885,7 @@ public final class Operation implements ApiMessage {
           Objects.equals(this.targetId, that.getTargetId()) &&
           Objects.equals(this.targetLink, that.getTargetLink()) &&
           Objects.equals(this.user, that.getUser()) &&
-          Objects.equals(this.warnings, that.getWarnings()) &&
+          Objects.equals(this.warnings, that.getWarningsList()) &&
           Objects.equals(this.zone, that.getZone())
           ;
     }

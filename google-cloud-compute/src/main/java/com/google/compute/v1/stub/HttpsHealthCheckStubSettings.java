@@ -284,7 +284,7 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
         }
         @Override
         public Iterable<HttpsHealthCheck> extractResources(HttpsHealthCheckList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -73,8 +74,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<AddInstancesInstanceGroupHttpRequest, Operation>newBuilder()
@@ -195,7 +194,6 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("instanceGroup")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupCallable;
@@ -211,6 +209,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
   private final UnaryCallable<RemoveInstancesInstanceGroupHttpRequest, Operation> removeInstancesInstanceGroupCallable;
   private final UnaryCallable<SetNamedPortsInstanceGroupHttpRequest, Operation> setNamedPortsInstanceGroupCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonInstanceGroupStub create(InstanceGroupStubSettings settings) throws IOException {
     return new HttpJsonInstanceGroupStub(settings, ClientContext.create(settings));
   }
@@ -219,12 +218,26 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
     return new HttpJsonInstanceGroupStub(InstanceGroupStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonInstanceGroupStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonInstanceGroupStub(InstanceGroupSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonInstanceGroupStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonInstanceGroupStub(InstanceGroupStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonInstanceGroupCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonInstanceGroupStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonInstanceGroupStub(InstanceGroupStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupTransportSettings =
         HttpJsonCallSettings.<AddInstancesInstanceGroupHttpRequest, Operation>newBuilder()
@@ -263,18 +276,18 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
             .setMethodDescriptor(setNamedPortsInstanceGroupMethodDescriptor)
             .build();
 
-    this.addInstancesInstanceGroupCallable = HttpJsonCallableFactory.createUnaryCallable(addInstancesInstanceGroupTransportSettings,settings.addInstancesInstanceGroupSettings(), clientContext);
-    this.aggregatedListInstanceGroupsCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListInstanceGroupsTransportSettings,settings.aggregatedListInstanceGroupsSettings(), clientContext);
-    this.aggregatedListInstanceGroupsPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListInstanceGroupsTransportSettings,settings.aggregatedListInstanceGroupsSettings(), clientContext);
-    this.deleteInstanceGroupCallable = HttpJsonCallableFactory.createUnaryCallable(deleteInstanceGroupTransportSettings,settings.deleteInstanceGroupSettings(), clientContext);
-    this.getInstanceGroupCallable = HttpJsonCallableFactory.createUnaryCallable(getInstanceGroupTransportSettings,settings.getInstanceGroupSettings(), clientContext);
-    this.insertInstanceGroupCallable = HttpJsonCallableFactory.createUnaryCallable(insertInstanceGroupTransportSettings,settings.insertInstanceGroupSettings(), clientContext);
-    this.listInstanceGroupsCallable = HttpJsonCallableFactory.createUnaryCallable(listInstanceGroupsTransportSettings,settings.listInstanceGroupsSettings(), clientContext);
-    this.listInstanceGroupsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listInstanceGroupsTransportSettings,settings.listInstanceGroupsSettings(), clientContext);
-    this.listInstancesInstanceGroupsCallable = HttpJsonCallableFactory.createUnaryCallable(listInstancesInstanceGroupsTransportSettings,settings.listInstancesInstanceGroupsSettings(), clientContext);
-    this.listInstancesInstanceGroupsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listInstancesInstanceGroupsTransportSettings,settings.listInstancesInstanceGroupsSettings(), clientContext);
-    this.removeInstancesInstanceGroupCallable = HttpJsonCallableFactory.createUnaryCallable(removeInstancesInstanceGroupTransportSettings,settings.removeInstancesInstanceGroupSettings(), clientContext);
-    this.setNamedPortsInstanceGroupCallable = HttpJsonCallableFactory.createUnaryCallable(setNamedPortsInstanceGroupTransportSettings,settings.setNamedPortsInstanceGroupSettings(), clientContext);
+    this.addInstancesInstanceGroupCallable = callableFactory.createUnaryCallable(addInstancesInstanceGroupTransportSettings,settings.addInstancesInstanceGroupSettings(), clientContext);
+    this.aggregatedListInstanceGroupsCallable = callableFactory.createUnaryCallable(aggregatedListInstanceGroupsTransportSettings,settings.aggregatedListInstanceGroupsSettings(), clientContext);
+    this.aggregatedListInstanceGroupsPagedCallable = callableFactory.createPagedCallable(aggregatedListInstanceGroupsTransportSettings,settings.aggregatedListInstanceGroupsSettings(), clientContext);
+    this.deleteInstanceGroupCallable = callableFactory.createUnaryCallable(deleteInstanceGroupTransportSettings,settings.deleteInstanceGroupSettings(), clientContext);
+    this.getInstanceGroupCallable = callableFactory.createUnaryCallable(getInstanceGroupTransportSettings,settings.getInstanceGroupSettings(), clientContext);
+    this.insertInstanceGroupCallable = callableFactory.createUnaryCallable(insertInstanceGroupTransportSettings,settings.insertInstanceGroupSettings(), clientContext);
+    this.listInstanceGroupsCallable = callableFactory.createUnaryCallable(listInstanceGroupsTransportSettings,settings.listInstanceGroupsSettings(), clientContext);
+    this.listInstanceGroupsPagedCallable = callableFactory.createPagedCallable(listInstanceGroupsTransportSettings,settings.listInstanceGroupsSettings(), clientContext);
+    this.listInstancesInstanceGroupsCallable = callableFactory.createUnaryCallable(listInstancesInstanceGroupsTransportSettings,settings.listInstancesInstanceGroupsSettings(), clientContext);
+    this.listInstancesInstanceGroupsPagedCallable = callableFactory.createPagedCallable(listInstancesInstanceGroupsTransportSettings,settings.listInstancesInstanceGroupsSettings(), clientContext);
+    this.removeInstancesInstanceGroupCallable = callableFactory.createUnaryCallable(removeInstancesInstanceGroupTransportSettings,settings.removeInstancesInstanceGroupSettings(), clientContext);
+    this.setNamedPortsInstanceGroupCallable = callableFactory.createUnaryCallable(setNamedPortsInstanceGroupTransportSettings,settings.setNamedPortsInstanceGroupSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

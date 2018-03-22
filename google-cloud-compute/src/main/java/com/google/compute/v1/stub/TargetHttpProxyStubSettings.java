@@ -274,7 +274,7 @@ public class TargetHttpProxyStubSettings extends StubSettings<TargetHttpProxyStu
         }
         @Override
         public Iterable<TargetHttpProxy> extractResources(TargetHttpProxyList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

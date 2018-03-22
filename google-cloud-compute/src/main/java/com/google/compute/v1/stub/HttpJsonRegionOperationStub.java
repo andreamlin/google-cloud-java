@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -56,8 +57,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonRegionOperationStub extends RegionOperationStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationMethodDescriptor =
       ApiMethodDescriptor.<DeleteRegionOperationHttpRequest, Void>newBuilder()
@@ -97,7 +96,6 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("region")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationCallable;
@@ -105,6 +103,7 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
   private final UnaryCallable<ListRegionOperationsHttpRequest, OperationList> listRegionOperationsCallable;
   private final UnaryCallable<ListRegionOperationsHttpRequest, ListRegionOperationsPagedResponse> listRegionOperationsPagedCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonRegionOperationStub create(RegionOperationStubSettings settings) throws IOException {
     return new HttpJsonRegionOperationStub(settings, ClientContext.create(settings));
   }
@@ -113,12 +112,26 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
     return new HttpJsonRegionOperationStub(RegionOperationStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonRegionOperationStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonRegionOperationStub(RegionOperationSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonRegionOperationStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonRegionOperationStub(RegionOperationStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonRegionOperationCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonRegionOperationStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonRegionOperationStub(RegionOperationStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationTransportSettings =
         HttpJsonCallSettings.<DeleteRegionOperationHttpRequest, Void>newBuilder()
@@ -133,10 +146,10 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
             .setMethodDescriptor(listRegionOperationsMethodDescriptor)
             .build();
 
-    this.deleteRegionOperationCallable = HttpJsonCallableFactory.createUnaryCallable(deleteRegionOperationTransportSettings,settings.deleteRegionOperationSettings(), clientContext);
-    this.getRegionOperationCallable = HttpJsonCallableFactory.createUnaryCallable(getRegionOperationTransportSettings,settings.getRegionOperationSettings(), clientContext);
-    this.listRegionOperationsCallable = HttpJsonCallableFactory.createUnaryCallable(listRegionOperationsTransportSettings,settings.listRegionOperationsSettings(), clientContext);
-    this.listRegionOperationsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listRegionOperationsTransportSettings,settings.listRegionOperationsSettings(), clientContext);
+    this.deleteRegionOperationCallable = callableFactory.createUnaryCallable(deleteRegionOperationTransportSettings,settings.deleteRegionOperationSettings(), clientContext);
+    this.getRegionOperationCallable = callableFactory.createUnaryCallable(getRegionOperationTransportSettings,settings.getRegionOperationSettings(), clientContext);
+    this.listRegionOperationsCallable = callableFactory.createUnaryCallable(listRegionOperationsTransportSettings,settings.listRegionOperationsSettings(), clientContext);
+    this.listRegionOperationsPagedCallable = callableFactory.createPagedCallable(listRegionOperationsTransportSettings,settings.listRegionOperationsSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

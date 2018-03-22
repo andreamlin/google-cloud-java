@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -59,8 +60,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonNetworkStub extends NetworkStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteNetworkHttpRequest, Operation> deleteNetworkMethodDescriptor =
       ApiMethodDescriptor.<DeleteNetworkHttpRequest, Operation>newBuilder()
@@ -127,7 +126,6 @@ public class HttpJsonNetworkStub extends NetworkStub {
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("network")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteNetworkHttpRequest, Operation> deleteNetworkCallable;
@@ -137,6 +135,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
   private final UnaryCallable<ListNetworksHttpRequest, ListNetworksPagedResponse> listNetworksPagedCallable;
   private final UnaryCallable<SwitchToCustomModeNetworkHttpRequest, Operation> switchToCustomModeNetworkCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonNetworkStub create(NetworkStubSettings settings) throws IOException {
     return new HttpJsonNetworkStub(settings, ClientContext.create(settings));
   }
@@ -145,12 +144,26 @@ public class HttpJsonNetworkStub extends NetworkStub {
     return new HttpJsonNetworkStub(NetworkStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonNetworkStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonNetworkStub(NetworkSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonNetworkStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonNetworkStub(NetworkStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonNetworkCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonNetworkStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonNetworkStub(NetworkStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteNetworkHttpRequest, Operation> deleteNetworkTransportSettings =
         HttpJsonCallSettings.<DeleteNetworkHttpRequest, Operation>newBuilder()
@@ -173,12 +186,12 @@ public class HttpJsonNetworkStub extends NetworkStub {
             .setMethodDescriptor(switchToCustomModeNetworkMethodDescriptor)
             .build();
 
-    this.deleteNetworkCallable = HttpJsonCallableFactory.createUnaryCallable(deleteNetworkTransportSettings,settings.deleteNetworkSettings(), clientContext);
-    this.getNetworkCallable = HttpJsonCallableFactory.createUnaryCallable(getNetworkTransportSettings,settings.getNetworkSettings(), clientContext);
-    this.insertNetworkCallable = HttpJsonCallableFactory.createUnaryCallable(insertNetworkTransportSettings,settings.insertNetworkSettings(), clientContext);
-    this.listNetworksCallable = HttpJsonCallableFactory.createUnaryCallable(listNetworksTransportSettings,settings.listNetworksSettings(), clientContext);
-    this.listNetworksPagedCallable = HttpJsonCallableFactory.createPagedCallable(listNetworksTransportSettings,settings.listNetworksSettings(), clientContext);
-    this.switchToCustomModeNetworkCallable = HttpJsonCallableFactory.createUnaryCallable(switchToCustomModeNetworkTransportSettings,settings.switchToCustomModeNetworkSettings(), clientContext);
+    this.deleteNetworkCallable = callableFactory.createUnaryCallable(deleteNetworkTransportSettings,settings.deleteNetworkSettings(), clientContext);
+    this.getNetworkCallable = callableFactory.createUnaryCallable(getNetworkTransportSettings,settings.getNetworkSettings(), clientContext);
+    this.insertNetworkCallable = callableFactory.createUnaryCallable(insertNetworkTransportSettings,settings.insertNetworkSettings(), clientContext);
+    this.listNetworksCallable = callableFactory.createUnaryCallable(listNetworksTransportSettings,settings.listNetworksSettings(), clientContext);
+    this.listNetworksPagedCallable = callableFactory.createPagedCallable(listNetworksTransportSettings,settings.listNetworksSettings(), clientContext);
+    this.switchToCustomModeNetworkCallable = callableFactory.createUnaryCallable(switchToCustomModeNetworkTransportSettings,settings.switchToCustomModeNetworkSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

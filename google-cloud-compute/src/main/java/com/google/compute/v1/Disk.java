@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -153,11 +155,11 @@ public final class Disk implements ApiMessage {
       fieldMap.put("lastDetachTimestamp", Collections.singletonList(String.valueOf(lastDetachTimestamp)));
     }
     if (fieldNames.contains("licenses") && licenses != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : licenses) {
         stringList.add(item.toString());
       }
-      fieldMap.put("licenses", stringList);
+      fieldMap.put("licenses", stringList.build());
     }
     if (fieldNames.contains("name") && name != null) {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
@@ -196,11 +198,11 @@ public final class Disk implements ApiMessage {
       fieldMap.put("type", Collections.singletonList(String.valueOf(type)));
     }
     if (fieldNames.contains("users") && users != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : users) {
         stringList.add(item.toString());
       }
-      fieldMap.put("users", stringList);
+      fieldMap.put("users", stringList.build());
     }
     if (fieldNames.contains("zone") && zone != null) {
       fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
@@ -293,7 +295,7 @@ public final class Disk implements ApiMessage {
     return description;
   }
 
-  public CustomerEncryptionKey getDiskEncryptionKey() {
+  public CustomerEncryptionKey getCustomerEncryptionKey() {
     return diskEncryptionKey;
   }
 
@@ -313,7 +315,7 @@ public final class Disk implements ApiMessage {
     return lastDetachTimestamp;
   }
 
-  public List<String> getLicenses() {
+  public List<String> getLicensesList() {
     return licenses;
   }
 
@@ -337,7 +339,7 @@ public final class Disk implements ApiMessage {
     return sourceImage;
   }
 
-  public CustomerEncryptionKey getSourceImageEncryptionKey() {
+  public CustomerEncryptionKey getCustomerEncryptionKey() {
     return sourceImageEncryptionKey;
   }
 
@@ -349,7 +351,7 @@ public final class Disk implements ApiMessage {
     return sourceSnapshot;
   }
 
-  public CustomerEncryptionKey getSourceSnapshotEncryptionKey() {
+  public CustomerEncryptionKey getCustomerEncryptionKey() {
     return sourceSnapshotEncryptionKey;
   }
 
@@ -365,7 +367,7 @@ public final class Disk implements ApiMessage {
     return type;
   }
 
-  public List<String> getUsers() {
+  public List<String> getUsersList() {
     return users;
   }
 
@@ -427,7 +429,7 @@ public final class Disk implements ApiMessage {
       if (other.getDescription() != null) {
         this.description = other.description;
       }
-      if (other.getDiskEncryptionKey() != null) {
+      if (other.getCustomerEncryptionKey() != null) {
         this.diskEncryptionKey = other.diskEncryptionKey;
       }
       if (other.getId() != null) {
@@ -442,7 +444,7 @@ public final class Disk implements ApiMessage {
       if (other.getLastDetachTimestamp() != null) {
         this.lastDetachTimestamp = other.lastDetachTimestamp;
       }
-      if (other.getLicenses() != null) {
+      if (other.getLicensesList() != null) {
         this.licenses = other.licenses;
       }
       if (other.getName() != null) {
@@ -460,7 +462,7 @@ public final class Disk implements ApiMessage {
       if (other.getSourceImage() != null) {
         this.sourceImage = other.sourceImage;
       }
-      if (other.getSourceImageEncryptionKey() != null) {
+      if (other.getCustomerEncryptionKey() != null) {
         this.sourceImageEncryptionKey = other.sourceImageEncryptionKey;
       }
       if (other.getSourceImageId() != null) {
@@ -469,7 +471,7 @@ public final class Disk implements ApiMessage {
       if (other.getSourceSnapshot() != null) {
         this.sourceSnapshot = other.sourceSnapshot;
       }
-      if (other.getSourceSnapshotEncryptionKey() != null) {
+      if (other.getCustomerEncryptionKey() != null) {
         this.sourceSnapshotEncryptionKey = other.sourceSnapshotEncryptionKey;
       }
       if (other.getSourceSnapshotId() != null) {
@@ -481,7 +483,7 @@ public final class Disk implements ApiMessage {
       if (other.getType() != null) {
         this.type = other.type;
       }
-      if (other.getUsers() != null) {
+      if (other.getUsersList() != null) {
         this.users = other.users;
       }
       if (other.getZone() != null) {
@@ -533,11 +535,11 @@ public final class Disk implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getDiskEncryptionKey() {
+    public CustomerEncryptionKey getCustomerEncryptionKey() {
       return diskEncryptionKey;
     }
 
-    public Builder setDiskEncryptionKey(CustomerEncryptionKey diskEncryptionKey) {
+    public Builder setCustomerEncryptionKey(CustomerEncryptionKey diskEncryptionKey) {
       this.diskEncryptionKey = diskEncryptionKey;
       return this;
     }
@@ -578,13 +580,13 @@ public final class Disk implements ApiMessage {
       return this;
     }
 
-    public List<String> getLicenses() {
+    public List<String> getLicensesList() {
       return licenses;
     }
 
     public Builder addAllLicenses(List<String> licenses) {
       if (this.licenses == null) {
-        this.licenses = new LinkedList<>();
+        this.licenses = new ArrayList<>(licenses.size());
       }
       this.licenses.addAll(licenses);
       return this;
@@ -640,11 +642,11 @@ public final class Disk implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getSourceImageEncryptionKey() {
+    public CustomerEncryptionKey getCustomerEncryptionKey() {
       return sourceImageEncryptionKey;
     }
 
-    public Builder setSourceImageEncryptionKey(CustomerEncryptionKey sourceImageEncryptionKey) {
+    public Builder setCustomerEncryptionKey(CustomerEncryptionKey sourceImageEncryptionKey) {
       this.sourceImageEncryptionKey = sourceImageEncryptionKey;
       return this;
     }
@@ -667,11 +669,11 @@ public final class Disk implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getSourceSnapshotEncryptionKey() {
+    public CustomerEncryptionKey getCustomerEncryptionKey() {
       return sourceSnapshotEncryptionKey;
     }
 
-    public Builder setSourceSnapshotEncryptionKey(CustomerEncryptionKey sourceSnapshotEncryptionKey) {
+    public Builder setCustomerEncryptionKey(CustomerEncryptionKey sourceSnapshotEncryptionKey) {
       this.sourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
       return this;
     }
@@ -703,13 +705,13 @@ public final class Disk implements ApiMessage {
       return this;
     }
 
-    public List<String> getUsers() {
+    public List<String> getUsersList() {
       return users;
     }
 
     public Builder addAllUsers(List<String> users) {
       if (this.users == null) {
-        this.users = new LinkedList<>();
+        this.users = new ArrayList<>(users.size());
       }
       this.users.addAll(users);
       return this;
@@ -782,7 +784,7 @@ public final class Disk implements ApiMessage {
       Builder newBuilder = new Builder();
       newBuilder.setCreationTimestamp(this.creationTimestamp);
       newBuilder.setDescription(this.description);
-      newBuilder.setDiskEncryptionKey(this.diskEncryptionKey);
+      newBuilder.setCustomerEncryptionKey(this.diskEncryptionKey);
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
       newBuilder.setLastAttachTimestamp(this.lastAttachTimestamp);
@@ -793,10 +795,10 @@ public final class Disk implements ApiMessage {
       newBuilder.setSelfLink(this.selfLink);
       newBuilder.setSizeGb(this.sizeGb);
       newBuilder.setSourceImage(this.sourceImage);
-      newBuilder.setSourceImageEncryptionKey(this.sourceImageEncryptionKey);
+      newBuilder.setCustomerEncryptionKey(this.sourceImageEncryptionKey);
       newBuilder.setSourceImageId(this.sourceImageId);
       newBuilder.setSourceSnapshot(this.sourceSnapshot);
-      newBuilder.setSourceSnapshotEncryptionKey(this.sourceSnapshotEncryptionKey);
+      newBuilder.setCustomerEncryptionKey(this.sourceSnapshotEncryptionKey);
       newBuilder.setSourceSnapshotId(this.sourceSnapshotId);
       newBuilder.setStatus(this.status);
       newBuilder.setType(this.type);
@@ -844,25 +846,25 @@ public final class Disk implements ApiMessage {
       return
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
           Objects.equals(this.description, that.getDescription()) &&
-          Objects.equals(this.diskEncryptionKey, that.getDiskEncryptionKey()) &&
+          Objects.equals(this.diskEncryptionKey, that.getCustomerEncryptionKey()) &&
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.lastAttachTimestamp, that.getLastAttachTimestamp()) &&
           Objects.equals(this.lastDetachTimestamp, that.getLastDetachTimestamp()) &&
-          Objects.equals(this.licenses, that.getLicenses()) &&
+          Objects.equals(this.licenses, that.getLicensesList()) &&
           Objects.equals(this.name, that.getName()) &&
           Objects.equals(this.options, that.getOptions()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
           Objects.equals(this.sizeGb, that.getSizeGb()) &&
           Objects.equals(this.sourceImage, that.getSourceImage()) &&
-          Objects.equals(this.sourceImageEncryptionKey, that.getSourceImageEncryptionKey()) &&
+          Objects.equals(this.sourceImageEncryptionKey, that.getCustomerEncryptionKey()) &&
           Objects.equals(this.sourceImageId, that.getSourceImageId()) &&
           Objects.equals(this.sourceSnapshot, that.getSourceSnapshot()) &&
-          Objects.equals(this.sourceSnapshotEncryptionKey, that.getSourceSnapshotEncryptionKey()) &&
+          Objects.equals(this.sourceSnapshotEncryptionKey, that.getCustomerEncryptionKey()) &&
           Objects.equals(this.sourceSnapshotId, that.getSourceSnapshotId()) &&
           Objects.equals(this.status, that.getStatus()) &&
           Objects.equals(this.type, that.getType()) &&
-          Objects.equals(this.users, that.getUsers()) &&
+          Objects.equals(this.users, that.getUsersList()) &&
           Objects.equals(this.zone, that.getZone())
           ;
     }

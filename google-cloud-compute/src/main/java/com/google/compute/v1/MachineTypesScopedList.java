@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,11 +54,11 @@ public final class MachineTypesScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("machineTypes") && machineTypes != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (MachineType item : machineTypes) {
         stringList.add(item.toString());
       }
-      fieldMap.put("machineTypes", stringList);
+      fieldMap.put("machineTypes", stringList.build());
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -81,7 +83,7 @@ public final class MachineTypesScopedList implements ApiMessage {
     return null;
   }
 
-  public List<MachineType> getMachineTypes() {
+  public List<MachineType> getMachineTypesList() {
     return machineTypes;
   }
 
@@ -117,7 +119,7 @@ public final class MachineTypesScopedList implements ApiMessage {
 
     public Builder mergeFrom(MachineTypesScopedList other) {
       if (other == MachineTypesScopedList.getDefaultInstance()) return this;
-      if (other.getMachineTypes() != null) {
+      if (other.getMachineTypesList() != null) {
         this.machineTypes = other.machineTypes;
       }
       if (other.getWarning() != null) {
@@ -131,13 +133,13 @@ public final class MachineTypesScopedList implements ApiMessage {
       this.warning = source.warning;
     }
 
-    public List<MachineType> getMachineTypes() {
+    public List<MachineType> getMachineTypesList() {
       return machineTypes;
     }
 
     public Builder addAllMachineTypes(List<MachineType> machineTypes) {
       if (this.machineTypes == null) {
-        this.machineTypes = new LinkedList<>();
+        this.machineTypes = new ArrayList<>(machineTypes.size());
       }
       this.machineTypes.addAll(machineTypes);
       return this;
@@ -190,7 +192,7 @@ public final class MachineTypesScopedList implements ApiMessage {
     if (o instanceof MachineTypesScopedList) {
       MachineTypesScopedList that = (MachineTypesScopedList) o;
       return
-          Objects.equals(this.machineTypes, that.getMachineTypes()) &&
+          Objects.equals(this.machineTypes, that.getMachineTypesList()) &&
           Objects.equals(this.warning, that.getWarning())
           ;
     }

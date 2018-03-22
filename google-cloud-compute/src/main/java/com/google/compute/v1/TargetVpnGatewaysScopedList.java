@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,11 +54,11 @@ public final class TargetVpnGatewaysScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("targetVpnGateways") && targetVpnGateways != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (TargetVpnGateway item : targetVpnGateways) {
         stringList.add(item.toString());
       }
-      fieldMap.put("targetVpnGateways", stringList);
+      fieldMap.put("targetVpnGateways", stringList.build());
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -81,7 +83,7 @@ public final class TargetVpnGatewaysScopedList implements ApiMessage {
     return null;
   }
 
-  public List<TargetVpnGateway> getTargetVpnGateways() {
+  public List<TargetVpnGateway> getTargetVpnGatewaysList() {
     return targetVpnGateways;
   }
 
@@ -117,7 +119,7 @@ public final class TargetVpnGatewaysScopedList implements ApiMessage {
 
     public Builder mergeFrom(TargetVpnGatewaysScopedList other) {
       if (other == TargetVpnGatewaysScopedList.getDefaultInstance()) return this;
-      if (other.getTargetVpnGateways() != null) {
+      if (other.getTargetVpnGatewaysList() != null) {
         this.targetVpnGateways = other.targetVpnGateways;
       }
       if (other.getWarning() != null) {
@@ -131,13 +133,13 @@ public final class TargetVpnGatewaysScopedList implements ApiMessage {
       this.warning = source.warning;
     }
 
-    public List<TargetVpnGateway> getTargetVpnGateways() {
+    public List<TargetVpnGateway> getTargetVpnGatewaysList() {
       return targetVpnGateways;
     }
 
     public Builder addAllTargetVpnGateways(List<TargetVpnGateway> targetVpnGateways) {
       if (this.targetVpnGateways == null) {
-        this.targetVpnGateways = new LinkedList<>();
+        this.targetVpnGateways = new ArrayList<>(targetVpnGateways.size());
       }
       this.targetVpnGateways.addAll(targetVpnGateways);
       return this;
@@ -190,7 +192,7 @@ public final class TargetVpnGatewaysScopedList implements ApiMessage {
     if (o instanceof TargetVpnGatewaysScopedList) {
       TargetVpnGatewaysScopedList that = (TargetVpnGatewaysScopedList) o;
       return
-          Objects.equals(this.targetVpnGateways, that.getTargetVpnGateways()) &&
+          Objects.equals(this.targetVpnGateways, that.getTargetVpnGatewaysList()) &&
           Objects.equals(this.warning, that.getWarning())
           ;
     }

@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -86,8 +87,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonInstanceStub extends InstanceStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AddAccessConfigInstanceHttpRequest, Operation> addAccessConfigInstanceMethodDescriptor =
       ApiMethodDescriptor.<AddAccessConfigInstanceHttpRequest, Operation>newBuilder()
@@ -355,7 +354,6 @@ public class HttpJsonInstanceStub extends InstanceStub {
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("instance")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AddAccessConfigInstanceHttpRequest, Operation> addAccessConfigInstanceCallable;
@@ -381,6 +379,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   private final UnaryCallable<StartWithEncryptionKeyInstanceHttpRequest, Operation> startWithEncryptionKeyInstanceCallable;
   private final UnaryCallable<StopInstanceHttpRequest, Operation> stopInstanceCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonInstanceStub create(InstanceStubSettings settings) throws IOException {
     return new HttpJsonInstanceStub(settings, ClientContext.create(settings));
   }
@@ -389,12 +388,26 @@ public class HttpJsonInstanceStub extends InstanceStub {
     return new HttpJsonInstanceStub(InstanceStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonInstanceStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonInstanceStub(InstanceSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonInstanceStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonInstanceStub(InstanceStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonInstanceCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonInstanceStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonInstanceStub(InstanceStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AddAccessConfigInstanceHttpRequest, Operation> addAccessConfigInstanceTransportSettings =
         HttpJsonCallSettings.<AddAccessConfigInstanceHttpRequest, Operation>newBuilder()
@@ -477,28 +490,28 @@ public class HttpJsonInstanceStub extends InstanceStub {
             .setMethodDescriptor(stopInstanceMethodDescriptor)
             .build();
 
-    this.addAccessConfigInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(addAccessConfigInstanceTransportSettings,settings.addAccessConfigInstanceSettings(), clientContext);
-    this.aggregatedListInstancesCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListInstancesTransportSettings,settings.aggregatedListInstancesSettings(), clientContext);
-    this.aggregatedListInstancesPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListInstancesTransportSettings,settings.aggregatedListInstancesSettings(), clientContext);
-    this.attachDiskInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(attachDiskInstanceTransportSettings,settings.attachDiskInstanceSettings(), clientContext);
-    this.deleteInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(deleteInstanceTransportSettings,settings.deleteInstanceSettings(), clientContext);
-    this.deleteAccessConfigInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(deleteAccessConfigInstanceTransportSettings,settings.deleteAccessConfigInstanceSettings(), clientContext);
-    this.detachDiskInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(detachDiskInstanceTransportSettings,settings.detachDiskInstanceSettings(), clientContext);
-    this.getInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(getInstanceTransportSettings,settings.getInstanceSettings(), clientContext);
-    this.getSerialPortOutputInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(getSerialPortOutputInstanceTransportSettings,settings.getSerialPortOutputInstanceSettings(), clientContext);
-    this.insertInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(insertInstanceTransportSettings,settings.insertInstanceSettings(), clientContext);
-    this.listInstancesCallable = HttpJsonCallableFactory.createUnaryCallable(listInstancesTransportSettings,settings.listInstancesSettings(), clientContext);
-    this.listInstancesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listInstancesTransportSettings,settings.listInstancesSettings(), clientContext);
-    this.resetInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(resetInstanceTransportSettings,settings.resetInstanceSettings(), clientContext);
-    this.setDiskAutoDeleteInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(setDiskAutoDeleteInstanceTransportSettings,settings.setDiskAutoDeleteInstanceSettings(), clientContext);
-    this.setMachineTypeInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(setMachineTypeInstanceTransportSettings,settings.setMachineTypeInstanceSettings(), clientContext);
-    this.setMetadataInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(setMetadataInstanceTransportSettings,settings.setMetadataInstanceSettings(), clientContext);
-    this.setSchedulingInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(setSchedulingInstanceTransportSettings,settings.setSchedulingInstanceSettings(), clientContext);
-    this.setServiceAccountInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(setServiceAccountInstanceTransportSettings,settings.setServiceAccountInstanceSettings(), clientContext);
-    this.setTagsInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(setTagsInstanceTransportSettings,settings.setTagsInstanceSettings(), clientContext);
-    this.startInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(startInstanceTransportSettings,settings.startInstanceSettings(), clientContext);
-    this.startWithEncryptionKeyInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(startWithEncryptionKeyInstanceTransportSettings,settings.startWithEncryptionKeyInstanceSettings(), clientContext);
-    this.stopInstanceCallable = HttpJsonCallableFactory.createUnaryCallable(stopInstanceTransportSettings,settings.stopInstanceSettings(), clientContext);
+    this.addAccessConfigInstanceCallable = callableFactory.createUnaryCallable(addAccessConfigInstanceTransportSettings,settings.addAccessConfigInstanceSettings(), clientContext);
+    this.aggregatedListInstancesCallable = callableFactory.createUnaryCallable(aggregatedListInstancesTransportSettings,settings.aggregatedListInstancesSettings(), clientContext);
+    this.aggregatedListInstancesPagedCallable = callableFactory.createPagedCallable(aggregatedListInstancesTransportSettings,settings.aggregatedListInstancesSettings(), clientContext);
+    this.attachDiskInstanceCallable = callableFactory.createUnaryCallable(attachDiskInstanceTransportSettings,settings.attachDiskInstanceSettings(), clientContext);
+    this.deleteInstanceCallable = callableFactory.createUnaryCallable(deleteInstanceTransportSettings,settings.deleteInstanceSettings(), clientContext);
+    this.deleteAccessConfigInstanceCallable = callableFactory.createUnaryCallable(deleteAccessConfigInstanceTransportSettings,settings.deleteAccessConfigInstanceSettings(), clientContext);
+    this.detachDiskInstanceCallable = callableFactory.createUnaryCallable(detachDiskInstanceTransportSettings,settings.detachDiskInstanceSettings(), clientContext);
+    this.getInstanceCallable = callableFactory.createUnaryCallable(getInstanceTransportSettings,settings.getInstanceSettings(), clientContext);
+    this.getSerialPortOutputInstanceCallable = callableFactory.createUnaryCallable(getSerialPortOutputInstanceTransportSettings,settings.getSerialPortOutputInstanceSettings(), clientContext);
+    this.insertInstanceCallable = callableFactory.createUnaryCallable(insertInstanceTransportSettings,settings.insertInstanceSettings(), clientContext);
+    this.listInstancesCallable = callableFactory.createUnaryCallable(listInstancesTransportSettings,settings.listInstancesSettings(), clientContext);
+    this.listInstancesPagedCallable = callableFactory.createPagedCallable(listInstancesTransportSettings,settings.listInstancesSettings(), clientContext);
+    this.resetInstanceCallable = callableFactory.createUnaryCallable(resetInstanceTransportSettings,settings.resetInstanceSettings(), clientContext);
+    this.setDiskAutoDeleteInstanceCallable = callableFactory.createUnaryCallable(setDiskAutoDeleteInstanceTransportSettings,settings.setDiskAutoDeleteInstanceSettings(), clientContext);
+    this.setMachineTypeInstanceCallable = callableFactory.createUnaryCallable(setMachineTypeInstanceTransportSettings,settings.setMachineTypeInstanceSettings(), clientContext);
+    this.setMetadataInstanceCallable = callableFactory.createUnaryCallable(setMetadataInstanceTransportSettings,settings.setMetadataInstanceSettings(), clientContext);
+    this.setSchedulingInstanceCallable = callableFactory.createUnaryCallable(setSchedulingInstanceTransportSettings,settings.setSchedulingInstanceSettings(), clientContext);
+    this.setServiceAccountInstanceCallable = callableFactory.createUnaryCallable(setServiceAccountInstanceTransportSettings,settings.setServiceAccountInstanceSettings(), clientContext);
+    this.setTagsInstanceCallable = callableFactory.createUnaryCallable(setTagsInstanceTransportSettings,settings.setTagsInstanceSettings(), clientContext);
+    this.startInstanceCallable = callableFactory.createUnaryCallable(startInstanceTransportSettings,settings.startInstanceSettings(), clientContext);
+    this.startWithEncryptionKeyInstanceCallable = callableFactory.createUnaryCallable(startWithEncryptionKeyInstanceTransportSettings,settings.startWithEncryptionKeyInstanceSettings(), clientContext);
+    this.stopInstanceCallable = callableFactory.createUnaryCallable(stopInstanceTransportSettings,settings.stopInstanceSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

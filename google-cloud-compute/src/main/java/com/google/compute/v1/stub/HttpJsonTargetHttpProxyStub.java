@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -60,8 +61,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteTargetHttpProxyHttpRequest, Operation> deleteTargetHttpProxyMethodDescriptor =
       ApiMethodDescriptor.<DeleteTargetHttpProxyHttpRequest, Operation>newBuilder()
@@ -128,7 +127,6 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("targetHttpProxy")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteTargetHttpProxyHttpRequest, Operation> deleteTargetHttpProxyCallable;
@@ -138,6 +136,7 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
   private final UnaryCallable<ListTargetHttpProxiesHttpRequest, ListTargetHttpProxiesPagedResponse> listTargetHttpProxiesPagedCallable;
   private final UnaryCallable<SetUrlMapTargetHttpProxyHttpRequest, Operation> setUrlMapTargetHttpProxyCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonTargetHttpProxyStub create(TargetHttpProxyStubSettings settings) throws IOException {
     return new HttpJsonTargetHttpProxyStub(settings, ClientContext.create(settings));
   }
@@ -146,12 +145,26 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
     return new HttpJsonTargetHttpProxyStub(TargetHttpProxyStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonTargetHttpProxyStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonTargetHttpProxyStub(TargetHttpProxySettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonTargetHttpProxyStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonTargetHttpProxyStub(TargetHttpProxyStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonTargetHttpProxyCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonTargetHttpProxyStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonTargetHttpProxyStub(TargetHttpProxyStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteTargetHttpProxyHttpRequest, Operation> deleteTargetHttpProxyTransportSettings =
         HttpJsonCallSettings.<DeleteTargetHttpProxyHttpRequest, Operation>newBuilder()
@@ -174,12 +187,12 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
             .setMethodDescriptor(setUrlMapTargetHttpProxyMethodDescriptor)
             .build();
 
-    this.deleteTargetHttpProxyCallable = HttpJsonCallableFactory.createUnaryCallable(deleteTargetHttpProxyTransportSettings,settings.deleteTargetHttpProxySettings(), clientContext);
-    this.getTargetHttpProxyCallable = HttpJsonCallableFactory.createUnaryCallable(getTargetHttpProxyTransportSettings,settings.getTargetHttpProxySettings(), clientContext);
-    this.insertTargetHttpProxyCallable = HttpJsonCallableFactory.createUnaryCallable(insertTargetHttpProxyTransportSettings,settings.insertTargetHttpProxySettings(), clientContext);
-    this.listTargetHttpProxiesCallable = HttpJsonCallableFactory.createUnaryCallable(listTargetHttpProxiesTransportSettings,settings.listTargetHttpProxiesSettings(), clientContext);
-    this.listTargetHttpProxiesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listTargetHttpProxiesTransportSettings,settings.listTargetHttpProxiesSettings(), clientContext);
-    this.setUrlMapTargetHttpProxyCallable = HttpJsonCallableFactory.createUnaryCallable(setUrlMapTargetHttpProxyTransportSettings,settings.setUrlMapTargetHttpProxySettings(), clientContext);
+    this.deleteTargetHttpProxyCallable = callableFactory.createUnaryCallable(deleteTargetHttpProxyTransportSettings,settings.deleteTargetHttpProxySettings(), clientContext);
+    this.getTargetHttpProxyCallable = callableFactory.createUnaryCallable(getTargetHttpProxyTransportSettings,settings.getTargetHttpProxySettings(), clientContext);
+    this.insertTargetHttpProxyCallable = callableFactory.createUnaryCallable(insertTargetHttpProxyTransportSettings,settings.insertTargetHttpProxySettings(), clientContext);
+    this.listTargetHttpProxiesCallable = callableFactory.createUnaryCallable(listTargetHttpProxiesTransportSettings,settings.listTargetHttpProxiesSettings(), clientContext);
+    this.listTargetHttpProxiesPagedCallable = callableFactory.createPagedCallable(listTargetHttpProxiesTransportSettings,settings.listTargetHttpProxiesSettings(), clientContext);
+    this.setUrlMapTargetHttpProxyCallable = callableFactory.createUnaryCallable(setUrlMapTargetHttpProxyTransportSettings,settings.setUrlMapTargetHttpProxySettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

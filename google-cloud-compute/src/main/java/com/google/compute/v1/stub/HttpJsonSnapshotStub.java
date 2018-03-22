@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -57,8 +58,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonSnapshotStub extends SnapshotStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteSnapshotHttpRequest, Operation> deleteSnapshotMethodDescriptor =
       ApiMethodDescriptor.<DeleteSnapshotHttpRequest, Operation>newBuilder()
@@ -99,7 +98,6 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("project")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteSnapshotHttpRequest, Operation> deleteSnapshotCallable;
@@ -107,6 +105,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
   private final UnaryCallable<ListSnapshotsHttpRequest, SnapshotList> listSnapshotsCallable;
   private final UnaryCallable<ListSnapshotsHttpRequest, ListSnapshotsPagedResponse> listSnapshotsPagedCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonSnapshotStub create(SnapshotStubSettings settings) throws IOException {
     return new HttpJsonSnapshotStub(settings, ClientContext.create(settings));
   }
@@ -115,12 +114,26 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
     return new HttpJsonSnapshotStub(SnapshotStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonSnapshotStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonSnapshotStub(SnapshotSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonSnapshotStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonSnapshotStub(SnapshotStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonSnapshotCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonSnapshotStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonSnapshotStub(SnapshotStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteSnapshotHttpRequest, Operation> deleteSnapshotTransportSettings =
         HttpJsonCallSettings.<DeleteSnapshotHttpRequest, Operation>newBuilder()
@@ -135,10 +148,10 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
             .setMethodDescriptor(listSnapshotsMethodDescriptor)
             .build();
 
-    this.deleteSnapshotCallable = HttpJsonCallableFactory.createUnaryCallable(deleteSnapshotTransportSettings,settings.deleteSnapshotSettings(), clientContext);
-    this.getSnapshotCallable = HttpJsonCallableFactory.createUnaryCallable(getSnapshotTransportSettings,settings.getSnapshotSettings(), clientContext);
-    this.listSnapshotsCallable = HttpJsonCallableFactory.createUnaryCallable(listSnapshotsTransportSettings,settings.listSnapshotsSettings(), clientContext);
-    this.listSnapshotsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listSnapshotsTransportSettings,settings.listSnapshotsSettings(), clientContext);
+    this.deleteSnapshotCallable = callableFactory.createUnaryCallable(deleteSnapshotTransportSettings,settings.deleteSnapshotSettings(), clientContext);
+    this.getSnapshotCallable = callableFactory.createUnaryCallable(getSnapshotTransportSettings,settings.getSnapshotSettings(), clientContext);
+    this.listSnapshotsCallable = callableFactory.createUnaryCallable(listSnapshotsTransportSettings,settings.listSnapshotsSettings(), clientContext);
+    this.listSnapshotsPagedCallable = callableFactory.createPagedCallable(listSnapshotsTransportSettings,settings.listSnapshotsSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -74,11 +76,11 @@ public final class AutoscalingPolicy implements ApiMessage {
       fieldMap.put("cpuUtilization", Collections.singletonList(String.valueOf(cpuUtilization)));
     }
     if (fieldNames.contains("customMetricUtilizations") && customMetricUtilizations != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (AutoscalingPolicyCustomMetricUtilization item : customMetricUtilizations) {
         stringList.add(item.toString());
       }
-      fieldMap.put("customMetricUtilizations", stringList);
+      fieldMap.put("customMetricUtilizations", stringList.build());
     }
     if (fieldNames.contains("loadBalancingUtilization") && loadBalancingUtilization != null) {
       fieldMap.put("loadBalancingUtilization", Collections.singletonList(String.valueOf(loadBalancingUtilization)));
@@ -125,15 +127,15 @@ public final class AutoscalingPolicy implements ApiMessage {
     return coolDownPeriodSec;
   }
 
-  public AutoscalingPolicyCpuUtilization getCpuUtilization() {
+  public AutoscalingPolicyCpuUtilization getAutoscalingPolicyCpuUtilization() {
     return cpuUtilization;
   }
 
-  public List<AutoscalingPolicyCustomMetricUtilization> getCustomMetricUtilizations() {
+  public List<AutoscalingPolicyCustomMetricUtilization> getCustomMetricUtilizationsList() {
     return customMetricUtilizations;
   }
 
-  public AutoscalingPolicyLoadBalancingUtilization getLoadBalancingUtilization() {
+  public AutoscalingPolicyLoadBalancingUtilization getAutoscalingPolicyLoadBalancingUtilization() {
     return loadBalancingUtilization;
   }
 
@@ -180,13 +182,13 @@ public final class AutoscalingPolicy implements ApiMessage {
       if (other.getCoolDownPeriodSec() != null) {
         this.coolDownPeriodSec = other.coolDownPeriodSec;
       }
-      if (other.getCpuUtilization() != null) {
+      if (other.getAutoscalingPolicyCpuUtilization() != null) {
         this.cpuUtilization = other.cpuUtilization;
       }
-      if (other.getCustomMetricUtilizations() != null) {
+      if (other.getCustomMetricUtilizationsList() != null) {
         this.customMetricUtilizations = other.customMetricUtilizations;
       }
-      if (other.getLoadBalancingUtilization() != null) {
+      if (other.getAutoscalingPolicyLoadBalancingUtilization() != null) {
         this.loadBalancingUtilization = other.loadBalancingUtilization;
       }
       if (other.getMaxNumReplicas() != null) {
@@ -216,22 +218,22 @@ public final class AutoscalingPolicy implements ApiMessage {
       return this;
     }
 
-    public AutoscalingPolicyCpuUtilization getCpuUtilization() {
+    public AutoscalingPolicyCpuUtilization getAutoscalingPolicyCpuUtilization() {
       return cpuUtilization;
     }
 
-    public Builder setCpuUtilization(AutoscalingPolicyCpuUtilization cpuUtilization) {
+    public Builder setAutoscalingPolicyCpuUtilization(AutoscalingPolicyCpuUtilization cpuUtilization) {
       this.cpuUtilization = cpuUtilization;
       return this;
     }
 
-    public List<AutoscalingPolicyCustomMetricUtilization> getCustomMetricUtilizations() {
+    public List<AutoscalingPolicyCustomMetricUtilization> getCustomMetricUtilizationsList() {
       return customMetricUtilizations;
     }
 
     public Builder addAllCustomMetricUtilizations(List<AutoscalingPolicyCustomMetricUtilization> customMetricUtilizations) {
       if (this.customMetricUtilizations == null) {
-        this.customMetricUtilizations = new LinkedList<>();
+        this.customMetricUtilizations = new ArrayList<>(customMetricUtilizations.size());
       }
       this.customMetricUtilizations.addAll(customMetricUtilizations);
       return this;
@@ -242,11 +244,11 @@ public final class AutoscalingPolicy implements ApiMessage {
       return this;
     }
 
-    public AutoscalingPolicyLoadBalancingUtilization getLoadBalancingUtilization() {
+    public AutoscalingPolicyLoadBalancingUtilization getAutoscalingPolicyLoadBalancingUtilization() {
       return loadBalancingUtilization;
     }
 
-    public Builder setLoadBalancingUtilization(AutoscalingPolicyLoadBalancingUtilization loadBalancingUtilization) {
+    public Builder setAutoscalingPolicyLoadBalancingUtilization(AutoscalingPolicyLoadBalancingUtilization loadBalancingUtilization) {
       this.loadBalancingUtilization = loadBalancingUtilization;
       return this;
     }
@@ -289,9 +291,9 @@ public final class AutoscalingPolicy implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setCoolDownPeriodSec(this.coolDownPeriodSec);
-      newBuilder.setCpuUtilization(this.cpuUtilization);
+      newBuilder.setAutoscalingPolicyCpuUtilization(this.cpuUtilization);
       newBuilder.addAllCustomMetricUtilizations(this.customMetricUtilizations);
-      newBuilder.setLoadBalancingUtilization(this.loadBalancingUtilization);
+      newBuilder.setAutoscalingPolicyLoadBalancingUtilization(this.loadBalancingUtilization);
       newBuilder.setMaxNumReplicas(this.maxNumReplicas);
       newBuilder.setMinNumReplicas(this.minNumReplicas);
       return newBuilder;
@@ -319,9 +321,9 @@ public final class AutoscalingPolicy implements ApiMessage {
       AutoscalingPolicy that = (AutoscalingPolicy) o;
       return
           Objects.equals(this.coolDownPeriodSec, that.getCoolDownPeriodSec()) &&
-          Objects.equals(this.cpuUtilization, that.getCpuUtilization()) &&
-          Objects.equals(this.customMetricUtilizations, that.getCustomMetricUtilizations()) &&
-          Objects.equals(this.loadBalancingUtilization, that.getLoadBalancingUtilization()) &&
+          Objects.equals(this.cpuUtilization, that.getAutoscalingPolicyCpuUtilization()) &&
+          Objects.equals(this.customMetricUtilizations, that.getCustomMetricUtilizationsList()) &&
+          Objects.equals(this.loadBalancingUtilization, that.getAutoscalingPolicyLoadBalancingUtilization()) &&
           Objects.equals(this.maxNumReplicas, that.getMaxNumReplicas()) &&
           Objects.equals(this.minNumReplicas, that.getMinNumReplicas())
           ;

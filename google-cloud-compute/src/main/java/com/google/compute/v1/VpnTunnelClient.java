@@ -25,7 +25,6 @@ import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
 import com.google.api.gax.paging.FixedSizeCollection;
 import com.google.api.gax.paging.Page;
-import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiExceptions;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -284,7 +283,7 @@ public class VpnTunnelClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     VpnTunnelAggregatedList response = vpnTunnelClient.aggregatedListVpnTunnelsCallable().call(request);
-   *     for (VpnTunnel element : response.getVpnTunnels()) {
+   *     for (VpnTunnel element : response.getVpnTunnelsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -712,7 +711,7 @@ public class VpnTunnelClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     VpnTunnelList response = vpnTunnelClient.listVpnTunnelsCallable().call(request);
-   *     for (VpnTunnel element : response.getItems()) {
+   *     for (VpnTunnel element : response.getItemsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

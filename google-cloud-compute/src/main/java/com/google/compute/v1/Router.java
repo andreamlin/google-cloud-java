@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -91,11 +93,11 @@ public final class Router implements ApiMessage {
       fieldMap.put("bgp", Collections.singletonList(String.valueOf(bgp)));
     }
     if (fieldNames.contains("bgpPeers") && bgpPeers != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (RouterBgpPeer item : bgpPeers) {
         stringList.add(item.toString());
       }
-      fieldMap.put("bgpPeers", stringList);
+      fieldMap.put("bgpPeers", stringList.build());
     }
     if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
       fieldMap.put("creationTimestamp", Collections.singletonList(String.valueOf(creationTimestamp)));
@@ -107,11 +109,11 @@ public final class Router implements ApiMessage {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
     }
     if (fieldNames.contains("interfaces") && interfaces != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (RouterInterface item : interfaces) {
         stringList.add(item.toString());
       }
-      fieldMap.put("interfaces", stringList);
+      fieldMap.put("interfaces", stringList.build());
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -175,11 +177,11 @@ public final class Router implements ApiMessage {
     return null;
   }
 
-  public RouterBgp getBgp() {
+  public RouterBgp getRouterBgp() {
     return bgp;
   }
 
-  public List<RouterBgpPeer> getBgpPeers() {
+  public List<RouterBgpPeer> getBgpPeersList() {
     return bgpPeers;
   }
 
@@ -195,7 +197,7 @@ public final class Router implements ApiMessage {
     return id;
   }
 
-  public List<RouterInterface> getInterfaces() {
+  public List<RouterInterface> getInterfacesList() {
     return interfaces;
   }
 
@@ -256,10 +258,10 @@ public final class Router implements ApiMessage {
 
     public Builder mergeFrom(Router other) {
       if (other == Router.getDefaultInstance()) return this;
-      if (other.getBgp() != null) {
+      if (other.getRouterBgp() != null) {
         this.bgp = other.bgp;
       }
-      if (other.getBgpPeers() != null) {
+      if (other.getBgpPeersList() != null) {
         this.bgpPeers = other.bgpPeers;
       }
       if (other.getCreationTimestamp() != null) {
@@ -271,7 +273,7 @@ public final class Router implements ApiMessage {
       if (other.getId() != null) {
         this.id = other.id;
       }
-      if (other.getInterfaces() != null) {
+      if (other.getInterfacesList() != null) {
         this.interfaces = other.interfaces;
       }
       if (other.getKind() != null) {
@@ -306,22 +308,22 @@ public final class Router implements ApiMessage {
       this.selfLink = source.selfLink;
     }
 
-    public RouterBgp getBgp() {
+    public RouterBgp getRouterBgp() {
       return bgp;
     }
 
-    public Builder setBgp(RouterBgp bgp) {
+    public Builder setRouterBgp(RouterBgp bgp) {
       this.bgp = bgp;
       return this;
     }
 
-    public List<RouterBgpPeer> getBgpPeers() {
+    public List<RouterBgpPeer> getBgpPeersList() {
       return bgpPeers;
     }
 
     public Builder addAllBgpPeers(List<RouterBgpPeer> bgpPeers) {
       if (this.bgpPeers == null) {
-        this.bgpPeers = new LinkedList<>();
+        this.bgpPeers = new ArrayList<>(bgpPeers.size());
       }
       this.bgpPeers.addAll(bgpPeers);
       return this;
@@ -359,13 +361,13 @@ public final class Router implements ApiMessage {
       return this;
     }
 
-    public List<RouterInterface> getInterfaces() {
+    public List<RouterInterface> getInterfacesList() {
       return interfaces;
     }
 
     public Builder addAllInterfaces(List<RouterInterface> interfaces) {
       if (this.interfaces == null) {
-        this.interfaces = new LinkedList<>();
+        this.interfaces = new ArrayList<>(interfaces.size());
       }
       this.interfaces.addAll(interfaces);
       return this;
@@ -450,7 +452,7 @@ public final class Router implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setBgp(this.bgp);
+      newBuilder.setRouterBgp(this.bgp);
       newBuilder.addAllBgpPeers(this.bgpPeers);
       newBuilder.setCreationTimestamp(this.creationTimestamp);
       newBuilder.setDescription(this.description);
@@ -490,12 +492,12 @@ public final class Router implements ApiMessage {
     if (o instanceof Router) {
       Router that = (Router) o;
       return
-          Objects.equals(this.bgp, that.getBgp()) &&
-          Objects.equals(this.bgpPeers, that.getBgpPeers()) &&
+          Objects.equals(this.bgp, that.getRouterBgp()) &&
+          Objects.equals(this.bgpPeers, that.getBgpPeersList()) &&
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.id, that.getId()) &&
-          Objects.equals(this.interfaces, that.getInterfaces()) &&
+          Objects.equals(this.interfaces, that.getInterfacesList()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.name, that.getName()) &&
           Objects.equals(this.network, that.getNetwork()) &&

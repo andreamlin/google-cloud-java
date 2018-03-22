@@ -347,7 +347,7 @@ public class InstanceGroupManagerStubSettings extends StubSettings<InstanceGroup
         }
         @Override
         public Iterable<InstanceGroupManager> extractResources(InstanceGroupManagerAggregatedList payload) {
-          return payload.getItems().getInstanceGroupManagers();
+          return payload.getItems().getInstanceGroupManagersList();
         }
       };
 
@@ -381,7 +381,7 @@ public class InstanceGroupManagerStubSettings extends StubSettings<InstanceGroup
         }
         @Override
         public Iterable<InstanceGroupManager> extractResources(InstanceGroupManagerList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

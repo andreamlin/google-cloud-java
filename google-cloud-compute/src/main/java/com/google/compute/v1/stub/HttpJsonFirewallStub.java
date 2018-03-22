@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -60,8 +61,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonFirewallStub extends FirewallStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteFirewallHttpRequest, Operation> deleteFirewallMethodDescriptor =
       ApiMethodDescriptor.<DeleteFirewallHttpRequest, Operation>newBuilder()
@@ -141,7 +140,6 @@ public class HttpJsonFirewallStub extends FirewallStub {
           .setHttpMethod(HttpMethods.PUT)
           .setResourceNameField("firewall")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteFirewallHttpRequest, Operation> deleteFirewallCallable;
@@ -152,6 +150,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
   private final UnaryCallable<PatchFirewallHttpRequest, Operation> patchFirewallCallable;
   private final UnaryCallable<UpdateFirewallHttpRequest, Operation> updateFirewallCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonFirewallStub create(FirewallStubSettings settings) throws IOException {
     return new HttpJsonFirewallStub(settings, ClientContext.create(settings));
   }
@@ -160,12 +159,26 @@ public class HttpJsonFirewallStub extends FirewallStub {
     return new HttpJsonFirewallStub(FirewallStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonFirewallStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonFirewallStub(FirewallSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonFirewallStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonFirewallStub(FirewallStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonFirewallCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonFirewallStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonFirewallStub(FirewallStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteFirewallHttpRequest, Operation> deleteFirewallTransportSettings =
         HttpJsonCallSettings.<DeleteFirewallHttpRequest, Operation>newBuilder()
@@ -192,13 +205,13 @@ public class HttpJsonFirewallStub extends FirewallStub {
             .setMethodDescriptor(updateFirewallMethodDescriptor)
             .build();
 
-    this.deleteFirewallCallable = HttpJsonCallableFactory.createUnaryCallable(deleteFirewallTransportSettings,settings.deleteFirewallSettings(), clientContext);
-    this.getFirewallCallable = HttpJsonCallableFactory.createUnaryCallable(getFirewallTransportSettings,settings.getFirewallSettings(), clientContext);
-    this.insertFirewallCallable = HttpJsonCallableFactory.createUnaryCallable(insertFirewallTransportSettings,settings.insertFirewallSettings(), clientContext);
-    this.listFirewallsCallable = HttpJsonCallableFactory.createUnaryCallable(listFirewallsTransportSettings,settings.listFirewallsSettings(), clientContext);
-    this.listFirewallsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listFirewallsTransportSettings,settings.listFirewallsSettings(), clientContext);
-    this.patchFirewallCallable = HttpJsonCallableFactory.createUnaryCallable(patchFirewallTransportSettings,settings.patchFirewallSettings(), clientContext);
-    this.updateFirewallCallable = HttpJsonCallableFactory.createUnaryCallable(updateFirewallTransportSettings,settings.updateFirewallSettings(), clientContext);
+    this.deleteFirewallCallable = callableFactory.createUnaryCallable(deleteFirewallTransportSettings,settings.deleteFirewallSettings(), clientContext);
+    this.getFirewallCallable = callableFactory.createUnaryCallable(getFirewallTransportSettings,settings.getFirewallSettings(), clientContext);
+    this.insertFirewallCallable = callableFactory.createUnaryCallable(insertFirewallTransportSettings,settings.insertFirewallSettings(), clientContext);
+    this.listFirewallsCallable = callableFactory.createUnaryCallable(listFirewallsTransportSettings,settings.listFirewallsSettings(), clientContext);
+    this.listFirewallsPagedCallable = callableFactory.createPagedCallable(listFirewallsTransportSettings,settings.listFirewallsSettings(), clientContext);
+    this.patchFirewallCallable = callableFactory.createUnaryCallable(patchFirewallTransportSettings,settings.patchFirewallSettings(), clientContext);
+    this.updateFirewallCallable = callableFactory.createUnaryCallable(updateFirewallTransportSettings,settings.updateFirewallSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

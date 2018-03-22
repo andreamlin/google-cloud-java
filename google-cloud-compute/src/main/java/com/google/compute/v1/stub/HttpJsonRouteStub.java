@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -58,8 +59,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonRouteStub extends RouteStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteRouteHttpRequest, Operation> deleteRouteMethodDescriptor =
       ApiMethodDescriptor.<DeleteRouteHttpRequest, Operation>newBuilder()
@@ -113,7 +112,6 @@ public class HttpJsonRouteStub extends RouteStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("project")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteRouteHttpRequest, Operation> deleteRouteCallable;
@@ -122,6 +120,7 @@ public class HttpJsonRouteStub extends RouteStub {
   private final UnaryCallable<ListRoutesHttpRequest, RouteList> listRoutesCallable;
   private final UnaryCallable<ListRoutesHttpRequest, ListRoutesPagedResponse> listRoutesPagedCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonRouteStub create(RouteStubSettings settings) throws IOException {
     return new HttpJsonRouteStub(settings, ClientContext.create(settings));
   }
@@ -130,12 +129,26 @@ public class HttpJsonRouteStub extends RouteStub {
     return new HttpJsonRouteStub(RouteStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonRouteStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonRouteStub(RouteSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonRouteStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonRouteStub(RouteStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonRouteCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonRouteStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonRouteStub(RouteStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteRouteHttpRequest, Operation> deleteRouteTransportSettings =
         HttpJsonCallSettings.<DeleteRouteHttpRequest, Operation>newBuilder()
@@ -154,11 +167,11 @@ public class HttpJsonRouteStub extends RouteStub {
             .setMethodDescriptor(listRoutesMethodDescriptor)
             .build();
 
-    this.deleteRouteCallable = HttpJsonCallableFactory.createUnaryCallable(deleteRouteTransportSettings,settings.deleteRouteSettings(), clientContext);
-    this.getRouteCallable = HttpJsonCallableFactory.createUnaryCallable(getRouteTransportSettings,settings.getRouteSettings(), clientContext);
-    this.insertRouteCallable = HttpJsonCallableFactory.createUnaryCallable(insertRouteTransportSettings,settings.insertRouteSettings(), clientContext);
-    this.listRoutesCallable = HttpJsonCallableFactory.createUnaryCallable(listRoutesTransportSettings,settings.listRoutesSettings(), clientContext);
-    this.listRoutesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listRoutesTransportSettings,settings.listRoutesSettings(), clientContext);
+    this.deleteRouteCallable = callableFactory.createUnaryCallable(deleteRouteTransportSettings,settings.deleteRouteSettings(), clientContext);
+    this.getRouteCallable = callableFactory.createUnaryCallable(getRouteTransportSettings,settings.getRouteSettings(), clientContext);
+    this.insertRouteCallable = callableFactory.createUnaryCallable(insertRouteTransportSettings,settings.insertRouteSettings(), clientContext);
+    this.listRoutesCallable = callableFactory.createUnaryCallable(listRoutesTransportSettings,settings.listRoutesSettings(), clientContext);
+    this.listRoutesPagedCallable = callableFactory.createPagedCallable(listRoutesTransportSettings,settings.listRoutesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

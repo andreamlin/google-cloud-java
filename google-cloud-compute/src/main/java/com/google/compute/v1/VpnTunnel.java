@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -130,11 +132,11 @@ public final class VpnTunnel implements ApiMessage {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
     }
     if (fieldNames.contains("localTrafficSelector") && localTrafficSelector != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : localTrafficSelector) {
         stringList.add(item.toString());
       }
-      fieldMap.put("localTrafficSelector", stringList);
+      fieldMap.put("localTrafficSelector", stringList.build());
     }
     if (fieldNames.contains("name") && name != null) {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
@@ -146,11 +148,11 @@ public final class VpnTunnel implements ApiMessage {
       fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
     }
     if (fieldNames.contains("remoteTrafficSelector") && remoteTrafficSelector != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : remoteTrafficSelector) {
         stringList.add(item.toString());
       }
-      fieldMap.put("remoteTrafficSelector", stringList);
+      fieldMap.put("remoteTrafficSelector", stringList.build());
     }
     if (fieldNames.contains("router") && router != null) {
       fieldMap.put("router", Collections.singletonList(String.valueOf(router)));
@@ -259,7 +261,7 @@ public final class VpnTunnel implements ApiMessage {
     return kind;
   }
 
-  public List<String> getLocalTrafficSelector() {
+  public List<String> getLocalTrafficSelectorList() {
     return localTrafficSelector;
   }
 
@@ -275,7 +277,7 @@ public final class VpnTunnel implements ApiMessage {
     return region;
   }
 
-  public List<String> getRemoteTrafficSelector() {
+  public List<String> getRemoteTrafficSelectorList() {
     return remoteTrafficSelector;
   }
 
@@ -364,7 +366,7 @@ public final class VpnTunnel implements ApiMessage {
       if (other.getKind() != null) {
         this.kind = other.kind;
       }
-      if (other.getLocalTrafficSelector() != null) {
+      if (other.getLocalTrafficSelectorList() != null) {
         this.localTrafficSelector = other.localTrafficSelector;
       }
       if (other.getName() != null) {
@@ -376,7 +378,7 @@ public final class VpnTunnel implements ApiMessage {
       if (other.getRegion() != null) {
         this.region = other.region;
       }
-      if (other.getRemoteTrafficSelector() != null) {
+      if (other.getRemoteTrafficSelectorList() != null) {
         this.remoteTrafficSelector = other.remoteTrafficSelector;
       }
       if (other.getRouter() != null) {
@@ -474,13 +476,13 @@ public final class VpnTunnel implements ApiMessage {
       return this;
     }
 
-    public List<String> getLocalTrafficSelector() {
+    public List<String> getLocalTrafficSelectorList() {
       return localTrafficSelector;
     }
 
     public Builder addAllLocalTrafficSelector(List<String> localTrafficSelector) {
       if (this.localTrafficSelector == null) {
-        this.localTrafficSelector = new LinkedList<>();
+        this.localTrafficSelector = new ArrayList<>(localTrafficSelector.size());
       }
       this.localTrafficSelector.addAll(localTrafficSelector);
       return this;
@@ -518,13 +520,13 @@ public final class VpnTunnel implements ApiMessage {
       return this;
     }
 
-    public List<String> getRemoteTrafficSelector() {
+    public List<String> getRemoteTrafficSelectorList() {
       return remoteTrafficSelector;
     }
 
     public Builder addAllRemoteTrafficSelector(List<String> remoteTrafficSelector) {
       if (this.remoteTrafficSelector == null) {
-        this.remoteTrafficSelector = new LinkedList<>();
+        this.remoteTrafficSelector = new ArrayList<>(remoteTrafficSelector.size());
       }
       this.remoteTrafficSelector.addAll(remoteTrafficSelector);
       return this;
@@ -688,11 +690,11 @@ public final class VpnTunnel implements ApiMessage {
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.ikeVersion, that.getIkeVersion()) &&
           Objects.equals(this.kind, that.getKind()) &&
-          Objects.equals(this.localTrafficSelector, that.getLocalTrafficSelector()) &&
+          Objects.equals(this.localTrafficSelector, that.getLocalTrafficSelectorList()) &&
           Objects.equals(this.name, that.getName()) &&
           Objects.equals(this.peerIp, that.getPeerIp()) &&
           Objects.equals(this.region, that.getRegion()) &&
-          Objects.equals(this.remoteTrafficSelector, that.getRemoteTrafficSelector()) &&
+          Objects.equals(this.remoteTrafficSelector, that.getRemoteTrafficSelectorList()) &&
           Objects.equals(this.router, that.getRouter()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
           Objects.equals(this.sharedSecret, that.getSharedSecret()) &&

@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -165,7 +167,7 @@ public final class DiskType implements ApiMessage {
     return defaultDiskSizeGb;
   }
 
-  public DeprecationStatus getDeprecated() {
+  public DeprecationStatus getDeprecationStatus() {
     return deprecated;
   }
 
@@ -239,7 +241,7 @@ public final class DiskType implements ApiMessage {
       if (other.getDefaultDiskSizeGb() != null) {
         this.defaultDiskSizeGb = other.defaultDiskSizeGb;
       }
-      if (other.getDeprecated() != null) {
+      if (other.getDeprecationStatus() != null) {
         this.deprecated = other.deprecated;
       }
       if (other.getDescription() != null) {
@@ -297,11 +299,11 @@ public final class DiskType implements ApiMessage {
       return this;
     }
 
-    public DeprecationStatus getDeprecated() {
+    public DeprecationStatus getDeprecationStatus() {
       return deprecated;
     }
 
-    public Builder setDeprecated(DeprecationStatus deprecated) {
+    public Builder setDeprecationStatus(DeprecationStatus deprecated) {
       this.deprecated = deprecated;
       return this;
     }
@@ -398,7 +400,7 @@ public final class DiskType implements ApiMessage {
       Builder newBuilder = new Builder();
       newBuilder.setCreationTimestamp(this.creationTimestamp);
       newBuilder.setDefaultDiskSizeGb(this.defaultDiskSizeGb);
-      newBuilder.setDeprecated(this.deprecated);
+      newBuilder.setDeprecationStatus(this.deprecated);
       newBuilder.setDescription(this.description);
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
@@ -436,7 +438,7 @@ public final class DiskType implements ApiMessage {
       return
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
           Objects.equals(this.defaultDiskSizeGb, that.getDefaultDiskSizeGb()) &&
-          Objects.equals(this.deprecated, that.getDeprecated()) &&
+          Objects.equals(this.deprecated, that.getDeprecationStatus()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.kind, that.getKind()) &&

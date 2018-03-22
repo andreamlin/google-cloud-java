@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -55,11 +57,11 @@ public final class Tags implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("items") && items != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : items) {
         stringList.add(item.toString());
       }
-      fieldMap.put("items", stringList);
+      fieldMap.put("items", stringList.build());
     }
     return fieldMap;
   }
@@ -85,7 +87,7 @@ public final class Tags implements ApiMessage {
     return fingerprint;
   }
 
-  public List<String> getItems() {
+  public List<String> getItemsList() {
     return items;
   }
 
@@ -120,7 +122,7 @@ public final class Tags implements ApiMessage {
       if (other.getFingerprint() != null) {
         this.fingerprint = other.fingerprint;
       }
-      if (other.getItems() != null) {
+      if (other.getItemsList() != null) {
         this.items = other.items;
       }
       return this;
@@ -140,13 +142,13 @@ public final class Tags implements ApiMessage {
       return this;
     }
 
-    public List<String> getItems() {
+    public List<String> getItemsList() {
       return items;
     }
 
     public Builder addAllItems(List<String> items) {
       if (this.items == null) {
-        this.items = new LinkedList<>();
+        this.items = new ArrayList<>(items.size());
       }
       this.items.addAll(items);
       return this;
@@ -191,7 +193,7 @@ public final class Tags implements ApiMessage {
       Tags that = (Tags) o;
       return
           Objects.equals(this.fingerprint, that.getFingerprint()) &&
-          Objects.equals(this.items, that.getItems())
+          Objects.equals(this.items, that.getItemsList())
           ;
     }
     return false;

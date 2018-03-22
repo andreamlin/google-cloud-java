@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -60,21 +62,21 @@ public final class UrlMapValidationResult implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("loadErrors") && loadErrors != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : loadErrors) {
         stringList.add(item.toString());
       }
-      fieldMap.put("loadErrors", stringList);
+      fieldMap.put("loadErrors", stringList.build());
     }
     if (fieldNames.contains("loadSucceeded") && loadSucceeded != null) {
       fieldMap.put("loadSucceeded", Collections.singletonList(String.valueOf(loadSucceeded)));
     }
     if (fieldNames.contains("testFailures") && testFailures != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (TestFailure item : testFailures) {
         stringList.add(item.toString());
       }
-      fieldMap.put("testFailures", stringList);
+      fieldMap.put("testFailures", stringList.build());
     }
     if (fieldNames.contains("testPassed") && testPassed != null) {
       fieldMap.put("testPassed", Collections.singletonList(String.valueOf(testPassed)));
@@ -105,7 +107,7 @@ public final class UrlMapValidationResult implements ApiMessage {
     return null;
   }
 
-  public List<String> getLoadErrors() {
+  public List<String> getLoadErrorsList() {
     return loadErrors;
   }
 
@@ -113,7 +115,7 @@ public final class UrlMapValidationResult implements ApiMessage {
     return loadSucceeded;
   }
 
-  public List<TestFailure> getTestFailures() {
+  public List<TestFailure> getTestFailuresList() {
     return testFailures;
   }
 
@@ -151,13 +153,13 @@ public final class UrlMapValidationResult implements ApiMessage {
 
     public Builder mergeFrom(UrlMapValidationResult other) {
       if (other == UrlMapValidationResult.getDefaultInstance()) return this;
-      if (other.getLoadErrors() != null) {
+      if (other.getLoadErrorsList() != null) {
         this.loadErrors = other.loadErrors;
       }
       if (other.getLoadSucceeded() != null) {
         this.loadSucceeded = other.loadSucceeded;
       }
-      if (other.getTestFailures() != null) {
+      if (other.getTestFailuresList() != null) {
         this.testFailures = other.testFailures;
       }
       if (other.getTestPassed() != null) {
@@ -173,13 +175,13 @@ public final class UrlMapValidationResult implements ApiMessage {
       this.testPassed = source.testPassed;
     }
 
-    public List<String> getLoadErrors() {
+    public List<String> getLoadErrorsList() {
       return loadErrors;
     }
 
     public Builder addAllLoadErrors(List<String> loadErrors) {
       if (this.loadErrors == null) {
-        this.loadErrors = new LinkedList<>();
+        this.loadErrors = new ArrayList<>(loadErrors.size());
       }
       this.loadErrors.addAll(loadErrors);
       return this;
@@ -199,13 +201,13 @@ public final class UrlMapValidationResult implements ApiMessage {
       return this;
     }
 
-    public List<TestFailure> getTestFailures() {
+    public List<TestFailure> getTestFailuresList() {
       return testFailures;
     }
 
     public Builder addAllTestFailures(List<TestFailure> testFailures) {
       if (this.testFailures == null) {
-        this.testFailures = new LinkedList<>();
+        this.testFailures = new ArrayList<>(testFailures.size());
       }
       this.testFailures.addAll(testFailures);
       return this;
@@ -266,9 +268,9 @@ public final class UrlMapValidationResult implements ApiMessage {
     if (o instanceof UrlMapValidationResult) {
       UrlMapValidationResult that = (UrlMapValidationResult) o;
       return
-          Objects.equals(this.loadErrors, that.getLoadErrors()) &&
+          Objects.equals(this.loadErrors, that.getLoadErrorsList()) &&
           Objects.equals(this.loadSucceeded, that.getLoadSucceeded()) &&
-          Objects.equals(this.testFailures, that.getTestFailures()) &&
+          Objects.equals(this.testFailures, that.getTestFailuresList()) &&
           Objects.equals(this.testPassed, that.getTestPassed())
           ;
     }

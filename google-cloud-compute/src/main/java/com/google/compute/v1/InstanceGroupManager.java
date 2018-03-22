@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -138,11 +140,11 @@ public final class InstanceGroupManager implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("namedPorts") && namedPorts != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (NamedPort item : namedPorts) {
         stringList.add(item.toString());
       }
-      fieldMap.put("namedPorts", stringList);
+      fieldMap.put("namedPorts", stringList.build());
     }
     if (fieldNames.contains("region") && region != null) {
       fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
@@ -151,11 +153,11 @@ public final class InstanceGroupManager implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("targetPools") && targetPools != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : targetPools) {
         stringList.add(item.toString());
       }
-      fieldMap.put("targetPools", stringList);
+      fieldMap.put("targetPools", stringList.build());
     }
     if (fieldNames.contains("targetSize") && targetSize != null) {
       fieldMap.put("targetSize", Collections.singletonList(String.valueOf(targetSize)));
@@ -233,7 +235,7 @@ public final class InstanceGroupManager implements ApiMessage {
     return creationTimestamp;
   }
 
-  public InstanceGroupManagerActionsSummary getCurrentActions() {
+  public InstanceGroupManagerActionsSummary getInstanceGroupManagerActionsSummary() {
     return currentActions;
   }
 
@@ -265,7 +267,7 @@ public final class InstanceGroupManager implements ApiMessage {
     return name;
   }
 
-  public List<NamedPort> getNamedPorts() {
+  public List<NamedPort> getNamedPortsList() {
     return namedPorts;
   }
 
@@ -277,7 +279,7 @@ public final class InstanceGroupManager implements ApiMessage {
     return selfLink;
   }
 
-  public List<String> getTargetPools() {
+  public List<String> getTargetPoolsList() {
     return targetPools;
   }
 
@@ -337,7 +339,7 @@ public final class InstanceGroupManager implements ApiMessage {
       if (other.getCreationTimestamp() != null) {
         this.creationTimestamp = other.creationTimestamp;
       }
-      if (other.getCurrentActions() != null) {
+      if (other.getInstanceGroupManagerActionsSummary() != null) {
         this.currentActions = other.currentActions;
       }
       if (other.getDescription() != null) {
@@ -361,7 +363,7 @@ public final class InstanceGroupManager implements ApiMessage {
       if (other.getName() != null) {
         this.name = other.name;
       }
-      if (other.getNamedPorts() != null) {
+      if (other.getNamedPortsList() != null) {
         this.namedPorts = other.namedPorts;
       }
       if (other.getRegion() != null) {
@@ -370,7 +372,7 @@ public final class InstanceGroupManager implements ApiMessage {
       if (other.getSelfLink() != null) {
         this.selfLink = other.selfLink;
       }
-      if (other.getTargetPools() != null) {
+      if (other.getTargetPoolsList() != null) {
         this.targetPools = other.targetPools;
       }
       if (other.getTargetSize() != null) {
@@ -419,11 +421,11 @@ public final class InstanceGroupManager implements ApiMessage {
       return this;
     }
 
-    public InstanceGroupManagerActionsSummary getCurrentActions() {
+    public InstanceGroupManagerActionsSummary getInstanceGroupManagerActionsSummary() {
       return currentActions;
     }
 
-    public Builder setCurrentActions(InstanceGroupManagerActionsSummary currentActions) {
+    public Builder setInstanceGroupManagerActionsSummary(InstanceGroupManagerActionsSummary currentActions) {
       this.currentActions = currentActions;
       return this;
     }
@@ -491,13 +493,13 @@ public final class InstanceGroupManager implements ApiMessage {
       return this;
     }
 
-    public List<NamedPort> getNamedPorts() {
+    public List<NamedPort> getNamedPortsList() {
       return namedPorts;
     }
 
     public Builder addAllNamedPorts(List<NamedPort> namedPorts) {
       if (this.namedPorts == null) {
-        this.namedPorts = new LinkedList<>();
+        this.namedPorts = new ArrayList<>(namedPorts.size());
       }
       this.namedPorts.addAll(namedPorts);
       return this;
@@ -526,13 +528,13 @@ public final class InstanceGroupManager implements ApiMessage {
       return this;
     }
 
-    public List<String> getTargetPools() {
+    public List<String> getTargetPoolsList() {
       return targetPools;
     }
 
     public Builder addAllTargetPools(List<String> targetPools) {
       if (this.targetPools == null) {
-        this.targetPools = new LinkedList<>();
+        this.targetPools = new ArrayList<>(targetPools.size());
       }
       this.targetPools.addAll(targetPools);
       return this;
@@ -602,7 +604,7 @@ public final class InstanceGroupManager implements ApiMessage {
       Builder newBuilder = new Builder();
       newBuilder.setBaseInstanceName(this.baseInstanceName);
       newBuilder.setCreationTimestamp(this.creationTimestamp);
-      newBuilder.setCurrentActions(this.currentActions);
+      newBuilder.setInstanceGroupManagerActionsSummary(this.currentActions);
       newBuilder.setDescription(this.description);
       newBuilder.setFingerprint(this.fingerprint);
       newBuilder.setId(this.id);
@@ -652,7 +654,7 @@ public final class InstanceGroupManager implements ApiMessage {
       return
           Objects.equals(this.baseInstanceName, that.getBaseInstanceName()) &&
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
-          Objects.equals(this.currentActions, that.getCurrentActions()) &&
+          Objects.equals(this.currentActions, that.getInstanceGroupManagerActionsSummary()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.fingerprint, that.getFingerprint()) &&
           Objects.equals(this.id, that.getId()) &&
@@ -660,10 +662,10 @@ public final class InstanceGroupManager implements ApiMessage {
           Objects.equals(this.instanceTemplate, that.getInstanceTemplate()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.name, that.getName()) &&
-          Objects.equals(this.namedPorts, that.getNamedPorts()) &&
+          Objects.equals(this.namedPorts, that.getNamedPortsList()) &&
           Objects.equals(this.region, that.getRegion()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
-          Objects.equals(this.targetPools, that.getTargetPools()) &&
+          Objects.equals(this.targetPools, that.getTargetPoolsList()) &&
           Objects.equals(this.targetSize, that.getTargetSize()) &&
           Objects.equals(this.zone, that.getZone())
           ;

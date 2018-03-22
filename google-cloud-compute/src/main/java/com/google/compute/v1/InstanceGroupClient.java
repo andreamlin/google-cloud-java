@@ -25,7 +25,6 @@ import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
 import com.google.api.gax.paging.FixedSizeCollection;
 import com.google.api.gax.paging.Page;
-import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiExceptions;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -390,7 +389,7 @@ public class InstanceGroupClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     InstanceGroupAggregatedList response = instanceGroupClient.aggregatedListInstanceGroupsCallable().call(request);
-   *     for (InstanceGroup element : response.getInstanceGroups()) {
+   *     for (InstanceGroup element : response.getInstanceGroupsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -818,7 +817,7 @@ public class InstanceGroupClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     InstanceGroupList response = instanceGroupClient.listInstanceGroupsCallable().call(request);
-   *     for (InstanceGroup element : response.getItems()) {
+   *     for (InstanceGroup element : response.getItemsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -963,7 +962,7 @@ public class InstanceGroupClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     InstanceGroupsListInstances response = instanceGroupClient.listInstancesInstanceGroupsCallable().call(request);
-   *     for (InstanceWithNamedPorts element : response.getItems()) {
+   *     for (InstanceWithNamedPorts element : response.getItemsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

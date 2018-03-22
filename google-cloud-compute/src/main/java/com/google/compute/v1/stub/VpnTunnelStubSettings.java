@@ -276,7 +276,7 @@ public class VpnTunnelStubSettings extends StubSettings<VpnTunnelStubSettings> {
         }
         @Override
         public Iterable<VpnTunnel> extractResources(VpnTunnelAggregatedList payload) {
-          return payload.getItems().getVpnTunnels();
+          return payload.getItems().getVpnTunnelsList();
         }
       };
 
@@ -310,7 +310,7 @@ public class VpnTunnelStubSettings extends StubSettings<VpnTunnelStubSettings> {
         }
         @Override
         public Iterable<VpnTunnel> extractResources(VpnTunnelList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

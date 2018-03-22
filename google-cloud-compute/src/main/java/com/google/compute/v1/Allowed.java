@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -55,11 +57,11 @@ public final class Allowed implements ApiMessage {
       fieldMap.put("iPProtocol", Collections.singletonList(String.valueOf(iPProtocol)));
     }
     if (fieldNames.contains("ports") && ports != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : ports) {
         stringList.add(item.toString());
       }
-      fieldMap.put("ports", stringList);
+      fieldMap.put("ports", stringList.build());
     }
     return fieldMap;
   }
@@ -85,7 +87,7 @@ public final class Allowed implements ApiMessage {
     return iPProtocol;
   }
 
-  public List<String> getPorts() {
+  public List<String> getPortsList() {
     return ports;
   }
 
@@ -120,7 +122,7 @@ public final class Allowed implements ApiMessage {
       if (other.getIPProtocol() != null) {
         this.iPProtocol = other.iPProtocol;
       }
-      if (other.getPorts() != null) {
+      if (other.getPortsList() != null) {
         this.ports = other.ports;
       }
       return this;
@@ -140,13 +142,13 @@ public final class Allowed implements ApiMessage {
       return this;
     }
 
-    public List<String> getPorts() {
+    public List<String> getPortsList() {
       return ports;
     }
 
     public Builder addAllPorts(List<String> ports) {
       if (this.ports == null) {
-        this.ports = new LinkedList<>();
+        this.ports = new ArrayList<>(ports.size());
       }
       this.ports.addAll(ports);
       return this;
@@ -191,7 +193,7 @@ public final class Allowed implements ApiMessage {
       Allowed that = (Allowed) o;
       return
           Objects.equals(this.iPProtocol, that.getIPProtocol()) &&
-          Objects.equals(this.ports, that.getPorts())
+          Objects.equals(this.ports, that.getPortsList())
           ;
     }
     return false;

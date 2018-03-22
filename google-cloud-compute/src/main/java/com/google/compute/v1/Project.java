@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -100,11 +102,11 @@ public final class Project implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("enabledFeatures") && enabledFeatures != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : enabledFeatures) {
         stringList.add(item.toString());
       }
-      fieldMap.put("enabledFeatures", stringList);
+      fieldMap.put("enabledFeatures", stringList.build());
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -116,11 +118,11 @@ public final class Project implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("quotas") && quotas != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Quota item : quotas) {
         stringList.add(item.toString());
       }
-      fieldMap.put("quotas", stringList);
+      fieldMap.put("quotas", stringList.build());
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
@@ -175,7 +177,7 @@ public final class Project implements ApiMessage {
     return null;
   }
 
-  public Metadata getCommonInstanceMetadata() {
+  public Metadata getMetadata() {
     return commonInstanceMetadata;
   }
 
@@ -191,7 +193,7 @@ public final class Project implements ApiMessage {
     return description;
   }
 
-  public List<String> getEnabledFeatures() {
+  public List<String> getEnabledFeaturesList() {
     return enabledFeatures;
   }
 
@@ -207,7 +209,7 @@ public final class Project implements ApiMessage {
     return name;
   }
 
-  public List<Quota> getQuotas() {
+  public List<Quota> getQuotasList() {
     return quotas;
   }
 
@@ -256,7 +258,7 @@ public final class Project implements ApiMessage {
 
     public Builder mergeFrom(Project other) {
       if (other == Project.getDefaultInstance()) return this;
-      if (other.getCommonInstanceMetadata() != null) {
+      if (other.getMetadata() != null) {
         this.commonInstanceMetadata = other.commonInstanceMetadata;
       }
       if (other.getCreationTimestamp() != null) {
@@ -268,7 +270,7 @@ public final class Project implements ApiMessage {
       if (other.getDescription() != null) {
         this.description = other.description;
       }
-      if (other.getEnabledFeatures() != null) {
+      if (other.getEnabledFeaturesList() != null) {
         this.enabledFeatures = other.enabledFeatures;
       }
       if (other.getId() != null) {
@@ -280,7 +282,7 @@ public final class Project implements ApiMessage {
       if (other.getName() != null) {
         this.name = other.name;
       }
-      if (other.getQuotas() != null) {
+      if (other.getQuotasList() != null) {
         this.quotas = other.quotas;
       }
       if (other.getSelfLink() != null) {
@@ -306,11 +308,11 @@ public final class Project implements ApiMessage {
       this.usageExportLocation = source.usageExportLocation;
     }
 
-    public Metadata getCommonInstanceMetadata() {
+    public Metadata getMetadata() {
       return commonInstanceMetadata;
     }
 
-    public Builder setCommonInstanceMetadata(Metadata commonInstanceMetadata) {
+    public Builder setMetadata(Metadata commonInstanceMetadata) {
       this.commonInstanceMetadata = commonInstanceMetadata;
       return this;
     }
@@ -342,13 +344,13 @@ public final class Project implements ApiMessage {
       return this;
     }
 
-    public List<String> getEnabledFeatures() {
+    public List<String> getEnabledFeaturesList() {
       return enabledFeatures;
     }
 
     public Builder addAllEnabledFeatures(List<String> enabledFeatures) {
       if (this.enabledFeatures == null) {
-        this.enabledFeatures = new LinkedList<>();
+        this.enabledFeatures = new ArrayList<>(enabledFeatures.size());
       }
       this.enabledFeatures.addAll(enabledFeatures);
       return this;
@@ -386,13 +388,13 @@ public final class Project implements ApiMessage {
       return this;
     }
 
-    public List<Quota> getQuotas() {
+    public List<Quota> getQuotasList() {
       return quotas;
     }
 
     public Builder addAllQuotas(List<Quota> quotas) {
       if (this.quotas == null) {
-        this.quotas = new LinkedList<>();
+        this.quotas = new ArrayList<>(quotas.size());
       }
       this.quotas.addAll(quotas);
       return this;
@@ -450,7 +452,7 @@ public final class Project implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setCommonInstanceMetadata(this.commonInstanceMetadata);
+      newBuilder.setMetadata(this.commonInstanceMetadata);
       newBuilder.setCreationTimestamp(this.creationTimestamp);
       newBuilder.setDefaultServiceAccount(this.defaultServiceAccount);
       newBuilder.setDescription(this.description);
@@ -490,15 +492,15 @@ public final class Project implements ApiMessage {
     if (o instanceof Project) {
       Project that = (Project) o;
       return
-          Objects.equals(this.commonInstanceMetadata, that.getCommonInstanceMetadata()) &&
+          Objects.equals(this.commonInstanceMetadata, that.getMetadata()) &&
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
           Objects.equals(this.defaultServiceAccount, that.getDefaultServiceAccount()) &&
           Objects.equals(this.description, that.getDescription()) &&
-          Objects.equals(this.enabledFeatures, that.getEnabledFeatures()) &&
+          Objects.equals(this.enabledFeatures, that.getEnabledFeaturesList()) &&
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.name, that.getName()) &&
-          Objects.equals(this.quotas, that.getQuotas()) &&
+          Objects.equals(this.quotas, that.getQuotasList()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
           Objects.equals(this.usageExportLocation, that.getUsageExportLocation())
           ;

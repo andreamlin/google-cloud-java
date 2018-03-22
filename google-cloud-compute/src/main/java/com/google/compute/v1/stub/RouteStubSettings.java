@@ -264,7 +264,7 @@ public class RouteStubSettings extends StubSettings<RouteStubSettings> {
         }
         @Override
         public Iterable<Route> extractResources(RouteList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

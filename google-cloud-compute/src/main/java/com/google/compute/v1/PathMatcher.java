@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -69,11 +71,11 @@ public final class PathMatcher implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("pathRules") && pathRules != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (PathRule item : pathRules) {
         stringList.add(item.toString());
       }
-      fieldMap.put("pathRules", stringList);
+      fieldMap.put("pathRules", stringList.build());
     }
     return fieldMap;
   }
@@ -113,7 +115,7 @@ public final class PathMatcher implements ApiMessage {
     return name;
   }
 
-  public List<PathRule> getPathRules() {
+  public List<PathRule> getPathRulesList() {
     return pathRules;
   }
 
@@ -156,7 +158,7 @@ public final class PathMatcher implements ApiMessage {
       if (other.getName() != null) {
         this.name = other.name;
       }
-      if (other.getPathRules() != null) {
+      if (other.getPathRulesList() != null) {
         this.pathRules = other.pathRules;
       }
       return this;
@@ -196,13 +198,13 @@ public final class PathMatcher implements ApiMessage {
       return this;
     }
 
-    public List<PathRule> getPathRules() {
+    public List<PathRule> getPathRulesList() {
       return pathRules;
     }
 
     public Builder addAllPathRules(List<PathRule> pathRules) {
       if (this.pathRules == null) {
-        this.pathRules = new LinkedList<>();
+        this.pathRules = new ArrayList<>(pathRules.size());
       }
       this.pathRules.addAll(pathRules);
       return this;
@@ -257,7 +259,7 @@ public final class PathMatcher implements ApiMessage {
           Objects.equals(this.defaultService, that.getDefaultService()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.name, that.getName()) &&
-          Objects.equals(this.pathRules, that.getPathRules())
+          Objects.equals(this.pathRules, that.getPathRulesList())
           ;
     }
     return false;

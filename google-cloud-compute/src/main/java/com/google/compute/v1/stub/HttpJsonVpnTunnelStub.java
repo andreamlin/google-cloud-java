@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -62,8 +63,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList> aggregatedListVpnTunnelsMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList>newBuilder()
@@ -131,7 +130,6 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("region")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList> aggregatedListVpnTunnelsCallable;
@@ -142,6 +140,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
   private final UnaryCallable<ListVpnTunnelsHttpRequest, VpnTunnelList> listVpnTunnelsCallable;
   private final UnaryCallable<ListVpnTunnelsHttpRequest, ListVpnTunnelsPagedResponse> listVpnTunnelsPagedCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonVpnTunnelStub create(VpnTunnelStubSettings settings) throws IOException {
     return new HttpJsonVpnTunnelStub(settings, ClientContext.create(settings));
   }
@@ -150,12 +149,26 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
     return new HttpJsonVpnTunnelStub(VpnTunnelStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonVpnTunnelStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonVpnTunnelStub(VpnTunnelSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonVpnTunnelStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonVpnTunnelStub(VpnTunnelStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonVpnTunnelCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonVpnTunnelStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonVpnTunnelStub(VpnTunnelStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList> aggregatedListVpnTunnelsTransportSettings =
         HttpJsonCallSettings.<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList>newBuilder()
@@ -178,13 +191,13 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
             .setMethodDescriptor(listVpnTunnelsMethodDescriptor)
             .build();
 
-    this.aggregatedListVpnTunnelsCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListVpnTunnelsTransportSettings,settings.aggregatedListVpnTunnelsSettings(), clientContext);
-    this.aggregatedListVpnTunnelsPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListVpnTunnelsTransportSettings,settings.aggregatedListVpnTunnelsSettings(), clientContext);
-    this.deleteVpnTunnelCallable = HttpJsonCallableFactory.createUnaryCallable(deleteVpnTunnelTransportSettings,settings.deleteVpnTunnelSettings(), clientContext);
-    this.getVpnTunnelCallable = HttpJsonCallableFactory.createUnaryCallable(getVpnTunnelTransportSettings,settings.getVpnTunnelSettings(), clientContext);
-    this.insertVpnTunnelCallable = HttpJsonCallableFactory.createUnaryCallable(insertVpnTunnelTransportSettings,settings.insertVpnTunnelSettings(), clientContext);
-    this.listVpnTunnelsCallable = HttpJsonCallableFactory.createUnaryCallable(listVpnTunnelsTransportSettings,settings.listVpnTunnelsSettings(), clientContext);
-    this.listVpnTunnelsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listVpnTunnelsTransportSettings,settings.listVpnTunnelsSettings(), clientContext);
+    this.aggregatedListVpnTunnelsCallable = callableFactory.createUnaryCallable(aggregatedListVpnTunnelsTransportSettings,settings.aggregatedListVpnTunnelsSettings(), clientContext);
+    this.aggregatedListVpnTunnelsPagedCallable = callableFactory.createPagedCallable(aggregatedListVpnTunnelsTransportSettings,settings.aggregatedListVpnTunnelsSettings(), clientContext);
+    this.deleteVpnTunnelCallable = callableFactory.createUnaryCallable(deleteVpnTunnelTransportSettings,settings.deleteVpnTunnelSettings(), clientContext);
+    this.getVpnTunnelCallable = callableFactory.createUnaryCallable(getVpnTunnelTransportSettings,settings.getVpnTunnelSettings(), clientContext);
+    this.insertVpnTunnelCallable = callableFactory.createUnaryCallable(insertVpnTunnelTransportSettings,settings.insertVpnTunnelSettings(), clientContext);
+    this.listVpnTunnelsCallable = callableFactory.createUnaryCallable(listVpnTunnelsTransportSettings,settings.listVpnTunnelsSettings(), clientContext);
+    this.listVpnTunnelsPagedCallable = callableFactory.createPagedCallable(listVpnTunnelsTransportSettings,settings.listVpnTunnelsSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

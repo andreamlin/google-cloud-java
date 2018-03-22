@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -150,18 +152,18 @@ public final class Route implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("tags") && tags != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : tags) {
         stringList.add(item.toString());
       }
-      fieldMap.put("tags", stringList);
+      fieldMap.put("tags", stringList.build());
     }
     if (fieldNames.contains("warnings") && warnings != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Warnings item : warnings) {
         stringList.add(item.toString());
       }
-      fieldMap.put("warnings", stringList);
+      fieldMap.put("warnings", stringList.build());
     }
     return fieldMap;
   }
@@ -281,11 +283,11 @@ public final class Route implements ApiMessage {
     return selfLink;
   }
 
-  public List<String> getTags() {
+  public List<String> getTagsList() {
     return tags;
   }
 
-  public List<Warnings> getWarnings() {
+  public List<Warnings> getWarningsList() {
     return warnings;
   }
 
@@ -373,10 +375,10 @@ public final class Route implements ApiMessage {
       if (other.getSelfLink() != null) {
         this.selfLink = other.selfLink;
       }
-      if (other.getTags() != null) {
+      if (other.getTagsList() != null) {
         this.tags = other.tags;
       }
-      if (other.getWarnings() != null) {
+      if (other.getWarningsList() != null) {
         this.warnings = other.warnings;
       }
       return this;
@@ -527,13 +529,13 @@ public final class Route implements ApiMessage {
       return this;
     }
 
-    public List<String> getTags() {
+    public List<String> getTagsList() {
       return tags;
     }
 
     public Builder addAllTags(List<String> tags) {
       if (this.tags == null) {
-        this.tags = new LinkedList<>();
+        this.tags = new ArrayList<>(tags.size());
       }
       this.tags.addAll(tags);
       return this;
@@ -544,13 +546,13 @@ public final class Route implements ApiMessage {
       return this;
     }
 
-    public List<Warnings> getWarnings() {
+    public List<Warnings> getWarningsList() {
       return warnings;
     }
 
     public Builder addAllWarnings(List<Warnings> warnings) {
       if (this.warnings == null) {
-        this.warnings = new LinkedList<>();
+        this.warnings = new ArrayList<>(warnings.size());
       }
       this.warnings.addAll(warnings);
       return this;
@@ -664,8 +666,8 @@ public final class Route implements ApiMessage {
           Objects.equals(this.nextHopVpnTunnel, that.getNextHopVpnTunnel()) &&
           Objects.equals(this.priority, that.getPriority()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
-          Objects.equals(this.tags, that.getTags()) &&
-          Objects.equals(this.warnings, that.getWarnings())
+          Objects.equals(this.tags, that.getTagsList()) &&
+          Objects.equals(this.warnings, that.getWarningsList())
           ;
     }
     return false;

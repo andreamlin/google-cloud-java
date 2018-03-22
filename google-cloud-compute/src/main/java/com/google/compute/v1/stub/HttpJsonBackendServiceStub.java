@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -66,8 +67,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonBackendServiceStub extends BackendServiceStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList> aggregatedListBackendServicesMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList>newBuilder()
@@ -174,7 +173,6 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
           .setHttpMethod(HttpMethods.PUT)
           .setResourceNameField("backendService")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList> aggregatedListBackendServicesCallable;
@@ -188,6 +186,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
   private final UnaryCallable<PatchBackendServiceHttpRequest, Operation> patchBackendServiceCallable;
   private final UnaryCallable<UpdateBackendServiceHttpRequest, Operation> updateBackendServiceCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonBackendServiceStub create(BackendServiceStubSettings settings) throws IOException {
     return new HttpJsonBackendServiceStub(settings, ClientContext.create(settings));
   }
@@ -196,12 +195,26 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
     return new HttpJsonBackendServiceStub(BackendServiceStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonBackendServiceStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonBackendServiceStub(BackendServiceSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonBackendServiceStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonBackendServiceStub(BackendServiceStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonBackendServiceCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonBackendServiceStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonBackendServiceStub(BackendServiceStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList> aggregatedListBackendServicesTransportSettings =
         HttpJsonCallSettings.<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList>newBuilder()
@@ -236,16 +249,16 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
             .setMethodDescriptor(updateBackendServiceMethodDescriptor)
             .build();
 
-    this.aggregatedListBackendServicesCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListBackendServicesTransportSettings,settings.aggregatedListBackendServicesSettings(), clientContext);
-    this.aggregatedListBackendServicesPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListBackendServicesTransportSettings,settings.aggregatedListBackendServicesSettings(), clientContext);
-    this.deleteBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(deleteBackendServiceTransportSettings,settings.deleteBackendServiceSettings(), clientContext);
-    this.getBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(getBackendServiceTransportSettings,settings.getBackendServiceSettings(), clientContext);
-    this.getHealthBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(getHealthBackendServiceTransportSettings,settings.getHealthBackendServiceSettings(), clientContext);
-    this.insertBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(insertBackendServiceTransportSettings,settings.insertBackendServiceSettings(), clientContext);
-    this.listBackendServicesCallable = HttpJsonCallableFactory.createUnaryCallable(listBackendServicesTransportSettings,settings.listBackendServicesSettings(), clientContext);
-    this.listBackendServicesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listBackendServicesTransportSettings,settings.listBackendServicesSettings(), clientContext);
-    this.patchBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(patchBackendServiceTransportSettings,settings.patchBackendServiceSettings(), clientContext);
-    this.updateBackendServiceCallable = HttpJsonCallableFactory.createUnaryCallable(updateBackendServiceTransportSettings,settings.updateBackendServiceSettings(), clientContext);
+    this.aggregatedListBackendServicesCallable = callableFactory.createUnaryCallable(aggregatedListBackendServicesTransportSettings,settings.aggregatedListBackendServicesSettings(), clientContext);
+    this.aggregatedListBackendServicesPagedCallable = callableFactory.createPagedCallable(aggregatedListBackendServicesTransportSettings,settings.aggregatedListBackendServicesSettings(), clientContext);
+    this.deleteBackendServiceCallable = callableFactory.createUnaryCallable(deleteBackendServiceTransportSettings,settings.deleteBackendServiceSettings(), clientContext);
+    this.getBackendServiceCallable = callableFactory.createUnaryCallable(getBackendServiceTransportSettings,settings.getBackendServiceSettings(), clientContext);
+    this.getHealthBackendServiceCallable = callableFactory.createUnaryCallable(getHealthBackendServiceTransportSettings,settings.getHealthBackendServiceSettings(), clientContext);
+    this.insertBackendServiceCallable = callableFactory.createUnaryCallable(insertBackendServiceTransportSettings,settings.insertBackendServiceSettings(), clientContext);
+    this.listBackendServicesCallable = callableFactory.createUnaryCallable(listBackendServicesTransportSettings,settings.listBackendServicesSettings(), clientContext);
+    this.listBackendServicesPagedCallable = callableFactory.createPagedCallable(listBackendServicesTransportSettings,settings.listBackendServicesSettings(), clientContext);
+    this.patchBackendServiceCallable = callableFactory.createUnaryCallable(patchBackendServiceTransportSettings,settings.patchBackendServiceSettings(), clientContext);
+    this.updateBackendServiceCallable = callableFactory.createUnaryCallable(updateBackendServiceTransportSettings,settings.updateBackendServiceSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

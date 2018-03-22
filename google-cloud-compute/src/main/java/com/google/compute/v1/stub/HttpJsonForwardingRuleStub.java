@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -64,8 +65,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList> aggregatedListForwardingRulesMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList>newBuilder()
@@ -146,7 +145,6 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("forwardingRule")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList> aggregatedListForwardingRulesCallable;
@@ -158,6 +156,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
   private final UnaryCallable<ListForwardingRulesHttpRequest, ListForwardingRulesPagedResponse> listForwardingRulesPagedCallable;
   private final UnaryCallable<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonForwardingRuleStub create(ForwardingRuleStubSettings settings) throws IOException {
     return new HttpJsonForwardingRuleStub(settings, ClientContext.create(settings));
   }
@@ -166,12 +165,26 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
     return new HttpJsonForwardingRuleStub(ForwardingRuleStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonForwardingRuleStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonForwardingRuleStub(ForwardingRuleSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonForwardingRuleStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonForwardingRuleStub(ForwardingRuleStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonForwardingRuleCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonForwardingRuleStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonForwardingRuleStub(ForwardingRuleStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList> aggregatedListForwardingRulesTransportSettings =
         HttpJsonCallSettings.<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList>newBuilder()
@@ -198,14 +211,14 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
             .setMethodDescriptor(setTargetForwardingRuleMethodDescriptor)
             .build();
 
-    this.aggregatedListForwardingRulesCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListForwardingRulesTransportSettings,settings.aggregatedListForwardingRulesSettings(), clientContext);
-    this.aggregatedListForwardingRulesPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListForwardingRulesTransportSettings,settings.aggregatedListForwardingRulesSettings(), clientContext);
-    this.deleteForwardingRuleCallable = HttpJsonCallableFactory.createUnaryCallable(deleteForwardingRuleTransportSettings,settings.deleteForwardingRuleSettings(), clientContext);
-    this.getForwardingRuleCallable = HttpJsonCallableFactory.createUnaryCallable(getForwardingRuleTransportSettings,settings.getForwardingRuleSettings(), clientContext);
-    this.insertForwardingRuleCallable = HttpJsonCallableFactory.createUnaryCallable(insertForwardingRuleTransportSettings,settings.insertForwardingRuleSettings(), clientContext);
-    this.listForwardingRulesCallable = HttpJsonCallableFactory.createUnaryCallable(listForwardingRulesTransportSettings,settings.listForwardingRulesSettings(), clientContext);
-    this.listForwardingRulesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listForwardingRulesTransportSettings,settings.listForwardingRulesSettings(), clientContext);
-    this.setTargetForwardingRuleCallable = HttpJsonCallableFactory.createUnaryCallable(setTargetForwardingRuleTransportSettings,settings.setTargetForwardingRuleSettings(), clientContext);
+    this.aggregatedListForwardingRulesCallable = callableFactory.createUnaryCallable(aggregatedListForwardingRulesTransportSettings,settings.aggregatedListForwardingRulesSettings(), clientContext);
+    this.aggregatedListForwardingRulesPagedCallable = callableFactory.createPagedCallable(aggregatedListForwardingRulesTransportSettings,settings.aggregatedListForwardingRulesSettings(), clientContext);
+    this.deleteForwardingRuleCallable = callableFactory.createUnaryCallable(deleteForwardingRuleTransportSettings,settings.deleteForwardingRuleSettings(), clientContext);
+    this.getForwardingRuleCallable = callableFactory.createUnaryCallable(getForwardingRuleTransportSettings,settings.getForwardingRuleSettings(), clientContext);
+    this.insertForwardingRuleCallable = callableFactory.createUnaryCallable(insertForwardingRuleTransportSettings,settings.insertForwardingRuleSettings(), clientContext);
+    this.listForwardingRulesCallable = callableFactory.createUnaryCallable(listForwardingRulesTransportSettings,settings.listForwardingRulesSettings(), clientContext);
+    this.listForwardingRulesPagedCallable = callableFactory.createPagedCallable(listForwardingRulesTransportSettings,settings.listForwardingRulesSettings(), clientContext);
+    this.setTargetForwardingRuleCallable = callableFactory.createUnaryCallable(setTargetForwardingRuleTransportSettings,settings.setTargetForwardingRuleSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

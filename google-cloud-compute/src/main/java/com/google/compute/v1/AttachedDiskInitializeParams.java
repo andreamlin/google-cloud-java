@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -123,7 +125,7 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
     return sourceImage;
   }
 
-  public CustomerEncryptionKey getSourceImageEncryptionKey() {
+  public CustomerEncryptionKey getCustomerEncryptionKey() {
     return sourceImageEncryptionKey;
   }
 
@@ -170,7 +172,7 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
       if (other.getSourceImage() != null) {
         this.sourceImage = other.sourceImage;
       }
-      if (other.getSourceImageEncryptionKey() != null) {
+      if (other.getCustomerEncryptionKey() != null) {
         this.sourceImageEncryptionKey = other.sourceImageEncryptionKey;
       }
       return this;
@@ -220,11 +222,11 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getSourceImageEncryptionKey() {
+    public CustomerEncryptionKey getCustomerEncryptionKey() {
       return sourceImageEncryptionKey;
     }
 
-    public Builder setSourceImageEncryptionKey(CustomerEncryptionKey sourceImageEncryptionKey) {
+    public Builder setCustomerEncryptionKey(CustomerEncryptionKey sourceImageEncryptionKey) {
       this.sourceImageEncryptionKey = sourceImageEncryptionKey;
       return this;
     }
@@ -250,7 +252,7 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
       newBuilder.setDiskSizeGb(this.diskSizeGb);
       newBuilder.setDiskType(this.diskType);
       newBuilder.setSourceImage(this.sourceImage);
-      newBuilder.setSourceImageEncryptionKey(this.sourceImageEncryptionKey);
+      newBuilder.setCustomerEncryptionKey(this.sourceImageEncryptionKey);
       return newBuilder;
     }
   }
@@ -278,7 +280,7 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
           Objects.equals(this.diskSizeGb, that.getDiskSizeGb()) &&
           Objects.equals(this.diskType, that.getDiskType()) &&
           Objects.equals(this.sourceImage, that.getSourceImage()) &&
-          Objects.equals(this.sourceImageEncryptionKey, that.getSourceImageEncryptionKey())
+          Objects.equals(this.sourceImageEncryptionKey, that.getCustomerEncryptionKey())
           ;
     }
     return false;

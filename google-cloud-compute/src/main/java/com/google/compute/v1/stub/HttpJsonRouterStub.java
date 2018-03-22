@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -68,8 +69,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonRouterStub extends RouterStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AggregatedListRoutersHttpRequest, RouterAggregatedList> aggregatedListRoutersMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListRoutersHttpRequest, RouterAggregatedList>newBuilder()
@@ -189,7 +188,6 @@ public class HttpJsonRouterStub extends RouterStub {
           .setHttpMethod(HttpMethods.PUT)
           .setResourceNameField("router")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AggregatedListRoutersHttpRequest, RouterAggregatedList> aggregatedListRoutersCallable;
@@ -204,6 +202,7 @@ public class HttpJsonRouterStub extends RouterStub {
   private final UnaryCallable<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterCallable;
   private final UnaryCallable<UpdateRouterHttpRequest, Operation> updateRouterCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonRouterStub create(RouterStubSettings settings) throws IOException {
     return new HttpJsonRouterStub(settings, ClientContext.create(settings));
   }
@@ -212,12 +211,26 @@ public class HttpJsonRouterStub extends RouterStub {
     return new HttpJsonRouterStub(RouterStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonRouterStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonRouterStub(RouterSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonRouterStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonRouterStub(RouterStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonRouterCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonRouterStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonRouterStub(RouterStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListRoutersHttpRequest, RouterAggregatedList> aggregatedListRoutersTransportSettings =
         HttpJsonCallSettings.<AggregatedListRoutersHttpRequest, RouterAggregatedList>newBuilder()
@@ -256,17 +269,17 @@ public class HttpJsonRouterStub extends RouterStub {
             .setMethodDescriptor(updateRouterMethodDescriptor)
             .build();
 
-    this.aggregatedListRoutersCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListRoutersTransportSettings,settings.aggregatedListRoutersSettings(), clientContext);
-    this.aggregatedListRoutersPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListRoutersTransportSettings,settings.aggregatedListRoutersSettings(), clientContext);
-    this.deleteRouterCallable = HttpJsonCallableFactory.createUnaryCallable(deleteRouterTransportSettings,settings.deleteRouterSettings(), clientContext);
-    this.getRouterCallable = HttpJsonCallableFactory.createUnaryCallable(getRouterTransportSettings,settings.getRouterSettings(), clientContext);
-    this.getRouterStatusRouterCallable = HttpJsonCallableFactory.createUnaryCallable(getRouterStatusRouterTransportSettings,settings.getRouterStatusRouterSettings(), clientContext);
-    this.insertRouterCallable = HttpJsonCallableFactory.createUnaryCallable(insertRouterTransportSettings,settings.insertRouterSettings(), clientContext);
-    this.listRoutersCallable = HttpJsonCallableFactory.createUnaryCallable(listRoutersTransportSettings,settings.listRoutersSettings(), clientContext);
-    this.listRoutersPagedCallable = HttpJsonCallableFactory.createPagedCallable(listRoutersTransportSettings,settings.listRoutersSettings(), clientContext);
-    this.patchRouterCallable = HttpJsonCallableFactory.createUnaryCallable(patchRouterTransportSettings,settings.patchRouterSettings(), clientContext);
-    this.previewRouterCallable = HttpJsonCallableFactory.createUnaryCallable(previewRouterTransportSettings,settings.previewRouterSettings(), clientContext);
-    this.updateRouterCallable = HttpJsonCallableFactory.createUnaryCallable(updateRouterTransportSettings,settings.updateRouterSettings(), clientContext);
+    this.aggregatedListRoutersCallable = callableFactory.createUnaryCallable(aggregatedListRoutersTransportSettings,settings.aggregatedListRoutersSettings(), clientContext);
+    this.aggregatedListRoutersPagedCallable = callableFactory.createPagedCallable(aggregatedListRoutersTransportSettings,settings.aggregatedListRoutersSettings(), clientContext);
+    this.deleteRouterCallable = callableFactory.createUnaryCallable(deleteRouterTransportSettings,settings.deleteRouterSettings(), clientContext);
+    this.getRouterCallable = callableFactory.createUnaryCallable(getRouterTransportSettings,settings.getRouterSettings(), clientContext);
+    this.getRouterStatusRouterCallable = callableFactory.createUnaryCallable(getRouterStatusRouterTransportSettings,settings.getRouterStatusRouterSettings(), clientContext);
+    this.insertRouterCallable = callableFactory.createUnaryCallable(insertRouterTransportSettings,settings.insertRouterSettings(), clientContext);
+    this.listRoutersCallable = callableFactory.createUnaryCallable(listRoutersTransportSettings,settings.listRoutersSettings(), clientContext);
+    this.listRoutersPagedCallable = callableFactory.createPagedCallable(listRoutersTransportSettings,settings.listRoutersSettings(), clientContext);
+    this.patchRouterCallable = callableFactory.createUnaryCallable(patchRouterTransportSettings,settings.patchRouterSettings(), clientContext);
+    this.previewRouterCallable = callableFactory.createUnaryCallable(previewRouterTransportSettings,settings.previewRouterSettings(), clientContext);
+    this.updateRouterCallable = callableFactory.createUnaryCallable(updateRouterTransportSettings,settings.updateRouterSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

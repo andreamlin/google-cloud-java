@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -141,11 +143,11 @@ public final class ForwardingRule implements ApiMessage {
       fieldMap.put("portRange", Collections.singletonList(String.valueOf(portRange)));
     }
     if (fieldNames.contains("ports") && ports != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : ports) {
         stringList.add(item.toString());
       }
-      fieldMap.put("ports", stringList);
+      fieldMap.put("ports", stringList.build());
     }
     if (fieldNames.contains("region") && region != null) {
       fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
@@ -265,7 +267,7 @@ public final class ForwardingRule implements ApiMessage {
     return portRange;
   }
 
-  public List<String> getPorts() {
+  public List<String> getPortsList() {
     return ports;
   }
 
@@ -360,7 +362,7 @@ public final class ForwardingRule implements ApiMessage {
       if (other.getPortRange() != null) {
         this.portRange = other.portRange;
       }
-      if (other.getPorts() != null) {
+      if (other.getPortsList() != null) {
         this.ports = other.ports;
       }
       if (other.getRegion() != null) {
@@ -496,13 +498,13 @@ public final class ForwardingRule implements ApiMessage {
       return this;
     }
 
-    public List<String> getPorts() {
+    public List<String> getPortsList() {
       return ports;
     }
 
     public Builder addAllPorts(List<String> ports) {
       if (this.ports == null) {
-        this.ports = new LinkedList<>();
+        this.ports = new ArrayList<>(ports.size());
       }
       this.ports.addAll(ports);
       return this;
@@ -649,7 +651,7 @@ public final class ForwardingRule implements ApiMessage {
           Objects.equals(this.name, that.getName()) &&
           Objects.equals(this.network, that.getNetwork()) &&
           Objects.equals(this.portRange, that.getPortRange()) &&
-          Objects.equals(this.ports, that.getPorts()) &&
+          Objects.equals(this.ports, that.getPortsList()) &&
           Objects.equals(this.region, that.getRegion()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
           Objects.equals(this.subnetwork, that.getSubnetwork()) &&

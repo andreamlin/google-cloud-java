@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -94,11 +96,11 @@ public final class TargetVpnGateway implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("forwardingRules") && forwardingRules != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : forwardingRules) {
         stringList.add(item.toString());
       }
-      fieldMap.put("forwardingRules", stringList);
+      fieldMap.put("forwardingRules", stringList.build());
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -122,11 +124,11 @@ public final class TargetVpnGateway implements ApiMessage {
       fieldMap.put("status", Collections.singletonList(String.valueOf(status)));
     }
     if (fieldNames.contains("tunnels") && tunnels != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : tunnels) {
         stringList.add(item.toString());
       }
-      fieldMap.put("tunnels", stringList);
+      fieldMap.put("tunnels", stringList.build());
     }
     return fieldMap;
   }
@@ -183,7 +185,7 @@ public final class TargetVpnGateway implements ApiMessage {
     return description;
   }
 
-  public List<String> getForwardingRules() {
+  public List<String> getForwardingRulesList() {
     return forwardingRules;
   }
 
@@ -215,7 +217,7 @@ public final class TargetVpnGateway implements ApiMessage {
     return status;
   }
 
-  public List<String> getTunnels() {
+  public List<String> getTunnelsList() {
     return tunnels;
   }
 
@@ -262,7 +264,7 @@ public final class TargetVpnGateway implements ApiMessage {
       if (other.getDescription() != null) {
         this.description = other.description;
       }
-      if (other.getForwardingRules() != null) {
+      if (other.getForwardingRulesList() != null) {
         this.forwardingRules = other.forwardingRules;
       }
       if (other.getId() != null) {
@@ -286,7 +288,7 @@ public final class TargetVpnGateway implements ApiMessage {
       if (other.getStatus() != null) {
         this.status = other.status;
       }
-      if (other.getTunnels() != null) {
+      if (other.getTunnelsList() != null) {
         this.tunnels = other.tunnels;
       }
       return this;
@@ -324,13 +326,13 @@ public final class TargetVpnGateway implements ApiMessage {
       return this;
     }
 
-    public List<String> getForwardingRules() {
+    public List<String> getForwardingRulesList() {
       return forwardingRules;
     }
 
     public Builder addAllForwardingRules(List<String> forwardingRules) {
       if (this.forwardingRules == null) {
-        this.forwardingRules = new LinkedList<>();
+        this.forwardingRules = new ArrayList<>(forwardingRules.size());
       }
       this.forwardingRules.addAll(forwardingRules);
       return this;
@@ -404,13 +406,13 @@ public final class TargetVpnGateway implements ApiMessage {
       return this;
     }
 
-    public List<String> getTunnels() {
+    public List<String> getTunnelsList() {
       return tunnels;
     }
 
     public Builder addAllTunnels(List<String> tunnels) {
       if (this.tunnels == null) {
-        this.tunnels = new LinkedList<>();
+        this.tunnels = new ArrayList<>(tunnels.size());
       }
       this.tunnels.addAll(tunnels);
       return this;
@@ -492,7 +494,7 @@ public final class TargetVpnGateway implements ApiMessage {
       return
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
           Objects.equals(this.description, that.getDescription()) &&
-          Objects.equals(this.forwardingRules, that.getForwardingRules()) &&
+          Objects.equals(this.forwardingRules, that.getForwardingRulesList()) &&
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.name, that.getName()) &&
@@ -500,7 +502,7 @@ public final class TargetVpnGateway implements ApiMessage {
           Objects.equals(this.region, that.getRegion()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
           Objects.equals(this.status, that.getStatus()) &&
-          Objects.equals(this.tunnels, that.getTunnels())
+          Objects.equals(this.tunnels, that.getTunnelsList())
           ;
     }
     return false;

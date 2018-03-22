@@ -255,7 +255,7 @@ public class MachineTypeStubSettings extends StubSettings<MachineTypeStubSetting
         }
         @Override
         public Iterable<MachineType> extractResources(MachineTypeAggregatedList payload) {
-          return payload.getItems().getMachineTypes();
+          return payload.getItems().getMachineTypesList();
         }
       };
 
@@ -289,7 +289,7 @@ public class MachineTypeStubSettings extends StubSettings<MachineTypeStubSetting
         }
         @Override
         public Iterable<MachineType> extractResources(MachineTypeList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

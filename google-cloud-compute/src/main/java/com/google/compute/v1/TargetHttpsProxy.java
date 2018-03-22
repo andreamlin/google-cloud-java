@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -94,11 +96,11 @@ public final class TargetHttpsProxy implements ApiMessage {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("sslCertificates") && sslCertificates != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : sslCertificates) {
         stringList.add(item.toString());
       }
-      fieldMap.put("sslCertificates", stringList);
+      fieldMap.put("sslCertificates", stringList.build());
     }
     if (fieldNames.contains("urlMap") && urlMap != null) {
       fieldMap.put("urlMap", Collections.singletonList(String.valueOf(urlMap)));
@@ -165,7 +167,7 @@ public final class TargetHttpsProxy implements ApiMessage {
     return selfLink;
   }
 
-  public List<String> getSslCertificates() {
+  public List<String> getSslCertificatesList() {
     return sslCertificates;
   }
 
@@ -225,7 +227,7 @@ public final class TargetHttpsProxy implements ApiMessage {
       if (other.getSelfLink() != null) {
         this.selfLink = other.selfLink;
       }
-      if (other.getSslCertificates() != null) {
+      if (other.getSslCertificatesList() != null) {
         this.sslCertificates = other.sslCertificates;
       }
       if (other.getUrlMap() != null) {
@@ -299,13 +301,13 @@ public final class TargetHttpsProxy implements ApiMessage {
       return this;
     }
 
-    public List<String> getSslCertificates() {
+    public List<String> getSslCertificatesList() {
       return sslCertificates;
     }
 
     public Builder addAllSslCertificates(List<String> sslCertificates) {
       if (this.sslCertificates == null) {
-        this.sslCertificates = new LinkedList<>();
+        this.sslCertificates = new ArrayList<>(sslCertificates.size());
       }
       this.sslCertificates.addAll(sslCertificates);
       return this;
@@ -388,7 +390,7 @@ public final class TargetHttpsProxy implements ApiMessage {
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.name, that.getName()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
-          Objects.equals(this.sslCertificates, that.getSslCertificates()) &&
+          Objects.equals(this.sslCertificates, that.getSslCertificatesList()) &&
           Objects.equals(this.urlMap, that.getUrlMap())
           ;
     }

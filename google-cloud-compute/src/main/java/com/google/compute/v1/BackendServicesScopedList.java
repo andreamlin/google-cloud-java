@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,11 +54,11 @@ public final class BackendServicesScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("backendServices") && backendServices != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (BackendService item : backendServices) {
         stringList.add(item.toString());
       }
-      fieldMap.put("backendServices", stringList);
+      fieldMap.put("backendServices", stringList.build());
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -81,7 +83,7 @@ public final class BackendServicesScopedList implements ApiMessage {
     return null;
   }
 
-  public List<BackendService> getBackendServices() {
+  public List<BackendService> getBackendServicesList() {
     return backendServices;
   }
 
@@ -117,7 +119,7 @@ public final class BackendServicesScopedList implements ApiMessage {
 
     public Builder mergeFrom(BackendServicesScopedList other) {
       if (other == BackendServicesScopedList.getDefaultInstance()) return this;
-      if (other.getBackendServices() != null) {
+      if (other.getBackendServicesList() != null) {
         this.backendServices = other.backendServices;
       }
       if (other.getWarning() != null) {
@@ -131,13 +133,13 @@ public final class BackendServicesScopedList implements ApiMessage {
       this.warning = source.warning;
     }
 
-    public List<BackendService> getBackendServices() {
+    public List<BackendService> getBackendServicesList() {
       return backendServices;
     }
 
     public Builder addAllBackendServices(List<BackendService> backendServices) {
       if (this.backendServices == null) {
-        this.backendServices = new LinkedList<>();
+        this.backendServices = new ArrayList<>(backendServices.size());
       }
       this.backendServices.addAll(backendServices);
       return this;
@@ -190,7 +192,7 @@ public final class BackendServicesScopedList implements ApiMessage {
     if (o instanceof BackendServicesScopedList) {
       BackendServicesScopedList that = (BackendServicesScopedList) o;
       return
-          Objects.equals(this.backendServices, that.getBackendServices()) &&
+          Objects.equals(this.backendServices, that.getBackendServicesList()) &&
           Objects.equals(this.warning, that.getWarning())
           ;
     }

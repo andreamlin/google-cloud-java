@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -59,8 +60,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> aggregatedListGlobalOperationsMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList>newBuilder()
@@ -114,7 +113,6 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("project")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> aggregatedListGlobalOperationsCallable;
@@ -124,6 +122,7 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
   private final UnaryCallable<ListGlobalOperationsHttpRequest, OperationList> listGlobalOperationsCallable;
   private final UnaryCallable<ListGlobalOperationsHttpRequest, ListGlobalOperationsPagedResponse> listGlobalOperationsPagedCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonGlobalOperationStub create(GlobalOperationStubSettings settings) throws IOException {
     return new HttpJsonGlobalOperationStub(settings, ClientContext.create(settings));
   }
@@ -132,12 +131,26 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
     return new HttpJsonGlobalOperationStub(GlobalOperationStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonGlobalOperationStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonGlobalOperationStub(GlobalOperationSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonGlobalOperationStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonGlobalOperationStub(GlobalOperationStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonGlobalOperationCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonGlobalOperationStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonGlobalOperationStub(GlobalOperationStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> aggregatedListGlobalOperationsTransportSettings =
         HttpJsonCallSettings.<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList>newBuilder()
@@ -156,12 +169,12 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
             .setMethodDescriptor(listGlobalOperationsMethodDescriptor)
             .build();
 
-    this.aggregatedListGlobalOperationsCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListGlobalOperationsTransportSettings,settings.aggregatedListGlobalOperationsSettings(), clientContext);
-    this.aggregatedListGlobalOperationsPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListGlobalOperationsTransportSettings,settings.aggregatedListGlobalOperationsSettings(), clientContext);
-    this.deleteGlobalOperationCallable = HttpJsonCallableFactory.createUnaryCallable(deleteGlobalOperationTransportSettings,settings.deleteGlobalOperationSettings(), clientContext);
-    this.getGlobalOperationCallable = HttpJsonCallableFactory.createUnaryCallable(getGlobalOperationTransportSettings,settings.getGlobalOperationSettings(), clientContext);
-    this.listGlobalOperationsCallable = HttpJsonCallableFactory.createUnaryCallable(listGlobalOperationsTransportSettings,settings.listGlobalOperationsSettings(), clientContext);
-    this.listGlobalOperationsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listGlobalOperationsTransportSettings,settings.listGlobalOperationsSettings(), clientContext);
+    this.aggregatedListGlobalOperationsCallable = callableFactory.createUnaryCallable(aggregatedListGlobalOperationsTransportSettings,settings.aggregatedListGlobalOperationsSettings(), clientContext);
+    this.aggregatedListGlobalOperationsPagedCallable = callableFactory.createPagedCallable(aggregatedListGlobalOperationsTransportSettings,settings.aggregatedListGlobalOperationsSettings(), clientContext);
+    this.deleteGlobalOperationCallable = callableFactory.createUnaryCallable(deleteGlobalOperationTransportSettings,settings.deleteGlobalOperationSettings(), clientContext);
+    this.getGlobalOperationCallable = callableFactory.createUnaryCallable(getGlobalOperationTransportSettings,settings.getGlobalOperationSettings(), clientContext);
+    this.listGlobalOperationsCallable = callableFactory.createUnaryCallable(listGlobalOperationsTransportSettings,settings.listGlobalOperationsSettings(), clientContext);
+    this.listGlobalOperationsPagedCallable = callableFactory.createPagedCallable(listGlobalOperationsTransportSettings,settings.listGlobalOperationsSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -48,11 +50,11 @@ public final class InstanceGroupManagersDeleteInstancesRequest implements ApiMes
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("instances") && instances != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : instances) {
         stringList.add(item.toString());
       }
-      fieldMap.put("instances", stringList);
+      fieldMap.put("instances", stringList.build());
     }
     return fieldMap;
   }
@@ -71,7 +73,7 @@ public final class InstanceGroupManagersDeleteInstancesRequest implements ApiMes
     return null;
   }
 
-  public List<String> getInstances() {
+  public List<String> getInstancesList() {
     return instances;
   }
 
@@ -102,7 +104,7 @@ public final class InstanceGroupManagersDeleteInstancesRequest implements ApiMes
 
     public Builder mergeFrom(InstanceGroupManagersDeleteInstancesRequest other) {
       if (other == InstanceGroupManagersDeleteInstancesRequest.getDefaultInstance()) return this;
-      if (other.getInstances() != null) {
+      if (other.getInstancesList() != null) {
         this.instances = other.instances;
       }
       return this;
@@ -112,13 +114,13 @@ public final class InstanceGroupManagersDeleteInstancesRequest implements ApiMes
       this.instances = source.instances;
     }
 
-    public List<String> getInstances() {
+    public List<String> getInstancesList() {
       return instances;
     }
 
     public Builder addAllInstances(List<String> instances) {
       if (this.instances == null) {
-        this.instances = new LinkedList<>();
+        this.instances = new ArrayList<>(instances.size());
       }
       this.instances.addAll(instances);
       return this;
@@ -158,7 +160,7 @@ public final class InstanceGroupManagersDeleteInstancesRequest implements ApiMes
     if (o instanceof InstanceGroupManagersDeleteInstancesRequest) {
       InstanceGroupManagersDeleteInstancesRequest that = (InstanceGroupManagersDeleteInstancesRequest) o;
       return
-          Objects.equals(this.instances, that.getInstances())
+          Objects.equals(this.instances, that.getInstancesList())
           ;
     }
     return false;

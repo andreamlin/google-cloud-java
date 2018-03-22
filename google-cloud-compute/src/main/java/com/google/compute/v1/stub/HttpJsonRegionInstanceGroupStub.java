@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -63,8 +64,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupMethodDescriptor =
       ApiMethodDescriptor.<GetRegionInstanceGroupHttpRequest, InstanceGroup>newBuilder()
@@ -119,7 +118,6 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("instanceGroup")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupCallable;
@@ -129,6 +127,7 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
   private final UnaryCallable<ListInstancesRegionInstanceGroupsHttpRequest, ListInstancesRegionInstanceGroupsPagedResponse> listInstancesRegionInstanceGroupsPagedCallable;
   private final UnaryCallable<SetNamedPortsRegionInstanceGroupHttpRequest, Operation> setNamedPortsRegionInstanceGroupCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonRegionInstanceGroupStub create(RegionInstanceGroupStubSettings settings) throws IOException {
     return new HttpJsonRegionInstanceGroupStub(settings, ClientContext.create(settings));
   }
@@ -137,12 +136,26 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
     return new HttpJsonRegionInstanceGroupStub(RegionInstanceGroupStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonRegionInstanceGroupStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonRegionInstanceGroupStub(RegionInstanceGroupSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonRegionInstanceGroupStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonRegionInstanceGroupStub(RegionInstanceGroupStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonRegionInstanceGroupCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonRegionInstanceGroupStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonRegionInstanceGroupStub(RegionInstanceGroupStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<GetRegionInstanceGroupHttpRequest, InstanceGroup> getRegionInstanceGroupTransportSettings =
         HttpJsonCallSettings.<GetRegionInstanceGroupHttpRequest, InstanceGroup>newBuilder()
@@ -161,12 +174,12 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
             .setMethodDescriptor(setNamedPortsRegionInstanceGroupMethodDescriptor)
             .build();
 
-    this.getRegionInstanceGroupCallable = HttpJsonCallableFactory.createUnaryCallable(getRegionInstanceGroupTransportSettings,settings.getRegionInstanceGroupSettings(), clientContext);
-    this.listRegionInstanceGroupsCallable = HttpJsonCallableFactory.createUnaryCallable(listRegionInstanceGroupsTransportSettings,settings.listRegionInstanceGroupsSettings(), clientContext);
-    this.listRegionInstanceGroupsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listRegionInstanceGroupsTransportSettings,settings.listRegionInstanceGroupsSettings(), clientContext);
-    this.listInstancesRegionInstanceGroupsCallable = HttpJsonCallableFactory.createUnaryCallable(listInstancesRegionInstanceGroupsTransportSettings,settings.listInstancesRegionInstanceGroupsSettings(), clientContext);
-    this.listInstancesRegionInstanceGroupsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listInstancesRegionInstanceGroupsTransportSettings,settings.listInstancesRegionInstanceGroupsSettings(), clientContext);
-    this.setNamedPortsRegionInstanceGroupCallable = HttpJsonCallableFactory.createUnaryCallable(setNamedPortsRegionInstanceGroupTransportSettings,settings.setNamedPortsRegionInstanceGroupSettings(), clientContext);
+    this.getRegionInstanceGroupCallable = callableFactory.createUnaryCallable(getRegionInstanceGroupTransportSettings,settings.getRegionInstanceGroupSettings(), clientContext);
+    this.listRegionInstanceGroupsCallable = callableFactory.createUnaryCallable(listRegionInstanceGroupsTransportSettings,settings.listRegionInstanceGroupsSettings(), clientContext);
+    this.listRegionInstanceGroupsPagedCallable = callableFactory.createPagedCallable(listRegionInstanceGroupsTransportSettings,settings.listRegionInstanceGroupsSettings(), clientContext);
+    this.listInstancesRegionInstanceGroupsCallable = callableFactory.createUnaryCallable(listInstancesRegionInstanceGroupsTransportSettings,settings.listInstancesRegionInstanceGroupsSettings(), clientContext);
+    this.listInstancesRegionInstanceGroupsPagedCallable = callableFactory.createPagedCallable(listInstancesRegionInstanceGroupsTransportSettings,settings.listInstancesRegionInstanceGroupsSettings(), clientContext);
+    this.setNamedPortsRegionInstanceGroupCallable = callableFactory.createUnaryCallable(setNamedPortsRegionInstanceGroupTransportSettings,settings.setNamedPortsRegionInstanceGroupSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

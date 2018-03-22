@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,11 +54,11 @@ public final class AddressesScopedList implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("addresses") && addresses != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Address item : addresses) {
         stringList.add(item.toString());
       }
-      fieldMap.put("addresses", stringList);
+      fieldMap.put("addresses", stringList.build());
     }
     if (fieldNames.contains("warning") && warning != null) {
       fieldMap.put("warning", Collections.singletonList(String.valueOf(warning)));
@@ -81,7 +83,7 @@ public final class AddressesScopedList implements ApiMessage {
     return null;
   }
 
-  public List<Address> getAddresses() {
+  public List<Address> getAddressesList() {
     return addresses;
   }
 
@@ -117,7 +119,7 @@ public final class AddressesScopedList implements ApiMessage {
 
     public Builder mergeFrom(AddressesScopedList other) {
       if (other == AddressesScopedList.getDefaultInstance()) return this;
-      if (other.getAddresses() != null) {
+      if (other.getAddressesList() != null) {
         this.addresses = other.addresses;
       }
       if (other.getWarning() != null) {
@@ -131,13 +133,13 @@ public final class AddressesScopedList implements ApiMessage {
       this.warning = source.warning;
     }
 
-    public List<Address> getAddresses() {
+    public List<Address> getAddressesList() {
       return addresses;
     }
 
     public Builder addAllAddresses(List<Address> addresses) {
       if (this.addresses == null) {
-        this.addresses = new LinkedList<>();
+        this.addresses = new ArrayList<>(addresses.size());
       }
       this.addresses.addAll(addresses);
       return this;
@@ -190,7 +192,7 @@ public final class AddressesScopedList implements ApiMessage {
     if (o instanceof AddressesScopedList) {
       AddressesScopedList that = (AddressesScopedList) o;
       return
-          Objects.equals(this.addresses, that.getAddresses()) &&
+          Objects.equals(this.addresses, that.getAddressesList()) &&
           Objects.equals(this.warning, that.getWarning())
           ;
     }

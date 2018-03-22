@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,11 +54,11 @@ public final class PathRule implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("paths") && paths != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : paths) {
         stringList.add(item.toString());
       }
-      fieldMap.put("paths", stringList);
+      fieldMap.put("paths", stringList.build());
     }
     if (fieldNames.contains("service") && service != null) {
       fieldMap.put("service", Collections.singletonList(String.valueOf(service)));
@@ -81,7 +83,7 @@ public final class PathRule implements ApiMessage {
     return null;
   }
 
-  public List<String> getPaths() {
+  public List<String> getPathsList() {
     return paths;
   }
 
@@ -117,7 +119,7 @@ public final class PathRule implements ApiMessage {
 
     public Builder mergeFrom(PathRule other) {
       if (other == PathRule.getDefaultInstance()) return this;
-      if (other.getPaths() != null) {
+      if (other.getPathsList() != null) {
         this.paths = other.paths;
       }
       if (other.getService() != null) {
@@ -131,13 +133,13 @@ public final class PathRule implements ApiMessage {
       this.service = source.service;
     }
 
-    public List<String> getPaths() {
+    public List<String> getPathsList() {
       return paths;
     }
 
     public Builder addAllPaths(List<String> paths) {
       if (this.paths == null) {
-        this.paths = new LinkedList<>();
+        this.paths = new ArrayList<>(paths.size());
       }
       this.paths.addAll(paths);
       return this;
@@ -190,7 +192,7 @@ public final class PathRule implements ApiMessage {
     if (o instanceof PathRule) {
       PathRule that = (PathRule) o;
       return
-          Objects.equals(this.paths, that.getPaths()) &&
+          Objects.equals(this.paths, that.getPathsList()) &&
           Objects.equals(this.service, that.getService())
           ;
     }

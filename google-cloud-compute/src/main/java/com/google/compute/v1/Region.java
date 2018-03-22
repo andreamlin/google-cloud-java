@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -102,11 +104,11 @@ public final class Region implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("quotas") && quotas != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Quota item : quotas) {
         stringList.add(item.toString());
       }
-      fieldMap.put("quotas", stringList);
+      fieldMap.put("quotas", stringList.build());
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
@@ -115,11 +117,11 @@ public final class Region implements ApiMessage {
       fieldMap.put("status", Collections.singletonList(String.valueOf(status)));
     }
     if (fieldNames.contains("zones") && zones != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (String item : zones) {
         stringList.add(item.toString());
       }
-      fieldMap.put("zones", stringList);
+      fieldMap.put("zones", stringList.build());
     }
     return fieldMap;
   }
@@ -169,7 +171,7 @@ public final class Region implements ApiMessage {
     return creationTimestamp;
   }
 
-  public DeprecationStatus getDeprecated() {
+  public DeprecationStatus getDeprecationStatus() {
     return deprecated;
   }
 
@@ -189,7 +191,7 @@ public final class Region implements ApiMessage {
     return name;
   }
 
-  public List<Quota> getQuotas() {
+  public List<Quota> getQuotasList() {
     return quotas;
   }
 
@@ -201,7 +203,7 @@ public final class Region implements ApiMessage {
     return status;
   }
 
-  public List<String> getZones() {
+  public List<String> getZonesList() {
     return zones;
   }
 
@@ -244,7 +246,7 @@ public final class Region implements ApiMessage {
       if (other.getCreationTimestamp() != null) {
         this.creationTimestamp = other.creationTimestamp;
       }
-      if (other.getDeprecated() != null) {
+      if (other.getDeprecationStatus() != null) {
         this.deprecated = other.deprecated;
       }
       if (other.getDescription() != null) {
@@ -259,7 +261,7 @@ public final class Region implements ApiMessage {
       if (other.getName() != null) {
         this.name = other.name;
       }
-      if (other.getQuotas() != null) {
+      if (other.getQuotasList() != null) {
         this.quotas = other.quotas;
       }
       if (other.getSelfLink() != null) {
@@ -268,7 +270,7 @@ public final class Region implements ApiMessage {
       if (other.getStatus() != null) {
         this.status = other.status;
       }
-      if (other.getZones() != null) {
+      if (other.getZonesList() != null) {
         this.zones = other.zones;
       }
       return this;
@@ -296,11 +298,11 @@ public final class Region implements ApiMessage {
       return this;
     }
 
-    public DeprecationStatus getDeprecated() {
+    public DeprecationStatus getDeprecationStatus() {
       return deprecated;
     }
 
-    public Builder setDeprecated(DeprecationStatus deprecated) {
+    public Builder setDeprecationStatus(DeprecationStatus deprecated) {
       this.deprecated = deprecated;
       return this;
     }
@@ -341,13 +343,13 @@ public final class Region implements ApiMessage {
       return this;
     }
 
-    public List<Quota> getQuotas() {
+    public List<Quota> getQuotasList() {
       return quotas;
     }
 
     public Builder addAllQuotas(List<Quota> quotas) {
       if (this.quotas == null) {
-        this.quotas = new LinkedList<>();
+        this.quotas = new ArrayList<>(quotas.size());
       }
       this.quotas.addAll(quotas);
       return this;
@@ -376,13 +378,13 @@ public final class Region implements ApiMessage {
       return this;
     }
 
-    public List<String> getZones() {
+    public List<String> getZonesList() {
       return zones;
     }
 
     public Builder addAllZones(List<String> zones) {
       if (this.zones == null) {
-        this.zones = new LinkedList<>();
+        this.zones = new ArrayList<>(zones.size());
       }
       this.zones.addAll(zones);
       return this;
@@ -421,7 +423,7 @@ public final class Region implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setCreationTimestamp(this.creationTimestamp);
-      newBuilder.setDeprecated(this.deprecated);
+      newBuilder.setDeprecationStatus(this.deprecated);
       newBuilder.setDescription(this.description);
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
@@ -459,15 +461,15 @@ public final class Region implements ApiMessage {
       Region that = (Region) o;
       return
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
-          Objects.equals(this.deprecated, that.getDeprecated()) &&
+          Objects.equals(this.deprecated, that.getDeprecationStatus()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.name, that.getName()) &&
-          Objects.equals(this.quotas, that.getQuotas()) &&
+          Objects.equals(this.quotas, that.getQuotasList()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
           Objects.equals(this.status, that.getStatus()) &&
-          Objects.equals(this.zones, that.getZones())
+          Objects.equals(this.zones, that.getZonesList())
           ;
     }
     return false;

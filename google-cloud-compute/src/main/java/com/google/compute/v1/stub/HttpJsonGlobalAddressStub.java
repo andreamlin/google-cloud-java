@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -58,8 +59,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteGlobalAddressHttpRequest, Operation> deleteGlobalAddressMethodDescriptor =
       ApiMethodDescriptor.<DeleteGlobalAddressHttpRequest, Operation>newBuilder()
@@ -113,7 +112,6 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("project")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteGlobalAddressHttpRequest, Operation> deleteGlobalAddressCallable;
@@ -122,6 +120,7 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
   private final UnaryCallable<ListGlobalAddressesHttpRequest, AddressList> listGlobalAddressesCallable;
   private final UnaryCallable<ListGlobalAddressesHttpRequest, ListGlobalAddressesPagedResponse> listGlobalAddressesPagedCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonGlobalAddressStub create(GlobalAddressStubSettings settings) throws IOException {
     return new HttpJsonGlobalAddressStub(settings, ClientContext.create(settings));
   }
@@ -130,12 +129,26 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
     return new HttpJsonGlobalAddressStub(GlobalAddressStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonGlobalAddressStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonGlobalAddressStub(GlobalAddressSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonGlobalAddressStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonGlobalAddressStub(GlobalAddressStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonGlobalAddressCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonGlobalAddressStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonGlobalAddressStub(GlobalAddressStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteGlobalAddressHttpRequest, Operation> deleteGlobalAddressTransportSettings =
         HttpJsonCallSettings.<DeleteGlobalAddressHttpRequest, Operation>newBuilder()
@@ -154,11 +167,11 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
             .setMethodDescriptor(listGlobalAddressesMethodDescriptor)
             .build();
 
-    this.deleteGlobalAddressCallable = HttpJsonCallableFactory.createUnaryCallable(deleteGlobalAddressTransportSettings,settings.deleteGlobalAddressSettings(), clientContext);
-    this.getGlobalAddressCallable = HttpJsonCallableFactory.createUnaryCallable(getGlobalAddressTransportSettings,settings.getGlobalAddressSettings(), clientContext);
-    this.insertGlobalAddressCallable = HttpJsonCallableFactory.createUnaryCallable(insertGlobalAddressTransportSettings,settings.insertGlobalAddressSettings(), clientContext);
-    this.listGlobalAddressesCallable = HttpJsonCallableFactory.createUnaryCallable(listGlobalAddressesTransportSettings,settings.listGlobalAddressesSettings(), clientContext);
-    this.listGlobalAddressesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listGlobalAddressesTransportSettings,settings.listGlobalAddressesSettings(), clientContext);
+    this.deleteGlobalAddressCallable = callableFactory.createUnaryCallable(deleteGlobalAddressTransportSettings,settings.deleteGlobalAddressSettings(), clientContext);
+    this.getGlobalAddressCallable = callableFactory.createUnaryCallable(getGlobalAddressTransportSettings,settings.getGlobalAddressSettings(), clientContext);
+    this.insertGlobalAddressCallable = callableFactory.createUnaryCallable(insertGlobalAddressTransportSettings,settings.insertGlobalAddressSettings(), clientContext);
+    this.listGlobalAddressesCallable = callableFactory.createUnaryCallable(listGlobalAddressesTransportSettings,settings.listGlobalAddressesSettings(), clientContext);
+    this.listGlobalAddressesPagedCallable = callableFactory.createPagedCallable(listGlobalAddressesTransportSettings,settings.listGlobalAddressesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

@@ -276,7 +276,7 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
         }
         @Override
         public Iterable<Address> extractResources(AddressAggregatedList payload) {
-          return payload.getItems().getAddresses();
+          return payload.getItems().getAddressesList();
         }
       };
 
@@ -310,7 +310,7 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
         }
         @Override
         public Iterable<Address> extractResources(AddressList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

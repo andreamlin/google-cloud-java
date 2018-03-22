@@ -286,7 +286,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
         }
         @Override
         public Iterable<Subnetwork> extractResources(SubnetworkAggregatedList payload) {
-          return payload.getItems().getSubnetworks();
+          return payload.getItems().getSubnetworksList();
         }
       };
 
@@ -320,7 +320,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
         }
         @Override
         public Iterable<Subnetwork> extractResources(SubnetworkList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

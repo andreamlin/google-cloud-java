@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -68,11 +70,11 @@ public final class NetworkInterface implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("accessConfigs") && accessConfigs != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (AccessConfig item : accessConfigs) {
         stringList.add(item.toString());
       }
-      fieldMap.put("accessConfigs", stringList);
+      fieldMap.put("accessConfigs", stringList.build());
     }
     if (fieldNames.contains("kind") && kind != null) {
       fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
@@ -121,7 +123,7 @@ public final class NetworkInterface implements ApiMessage {
     return null;
   }
 
-  public List<AccessConfig> getAccessConfigs() {
+  public List<AccessConfig> getAccessConfigsList() {
     return accessConfigs;
   }
 
@@ -177,7 +179,7 @@ public final class NetworkInterface implements ApiMessage {
 
     public Builder mergeFrom(NetworkInterface other) {
       if (other == NetworkInterface.getDefaultInstance()) return this;
-      if (other.getAccessConfigs() != null) {
+      if (other.getAccessConfigsList() != null) {
         this.accessConfigs = other.accessConfigs;
       }
       if (other.getKind() != null) {
@@ -207,13 +209,13 @@ public final class NetworkInterface implements ApiMessage {
       this.subnetwork = source.subnetwork;
     }
 
-    public List<AccessConfig> getAccessConfigs() {
+    public List<AccessConfig> getAccessConfigsList() {
       return accessConfigs;
     }
 
     public Builder addAllAccessConfigs(List<AccessConfig> accessConfigs) {
       if (this.accessConfigs == null) {
-        this.accessConfigs = new LinkedList<>();
+        this.accessConfigs = new ArrayList<>(accessConfigs.size());
       }
       this.accessConfigs.addAll(accessConfigs);
       return this;
@@ -318,7 +320,7 @@ public final class NetworkInterface implements ApiMessage {
     if (o instanceof NetworkInterface) {
       NetworkInterface that = (NetworkInterface) o;
       return
-          Objects.equals(this.accessConfigs, that.getAccessConfigs()) &&
+          Objects.equals(this.accessConfigs, that.getAccessConfigsList()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.name, that.getName()) &&
           Objects.equals(this.network, that.getNetwork()) &&

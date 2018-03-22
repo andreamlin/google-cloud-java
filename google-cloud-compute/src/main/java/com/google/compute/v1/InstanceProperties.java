@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -86,11 +88,11 @@ public final class InstanceProperties implements ApiMessage {
       fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
     }
     if (fieldNames.contains("disks") && disks != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (AttachedDisk item : disks) {
         stringList.add(item.toString());
       }
-      fieldMap.put("disks", stringList);
+      fieldMap.put("disks", stringList.build());
     }
     if (fieldNames.contains("machineType") && machineType != null) {
       fieldMap.put("machineType", Collections.singletonList(String.valueOf(machineType)));
@@ -99,21 +101,21 @@ public final class InstanceProperties implements ApiMessage {
       fieldMap.put("metadata", Collections.singletonList(String.valueOf(metadata)));
     }
     if (fieldNames.contains("networkInterfaces") && networkInterfaces != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (NetworkInterface item : networkInterfaces) {
         stringList.add(item.toString());
       }
-      fieldMap.put("networkInterfaces", stringList);
+      fieldMap.put("networkInterfaces", stringList.build());
     }
     if (fieldNames.contains("scheduling") && scheduling != null) {
       fieldMap.put("scheduling", Collections.singletonList(String.valueOf(scheduling)));
     }
     if (fieldNames.contains("serviceAccounts") && serviceAccounts != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (ServiceAccount item : serviceAccounts) {
         stringList.add(item.toString());
       }
-      fieldMap.put("serviceAccounts", stringList);
+      fieldMap.put("serviceAccounts", stringList.build());
     }
     if (fieldNames.contains("tags") && tags != null) {
       fieldMap.put("tags", Collections.singletonList(String.valueOf(tags)));
@@ -167,7 +169,7 @@ public final class InstanceProperties implements ApiMessage {
     return description;
   }
 
-  public List<AttachedDisk> getDisks() {
+  public List<AttachedDisk> getDisksList() {
     return disks;
   }
 
@@ -179,7 +181,7 @@ public final class InstanceProperties implements ApiMessage {
     return metadata;
   }
 
-  public List<NetworkInterface> getNetworkInterfaces() {
+  public List<NetworkInterface> getNetworkInterfacesList() {
     return networkInterfaces;
   }
 
@@ -187,7 +189,7 @@ public final class InstanceProperties implements ApiMessage {
     return scheduling;
   }
 
-  public List<ServiceAccount> getServiceAccounts() {
+  public List<ServiceAccount> getServiceAccountsList() {
     return serviceAccounts;
   }
 
@@ -236,7 +238,7 @@ public final class InstanceProperties implements ApiMessage {
       if (other.getDescription() != null) {
         this.description = other.description;
       }
-      if (other.getDisks() != null) {
+      if (other.getDisksList() != null) {
         this.disks = other.disks;
       }
       if (other.getMachineType() != null) {
@@ -245,13 +247,13 @@ public final class InstanceProperties implements ApiMessage {
       if (other.getMetadata() != null) {
         this.metadata = other.metadata;
       }
-      if (other.getNetworkInterfaces() != null) {
+      if (other.getNetworkInterfacesList() != null) {
         this.networkInterfaces = other.networkInterfaces;
       }
       if (other.getScheduling() != null) {
         this.scheduling = other.scheduling;
       }
-      if (other.getServiceAccounts() != null) {
+      if (other.getServiceAccountsList() != null) {
         this.serviceAccounts = other.serviceAccounts;
       }
       if (other.getTags() != null) {
@@ -290,13 +292,13 @@ public final class InstanceProperties implements ApiMessage {
       return this;
     }
 
-    public List<AttachedDisk> getDisks() {
+    public List<AttachedDisk> getDisksList() {
       return disks;
     }
 
     public Builder addAllDisks(List<AttachedDisk> disks) {
       if (this.disks == null) {
-        this.disks = new LinkedList<>();
+        this.disks = new ArrayList<>(disks.size());
       }
       this.disks.addAll(disks);
       return this;
@@ -325,13 +327,13 @@ public final class InstanceProperties implements ApiMessage {
       return this;
     }
 
-    public List<NetworkInterface> getNetworkInterfaces() {
+    public List<NetworkInterface> getNetworkInterfacesList() {
       return networkInterfaces;
     }
 
     public Builder addAllNetworkInterfaces(List<NetworkInterface> networkInterfaces) {
       if (this.networkInterfaces == null) {
-        this.networkInterfaces = new LinkedList<>();
+        this.networkInterfaces = new ArrayList<>(networkInterfaces.size());
       }
       this.networkInterfaces.addAll(networkInterfaces);
       return this;
@@ -351,13 +353,13 @@ public final class InstanceProperties implements ApiMessage {
       return this;
     }
 
-    public List<ServiceAccount> getServiceAccounts() {
+    public List<ServiceAccount> getServiceAccountsList() {
       return serviceAccounts;
     }
 
     public Builder addAllServiceAccounts(List<ServiceAccount> serviceAccounts) {
       if (this.serviceAccounts == null) {
-        this.serviceAccounts = new LinkedList<>();
+        this.serviceAccounts = new ArrayList<>(serviceAccounts.size());
       }
       this.serviceAccounts.addAll(serviceAccounts);
       return this;
@@ -440,12 +442,12 @@ public final class InstanceProperties implements ApiMessage {
       return
           Objects.equals(this.canIpForward, that.getCanIpForward()) &&
           Objects.equals(this.description, that.getDescription()) &&
-          Objects.equals(this.disks, that.getDisks()) &&
+          Objects.equals(this.disks, that.getDisksList()) &&
           Objects.equals(this.machineType, that.getMachineType()) &&
           Objects.equals(this.metadata, that.getMetadata()) &&
-          Objects.equals(this.networkInterfaces, that.getNetworkInterfaces()) &&
+          Objects.equals(this.networkInterfaces, that.getNetworkInterfacesList()) &&
           Objects.equals(this.scheduling, that.getScheduling()) &&
-          Objects.equals(this.serviceAccounts, that.getServiceAccounts()) &&
+          Objects.equals(this.serviceAccounts, that.getServiceAccountsList()) &&
           Objects.equals(this.tags, that.getTags())
           ;
     }

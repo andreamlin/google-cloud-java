@@ -335,7 +335,7 @@ public class RegionInstanceGroupManagerStubSettings extends StubSettings<RegionI
         }
         @Override
         public Iterable<InstanceGroupManager> extractResources(RegionInstanceGroupManagerList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

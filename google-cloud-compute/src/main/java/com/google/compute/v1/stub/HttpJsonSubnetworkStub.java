@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -64,8 +65,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonSubnetworkStub extends SubnetworkStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList> aggregatedListSubnetworksMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList>newBuilder()
@@ -146,7 +145,6 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("region")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList> aggregatedListSubnetworksCallable;
@@ -158,6 +156,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
   private final UnaryCallable<ListSubnetworksHttpRequest, SubnetworkList> listSubnetworksCallable;
   private final UnaryCallable<ListSubnetworksHttpRequest, ListSubnetworksPagedResponse> listSubnetworksPagedCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonSubnetworkStub create(SubnetworkStubSettings settings) throws IOException {
     return new HttpJsonSubnetworkStub(settings, ClientContext.create(settings));
   }
@@ -166,12 +165,26 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
     return new HttpJsonSubnetworkStub(SubnetworkStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonSubnetworkStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonSubnetworkStub(SubnetworkSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonSubnetworkStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonSubnetworkStub(SubnetworkStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonSubnetworkCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonSubnetworkStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonSubnetworkStub(SubnetworkStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList> aggregatedListSubnetworksTransportSettings =
         HttpJsonCallSettings.<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList>newBuilder()
@@ -198,14 +211,14 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
             .setMethodDescriptor(listSubnetworksMethodDescriptor)
             .build();
 
-    this.aggregatedListSubnetworksCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListSubnetworksTransportSettings,settings.aggregatedListSubnetworksSettings(), clientContext);
-    this.aggregatedListSubnetworksPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListSubnetworksTransportSettings,settings.aggregatedListSubnetworksSettings(), clientContext);
-    this.deleteSubnetworkCallable = HttpJsonCallableFactory.createUnaryCallable(deleteSubnetworkTransportSettings,settings.deleteSubnetworkSettings(), clientContext);
-    this.expandIpCidrRangeSubnetworkCallable = HttpJsonCallableFactory.createUnaryCallable(expandIpCidrRangeSubnetworkTransportSettings,settings.expandIpCidrRangeSubnetworkSettings(), clientContext);
-    this.getSubnetworkCallable = HttpJsonCallableFactory.createUnaryCallable(getSubnetworkTransportSettings,settings.getSubnetworkSettings(), clientContext);
-    this.insertSubnetworkCallable = HttpJsonCallableFactory.createUnaryCallable(insertSubnetworkTransportSettings,settings.insertSubnetworkSettings(), clientContext);
-    this.listSubnetworksCallable = HttpJsonCallableFactory.createUnaryCallable(listSubnetworksTransportSettings,settings.listSubnetworksSettings(), clientContext);
-    this.listSubnetworksPagedCallable = HttpJsonCallableFactory.createPagedCallable(listSubnetworksTransportSettings,settings.listSubnetworksSettings(), clientContext);
+    this.aggregatedListSubnetworksCallable = callableFactory.createUnaryCallable(aggregatedListSubnetworksTransportSettings,settings.aggregatedListSubnetworksSettings(), clientContext);
+    this.aggregatedListSubnetworksPagedCallable = callableFactory.createPagedCallable(aggregatedListSubnetworksTransportSettings,settings.aggregatedListSubnetworksSettings(), clientContext);
+    this.deleteSubnetworkCallable = callableFactory.createUnaryCallable(deleteSubnetworkTransportSettings,settings.deleteSubnetworkSettings(), clientContext);
+    this.expandIpCidrRangeSubnetworkCallable = callableFactory.createUnaryCallable(expandIpCidrRangeSubnetworkTransportSettings,settings.expandIpCidrRangeSubnetworkSettings(), clientContext);
+    this.getSubnetworkCallable = callableFactory.createUnaryCallable(getSubnetworkTransportSettings,settings.getSubnetworkSettings(), clientContext);
+    this.insertSubnetworkCallable = callableFactory.createUnaryCallable(insertSubnetworkTransportSettings,settings.insertSubnetworkSettings(), clientContext);
+    this.listSubnetworksCallable = callableFactory.createUnaryCallable(listSubnetworksTransportSettings,settings.listSubnetworksSettings(), clientContext);
+    this.listSubnetworksPagedCallable = callableFactory.createPagedCallable(listSubnetworksTransportSettings,settings.listSubnetworksSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -67,7 +69,7 @@ public final class UrlMapsValidateResponse implements ApiMessage {
     return null;
   }
 
-  public UrlMapValidationResult getResult() {
+  public UrlMapValidationResult getUrlMapValidationResult() {
     return result;
   }
 
@@ -98,7 +100,7 @@ public final class UrlMapsValidateResponse implements ApiMessage {
 
     public Builder mergeFrom(UrlMapsValidateResponse other) {
       if (other == UrlMapsValidateResponse.getDefaultInstance()) return this;
-      if (other.getResult() != null) {
+      if (other.getUrlMapValidationResult() != null) {
         this.result = other.result;
       }
       return this;
@@ -108,11 +110,11 @@ public final class UrlMapsValidateResponse implements ApiMessage {
       this.result = source.result;
     }
 
-    public UrlMapValidationResult getResult() {
+    public UrlMapValidationResult getUrlMapValidationResult() {
       return result;
     }
 
-    public Builder setResult(UrlMapValidationResult result) {
+    public Builder setUrlMapValidationResult(UrlMapValidationResult result) {
       this.result = result;
       return this;
     }
@@ -126,7 +128,7 @@ public final class UrlMapsValidateResponse implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setResult(this.result);
+      newBuilder.setUrlMapValidationResult(this.result);
       return newBuilder;
     }
   }
@@ -146,7 +148,7 @@ public final class UrlMapsValidateResponse implements ApiMessage {
     if (o instanceof UrlMapsValidateResponse) {
       UrlMapsValidateResponse that = (UrlMapsValidateResponse) o;
       return
-          Objects.equals(this.result, that.getResult())
+          Objects.equals(this.result, that.getUrlMapValidationResult())
           ;
     }
     return false;

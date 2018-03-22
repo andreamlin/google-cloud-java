@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -59,11 +61,11 @@ public final class InstanceWithNamedPorts implements ApiMessage {
       fieldMap.put("instance", Collections.singletonList(String.valueOf(instance)));
     }
     if (fieldNames.contains("namedPorts") && namedPorts != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (NamedPort item : namedPorts) {
         stringList.add(item.toString());
       }
-      fieldMap.put("namedPorts", stringList);
+      fieldMap.put("namedPorts", stringList.build());
     }
     if (fieldNames.contains("status") && status != null) {
       fieldMap.put("status", Collections.singletonList(String.valueOf(status)));
@@ -95,7 +97,7 @@ public final class InstanceWithNamedPorts implements ApiMessage {
     return instance;
   }
 
-  public List<NamedPort> getNamedPorts() {
+  public List<NamedPort> getNamedPortsList() {
     return namedPorts;
   }
 
@@ -135,7 +137,7 @@ public final class InstanceWithNamedPorts implements ApiMessage {
       if (other.getInstance() != null) {
         this.instance = other.instance;
       }
-      if (other.getNamedPorts() != null) {
+      if (other.getNamedPortsList() != null) {
         this.namedPorts = other.namedPorts;
       }
       if (other.getStatus() != null) {
@@ -159,13 +161,13 @@ public final class InstanceWithNamedPorts implements ApiMessage {
       return this;
     }
 
-    public List<NamedPort> getNamedPorts() {
+    public List<NamedPort> getNamedPortsList() {
       return namedPorts;
     }
 
     public Builder addAllNamedPorts(List<NamedPort> namedPorts) {
       if (this.namedPorts == null) {
-        this.namedPorts = new LinkedList<>();
+        this.namedPorts = new ArrayList<>(namedPorts.size());
       }
       this.namedPorts.addAll(namedPorts);
       return this;
@@ -223,7 +225,7 @@ public final class InstanceWithNamedPorts implements ApiMessage {
       InstanceWithNamedPorts that = (InstanceWithNamedPorts) o;
       return
           Objects.equals(this.instance, that.getInstance()) &&
-          Objects.equals(this.namedPorts, that.getNamedPorts()) &&
+          Objects.equals(this.namedPorts, that.getNamedPortsList()) &&
           Objects.equals(this.status, that.getStatus())
           ;
     }

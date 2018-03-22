@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -81,7 +83,7 @@ public final class RouterStatusResponse implements ApiMessage {
     return kind;
   }
 
-  public RouterStatus getResult() {
+  public RouterStatus getRouterStatus() {
     return result;
   }
 
@@ -116,7 +118,7 @@ public final class RouterStatusResponse implements ApiMessage {
       if (other.getKind() != null) {
         this.kind = other.kind;
       }
-      if (other.getResult() != null) {
+      if (other.getRouterStatus() != null) {
         this.result = other.result;
       }
       return this;
@@ -136,11 +138,11 @@ public final class RouterStatusResponse implements ApiMessage {
       return this;
     }
 
-    public RouterStatus getResult() {
+    public RouterStatus getRouterStatus() {
       return result;
     }
 
-    public Builder setResult(RouterStatus result) {
+    public Builder setRouterStatus(RouterStatus result) {
       this.result = result;
       return this;
     }
@@ -157,7 +159,7 @@ public final class RouterStatusResponse implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setKind(this.kind);
-      newBuilder.setResult(this.result);
+      newBuilder.setRouterStatus(this.result);
       return newBuilder;
     }
   }
@@ -179,7 +181,7 @@ public final class RouterStatusResponse implements ApiMessage {
       RouterStatusResponse that = (RouterStatusResponse) o;
       return
           Objects.equals(this.kind, that.getKind()) &&
-          Objects.equals(this.result, that.getResult())
+          Objects.equals(this.result, that.getRouterStatus())
           ;
     }
     return false;

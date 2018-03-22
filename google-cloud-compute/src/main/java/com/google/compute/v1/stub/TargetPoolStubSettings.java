@@ -337,7 +337,7 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
         }
         @Override
         public Iterable<TargetPool> extractResources(TargetPoolAggregatedList payload) {
-          return payload.getItems().getTargetPools();
+          return payload.getItems().getTargetPoolsList();
         }
       };
 
@@ -371,7 +371,7 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
         }
         @Override
         public Iterable<TargetPool> extractResources(TargetPoolList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

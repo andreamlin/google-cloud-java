@@ -274,7 +274,7 @@ public class GlobalForwardingRuleStubSettings extends StubSettings<GlobalForward
         }
         @Override
         public Iterable<ForwardingRule> extractResources(ForwardingRuleList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

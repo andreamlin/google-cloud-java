@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -56,18 +58,18 @@ public final class RouterStatus implements ApiMessage {
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("bestRoutes") && bestRoutes != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (Route item : bestRoutes) {
         stringList.add(item.toString());
       }
-      fieldMap.put("bestRoutes", stringList);
+      fieldMap.put("bestRoutes", stringList.build());
     }
     if (fieldNames.contains("bgpPeerStatus") && bgpPeerStatus != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (RouterStatusBgpPeerStatus item : bgpPeerStatus) {
         stringList.add(item.toString());
       }
-      fieldMap.put("bgpPeerStatus", stringList);
+      fieldMap.put("bgpPeerStatus", stringList.build());
     }
     if (fieldNames.contains("network") && network != null) {
       fieldMap.put("network", Collections.singletonList(String.valueOf(network)));
@@ -95,11 +97,11 @@ public final class RouterStatus implements ApiMessage {
     return null;
   }
 
-  public List<Route> getBestRoutes() {
+  public List<Route> getBestRoutesList() {
     return bestRoutes;
   }
 
-  public List<RouterStatusBgpPeerStatus> getBgpPeerStatus() {
+  public List<RouterStatusBgpPeerStatus> getBgpPeerStatusList() {
     return bgpPeerStatus;
   }
 
@@ -136,10 +138,10 @@ public final class RouterStatus implements ApiMessage {
 
     public Builder mergeFrom(RouterStatus other) {
       if (other == RouterStatus.getDefaultInstance()) return this;
-      if (other.getBestRoutes() != null) {
+      if (other.getBestRoutesList() != null) {
         this.bestRoutes = other.bestRoutes;
       }
-      if (other.getBgpPeerStatus() != null) {
+      if (other.getBgpPeerStatusList() != null) {
         this.bgpPeerStatus = other.bgpPeerStatus;
       }
       if (other.getNetwork() != null) {
@@ -154,13 +156,13 @@ public final class RouterStatus implements ApiMessage {
       this.network = source.network;
     }
 
-    public List<Route> getBestRoutes() {
+    public List<Route> getBestRoutesList() {
       return bestRoutes;
     }
 
     public Builder addAllBestRoutes(List<Route> bestRoutes) {
       if (this.bestRoutes == null) {
-        this.bestRoutes = new LinkedList<>();
+        this.bestRoutes = new ArrayList<>(bestRoutes.size());
       }
       this.bestRoutes.addAll(bestRoutes);
       return this;
@@ -171,13 +173,13 @@ public final class RouterStatus implements ApiMessage {
       return this;
     }
 
-    public List<RouterStatusBgpPeerStatus> getBgpPeerStatus() {
+    public List<RouterStatusBgpPeerStatus> getBgpPeerStatusList() {
       return bgpPeerStatus;
     }
 
     public Builder addAllBgpPeerStatus(List<RouterStatusBgpPeerStatus> bgpPeerStatus) {
       if (this.bgpPeerStatus == null) {
-        this.bgpPeerStatus = new LinkedList<>();
+        this.bgpPeerStatus = new ArrayList<>(bgpPeerStatus.size());
       }
       this.bgpPeerStatus.addAll(bgpPeerStatus);
       return this;
@@ -234,8 +236,8 @@ public final class RouterStatus implements ApiMessage {
     if (o instanceof RouterStatus) {
       RouterStatus that = (RouterStatus) o;
       return
-          Objects.equals(this.bestRoutes, that.getBestRoutes()) &&
-          Objects.equals(this.bgpPeerStatus, that.getBgpPeerStatus()) &&
+          Objects.equals(this.bestRoutes, that.getBestRoutesList()) &&
+          Objects.equals(this.bgpPeerStatus, that.getBgpPeerStatusList()) &&
           Objects.equals(this.network, that.getNetwork())
           ;
     }

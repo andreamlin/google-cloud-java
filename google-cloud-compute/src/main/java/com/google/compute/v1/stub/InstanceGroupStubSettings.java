@@ -319,7 +319,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
         }
         @Override
         public Iterable<InstanceGroup> extractResources(InstanceGroupAggregatedList payload) {
-          return payload.getItems().getInstanceGroups();
+          return payload.getItems().getInstanceGroupsList();
         }
       };
 
@@ -353,7 +353,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
         }
         @Override
         public Iterable<InstanceGroup> extractResources(InstanceGroupList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 
@@ -387,7 +387,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
         }
         @Override
         public Iterable<InstanceWithNamedPorts> extractResources(InstanceGroupsListInstances payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

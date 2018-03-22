@@ -267,7 +267,7 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
         }
         @Override
         public Iterable<InstanceGroup> extractResources(RegionInstanceGroupList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 
@@ -301,7 +301,7 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
         }
         @Override
         public Iterable<InstanceWithNamedPorts> extractResources(RegionInstanceGroupsListInstances payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 

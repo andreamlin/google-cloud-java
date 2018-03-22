@@ -25,7 +25,6 @@ import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
 import com.google.api.gax.paging.FixedSizeCollection;
 import com.google.api.gax.paging.Page;
-import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiExceptions;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -495,7 +494,7 @@ public class TargetPoolClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     TargetPoolAggregatedList response = targetPoolClient.aggregatedListTargetPoolsCallable().call(request);
-   *     for (TargetPool element : response.getTargetPools()) {
+   *     for (TargetPool element : response.getTargetPoolsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -1028,7 +1027,7 @@ public class TargetPoolClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     TargetPoolList response = targetPoolClient.listTargetPoolsCallable().call(request);
-   *     for (TargetPool element : response.getItems()) {
+   *     for (TargetPool element : response.getItemsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

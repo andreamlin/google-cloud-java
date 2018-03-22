@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -123,7 +125,7 @@ public final class ManagedInstance implements ApiMessage {
     return instanceStatus;
   }
 
-  public ManagedInstanceLastAttempt getLastAttempt() {
+  public ManagedInstanceLastAttempt getManagedInstanceLastAttempt() {
     return lastAttempt;
   }
 
@@ -170,7 +172,7 @@ public final class ManagedInstance implements ApiMessage {
       if (other.getInstanceStatus() != null) {
         this.instanceStatus = other.instanceStatus;
       }
-      if (other.getLastAttempt() != null) {
+      if (other.getManagedInstanceLastAttempt() != null) {
         this.lastAttempt = other.lastAttempt;
       }
       return this;
@@ -220,11 +222,11 @@ public final class ManagedInstance implements ApiMessage {
       return this;
     }
 
-    public ManagedInstanceLastAttempt getLastAttempt() {
+    public ManagedInstanceLastAttempt getManagedInstanceLastAttempt() {
       return lastAttempt;
     }
 
-    public Builder setLastAttempt(ManagedInstanceLastAttempt lastAttempt) {
+    public Builder setManagedInstanceLastAttempt(ManagedInstanceLastAttempt lastAttempt) {
       this.lastAttempt = lastAttempt;
       return this;
     }
@@ -250,7 +252,7 @@ public final class ManagedInstance implements ApiMessage {
       newBuilder.setId(this.id);
       newBuilder.setInstance(this.instance);
       newBuilder.setInstanceStatus(this.instanceStatus);
-      newBuilder.setLastAttempt(this.lastAttempt);
+      newBuilder.setManagedInstanceLastAttempt(this.lastAttempt);
       return newBuilder;
     }
   }
@@ -278,7 +280,7 @@ public final class ManagedInstance implements ApiMessage {
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.instance, that.getInstance()) &&
           Objects.equals(this.instanceStatus, that.getInstanceStatus()) &&
-          Objects.equals(this.lastAttempt, that.getLastAttempt())
+          Objects.equals(this.lastAttempt, that.getManagedInstanceLastAttempt())
           ;
     }
     return false;

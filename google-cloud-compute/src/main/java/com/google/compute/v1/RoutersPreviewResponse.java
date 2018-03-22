@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -67,7 +69,7 @@ public final class RoutersPreviewResponse implements ApiMessage {
     return null;
   }
 
-  public Router getResource() {
+  public Router getRouter() {
     return resource;
   }
 
@@ -98,7 +100,7 @@ public final class RoutersPreviewResponse implements ApiMessage {
 
     public Builder mergeFrom(RoutersPreviewResponse other) {
       if (other == RoutersPreviewResponse.getDefaultInstance()) return this;
-      if (other.getResource() != null) {
+      if (other.getRouter() != null) {
         this.resource = other.resource;
       }
       return this;
@@ -108,11 +110,11 @@ public final class RoutersPreviewResponse implements ApiMessage {
       this.resource = source.resource;
     }
 
-    public Router getResource() {
+    public Router getRouter() {
       return resource;
     }
 
-    public Builder setResource(Router resource) {
+    public Builder setRouter(Router resource) {
       this.resource = resource;
       return this;
     }
@@ -126,7 +128,7 @@ public final class RoutersPreviewResponse implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setResource(this.resource);
+      newBuilder.setRouter(this.resource);
       return newBuilder;
     }
   }
@@ -146,7 +148,7 @@ public final class RoutersPreviewResponse implements ApiMessage {
     if (o instanceof RoutersPreviewResponse) {
       RoutersPreviewResponse that = (RoutersPreviewResponse) o;
       return
-          Objects.equals(this.resource, that.getResource())
+          Objects.equals(this.resource, that.getRouter())
           ;
     }
     return false;

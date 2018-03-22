@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -147,7 +149,7 @@ public final class InstanceTemplate implements ApiMessage {
     return name;
   }
 
-  public InstanceProperties getProperties() {
+  public InstanceProperties getInstanceProperties() {
     return properties;
   }
 
@@ -203,7 +205,7 @@ public final class InstanceTemplate implements ApiMessage {
       if (other.getName() != null) {
         this.name = other.name;
       }
-      if (other.getProperties() != null) {
+      if (other.getInstanceProperties() != null) {
         this.properties = other.properties;
       }
       if (other.getSelfLink() != null) {
@@ -267,11 +269,11 @@ public final class InstanceTemplate implements ApiMessage {
       return this;
     }
 
-    public InstanceProperties getProperties() {
+    public InstanceProperties getInstanceProperties() {
       return properties;
     }
 
-    public Builder setProperties(InstanceProperties properties) {
+    public Builder setInstanceProperties(InstanceProperties properties) {
       this.properties = properties;
       return this;
     }
@@ -311,7 +313,7 @@ public final class InstanceTemplate implements ApiMessage {
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
       newBuilder.setName(this.name);
-      newBuilder.setProperties(this.properties);
+      newBuilder.setInstanceProperties(this.properties);
       newBuilder.setSelfLink(this.selfLink);
       return newBuilder;
     }
@@ -343,7 +345,7 @@ public final class InstanceTemplate implements ApiMessage {
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.name, that.getName()) &&
-          Objects.equals(this.properties, that.getProperties()) &&
+          Objects.equals(this.properties, that.getInstanceProperties()) &&
           Objects.equals(this.selfLink, that.getSelfLink())
           ;
     }

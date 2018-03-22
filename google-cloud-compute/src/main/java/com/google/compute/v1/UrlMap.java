@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -100,11 +102,11 @@ public final class UrlMap implements ApiMessage {
       fieldMap.put("fingerprint", Collections.singletonList(String.valueOf(fingerprint)));
     }
     if (fieldNames.contains("hostRules") && hostRules != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (HostRule item : hostRules) {
         stringList.add(item.toString());
       }
-      fieldMap.put("hostRules", stringList);
+      fieldMap.put("hostRules", stringList.build());
     }
     if (fieldNames.contains("id") && id != null) {
       fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
@@ -116,21 +118,21 @@ public final class UrlMap implements ApiMessage {
       fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
     }
     if (fieldNames.contains("pathMatchers") && pathMatchers != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (PathMatcher item : pathMatchers) {
         stringList.add(item.toString());
       }
-      fieldMap.put("pathMatchers", stringList);
+      fieldMap.put("pathMatchers", stringList.build());
     }
     if (fieldNames.contains("selfLink") && selfLink != null) {
       fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
     }
     if (fieldNames.contains("tests") && tests != null) {
-      List<String> stringList = new LinkedList<>();
+      ImmutableList.Builder stringList = ImmutableList.builder();
       for (UrlMapTest item : tests) {
         stringList.add(item.toString());
       }
-      fieldMap.put("tests", stringList);
+      fieldMap.put("tests", stringList.build());
     }
     return fieldMap;
   }
@@ -195,7 +197,7 @@ public final class UrlMap implements ApiMessage {
     return fingerprint;
   }
 
-  public List<HostRule> getHostRules() {
+  public List<HostRule> getHostRulesList() {
     return hostRules;
   }
 
@@ -211,7 +213,7 @@ public final class UrlMap implements ApiMessage {
     return name;
   }
 
-  public List<PathMatcher> getPathMatchers() {
+  public List<PathMatcher> getPathMatchersList() {
     return pathMatchers;
   }
 
@@ -219,7 +221,7 @@ public final class UrlMap implements ApiMessage {
     return selfLink;
   }
 
-  public List<UrlMapTest> getTests() {
+  public List<UrlMapTest> getTestsList() {
     return tests;
   }
 
@@ -272,7 +274,7 @@ public final class UrlMap implements ApiMessage {
       if (other.getFingerprint() != null) {
         this.fingerprint = other.fingerprint;
       }
-      if (other.getHostRules() != null) {
+      if (other.getHostRulesList() != null) {
         this.hostRules = other.hostRules;
       }
       if (other.getId() != null) {
@@ -284,13 +286,13 @@ public final class UrlMap implements ApiMessage {
       if (other.getName() != null) {
         this.name = other.name;
       }
-      if (other.getPathMatchers() != null) {
+      if (other.getPathMatchersList() != null) {
         this.pathMatchers = other.pathMatchers;
       }
       if (other.getSelfLink() != null) {
         this.selfLink = other.selfLink;
       }
-      if (other.getTests() != null) {
+      if (other.getTestsList() != null) {
         this.tests = other.tests;
       }
       return this;
@@ -346,13 +348,13 @@ public final class UrlMap implements ApiMessage {
       return this;
     }
 
-    public List<HostRule> getHostRules() {
+    public List<HostRule> getHostRulesList() {
       return hostRules;
     }
 
     public Builder addAllHostRules(List<HostRule> hostRules) {
       if (this.hostRules == null) {
-        this.hostRules = new LinkedList<>();
+        this.hostRules = new ArrayList<>(hostRules.size());
       }
       this.hostRules.addAll(hostRules);
       return this;
@@ -390,13 +392,13 @@ public final class UrlMap implements ApiMessage {
       return this;
     }
 
-    public List<PathMatcher> getPathMatchers() {
+    public List<PathMatcher> getPathMatchersList() {
       return pathMatchers;
     }
 
     public Builder addAllPathMatchers(List<PathMatcher> pathMatchers) {
       if (this.pathMatchers == null) {
-        this.pathMatchers = new LinkedList<>();
+        this.pathMatchers = new ArrayList<>(pathMatchers.size());
       }
       this.pathMatchers.addAll(pathMatchers);
       return this;
@@ -416,13 +418,13 @@ public final class UrlMap implements ApiMessage {
       return this;
     }
 
-    public List<UrlMapTest> getTests() {
+    public List<UrlMapTest> getTestsList() {
       return tests;
     }
 
     public Builder addAllTests(List<UrlMapTest> tests) {
       if (this.tests == null) {
-        this.tests = new LinkedList<>();
+        this.tests = new ArrayList<>(tests.size());
       }
       this.tests.addAll(tests);
       return this;
@@ -506,13 +508,13 @@ public final class UrlMap implements ApiMessage {
           Objects.equals(this.defaultService, that.getDefaultService()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.fingerprint, that.getFingerprint()) &&
-          Objects.equals(this.hostRules, that.getHostRules()) &&
+          Objects.equals(this.hostRules, that.getHostRulesList()) &&
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.name, that.getName()) &&
-          Objects.equals(this.pathMatchers, that.getPathMatchers()) &&
+          Objects.equals(this.pathMatchers, that.getPathMatchersList()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
-          Objects.equals(this.tests, that.getTests())
+          Objects.equals(this.tests, that.getTestsList())
           ;
     }
     return false;

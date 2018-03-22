@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -60,8 +61,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonHttpHealthCheckStub extends HttpHealthCheckStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteHttpHealthCheckHttpRequest, Operation> deleteHttpHealthCheckMethodDescriptor =
       ApiMethodDescriptor.<DeleteHttpHealthCheckHttpRequest, Operation>newBuilder()
@@ -141,7 +140,6 @@ public class HttpJsonHttpHealthCheckStub extends HttpHealthCheckStub {
           .setHttpMethod(HttpMethods.PUT)
           .setResourceNameField("httpHealthCheck")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteHttpHealthCheckHttpRequest, Operation> deleteHttpHealthCheckCallable;
@@ -152,6 +150,7 @@ public class HttpJsonHttpHealthCheckStub extends HttpHealthCheckStub {
   private final UnaryCallable<PatchHttpHealthCheckHttpRequest, Operation> patchHttpHealthCheckCallable;
   private final UnaryCallable<UpdateHttpHealthCheckHttpRequest, Operation> updateHttpHealthCheckCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonHttpHealthCheckStub create(HttpHealthCheckStubSettings settings) throws IOException {
     return new HttpJsonHttpHealthCheckStub(settings, ClientContext.create(settings));
   }
@@ -160,12 +159,26 @@ public class HttpJsonHttpHealthCheckStub extends HttpHealthCheckStub {
     return new HttpJsonHttpHealthCheckStub(HttpHealthCheckStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonHttpHealthCheckStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonHttpHealthCheckStub(HttpHealthCheckSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonHttpHealthCheckStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonHttpHealthCheckStub(HttpHealthCheckStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonHttpHealthCheckCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonHttpHealthCheckStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonHttpHealthCheckStub(HttpHealthCheckStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteHttpHealthCheckHttpRequest, Operation> deleteHttpHealthCheckTransportSettings =
         HttpJsonCallSettings.<DeleteHttpHealthCheckHttpRequest, Operation>newBuilder()
@@ -192,13 +205,13 @@ public class HttpJsonHttpHealthCheckStub extends HttpHealthCheckStub {
             .setMethodDescriptor(updateHttpHealthCheckMethodDescriptor)
             .build();
 
-    this.deleteHttpHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(deleteHttpHealthCheckTransportSettings,settings.deleteHttpHealthCheckSettings(), clientContext);
-    this.getHttpHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(getHttpHealthCheckTransportSettings,settings.getHttpHealthCheckSettings(), clientContext);
-    this.insertHttpHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(insertHttpHealthCheckTransportSettings,settings.insertHttpHealthCheckSettings(), clientContext);
-    this.listHttpHealthChecksCallable = HttpJsonCallableFactory.createUnaryCallable(listHttpHealthChecksTransportSettings,settings.listHttpHealthChecksSettings(), clientContext);
-    this.listHttpHealthChecksPagedCallable = HttpJsonCallableFactory.createPagedCallable(listHttpHealthChecksTransportSettings,settings.listHttpHealthChecksSettings(), clientContext);
-    this.patchHttpHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(patchHttpHealthCheckTransportSettings,settings.patchHttpHealthCheckSettings(), clientContext);
-    this.updateHttpHealthCheckCallable = HttpJsonCallableFactory.createUnaryCallable(updateHttpHealthCheckTransportSettings,settings.updateHttpHealthCheckSettings(), clientContext);
+    this.deleteHttpHealthCheckCallable = callableFactory.createUnaryCallable(deleteHttpHealthCheckTransportSettings,settings.deleteHttpHealthCheckSettings(), clientContext);
+    this.getHttpHealthCheckCallable = callableFactory.createUnaryCallable(getHttpHealthCheckTransportSettings,settings.getHttpHealthCheckSettings(), clientContext);
+    this.insertHttpHealthCheckCallable = callableFactory.createUnaryCallable(insertHttpHealthCheckTransportSettings,settings.insertHttpHealthCheckSettings(), clientContext);
+    this.listHttpHealthChecksCallable = callableFactory.createUnaryCallable(listHttpHealthChecksTransportSettings,settings.listHttpHealthChecksSettings(), clientContext);
+    this.listHttpHealthChecksPagedCallable = callableFactory.createPagedCallable(listHttpHealthChecksTransportSettings,settings.listHttpHealthChecksSettings(), clientContext);
+    this.patchHttpHealthCheckCallable = callableFactory.createUnaryCallable(patchHttpHealthCheckTransportSettings,settings.patchHttpHealthCheckSettings(), clientContext);
+    this.updateHttpHealthCheckCallable = callableFactory.createUnaryCallable(updateHttpHealthCheckTransportSettings,settings.updateHttpHealthCheckSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

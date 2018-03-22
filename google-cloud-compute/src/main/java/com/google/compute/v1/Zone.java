@@ -17,7 +17,9 @@ package com.google.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -151,7 +153,7 @@ public final class Zone implements ApiMessage {
     return creationTimestamp;
   }
 
-  public DeprecationStatus getDeprecated() {
+  public DeprecationStatus getDeprecationStatus() {
     return deprecated;
   }
 
@@ -221,7 +223,7 @@ public final class Zone implements ApiMessage {
       if (other.getCreationTimestamp() != null) {
         this.creationTimestamp = other.creationTimestamp;
       }
-      if (other.getDeprecated() != null) {
+      if (other.getDeprecationStatus() != null) {
         this.deprecated = other.deprecated;
       }
       if (other.getDescription() != null) {
@@ -269,11 +271,11 @@ public final class Zone implements ApiMessage {
       return this;
     }
 
-    public DeprecationStatus getDeprecated() {
+    public DeprecationStatus getDeprecationStatus() {
       return deprecated;
     }
 
-    public Builder setDeprecated(DeprecationStatus deprecated) {
+    public Builder setDeprecationStatus(DeprecationStatus deprecated) {
       this.deprecated = deprecated;
       return this;
     }
@@ -367,7 +369,7 @@ public final class Zone implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setCreationTimestamp(this.creationTimestamp);
-      newBuilder.setDeprecated(this.deprecated);
+      newBuilder.setDeprecationStatus(this.deprecated);
       newBuilder.setDescription(this.description);
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
@@ -403,7 +405,7 @@ public final class Zone implements ApiMessage {
       Zone that = (Zone) o;
       return
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
-          Objects.equals(this.deprecated, that.getDeprecated()) &&
+          Objects.equals(this.deprecated, that.getDeprecationStatus()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.kind, that.getKind()) &&

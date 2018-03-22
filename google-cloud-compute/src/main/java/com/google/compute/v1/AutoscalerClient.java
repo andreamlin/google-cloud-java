@@ -25,7 +25,6 @@ import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
 import com.google.api.gax.paging.FixedSizeCollection;
 import com.google.api.gax.paging.Page;
-import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiExceptions;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -284,7 +283,7 @@ public class AutoscalerClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     AutoscalerAggregatedList response = autoscalerClient.aggregatedListAutoscalersCallable().call(request);
-   *     for (Autoscaler element : response.getAutoscalers()) {
+   *     for (Autoscaler element : response.getAutoscalersList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -712,7 +711,7 @@ public class AutoscalerClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     AutoscalerList response = autoscalerClient.listAutoscalersCallable().call(request);
-   *     for (Autoscaler element : response.getItems()) {
+   *     for (Autoscaler element : response.getItemsList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();

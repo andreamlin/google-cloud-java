@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -62,8 +63,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonImageStub extends ImageStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteImageHttpRequest, Operation> deleteImageMethodDescriptor =
       ApiMethodDescriptor.<DeleteImageHttpRequest, Operation>newBuilder()
@@ -143,7 +142,6 @@ public class HttpJsonImageStub extends ImageStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("project")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteImageHttpRequest, Operation> deleteImageCallable;
@@ -154,6 +152,7 @@ public class HttpJsonImageStub extends ImageStub {
   private final UnaryCallable<ListImagesHttpRequest, ImageList> listImagesCallable;
   private final UnaryCallable<ListImagesHttpRequest, ListImagesPagedResponse> listImagesPagedCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonImageStub create(ImageStubSettings settings) throws IOException {
     return new HttpJsonImageStub(settings, ClientContext.create(settings));
   }
@@ -162,12 +161,26 @@ public class HttpJsonImageStub extends ImageStub {
     return new HttpJsonImageStub(ImageStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonImageStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonImageStub(ImageSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonImageStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonImageStub(ImageStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonImageCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonImageStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonImageStub(ImageStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteImageHttpRequest, Operation> deleteImageTransportSettings =
         HttpJsonCallSettings.<DeleteImageHttpRequest, Operation>newBuilder()
@@ -194,13 +207,13 @@ public class HttpJsonImageStub extends ImageStub {
             .setMethodDescriptor(listImagesMethodDescriptor)
             .build();
 
-    this.deleteImageCallable = HttpJsonCallableFactory.createUnaryCallable(deleteImageTransportSettings,settings.deleteImageSettings(), clientContext);
-    this.deprecateImageCallable = HttpJsonCallableFactory.createUnaryCallable(deprecateImageTransportSettings,settings.deprecateImageSettings(), clientContext);
-    this.getImageCallable = HttpJsonCallableFactory.createUnaryCallable(getImageTransportSettings,settings.getImageSettings(), clientContext);
-    this.getFromFamilyImageCallable = HttpJsonCallableFactory.createUnaryCallable(getFromFamilyImageTransportSettings,settings.getFromFamilyImageSettings(), clientContext);
-    this.insertImageCallable = HttpJsonCallableFactory.createUnaryCallable(insertImageTransportSettings,settings.insertImageSettings(), clientContext);
-    this.listImagesCallable = HttpJsonCallableFactory.createUnaryCallable(listImagesTransportSettings,settings.listImagesSettings(), clientContext);
-    this.listImagesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listImagesTransportSettings,settings.listImagesSettings(), clientContext);
+    this.deleteImageCallable = callableFactory.createUnaryCallable(deleteImageTransportSettings,settings.deleteImageSettings(), clientContext);
+    this.deprecateImageCallable = callableFactory.createUnaryCallable(deprecateImageTransportSettings,settings.deprecateImageSettings(), clientContext);
+    this.getImageCallable = callableFactory.createUnaryCallable(getImageTransportSettings,settings.getImageSettings(), clientContext);
+    this.getFromFamilyImageCallable = callableFactory.createUnaryCallable(getFromFamilyImageTransportSettings,settings.getFromFamilyImageSettings(), clientContext);
+    this.insertImageCallable = callableFactory.createUnaryCallable(insertImageTransportSettings,settings.insertImageSettings(), clientContext);
+    this.listImagesCallable = callableFactory.createUnaryCallable(listImagesTransportSettings,settings.listImagesSettings(), clientContext);
+    this.listImagesPagedCallable = callableFactory.createPagedCallable(listImagesTransportSettings,settings.listImagesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -65,8 +66,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonUrlMapStub extends UrlMapStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<DeleteUrlMapHttpRequest, Operation> deleteUrlMapMethodDescriptor =
       ApiMethodDescriptor.<DeleteUrlMapHttpRequest, Operation>newBuilder()
@@ -172,7 +171,6 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
           .setHttpMethod(HttpMethods.POST)
           .setResourceNameField("urlMap")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<DeleteUrlMapHttpRequest, Operation> deleteUrlMapCallable;
@@ -185,6 +183,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
   private final UnaryCallable<UpdateUrlMapHttpRequest, Operation> updateUrlMapCallable;
   private final UnaryCallable<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonUrlMapStub create(UrlMapStubSettings settings) throws IOException {
     return new HttpJsonUrlMapStub(settings, ClientContext.create(settings));
   }
@@ -193,12 +192,26 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
     return new HttpJsonUrlMapStub(UrlMapStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonUrlMapStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonUrlMapStub(UrlMapSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonUrlMapStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonUrlMapStub(UrlMapStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonUrlMapCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonUrlMapStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonUrlMapStub(UrlMapStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteUrlMapHttpRequest, Operation> deleteUrlMapTransportSettings =
         HttpJsonCallSettings.<DeleteUrlMapHttpRequest, Operation>newBuilder()
@@ -233,15 +246,15 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
             .setMethodDescriptor(validateUrlMapMethodDescriptor)
             .build();
 
-    this.deleteUrlMapCallable = HttpJsonCallableFactory.createUnaryCallable(deleteUrlMapTransportSettings,settings.deleteUrlMapSettings(), clientContext);
-    this.getUrlMapCallable = HttpJsonCallableFactory.createUnaryCallable(getUrlMapTransportSettings,settings.getUrlMapSettings(), clientContext);
-    this.insertUrlMapCallable = HttpJsonCallableFactory.createUnaryCallable(insertUrlMapTransportSettings,settings.insertUrlMapSettings(), clientContext);
-    this.invalidateCacheUrlMapCallable = HttpJsonCallableFactory.createUnaryCallable(invalidateCacheUrlMapTransportSettings,settings.invalidateCacheUrlMapSettings(), clientContext);
-    this.listUrlMapsCallable = HttpJsonCallableFactory.createUnaryCallable(listUrlMapsTransportSettings,settings.listUrlMapsSettings(), clientContext);
-    this.listUrlMapsPagedCallable = HttpJsonCallableFactory.createPagedCallable(listUrlMapsTransportSettings,settings.listUrlMapsSettings(), clientContext);
-    this.patchUrlMapCallable = HttpJsonCallableFactory.createUnaryCallable(patchUrlMapTransportSettings,settings.patchUrlMapSettings(), clientContext);
-    this.updateUrlMapCallable = HttpJsonCallableFactory.createUnaryCallable(updateUrlMapTransportSettings,settings.updateUrlMapSettings(), clientContext);
-    this.validateUrlMapCallable = HttpJsonCallableFactory.createUnaryCallable(validateUrlMapTransportSettings,settings.validateUrlMapSettings(), clientContext);
+    this.deleteUrlMapCallable = callableFactory.createUnaryCallable(deleteUrlMapTransportSettings,settings.deleteUrlMapSettings(), clientContext);
+    this.getUrlMapCallable = callableFactory.createUnaryCallable(getUrlMapTransportSettings,settings.getUrlMapSettings(), clientContext);
+    this.insertUrlMapCallable = callableFactory.createUnaryCallable(insertUrlMapTransportSettings,settings.insertUrlMapSettings(), clientContext);
+    this.invalidateCacheUrlMapCallable = callableFactory.createUnaryCallable(invalidateCacheUrlMapTransportSettings,settings.invalidateCacheUrlMapSettings(), clientContext);
+    this.listUrlMapsCallable = callableFactory.createUnaryCallable(listUrlMapsTransportSettings,settings.listUrlMapsSettings(), clientContext);
+    this.listUrlMapsPagedCallable = callableFactory.createPagedCallable(listUrlMapsTransportSettings,settings.listUrlMapsSettings(), clientContext);
+    this.patchUrlMapCallable = callableFactory.createUnaryCallable(patchUrlMapTransportSettings,settings.patchUrlMapSettings(), clientContext);
+    this.updateUrlMapCallable = callableFactory.createUnaryCallable(updateUrlMapTransportSettings,settings.updateUrlMapSettings(), clientContext);
+    this.validateUrlMapCallable = callableFactory.createUnaryCallable(validateUrlMapTransportSettings,settings.validateUrlMapSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

@@ -24,6 +24,7 @@ import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonCallableFactory;
+import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.RequestParamsExtractor;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -59,8 +60,6 @@ import javax.annotation.Generated;
 @Generated("by GAPIC v0.0.5")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonMachineTypeStub extends MachineTypeStub {
-  private static final String BASE_URL = "https://www.googleapis.com/compute/v1/projects/";
-
   @InternalApi
   public static final ApiMethodDescriptor<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList> aggregatedListMachineTypesMethodDescriptor =
       ApiMethodDescriptor.<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList>newBuilder()
@@ -102,7 +101,6 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
           .setHttpMethod(HttpMethods.GET)
           .setResourceNameField("zone")
           .build();
-
   private final BackgroundResource backgroundResources;
 
   private final UnaryCallable<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList> aggregatedListMachineTypesCallable;
@@ -111,6 +109,7 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
   private final UnaryCallable<ListMachineTypesHttpRequest, MachineTypeList> listMachineTypesCallable;
   private final UnaryCallable<ListMachineTypesHttpRequest, ListMachineTypesPagedResponse> listMachineTypesPagedCallable;
 
+  private final HttpJsonClientCallableFactory callableFactory;
   public static final HttpJsonMachineTypeStub create(MachineTypeStubSettings settings) throws IOException {
     return new HttpJsonMachineTypeStub(settings, ClientContext.create(settings));
   }
@@ -119,12 +118,26 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
     return new HttpJsonMachineTypeStub(MachineTypeStubSettings.newBuilder().build(), clientContext);
   }
 
+  public static final HttpJsonMachineTypeStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    return new HttpJsonMachineTypeStub(MachineTypeSettings.newBuilder().build(), clientContext, callableFactory);
+  }
+
   /**
    * Constructs an instance of HttpJsonMachineTypeStub, using the given settings.
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
   protected HttpJsonMachineTypeStub(MachineTypeStubSettings settings, ClientContext clientContext) throws IOException {
+    this(settings, clientContext, new HttpJsonMachineTypeCallableFactory();
+  }
+
+  /**
+   * Constructs an instance of HttpJsonMachineTypeStub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static
+   * factory methods should be preferred.
+   */
+  protected HttpJsonMachineTypeStub(MachineTypeStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+    this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList> aggregatedListMachineTypesTransportSettings =
         HttpJsonCallSettings.<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList>newBuilder()
@@ -139,11 +152,11 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
             .setMethodDescriptor(listMachineTypesMethodDescriptor)
             .build();
 
-    this.aggregatedListMachineTypesCallable = HttpJsonCallableFactory.createUnaryCallable(aggregatedListMachineTypesTransportSettings,settings.aggregatedListMachineTypesSettings(), clientContext);
-    this.aggregatedListMachineTypesPagedCallable = HttpJsonCallableFactory.createPagedCallable(aggregatedListMachineTypesTransportSettings,settings.aggregatedListMachineTypesSettings(), clientContext);
-    this.getMachineTypeCallable = HttpJsonCallableFactory.createUnaryCallable(getMachineTypeTransportSettings,settings.getMachineTypeSettings(), clientContext);
-    this.listMachineTypesCallable = HttpJsonCallableFactory.createUnaryCallable(listMachineTypesTransportSettings,settings.listMachineTypesSettings(), clientContext);
-    this.listMachineTypesPagedCallable = HttpJsonCallableFactory.createPagedCallable(listMachineTypesTransportSettings,settings.listMachineTypesSettings(), clientContext);
+    this.aggregatedListMachineTypesCallable = callableFactory.createUnaryCallable(aggregatedListMachineTypesTransportSettings,settings.aggregatedListMachineTypesSettings(), clientContext);
+    this.aggregatedListMachineTypesPagedCallable = callableFactory.createPagedCallable(aggregatedListMachineTypesTransportSettings,settings.aggregatedListMachineTypesSettings(), clientContext);
+    this.getMachineTypeCallable = callableFactory.createUnaryCallable(getMachineTypeTransportSettings,settings.getMachineTypeSettings(), clientContext);
+    this.listMachineTypesCallable = callableFactory.createUnaryCallable(listMachineTypesTransportSettings,settings.listMachineTypesSettings(), clientContext);
+    this.listMachineTypesPagedCallable = callableFactory.createPagedCallable(listMachineTypesTransportSettings,settings.listMachineTypesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }

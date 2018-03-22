@@ -284,7 +284,7 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
         }
         @Override
         public Iterable<Autoscaler> extractResources(RegionAutoscalerList payload) {
-          return payload.getItems();
+          return payload.getItemsList();
         }
       };
 
