@@ -253,7 +253,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
   private final UnaryCallable<SetInstanceTemplateInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateInstanceGroupManagerCallable;
   private final UnaryCallable<SetTargetPoolsInstanceGroupManagerHttpRequest, Operation> setTargetPoolsInstanceGroupManagerCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonInstanceGroupManagerStub create(InstanceGroupManagerStubSettings settings) throws IOException {
     return new HttpJsonInstanceGroupManagerStub(settings, ClientContext.create(settings));
   }
@@ -262,8 +262,8 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
     return new HttpJsonInstanceGroupManagerStub(InstanceGroupManagerStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonInstanceGroupManagerStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonInstanceGroupManagerStub(InstanceGroupManagerSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonInstanceGroupManagerStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonInstanceGroupManagerStub(InstanceGroupManagerStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -272,7 +272,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
    * factory methods should be preferred.
    */
   protected HttpJsonInstanceGroupManagerStub(InstanceGroupManagerStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonInstanceGroupManagerCallableFactory();
+    this(settings, clientContext, new HttpJsonInstanceGroupManagerCallableFactory());
   }
 
   /**
@@ -280,7 +280,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonInstanceGroupManagerStub(InstanceGroupManagerStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonInstanceGroupManagerStub(InstanceGroupManagerStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AbandonInstancesInstanceGroupManagerHttpRequest, Operation> abandonInstancesInstanceGroupManagerTransportSettings =

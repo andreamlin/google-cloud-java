@@ -50,7 +50,6 @@ import static com.google.compute.v1.SnapshotClient.ListSnapshotsPagedResponse;
 import com.google.compute.v1.SnapshotList;
 import com.google.compute.v1.SnapshotName;
 import com.google.compute.v1.SnapshotSettings;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

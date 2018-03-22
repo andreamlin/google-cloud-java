@@ -140,7 +140,7 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
   private final UnaryCallable<ListTargetInstancesHttpRequest, TargetInstanceList> listTargetInstancesCallable;
   private final UnaryCallable<ListTargetInstancesHttpRequest, ListTargetInstancesPagedResponse> listTargetInstancesPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonTargetInstanceStub create(TargetInstanceStubSettings settings) throws IOException {
     return new HttpJsonTargetInstanceStub(settings, ClientContext.create(settings));
   }
@@ -149,8 +149,8 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
     return new HttpJsonTargetInstanceStub(TargetInstanceStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonTargetInstanceStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonTargetInstanceStub(TargetInstanceSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonTargetInstanceStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonTargetInstanceStub(TargetInstanceStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -159,7 +159,7 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
    * factory methods should be preferred.
    */
   protected HttpJsonTargetInstanceStub(TargetInstanceStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonTargetInstanceCallableFactory();
+    this(settings, clientContext, new HttpJsonTargetInstanceCallableFactory());
   }
 
   /**
@@ -167,7 +167,7 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonTargetInstanceStub(TargetInstanceStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonTargetInstanceStub(TargetInstanceStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList> aggregatedListTargetInstancesTransportSettings =

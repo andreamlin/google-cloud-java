@@ -120,7 +120,7 @@ public class HttpJsonRouteStub extends RouteStub {
   private final UnaryCallable<ListRoutesHttpRequest, RouteList> listRoutesCallable;
   private final UnaryCallable<ListRoutesHttpRequest, ListRoutesPagedResponse> listRoutesPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonRouteStub create(RouteStubSettings settings) throws IOException {
     return new HttpJsonRouteStub(settings, ClientContext.create(settings));
   }
@@ -129,8 +129,8 @@ public class HttpJsonRouteStub extends RouteStub {
     return new HttpJsonRouteStub(RouteStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonRouteStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonRouteStub(RouteSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonRouteStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonRouteStub(RouteStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -139,7 +139,7 @@ public class HttpJsonRouteStub extends RouteStub {
    * factory methods should be preferred.
    */
   protected HttpJsonRouteStub(RouteStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonRouteCallableFactory();
+    this(settings, clientContext, new HttpJsonRouteCallableFactory());
   }
 
   /**
@@ -147,7 +147,7 @@ public class HttpJsonRouteStub extends RouteStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonRouteStub(RouteStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonRouteStub(RouteStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteRouteHttpRequest, Operation> deleteRouteTransportSettings =

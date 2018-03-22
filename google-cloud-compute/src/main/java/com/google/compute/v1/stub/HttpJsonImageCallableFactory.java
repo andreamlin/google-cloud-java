@@ -55,7 +55,6 @@ import com.google.compute.v1.InsertImageHttpRequest;
 import com.google.compute.v1.ListImagesHttpRequest;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.ProjectName;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

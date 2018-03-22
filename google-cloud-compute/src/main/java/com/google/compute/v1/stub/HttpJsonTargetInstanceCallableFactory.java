@@ -55,7 +55,6 @@ import com.google.compute.v1.TargetInstanceList;
 import com.google.compute.v1.TargetInstanceName;
 import com.google.compute.v1.TargetInstanceSettings;
 import com.google.compute.v1.ZoneName;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -61,7 +61,6 @@ import com.google.compute.v1.RouterSettings;
 import com.google.compute.v1.RouterStatusResponse;
 import com.google.compute.v1.RoutersPreviewResponse;
 import com.google.compute.v1.UpdateRouterHttpRequest;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

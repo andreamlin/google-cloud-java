@@ -55,7 +55,6 @@ import static com.google.compute.v1.TargetVpnGatewayClient.ListTargetVpnGateways
 import com.google.compute.v1.TargetVpnGatewayList;
 import com.google.compute.v1.TargetVpnGatewayName;
 import com.google.compute.v1.TargetVpnGatewaySettings;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

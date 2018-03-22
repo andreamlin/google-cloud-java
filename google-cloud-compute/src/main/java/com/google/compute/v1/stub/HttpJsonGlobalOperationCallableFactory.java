@@ -52,7 +52,6 @@ import com.google.compute.v1.OperationAggregatedList;
 import com.google.compute.v1.OperationList;
 import com.google.compute.v1.OperationName;
 import com.google.compute.v1.ProjectName;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

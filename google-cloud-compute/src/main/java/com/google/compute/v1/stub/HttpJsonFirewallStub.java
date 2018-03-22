@@ -150,7 +150,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
   private final UnaryCallable<PatchFirewallHttpRequest, Operation> patchFirewallCallable;
   private final UnaryCallable<UpdateFirewallHttpRequest, Operation> updateFirewallCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonFirewallStub create(FirewallStubSettings settings) throws IOException {
     return new HttpJsonFirewallStub(settings, ClientContext.create(settings));
   }
@@ -159,8 +159,8 @@ public class HttpJsonFirewallStub extends FirewallStub {
     return new HttpJsonFirewallStub(FirewallStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonFirewallStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonFirewallStub(FirewallSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonFirewallStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonFirewallStub(FirewallStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -169,7 +169,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
    * factory methods should be preferred.
    */
   protected HttpJsonFirewallStub(FirewallStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonFirewallCallableFactory();
+    this(settings, clientContext, new HttpJsonFirewallCallableFactory());
   }
 
   /**
@@ -177,7 +177,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonFirewallStub(FirewallStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonFirewallStub(FirewallStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteFirewallHttpRequest, Operation> deleteFirewallTransportSettings =

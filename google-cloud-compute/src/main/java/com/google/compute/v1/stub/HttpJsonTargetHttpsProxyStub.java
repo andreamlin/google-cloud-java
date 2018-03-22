@@ -152,7 +152,7 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
   private final UnaryCallable<SetSslCertificatesTargetHttpsProxyHttpRequest, Operation> setSslCertificatesTargetHttpsProxyCallable;
   private final UnaryCallable<SetUrlMapTargetHttpsProxyHttpRequest, Operation> setUrlMapTargetHttpsProxyCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonTargetHttpsProxyStub create(TargetHttpsProxyStubSettings settings) throws IOException {
     return new HttpJsonTargetHttpsProxyStub(settings, ClientContext.create(settings));
   }
@@ -161,8 +161,8 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
     return new HttpJsonTargetHttpsProxyStub(TargetHttpsProxyStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonTargetHttpsProxyStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonTargetHttpsProxyStub(TargetHttpsProxySettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonTargetHttpsProxyStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonTargetHttpsProxyStub(TargetHttpsProxyStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -171,7 +171,7 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
    * factory methods should be preferred.
    */
   protected HttpJsonTargetHttpsProxyStub(TargetHttpsProxyStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonTargetHttpsProxyCallableFactory();
+    this(settings, clientContext, new HttpJsonTargetHttpsProxyCallableFactory());
   }
 
   /**
@@ -179,7 +179,7 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonTargetHttpsProxyStub(TargetHttpsProxyStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonTargetHttpsProxyStub(TargetHttpsProxyStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteTargetHttpsProxyHttpRequest, Operation> deleteTargetHttpsProxyTransportSettings =

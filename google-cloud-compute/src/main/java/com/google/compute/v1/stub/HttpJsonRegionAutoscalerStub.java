@@ -152,7 +152,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
   private final UnaryCallable<PatchRegionAutoscalerHttpRequest, Operation> patchRegionAutoscalerCallable;
   private final UnaryCallable<UpdateRegionAutoscalerHttpRequest, Operation> updateRegionAutoscalerCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonRegionAutoscalerStub create(RegionAutoscalerStubSettings settings) throws IOException {
     return new HttpJsonRegionAutoscalerStub(settings, ClientContext.create(settings));
   }
@@ -161,8 +161,8 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
     return new HttpJsonRegionAutoscalerStub(RegionAutoscalerStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonRegionAutoscalerStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonRegionAutoscalerStub(RegionAutoscalerSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonRegionAutoscalerStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonRegionAutoscalerStub(RegionAutoscalerStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -171,7 +171,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
    * factory methods should be preferred.
    */
   protected HttpJsonRegionAutoscalerStub(RegionAutoscalerStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonRegionAutoscalerCallableFactory();
+    this(settings, clientContext, new HttpJsonRegionAutoscalerCallableFactory());
   }
 
   /**
@@ -179,7 +179,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonRegionAutoscalerStub(RegionAutoscalerStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonRegionAutoscalerStub(RegionAutoscalerStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteRegionAutoscalerHttpRequest, Operation> deleteRegionAutoscalerTransportSettings =

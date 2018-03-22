@@ -156,7 +156,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
   private final UnaryCallable<ListForwardingRulesHttpRequest, ListForwardingRulesPagedResponse> listForwardingRulesPagedCallable;
   private final UnaryCallable<SetTargetForwardingRuleHttpRequest, Operation> setTargetForwardingRuleCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonForwardingRuleStub create(ForwardingRuleStubSettings settings) throws IOException {
     return new HttpJsonForwardingRuleStub(settings, ClientContext.create(settings));
   }
@@ -165,8 +165,8 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
     return new HttpJsonForwardingRuleStub(ForwardingRuleStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonForwardingRuleStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonForwardingRuleStub(ForwardingRuleSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonForwardingRuleStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonForwardingRuleStub(ForwardingRuleStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -175,7 +175,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
    * factory methods should be preferred.
    */
   protected HttpJsonForwardingRuleStub(ForwardingRuleStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonForwardingRuleCallableFactory();
+    this(settings, clientContext, new HttpJsonForwardingRuleCallableFactory());
   }
 
   /**
@@ -183,7 +183,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonForwardingRuleStub(ForwardingRuleStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonForwardingRuleStub(ForwardingRuleStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList> aggregatedListForwardingRulesTransportSettings =

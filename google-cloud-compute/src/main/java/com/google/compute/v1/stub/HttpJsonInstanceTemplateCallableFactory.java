@@ -51,7 +51,6 @@ import com.google.compute.v1.InstanceTemplateSettings;
 import com.google.compute.v1.ListInstanceTemplatesHttpRequest;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.ProjectName;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -53,7 +53,6 @@ import com.google.compute.v1.ProjectSettings;
 import com.google.compute.v1.SetCommonInstanceMetadataProjectHttpRequest;
 import com.google.compute.v1.SetUsageExportBucketProjectHttpRequest;
 import com.google.compute.v1.UsageExportLocation;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

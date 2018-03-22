@@ -59,7 +59,6 @@ import com.google.compute.v1.PatchBackendServiceHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.ResourceGroupReference;
 import com.google.compute.v1.UpdateBackendServiceHttpRequest;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

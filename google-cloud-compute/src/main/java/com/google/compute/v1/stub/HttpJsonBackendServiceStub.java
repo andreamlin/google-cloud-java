@@ -186,7 +186,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
   private final UnaryCallable<PatchBackendServiceHttpRequest, Operation> patchBackendServiceCallable;
   private final UnaryCallable<UpdateBackendServiceHttpRequest, Operation> updateBackendServiceCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonBackendServiceStub create(BackendServiceStubSettings settings) throws IOException {
     return new HttpJsonBackendServiceStub(settings, ClientContext.create(settings));
   }
@@ -195,8 +195,8 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
     return new HttpJsonBackendServiceStub(BackendServiceStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonBackendServiceStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonBackendServiceStub(BackendServiceSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonBackendServiceStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonBackendServiceStub(BackendServiceStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -205,7 +205,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
    * factory methods should be preferred.
    */
   protected HttpJsonBackendServiceStub(BackendServiceStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonBackendServiceCallableFactory();
+    this(settings, clientContext, new HttpJsonBackendServiceCallableFactory());
   }
 
   /**
@@ -213,7 +213,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonBackendServiceStub(BackendServiceStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonBackendServiceStub(BackendServiceStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList> aggregatedListBackendServicesTransportSettings =

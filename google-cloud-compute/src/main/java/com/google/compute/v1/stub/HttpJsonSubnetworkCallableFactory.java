@@ -57,7 +57,6 @@ import com.google.compute.v1.SubnetworkList;
 import com.google.compute.v1.SubnetworkName;
 import com.google.compute.v1.SubnetworkSettings;
 import com.google.compute.v1.SubnetworksExpandIpCidrRangeRequest;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -105,7 +105,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
   private final UnaryCallable<ListSnapshotsHttpRequest, SnapshotList> listSnapshotsCallable;
   private final UnaryCallable<ListSnapshotsHttpRequest, ListSnapshotsPagedResponse> listSnapshotsPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonSnapshotStub create(SnapshotStubSettings settings) throws IOException {
     return new HttpJsonSnapshotStub(settings, ClientContext.create(settings));
   }
@@ -114,8 +114,8 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
     return new HttpJsonSnapshotStub(SnapshotStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonSnapshotStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonSnapshotStub(SnapshotSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonSnapshotStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonSnapshotStub(SnapshotStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -124,7 +124,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
    * factory methods should be preferred.
    */
   protected HttpJsonSnapshotStub(SnapshotStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonSnapshotCallableFactory();
+    this(settings, clientContext, new HttpJsonSnapshotCallableFactory());
   }
 
   /**
@@ -132,7 +132,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonSnapshotStub(SnapshotStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonSnapshotStub(SnapshotStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteSnapshotHttpRequest, Operation> deleteSnapshotTransportSettings =

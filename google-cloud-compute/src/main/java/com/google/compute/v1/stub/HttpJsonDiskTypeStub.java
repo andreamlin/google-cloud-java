@@ -109,7 +109,7 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
   private final UnaryCallable<ListDiskTypesHttpRequest, DiskTypeList> listDiskTypesCallable;
   private final UnaryCallable<ListDiskTypesHttpRequest, ListDiskTypesPagedResponse> listDiskTypesPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonDiskTypeStub create(DiskTypeStubSettings settings) throws IOException {
     return new HttpJsonDiskTypeStub(settings, ClientContext.create(settings));
   }
@@ -118,8 +118,8 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
     return new HttpJsonDiskTypeStub(DiskTypeStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonDiskTypeStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonDiskTypeStub(DiskTypeSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonDiskTypeStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonDiskTypeStub(DiskTypeStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -128,7 +128,7 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
    * factory methods should be preferred.
    */
   protected HttpJsonDiskTypeStub(DiskTypeStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonDiskTypeCallableFactory();
+    this(settings, clientContext, new HttpJsonDiskTypeCallableFactory());
   }
 
   /**
@@ -136,7 +136,7 @@ public class HttpJsonDiskTypeStub extends DiskTypeStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonDiskTypeStub(DiskTypeStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonDiskTypeStub(DiskTypeStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList> aggregatedListDiskTypesTransportSettings =

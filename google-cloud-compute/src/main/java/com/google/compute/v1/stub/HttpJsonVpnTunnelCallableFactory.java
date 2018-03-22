@@ -55,7 +55,6 @@ import static com.google.compute.v1.VpnTunnelClient.ListVpnTunnelsPagedResponse;
 import com.google.compute.v1.VpnTunnelList;
 import com.google.compute.v1.VpnTunnelName;
 import com.google.compute.v1.VpnTunnelSettings;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

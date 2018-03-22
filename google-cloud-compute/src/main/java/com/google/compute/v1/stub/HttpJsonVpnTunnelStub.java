@@ -140,7 +140,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
   private final UnaryCallable<ListVpnTunnelsHttpRequest, VpnTunnelList> listVpnTunnelsCallable;
   private final UnaryCallable<ListVpnTunnelsHttpRequest, ListVpnTunnelsPagedResponse> listVpnTunnelsPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonVpnTunnelStub create(VpnTunnelStubSettings settings) throws IOException {
     return new HttpJsonVpnTunnelStub(settings, ClientContext.create(settings));
   }
@@ -149,8 +149,8 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
     return new HttpJsonVpnTunnelStub(VpnTunnelStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonVpnTunnelStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonVpnTunnelStub(VpnTunnelSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonVpnTunnelStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonVpnTunnelStub(VpnTunnelStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -159,7 +159,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
    * factory methods should be preferred.
    */
   protected HttpJsonVpnTunnelStub(VpnTunnelStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonVpnTunnelCallableFactory();
+    this(settings, clientContext, new HttpJsonVpnTunnelCallableFactory());
   }
 
   /**
@@ -167,7 +167,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonVpnTunnelStub(VpnTunnelStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonVpnTunnelStub(VpnTunnelStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList> aggregatedListVpnTunnelsTransportSettings =

@@ -134,7 +134,7 @@ public class HttpJsonProjectStub extends ProjectStub {
   private final UnaryCallable<SetCommonInstanceMetadataProjectHttpRequest, Operation> setCommonInstanceMetadataProjectCallable;
   private final UnaryCallable<SetUsageExportBucketProjectHttpRequest, Operation> setUsageExportBucketProjectCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonProjectStub create(ProjectStubSettings settings) throws IOException {
     return new HttpJsonProjectStub(settings, ClientContext.create(settings));
   }
@@ -143,8 +143,8 @@ public class HttpJsonProjectStub extends ProjectStub {
     return new HttpJsonProjectStub(ProjectStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonProjectStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonProjectStub(ProjectSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonProjectStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonProjectStub(ProjectStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -153,7 +153,7 @@ public class HttpJsonProjectStub extends ProjectStub {
    * factory methods should be preferred.
    */
   protected HttpJsonProjectStub(ProjectStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonProjectCallableFactory();
+    this(settings, clientContext, new HttpJsonProjectCallableFactory());
   }
 
   /**
@@ -161,7 +161,7 @@ public class HttpJsonProjectStub extends ProjectStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonProjectStub(ProjectStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonProjectStub(ProjectStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<GetProjectHttpRequest, Project> getProjectTransportSettings =

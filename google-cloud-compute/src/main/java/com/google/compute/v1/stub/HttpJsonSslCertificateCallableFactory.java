@@ -51,7 +51,6 @@ import static com.google.compute.v1.SslCertificateClient.ListSslCertificatesPage
 import com.google.compute.v1.SslCertificateList;
 import com.google.compute.v1.SslCertificateName;
 import com.google.compute.v1.SslCertificateSettings;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

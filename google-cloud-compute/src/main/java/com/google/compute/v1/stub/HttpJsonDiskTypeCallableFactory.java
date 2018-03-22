@@ -53,7 +53,6 @@ import com.google.compute.v1.ListDiskTypesHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.ZoneName;
 import com.google.longrunning.Operation;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

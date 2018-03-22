@@ -168,7 +168,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
   private final UnaryCallable<SetProxyHeaderTargetSslProxyHttpRequest, Operation> setProxyHeaderTargetSslProxyCallable;
   private final UnaryCallable<SetSslCertificatesTargetSslProxyHttpRequest, Operation> setSslCertificatesTargetSslProxyCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonTargetSslProxyStub create(TargetSslProxyStubSettings settings) throws IOException {
     return new HttpJsonTargetSslProxyStub(settings, ClientContext.create(settings));
   }
@@ -177,8 +177,8 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
     return new HttpJsonTargetSslProxyStub(TargetSslProxyStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonTargetSslProxyStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonTargetSslProxyStub(TargetSslProxySettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonTargetSslProxyStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonTargetSslProxyStub(TargetSslProxyStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -187,7 +187,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
    * factory methods should be preferred.
    */
   protected HttpJsonTargetSslProxyStub(TargetSslProxyStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonTargetSslProxyCallableFactory();
+    this(settings, clientContext, new HttpJsonTargetSslProxyCallableFactory());
   }
 
   /**
@@ -195,7 +195,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonTargetSslProxyStub(TargetSslProxyStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonTargetSslProxyStub(TargetSslProxyStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteTargetSslProxyHttpRequest, Operation> deleteTargetSslProxyTransportSettings =

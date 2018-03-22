@@ -89,7 +89,7 @@ public class HttpJsonZoneStub extends ZoneStub {
   private final UnaryCallable<ListZonesHttpRequest, ZoneList> listZonesCallable;
   private final UnaryCallable<ListZonesHttpRequest, ListZonesPagedResponse> listZonesPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonZoneStub create(ZoneStubSettings settings) throws IOException {
     return new HttpJsonZoneStub(settings, ClientContext.create(settings));
   }
@@ -98,8 +98,8 @@ public class HttpJsonZoneStub extends ZoneStub {
     return new HttpJsonZoneStub(ZoneStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonZoneStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonZoneStub(ZoneSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonZoneStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonZoneStub(ZoneStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -108,7 +108,7 @@ public class HttpJsonZoneStub extends ZoneStub {
    * factory methods should be preferred.
    */
   protected HttpJsonZoneStub(ZoneStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonZoneCallableFactory();
+    this(settings, clientContext, new HttpJsonZoneCallableFactory());
   }
 
   /**
@@ -116,7 +116,7 @@ public class HttpJsonZoneStub extends ZoneStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonZoneStub(ZoneStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonZoneStub(ZoneStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<GetZoneHttpRequest, Zone> getZoneTransportSettings =

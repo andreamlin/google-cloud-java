@@ -58,7 +58,6 @@ import com.google.compute.v1.UrlMapSettings;
 import com.google.compute.v1.UrlMapsValidateRequest;
 import com.google.compute.v1.UrlMapsValidateResponse;
 import com.google.compute.v1.ValidateUrlMapHttpRequest;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

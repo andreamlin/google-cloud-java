@@ -103,7 +103,7 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
   private final UnaryCallable<ListRegionOperationsHttpRequest, OperationList> listRegionOperationsCallable;
   private final UnaryCallable<ListRegionOperationsHttpRequest, ListRegionOperationsPagedResponse> listRegionOperationsPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonRegionOperationStub create(RegionOperationStubSettings settings) throws IOException {
     return new HttpJsonRegionOperationStub(settings, ClientContext.create(settings));
   }
@@ -112,8 +112,8 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
     return new HttpJsonRegionOperationStub(RegionOperationStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonRegionOperationStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonRegionOperationStub(RegionOperationSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonRegionOperationStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonRegionOperationStub(RegionOperationStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -122,7 +122,7 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
    * factory methods should be preferred.
    */
   protected HttpJsonRegionOperationStub(RegionOperationStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonRegionOperationCallableFactory();
+    this(settings, clientContext, new HttpJsonRegionOperationCallableFactory());
   }
 
   /**
@@ -130,7 +130,7 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonRegionOperationStub(RegionOperationStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonRegionOperationStub(RegionOperationStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationTransportSettings =

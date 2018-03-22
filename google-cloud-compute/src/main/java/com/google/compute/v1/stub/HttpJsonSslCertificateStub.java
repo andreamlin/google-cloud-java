@@ -120,7 +120,7 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
   private final UnaryCallable<ListSslCertificatesHttpRequest, SslCertificateList> listSslCertificatesCallable;
   private final UnaryCallable<ListSslCertificatesHttpRequest, ListSslCertificatesPagedResponse> listSslCertificatesPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonSslCertificateStub create(SslCertificateStubSettings settings) throws IOException {
     return new HttpJsonSslCertificateStub(settings, ClientContext.create(settings));
   }
@@ -129,8 +129,8 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
     return new HttpJsonSslCertificateStub(SslCertificateStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonSslCertificateStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonSslCertificateStub(SslCertificateSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonSslCertificateStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonSslCertificateStub(SslCertificateStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -139,7 +139,7 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
    * factory methods should be preferred.
    */
   protected HttpJsonSslCertificateStub(SslCertificateStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonSslCertificateCallableFactory();
+    this(settings, clientContext, new HttpJsonSslCertificateCallableFactory());
   }
 
   /**
@@ -147,7 +147,7 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonSslCertificateStub(SslCertificateStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonSslCertificateStub(SslCertificateStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateTransportSettings =

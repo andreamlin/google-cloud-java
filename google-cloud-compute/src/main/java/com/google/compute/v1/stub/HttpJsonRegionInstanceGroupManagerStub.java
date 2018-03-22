@@ -233,7 +233,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
   private final UnaryCallable<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation> setInstanceTemplateRegionInstanceGroupManagerCallable;
   private final UnaryCallable<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation> setTargetPoolsRegionInstanceGroupManagerCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonRegionInstanceGroupManagerStub create(RegionInstanceGroupManagerStubSettings settings) throws IOException {
     return new HttpJsonRegionInstanceGroupManagerStub(settings, ClientContext.create(settings));
   }
@@ -242,8 +242,8 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
     return new HttpJsonRegionInstanceGroupManagerStub(RegionInstanceGroupManagerStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonRegionInstanceGroupManagerStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonRegionInstanceGroupManagerStub(RegionInstanceGroupManagerSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonRegionInstanceGroupManagerStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonRegionInstanceGroupManagerStub(RegionInstanceGroupManagerStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -252,7 +252,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
    * factory methods should be preferred.
    */
   protected HttpJsonRegionInstanceGroupManagerStub(RegionInstanceGroupManagerStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonRegionInstanceGroupManagerCallableFactory();
+    this(settings, clientContext, new HttpJsonRegionInstanceGroupManagerCallableFactory());
   }
 
   /**
@@ -260,7 +260,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonRegionInstanceGroupManagerStub(RegionInstanceGroupManagerStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonRegionInstanceGroupManagerStub(RegionInstanceGroupManagerStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation> abandonInstancesRegionInstanceGroupManagerTransportSettings =

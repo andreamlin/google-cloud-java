@@ -167,7 +167,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
   private final UnaryCallable<PatchRegionBackendServiceHttpRequest, Operation> patchRegionBackendServiceCallable;
   private final UnaryCallable<UpdateRegionBackendServiceHttpRequest, Operation> updateRegionBackendServiceCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonRegionBackendServiceStub create(RegionBackendServiceStubSettings settings) throws IOException {
     return new HttpJsonRegionBackendServiceStub(settings, ClientContext.create(settings));
   }
@@ -176,8 +176,8 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
     return new HttpJsonRegionBackendServiceStub(RegionBackendServiceStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonRegionBackendServiceStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonRegionBackendServiceStub(RegionBackendServiceSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonRegionBackendServiceStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonRegionBackendServiceStub(RegionBackendServiceStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -186,7 +186,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
    * factory methods should be preferred.
    */
   protected HttpJsonRegionBackendServiceStub(RegionBackendServiceStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonRegionBackendServiceCallableFactory();
+    this(settings, clientContext, new HttpJsonRegionBackendServiceCallableFactory());
   }
 
   /**
@@ -194,7 +194,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonRegionBackendServiceStub(RegionBackendServiceStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonRegionBackendServiceStub(RegionBackendServiceStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteRegionBackendServiceHttpRequest, Operation> deleteRegionBackendServiceTransportSettings =

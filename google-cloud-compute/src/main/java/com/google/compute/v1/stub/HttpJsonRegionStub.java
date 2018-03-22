@@ -89,7 +89,7 @@ public class HttpJsonRegionStub extends RegionStub {
   private final UnaryCallable<ListRegionsHttpRequest, RegionList> listRegionsCallable;
   private final UnaryCallable<ListRegionsHttpRequest, ListRegionsPagedResponse> listRegionsPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonRegionStub create(RegionStubSettings settings) throws IOException {
     return new HttpJsonRegionStub(settings, ClientContext.create(settings));
   }
@@ -98,8 +98,8 @@ public class HttpJsonRegionStub extends RegionStub {
     return new HttpJsonRegionStub(RegionStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonRegionStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonRegionStub(RegionSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonRegionStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonRegionStub(RegionStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -108,7 +108,7 @@ public class HttpJsonRegionStub extends RegionStub {
    * factory methods should be preferred.
    */
   protected HttpJsonRegionStub(RegionStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonRegionCallableFactory();
+    this(settings, clientContext, new HttpJsonRegionCallableFactory());
   }
 
   /**
@@ -116,7 +116,7 @@ public class HttpJsonRegionStub extends RegionStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonRegionStub(RegionStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonRegionStub(RegionStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<GetRegionHttpRequest, Region> getRegionTransportSettings =

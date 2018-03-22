@@ -140,7 +140,7 @@ public class HttpJsonAddressStub extends AddressStub {
   private final UnaryCallable<ListAddressesHttpRequest, AddressList> listAddressesCallable;
   private final UnaryCallable<ListAddressesHttpRequest, ListAddressesPagedResponse> listAddressesPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonAddressStub create(AddressStubSettings settings) throws IOException {
     return new HttpJsonAddressStub(settings, ClientContext.create(settings));
   }
@@ -149,8 +149,8 @@ public class HttpJsonAddressStub extends AddressStub {
     return new HttpJsonAddressStub(AddressStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonAddressStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonAddressStub(AddressSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonAddressStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonAddressStub(AddressStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -159,7 +159,7 @@ public class HttpJsonAddressStub extends AddressStub {
    * factory methods should be preferred.
    */
   protected HttpJsonAddressStub(AddressStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonAddressCallableFactory();
+    this(settings, clientContext, new HttpJsonAddressCallableFactory());
   }
 
   /**
@@ -167,7 +167,7 @@ public class HttpJsonAddressStub extends AddressStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonAddressStub(AddressStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonAddressStub(AddressStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListAddressesHttpRequest, AddressAggregatedList> aggregatedListAddressesTransportSettings =

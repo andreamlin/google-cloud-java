@@ -120,7 +120,7 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
   private final UnaryCallable<ListGlobalAddressesHttpRequest, AddressList> listGlobalAddressesCallable;
   private final UnaryCallable<ListGlobalAddressesHttpRequest, ListGlobalAddressesPagedResponse> listGlobalAddressesPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonGlobalAddressStub create(GlobalAddressStubSettings settings) throws IOException {
     return new HttpJsonGlobalAddressStub(settings, ClientContext.create(settings));
   }
@@ -129,8 +129,8 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
     return new HttpJsonGlobalAddressStub(GlobalAddressStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonGlobalAddressStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonGlobalAddressStub(GlobalAddressSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonGlobalAddressStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonGlobalAddressStub(GlobalAddressStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -139,7 +139,7 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
    * factory methods should be preferred.
    */
   protected HttpJsonGlobalAddressStub(GlobalAddressStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonGlobalAddressCallableFactory();
+    this(settings, clientContext, new HttpJsonGlobalAddressCallableFactory());
   }
 
   /**
@@ -147,7 +147,7 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonGlobalAddressStub(GlobalAddressStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonGlobalAddressStub(GlobalAddressStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteGlobalAddressHttpRequest, Operation> deleteGlobalAddressTransportSettings =

@@ -56,7 +56,6 @@ import com.google.compute.v1.RegionInstanceGroupsListInstancesRequest;
 import com.google.compute.v1.RegionInstanceGroupsSetNamedPortsRequest;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.SetNamedPortsRegionInstanceGroupHttpRequest;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -79,7 +79,6 @@ import com.google.compute.v1.StartWithEncryptionKeyInstanceHttpRequest;
 import com.google.compute.v1.StopInstanceHttpRequest;
 import com.google.compute.v1.Tags;
 import com.google.compute.v1.ZoneName;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

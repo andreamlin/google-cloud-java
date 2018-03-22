@@ -172,7 +172,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
   private final UnaryCallable<PatchAutoscalerHttpRequest, Operation> patchAutoscalerCallable;
   private final UnaryCallable<UpdateAutoscalerHttpRequest, Operation> updateAutoscalerCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonAutoscalerStub create(AutoscalerStubSettings settings) throws IOException {
     return new HttpJsonAutoscalerStub(settings, ClientContext.create(settings));
   }
@@ -181,8 +181,8 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
     return new HttpJsonAutoscalerStub(AutoscalerStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonAutoscalerStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonAutoscalerStub(AutoscalerSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonAutoscalerStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonAutoscalerStub(AutoscalerStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -191,7 +191,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
    * factory methods should be preferred.
    */
   protected HttpJsonAutoscalerStub(AutoscalerStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonAutoscalerCallableFactory();
+    this(settings, clientContext, new HttpJsonAutoscalerCallableFactory());
   }
 
   /**
@@ -199,7 +199,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonAutoscalerStub(AutoscalerStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonAutoscalerStub(AutoscalerStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList> aggregatedListAutoscalersTransportSettings =

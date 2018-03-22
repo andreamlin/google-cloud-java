@@ -53,7 +53,6 @@ import com.google.compute.v1.RegionAutoscalerList;
 import com.google.compute.v1.RegionAutoscalerSettings;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.UpdateRegionAutoscalerHttpRequest;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

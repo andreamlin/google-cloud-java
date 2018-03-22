@@ -173,7 +173,7 @@ public class HttpJsonDiskStub extends DiskStub {
   private final UnaryCallable<ListDisksHttpRequest, ListDisksPagedResponse> listDisksPagedCallable;
   private final UnaryCallable<ResizeDiskHttpRequest, Operation> resizeDiskCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonDiskStub create(DiskStubSettings settings) throws IOException {
     return new HttpJsonDiskStub(settings, ClientContext.create(settings));
   }
@@ -182,8 +182,8 @@ public class HttpJsonDiskStub extends DiskStub {
     return new HttpJsonDiskStub(DiskStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonDiskStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonDiskStub(DiskSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonDiskStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonDiskStub(DiskStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -192,7 +192,7 @@ public class HttpJsonDiskStub extends DiskStub {
    * factory methods should be preferred.
    */
   protected HttpJsonDiskStub(DiskStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonDiskCallableFactory();
+    this(settings, clientContext, new HttpJsonDiskCallableFactory());
   }
 
   /**
@@ -200,7 +200,7 @@ public class HttpJsonDiskStub extends DiskStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonDiskStub(DiskStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonDiskStub(DiskStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListDisksHttpRequest, DiskAggregatedList> aggregatedListDisksTransportSettings =

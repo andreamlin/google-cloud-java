@@ -49,7 +49,6 @@ import com.google.compute.v1.ZoneList;
 import com.google.compute.v1.ZoneName;
 import com.google.compute.v1.ZoneSettings;
 import com.google.longrunning.Operation;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

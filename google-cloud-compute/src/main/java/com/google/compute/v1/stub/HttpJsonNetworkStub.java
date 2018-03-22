@@ -135,7 +135,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
   private final UnaryCallable<ListNetworksHttpRequest, ListNetworksPagedResponse> listNetworksPagedCallable;
   private final UnaryCallable<SwitchToCustomModeNetworkHttpRequest, Operation> switchToCustomModeNetworkCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonNetworkStub create(NetworkStubSettings settings) throws IOException {
     return new HttpJsonNetworkStub(settings, ClientContext.create(settings));
   }
@@ -144,8 +144,8 @@ public class HttpJsonNetworkStub extends NetworkStub {
     return new HttpJsonNetworkStub(NetworkStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonNetworkStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonNetworkStub(NetworkSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonNetworkStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonNetworkStub(NetworkStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -154,7 +154,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
    * factory methods should be preferred.
    */
   protected HttpJsonNetworkStub(NetworkStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonNetworkCallableFactory();
+    this(settings, clientContext, new HttpJsonNetworkCallableFactory());
   }
 
   /**
@@ -162,7 +162,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonNetworkStub(NetworkStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonNetworkStub(NetworkStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteNetworkHttpRequest, Operation> deleteNetworkTransportSettings =

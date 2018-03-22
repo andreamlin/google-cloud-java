@@ -109,7 +109,7 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
   private final UnaryCallable<ListMachineTypesHttpRequest, MachineTypeList> listMachineTypesCallable;
   private final UnaryCallable<ListMachineTypesHttpRequest, ListMachineTypesPagedResponse> listMachineTypesPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonMachineTypeStub create(MachineTypeStubSettings settings) throws IOException {
     return new HttpJsonMachineTypeStub(settings, ClientContext.create(settings));
   }
@@ -118,8 +118,8 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
     return new HttpJsonMachineTypeStub(MachineTypeStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonMachineTypeStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonMachineTypeStub(MachineTypeSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonMachineTypeStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonMachineTypeStub(MachineTypeStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -128,7 +128,7 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
    * factory methods should be preferred.
    */
   protected HttpJsonMachineTypeStub(MachineTypeStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonMachineTypeCallableFactory();
+    this(settings, clientContext, new HttpJsonMachineTypeCallableFactory());
   }
 
   /**
@@ -136,7 +136,7 @@ public class HttpJsonMachineTypeStub extends MachineTypeStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonMachineTypeStub(MachineTypeStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonMachineTypeStub(MachineTypeStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList> aggregatedListMachineTypesTransportSettings =

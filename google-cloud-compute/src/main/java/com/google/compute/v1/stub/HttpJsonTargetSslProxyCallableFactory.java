@@ -57,7 +57,6 @@ import static com.google.compute.v1.TargetSslProxyClient.ListTargetSslProxiesPag
 import com.google.compute.v1.TargetSslProxyList;
 import com.google.compute.v1.TargetSslProxyName;
 import com.google.compute.v1.TargetSslProxySettings;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -156,7 +156,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
   private final UnaryCallable<ListSubnetworksHttpRequest, SubnetworkList> listSubnetworksCallable;
   private final UnaryCallable<ListSubnetworksHttpRequest, ListSubnetworksPagedResponse> listSubnetworksPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonSubnetworkStub create(SubnetworkStubSettings settings) throws IOException {
     return new HttpJsonSubnetworkStub(settings, ClientContext.create(settings));
   }
@@ -165,8 +165,8 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
     return new HttpJsonSubnetworkStub(SubnetworkStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonSubnetworkStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonSubnetworkStub(SubnetworkSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonSubnetworkStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonSubnetworkStub(SubnetworkStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -175,7 +175,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
    * factory methods should be preferred.
    */
   protected HttpJsonSubnetworkStub(SubnetworkStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonSubnetworkCallableFactory();
+    this(settings, clientContext, new HttpJsonSubnetworkCallableFactory());
   }
 
   /**
@@ -183,7 +183,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonSubnetworkStub(SubnetworkStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonSubnetworkStub(SubnetworkStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList> aggregatedListSubnetworksTransportSettings =

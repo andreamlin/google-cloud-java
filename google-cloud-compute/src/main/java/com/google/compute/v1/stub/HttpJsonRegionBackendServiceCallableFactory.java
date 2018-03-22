@@ -56,7 +56,6 @@ import com.google.compute.v1.RegionBackendServiceSettings;
 import com.google.compute.v1.RegionName;
 import com.google.compute.v1.ResourceGroupReference;
 import com.google.compute.v1.UpdateRegionBackendServiceHttpRequest;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

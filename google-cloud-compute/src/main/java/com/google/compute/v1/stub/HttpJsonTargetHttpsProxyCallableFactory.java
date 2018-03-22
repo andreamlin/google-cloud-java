@@ -55,7 +55,6 @@ import com.google.compute.v1.TargetHttpsProxyList;
 import com.google.compute.v1.TargetHttpsProxyName;
 import com.google.compute.v1.TargetHttpsProxySettings;
 import com.google.compute.v1.UrlMapReference;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

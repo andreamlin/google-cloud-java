@@ -122,7 +122,7 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
   private final UnaryCallable<ListGlobalOperationsHttpRequest, OperationList> listGlobalOperationsCallable;
   private final UnaryCallable<ListGlobalOperationsHttpRequest, ListGlobalOperationsPagedResponse> listGlobalOperationsPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonGlobalOperationStub create(GlobalOperationStubSettings settings) throws IOException {
     return new HttpJsonGlobalOperationStub(settings, ClientContext.create(settings));
   }
@@ -131,8 +131,8 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
     return new HttpJsonGlobalOperationStub(GlobalOperationStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonGlobalOperationStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonGlobalOperationStub(GlobalOperationSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonGlobalOperationStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonGlobalOperationStub(GlobalOperationStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -141,7 +141,7 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
    * factory methods should be preferred.
    */
   protected HttpJsonGlobalOperationStub(GlobalOperationStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonGlobalOperationCallableFactory();
+    this(settings, clientContext, new HttpJsonGlobalOperationCallableFactory());
   }
 
   /**
@@ -149,7 +149,7 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonGlobalOperationStub(GlobalOperationStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonGlobalOperationStub(GlobalOperationStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList> aggregatedListGlobalOperationsTransportSettings =

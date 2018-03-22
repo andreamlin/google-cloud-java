@@ -53,7 +53,6 @@ import com.google.compute.v1.Operation;
 import com.google.compute.v1.PatchHealthCheckHttpRequest;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.UpdateHealthCheckHttpRequest;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

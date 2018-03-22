@@ -103,7 +103,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   private final UnaryCallable<ListZoneOperationsHttpRequest, OperationList> listZoneOperationsCallable;
   private final UnaryCallable<ListZoneOperationsHttpRequest, ListZoneOperationsPagedResponse> listZoneOperationsPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonZoneOperationStub create(ZoneOperationStubSettings settings) throws IOException {
     return new HttpJsonZoneOperationStub(settings, ClientContext.create(settings));
   }
@@ -112,8 +112,8 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
     return new HttpJsonZoneOperationStub(ZoneOperationStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonZoneOperationStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonZoneOperationStub(ZoneOperationSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonZoneOperationStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonZoneOperationStub(ZoneOperationStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -122,7 +122,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
    * factory methods should be preferred.
    */
   protected HttpJsonZoneOperationStub(ZoneOperationStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonZoneOperationCallableFactory();
+    this(settings, clientContext, new HttpJsonZoneOperationCallableFactory());
   }
 
   /**
@@ -130,7 +130,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonZoneOperationStub(ZoneOperationStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonZoneOperationStub(ZoneOperationStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationTransportSettings =

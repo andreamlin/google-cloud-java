@@ -183,7 +183,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
   private final UnaryCallable<UpdateUrlMapHttpRequest, Operation> updateUrlMapCallable;
   private final UnaryCallable<ValidateUrlMapHttpRequest, UrlMapsValidateResponse> validateUrlMapCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonUrlMapStub create(UrlMapStubSettings settings) throws IOException {
     return new HttpJsonUrlMapStub(settings, ClientContext.create(settings));
   }
@@ -192,8 +192,8 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
     return new HttpJsonUrlMapStub(UrlMapStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonUrlMapStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonUrlMapStub(UrlMapSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonUrlMapStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonUrlMapStub(UrlMapStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -202,7 +202,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
    * factory methods should be preferred.
    */
   protected HttpJsonUrlMapStub(UrlMapStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonUrlMapCallableFactory();
+    this(settings, clientContext, new HttpJsonUrlMapCallableFactory());
   }
 
   /**
@@ -210,7 +210,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonUrlMapStub(UrlMapStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonUrlMapStub(UrlMapStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteUrlMapHttpRequest, Operation> deleteUrlMapTransportSettings =

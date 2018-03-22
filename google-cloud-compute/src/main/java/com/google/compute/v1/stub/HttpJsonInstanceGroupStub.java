@@ -209,7 +209,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
   private final UnaryCallable<RemoveInstancesInstanceGroupHttpRequest, Operation> removeInstancesInstanceGroupCallable;
   private final UnaryCallable<SetNamedPortsInstanceGroupHttpRequest, Operation> setNamedPortsInstanceGroupCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonInstanceGroupStub create(InstanceGroupStubSettings settings) throws IOException {
     return new HttpJsonInstanceGroupStub(settings, ClientContext.create(settings));
   }
@@ -218,8 +218,8 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
     return new HttpJsonInstanceGroupStub(InstanceGroupStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonInstanceGroupStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonInstanceGroupStub(InstanceGroupSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonInstanceGroupStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonInstanceGroupStub(InstanceGroupStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -228,7 +228,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
    * factory methods should be preferred.
    */
   protected HttpJsonInstanceGroupStub(InstanceGroupStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonInstanceGroupCallableFactory();
+    this(settings, clientContext, new HttpJsonInstanceGroupCallableFactory());
   }
 
   /**
@@ -236,7 +236,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonInstanceGroupStub(InstanceGroupStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonInstanceGroupStub(InstanceGroupStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AddInstancesInstanceGroupHttpRequest, Operation> addInstancesInstanceGroupTransportSettings =

@@ -238,7 +238,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
   private final UnaryCallable<RemoveInstanceTargetPoolHttpRequest, Operation> removeInstanceTargetPoolCallable;
   private final UnaryCallable<SetBackupTargetPoolHttpRequest, Operation> setBackupTargetPoolCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonTargetPoolStub create(TargetPoolStubSettings settings) throws IOException {
     return new HttpJsonTargetPoolStub(settings, ClientContext.create(settings));
   }
@@ -247,8 +247,8 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
     return new HttpJsonTargetPoolStub(TargetPoolStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonTargetPoolStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonTargetPoolStub(TargetPoolSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonTargetPoolStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonTargetPoolStub(TargetPoolStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -257,7 +257,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
    * factory methods should be preferred.
    */
   protected HttpJsonTargetPoolStub(TargetPoolStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonTargetPoolCallableFactory();
+    this(settings, clientContext, new HttpJsonTargetPoolCallableFactory());
   }
 
   /**
@@ -265,7 +265,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonTargetPoolStub(TargetPoolStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonTargetPoolStub(TargetPoolStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AddHealthCheckTargetPoolHttpRequest, Operation> addHealthCheckTargetPoolTransportSettings =

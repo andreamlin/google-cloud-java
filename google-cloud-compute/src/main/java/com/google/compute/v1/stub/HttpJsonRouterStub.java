@@ -202,7 +202,7 @@ public class HttpJsonRouterStub extends RouterStub {
   private final UnaryCallable<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterCallable;
   private final UnaryCallable<UpdateRouterHttpRequest, Operation> updateRouterCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonRouterStub create(RouterStubSettings settings) throws IOException {
     return new HttpJsonRouterStub(settings, ClientContext.create(settings));
   }
@@ -211,8 +211,8 @@ public class HttpJsonRouterStub extends RouterStub {
     return new HttpJsonRouterStub(RouterStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonRouterStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonRouterStub(RouterSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonRouterStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonRouterStub(RouterStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -221,7 +221,7 @@ public class HttpJsonRouterStub extends RouterStub {
    * factory methods should be preferred.
    */
   protected HttpJsonRouterStub(RouterStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonRouterCallableFactory();
+    this(settings, clientContext, new HttpJsonRouterCallableFactory());
   }
 
   /**
@@ -229,7 +229,7 @@ public class HttpJsonRouterStub extends RouterStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonRouterStub(RouterStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonRouterStub(RouterStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListRoutersHttpRequest, RouterAggregatedList> aggregatedListRoutersTransportSettings =

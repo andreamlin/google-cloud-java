@@ -45,7 +45,6 @@ import com.google.compute.v1.LicensSettings;
 import com.google.compute.v1.License;
 import com.google.compute.v1.LicenseName;
 import com.google.longrunning.Operation;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

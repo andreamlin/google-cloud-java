@@ -69,7 +69,7 @@ public class HttpJsonLicensStub extends LicensStub {
 
   private final UnaryCallable<GetLicensHttpRequest, License> getLicensCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonLicensStub create(LicensStubSettings settings) throws IOException {
     return new HttpJsonLicensStub(settings, ClientContext.create(settings));
   }
@@ -78,8 +78,8 @@ public class HttpJsonLicensStub extends LicensStub {
     return new HttpJsonLicensStub(LicensStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonLicensStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonLicensStub(LicensSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonLicensStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonLicensStub(LicensStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -88,7 +88,7 @@ public class HttpJsonLicensStub extends LicensStub {
    * factory methods should be preferred.
    */
   protected HttpJsonLicensStub(LicensStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonLicensCallableFactory();
+    this(settings, clientContext, new HttpJsonLicensCallableFactory());
   }
 
   /**
@@ -96,7 +96,7 @@ public class HttpJsonLicensStub extends LicensStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonLicensStub(LicensStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonLicensStub(LicensStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<GetLicensHttpRequest, License> getLicensTransportSettings =

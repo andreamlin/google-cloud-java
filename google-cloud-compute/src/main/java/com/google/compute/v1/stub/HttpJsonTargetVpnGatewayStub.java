@@ -140,7 +140,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
   private final UnaryCallable<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList> listTargetVpnGatewaysCallable;
   private final UnaryCallable<ListTargetVpnGatewaysHttpRequest, ListTargetVpnGatewaysPagedResponse> listTargetVpnGatewaysPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonTargetVpnGatewayStub create(TargetVpnGatewayStubSettings settings) throws IOException {
     return new HttpJsonTargetVpnGatewayStub(settings, ClientContext.create(settings));
   }
@@ -149,8 +149,8 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
     return new HttpJsonTargetVpnGatewayStub(TargetVpnGatewayStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonTargetVpnGatewayStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonTargetVpnGatewayStub(TargetVpnGatewaySettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonTargetVpnGatewayStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonTargetVpnGatewayStub(TargetVpnGatewayStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -159,7 +159,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
    * factory methods should be preferred.
    */
   protected HttpJsonTargetVpnGatewayStub(TargetVpnGatewayStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonTargetVpnGatewayCallableFactory();
+    this(settings, clientContext, new HttpJsonTargetVpnGatewayCallableFactory());
   }
 
   /**
@@ -167,7 +167,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonTargetVpnGatewayStub(TargetVpnGatewayStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonTargetVpnGatewayStub(TargetVpnGatewayStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList> aggregatedListTargetVpnGatewaysTransportSettings =

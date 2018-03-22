@@ -68,7 +68,6 @@ import com.google.compute.v1.ResizeInstanceGroupManagerHttpRequest;
 import com.google.compute.v1.SetInstanceTemplateInstanceGroupManagerHttpRequest;
 import com.google.compute.v1.SetTargetPoolsInstanceGroupManagerHttpRequest;
 import com.google.compute.v1.ZoneName;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

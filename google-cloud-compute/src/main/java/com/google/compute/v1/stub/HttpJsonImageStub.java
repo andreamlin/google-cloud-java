@@ -152,7 +152,7 @@ public class HttpJsonImageStub extends ImageStub {
   private final UnaryCallable<ListImagesHttpRequest, ImageList> listImagesCallable;
   private final UnaryCallable<ListImagesHttpRequest, ListImagesPagedResponse> listImagesPagedCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonImageStub create(ImageStubSettings settings) throws IOException {
     return new HttpJsonImageStub(settings, ClientContext.create(settings));
   }
@@ -161,8 +161,8 @@ public class HttpJsonImageStub extends ImageStub {
     return new HttpJsonImageStub(ImageStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonImageStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonImageStub(ImageSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonImageStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonImageStub(ImageStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -171,7 +171,7 @@ public class HttpJsonImageStub extends ImageStub {
    * factory methods should be preferred.
    */
   protected HttpJsonImageStub(ImageStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonImageCallableFactory();
+    this(settings, clientContext, new HttpJsonImageCallableFactory());
   }
 
   /**
@@ -179,7 +179,7 @@ public class HttpJsonImageStub extends ImageStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonImageStub(ImageStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonImageStub(ImageStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteImageHttpRequest, Operation> deleteImageTransportSettings =

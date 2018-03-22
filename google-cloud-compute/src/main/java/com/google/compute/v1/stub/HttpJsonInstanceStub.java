@@ -379,7 +379,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   private final UnaryCallable<StartWithEncryptionKeyInstanceHttpRequest, Operation> startWithEncryptionKeyInstanceCallable;
   private final UnaryCallable<StopInstanceHttpRequest, Operation> stopInstanceCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonInstanceStub create(InstanceStubSettings settings) throws IOException {
     return new HttpJsonInstanceStub(settings, ClientContext.create(settings));
   }
@@ -388,8 +388,8 @@ public class HttpJsonInstanceStub extends InstanceStub {
     return new HttpJsonInstanceStub(InstanceStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonInstanceStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonInstanceStub(InstanceSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonInstanceStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonInstanceStub(InstanceStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -398,7 +398,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
    * factory methods should be preferred.
    */
   protected HttpJsonInstanceStub(InstanceStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonInstanceCallableFactory();
+    this(settings, clientContext, new HttpJsonInstanceCallableFactory());
   }
 
   /**
@@ -406,7 +406,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonInstanceStub(InstanceStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonInstanceStub(InstanceStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<AddAccessConfigInstanceHttpRequest, Operation> addAccessConfigInstanceTransportSettings =

@@ -150,7 +150,7 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
   private final UnaryCallable<PatchHttpsHealthCheckHttpRequest, Operation> patchHttpsHealthCheckCallable;
   private final UnaryCallable<UpdateHttpsHealthCheckHttpRequest, Operation> updateHttpsHealthCheckCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonHttpsHealthCheckStub create(HttpsHealthCheckStubSettings settings) throws IOException {
     return new HttpJsonHttpsHealthCheckStub(settings, ClientContext.create(settings));
   }
@@ -159,8 +159,8 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
     return new HttpJsonHttpsHealthCheckStub(HttpsHealthCheckStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonHttpsHealthCheckStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonHttpsHealthCheckStub(HttpsHealthCheckSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonHttpsHealthCheckStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonHttpsHealthCheckStub(HttpsHealthCheckStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -169,7 +169,7 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
    * factory methods should be preferred.
    */
   protected HttpJsonHttpsHealthCheckStub(HttpsHealthCheckStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonHttpsHealthCheckCallableFactory();
+    this(settings, clientContext, new HttpJsonHttpsHealthCheckCallableFactory());
   }
 
   /**
@@ -177,7 +177,7 @@ public class HttpJsonHttpsHealthCheckStub extends HttpsHealthCheckStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonHttpsHealthCheckStub(HttpsHealthCheckStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonHttpsHealthCheckStub(HttpsHealthCheckStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteHttpsHealthCheckHttpRequest, Operation> deleteHttpsHealthCheckTransportSettings =

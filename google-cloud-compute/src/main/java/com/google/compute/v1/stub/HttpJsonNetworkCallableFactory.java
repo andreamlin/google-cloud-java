@@ -52,7 +52,6 @@ import com.google.compute.v1.NetworkSettings;
 import com.google.compute.v1.Operation;
 import com.google.compute.v1.ProjectName;
 import com.google.compute.v1.SwitchToCustomModeNetworkHttpRequest;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

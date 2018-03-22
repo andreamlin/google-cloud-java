@@ -136,7 +136,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
   private final UnaryCallable<ListGlobalForwardingRulesHttpRequest, ListGlobalForwardingRulesPagedResponse> listGlobalForwardingRulesPagedCallable;
   private final UnaryCallable<SetTargetGlobalForwardingRuleHttpRequest, Operation> setTargetGlobalForwardingRuleCallable;
 
-  private final HttpJsonClientCallableFactory callableFactory;
+  private final HttpJsonStubCallableFactory callableFactory;
   public static final HttpJsonGlobalForwardingRuleStub create(GlobalForwardingRuleStubSettings settings) throws IOException {
     return new HttpJsonGlobalForwardingRuleStub(settings, ClientContext.create(settings));
   }
@@ -145,8 +145,8 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
     return new HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleStubSettings.newBuilder().build(), clientContext);
   }
 
-  public static final HttpJsonGlobalForwardingRuleStub create(ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
-    return new HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleSettings.newBuilder().build(), clientContext, callableFactory);
+  public static final HttpJsonGlobalForwardingRuleStub create(ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
+    return new HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleStubSettings.newBuilder().build(), clientContext, callableFactory);
   }
 
   /**
@@ -155,7 +155,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
    * factory methods should be preferred.
    */
   protected HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleStubSettings settings, ClientContext clientContext) throws IOException {
-    this(settings, clientContext, new HttpJsonGlobalForwardingRuleCallableFactory();
+    this(settings, clientContext, new HttpJsonGlobalForwardingRuleCallableFactory());
   }
 
   /**
@@ -163,7 +163,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
    * This is protected so that it is easy to make a subclass, but otherwise, the static
    * factory methods should be preferred.
    */
-  protected HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleStubSettings settings, ClientContext clientContext, HttpJsonClientCallableFactory callableFactory) throws IOException {
+  protected HttpJsonGlobalForwardingRuleStub(GlobalForwardingRuleStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
     HttpJsonCallSettings<DeleteGlobalForwardingRuleHttpRequest, Operation> deleteGlobalForwardingRuleTransportSettings =

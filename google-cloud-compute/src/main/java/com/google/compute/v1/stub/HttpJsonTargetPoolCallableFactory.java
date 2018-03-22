@@ -68,7 +68,6 @@ import com.google.compute.v1.TargetPoolsAddInstanceRequest;
 import com.google.compute.v1.TargetPoolsRemoveHealthCheckRequest;
 import com.google.compute.v1.TargetPoolsRemoveInstanceRequest;
 import com.google.compute.v1.TargetReference;
-import com.google.longrunning.stub.OperationsStub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
