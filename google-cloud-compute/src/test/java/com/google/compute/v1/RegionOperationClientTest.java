@@ -48,7 +48,6 @@ import org.junit.Test;
 public class RegionOperationClientTest {
   private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
       = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
-              deleteRegionOperationMethodDescriptor,
               getRegionOperationMethodDescriptor,
               listRegionOperationsMethodDescriptor
           ));
@@ -81,7 +80,7 @@ public class RegionOperationClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteRegionOperationTest() {
-
+    mockService.addNullResponse();
 
     ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
 

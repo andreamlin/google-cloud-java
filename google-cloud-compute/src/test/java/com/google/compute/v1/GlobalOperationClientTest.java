@@ -51,7 +51,6 @@ public class GlobalOperationClientTest {
   private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
       = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
               aggregatedListGlobalOperationsMethodDescriptor,
-              deleteGlobalOperationMethodDescriptor,
               getGlobalOperationMethodDescriptor,
               listGlobalOperationsMethodDescriptor
           ));
@@ -133,7 +132,7 @@ public class GlobalOperationClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteGlobalOperationTest() {
-
+    mockService.addNullResponse();
 
     OperationName operation = OperationName.of("[PROJECT]", "[OPERATION]");
 

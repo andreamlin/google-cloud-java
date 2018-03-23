@@ -22,7 +22,6 @@ import com.google.common.collect.ImmutableMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -339,7 +338,7 @@ public final class Disk implements ApiMessage {
     return sourceImage;
   }
 
-  public CustomerEncryptionKey getCustomerEncryptionKey() {
+  public CustomerEncryptionKey getSourceImageEncryptionKey() {
     return sourceImageEncryptionKey;
   }
 
@@ -351,7 +350,7 @@ public final class Disk implements ApiMessage {
     return sourceSnapshot;
   }
 
-  public CustomerEncryptionKey getCustomerEncryptionKey() {
+  public CustomerEncryptionKey getSourceSnapshotEncryptionKey() {
     return sourceSnapshotEncryptionKey;
   }
 
@@ -535,11 +534,11 @@ public final class Disk implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getCustomerEncryptionKey() {
+    public CustomerEncryptionKey getDiskEncryptionKey() {
       return diskEncryptionKey;
     }
 
-    public Builder setCustomerEncryptionKey(CustomerEncryptionKey diskEncryptionKey) {
+    public Builder setDiskEncryptionKey(CustomerEncryptionKey diskEncryptionKey) {
       this.diskEncryptionKey = diskEncryptionKey;
       return this;
     }
@@ -642,11 +641,11 @@ public final class Disk implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getCustomerEncryptionKey() {
+    public CustomerEncryptionKey getSourceImageEncryptionKey() {
       return sourceImageEncryptionKey;
     }
 
-    public Builder setCustomerEncryptionKey(CustomerEncryptionKey sourceImageEncryptionKey) {
+    public Builder setSource(CustomerEncryptionKey sourceImageEncryptionKey) {
       this.sourceImageEncryptionKey = sourceImageEncryptionKey;
       return this;
     }

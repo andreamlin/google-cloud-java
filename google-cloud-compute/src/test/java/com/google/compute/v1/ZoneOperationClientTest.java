@@ -48,7 +48,6 @@ import org.junit.Test;
 public class ZoneOperationClientTest {
   private static final List<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>> METHOD_DESCRIPTORS
       = ImmutableList.copyOf(Lists.<ApiMethodDescriptor<? extends ApiMessage, ? extends ApiMessage>>newArrayList(
-              deleteZoneOperationMethodDescriptor,
               getZoneOperationMethodDescriptor,
               listZoneOperationsMethodDescriptor
           ));
@@ -81,7 +80,7 @@ public class ZoneOperationClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteZoneOperationTest() {
-
+    mockService.addNullResponse();
 
     ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
 
