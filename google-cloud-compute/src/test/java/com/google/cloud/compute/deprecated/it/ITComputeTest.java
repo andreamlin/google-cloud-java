@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.cloud.compute.v1.it;
+package com.google.cloud.compute.deprecated.it;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -23,14 +23,58 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import com.google.api.gax.paging.Page;
+import com.google.cloud.compute.deprecated.Address;
+import com.google.cloud.compute.deprecated.AddressId;
+import com.google.cloud.compute.deprecated.AddressInfo;
+import com.google.cloud.compute.deprecated.AttachedDisk;
+import com.google.cloud.compute.deprecated.Compute;
+import com.google.cloud.compute.deprecated.DeprecationStatus;
+import com.google.cloud.compute.deprecated.Disk;
+import com.google.cloud.compute.deprecated.DiskConfiguration;
+import com.google.cloud.compute.deprecated.DiskId;
+import com.google.cloud.compute.deprecated.DiskImageConfiguration;
+import com.google.cloud.compute.deprecated.DiskInfo;
+import com.google.cloud.compute.deprecated.DiskType;
+import com.google.cloud.compute.deprecated.DiskTypeId;
+import com.google.cloud.compute.deprecated.GlobalAddressId;
+import com.google.cloud.compute.deprecated.Image;
+import com.google.cloud.compute.deprecated.ImageConfiguration;
+import com.google.cloud.compute.deprecated.ImageDiskConfiguration;
+import com.google.cloud.compute.deprecated.ImageId;
+import com.google.cloud.compute.deprecated.ImageInfo;
+import com.google.cloud.compute.deprecated.Instance;
+import com.google.cloud.compute.deprecated.InstanceId;
+import com.google.cloud.compute.deprecated.InstanceInfo;
+import com.google.cloud.compute.deprecated.License;
+import com.google.cloud.compute.deprecated.LicenseId;
+import com.google.cloud.compute.deprecated.MachineType;
+import com.google.cloud.compute.deprecated.MachineTypeId;
+import com.google.cloud.compute.deprecated.Network;
+import com.google.cloud.compute.deprecated.NetworkConfiguration;
+import com.google.cloud.compute.deprecated.NetworkId;
+import com.google.cloud.compute.deprecated.NetworkInfo;
+import com.google.cloud.compute.deprecated.NetworkInterface;
+import com.google.cloud.compute.deprecated.Operation;
+import com.google.cloud.compute.deprecated.Region;
+import com.google.cloud.compute.deprecated.RegionAddressId;
+import com.google.cloud.compute.deprecated.RegionOperationId;
+import com.google.cloud.compute.deprecated.SchedulingOptions;
+import com.google.cloud.compute.deprecated.Snapshot;
+import com.google.cloud.compute.deprecated.SnapshotDiskConfiguration;
+import com.google.cloud.compute.deprecated.SnapshotId;
+import com.google.cloud.compute.deprecated.SnapshotInfo;
+import com.google.cloud.compute.deprecated.StandardDiskConfiguration;
+import com.google.cloud.compute.deprecated.StandardNetworkConfiguration;
+import com.google.cloud.compute.deprecated.StorageImageConfiguration;
+import com.google.cloud.compute.deprecated.SubnetNetworkConfiguration;
+import com.google.cloud.compute.deprecated.Subnetwork;
+import com.google.cloud.compute.deprecated.SubnetworkId;
+import com.google.cloud.compute.deprecated.SubnetworkInfo;
+import com.google.cloud.compute.deprecated.Zone;
+import com.google.cloud.compute.deprecated.ZoneOperationId;
+import com.google.cloud.compute.deprecated.testing.ResourceCleaner;
 import com.google.cloud.compute.deprecated.testing.RemoteComputeHelper;
-import com.google.cloud.compute.v1.DiskClient;
-import com.google.cloud.compute.v1.DiskName;
-import com.google.cloud.compute.v1.DiskType;
-import com.google.cloud.compute.v1.DiskTypeClient;
-import com.google.cloud.compute.v1.DiskTypeName;
-import com.google.cloud.compute.v1.ImageName;
-import com.google.cloud.compute.v1.LicenseName;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -52,14 +96,12 @@ public class ITComputeTest {
   private static final String ZONE = "us-central1-a";
   private static final String DISK_TYPE = "local-ssd";
   private static final String MACHINE_TYPE = "f1-micro";
-  private static final LicenseName LICENSE_ID = LicenseName.of("ubuntu-os-cloud", "ubuntu-1404-trusty");
+  private static final LicenseId LICENSE_ID = LicenseId.of("ubuntu-os-cloud", "ubuntu-1404-trusty");
   private static final String BASE_RESOURCE_NAME = RemoteComputeHelper.baseResourceName();
-  private static final ImageName IMAGE_ID = ImageName.of("debian-cloud", "debian-8-jessie-v20160219");
+  private static final ImageId IMAGE_ID = ImageId.of("debian-cloud", "debian-8-jessie-v20160219");
   private static final String IMAGE_PROJECT = "debian-cloud";
 
-  // private static Compute compute;
-  private static DiskClient diskClient;
-  private static DiskTypeClient diskTypeClient;
+  private static Compute compute;
   private static ResourceCleaner resourceCleaner;
 
 
@@ -68,8 +110,6 @@ public class ITComputeTest {
 
   @BeforeClass
   public static void beforeClass() {
-    // Set up diskClient
-    // Set up diskTypeClient
     RemoteComputeHelper computeHelper = RemoteComputeHelper.create();
     compute = computeHelper.getOptions().getService();
     resourceCleaner = ResourceCleaner.create(compute);
@@ -82,11 +122,10 @@ public class ITComputeTest {
 
   @Test
   public void testGetDiskType() {
-    DiskType diskType = diskTypeClient.getDiskType(DiskTypeName.of(IMAGE_PROJECT, ZONE, DISK_TYPE));
+    DiskType diskType = compute.getDiskType(ZONE, DISK_TYPE);
     // assertNotNull(diskType.getGeneratedId());
-    DiskTypeName returnDiskName = DiskTypeName.parse(diskType.getName());
-    assertEquals(ZONE, returnDiskName.getZone());
-    assertEquals(DISK_TYPE, returnDiskName.getDiskType());
+    assertEquals(ZONE, diskType.getDiskTypeId().getZone());
+    assertEquals(DISK_TYPE, diskType.getDiskTypeId().getType());
     assertNotNull(diskType.getCreationTimestamp());
     assertNotNull(diskType.getDescription());
     assertNotNull(diskType.getValidDiskSize());
@@ -95,7 +134,7 @@ public class ITComputeTest {
 
   @Test
   public void testGetDiskTypeWithSelectedFields() {
-    DiskType diskType = diskTypeClient.getDiskType(ZONE, DISK_TYPE,
+    DiskType diskType = compute.getDiskType(ZONE, DISK_TYPE,
         Compute.DiskTypeOption.fields(Compute.DiskTypeField.CREATION_TIMESTAMP));
     // assertNotNull(diskType.getGeneratedId());
     assertEquals(ZONE, diskType.getDiskTypeId().getZone());
@@ -1188,15 +1227,15 @@ public class ITComputeTest {
     String diskName = BASE_RESOURCE_NAME + "create-and-get-image-disk";
     String imageName = BASE_RESOURCE_NAME + "create-and-get-image";
     DiskId diskId = DiskId.of(ZONE, diskName);
-    ImageName imageId = ImageName.of(imageName);
+    ImageId imageId = ImageId.of(imageName);
     DiskInfo diskInfo =
         DiskInfo.of(diskId, StandardDiskConfiguration.of(DiskTypeId.of(ZONE, "pd-ssd"), 100L));
     Operation operation = compute.create(diskInfo);
-    operation.waitFor();
+operation.waitFor();
     Disk remoteDisk = compute.getDisk(diskId);
     ImageInfo imageInfo = ImageInfo.of(imageId, DiskImageConfiguration.of(diskId));
     operation = compute.create(imageInfo);
-    operation.waitFor();
+operation.waitFor();
     resourceCleaner.add(diskId);
     // test get image with selected fields
     Image image = compute.getImage(imageId,
@@ -1229,7 +1268,7 @@ public class ITComputeTest {
     assertNotNull(image.getStatus());
     assertNull(image.getDeprecationStatus());
     // test deprecate image
-    DeprecationStatus<ImageName> deprecationStatus =
+    DeprecationStatus<ImageId> deprecationStatus =
         DeprecationStatus.newBuilder(DeprecationStatus.Status.DEPRECATED, imageId)
             .setDeprecated(System.currentTimeMillis())
             .build();
@@ -1313,7 +1352,7 @@ public class ITComputeTest {
     NetworkInfo networkInfo =
         NetworkInfo.of(networkId, StandardNetworkConfiguration.of("192.168.0.0/16"));
     Operation operation = compute.create(networkInfo);
-    operation.waitFor();
+operation.waitFor();
     // test get network with selected fields
     Network network = compute.getNetwork(networkId.getNetwork(),
         Compute.NetworkOption.fields(Compute.NetworkField.CREATION_TIMESTAMP));
@@ -1724,7 +1763,7 @@ public class ITComputeTest {
     Operation instanceOperation = compute.create(instanceInfo);
     DiskId diskId = DiskId.of(ZONE, diskName);
     Operation diskOperation = compute.create(DiskInfo.of(diskId,
-        StandardDiskConfiguration.of(DiskTypeId.of(ZONE, "pd-ssd"))));
+            StandardDiskConfiguration.of(DiskTypeId.of(ZONE, "pd-ssd"))));
     instanceOperation.waitFor();
     diskOperation.waitFor();
     resourceCleaner.add(diskId);
