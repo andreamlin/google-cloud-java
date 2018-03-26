@@ -28,6 +28,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Generated;
 
 @Generated("by GAPIC")
@@ -37,7 +39,11 @@ public final class DiskTypeName implements ResourceName {
   private final String project;
   private final String zone;
   private static final PathTemplate PATH_TEMPLATE =
-        PathTemplate.createWithoutUrlEncoding("projects/{project}/zones/{zone}/diskTypes/{diskType}");
+        PathTemplate.createWithoutUrlEncoding("/projects/{project}/zones/{zone}/diskTypes/{diskType}");
+
+
+  private static final String REGEX = ".*?projects/([^/]+)/zones/([^/]+)/diskTypes/([^/]+)";
+  private static final Pattern PATTERN = Pattern.compile(REGEX);
 
   private volatile Map<String, String> fieldValuesMap;
 
@@ -128,6 +134,25 @@ public final class DiskTypeName implements ResourceName {
       matchMap.get("project"),
       matchMap.get("zone")
     );
+  }
+
+  /**
+   * Returns {@code true} if the provided string matches the expected format of a disk type URL.
+   * Returns {@code false} otherwise.
+   */
+  public static boolean matchesUrl(String url) {
+    return PATTERN.matcher(url).matches();
+  }
+
+  public static DiskTypeName fromUrl(String url) {
+    Matcher matcher = PATTERN.matcher(url);
+    if (!matcher.matches()) {
+      throw new IllegalArgumentException(url + " is not a valid disk type URL");
+    }
+    return DiskTypeName.newBuilder()
+      .setProject(matcher.group(1))
+      .setZone(matcher.group(2))
+      .setDiskType(matcher.group(3)).build();
   }
 
   public static boolean isParsableFrom(String formattedString) {
