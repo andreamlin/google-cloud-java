@@ -47,9 +47,10 @@ public class ZoneOperationClientTest {
 
    private static final List<ApiMethodDescriptor> METHOD_DESCRIPTORS = ImmutableList.copyOf(
         Lists.<ApiMethodDescriptor>newArrayList(
+          deleteZoneOperationMethodDescriptor,
           getZoneOperationMethodDescriptor,
           listZoneOperationsMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, ZoneOperationStubSettings.getDefaultEndpoint());
 
@@ -80,7 +81,7 @@ public class ZoneOperationClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteZoneOperationTest() {
-
+    mockService.addNullResponse();
 
     ProjectZoneOperationName operation = ProjectZoneOperationName.of("[PROJECT]", "[ZONE]", "[OPERATION]");
 

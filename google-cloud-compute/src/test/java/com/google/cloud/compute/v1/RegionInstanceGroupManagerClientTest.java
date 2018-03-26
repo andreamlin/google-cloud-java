@@ -66,7 +66,7 @@ public class RegionInstanceGroupManagerClientTest {
           resizeRegionInstanceGroupManagerMethodDescriptor,
           setInstanceTemplateRegionInstanceGroupManagerMethodDescriptor,
           setTargetPoolsRegionInstanceGroupManagerMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, RegionInstanceGroupManagerStubSettings.getDefaultEndpoint());
 

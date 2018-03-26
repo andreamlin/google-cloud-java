@@ -68,7 +68,7 @@ public final class UrlMapsValidateResponse implements ApiMessage {
     return null;
   }
 
-  public UrlMapValidationResult getUrlMapValidationResult() {
+  public UrlMapValidationResult getResult() {
     return result;
   }
 
@@ -99,7 +99,7 @@ public final class UrlMapsValidateResponse implements ApiMessage {
 
     public Builder mergeFrom(UrlMapsValidateResponse other) {
       if (other == UrlMapsValidateResponse.getDefaultInstance()) return this;
-      if (other.getUrlMapValidationResult() != null) {
+      if (other.getResult() != null) {
         this.result = other.result;
       }
       return this;
@@ -109,11 +109,11 @@ public final class UrlMapsValidateResponse implements ApiMessage {
       this.result = source.result;
     }
 
-    public UrlMapValidationResult getUrlMapValidationResult() {
+    public UrlMapValidationResult getResult() {
       return result;
     }
 
-    public Builder setUrlMapValidationResult(UrlMapValidationResult result) {
+    public Builder setResult(UrlMapValidationResult result) {
       this.result = result;
       return this;
     }
@@ -127,7 +127,7 @@ public final class UrlMapsValidateResponse implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setUrlMapValidationResult(this.result);
+      newBuilder.setResult(this.result);
       return newBuilder;
     }
   }
@@ -147,7 +147,7 @@ public final class UrlMapsValidateResponse implements ApiMessage {
     if (o instanceof UrlMapsValidateResponse) {
       UrlMapsValidateResponse that = (UrlMapsValidateResponse) o;
       return
-          Objects.equals(this.result, that.getUrlMapValidationResult())
+          Objects.equals(this.result, that.getResult())
           ;
     }
     return false;

@@ -47,9 +47,10 @@ public class RegionOperationClientTest {
 
    private static final List<ApiMethodDescriptor> METHOD_DESCRIPTORS = ImmutableList.copyOf(
         Lists.<ApiMethodDescriptor>newArrayList(
+          deleteRegionOperationMethodDescriptor,
           getRegionOperationMethodDescriptor,
           listRegionOperationsMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, RegionOperationStubSettings.getDefaultEndpoint());
 
@@ -80,7 +81,7 @@ public class RegionOperationClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteRegionOperationTest() {
-
+    mockService.addNullResponse();
 
     ProjectRegionOperationName operation = ProjectRegionOperationName.of("[PROJECT]", "[REGION]", "[OPERATION]");
 

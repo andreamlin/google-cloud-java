@@ -58,7 +58,7 @@ public class TargetSslProxyClientTest {
           setBackendServiceTargetSslProxyMethodDescriptor,
           setProxyHeaderTargetSslProxyMethodDescriptor,
           setSslCertificatesTargetSslProxyMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, TargetSslProxyStubSettings.getDefaultEndpoint());
 

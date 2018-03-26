@@ -52,7 +52,7 @@ public class RouteClientTest {
           getRouteMethodDescriptor,
           insertRouteMethodDescriptor,
           listRoutesMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, RouteStubSettings.getDefaultEndpoint());
 

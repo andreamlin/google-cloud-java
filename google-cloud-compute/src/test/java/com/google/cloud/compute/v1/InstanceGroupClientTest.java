@@ -64,7 +64,7 @@ public class InstanceGroupClientTest {
           listInstancesInstanceGroupsMethodDescriptor,
           removeInstancesInstanceGroupMethodDescriptor,
           setNamedPortsInstanceGroupMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, InstanceGroupStubSettings.getDefaultEndpoint());
 

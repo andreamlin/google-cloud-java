@@ -53,7 +53,7 @@ public class RegionInstanceGroupClientTest {
           listRegionInstanceGroupsMethodDescriptor,
           listInstancesRegionInstanceGroupsMethodDescriptor,
           setNamedPortsRegionInstanceGroupMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, RegionInstanceGroupStubSettings.getDefaultEndpoint());
 

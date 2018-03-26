@@ -50,9 +50,10 @@ public class GlobalOperationClientTest {
    private static final List<ApiMethodDescriptor> METHOD_DESCRIPTORS = ImmutableList.copyOf(
         Lists.<ApiMethodDescriptor>newArrayList(
           aggregatedListGlobalOperationsMethodDescriptor,
+          deleteGlobalOperationMethodDescriptor,
           getGlobalOperationMethodDescriptor,
           listGlobalOperationsMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, GlobalOperationStubSettings.getDefaultEndpoint());
 
@@ -132,7 +133,7 @@ public class GlobalOperationClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteGlobalOperationTest() {
-
+    mockService.addNullResponse();
 
     OperationName operation = OperationName.of("[PROJECT]", "[OPERATION]");
 

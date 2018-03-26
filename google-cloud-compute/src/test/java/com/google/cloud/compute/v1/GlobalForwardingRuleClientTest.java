@@ -54,7 +54,7 @@ public class GlobalForwardingRuleClientTest {
           insertGlobalForwardingRuleMethodDescriptor,
           listGlobalForwardingRulesMethodDescriptor,
           setTargetGlobalForwardingRuleMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, GlobalForwardingRuleStubSettings.getDefaultEndpoint());
 

@@ -68,7 +68,7 @@ public final class UrlMapsValidateRequest implements ApiMessage {
     return null;
   }
 
-  public UrlMap getUrlMap() {
+  public UrlMap getResource() {
     return resource;
   }
 
@@ -99,7 +99,7 @@ public final class UrlMapsValidateRequest implements ApiMessage {
 
     public Builder mergeFrom(UrlMapsValidateRequest other) {
       if (other == UrlMapsValidateRequest.getDefaultInstance()) return this;
-      if (other.getUrlMap() != null) {
+      if (other.getResource() != null) {
         this.resource = other.resource;
       }
       return this;
@@ -109,11 +109,11 @@ public final class UrlMapsValidateRequest implements ApiMessage {
       this.resource = source.resource;
     }
 
-    public UrlMap getUrlMap() {
+    public UrlMap getResource() {
       return resource;
     }
 
-    public Builder setUrlMap(UrlMap resource) {
+    public Builder setResource(UrlMap resource) {
       this.resource = resource;
       return this;
     }
@@ -127,7 +127,7 @@ public final class UrlMapsValidateRequest implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setUrlMap(this.resource);
+      newBuilder.setResource(this.resource);
       return newBuilder;
     }
   }
@@ -147,7 +147,7 @@ public final class UrlMapsValidateRequest implements ApiMessage {
     if (o instanceof UrlMapsValidateRequest) {
       UrlMapsValidateRequest that = (UrlMapsValidateRequest) o;
       return
-          Objects.equals(this.resource, that.getUrlMap())
+          Objects.equals(this.resource, that.getResource())
           ;
     }
     return false;

@@ -194,7 +194,7 @@ public final class AttachedDisk implements ApiMessage {
     return deviceName;
   }
 
-  public CustomerEncryptionKey getCustomerEncryptionKey() {
+  public CustomerEncryptionKey getDiskEncryptionKey() {
     return diskEncryptionKey;
   }
 
@@ -202,7 +202,7 @@ public final class AttachedDisk implements ApiMessage {
     return index;
   }
 
-  public AttachedDiskInitializeParams getAttachedDiskInitializeParams() {
+  public AttachedDiskInitializeParams getInitializeParams() {
     return initializeParams;
   }
 
@@ -277,13 +277,13 @@ public final class AttachedDisk implements ApiMessage {
       if (other.getDeviceName() != null) {
         this.deviceName = other.deviceName;
       }
-      if (other.getCustomerEncryptionKey() != null) {
+      if (other.getDiskEncryptionKey() != null) {
         this.diskEncryptionKey = other.diskEncryptionKey;
       }
       if (other.getIndex() != null) {
         this.index = other.index;
       }
-      if (other.getAttachedDiskInitializeParams() != null) {
+      if (other.getInitializeParams() != null) {
         this.initializeParams = other.initializeParams;
       }
       if (other.getInterface() != null) {
@@ -349,11 +349,11 @@ public final class AttachedDisk implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getCustomerEncryptionKey() {
+    public CustomerEncryptionKey getDiskEncryptionKey() {
       return diskEncryptionKey;
     }
 
-    public Builder setCustomerEncryptionKey(CustomerEncryptionKey diskEncryptionKey) {
+    public Builder setDiskEncryptionKey(CustomerEncryptionKey diskEncryptionKey) {
       this.diskEncryptionKey = diskEncryptionKey;
       return this;
     }
@@ -367,11 +367,11 @@ public final class AttachedDisk implements ApiMessage {
       return this;
     }
 
-    public AttachedDiskInitializeParams getAttachedDiskInitializeParams() {
+    public AttachedDiskInitializeParams getInitializeParams() {
       return initializeParams;
     }
 
-    public Builder setAttachedDiskInitializeParams(AttachedDiskInitializeParams initializeParams) {
+    public Builder setInitializeParams(AttachedDiskInitializeParams initializeParams) {
       this.initializeParams = initializeParams;
       return this;
     }
@@ -472,9 +472,9 @@ public final class AttachedDisk implements ApiMessage {
       newBuilder.setAutoDelete(this.autoDelete);
       newBuilder.setBoot(this.boot);
       newBuilder.setDeviceName(this.deviceName);
-      newBuilder.setCustomerEncryptionKey(this.diskEncryptionKey);
+      newBuilder.setDiskEncryptionKey(this.diskEncryptionKey);
       newBuilder.setIndex(this.index);
-      newBuilder.setAttachedDiskInitializeParams(this.initializeParams);
+      newBuilder.setInitializeParams(this.initializeParams);
       newBuilder.setInterface(this.interface2);
       newBuilder.setKind(this.kind);
       newBuilder.addAllLicenses(this.licenses);
@@ -514,9 +514,9 @@ public final class AttachedDisk implements ApiMessage {
           Objects.equals(this.autoDelete, that.getAutoDelete()) &&
           Objects.equals(this.boot, that.getBoot()) &&
           Objects.equals(this.deviceName, that.getDeviceName()) &&
-          Objects.equals(this.diskEncryptionKey, that.getCustomerEncryptionKey()) &&
+          Objects.equals(this.diskEncryptionKey, that.getDiskEncryptionKey()) &&
           Objects.equals(this.index, that.getIndex()) &&
-          Objects.equals(this.initializeParams, that.getAttachedDiskInitializeParams()) &&
+          Objects.equals(this.initializeParams, that.getInitializeParams()) &&
           Objects.equals(this.interface2, that.getInterface()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.licenses, that.getLicensesList()) &&

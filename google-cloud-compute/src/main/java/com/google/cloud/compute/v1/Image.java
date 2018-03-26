@@ -264,7 +264,7 @@ public final class Image implements ApiMessage {
     return creationTimestamp;
   }
 
-  public DeprecationStatus getDeprecationStatus() {
+  public DeprecationStatus getDeprecated() {
     return deprecated;
   }
 
@@ -288,7 +288,7 @@ public final class Image implements ApiMessage {
     return id;
   }
 
-  public CustomerEncryptionKey getCustomerEncryptionKey() {
+  public CustomerEncryptionKey getImageEncryptionKey() {
     return imageEncryptionKey;
   }
 
@@ -316,7 +316,7 @@ public final class Image implements ApiMessage {
     return sourceDisk;
   }
 
-  public CustomerEncryptionKey getCustomerEncryptionKey() {
+  public CustomerEncryptionKey getSourceDiskEncryptionKey() {
     return sourceDiskEncryptionKey;
   }
 
@@ -383,7 +383,7 @@ public final class Image implements ApiMessage {
       if (other.getCreationTimestamp() != null) {
         this.creationTimestamp = other.creationTimestamp;
       }
-      if (other.getDeprecationStatus() != null) {
+      if (other.getDeprecated() != null) {
         this.deprecated = other.deprecated;
       }
       if (other.getDescription() != null) {
@@ -401,7 +401,7 @@ public final class Image implements ApiMessage {
       if (other.getId() != null) {
         this.id = other.id;
       }
-      if (other.getCustomerEncryptionKey() != null) {
+      if (other.getImageEncryptionKey() != null) {
         this.imageEncryptionKey = other.imageEncryptionKey;
       }
       if (other.getKind() != null) {
@@ -422,7 +422,7 @@ public final class Image implements ApiMessage {
       if (other.getSourceDisk() != null) {
         this.sourceDisk = other.sourceDisk;
       }
-      if (other.getCustomerEncryptionKey() != null) {
+      if (other.getSourceDiskEncryptionKey() != null) {
         this.sourceDiskEncryptionKey = other.sourceDiskEncryptionKey;
       }
       if (other.getSourceDiskId() != null) {
@@ -477,11 +477,11 @@ public final class Image implements ApiMessage {
       return this;
     }
 
-    public DeprecationStatus getDeprecationStatus() {
+    public DeprecationStatus getDeprecated() {
       return deprecated;
     }
 
-    public Builder setDeprecationStatus(DeprecationStatus deprecated) {
+    public Builder setDeprecated(DeprecationStatus deprecated) {
       this.deprecated = deprecated;
       return this;
     }
@@ -539,11 +539,11 @@ public final class Image implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getCustomerEncryptionKey() {
+    public CustomerEncryptionKey getImageEncryptionKey() {
       return imageEncryptionKey;
     }
 
-    public Builder setCustomerEncryptionKey(CustomerEncryptionKey imageEncryptionKey) {
+    public Builder setImageEncryptionKey(CustomerEncryptionKey imageEncryptionKey) {
       this.imageEncryptionKey = imageEncryptionKey;
       return this;
     }
@@ -610,11 +610,11 @@ public final class Image implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getCustomerEncryptionKey() {
+    public CustomerEncryptionKey getSourceDiskEncryptionKey() {
       return sourceDiskEncryptionKey;
     }
 
-    public Builder setCustomerEncryptionKey(CustomerEncryptionKey sourceDiskEncryptionKey) {
+    public Builder setSourceDiskEncryptionKey(CustomerEncryptionKey sourceDiskEncryptionKey) {
       this.sourceDiskEncryptionKey = sourceDiskEncryptionKey;
       return this;
     }
@@ -693,20 +693,20 @@ public final class Image implements ApiMessage {
       Builder newBuilder = new Builder();
       newBuilder.setArchiveSizeBytes(this.archiveSizeBytes);
       newBuilder.setCreationTimestamp(this.creationTimestamp);
-      newBuilder.setDeprecationStatus(this.deprecated);
+      newBuilder.setDeprecated(this.deprecated);
       newBuilder.setDescription(this.description);
       newBuilder.setDiskSizeGb(this.diskSizeGb);
       newBuilder.setFamily(this.family);
       newBuilder.addAllGuestOsFeatures(this.guestOsFeatures);
       newBuilder.setId(this.id);
-      newBuilder.setCustomerEncryptionKey(this.imageEncryptionKey);
+      newBuilder.setImageEncryptionKey(this.imageEncryptionKey);
       newBuilder.setKind(this.kind);
       newBuilder.addAllLicenses(this.licenses);
       newBuilder.setName(this.name);
       newBuilder.setRawDisk(this.rawDisk);
       newBuilder.setSelfLink(this.selfLink);
       newBuilder.setSourceDisk(this.sourceDisk);
-      newBuilder.setCustomerEncryptionKey(this.sourceDiskEncryptionKey);
+      newBuilder.setSourceDiskEncryptionKey(this.sourceDiskEncryptionKey);
       newBuilder.setSourceDiskId(this.sourceDiskId);
       newBuilder.setSourceType(this.sourceType);
       newBuilder.setStatus(this.status);
@@ -749,20 +749,20 @@ public final class Image implements ApiMessage {
       return
           Objects.equals(this.archiveSizeBytes, that.getArchiveSizeBytes()) &&
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
-          Objects.equals(this.deprecated, that.getDeprecationStatus()) &&
+          Objects.equals(this.deprecated, that.getDeprecated()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.diskSizeGb, that.getDiskSizeGb()) &&
           Objects.equals(this.family, that.getFamily()) &&
           Objects.equals(this.guestOsFeatures, that.getGuestOsFeaturesList()) &&
           Objects.equals(this.id, that.getId()) &&
-          Objects.equals(this.imageEncryptionKey, that.getCustomerEncryptionKey()) &&
+          Objects.equals(this.imageEncryptionKey, that.getImageEncryptionKey()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.licenses, that.getLicensesList()) &&
           Objects.equals(this.name, that.getName()) &&
           Objects.equals(this.rawDisk, that.getRawDisk()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
           Objects.equals(this.sourceDisk, that.getSourceDisk()) &&
-          Objects.equals(this.sourceDiskEncryptionKey, that.getCustomerEncryptionKey()) &&
+          Objects.equals(this.sourceDiskEncryptionKey, that.getSourceDiskEncryptionKey()) &&
           Objects.equals(this.sourceDiskId, that.getSourceDiskId()) &&
           Objects.equals(this.sourceType, that.getSourceType()) &&
           Objects.equals(this.status, that.getStatus())

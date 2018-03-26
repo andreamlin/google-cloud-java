@@ -78,7 +78,7 @@ public final class CustomerEncryptionKeyProtectedDisk implements ApiMessage {
     return null;
   }
 
-  public CustomerEncryptionKey getCustomerEncryptionKey() {
+  public CustomerEncryptionKey getDiskEncryptionKey() {
     return diskEncryptionKey;
   }
 
@@ -114,7 +114,7 @@ public final class CustomerEncryptionKeyProtectedDisk implements ApiMessage {
 
     public Builder mergeFrom(CustomerEncryptionKeyProtectedDisk other) {
       if (other == CustomerEncryptionKeyProtectedDisk.getDefaultInstance()) return this;
-      if (other.getCustomerEncryptionKey() != null) {
+      if (other.getDiskEncryptionKey() != null) {
         this.diskEncryptionKey = other.diskEncryptionKey;
       }
       if (other.getSource() != null) {
@@ -128,11 +128,11 @@ public final class CustomerEncryptionKeyProtectedDisk implements ApiMessage {
       this.source = source.source;
     }
 
-    public CustomerEncryptionKey getCustomerEncryptionKey() {
+    public CustomerEncryptionKey getDiskEncryptionKey() {
       return diskEncryptionKey;
     }
 
-    public Builder setCustomerEncryptionKey(CustomerEncryptionKey diskEncryptionKey) {
+    public Builder setDiskEncryptionKey(CustomerEncryptionKey diskEncryptionKey) {
       this.diskEncryptionKey = diskEncryptionKey;
       return this;
     }
@@ -157,7 +157,7 @@ public final class CustomerEncryptionKeyProtectedDisk implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setCustomerEncryptionKey(this.diskEncryptionKey);
+      newBuilder.setDiskEncryptionKey(this.diskEncryptionKey);
       newBuilder.setSource(this.source);
       return newBuilder;
     }
@@ -179,7 +179,7 @@ public final class CustomerEncryptionKeyProtectedDisk implements ApiMessage {
     if (o instanceof CustomerEncryptionKeyProtectedDisk) {
       CustomerEncryptionKeyProtectedDisk that = (CustomerEncryptionKeyProtectedDisk) o;
       return
-          Objects.equals(this.diskEncryptionKey, that.getCustomerEncryptionKey()) &&
+          Objects.equals(this.diskEncryptionKey, that.getDiskEncryptionKey()) &&
           Objects.equals(this.source, that.getSource())
           ;
     }

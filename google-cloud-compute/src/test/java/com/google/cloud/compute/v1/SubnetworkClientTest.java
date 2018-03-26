@@ -57,7 +57,7 @@ public class SubnetworkClientTest {
           getSubnetworkMethodDescriptor,
           insertSubnetworkMethodDescriptor,
           listSubnetworksMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, SubnetworkStubSettings.getDefaultEndpoint());
 

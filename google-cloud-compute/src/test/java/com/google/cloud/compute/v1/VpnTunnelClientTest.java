@@ -55,7 +55,7 @@ public class VpnTunnelClientTest {
           getVpnTunnelMethodDescriptor,
           insertVpnTunnelMethodDescriptor,
           listVpnTunnelsMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, VpnTunnelStubSettings.getDefaultEndpoint());
 

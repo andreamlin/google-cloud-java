@@ -60,7 +60,7 @@ public class UrlMapClientTest {
           patchUrlMapMethodDescriptor,
           updateUrlMapMethodDescriptor,
           validateUrlMapMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, UrlMapStubSettings.getDefaultEndpoint());
 

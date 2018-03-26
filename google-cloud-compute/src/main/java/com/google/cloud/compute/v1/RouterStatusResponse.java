@@ -82,7 +82,7 @@ public final class RouterStatusResponse implements ApiMessage {
     return kind;
   }
 
-  public RouterStatus getRouterStatus() {
+  public RouterStatus getResult() {
     return result;
   }
 
@@ -117,7 +117,7 @@ public final class RouterStatusResponse implements ApiMessage {
       if (other.getKind() != null) {
         this.kind = other.kind;
       }
-      if (other.getRouterStatus() != null) {
+      if (other.getResult() != null) {
         this.result = other.result;
       }
       return this;
@@ -137,11 +137,11 @@ public final class RouterStatusResponse implements ApiMessage {
       return this;
     }
 
-    public RouterStatus getRouterStatus() {
+    public RouterStatus getResult() {
       return result;
     }
 
-    public Builder setRouterStatus(RouterStatus result) {
+    public Builder setResult(RouterStatus result) {
       this.result = result;
       return this;
     }
@@ -158,7 +158,7 @@ public final class RouterStatusResponse implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setKind(this.kind);
-      newBuilder.setRouterStatus(this.result);
+      newBuilder.setResult(this.result);
       return newBuilder;
     }
   }
@@ -180,7 +180,7 @@ public final class RouterStatusResponse implements ApiMessage {
       RouterStatusResponse that = (RouterStatusResponse) o;
       return
           Objects.equals(this.kind, that.getKind()) &&
-          Objects.equals(this.result, that.getRouterStatus())
+          Objects.equals(this.result, that.getResult())
           ;
     }
     return false;

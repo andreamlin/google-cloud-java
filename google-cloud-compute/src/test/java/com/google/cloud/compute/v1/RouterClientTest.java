@@ -63,7 +63,7 @@ public class RouterClientTest {
           patchRouterMethodDescriptor,
           previewRouterMethodDescriptor,
           updateRouterMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, RouterStubSettings.getDefaultEndpoint());
 

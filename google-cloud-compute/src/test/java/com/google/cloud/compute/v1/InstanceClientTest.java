@@ -85,7 +85,7 @@ public class InstanceClientTest {
           startInstanceMethodDescriptor,
           startWithEncryptionKeyInstanceMethodDescriptor,
           stopInstanceMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, InstanceStubSettings.getDefaultEndpoint());
 

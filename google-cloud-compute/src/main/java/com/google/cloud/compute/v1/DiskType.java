@@ -166,7 +166,7 @@ public final class DiskType implements ApiMessage {
     return defaultDiskSizeGb;
   }
 
-  public DeprecationStatus getDeprecationStatus() {
+  public DeprecationStatus getDeprecated() {
     return deprecated;
   }
 
@@ -240,7 +240,7 @@ public final class DiskType implements ApiMessage {
       if (other.getDefaultDiskSizeGb() != null) {
         this.defaultDiskSizeGb = other.defaultDiskSizeGb;
       }
-      if (other.getDeprecationStatus() != null) {
+      if (other.getDeprecated() != null) {
         this.deprecated = other.deprecated;
       }
       if (other.getDescription() != null) {
@@ -298,11 +298,11 @@ public final class DiskType implements ApiMessage {
       return this;
     }
 
-    public DeprecationStatus getDeprecationStatus() {
+    public DeprecationStatus getDeprecated() {
       return deprecated;
     }
 
-    public Builder setDeprecationStatus(DeprecationStatus deprecated) {
+    public Builder setDeprecated(DeprecationStatus deprecated) {
       this.deprecated = deprecated;
       return this;
     }
@@ -399,7 +399,7 @@ public final class DiskType implements ApiMessage {
       Builder newBuilder = new Builder();
       newBuilder.setCreationTimestamp(this.creationTimestamp);
       newBuilder.setDefaultDiskSizeGb(this.defaultDiskSizeGb);
-      newBuilder.setDeprecationStatus(this.deprecated);
+      newBuilder.setDeprecated(this.deprecated);
       newBuilder.setDescription(this.description);
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
@@ -437,7 +437,7 @@ public final class DiskType implements ApiMessage {
       return
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
           Objects.equals(this.defaultDiskSizeGb, that.getDefaultDiskSizeGb()) &&
-          Objects.equals(this.deprecated, that.getDeprecationStatus()) &&
+          Objects.equals(this.deprecated, that.getDeprecated()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.kind, that.getKind()) &&

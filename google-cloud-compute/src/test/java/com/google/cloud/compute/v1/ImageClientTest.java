@@ -56,7 +56,7 @@ public class ImageClientTest {
           getFromFamilyImageMethodDescriptor,
           insertImageMethodDescriptor,
           listImagesMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, ImageStubSettings.getDefaultEndpoint());
 

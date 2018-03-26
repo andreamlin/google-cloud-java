@@ -124,7 +124,7 @@ public final class ManagedInstance implements ApiMessage {
     return instanceStatus;
   }
 
-  public ManagedInstanceLastAttempt getManagedInstanceLastAttempt() {
+  public ManagedInstanceLastAttempt getLastAttempt() {
     return lastAttempt;
   }
 
@@ -171,7 +171,7 @@ public final class ManagedInstance implements ApiMessage {
       if (other.getInstanceStatus() != null) {
         this.instanceStatus = other.instanceStatus;
       }
-      if (other.getManagedInstanceLastAttempt() != null) {
+      if (other.getLastAttempt() != null) {
         this.lastAttempt = other.lastAttempt;
       }
       return this;
@@ -221,11 +221,11 @@ public final class ManagedInstance implements ApiMessage {
       return this;
     }
 
-    public ManagedInstanceLastAttempt getManagedInstanceLastAttempt() {
+    public ManagedInstanceLastAttempt getLastAttempt() {
       return lastAttempt;
     }
 
-    public Builder setManagedInstanceLastAttempt(ManagedInstanceLastAttempt lastAttempt) {
+    public Builder setLastAttempt(ManagedInstanceLastAttempt lastAttempt) {
       this.lastAttempt = lastAttempt;
       return this;
     }
@@ -251,7 +251,7 @@ public final class ManagedInstance implements ApiMessage {
       newBuilder.setId(this.id);
       newBuilder.setInstance(this.instance);
       newBuilder.setInstanceStatus(this.instanceStatus);
-      newBuilder.setManagedInstanceLastAttempt(this.lastAttempt);
+      newBuilder.setLastAttempt(this.lastAttempt);
       return newBuilder;
     }
   }
@@ -279,7 +279,7 @@ public final class ManagedInstance implements ApiMessage {
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.instance, that.getInstance()) &&
           Objects.equals(this.instanceStatus, that.getInstanceStatus()) &&
-          Objects.equals(this.lastAttempt, that.getManagedInstanceLastAttempt())
+          Objects.equals(this.lastAttempt, that.getLastAttempt())
           ;
     }
     return false;

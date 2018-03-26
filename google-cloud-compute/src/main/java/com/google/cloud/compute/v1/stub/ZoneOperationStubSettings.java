@@ -101,14 +101,14 @@ public class ZoneOperationStubSettings extends StubSettings<ZoneOperationStubSet
       .add("https://www.googleapis.com/auth/devstorage.read_write")
       .build();
 
-  private final UnaryCallSettings<DeleteZoneOperationHttpRequest, nullTypeName> deleteZoneOperationSettings;
+  private final UnaryCallSettings<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationSettings;
   private final UnaryCallSettings<GetZoneOperationHttpRequest, Operation> getZoneOperationSettings;
   private final PagedCallSettings<ListZoneOperationsHttpRequest, OperationList, ListZoneOperationsPagedResponse> listZoneOperationsSettings;
 
   /**
    * Returns the object with the settings used for calls to deleteZoneOperation.
    */
-  public UnaryCallSettings<DeleteZoneOperationHttpRequest, nullTypeName> deleteZoneOperationSettings() {
+  public UnaryCallSettings<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationSettings() {
     return deleteZoneOperationSettings;
   }
 
@@ -278,7 +278,7 @@ public class ZoneOperationStubSettings extends StubSettings<ZoneOperationStubSet
   public static class Builder extends StubSettings.Builder<ZoneOperationStubSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<DeleteZoneOperationHttpRequest, nullTypeName> deleteZoneOperationSettings;
+    private final UnaryCallSettings.Builder<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationSettings;
     private final UnaryCallSettings.Builder<GetZoneOperationHttpRequest, Operation> getZoneOperationSettings;
     private final PagedCallSettings.Builder<ListZoneOperationsHttpRequest, OperationList, ListZoneOperationsPagedResponse> listZoneOperationsSettings;
 
@@ -393,7 +393,7 @@ public class ZoneOperationStubSettings extends StubSettings<ZoneOperationStubSet
     /**
      * Returns the builder for the settings used for calls to deleteZoneOperation.
      */
-    public UnaryCallSettings.Builder<DeleteZoneOperationHttpRequest, nullTypeName> deleteZoneOperationSettings() {
+    public UnaryCallSettings.Builder<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationSettings() {
       return deleteZoneOperationSettings;
     }
 

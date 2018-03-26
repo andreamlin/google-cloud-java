@@ -56,7 +56,7 @@ public class RegionAutoscalerClientTest {
           listRegionAutoscalersMethodDescriptor,
           patchRegionAutoscalerMethodDescriptor,
           updateRegionAutoscalerMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, RegionAutoscalerStubSettings.getDefaultEndpoint());
 

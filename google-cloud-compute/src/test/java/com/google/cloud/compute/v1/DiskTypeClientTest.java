@@ -51,7 +51,7 @@ public class DiskTypeClientTest {
           aggregatedListDiskTypesMethodDescriptor,
           getDiskTypeMethodDescriptor,
           listDiskTypesMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, DiskTypeStubSettings.getDefaultEndpoint());
 

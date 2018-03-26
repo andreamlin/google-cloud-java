@@ -234,7 +234,7 @@ public final class InstanceGroupManager implements ApiMessage {
     return creationTimestamp;
   }
 
-  public InstanceGroupManagerActionsSummary getInstanceGroupManagerActionsSummary() {
+  public InstanceGroupManagerActionsSummary getCurrentActions() {
     return currentActions;
   }
 
@@ -338,7 +338,7 @@ public final class InstanceGroupManager implements ApiMessage {
       if (other.getCreationTimestamp() != null) {
         this.creationTimestamp = other.creationTimestamp;
       }
-      if (other.getInstanceGroupManagerActionsSummary() != null) {
+      if (other.getCurrentActions() != null) {
         this.currentActions = other.currentActions;
       }
       if (other.getDescription() != null) {
@@ -420,11 +420,11 @@ public final class InstanceGroupManager implements ApiMessage {
       return this;
     }
 
-    public InstanceGroupManagerActionsSummary getInstanceGroupManagerActionsSummary() {
+    public InstanceGroupManagerActionsSummary getCurrentActions() {
       return currentActions;
     }
 
-    public Builder setInstanceGroupManagerActionsSummary(InstanceGroupManagerActionsSummary currentActions) {
+    public Builder setCurrentActions(InstanceGroupManagerActionsSummary currentActions) {
       this.currentActions = currentActions;
       return this;
     }
@@ -603,7 +603,7 @@ public final class InstanceGroupManager implements ApiMessage {
       Builder newBuilder = new Builder();
       newBuilder.setBaseInstanceName(this.baseInstanceName);
       newBuilder.setCreationTimestamp(this.creationTimestamp);
-      newBuilder.setInstanceGroupManagerActionsSummary(this.currentActions);
+      newBuilder.setCurrentActions(this.currentActions);
       newBuilder.setDescription(this.description);
       newBuilder.setFingerprint(this.fingerprint);
       newBuilder.setId(this.id);
@@ -653,7 +653,7 @@ public final class InstanceGroupManager implements ApiMessage {
       return
           Objects.equals(this.baseInstanceName, that.getBaseInstanceName()) &&
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
-          Objects.equals(this.currentActions, that.getInstanceGroupManagerActionsSummary()) &&
+          Objects.equals(this.currentActions, that.getCurrentActions()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.fingerprint, that.getFingerprint()) &&
           Objects.equals(this.id, that.getId()) &&

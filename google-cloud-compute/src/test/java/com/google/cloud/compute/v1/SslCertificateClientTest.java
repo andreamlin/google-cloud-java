@@ -52,7 +52,7 @@ public class SslCertificateClientTest {
           getSslCertificateMethodDescriptor,
           insertSslCertificateMethodDescriptor,
           listSslCertificatesMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, SslCertificateStubSettings.getDefaultEndpoint());
 

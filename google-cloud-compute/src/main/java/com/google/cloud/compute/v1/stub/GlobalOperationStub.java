@@ -53,7 +53,7 @@ public abstract class GlobalOperationStub implements BackgroundResource {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteGlobalOperationHttpRequest, nullTypeName> deleteGlobalOperationCallable() {
+  public UnaryCallable<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteGlobalOperationCallable()");
   }
 

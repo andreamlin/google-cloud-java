@@ -59,7 +59,7 @@ public class AutoscalerClientTest {
           listAutoscalersMethodDescriptor,
           patchAutoscalerMethodDescriptor,
           updateAutoscalerMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, AutoscalerStubSettings.getDefaultEndpoint());
 

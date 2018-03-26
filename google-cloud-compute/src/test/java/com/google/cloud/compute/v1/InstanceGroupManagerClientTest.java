@@ -69,7 +69,7 @@ public class InstanceGroupManagerClientTest {
           resizeInstanceGroupManagerMethodDescriptor,
           setInstanceTemplateInstanceGroupManagerMethodDescriptor,
           setTargetPoolsInstanceGroupManagerMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, InstanceGroupManagerStubSettings.getDefaultEndpoint());
 

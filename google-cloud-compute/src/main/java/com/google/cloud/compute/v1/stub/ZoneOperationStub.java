@@ -40,7 +40,7 @@ public abstract class ZoneOperationStub implements BackgroundResource {
 
 
   @BetaApi
-  public UnaryCallable<DeleteZoneOperationHttpRequest, nullTypeName> deleteZoneOperationCallable() {
+  public UnaryCallable<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteZoneOperationCallable()");
   }
 

@@ -54,7 +54,7 @@ public class NetworkClientTest {
           insertNetworkMethodDescriptor,
           listNetworksMethodDescriptor,
           switchToCustomModeNetworkMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, NetworkStubSettings.getDefaultEndpoint());
 

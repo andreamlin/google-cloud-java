@@ -148,7 +148,7 @@ public final class InstanceTemplate implements ApiMessage {
     return name;
   }
 
-  public InstanceProperties getInstanceProperties() {
+  public InstanceProperties getProperties() {
     return properties;
   }
 
@@ -204,7 +204,7 @@ public final class InstanceTemplate implements ApiMessage {
       if (other.getName() != null) {
         this.name = other.name;
       }
-      if (other.getInstanceProperties() != null) {
+      if (other.getProperties() != null) {
         this.properties = other.properties;
       }
       if (other.getSelfLink() != null) {
@@ -268,11 +268,11 @@ public final class InstanceTemplate implements ApiMessage {
       return this;
     }
 
-    public InstanceProperties getInstanceProperties() {
+    public InstanceProperties getProperties() {
       return properties;
     }
 
-    public Builder setInstanceProperties(InstanceProperties properties) {
+    public Builder setProperties(InstanceProperties properties) {
       this.properties = properties;
       return this;
     }
@@ -312,7 +312,7 @@ public final class InstanceTemplate implements ApiMessage {
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
       newBuilder.setName(this.name);
-      newBuilder.setInstanceProperties(this.properties);
+      newBuilder.setProperties(this.properties);
       newBuilder.setSelfLink(this.selfLink);
       return newBuilder;
     }
@@ -344,7 +344,7 @@ public final class InstanceTemplate implements ApiMessage {
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.name, that.getName()) &&
-          Objects.equals(this.properties, that.getInstanceProperties()) &&
+          Objects.equals(this.properties, that.getProperties()) &&
           Objects.equals(this.selfLink, that.getSelfLink())
           ;
     }

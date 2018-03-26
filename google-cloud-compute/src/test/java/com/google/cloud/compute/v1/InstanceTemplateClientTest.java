@@ -52,7 +52,7 @@ public class InstanceTemplateClientTest {
           getInstanceTemplateMethodDescriptor,
           insertInstanceTemplateMethodDescriptor,
           listInstanceTemplatesMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, InstanceTemplateStubSettings.getDefaultEndpoint());
 

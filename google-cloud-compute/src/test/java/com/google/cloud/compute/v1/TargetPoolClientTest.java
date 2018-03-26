@@ -67,7 +67,7 @@ public class TargetPoolClientTest {
           removeHealthCheckTargetPoolMethodDescriptor,
           removeInstanceTargetPoolMethodDescriptor,
           setBackupTargetPoolMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, TargetPoolStubSettings.getDefaultEndpoint());
 
@@ -381,7 +381,7 @@ public class TargetPoolClientTest {
     String creationTimestamp = "creationTimestamp567396278";
     String name = "name3373707";
     String description = "description-1724546052";
-    Float failoverRatio = -8.6107481E7;
+    Float failoverRatio = -8.6107481E7F;
     String id = "id3355";
     RegionName region = RegionName.of("[PROJECT]", "[REGION]");
     String backupPool = "backupPool1119626361";
@@ -790,7 +790,7 @@ public class TargetPoolClientTest {
     mockService.addResponse(expectedResponse);
 
     TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-    Float failoverRatio = -8.6107481E7;
+    Float failoverRatio = -8.6107481E7F;
     TargetReference targetReferenceResource = TargetReference.newBuilder().build();
 
     Operation actualResponse =
@@ -809,7 +809,7 @@ public class TargetPoolClientTest {
 
     try {
       TargetPoolName targetPool = TargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
-      Float failoverRatio = -8.6107481E7;
+      Float failoverRatio = -8.6107481E7F;
       TargetReference targetReferenceResource = TargetReference.newBuilder().build();
 
       client.setBackupTargetPool(targetPool, failoverRatio, targetReferenceResource);

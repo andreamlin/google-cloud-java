@@ -53,7 +53,7 @@ public class ProjectClientTest {
           moveInstanceProjectMethodDescriptor,
           setCommonInstanceMetadataProjectMethodDescriptor,
           setUsageExportBucketProjectMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, ProjectStubSettings.getDefaultEndpoint());
 

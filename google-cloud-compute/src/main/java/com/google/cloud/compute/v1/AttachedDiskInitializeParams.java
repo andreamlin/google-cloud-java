@@ -124,7 +124,7 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
     return sourceImage;
   }
 
-  public CustomerEncryptionKey getCustomerEncryptionKey() {
+  public CustomerEncryptionKey getSourceImageEncryptionKey() {
     return sourceImageEncryptionKey;
   }
 
@@ -171,7 +171,7 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
       if (other.getSourceImage() != null) {
         this.sourceImage = other.sourceImage;
       }
-      if (other.getCustomerEncryptionKey() != null) {
+      if (other.getSourceImageEncryptionKey() != null) {
         this.sourceImageEncryptionKey = other.sourceImageEncryptionKey;
       }
       return this;
@@ -221,11 +221,11 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getCustomerEncryptionKey() {
+    public CustomerEncryptionKey getSourceImageEncryptionKey() {
       return sourceImageEncryptionKey;
     }
 
-    public Builder setCustomerEncryptionKey(CustomerEncryptionKey sourceImageEncryptionKey) {
+    public Builder setSourceImageEncryptionKey(CustomerEncryptionKey sourceImageEncryptionKey) {
       this.sourceImageEncryptionKey = sourceImageEncryptionKey;
       return this;
     }
@@ -251,7 +251,7 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
       newBuilder.setDiskSizeGb(this.diskSizeGb);
       newBuilder.setDiskType(this.diskType);
       newBuilder.setSourceImage(this.sourceImage);
-      newBuilder.setCustomerEncryptionKey(this.sourceImageEncryptionKey);
+      newBuilder.setSourceImageEncryptionKey(this.sourceImageEncryptionKey);
       return newBuilder;
     }
   }
@@ -279,7 +279,7 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
           Objects.equals(this.diskSizeGb, that.getDiskSizeGb()) &&
           Objects.equals(this.diskType, that.getDiskType()) &&
           Objects.equals(this.sourceImage, that.getSourceImage()) &&
-          Objects.equals(this.sourceImageEncryptionKey, that.getCustomerEncryptionKey())
+          Objects.equals(this.sourceImageEncryptionKey, that.getSourceImageEncryptionKey())
           ;
     }
     return false;

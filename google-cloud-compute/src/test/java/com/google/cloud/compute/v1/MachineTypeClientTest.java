@@ -51,7 +51,7 @@ public class MachineTypeClientTest {
           aggregatedListMachineTypesMethodDescriptor,
           getMachineTypeMethodDescriptor,
           listMachineTypesMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, MachineTypeStubSettings.getDefaultEndpoint());
 

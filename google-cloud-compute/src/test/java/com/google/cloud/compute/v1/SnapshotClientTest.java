@@ -50,7 +50,7 @@ public class SnapshotClientTest {
           deleteSnapshotMethodDescriptor,
           getSnapshotMethodDescriptor,
           listSnapshotsMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, SnapshotStubSettings.getDefaultEndpoint());
 

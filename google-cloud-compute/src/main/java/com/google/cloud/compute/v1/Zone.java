@@ -152,7 +152,7 @@ public final class Zone implements ApiMessage {
     return creationTimestamp;
   }
 
-  public DeprecationStatus getDeprecationStatus() {
+  public DeprecationStatus getDeprecated() {
     return deprecated;
   }
 
@@ -222,7 +222,7 @@ public final class Zone implements ApiMessage {
       if (other.getCreationTimestamp() != null) {
         this.creationTimestamp = other.creationTimestamp;
       }
-      if (other.getDeprecationStatus() != null) {
+      if (other.getDeprecated() != null) {
         this.deprecated = other.deprecated;
       }
       if (other.getDescription() != null) {
@@ -270,11 +270,11 @@ public final class Zone implements ApiMessage {
       return this;
     }
 
-    public DeprecationStatus getDeprecationStatus() {
+    public DeprecationStatus getDeprecated() {
       return deprecated;
     }
 
-    public Builder setDeprecationStatus(DeprecationStatus deprecated) {
+    public Builder setDeprecated(DeprecationStatus deprecated) {
       this.deprecated = deprecated;
       return this;
     }
@@ -368,7 +368,7 @@ public final class Zone implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setCreationTimestamp(this.creationTimestamp);
-      newBuilder.setDeprecationStatus(this.deprecated);
+      newBuilder.setDeprecated(this.deprecated);
       newBuilder.setDescription(this.description);
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
@@ -404,7 +404,7 @@ public final class Zone implements ApiMessage {
       Zone that = (Zone) o;
       return
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
-          Objects.equals(this.deprecated, that.getDeprecationStatus()) &&
+          Objects.equals(this.deprecated, that.getDeprecated()) &&
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.kind, that.getKind()) &&

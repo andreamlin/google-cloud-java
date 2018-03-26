@@ -56,7 +56,7 @@ public class FirewallClientTest {
           listFirewallsMethodDescriptor,
           patchFirewallMethodDescriptor,
           updateFirewallMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, FirewallStubSettings.getDefaultEndpoint());
 

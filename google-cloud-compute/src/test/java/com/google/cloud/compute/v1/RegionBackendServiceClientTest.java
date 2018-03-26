@@ -58,7 +58,7 @@ public class RegionBackendServiceClientTest {
           listRegionBackendServicesMethodDescriptor,
           patchRegionBackendServiceMethodDescriptor,
           updateRegionBackendServiceMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, RegionBackendServiceStubSettings.getDefaultEndpoint());
 

@@ -176,7 +176,7 @@ public final class Router implements ApiMessage {
     return null;
   }
 
-  public RouterBgp getRouterBgp() {
+  public RouterBgp getBgp() {
     return bgp;
   }
 
@@ -257,7 +257,7 @@ public final class Router implements ApiMessage {
 
     public Builder mergeFrom(Router other) {
       if (other == Router.getDefaultInstance()) return this;
-      if (other.getRouterBgp() != null) {
+      if (other.getBgp() != null) {
         this.bgp = other.bgp;
       }
       if (other.getBgpPeersList() != null) {
@@ -307,11 +307,11 @@ public final class Router implements ApiMessage {
       this.selfLink = source.selfLink;
     }
 
-    public RouterBgp getRouterBgp() {
+    public RouterBgp getBgp() {
       return bgp;
     }
 
-    public Builder setRouterBgp(RouterBgp bgp) {
+    public Builder setBgp(RouterBgp bgp) {
       this.bgp = bgp;
       return this;
     }
@@ -451,7 +451,7 @@ public final class Router implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setRouterBgp(this.bgp);
+      newBuilder.setBgp(this.bgp);
       newBuilder.addAllBgpPeers(this.bgpPeers);
       newBuilder.setCreationTimestamp(this.creationTimestamp);
       newBuilder.setDescription(this.description);
@@ -491,7 +491,7 @@ public final class Router implements ApiMessage {
     if (o instanceof Router) {
       Router that = (Router) o;
       return
-          Objects.equals(this.bgp, that.getRouterBgp()) &&
+          Objects.equals(this.bgp, that.getBgp()) &&
           Objects.equals(this.bgpPeers, that.getBgpPeersList()) &&
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
           Objects.equals(this.description, that.getDescription()) &&

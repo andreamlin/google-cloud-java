@@ -56,7 +56,7 @@ public class HttpHealthCheckClientTest {
           listHttpHealthChecksMethodDescriptor,
           patchHttpHealthCheckMethodDescriptor,
           updateHttpHealthCheckMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, HttpHealthCheckStubSettings.getDefaultEndpoint());
 

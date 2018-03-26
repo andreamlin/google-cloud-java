@@ -88,7 +88,7 @@ public class RegionOperationSettings extends ClientSettings<RegionOperationSetti
   /**
    * Returns the object with the settings used for calls to deleteRegionOperation.
    */
-  public UnaryCallSettings<DeleteRegionOperationHttpRequest, nullTypeName> deleteRegionOperationSettings() {
+  public UnaryCallSettings<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationSettings() {
     return ((RegionOperationStubSettings) getStubSettings()).deleteRegionOperationSettings();
   }
 
@@ -228,7 +228,7 @@ public class RegionOperationSettings extends ClientSettings<RegionOperationSetti
     /**
      * Returns the builder for the settings used for calls to deleteRegionOperation.
      */
-    public UnaryCallSettings.Builder<DeleteRegionOperationHttpRequest, nullTypeName> deleteRegionOperationSettings() {
+    public UnaryCallSettings.Builder<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationSettings() {
       return getStubSettingsBuilder().deleteRegionOperationSettings();
     }
 

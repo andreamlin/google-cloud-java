@@ -259,7 +259,7 @@ public class ZoneOperationClient implements BackgroundResource {
    * </code></pre>
    */
   @BetaApi
-  public final UnaryCallable<DeleteZoneOperationHttpRequest, nullTypeName> deleteZoneOperationCallable() {
+  public final UnaryCallable<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationCallable() {
     return stub.deleteZoneOperationCallable();
   }
 

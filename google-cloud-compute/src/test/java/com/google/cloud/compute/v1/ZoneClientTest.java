@@ -48,7 +48,7 @@ public class ZoneClientTest {
         Lists.<ApiMethodDescriptor>newArrayList(
           getZoneMethodDescriptor,
           listZonesMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, ZoneStubSettings.getDefaultEndpoint());
 

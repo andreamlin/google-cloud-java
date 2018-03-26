@@ -176,7 +176,7 @@ public final class Project implements ApiMessage {
     return null;
   }
 
-  public Metadata getMetadata() {
+  public Metadata getCommonInstanceMetadata() {
     return commonInstanceMetadata;
   }
 
@@ -257,7 +257,7 @@ public final class Project implements ApiMessage {
 
     public Builder mergeFrom(Project other) {
       if (other == Project.getDefaultInstance()) return this;
-      if (other.getMetadata() != null) {
+      if (other.getCommonInstanceMetadata() != null) {
         this.commonInstanceMetadata = other.commonInstanceMetadata;
       }
       if (other.getCreationTimestamp() != null) {
@@ -307,11 +307,11 @@ public final class Project implements ApiMessage {
       this.usageExportLocation = source.usageExportLocation;
     }
 
-    public Metadata getMetadata() {
+    public Metadata getCommonInstanceMetadata() {
       return commonInstanceMetadata;
     }
 
-    public Builder setMetadata(Metadata commonInstanceMetadata) {
+    public Builder setCommonInstanceMetadata(Metadata commonInstanceMetadata) {
       this.commonInstanceMetadata = commonInstanceMetadata;
       return this;
     }
@@ -451,7 +451,7 @@ public final class Project implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setMetadata(this.commonInstanceMetadata);
+      newBuilder.setCommonInstanceMetadata(this.commonInstanceMetadata);
       newBuilder.setCreationTimestamp(this.creationTimestamp);
       newBuilder.setDefaultServiceAccount(this.defaultServiceAccount);
       newBuilder.setDescription(this.description);
@@ -491,7 +491,7 @@ public final class Project implements ApiMessage {
     if (o instanceof Project) {
       Project that = (Project) o;
       return
-          Objects.equals(this.commonInstanceMetadata, that.getMetadata()) &&
+          Objects.equals(this.commonInstanceMetadata, that.getCommonInstanceMetadata()) &&
           Objects.equals(this.creationTimestamp, that.getCreationTimestamp()) &&
           Objects.equals(this.defaultServiceAccount, that.getDefaultServiceAccount()) &&
           Objects.equals(this.description, that.getDescription()) &&

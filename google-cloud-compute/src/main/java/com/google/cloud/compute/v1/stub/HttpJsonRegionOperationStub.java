@@ -57,8 +57,8 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonRegionOperationStub extends RegionOperationStub {
   @InternalApi
-  public static final ApiMethodDescriptor<DeleteRegionOperationHttpRequest, nullTypeName> deleteRegionOperationMethodDescriptor =
-      ApiMethodDescriptor.<DeleteRegionOperationHttpRequest, nullTypeName>newBuilder()
+  public static final ApiMethodDescriptor<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationMethodDescriptor =
+      ApiMethodDescriptor.<DeleteRegionOperationHttpRequest, Void>newBuilder()
           .setFullMethodName("compute.regionOperations.delete")
           .setHttpMethod(HttpMethods.DELETE)
           .setRequestFormatter(
@@ -69,9 +69,6 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
                                      ))
                   .setResourceNameFactory(ProjectRegionOperationName.newFactory())
                   .setResourceNameField("operation")
-                  .build())
-          .setResponseParser(
-              ApiMessageHttpResponseParser.<nullTypeName>newBuilder()
                   .build())
           .build();
   @InternalApi
@@ -115,7 +112,7 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
           .build();
   private final BackgroundResource backgroundResources;
 
-  private final UnaryCallable<DeleteRegionOperationHttpRequest, nullTypeName> deleteRegionOperationCallable;
+  private final UnaryCallable<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationCallable;
   private final UnaryCallable<GetRegionOperationHttpRequest, Operation> getRegionOperationCallable;
   private final UnaryCallable<ListRegionOperationsHttpRequest, OperationList> listRegionOperationsCallable;
   private final UnaryCallable<ListRegionOperationsHttpRequest, ListRegionOperationsPagedResponse> listRegionOperationsPagedCallable;
@@ -150,8 +147,8 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
   protected HttpJsonRegionOperationStub(RegionOperationStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
-    HttpJsonCallSettings<DeleteRegionOperationHttpRequest, nullTypeName> deleteRegionOperationTransportSettings =
-        HttpJsonCallSettings.<DeleteRegionOperationHttpRequest, nullTypeName>newBuilder()
+    HttpJsonCallSettings<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationTransportSettings =
+        HttpJsonCallSettings.<DeleteRegionOperationHttpRequest, Void>newBuilder()
             .setMethodDescriptor(deleteRegionOperationMethodDescriptor)
             .build();
     HttpJsonCallSettings<GetRegionOperationHttpRequest, Operation> getRegionOperationTransportSettings =
@@ -172,7 +169,7 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteRegionOperationHttpRequest, nullTypeName> deleteRegionOperationCallable() {
+  public UnaryCallable<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationCallable() {
     return deleteRegionOperationCallable;
   }
 

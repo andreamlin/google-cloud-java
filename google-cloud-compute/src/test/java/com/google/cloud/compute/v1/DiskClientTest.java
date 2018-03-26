@@ -59,7 +59,7 @@ public class DiskClientTest {
           insertDiskMethodDescriptor,
           listDisksMethodDescriptor,
           resizeDiskMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, DiskStubSettings.getDefaultEndpoint());
 

@@ -54,7 +54,7 @@ public class TargetHttpProxyClientTest {
           insertTargetHttpProxyMethodDescriptor,
           listTargetHttpProxiesMethodDescriptor,
           setUrlMapTargetHttpProxyMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, TargetHttpProxyStubSettings.getDefaultEndpoint());
 

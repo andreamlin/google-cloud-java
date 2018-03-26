@@ -68,7 +68,7 @@ public final class RoutersPreviewResponse implements ApiMessage {
     return null;
   }
 
-  public Router getRouter() {
+  public Router getResource() {
     return resource;
   }
 
@@ -99,7 +99,7 @@ public final class RoutersPreviewResponse implements ApiMessage {
 
     public Builder mergeFrom(RoutersPreviewResponse other) {
       if (other == RoutersPreviewResponse.getDefaultInstance()) return this;
-      if (other.getRouter() != null) {
+      if (other.getResource() != null) {
         this.resource = other.resource;
       }
       return this;
@@ -109,11 +109,11 @@ public final class RoutersPreviewResponse implements ApiMessage {
       this.resource = source.resource;
     }
 
-    public Router getRouter() {
+    public Router getResource() {
       return resource;
     }
 
-    public Builder setRouter(Router resource) {
+    public Builder setResource(Router resource) {
       this.resource = resource;
       return this;
     }
@@ -127,7 +127,7 @@ public final class RoutersPreviewResponse implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.setRouter(this.resource);
+      newBuilder.setResource(this.resource);
       return newBuilder;
     }
   }
@@ -147,7 +147,7 @@ public final class RoutersPreviewResponse implements ApiMessage {
     if (o instanceof RoutersPreviewResponse) {
       RoutersPreviewResponse that = (RoutersPreviewResponse) o;
       return
-          Objects.equals(this.resource, that.getRouter())
+          Objects.equals(this.resource, that.getResource())
           ;
     }
     return false;

@@ -55,7 +55,7 @@ public class AddressClientTest {
           getAddressMethodDescriptor,
           insertAddressMethodDescriptor,
           listAddressesMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, AddressStubSettings.getDefaultEndpoint());
 

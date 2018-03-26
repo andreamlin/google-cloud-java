@@ -48,7 +48,7 @@ public class RegionClientTest {
         Lists.<ApiMethodDescriptor>newArrayList(
           getRegionMethodDescriptor,
           listRegionsMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, RegionStubSettings.getDefaultEndpoint());
 

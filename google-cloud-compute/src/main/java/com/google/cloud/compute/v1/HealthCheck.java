@@ -228,7 +228,7 @@ public final class HealthCheck implements ApiMessage {
     return httpHealthCheck;
   }
 
-  public HTTPSHealthCheck getHttpSHealthCheck() {
+  public HTTPSHealthCheck getHttpsHealthCheck() {
     return httpsHealthCheck;
   }
 
@@ -248,11 +248,11 @@ public final class HealthCheck implements ApiMessage {
     return selfLink;
   }
 
-  public SSLHealthCheck getSSLHealthCheck() {
+  public SSLHealthCheck getSslHealthCheck() {
     return sslHealthCheck;
   }
 
-  public TCPHealthCheck getTCPHealthCheck() {
+  public TCPHealthCheck getTcpHealthCheck() {
     return tcpHealthCheck;
   }
 
@@ -324,7 +324,7 @@ public final class HealthCheck implements ApiMessage {
       if (other.getHttpHealthCheck() != null) {
         this.httpHealthCheck = other.httpHealthCheck;
       }
-      if (other.getHttpSHealthCheck() != null) {
+      if (other.getHttpsHealthCheck() != null) {
         this.httpsHealthCheck = other.httpsHealthCheck;
       }
       if (other.getId() != null) {
@@ -339,10 +339,10 @@ public final class HealthCheck implements ApiMessage {
       if (other.getSelfLink() != null) {
         this.selfLink = other.selfLink;
       }
-      if (other.getSSLHealthCheck() != null) {
+      if (other.getSslHealthCheck() != null) {
         this.sslHealthCheck = other.sslHealthCheck;
       }
-      if (other.getTCPHealthCheck() != null) {
+      if (other.getTcpHealthCheck() != null) {
         this.tcpHealthCheck = other.tcpHealthCheck;
       }
       if (other.getTimeoutSec() != null) {
@@ -420,11 +420,11 @@ public final class HealthCheck implements ApiMessage {
       return this;
     }
 
-    public HTTPSHealthCheck getHttpSHealthCheck() {
+    public HTTPSHealthCheck getHttpsHealthCheck() {
       return httpsHealthCheck;
     }
 
-    public Builder setHttpSHealthCheck(HTTPSHealthCheck httpsHealthCheck) {
+    public Builder setHttpsHealthCheck(HTTPSHealthCheck httpsHealthCheck) {
       this.httpsHealthCheck = httpsHealthCheck;
       return this;
     }
@@ -465,20 +465,20 @@ public final class HealthCheck implements ApiMessage {
       return this;
     }
 
-    public SSLHealthCheck getSSLHealthCheck() {
+    public SSLHealthCheck getSslHealthCheck() {
       return sslHealthCheck;
     }
 
-    public Builder setSSLHealthCheck(SSLHealthCheck sslHealthCheck) {
+    public Builder setSslHealthCheck(SSLHealthCheck sslHealthCheck) {
       this.sslHealthCheck = sslHealthCheck;
       return this;
     }
 
-    public TCPHealthCheck getTCPHealthCheck() {
+    public TCPHealthCheck getTcpHealthCheck() {
       return tcpHealthCheck;
     }
 
-    public Builder setTCPHealthCheck(TCPHealthCheck tcpHealthCheck) {
+    public Builder setTcpHealthCheck(TCPHealthCheck tcpHealthCheck) {
       this.tcpHealthCheck = tcpHealthCheck;
       return this;
     }
@@ -552,13 +552,13 @@ public final class HealthCheck implements ApiMessage {
       newBuilder.setDescription(this.description);
       newBuilder.setHealthyThreshold(this.healthyThreshold);
       newBuilder.setHttpHealthCheck(this.httpHealthCheck);
-      newBuilder.setHttpSHealthCheck(this.httpsHealthCheck);
+      newBuilder.setHttpsHealthCheck(this.httpsHealthCheck);
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
       newBuilder.setName(this.name);
       newBuilder.setSelfLink(this.selfLink);
-      newBuilder.setSSLHealthCheck(this.sslHealthCheck);
-      newBuilder.setTCPHealthCheck(this.tcpHealthCheck);
+      newBuilder.setSslHealthCheck(this.sslHealthCheck);
+      newBuilder.setTcpHealthCheck(this.tcpHealthCheck);
       newBuilder.setTimeoutSec(this.timeoutSec);
       newBuilder.setType(this.type);
       newBuilder.setUnhealthyThreshold(this.unhealthyThreshold);
@@ -600,13 +600,13 @@ public final class HealthCheck implements ApiMessage {
           Objects.equals(this.description, that.getDescription()) &&
           Objects.equals(this.healthyThreshold, that.getHealthyThreshold()) &&
           Objects.equals(this.httpHealthCheck, that.getHttpHealthCheck()) &&
-          Objects.equals(this.httpsHealthCheck, that.getHttpSHealthCheck()) &&
+          Objects.equals(this.httpsHealthCheck, that.getHttpsHealthCheck()) &&
           Objects.equals(this.id, that.getId()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.name, that.getName()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
-          Objects.equals(this.sslHealthCheck, that.getSSLHealthCheck()) &&
-          Objects.equals(this.tcpHealthCheck, that.getTCPHealthCheck()) &&
+          Objects.equals(this.sslHealthCheck, that.getSslHealthCheck()) &&
+          Objects.equals(this.tcpHealthCheck, that.getTcpHealthCheck()) &&
           Objects.equals(this.timeoutSec, that.getTimeoutSec()) &&
           Objects.equals(this.type, that.getType()) &&
           Objects.equals(this.unhealthyThreshold, that.getUnhealthyThreshold())

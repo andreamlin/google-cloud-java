@@ -55,7 +55,7 @@ public class TargetVpnGatewayClientTest {
           getTargetVpnGatewayMethodDescriptor,
           insertTargetVpnGatewayMethodDescriptor,
           listTargetVpnGatewaysMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, TargetVpnGatewayStubSettings.getDefaultEndpoint());
 

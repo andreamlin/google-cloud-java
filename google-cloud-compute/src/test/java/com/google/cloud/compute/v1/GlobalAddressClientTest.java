@@ -52,7 +52,7 @@ public class GlobalAddressClientTest {
           getGlobalAddressMethodDescriptor,
           insertGlobalAddressMethodDescriptor,
           listGlobalAddressesMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, GlobalAddressStubSettings.getDefaultEndpoint());
 

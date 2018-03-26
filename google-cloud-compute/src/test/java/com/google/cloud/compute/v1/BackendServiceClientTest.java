@@ -61,7 +61,7 @@ public class BackendServiceClientTest {
           listBackendServicesMethodDescriptor,
           patchBackendServiceMethodDescriptor,
           updateBackendServiceMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, BackendServiceStubSettings.getDefaultEndpoint());
 

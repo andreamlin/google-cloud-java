@@ -57,7 +57,7 @@ public class ForwardingRuleClientTest {
           insertForwardingRuleMethodDescriptor,
           listForwardingRulesMethodDescriptor,
           setTargetForwardingRuleMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, ForwardingRuleStubSettings.getDefaultEndpoint());
 

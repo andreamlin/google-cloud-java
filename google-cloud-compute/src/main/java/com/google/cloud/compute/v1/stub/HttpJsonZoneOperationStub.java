@@ -57,8 +57,8 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   @InternalApi
-  public static final ApiMethodDescriptor<DeleteZoneOperationHttpRequest, nullTypeName> deleteZoneOperationMethodDescriptor =
-      ApiMethodDescriptor.<DeleteZoneOperationHttpRequest, nullTypeName>newBuilder()
+  public static final ApiMethodDescriptor<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationMethodDescriptor =
+      ApiMethodDescriptor.<DeleteZoneOperationHttpRequest, Void>newBuilder()
           .setFullMethodName("compute.zoneOperations.delete")
           .setHttpMethod(HttpMethods.DELETE)
           .setRequestFormatter(
@@ -69,9 +69,6 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
                                      ))
                   .setResourceNameFactory(ProjectZoneOperationName.newFactory())
                   .setResourceNameField("operation")
-                  .build())
-          .setResponseParser(
-              ApiMessageHttpResponseParser.<nullTypeName>newBuilder()
                   .build())
           .build();
   @InternalApi
@@ -115,7 +112,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
           .build();
   private final BackgroundResource backgroundResources;
 
-  private final UnaryCallable<DeleteZoneOperationHttpRequest, nullTypeName> deleteZoneOperationCallable;
+  private final UnaryCallable<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationCallable;
   private final UnaryCallable<GetZoneOperationHttpRequest, Operation> getZoneOperationCallable;
   private final UnaryCallable<ListZoneOperationsHttpRequest, OperationList> listZoneOperationsCallable;
   private final UnaryCallable<ListZoneOperationsHttpRequest, ListZoneOperationsPagedResponse> listZoneOperationsPagedCallable;
@@ -150,8 +147,8 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   protected HttpJsonZoneOperationStub(ZoneOperationStubSettings settings, ClientContext clientContext, HttpJsonStubCallableFactory callableFactory) throws IOException {
     this.callableFactory = callableFactory;
 
-    HttpJsonCallSettings<DeleteZoneOperationHttpRequest, nullTypeName> deleteZoneOperationTransportSettings =
-        HttpJsonCallSettings.<DeleteZoneOperationHttpRequest, nullTypeName>newBuilder()
+    HttpJsonCallSettings<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationTransportSettings =
+        HttpJsonCallSettings.<DeleteZoneOperationHttpRequest, Void>newBuilder()
             .setMethodDescriptor(deleteZoneOperationMethodDescriptor)
             .build();
     HttpJsonCallSettings<GetZoneOperationHttpRequest, Operation> getZoneOperationTransportSettings =
@@ -172,7 +169,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteZoneOperationHttpRequest, nullTypeName> deleteZoneOperationCallable() {
+  public UnaryCallable<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationCallable() {
     return deleteZoneOperationCallable;
   }
 

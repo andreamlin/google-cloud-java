@@ -244,7 +244,7 @@ public final class Snapshot implements ApiMessage {
     return selfLink;
   }
 
-  public CustomerEncryptionKey getCustomerEncryptionKey() {
+  public CustomerEncryptionKey getSnapshotEncryptionKey() {
     return snapshotEncryptionKey;
   }
 
@@ -252,7 +252,7 @@ public final class Snapshot implements ApiMessage {
     return sourceDisk;
   }
 
-  public CustomerEncryptionKey getCustomerEncryptionKey() {
+  public CustomerEncryptionKey getSourceDiskEncryptionKey() {
     return sourceDiskEncryptionKey;
   }
 
@@ -337,13 +337,13 @@ public final class Snapshot implements ApiMessage {
       if (other.getSelfLink() != null) {
         this.selfLink = other.selfLink;
       }
-      if (other.getCustomerEncryptionKey() != null) {
+      if (other.getSnapshotEncryptionKey() != null) {
         this.snapshotEncryptionKey = other.snapshotEncryptionKey;
       }
       if (other.getSourceDisk() != null) {
         this.sourceDisk = other.sourceDisk;
       }
-      if (other.getCustomerEncryptionKey() != null) {
+      if (other.getSourceDiskEncryptionKey() != null) {
         this.sourceDiskEncryptionKey = other.sourceDiskEncryptionKey;
       }
       if (other.getSourceDiskId() != null) {
@@ -459,11 +459,11 @@ public final class Snapshot implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getCustomerEncryptionKey() {
+    public CustomerEncryptionKey getSnapshotEncryptionKey() {
       return snapshotEncryptionKey;
     }
 
-    public Builder setCustomerEncryptionKey(CustomerEncryptionKey snapshotEncryptionKey) {
+    public Builder setSnapshotEncryptionKey(CustomerEncryptionKey snapshotEncryptionKey) {
       this.snapshotEncryptionKey = snapshotEncryptionKey;
       return this;
     }
@@ -477,11 +477,11 @@ public final class Snapshot implements ApiMessage {
       return this;
     }
 
-    public CustomerEncryptionKey getCustomerEncryptionKey() {
+    public CustomerEncryptionKey getSourceDiskEncryptionKey() {
       return sourceDiskEncryptionKey;
     }
 
-    public Builder setCustomerEncryptionKey(CustomerEncryptionKey sourceDiskEncryptionKey) {
+    public Builder setSourceDiskEncryptionKey(CustomerEncryptionKey sourceDiskEncryptionKey) {
       this.sourceDiskEncryptionKey = sourceDiskEncryptionKey;
       return this;
     }
@@ -567,9 +567,9 @@ public final class Snapshot implements ApiMessage {
       newBuilder.addAllLicenses(this.licenses);
       newBuilder.setName(this.name);
       newBuilder.setSelfLink(this.selfLink);
-      newBuilder.setCustomerEncryptionKey(this.snapshotEncryptionKey);
+      newBuilder.setSnapshotEncryptionKey(this.snapshotEncryptionKey);
       newBuilder.setSourceDisk(this.sourceDisk);
-      newBuilder.setCustomerEncryptionKey(this.sourceDiskEncryptionKey);
+      newBuilder.setSourceDiskEncryptionKey(this.sourceDiskEncryptionKey);
       newBuilder.setSourceDiskId(this.sourceDiskId);
       newBuilder.setStatus(this.status);
       newBuilder.setStorageBytes(this.storageBytes);
@@ -615,9 +615,9 @@ public final class Snapshot implements ApiMessage {
           Objects.equals(this.licenses, that.getLicensesList()) &&
           Objects.equals(this.name, that.getName()) &&
           Objects.equals(this.selfLink, that.getSelfLink()) &&
-          Objects.equals(this.snapshotEncryptionKey, that.getCustomerEncryptionKey()) &&
+          Objects.equals(this.snapshotEncryptionKey, that.getSnapshotEncryptionKey()) &&
           Objects.equals(this.sourceDisk, that.getSourceDisk()) &&
-          Objects.equals(this.sourceDiskEncryptionKey, that.getCustomerEncryptionKey()) &&
+          Objects.equals(this.sourceDiskEncryptionKey, that.getSourceDiskEncryptionKey()) &&
           Objects.equals(this.sourceDiskId, that.getSourceDiskId()) &&
           Objects.equals(this.status, that.getStatus()) &&
           Objects.equals(this.storageBytes, that.getStorageBytes()) &&

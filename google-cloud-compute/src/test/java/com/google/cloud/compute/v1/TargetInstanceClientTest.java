@@ -55,7 +55,7 @@ public class TargetInstanceClientTest {
           getTargetInstanceMethodDescriptor,
           insertTargetInstanceMethodDescriptor,
           listTargetInstancesMethodDescriptor
-      ));
+        ));
   private static final MockHttpService mockService
       = new MockHttpService(METHOD_DESCRIPTORS, TargetInstanceStubSettings.getDefaultEndpoint());
 
