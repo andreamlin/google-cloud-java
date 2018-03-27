@@ -43,13 +43,18 @@ import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
 import com.google.cloud.simplecompute.v1.Address;
+import com.google.cloud.simplecompute.v1.AddressAggregatedList;
+import static com.google.cloud.simplecompute.v1.AddressClient.AggregatedListAddressesPagedResponse;
 import static com.google.cloud.simplecompute.v1.AddressClient.ListAddressesPagedResponse;
 import com.google.cloud.simplecompute.v1.AddressList;
+import com.google.cloud.simplecompute.v1.AggregatedListAddressesHttpRequest;
 import com.google.cloud.simplecompute.v1.DeleteAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.GetAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.InsertAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.ListAddressesHttpRequest;
 import com.google.cloud.simplecompute.v1.Operation;
+import com.google.cloud.simplecompute.v1.PatchAddressHttpRequest;
+import com.google.cloud.simplecompute.v1.UpdateAddressHttpRequest;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -103,10 +108,20 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
       .add("https://www.googleapis.com/auth/devstorage.read_write")
       .build();
 
+  private final PagedCallSettings<AggregatedListAddressesHttpRequest, AddressAggregatedList, AggregatedListAddressesPagedResponse> aggregatedListAddressesSettings;
   private final UnaryCallSettings<DeleteAddressHttpRequest, Operation> deleteAddressSettings;
   private final UnaryCallSettings<GetAddressHttpRequest, Address> getAddressSettings;
   private final UnaryCallSettings<InsertAddressHttpRequest, Operation> insertAddressSettings;
   private final PagedCallSettings<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse> listAddressesSettings;
+  private final UnaryCallSettings<PatchAddressHttpRequest, Operation> patchAddressSettings;
+  private final UnaryCallSettings<UpdateAddressHttpRequest, Operation> updateAddressSettings;
+
+  /**
+   * Returns the object with the settings used for calls to aggregatedListAddresses.
+   */
+  public PagedCallSettings<AggregatedListAddressesHttpRequest, AddressAggregatedList, AggregatedListAddressesPagedResponse> aggregatedListAddressesSettings() {
+    return aggregatedListAddressesSettings;
+  }
 
   /**
    * Returns the object with the settings used for calls to deleteAddress.
@@ -134,6 +149,20 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
    */
   public PagedCallSettings<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse> listAddressesSettings() {
     return listAddressesSettings;
+  }
+
+  /**
+   * Returns the object with the settings used for calls to patchAddress.
+   */
+  public UnaryCallSettings<PatchAddressHttpRequest, Operation> patchAddressSettings() {
+    return patchAddressSettings;
+  }
+
+  /**
+   * Returns the object with the settings used for calls to updateAddress.
+   */
+  public UnaryCallSettings<UpdateAddressHttpRequest, Operation> updateAddressSettings() {
+    return updateAddressSettings;
   }
 
 
@@ -228,11 +257,48 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
   protected AddressStubSettings(Builder settingsBuilder) throws IOException {
     super(settingsBuilder);
 
+    aggregatedListAddressesSettings = settingsBuilder.aggregatedListAddressesSettings().build();
     deleteAddressSettings = settingsBuilder.deleteAddressSettings().build();
     getAddressSettings = settingsBuilder.getAddressSettings().build();
     insertAddressSettings = settingsBuilder.insertAddressSettings().build();
     listAddressesSettings = settingsBuilder.listAddressesSettings().build();
+    patchAddressSettings = settingsBuilder.patchAddressSettings().build();
+    updateAddressSettings = settingsBuilder.updateAddressSettings().build();
   }
+
+  private static final PagedListDescriptor<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address> AGGREGATED_LIST_ADDRESSES_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address>() {
+        @Override
+        public String emptyToken() {
+          return "";
+        }
+        @Override
+        public AggregatedListAddressesHttpRequest injectToken(AggregatedListAddressesHttpRequest payload, String token) {
+          return AggregatedListAddressesHttpRequest
+            .newBuilder(payload)
+            .setPageToken(token)
+            .build();
+        }
+        @Override
+        public AggregatedListAddressesHttpRequest injectPageSize(AggregatedListAddressesHttpRequest payload, int pageSize) {
+          return AggregatedListAddressesHttpRequest
+            .newBuilder(payload)
+            .setMaxResults(pageSize)
+            .build();
+        }
+        @Override
+        public Integer extractPageSize(AggregatedListAddressesHttpRequest payload) {
+          return payload.getMaxResults();
+        }
+        @Override
+        public String extractNextToken(AddressAggregatedList payload) {
+          return payload.getNextPageToken();
+        }
+        @Override
+        public Iterable<Address> extractResources(AddressAggregatedList payload) {
+          return payload.getItemsMap().getAddressesList();
+        }
+      };
 
   private static final PagedListDescriptor<ListAddressesHttpRequest, AddressList, Address> LIST_ADDRESSES_PAGE_STR_DESC =
       new PagedListDescriptor<ListAddressesHttpRequest, AddressList, Address>() {
@@ -268,6 +334,20 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
         }
       };
 
+  private static final PagedListResponseFactory<AggregatedListAddressesHttpRequest, AddressAggregatedList, AggregatedListAddressesPagedResponse> AGGREGATED_LIST_ADDRESSES_PAGE_STR_FACT =
+      new PagedListResponseFactory<AggregatedListAddressesHttpRequest, AddressAggregatedList, AggregatedListAddressesPagedResponse>() {
+        @Override
+        public ApiFuture<AggregatedListAddressesPagedResponse> getFuturePagedResponse(
+            UnaryCallable<AggregatedListAddressesHttpRequest, AddressAggregatedList> callable,
+            AggregatedListAddressesHttpRequest request,
+            ApiCallContext context,
+            ApiFuture<AddressAggregatedList> futureResponse) {
+          PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address> pageContext =
+              PageContext.create(callable, AGGREGATED_LIST_ADDRESSES_PAGE_STR_DESC, request, context);
+          return AggregatedListAddressesPagedResponse.createAsync(pageContext, futureResponse);
+        }
+      };
+
   private static final PagedListResponseFactory<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse> LIST_ADDRESSES_PAGE_STR_FACT =
       new PagedListResponseFactory<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse>() {
         @Override
@@ -289,10 +369,13 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
   public static class Builder extends StubSettings.Builder<AddressStubSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
+    private final PagedCallSettings.Builder<AggregatedListAddressesHttpRequest, AddressAggregatedList, AggregatedListAddressesPagedResponse> aggregatedListAddressesSettings;
     private final UnaryCallSettings.Builder<DeleteAddressHttpRequest, Operation> deleteAddressSettings;
     private final UnaryCallSettings.Builder<GetAddressHttpRequest, Address> getAddressSettings;
     private final UnaryCallSettings.Builder<InsertAddressHttpRequest, Operation> insertAddressSettings;
     private final PagedCallSettings.Builder<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse> listAddressesSettings;
+    private final UnaryCallSettings.Builder<PatchAddressHttpRequest, Operation> patchAddressSettings;
+    private final UnaryCallSettings.Builder<UpdateAddressHttpRequest, Operation> updateAddressSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>> RETRYABLE_CODE_DEFINITIONS;
 
@@ -332,6 +415,9 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
     protected Builder(ClientContext clientContext) {
       super(clientContext);
 
+      aggregatedListAddressesSettings = PagedCallSettings.newBuilder(
+          AGGREGATED_LIST_ADDRESSES_PAGE_STR_FACT);
+
       deleteAddressSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       getAddressSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
@@ -341,11 +427,18 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
       listAddressesSettings = PagedCallSettings.newBuilder(
           LIST_ADDRESSES_PAGE_STR_FACT);
 
+      patchAddressSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      updateAddressSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
       unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
+          aggregatedListAddressesSettings,
           deleteAddressSettings,
           getAddressSettings,
           insertAddressSettings,
-          listAddressesSettings
+          listAddressesSettings,
+          patchAddressSettings,
+          updateAddressSettings
       );
 
       initDefaults(this);
@@ -361,6 +454,10 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
     }
 
     private static Builder initDefaults(Builder builder) {
+
+      builder.aggregatedListAddressesSettings()
+          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
 
       builder.deleteAddressSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
@@ -378,22 +475,36 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
 
+      builder.patchAddressSettings()
+          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+
+      builder.updateAddressSettings()
+          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+
       return builder;
     }
 
     protected Builder(AddressStubSettings settings) {
       super(settings);
 
+      aggregatedListAddressesSettings = settings.aggregatedListAddressesSettings.toBuilder();
       deleteAddressSettings = settings.deleteAddressSettings.toBuilder();
       getAddressSettings = settings.getAddressSettings.toBuilder();
       insertAddressSettings = settings.insertAddressSettings.toBuilder();
       listAddressesSettings = settings.listAddressesSettings.toBuilder();
+      patchAddressSettings = settings.patchAddressSettings.toBuilder();
+      updateAddressSettings = settings.updateAddressSettings.toBuilder();
 
       unaryMethodSettingsBuilders = ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
+          aggregatedListAddressesSettings,
           deleteAddressSettings,
           getAddressSettings,
           insertAddressSettings,
-          listAddressesSettings
+          listAddressesSettings,
+          patchAddressSettings,
+          updateAddressSettings
       );
     }
 
@@ -409,6 +520,13 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
 
     public ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders() {
       return unaryMethodSettingsBuilders;
+    }
+
+    /**
+     * Returns the builder for the settings used for calls to aggregatedListAddresses.
+     */
+    public PagedCallSettings.Builder<AggregatedListAddressesHttpRequest, AddressAggregatedList, AggregatedListAddressesPagedResponse> aggregatedListAddressesSettings() {
+      return aggregatedListAddressesSettings;
     }
 
     /**
@@ -437,6 +555,20 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
      */
     public PagedCallSettings.Builder<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse> listAddressesSettings() {
       return listAddressesSettings;
+    }
+
+    /**
+     * Returns the builder for the settings used for calls to patchAddress.
+     */
+    public UnaryCallSettings.Builder<PatchAddressHttpRequest, Operation> patchAddressSettings() {
+      return patchAddressSettings;
+    }
+
+    /**
+     * Returns the builder for the settings used for calls to updateAddress.
+     */
+    public UnaryCallSettings.Builder<UpdateAddressHttpRequest, Operation> updateAddressSettings() {
+      return updateAddressSettings;
     }
 
     @Override

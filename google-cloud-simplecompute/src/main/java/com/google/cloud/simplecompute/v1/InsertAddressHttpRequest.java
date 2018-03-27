@@ -17,7 +17,9 @@ package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -73,10 +75,6 @@ public final class InsertAddressHttpRequest implements ApiMessage {
     this.quotaUser = quotaUser;
     this.region = region;
     this.userIp = userIp;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    RegionName resourceName = RegionName.parse(region);
-    mapBuilder.put("project", resourceName.getProject());
-    mapBuilder.put("region", resourceName.getRegion());
   }
 
   @Override

@@ -42,6 +42,7 @@ import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.auth.Credentials;
+import static com.google.cloud.simplecompute.v1.AddressClient.AggregatedListAddressesPagedResponse;
 import static com.google.cloud.simplecompute.v1.AddressClient.ListAddressesPagedResponse;
 import com.google.cloud.simplecompute.v1.stub.AddressStubSettings;
 import com.google.common.collect.ImmutableList;
@@ -86,6 +87,13 @@ import org.threeten.bp.Duration;
 @BetaApi
 public class AddressSettings extends ClientSettings<AddressSettings> {
   /**
+   * Returns the object with the settings used for calls to aggregatedListAddresses.
+   */
+  public PagedCallSettings<AggregatedListAddressesHttpRequest, AddressAggregatedList, AggregatedListAddressesPagedResponse> aggregatedListAddressesSettings() {
+    return ((AddressStubSettings) getStubSettings()).aggregatedListAddressesSettings();
+  }
+
+  /**
    * Returns the object with the settings used for calls to deleteAddress.
    */
   public UnaryCallSettings<DeleteAddressHttpRequest, Operation> deleteAddressSettings() {
@@ -111,6 +119,20 @@ public class AddressSettings extends ClientSettings<AddressSettings> {
    */
   public PagedCallSettings<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse> listAddressesSettings() {
     return ((AddressStubSettings) getStubSettings()).listAddressesSettings();
+  }
+
+  /**
+   * Returns the object with the settings used for calls to patchAddress.
+   */
+  public UnaryCallSettings<PatchAddressHttpRequest, Operation> patchAddressSettings() {
+    return ((AddressStubSettings) getStubSettings()).patchAddressSettings();
+  }
+
+  /**
+   * Returns the object with the settings used for calls to updateAddress.
+   */
+  public UnaryCallSettings<UpdateAddressHttpRequest, Operation> updateAddressSettings() {
+    return ((AddressStubSettings) getStubSettings()).updateAddressSettings();
   }
 
 
@@ -233,6 +255,13 @@ public class AddressSettings extends ClientSettings<AddressSettings> {
     }
 
     /**
+     * Returns the builder for the settings used for calls to aggregatedListAddresses.
+     */
+    public PagedCallSettings.Builder<AggregatedListAddressesHttpRequest, AddressAggregatedList, AggregatedListAddressesPagedResponse> aggregatedListAddressesSettings() {
+      return getStubSettingsBuilder().aggregatedListAddressesSettings();
+    }
+
+    /**
      * Returns the builder for the settings used for calls to deleteAddress.
      */
     public UnaryCallSettings.Builder<DeleteAddressHttpRequest, Operation> deleteAddressSettings() {
@@ -258,6 +287,20 @@ public class AddressSettings extends ClientSettings<AddressSettings> {
      */
     public PagedCallSettings.Builder<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse> listAddressesSettings() {
       return getStubSettingsBuilder().listAddressesSettings();
+    }
+
+    /**
+     * Returns the builder for the settings used for calls to patchAddress.
+     */
+    public UnaryCallSettings.Builder<PatchAddressHttpRequest, Operation> patchAddressSettings() {
+      return getStubSettingsBuilder().patchAddressSettings();
+    }
+
+    /**
+     * Returns the builder for the settings used for calls to updateAddress.
+     */
+    public UnaryCallSettings.Builder<UpdateAddressHttpRequest, Operation> updateAddressSettings() {
+      return getStubSettingsBuilder().updateAddressSettings();
     }
 
     @Override

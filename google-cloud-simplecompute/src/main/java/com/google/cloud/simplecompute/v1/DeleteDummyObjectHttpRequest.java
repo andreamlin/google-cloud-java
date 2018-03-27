@@ -31,20 +31,20 @@ import javax.annotation.Nullable;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class GetAddressHttpRequest implements ApiMessage {
+public final class DeleteDummyObjectHttpRequest implements ApiMessage {
   private final String access_token;
-  private final String address;
   private final String callback;
+  private final String dummyObject;
   private final String fields;
   private final String key;
   private final String prettyPrint;
   private final String quotaUser;
   private final String userIp;
 
-  private GetAddressHttpRequest() {
+  private DeleteDummyObjectHttpRequest() {
     this.access_token = null;
-    this.address = null;
     this.callback = null;
+    this.dummyObject = null;
     this.fields = null;
     this.key = null;
     this.prettyPrint = null;
@@ -53,10 +53,10 @@ public final class GetAddressHttpRequest implements ApiMessage {
   }
 
 
-  private GetAddressHttpRequest(
+  private DeleteDummyObjectHttpRequest(
       String access_token,
-      String address,
       String callback,
+      String dummyObject,
       String fields,
       String key,
       String prettyPrint,
@@ -64,8 +64,8 @@ public final class GetAddressHttpRequest implements ApiMessage {
       String userIp
       ) {
     this.access_token = access_token;
-    this.address = address;
     this.callback = callback;
+    this.dummyObject = dummyObject;
     this.fields = fields;
     this.key = key;
     this.prettyPrint = prettyPrint;
@@ -79,11 +79,11 @@ public final class GetAddressHttpRequest implements ApiMessage {
     if (fieldNames.contains("access_token") && access_token != null) {
       fieldMap.put("access_token", Collections.singletonList(String.valueOf(access_token)));
     }
-    if (fieldNames.contains("address") && address != null) {
-      fieldMap.put("address", Collections.singletonList(String.valueOf(address)));
-    }
     if (fieldNames.contains("callback") && callback != null) {
       fieldMap.put("callback", Collections.singletonList(String.valueOf(callback)));
+    }
+    if (fieldNames.contains("dummyObject") && dummyObject != null) {
+      fieldMap.put("dummyObject", Collections.singletonList(String.valueOf(dummyObject)));
     }
     if (fieldNames.contains("fields") && fields != null) {
       fieldMap.put("fields", Collections.singletonList(String.valueOf(fields)));
@@ -108,11 +108,11 @@ public final class GetAddressHttpRequest implements ApiMessage {
     if (fieldName.equals("access_token")) {
       return String.valueOf(access_token);
     }
-    if (fieldName.equals("address")) {
-      return String.valueOf(address);
-    }
     if (fieldName.equals("callback")) {
       return String.valueOf(callback);
+    }
+    if (fieldName.equals("dummyObject")) {
+      return String.valueOf(dummyObject);
     }
     if (fieldName.equals("fields")) {
       return String.valueOf(fields);
@@ -142,12 +142,12 @@ public final class GetAddressHttpRequest implements ApiMessage {
     return access_token;
   }
 
-  public String getAddress() {
-    return address;
-  }
-
   public String getCallback() {
     return callback;
+  }
+
+  public String getDummyObject() {
+    return dummyObject;
   }
 
   public String getFields() {
@@ -174,7 +174,7 @@ public final class GetAddressHttpRequest implements ApiMessage {
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(GetAddressHttpRequest prototype) {
+  public static Builder newBuilder(DeleteDummyObjectHttpRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -182,18 +182,18 @@ public final class GetAddressHttpRequest implements ApiMessage {
         ? new Builder() : new Builder().mergeFrom(this);
   }
 
-  public static GetAddressHttpRequest getDefaultInstance() {
+  public static DeleteDummyObjectHttpRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
-  private static final GetAddressHttpRequest DEFAULT_INSTANCE;
+  private static final DeleteDummyObjectHttpRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new GetAddressHttpRequest();
+    DEFAULT_INSTANCE = new DeleteDummyObjectHttpRequest();
   }
 
   public static class Builder {
     private String access_token;
-    private String address;
     private String callback;
+    private String dummyObject;
     private String fields;
     private String key;
     private String prettyPrint;
@@ -202,16 +202,16 @@ public final class GetAddressHttpRequest implements ApiMessage {
 
     Builder() {}
 
-    public Builder mergeFrom(GetAddressHttpRequest other) {
-      if (other == GetAddressHttpRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(DeleteDummyObjectHttpRequest other) {
+      if (other == DeleteDummyObjectHttpRequest.getDefaultInstance()) return this;
       if (other.getAccessToken() != null) {
         this.access_token = other.access_token;
       }
-      if (other.getAddress() != null) {
-        this.address = other.address;
-      }
       if (other.getCallback() != null) {
         this.callback = other.callback;
+      }
+      if (other.getDummyObject() != null) {
+        this.dummyObject = other.dummyObject;
       }
       if (other.getFields() != null) {
         this.fields = other.fields;
@@ -231,10 +231,10 @@ public final class GetAddressHttpRequest implements ApiMessage {
       return this;
     }
 
-    Builder(GetAddressHttpRequest source) {
+    Builder(DeleteDummyObjectHttpRequest source) {
       this.access_token = source.access_token;
-      this.address = source.address;
       this.callback = source.callback;
+      this.dummyObject = source.dummyObject;
       this.fields = source.fields;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
@@ -251,21 +251,21 @@ public final class GetAddressHttpRequest implements ApiMessage {
       return this;
     }
 
-    public String getAddress() {
-      return address;
-    }
-
-    public Builder setAddress(String address) {
-      this.address = address;
-      return this;
-    }
-
     public String getCallback() {
       return callback;
     }
 
     public Builder setCallback(String callback) {
       this.callback = callback;
+      return this;
+    }
+
+    public String getDummyObject() {
+      return dummyObject;
+    }
+
+    public Builder setDummyObject(String dummyObject) {
+      this.dummyObject = dummyObject;
       return this;
     }
 
@@ -315,13 +315,13 @@ public final class GetAddressHttpRequest implements ApiMessage {
     }
 
 
-    public GetAddressHttpRequest build() {
+    public DeleteDummyObjectHttpRequest build() {
       String missing = "";
 
-      if (address == null) {
-        missing += " address";
-      }
 
+      if (dummyObject == null) {
+        missing += " dummyObject";
+      }
 
 
 
@@ -330,10 +330,10 @@ public final class GetAddressHttpRequest implements ApiMessage {
       if (!missing.isEmpty()) {
         throw new IllegalStateException("Missing required properties:" + missing);
       }
-      return new GetAddressHttpRequest(
+      return new DeleteDummyObjectHttpRequest(
         access_token,
-        address,
         callback,
+        dummyObject,
         fields,
         key,
         prettyPrint,
@@ -345,8 +345,8 @@ public final class GetAddressHttpRequest implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setAccessToken(this.access_token);
-      newBuilder.setAddress(this.address);
       newBuilder.setCallback(this.callback);
+      newBuilder.setDummyObject(this.dummyObject);
       newBuilder.setFields(this.fields);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
@@ -358,10 +358,10 @@ public final class GetAddressHttpRequest implements ApiMessage {
 
   @Override
   public String toString() {
-    return "GetAddressHttpRequest{"
+    return "DeleteDummyObjectHttpRequest{"
         + "access_token=" + access_token + ", "
-        + "address=" + address + ", "
         + "callback=" + callback + ", "
+        + "dummyObject=" + dummyObject + ", "
         + "fields=" + fields + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
@@ -375,12 +375,12 @@ public final class GetAddressHttpRequest implements ApiMessage {
     if (o == this) {
       return true;
     }
-    if (o instanceof GetAddressHttpRequest) {
-      GetAddressHttpRequest that = (GetAddressHttpRequest) o;
+    if (o instanceof DeleteDummyObjectHttpRequest) {
+      DeleteDummyObjectHttpRequest that = (DeleteDummyObjectHttpRequest) o;
       return
           Objects.equals(this.access_token, that.getAccessToken()) &&
-          Objects.equals(this.address, that.getAddress()) &&
           Objects.equals(this.callback, that.getCallback()) &&
+          Objects.equals(this.dummyObject, that.getDummyObject()) &&
           Objects.equals(this.fields, that.getFields()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
@@ -395,8 +395,8 @@ public final class GetAddressHttpRequest implements ApiMessage {
   public int hashCode() {
     return Objects.hash(
       access_token,
-      address,
       callback,
+      dummyObject,
       fields,
       key,
       prettyPrint,

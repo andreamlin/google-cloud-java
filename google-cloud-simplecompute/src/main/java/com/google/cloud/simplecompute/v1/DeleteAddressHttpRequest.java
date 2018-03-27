@@ -17,7 +17,9 @@ package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -69,11 +71,6 @@ public final class DeleteAddressHttpRequest implements ApiMessage {
     this.prettyPrint = prettyPrint;
     this.quotaUser = quotaUser;
     this.userIp = userIp;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
-    AddressName resourceName = AddressName.parse(address);
-    mapBuilder.put("address", resourceName.getAddress());
-    mapBuilder.put("project", resourceName.getProject());
-    mapBuilder.put("region", resourceName.getRegion());
   }
 
   @Override

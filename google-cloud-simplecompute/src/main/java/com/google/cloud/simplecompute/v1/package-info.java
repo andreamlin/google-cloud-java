@@ -35,6 +35,22 @@
  * </code>
  * </pre>
  *
+ * =================
+ * DummyObjectClient
+ * =================
+ *
+ * Service Description: Creates and runs virtual machines on Google Cloud Platform.
+ *
+ * Sample for DummyObjectClient:
+ * <pre>
+ * <code>
+ * try (DummyObjectClient dummyObjectClient = DummyObjectClient.create()) {
+ *   DummyObjectName dummyObject = DummyObjectName.of("[PROJECT]", "[DUMMY_OBJECT]");
+ *   dummyObjectClient.deleteDummyObject(dummyObject);
+ * }
+ * </code>
+ * </pre>
+ *
  */
 
 package com.google.cloud.simplecompute.v1;

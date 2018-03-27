@@ -17,7 +17,9 @@ package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -129,7 +131,6 @@ public final class Operation implements ApiMessage {
     this.user = user;
     this.warnings = warnings;
     this.zone = zone;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
   }
 
   @Override
@@ -199,7 +200,11 @@ public final class Operation implements ApiMessage {
       fieldMap.put("user", Collections.singletonList(String.valueOf(user)));
     }
     if (fieldNames.contains("warnings") && warnings != null) {
-      fieldMap.put("warnings", Collections.singletonList(String.valueOf(warnings)));
+      ImmutableList.Builder stringList = ImmutableList.builder();
+      for (Warnings item : warnings) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("warnings", stringList.build());
     }
     if (fieldNames.contains("zone") && zone != null) {
       fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
@@ -720,7 +725,15 @@ public final class Operation implements ApiMessage {
     }
 
     public Builder addAllWarnings(List<Warnings> warnings) {
-      this.warnings = warnings;
+      if (this.warnings == null) {
+        this.warnings = new ArrayList<>(warnings.size());
+      }
+      this.warnings.addAll(warnings);
+      return this;
+    }
+
+    public Builder addWarnings(Warnings warnings) {
+      this.warnings.add(warnings);
       return this;
     }
 

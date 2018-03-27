@@ -17,7 +17,9 @@ package com.google.cloud.simplecompute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -41,14 +43,17 @@ public final class Error implements ApiMessage {
       List<Errors> errors
       ) {
     this.errors = errors;
-    ImmutableMap.Builder<String, String> mapBuilder = ImmutableMap.builder();
   }
 
   @Override
   public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
     Map<String, List<String>> fieldMap = new HashMap<>();
     if (fieldNames.contains("errors") && errors != null) {
-      fieldMap.put("errors", Collections.singletonList(String.valueOf(errors)));
+      ImmutableList.Builder stringList = ImmutableList.builder();
+      for (Errors item : errors) {
+        stringList.add(item.toString());
+      }
+      fieldMap.put("errors", stringList.build());
     }
     return fieldMap;
   }
@@ -113,7 +118,15 @@ public final class Error implements ApiMessage {
     }
 
     public Builder addAllErrors(List<Errors> errors) {
-      this.errors = errors;
+      if (this.errors == null) {
+        this.errors = new ArrayList<>(errors.size());
+      }
+      this.errors.addAll(errors);
+      return this;
+    }
+
+    public Builder addErrors(Errors errors) {
+      this.errors.add(errors);
       return this;
     }
 

@@ -25,7 +25,6 @@ import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
 import com.google.api.gax.paging.FixedSizeCollection;
 import com.google.api.gax.paging.Page;
-import com.google.api.gax.paging.PagedListResponse;
 import com.google.api.gax.rpc.ApiExceptions;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -168,6 +167,139 @@ public class AddressClient implements BackgroundResource {
     return stub;
   }
 
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves an aggregated list of addresses.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (Address element : addressClient.aggregatedListAddresses(project).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListAddressesPagedResponse aggregatedListAddresses(ProjectName project) {
+    AggregatedListAddressesHttpRequest request =
+        AggregatedListAddressesHttpRequest.newBuilder()
+        .setProject(project == null ? null : project.toString())
+        .build();
+    return aggregatedListAddresses(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves an aggregated list of addresses.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (Address element : addressClient.aggregatedListAddresses(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Project ID for this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListAddressesPagedResponse aggregatedListAddresses(String project) {
+    AggregatedListAddressesHttpRequest request =
+        AggregatedListAddressesHttpRequest.newBuilder()
+        .setProject(project)
+        .build();
+    return aggregatedListAddresses(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves an aggregated list of addresses.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   AggregatedListAddressesHttpRequest request = AggregatedListAddressesHttpRequest.newBuilder()
+   *     .setProject(project.toString())
+   *     .build();
+   *   for (Address element : addressClient.aggregatedListAddresses(request).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param request The request object containing all of the parameters for the API call.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListAddressesPagedResponse aggregatedListAddresses(AggregatedListAddressesHttpRequest request) {
+    return aggregatedListAddressesPagedCallable()
+        .call(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves an aggregated list of addresses.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   AggregatedListAddressesHttpRequest request = AggregatedListAddressesHttpRequest.newBuilder()
+   *     .setProject(project.toString())
+   *     .build();
+   *   ApiFuture&lt;AggregatedListAddressesPagedResponse&gt; future = addressClient.aggregatedListAddressesPagedCallable().futureCall(request);
+   *   // Do something
+   *   for (Address element : future.get().iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   */
+  @BetaApi
+  public final UnaryCallable<AggregatedListAddressesHttpRequest, AggregatedListAddressesPagedResponse> aggregatedListAddressesPagedCallable() {
+    return stub.aggregatedListAddressesPagedCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves an aggregated list of addresses.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   AggregatedListAddressesHttpRequest request = AggregatedListAddressesHttpRequest.newBuilder()
+   *     .setProject(project.toString())
+   *     .build();
+   *   while (true) {
+   *     AddressAggregatedList response = addressClient.aggregatedListAddressesCallable().call(request);
+   *     for (Address element : response.getAddressesList()) {
+   *       // doThingsWith(element);
+   *     }
+   *     String nextPageToken = response.getNextPageToken();
+   *     if (!Strings.isNullOrEmpty(nextPageToken)) {
+   *       request = request.toBuilder().setPageToken(nextPageToken).build();
+   *     } else {
+   *       break;
+   *     }
+   *   }
+   * }
+   * </code></pre>
+   */
+  @BetaApi
+  public final UnaryCallable<AggregatedListAddressesHttpRequest, AddressAggregatedList> aggregatedListAddressesCallable() {
+    return stub.aggregatedListAddressesCallable();
+  }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
@@ -367,8 +499,8 @@ public class AddressClient implements BackgroundResource {
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   Address address = Address.newBuilder().build();
-   *   Operation response = addressClient.insertAddress(region, address);
+   *   Address addressResource = Address.newBuilder().build();
+   *   Operation response = addressClient.insertAddress(region, addressResource);
    * }
    * </code></pre>
    *
@@ -395,8 +527,8 @@ public class AddressClient implements BackgroundResource {
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   Address address = Address.newBuilder().build();
-   *   Operation response = addressClient.insertAddress(region.toString(), address);
+   *   Address addressResource = Address.newBuilder().build();
+   *   Operation response = addressClient.insertAddress(region.toString(), addressResource);
    * }
    * </code></pre>
    *
@@ -423,10 +555,10 @@ public class AddressClient implements BackgroundResource {
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   Address address = Address.newBuilder().build();
+   *   Address addressResource = Address.newBuilder().build();
    *   InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
    *     .setRegion(region.toString())
-   *     .setAddressResource(address)
+   *     .setAddressResource(addressResource)
    *     .build();
    *   Operation response = addressClient.insertAddress(request);
    * }
@@ -448,10 +580,10 @@ public class AddressClient implements BackgroundResource {
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
    *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
-   *   Address address = Address.newBuilder().build();
+   *   Address addressResource = Address.newBuilder().build();
    *   InsertAddressHttpRequest request = InsertAddressHttpRequest.newBuilder()
    *     .setRegion(region.toString())
-   *     .setAddressResource(address)
+   *     .setAddressResource(addressResource)
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = addressClient.insertAddressCallable().futureCall(request);
    *   // Do something
@@ -597,6 +729,262 @@ public class AddressClient implements BackgroundResource {
     return stub.listAddressesCallable();
   }
 
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates an address in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   String address = "";
+   *   String requestId = "";
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   Address addressResource = Address.newBuilder().build();
+   *   Operation response = addressClient.patchAddress(address, requestId, region, addressResource);
+   * }
+   * </code></pre>
+   *
+   * @param address Name of the address to patch.
+   * @param requestId An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+   * @param region Name of the region for this request.
+   * @param addressResource A reserved address resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation patchAddress(String address, String requestId, RegionName region, Address addressResource) {
+
+    PatchAddressHttpRequest request =
+        PatchAddressHttpRequest.newBuilder()
+        .setAddress(address)
+        .setRequestId(requestId)
+        .setRegion(region == null ? null : region.toString())
+        .setAddressResource(addressResource)
+        .build();
+    return patchAddress(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates an address in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   String address = "";
+   *   String requestId = "";
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   Address addressResource = Address.newBuilder().build();
+   *   Operation response = addressClient.patchAddress(address, requestId, region.toString(), addressResource);
+   * }
+   * </code></pre>
+   *
+   * @param address Name of the address to patch.
+   * @param requestId An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+   * @param region Name of the region for this request.
+   * @param addressResource A reserved address resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation patchAddress(String address, String requestId, String region, Address addressResource) {
+
+    PatchAddressHttpRequest request =
+        PatchAddressHttpRequest.newBuilder()
+        .setAddress(address)
+        .setRequestId(requestId)
+        .setRegion(region)
+        .setAddressResource(addressResource)
+        .build();
+    return patchAddress(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates an address in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   String address = "";
+   *   String requestId = "";
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   Address addressResource = Address.newBuilder().build();
+   *   PatchAddressHttpRequest request = PatchAddressHttpRequest.newBuilder()
+   *     .setAddress(address)
+   *     .setRequestId(requestId)
+   *     .setRegion(region.toString())
+   *     .setAddressResource(addressResource)
+   *     .build();
+   *   Operation response = addressClient.patchAddress(request);
+   * }
+   * </code></pre>
+   *
+   * @param request The request object containing all of the parameters for the API call.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation patchAddress(PatchAddressHttpRequest request) {
+    return patchAddressCallable().call(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates an address in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   String address = "";
+   *   String requestId = "";
+   *   RegionName region = RegionName.of("[PROJECT]", "[REGION]");
+   *   Address addressResource = Address.newBuilder().build();
+   *   PatchAddressHttpRequest request = PatchAddressHttpRequest.newBuilder()
+   *     .setAddress(address)
+   *     .setRequestId(requestId)
+   *     .setRegion(region.toString())
+   *     .setAddressResource(addressResource)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = addressClient.patchAddressCallable().futureCall(request);
+   *   // Do something
+   *   Operation response = future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi
+  public final UnaryCallable<PatchAddressHttpRequest, Operation> patchAddressCallable() {
+    return stub.patchAddressCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the specified Address resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating an address. Read  Restrictions and Guidelines for more information.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
+   *   String requestId = "";
+   *   Address addressResource = Address.newBuilder().build();
+   *   Operation response = addressClient.updateAddress(address, requestId, addressResource);
+   * }
+   * </code></pre>
+   *
+   * @param address Name of the Address resource to update.
+   * @param requestId An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+   * @param addressResource A reserved address resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation updateAddress(ProjectAddressName address, String requestId, Address addressResource) {
+
+    UpdateAddressHttpRequest request =
+        UpdateAddressHttpRequest.newBuilder()
+        .setAddress(address == null ? null : address.toString())
+        .setRequestId(requestId)
+        .setAddressResource(addressResource)
+        .build();
+    return updateAddress(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the specified Address resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating an address. Read  Restrictions and Guidelines for more information.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
+   *   String requestId = "";
+   *   Address addressResource = Address.newBuilder().build();
+   *   Operation response = addressClient.updateAddress(address.toString(), requestId, addressResource);
+   * }
+   * </code></pre>
+   *
+   * @param address Name of the Address resource to update.
+   * @param requestId An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+   * @param addressResource A reserved address resource.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation updateAddress(String address, String requestId, Address addressResource) {
+
+    UpdateAddressHttpRequest request =
+        UpdateAddressHttpRequest.newBuilder()
+        .setAddress(address)
+        .setRequestId(requestId)
+        .setAddressResource(addressResource)
+        .build();
+    return updateAddress(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the specified Address resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating an address. Read  Restrictions and Guidelines for more information.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
+   *   String requestId = "";
+   *   Address addressResource = Address.newBuilder().build();
+   *   UpdateAddressHttpRequest request = UpdateAddressHttpRequest.newBuilder()
+   *     .setAddress(address.toString())
+   *     .setRequestId(requestId)
+   *     .setAddressResource(addressResource)
+   *     .build();
+   *   Operation response = addressClient.updateAddress(request);
+   * }
+   * </code></pre>
+   *
+   * @param request The request object containing all of the parameters for the API call.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation updateAddress(UpdateAddressHttpRequest request) {
+    return updateAddressCallable().call(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the specified Address resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating an address. Read  Restrictions and Guidelines for more information.
+   *
+   * Sample code:
+   * <pre><code>
+   * try (AddressClient addressClient = AddressClient.create()) {
+   *   ProjectAddressName address = ProjectAddressName.of("[PROJECT]", "[ADDRESS]");
+   *   String requestId = "";
+   *   Address addressResource = Address.newBuilder().build();
+   *   UpdateAddressHttpRequest request = UpdateAddressHttpRequest.newBuilder()
+   *     .setAddress(address.toString())
+   *     .setRequestId(requestId)
+   *     .setAddressResource(addressResource)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = addressClient.updateAddressCallable().futureCall(request);
+   *   // Do something
+   *   Operation response = future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi
+  public final UnaryCallable<UpdateAddressHttpRequest, Operation> updateAddressCallable() {
+    return stub.updateAddressCallable();
+  }
+
   @Override
   public final void close() throws Exception {
     stub.close();
@@ -627,6 +1015,93 @@ public class AddressClient implements BackgroundResource {
     return stub.awaitTermination(duration, unit);
   }
 
+  public static class AggregatedListAddressesPagedResponse extends AbstractPagedListResponse<
+      AggregatedListAddressesHttpRequest,
+      AddressAggregatedList,
+      Address,
+      AggregatedListAddressesPage,
+      AggregatedListAddressesFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListAddressesPagedResponse> createAsync(
+        PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address> context,
+        ApiFuture<AddressAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListAddressesPage> futurePage =
+          AggregatedListAddressesPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<AggregatedListAddressesPage, AggregatedListAddressesPagedResponse>() {
+            @Override
+            public AggregatedListAddressesPagedResponse apply(AggregatedListAddressesPage input) {
+              return new AggregatedListAddressesPagedResponse(input);
+            }
+          });
+    }
+
+    private AggregatedListAddressesPagedResponse(AggregatedListAddressesPage page) {
+      super(page, AggregatedListAddressesFixedSizeCollection.createEmptyCollection());
+    }
+
+
+  }
+
+  public static class AggregatedListAddressesPage extends AbstractPage<
+      AggregatedListAddressesHttpRequest,
+      AddressAggregatedList,
+      Address,
+      AggregatedListAddressesPage> {
+
+    private AggregatedListAddressesPage(
+        PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address> context,
+        AddressAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListAddressesPage createEmptyPage() {
+      return new AggregatedListAddressesPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListAddressesPage createPage(
+        PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address> context,
+        AddressAggregatedList response) {
+      return new AggregatedListAddressesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListAddressesPage> createPageAsync(
+        PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address> context,
+        ApiFuture<AddressAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+
+
+
+
+  }
+
+  public static class AggregatedListAddressesFixedSizeCollection extends AbstractFixedSizeCollection<
+      AggregatedListAddressesHttpRequest,
+      AddressAggregatedList,
+      Address,
+      AggregatedListAddressesPage,
+      AggregatedListAddressesFixedSizeCollection> {
+
+    private AggregatedListAddressesFixedSizeCollection(List<AggregatedListAddressesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListAddressesFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListAddressesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListAddressesFixedSizeCollection createCollection(
+        List<AggregatedListAddressesPage> pages, int collectionSize) {
+      return new AggregatedListAddressesFixedSizeCollection(pages, collectionSize);
+    }
+
+
+  }
   public static class ListAddressesPagedResponse extends AbstractPagedListResponse<
       ListAddressesHttpRequest,
       AddressList,

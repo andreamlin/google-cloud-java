@@ -31,45 +31,57 @@ import javax.annotation.Nullable;
 
 @Generated("by GAPIC")
 @BetaApi
-public final class GetAddressHttpRequest implements ApiMessage {
+public final class PatchAddressHttpRequest implements ApiMessage {
   private final String access_token;
   private final String address;
+  private final Address addressResource;
   private final String callback;
   private final String fields;
   private final String key;
   private final String prettyPrint;
   private final String quotaUser;
+  private final String region;
+  private final String requestId;
   private final String userIp;
 
-  private GetAddressHttpRequest() {
+  private PatchAddressHttpRequest() {
     this.access_token = null;
     this.address = null;
+    this.addressResource = null;
     this.callback = null;
     this.fields = null;
     this.key = null;
     this.prettyPrint = null;
     this.quotaUser = null;
+    this.region = null;
+    this.requestId = null;
     this.userIp = null;
   }
 
 
-  private GetAddressHttpRequest(
+  private PatchAddressHttpRequest(
       String access_token,
       String address,
+      Address addressResource,
       String callback,
       String fields,
       String key,
       String prettyPrint,
       String quotaUser,
+      String region,
+      String requestId,
       String userIp
       ) {
     this.access_token = access_token;
     this.address = address;
+    this.addressResource = addressResource;
     this.callback = callback;
     this.fields = fields;
     this.key = key;
     this.prettyPrint = prettyPrint;
     this.quotaUser = quotaUser;
+    this.region = region;
+    this.requestId = requestId;
     this.userIp = userIp;
   }
 
@@ -81,6 +93,9 @@ public final class GetAddressHttpRequest implements ApiMessage {
     }
     if (fieldNames.contains("address") && address != null) {
       fieldMap.put("address", Collections.singletonList(String.valueOf(address)));
+    }
+    if (fieldNames.contains("addressResource") && addressResource != null) {
+      fieldMap.put("addressResource", Collections.singletonList(String.valueOf(addressResource)));
     }
     if (fieldNames.contains("callback") && callback != null) {
       fieldMap.put("callback", Collections.singletonList(String.valueOf(callback)));
@@ -97,6 +112,12 @@ public final class GetAddressHttpRequest implements ApiMessage {
     if (fieldNames.contains("quotaUser") && quotaUser != null) {
       fieldMap.put("quotaUser", Collections.singletonList(String.valueOf(quotaUser)));
     }
+    if (fieldNames.contains("region") && region != null) {
+      fieldMap.put("region", Collections.singletonList(String.valueOf(region)));
+    }
+    if (fieldNames.contains("requestId") && requestId != null) {
+      fieldMap.put("requestId", Collections.singletonList(String.valueOf(requestId)));
+    }
     if (fieldNames.contains("userIp") && userIp != null) {
       fieldMap.put("userIp", Collections.singletonList(String.valueOf(userIp)));
     }
@@ -110,6 +131,9 @@ public final class GetAddressHttpRequest implements ApiMessage {
     }
     if (fieldName.equals("address")) {
       return String.valueOf(address);
+    }
+    if (fieldName.equals("addressResource")) {
+      return String.valueOf(addressResource);
     }
     if (fieldName.equals("callback")) {
       return String.valueOf(callback);
@@ -126,6 +150,12 @@ public final class GetAddressHttpRequest implements ApiMessage {
     if (fieldName.equals("quotaUser")) {
       return String.valueOf(quotaUser);
     }
+    if (fieldName.equals("region")) {
+      return String.valueOf(region);
+    }
+    if (fieldName.equals("requestId")) {
+      return String.valueOf(requestId);
+    }
     if (fieldName.equals("userIp")) {
       return String.valueOf(userIp);
     }
@@ -134,8 +164,8 @@ public final class GetAddressHttpRequest implements ApiMessage {
 
   @Nullable
   @Override
-  public ApiMessage getApiMessageRequestBody() {
-    return null;
+  public Address getApiMessageRequestBody() {
+    return addressResource;
   }
 
   public String getAccessToken() {
@@ -144,6 +174,10 @@ public final class GetAddressHttpRequest implements ApiMessage {
 
   public String getAddress() {
     return address;
+  }
+
+  public Address getAddressResource() {
+    return addressResource;
   }
 
   public String getCallback() {
@@ -166,6 +200,14 @@ public final class GetAddressHttpRequest implements ApiMessage {
     return quotaUser;
   }
 
+  public String getRegion() {
+    return region;
+  }
+
+  public String getRequestId() {
+    return requestId;
+  }
+
   public String getUserIp() {
     return userIp;
   }
@@ -174,7 +216,7 @@ public final class GetAddressHttpRequest implements ApiMessage {
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(GetAddressHttpRequest prototype) {
+  public static Builder newBuilder(PatchAddressHttpRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -182,33 +224,39 @@ public final class GetAddressHttpRequest implements ApiMessage {
         ? new Builder() : new Builder().mergeFrom(this);
   }
 
-  public static GetAddressHttpRequest getDefaultInstance() {
+  public static PatchAddressHttpRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
-  private static final GetAddressHttpRequest DEFAULT_INSTANCE;
+  private static final PatchAddressHttpRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new GetAddressHttpRequest();
+    DEFAULT_INSTANCE = new PatchAddressHttpRequest();
   }
 
   public static class Builder {
     private String access_token;
     private String address;
+    private Address addressResource;
     private String callback;
     private String fields;
     private String key;
     private String prettyPrint;
     private String quotaUser;
+    private String region;
+    private String requestId;
     private String userIp;
 
     Builder() {}
 
-    public Builder mergeFrom(GetAddressHttpRequest other) {
-      if (other == GetAddressHttpRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(PatchAddressHttpRequest other) {
+      if (other == PatchAddressHttpRequest.getDefaultInstance()) return this;
       if (other.getAccessToken() != null) {
         this.access_token = other.access_token;
       }
       if (other.getAddress() != null) {
         this.address = other.address;
+      }
+      if (other.getAddressResource() != null) {
+        this.addressResource = other.addressResource;
       }
       if (other.getCallback() != null) {
         this.callback = other.callback;
@@ -225,20 +273,29 @@ public final class GetAddressHttpRequest implements ApiMessage {
       if (other.getQuotaUser() != null) {
         this.quotaUser = other.quotaUser;
       }
+      if (other.getRegion() != null) {
+        this.region = other.region;
+      }
+      if (other.getRequestId() != null) {
+        this.requestId = other.requestId;
+      }
       if (other.getUserIp() != null) {
         this.userIp = other.userIp;
       }
       return this;
     }
 
-    Builder(GetAddressHttpRequest source) {
+    Builder(PatchAddressHttpRequest source) {
       this.access_token = source.access_token;
       this.address = source.address;
+      this.addressResource = source.addressResource;
       this.callback = source.callback;
       this.fields = source.fields;
       this.key = source.key;
       this.prettyPrint = source.prettyPrint;
       this.quotaUser = source.quotaUser;
+      this.region = source.region;
+      this.requestId = source.requestId;
       this.userIp = source.userIp;
     }
 
@@ -257,6 +314,15 @@ public final class GetAddressHttpRequest implements ApiMessage {
 
     public Builder setAddress(String address) {
       this.address = address;
+      return this;
+    }
+
+    public Address getAddressResource() {
+      return addressResource;
+    }
+
+    public Builder setAddressResource(Address addressResource) {
+      this.addressResource = addressResource;
       return this;
     }
 
@@ -305,6 +371,24 @@ public final class GetAddressHttpRequest implements ApiMessage {
       return this;
     }
 
+    public String getRegion() {
+      return region;
+    }
+
+    public Builder setRegion(String region) {
+      this.region = region;
+      return this;
+    }
+
+    public String getRequestId() {
+      return requestId;
+    }
+
+    public Builder setRequestId(String requestId) {
+      this.requestId = requestId;
+      return this;
+    }
+
     public String getUserIp() {
       return userIp;
     }
@@ -315,29 +399,35 @@ public final class GetAddressHttpRequest implements ApiMessage {
     }
 
 
-    public GetAddressHttpRequest build() {
+    public PatchAddressHttpRequest build() {
       String missing = "";
 
-      if (address == null) {
-        missing += " address";
+
+
+
+
+
+
+
+      if (region == null) {
+        missing += " region";
       }
-
-
-
-
 
 
       if (!missing.isEmpty()) {
         throw new IllegalStateException("Missing required properties:" + missing);
       }
-      return new GetAddressHttpRequest(
+      return new PatchAddressHttpRequest(
         access_token,
         address,
+        addressResource,
         callback,
         fields,
         key,
         prettyPrint,
         quotaUser,
+        region,
+        requestId,
         userIp
       );
     }
@@ -346,11 +436,14 @@ public final class GetAddressHttpRequest implements ApiMessage {
       Builder newBuilder = new Builder();
       newBuilder.setAccessToken(this.access_token);
       newBuilder.setAddress(this.address);
+      newBuilder.setAddressResource(this.addressResource);
       newBuilder.setCallback(this.callback);
       newBuilder.setFields(this.fields);
       newBuilder.setKey(this.key);
       newBuilder.setPrettyPrint(this.prettyPrint);
       newBuilder.setQuotaUser(this.quotaUser);
+      newBuilder.setRegion(this.region);
+      newBuilder.setRequestId(this.requestId);
       newBuilder.setUserIp(this.userIp);
       return newBuilder;
     }
@@ -358,14 +451,17 @@ public final class GetAddressHttpRequest implements ApiMessage {
 
   @Override
   public String toString() {
-    return "GetAddressHttpRequest{"
+    return "PatchAddressHttpRequest{"
         + "access_token=" + access_token + ", "
         + "address=" + address + ", "
+        + "addressResource=" + addressResource + ", "
         + "callback=" + callback + ", "
         + "fields=" + fields + ", "
         + "key=" + key + ", "
         + "prettyPrint=" + prettyPrint + ", "
         + "quotaUser=" + quotaUser + ", "
+        + "region=" + region + ", "
+        + "requestId=" + requestId + ", "
         + "userIp=" + userIp
         + "}";
   }
@@ -375,16 +471,19 @@ public final class GetAddressHttpRequest implements ApiMessage {
     if (o == this) {
       return true;
     }
-    if (o instanceof GetAddressHttpRequest) {
-      GetAddressHttpRequest that = (GetAddressHttpRequest) o;
+    if (o instanceof PatchAddressHttpRequest) {
+      PatchAddressHttpRequest that = (PatchAddressHttpRequest) o;
       return
           Objects.equals(this.access_token, that.getAccessToken()) &&
           Objects.equals(this.address, that.getAddress()) &&
+          Objects.equals(this.addressResource, that.getAddressResource()) &&
           Objects.equals(this.callback, that.getCallback()) &&
           Objects.equals(this.fields, that.getFields()) &&
           Objects.equals(this.key, that.getKey()) &&
           Objects.equals(this.prettyPrint, that.getPrettyPrint()) &&
           Objects.equals(this.quotaUser, that.getQuotaUser()) &&
+          Objects.equals(this.region, that.getRegion()) &&
+          Objects.equals(this.requestId, that.getRequestId()) &&
           Objects.equals(this.userIp, that.getUserIp())
           ;
     }
@@ -396,11 +495,14 @@ public final class GetAddressHttpRequest implements ApiMessage {
     return Objects.hash(
       access_token,
       address,
+      addressResource,
       callback,
       fields,
       key,
       prettyPrint,
       quotaUser,
+      region,
+      requestId,
       userIp
     );
   }
