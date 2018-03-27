@@ -47,6 +47,7 @@ import com.google.cloud.simplecompute.v1.AddressAggregatedList;
 import static com.google.cloud.simplecompute.v1.AddressClient.AggregatedListAddressesPagedResponse;
 import static com.google.cloud.simplecompute.v1.AddressClient.ListAddressesPagedResponse;
 import com.google.cloud.simplecompute.v1.AddressList;
+import com.google.cloud.simplecompute.v1.AddressesScopedList;
 import com.google.cloud.simplecompute.v1.AggregatedListAddressesHttpRequest;
 import com.google.cloud.simplecompute.v1.DeleteAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.GetAddressHttpRequest;
@@ -58,9 +59,12 @@ import com.google.cloud.simplecompute.v1.UpdateAddressHttpRequest;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
@@ -295,8 +299,8 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<Address> extractResources(AddressAggregatedList payload) {
-          return payload.getItemsMap().getAddressesList();
+        public Iterable<Address> extractResources(final AddressAggregatedList payload) {
+          return payload.getAddressItems();
         }
       };
 

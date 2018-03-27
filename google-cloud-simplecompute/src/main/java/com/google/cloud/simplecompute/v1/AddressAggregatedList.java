@@ -22,6 +22,7 @@ import com.google.common.collect.ImmutableMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -33,7 +34,7 @@ import javax.annotation.Nullable;
 @BetaApi
 public final class AddressAggregatedList implements ApiMessage {
   private final String id;
-  private final AddressesScopedList items;
+  private final Map<String, AddressesScopedList> items;
   private final String kind;
   private final String nextPageToken;
   private final String selfLink;
@@ -51,7 +52,7 @@ public final class AddressAggregatedList implements ApiMessage {
 
   private AddressAggregatedList(
       String id,
-      AddressesScopedList items,
+      Map<String, AddressesScopedList> items,
       String kind,
       String nextPageToken,
       String selfLink,
@@ -122,7 +123,19 @@ public final class AddressAggregatedList implements ApiMessage {
     return id;
   }
 
-  public AddressesScopedList getItemsMap() {
+  public Map<String, AddressesScopedList> getItemsMap() {
+    return items;
+  }
+
+  public Iterable<AddressesScopedList> getItemsList() {
+    return getItemsMap().values();
+  }
+
+  public Iterable<Address> getAddressItems() {
+    List<Address> items = new LinkedList<>();
+      for (AddressesScopedList item : getItemsList()) {
+        items.addAll(item.getAddressesList());
+      }
     return items;
   }
 
@@ -164,7 +177,7 @@ public final class AddressAggregatedList implements ApiMessage {
 
   public static class Builder {
     private String id;
-    private AddressesScopedList items;
+    private Map<String, AddressesScopedList> items;
     private String kind;
     private String nextPageToken;
     private String selfLink;
@@ -213,11 +226,11 @@ public final class AddressAggregatedList implements ApiMessage {
       return this;
     }
 
-    public AddressesScopedList getItemsMap() {
+    public Map<String, AddressesScopedList> getItemsMap() {
       return items;
     }
 
-    public Builder putAllItems(AddressesScopedList items) {
+    public Builder putAllItems(Map<String, AddressesScopedList> items) {
       this.items = items;
       return this;
     }
