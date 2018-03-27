@@ -48,6 +48,7 @@ import com.google.cloud.compute.v1.DiskTypeAggregatedList;
 import static com.google.cloud.compute.v1.DiskTypeClient.AggregatedListDiskTypesPagedResponse;
 import static com.google.cloud.compute.v1.DiskTypeClient.ListDiskTypesPagedResponse;
 import com.google.cloud.compute.v1.DiskTypeList;
+import com.google.cloud.compute.v1.DiskTypesScopedList;
 import com.google.cloud.compute.v1.GetDiskTypeHttpRequest;
 import com.google.cloud.compute.v1.ListDiskTypesHttpRequest;
 import com.google.common.collect.ImmutableList;
@@ -56,6 +57,9 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
@@ -255,7 +259,12 @@ public class DiskTypeStubSettings extends StubSettings<DiskTypeStubSettings> {
         }
         @Override
         public Iterable<DiskType> extractResources(DiskTypeAggregatedList payload) {
-          return payload.getItems().getDiskTypesList();
+          Collection<DiskType> diskTypes = new LinkedList<>();
+          Iterator<DiskTypesScopedList> iterator = payload.getItems().values().iterator();
+          while(iterator.hasNext()) {
+            diskTypes.addAll(iterator.next().getDiskTypesList());
+          }
+          return diskTypes;
         }
       };
 

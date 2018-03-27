@@ -17,9 +17,6 @@ package com.google.cloud.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +30,7 @@ import javax.annotation.Nullable;
 @BetaApi
 public final class DiskTypeAggregatedList implements ApiMessage {
   private final String id;
-  private final DiskTypesScopedList items;
+  private final Map<String, DiskTypesScopedList> items;
   private final String kind;
   private final String nextPageToken;
   private final String selfLink;
@@ -49,7 +46,7 @@ public final class DiskTypeAggregatedList implements ApiMessage {
 
   private DiskTypeAggregatedList(
       String id,
-      DiskTypesScopedList items,
+      Map<String, DiskTypesScopedList> items,
       String kind,
       String nextPageToken,
       String selfLink
@@ -112,7 +109,7 @@ public final class DiskTypeAggregatedList implements ApiMessage {
     return id;
   }
 
-  public DiskTypesScopedList getItems() {
+  public Map<String, DiskTypesScopedList> getItems() {
     return items;
   }
 
@@ -150,7 +147,7 @@ public final class DiskTypeAggregatedList implements ApiMessage {
 
   public static class Builder {
     private String id;
-    private DiskTypesScopedList items;
+    private Map<String, DiskTypesScopedList> items;
     private String kind;
     private String nextPageToken;
     private String selfLink;
@@ -194,11 +191,11 @@ public final class DiskTypeAggregatedList implements ApiMessage {
       return this;
     }
 
-    public DiskTypesScopedList getItems() {
+    public Map<String, DiskTypesScopedList> getItems() {
       return items;
     }
 
-    public Builder setItems(DiskTypesScopedList items) {
+    public Builder setItems(Map<String, DiskTypesScopedList> items) {
       this.items = items;
       return this;
     }
