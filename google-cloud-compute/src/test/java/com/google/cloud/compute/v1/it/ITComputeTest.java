@@ -134,7 +134,7 @@ public class ITComputeTest {
       assertNotNull(diskType.getCreationTimestamp());
       assertNotNull(diskType.getDescription());
       assertNotNull(diskType.getValidDiskSize());
-      assertEquals(375, Long.parseLong(diskType.getDefaultDiskSizeGb()));
+      assertNotNull(diskType.getDefaultDiskSizeGb());
     }
   }
 
@@ -146,8 +146,9 @@ public class ITComputeTest {
     assertTrue(diskTypeIterator.size() > 0);
     for (DiskType diskType : diskTypeIterator) {
       assertNotNull(diskType.getZone());
-      ZoneName zoneName = ZoneName.parse(diskType.getZone());
-      assertEquals(ZONE, zoneName.getZone());
+      DiskTypeName zoneName = DiskTypeName.parse(trimUrl(diskType.getSelfLink()));
+      assertNotNull(zoneName.getDiskType());
+      assertNotNull(zoneName.getZone());
       assertNotNull(diskType.getCreationTimestamp());
       assertNotNull(diskType.getDescription());
       assertNotNull(diskType.getValidDiskSize());
