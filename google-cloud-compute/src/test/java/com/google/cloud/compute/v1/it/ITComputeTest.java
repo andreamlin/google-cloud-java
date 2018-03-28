@@ -125,7 +125,6 @@ public class ITComputeTest {
 
   @Test
   public void testAggregatedListDiskTypes() {
-    // Page<DiskType> diskPage = diskTypeClient.aggregatedListDiskTypes(ProjectName.of(DEFAULT_PROJECT)).getPage();
     AggregatedListDiskTypesPagedResponse pagedListResponse = diskTypeClient.aggregatedListDiskTypes(ProjectName.of(DEFAULT_PROJECT));
     List<DiskTypesScopedList> diskTypeScopedListIterator = Lists.newArrayList(pagedListResponse.iterateAll());
     List<DiskType> diskTypeIterator = new LinkedList<>();
