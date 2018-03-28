@@ -37,6 +37,7 @@ import com.google.cloud.compute.v1.RouterList;
 import com.google.cloud.compute.v1.RouterName;
 import com.google.cloud.compute.v1.RouterStatusResponse;
 import com.google.cloud.compute.v1.RoutersPreviewResponse;
+import com.google.cloud.compute.v1.RoutersScopedList;
 import com.google.cloud.compute.v1.UpdateRouterHttpRequest;
 import javax.annotation.Generated;
 

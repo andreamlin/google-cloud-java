@@ -32,6 +32,7 @@ import static com.google.cloud.compute.v1.TargetVpnGatewayClient.AggregatedListT
 import static com.google.cloud.compute.v1.TargetVpnGatewayClient.ListTargetVpnGatewaysPagedResponse;
 import com.google.cloud.compute.v1.TargetVpnGatewayList;
 import com.google.cloud.compute.v1.TargetVpnGatewayName;
+import com.google.cloud.compute.v1.TargetVpnGatewaysScopedList;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

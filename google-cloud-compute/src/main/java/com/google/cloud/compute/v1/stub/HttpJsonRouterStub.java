@@ -49,6 +49,7 @@ import com.google.cloud.compute.v1.RouterName;
 import com.google.cloud.compute.v1.RouterSettings;
 import com.google.cloud.compute.v1.RouterStatusResponse;
 import com.google.cloud.compute.v1.RoutersPreviewResponse;
+import com.google.cloud.compute.v1.RoutersScopedList;
 import com.google.cloud.compute.v1.UpdateRouterHttpRequest;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;

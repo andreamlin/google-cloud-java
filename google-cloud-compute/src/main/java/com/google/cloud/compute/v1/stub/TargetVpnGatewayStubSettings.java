@@ -53,6 +53,7 @@ import com.google.cloud.compute.v1.TargetVpnGatewayAggregatedList;
 import static com.google.cloud.compute.v1.TargetVpnGatewayClient.AggregatedListTargetVpnGatewaysPagedResponse;
 import static com.google.cloud.compute.v1.TargetVpnGatewayClient.ListTargetVpnGatewaysPagedResponse;
 import com.google.cloud.compute.v1.TargetVpnGatewayList;
+import com.google.cloud.compute.v1.TargetVpnGatewaysScopedList;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -246,8 +247,8 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
     listTargetVpnGatewaysSettings = settingsBuilder.listTargetVpnGatewaysSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGateway> AGGREGATED_LIST_TARGET_VPN_GATEWAYS_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGateway>() {
+  private static final PagedListDescriptor<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGatewaysScopedList> AGGREGATED_LIST_TARGET_VPN_GATEWAYS_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGatewaysScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -275,8 +276,8 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<TargetVpnGateway> extractResources(TargetVpnGatewayAggregatedList payload) {
-          return payload.getItems().getTargetVpnGatewaysList();
+        public Iterable<TargetVpnGatewaysScopedList> extractResources(TargetVpnGatewayAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -322,7 +323,7 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
             AggregatedListTargetVpnGatewaysHttpRequest request,
             ApiCallContext context,
             ApiFuture<TargetVpnGatewayAggregatedList> futureResponse) {
-          PageContext<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGateway> pageContext =
+          PageContext<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGatewaysScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_TARGET_VPN_GATEWAYS_PAGE_STR_DESC, request, context);
           return AggregatedListTargetVpnGatewaysPagedResponse.createAsync(pageContext, futureResponse);
         }

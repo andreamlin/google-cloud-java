@@ -49,6 +49,7 @@ import com.google.cloud.compute.v1.ForwardingRuleAggregatedList;
 import static com.google.cloud.compute.v1.ForwardingRuleClient.AggregatedListForwardingRulesPagedResponse;
 import static com.google.cloud.compute.v1.ForwardingRuleClient.ListForwardingRulesPagedResponse;
 import com.google.cloud.compute.v1.ForwardingRuleList;
+import com.google.cloud.compute.v1.ForwardingRulesScopedList;
 import com.google.cloud.compute.v1.GetForwardingRuleHttpRequest;
 import com.google.cloud.compute.v1.InsertForwardingRuleHttpRequest;
 import com.google.cloud.compute.v1.ListForwardingRulesHttpRequest;
@@ -256,8 +257,8 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
     setTargetForwardingRuleSettings = settingsBuilder.setTargetForwardingRuleSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList, ForwardingRule> AGGREGATED_LIST_FORWARDING_RULES_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList, ForwardingRule>() {
+  private static final PagedListDescriptor<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList, ForwardingRulesScopedList> AGGREGATED_LIST_FORWARDING_RULES_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList, ForwardingRulesScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -285,8 +286,8 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<ForwardingRule> extractResources(ForwardingRuleAggregatedList payload) {
-          return payload.getItems().getForwardingRulesList();
+        public Iterable<ForwardingRulesScopedList> extractResources(ForwardingRuleAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -332,7 +333,7 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
             AggregatedListForwardingRulesHttpRequest request,
             ApiCallContext context,
             ApiFuture<ForwardingRuleAggregatedList> futureResponse) {
-          PageContext<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList, ForwardingRule> pageContext =
+          PageContext<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList, ForwardingRulesScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_FORWARDING_RULES_PAGE_STR_DESC, request, context);
           return AggregatedListForwardingRulesPagedResponse.createAsync(pageContext, futureResponse);
         }

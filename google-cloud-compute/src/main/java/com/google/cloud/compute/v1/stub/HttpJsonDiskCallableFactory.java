@@ -51,6 +51,7 @@ import com.google.cloud.compute.v1.DiskList;
 import com.google.cloud.compute.v1.DiskName;
 import com.google.cloud.compute.v1.DiskSettings;
 import com.google.cloud.compute.v1.DisksResizeRequest;
+import com.google.cloud.compute.v1.DisksScopedList;
 import com.google.cloud.compute.v1.GetDiskHttpRequest;
 import com.google.cloud.compute.v1.InsertDiskHttpRequest;
 import com.google.cloud.compute.v1.ListDisksHttpRequest;

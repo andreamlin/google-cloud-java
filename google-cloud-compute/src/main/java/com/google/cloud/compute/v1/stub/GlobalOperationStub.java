@@ -28,6 +28,7 @@ import com.google.cloud.compute.v1.Operation;
 import com.google.cloud.compute.v1.OperationAggregatedList;
 import com.google.cloud.compute.v1.OperationList;
 import com.google.cloud.compute.v1.OperationName;
+import com.google.cloud.compute.v1.OperationsScopedList;
 import com.google.cloud.compute.v1.ProjectName;
 import javax.annotation.Generated;
 

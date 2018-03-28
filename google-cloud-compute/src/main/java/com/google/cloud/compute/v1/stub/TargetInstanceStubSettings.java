@@ -53,6 +53,7 @@ import com.google.cloud.compute.v1.TargetInstanceAggregatedList;
 import static com.google.cloud.compute.v1.TargetInstanceClient.AggregatedListTargetInstancesPagedResponse;
 import static com.google.cloud.compute.v1.TargetInstanceClient.ListTargetInstancesPagedResponse;
 import com.google.cloud.compute.v1.TargetInstanceList;
+import com.google.cloud.compute.v1.TargetInstancesScopedList;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -246,8 +247,8 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
     listTargetInstancesSettings = settingsBuilder.listTargetInstancesSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, TargetInstance> AGGREGATED_LIST_TARGET_INSTANCES_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, TargetInstance>() {
+  private static final PagedListDescriptor<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, TargetInstancesScopedList> AGGREGATED_LIST_TARGET_INSTANCES_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, TargetInstancesScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -275,8 +276,8 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<TargetInstance> extractResources(TargetInstanceAggregatedList payload) {
-          return payload.getItems().getTargetInstancesList();
+        public Iterable<TargetInstancesScopedList> extractResources(TargetInstanceAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -322,7 +323,7 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
             AggregatedListTargetInstancesHttpRequest request,
             ApiCallContext context,
             ApiFuture<TargetInstanceAggregatedList> futureResponse) {
-          PageContext<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, TargetInstance> pageContext =
+          PageContext<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList, TargetInstancesScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_TARGET_INSTANCES_PAGE_STR_DESC, request, context);
           return AggregatedListTargetInstancesPagedResponse.createAsync(pageContext, futureResponse);
         }

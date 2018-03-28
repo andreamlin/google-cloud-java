@@ -46,6 +46,7 @@ import com.google.cloud.compute.v1.InstanceGroupManagersAbandonInstancesRequest;
 import com.google.cloud.compute.v1.InstanceGroupManagersDeleteInstancesRequest;
 import com.google.cloud.compute.v1.InstanceGroupManagersListManagedInstancesResponse;
 import com.google.cloud.compute.v1.InstanceGroupManagersRecreateInstancesRequest;
+import com.google.cloud.compute.v1.InstanceGroupManagersScopedList;
 import com.google.cloud.compute.v1.InstanceGroupManagersSetInstanceTemplateRequest;
 import com.google.cloud.compute.v1.InstanceGroupManagersSetTargetPoolsRequest;
 import com.google.cloud.compute.v1.ListInstanceGroupManagersHttpRequest;

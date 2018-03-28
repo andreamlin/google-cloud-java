@@ -54,6 +54,7 @@ import static com.google.cloud.compute.v1.TargetInstanceClient.ListTargetInstanc
 import com.google.cloud.compute.v1.TargetInstanceList;
 import com.google.cloud.compute.v1.TargetInstanceName;
 import com.google.cloud.compute.v1.TargetInstanceSettings;
+import com.google.cloud.compute.v1.TargetInstancesScopedList;
 import com.google.cloud.compute.v1.ZoneName;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;

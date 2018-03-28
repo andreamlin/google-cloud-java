@@ -46,6 +46,7 @@ import com.google.cloud.compute.v1.SubnetworkList;
 import com.google.cloud.compute.v1.SubnetworkName;
 import com.google.cloud.compute.v1.SubnetworkSettings;
 import com.google.cloud.compute.v1.SubnetworksExpandIpCidrRangeRequest;
+import com.google.cloud.compute.v1.SubnetworksScopedList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import java.io.IOException;

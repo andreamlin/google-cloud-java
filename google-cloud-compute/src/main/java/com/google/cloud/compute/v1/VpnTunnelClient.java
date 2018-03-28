@@ -176,7 +176,7 @@ public class VpnTunnelClient implements BackgroundResource {
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (VpnTunnel element : vpnTunnelClient.aggregatedListVpnTunnels(project).iterateAll()) {
+   *   for (VpnTunnelsScopedList element : vpnTunnelClient.aggregatedListVpnTunnels(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -202,7 +202,7 @@ public class VpnTunnelClient implements BackgroundResource {
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (VpnTunnel element : vpnTunnelClient.aggregatedListVpnTunnels(project.toString()).iterateAll()) {
+   *   for (VpnTunnelsScopedList element : vpnTunnelClient.aggregatedListVpnTunnels(project.toString()).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -231,7 +231,7 @@ public class VpnTunnelClient implements BackgroundResource {
    *   AggregatedListVpnTunnelsHttpRequest request = AggregatedListVpnTunnelsHttpRequest.newBuilder()
    *     .setProject(project.toString())
    *     .build();
-   *   for (VpnTunnel element : vpnTunnelClient.aggregatedListVpnTunnels(request).iterateAll()) {
+   *   for (VpnTunnelsScopedList element : vpnTunnelClient.aggregatedListVpnTunnels(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -259,7 +259,7 @@ public class VpnTunnelClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;AggregatedListVpnTunnelsPagedResponse&gt; future = vpnTunnelClient.aggregatedListVpnTunnelsPagedCallable().futureCall(request);
    *   // Do something
-   *   for (VpnTunnel element : future.get().iterateAll()) {
+   *   for (VpnTunnelsScopedList element : future.get().iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -283,7 +283,7 @@ public class VpnTunnelClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     VpnTunnelAggregatedList response = vpnTunnelClient.aggregatedListVpnTunnelsCallable().call(request);
-   *     for (VpnTunnel element : response.getVpnTunnelsList()) {
+   *     for (VpnTunnelsScopedList element : response.getItemsMap()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -762,12 +762,12 @@ public class VpnTunnelClient implements BackgroundResource {
   public static class AggregatedListVpnTunnelsPagedResponse extends AbstractPagedListResponse<
       AggregatedListVpnTunnelsHttpRequest,
       VpnTunnelAggregatedList,
-      VpnTunnel,
+      VpnTunnelsScopedList,
       AggregatedListVpnTunnelsPage,
       AggregatedListVpnTunnelsFixedSizeCollection> {
 
     public static ApiFuture<AggregatedListVpnTunnelsPagedResponse> createAsync(
-        PageContext<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, VpnTunnel> context,
+        PageContext<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, VpnTunnelsScopedList> context,
         ApiFuture<VpnTunnelAggregatedList> futureResponse) {
       ApiFuture<AggregatedListVpnTunnelsPage> futurePage =
           AggregatedListVpnTunnelsPage.createEmptyPage().createPageAsync(context, futureResponse);
@@ -791,11 +791,11 @@ public class VpnTunnelClient implements BackgroundResource {
   public static class AggregatedListVpnTunnelsPage extends AbstractPage<
       AggregatedListVpnTunnelsHttpRequest,
       VpnTunnelAggregatedList,
-      VpnTunnel,
+      VpnTunnelsScopedList,
       AggregatedListVpnTunnelsPage> {
 
     private AggregatedListVpnTunnelsPage(
-        PageContext<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, VpnTunnel> context,
+        PageContext<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, VpnTunnelsScopedList> context,
         VpnTunnelAggregatedList response) {
       super(context, response);
     }
@@ -806,14 +806,14 @@ public class VpnTunnelClient implements BackgroundResource {
 
     @Override
     protected AggregatedListVpnTunnelsPage createPage(
-        PageContext<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, VpnTunnel> context,
+        PageContext<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, VpnTunnelsScopedList> context,
         VpnTunnelAggregatedList response) {
       return new AggregatedListVpnTunnelsPage(context, response);
     }
 
     @Override
     public ApiFuture<AggregatedListVpnTunnelsPage> createPageAsync(
-        PageContext<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, VpnTunnel> context,
+        PageContext<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, VpnTunnelsScopedList> context,
         ApiFuture<VpnTunnelAggregatedList> futureResponse) {
       return super.createPageAsync(context, futureResponse);
     }
@@ -826,7 +826,7 @@ public class VpnTunnelClient implements BackgroundResource {
   public static class AggregatedListVpnTunnelsFixedSizeCollection extends AbstractFixedSizeCollection<
       AggregatedListVpnTunnelsHttpRequest,
       VpnTunnelAggregatedList,
-      VpnTunnel,
+      VpnTunnelsScopedList,
       AggregatedListVpnTunnelsPage,
       AggregatedListVpnTunnelsFixedSizeCollection> {
 

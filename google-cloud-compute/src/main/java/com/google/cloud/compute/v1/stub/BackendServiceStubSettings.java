@@ -49,6 +49,7 @@ import static com.google.cloud.compute.v1.BackendServiceClient.AggregatedListBac
 import static com.google.cloud.compute.v1.BackendServiceClient.ListBackendServicesPagedResponse;
 import com.google.cloud.compute.v1.BackendServiceGroupHealth;
 import com.google.cloud.compute.v1.BackendServiceList;
+import com.google.cloud.compute.v1.BackendServicesScopedList;
 import com.google.cloud.compute.v1.DeleteBackendServiceHttpRequest;
 import com.google.cloud.compute.v1.GetBackendServiceHttpRequest;
 import com.google.cloud.compute.v1.GetHealthBackendServiceHttpRequest;
@@ -277,8 +278,8 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
     updateBackendServiceSettings = settingsBuilder.updateBackendServiceSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendService> AGGREGATED_LIST_BACKEND_SERVICES_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendService>() {
+  private static final PagedListDescriptor<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendServicesScopedList> AGGREGATED_LIST_BACKEND_SERVICES_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendServicesScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -306,8 +307,8 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<BackendService> extractResources(BackendServiceAggregatedList payload) {
-          return payload.getItems().getBackendServicesList();
+        public Iterable<BackendServicesScopedList> extractResources(BackendServiceAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -353,7 +354,7 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
             AggregatedListBackendServicesHttpRequest request,
             ApiCallContext context,
             ApiFuture<BackendServiceAggregatedList> futureResponse) {
-          PageContext<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendService> pageContext =
+          PageContext<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendServicesScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_BACKEND_SERVICES_PAGE_STR_DESC, request, context);
           return AggregatedListBackendServicesPagedResponse.createAsync(pageContext, futureResponse);
         }

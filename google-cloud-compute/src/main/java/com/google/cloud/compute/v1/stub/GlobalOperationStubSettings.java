@@ -51,6 +51,7 @@ import com.google.cloud.compute.v1.ListGlobalOperationsHttpRequest;
 import com.google.cloud.compute.v1.Operation;
 import com.google.cloud.compute.v1.OperationAggregatedList;
 import com.google.cloud.compute.v1.OperationList;
+import com.google.cloud.compute.v1.OperationsScopedList;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -235,8 +236,8 @@ public class GlobalOperationStubSettings extends StubSettings<GlobalOperationStu
     listGlobalOperationsSettings = settingsBuilder.listGlobalOperationsSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, Operation> AGGREGATED_LIST_GLOBAL_OPERATIONS_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, Operation>() {
+  private static final PagedListDescriptor<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, OperationsScopedList> AGGREGATED_LIST_GLOBAL_OPERATIONS_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, OperationsScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -264,8 +265,8 @@ public class GlobalOperationStubSettings extends StubSettings<GlobalOperationStu
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<Operation> extractResources(OperationAggregatedList payload) {
-          return payload.getItems().getOperationsList();
+        public Iterable<OperationsScopedList> extractResources(OperationAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -311,7 +312,7 @@ public class GlobalOperationStubSettings extends StubSettings<GlobalOperationStu
             AggregatedListGlobalOperationsHttpRequest request,
             ApiCallContext context,
             ApiFuture<OperationAggregatedList> futureResponse) {
-          PageContext<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, Operation> pageContext =
+          PageContext<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList, OperationsScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_GLOBAL_OPERATIONS_PAGE_STR_DESC, request, context);
           return AggregatedListGlobalOperationsPagedResponse.createAsync(pageContext, futureResponse);
         }

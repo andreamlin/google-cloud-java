@@ -282,7 +282,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (InstanceGroupManager element : instanceGroupManagerClient.aggregatedListInstanceGroupManagers(project).iterateAll()) {
+   *   for (InstanceGroupManagersScopedList element : instanceGroupManagerClient.aggregatedListInstanceGroupManagers(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -308,7 +308,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (InstanceGroupManager element : instanceGroupManagerClient.aggregatedListInstanceGroupManagers(project.toString()).iterateAll()) {
+   *   for (InstanceGroupManagersScopedList element : instanceGroupManagerClient.aggregatedListInstanceGroupManagers(project.toString()).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -337,7 +337,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *   AggregatedListInstanceGroupManagersHttpRequest request = AggregatedListInstanceGroupManagersHttpRequest.newBuilder()
    *     .setProject(project.toString())
    *     .build();
-   *   for (InstanceGroupManager element : instanceGroupManagerClient.aggregatedListInstanceGroupManagers(request).iterateAll()) {
+   *   for (InstanceGroupManagersScopedList element : instanceGroupManagerClient.aggregatedListInstanceGroupManagers(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -365,7 +365,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;AggregatedListInstanceGroupManagersPagedResponse&gt; future = instanceGroupManagerClient.aggregatedListInstanceGroupManagersPagedCallable().futureCall(request);
    *   // Do something
-   *   for (InstanceGroupManager element : future.get().iterateAll()) {
+   *   for (InstanceGroupManagersScopedList element : future.get().iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -389,7 +389,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     InstanceGroupManagerAggregatedList response = instanceGroupManagerClient.aggregatedListInstanceGroupManagersCallable().call(request);
-   *     for (InstanceGroupManager element : response.getInstanceGroupManagersList()) {
+   *     for (InstanceGroupManagersScopedList element : response.getItemsMap()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -1488,12 +1488,12 @@ public class InstanceGroupManagerClient implements BackgroundResource {
   public static class AggregatedListInstanceGroupManagersPagedResponse extends AbstractPagedListResponse<
       AggregatedListInstanceGroupManagersHttpRequest,
       InstanceGroupManagerAggregatedList,
-      InstanceGroupManager,
+      InstanceGroupManagersScopedList,
       AggregatedListInstanceGroupManagersPage,
       AggregatedListInstanceGroupManagersFixedSizeCollection> {
 
     public static ApiFuture<AggregatedListInstanceGroupManagersPagedResponse> createAsync(
-        PageContext<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, InstanceGroupManager> context,
+        PageContext<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, InstanceGroupManagersScopedList> context,
         ApiFuture<InstanceGroupManagerAggregatedList> futureResponse) {
       ApiFuture<AggregatedListInstanceGroupManagersPage> futurePage =
           AggregatedListInstanceGroupManagersPage.createEmptyPage().createPageAsync(context, futureResponse);
@@ -1517,11 +1517,11 @@ public class InstanceGroupManagerClient implements BackgroundResource {
   public static class AggregatedListInstanceGroupManagersPage extends AbstractPage<
       AggregatedListInstanceGroupManagersHttpRequest,
       InstanceGroupManagerAggregatedList,
-      InstanceGroupManager,
+      InstanceGroupManagersScopedList,
       AggregatedListInstanceGroupManagersPage> {
 
     private AggregatedListInstanceGroupManagersPage(
-        PageContext<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, InstanceGroupManager> context,
+        PageContext<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, InstanceGroupManagersScopedList> context,
         InstanceGroupManagerAggregatedList response) {
       super(context, response);
     }
@@ -1532,14 +1532,14 @@ public class InstanceGroupManagerClient implements BackgroundResource {
 
     @Override
     protected AggregatedListInstanceGroupManagersPage createPage(
-        PageContext<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, InstanceGroupManager> context,
+        PageContext<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, InstanceGroupManagersScopedList> context,
         InstanceGroupManagerAggregatedList response) {
       return new AggregatedListInstanceGroupManagersPage(context, response);
     }
 
     @Override
     public ApiFuture<AggregatedListInstanceGroupManagersPage> createPageAsync(
-        PageContext<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, InstanceGroupManager> context,
+        PageContext<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, InstanceGroupManagersScopedList> context,
         ApiFuture<InstanceGroupManagerAggregatedList> futureResponse) {
       return super.createPageAsync(context, futureResponse);
     }
@@ -1552,7 +1552,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
   public static class AggregatedListInstanceGroupManagersFixedSizeCollection extends AbstractFixedSizeCollection<
       AggregatedListInstanceGroupManagersHttpRequest,
       InstanceGroupManagerAggregatedList,
-      InstanceGroupManager,
+      InstanceGroupManagersScopedList,
       AggregatedListInstanceGroupManagersPage,
       AggregatedListInstanceGroupManagersFixedSizeCollection> {
 

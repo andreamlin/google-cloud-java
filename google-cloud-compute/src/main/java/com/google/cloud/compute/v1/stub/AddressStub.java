@@ -24,6 +24,7 @@ import static com.google.cloud.compute.v1.AddressClient.AggregatedListAddressesP
 import static com.google.cloud.compute.v1.AddressClient.ListAddressesPagedResponse;
 import com.google.cloud.compute.v1.AddressList;
 import com.google.cloud.compute.v1.AddressName;
+import com.google.cloud.compute.v1.AddressesScopedList;
 import com.google.cloud.compute.v1.AggregatedListAddressesHttpRequest;
 import com.google.cloud.compute.v1.DeleteAddressHttpRequest;
 import com.google.cloud.compute.v1.GetAddressHttpRequest;

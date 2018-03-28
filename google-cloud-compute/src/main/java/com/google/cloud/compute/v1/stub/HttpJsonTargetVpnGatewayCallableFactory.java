@@ -55,6 +55,7 @@ import static com.google.cloud.compute.v1.TargetVpnGatewayClient.ListTargetVpnGa
 import com.google.cloud.compute.v1.TargetVpnGatewayList;
 import com.google.cloud.compute.v1.TargetVpnGatewayName;
 import com.google.cloud.compute.v1.TargetVpnGatewaySettings;
+import com.google.cloud.compute.v1.TargetVpnGatewaysScopedList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import java.io.IOException;

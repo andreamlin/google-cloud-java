@@ -31,6 +31,7 @@ import static com.google.cloud.compute.v1.TargetInstanceClient.AggregatedListTar
 import static com.google.cloud.compute.v1.TargetInstanceClient.ListTargetInstancesPagedResponse;
 import com.google.cloud.compute.v1.TargetInstanceList;
 import com.google.cloud.compute.v1.TargetInstanceName;
+import com.google.cloud.compute.v1.TargetInstancesScopedList;
 import com.google.cloud.compute.v1.ZoneName;
 import javax.annotation.Generated;
 

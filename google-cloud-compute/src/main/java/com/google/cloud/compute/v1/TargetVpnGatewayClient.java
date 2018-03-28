@@ -176,7 +176,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (TargetVpnGateway element : targetVpnGatewayClient.aggregatedListTargetVpnGateways(project).iterateAll()) {
+   *   for (TargetVpnGatewaysScopedList element : targetVpnGatewayClient.aggregatedListTargetVpnGateways(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -202,7 +202,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (TargetVpnGateway element : targetVpnGatewayClient.aggregatedListTargetVpnGateways(project.toString()).iterateAll()) {
+   *   for (TargetVpnGatewaysScopedList element : targetVpnGatewayClient.aggregatedListTargetVpnGateways(project.toString()).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -231,7 +231,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *   AggregatedListTargetVpnGatewaysHttpRequest request = AggregatedListTargetVpnGatewaysHttpRequest.newBuilder()
    *     .setProject(project.toString())
    *     .build();
-   *   for (TargetVpnGateway element : targetVpnGatewayClient.aggregatedListTargetVpnGateways(request).iterateAll()) {
+   *   for (TargetVpnGatewaysScopedList element : targetVpnGatewayClient.aggregatedListTargetVpnGateways(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -259,7 +259,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;AggregatedListTargetVpnGatewaysPagedResponse&gt; future = targetVpnGatewayClient.aggregatedListTargetVpnGatewaysPagedCallable().futureCall(request);
    *   // Do something
-   *   for (TargetVpnGateway element : future.get().iterateAll()) {
+   *   for (TargetVpnGatewaysScopedList element : future.get().iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -283,7 +283,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     TargetVpnGatewayAggregatedList response = targetVpnGatewayClient.aggregatedListTargetVpnGatewaysCallable().call(request);
-   *     for (TargetVpnGateway element : response.getTargetVpnGatewaysList()) {
+   *     for (TargetVpnGatewaysScopedList element : response.getItemsMap()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -762,12 +762,12 @@ public class TargetVpnGatewayClient implements BackgroundResource {
   public static class AggregatedListTargetVpnGatewaysPagedResponse extends AbstractPagedListResponse<
       AggregatedListTargetVpnGatewaysHttpRequest,
       TargetVpnGatewayAggregatedList,
-      TargetVpnGateway,
+      TargetVpnGatewaysScopedList,
       AggregatedListTargetVpnGatewaysPage,
       AggregatedListTargetVpnGatewaysFixedSizeCollection> {
 
     public static ApiFuture<AggregatedListTargetVpnGatewaysPagedResponse> createAsync(
-        PageContext<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGateway> context,
+        PageContext<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGatewaysScopedList> context,
         ApiFuture<TargetVpnGatewayAggregatedList> futureResponse) {
       ApiFuture<AggregatedListTargetVpnGatewaysPage> futurePage =
           AggregatedListTargetVpnGatewaysPage.createEmptyPage().createPageAsync(context, futureResponse);
@@ -791,11 +791,11 @@ public class TargetVpnGatewayClient implements BackgroundResource {
   public static class AggregatedListTargetVpnGatewaysPage extends AbstractPage<
       AggregatedListTargetVpnGatewaysHttpRequest,
       TargetVpnGatewayAggregatedList,
-      TargetVpnGateway,
+      TargetVpnGatewaysScopedList,
       AggregatedListTargetVpnGatewaysPage> {
 
     private AggregatedListTargetVpnGatewaysPage(
-        PageContext<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGateway> context,
+        PageContext<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGatewaysScopedList> context,
         TargetVpnGatewayAggregatedList response) {
       super(context, response);
     }
@@ -806,14 +806,14 @@ public class TargetVpnGatewayClient implements BackgroundResource {
 
     @Override
     protected AggregatedListTargetVpnGatewaysPage createPage(
-        PageContext<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGateway> context,
+        PageContext<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGatewaysScopedList> context,
         TargetVpnGatewayAggregatedList response) {
       return new AggregatedListTargetVpnGatewaysPage(context, response);
     }
 
     @Override
     public ApiFuture<AggregatedListTargetVpnGatewaysPage> createPageAsync(
-        PageContext<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGateway> context,
+        PageContext<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList, TargetVpnGatewaysScopedList> context,
         ApiFuture<TargetVpnGatewayAggregatedList> futureResponse) {
       return super.createPageAsync(context, futureResponse);
     }
@@ -826,7 +826,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
   public static class AggregatedListTargetVpnGatewaysFixedSizeCollection extends AbstractFixedSizeCollection<
       AggregatedListTargetVpnGatewaysHttpRequest,
       TargetVpnGatewayAggregatedList,
-      TargetVpnGateway,
+      TargetVpnGatewaysScopedList,
       AggregatedListTargetVpnGatewaysPage,
       AggregatedListTargetVpnGatewaysFixedSizeCollection> {
 

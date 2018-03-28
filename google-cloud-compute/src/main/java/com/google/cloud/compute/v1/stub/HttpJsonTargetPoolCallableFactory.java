@@ -67,6 +67,7 @@ import com.google.cloud.compute.v1.TargetPoolsAddHealthCheckRequest;
 import com.google.cloud.compute.v1.TargetPoolsAddInstanceRequest;
 import com.google.cloud.compute.v1.TargetPoolsRemoveHealthCheckRequest;
 import com.google.cloud.compute.v1.TargetPoolsRemoveInstanceRequest;
+import com.google.cloud.compute.v1.TargetPoolsScopedList;
 import com.google.cloud.compute.v1.TargetReference;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;

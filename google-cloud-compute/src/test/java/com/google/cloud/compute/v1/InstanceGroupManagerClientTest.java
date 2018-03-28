@@ -43,7 +43,9 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -154,7 +156,7 @@ public class InstanceGroupManagerClientTest {
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -184,17 +186,15 @@ public class InstanceGroupManagerClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    InstanceGroupManager instanceGroupManagersElement = InstanceGroupManager.newBuilder().build();
-    List<InstanceGroupManager> instanceGroupManagers = Arrays.asList(instanceGroupManagersElement);
-    InstanceGroupManagersScopedList items = InstanceGroupManagersScopedList.newBuilder()
-      .addAllInstanceGroupManagers(instanceGroupManagers)
-      .build();
+    InstanceGroupManagersScopedList itemsItem = InstanceGroupManagersScopedList.newBuilder().build();
+    Map<String, InstanceGroupManagersScopedList> items = new HashMap<>();
+    items.put("items", itemsItem);
     InstanceGroupManagerAggregatedList expectedResponse = InstanceGroupManagerAggregatedList.newBuilder()
       .setKind(kind)
       .setNextPageToken(nextPageToken)
       .setId(id)
       .setSelfLink(selfLink)
-      .setItems(items)
+      .putAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
 
@@ -202,14 +202,15 @@ public class InstanceGroupManagerClientTest {
 
     AggregatedListInstanceGroupManagersPagedResponse pagedListResponse = client.aggregatedListInstanceGroupManagers(project);
 
-    List<InstanceGroupManager> resources = Lists.newArrayList(pagedListResponse.iterateAll());
+    List<InstanceGroupManagersScopedList> resources = Lists.newArrayList(pagedListResponse.iterateAll());
     Assert.assertEquals(1, resources.size());
-    Assert.assertEquals(expectedResponse.getItems().getInstanceGroupManagersList().get(0), resources.get(0));
+    Assert.assertEquals(expectedResponse.getItemsMap().values().iterator().next(),
+        resources.get(0));
 
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -289,7 +290,7 @@ public class InstanceGroupManagerClientTest {
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -370,7 +371,7 @@ public class InstanceGroupManagerClientTest {
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -435,7 +436,7 @@ public class InstanceGroupManagerClientTest {
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -516,7 +517,7 @@ public class InstanceGroupManagerClientTest {
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -563,12 +564,13 @@ public class InstanceGroupManagerClientTest {
 
     List<InstanceGroupManager> resources = Lists.newArrayList(pagedListResponse.iterateAll());
     Assert.assertEquals(1, resources.size());
-    Assert.assertEquals(expectedResponse.getItemsList().get(0), resources.get(0));
+    Assert.assertEquals(expectedResponse.getItemsList().get(0),
+        resources.get(0));
 
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -605,7 +607,7 @@ public class InstanceGroupManagerClientTest {
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -686,7 +688,7 @@ public class InstanceGroupManagerClientTest {
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -768,7 +770,7 @@ public class InstanceGroupManagerClientTest {
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -850,7 +852,7 @@ public class InstanceGroupManagerClientTest {
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -932,7 +934,7 @@ public class InstanceGroupManagerClientTest {
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());

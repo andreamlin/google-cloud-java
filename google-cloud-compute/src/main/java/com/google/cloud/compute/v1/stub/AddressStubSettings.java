@@ -47,6 +47,7 @@ import com.google.cloud.compute.v1.AddressAggregatedList;
 import static com.google.cloud.compute.v1.AddressClient.AggregatedListAddressesPagedResponse;
 import static com.google.cloud.compute.v1.AddressClient.ListAddressesPagedResponse;
 import com.google.cloud.compute.v1.AddressList;
+import com.google.cloud.compute.v1.AddressesScopedList;
 import com.google.cloud.compute.v1.AggregatedListAddressesHttpRequest;
 import com.google.cloud.compute.v1.DeleteAddressHttpRequest;
 import com.google.cloud.compute.v1.GetAddressHttpRequest;
@@ -246,8 +247,8 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
     listAddressesSettings = settingsBuilder.listAddressesSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address> AGGREGATED_LIST_ADDRESSES_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address>() {
+  private static final PagedListDescriptor<AggregatedListAddressesHttpRequest, AddressAggregatedList, AddressesScopedList> AGGREGATED_LIST_ADDRESSES_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListAddressesHttpRequest, AddressAggregatedList, AddressesScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -275,8 +276,8 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<Address> extractResources(AddressAggregatedList payload) {
-          return payload.getItems().getAddressesList();
+        public Iterable<AddressesScopedList> extractResources(AddressAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -322,7 +323,7 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
             AggregatedListAddressesHttpRequest request,
             ApiCallContext context,
             ApiFuture<AddressAggregatedList> futureResponse) {
-          PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address> pageContext =
+          PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, AddressesScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_ADDRESSES_PAGE_STR_DESC, request, context);
           return AggregatedListAddressesPagedResponse.createAsync(pageContext, futureResponse);
         }

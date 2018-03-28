@@ -34,6 +34,7 @@ import com.google.cloud.compute.v1.InstanceGroupsAddInstancesRequest;
 import com.google.cloud.compute.v1.InstanceGroupsListInstances;
 import com.google.cloud.compute.v1.InstanceGroupsListInstancesRequest;
 import com.google.cloud.compute.v1.InstanceGroupsRemoveInstancesRequest;
+import com.google.cloud.compute.v1.InstanceGroupsScopedList;
 import com.google.cloud.compute.v1.InstanceGroupsSetNamedPortsRequest;
 import com.google.cloud.compute.v1.InstanceWithNamedPorts;
 import com.google.cloud.compute.v1.ListInstanceGroupsHttpRequest;

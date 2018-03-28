@@ -48,6 +48,7 @@ import static com.google.cloud.compute.v1.DiskTypeClient.ListDiskTypesPagedRespo
 import com.google.cloud.compute.v1.DiskTypeList;
 import com.google.cloud.compute.v1.DiskTypeName;
 import com.google.cloud.compute.v1.DiskTypeSettings;
+import com.google.cloud.compute.v1.DiskTypesScopedList;
 import com.google.cloud.compute.v1.GetDiskTypeHttpRequest;
 import com.google.cloud.compute.v1.ListDiskTypesHttpRequest;
 import com.google.cloud.compute.v1.ProjectName;

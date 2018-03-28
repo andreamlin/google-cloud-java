@@ -50,6 +50,7 @@ import com.google.cloud.compute.v1.DiskAggregatedList;
 import static com.google.cloud.compute.v1.DiskClient.AggregatedListDisksPagedResponse;
 import static com.google.cloud.compute.v1.DiskClient.ListDisksPagedResponse;
 import com.google.cloud.compute.v1.DiskList;
+import com.google.cloud.compute.v1.DisksScopedList;
 import com.google.cloud.compute.v1.GetDiskHttpRequest;
 import com.google.cloud.compute.v1.InsertDiskHttpRequest;
 import com.google.cloud.compute.v1.ListDisksHttpRequest;
@@ -266,8 +267,8 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
     resizeDiskSettings = settingsBuilder.resizeDiskSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListDisksHttpRequest, DiskAggregatedList, Disk> AGGREGATED_LIST_DISKS_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListDisksHttpRequest, DiskAggregatedList, Disk>() {
+  private static final PagedListDescriptor<AggregatedListDisksHttpRequest, DiskAggregatedList, DisksScopedList> AGGREGATED_LIST_DISKS_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListDisksHttpRequest, DiskAggregatedList, DisksScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -295,8 +296,8 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<Disk> extractResources(DiskAggregatedList payload) {
-          return payload.getItems().getDisksList();
+        public Iterable<DisksScopedList> extractResources(DiskAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -342,7 +343,7 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
             AggregatedListDisksHttpRequest request,
             ApiCallContext context,
             ApiFuture<DiskAggregatedList> futureResponse) {
-          PageContext<AggregatedListDisksHttpRequest, DiskAggregatedList, Disk> pageContext =
+          PageContext<AggregatedListDisksHttpRequest, DiskAggregatedList, DisksScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_DISKS_PAGE_STR_DESC, request, context);
           return AggregatedListDisksPagedResponse.createAsync(pageContext, futureResponse);
         }

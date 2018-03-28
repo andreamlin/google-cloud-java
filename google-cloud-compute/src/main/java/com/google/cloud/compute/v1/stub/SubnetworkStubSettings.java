@@ -54,6 +54,7 @@ import com.google.cloud.compute.v1.SubnetworkAggregatedList;
 import static com.google.cloud.compute.v1.SubnetworkClient.AggregatedListSubnetworksPagedResponse;
 import static com.google.cloud.compute.v1.SubnetworkClient.ListSubnetworksPagedResponse;
 import com.google.cloud.compute.v1.SubnetworkList;
+import com.google.cloud.compute.v1.SubnetworksScopedList;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -256,8 +257,8 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
     listSubnetworksSettings = settingsBuilder.listSubnetworksSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, Subnetwork> AGGREGATED_LIST_SUBNETWORKS_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, Subnetwork>() {
+  private static final PagedListDescriptor<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, SubnetworksScopedList> AGGREGATED_LIST_SUBNETWORKS_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, SubnetworksScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -285,8 +286,8 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<Subnetwork> extractResources(SubnetworkAggregatedList payload) {
-          return payload.getItems().getSubnetworksList();
+        public Iterable<SubnetworksScopedList> extractResources(SubnetworkAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -332,7 +333,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
             AggregatedListSubnetworksHttpRequest request,
             ApiCallContext context,
             ApiFuture<SubnetworkAggregatedList> futureResponse) {
-          PageContext<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, Subnetwork> pageContext =
+          PageContext<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, SubnetworksScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_SUBNETWORKS_PAGE_STR_DESC, request, context);
           return AggregatedListSubnetworksPagedResponse.createAsync(pageContext, futureResponse);
         }

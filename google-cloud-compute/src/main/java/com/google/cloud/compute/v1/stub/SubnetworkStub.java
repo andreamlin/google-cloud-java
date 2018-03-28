@@ -34,6 +34,7 @@ import static com.google.cloud.compute.v1.SubnetworkClient.ListSubnetworksPagedR
 import com.google.cloud.compute.v1.SubnetworkList;
 import com.google.cloud.compute.v1.SubnetworkName;
 import com.google.cloud.compute.v1.SubnetworksExpandIpCidrRangeRequest;
+import com.google.cloud.compute.v1.SubnetworksScopedList;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

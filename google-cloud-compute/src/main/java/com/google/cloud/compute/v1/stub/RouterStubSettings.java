@@ -58,6 +58,7 @@ import static com.google.cloud.compute.v1.RouterClient.ListRoutersPagedResponse;
 import com.google.cloud.compute.v1.RouterList;
 import com.google.cloud.compute.v1.RouterStatusResponse;
 import com.google.cloud.compute.v1.RoutersPreviewResponse;
+import com.google.cloud.compute.v1.RoutersScopedList;
 import com.google.cloud.compute.v1.UpdateRouterHttpRequest;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -288,8 +289,8 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
     updateRouterSettings = settingsBuilder.updateRouterSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListRoutersHttpRequest, RouterAggregatedList, Router> AGGREGATED_LIST_ROUTERS_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListRoutersHttpRequest, RouterAggregatedList, Router>() {
+  private static final PagedListDescriptor<AggregatedListRoutersHttpRequest, RouterAggregatedList, RoutersScopedList> AGGREGATED_LIST_ROUTERS_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListRoutersHttpRequest, RouterAggregatedList, RoutersScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -317,8 +318,8 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<Router> extractResources(RouterAggregatedList payload) {
-          return payload.getItems().getRoutersList();
+        public Iterable<RoutersScopedList> extractResources(RouterAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -364,7 +365,7 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
             AggregatedListRoutersHttpRequest request,
             ApiCallContext context,
             ApiFuture<RouterAggregatedList> futureResponse) {
-          PageContext<AggregatedListRoutersHttpRequest, RouterAggregatedList, Router> pageContext =
+          PageContext<AggregatedListRoutersHttpRequest, RouterAggregatedList, RoutersScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_ROUTERS_PAGE_STR_DESC, request, context);
           return AggregatedListRoutersPagedResponse.createAsync(pageContext, futureResponse);
         }

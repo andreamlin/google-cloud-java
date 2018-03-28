@@ -49,6 +49,7 @@ import static com.google.cloud.compute.v1.ForwardingRuleClient.ListForwardingRul
 import com.google.cloud.compute.v1.ForwardingRuleList;
 import com.google.cloud.compute.v1.ForwardingRuleName;
 import com.google.cloud.compute.v1.ForwardingRuleSettings;
+import com.google.cloud.compute.v1.ForwardingRulesScopedList;
 import com.google.cloud.compute.v1.GetForwardingRuleHttpRequest;
 import com.google.cloud.compute.v1.InsertForwardingRuleHttpRequest;
 import com.google.cloud.compute.v1.ListForwardingRulesHttpRequest;

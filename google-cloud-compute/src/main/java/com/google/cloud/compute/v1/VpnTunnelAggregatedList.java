@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
 @BetaApi
 public final class VpnTunnelAggregatedList implements ApiMessage {
   private final String id;
-  private final VpnTunnelsScopedList items;
+  private final Map<String, VpnTunnelsScopedList> items;
   private final String kind;
   private final String nextPageToken;
   private final String selfLink;
@@ -49,7 +49,7 @@ public final class VpnTunnelAggregatedList implements ApiMessage {
 
   private VpnTunnelAggregatedList(
       String id,
-      VpnTunnelsScopedList items,
+      Map<String, VpnTunnelsScopedList> items,
       String kind,
       String nextPageToken,
       String selfLink
@@ -112,7 +112,7 @@ public final class VpnTunnelAggregatedList implements ApiMessage {
     return id;
   }
 
-  public VpnTunnelsScopedList getItems() {
+  public Map<String, VpnTunnelsScopedList> getItemsMap() {
     return items;
   }
 
@@ -150,7 +150,7 @@ public final class VpnTunnelAggregatedList implements ApiMessage {
 
   public static class Builder {
     private String id;
-    private VpnTunnelsScopedList items;
+    private Map<String, VpnTunnelsScopedList> items;
     private String kind;
     private String nextPageToken;
     private String selfLink;
@@ -162,7 +162,7 @@ public final class VpnTunnelAggregatedList implements ApiMessage {
       if (other.getId() != null) {
         this.id = other.id;
       }
-      if (other.getItems() != null) {
+      if (other.getItemsMap() != null) {
         this.items = other.items;
       }
       if (other.getKind() != null) {
@@ -194,11 +194,11 @@ public final class VpnTunnelAggregatedList implements ApiMessage {
       return this;
     }
 
-    public VpnTunnelsScopedList getItems() {
+    public Map<String, VpnTunnelsScopedList> getItemsMap() {
       return items;
     }
 
-    public Builder setItems(VpnTunnelsScopedList items) {
+    public Builder putAllItems(Map<String, VpnTunnelsScopedList> items) {
       this.items = items;
       return this;
     }
@@ -248,7 +248,7 @@ public final class VpnTunnelAggregatedList implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setId(this.id);
-      newBuilder.setItems(this.items);
+      newBuilder.putAllItems(this.items);
       newBuilder.setKind(this.kind);
       newBuilder.setNextPageToken(this.nextPageToken);
       newBuilder.setSelfLink(this.selfLink);
@@ -276,7 +276,7 @@ public final class VpnTunnelAggregatedList implements ApiMessage {
       VpnTunnelAggregatedList that = (VpnTunnelAggregatedList) o;
       return
           Objects.equals(this.id, that.getId()) &&
-          Objects.equals(this.items, that.getItems()) &&
+          Objects.equals(this.items, that.getItemsMap()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.nextPageToken, that.getNextPageToken()) &&
           Objects.equals(this.selfLink, that.getSelfLink())

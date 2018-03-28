@@ -57,9 +57,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
@@ -229,8 +226,8 @@ public class DiskTypeStubSettings extends StubSettings<DiskTypeStubSettings> {
     listDiskTypesSettings = settingsBuilder.listDiskTypesSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList, DiskType> AGGREGATED_LIST_DISK_TYPES_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList, DiskType>() {
+  private static final PagedListDescriptor<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList, DiskTypesScopedList> AGGREGATED_LIST_DISK_TYPES_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList, DiskTypesScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -258,13 +255,8 @@ public class DiskTypeStubSettings extends StubSettings<DiskTypeStubSettings> {
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<DiskType> extractResources(DiskTypeAggregatedList payload) {
-          Collection<DiskType> diskTypes = new LinkedList<>();
-          Iterator<DiskTypesScopedList> iterator = payload.getItems().values().iterator();
-          while(iterator.hasNext()) {
-            diskTypes.addAll(iterator.next().getDiskTypesList());
-          }
-          return diskTypes;
+        public Iterable<DiskTypesScopedList> extractResources(DiskTypeAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -310,7 +302,7 @@ public class DiskTypeStubSettings extends StubSettings<DiskTypeStubSettings> {
             AggregatedListDiskTypesHttpRequest request,
             ApiCallContext context,
             ApiFuture<DiskTypeAggregatedList> futureResponse) {
-          PageContext<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList, DiskType> pageContext =
+          PageContext<AggregatedListDiskTypesHttpRequest, DiskTypeAggregatedList, DiskTypesScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_DISK_TYPES_PAGE_STR_DESC, request, context);
           return AggregatedListDiskTypesPagedResponse.createAsync(pageContext, futureResponse);
         }

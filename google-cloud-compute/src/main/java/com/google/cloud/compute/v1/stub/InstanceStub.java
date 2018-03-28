@@ -35,6 +35,7 @@ import static com.google.cloud.compute.v1.InstanceClient.AggregatedListInstances
 import static com.google.cloud.compute.v1.InstanceClient.ListInstancesPagedResponse;
 import com.google.cloud.compute.v1.InstanceList;
 import com.google.cloud.compute.v1.InstanceName;
+import com.google.cloud.compute.v1.InstancesScopedList;
 import com.google.cloud.compute.v1.InstancesSetMachineTypeRequest;
 import com.google.cloud.compute.v1.InstancesSetServiceAccountRequest;
 import com.google.cloud.compute.v1.InstancesStartWithEncryptionKeyRequest;

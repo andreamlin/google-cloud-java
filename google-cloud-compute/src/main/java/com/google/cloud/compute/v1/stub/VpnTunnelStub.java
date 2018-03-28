@@ -32,6 +32,7 @@ import static com.google.cloud.compute.v1.VpnTunnelClient.AggregatedListVpnTunne
 import static com.google.cloud.compute.v1.VpnTunnelClient.ListVpnTunnelsPagedResponse;
 import com.google.cloud.compute.v1.VpnTunnelList;
 import com.google.cloud.compute.v1.VpnTunnelName;
+import com.google.cloud.compute.v1.VpnTunnelsScopedList;
 import javax.annotation.Generated;
 
 // AUTO-GENERATED DOCUMENTATION AND CLASS

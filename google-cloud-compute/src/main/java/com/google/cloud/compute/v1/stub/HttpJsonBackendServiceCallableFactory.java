@@ -49,6 +49,7 @@ import com.google.cloud.compute.v1.BackendServiceGroupHealth;
 import com.google.cloud.compute.v1.BackendServiceList;
 import com.google.cloud.compute.v1.BackendServiceName;
 import com.google.cloud.compute.v1.BackendServiceSettings;
+import com.google.cloud.compute.v1.BackendServicesScopedList;
 import com.google.cloud.compute.v1.DeleteBackendServiceHttpRequest;
 import com.google.cloud.compute.v1.GetBackendServiceHttpRequest;
 import com.google.cloud.compute.v1.GetHealthBackendServiceHttpRequest;

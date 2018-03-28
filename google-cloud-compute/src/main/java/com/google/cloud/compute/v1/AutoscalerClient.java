@@ -176,7 +176,7 @@ public class AutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (Autoscaler element : autoscalerClient.aggregatedListAutoscalers(project).iterateAll()) {
+   *   for (AutoscalersScopedList element : autoscalerClient.aggregatedListAutoscalers(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -202,7 +202,7 @@ public class AutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (Autoscaler element : autoscalerClient.aggregatedListAutoscalers(project.toString()).iterateAll()) {
+   *   for (AutoscalersScopedList element : autoscalerClient.aggregatedListAutoscalers(project.toString()).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -231,7 +231,7 @@ public class AutoscalerClient implements BackgroundResource {
    *   AggregatedListAutoscalersHttpRequest request = AggregatedListAutoscalersHttpRequest.newBuilder()
    *     .setProject(project.toString())
    *     .build();
-   *   for (Autoscaler element : autoscalerClient.aggregatedListAutoscalers(request).iterateAll()) {
+   *   for (AutoscalersScopedList element : autoscalerClient.aggregatedListAutoscalers(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -259,7 +259,7 @@ public class AutoscalerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;AggregatedListAutoscalersPagedResponse&gt; future = autoscalerClient.aggregatedListAutoscalersPagedCallable().futureCall(request);
    *   // Do something
-   *   for (Autoscaler element : future.get().iterateAll()) {
+   *   for (AutoscalersScopedList element : future.get().iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -283,7 +283,7 @@ public class AutoscalerClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     AutoscalerAggregatedList response = autoscalerClient.aggregatedListAutoscalersCallable().call(request);
-   *     for (Autoscaler element : response.getAutoscalersList()) {
+   *     for (AutoscalersScopedList element : response.getItemsMap()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -992,12 +992,12 @@ public class AutoscalerClient implements BackgroundResource {
   public static class AggregatedListAutoscalersPagedResponse extends AbstractPagedListResponse<
       AggregatedListAutoscalersHttpRequest,
       AutoscalerAggregatedList,
-      Autoscaler,
+      AutoscalersScopedList,
       AggregatedListAutoscalersPage,
       AggregatedListAutoscalersFixedSizeCollection> {
 
     public static ApiFuture<AggregatedListAutoscalersPagedResponse> createAsync(
-        PageContext<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, Autoscaler> context,
+        PageContext<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, AutoscalersScopedList> context,
         ApiFuture<AutoscalerAggregatedList> futureResponse) {
       ApiFuture<AggregatedListAutoscalersPage> futurePage =
           AggregatedListAutoscalersPage.createEmptyPage().createPageAsync(context, futureResponse);
@@ -1021,11 +1021,11 @@ public class AutoscalerClient implements BackgroundResource {
   public static class AggregatedListAutoscalersPage extends AbstractPage<
       AggregatedListAutoscalersHttpRequest,
       AutoscalerAggregatedList,
-      Autoscaler,
+      AutoscalersScopedList,
       AggregatedListAutoscalersPage> {
 
     private AggregatedListAutoscalersPage(
-        PageContext<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, Autoscaler> context,
+        PageContext<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, AutoscalersScopedList> context,
         AutoscalerAggregatedList response) {
       super(context, response);
     }
@@ -1036,14 +1036,14 @@ public class AutoscalerClient implements BackgroundResource {
 
     @Override
     protected AggregatedListAutoscalersPage createPage(
-        PageContext<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, Autoscaler> context,
+        PageContext<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, AutoscalersScopedList> context,
         AutoscalerAggregatedList response) {
       return new AggregatedListAutoscalersPage(context, response);
     }
 
     @Override
     public ApiFuture<AggregatedListAutoscalersPage> createPageAsync(
-        PageContext<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, Autoscaler> context,
+        PageContext<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, AutoscalersScopedList> context,
         ApiFuture<AutoscalerAggregatedList> futureResponse) {
       return super.createPageAsync(context, futureResponse);
     }
@@ -1056,7 +1056,7 @@ public class AutoscalerClient implements BackgroundResource {
   public static class AggregatedListAutoscalersFixedSizeCollection extends AbstractFixedSizeCollection<
       AggregatedListAutoscalersHttpRequest,
       AutoscalerAggregatedList,
-      Autoscaler,
+      AutoscalersScopedList,
       AggregatedListAutoscalersPage,
       AggregatedListAutoscalersFixedSizeCollection> {
 

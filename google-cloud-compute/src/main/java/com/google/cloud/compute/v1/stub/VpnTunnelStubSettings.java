@@ -53,6 +53,7 @@ import com.google.cloud.compute.v1.VpnTunnelAggregatedList;
 import static com.google.cloud.compute.v1.VpnTunnelClient.AggregatedListVpnTunnelsPagedResponse;
 import static com.google.cloud.compute.v1.VpnTunnelClient.ListVpnTunnelsPagedResponse;
 import com.google.cloud.compute.v1.VpnTunnelList;
+import com.google.cloud.compute.v1.VpnTunnelsScopedList;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -246,8 +247,8 @@ public class VpnTunnelStubSettings extends StubSettings<VpnTunnelStubSettings> {
     listVpnTunnelsSettings = settingsBuilder.listVpnTunnelsSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, VpnTunnel> AGGREGATED_LIST_VPN_TUNNELS_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, VpnTunnel>() {
+  private static final PagedListDescriptor<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, VpnTunnelsScopedList> AGGREGATED_LIST_VPN_TUNNELS_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, VpnTunnelsScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -275,8 +276,8 @@ public class VpnTunnelStubSettings extends StubSettings<VpnTunnelStubSettings> {
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<VpnTunnel> extractResources(VpnTunnelAggregatedList payload) {
-          return payload.getItems().getVpnTunnelsList();
+        public Iterable<VpnTunnelsScopedList> extractResources(VpnTunnelAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -322,7 +323,7 @@ public class VpnTunnelStubSettings extends StubSettings<VpnTunnelStubSettings> {
             AggregatedListVpnTunnelsHttpRequest request,
             ApiCallContext context,
             ApiFuture<VpnTunnelAggregatedList> futureResponse) {
-          PageContext<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, VpnTunnel> pageContext =
+          PageContext<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList, VpnTunnelsScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_VPN_TUNNELS_PAGE_STR_DESC, request, context);
           return AggregatedListVpnTunnelsPagedResponse.createAsync(pageContext, futureResponse);
         }

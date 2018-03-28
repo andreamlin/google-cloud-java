@@ -54,6 +54,7 @@ import static com.google.cloud.compute.v1.InstanceGroupClient.ListInstanceGroups
 import static com.google.cloud.compute.v1.InstanceGroupClient.ListInstancesInstanceGroupsPagedResponse;
 import com.google.cloud.compute.v1.InstanceGroupList;
 import com.google.cloud.compute.v1.InstanceGroupsListInstances;
+import com.google.cloud.compute.v1.InstanceGroupsScopedList;
 import com.google.cloud.compute.v1.InstanceWithNamedPorts;
 import com.google.cloud.compute.v1.ListInstanceGroupsHttpRequest;
 import com.google.cloud.compute.v1.ListInstancesInstanceGroupsHttpRequest;
@@ -289,8 +290,8 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
     setNamedPortsInstanceGroupSettings = settingsBuilder.setNamedPortsInstanceGroupSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList, InstanceGroup> AGGREGATED_LIST_INSTANCE_GROUPS_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList, InstanceGroup>() {
+  private static final PagedListDescriptor<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList, InstanceGroupsScopedList> AGGREGATED_LIST_INSTANCE_GROUPS_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList, InstanceGroupsScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -318,8 +319,8 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<InstanceGroup> extractResources(InstanceGroupAggregatedList payload) {
-          return payload.getItems().getInstanceGroupsList();
+        public Iterable<InstanceGroupsScopedList> extractResources(InstanceGroupAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -399,7 +400,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
             AggregatedListInstanceGroupsHttpRequest request,
             ApiCallContext context,
             ApiFuture<InstanceGroupAggregatedList> futureResponse) {
-          PageContext<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList, InstanceGroup> pageContext =
+          PageContext<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList, InstanceGroupsScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_INSTANCE_GROUPS_PAGE_STR_DESC, request, context);
           return AggregatedListInstanceGroupsPagedResponse.createAsync(pageContext, futureResponse);
         }

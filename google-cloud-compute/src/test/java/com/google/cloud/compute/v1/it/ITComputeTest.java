@@ -30,12 +30,14 @@ import com.google.cloud.compute.v1.DiskTypeClient;
 import com.google.cloud.compute.v1.DiskTypeClient.AggregatedListDiskTypesPagedResponse;
 import com.google.cloud.compute.v1.DiskTypeName;
 import com.google.cloud.compute.v1.DiskTypeSettings;
+import com.google.cloud.compute.v1.DiskTypesScopedList;
 import com.google.cloud.compute.v1.ListDiskTypesHttpRequest;
 import com.google.cloud.compute.v1.ProjectName;
 import com.google.cloud.compute.v1.ZoneName;
 import com.google.common.collect.Lists;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -125,7 +127,11 @@ public class ITComputeTest {
   public void testAggregatedListDiskTypes() {
     // Page<DiskType> diskPage = diskTypeClient.aggregatedListDiskTypes(ProjectName.of(DEFAULT_PROJECT)).getPage();
     AggregatedListDiskTypesPagedResponse pagedListResponse = diskTypeClient.aggregatedListDiskTypes(ProjectName.of(DEFAULT_PROJECT));
-    List<DiskType> diskTypeIterator = Lists.newArrayList(pagedListResponse.iterateAll());
+    List<DiskTypesScopedList> diskTypeScopedListIterator = Lists.newArrayList(pagedListResponse.iterateAll());
+    List<DiskType> diskTypeIterator = new LinkedList<>();
+    for (DiskTypesScopedList scopedList : diskTypeScopedListIterator) {
+      diskTypeIterator.addAll(scopedList.getDiskTypesList());
+    }
     assertTrue(diskTypeIterator.size() > 0);
     for (DiskType diskType : diskTypeIterator) {
       assertNotNull(diskType.getZone());

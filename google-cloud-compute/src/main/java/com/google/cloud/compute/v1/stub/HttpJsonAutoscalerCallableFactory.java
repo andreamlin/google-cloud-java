@@ -48,6 +48,7 @@ import static com.google.cloud.compute.v1.AutoscalerClient.ListAutoscalersPagedR
 import com.google.cloud.compute.v1.AutoscalerList;
 import com.google.cloud.compute.v1.AutoscalerName;
 import com.google.cloud.compute.v1.AutoscalerSettings;
+import com.google.cloud.compute.v1.AutoscalersScopedList;
 import com.google.cloud.compute.v1.DeleteAutoscalerHttpRequest;
 import com.google.cloud.compute.v1.GetAutoscalerHttpRequest;
 import com.google.cloud.compute.v1.InsertAutoscalerHttpRequest;

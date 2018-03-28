@@ -176,7 +176,7 @@ public class SubnetworkClient implements BackgroundResource {
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (Subnetwork element : subnetworkClient.aggregatedListSubnetworks(project).iterateAll()) {
+   *   for (SubnetworksScopedList element : subnetworkClient.aggregatedListSubnetworks(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -202,7 +202,7 @@ public class SubnetworkClient implements BackgroundResource {
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (Subnetwork element : subnetworkClient.aggregatedListSubnetworks(project.toString()).iterateAll()) {
+   *   for (SubnetworksScopedList element : subnetworkClient.aggregatedListSubnetworks(project.toString()).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -231,7 +231,7 @@ public class SubnetworkClient implements BackgroundResource {
    *   AggregatedListSubnetworksHttpRequest request = AggregatedListSubnetworksHttpRequest.newBuilder()
    *     .setProject(project.toString())
    *     .build();
-   *   for (Subnetwork element : subnetworkClient.aggregatedListSubnetworks(request).iterateAll()) {
+   *   for (SubnetworksScopedList element : subnetworkClient.aggregatedListSubnetworks(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -259,7 +259,7 @@ public class SubnetworkClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;AggregatedListSubnetworksPagedResponse&gt; future = subnetworkClient.aggregatedListSubnetworksPagedCallable().futureCall(request);
    *   // Do something
-   *   for (Subnetwork element : future.get().iterateAll()) {
+   *   for (SubnetworksScopedList element : future.get().iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -283,7 +283,7 @@ public class SubnetworkClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     SubnetworkAggregatedList response = subnetworkClient.aggregatedListSubnetworksCallable().call(request);
-   *     for (Subnetwork element : response.getSubnetworksList()) {
+   *     for (SubnetworksScopedList element : response.getItemsMap()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -867,12 +867,12 @@ public class SubnetworkClient implements BackgroundResource {
   public static class AggregatedListSubnetworksPagedResponse extends AbstractPagedListResponse<
       AggregatedListSubnetworksHttpRequest,
       SubnetworkAggregatedList,
-      Subnetwork,
+      SubnetworksScopedList,
       AggregatedListSubnetworksPage,
       AggregatedListSubnetworksFixedSizeCollection> {
 
     public static ApiFuture<AggregatedListSubnetworksPagedResponse> createAsync(
-        PageContext<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, Subnetwork> context,
+        PageContext<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, SubnetworksScopedList> context,
         ApiFuture<SubnetworkAggregatedList> futureResponse) {
       ApiFuture<AggregatedListSubnetworksPage> futurePage =
           AggregatedListSubnetworksPage.createEmptyPage().createPageAsync(context, futureResponse);
@@ -896,11 +896,11 @@ public class SubnetworkClient implements BackgroundResource {
   public static class AggregatedListSubnetworksPage extends AbstractPage<
       AggregatedListSubnetworksHttpRequest,
       SubnetworkAggregatedList,
-      Subnetwork,
+      SubnetworksScopedList,
       AggregatedListSubnetworksPage> {
 
     private AggregatedListSubnetworksPage(
-        PageContext<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, Subnetwork> context,
+        PageContext<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, SubnetworksScopedList> context,
         SubnetworkAggregatedList response) {
       super(context, response);
     }
@@ -911,14 +911,14 @@ public class SubnetworkClient implements BackgroundResource {
 
     @Override
     protected AggregatedListSubnetworksPage createPage(
-        PageContext<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, Subnetwork> context,
+        PageContext<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, SubnetworksScopedList> context,
         SubnetworkAggregatedList response) {
       return new AggregatedListSubnetworksPage(context, response);
     }
 
     @Override
     public ApiFuture<AggregatedListSubnetworksPage> createPageAsync(
-        PageContext<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, Subnetwork> context,
+        PageContext<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList, SubnetworksScopedList> context,
         ApiFuture<SubnetworkAggregatedList> futureResponse) {
       return super.createPageAsync(context, futureResponse);
     }
@@ -931,7 +931,7 @@ public class SubnetworkClient implements BackgroundResource {
   public static class AggregatedListSubnetworksFixedSizeCollection extends AbstractFixedSizeCollection<
       AggregatedListSubnetworksHttpRequest,
       SubnetworkAggregatedList,
-      Subnetwork,
+      SubnetworksScopedList,
       AggregatedListSubnetworksPage,
       AggregatedListSubnetworksFixedSizeCollection> {
 

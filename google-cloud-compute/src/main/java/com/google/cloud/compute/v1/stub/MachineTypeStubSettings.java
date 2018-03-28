@@ -50,6 +50,7 @@ import com.google.cloud.compute.v1.MachineTypeAggregatedList;
 import static com.google.cloud.compute.v1.MachineTypeClient.AggregatedListMachineTypesPagedResponse;
 import static com.google.cloud.compute.v1.MachineTypeClient.ListMachineTypesPagedResponse;
 import com.google.cloud.compute.v1.MachineTypeList;
+import com.google.cloud.compute.v1.MachineTypesScopedList;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -225,8 +226,8 @@ public class MachineTypeStubSettings extends StubSettings<MachineTypeStubSetting
     listMachineTypesSettings = settingsBuilder.listMachineTypesSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineType> AGGREGATED_LIST_MACHINE_TYPES_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineType>() {
+  private static final PagedListDescriptor<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineTypesScopedList> AGGREGATED_LIST_MACHINE_TYPES_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineTypesScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -254,8 +255,8 @@ public class MachineTypeStubSettings extends StubSettings<MachineTypeStubSetting
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<MachineType> extractResources(MachineTypeAggregatedList payload) {
-          return payload.getItems().getMachineTypesList();
+        public Iterable<MachineTypesScopedList> extractResources(MachineTypeAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -301,7 +302,7 @@ public class MachineTypeStubSettings extends StubSettings<MachineTypeStubSetting
             AggregatedListMachineTypesHttpRequest request,
             ApiCallContext context,
             ApiFuture<MachineTypeAggregatedList> futureResponse) {
-          PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineType> pageContext =
+          PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineTypesScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_MACHINE_TYPES_PAGE_STR_DESC, request, context);
           return AggregatedListMachineTypesPagedResponse.createAsync(pageContext, futureResponse);
         }

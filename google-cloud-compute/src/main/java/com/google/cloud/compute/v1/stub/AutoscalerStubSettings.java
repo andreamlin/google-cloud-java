@@ -48,6 +48,7 @@ import com.google.cloud.compute.v1.AutoscalerAggregatedList;
 import static com.google.cloud.compute.v1.AutoscalerClient.AggregatedListAutoscalersPagedResponse;
 import static com.google.cloud.compute.v1.AutoscalerClient.ListAutoscalersPagedResponse;
 import com.google.cloud.compute.v1.AutoscalerList;
+import com.google.cloud.compute.v1.AutoscalersScopedList;
 import com.google.cloud.compute.v1.DeleteAutoscalerHttpRequest;
 import com.google.cloud.compute.v1.GetAutoscalerHttpRequest;
 import com.google.cloud.compute.v1.InsertAutoscalerHttpRequest;
@@ -266,8 +267,8 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
     updateAutoscalerSettings = settingsBuilder.updateAutoscalerSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, Autoscaler> AGGREGATED_LIST_AUTOSCALERS_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, Autoscaler>() {
+  private static final PagedListDescriptor<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, AutoscalersScopedList> AGGREGATED_LIST_AUTOSCALERS_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, AutoscalersScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -295,8 +296,8 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<Autoscaler> extractResources(AutoscalerAggregatedList payload) {
-          return payload.getItems().getAutoscalersList();
+        public Iterable<AutoscalersScopedList> extractResources(AutoscalerAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -342,7 +343,7 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
             AggregatedListAutoscalersHttpRequest request,
             ApiCallContext context,
             ApiFuture<AutoscalerAggregatedList> futureResponse) {
-          PageContext<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, Autoscaler> pageContext =
+          PageContext<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList, AutoscalersScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_AUTOSCALERS_PAGE_STR_DESC, request, context);
           return AggregatedListAutoscalersPagedResponse.createAsync(pageContext, futureResponse);
         }

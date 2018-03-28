@@ -176,7 +176,7 @@ public class MachineTypeClient implements BackgroundResource {
    * <pre><code>
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (MachineType element : machineTypeClient.aggregatedListMachineTypes(project).iterateAll()) {
+   *   for (MachineTypesScopedList element : machineTypeClient.aggregatedListMachineTypes(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -202,7 +202,7 @@ public class MachineTypeClient implements BackgroundResource {
    * <pre><code>
    * try (MachineTypeClient machineTypeClient = MachineTypeClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (MachineType element : machineTypeClient.aggregatedListMachineTypes(project.toString()).iterateAll()) {
+   *   for (MachineTypesScopedList element : machineTypeClient.aggregatedListMachineTypes(project.toString()).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -231,7 +231,7 @@ public class MachineTypeClient implements BackgroundResource {
    *   AggregatedListMachineTypesHttpRequest request = AggregatedListMachineTypesHttpRequest.newBuilder()
    *     .setProject(project.toString())
    *     .build();
-   *   for (MachineType element : machineTypeClient.aggregatedListMachineTypes(request).iterateAll()) {
+   *   for (MachineTypesScopedList element : machineTypeClient.aggregatedListMachineTypes(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -259,7 +259,7 @@ public class MachineTypeClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;AggregatedListMachineTypesPagedResponse&gt; future = machineTypeClient.aggregatedListMachineTypesPagedCallable().futureCall(request);
    *   // Do something
-   *   for (MachineType element : future.get().iterateAll()) {
+   *   for (MachineTypesScopedList element : future.get().iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -283,7 +283,7 @@ public class MachineTypeClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     MachineTypeAggregatedList response = machineTypeClient.aggregatedListMachineTypesCallable().call(request);
-   *     for (MachineType element : response.getMachineTypesList()) {
+   *     for (MachineTypesScopedList element : response.getItemsMap()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -562,12 +562,12 @@ public class MachineTypeClient implements BackgroundResource {
   public static class AggregatedListMachineTypesPagedResponse extends AbstractPagedListResponse<
       AggregatedListMachineTypesHttpRequest,
       MachineTypeAggregatedList,
-      MachineType,
+      MachineTypesScopedList,
       AggregatedListMachineTypesPage,
       AggregatedListMachineTypesFixedSizeCollection> {
 
     public static ApiFuture<AggregatedListMachineTypesPagedResponse> createAsync(
-        PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineType> context,
+        PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineTypesScopedList> context,
         ApiFuture<MachineTypeAggregatedList> futureResponse) {
       ApiFuture<AggregatedListMachineTypesPage> futurePage =
           AggregatedListMachineTypesPage.createEmptyPage().createPageAsync(context, futureResponse);
@@ -591,11 +591,11 @@ public class MachineTypeClient implements BackgroundResource {
   public static class AggregatedListMachineTypesPage extends AbstractPage<
       AggregatedListMachineTypesHttpRequest,
       MachineTypeAggregatedList,
-      MachineType,
+      MachineTypesScopedList,
       AggregatedListMachineTypesPage> {
 
     private AggregatedListMachineTypesPage(
-        PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineType> context,
+        PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineTypesScopedList> context,
         MachineTypeAggregatedList response) {
       super(context, response);
     }
@@ -606,14 +606,14 @@ public class MachineTypeClient implements BackgroundResource {
 
     @Override
     protected AggregatedListMachineTypesPage createPage(
-        PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineType> context,
+        PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineTypesScopedList> context,
         MachineTypeAggregatedList response) {
       return new AggregatedListMachineTypesPage(context, response);
     }
 
     @Override
     public ApiFuture<AggregatedListMachineTypesPage> createPageAsync(
-        PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineType> context,
+        PageContext<AggregatedListMachineTypesHttpRequest, MachineTypeAggregatedList, MachineTypesScopedList> context,
         ApiFuture<MachineTypeAggregatedList> futureResponse) {
       return super.createPageAsync(context, futureResponse);
     }
@@ -626,7 +626,7 @@ public class MachineTypeClient implements BackgroundResource {
   public static class AggregatedListMachineTypesFixedSizeCollection extends AbstractFixedSizeCollection<
       AggregatedListMachineTypesHttpRequest,
       MachineTypeAggregatedList,
-      MachineType,
+      MachineTypesScopedList,
       AggregatedListMachineTypesPage,
       AggregatedListMachineTypesFixedSizeCollection> {
 

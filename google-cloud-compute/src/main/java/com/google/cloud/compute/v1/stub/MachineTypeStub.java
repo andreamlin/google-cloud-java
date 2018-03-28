@@ -27,6 +27,7 @@ import static com.google.cloud.compute.v1.MachineTypeClient.AggregatedListMachin
 import static com.google.cloud.compute.v1.MachineTypeClient.ListMachineTypesPagedResponse;
 import com.google.cloud.compute.v1.MachineTypeList;
 import com.google.cloud.compute.v1.MachineTypeName;
+import com.google.cloud.compute.v1.MachineTypesScopedList;
 import com.google.cloud.compute.v1.ProjectName;
 import com.google.cloud.compute.v1.ZoneName;
 import javax.annotation.Generated;

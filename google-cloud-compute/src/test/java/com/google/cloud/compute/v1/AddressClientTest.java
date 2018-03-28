@@ -36,7 +36,9 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -88,17 +90,15 @@ public class AddressClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    Address addressesElement = Address.newBuilder().build();
-    List<Address> addresses = Arrays.asList(addressesElement);
-    AddressesScopedList items = AddressesScopedList.newBuilder()
-      .addAllAddresses(addresses)
-      .build();
+    AddressesScopedList itemsItem = AddressesScopedList.newBuilder().build();
+    Map<String, AddressesScopedList> items = new HashMap<>();
+    items.put("items", itemsItem);
     AddressAggregatedList expectedResponse = AddressAggregatedList.newBuilder()
       .setKind(kind)
       .setNextPageToken(nextPageToken)
       .setId(id)
       .setSelfLink(selfLink)
-      .setItems(items)
+      .putAllItems(items)
       .build();
     mockService.addResponse(expectedResponse);
 
@@ -106,14 +106,15 @@ public class AddressClientTest {
 
     AggregatedListAddressesPagedResponse pagedListResponse = client.aggregatedListAddresses(project);
 
-    List<Address> resources = Lists.newArrayList(pagedListResponse.iterateAll());
+    List<AddressesScopedList> resources = Lists.newArrayList(pagedListResponse.iterateAll());
     Assert.assertEquals(1, resources.size());
-    Assert.assertEquals(expectedResponse.getItems().getAddressesList().get(0), resources.get(0));
+    Assert.assertEquals(expectedResponse.getItemsMap().values().iterator().next(),
+        resources.get(0));
 
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -193,7 +194,7 @@ public class AddressClientTest {
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -249,7 +250,7 @@ public class AddressClientTest {
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -330,7 +331,7 @@ public class AddressClientTest {
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());
@@ -377,12 +378,13 @@ public class AddressClientTest {
 
     List<Address> resources = Lists.newArrayList(pagedListResponse.iterateAll());
     Assert.assertEquals(1, resources.size());
-    Assert.assertEquals(expectedResponse.getItemsList().get(0), resources.get(0));
+    Assert.assertEquals(expectedResponse.getItemsList().get(0),
+        resources.get(0));
 
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
 
-    String apiClientHeaderKey =  mockService.getRequestHeaders()
+    String apiClientHeaderKey = mockService.getRequestHeaders()
         .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey()).iterator().next();
     Assert.assertTrue(GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
         .matcher(apiClientHeaderKey).matches());

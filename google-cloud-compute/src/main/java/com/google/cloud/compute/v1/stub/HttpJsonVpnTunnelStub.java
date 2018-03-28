@@ -44,6 +44,7 @@ import static com.google.cloud.compute.v1.VpnTunnelClient.ListVpnTunnelsPagedRes
 import com.google.cloud.compute.v1.VpnTunnelList;
 import com.google.cloud.compute.v1.VpnTunnelName;
 import com.google.cloud.compute.v1.VpnTunnelSettings;
+import com.google.cloud.compute.v1.VpnTunnelsScopedList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import java.io.IOException;

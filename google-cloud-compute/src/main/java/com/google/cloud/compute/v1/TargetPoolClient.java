@@ -387,7 +387,7 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (TargetPool element : targetPoolClient.aggregatedListTargetPools(project).iterateAll()) {
+   *   for (TargetPoolsScopedList element : targetPoolClient.aggregatedListTargetPools(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -413,7 +413,7 @@ public class TargetPoolClient implements BackgroundResource {
    * <pre><code>
    * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (TargetPool element : targetPoolClient.aggregatedListTargetPools(project.toString()).iterateAll()) {
+   *   for (TargetPoolsScopedList element : targetPoolClient.aggregatedListTargetPools(project.toString()).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -442,7 +442,7 @@ public class TargetPoolClient implements BackgroundResource {
    *   AggregatedListTargetPoolsHttpRequest request = AggregatedListTargetPoolsHttpRequest.newBuilder()
    *     .setProject(project.toString())
    *     .build();
-   *   for (TargetPool element : targetPoolClient.aggregatedListTargetPools(request).iterateAll()) {
+   *   for (TargetPoolsScopedList element : targetPoolClient.aggregatedListTargetPools(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -470,7 +470,7 @@ public class TargetPoolClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;AggregatedListTargetPoolsPagedResponse&gt; future = targetPoolClient.aggregatedListTargetPoolsPagedCallable().futureCall(request);
    *   // Do something
-   *   for (TargetPool element : future.get().iterateAll()) {
+   *   for (TargetPoolsScopedList element : future.get().iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -494,7 +494,7 @@ public class TargetPoolClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     TargetPoolAggregatedList response = targetPoolClient.aggregatedListTargetPoolsCallable().call(request);
-   *     for (TargetPool element : response.getTargetPoolsList()) {
+   *     for (TargetPoolsScopedList element : response.getItemsMap()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -1403,12 +1403,12 @@ public class TargetPoolClient implements BackgroundResource {
   public static class AggregatedListTargetPoolsPagedResponse extends AbstractPagedListResponse<
       AggregatedListTargetPoolsHttpRequest,
       TargetPoolAggregatedList,
-      TargetPool,
+      TargetPoolsScopedList,
       AggregatedListTargetPoolsPage,
       AggregatedListTargetPoolsFixedSizeCollection> {
 
     public static ApiFuture<AggregatedListTargetPoolsPagedResponse> createAsync(
-        PageContext<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPool> context,
+        PageContext<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPoolsScopedList> context,
         ApiFuture<TargetPoolAggregatedList> futureResponse) {
       ApiFuture<AggregatedListTargetPoolsPage> futurePage =
           AggregatedListTargetPoolsPage.createEmptyPage().createPageAsync(context, futureResponse);
@@ -1432,11 +1432,11 @@ public class TargetPoolClient implements BackgroundResource {
   public static class AggregatedListTargetPoolsPage extends AbstractPage<
       AggregatedListTargetPoolsHttpRequest,
       TargetPoolAggregatedList,
-      TargetPool,
+      TargetPoolsScopedList,
       AggregatedListTargetPoolsPage> {
 
     private AggregatedListTargetPoolsPage(
-        PageContext<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPool> context,
+        PageContext<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPoolsScopedList> context,
         TargetPoolAggregatedList response) {
       super(context, response);
     }
@@ -1447,14 +1447,14 @@ public class TargetPoolClient implements BackgroundResource {
 
     @Override
     protected AggregatedListTargetPoolsPage createPage(
-        PageContext<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPool> context,
+        PageContext<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPoolsScopedList> context,
         TargetPoolAggregatedList response) {
       return new AggregatedListTargetPoolsPage(context, response);
     }
 
     @Override
     public ApiFuture<AggregatedListTargetPoolsPage> createPageAsync(
-        PageContext<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPool> context,
+        PageContext<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPoolsScopedList> context,
         ApiFuture<TargetPoolAggregatedList> futureResponse) {
       return super.createPageAsync(context, futureResponse);
     }
@@ -1467,7 +1467,7 @@ public class TargetPoolClient implements BackgroundResource {
   public static class AggregatedListTargetPoolsFixedSizeCollection extends AbstractFixedSizeCollection<
       AggregatedListTargetPoolsHttpRequest,
       TargetPoolAggregatedList,
-      TargetPool,
+      TargetPoolsScopedList,
       AggregatedListTargetPoolsPage,
       AggregatedListTargetPoolsFixedSizeCollection> {
 

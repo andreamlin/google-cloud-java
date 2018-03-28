@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
 @BetaApi
 public final class InstanceAggregatedList implements ApiMessage {
   private final String id;
-  private final InstancesScopedList items;
+  private final Map<String, InstancesScopedList> items;
   private final String kind;
   private final String nextPageToken;
   private final String selfLink;
@@ -49,7 +49,7 @@ public final class InstanceAggregatedList implements ApiMessage {
 
   private InstanceAggregatedList(
       String id,
-      InstancesScopedList items,
+      Map<String, InstancesScopedList> items,
       String kind,
       String nextPageToken,
       String selfLink
@@ -112,7 +112,7 @@ public final class InstanceAggregatedList implements ApiMessage {
     return id;
   }
 
-  public InstancesScopedList getItems() {
+  public Map<String, InstancesScopedList> getItemsMap() {
     return items;
   }
 
@@ -150,7 +150,7 @@ public final class InstanceAggregatedList implements ApiMessage {
 
   public static class Builder {
     private String id;
-    private InstancesScopedList items;
+    private Map<String, InstancesScopedList> items;
     private String kind;
     private String nextPageToken;
     private String selfLink;
@@ -162,7 +162,7 @@ public final class InstanceAggregatedList implements ApiMessage {
       if (other.getId() != null) {
         this.id = other.id;
       }
-      if (other.getItems() != null) {
+      if (other.getItemsMap() != null) {
         this.items = other.items;
       }
       if (other.getKind() != null) {
@@ -194,11 +194,11 @@ public final class InstanceAggregatedList implements ApiMessage {
       return this;
     }
 
-    public InstancesScopedList getItems() {
+    public Map<String, InstancesScopedList> getItemsMap() {
       return items;
     }
 
-    public Builder setItems(InstancesScopedList items) {
+    public Builder putAllItems(Map<String, InstancesScopedList> items) {
       this.items = items;
       return this;
     }
@@ -248,7 +248,7 @@ public final class InstanceAggregatedList implements ApiMessage {
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setId(this.id);
-      newBuilder.setItems(this.items);
+      newBuilder.putAllItems(this.items);
       newBuilder.setKind(this.kind);
       newBuilder.setNextPageToken(this.nextPageToken);
       newBuilder.setSelfLink(this.selfLink);
@@ -276,7 +276,7 @@ public final class InstanceAggregatedList implements ApiMessage {
       InstanceAggregatedList that = (InstanceAggregatedList) o;
       return
           Objects.equals(this.id, that.getId()) &&
-          Objects.equals(this.items, that.getItems()) &&
+          Objects.equals(this.items, that.getItemsMap()) &&
           Objects.equals(this.kind, that.getKind()) &&
           Objects.equals(this.nextPageToken, that.getNextPageToken()) &&
           Objects.equals(this.selfLink, that.getSelfLink())

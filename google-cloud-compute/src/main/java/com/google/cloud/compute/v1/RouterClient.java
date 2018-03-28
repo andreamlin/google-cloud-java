@@ -176,7 +176,7 @@ public class RouterClient implements BackgroundResource {
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (Router element : routerClient.aggregatedListRouters(project).iterateAll()) {
+   *   for (RoutersScopedList element : routerClient.aggregatedListRouters(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -202,7 +202,7 @@ public class RouterClient implements BackgroundResource {
    * <pre><code>
    * try (RouterClient routerClient = RouterClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (Router element : routerClient.aggregatedListRouters(project.toString()).iterateAll()) {
+   *   for (RoutersScopedList element : routerClient.aggregatedListRouters(project.toString()).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -231,7 +231,7 @@ public class RouterClient implements BackgroundResource {
    *   AggregatedListRoutersHttpRequest request = AggregatedListRoutersHttpRequest.newBuilder()
    *     .setProject(project.toString())
    *     .build();
-   *   for (Router element : routerClient.aggregatedListRouters(request).iterateAll()) {
+   *   for (RoutersScopedList element : routerClient.aggregatedListRouters(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -259,7 +259,7 @@ public class RouterClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;AggregatedListRoutersPagedResponse&gt; future = routerClient.aggregatedListRoutersPagedCallable().futureCall(request);
    *   // Do something
-   *   for (Router element : future.get().iterateAll()) {
+   *   for (RoutersScopedList element : future.get().iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -283,7 +283,7 @@ public class RouterClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     RouterAggregatedList response = routerClient.aggregatedListRoutersCallable().call(request);
-   *     for (Router element : response.getRoutersList()) {
+   *     for (RoutersScopedList element : response.getItemsMap()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -1172,12 +1172,12 @@ public class RouterClient implements BackgroundResource {
   public static class AggregatedListRoutersPagedResponse extends AbstractPagedListResponse<
       AggregatedListRoutersHttpRequest,
       RouterAggregatedList,
-      Router,
+      RoutersScopedList,
       AggregatedListRoutersPage,
       AggregatedListRoutersFixedSizeCollection> {
 
     public static ApiFuture<AggregatedListRoutersPagedResponse> createAsync(
-        PageContext<AggregatedListRoutersHttpRequest, RouterAggregatedList, Router> context,
+        PageContext<AggregatedListRoutersHttpRequest, RouterAggregatedList, RoutersScopedList> context,
         ApiFuture<RouterAggregatedList> futureResponse) {
       ApiFuture<AggregatedListRoutersPage> futurePage =
           AggregatedListRoutersPage.createEmptyPage().createPageAsync(context, futureResponse);
@@ -1201,11 +1201,11 @@ public class RouterClient implements BackgroundResource {
   public static class AggregatedListRoutersPage extends AbstractPage<
       AggregatedListRoutersHttpRequest,
       RouterAggregatedList,
-      Router,
+      RoutersScopedList,
       AggregatedListRoutersPage> {
 
     private AggregatedListRoutersPage(
-        PageContext<AggregatedListRoutersHttpRequest, RouterAggregatedList, Router> context,
+        PageContext<AggregatedListRoutersHttpRequest, RouterAggregatedList, RoutersScopedList> context,
         RouterAggregatedList response) {
       super(context, response);
     }
@@ -1216,14 +1216,14 @@ public class RouterClient implements BackgroundResource {
 
     @Override
     protected AggregatedListRoutersPage createPage(
-        PageContext<AggregatedListRoutersHttpRequest, RouterAggregatedList, Router> context,
+        PageContext<AggregatedListRoutersHttpRequest, RouterAggregatedList, RoutersScopedList> context,
         RouterAggregatedList response) {
       return new AggregatedListRoutersPage(context, response);
     }
 
     @Override
     public ApiFuture<AggregatedListRoutersPage> createPageAsync(
-        PageContext<AggregatedListRoutersHttpRequest, RouterAggregatedList, Router> context,
+        PageContext<AggregatedListRoutersHttpRequest, RouterAggregatedList, RoutersScopedList> context,
         ApiFuture<RouterAggregatedList> futureResponse) {
       return super.createPageAsync(context, futureResponse);
     }
@@ -1236,7 +1236,7 @@ public class RouterClient implements BackgroundResource {
   public static class AggregatedListRoutersFixedSizeCollection extends AbstractFixedSizeCollection<
       AggregatedListRoutersHttpRequest,
       RouterAggregatedList,
-      Router,
+      RoutersScopedList,
       AggregatedListRoutersPage,
       AggregatedListRoutersFixedSizeCollection> {
 

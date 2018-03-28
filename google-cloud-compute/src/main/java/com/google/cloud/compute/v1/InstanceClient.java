@@ -293,7 +293,7 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (Instance element : instanceClient.aggregatedListInstances(project).iterateAll()) {
+   *   for (InstancesScopedList element : instanceClient.aggregatedListInstances(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -319,7 +319,7 @@ public class InstanceClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceClient instanceClient = InstanceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (Instance element : instanceClient.aggregatedListInstances(project.toString()).iterateAll()) {
+   *   for (InstancesScopedList element : instanceClient.aggregatedListInstances(project.toString()).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -348,7 +348,7 @@ public class InstanceClient implements BackgroundResource {
    *   AggregatedListInstancesHttpRequest request = AggregatedListInstancesHttpRequest.newBuilder()
    *     .setProject(project.toString())
    *     .build();
-   *   for (Instance element : instanceClient.aggregatedListInstances(request).iterateAll()) {
+   *   for (InstancesScopedList element : instanceClient.aggregatedListInstances(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -376,7 +376,7 @@ public class InstanceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;AggregatedListInstancesPagedResponse&gt; future = instanceClient.aggregatedListInstancesPagedCallable().futureCall(request);
    *   // Do something
-   *   for (Instance element : future.get().iterateAll()) {
+   *   for (InstancesScopedList element : future.get().iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -400,7 +400,7 @@ public class InstanceClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     InstanceAggregatedList response = instanceClient.aggregatedListInstancesCallable().call(request);
-   *     for (Instance element : response.getInstancesList()) {
+   *     for (InstancesScopedList element : response.getItemsMap()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -2349,12 +2349,12 @@ public class InstanceClient implements BackgroundResource {
   public static class AggregatedListInstancesPagedResponse extends AbstractPagedListResponse<
       AggregatedListInstancesHttpRequest,
       InstanceAggregatedList,
-      Instance,
+      InstancesScopedList,
       AggregatedListInstancesPage,
       AggregatedListInstancesFixedSizeCollection> {
 
     public static ApiFuture<AggregatedListInstancesPagedResponse> createAsync(
-        PageContext<AggregatedListInstancesHttpRequest, InstanceAggregatedList, Instance> context,
+        PageContext<AggregatedListInstancesHttpRequest, InstanceAggregatedList, InstancesScopedList> context,
         ApiFuture<InstanceAggregatedList> futureResponse) {
       ApiFuture<AggregatedListInstancesPage> futurePage =
           AggregatedListInstancesPage.createEmptyPage().createPageAsync(context, futureResponse);
@@ -2378,11 +2378,11 @@ public class InstanceClient implements BackgroundResource {
   public static class AggregatedListInstancesPage extends AbstractPage<
       AggregatedListInstancesHttpRequest,
       InstanceAggregatedList,
-      Instance,
+      InstancesScopedList,
       AggregatedListInstancesPage> {
 
     private AggregatedListInstancesPage(
-        PageContext<AggregatedListInstancesHttpRequest, InstanceAggregatedList, Instance> context,
+        PageContext<AggregatedListInstancesHttpRequest, InstanceAggregatedList, InstancesScopedList> context,
         InstanceAggregatedList response) {
       super(context, response);
     }
@@ -2393,14 +2393,14 @@ public class InstanceClient implements BackgroundResource {
 
     @Override
     protected AggregatedListInstancesPage createPage(
-        PageContext<AggregatedListInstancesHttpRequest, InstanceAggregatedList, Instance> context,
+        PageContext<AggregatedListInstancesHttpRequest, InstanceAggregatedList, InstancesScopedList> context,
         InstanceAggregatedList response) {
       return new AggregatedListInstancesPage(context, response);
     }
 
     @Override
     public ApiFuture<AggregatedListInstancesPage> createPageAsync(
-        PageContext<AggregatedListInstancesHttpRequest, InstanceAggregatedList, Instance> context,
+        PageContext<AggregatedListInstancesHttpRequest, InstanceAggregatedList, InstancesScopedList> context,
         ApiFuture<InstanceAggregatedList> futureResponse) {
       return super.createPageAsync(context, futureResponse);
     }
@@ -2413,7 +2413,7 @@ public class InstanceClient implements BackgroundResource {
   public static class AggregatedListInstancesFixedSizeCollection extends AbstractFixedSizeCollection<
       AggregatedListInstancesHttpRequest,
       InstanceAggregatedList,
-      Instance,
+      InstancesScopedList,
       AggregatedListInstancesPage,
       AggregatedListInstancesFixedSizeCollection> {
 

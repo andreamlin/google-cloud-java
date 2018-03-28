@@ -50,6 +50,7 @@ import static com.google.cloud.compute.v1.MachineTypeClient.ListMachineTypesPage
 import com.google.cloud.compute.v1.MachineTypeList;
 import com.google.cloud.compute.v1.MachineTypeName;
 import com.google.cloud.compute.v1.MachineTypeSettings;
+import com.google.cloud.compute.v1.MachineTypesScopedList;
 import com.google.cloud.compute.v1.ProjectName;
 import com.google.cloud.compute.v1.ZoneName;
 import com.google.common.collect.ImmutableMap;

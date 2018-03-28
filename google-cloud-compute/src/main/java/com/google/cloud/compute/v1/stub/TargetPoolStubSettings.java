@@ -60,6 +60,7 @@ import static com.google.cloud.compute.v1.TargetPoolClient.AggregatedListTargetP
 import static com.google.cloud.compute.v1.TargetPoolClient.ListTargetPoolsPagedResponse;
 import com.google.cloud.compute.v1.TargetPoolInstanceHealth;
 import com.google.cloud.compute.v1.TargetPoolList;
+import com.google.cloud.compute.v1.TargetPoolsScopedList;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -307,8 +308,8 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
     setBackupTargetPoolSettings = settingsBuilder.setBackupTargetPoolSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPool> AGGREGATED_LIST_TARGET_POOLS_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPool>() {
+  private static final PagedListDescriptor<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPoolsScopedList> AGGREGATED_LIST_TARGET_POOLS_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPoolsScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -336,8 +337,8 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<TargetPool> extractResources(TargetPoolAggregatedList payload) {
-          return payload.getItems().getTargetPoolsList();
+        public Iterable<TargetPoolsScopedList> extractResources(TargetPoolAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -383,7 +384,7 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
             AggregatedListTargetPoolsHttpRequest request,
             ApiCallContext context,
             ApiFuture<TargetPoolAggregatedList> futureResponse) {
-          PageContext<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPool> pageContext =
+          PageContext<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList, TargetPoolsScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_TARGET_POOLS_PAGE_STR_DESC, request, context);
           return AggregatedListTargetPoolsPagedResponse.createAsync(pageContext, futureResponse);
         }

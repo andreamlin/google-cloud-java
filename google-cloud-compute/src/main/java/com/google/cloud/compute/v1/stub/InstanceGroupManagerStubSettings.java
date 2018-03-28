@@ -54,6 +54,7 @@ import static com.google.cloud.compute.v1.InstanceGroupManagerClient.AggregatedL
 import static com.google.cloud.compute.v1.InstanceGroupManagerClient.ListInstanceGroupManagersPagedResponse;
 import com.google.cloud.compute.v1.InstanceGroupManagerList;
 import com.google.cloud.compute.v1.InstanceGroupManagersListManagedInstancesResponse;
+import com.google.cloud.compute.v1.InstanceGroupManagersScopedList;
 import com.google.cloud.compute.v1.ListInstanceGroupManagersHttpRequest;
 import com.google.cloud.compute.v1.ListManagedInstancesInstanceGroupManagersHttpRequest;
 import com.google.cloud.compute.v1.Operation;
@@ -317,8 +318,8 @@ public class InstanceGroupManagerStubSettings extends StubSettings<InstanceGroup
     setTargetPoolsInstanceGroupManagerSettings = settingsBuilder.setTargetPoolsInstanceGroupManagerSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, InstanceGroupManager> AGGREGATED_LIST_INSTANCE_GROUP_MANAGERS_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, InstanceGroupManager>() {
+  private static final PagedListDescriptor<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, InstanceGroupManagersScopedList> AGGREGATED_LIST_INSTANCE_GROUP_MANAGERS_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, InstanceGroupManagersScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -346,8 +347,8 @@ public class InstanceGroupManagerStubSettings extends StubSettings<InstanceGroup
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<InstanceGroupManager> extractResources(InstanceGroupManagerAggregatedList payload) {
-          return payload.getItems().getInstanceGroupManagersList();
+        public Iterable<InstanceGroupManagersScopedList> extractResources(InstanceGroupManagerAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -393,7 +394,7 @@ public class InstanceGroupManagerStubSettings extends StubSettings<InstanceGroup
             AggregatedListInstanceGroupManagersHttpRequest request,
             ApiCallContext context,
             ApiFuture<InstanceGroupManagerAggregatedList> futureResponse) {
-          PageContext<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, InstanceGroupManager> pageContext =
+          PageContext<AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList, InstanceGroupManagersScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_INSTANCE_GROUP_MANAGERS_PAGE_STR_DESC, request, context);
           return AggregatedListInstanceGroupManagersPagedResponse.createAsync(pageContext, futureResponse);
         }

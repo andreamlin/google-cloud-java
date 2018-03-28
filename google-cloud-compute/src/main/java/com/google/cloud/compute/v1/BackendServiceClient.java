@@ -176,7 +176,7 @@ public class BackendServiceClient implements BackgroundResource {
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (BackendService element : backendServiceClient.aggregatedListBackendServices(project).iterateAll()) {
+   *   for (BackendServicesScopedList element : backendServiceClient.aggregatedListBackendServices(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -202,7 +202,7 @@ public class BackendServiceClient implements BackgroundResource {
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (BackendService element : backendServiceClient.aggregatedListBackendServices(project.toString()).iterateAll()) {
+   *   for (BackendServicesScopedList element : backendServiceClient.aggregatedListBackendServices(project.toString()).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -231,7 +231,7 @@ public class BackendServiceClient implements BackgroundResource {
    *   AggregatedListBackendServicesHttpRequest request = AggregatedListBackendServicesHttpRequest.newBuilder()
    *     .setProject(project.toString())
    *     .build();
-   *   for (BackendService element : backendServiceClient.aggregatedListBackendServices(request).iterateAll()) {
+   *   for (BackendServicesScopedList element : backendServiceClient.aggregatedListBackendServices(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -259,7 +259,7 @@ public class BackendServiceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;AggregatedListBackendServicesPagedResponse&gt; future = backendServiceClient.aggregatedListBackendServicesPagedCallable().futureCall(request);
    *   // Do something
-   *   for (BackendService element : future.get().iterateAll()) {
+   *   for (BackendServicesScopedList element : future.get().iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -283,7 +283,7 @@ public class BackendServiceClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     BackendServiceAggregatedList response = backendServiceClient.aggregatedListBackendServicesCallable().call(request);
-   *     for (BackendService element : response.getBackendServicesList()) {
+   *     for (BackendServicesScopedList element : response.getItemsMap()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -1077,12 +1077,12 @@ public class BackendServiceClient implements BackgroundResource {
   public static class AggregatedListBackendServicesPagedResponse extends AbstractPagedListResponse<
       AggregatedListBackendServicesHttpRequest,
       BackendServiceAggregatedList,
-      BackendService,
+      BackendServicesScopedList,
       AggregatedListBackendServicesPage,
       AggregatedListBackendServicesFixedSizeCollection> {
 
     public static ApiFuture<AggregatedListBackendServicesPagedResponse> createAsync(
-        PageContext<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendService> context,
+        PageContext<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendServicesScopedList> context,
         ApiFuture<BackendServiceAggregatedList> futureResponse) {
       ApiFuture<AggregatedListBackendServicesPage> futurePage =
           AggregatedListBackendServicesPage.createEmptyPage().createPageAsync(context, futureResponse);
@@ -1106,11 +1106,11 @@ public class BackendServiceClient implements BackgroundResource {
   public static class AggregatedListBackendServicesPage extends AbstractPage<
       AggregatedListBackendServicesHttpRequest,
       BackendServiceAggregatedList,
-      BackendService,
+      BackendServicesScopedList,
       AggregatedListBackendServicesPage> {
 
     private AggregatedListBackendServicesPage(
-        PageContext<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendService> context,
+        PageContext<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendServicesScopedList> context,
         BackendServiceAggregatedList response) {
       super(context, response);
     }
@@ -1121,14 +1121,14 @@ public class BackendServiceClient implements BackgroundResource {
 
     @Override
     protected AggregatedListBackendServicesPage createPage(
-        PageContext<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendService> context,
+        PageContext<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendServicesScopedList> context,
         BackendServiceAggregatedList response) {
       return new AggregatedListBackendServicesPage(context, response);
     }
 
     @Override
     public ApiFuture<AggregatedListBackendServicesPage> createPageAsync(
-        PageContext<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendService> context,
+        PageContext<AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList, BackendServicesScopedList> context,
         ApiFuture<BackendServiceAggregatedList> futureResponse) {
       return super.createPageAsync(context, futureResponse);
     }
@@ -1141,7 +1141,7 @@ public class BackendServiceClient implements BackgroundResource {
   public static class AggregatedListBackendServicesFixedSizeCollection extends AbstractFixedSizeCollection<
       AggregatedListBackendServicesHttpRequest,
       BackendServiceAggregatedList,
-      BackendService,
+      BackendServicesScopedList,
       AggregatedListBackendServicesPage,
       AggregatedListBackendServicesFixedSizeCollection> {
 
