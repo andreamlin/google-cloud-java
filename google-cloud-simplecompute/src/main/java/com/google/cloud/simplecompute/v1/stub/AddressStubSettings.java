@@ -300,7 +300,11 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
         }
         @Override
         public Iterable<Address> extractResources(final AddressAggregatedList payload) {
-          return payload.getAddressItems();
+          List<Address> items = new LinkedList<>();
+          for (AddressesScopedList item : payload.getItemsList()) {
+            items.addAll(item.getAddressesList());
+          }
+          return items;
         }
       };
 
