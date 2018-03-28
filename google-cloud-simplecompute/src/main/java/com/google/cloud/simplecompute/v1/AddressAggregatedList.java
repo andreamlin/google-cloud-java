@@ -22,7 +22,6 @@ import com.google.common.collect.ImmutableMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -124,18 +123,6 @@ public final class AddressAggregatedList implements ApiMessage {
   }
 
   public Map<String, AddressesScopedList> getItemsMap() {
-    return items;
-  }
-
-  public Iterable<AddressesScopedList> getItemsList() {
-    return getItemsMap().values();
-  }
-
-  public Iterable<Address> getAddressItems() {
-    List<Address> items = new LinkedList<>();
-      for (AddressesScopedList item : getItemsList()) {
-        items.addAll(item.getAddressesList());
-      }
     return items;
   }
 

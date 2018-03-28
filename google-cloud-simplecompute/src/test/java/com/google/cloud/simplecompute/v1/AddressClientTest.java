@@ -94,13 +94,9 @@ public class AddressClientTest {
     String nextPageToken = "";
     String id = "id3355";
     String selfLink = "selfLink-1691268851";
-    Address addressesElement = Address.newBuilder().build();
-    List<Address> addresses = Arrays.asList(addressesElement);
-    AddressesScopedList itemsItem = AddressesScopedList.newBuilder()
-      .addAllAddresses(addresses)
-      .build();
+    AddressesScopedList itemsItem = AddressesScopedList.newBuilder().build();
     Map<String, AddressesScopedList> items = new HashMap<>();
-    items.put("addressesScopedList", itemsItem);
+    items.put("items", itemsItem);
     AddressAggregatedList expectedResponse = AddressAggregatedList.newBuilder()
       .setKind(kind)
       .setNextPageToken(nextPageToken)
@@ -114,9 +110,10 @@ public class AddressClientTest {
 
     AggregatedListAddressesPagedResponse pagedListResponse = client.aggregatedListAddresses(project);
 
-    List<Address> resources = Lists.newArrayList(pagedListResponse.iterateAll());
+    List<AddressesScopedList> resources = Lists.newArrayList(pagedListResponse.iterateAll());
     Assert.assertEquals(1, resources.size());
-    Assert.assertEquals(expectedResponse.getItemsMap().values().iterator().next().getAddressesList().get(0), resources.get(0));
+    Assert.assertEquals(expectedResponse.getItemsMap().values().iterator().next(),
+        resources.get(0));
 
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());
@@ -385,7 +382,8 @@ public class AddressClientTest {
 
     List<Address> resources = Lists.newArrayList(pagedListResponse.iterateAll());
     Assert.assertEquals(1, resources.size());
-    Assert.assertEquals(expectedResponse.getItemsList().get(0), resources.get(0));
+    Assert.assertEquals(expectedResponse.getItemsList().get(0),
+        resources.get(0));
 
     List<String> actualRequests = mockService.getRequestPaths();
     Assert.assertEquals(1, actualRequests.size());

@@ -24,6 +24,7 @@ import static com.google.cloud.simplecompute.v1.AddressClient.AggregatedListAddr
 import static com.google.cloud.simplecompute.v1.AddressClient.ListAddressesPagedResponse;
 import com.google.cloud.simplecompute.v1.AddressList;
 import com.google.cloud.simplecompute.v1.AddressName;
+import com.google.cloud.simplecompute.v1.AddressesScopedList;
 import com.google.cloud.simplecompute.v1.AggregatedListAddressesHttpRequest;
 import com.google.cloud.simplecompute.v1.DeleteAddressHttpRequest;
 import com.google.cloud.simplecompute.v1.GetAddressHttpRequest;

@@ -59,12 +59,9 @@ import com.google.cloud.simplecompute.v1.UpdateAddressHttpRequest;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.annotation.Generated;
@@ -270,8 +267,8 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
     updateAddressSettings = settingsBuilder.updateAddressSettings().build();
   }
 
-  private static final PagedListDescriptor<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address> AGGREGATED_LIST_ADDRESSES_PAGE_STR_DESC =
-      new PagedListDescriptor<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address>() {
+  private static final PagedListDescriptor<AggregatedListAddressesHttpRequest, AddressAggregatedList, AddressesScopedList> AGGREGATED_LIST_ADDRESSES_PAGE_STR_DESC =
+      new PagedListDescriptor<AggregatedListAddressesHttpRequest, AddressAggregatedList, AddressesScopedList>() {
         @Override
         public String emptyToken() {
           return "";
@@ -299,12 +296,8 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
           return payload.getNextPageToken();
         }
         @Override
-        public Iterable<Address> extractResources(final AddressAggregatedList payload) {
-          List<Address> items = new LinkedList<>();
-          for (AddressesScopedList item : payload.getItemsList()) {
-            items.addAll(item.getAddressesList());
-          }
-          return items;
+        public Iterable<AddressesScopedList> extractResources(AddressAggregatedList payload) {
+          return payload.getItemsMap().values();
         }
       };
 
@@ -350,7 +343,7 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
             AggregatedListAddressesHttpRequest request,
             ApiCallContext context,
             ApiFuture<AddressAggregatedList> futureResponse) {
-          PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address> pageContext =
+          PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, AddressesScopedList> pageContext =
               PageContext.create(callable, AGGREGATED_LIST_ADDRESSES_PAGE_STR_DESC, request, context);
           return AggregatedListAddressesPagedResponse.createAsync(pageContext, futureResponse);
         }

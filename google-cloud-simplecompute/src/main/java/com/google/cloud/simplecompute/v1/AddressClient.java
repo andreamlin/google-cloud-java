@@ -176,7 +176,7 @@ public class AddressClient implements BackgroundResource {
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (Address element : addressClient.aggregatedListAddresses(project).iterateAll()) {
+   *   for (AddressesScopedList element : addressClient.aggregatedListAddresses(project).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -202,7 +202,7 @@ public class AddressClient implements BackgroundResource {
    * <pre><code>
    * try (AddressClient addressClient = AddressClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
-   *   for (Address element : addressClient.aggregatedListAddresses(project.toString()).iterateAll()) {
+   *   for (AddressesScopedList element : addressClient.aggregatedListAddresses(project.toString()).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -231,7 +231,7 @@ public class AddressClient implements BackgroundResource {
    *   AggregatedListAddressesHttpRequest request = AggregatedListAddressesHttpRequest.newBuilder()
    *     .setProject(project.toString())
    *     .build();
-   *   for (Address element : addressClient.aggregatedListAddresses(request).iterateAll()) {
+   *   for (AddressesScopedList element : addressClient.aggregatedListAddresses(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -259,7 +259,7 @@ public class AddressClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;AggregatedListAddressesPagedResponse&gt; future = addressClient.aggregatedListAddressesPagedCallable().futureCall(request);
    *   // Do something
-   *   for (Address element : future.get().iterateAll()) {
+   *   for (AddressesScopedList element : future.get().iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -283,7 +283,7 @@ public class AddressClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     AddressAggregatedList response = addressClient.aggregatedListAddressesCallable().call(request);
-   *     for (Address element : response.getAddressesList()) {
+   *     for (AddressesScopedList element : response.getItemsMap()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -1018,12 +1018,12 @@ public class AddressClient implements BackgroundResource {
   public static class AggregatedListAddressesPagedResponse extends AbstractPagedListResponse<
       AggregatedListAddressesHttpRequest,
       AddressAggregatedList,
-      Address,
+      AddressesScopedList,
       AggregatedListAddressesPage,
       AggregatedListAddressesFixedSizeCollection> {
 
     public static ApiFuture<AggregatedListAddressesPagedResponse> createAsync(
-        PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address> context,
+        PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, AddressesScopedList> context,
         ApiFuture<AddressAggregatedList> futureResponse) {
       ApiFuture<AggregatedListAddressesPage> futurePage =
           AggregatedListAddressesPage.createEmptyPage().createPageAsync(context, futureResponse);
@@ -1047,11 +1047,11 @@ public class AddressClient implements BackgroundResource {
   public static class AggregatedListAddressesPage extends AbstractPage<
       AggregatedListAddressesHttpRequest,
       AddressAggregatedList,
-      Address,
+      AddressesScopedList,
       AggregatedListAddressesPage> {
 
     private AggregatedListAddressesPage(
-        PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address> context,
+        PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, AddressesScopedList> context,
         AddressAggregatedList response) {
       super(context, response);
     }
@@ -1062,14 +1062,14 @@ public class AddressClient implements BackgroundResource {
 
     @Override
     protected AggregatedListAddressesPage createPage(
-        PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address> context,
+        PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, AddressesScopedList> context,
         AddressAggregatedList response) {
       return new AggregatedListAddressesPage(context, response);
     }
 
     @Override
     public ApiFuture<AggregatedListAddressesPage> createPageAsync(
-        PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, Address> context,
+        PageContext<AggregatedListAddressesHttpRequest, AddressAggregatedList, AddressesScopedList> context,
         ApiFuture<AddressAggregatedList> futureResponse) {
       return super.createPageAsync(context, futureResponse);
     }
@@ -1082,7 +1082,7 @@ public class AddressClient implements BackgroundResource {
   public static class AggregatedListAddressesFixedSizeCollection extends AbstractFixedSizeCollection<
       AggregatedListAddressesHttpRequest,
       AddressAggregatedList,
-      Address,
+      AddressesScopedList,
       AggregatedListAddressesPage,
       AggregatedListAddressesFixedSizeCollection> {
 
