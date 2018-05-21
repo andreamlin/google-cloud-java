@@ -185,11 +185,10 @@ public class InstanceClientTest {
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String networkInterface = "networkInterface902258792";
-    String requestId = "requestId37109963";
     AccessConfig accessConfigResource = AccessConfig.newBuilder().build();
 
     Operation actualResponse =
-        client.addAccessConfigInstance(instance, networkInterface, requestId, accessConfigResource);
+        client.addAccessConfigInstance(instance, networkInterface, accessConfigResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -219,10 +218,9 @@ public class InstanceClientTest {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
       String networkInterface = "networkInterface902258792";
-      String requestId = "requestId37109963";
       AccessConfig accessConfigResource = AccessConfig.newBuilder().build();
 
-      client.addAccessConfigInstance(instance, networkInterface, requestId, accessConfigResource);
+      client.addAccessConfigInstance(instance, networkInterface, accessConfigResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -344,10 +342,11 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
+    Boolean forceAttach = false;
     AttachedDisk attachedDiskResource = AttachedDisk.newBuilder().build();
 
-    Operation actualResponse = client.attachDiskInstance(instance, requestId, attachedDiskResource);
+    Operation actualResponse =
+        client.attachDiskInstance(instance, forceAttach, attachedDiskResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -376,10 +375,10 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
+      Boolean forceAttach = false;
       AttachedDisk attachedDiskResource = AttachedDisk.newBuilder().build();
 
-      client.attachDiskInstance(instance, requestId, attachedDiskResource);
+      client.attachDiskInstance(instance, forceAttach, attachedDiskResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -438,9 +437,8 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
 
-    Operation actualResponse = client.deleteInstance(instance, requestId);
+    Operation actualResponse = client.deleteInstance(instance);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -469,9 +467,8 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
 
-      client.deleteInstance(instance, requestId);
+      client.deleteInstance(instance);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -531,11 +528,10 @@ public class InstanceClientTest {
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String networkInterface = "networkInterface902258792";
-    String requestId = "requestId37109963";
     String accessConfig = "accessConfig-464014723";
 
     Operation actualResponse =
-        client.deleteAccessConfigInstance(instance, networkInterface, requestId, accessConfig);
+        client.deleteAccessConfigInstance(instance, networkInterface, accessConfig);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -565,10 +561,9 @@ public class InstanceClientTest {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
       String networkInterface = "networkInterface902258792";
-      String requestId = "requestId37109963";
       String accessConfig = "accessConfig-464014723";
 
-      client.deleteAccessConfigInstance(instance, networkInterface, requestId, accessConfig);
+      client.deleteAccessConfigInstance(instance, networkInterface, accessConfig);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -627,10 +622,9 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
     String deviceName = "deviceName-1543071020";
 
-    Operation actualResponse = client.detachDiskInstance(instance, requestId, deviceName);
+    Operation actualResponse = client.detachDiskInstance(instance, deviceName);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -659,10 +653,9 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
       String deviceName = "deviceName-1543071020";
 
-      client.detachDiskInstance(instance, requestId, deviceName);
+      client.detachDiskInstance(instance, deviceName);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -862,13 +855,10 @@ public class InstanceClientTest {
             .build();
     mockService.addResponse(expectedResponse);
 
-    String sourceInstanceTemplate = "sourceInstanceTemplate869294528";
     ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    String requestId = "requestId37109963";
     Instance instanceResource = Instance.newBuilder().build();
 
-    Operation actualResponse =
-        client.insertInstance(sourceInstanceTemplate, zone, requestId, instanceResource);
+    Operation actualResponse = client.insertInstance(zone, instanceResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -895,12 +885,10 @@ public class InstanceClientTest {
     mockService.addException(exception);
 
     try {
-      String sourceInstanceTemplate = "sourceInstanceTemplate869294528";
       ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-      String requestId = "requestId37109963";
       Instance instanceResource = Instance.newBuilder().build();
 
-      client.insertInstance(sourceInstanceTemplate, zone, requestId, instanceResource);
+      client.insertInstance(zone, instanceResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1081,9 +1069,8 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
 
-    Operation actualResponse = client.resetInstance(instance, requestId);
+    Operation actualResponse = client.resetInstance(instance);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1112,9 +1099,8 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
 
-      client.resetInstance(instance, requestId);
+      client.resetInstance(instance);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1173,11 +1159,9 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceResourceName resource =
         ProjectZoneInstanceResourceName.of("[PROJECT]", "[ZONE]", "[RESOURCE]");
-    String requestId = "requestId37109963";
     Boolean deletionProtection = true;
 
-    Operation actualResponse =
-        client.setDeletionProtectionInstance(resource, requestId, deletionProtection);
+    Operation actualResponse = client.setDeletionProtectionInstance(resource, deletionProtection);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1206,10 +1190,9 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceResourceName resource =
           ProjectZoneInstanceResourceName.of("[PROJECT]", "[ZONE]", "[RESOURCE]");
-      String requestId = "requestId37109963";
       Boolean deletionProtection = true;
 
-      client.setDeletionProtectionInstance(resource, requestId, deletionProtection);
+      client.setDeletionProtectionInstance(resource, deletionProtection);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1268,12 +1251,10 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
     Boolean autoDelete = false;
     String deviceName = "deviceName-1543071020";
 
-    Operation actualResponse =
-        client.setDiskAutoDeleteInstance(instance, requestId, autoDelete, deviceName);
+    Operation actualResponse = client.setDiskAutoDeleteInstance(instance, autoDelete, deviceName);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1302,11 +1283,10 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
       Boolean autoDelete = false;
       String deviceName = "deviceName-1543071020";
 
-      client.setDiskAutoDeleteInstance(instance, requestId, autoDelete, deviceName);
+      client.setDiskAutoDeleteInstance(instance, autoDelete, deviceName);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1365,12 +1345,11 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
     InstancesSetLabelsRequest instancesSetLabelsRequestResource =
         InstancesSetLabelsRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.setLabelsInstance(instance, requestId, instancesSetLabelsRequestResource);
+        client.setLabelsInstance(instance, instancesSetLabelsRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1399,11 +1378,10 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
       InstancesSetLabelsRequest instancesSetLabelsRequestResource =
           InstancesSetLabelsRequest.newBuilder().build();
 
-      client.setLabelsInstance(instance, requestId, instancesSetLabelsRequestResource);
+      client.setLabelsInstance(instance, instancesSetLabelsRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1462,13 +1440,11 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
     InstancesSetMachineResourcesRequest instancesSetMachineResourcesRequestResource =
         InstancesSetMachineResourcesRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.setMachineResourcesInstance(
-            instance, requestId, instancesSetMachineResourcesRequestResource);
+        client.setMachineResourcesInstance(instance, instancesSetMachineResourcesRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1497,12 +1473,10 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
       InstancesSetMachineResourcesRequest instancesSetMachineResourcesRequestResource =
           InstancesSetMachineResourcesRequest.newBuilder().build();
 
-      client.setMachineResourcesInstance(
-          instance, requestId, instancesSetMachineResourcesRequestResource);
+      client.setMachineResourcesInstance(instance, instancesSetMachineResourcesRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1561,12 +1535,11 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
     InstancesSetMachineTypeRequest instancesSetMachineTypeRequestResource =
         InstancesSetMachineTypeRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.setMachineTypeInstance(instance, requestId, instancesSetMachineTypeRequestResource);
+        client.setMachineTypeInstance(instance, instancesSetMachineTypeRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1595,11 +1568,10 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
       InstancesSetMachineTypeRequest instancesSetMachineTypeRequestResource =
           InstancesSetMachineTypeRequest.newBuilder().build();
 
-      client.setMachineTypeInstance(instance, requestId, instancesSetMachineTypeRequestResource);
+      client.setMachineTypeInstance(instance, instancesSetMachineTypeRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1658,10 +1630,9 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
     Metadata metadataResource = Metadata.newBuilder().build();
 
-    Operation actualResponse = client.setMetadataInstance(instance, requestId, metadataResource);
+    Operation actualResponse = client.setMetadataInstance(instance, metadataResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1690,10 +1661,9 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
       Metadata metadataResource = Metadata.newBuilder().build();
 
-      client.setMetadataInstance(instance, requestId, metadataResource);
+      client.setMetadataInstance(instance, metadataResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1752,13 +1722,11 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
     InstancesSetMinCpuPlatformRequest instancesSetMinCpuPlatformRequestResource =
         InstancesSetMinCpuPlatformRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.setMinCpuPlatformInstance(
-            instance, requestId, instancesSetMinCpuPlatformRequestResource);
+        client.setMinCpuPlatformInstance(instance, instancesSetMinCpuPlatformRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1787,12 +1755,10 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
       InstancesSetMinCpuPlatformRequest instancesSetMinCpuPlatformRequestResource =
           InstancesSetMinCpuPlatformRequest.newBuilder().build();
 
-      client.setMinCpuPlatformInstance(
-          instance, requestId, instancesSetMinCpuPlatformRequestResource);
+      client.setMinCpuPlatformInstance(instance, instancesSetMinCpuPlatformRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1851,11 +1817,9 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
     Scheduling schedulingResource = Scheduling.newBuilder().build();
 
-    Operation actualResponse =
-        client.setSchedulingInstance(instance, requestId, schedulingResource);
+    Operation actualResponse = client.setSchedulingInstance(instance, schedulingResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1884,10 +1848,9 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
       Scheduling schedulingResource = Scheduling.newBuilder().build();
 
-      client.setSchedulingInstance(instance, requestId, schedulingResource);
+      client.setSchedulingInstance(instance, schedulingResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -1946,13 +1909,11 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
     InstancesSetServiceAccountRequest instancesSetServiceAccountRequestResource =
         InstancesSetServiceAccountRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.setServiceAccountInstance(
-            instance, requestId, instancesSetServiceAccountRequestResource);
+        client.setServiceAccountInstance(instance, instancesSetServiceAccountRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1981,12 +1942,10 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
       InstancesSetServiceAccountRequest instancesSetServiceAccountRequestResource =
           InstancesSetServiceAccountRequest.newBuilder().build();
 
-      client.setServiceAccountInstance(
-          instance, requestId, instancesSetServiceAccountRequestResource);
+      client.setServiceAccountInstance(instance, instancesSetServiceAccountRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -2045,10 +2004,9 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
     Tags tagsResource = Tags.newBuilder().build();
 
-    Operation actualResponse = client.setTagsInstance(instance, requestId, tagsResource);
+    Operation actualResponse = client.setTagsInstance(instance, tagsResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -2077,10 +2035,9 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
       Tags tagsResource = Tags.newBuilder().build();
 
-      client.setTagsInstance(instance, requestId, tagsResource);
+      client.setTagsInstance(instance, tagsResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -2139,9 +2096,8 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
 
-    Operation actualResponse = client.startInstance(instance, requestId);
+    Operation actualResponse = client.startInstance(instance);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -2170,9 +2126,8 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
 
-      client.startInstance(instance, requestId);
+      client.startInstance(instance);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -2231,13 +2186,12 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
     InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequestResource =
         InstancesStartWithEncryptionKeyRequest.newBuilder().build();
 
     Operation actualResponse =
         client.startWithEncryptionKeyInstance(
-            instance, requestId, instancesStartWithEncryptionKeyRequestResource);
+            instance, instancesStartWithEncryptionKeyRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -2266,12 +2220,11 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
       InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequestResource =
           InstancesStartWithEncryptionKeyRequest.newBuilder().build();
 
       client.startWithEncryptionKeyInstance(
-          instance, requestId, instancesStartWithEncryptionKeyRequestResource);
+          instance, instancesStartWithEncryptionKeyRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -2330,9 +2283,8 @@ public class InstanceClientTest {
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-    String requestId = "requestId37109963";
 
-    Operation actualResponse = client.stopInstance(instance, requestId);
+    Operation actualResponse = client.stopInstance(instance);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -2361,9 +2313,8 @@ public class InstanceClientTest {
     try {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
-      String requestId = "requestId37109963";
 
-      client.stopInstance(instance, requestId);
+      client.stopInstance(instance);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -2423,12 +2374,10 @@ public class InstanceClientTest {
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String networkInterface = "networkInterface902258792";
-    String requestId = "requestId37109963";
     AccessConfig accessConfigResource = AccessConfig.newBuilder().build();
 
     Operation actualResponse =
-        client.updateAccessConfigInstance(
-            instance, networkInterface, requestId, accessConfigResource);
+        client.updateAccessConfigInstance(instance, networkInterface, accessConfigResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -2458,11 +2407,9 @@ public class InstanceClientTest {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
       String networkInterface = "networkInterface902258792";
-      String requestId = "requestId37109963";
       AccessConfig accessConfigResource = AccessConfig.newBuilder().build();
 
-      client.updateAccessConfigInstance(
-          instance, networkInterface, requestId, accessConfigResource);
+      client.updateAccessConfigInstance(instance, networkInterface, accessConfigResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -2522,12 +2469,10 @@ public class InstanceClientTest {
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String networkInterface = "networkInterface902258792";
-    String requestId = "requestId37109963";
     NetworkInterface networkInterfaceResource = NetworkInterface.newBuilder().build();
 
     Operation actualResponse =
-        client.updateNetworkInterfaceInstance(
-            instance, networkInterface, requestId, networkInterfaceResource);
+        client.updateNetworkInterfaceInstance(instance, networkInterface, networkInterfaceResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -2557,11 +2502,9 @@ public class InstanceClientTest {
       ProjectZoneInstanceName instance =
           ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
       String networkInterface = "networkInterface902258792";
-      String requestId = "requestId37109963";
       NetworkInterface networkInterfaceResource = NetworkInterface.newBuilder().build();
 
-      client.updateNetworkInterfaceInstance(
-          instance, networkInterface, requestId, networkInterfaceResource);
+      client.updateNetworkInterfaceInstance(instance, networkInterface, networkInterfaceResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception

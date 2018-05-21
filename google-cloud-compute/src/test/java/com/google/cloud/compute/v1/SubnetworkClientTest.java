@@ -206,11 +206,10 @@ public class SubnetworkClientTest {
             .build();
     mockService.addResponse(expectedResponse);
 
-    String requestId = "requestId37109963";
     ProjectRegionSubnetworkName subnetwork =
         ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
 
-    Operation actualResponse = client.deleteSubnetwork(requestId, subnetwork);
+    Operation actualResponse = client.deleteSubnetwork(subnetwork);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -237,11 +236,10 @@ public class SubnetworkClientTest {
     mockService.addException(exception);
 
     try {
-      String requestId = "requestId37109963";
       ProjectRegionSubnetworkName subnetwork =
           ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
 
-      client.deleteSubnetwork(requestId, subnetwork);
+      client.deleteSubnetwork(subnetwork);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -298,15 +296,13 @@ public class SubnetworkClientTest {
             .build();
     mockService.addResponse(expectedResponse);
 
-    String requestId = "requestId37109963";
     ProjectRegionSubnetworkName subnetwork =
         ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
     SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource =
         SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
 
     Operation actualResponse =
-        client.expandIpCidrRangeSubnetwork(
-            requestId, subnetwork, subnetworksExpandIpCidrRangeRequestResource);
+        client.expandIpCidrRangeSubnetwork(subnetwork, subnetworksExpandIpCidrRangeRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -333,14 +329,12 @@ public class SubnetworkClientTest {
     mockService.addException(exception);
 
     try {
-      String requestId = "requestId37109963";
       ProjectRegionSubnetworkName subnetwork =
           ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
       SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource =
           SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
 
-      client.expandIpCidrRangeSubnetwork(
-          requestId, subnetwork, subnetworksExpandIpCidrRangeRequestResource);
+      client.expandIpCidrRangeSubnetwork(subnetwork, subnetworksExpandIpCidrRangeRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -355,6 +349,7 @@ public class SubnetworkClientTest {
     String description = "description-1724546052";
     ProjectGlobalNetworkName network = ProjectGlobalNetworkName.of("[PROJECT]", "[NETWORK]");
     String selfLink = "selfLink-1691268851";
+    Boolean enableFlowLogs = true;
     String creationTimestamp = "creationTimestamp567396278";
     String fingerprint = "fingerprint-1375934236";
     String name = "name3373707";
@@ -369,6 +364,7 @@ public class SubnetworkClientTest {
             .setDescription(description)
             .setNetwork(network.toString())
             .setSelfLink(selfLink)
+            .setEnableFlowLogs(enableFlowLogs)
             .setCreationTimestamp(creationTimestamp)
             .setFingerprint(fingerprint)
             .setName(name)
@@ -469,11 +465,10 @@ public class SubnetworkClientTest {
             .build();
     mockService.addResponse(expectedResponse);
 
-    String requestId = "requestId37109963";
     ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
     Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
 
-    Operation actualResponse = client.insertSubnetwork(requestId, region, subnetworkResource);
+    Operation actualResponse = client.insertSubnetwork(region, subnetworkResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -500,11 +495,10 @@ public class SubnetworkClientTest {
     mockService.addException(exception);
 
     try {
-      String requestId = "requestId37109963";
       ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
       Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
 
-      client.insertSubnetwork(requestId, region, subnetworkResource);
+      client.insertSubnetwork(region, subnetworkResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -621,12 +615,11 @@ public class SubnetworkClientTest {
             .build();
     mockService.addResponse(expectedResponse);
 
-    String requestId = "requestId37109963";
     ProjectRegionSubnetworkName subnetwork =
         ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
     Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
 
-    Operation actualResponse = client.patchSubnetwork(requestId, subnetwork, subnetworkResource);
+    Operation actualResponse = client.patchSubnetwork(subnetwork, subnetworkResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -653,12 +646,11 @@ public class SubnetworkClientTest {
     mockService.addException(exception);
 
     try {
-      String requestId = "requestId37109963";
       ProjectRegionSubnetworkName subnetwork =
           ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
       Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
 
-      client.patchSubnetwork(requestId, subnetwork, subnetworkResource);
+      client.patchSubnetwork(subnetwork, subnetworkResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception
@@ -715,7 +707,6 @@ public class SubnetworkClientTest {
             .build();
     mockService.addResponse(expectedResponse);
 
-    String requestId = "requestId37109963";
     ProjectRegionSubnetworkName subnetwork =
         ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
     SubnetworksSetPrivateIpGoogleAccessRequest subnetworksSetPrivateIpGoogleAccessRequestResource =
@@ -723,7 +714,7 @@ public class SubnetworkClientTest {
 
     Operation actualResponse =
         client.setPrivateIpGoogleAccessSubnetwork(
-            requestId, subnetwork, subnetworksSetPrivateIpGoogleAccessRequestResource);
+            subnetwork, subnetworksSetPrivateIpGoogleAccessRequestResource);
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -750,7 +741,6 @@ public class SubnetworkClientTest {
     mockService.addException(exception);
 
     try {
-      String requestId = "requestId37109963";
       ProjectRegionSubnetworkName subnetwork =
           ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
       SubnetworksSetPrivateIpGoogleAccessRequest
@@ -758,7 +748,7 @@ public class SubnetworkClientTest {
               SubnetworksSetPrivateIpGoogleAccessRequest.newBuilder().build();
 
       client.setPrivateIpGoogleAccessSubnetwork(
-          requestId, subnetwork, subnetworksSetPrivateIpGoogleAccessRequestResource);
+          subnetwork, subnetworksSetPrivateIpGoogleAccessRequestResource);
       Assert.fail("No exception raised");
     } catch (InvalidArgumentException e) {
       // Expected exception

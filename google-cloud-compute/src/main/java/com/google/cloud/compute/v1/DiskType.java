@@ -17,12 +17,8 @@ package com.google.cloud.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -36,6 +32,7 @@ public final class DiskType implements ApiMessage {
   private final String id;
   private final String kind;
   private final String name;
+  private final String region;
   private final String selfLink;
   private final String validDiskSize;
   private final String zone;
@@ -48,6 +45,7 @@ public final class DiskType implements ApiMessage {
     this.id = null;
     this.kind = null;
     this.name = null;
+    this.region = null;
     this.selfLink = null;
     this.validDiskSize = null;
     this.zone = null;
@@ -61,6 +59,7 @@ public final class DiskType implements ApiMessage {
       String id,
       String kind,
       String name,
+      String region,
       String selfLink,
       String validDiskSize,
       String zone) {
@@ -71,80 +70,46 @@ public final class DiskType implements ApiMessage {
     this.id = id;
     this.kind = kind;
     this.name = name;
+    this.region = region;
     this.selfLink = selfLink;
     this.validDiskSize = validDiskSize;
     this.zone = zone;
   }
 
   @Override
-  public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
-    Map<String, List<String>> fieldMap = new HashMap<>();
-    if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
-      fieldMap.put(
-          "creationTimestamp", Collections.singletonList(String.valueOf(creationTimestamp)));
-    }
-    if (fieldNames.contains("defaultDiskSizeGb") && defaultDiskSizeGb != null) {
-      fieldMap.put(
-          "defaultDiskSizeGb", Collections.singletonList(String.valueOf(defaultDiskSizeGb)));
-    }
-    if (fieldNames.contains("deprecated") && deprecated != null) {
-      fieldMap.put("deprecated", Collections.singletonList(String.valueOf(deprecated)));
-    }
-    if (fieldNames.contains("description") && description != null) {
-      fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
-    }
-    if (fieldNames.contains("id") && id != null) {
-      fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
-    }
-    if (fieldNames.contains("kind") && kind != null) {
-      fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
-    }
-    if (fieldNames.contains("name") && name != null) {
-      fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
-    }
-    if (fieldNames.contains("selfLink") && selfLink != null) {
-      fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
-    }
-    if (fieldNames.contains("validDiskSize") && validDiskSize != null) {
-      fieldMap.put("validDiskSize", Collections.singletonList(String.valueOf(validDiskSize)));
-    }
-    if (fieldNames.contains("zone") && zone != null) {
-      fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
-    }
-    return fieldMap;
-  }
-
-  @Override
-  public String getFieldStringValue(String fieldName) {
+  public Object getFieldValue(String fieldName) {
     if (fieldName.equals("creationTimestamp")) {
-      return String.valueOf(creationTimestamp);
+      return creationTimestamp;
     }
     if (fieldName.equals("defaultDiskSizeGb")) {
-      return String.valueOf(defaultDiskSizeGb);
+      return defaultDiskSizeGb;
     }
     if (fieldName.equals("deprecated")) {
-      return String.valueOf(deprecated);
+      return deprecated;
     }
     if (fieldName.equals("description")) {
-      return String.valueOf(description);
+      return description;
     }
     if (fieldName.equals("id")) {
-      return String.valueOf(id);
+      return id;
     }
     if (fieldName.equals("kind")) {
-      return String.valueOf(kind);
+      return kind;
     }
     if (fieldName.equals("name")) {
-      return String.valueOf(name);
+      return name;
+    }
+    if (fieldName.equals("region")) {
+      return region;
     }
     if (fieldName.equals("selfLink")) {
-      return String.valueOf(selfLink);
+      return selfLink;
     }
     if (fieldName.equals("validDiskSize")) {
-      return String.valueOf(validDiskSize);
+      return validDiskSize;
     }
     if (fieldName.equals("zone")) {
-      return String.valueOf(zone);
+      return zone;
     }
     return null;
   }
@@ -152,6 +117,12 @@ public final class DiskType implements ApiMessage {
   @Nullable
   @Override
   public ApiMessage getApiMessageRequestBody() {
+    return null;
+  }
+
+  @Nullable
+  @Override
+  public List<String> getFieldMask() {
     return null;
   }
 
@@ -181,6 +152,10 @@ public final class DiskType implements ApiMessage {
 
   public String getName() {
     return name;
+  }
+
+  public String getRegion() {
+    return region;
   }
 
   public String getSelfLink() {
@@ -225,6 +200,7 @@ public final class DiskType implements ApiMessage {
     private String id;
     private String kind;
     private String name;
+    private String region;
     private String selfLink;
     private String validDiskSize;
     private String zone;
@@ -254,6 +230,9 @@ public final class DiskType implements ApiMessage {
       if (other.getName() != null) {
         this.name = other.name;
       }
+      if (other.getRegion() != null) {
+        this.region = other.region;
+      }
       if (other.getSelfLink() != null) {
         this.selfLink = other.selfLink;
       }
@@ -274,6 +253,7 @@ public final class DiskType implements ApiMessage {
       this.id = source.id;
       this.kind = source.kind;
       this.name = source.name;
+      this.region = source.region;
       this.selfLink = source.selfLink;
       this.validDiskSize = source.validDiskSize;
       this.zone = source.zone;
@@ -342,6 +322,15 @@ public final class DiskType implements ApiMessage {
       return this;
     }
 
+    public String getRegion() {
+      return region;
+    }
+
+    public Builder setRegion(String region) {
+      this.region = region;
+      return this;
+    }
+
     public String getSelfLink() {
       return selfLink;
     }
@@ -379,6 +368,7 @@ public final class DiskType implements ApiMessage {
           id,
           kind,
           name,
+          region,
           selfLink,
           validDiskSize,
           zone);
@@ -393,6 +383,7 @@ public final class DiskType implements ApiMessage {
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
       newBuilder.setName(this.name);
+      newBuilder.setRegion(this.region);
       newBuilder.setSelfLink(this.selfLink);
       newBuilder.setValidDiskSize(this.validDiskSize);
       newBuilder.setZone(this.zone);
@@ -424,6 +415,9 @@ public final class DiskType implements ApiMessage {
         + "name="
         + name
         + ", "
+        + "region="
+        + region
+        + ", "
         + "selfLink="
         + selfLink
         + ", "
@@ -449,6 +443,7 @@ public final class DiskType implements ApiMessage {
           && Objects.equals(this.id, that.getId())
           && Objects.equals(this.kind, that.getKind())
           && Objects.equals(this.name, that.getName())
+          && Objects.equals(this.region, that.getRegion())
           && Objects.equals(this.selfLink, that.getSelfLink())
           && Objects.equals(this.validDiskSize, that.getValidDiskSize())
           && Objects.equals(this.zone, that.getZone());
@@ -466,6 +461,7 @@ public final class DiskType implements ApiMessage {
         id,
         kind,
         name,
+        region,
         selfLink,
         validDiskSize,
         zone);

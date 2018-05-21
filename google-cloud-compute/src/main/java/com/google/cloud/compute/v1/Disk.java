@@ -17,14 +17,10 @@ package com.google.cloud.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
-import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
 
@@ -45,6 +41,8 @@ public final class Disk implements ApiMessage {
   private final List<String> licenses;
   private final String name;
   private final String options;
+  private final String region;
+  private final List<String> replicaZones;
   private final String selfLink;
   private final String sizeGb;
   private final String sourceImage;
@@ -73,6 +71,8 @@ public final class Disk implements ApiMessage {
     this.licenses = null;
     this.name = null;
     this.options = null;
+    this.region = null;
+    this.replicaZones = null;
     this.selfLink = null;
     this.sizeGb = null;
     this.sourceImage = null;
@@ -102,6 +102,8 @@ public final class Disk implements ApiMessage {
       List<String> licenses,
       String name,
       String options,
+      String region,
+      List<String> replicaZones,
       String selfLink,
       String sizeGb,
       String sourceImage,
@@ -128,6 +130,8 @@ public final class Disk implements ApiMessage {
     this.licenses = licenses;
     this.name = name;
     this.options = options;
+    this.region = region;
+    this.replicaZones = replicaZones;
     this.selfLink = selfLink;
     this.sizeGb = sizeGb;
     this.sourceImage = sourceImage;
@@ -143,192 +147,90 @@ public final class Disk implements ApiMessage {
   }
 
   @Override
-  public Map<String, List<String>> populateFieldsInMap(Set<String> fieldNames) {
-    Map<String, List<String>> fieldMap = new HashMap<>();
-    if (fieldNames.contains("creationTimestamp") && creationTimestamp != null) {
-      fieldMap.put(
-          "creationTimestamp", Collections.singletonList(String.valueOf(creationTimestamp)));
-    }
-    if (fieldNames.contains("description") && description != null) {
-      fieldMap.put("description", Collections.singletonList(String.valueOf(description)));
-    }
-    if (fieldNames.contains("diskEncryptionKey") && diskEncryptionKey != null) {
-      fieldMap.put(
-          "diskEncryptionKey", Collections.singletonList(String.valueOf(diskEncryptionKey)));
-    }
-    if (fieldNames.contains("guestOsFeatures") && guestOsFeatures != null) {
-      ImmutableList.Builder stringList = ImmutableList.builder();
-      for (GuestOsFeature item : guestOsFeatures) {
-        stringList.add(item.toString());
-      }
-      fieldMap.put("guestOsFeatures", stringList.build());
-    }
-    if (fieldNames.contains("id") && id != null) {
-      fieldMap.put("id", Collections.singletonList(String.valueOf(id)));
-    }
-    if (fieldNames.contains("kind") && kind != null) {
-      fieldMap.put("kind", Collections.singletonList(String.valueOf(kind)));
-    }
-    if (fieldNames.contains("labelFingerprint") && labelFingerprint != null) {
-      fieldMap.put("labelFingerprint", Collections.singletonList(String.valueOf(labelFingerprint)));
-    }
-    if (fieldNames.contains("labels") && labels != null) {
-      fieldMap.put("labels", Collections.singletonList(String.valueOf(labels)));
-    }
-    if (fieldNames.contains("lastAttachTimestamp") && lastAttachTimestamp != null) {
-      fieldMap.put(
-          "lastAttachTimestamp", Collections.singletonList(String.valueOf(lastAttachTimestamp)));
-    }
-    if (fieldNames.contains("lastDetachTimestamp") && lastDetachTimestamp != null) {
-      fieldMap.put(
-          "lastDetachTimestamp", Collections.singletonList(String.valueOf(lastDetachTimestamp)));
-    }
-    if (fieldNames.contains("licenseCodes") && licenseCodes != null) {
-      ImmutableList.Builder stringList = ImmutableList.builder();
-      for (String item : licenseCodes) {
-        stringList.add(item.toString());
-      }
-      fieldMap.put("licenseCodes", stringList.build());
-    }
-    if (fieldNames.contains("licenses") && licenses != null) {
-      ImmutableList.Builder stringList = ImmutableList.builder();
-      for (String item : licenses) {
-        stringList.add(item.toString());
-      }
-      fieldMap.put("licenses", stringList.build());
-    }
-    if (fieldNames.contains("name") && name != null) {
-      fieldMap.put("name", Collections.singletonList(String.valueOf(name)));
-    }
-    if (fieldNames.contains("options") && options != null) {
-      fieldMap.put("options", Collections.singletonList(String.valueOf(options)));
-    }
-    if (fieldNames.contains("selfLink") && selfLink != null) {
-      fieldMap.put("selfLink", Collections.singletonList(String.valueOf(selfLink)));
-    }
-    if (fieldNames.contains("sizeGb") && sizeGb != null) {
-      fieldMap.put("sizeGb", Collections.singletonList(String.valueOf(sizeGb)));
-    }
-    if (fieldNames.contains("sourceImage") && sourceImage != null) {
-      fieldMap.put("sourceImage", Collections.singletonList(String.valueOf(sourceImage)));
-    }
-    if (fieldNames.contains("sourceImageEncryptionKey") && sourceImageEncryptionKey != null) {
-      fieldMap.put(
-          "sourceImageEncryptionKey",
-          Collections.singletonList(String.valueOf(sourceImageEncryptionKey)));
-    }
-    if (fieldNames.contains("sourceImageId") && sourceImageId != null) {
-      fieldMap.put("sourceImageId", Collections.singletonList(String.valueOf(sourceImageId)));
-    }
-    if (fieldNames.contains("sourceSnapshot") && sourceSnapshot != null) {
-      fieldMap.put("sourceSnapshot", Collections.singletonList(String.valueOf(sourceSnapshot)));
-    }
-    if (fieldNames.contains("sourceSnapshotEncryptionKey") && sourceSnapshotEncryptionKey != null) {
-      fieldMap.put(
-          "sourceSnapshotEncryptionKey",
-          Collections.singletonList(String.valueOf(sourceSnapshotEncryptionKey)));
-    }
-    if (fieldNames.contains("sourceSnapshotId") && sourceSnapshotId != null) {
-      fieldMap.put("sourceSnapshotId", Collections.singletonList(String.valueOf(sourceSnapshotId)));
-    }
-    if (fieldNames.contains("status") && status != null) {
-      fieldMap.put("status", Collections.singletonList(String.valueOf(status)));
-    }
-    if (fieldNames.contains("type") && type != null) {
-      fieldMap.put("type", Collections.singletonList(String.valueOf(type)));
-    }
-    if (fieldNames.contains("users") && users != null) {
-      ImmutableList.Builder stringList = ImmutableList.builder();
-      for (String item : users) {
-        stringList.add(item.toString());
-      }
-      fieldMap.put("users", stringList.build());
-    }
-    if (fieldNames.contains("zone") && zone != null) {
-      fieldMap.put("zone", Collections.singletonList(String.valueOf(zone)));
-    }
-    return fieldMap;
-  }
-
-  @Override
-  public String getFieldStringValue(String fieldName) {
+  public Object getFieldValue(String fieldName) {
     if (fieldName.equals("creationTimestamp")) {
-      return String.valueOf(creationTimestamp);
+      return creationTimestamp;
     }
     if (fieldName.equals("description")) {
-      return String.valueOf(description);
+      return description;
     }
     if (fieldName.equals("diskEncryptionKey")) {
-      return String.valueOf(diskEncryptionKey);
+      return diskEncryptionKey;
     }
     if (fieldName.equals("guestOsFeatures")) {
-      return String.valueOf(guestOsFeatures);
+      return guestOsFeatures;
     }
     if (fieldName.equals("id")) {
-      return String.valueOf(id);
+      return id;
     }
     if (fieldName.equals("kind")) {
-      return String.valueOf(kind);
+      return kind;
     }
     if (fieldName.equals("labelFingerprint")) {
-      return String.valueOf(labelFingerprint);
+      return labelFingerprint;
     }
     if (fieldName.equals("labels")) {
-      return String.valueOf(labels);
+      return labels;
     }
     if (fieldName.equals("lastAttachTimestamp")) {
-      return String.valueOf(lastAttachTimestamp);
+      return lastAttachTimestamp;
     }
     if (fieldName.equals("lastDetachTimestamp")) {
-      return String.valueOf(lastDetachTimestamp);
+      return lastDetachTimestamp;
     }
     if (fieldName.equals("licenseCodes")) {
-      return String.valueOf(licenseCodes);
+      return licenseCodes;
     }
     if (fieldName.equals("licenses")) {
-      return String.valueOf(licenses);
+      return licenses;
     }
     if (fieldName.equals("name")) {
-      return String.valueOf(name);
+      return name;
     }
     if (fieldName.equals("options")) {
-      return String.valueOf(options);
+      return options;
+    }
+    if (fieldName.equals("region")) {
+      return region;
+    }
+    if (fieldName.equals("replicaZones")) {
+      return replicaZones;
     }
     if (fieldName.equals("selfLink")) {
-      return String.valueOf(selfLink);
+      return selfLink;
     }
     if (fieldName.equals("sizeGb")) {
-      return String.valueOf(sizeGb);
+      return sizeGb;
     }
     if (fieldName.equals("sourceImage")) {
-      return String.valueOf(sourceImage);
+      return sourceImage;
     }
     if (fieldName.equals("sourceImageEncryptionKey")) {
-      return String.valueOf(sourceImageEncryptionKey);
+      return sourceImageEncryptionKey;
     }
     if (fieldName.equals("sourceImageId")) {
-      return String.valueOf(sourceImageId);
+      return sourceImageId;
     }
     if (fieldName.equals("sourceSnapshot")) {
-      return String.valueOf(sourceSnapshot);
+      return sourceSnapshot;
     }
     if (fieldName.equals("sourceSnapshotEncryptionKey")) {
-      return String.valueOf(sourceSnapshotEncryptionKey);
+      return sourceSnapshotEncryptionKey;
     }
     if (fieldName.equals("sourceSnapshotId")) {
-      return String.valueOf(sourceSnapshotId);
+      return sourceSnapshotId;
     }
     if (fieldName.equals("status")) {
-      return String.valueOf(status);
+      return status;
     }
     if (fieldName.equals("type")) {
-      return String.valueOf(type);
+      return type;
     }
     if (fieldName.equals("users")) {
-      return String.valueOf(users);
+      return users;
     }
     if (fieldName.equals("zone")) {
-      return String.valueOf(zone);
+      return zone;
     }
     return null;
   }
@@ -336,6 +238,12 @@ public final class Disk implements ApiMessage {
   @Nullable
   @Override
   public ApiMessage getApiMessageRequestBody() {
+    return null;
+  }
+
+  @Nullable
+  @Override
+  public List<String> getFieldMask() {
     return null;
   }
 
@@ -393,6 +301,14 @@ public final class Disk implements ApiMessage {
 
   public String getOptions() {
     return options;
+  }
+
+  public String getRegion() {
+    return region;
+  }
+
+  public List<String> getReplicaZonesList() {
+    return replicaZones;
   }
 
   public String getSelfLink() {
@@ -480,6 +396,8 @@ public final class Disk implements ApiMessage {
     private List<String> licenses;
     private String name;
     private String options;
+    private String region;
+    private List<String> replicaZones;
     private String selfLink;
     private String sizeGb;
     private String sourceImage;
@@ -539,6 +457,12 @@ public final class Disk implements ApiMessage {
       if (other.getOptions() != null) {
         this.options = other.options;
       }
+      if (other.getRegion() != null) {
+        this.region = other.region;
+      }
+      if (other.getReplicaZonesList() != null) {
+        this.replicaZones = other.replicaZones;
+      }
       if (other.getSelfLink() != null) {
         this.selfLink = other.selfLink;
       }
@@ -593,6 +517,8 @@ public final class Disk implements ApiMessage {
       this.licenses = source.licenses;
       this.name = source.name;
       this.options = source.options;
+      this.region = source.region;
+      this.replicaZones = source.replicaZones;
       this.selfLink = source.selfLink;
       this.sizeGb = source.sizeGb;
       this.sourceImage = source.sourceImage;
@@ -757,6 +683,32 @@ public final class Disk implements ApiMessage {
       return this;
     }
 
+    public String getRegion() {
+      return region;
+    }
+
+    public Builder setRegion(String region) {
+      this.region = region;
+      return this;
+    }
+
+    public List<String> getReplicaZonesList() {
+      return replicaZones;
+    }
+
+    public Builder addAllReplicaZones(List<String> replicaZones) {
+      if (this.replicaZones == null) {
+        this.replicaZones = new ArrayList<>(replicaZones.size());
+      }
+      this.replicaZones.addAll(replicaZones);
+      return this;
+    }
+
+    public Builder addReplicaZones(String replicaZones) {
+      this.replicaZones.add(replicaZones);
+      return this;
+    }
+
     public String getSelfLink() {
       return selfLink;
     }
@@ -891,6 +843,8 @@ public final class Disk implements ApiMessage {
           licenses,
           name,
           options,
+          region,
+          replicaZones,
           selfLink,
           sizeGb,
           sourceImage,
@@ -921,6 +875,8 @@ public final class Disk implements ApiMessage {
       newBuilder.addAllLicenses(this.licenses);
       newBuilder.setName(this.name);
       newBuilder.setOptions(this.options);
+      newBuilder.setRegion(this.region);
+      newBuilder.addAllReplicaZones(this.replicaZones);
       newBuilder.setSelfLink(this.selfLink);
       newBuilder.setSizeGb(this.sizeGb);
       newBuilder.setSourceImage(this.sourceImage);
@@ -982,6 +938,12 @@ public final class Disk implements ApiMessage {
         + "options="
         + options
         + ", "
+        + "region="
+        + region
+        + ", "
+        + "replicaZones="
+        + replicaZones
+        + ", "
         + "selfLink="
         + selfLink
         + ", "
@@ -1041,6 +1003,8 @@ public final class Disk implements ApiMessage {
           && Objects.equals(this.licenses, that.getLicensesList())
           && Objects.equals(this.name, that.getName())
           && Objects.equals(this.options, that.getOptions())
+          && Objects.equals(this.region, that.getRegion())
+          && Objects.equals(this.replicaZones, that.getReplicaZonesList())
           && Objects.equals(this.selfLink, that.getSelfLink())
           && Objects.equals(this.sizeGb, that.getSizeGb())
           && Objects.equals(this.sourceImage, that.getSourceImage())
@@ -1074,6 +1038,8 @@ public final class Disk implements ApiMessage {
         licenses,
         name,
         options,
+        region,
+        replicaZones,
         selfLink,
         sizeGb,
         sourceImage,
