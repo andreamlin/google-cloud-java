@@ -82,7 +82,7 @@ public class JsonComputeExample {
     // Begin samplegen code for insertAddress().
     Address newAddress = Address.newBuilder().setName(newAddressName).build();
     ProjectRegionName region = ProjectRegionName.of(PROJECT_NAME, REGION);
-    Operation response = client.insertAddress(null, region, newAddress);
+    Operation response = client.insertAddress(region, newAddress);
     // End samplegen code for insertAddress().
     System.out.format("Result of insert: %s\n", response.toString());
   }
