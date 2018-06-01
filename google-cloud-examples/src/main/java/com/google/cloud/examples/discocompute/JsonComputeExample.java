@@ -59,14 +59,14 @@ public class JsonComputeExample {
     String newAddressName = "usseaparkview";
     System.out.println("Inserting address:");
 
-    // insertNewAddressJustClient(client, newAddressName);
+    insertNewAddressJustClient(client, newAddressName);
 
     listAddresses(client);
 
     System.out.println("Deleting address:");
-    // Operation deleteResponse = client.deleteAddress(
-    //     ProjectRegionAddressName.of(newAddressName, PROJECT_NAME, REGION), null);
-    // System.out.format("Result of delete: %s\n", deleteResponse.toString());
+    Operation deleteResponse = client.deleteAddress(
+        ProjectRegionAddressName.of(newAddressName, PROJECT_NAME, REGION));
+    System.out.format("Result of delete: %s\n", deleteResponse.toString());
     int sleepTimeInSeconds = 3;
     System.out.format("Waiting %d seconds for server to update...\n", sleepTimeInSeconds);
     // Wait for the delete operation to finish on the server.
