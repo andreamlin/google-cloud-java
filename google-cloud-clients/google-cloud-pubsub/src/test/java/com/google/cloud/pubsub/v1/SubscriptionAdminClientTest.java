@@ -56,7 +56,6 @@ import com.google.pubsub.v1.ProjectTopicName;
 import com.google.pubsub.v1.PullRequest;
 import com.google.pubsub.v1.PullResponse;
 import com.google.pubsub.v1.PushConfig;
-import com.google.pubsub.v1.ReceivedMessage;
 import com.google.pubsub.v1.Snapshot;
 import com.google.pubsub.v1.StreamingPullRequest;
 import com.google.pubsub.v1.StreamingPullResponse;
@@ -456,10 +455,7 @@ public class SubscriptionAdminClientTest {
   @Test
   @SuppressWarnings("all")
   public void streamingPullTest() throws Exception {
-    ReceivedMessage receivedMessagesElement = ReceivedMessage.newBuilder().build();
-    List<ReceivedMessage> receivedMessages = Arrays.asList(receivedMessagesElement);
-    StreamingPullResponse expectedResponse =
-        StreamingPullResponse.newBuilder().addAllReceivedMessages(receivedMessages).build();
+    StreamingPullResponse expectedResponse = StreamingPullResponse.newBuilder().build();
     mockSubscriber.addResponse(expectedResponse);
     ProjectSubscriptionName subscription =
         ProjectSubscriptionName.of("[PROJECT]", "[SUBSCRIPTION]");
