@@ -27,7 +27,11 @@ import com.google.cloud.compute.v1.DiskTypeClient;
 import com.google.cloud.compute.v1.DiskTypeClient.AggregatedListDiskTypesPagedResponse;
 import com.google.cloud.compute.v1.DiskTypeSettings;
 import com.google.cloud.compute.v1.DiskTypesScopedList;
+import com.google.cloud.compute.v1.Instance;
+import com.google.cloud.compute.v1.InstanceClient;
+import com.google.cloud.compute.v1.InstanceSettings;
 import com.google.cloud.compute.v1.ListDiskTypesHttpRequest;
+import com.google.cloud.compute.v1.Operation;
 import com.google.cloud.compute.v1.ProjectName;
 import com.google.cloud.compute.v1.ProjectRegionDiskTypeName;
 import com.google.cloud.compute.v1.ProjectZoneDiskTypeName;
@@ -50,6 +54,8 @@ public class ITComputeTest {
   private static final String DEFAULT_PROJECT = ServiceOptions.getDefaultProjectId();
 
   private static DiskTypeClient diskTypeClient;
+  private static InstanceClient instanceClient;
+  private static InstanceSettings instanceSettings;
   private static DiskTypeSettings diskTypeSettings;
 
   @Rule public Timeout globalTimeout = Timeout.seconds(300);
@@ -65,6 +71,12 @@ public class ITComputeTest {
             .setCredentialsProvider(FixedCredentialsProvider.create(credentials))
             .build();
     diskTypeClient = DiskTypeClient.create(diskTypeSettings);
+
+    instanceSettings =
+        InstanceSettings.newBuilder()
+            .setCredentialsProvider(FixedCredentialsProvider.create(credentials))
+            .build();
+    instanceClient = DiskTypeClient.create(instanceSettings);
   }
 
   @AfterClass
@@ -88,7 +100,11 @@ public class ITComputeTest {
   @Test
   public void testListDiskTypes() {
     Page<DiskType> diskPage =
-        diskTypeClient.listDiskTypes(ProjectZoneName.of(DEFAULT_PROJECT, ZONE)).getPage();
+        diskTypeClient.listDiskTypes(
+            ListDiskTypesHttpRequest.newBuilder()
+                .setZone(ProjectZoneName.of(DEFAULT_PROJECT, ZONE).toString())
+                .setMaxResults(1)
+                .build()).getPage();
     Iterator<DiskType> diskTypeIterator = diskPage.iterateAll().iterator();
     assertThat(diskTypeIterator.hasNext()).isTrue();
     while (diskTypeIterator.hasNext()) {
@@ -101,6 +117,31 @@ public class ITComputeTest {
       assertThat(diskType.getDescription()).isNotNull();
       assertThat(diskType.getValidDiskSize()).isNotNull();
       assertThat(diskType.getDefaultDiskSizeGb()).isNotNull();
+    }
+  }
+
+
+  @Test
+  public void testDetach() {
+    InstanceClient instanceClient = new InstanceClient();
+    Instance instance = Instance.newBuilder().build();
+    String deviceName =
+    Operation operation = instanceClient.detachDisk(instance, deviceName);
+    if (operation == null) {
+      System.out.printf("Instance %s does not exist%n", instance);
+      return;
+    }
+    while (!operation.isDone()) {
+      System.out.printf(
+          "Waiting for operation %s to complete%n", operation.getOperationId().getOperation());
+      Thread.sleep(1000L);
+    }
+    operation = operation.reload();
+    if (operation.getErrors() == null) {
+      System.out.printf("Disk detached from instance %s%n", instance);
+    } else {
+      System.out.printf("Attempt to detach disk from instance %s failed%n", instance);
+      System.out.printf("Error: %s%n", operation.getErrors());
     }
   }
 
