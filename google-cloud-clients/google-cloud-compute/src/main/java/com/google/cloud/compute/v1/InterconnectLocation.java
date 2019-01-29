@@ -40,7 +40,6 @@ public final class InterconnectLocation implements ApiMessage {
   private final String peeringdbFacilityId;
   private final List<InterconnectLocationRegionInfo> regionInfos;
   private final String selfLink;
-  private final String status;
 
   private InterconnectLocation() {
     this.address = null;
@@ -57,7 +56,6 @@ public final class InterconnectLocation implements ApiMessage {
     this.peeringdbFacilityId = null;
     this.regionInfos = null;
     this.selfLink = null;
-    this.status = null;
   }
 
   private InterconnectLocation(
@@ -74,8 +72,7 @@ public final class InterconnectLocation implements ApiMessage {
       String name,
       String peeringdbFacilityId,
       List<InterconnectLocationRegionInfo> regionInfos,
-      String selfLink,
-      String status) {
+      String selfLink) {
     this.address = address;
     this.availabilityZone = availabilityZone;
     this.city = city;
@@ -90,7 +87,6 @@ public final class InterconnectLocation implements ApiMessage {
     this.peeringdbFacilityId = peeringdbFacilityId;
     this.regionInfos = regionInfos;
     this.selfLink = selfLink;
-    this.status = status;
   }
 
   @Override
@@ -136,9 +132,6 @@ public final class InterconnectLocation implements ApiMessage {
     }
     if ("selfLink".equals(fieldName)) {
       return selfLink;
-    }
-    if ("status".equals(fieldName)) {
-      return status;
     }
     return null;
   }
@@ -211,10 +204,6 @@ public final class InterconnectLocation implements ApiMessage {
     return selfLink;
   }
 
-  public String getStatus() {
-    return status;
-  }
-
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
@@ -252,7 +241,6 @@ public final class InterconnectLocation implements ApiMessage {
     private String peeringdbFacilityId;
     private List<InterconnectLocationRegionInfo> regionInfos;
     private String selfLink;
-    private String status;
 
     Builder() {}
 
@@ -300,9 +288,6 @@ public final class InterconnectLocation implements ApiMessage {
       if (other.getSelfLink() != null) {
         this.selfLink = other.selfLink;
       }
-      if (other.getStatus() != null) {
-        this.status = other.status;
-      }
       return this;
     }
 
@@ -321,7 +306,6 @@ public final class InterconnectLocation implements ApiMessage {
       this.peeringdbFacilityId = source.peeringdbFacilityId;
       this.regionInfos = source.regionInfos;
       this.selfLink = source.selfLink;
-      this.status = source.status;
     }
 
     public String getAddress() {
@@ -461,15 +445,6 @@ public final class InterconnectLocation implements ApiMessage {
       return this;
     }
 
-    public String getStatus() {
-      return status;
-    }
-
-    public Builder setStatus(String status) {
-      this.status = status;
-      return this;
-    }
-
     public InterconnectLocation build() {
 
       return new InterconnectLocation(
@@ -486,8 +461,7 @@ public final class InterconnectLocation implements ApiMessage {
           name,
           peeringdbFacilityId,
           regionInfos,
-          selfLink,
-          status);
+          selfLink);
     }
 
     public Builder clone() {
@@ -506,7 +480,6 @@ public final class InterconnectLocation implements ApiMessage {
       newBuilder.setPeeringdbFacilityId(this.peeringdbFacilityId);
       newBuilder.addAllRegionInfos(this.regionInfos);
       newBuilder.setSelfLink(this.selfLink);
-      newBuilder.setStatus(this.status);
       return newBuilder;
     }
   }
@@ -555,9 +528,6 @@ public final class InterconnectLocation implements ApiMessage {
         + ", "
         + "selfLink="
         + selfLink
-        + ", "
-        + "status="
-        + status
         + "}";
   }
 
@@ -581,8 +551,7 @@ public final class InterconnectLocation implements ApiMessage {
           && Objects.equals(this.name, that.getName())
           && Objects.equals(this.peeringdbFacilityId, that.getPeeringdbFacilityId())
           && Objects.equals(this.regionInfos, that.getRegionInfosList())
-          && Objects.equals(this.selfLink, that.getSelfLink())
-          && Objects.equals(this.status, that.getStatus());
+          && Objects.equals(this.selfLink, that.getSelfLink());
     }
     return false;
   }
@@ -603,7 +572,6 @@ public final class InterconnectLocation implements ApiMessage {
         name,
         peeringdbFacilityId,
         regionInfos,
-        selfLink,
-        status);
+        selfLink);
   }
 }

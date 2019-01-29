@@ -26,7 +26,6 @@ import javax.annotation.Nullable;
 @Generated("by GAPIC")
 @BetaApi
 public final class InstanceGroupManager implements ApiMessage {
-  private final List<InstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
   private final String baseInstanceName;
   private final String creationTimestamp;
   private final InstanceGroupManagerActionsSummary currentActions;
@@ -46,7 +45,6 @@ public final class InstanceGroupManager implements ApiMessage {
   private final String zone;
 
   private InstanceGroupManager() {
-    this.autoHealingPolicies = null;
     this.baseInstanceName = null;
     this.creationTimestamp = null;
     this.currentActions = null;
@@ -67,7 +65,6 @@ public final class InstanceGroupManager implements ApiMessage {
   }
 
   private InstanceGroupManager(
-      List<InstanceGroupManagerAutoHealingPolicy> autoHealingPolicies,
       String baseInstanceName,
       String creationTimestamp,
       InstanceGroupManagerActionsSummary currentActions,
@@ -85,7 +82,6 @@ public final class InstanceGroupManager implements ApiMessage {
       List<String> targetPools,
       Integer targetSize,
       String zone) {
-    this.autoHealingPolicies = autoHealingPolicies;
     this.baseInstanceName = baseInstanceName;
     this.creationTimestamp = creationTimestamp;
     this.currentActions = currentActions;
@@ -107,9 +103,6 @@ public final class InstanceGroupManager implements ApiMessage {
 
   @Override
   public Object getFieldValue(String fieldName) {
-    if ("autoHealingPolicies".equals(fieldName)) {
-      return autoHealingPolicies;
-    }
     if ("baseInstanceName".equals(fieldName)) {
       return baseInstanceName;
     }
@@ -174,10 +167,6 @@ public final class InstanceGroupManager implements ApiMessage {
   @Override
   public List<String> getFieldMask() {
     return null;
-  }
-
-  public List<InstanceGroupManagerAutoHealingPolicy> getAutoHealingPoliciesList() {
-    return autoHealingPolicies;
   }
 
   public String getBaseInstanceName() {
@@ -271,7 +260,6 @@ public final class InstanceGroupManager implements ApiMessage {
   }
 
   public static class Builder {
-    private List<InstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
     private String baseInstanceName;
     private String creationTimestamp;
     private InstanceGroupManagerActionsSummary currentActions;
@@ -294,9 +282,6 @@ public final class InstanceGroupManager implements ApiMessage {
 
     public Builder mergeFrom(InstanceGroupManager other) {
       if (other == InstanceGroupManager.getDefaultInstance()) return this;
-      if (other.getAutoHealingPoliciesList() != null) {
-        this.autoHealingPolicies = other.autoHealingPolicies;
-      }
       if (other.getBaseInstanceName() != null) {
         this.baseInstanceName = other.baseInstanceName;
       }
@@ -352,7 +337,6 @@ public final class InstanceGroupManager implements ApiMessage {
     }
 
     Builder(InstanceGroupManager source) {
-      this.autoHealingPolicies = source.autoHealingPolicies;
       this.baseInstanceName = source.baseInstanceName;
       this.creationTimestamp = source.creationTimestamp;
       this.currentActions = source.currentActions;
@@ -370,28 +354,6 @@ public final class InstanceGroupManager implements ApiMessage {
       this.targetPools = source.targetPools;
       this.targetSize = source.targetSize;
       this.zone = source.zone;
-    }
-
-    public List<InstanceGroupManagerAutoHealingPolicy> getAutoHealingPoliciesList() {
-      return autoHealingPolicies;
-    }
-
-    public Builder addAllAutoHealingPolicies(
-        List<InstanceGroupManagerAutoHealingPolicy> autoHealingPolicies) {
-      if (this.autoHealingPolicies == null) {
-        this.autoHealingPolicies = new LinkedList<>();
-      }
-      this.autoHealingPolicies.addAll(autoHealingPolicies);
-      return this;
-    }
-
-    public Builder addAutoHealingPolicies(
-        InstanceGroupManagerAutoHealingPolicy autoHealingPolicies) {
-      if (this.autoHealingPolicies == null) {
-        this.autoHealingPolicies = new LinkedList<>();
-      }
-      this.autoHealingPolicies.add(autoHealingPolicies);
-      return this;
     }
 
     public String getBaseInstanceName() {
@@ -572,7 +534,6 @@ public final class InstanceGroupManager implements ApiMessage {
     public InstanceGroupManager build() {
 
       return new InstanceGroupManager(
-          autoHealingPolicies,
           baseInstanceName,
           creationTimestamp,
           currentActions,
@@ -594,7 +555,6 @@ public final class InstanceGroupManager implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
-      newBuilder.addAllAutoHealingPolicies(this.autoHealingPolicies);
       newBuilder.setBaseInstanceName(this.baseInstanceName);
       newBuilder.setCreationTimestamp(this.creationTimestamp);
       newBuilder.setCurrentActions(this.currentActions);
@@ -619,9 +579,6 @@ public final class InstanceGroupManager implements ApiMessage {
   @Override
   public String toString() {
     return "InstanceGroupManager{"
-        + "autoHealingPolicies="
-        + autoHealingPolicies
-        + ", "
         + "baseInstanceName="
         + baseInstanceName
         + ", "
@@ -682,8 +639,7 @@ public final class InstanceGroupManager implements ApiMessage {
     }
     if (o instanceof InstanceGroupManager) {
       InstanceGroupManager that = (InstanceGroupManager) o;
-      return Objects.equals(this.autoHealingPolicies, that.getAutoHealingPoliciesList())
-          && Objects.equals(this.baseInstanceName, that.getBaseInstanceName())
+      return Objects.equals(this.baseInstanceName, that.getBaseInstanceName())
           && Objects.equals(this.creationTimestamp, that.getCreationTimestamp())
           && Objects.equals(this.currentActions, that.getCurrentActions())
           && Objects.equals(this.description, that.getDescription())
@@ -707,7 +663,6 @@ public final class InstanceGroupManager implements ApiMessage {
   @Override
   public int hashCode() {
     return Objects.hash(
-        autoHealingPolicies,
         baseInstanceName,
         creationTimestamp,
         currentActions,

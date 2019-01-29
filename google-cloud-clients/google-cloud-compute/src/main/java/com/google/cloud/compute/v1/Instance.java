@@ -34,7 +34,6 @@ public final class Instance implements ApiMessage {
   private final String description;
   private final List<AttachedDisk> disks;
   private final List<AcceleratorConfig> guestAccelerators;
-  private final String hostname;
   private final String id;
   private final String kind;
   private final String labelFingerprint;
@@ -61,7 +60,6 @@ public final class Instance implements ApiMessage {
     this.description = null;
     this.disks = null;
     this.guestAccelerators = null;
-    this.hostname = null;
     this.id = null;
     this.kind = null;
     this.labelFingerprint = null;
@@ -89,7 +87,6 @@ public final class Instance implements ApiMessage {
       String description,
       List<AttachedDisk> disks,
       List<AcceleratorConfig> guestAccelerators,
-      String hostname,
       String id,
       String kind,
       String labelFingerprint,
@@ -114,7 +111,6 @@ public final class Instance implements ApiMessage {
     this.description = description;
     this.disks = disks;
     this.guestAccelerators = guestAccelerators;
-    this.hostname = hostname;
     this.id = id;
     this.kind = kind;
     this.labelFingerprint = labelFingerprint;
@@ -156,9 +152,6 @@ public final class Instance implements ApiMessage {
     }
     if ("guestAccelerators".equals(fieldName)) {
       return guestAccelerators;
-    }
-    if ("hostname".equals(fieldName)) {
-      return hostname;
     }
     if ("id".equals(fieldName)) {
       return id;
@@ -252,10 +245,6 @@ public final class Instance implements ApiMessage {
 
   public List<AcceleratorConfig> getGuestAcceleratorsList() {
     return guestAccelerators;
-  }
-
-  public String getHostname() {
-    return hostname;
   }
 
   public String getId() {
@@ -356,7 +345,6 @@ public final class Instance implements ApiMessage {
     private String description;
     private List<AttachedDisk> disks;
     private List<AcceleratorConfig> guestAccelerators;
-    private String hostname;
     private String id;
     private String kind;
     private String labelFingerprint;
@@ -399,9 +387,6 @@ public final class Instance implements ApiMessage {
       }
       if (other.getGuestAcceleratorsList() != null) {
         this.guestAccelerators = other.guestAccelerators;
-      }
-      if (other.getHostname() != null) {
-        this.hostname = other.hostname;
       }
       if (other.getId() != null) {
         this.id = other.id;
@@ -465,7 +450,6 @@ public final class Instance implements ApiMessage {
       this.description = source.description;
       this.disks = source.disks;
       this.guestAccelerators = source.guestAccelerators;
-      this.hostname = source.hostname;
       this.id = source.id;
       this.kind = source.kind;
       this.labelFingerprint = source.labelFingerprint;
@@ -567,15 +551,6 @@ public final class Instance implements ApiMessage {
         this.guestAccelerators = new LinkedList<>();
       }
       this.guestAccelerators.add(guestAccelerators);
-      return this;
-    }
-
-    public String getHostname() {
-      return hostname;
-    }
-
-    public Builder setHostname(String hostname) {
-      this.hostname = hostname;
       return this;
     }
 
@@ -764,7 +739,6 @@ public final class Instance implements ApiMessage {
           description,
           disks,
           guestAccelerators,
-          hostname,
           id,
           kind,
           labelFingerprint,
@@ -793,7 +767,6 @@ public final class Instance implements ApiMessage {
       newBuilder.setDescription(this.description);
       newBuilder.addAllDisks(this.disks);
       newBuilder.addAllGuestAccelerators(this.guestAccelerators);
-      newBuilder.setHostname(this.hostname);
       newBuilder.setId(this.id);
       newBuilder.setKind(this.kind);
       newBuilder.setLabelFingerprint(this.labelFingerprint);
@@ -838,9 +811,6 @@ public final class Instance implements ApiMessage {
         + ", "
         + "guestAccelerators="
         + guestAccelerators
-        + ", "
-        + "hostname="
-        + hostname
         + ", "
         + "id="
         + id
@@ -909,7 +879,6 @@ public final class Instance implements ApiMessage {
           && Objects.equals(this.description, that.getDescription())
           && Objects.equals(this.disks, that.getDisksList())
           && Objects.equals(this.guestAccelerators, that.getGuestAcceleratorsList())
-          && Objects.equals(this.hostname, that.getHostname())
           && Objects.equals(this.id, that.getId())
           && Objects.equals(this.kind, that.getKind())
           && Objects.equals(this.labelFingerprint, that.getLabelFingerprint())
@@ -941,7 +910,6 @@ public final class Instance implements ApiMessage {
         description,
         disks,
         guestAccelerators,
-        hostname,
         id,
         kind,
         labelFingerprint,
