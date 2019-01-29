@@ -26,6 +26,7 @@ import javax.annotation.Nullable;
 @Generated("by GAPIC")
 @BetaApi
 public final class InstanceGroupManager implements ApiMessage {
+  private final List<InstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
   private final String baseInstanceName;
   private final String creationTimestamp;
   private final InstanceGroupManagerActionsSummary currentActions;
@@ -40,11 +41,15 @@ public final class InstanceGroupManager implements ApiMessage {
   private final List<NamedPort> namedPorts;
   private final String region;
   private final String selfLink;
+  private final InstanceGroupManagerStatus status;
   private final List<String> targetPools;
   private final Integer targetSize;
+  private final InstanceGroupManagerUpdatePolicy updatePolicy;
+  private final List<InstanceGroupManagerVersion> versions;
   private final String zone;
 
   private InstanceGroupManager() {
+    this.autoHealingPolicies = null;
     this.baseInstanceName = null;
     this.creationTimestamp = null;
     this.currentActions = null;
@@ -59,12 +64,16 @@ public final class InstanceGroupManager implements ApiMessage {
     this.namedPorts = null;
     this.region = null;
     this.selfLink = null;
+    this.status = null;
     this.targetPools = null;
     this.targetSize = null;
+    this.updatePolicy = null;
+    this.versions = null;
     this.zone = null;
   }
 
   private InstanceGroupManager(
+      List<InstanceGroupManagerAutoHealingPolicy> autoHealingPolicies,
       String baseInstanceName,
       String creationTimestamp,
       InstanceGroupManagerActionsSummary currentActions,
@@ -79,9 +88,13 @@ public final class InstanceGroupManager implements ApiMessage {
       List<NamedPort> namedPorts,
       String region,
       String selfLink,
+      InstanceGroupManagerStatus status,
       List<String> targetPools,
       Integer targetSize,
+      InstanceGroupManagerUpdatePolicy updatePolicy,
+      List<InstanceGroupManagerVersion> versions,
       String zone) {
+    this.autoHealingPolicies = autoHealingPolicies;
     this.baseInstanceName = baseInstanceName;
     this.creationTimestamp = creationTimestamp;
     this.currentActions = currentActions;
@@ -96,13 +109,19 @@ public final class InstanceGroupManager implements ApiMessage {
     this.namedPorts = namedPorts;
     this.region = region;
     this.selfLink = selfLink;
+    this.status = status;
     this.targetPools = targetPools;
     this.targetSize = targetSize;
+    this.updatePolicy = updatePolicy;
+    this.versions = versions;
     this.zone = zone;
   }
 
   @Override
   public Object getFieldValue(String fieldName) {
+    if ("autoHealingPolicies".equals(fieldName)) {
+      return autoHealingPolicies;
+    }
     if ("baseInstanceName".equals(fieldName)) {
       return baseInstanceName;
     }
@@ -145,11 +164,20 @@ public final class InstanceGroupManager implements ApiMessage {
     if ("selfLink".equals(fieldName)) {
       return selfLink;
     }
+    if ("status".equals(fieldName)) {
+      return status;
+    }
     if ("targetPools".equals(fieldName)) {
       return targetPools;
     }
     if ("targetSize".equals(fieldName)) {
       return targetSize;
+    }
+    if ("updatePolicy".equals(fieldName)) {
+      return updatePolicy;
+    }
+    if ("versions".equals(fieldName)) {
+      return versions;
     }
     if ("zone".equals(fieldName)) {
       return zone;
@@ -167,6 +195,10 @@ public final class InstanceGroupManager implements ApiMessage {
   @Override
   public List<String> getFieldMask() {
     return null;
+  }
+
+  public List<InstanceGroupManagerAutoHealingPolicy> getAutoHealingPoliciesList() {
+    return autoHealingPolicies;
   }
 
   public String getBaseInstanceName() {
@@ -225,12 +257,24 @@ public final class InstanceGroupManager implements ApiMessage {
     return selfLink;
   }
 
+  public InstanceGroupManagerStatus getStatus() {
+    return status;
+  }
+
   public List<String> getTargetPoolsList() {
     return targetPools;
   }
 
   public Integer getTargetSize() {
     return targetSize;
+  }
+
+  public InstanceGroupManagerUpdatePolicy getUpdatePolicy() {
+    return updatePolicy;
+  }
+
+  public List<InstanceGroupManagerVersion> getVersionsList() {
+    return versions;
   }
 
   public String getZone() {
@@ -260,6 +304,7 @@ public final class InstanceGroupManager implements ApiMessage {
   }
 
   public static class Builder {
+    private List<InstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
     private String baseInstanceName;
     private String creationTimestamp;
     private InstanceGroupManagerActionsSummary currentActions;
@@ -274,14 +319,20 @@ public final class InstanceGroupManager implements ApiMessage {
     private List<NamedPort> namedPorts;
     private String region;
     private String selfLink;
+    private InstanceGroupManagerStatus status;
     private List<String> targetPools;
     private Integer targetSize;
+    private InstanceGroupManagerUpdatePolicy updatePolicy;
+    private List<InstanceGroupManagerVersion> versions;
     private String zone;
 
     Builder() {}
 
     public Builder mergeFrom(InstanceGroupManager other) {
       if (other == InstanceGroupManager.getDefaultInstance()) return this;
+      if (other.getAutoHealingPoliciesList() != null) {
+        this.autoHealingPolicies = other.autoHealingPolicies;
+      }
       if (other.getBaseInstanceName() != null) {
         this.baseInstanceName = other.baseInstanceName;
       }
@@ -324,11 +375,20 @@ public final class InstanceGroupManager implements ApiMessage {
       if (other.getSelfLink() != null) {
         this.selfLink = other.selfLink;
       }
+      if (other.getStatus() != null) {
+        this.status = other.status;
+      }
       if (other.getTargetPoolsList() != null) {
         this.targetPools = other.targetPools;
       }
       if (other.getTargetSize() != null) {
         this.targetSize = other.targetSize;
+      }
+      if (other.getUpdatePolicy() != null) {
+        this.updatePolicy = other.updatePolicy;
+      }
+      if (other.getVersionsList() != null) {
+        this.versions = other.versions;
       }
       if (other.getZone() != null) {
         this.zone = other.zone;
@@ -337,6 +397,7 @@ public final class InstanceGroupManager implements ApiMessage {
     }
 
     Builder(InstanceGroupManager source) {
+      this.autoHealingPolicies = source.autoHealingPolicies;
       this.baseInstanceName = source.baseInstanceName;
       this.creationTimestamp = source.creationTimestamp;
       this.currentActions = source.currentActions;
@@ -351,9 +412,34 @@ public final class InstanceGroupManager implements ApiMessage {
       this.namedPorts = source.namedPorts;
       this.region = source.region;
       this.selfLink = source.selfLink;
+      this.status = source.status;
       this.targetPools = source.targetPools;
       this.targetSize = source.targetSize;
+      this.updatePolicy = source.updatePolicy;
+      this.versions = source.versions;
       this.zone = source.zone;
+    }
+
+    public List<InstanceGroupManagerAutoHealingPolicy> getAutoHealingPoliciesList() {
+      return autoHealingPolicies;
+    }
+
+    public Builder addAllAutoHealingPolicies(
+        List<InstanceGroupManagerAutoHealingPolicy> autoHealingPolicies) {
+      if (this.autoHealingPolicies == null) {
+        this.autoHealingPolicies = new LinkedList<>();
+      }
+      this.autoHealingPolicies.addAll(autoHealingPolicies);
+      return this;
+    }
+
+    public Builder addAutoHealingPolicies(
+        InstanceGroupManagerAutoHealingPolicy autoHealingPolicies) {
+      if (this.autoHealingPolicies == null) {
+        this.autoHealingPolicies = new LinkedList<>();
+      }
+      this.autoHealingPolicies.add(autoHealingPolicies);
+      return this;
     }
 
     public String getBaseInstanceName() {
@@ -493,6 +579,15 @@ public final class InstanceGroupManager implements ApiMessage {
       return this;
     }
 
+    public InstanceGroupManagerStatus getStatus() {
+      return status;
+    }
+
+    public Builder setStatus(InstanceGroupManagerStatus status) {
+      this.status = status;
+      return this;
+    }
+
     public List<String> getTargetPoolsList() {
       return targetPools;
     }
@@ -522,6 +617,35 @@ public final class InstanceGroupManager implements ApiMessage {
       return this;
     }
 
+    public InstanceGroupManagerUpdatePolicy getUpdatePolicy() {
+      return updatePolicy;
+    }
+
+    public Builder setUpdatePolicy(InstanceGroupManagerUpdatePolicy updatePolicy) {
+      this.updatePolicy = updatePolicy;
+      return this;
+    }
+
+    public List<InstanceGroupManagerVersion> getVersionsList() {
+      return versions;
+    }
+
+    public Builder addAllVersions(List<InstanceGroupManagerVersion> versions) {
+      if (this.versions == null) {
+        this.versions = new LinkedList<>();
+      }
+      this.versions.addAll(versions);
+      return this;
+    }
+
+    public Builder addVersions(InstanceGroupManagerVersion versions) {
+      if (this.versions == null) {
+        this.versions = new LinkedList<>();
+      }
+      this.versions.add(versions);
+      return this;
+    }
+
     public String getZone() {
       return zone;
     }
@@ -534,6 +658,7 @@ public final class InstanceGroupManager implements ApiMessage {
     public InstanceGroupManager build() {
 
       return new InstanceGroupManager(
+          autoHealingPolicies,
           baseInstanceName,
           creationTimestamp,
           currentActions,
@@ -548,13 +673,17 @@ public final class InstanceGroupManager implements ApiMessage {
           namedPorts,
           region,
           selfLink,
+          status,
           targetPools,
           targetSize,
+          updatePolicy,
+          versions,
           zone);
     }
 
     public Builder clone() {
       Builder newBuilder = new Builder();
+      newBuilder.addAllAutoHealingPolicies(this.autoHealingPolicies);
       newBuilder.setBaseInstanceName(this.baseInstanceName);
       newBuilder.setCreationTimestamp(this.creationTimestamp);
       newBuilder.setCurrentActions(this.currentActions);
@@ -569,8 +698,11 @@ public final class InstanceGroupManager implements ApiMessage {
       newBuilder.addAllNamedPorts(this.namedPorts);
       newBuilder.setRegion(this.region);
       newBuilder.setSelfLink(this.selfLink);
+      newBuilder.setStatus(this.status);
       newBuilder.addAllTargetPools(this.targetPools);
       newBuilder.setTargetSize(this.targetSize);
+      newBuilder.setUpdatePolicy(this.updatePolicy);
+      newBuilder.addAllVersions(this.versions);
       newBuilder.setZone(this.zone);
       return newBuilder;
     }
@@ -579,6 +711,9 @@ public final class InstanceGroupManager implements ApiMessage {
   @Override
   public String toString() {
     return "InstanceGroupManager{"
+        + "autoHealingPolicies="
+        + autoHealingPolicies
+        + ", "
         + "baseInstanceName="
         + baseInstanceName
         + ", "
@@ -621,11 +756,20 @@ public final class InstanceGroupManager implements ApiMessage {
         + "selfLink="
         + selfLink
         + ", "
+        + "status="
+        + status
+        + ", "
         + "targetPools="
         + targetPools
         + ", "
         + "targetSize="
         + targetSize
+        + ", "
+        + "updatePolicy="
+        + updatePolicy
+        + ", "
+        + "versions="
+        + versions
         + ", "
         + "zone="
         + zone
@@ -639,7 +783,8 @@ public final class InstanceGroupManager implements ApiMessage {
     }
     if (o instanceof InstanceGroupManager) {
       InstanceGroupManager that = (InstanceGroupManager) o;
-      return Objects.equals(this.baseInstanceName, that.getBaseInstanceName())
+      return Objects.equals(this.autoHealingPolicies, that.getAutoHealingPoliciesList())
+          && Objects.equals(this.baseInstanceName, that.getBaseInstanceName())
           && Objects.equals(this.creationTimestamp, that.getCreationTimestamp())
           && Objects.equals(this.currentActions, that.getCurrentActions())
           && Objects.equals(this.description, that.getDescription())
@@ -653,8 +798,11 @@ public final class InstanceGroupManager implements ApiMessage {
           && Objects.equals(this.namedPorts, that.getNamedPortsList())
           && Objects.equals(this.region, that.getRegion())
           && Objects.equals(this.selfLink, that.getSelfLink())
+          && Objects.equals(this.status, that.getStatus())
           && Objects.equals(this.targetPools, that.getTargetPoolsList())
           && Objects.equals(this.targetSize, that.getTargetSize())
+          && Objects.equals(this.updatePolicy, that.getUpdatePolicy())
+          && Objects.equals(this.versions, that.getVersionsList())
           && Objects.equals(this.zone, that.getZone());
     }
     return false;
@@ -663,6 +811,7 @@ public final class InstanceGroupManager implements ApiMessage {
   @Override
   public int hashCode() {
     return Objects.hash(
+        autoHealingPolicies,
         baseInstanceName,
         creationTimestamp,
         currentActions,
@@ -677,8 +826,11 @@ public final class InstanceGroupManager implements ApiMessage {
         namedPorts,
         region,
         selfLink,
+        status,
         targetPools,
         targetSize,
+        updatePolicy,
+        versions,
         zone);
   }
 }
