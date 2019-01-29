@@ -27,10 +27,15 @@ import com.google.cloud.compute.v1.DiskTypeClient;
 import com.google.cloud.compute.v1.DiskTypeClient.AggregatedListDiskTypesPagedResponse;
 import com.google.cloud.compute.v1.DiskTypeSettings;
 import com.google.cloud.compute.v1.DiskTypesScopedList;
+import com.google.cloud.compute.v1.Instance;
+import com.google.cloud.compute.v1.InstanceClient;
+import com.google.cloud.compute.v1.InstanceSettings;
 import com.google.cloud.compute.v1.ListDiskTypesHttpRequest;
 import com.google.cloud.compute.v1.ProjectName;
 import com.google.cloud.compute.v1.ProjectRegionDiskTypeName;
 import com.google.cloud.compute.v1.ProjectZoneDiskTypeName;
+import com.google.cloud.compute.v1.ProjectZoneInstanceName;
+import com.google.cloud.compute.v1.ProjectZoneMachineTypeName;
 import com.google.cloud.compute.v1.ProjectZoneName;
 import com.google.common.collect.Lists;
 import java.io.IOException;
@@ -52,6 +57,9 @@ public class ITComputeTest {
   private static DiskTypeClient diskTypeClient;
   private static DiskTypeSettings diskTypeSettings;
 
+  private static InstanceClient instanceClient;
+  private static InstanceSettings instanceSettings;
+
   @Rule public Timeout globalTimeout = Timeout.seconds(300);
 
   @BeforeClass
@@ -65,11 +73,18 @@ public class ITComputeTest {
             .setCredentialsProvider(FixedCredentialsProvider.create(credentials))
             .build();
     diskTypeClient = DiskTypeClient.create(diskTypeSettings);
+
+    instanceSettings =
+        InstanceSettings.newBuilder()
+            .setCredentialsProvider(FixedCredentialsProvider.create(credentials))
+            .build();
+    instanceClient = InstanceClient.create(instanceSettings);
   }
 
   @AfterClass
   public static void tearDown() throws Exception {
     diskTypeClient.close();
+    instanceClient.close();
   }
 
   @Test
@@ -83,6 +98,21 @@ public class ITComputeTest {
     assertThat(diskType.getDescription()).isNotNull();
     assertThat(diskType.getValidDiskSize()).isNotNull();
     assertThat(diskType.getDefaultDiskSizeGb()).isNotNull();
+  }
+
+  @Test
+  public void testInsertInstance() {
+    String machineType = ProjectZoneMachineTypeName.of("n1-standard-1", DEFAULT_PROJECT, ZONE).toString();
+    ProjectZoneInstanceName instanceName = ProjectZoneInstanceName.of("myinstance", DEFAULT_PROJECT, ZONE);
+    Instance instance = Instance.newBuilder().setMachineType("zones/us-central1-a/machineTypes/n1-standard-1").setName("myinstance").build();
+    instanceClient.insertInstance(ProjectZoneName.of(DEFAULT_PROJECT, ZONE), instance);
+
+
+    instanceClient.deleteInstance(ProjectZoneInstanceName.newBuilder()
+        .setInstance(instance.getName())
+        .setProject(DEFAULT_PROJECT)
+        .setZone(ZONE)
+        .build());
   }
 
   @Test
