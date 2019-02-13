@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2050,7 +2050,7 @@ public class ProductSearchClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Permanently deletes a ProductSet. All Products and ReferenceImages in the ProductSet will be
+   * Permanently deletes a ProductSet. Products and ReferenceImages in the ProductSet are not
    * deleted.
    *
    * <p>The actual image files are not deleted from Google Cloud Storage.
@@ -2081,7 +2081,7 @@ public class ProductSearchClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Permanently deletes a ProductSet. All Products and ReferenceImages in the ProductSet will be
+   * Permanently deletes a ProductSet. Products and ReferenceImages in the ProductSet are not
    * deleted.
    *
    * <p>The actual image files are not deleted from Google Cloud Storage.
@@ -2111,7 +2111,7 @@ public class ProductSearchClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Permanently deletes a ProductSet. All Products and ReferenceImages in the ProductSet will be
+   * Permanently deletes a ProductSet. Products and ReferenceImages in the ProductSet are not
    * deleted.
    *
    * <p>The actual image files are not deleted from Google Cloud Storage.
@@ -2141,7 +2141,7 @@ public class ProductSearchClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Permanently deletes a ProductSet. All Products and ReferenceImages in the ProductSet will be
+   * Permanently deletes a ProductSet. Products and ReferenceImages in the ProductSet are not
    * deleted.
    *
    * <p>The actual image files are not deleted from Google Cloud Storage.
