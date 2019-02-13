@@ -3,11 +3,14 @@
 
 package com.google.cloud.scheduler.v1beta1;
 
-public interface AppEngineHttpTargetOrBuilder extends
+public interface AppEngineHttpTargetOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:google.cloud.scheduler.v1beta1.AppEngineHttpTarget)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * The HTTP method to use for the request. PATCH and OPTIONS are not
    * permitted.
@@ -17,6 +20,8 @@ public interface AppEngineHttpTargetOrBuilder extends
    */
   int getHttpMethodValue();
   /**
+   *
+   *
    * <pre>
    * The HTTP method to use for the request. PATCH and OPTIONS are not
    * permitted.
@@ -27,6 +32,8 @@ public interface AppEngineHttpTargetOrBuilder extends
   com.google.cloud.scheduler.v1beta1.HttpMethod getHttpMethod();
 
   /**
+   *
+   *
    * <pre>
    * App Engine Routing setting for the job.
    * </pre>
@@ -35,6 +42,8 @@ public interface AppEngineHttpTargetOrBuilder extends
    */
   boolean hasAppEngineRouting();
   /**
+   *
+   *
    * <pre>
    * App Engine Routing setting for the job.
    * </pre>
@@ -43,6 +52,8 @@ public interface AppEngineHttpTargetOrBuilder extends
    */
   com.google.cloud.scheduler.v1beta1.AppEngineRouting getAppEngineRouting();
   /**
+   *
+   *
    * <pre>
    * App Engine Routing setting for the job.
    * </pre>
@@ -52,6 +63,8 @@ public interface AppEngineHttpTargetOrBuilder extends
   com.google.cloud.scheduler.v1beta1.AppEngineRoutingOrBuilder getAppEngineRoutingOrBuilder();
 
   /**
+   *
+   *
    * <pre>
    * The relative URI.
    * The relative URL must begin with "/" and must be a valid HTTP relative URL.
@@ -64,6 +77,8 @@ public interface AppEngineHttpTargetOrBuilder extends
    */
   java.lang.String getRelativeUri();
   /**
+   *
+   *
    * <pre>
    * The relative URI.
    * The relative URL must begin with "/" and must be a valid HTTP relative URL.
@@ -74,10 +89,11 @@ public interface AppEngineHttpTargetOrBuilder extends
    *
    * <code>string relative_uri = 3;</code>
    */
-  com.google.protobuf.ByteString
-      getRelativeUriBytes();
+  com.google.protobuf.ByteString getRelativeUriBytes();
 
   /**
+   *
+   *
    * <pre>
    * HTTP request headers.
    * This map contains the header field names and values. Headers can be set
@@ -103,13 +119,15 @@ public interface AppEngineHttpTargetOrBuilder extends
    *   [Reading request headers](https://cloud.google.com/appengine/docs/python/taskqueue/push/creating-handlers#reading_request_headers).
    * In addition, some App Engine headers, which contain
    * job-specific information, are also be sent to the job handler; see
-   * [request headers](https://cloud.google.comappengine/docs/standard/python/config/cron#securing_urls_for_cron).
+   * [request headers](https://cloud.google.com/appengine/docs/standard/python/config/cron#securing_urls_for_cron).
    * </pre>
    *
    * <code>map&lt;string, string&gt; headers = 4;</code>
    */
   int getHeadersCount();
   /**
+   *
+   *
    * <pre>
    * HTTP request headers.
    * This map contains the header field names and values. Headers can be set
@@ -135,20 +153,18 @@ public interface AppEngineHttpTargetOrBuilder extends
    *   [Reading request headers](https://cloud.google.com/appengine/docs/python/taskqueue/push/creating-handlers#reading_request_headers).
    * In addition, some App Engine headers, which contain
    * job-specific information, are also be sent to the job handler; see
-   * [request headers](https://cloud.google.comappengine/docs/standard/python/config/cron#securing_urls_for_cron).
+   * [request headers](https://cloud.google.com/appengine/docs/standard/python/config/cron#securing_urls_for_cron).
    * </pre>
    *
    * <code>map&lt;string, string&gt; headers = 4;</code>
    */
-  boolean containsHeaders(
-      java.lang.String key);
-  /**
-   * Use {@link #getHeadersMap()} instead.
-   */
+  boolean containsHeaders(java.lang.String key);
+  /** Use {@link #getHeadersMap()} instead. */
   @java.lang.Deprecated
-  java.util.Map<java.lang.String, java.lang.String>
-  getHeaders();
+  java.util.Map<java.lang.String, java.lang.String> getHeaders();
   /**
+   *
+   *
    * <pre>
    * HTTP request headers.
    * This map contains the header field names and values. Headers can be set
@@ -174,14 +190,15 @@ public interface AppEngineHttpTargetOrBuilder extends
    *   [Reading request headers](https://cloud.google.com/appengine/docs/python/taskqueue/push/creating-handlers#reading_request_headers).
    * In addition, some App Engine headers, which contain
    * job-specific information, are also be sent to the job handler; see
-   * [request headers](https://cloud.google.comappengine/docs/standard/python/config/cron#securing_urls_for_cron).
+   * [request headers](https://cloud.google.com/appengine/docs/standard/python/config/cron#securing_urls_for_cron).
    * </pre>
    *
    * <code>map&lt;string, string&gt; headers = 4;</code>
    */
-  java.util.Map<java.lang.String, java.lang.String>
-  getHeadersMap();
+  java.util.Map<java.lang.String, java.lang.String> getHeadersMap();
   /**
+   *
+   *
    * <pre>
    * HTTP request headers.
    * This map contains the header field names and values. Headers can be set
@@ -207,16 +224,15 @@ public interface AppEngineHttpTargetOrBuilder extends
    *   [Reading request headers](https://cloud.google.com/appengine/docs/python/taskqueue/push/creating-handlers#reading_request_headers).
    * In addition, some App Engine headers, which contain
    * job-specific information, are also be sent to the job handler; see
-   * [request headers](https://cloud.google.comappengine/docs/standard/python/config/cron#securing_urls_for_cron).
+   * [request headers](https://cloud.google.com/appengine/docs/standard/python/config/cron#securing_urls_for_cron).
    * </pre>
    *
    * <code>map&lt;string, string&gt; headers = 4;</code>
    */
-
-  java.lang.String getHeadersOrDefault(
-      java.lang.String key,
-      java.lang.String defaultValue);
+  java.lang.String getHeadersOrDefault(java.lang.String key, java.lang.String defaultValue);
   /**
+   *
+   *
    * <pre>
    * HTTP request headers.
    * This map contains the header field names and values. Headers can be set
@@ -242,16 +258,16 @@ public interface AppEngineHttpTargetOrBuilder extends
    *   [Reading request headers](https://cloud.google.com/appengine/docs/python/taskqueue/push/creating-handlers#reading_request_headers).
    * In addition, some App Engine headers, which contain
    * job-specific information, are also be sent to the job handler; see
-   * [request headers](https://cloud.google.comappengine/docs/standard/python/config/cron#securing_urls_for_cron).
+   * [request headers](https://cloud.google.com/appengine/docs/standard/python/config/cron#securing_urls_for_cron).
    * </pre>
    *
    * <code>map&lt;string, string&gt; headers = 4;</code>
    */
-
-  java.lang.String getHeadersOrThrow(
-      java.lang.String key);
+  java.lang.String getHeadersOrThrow(java.lang.String key);
 
   /**
+   *
+   *
    * <pre>
    * Body.
    * HTTP request body. A request body is allowed only if the HTTP method is

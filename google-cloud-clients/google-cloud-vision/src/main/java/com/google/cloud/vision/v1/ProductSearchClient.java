@@ -78,13 +78,13 @@ import javax.annotation.Generated;
  * methods:
  *
  * <ol>
- *   <li> A "flattened" method. With this type of method, the fields of the request type have been
+ *   <li>A "flattened" method. With this type of method, the fields of the request type have been
  *       converted into function parameters. It may be the case that not all fields are available as
  *       parameters, and not every API method will have a flattened method entry point.
- *   <li> A "request object" method. This type of method only takes one parameter, a request object,
+ *   <li>A "request object" method. This type of method only takes one parameter, a request object,
  *       which must be constructed before the call. Not every API method will have a request object
  *       method.
- *   <li> A "callable" method. This type of method takes no parameters and returns an immutable API
+ *   <li>A "callable" method. This type of method takes no parameters and returns an immutable API
  *       callable object, which can be used to initiate calls to the service.
  * </ol>
  *
@@ -2808,7 +2808,10 @@ public class ProductSearchClient implements BackgroundResource {
 
   public static class ListProductsPagedResponse
       extends AbstractPagedListResponse<
-          ListProductsRequest, ListProductsResponse, Product, ListProductsPage,
+          ListProductsRequest,
+          ListProductsResponse,
+          Product,
+          ListProductsPage,
           ListProductsFixedSizeCollection> {
 
     public static ApiFuture<ListProductsPagedResponse> createAsync(
@@ -2861,7 +2864,10 @@ public class ProductSearchClient implements BackgroundResource {
 
   public static class ListProductsFixedSizeCollection
       extends AbstractFixedSizeCollection<
-          ListProductsRequest, ListProductsResponse, Product, ListProductsPage,
+          ListProductsRequest,
+          ListProductsResponse,
+          Product,
+          ListProductsPage,
           ListProductsFixedSizeCollection> {
 
     private ListProductsFixedSizeCollection(List<ListProductsPage> pages, int collectionSize) {
@@ -2881,8 +2887,11 @@ public class ProductSearchClient implements BackgroundResource {
 
   public static class ListReferenceImagesPagedResponse
       extends AbstractPagedListResponse<
-          ListReferenceImagesRequest, ListReferenceImagesResponse, ReferenceImage,
-          ListReferenceImagesPage, ListReferenceImagesFixedSizeCollection> {
+          ListReferenceImagesRequest,
+          ListReferenceImagesResponse,
+          ReferenceImage,
+          ListReferenceImagesPage,
+          ListReferenceImagesFixedSizeCollection> {
 
     public static ApiFuture<ListReferenceImagesPagedResponse> createAsync(
         PageContext<ListReferenceImagesRequest, ListReferenceImagesResponse, ReferenceImage>
@@ -2907,7 +2916,9 @@ public class ProductSearchClient implements BackgroundResource {
 
   public static class ListReferenceImagesPage
       extends AbstractPage<
-          ListReferenceImagesRequest, ListReferenceImagesResponse, ReferenceImage,
+          ListReferenceImagesRequest,
+          ListReferenceImagesResponse,
+          ReferenceImage,
           ListReferenceImagesPage> {
 
     private ListReferenceImagesPage(
@@ -2940,8 +2951,11 @@ public class ProductSearchClient implements BackgroundResource {
 
   public static class ListReferenceImagesFixedSizeCollection
       extends AbstractFixedSizeCollection<
-          ListReferenceImagesRequest, ListReferenceImagesResponse, ReferenceImage,
-          ListReferenceImagesPage, ListReferenceImagesFixedSizeCollection> {
+          ListReferenceImagesRequest,
+          ListReferenceImagesResponse,
+          ReferenceImage,
+          ListReferenceImagesPage,
+          ListReferenceImagesFixedSizeCollection> {
 
     private ListReferenceImagesFixedSizeCollection(
         List<ListReferenceImagesPage> pages, int collectionSize) {
@@ -2961,7 +2975,10 @@ public class ProductSearchClient implements BackgroundResource {
 
   public static class ListProductSetsPagedResponse
       extends AbstractPagedListResponse<
-          ListProductSetsRequest, ListProductSetsResponse, ProductSet, ListProductSetsPage,
+          ListProductSetsRequest,
+          ListProductSetsResponse,
+          ProductSet,
+          ListProductSetsPage,
           ListProductSetsFixedSizeCollection> {
 
     public static ApiFuture<ListProductSetsPagedResponse> createAsync(
@@ -3015,7 +3032,10 @@ public class ProductSearchClient implements BackgroundResource {
 
   public static class ListProductSetsFixedSizeCollection
       extends AbstractFixedSizeCollection<
-          ListProductSetsRequest, ListProductSetsResponse, ProductSet, ListProductSetsPage,
+          ListProductSetsRequest,
+          ListProductSetsResponse,
+          ProductSet,
+          ListProductSetsPage,
           ListProductSetsFixedSizeCollection> {
 
     private ListProductSetsFixedSizeCollection(
@@ -3036,8 +3056,11 @@ public class ProductSearchClient implements BackgroundResource {
 
   public static class ListProductsInProductSetPagedResponse
       extends AbstractPagedListResponse<
-          ListProductsInProductSetRequest, ListProductsInProductSetResponse, Product,
-          ListProductsInProductSetPage, ListProductsInProductSetFixedSizeCollection> {
+          ListProductsInProductSetRequest,
+          ListProductsInProductSetResponse,
+          Product,
+          ListProductsInProductSetPage,
+          ListProductsInProductSetFixedSizeCollection> {
 
     public static ApiFuture<ListProductsInProductSetPagedResponse> createAsync(
         PageContext<ListProductsInProductSetRequest, ListProductsInProductSetResponse, Product>
@@ -3062,7 +3085,9 @@ public class ProductSearchClient implements BackgroundResource {
 
   public static class ListProductsInProductSetPage
       extends AbstractPage<
-          ListProductsInProductSetRequest, ListProductsInProductSetResponse, Product,
+          ListProductsInProductSetRequest,
+          ListProductsInProductSetResponse,
+          Product,
           ListProductsInProductSetPage> {
 
     private ListProductsInProductSetPage(
@@ -3095,8 +3120,11 @@ public class ProductSearchClient implements BackgroundResource {
 
   public static class ListProductsInProductSetFixedSizeCollection
       extends AbstractFixedSizeCollection<
-          ListProductsInProductSetRequest, ListProductsInProductSetResponse, Product,
-          ListProductsInProductSetPage, ListProductsInProductSetFixedSizeCollection> {
+          ListProductsInProductSetRequest,
+          ListProductsInProductSetResponse,
+          Product,
+          ListProductsInProductSetPage,
+          ListProductsInProductSetFixedSizeCollection> {
 
     private ListProductsInProductSetFixedSizeCollection(
         List<ListProductsInProductSetPage> pages, int collectionSize) {
