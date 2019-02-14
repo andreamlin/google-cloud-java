@@ -15,8 +15,14 @@
  */
 package com.google.cloud.compute.v1;
 
+import static com.google.cloud.compute.v1.Operation.Status.DONE;
+
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import com.google.api.gax.httpjson.HttpJsonStatusCode;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.rpc.StatusCode;
+import com.google.api.gax.rpc.StatusCode.Code;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -31,7 +37,7 @@ import javax.annotation.Nullable;
  * v1.regionOperations ==) (== resource_for beta.regionOperations ==) (== resource_for
  * v1.zoneOperations ==) (== resource_for beta.zoneOperations ==)
  */
-public final class Operation implements ApiMessage {
+public final class Operation implements ApiMessage, OperationSnapshot {
   private final String clientOperationId;
   private final String creationTimestamp;
   private final String description;
@@ -1099,5 +1105,45 @@ public final class Operation implements ApiMessage {
         user,
         warnings,
         zone);
+  }
+
+  @Override
+  public Object getMetadata() {
+    return null;
+  }
+
+  @Override
+  public boolean isDone() {
+    return DONE.equals(getOperationStatus());
+  }
+
+  @Override
+  public Object getResponse() {
+    return null;
+  }
+
+  @Override
+  public StatusCode getErrorCode() {
+    if (getError().getErrorsList().isEmpty()) {
+      return null;
+    }
+
+    // Return the first Error code.
+    return HttpJsonStatusCode.of(Integer.valueOf(error.getErrorsList().get(0).getCode()), error.getErrorsList().get(0).getMessage());
+  }
+
+  @Override
+  public String getErrorMessage() {
+    return error.getErrorsList().toString();
+  }
+
+  public enum Status {
+    PENDING,
+    RUNNING,
+    DONE
+  }
+
+  public Status getOperationStatus() {
+    return Status.valueOf(getStatus());
   }
 }
