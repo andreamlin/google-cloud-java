@@ -36,6 +36,7 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.SslPolicyStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -89,58 +90,20 @@ public class SslPolicyClientTest {
 
   @Test
   @SuppressWarnings("all")
-  public void deleteSslPolicyTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void deleteSslPolicyTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("deleteSslPolicyTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockSslPolicies.addResponse(resultOperation);
 
     ProjectGlobalSslPolicyName sslPolicy =
         ProjectGlobalSslPolicyName.of("[PROJECT]", "[SSL_POLICY]");
 
-    Operation actualResponse = client.deleteSslPolicy(sslPolicy);
+    Void actualResponse = client.deleteSslPolicyAsync(sslPolicy).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -170,10 +133,12 @@ public class SslPolicyClientTest {
       ProjectGlobalSslPolicyName sslPolicy =
           ProjectGlobalSslPolicyName.of("[PROJECT]", "[SSL_POLICY]");
 
-      client.deleteSslPolicy(sslPolicy);
+      client.deleteSslPolicyAsync(sslPolicy).get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -245,58 +210,20 @@ public class SslPolicyClientTest {
 
   @Test
   @SuppressWarnings("all")
-  public void insertSslPolicyTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void insertSslPolicyTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("insertSslPolicyTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockSslPolicies.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     SslPolicy sslPolicyResource = SslPolicy.newBuilder().build();
 
-    Operation actualResponse = client.insertSslPolicy(project, sslPolicyResource);
+    Void actualResponse = client.insertSslPolicyAsync(project, sslPolicyResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -326,10 +253,12 @@ public class SslPolicyClientTest {
       ProjectName project = ProjectName.of("[PROJECT]");
       SslPolicy sslPolicyResource = SslPolicy.newBuilder().build();
 
-      client.insertSslPolicy(project, sslPolicyResource);
+      client.insertSslPolicyAsync(project, sslPolicyResource).get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -441,60 +370,22 @@ public class SslPolicyClientTest {
 
   @Test
   @SuppressWarnings("all")
-  public void patchSslPolicyTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void patchSslPolicyTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("patchSslPolicyTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockSslPolicies.addResponse(resultOperation);
 
     ProjectGlobalSslPolicyName sslPolicy =
         ProjectGlobalSslPolicyName.of("[PROJECT]", "[SSL_POLICY]");
     SslPolicy sslPolicyResource = SslPolicy.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Operation actualResponse = client.patchSslPolicy(sslPolicy, sslPolicyResource, fieldMask);
+    Void actualResponse = client.patchSslPolicyAsync(sslPolicy, sslPolicyResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -526,10 +417,12 @@ public class SslPolicyClientTest {
       SslPolicy sslPolicyResource = SslPolicy.newBuilder().build();
       List<String> fieldMask = new ArrayList<>();
 
-      client.patchSslPolicy(sslPolicy, sslPolicyResource, fieldMask);
+      client.patchSslPolicyAsync(sslPolicy, sslPolicyResource, fieldMask).get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

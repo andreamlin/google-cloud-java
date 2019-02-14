@@ -42,6 +42,7 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.RegionInstanceGroupManagerStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -102,53 +103,15 @@ public class RegionInstanceGroupManagerClientTest {
 
   @Test
   @SuppressWarnings("all")
-  public void abandonInstancesRegionInstanceGroupManagerTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void abandonInstancesRegionInstanceGroupManagerTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("abandonInstancesRegionInstanceGroupManagerTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockRegionInstanceGroupManagers.addResponse(resultOperation);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
@@ -157,9 +120,11 @@ public class RegionInstanceGroupManagerClientTest {
         regionInstanceGroupManagersAbandonInstancesRequestResource =
             RegionInstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
 
-    Operation actualResponse =
-        client.abandonInstancesRegionInstanceGroupManager(
-            instanceGroupManager, regionInstanceGroupManagersAbandonInstancesRequestResource);
+    Void actualResponse =
+        client
+            .abandonInstancesRegionInstanceGroupManagerAsync(
+                instanceGroupManager, regionInstanceGroupManagersAbandonInstancesRequestResource)
+            .get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -193,69 +158,35 @@ public class RegionInstanceGroupManagerClientTest {
           regionInstanceGroupManagersAbandonInstancesRequestResource =
               RegionInstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
 
-      client.abandonInstancesRegionInstanceGroupManager(
-          instanceGroupManager, regionInstanceGroupManagersAbandonInstancesRequestResource);
+      client
+          .abandonInstancesRegionInstanceGroupManagerAsync(
+              instanceGroupManager, regionInstanceGroupManagersAbandonInstancesRequestResource)
+          .get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
-  public void deleteRegionInstanceGroupManagerTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void deleteRegionInstanceGroupManagerTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("deleteRegionInstanceGroupManagerTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockRegionInstanceGroupManagers.addResponse(resultOperation);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
             "[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
 
-    Operation actualResponse = client.deleteRegionInstanceGroupManager(instanceGroupManager);
+    Void actualResponse = client.deleteRegionInstanceGroupManagerAsync(instanceGroupManager).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -286,62 +217,26 @@ public class RegionInstanceGroupManagerClientTest {
           ProjectRegionInstanceGroupManagerName.of(
               "[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
 
-      client.deleteRegionInstanceGroupManager(instanceGroupManager);
+      client.deleteRegionInstanceGroupManagerAsync(instanceGroupManager).get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
-  public void deleteInstancesRegionInstanceGroupManagerTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void deleteInstancesRegionInstanceGroupManagerTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("deleteInstancesRegionInstanceGroupManagerTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockRegionInstanceGroupManagers.addResponse(resultOperation);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
@@ -350,9 +245,11 @@ public class RegionInstanceGroupManagerClientTest {
         regionInstanceGroupManagersDeleteInstancesRequestResource =
             RegionInstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
 
-    Operation actualResponse =
-        client.deleteInstancesRegionInstanceGroupManager(
-            instanceGroupManager, regionInstanceGroupManagersDeleteInstancesRequestResource);
+    Void actualResponse =
+        client
+            .deleteInstancesRegionInstanceGroupManagerAsync(
+                instanceGroupManager, regionInstanceGroupManagersDeleteInstancesRequestResource)
+            .get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -386,11 +283,15 @@ public class RegionInstanceGroupManagerClientTest {
           regionInstanceGroupManagersDeleteInstancesRequestResource =
               RegionInstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
 
-      client.deleteInstancesRegionInstanceGroupManager(
-          instanceGroupManager, regionInstanceGroupManagersDeleteInstancesRequestResource);
+      client
+          .deleteInstancesRegionInstanceGroupManagerAsync(
+              instanceGroupManager, regionInstanceGroupManagersDeleteInstancesRequestResource)
+          .get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -475,59 +376,21 @@ public class RegionInstanceGroupManagerClientTest {
 
   @Test
   @SuppressWarnings("all")
-  public void insertRegionInstanceGroupManagerTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region2 = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void insertRegionInstanceGroupManagerTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region2.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("insertRegionInstanceGroupManagerTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockRegionInstanceGroupManagers.addResponse(resultOperation);
 
     ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
     InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
 
-    Operation actualResponse =
-        client.insertRegionInstanceGroupManager(region, instanceGroupManagerResource);
+    Void actualResponse =
+        client.insertRegionInstanceGroupManagerAsync(region, instanceGroupManagerResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -557,10 +420,12 @@ public class RegionInstanceGroupManagerClientTest {
       ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
       InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
 
-      client.insertRegionInstanceGroupManager(region, instanceGroupManagerResource);
+      client.insertRegionInstanceGroupManagerAsync(region, instanceGroupManagerResource).get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -677,53 +542,15 @@ public class RegionInstanceGroupManagerClientTest {
 
   @Test
   @SuppressWarnings("all")
-  public void patchRegionInstanceGroupManagerTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void patchRegionInstanceGroupManagerTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("patchRegionInstanceGroupManagerTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockRegionInstanceGroupManagers.addResponse(resultOperation);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
@@ -731,9 +558,11 @@ public class RegionInstanceGroupManagerClientTest {
     InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Operation actualResponse =
-        client.patchRegionInstanceGroupManager(
-            instanceGroupManager, instanceGroupManagerResource, fieldMask);
+    Void actualResponse =
+        client
+            .patchRegionInstanceGroupManagerAsync(
+                instanceGroupManager, instanceGroupManagerResource, fieldMask)
+            .get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -766,63 +595,29 @@ public class RegionInstanceGroupManagerClientTest {
       InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
       List<String> fieldMask = new ArrayList<>();
 
-      client.patchRegionInstanceGroupManager(
-          instanceGroupManager, instanceGroupManagerResource, fieldMask);
+      client
+          .patchRegionInstanceGroupManagerAsync(
+              instanceGroupManager, instanceGroupManagerResource, fieldMask)
+          .get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
-  public void recreateInstancesRegionInstanceGroupManagerTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void recreateInstancesRegionInstanceGroupManagerTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("recreateInstancesRegionInstanceGroupManagerTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockRegionInstanceGroupManagers.addResponse(resultOperation);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
@@ -830,9 +625,11 @@ public class RegionInstanceGroupManagerClientTest {
     RegionInstanceGroupManagersRecreateRequest regionInstanceGroupManagersRecreateRequestResource =
         RegionInstanceGroupManagersRecreateRequest.newBuilder().build();
 
-    Operation actualResponse =
-        client.recreateInstancesRegionInstanceGroupManager(
-            instanceGroupManager, regionInstanceGroupManagersRecreateRequestResource);
+    Void actualResponse =
+        client
+            .recreateInstancesRegionInstanceGroupManagerAsync(
+                instanceGroupManager, regionInstanceGroupManagersRecreateRequestResource)
+            .get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -866,70 +663,37 @@ public class RegionInstanceGroupManagerClientTest {
           regionInstanceGroupManagersRecreateRequestResource =
               RegionInstanceGroupManagersRecreateRequest.newBuilder().build();
 
-      client.recreateInstancesRegionInstanceGroupManager(
-          instanceGroupManager, regionInstanceGroupManagersRecreateRequestResource);
+      client
+          .recreateInstancesRegionInstanceGroupManagerAsync(
+              instanceGroupManager, regionInstanceGroupManagersRecreateRequestResource)
+          .get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
-  public void resizeRegionInstanceGroupManagerTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void resizeRegionInstanceGroupManagerTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("resizeRegionInstanceGroupManagerTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockRegionInstanceGroupManagers.addResponse(resultOperation);
 
     Integer size = 3530753;
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
             "[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
 
-    Operation actualResponse = client.resizeRegionInstanceGroupManager(size, instanceGroupManager);
+    Void actualResponse =
+        client.resizeRegionInstanceGroupManagerAsync(size, instanceGroupManager).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -961,62 +725,26 @@ public class RegionInstanceGroupManagerClientTest {
           ProjectRegionInstanceGroupManagerName.of(
               "[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
 
-      client.resizeRegionInstanceGroupManager(size, instanceGroupManager);
+      client.resizeRegionInstanceGroupManagerAsync(size, instanceGroupManager).get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
-  public void setInstanceTemplateRegionInstanceGroupManagerTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void setInstanceTemplateRegionInstanceGroupManagerTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("setInstanceTemplateRegionInstanceGroupManagerTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockRegionInstanceGroupManagers.addResponse(resultOperation);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
@@ -1025,9 +753,11 @@ public class RegionInstanceGroupManagerClientTest {
         regionInstanceGroupManagersSetTemplateRequestResource =
             RegionInstanceGroupManagersSetTemplateRequest.newBuilder().build();
 
-    Operation actualResponse =
-        client.setInstanceTemplateRegionInstanceGroupManager(
-            instanceGroupManager, regionInstanceGroupManagersSetTemplateRequestResource);
+    Void actualResponse =
+        client
+            .setInstanceTemplateRegionInstanceGroupManagerAsync(
+                instanceGroupManager, regionInstanceGroupManagersSetTemplateRequestResource)
+            .get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1061,63 +791,29 @@ public class RegionInstanceGroupManagerClientTest {
           regionInstanceGroupManagersSetTemplateRequestResource =
               RegionInstanceGroupManagersSetTemplateRequest.newBuilder().build();
 
-      client.setInstanceTemplateRegionInstanceGroupManager(
-          instanceGroupManager, regionInstanceGroupManagersSetTemplateRequestResource);
+      client
+          .setInstanceTemplateRegionInstanceGroupManagerAsync(
+              instanceGroupManager, regionInstanceGroupManagersSetTemplateRequestResource)
+          .get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
-  public void setTargetPoolsRegionInstanceGroupManagerTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void setTargetPoolsRegionInstanceGroupManagerTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("setTargetPoolsRegionInstanceGroupManagerTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockRegionInstanceGroupManagers.addResponse(resultOperation);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
@@ -1126,9 +822,11 @@ public class RegionInstanceGroupManagerClientTest {
         regionInstanceGroupManagersSetTargetPoolsRequestResource =
             RegionInstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
 
-    Operation actualResponse =
-        client.setTargetPoolsRegionInstanceGroupManager(
-            instanceGroupManager, regionInstanceGroupManagersSetTargetPoolsRequestResource);
+    Void actualResponse =
+        client
+            .setTargetPoolsRegionInstanceGroupManagerAsync(
+                instanceGroupManager, regionInstanceGroupManagersSetTargetPoolsRequestResource)
+            .get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1162,11 +860,15 @@ public class RegionInstanceGroupManagerClientTest {
           regionInstanceGroupManagersSetTargetPoolsRequestResource =
               RegionInstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
 
-      client.setTargetPoolsRegionInstanceGroupManager(
-          instanceGroupManager, regionInstanceGroupManagersSetTargetPoolsRequestResource);
+      client
+          .setTargetPoolsRegionInstanceGroupManagerAsync(
+              instanceGroupManager, regionInstanceGroupManagersSetTargetPoolsRequestResource)
+          .get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

@@ -38,6 +38,7 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.BackendBucketStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -93,60 +94,22 @@ public class BackendBucketClientTest {
 
   @Test
   @SuppressWarnings("all")
-  public void addSignedUrlKeyBackendBucketTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void addSignedUrlKeyBackendBucketTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("addSignedUrlKeyBackendBucketTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockBackendBuckets.addResponse(resultOperation);
 
     ProjectGlobalBackendBucketName backendBucket =
         ProjectGlobalBackendBucketName.of("[PROJECT]", "[BACKEND_BUCKET]");
     SignedUrlKey signedUrlKeyResource = SignedUrlKey.newBuilder().build();
 
-    Operation actualResponse =
-        client.addSignedUrlKeyBackendBucket(backendBucket, signedUrlKeyResource);
+    Void actualResponse =
+        client.addSignedUrlKeyBackendBucketAsync(backendBucket, signedUrlKeyResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -177,67 +140,31 @@ public class BackendBucketClientTest {
           ProjectGlobalBackendBucketName.of("[PROJECT]", "[BACKEND_BUCKET]");
       SignedUrlKey signedUrlKeyResource = SignedUrlKey.newBuilder().build();
 
-      client.addSignedUrlKeyBackendBucket(backendBucket, signedUrlKeyResource);
+      client.addSignedUrlKeyBackendBucketAsync(backendBucket, signedUrlKeyResource).get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
-  public void deleteBackendBucketTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void deleteBackendBucketTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("deleteBackendBucketTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockBackendBuckets.addResponse(resultOperation);
 
     ProjectGlobalBackendBucketName backendBucket =
         ProjectGlobalBackendBucketName.of("[PROJECT]", "[BACKEND_BUCKET]");
 
-    Operation actualResponse = client.deleteBackendBucket(backendBucket);
+    Void actualResponse = client.deleteBackendBucketAsync(backendBucket).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -267,68 +194,32 @@ public class BackendBucketClientTest {
       ProjectGlobalBackendBucketName backendBucket =
           ProjectGlobalBackendBucketName.of("[PROJECT]", "[BACKEND_BUCKET]");
 
-      client.deleteBackendBucket(backendBucket);
+      client.deleteBackendBucketAsync(backendBucket).get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
-  public void deleteSignedUrlKeyBackendBucketTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void deleteSignedUrlKeyBackendBucketTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("deleteSignedUrlKeyBackendBucketTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockBackendBuckets.addResponse(resultOperation);
 
     ProjectGlobalBackendBucketName backendBucket =
         ProjectGlobalBackendBucketName.of("[PROJECT]", "[BACKEND_BUCKET]");
     String keyName = "keyName500938859";
 
-    Operation actualResponse = client.deleteSignedUrlKeyBackendBucket(backendBucket, keyName);
+    Void actualResponse = client.deleteSignedUrlKeyBackendBucketAsync(backendBucket, keyName).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -359,10 +250,12 @@ public class BackendBucketClientTest {
           ProjectGlobalBackendBucketName.of("[PROJECT]", "[BACKEND_BUCKET]");
       String keyName = "keyName500938859";
 
-      client.deleteSignedUrlKeyBackendBucket(backendBucket, keyName);
+      client.deleteSignedUrlKeyBackendBucketAsync(backendBucket, keyName).get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -432,58 +325,20 @@ public class BackendBucketClientTest {
 
   @Test
   @SuppressWarnings("all")
-  public void insertBackendBucketTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void insertBackendBucketTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("insertBackendBucketTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockBackendBuckets.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     BackendBucket backendBucketResource = BackendBucket.newBuilder().build();
 
-    Operation actualResponse = client.insertBackendBucket(project, backendBucketResource);
+    Void actualResponse = client.insertBackendBucketAsync(project, backendBucketResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -513,10 +368,12 @@ public class BackendBucketClientTest {
       ProjectName project = ProjectName.of("[PROJECT]");
       BackendBucket backendBucketResource = BackendBucket.newBuilder().build();
 
-      client.insertBackendBucket(project, backendBucketResource);
+      client.insertBackendBucketAsync(project, backendBucketResource).get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -582,61 +439,23 @@ public class BackendBucketClientTest {
 
   @Test
   @SuppressWarnings("all")
-  public void patchBackendBucketTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void patchBackendBucketTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("patchBackendBucketTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockBackendBuckets.addResponse(resultOperation);
 
     ProjectGlobalBackendBucketName backendBucket =
         ProjectGlobalBackendBucketName.of("[PROJECT]", "[BACKEND_BUCKET]");
     BackendBucket backendBucketResource = BackendBucket.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Operation actualResponse =
-        client.patchBackendBucket(backendBucket, backendBucketResource, fieldMask);
+    Void actualResponse =
+        client.patchBackendBucketAsync(backendBucket, backendBucketResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -668,70 +487,34 @@ public class BackendBucketClientTest {
       BackendBucket backendBucketResource = BackendBucket.newBuilder().build();
       List<String> fieldMask = new ArrayList<>();
 
-      client.patchBackendBucket(backendBucket, backendBucketResource, fieldMask);
+      client.patchBackendBucketAsync(backendBucket, backendBucketResource, fieldMask).get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
-  public void updateBackendBucketTest() {
-    String clientOperationId = "clientOperationId-239630617";
-    String creationTimestamp = "creationTimestamp567396278";
-    String description = "description-1724546052";
-    String endTime = "endTime1725551537";
-    String httpErrorMessage = "httpErrorMessage1276263769";
-    Integer httpErrorStatusCode = 1386087020;
-    String id = "id3355";
-    String insertTime = "insertTime-103148397";
-    String kind = "kind3292052";
-    String name = "name3373707";
-    String operationType = "operationType-1432962286";
-    Integer progress = 1001078227;
-    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
-    String selfLink = "selfLink-1691268851";
-    String startTime = "startTime-1573145462";
-    String status = "status-892481550";
-    String statusMessage = "statusMessage-239442758";
-    String targetId = "targetId-815576439";
-    String targetLink = "targetLink-2084812312";
-    String user = "user3599307";
-    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
-    Operation expectedResponse =
+  public void updateBackendBucketTest() throws Exception {
+    Void expectedResponse = null;
+    Operation resultOperation =
         Operation.newBuilder()
-            .setClientOperationId(clientOperationId)
-            .setCreationTimestamp(creationTimestamp)
-            .setDescription(description)
-            .setEndTime(endTime)
-            .setHttpErrorMessage(httpErrorMessage)
-            .setHttpErrorStatusCode(httpErrorStatusCode)
-            .setId(id)
-            .setInsertTime(insertTime)
-            .setKind(kind)
-            .setName(name)
-            .setOperationType(operationType)
-            .setProgress(progress)
-            .setRegion(region.toString())
-            .setSelfLink(selfLink)
-            .setStartTime(startTime)
-            .setStatus(status)
-            .setStatusMessage(statusMessage)
-            .setTargetId(targetId)
-            .setTargetLink(targetLink)
-            .setUser(user)
-            .setZone(zone.toString())
+            .setName("updateBackendBucketTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
             .build();
-    mockService.addResponse(expectedResponse);
+    mockBackendBuckets.addResponse(resultOperation);
 
     ProjectGlobalBackendBucketName backendBucket =
         ProjectGlobalBackendBucketName.of("[PROJECT]", "[BACKEND_BUCKET]");
     BackendBucket backendBucketResource = BackendBucket.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Operation actualResponse =
-        client.updateBackendBucket(backendBucket, backendBucketResource, fieldMask);
+    Void actualResponse =
+        client.updateBackendBucketAsync(backendBucket, backendBucketResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -763,10 +546,12 @@ public class BackendBucketClientTest {
       BackendBucket backendBucketResource = BackendBucket.newBuilder().build();
       List<String> fieldMask = new ArrayList<>();
 
-      client.updateBackendBucket(backendBucket, backendBucketResource, fieldMask);
+      client.updateBackendBucketAsync(backendBucket, backendBucketResource, fieldMask).get();
       Assert.fail("No exception raised");
-    } catch (InvalidArgumentException e) {
-      // Expected exception
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }
