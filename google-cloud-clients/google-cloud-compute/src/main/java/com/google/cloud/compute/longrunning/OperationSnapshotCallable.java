@@ -42,10 +42,8 @@ import com.google.cloud.compute.v1.Operation;
 /**
  * A {@code UnaryCallable} that wraps a UnaryCallable returning an Operation and returns an
  * OperationSnapshot instead.
- *
- * <p>Package-private for internal usage.
  */
-class OperationSnapshotCallable<RequestT> extends UnaryCallable<RequestT, OperationSnapshot> {
+public class OperationSnapshotCallable<RequestT> extends UnaryCallable<RequestT, OperationSnapshot> {
   private final UnaryCallable<RequestT, Operation> innerCallable;
 
   public OperationSnapshotCallable(UnaryCallable<RequestT, Operation> innerCallable) {
@@ -59,8 +57,7 @@ class OperationSnapshotCallable<RequestT> extends UnaryCallable<RequestT, Operat
         new ApiFunction<Operation, OperationSnapshot>() {
           @Override
           public OperationSnapshot apply(Operation operation) {
-            return new ComputeOperationSnapshot(operation) {
-            };
+            return ComputeOperationSnapshot.create(operation);
           }
         },
         directExecutor());

@@ -13,10 +13,8 @@ import com.google.cloud.compute.v1.stub.GlobalOperationStub;
 
 /**
  * Implementation of LongRunningClient for the Compute client.
- *
- * <p>Package-private for internal usage.
  */
-class ComputeLongRunningClient implements LongRunningClient {
+public class ComputeLongRunningClient implements LongRunningClient {
 
   private final GlobalOperationStub operationStub;
 

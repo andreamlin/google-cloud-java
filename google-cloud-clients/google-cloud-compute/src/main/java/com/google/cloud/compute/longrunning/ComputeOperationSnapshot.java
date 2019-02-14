@@ -17,8 +17,12 @@ public class ComputeOperationSnapshot implements OperationSnapshot {
 
   private final Operation operation;
 
-  public ComputeOperationSnapshot(Operation operation) {
+  private ComputeOperationSnapshot(Operation operation) {
     this.operation = operation;
+  }
+
+  public static ComputeOperationSnapshot create(Operation operation) {
+    return new ComputeOperationSnapshot(operation);
   }
 
   @Override
