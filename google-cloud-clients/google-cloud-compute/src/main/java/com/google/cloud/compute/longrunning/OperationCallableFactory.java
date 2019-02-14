@@ -14,17 +14,23 @@ import com.google.cloud.compute.v1.stub.GlobalOperationStub;
 
 public class OperationCallableFactory {
 
-  @BetaApi("The surface for long-running operations is not stable yet and may change in the future.")
-  public static <RequestT, ResponseT, MetadataT> OperationCallable<RequestT, ResponseT, MetadataT> createOperationCallable(
-      HttpJsonCallSettings<RequestT, Operation> httpJsonCallSettings,
-      OperationCallSettings<RequestT, ResponseT, MetadataT> operationCallSettings,
-      ClientContext clientContext,
-      GlobalOperationStub operationsStub) {
-    UnaryCallable<RequestT, Operation> initialGrpcCallable = HttpJsonCallableFactory.createBaseUnaryCallable(httpJsonCallSettings, operationCallSettings.getInitialCallSettings(), clientContext);
-    UnaryCallable<RequestT, OperationSnapshot> initialCallable = new OperationSnapshotCallable<>(initialGrpcCallable);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public static <RequestT, ResponseT, MetadataT>
+      OperationCallable<RequestT, ResponseT, MetadataT> createOperationCallable(
+          HttpJsonCallSettings<RequestT, Operation> httpJsonCallSettings,
+          OperationCallSettings<RequestT, ResponseT, MetadataT> operationCallSettings,
+          ClientContext clientContext,
+          GlobalOperationStub operationsStub) {
+    UnaryCallable<RequestT, Operation> initialGrpcCallable =
+        HttpJsonCallableFactory.createBaseUnaryCallable(
+            httpJsonCallSettings, operationCallSettings.getInitialCallSettings(), clientContext);
+    UnaryCallable<RequestT, OperationSnapshot> initialCallable =
+        new OperationSnapshotCallable<>(initialGrpcCallable);
     ComputeLongRunningClient longRunningClient = ComputeLongRunningClient.create(operationsStub);
-    OperationCallable<RequestT, ResponseT, MetadataT> operationCallable = Callables
-        .longRunningOperation(initialCallable, operationCallSettings, clientContext, longRunningClient);
+    OperationCallable<RequestT, ResponseT, MetadataT> operationCallable =
+        Callables.longRunningOperation(
+            initialCallable, operationCallSettings, clientContext, longRunningClient);
     return operationCallable.withDefaultCallContext(clientContext.getDefaultCallContext());
   }
 }

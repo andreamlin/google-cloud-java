@@ -52,15 +52,15 @@ public class ComputeOperationSnapshot implements OperationSnapshot {
     }
 
     // Return the first Error code.
-    return HttpJsonStatusCode
-        .of(Integer.valueOf(operation.getError().getErrorsList().get(0).getCode()), operation.getError().getErrorsList().get(0).getMessage());
+    return HttpJsonStatusCode.of(
+        Integer.valueOf(operation.getError().getErrorsList().get(0).getCode()),
+        operation.getError().getErrorsList().get(0).getMessage());
   }
 
   @Override
   public String getErrorMessage() {
     return operation.getError().getErrorsList().toString();
   }
-
 
   public Status getOperationStatus() {
     return Status.valueOf(operation.getStatus());

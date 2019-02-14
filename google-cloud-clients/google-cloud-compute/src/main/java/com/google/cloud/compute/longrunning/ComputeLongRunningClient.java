@@ -11,9 +11,7 @@ import com.google.cloud.compute.v1.GlobalOperationClient;
 import com.google.cloud.compute.v1.Operation;
 import com.google.cloud.compute.v1.stub.GlobalOperationStub;
 
-/**
- * Implementation of LongRunningClient for the Compute client.
- */
+/** Implementation of LongRunningClient for the Compute client. */
 public class ComputeLongRunningClient implements LongRunningClient {
 
   private final GlobalOperationStub operationStub;
@@ -47,7 +45,7 @@ public class ComputeLongRunningClient implements LongRunningClient {
 
   @Override
   public UnaryCallable<String, Void> cancelOperationCallable() {
-     throw new UnsupportedOperationException("Cancelling operations is not supported by this API.");
+    throw new UnsupportedOperationException("Cancelling operations is not supported by this API.");
   }
 
   @Override

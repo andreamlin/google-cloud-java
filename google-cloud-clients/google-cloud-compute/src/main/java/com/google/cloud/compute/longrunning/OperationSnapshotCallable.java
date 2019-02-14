@@ -43,7 +43,8 @@ import com.google.cloud.compute.v1.Operation;
  * A {@code UnaryCallable} that wraps a UnaryCallable returning an Operation and returns an
  * OperationSnapshot instead.
  */
-public class OperationSnapshotCallable<RequestT> extends UnaryCallable<RequestT, OperationSnapshot> {
+public class OperationSnapshotCallable<RequestT>
+    extends UnaryCallable<RequestT, OperationSnapshot> {
   private final UnaryCallable<RequestT, Operation> innerCallable;
 
   public OperationSnapshotCallable(UnaryCallable<RequestT, Operation> innerCallable) {

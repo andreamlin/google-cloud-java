@@ -6,14 +6,10 @@ import java.util.concurrent.TimeUnit;
 public class ComputeOperationsStub extends OperationsStub {
 
   @Override
-  public void close() {
-
-  }
+  public void close() {}
 
   @Override
-  public void shutdown() {
-
-  }
+  public void shutdown() {}
 
   @Override
   public boolean isShutdown() {
@@ -26,9 +22,7 @@ public class ComputeOperationsStub extends OperationsStub {
   }
 
   @Override
-  public void shutdownNow() {
-
-  }
+  public void shutdownNow() {}
 
   @Override
   public boolean awaitTermination(long l, TimeUnit timeUnit) throws InterruptedException {

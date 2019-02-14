@@ -5,7 +5,8 @@ import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.StatusCode.Code;
 
-public class ComputeOperationTransformer<ResponseT> implements ApiFunction<OperationSnapshot, ResponseT> {
+public class ComputeOperationTransformer<ResponseT>
+    implements ApiFunction<OperationSnapshot, ResponseT> {
 
   @Override
   @SuppressWarnings("unchecked")
@@ -34,7 +35,4 @@ public class ComputeOperationTransformer<ResponseT> implements ApiFunction<Opera
           false);
     }
   }
-
-
-
 }
