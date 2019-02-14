@@ -25,22 +25,26 @@ import static com.google.cloud.compute.v1.stub.HttpJsonFirewallStub.updateFirewa
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
+import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ApiException;
 import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.cloud.compute.longrunning.ComputeOperationSnapshot;
+import com.google.cloud.compute.longrunning.ComputeOperationSnapshot.Status;
 import com.google.cloud.compute.v1.stub.FirewallStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -91,18 +95,17 @@ public class FirewallClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteFirewallTest() throws Exception {
-    Void expectedResponse = null;
-    Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteFirewallTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockFirewalls.addResponse(resultOperation);
+    EmptyMessage expectedResponse = null;
+    Operation resultOperation = Operation.newBuilder()
+        .setName("deleteFirewallTest")
+        .setStatus(Status.DONE.toString())
+        .build();
+    // mockService.addNullResponse();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
 
-    Void actualResponse = client.deleteFirewallAsync(firewall).get();
+    EmptyMessage actualResponse = client.deleteFirewallAsync(firewall).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -136,7 +139,7 @@ public class FirewallClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -209,19 +212,14 @@ public class FirewallClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertFirewallTest() throws Exception {
-    Void expectedResponse = null;
-    Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertFirewallTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockFirewalls.addResponse(resultOperation);
+    EmptyMessage expectedResponse = null;
+    Operation resultOperation = Operation.newBuilder().setName("insertFirewallTest").build();
+    mockService.addNullResponse();
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Firewall firewallResource = Firewall.newBuilder().build();
 
-    Void actualResponse = client.insertFirewallAsync(project, firewallResource).get();
+    EmptyMessage actualResponse = client.insertFirewallAsync(project, firewallResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -256,7 +254,7 @@ public class FirewallClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -323,20 +321,16 @@ public class FirewallClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchFirewallTest() throws Exception {
-    Void expectedResponse = null;
-    Operation resultOperation =
-        Operation.newBuilder()
-            .setName("patchFirewallTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockFirewalls.addResponse(resultOperation);
+    EmptyMessage expectedResponse = null;
+    Operation resultOperation = Operation.newBuilder().setName("patchFirewallTest").build();
+    mockService.addNullResponse();
 
     ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
     Firewall firewallResource = Firewall.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse = client.patchFirewallAsync(firewall, firewallResource, fieldMask).get();
+    EmptyMessage actualResponse =
+        client.patchFirewallAsync(firewall, firewallResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -372,27 +366,23 @@ public class FirewallClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void updateFirewallTest() throws Exception {
-    Void expectedResponse = null;
-    Operation resultOperation =
-        Operation.newBuilder()
-            .setName("updateFirewallTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockFirewalls.addResponse(resultOperation);
+    EmptyMessage expectedResponse = null;
+    Operation resultOperation = Operation.newBuilder().setName("updateFirewallTest").build();
+    mockService.addNullResponse();
 
     ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
     Firewall firewallResource = Firewall.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse = client.updateFirewallAsync(firewall, firewallResource, fieldMask).get();
+    EmptyMessage actualResponse =
+        client.updateFirewallAsync(firewall, firewallResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -428,7 +418,7 @@ public class FirewallClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }
