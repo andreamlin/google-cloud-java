@@ -1,6 +1,7 @@
 package com.google.cloud.compute.longrunning;
 
 import com.google.api.core.ApiFunction;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.LongRunningClient;
 import com.google.api.gax.rpc.TranslatingUnaryCallable;
@@ -58,9 +59,9 @@ public class ComputeLongRunningClient implements LongRunningClient {
             return DeleteGlobalOperationHttpRequest.newBuilder().setOperation(request).build();
           }
         },
-        new ApiFunction<Void, Void>() {
+        new ApiFunction<EmptyMessage, Void>() {
           @Override
-          public Void apply(Void empty) {
+          public Void apply(EmptyMessage empty) {
             return null;
           }
         });
