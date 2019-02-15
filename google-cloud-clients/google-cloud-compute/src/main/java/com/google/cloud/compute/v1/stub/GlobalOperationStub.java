@@ -20,6 +20,7 @@ import static com.google.cloud.compute.v1.GlobalOperationClient.ListGlobalOperat
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AggregatedListGlobalOperationsHttpRequest;
 import com.google.cloud.compute.v1.DeleteGlobalOperationHttpRequest;
@@ -56,7 +57,8 @@ public abstract class GlobalOperationStub implements BackgroundResource {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationCallable() {
+  public UnaryCallable<DeleteGlobalOperationHttpRequest, EmptyMessage>
+      deleteGlobalOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteGlobalOperationCallable()");
   }
 

@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.HttpHealthCheckClient.ListHttpHealthCh
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteHttpHealthCheckHttpRequest;
 import com.google.cloud.compute.v1.GetHttpHealthCheckHttpRequest;
@@ -41,6 +43,18 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class HttpHealthCheckStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteHttpHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      deleteHttpHealthCheckOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteHttpHealthCheckOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteHttpHealthCheckHttpRequest, Operation>
       deleteHttpHealthCheckCallable() {
@@ -51,6 +65,13 @@ public abstract class HttpHealthCheckStub implements BackgroundResource {
   public UnaryCallable<GetHttpHealthCheckHttpRequest, HttpHealthCheck2>
       getHttpHealthCheckCallable() {
     throw new UnsupportedOperationException("Not implemented: getHttpHealthCheckCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertHttpHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      insertHttpHealthCheckOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertHttpHealthCheckOperationCallable()");
   }
 
   @BetaApi
@@ -71,9 +92,23 @@ public abstract class HttpHealthCheckStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: listHttpHealthChecksCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchHttpHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      patchHttpHealthCheckOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: patchHttpHealthCheckOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<PatchHttpHealthCheckHttpRequest, Operation> patchHttpHealthCheckCallable() {
     throw new UnsupportedOperationException("Not implemented: patchHttpHealthCheckCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateHttpHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      updateHttpHealthCheckOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: updateHttpHealthCheckOperationCallable()");
   }
 
   @BetaApi

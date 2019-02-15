@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AddSignedUrlKeyBackendBucketHttpRequest;
@@ -221,23 +223,38 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AddSignedUrlKeyBackendBucketHttpRequest, Operation>
       addSignedUrlKeyBackendBucketCallable;
+  private final OperationCallable<
+          AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      addSignedUrlKeyBackendBucketOperationCallable;
   private final UnaryCallable<DeleteBackendBucketHttpRequest, Operation>
       deleteBackendBucketCallable;
+  private final OperationCallable<DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      deleteBackendBucketOperationCallable;
   private final UnaryCallable<DeleteSignedUrlKeyBackendBucketHttpRequest, Operation>
       deleteSignedUrlKeyBackendBucketCallable;
+  private final OperationCallable<
+          DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSignedUrlKeyBackendBucketOperationCallable;
   private final UnaryCallable<GetBackendBucketHttpRequest, BackendBucket> getBackendBucketCallable;
   private final UnaryCallable<InsertBackendBucketHttpRequest, Operation>
       insertBackendBucketCallable;
+  private final OperationCallable<InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      insertBackendBucketOperationCallable;
   private final UnaryCallable<ListBackendBucketsHttpRequest, BackendBucketList>
       listBackendBucketsCallable;
   private final UnaryCallable<ListBackendBucketsHttpRequest, ListBackendBucketsPagedResponse>
       listBackendBucketsPagedCallable;
   private final UnaryCallable<PatchBackendBucketHttpRequest, Operation> patchBackendBucketCallable;
+  private final OperationCallable<PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      patchBackendBucketOperationCallable;
   private final UnaryCallable<UpdateBackendBucketHttpRequest, Operation>
       updateBackendBucketCallable;
+  private final OperationCallable<UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      updateBackendBucketOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -279,6 +296,7 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AddSignedUrlKeyBackendBucketHttpRequest, Operation>
         addSignedUrlKeyBackendBucketTransportSettings =
@@ -326,16 +344,34 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
             addSignedUrlKeyBackendBucketTransportSettings,
             settings.addSignedUrlKeyBackendBucketSettings(),
             clientContext);
+    this.addSignedUrlKeyBackendBucketOperationCallable =
+        callableFactory.createOperationCallable(
+            addSignedUrlKeyBackendBucketTransportSettings,
+            settings.addSignedUrlKeyBackendBucketOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.deleteBackendBucketCallable =
         callableFactory.createUnaryCallable(
             deleteBackendBucketTransportSettings,
             settings.deleteBackendBucketSettings(),
             clientContext);
+    this.deleteBackendBucketOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteBackendBucketTransportSettings,
+            settings.deleteBackendBucketOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.deleteSignedUrlKeyBackendBucketCallable =
         callableFactory.createUnaryCallable(
             deleteSignedUrlKeyBackendBucketTransportSettings,
             settings.deleteSignedUrlKeyBackendBucketSettings(),
             clientContext);
+    this.deleteSignedUrlKeyBackendBucketOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteSignedUrlKeyBackendBucketTransportSettings,
+            settings.deleteSignedUrlKeyBackendBucketOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getBackendBucketCallable =
         callableFactory.createUnaryCallable(
             getBackendBucketTransportSettings, settings.getBackendBucketSettings(), clientContext);
@@ -344,6 +380,12 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
             insertBackendBucketTransportSettings,
             settings.insertBackendBucketSettings(),
             clientContext);
+    this.insertBackendBucketOperationCallable =
+        callableFactory.createOperationCallable(
+            insertBackendBucketTransportSettings,
+            settings.insertBackendBucketOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listBackendBucketsCallable =
         callableFactory.createUnaryCallable(
             listBackendBucketsTransportSettings,
@@ -359,13 +401,36 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
             patchBackendBucketTransportSettings,
             settings.patchBackendBucketSettings(),
             clientContext);
+    this.patchBackendBucketOperationCallable =
+        callableFactory.createOperationCallable(
+            patchBackendBucketTransportSettings,
+            settings.patchBackendBucketOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.updateBackendBucketCallable =
         callableFactory.createUnaryCallable(
             updateBackendBucketTransportSettings,
             settings.updateBackendBucketSettings(),
             clientContext);
+    this.updateBackendBucketOperationCallable =
+        callableFactory.createOperationCallable(
+            updateBackendBucketTransportSettings,
+            settings.updateBackendBucketOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      addSignedUrlKeyBackendBucketOperationCallable() {
+    return addSignedUrlKeyBackendBucketOperationCallable;
   }
 
   @BetaApi
@@ -374,9 +439,21 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
     return addSignedUrlKeyBackendBucketCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      deleteBackendBucketOperationCallable() {
+    return deleteBackendBucketOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteBackendBucketHttpRequest, Operation> deleteBackendBucketCallable() {
     return deleteBackendBucketCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSignedUrlKeyBackendBucketOperationCallable() {
+    return deleteSignedUrlKeyBackendBucketOperationCallable;
   }
 
   @BetaApi
@@ -388,6 +465,12 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
   @BetaApi
   public UnaryCallable<GetBackendBucketHttpRequest, BackendBucket> getBackendBucketCallable() {
     return getBackendBucketCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      insertBackendBucketOperationCallable() {
+    return insertBackendBucketOperationCallable;
   }
 
   @BetaApi
@@ -407,9 +490,21 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
     return listBackendBucketsCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      patchBackendBucketOperationCallable() {
+    return patchBackendBucketOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<PatchBackendBucketHttpRequest, Operation> patchBackendBucketCallable() {
     return patchBackendBucketCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      updateBackendBucketOperationCallable() {
+    return updateBackendBucketOperationCallable;
   }
 
   @BetaApi

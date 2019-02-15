@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AddRuleSecurityPolicyHttpRequest;
@@ -243,27 +245,40 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AddRuleSecurityPolicyHttpRequest, Operation>
       addRuleSecurityPolicyCallable;
+  private final OperationCallable<AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      addRuleSecurityPolicyOperationCallable;
   private final UnaryCallable<DeleteSecurityPolicyHttpRequest, Operation>
       deleteSecurityPolicyCallable;
+  private final OperationCallable<DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSecurityPolicyOperationCallable;
   private final UnaryCallable<GetSecurityPolicyHttpRequest, SecurityPolicy>
       getSecurityPolicyCallable;
   private final UnaryCallable<GetRuleSecurityPolicyHttpRequest, SecurityPolicyRule>
       getRuleSecurityPolicyCallable;
   private final UnaryCallable<InsertSecurityPolicyHttpRequest, Operation>
       insertSecurityPolicyCallable;
+  private final OperationCallable<InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      insertSecurityPolicyOperationCallable;
   private final UnaryCallable<ListSecurityPoliciesHttpRequest, SecurityPolicyList>
       listSecurityPoliciesCallable;
   private final UnaryCallable<ListSecurityPoliciesHttpRequest, ListSecurityPoliciesPagedResponse>
       listSecurityPoliciesPagedCallable;
   private final UnaryCallable<PatchSecurityPolicyHttpRequest, Operation>
       patchSecurityPolicyCallable;
+  private final OperationCallable<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchSecurityPolicyOperationCallable;
   private final UnaryCallable<PatchRuleSecurityPolicyHttpRequest, Operation>
       patchRuleSecurityPolicyCallable;
+  private final OperationCallable<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchRuleSecurityPolicyOperationCallable;
   private final UnaryCallable<RemoveRuleSecurityPolicyHttpRequest, Operation>
       removeRuleSecurityPolicyCallable;
+  private final OperationCallable<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      removeRuleSecurityPolicyOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -305,6 +320,7 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AddRuleSecurityPolicyHttpRequest, Operation>
         addRuleSecurityPolicyTransportSettings =
@@ -357,11 +373,23 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
             addRuleSecurityPolicyTransportSettings,
             settings.addRuleSecurityPolicySettings(),
             clientContext);
+    this.addRuleSecurityPolicyOperationCallable =
+        callableFactory.createOperationCallable(
+            addRuleSecurityPolicyTransportSettings,
+            settings.addRuleSecurityPolicyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.deleteSecurityPolicyCallable =
         callableFactory.createUnaryCallable(
             deleteSecurityPolicyTransportSettings,
             settings.deleteSecurityPolicySettings(),
             clientContext);
+    this.deleteSecurityPolicyOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteSecurityPolicyTransportSettings,
+            settings.deleteSecurityPolicyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getSecurityPolicyCallable =
         callableFactory.createUnaryCallable(
             getSecurityPolicyTransportSettings,
@@ -377,6 +405,12 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
             insertSecurityPolicyTransportSettings,
             settings.insertSecurityPolicySettings(),
             clientContext);
+    this.insertSecurityPolicyOperationCallable =
+        callableFactory.createOperationCallable(
+            insertSecurityPolicyTransportSettings,
+            settings.insertSecurityPolicyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listSecurityPoliciesCallable =
         callableFactory.createUnaryCallable(
             listSecurityPoliciesTransportSettings,
@@ -392,24 +426,59 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
             patchSecurityPolicyTransportSettings,
             settings.patchSecurityPolicySettings(),
             clientContext);
+    this.patchSecurityPolicyOperationCallable =
+        callableFactory.createOperationCallable(
+            patchSecurityPolicyTransportSettings,
+            settings.patchSecurityPolicyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.patchRuleSecurityPolicyCallable =
         callableFactory.createUnaryCallable(
             patchRuleSecurityPolicyTransportSettings,
             settings.patchRuleSecurityPolicySettings(),
             clientContext);
+    this.patchRuleSecurityPolicyOperationCallable =
+        callableFactory.createOperationCallable(
+            patchRuleSecurityPolicyTransportSettings,
+            settings.patchRuleSecurityPolicyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.removeRuleSecurityPolicyCallable =
         callableFactory.createUnaryCallable(
             removeRuleSecurityPolicyTransportSettings,
             settings.removeRuleSecurityPolicySettings(),
             clientContext);
+    this.removeRuleSecurityPolicyOperationCallable =
+        callableFactory.createOperationCallable(
+            removeRuleSecurityPolicyTransportSettings,
+            settings.removeRuleSecurityPolicyOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      addRuleSecurityPolicyOperationCallable() {
+    return addRuleSecurityPolicyOperationCallable;
   }
 
   @BetaApi
   public UnaryCallable<AddRuleSecurityPolicyHttpRequest, Operation>
       addRuleSecurityPolicyCallable() {
     return addRuleSecurityPolicyCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSecurityPolicyOperationCallable() {
+    return deleteSecurityPolicyOperationCallable;
   }
 
   @BetaApi
@@ -426,6 +495,12 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
   public UnaryCallable<GetRuleSecurityPolicyHttpRequest, SecurityPolicyRule>
       getRuleSecurityPolicyCallable() {
     return getRuleSecurityPolicyCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      insertSecurityPolicyOperationCallable() {
+    return insertSecurityPolicyOperationCallable;
   }
 
   @BetaApi
@@ -445,15 +520,33 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
     return listSecurityPoliciesCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchSecurityPolicyOperationCallable() {
+    return patchSecurityPolicyOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<PatchSecurityPolicyHttpRequest, Operation> patchSecurityPolicyCallable() {
     return patchSecurityPolicyCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchRuleSecurityPolicyOperationCallable() {
+    return patchRuleSecurityPolicyOperationCallable;
   }
 
   @BetaApi
   public UnaryCallable<PatchRuleSecurityPolicyHttpRequest, Operation>
       patchRuleSecurityPolicyCallable() {
     return patchRuleSecurityPolicyCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      removeRuleSecurityPolicyOperationCallable() {
+    return removeRuleSecurityPolicyOperationCallable;
   }
 
   @BetaApi

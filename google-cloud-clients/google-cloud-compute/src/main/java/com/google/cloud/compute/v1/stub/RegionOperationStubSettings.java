@@ -23,6 +23,7 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
@@ -94,7 +95,7 @@ public class RegionOperationStubSettings extends StubSettings<RegionOperationStu
           .add("https://www.googleapis.com/auth/devstorage.read_write")
           .build();
 
-  private final UnaryCallSettings<DeleteRegionOperationHttpRequest, Void>
+  private final UnaryCallSettings<DeleteRegionOperationHttpRequest, EmptyMessage>
       deleteRegionOperationSettings;
   private final UnaryCallSettings<GetRegionOperationHttpRequest, Operation>
       getRegionOperationSettings;
@@ -103,7 +104,8 @@ public class RegionOperationStubSettings extends StubSettings<RegionOperationStu
       listRegionOperationsSettings;
 
   /** Returns the object with the settings used for calls to deleteRegionOperation. */
-  public UnaryCallSettings<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationSettings() {
+  public UnaryCallSettings<DeleteRegionOperationHttpRequest, EmptyMessage>
+      deleteRegionOperationSettings() {
     return deleteRegionOperationSettings;
   }
 
@@ -264,7 +266,7 @@ public class RegionOperationStubSettings extends StubSettings<RegionOperationStu
   public static class Builder extends StubSettings.Builder<RegionOperationStubSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<DeleteRegionOperationHttpRequest, Void>
+    private final UnaryCallSettings.Builder<DeleteRegionOperationHttpRequest, EmptyMessage>
         deleteRegionOperationSettings;
     private final UnaryCallSettings.Builder<GetRegionOperationHttpRequest, Operation>
         getRegionOperationSettings;
@@ -389,7 +391,7 @@ public class RegionOperationStubSettings extends StubSettings<RegionOperationStu
     }
 
     /** Returns the builder for the settings used for calls to deleteRegionOperation. */
-    public UnaryCallSettings.Builder<DeleteRegionOperationHttpRequest, Void>
+    public UnaryCallSettings.Builder<DeleteRegionOperationHttpRequest, EmptyMessage>
         deleteRegionOperationSettings() {
       return deleteRegionOperationSettings;
     }

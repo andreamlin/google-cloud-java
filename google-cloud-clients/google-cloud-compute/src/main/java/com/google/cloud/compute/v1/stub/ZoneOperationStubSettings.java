@@ -23,6 +23,7 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
@@ -94,14 +95,16 @@ public class ZoneOperationStubSettings extends StubSettings<ZoneOperationStubSet
           .add("https://www.googleapis.com/auth/devstorage.read_write")
           .build();
 
-  private final UnaryCallSettings<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationSettings;
+  private final UnaryCallSettings<DeleteZoneOperationHttpRequest, EmptyMessage>
+      deleteZoneOperationSettings;
   private final UnaryCallSettings<GetZoneOperationHttpRequest, Operation> getZoneOperationSettings;
   private final PagedCallSettings<
           ListZoneOperationsHttpRequest, OperationList, ListZoneOperationsPagedResponse>
       listZoneOperationsSettings;
 
   /** Returns the object with the settings used for calls to deleteZoneOperation. */
-  public UnaryCallSettings<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationSettings() {
+  public UnaryCallSettings<DeleteZoneOperationHttpRequest, EmptyMessage>
+      deleteZoneOperationSettings() {
     return deleteZoneOperationSettings;
   }
 
@@ -259,7 +262,7 @@ public class ZoneOperationStubSettings extends StubSettings<ZoneOperationStubSet
   public static class Builder extends StubSettings.Builder<ZoneOperationStubSettings, Builder> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
-    private final UnaryCallSettings.Builder<DeleteZoneOperationHttpRequest, Void>
+    private final UnaryCallSettings.Builder<DeleteZoneOperationHttpRequest, EmptyMessage>
         deleteZoneOperationSettings;
     private final UnaryCallSettings.Builder<GetZoneOperationHttpRequest, Operation>
         getZoneOperationSettings;
@@ -379,7 +382,7 @@ public class ZoneOperationStubSettings extends StubSettings<ZoneOperationStubSet
     }
 
     /** Returns the builder for the settings used for calls to deleteZoneOperation. */
-    public UnaryCallSettings.Builder<DeleteZoneOperationHttpRequest, Void>
+    public UnaryCallSettings.Builder<DeleteZoneOperationHttpRequest, EmptyMessage>
         deleteZoneOperationSettings() {
       return deleteZoneOperationSettings;
     }

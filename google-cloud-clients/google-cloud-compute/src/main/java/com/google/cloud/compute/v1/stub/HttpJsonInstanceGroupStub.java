@@ -27,9 +27,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AddInstancesInstanceGroupHttpRequest;
@@ -257,9 +259,12 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AddInstancesInstanceGroupHttpRequest, Operation>
       addInstancesInstanceGroupCallable;
+  private final OperationCallable<AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      addInstancesInstanceGroupOperationCallable;
   private final UnaryCallable<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList>
       aggregatedListInstanceGroupsCallable;
   private final UnaryCallable<
@@ -267,9 +272,13 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
       aggregatedListInstanceGroupsPagedCallable;
   private final UnaryCallable<DeleteInstanceGroupHttpRequest, Operation>
       deleteInstanceGroupCallable;
+  private final OperationCallable<DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstanceGroupOperationCallable;
   private final UnaryCallable<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupCallable;
   private final UnaryCallable<InsertInstanceGroupHttpRequest, Operation>
       insertInstanceGroupCallable;
+  private final OperationCallable<InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      insertInstanceGroupOperationCallable;
   private final UnaryCallable<ListInstanceGroupsHttpRequest, InstanceGroupList>
       listInstanceGroupsCallable;
   private final UnaryCallable<ListInstanceGroupsHttpRequest, ListInstanceGroupsPagedResponse>
@@ -281,8 +290,13 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
       listInstancesInstanceGroupsPagedCallable;
   private final UnaryCallable<RemoveInstancesInstanceGroupHttpRequest, Operation>
       removeInstancesInstanceGroupCallable;
+  private final OperationCallable<
+          RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      removeInstancesInstanceGroupOperationCallable;
   private final UnaryCallable<SetNamedPortsInstanceGroupHttpRequest, Operation>
       setNamedPortsInstanceGroupCallable;
+  private final OperationCallable<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNamedPortsInstanceGroupOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -324,6 +338,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AddInstancesInstanceGroupHttpRequest, Operation>
         addInstancesInstanceGroupTransportSettings =
@@ -378,6 +393,12 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
             addInstancesInstanceGroupTransportSettings,
             settings.addInstancesInstanceGroupSettings(),
             clientContext);
+    this.addInstancesInstanceGroupOperationCallable =
+        callableFactory.createOperationCallable(
+            addInstancesInstanceGroupTransportSettings,
+            settings.addInstancesInstanceGroupOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.aggregatedListInstanceGroupsCallable =
         callableFactory.createUnaryCallable(
             aggregatedListInstanceGroupsTransportSettings,
@@ -393,6 +414,12 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
             deleteInstanceGroupTransportSettings,
             settings.deleteInstanceGroupSettings(),
             clientContext);
+    this.deleteInstanceGroupOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteInstanceGroupTransportSettings,
+            settings.deleteInstanceGroupOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getInstanceGroupCallable =
         callableFactory.createUnaryCallable(
             getInstanceGroupTransportSettings, settings.getInstanceGroupSettings(), clientContext);
@@ -401,6 +428,12 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
             insertInstanceGroupTransportSettings,
             settings.insertInstanceGroupSettings(),
             clientContext);
+    this.insertInstanceGroupOperationCallable =
+        callableFactory.createOperationCallable(
+            insertInstanceGroupTransportSettings,
+            settings.insertInstanceGroupOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listInstanceGroupsCallable =
         callableFactory.createUnaryCallable(
             listInstanceGroupsTransportSettings,
@@ -426,13 +459,36 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
             removeInstancesInstanceGroupTransportSettings,
             settings.removeInstancesInstanceGroupSettings(),
             clientContext);
+    this.removeInstancesInstanceGroupOperationCallable =
+        callableFactory.createOperationCallable(
+            removeInstancesInstanceGroupTransportSettings,
+            settings.removeInstancesInstanceGroupOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setNamedPortsInstanceGroupCallable =
         callableFactory.createUnaryCallable(
             setNamedPortsInstanceGroupTransportSettings,
             settings.setNamedPortsInstanceGroupSettings(),
             clientContext);
+    this.setNamedPortsInstanceGroupOperationCallable =
+        callableFactory.createOperationCallable(
+            setNamedPortsInstanceGroupTransportSettings,
+            settings.setNamedPortsInstanceGroupOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      addInstancesInstanceGroupOperationCallable() {
+    return addInstancesInstanceGroupOperationCallable;
   }
 
   @BetaApi
@@ -454,6 +510,12 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
     return aggregatedListInstanceGroupsCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstanceGroupOperationCallable() {
+    return deleteInstanceGroupOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteInstanceGroupHttpRequest, Operation> deleteInstanceGroupCallable() {
     return deleteInstanceGroupCallable;
@@ -462,6 +524,12 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
   @BetaApi
   public UnaryCallable<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupCallable() {
     return getInstanceGroupCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      insertInstanceGroupOperationCallable() {
+    return insertInstanceGroupOperationCallable;
   }
 
   @BetaApi
@@ -494,10 +562,22 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
     return listInstancesInstanceGroupsCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      removeInstancesInstanceGroupOperationCallable() {
+    return removeInstancesInstanceGroupOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<RemoveInstancesInstanceGroupHttpRequest, Operation>
       removeInstancesInstanceGroupCallable() {
     return removeInstancesInstanceGroupCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNamedPortsInstanceGroupOperationCallable() {
+    return setNamedPortsInstanceGroupOperationCallable;
   }
 
   @BetaApi

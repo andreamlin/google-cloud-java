@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of createSnapshotRegionDisk to 30 seconds:
+ * example, to set the total timeout of getRegionDisk to 30 seconds:
  *
  * <pre>
  * <code>
  * RegionDiskSettings.Builder regionDiskSettingsBuilder =
  *     RegionDiskSettings.newBuilder();
- * regionDiskSettingsBuilder.createSnapshotRegionDiskSettings().getRetrySettings().toBuilder()
+ * regionDiskSettingsBuilder.getRegionDiskSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * RegionDiskSettings regionDiskSettings = regionDiskSettingsBuilder.build();
  * </code>
@@ -69,9 +71,25 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
     return ((RegionDiskStubSettings) getStubSettings()).createSnapshotRegionDiskSettings();
   }
 
+  /** Returns the object with the settings used for calls to createSnapshotRegionDisk. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<CreateSnapshotRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      createSnapshotRegionDiskOperationSettings() {
+    return ((RegionDiskStubSettings) getStubSettings()).createSnapshotRegionDiskOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to deleteRegionDisk. */
   public UnaryCallSettings<DeleteRegionDiskHttpRequest, Operation> deleteRegionDiskSettings() {
     return ((RegionDiskStubSettings) getStubSettings()).deleteRegionDiskSettings();
+  }
+
+  /** Returns the object with the settings used for calls to deleteRegionDisk. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionDiskOperationSettings() {
+    return ((RegionDiskStubSettings) getStubSettings()).deleteRegionDiskOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getRegionDisk. */
@@ -82,6 +100,14 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
   /** Returns the object with the settings used for calls to insertRegionDisk. */
   public UnaryCallSettings<InsertRegionDiskHttpRequest, Operation> insertRegionDiskSettings() {
     return ((RegionDiskStubSettings) getStubSettings()).insertRegionDiskSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertRegionDisk. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionDiskOperationSettings() {
+    return ((RegionDiskStubSettings) getStubSettings()).insertRegionDiskOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listRegionDisks. */
@@ -95,10 +121,26 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
     return ((RegionDiskStubSettings) getStubSettings()).resizeRegionDiskSettings();
   }
 
+  /** Returns the object with the settings used for calls to resizeRegionDisk. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<ResizeRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      resizeRegionDiskOperationSettings() {
+    return ((RegionDiskStubSettings) getStubSettings()).resizeRegionDiskOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to setLabelsRegionDisk. */
   public UnaryCallSettings<SetLabelsRegionDiskHttpRequest, Operation>
       setLabelsRegionDiskSettings() {
     return ((RegionDiskStubSettings) getStubSettings()).setLabelsRegionDiskSettings();
+  }
+
+  /** Returns the object with the settings used for calls to setLabelsRegionDisk. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<SetLabelsRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsRegionDiskOperationSettings() {
+    return ((RegionDiskStubSettings) getStubSettings()).setLabelsRegionDiskOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to testIamPermissionsRegionDisk. */
@@ -214,10 +256,27 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
       return getStubSettingsBuilder().createSnapshotRegionDiskSettings();
     }
 
+    /** Returns the builder for the settings used for calls to createSnapshotRegionDisk. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            CreateSnapshotRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        createSnapshotRegionDiskOperationSettings() {
+      return getStubSettingsBuilder().createSnapshotRegionDiskOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to deleteRegionDisk. */
     public UnaryCallSettings.Builder<DeleteRegionDiskHttpRequest, Operation>
         deleteRegionDiskSettings() {
       return getStubSettingsBuilder().deleteRegionDiskSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to deleteRegionDisk. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        deleteRegionDiskOperationSettings() {
+      return getStubSettingsBuilder().deleteRegionDiskOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to getRegionDisk. */
@@ -229,6 +288,14 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
     public UnaryCallSettings.Builder<InsertRegionDiskHttpRequest, Operation>
         insertRegionDiskSettings() {
       return getStubSettingsBuilder().insertRegionDiskSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertRegionDisk. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        insertRegionDiskOperationSettings() {
+      return getStubSettingsBuilder().insertRegionDiskOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listRegionDisks. */
@@ -244,10 +311,26 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
       return getStubSettingsBuilder().resizeRegionDiskSettings();
     }
 
+    /** Returns the builder for the settings used for calls to resizeRegionDisk. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<ResizeRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        resizeRegionDiskOperationSettings() {
+      return getStubSettingsBuilder().resizeRegionDiskOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to setLabelsRegionDisk. */
     public UnaryCallSettings.Builder<SetLabelsRegionDiskHttpRequest, Operation>
         setLabelsRegionDiskSettings() {
       return getStubSettingsBuilder().setLabelsRegionDiskSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to setLabelsRegionDisk. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<SetLabelsRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        setLabelsRegionDiskOperationSettings() {
+      return getStubSettingsBuilder().setLabelsRegionDiskOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to testIamPermissionsRegionDisk. */

@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteHttpsHealthCheck to 30 seconds:
+ * example, to set the total timeout of getHttpsHealthCheck to 30 seconds:
  *
  * <pre>
  * <code>
  * HttpsHealthCheckSettings.Builder httpsHealthCheckSettingsBuilder =
  *     HttpsHealthCheckSettings.newBuilder();
- * httpsHealthCheckSettingsBuilder.deleteHttpsHealthCheckSettings().getRetrySettings().toBuilder()
+ * httpsHealthCheckSettingsBuilder.getHttpsHealthCheckSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * HttpsHealthCheckSettings httpsHealthCheckSettings = httpsHealthCheckSettingsBuilder.build();
  * </code>
@@ -69,6 +71,15 @@ public class HttpsHealthCheckSettings extends ClientSettings<HttpsHealthCheckSet
     return ((HttpsHealthCheckStubSettings) getStubSettings()).deleteHttpsHealthCheckSettings();
   }
 
+  /** Returns the object with the settings used for calls to deleteHttpsHealthCheck. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      deleteHttpsHealthCheckOperationSettings() {
+    return ((HttpsHealthCheckStubSettings) getStubSettings())
+        .deleteHttpsHealthCheckOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to getHttpsHealthCheck. */
   public UnaryCallSettings<GetHttpsHealthCheckHttpRequest, HttpsHealthCheck2>
       getHttpsHealthCheckSettings() {
@@ -79,6 +90,15 @@ public class HttpsHealthCheckSettings extends ClientSettings<HttpsHealthCheckSet
   public UnaryCallSettings<InsertHttpsHealthCheckHttpRequest, Operation>
       insertHttpsHealthCheckSettings() {
     return ((HttpsHealthCheckStubSettings) getStubSettings()).insertHttpsHealthCheckSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertHttpsHealthCheck. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      insertHttpsHealthCheckOperationSettings() {
+    return ((HttpsHealthCheckStubSettings) getStubSettings())
+        .insertHttpsHealthCheckOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listHttpsHealthChecks. */
@@ -96,10 +116,28 @@ public class HttpsHealthCheckSettings extends ClientSettings<HttpsHealthCheckSet
     return ((HttpsHealthCheckStubSettings) getStubSettings()).patchHttpsHealthCheckSettings();
   }
 
+  /** Returns the object with the settings used for calls to patchHttpsHealthCheck. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      patchHttpsHealthCheckOperationSettings() {
+    return ((HttpsHealthCheckStubSettings) getStubSettings())
+        .patchHttpsHealthCheckOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to updateHttpsHealthCheck. */
   public UnaryCallSettings<UpdateHttpsHealthCheckHttpRequest, Operation>
       updateHttpsHealthCheckSettings() {
     return ((HttpsHealthCheckStubSettings) getStubSettings()).updateHttpsHealthCheckSettings();
+  }
+
+  /** Returns the object with the settings used for calls to updateHttpsHealthCheck. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<UpdateHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      updateHttpsHealthCheckOperationSettings() {
+    return ((HttpsHealthCheckStubSettings) getStubSettings())
+        .updateHttpsHealthCheckOperationSettings();
   }
 
   public static final HttpsHealthCheckSettings create(HttpsHealthCheckStubSettings stub)
@@ -210,6 +248,15 @@ public class HttpsHealthCheckSettings extends ClientSettings<HttpsHealthCheckSet
       return getStubSettingsBuilder().deleteHttpsHealthCheckSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteHttpsHealthCheck. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+        deleteHttpsHealthCheckOperationSettings() {
+      return getStubSettingsBuilder().deleteHttpsHealthCheckOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getHttpsHealthCheck. */
     public UnaryCallSettings.Builder<GetHttpsHealthCheckHttpRequest, HttpsHealthCheck2>
         getHttpsHealthCheckSettings() {
@@ -220,6 +267,15 @@ public class HttpsHealthCheckSettings extends ClientSettings<HttpsHealthCheckSet
     public UnaryCallSettings.Builder<InsertHttpsHealthCheckHttpRequest, Operation>
         insertHttpsHealthCheckSettings() {
       return getStubSettingsBuilder().insertHttpsHealthCheckSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertHttpsHealthCheck. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+        insertHttpsHealthCheckOperationSettings() {
+      return getStubSettingsBuilder().insertHttpsHealthCheckOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listHttpsHealthChecks. */
@@ -237,10 +293,28 @@ public class HttpsHealthCheckSettings extends ClientSettings<HttpsHealthCheckSet
       return getStubSettingsBuilder().patchHttpsHealthCheckSettings();
     }
 
+    /** Returns the builder for the settings used for calls to patchHttpsHealthCheck. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            PatchHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+        patchHttpsHealthCheckOperationSettings() {
+      return getStubSettingsBuilder().patchHttpsHealthCheckOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to updateHttpsHealthCheck. */
     public UnaryCallSettings.Builder<UpdateHttpsHealthCheckHttpRequest, Operation>
         updateHttpsHealthCheckSettings() {
       return getStubSettingsBuilder().updateHttpsHealthCheckSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to updateHttpsHealthCheck. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            UpdateHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+        updateHttpsHealthCheckOperationSettings() {
+      return getStubSettingsBuilder().updateHttpsHealthCheckOperationSettings();
     }
 
     @Override

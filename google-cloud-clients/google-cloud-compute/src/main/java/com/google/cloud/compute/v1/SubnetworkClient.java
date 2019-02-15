@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.SubnetworkStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
  *   ProjectRegionSubnetworkName subnetwork = ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
- *   Operation response = subnetworkClient.deleteSubnetwork(subnetwork);
+ *   Subnetwork response = subnetworkClient.getSubnetwork(subnetwork);
  * }
  * </code>
  * </pre>
@@ -103,6 +106,7 @@ import javax.annotation.Generated;
 public class SubnetworkClient implements BackgroundResource {
   private final SubnetworkSettings settings;
   private final SubnetworkStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of SubnetworkClient with default settings. */
   public static final SubnetworkClient create() throws IOException {
@@ -133,12 +137,14 @@ public class SubnetworkClient implements BackgroundResource {
   protected SubnetworkClient(SubnetworkSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((SubnetworkStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected SubnetworkClient(SubnetworkStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final SubnetworkSettings getSettings() {
@@ -148,6 +154,16 @@ public class SubnetworkClient implements BackgroundResource {
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public SubnetworkStub getStub() {
     return stub;
+  }
+
+  /**
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -299,21 +315,23 @@ public class SubnetworkClient implements BackgroundResource {
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   ProjectRegionSubnetworkName subnetwork = ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
-   *   Operation response = subnetworkClient.deleteSubnetwork(subnetwork);
+   *   subnetworkClient.deleteSubnetworkAsync(subnetwork).get();
    * }
    * </code></pre>
    *
    * @param subnetwork Name of the Subnetwork resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSubnetwork(ProjectRegionSubnetworkName subnetwork) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSubnetworkAsync(
+      ProjectRegionSubnetworkName subnetwork) {
 
     DeleteSubnetworkHttpRequest request =
         DeleteSubnetworkHttpRequest.newBuilder()
             .setSubnetwork(subnetwork == null ? null : subnetwork.toString())
             .build();
-    return deleteSubnetwork(request);
+    return deleteSubnetworkAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -325,19 +343,21 @@ public class SubnetworkClient implements BackgroundResource {
    * <pre><code>
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   ProjectRegionSubnetworkName subnetwork = ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
-   *   Operation response = subnetworkClient.deleteSubnetwork(subnetwork.toString());
+   *   subnetworkClient.deleteSubnetworkAsync(subnetwork.toString()).get();
    * }
    * </code></pre>
    *
    * @param subnetwork Name of the Subnetwork resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSubnetwork(String subnetwork) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSubnetworkAsync(
+      String subnetwork) {
 
     DeleteSubnetworkHttpRequest request =
         DeleteSubnetworkHttpRequest.newBuilder().setSubnetwork(subnetwork).build();
-    return deleteSubnetwork(request);
+    return deleteSubnetworkAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -352,16 +372,42 @@ public class SubnetworkClient implements BackgroundResource {
    *   DeleteSubnetworkHttpRequest request = DeleteSubnetworkHttpRequest.newBuilder()
    *     .setSubnetwork(subnetwork.toString())
    *     .build();
-   *   Operation response = subnetworkClient.deleteSubnetwork(request);
+   *   subnetworkClient.deleteSubnetworkAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSubnetwork(DeleteSubnetworkHttpRequest request) {
-    return deleteSubnetworkCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSubnetworkAsync(
+      DeleteSubnetworkHttpRequest request) {
+    return deleteSubnetworkOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified subnetwork.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
+   *   ProjectRegionSubnetworkName subnetwork = ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   DeleteSubnetworkHttpRequest request = DeleteSubnetworkHttpRequest.newBuilder()
+   *     .setSubnetwork(subnetwork.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = subnetworkClient.deleteSubnetworkOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSubnetworkOperationCallable() {
+    return stub.deleteSubnetworkOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -378,7 +424,7 @@ public class SubnetworkClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = subnetworkClient.deleteSubnetworkCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -397,7 +443,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   ProjectRegionSubnetworkName subnetwork = ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
-   *   Operation response = subnetworkClient.expandIpCidrRangeSubnetwork(subnetwork, subnetworksExpandIpCidrRangeRequestResource);
+   *   subnetworkClient.expandIpCidrRangeSubnetworkAsync(subnetwork, subnetworksExpandIpCidrRangeRequestResource).get();
    * }
    * </code></pre>
    *
@@ -405,8 +451,9 @@ public class SubnetworkClient implements BackgroundResource {
    * @param subnetworksExpandIpCidrRangeRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation expandIpCidrRangeSubnetwork(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> expandIpCidrRangeSubnetworkAsync(
       ProjectRegionSubnetworkName subnetwork,
       SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource) {
 
@@ -416,7 +463,7 @@ public class SubnetworkClient implements BackgroundResource {
             .setSubnetworksExpandIpCidrRangeRequestResource(
                 subnetworksExpandIpCidrRangeRequestResource)
             .build();
-    return expandIpCidrRangeSubnetwork(request);
+    return expandIpCidrRangeSubnetworkAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -429,7 +476,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   ProjectRegionSubnetworkName subnetwork = ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
-   *   Operation response = subnetworkClient.expandIpCidrRangeSubnetwork(subnetwork.toString(), subnetworksExpandIpCidrRangeRequestResource);
+   *   subnetworkClient.expandIpCidrRangeSubnetworkAsync(subnetwork.toString(), subnetworksExpandIpCidrRangeRequestResource).get();
    * }
    * </code></pre>
    *
@@ -437,8 +484,9 @@ public class SubnetworkClient implements BackgroundResource {
    * @param subnetworksExpandIpCidrRangeRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation expandIpCidrRangeSubnetwork(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> expandIpCidrRangeSubnetworkAsync(
       String subnetwork,
       SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource) {
 
@@ -448,7 +496,7 @@ public class SubnetworkClient implements BackgroundResource {
             .setSubnetworksExpandIpCidrRangeRequestResource(
                 subnetworksExpandIpCidrRangeRequestResource)
             .build();
-    return expandIpCidrRangeSubnetwork(request);
+    return expandIpCidrRangeSubnetworkAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -465,17 +513,44 @@ public class SubnetworkClient implements BackgroundResource {
    *     .setSubnetwork(subnetwork.toString())
    *     .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequestResource)
    *     .build();
-   *   Operation response = subnetworkClient.expandIpCidrRangeSubnetwork(request);
+   *   subnetworkClient.expandIpCidrRangeSubnetworkAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation expandIpCidrRangeSubnetwork(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> expandIpCidrRangeSubnetworkAsync(
       ExpandIpCidrRangeSubnetworkHttpRequest request) {
-    return expandIpCidrRangeSubnetworkCallable().call(request);
+    return expandIpCidrRangeSubnetworkOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Expands the IP CIDR range of the subnetwork to a specified value.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
+   *   ProjectRegionSubnetworkName subnetwork = ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource = SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
+   *   ExpandIpCidrRangeSubnetworkHttpRequest request = ExpandIpCidrRangeSubnetworkHttpRequest.newBuilder()
+   *     .setSubnetwork(subnetwork.toString())
+   *     .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = subnetworkClient.expandIpCidrRangeSubnetworkOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      expandIpCidrRangeSubnetworkOperationCallable() {
+    return stub.expandIpCidrRangeSubnetworkOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -494,7 +569,7 @@ public class SubnetworkClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = subnetworkClient.expandIpCidrRangeSubnetworkCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -713,7 +788,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
    *   Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
-   *   Operation response = subnetworkClient.insertSubnetwork(region, subnetworkResource);
+   *   subnetworkClient.insertSubnetworkAsync(region, subnetworkResource).get();
    * }
    * </code></pre>
    *
@@ -722,15 +797,17 @@ public class SubnetworkClient implements BackgroundResource {
    *     resource_for v1.subnetworks ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertSubnetwork(ProjectRegionName region, Subnetwork subnetworkResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertSubnetworkAsync(
+      ProjectRegionName region, Subnetwork subnetworkResource) {
 
     InsertSubnetworkHttpRequest request =
         InsertSubnetworkHttpRequest.newBuilder()
             .setRegion(region == null ? null : region.toString())
             .setSubnetworkResource(subnetworkResource)
             .build();
-    return insertSubnetwork(request);
+    return insertSubnetworkAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -743,7 +820,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
    *   Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
-   *   Operation response = subnetworkClient.insertSubnetwork(region.toString(), subnetworkResource);
+   *   subnetworkClient.insertSubnetworkAsync(region.toString(), subnetworkResource).get();
    * }
    * </code></pre>
    *
@@ -752,15 +829,17 @@ public class SubnetworkClient implements BackgroundResource {
    *     resource_for v1.subnetworks ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertSubnetwork(String region, Subnetwork subnetworkResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertSubnetworkAsync(
+      String region, Subnetwork subnetworkResource) {
 
     InsertSubnetworkHttpRequest request =
         InsertSubnetworkHttpRequest.newBuilder()
             .setRegion(region)
             .setSubnetworkResource(subnetworkResource)
             .build();
-    return insertSubnetwork(request);
+    return insertSubnetworkAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -777,16 +856,44 @@ public class SubnetworkClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setSubnetworkResource(subnetworkResource)
    *     .build();
-   *   Operation response = subnetworkClient.insertSubnetwork(request);
+   *   subnetworkClient.insertSubnetworkAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertSubnetwork(InsertSubnetworkHttpRequest request) {
-    return insertSubnetworkCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertSubnetworkAsync(
+      InsertSubnetworkHttpRequest request) {
+    return insertSubnetworkOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a subnetwork in the specified project using the data included in the request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
+   *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
+   *   Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
+   *   InsertSubnetworkHttpRequest request = InsertSubnetworkHttpRequest.newBuilder()
+   *     .setRegion(region.toString())
+   *     .setSubnetworkResource(subnetworkResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = subnetworkClient.insertSubnetworkOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      insertSubnetworkOperationCallable() {
+    return stub.insertSubnetworkOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -805,7 +912,7 @@ public class SubnetworkClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = subnetworkClient.insertSubnetworkCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1101,7 +1208,7 @@ public class SubnetworkClient implements BackgroundResource {
    *   ProjectRegionSubnetworkName subnetwork = ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = subnetworkClient.patchSubnetwork(subnetwork, subnetworkResource, fieldMask);
+   *   subnetworkClient.patchSubnetworkAsync(subnetwork, subnetworkResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -1114,8 +1221,9 @@ public class SubnetworkClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchSubnetwork(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchSubnetworkAsync(
       ProjectRegionSubnetworkName subnetwork,
       Subnetwork subnetworkResource,
       List<String> fieldMask) {
@@ -1126,7 +1234,7 @@ public class SubnetworkClient implements BackgroundResource {
             .setSubnetworkResource(subnetworkResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchSubnetwork(request);
+    return patchSubnetworkAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1142,7 +1250,7 @@ public class SubnetworkClient implements BackgroundResource {
    *   ProjectRegionSubnetworkName subnetwork = ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = subnetworkClient.patchSubnetwork(subnetwork.toString(), subnetworkResource, fieldMask);
+   *   subnetworkClient.patchSubnetworkAsync(subnetwork.toString(), subnetworkResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -1155,8 +1263,9 @@ public class SubnetworkClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchSubnetwork(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchSubnetworkAsync(
       String subnetwork, Subnetwork subnetworkResource, List<String> fieldMask) {
 
     PatchSubnetworkHttpRequest request =
@@ -1165,7 +1274,7 @@ public class SubnetworkClient implements BackgroundResource {
             .setSubnetworkResource(subnetworkResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchSubnetwork(request);
+    return patchSubnetworkAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1186,16 +1295,48 @@ public class SubnetworkClient implements BackgroundResource {
    *     .setSubnetworkResource(subnetworkResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = subnetworkClient.patchSubnetwork(request);
+   *   subnetworkClient.patchSubnetworkAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchSubnetwork(PatchSubnetworkHttpRequest request) {
-    return patchSubnetworkCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchSubnetworkAsync(
+      PatchSubnetworkHttpRequest request) {
+    return patchSubnetworkOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Patches the specified subnetwork with the data included in the request. Only certain fields can
+   * up updated with a patch request as indicated in the field descriptions. You must specify the
+   * current fingeprint of the subnetwork resource being patched.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
+   *   ProjectRegionSubnetworkName subnetwork = ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   PatchSubnetworkHttpRequest request = PatchSubnetworkHttpRequest.newBuilder()
+   *     .setSubnetwork(subnetwork.toString())
+   *     .setSubnetworkResource(subnetworkResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = subnetworkClient.patchSubnetworkOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<PatchSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      patchSubnetworkOperationCallable() {
+    return stub.patchSubnetworkOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1218,7 +1359,7 @@ public class SubnetworkClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = subnetworkClient.patchSubnetworkCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1351,7 +1492,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   ProjectRegionSubnetworkName subnetwork = ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   SubnetworksSetPrivateIpGoogleAccessRequest subnetworksSetPrivateIpGoogleAccessRequestResource = SubnetworksSetPrivateIpGoogleAccessRequest.newBuilder().build();
-   *   Operation response = subnetworkClient.setPrivateIpGoogleAccessSubnetwork(subnetwork, subnetworksSetPrivateIpGoogleAccessRequestResource);
+   *   subnetworkClient.setPrivateIpGoogleAccessSubnetworkAsync(subnetwork, subnetworksSetPrivateIpGoogleAccessRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1359,8 +1500,9 @@ public class SubnetworkClient implements BackgroundResource {
    * @param subnetworksSetPrivateIpGoogleAccessRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setPrivateIpGoogleAccessSubnetwork(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setPrivateIpGoogleAccessSubnetworkAsync(
       ProjectRegionSubnetworkName subnetwork,
       SubnetworksSetPrivateIpGoogleAccessRequest
           subnetworksSetPrivateIpGoogleAccessRequestResource) {
@@ -1371,7 +1513,7 @@ public class SubnetworkClient implements BackgroundResource {
             .setSubnetworksSetPrivateIpGoogleAccessRequestResource(
                 subnetworksSetPrivateIpGoogleAccessRequestResource)
             .build();
-    return setPrivateIpGoogleAccessSubnetwork(request);
+    return setPrivateIpGoogleAccessSubnetworkAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1385,7 +1527,7 @@ public class SubnetworkClient implements BackgroundResource {
    * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
    *   ProjectRegionSubnetworkName subnetwork = ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
    *   SubnetworksSetPrivateIpGoogleAccessRequest subnetworksSetPrivateIpGoogleAccessRequestResource = SubnetworksSetPrivateIpGoogleAccessRequest.newBuilder().build();
-   *   Operation response = subnetworkClient.setPrivateIpGoogleAccessSubnetwork(subnetwork.toString(), subnetworksSetPrivateIpGoogleAccessRequestResource);
+   *   subnetworkClient.setPrivateIpGoogleAccessSubnetworkAsync(subnetwork.toString(), subnetworksSetPrivateIpGoogleAccessRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1393,8 +1535,9 @@ public class SubnetworkClient implements BackgroundResource {
    * @param subnetworksSetPrivateIpGoogleAccessRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setPrivateIpGoogleAccessSubnetwork(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setPrivateIpGoogleAccessSubnetworkAsync(
       String subnetwork,
       SubnetworksSetPrivateIpGoogleAccessRequest
           subnetworksSetPrivateIpGoogleAccessRequestResource) {
@@ -1405,7 +1548,7 @@ public class SubnetworkClient implements BackgroundResource {
             .setSubnetworksSetPrivateIpGoogleAccessRequestResource(
                 subnetworksSetPrivateIpGoogleAccessRequestResource)
             .build();
-    return setPrivateIpGoogleAccessSubnetwork(request);
+    return setPrivateIpGoogleAccessSubnetworkAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1423,17 +1566,46 @@ public class SubnetworkClient implements BackgroundResource {
    *     .setSubnetwork(subnetwork.toString())
    *     .setSubnetworksSetPrivateIpGoogleAccessRequestResource(subnetworksSetPrivateIpGoogleAccessRequestResource)
    *     .build();
-   *   Operation response = subnetworkClient.setPrivateIpGoogleAccessSubnetwork(request);
+   *   subnetworkClient.setPrivateIpGoogleAccessSubnetworkAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setPrivateIpGoogleAccessSubnetwork(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setPrivateIpGoogleAccessSubnetworkAsync(
       SetPrivateIpGoogleAccessSubnetworkHttpRequest request) {
-    return setPrivateIpGoogleAccessSubnetworkCallable().call(request);
+    return setPrivateIpGoogleAccessSubnetworkOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Set whether VMs in this subnet can access Google services without assigning external IP
+   * addresses through Private Google Access.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
+   *   ProjectRegionSubnetworkName subnetwork = ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
+   *   SubnetworksSetPrivateIpGoogleAccessRequest subnetworksSetPrivateIpGoogleAccessRequestResource = SubnetworksSetPrivateIpGoogleAccessRequest.newBuilder().build();
+   *   SetPrivateIpGoogleAccessSubnetworkHttpRequest request = SetPrivateIpGoogleAccessSubnetworkHttpRequest.newBuilder()
+   *     .setSubnetwork(subnetwork.toString())
+   *     .setSubnetworksSetPrivateIpGoogleAccessRequestResource(subnetworksSetPrivateIpGoogleAccessRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = subnetworkClient.setPrivateIpGoogleAccessSubnetworkOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      setPrivateIpGoogleAccessSubnetworkOperationCallable() {
+    return stub.setPrivateIpGoogleAccessSubnetworkOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1453,7 +1625,7 @@ public class SubnetworkClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = subnetworkClient.setPrivateIpGoogleAccessSubnetworkCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

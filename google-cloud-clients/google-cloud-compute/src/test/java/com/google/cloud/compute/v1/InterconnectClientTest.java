@@ -25,6 +25,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonInterconnectStub.patchInt
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -36,11 +37,11 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.InterconnectStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -91,19 +92,15 @@ public class InterconnectClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteInterconnectTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteInterconnectTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInterconnects.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteInterconnectTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalInterconnectName interconnect =
         ProjectGlobalInterconnectName.of("[PROJECT]", "[INTERCONNECT]");
 
-    Void actualResponse = client.deleteInterconnectAsync(interconnect).get();
+    EmptyMessage actualResponse = client.deleteInterconnectAsync(interconnect).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -138,7 +135,7 @@ public class InterconnectClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -279,19 +276,16 @@ public class InterconnectClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertInterconnectTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertInterconnectTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInterconnects.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertInterconnectTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Interconnect interconnectResource = Interconnect.newBuilder().build();
 
-    Void actualResponse = client.insertInterconnectAsync(project, interconnectResource).get();
+    EmptyMessage actualResponse =
+        client.insertInterconnectAsync(project, interconnectResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -326,7 +320,7 @@ public class InterconnectClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -393,21 +387,17 @@ public class InterconnectClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchInterconnectTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("patchInterconnectTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInterconnects.addResponse(resultOperation);
+        Operation.newBuilder().setName("patchInterconnectTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalInterconnectName interconnect =
         ProjectGlobalInterconnectName.of("[PROJECT]", "[INTERCONNECT]");
     Interconnect interconnectResource = Interconnect.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.patchInterconnectAsync(interconnect, interconnectResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -445,7 +435,7 @@ public class InterconnectClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

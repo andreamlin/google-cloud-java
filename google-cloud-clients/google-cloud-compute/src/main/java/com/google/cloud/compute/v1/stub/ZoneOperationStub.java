@@ -19,6 +19,7 @@ import static com.google.cloud.compute.v1.ZoneOperationClient.ListZoneOperations
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteZoneOperationHttpRequest;
 import com.google.cloud.compute.v1.GetZoneOperationHttpRequest;
@@ -38,7 +39,7 @@ import javax.annotation.Generated;
 public abstract class ZoneOperationStub implements BackgroundResource {
 
   @BetaApi
-  public UnaryCallable<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationCallable() {
+  public UnaryCallable<DeleteZoneOperationHttpRequest, EmptyMessage> deleteZoneOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteZoneOperationCallable()");
   }
 

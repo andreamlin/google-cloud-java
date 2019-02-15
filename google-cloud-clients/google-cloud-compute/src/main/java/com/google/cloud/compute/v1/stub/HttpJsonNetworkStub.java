@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AddPeeringNetworkHttpRequest;
@@ -215,19 +217,32 @@ public class HttpJsonNetworkStub extends NetworkStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AddPeeringNetworkHttpRequest, Operation> addPeeringNetworkCallable;
+  private final OperationCallable<AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      addPeeringNetworkOperationCallable;
   private final UnaryCallable<DeleteNetworkHttpRequest, Operation> deleteNetworkCallable;
+  private final OperationCallable<DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNetworkOperationCallable;
   private final UnaryCallable<GetNetworkHttpRequest, Network> getNetworkCallable;
   private final UnaryCallable<InsertNetworkHttpRequest, Operation> insertNetworkCallable;
+  private final OperationCallable<InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      insertNetworkOperationCallable;
   private final UnaryCallable<ListNetworksHttpRequest, NetworkList> listNetworksCallable;
   private final UnaryCallable<ListNetworksHttpRequest, ListNetworksPagedResponse>
       listNetworksPagedCallable;
   private final UnaryCallable<PatchNetworkHttpRequest, Operation> patchNetworkCallable;
+  private final OperationCallable<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      patchNetworkOperationCallable;
   private final UnaryCallable<RemovePeeringNetworkHttpRequest, Operation>
       removePeeringNetworkCallable;
+  private final OperationCallable<RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      removePeeringNetworkOperationCallable;
   private final UnaryCallable<SwitchToCustomModeNetworkHttpRequest, Operation>
       switchToCustomModeNetworkCallable;
+  private final OperationCallable<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      switchToCustomModeNetworkOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -266,6 +281,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AddPeeringNetworkHttpRequest, Operation>
         addPeeringNetworkTransportSettings =
@@ -308,15 +324,33 @@ public class HttpJsonNetworkStub extends NetworkStub {
             addPeeringNetworkTransportSettings,
             settings.addPeeringNetworkSettings(),
             clientContext);
+    this.addPeeringNetworkOperationCallable =
+        callableFactory.createOperationCallable(
+            addPeeringNetworkTransportSettings,
+            settings.addPeeringNetworkOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.deleteNetworkCallable =
         callableFactory.createUnaryCallable(
             deleteNetworkTransportSettings, settings.deleteNetworkSettings(), clientContext);
+    this.deleteNetworkOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteNetworkTransportSettings,
+            settings.deleteNetworkOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getNetworkCallable =
         callableFactory.createUnaryCallable(
             getNetworkTransportSettings, settings.getNetworkSettings(), clientContext);
     this.insertNetworkCallable =
         callableFactory.createUnaryCallable(
             insertNetworkTransportSettings, settings.insertNetworkSettings(), clientContext);
+    this.insertNetworkOperationCallable =
+        callableFactory.createOperationCallable(
+            insertNetworkTransportSettings,
+            settings.insertNetworkOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listNetworksCallable =
         callableFactory.createUnaryCallable(
             listNetworksTransportSettings, settings.listNetworksSettings(), clientContext);
@@ -326,23 +360,58 @@ public class HttpJsonNetworkStub extends NetworkStub {
     this.patchNetworkCallable =
         callableFactory.createUnaryCallable(
             patchNetworkTransportSettings, settings.patchNetworkSettings(), clientContext);
+    this.patchNetworkOperationCallable =
+        callableFactory.createOperationCallable(
+            patchNetworkTransportSettings,
+            settings.patchNetworkOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.removePeeringNetworkCallable =
         callableFactory.createUnaryCallable(
             removePeeringNetworkTransportSettings,
             settings.removePeeringNetworkSettings(),
             clientContext);
+    this.removePeeringNetworkOperationCallable =
+        callableFactory.createOperationCallable(
+            removePeeringNetworkTransportSettings,
+            settings.removePeeringNetworkOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.switchToCustomModeNetworkCallable =
         callableFactory.createUnaryCallable(
             switchToCustomModeNetworkTransportSettings,
             settings.switchToCustomModeNetworkSettings(),
             clientContext);
+    this.switchToCustomModeNetworkOperationCallable =
+        callableFactory.createOperationCallable(
+            switchToCustomModeNetworkTransportSettings,
+            settings.switchToCustomModeNetworkOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      addPeeringNetworkOperationCallable() {
+    return addPeeringNetworkOperationCallable;
   }
 
   @BetaApi
   public UnaryCallable<AddPeeringNetworkHttpRequest, Operation> addPeeringNetworkCallable() {
     return addPeeringNetworkCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNetworkOperationCallable() {
+    return deleteNetworkOperationCallable;
   }
 
   @BetaApi
@@ -353,6 +422,12 @@ public class HttpJsonNetworkStub extends NetworkStub {
   @BetaApi
   public UnaryCallable<GetNetworkHttpRequest, Network> getNetworkCallable() {
     return getNetworkCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      insertNetworkOperationCallable() {
+    return insertNetworkOperationCallable;
   }
 
   @BetaApi
@@ -371,14 +446,32 @@ public class HttpJsonNetworkStub extends NetworkStub {
     return listNetworksCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      patchNetworkOperationCallable() {
+    return patchNetworkOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<PatchNetworkHttpRequest, Operation> patchNetworkCallable() {
     return patchNetworkCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      removePeeringNetworkOperationCallable() {
+    return removePeeringNetworkOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<RemovePeeringNetworkHttpRequest, Operation> removePeeringNetworkCallable() {
     return removePeeringNetworkCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      switchToCustomModeNetworkOperationCallable() {
+    return switchToCustomModeNetworkOperationCallable;
   }
 
   @BetaApi

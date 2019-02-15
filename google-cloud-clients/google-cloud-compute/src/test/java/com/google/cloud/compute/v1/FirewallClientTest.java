@@ -28,15 +28,12 @@ import com.google.api.gax.httpjson.ApiMethodDescriptor;
 import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
-import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ApiException;
 import com.google.api.gax.rpc.ApiExceptionFactory;
 import com.google.api.gax.rpc.InvalidArgumentException;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.testing.FakeStatusCode;
-import com.google.cloud.compute.longrunning.ComputeOperationSnapshot;
-import com.google.cloud.compute.longrunning.ComputeOperationSnapshot.Status;
 import com.google.cloud.compute.v1.stub.FirewallStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
@@ -96,11 +93,8 @@ public class FirewallClientTest {
   @SuppressWarnings("all")
   public void deleteFirewallTest() throws Exception {
     EmptyMessage expectedResponse = null;
-    Operation resultOperation = Operation.newBuilder()
-        .setName("deleteFirewallTest")
-        .setStatus(Status.DONE.toString())
-        .build();
-    // mockService.addNullResponse();
+    Operation resultOperation =
+        Operation.newBuilder().setName("deleteFirewallTest").setStatus("DONE").build();
     mockService.addResponse(resultOperation);
 
     ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
@@ -213,8 +207,9 @@ public class FirewallClientTest {
   @SuppressWarnings("all")
   public void insertFirewallTest() throws Exception {
     EmptyMessage expectedResponse = null;
-    Operation resultOperation = Operation.newBuilder().setName("insertFirewallTest").build();
-    mockService.addNullResponse();
+    Operation resultOperation =
+        Operation.newBuilder().setName("insertFirewallTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Firewall firewallResource = Firewall.newBuilder().build();
@@ -322,8 +317,9 @@ public class FirewallClientTest {
   @SuppressWarnings("all")
   public void patchFirewallTest() throws Exception {
     EmptyMessage expectedResponse = null;
-    Operation resultOperation = Operation.newBuilder().setName("patchFirewallTest").build();
-    mockService.addNullResponse();
+    Operation resultOperation =
+        Operation.newBuilder().setName("patchFirewallTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
     Firewall firewallResource = Firewall.newBuilder().build();
@@ -374,8 +370,9 @@ public class FirewallClientTest {
   @SuppressWarnings("all")
   public void updateFirewallTest() throws Exception {
     EmptyMessage expectedResponse = null;
-    Operation resultOperation = Operation.newBuilder().setName("updateFirewallTest").build();
-    mockService.addNullResponse();
+    Operation resultOperation =
+        Operation.newBuilder().setName("updateFirewallTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
     Firewall firewallResource = Firewall.newBuilder().build();

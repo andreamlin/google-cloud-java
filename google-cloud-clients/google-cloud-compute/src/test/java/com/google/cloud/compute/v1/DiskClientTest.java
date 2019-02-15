@@ -31,6 +31,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonDiskStub.testIamPermissio
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -42,12 +43,12 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.DiskStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -165,20 +166,17 @@ public class DiskClientTest {
   @Test
   @SuppressWarnings("all")
   public void createSnapshotDiskTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("createSnapshotDiskTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockDisks.addResponse(resultOperation);
+        Operation.newBuilder().setName("createSnapshotDiskTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
     Boolean guestFlush = false;
     Snapshot snapshotResource = Snapshot.newBuilder().build();
 
-    Void actualResponse = client.createSnapshotDiskAsync(disk, guestFlush, snapshotResource).get();
+    EmptyMessage actualResponse =
+        client.createSnapshotDiskAsync(disk, guestFlush, snapshotResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -214,25 +212,21 @@ public class DiskClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void deleteDiskTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteDiskTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockDisks.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteDiskTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
 
-    Void actualResponse = client.deleteDiskAsync(disk).get();
+    EmptyMessage actualResponse = client.deleteDiskAsync(disk).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -266,7 +260,7 @@ public class DiskClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -409,19 +403,15 @@ public class DiskClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertDiskTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertDiskTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockDisks.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertDiskTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
     Disk diskResource = Disk.newBuilder().build();
 
-    Void actualResponse = client.insertDiskAsync(zone, diskResource).get();
+    EmptyMessage actualResponse = client.insertDiskAsync(zone, diskResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -456,7 +446,7 @@ public class DiskClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -523,19 +513,15 @@ public class DiskClientTest {
   @Test
   @SuppressWarnings("all")
   public void resizeDiskTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("resizeDiskTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockDisks.addResponse(resultOperation);
+        Operation.newBuilder().setName("resizeDiskTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
     DisksResizeRequest disksResizeRequestResource = DisksResizeRequest.newBuilder().build();
 
-    Void actualResponse = client.resizeDiskAsync(disk, disksResizeRequestResource).get();
+    EmptyMessage actualResponse = client.resizeDiskAsync(disk, disksResizeRequestResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -570,7 +556,7 @@ public class DiskClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -629,20 +615,17 @@ public class DiskClientTest {
   @Test
   @SuppressWarnings("all")
   public void setLabelsDiskTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setLabelsDiskTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockDisks.addResponse(resultOperation);
+        Operation.newBuilder().setName("setLabelsDiskTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneDiskResourceName resource =
         ProjectZoneDiskResourceName.of("[PROJECT]", "[ZONE]", "[RESOURCE]");
     ZoneSetLabelsRequest zoneSetLabelsRequestResource = ZoneSetLabelsRequest.newBuilder().build();
 
-    Void actualResponse = client.setLabelsDiskAsync(resource, zoneSetLabelsRequestResource).get();
+    EmptyMessage actualResponse =
+        client.setLabelsDiskAsync(resource, zoneSetLabelsRequestResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -678,7 +661,7 @@ public class DiskClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 

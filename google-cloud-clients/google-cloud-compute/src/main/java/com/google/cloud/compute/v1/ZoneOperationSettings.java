@@ -21,6 +21,7 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
@@ -64,7 +65,8 @@ import javax.annotation.Generated;
 @BetaApi
 public class ZoneOperationSettings extends ClientSettings<ZoneOperationSettings> {
   /** Returns the object with the settings used for calls to deleteZoneOperation. */
-  public UnaryCallSettings<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationSettings() {
+  public UnaryCallSettings<DeleteZoneOperationHttpRequest, EmptyMessage>
+      deleteZoneOperationSettings() {
     return ((ZoneOperationStubSettings) getStubSettings()).deleteZoneOperationSettings();
   }
 
@@ -183,7 +185,7 @@ public class ZoneOperationSettings extends ClientSettings<ZoneOperationSettings>
     }
 
     /** Returns the builder for the settings used for calls to deleteZoneOperation. */
-    public UnaryCallSettings.Builder<DeleteZoneOperationHttpRequest, Void>
+    public UnaryCallSettings.Builder<DeleteZoneOperationHttpRequest, EmptyMessage>
         deleteZoneOperationSettings() {
       return getStubSettingsBuilder().deleteZoneOperationSettings();
     }

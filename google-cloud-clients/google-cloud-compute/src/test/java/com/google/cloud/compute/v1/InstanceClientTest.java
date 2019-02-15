@@ -52,6 +52,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonInstanceStub.updateNetwor
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -63,13 +64,13 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.InstanceStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -145,21 +146,17 @@ public class InstanceClientTest {
   @Test
   @SuppressWarnings("all")
   public void addAccessConfigInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("addAccessConfigInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("addAccessConfigInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String networkInterface = "networkInterface902258792";
     AccessConfig accessConfigResource = AccessConfig.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.addAccessConfigInstanceAsync(instance, networkInterface, accessConfigResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -197,7 +194,7 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -267,21 +264,17 @@ public class InstanceClientTest {
   @Test
   @SuppressWarnings("all")
   public void attachDiskInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("attachDiskInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("attachDiskInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Boolean forceAttach = false;
     AttachedDisk attachedDiskResource = AttachedDisk.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.attachDiskInstanceAsync(instance, forceAttach, attachedDiskResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -319,26 +312,22 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void deleteInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
-    Void actualResponse = client.deleteInstanceAsync(instance).get();
+    EmptyMessage actualResponse = client.deleteInstanceAsync(instance).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -373,28 +362,24 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void deleteAccessConfigInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteAccessConfigInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteAccessConfigInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String networkInterface = "networkInterface902258792";
     String accessConfig = "accessConfig-464014723";
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.deleteAccessConfigInstanceAsync(instance, networkInterface, accessConfig).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -432,27 +417,23 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void detachDiskInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("detachDiskInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("detachDiskInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String deviceName = "deviceName-1543071020";
 
-    Void actualResponse = client.detachDiskInstanceAsync(instance, deviceName).get();
+    EmptyMessage actualResponse = client.detachDiskInstanceAsync(instance, deviceName).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -488,7 +469,7 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -690,19 +671,15 @@ public class InstanceClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
     Instance instanceResource = Instance.newBuilder().build();
 
-    Void actualResponse = client.insertInstanceAsync(zone, instanceResource).get();
+    EmptyMessage actualResponse = client.insertInstanceAsync(zone, instanceResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -737,7 +714,7 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -866,19 +843,15 @@ public class InstanceClientTest {
   @Test
   @SuppressWarnings("all")
   public void resetInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("resetInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("resetInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
-    Void actualResponse = client.resetInstanceAsync(instance).get();
+    EmptyMessage actualResponse = client.resetInstanceAsync(instance).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -913,27 +886,26 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setDeletionProtectionInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("setDeletionProtectionInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockInstances.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceResourceName resource =
         ProjectZoneInstanceResourceName.of("[PROJECT]", "[ZONE]", "[RESOURCE]");
     Boolean deletionProtection = true;
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.setDeletionProtectionInstanceAsync(resource, deletionProtection).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -970,28 +942,24 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setDiskAutoDeleteInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setDiskAutoDeleteInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("setDiskAutoDeleteInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Boolean autoDelete = false;
     String deviceName = "deviceName-1543071020";
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.setDiskAutoDeleteInstanceAsync(instance, autoDelete, deviceName).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -1029,7 +997,7 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -1088,21 +1056,17 @@ public class InstanceClientTest {
   @Test
   @SuppressWarnings("all")
   public void setLabelsInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setLabelsInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("setLabelsInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     InstancesSetLabelsRequest instancesSetLabelsRequestResource =
         InstancesSetLabelsRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.setLabelsInstanceAsync(instance, instancesSetLabelsRequestResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -1140,28 +1104,24 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setMachineResourcesInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setMachineResourcesInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("setMachineResourcesInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     InstancesSetMachineResourcesRequest instancesSetMachineResourcesRequestResource =
         InstancesSetMachineResourcesRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setMachineResourcesInstanceAsync(instance, instancesSetMachineResourcesRequestResource)
             .get();
@@ -1203,28 +1163,24 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setMachineTypeInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setMachineTypeInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("setMachineTypeInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     InstancesSetMachineTypeRequest instancesSetMachineTypeRequestResource =
         InstancesSetMachineTypeRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.setMachineTypeInstanceAsync(instance, instancesSetMachineTypeRequestResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -1262,27 +1218,23 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setMetadataInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setMetadataInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("setMetadataInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Metadata metadataResource = Metadata.newBuilder().build();
 
-    Void actualResponse = client.setMetadataInstanceAsync(instance, metadataResource).get();
+    EmptyMessage actualResponse = client.setMetadataInstanceAsync(instance, metadataResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1318,28 +1270,24 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setMinCpuPlatformInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setMinCpuPlatformInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("setMinCpuPlatformInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     InstancesSetMinCpuPlatformRequest instancesSetMinCpuPlatformRequestResource =
         InstancesSetMinCpuPlatformRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setMinCpuPlatformInstanceAsync(instance, instancesSetMinCpuPlatformRequestResource)
             .get();
@@ -1381,27 +1329,24 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setSchedulingInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setSchedulingInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("setSchedulingInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Scheduling schedulingResource = Scheduling.newBuilder().build();
 
-    Void actualResponse = client.setSchedulingInstanceAsync(instance, schedulingResource).get();
+    EmptyMessage actualResponse =
+        client.setSchedulingInstanceAsync(instance, schedulingResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1437,28 +1382,24 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setServiceAccountInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setServiceAccountInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("setServiceAccountInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     InstancesSetServiceAccountRequest instancesSetServiceAccountRequestResource =
         InstancesSetServiceAccountRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setServiceAccountInstanceAsync(instance, instancesSetServiceAccountRequestResource)
             .get();
@@ -1500,27 +1441,23 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setTagsInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setTagsInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("setTagsInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     Tags tagsResource = Tags.newBuilder().build();
 
-    Void actualResponse = client.setTagsInstanceAsync(instance, tagsResource).get();
+    EmptyMessage actualResponse = client.setTagsInstanceAsync(instance, tagsResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1556,26 +1493,25 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void simulateMaintenanceEventInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("simulateMaintenanceEventInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockInstances.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
-    Void actualResponse = client.simulateMaintenanceEventInstanceAsync(instance).get();
+    EmptyMessage actualResponse = client.simulateMaintenanceEventInstanceAsync(instance).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1610,26 +1546,22 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void startInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("startInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("startInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
-    Void actualResponse = client.startInstanceAsync(instance).get();
+    EmptyMessage actualResponse = client.startInstanceAsync(instance).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1664,28 +1596,27 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void startWithEncryptionKeyInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("startWithEncryptionKeyInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockInstances.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequestResource =
         InstancesStartWithEncryptionKeyRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .startWithEncryptionKeyInstanceAsync(
                 instance, instancesStartWithEncryptionKeyRequestResource)
@@ -1729,26 +1660,22 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void stopInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("stopInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("stopInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
 
-    Void actualResponse = client.stopInstanceAsync(instance).get();
+    EmptyMessage actualResponse = client.stopInstanceAsync(instance).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -1783,7 +1710,7 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -1841,21 +1768,17 @@ public class InstanceClientTest {
   @Test
   @SuppressWarnings("all")
   public void updateAccessConfigInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("updateAccessConfigInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("updateAccessConfigInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
     String networkInterface = "networkInterface902258792";
     AccessConfig accessConfigResource = AccessConfig.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .updateAccessConfigInstanceAsync(instance, networkInterface, accessConfigResource)
             .get();
@@ -1897,21 +1820,20 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void updateNetworkInterfaceInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("updateNetworkInterfaceInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockInstances.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceName instance =
         ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
@@ -1919,7 +1841,7 @@ public class InstanceClientTest {
     NetworkInterface networkInterfaceResource = NetworkInterface.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .updateNetworkInterfaceInstanceAsync(
                 instance, networkInterface, networkInterfaceResource, fieldMask)
@@ -1964,7 +1886,7 @@ public class InstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

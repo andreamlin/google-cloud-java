@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.DiskStub;
@@ -43,9 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (DiskClient diskClient = DiskClient.create()) {
  *   ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
- *   Boolean guestFlush = false;
- *   Snapshot snapshotResource = Snapshot.newBuilder().build();
- *   Operation response = diskClient.createSnapshotDisk(disk, guestFlush, snapshotResource);
+ *   Disk response = diskClient.getDisk(disk);
  * }
  * </code>
  * </pre>
@@ -105,6 +106,7 @@ import javax.annotation.Generated;
 public class DiskClient implements BackgroundResource {
   private final DiskSettings settings;
   private final DiskStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of DiskClient with default settings. */
   public static final DiskClient create() throws IOException {
@@ -135,12 +137,14 @@ public class DiskClient implements BackgroundResource {
   protected DiskClient(DiskSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((DiskStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected DiskClient(DiskStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final DiskSettings getSettings() {
@@ -150,6 +154,16 @@ public class DiskClient implements BackgroundResource {
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public DiskStub getStub() {
     return stub;
+  }
+
+  /**
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -301,7 +315,7 @@ public class DiskClient implements BackgroundResource {
    *   ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   Boolean guestFlush = false;
    *   Snapshot snapshotResource = Snapshot.newBuilder().build();
-   *   Operation response = diskClient.createSnapshotDisk(disk, guestFlush, snapshotResource);
+   *   diskClient.createSnapshotDiskAsync(disk, guestFlush, snapshotResource).get();
    * }
    * </code></pre>
    *
@@ -311,8 +325,9 @@ public class DiskClient implements BackgroundResource {
    *     ==) (== resource_for v1.snapshots ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation createSnapshotDisk(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> createSnapshotDiskAsync(
       ProjectZoneDiskName disk, Boolean guestFlush, Snapshot snapshotResource) {
 
     CreateSnapshotDiskHttpRequest request =
@@ -321,7 +336,7 @@ public class DiskClient implements BackgroundResource {
             .setGuestFlush(guestFlush)
             .setSnapshotResource(snapshotResource)
             .build();
-    return createSnapshotDisk(request);
+    return createSnapshotDiskAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -335,7 +350,7 @@ public class DiskClient implements BackgroundResource {
    *   ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   Boolean guestFlush = false;
    *   Snapshot snapshotResource = Snapshot.newBuilder().build();
-   *   Operation response = diskClient.createSnapshotDisk(disk.toString(), guestFlush, snapshotResource);
+   *   diskClient.createSnapshotDiskAsync(disk.toString(), guestFlush, snapshotResource).get();
    * }
    * </code></pre>
    *
@@ -345,8 +360,9 @@ public class DiskClient implements BackgroundResource {
    *     ==) (== resource_for v1.snapshots ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation createSnapshotDisk(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> createSnapshotDiskAsync(
       String disk, Boolean guestFlush, Snapshot snapshotResource) {
 
     CreateSnapshotDiskHttpRequest request =
@@ -355,7 +371,7 @@ public class DiskClient implements BackgroundResource {
             .setGuestFlush(guestFlush)
             .setSnapshotResource(snapshotResource)
             .build();
-    return createSnapshotDisk(request);
+    return createSnapshotDiskAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -374,16 +390,46 @@ public class DiskClient implements BackgroundResource {
    *     .setGuestFlush(guestFlush)
    *     .setSnapshotResource(snapshotResource)
    *     .build();
-   *   Operation response = diskClient.createSnapshotDisk(request);
+   *   diskClient.createSnapshotDiskAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation createSnapshotDisk(CreateSnapshotDiskHttpRequest request) {
-    return createSnapshotDiskCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> createSnapshotDiskAsync(
+      CreateSnapshotDiskHttpRequest request) {
+    return createSnapshotDiskOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a snapshot of a specified persistent disk.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (DiskClient diskClient = DiskClient.create()) {
+   *   ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
+   *   Boolean guestFlush = false;
+   *   Snapshot snapshotResource = Snapshot.newBuilder().build();
+   *   CreateSnapshotDiskHttpRequest request = CreateSnapshotDiskHttpRequest.newBuilder()
+   *     .setDisk(disk.toString())
+   *     .setGuestFlush(guestFlush)
+   *     .setSnapshotResource(snapshotResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = diskClient.createSnapshotDiskOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+      createSnapshotDiskOperationCallable() {
+    return stub.createSnapshotDiskOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -404,7 +450,7 @@ public class DiskClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = diskClient.createSnapshotDiskCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -425,19 +471,21 @@ public class DiskClient implements BackgroundResource {
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
-   *   Operation response = diskClient.deleteDisk(disk);
+   *   diskClient.deleteDiskAsync(disk).get();
    * }
    * </code></pre>
    *
    * @param disk Name of the persistent disk to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteDisk(ProjectZoneDiskName disk) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteDiskAsync(
+      ProjectZoneDiskName disk) {
 
     DeleteDiskHttpRequest request =
         DeleteDiskHttpRequest.newBuilder().setDisk(disk == null ? null : disk.toString()).build();
-    return deleteDisk(request);
+    return deleteDiskAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -451,18 +499,19 @@ public class DiskClient implements BackgroundResource {
    * <pre><code>
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
-   *   Operation response = diskClient.deleteDisk(disk.toString());
+   *   diskClient.deleteDiskAsync(disk.toString()).get();
    * }
    * </code></pre>
    *
    * @param disk Name of the persistent disk to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteDisk(String disk) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteDiskAsync(String disk) {
 
     DeleteDiskHttpRequest request = DeleteDiskHttpRequest.newBuilder().setDisk(disk).build();
-    return deleteDisk(request);
+    return deleteDiskAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -479,16 +528,44 @@ public class DiskClient implements BackgroundResource {
    *   DeleteDiskHttpRequest request = DeleteDiskHttpRequest.newBuilder()
    *     .setDisk(disk.toString())
    *     .build();
-   *   Operation response = diskClient.deleteDisk(request);
+   *   diskClient.deleteDiskAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteDisk(DeleteDiskHttpRequest request) {
-    return deleteDiskCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteDiskAsync(
+      DeleteDiskHttpRequest request) {
+    return deleteDiskOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified persistent disk. Deleting a disk removes its data permanently and is
+   * irreversible. However, deleting a disk does not delete any snapshots previously made from the
+   * disk. You must separately delete snapshots.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (DiskClient diskClient = DiskClient.create()) {
+   *   ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DeleteDiskHttpRequest request = DeleteDiskHttpRequest.newBuilder()
+   *     .setDisk(disk.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = diskClient.deleteDiskOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+      deleteDiskOperationCallable() {
+    return stub.deleteDiskOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -507,7 +584,7 @@ public class DiskClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = diskClient.deleteDiskCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -728,7 +805,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
    *   Disk diskResource = Disk.newBuilder().build();
-   *   Operation response = diskClient.insertDisk(zone, diskResource);
+   *   diskClient.insertDiskAsync(zone, diskResource).get();
    * }
    * </code></pre>
    *
@@ -737,15 +814,17 @@ public class DiskClient implements BackgroundResource {
    *     ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertDisk(ProjectZoneName zone, Disk diskResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertDiskAsync(
+      ProjectZoneName zone, Disk diskResource) {
 
     InsertDiskHttpRequest request =
         InsertDiskHttpRequest.newBuilder()
             .setZone(zone == null ? null : zone.toString())
             .setDiskResource(diskResource)
             .build();
-    return insertDisk(request);
+    return insertDiskAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -761,7 +840,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
    *   Disk diskResource = Disk.newBuilder().build();
-   *   Operation response = diskClient.insertDisk(zone.toString(), diskResource);
+   *   diskClient.insertDiskAsync(zone.toString(), diskResource).get();
    * }
    * </code></pre>
    *
@@ -770,12 +849,14 @@ public class DiskClient implements BackgroundResource {
    *     ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertDisk(String zone, Disk diskResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertDiskAsync(
+      String zone, Disk diskResource) {
 
     InsertDiskHttpRequest request =
         InsertDiskHttpRequest.newBuilder().setZone(zone).setDiskResource(diskResource).build();
-    return insertDisk(request);
+    return insertDiskAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -795,16 +876,47 @@ public class DiskClient implements BackgroundResource {
    *     .setZone(zone.toString())
    *     .setDiskResource(diskResource)
    *     .build();
-   *   Operation response = diskClient.insertDisk(request);
+   *   diskClient.insertDiskAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertDisk(InsertDiskHttpRequest request) {
-    return insertDiskCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertDiskAsync(
+      InsertDiskHttpRequest request) {
+    return insertDiskOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a persistent disk in the specified project using the data in the request. You can
+   * create a disk with a sourceImage, a sourceSnapshot, or create an empty 500 GB data disk by
+   * omitting all properties. You can also create a disk that is larger than the default size by
+   * specifying the sizeGb property.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (DiskClient diskClient = DiskClient.create()) {
+   *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
+   *   Disk diskResource = Disk.newBuilder().build();
+   *   InsertDiskHttpRequest request = InsertDiskHttpRequest.newBuilder()
+   *     .setZone(zone.toString())
+   *     .setDiskResource(diskResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = diskClient.insertDiskOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+      insertDiskOperationCallable() {
+    return stub.insertDiskOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -826,7 +938,7 @@ public class DiskClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = diskClient.insertDiskCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -978,7 +1090,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   DisksResizeRequest disksResizeRequestResource = DisksResizeRequest.newBuilder().build();
-   *   Operation response = diskClient.resizeDisk(disk, disksResizeRequestResource);
+   *   diskClient.resizeDiskAsync(disk, disksResizeRequestResource).get();
    * }
    * </code></pre>
    *
@@ -986,8 +1098,9 @@ public class DiskClient implements BackgroundResource {
    * @param disksResizeRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation resizeDisk(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> resizeDiskAsync(
       ProjectZoneDiskName disk, DisksResizeRequest disksResizeRequestResource) {
 
     ResizeDiskHttpRequest request =
@@ -995,7 +1108,7 @@ public class DiskClient implements BackgroundResource {
             .setDisk(disk == null ? null : disk.toString())
             .setDisksResizeRequestResource(disksResizeRequestResource)
             .build();
-    return resizeDisk(request);
+    return resizeDiskAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1008,7 +1121,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
    *   DisksResizeRequest disksResizeRequestResource = DisksResizeRequest.newBuilder().build();
-   *   Operation response = diskClient.resizeDisk(disk.toString(), disksResizeRequestResource);
+   *   diskClient.resizeDiskAsync(disk.toString(), disksResizeRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1016,15 +1129,17 @@ public class DiskClient implements BackgroundResource {
    * @param disksResizeRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation resizeDisk(String disk, DisksResizeRequest disksResizeRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> resizeDiskAsync(
+      String disk, DisksResizeRequest disksResizeRequestResource) {
 
     ResizeDiskHttpRequest request =
         ResizeDiskHttpRequest.newBuilder()
             .setDisk(disk)
             .setDisksResizeRequestResource(disksResizeRequestResource)
             .build();
-    return resizeDisk(request);
+    return resizeDiskAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1041,16 +1156,44 @@ public class DiskClient implements BackgroundResource {
    *     .setDisk(disk.toString())
    *     .setDisksResizeRequestResource(disksResizeRequestResource)
    *     .build();
-   *   Operation response = diskClient.resizeDisk(request);
+   *   diskClient.resizeDiskAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation resizeDisk(ResizeDiskHttpRequest request) {
-    return resizeDiskCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> resizeDiskAsync(
+      ResizeDiskHttpRequest request) {
+    return resizeDiskOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Resizes the specified persistent disk. You can only increase the size of the disk.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (DiskClient diskClient = DiskClient.create()) {
+   *   ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
+   *   DisksResizeRequest disksResizeRequestResource = DisksResizeRequest.newBuilder().build();
+   *   ResizeDiskHttpRequest request = ResizeDiskHttpRequest.newBuilder()
+   *     .setDisk(disk.toString())
+   *     .setDisksResizeRequestResource(disksResizeRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = diskClient.resizeDiskOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+      resizeDiskOperationCallable() {
+    return stub.resizeDiskOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1069,7 +1212,7 @@ public class DiskClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = diskClient.resizeDiskCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1200,7 +1343,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ProjectZoneDiskResourceName resource = ProjectZoneDiskResourceName.of("[PROJECT]", "[ZONE]", "[RESOURCE]");
    *   ZoneSetLabelsRequest zoneSetLabelsRequestResource = ZoneSetLabelsRequest.newBuilder().build();
-   *   Operation response = diskClient.setLabelsDisk(resource, zoneSetLabelsRequestResource);
+   *   diskClient.setLabelsDiskAsync(resource, zoneSetLabelsRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1208,8 +1351,9 @@ public class DiskClient implements BackgroundResource {
    * @param zoneSetLabelsRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setLabelsDisk(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsDiskAsync(
       ProjectZoneDiskResourceName resource, ZoneSetLabelsRequest zoneSetLabelsRequestResource) {
 
     SetLabelsDiskHttpRequest request =
@@ -1217,7 +1361,7 @@ public class DiskClient implements BackgroundResource {
             .setResource(resource == null ? null : resource.toString())
             .setZoneSetLabelsRequestResource(zoneSetLabelsRequestResource)
             .build();
-    return setLabelsDisk(request);
+    return setLabelsDiskAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1231,7 +1375,7 @@ public class DiskClient implements BackgroundResource {
    * try (DiskClient diskClient = DiskClient.create()) {
    *   ProjectZoneDiskResourceName resource = ProjectZoneDiskResourceName.of("[PROJECT]", "[ZONE]", "[RESOURCE]");
    *   ZoneSetLabelsRequest zoneSetLabelsRequestResource = ZoneSetLabelsRequest.newBuilder().build();
-   *   Operation response = diskClient.setLabelsDisk(resource.toString(), zoneSetLabelsRequestResource);
+   *   diskClient.setLabelsDiskAsync(resource.toString(), zoneSetLabelsRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1239,8 +1383,9 @@ public class DiskClient implements BackgroundResource {
    * @param zoneSetLabelsRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setLabelsDisk(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsDiskAsync(
       String resource, ZoneSetLabelsRequest zoneSetLabelsRequestResource) {
 
     SetLabelsDiskHttpRequest request =
@@ -1248,7 +1393,7 @@ public class DiskClient implements BackgroundResource {
             .setResource(resource)
             .setZoneSetLabelsRequestResource(zoneSetLabelsRequestResource)
             .build();
-    return setLabelsDisk(request);
+    return setLabelsDiskAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1266,16 +1411,45 @@ public class DiskClient implements BackgroundResource {
    *     .setResource(resource.toString())
    *     .setZoneSetLabelsRequestResource(zoneSetLabelsRequestResource)
    *     .build();
-   *   Operation response = diskClient.setLabelsDisk(request);
+   *   diskClient.setLabelsDiskAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setLabelsDisk(SetLabelsDiskHttpRequest request) {
-    return setLabelsDiskCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsDiskAsync(
+      SetLabelsDiskHttpRequest request) {
+    return setLabelsDiskOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Sets the labels on a disk. To learn more about labels, read the Labeling Resources
+   * documentation.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (DiskClient diskClient = DiskClient.create()) {
+   *   ProjectZoneDiskResourceName resource = ProjectZoneDiskResourceName.of("[PROJECT]", "[ZONE]", "[RESOURCE]");
+   *   ZoneSetLabelsRequest zoneSetLabelsRequestResource = ZoneSetLabelsRequest.newBuilder().build();
+   *   SetLabelsDiskHttpRequest request = SetLabelsDiskHttpRequest.newBuilder()
+   *     .setResource(resource.toString())
+   *     .setZoneSetLabelsRequestResource(zoneSetLabelsRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = diskClient.setLabelsDiskOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsDiskOperationCallable() {
+    return stub.setLabelsDiskOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1295,7 +1469,7 @@ public class DiskClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = diskClient.setLabelsDiskCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

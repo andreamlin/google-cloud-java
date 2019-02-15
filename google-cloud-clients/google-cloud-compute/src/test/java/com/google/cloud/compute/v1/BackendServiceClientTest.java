@@ -31,6 +31,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonBackendServiceStub.update
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -42,13 +43,13 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.BackendServiceStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -104,20 +105,19 @@ public class BackendServiceClientTest {
   @Test
   @SuppressWarnings("all")
   public void addSignedUrlKeyBackendServiceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("addSignedUrlKeyBackendServiceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockBackendServices.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalBackendServiceName backendService =
         ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
     SignedUrlKey signedUrlKeyResource = SignedUrlKey.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.addSignedUrlKeyBackendServiceAsync(backendService, signedUrlKeyResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -154,7 +154,7 @@ public class BackendServiceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -224,19 +224,15 @@ public class BackendServiceClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteBackendServiceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteBackendServiceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockBackendServices.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteBackendServiceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalBackendServiceName backendService =
         ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
 
-    Void actualResponse = client.deleteBackendServiceAsync(backendService).get();
+    EmptyMessage actualResponse = client.deleteBackendServiceAsync(backendService).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -271,27 +267,26 @@ public class BackendServiceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void deleteSignedUrlKeyBackendServiceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("deleteSignedUrlKeyBackendServiceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockBackendServices.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalBackendServiceName backendService =
         ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
     String keyName = "keyName500938859";
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.deleteSignedUrlKeyBackendServiceAsync(backendService, keyName).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -328,7 +323,7 @@ public class BackendServiceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -471,19 +466,16 @@ public class BackendServiceClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertBackendServiceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertBackendServiceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockBackendServices.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertBackendServiceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     BackendService backendServiceResource = BackendService.newBuilder().build();
 
-    Void actualResponse = client.insertBackendServiceAsync(project, backendServiceResource).get();
+    EmptyMessage actualResponse =
+        client.insertBackendServiceAsync(project, backendServiceResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -518,7 +510,7 @@ public class BackendServiceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -585,21 +577,17 @@ public class BackendServiceClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchBackendServiceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("patchBackendServiceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockBackendServices.addResponse(resultOperation);
+        Operation.newBuilder().setName("patchBackendServiceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalBackendServiceName backendService =
         ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
     BackendService backendServiceResource = BackendService.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.patchBackendServiceAsync(backendService, backendServiceResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -637,28 +625,27 @@ public class BackendServiceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setSecurityPolicyBackendServiceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("setSecurityPolicyBackendServiceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockBackendServices.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalBackendServiceName backendService =
         ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
     SecurityPolicyReference securityPolicyReferenceResource =
         SecurityPolicyReference.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setSecurityPolicyBackendServiceAsync(backendService, securityPolicyReferenceResource)
             .get();
@@ -700,28 +687,24 @@ public class BackendServiceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void updateBackendServiceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("updateBackendServiceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockBackendServices.addResponse(resultOperation);
+        Operation.newBuilder().setName("updateBackendServiceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalBackendServiceName backendService =
         ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
     BackendService backendServiceResource = BackendService.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.updateBackendServiceAsync(backendService, backendServiceResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -759,7 +742,7 @@ public class BackendServiceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

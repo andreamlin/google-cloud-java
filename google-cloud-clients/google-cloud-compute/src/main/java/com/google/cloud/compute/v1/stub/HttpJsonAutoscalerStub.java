@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AggregatedListAutoscalersHttpRequest;
@@ -199,6 +201,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList>
       aggregatedListAutoscalersCallable;
@@ -206,13 +209,21 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           AggregatedListAutoscalersHttpRequest, AggregatedListAutoscalersPagedResponse>
       aggregatedListAutoscalersPagedCallable;
   private final UnaryCallable<DeleteAutoscalerHttpRequest, Operation> deleteAutoscalerCallable;
+  private final OperationCallable<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteAutoscalerOperationCallable;
   private final UnaryCallable<GetAutoscalerHttpRequest, Autoscaler> getAutoscalerCallable;
   private final UnaryCallable<InsertAutoscalerHttpRequest, Operation> insertAutoscalerCallable;
+  private final OperationCallable<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      insertAutoscalerOperationCallable;
   private final UnaryCallable<ListAutoscalersHttpRequest, AutoscalerList> listAutoscalersCallable;
   private final UnaryCallable<ListAutoscalersHttpRequest, ListAutoscalersPagedResponse>
       listAutoscalersPagedCallable;
   private final UnaryCallable<PatchAutoscalerHttpRequest, Operation> patchAutoscalerCallable;
+  private final OperationCallable<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      patchAutoscalerOperationCallable;
   private final UnaryCallable<UpdateAutoscalerHttpRequest, Operation> updateAutoscalerCallable;
+  private final OperationCallable<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      updateAutoscalerOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -253,6 +264,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList>
         aggregatedListAutoscalersTransportSettings =
@@ -299,12 +311,24 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
     this.deleteAutoscalerCallable =
         callableFactory.createUnaryCallable(
             deleteAutoscalerTransportSettings, settings.deleteAutoscalerSettings(), clientContext);
+    this.deleteAutoscalerOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteAutoscalerTransportSettings,
+            settings.deleteAutoscalerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getAutoscalerCallable =
         callableFactory.createUnaryCallable(
             getAutoscalerTransportSettings, settings.getAutoscalerSettings(), clientContext);
     this.insertAutoscalerCallable =
         callableFactory.createUnaryCallable(
             insertAutoscalerTransportSettings, settings.insertAutoscalerSettings(), clientContext);
+    this.insertAutoscalerOperationCallable =
+        callableFactory.createOperationCallable(
+            insertAutoscalerTransportSettings,
+            settings.insertAutoscalerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listAutoscalersCallable =
         callableFactory.createUnaryCallable(
             listAutoscalersTransportSettings, settings.listAutoscalersSettings(), clientContext);
@@ -314,11 +338,28 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
     this.patchAutoscalerCallable =
         callableFactory.createUnaryCallable(
             patchAutoscalerTransportSettings, settings.patchAutoscalerSettings(), clientContext);
+    this.patchAutoscalerOperationCallable =
+        callableFactory.createOperationCallable(
+            patchAutoscalerTransportSettings,
+            settings.patchAutoscalerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.updateAutoscalerCallable =
         callableFactory.createUnaryCallable(
             updateAutoscalerTransportSettings, settings.updateAutoscalerSettings(), clientContext);
+    this.updateAutoscalerOperationCallable =
+        callableFactory.createOperationCallable(
+            updateAutoscalerTransportSettings,
+            settings.updateAutoscalerOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
   }
 
   @BetaApi
@@ -333,6 +374,12 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
     return aggregatedListAutoscalersCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteAutoscalerOperationCallable() {
+    return deleteAutoscalerOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteAutoscalerHttpRequest, Operation> deleteAutoscalerCallable() {
     return deleteAutoscalerCallable;
@@ -341,6 +388,12 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
   @BetaApi
   public UnaryCallable<GetAutoscalerHttpRequest, Autoscaler> getAutoscalerCallable() {
     return getAutoscalerCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      insertAutoscalerOperationCallable() {
+    return insertAutoscalerOperationCallable;
   }
 
   @BetaApi
@@ -359,9 +412,21 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
     return listAutoscalersCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      patchAutoscalerOperationCallable() {
+    return patchAutoscalerOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<PatchAutoscalerHttpRequest, Operation> patchAutoscalerCallable() {
     return patchAutoscalerCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      updateAutoscalerOperationCallable() {
+    return updateAutoscalerOperationCallable;
   }
 
   @BetaApi

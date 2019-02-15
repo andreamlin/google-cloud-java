@@ -20,6 +20,8 @@ import static com.google.cloud.compute.v1.TargetInstanceClient.ListTargetInstanc
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AggregatedListTargetInstancesHttpRequest;
 import com.google.cloud.compute.v1.DeleteTargetInstanceHttpRequest;
@@ -42,6 +44,11 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class TargetInstanceStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
   @BetaApi
   public UnaryCallable<
           AggregatedListTargetInstancesHttpRequest, AggregatedListTargetInstancesPagedResponse>
@@ -57,6 +64,13 @@ public abstract class TargetInstanceStub implements BackgroundResource {
         "Not implemented: aggregatedListTargetInstancesCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetInstanceOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteTargetInstanceOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteTargetInstanceHttpRequest, Operation> deleteTargetInstanceCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteTargetInstanceCallable()");
@@ -65,6 +79,13 @@ public abstract class TargetInstanceStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetTargetInstanceHttpRequest, TargetInstance> getTargetInstanceCallable() {
     throw new UnsupportedOperationException("Not implemented: getTargetInstanceCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetInstanceOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertTargetInstanceOperationCallable()");
   }
 
   @BetaApi

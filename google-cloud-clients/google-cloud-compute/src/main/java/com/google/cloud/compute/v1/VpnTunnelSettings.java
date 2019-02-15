@@ -22,10 +22,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -49,13 +51,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteVpnTunnel to 30 seconds:
+ * example, to set the total timeout of getVpnTunnel to 30 seconds:
  *
  * <pre>
  * <code>
  * VpnTunnelSettings.Builder vpnTunnelSettingsBuilder =
  *     VpnTunnelSettings.newBuilder();
- * vpnTunnelSettingsBuilder.deleteVpnTunnelSettings().getRetrySettings().toBuilder()
+ * vpnTunnelSettingsBuilder.getVpnTunnelSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * VpnTunnelSettings vpnTunnelSettings = vpnTunnelSettingsBuilder.build();
  * </code>
@@ -78,6 +80,14 @@ public class VpnTunnelSettings extends ClientSettings<VpnTunnelSettings> {
     return ((VpnTunnelStubSettings) getStubSettings()).deleteVpnTunnelSettings();
   }
 
+  /** Returns the object with the settings used for calls to deleteVpnTunnel. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+      deleteVpnTunnelOperationSettings() {
+    return ((VpnTunnelStubSettings) getStubSettings()).deleteVpnTunnelOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to getVpnTunnel. */
   public UnaryCallSettings<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelSettings() {
     return ((VpnTunnelStubSettings) getStubSettings()).getVpnTunnelSettings();
@@ -86,6 +96,14 @@ public class VpnTunnelSettings extends ClientSettings<VpnTunnelSettings> {
   /** Returns the object with the settings used for calls to insertVpnTunnel. */
   public UnaryCallSettings<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelSettings() {
     return ((VpnTunnelStubSettings) getStubSettings()).insertVpnTunnelSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertVpnTunnel. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+      insertVpnTunnelOperationSettings() {
+    return ((VpnTunnelStubSettings) getStubSettings()).insertVpnTunnelOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listVpnTunnels. */
@@ -210,6 +228,14 @@ public class VpnTunnelSettings extends ClientSettings<VpnTunnelSettings> {
       return getStubSettingsBuilder().deleteVpnTunnelSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteVpnTunnel. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+        deleteVpnTunnelOperationSettings() {
+      return getStubSettingsBuilder().deleteVpnTunnelOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getVpnTunnel. */
     public UnaryCallSettings.Builder<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelSettings() {
       return getStubSettingsBuilder().getVpnTunnelSettings();
@@ -219,6 +245,14 @@ public class VpnTunnelSettings extends ClientSettings<VpnTunnelSettings> {
     public UnaryCallSettings.Builder<InsertVpnTunnelHttpRequest, Operation>
         insertVpnTunnelSettings() {
       return getStubSettingsBuilder().insertVpnTunnelSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertVpnTunnel. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+        insertVpnTunnelOperationSettings() {
+      return getStubSettingsBuilder().insertVpnTunnelOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listVpnTunnels. */

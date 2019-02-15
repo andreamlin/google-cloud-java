@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteRegionBackendService to 30 seconds:
+ * example, to set the total timeout of getRegionBackendService to 30 seconds:
  *
  * <pre>
  * <code>
  * RegionBackendServiceSettings.Builder regionBackendServiceSettingsBuilder =
  *     RegionBackendServiceSettings.newBuilder();
- * regionBackendServiceSettingsBuilder.deleteRegionBackendServiceSettings().getRetrySettings().toBuilder()
+ * regionBackendServiceSettingsBuilder.getRegionBackendServiceSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * RegionBackendServiceSettings regionBackendServiceSettings = regionBackendServiceSettingsBuilder.build();
  * </code>
@@ -68,6 +70,15 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
       deleteRegionBackendServiceSettings() {
     return ((RegionBackendServiceStubSettings) getStubSettings())
         .deleteRegionBackendServiceSettings();
+  }
+
+  /** Returns the object with the settings used for calls to deleteRegionBackendService. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionBackendServiceOperationSettings() {
+    return ((RegionBackendServiceStubSettings) getStubSettings())
+        .deleteRegionBackendServiceOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getRegionBackendService. */
@@ -90,6 +101,15 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
         .insertRegionBackendServiceSettings();
   }
 
+  /** Returns the object with the settings used for calls to insertRegionBackendService. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionBackendServiceOperationSettings() {
+    return ((RegionBackendServiceStubSettings) getStubSettings())
+        .insertRegionBackendServiceOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to listRegionBackendServices. */
   public PagedCallSettings<
           ListRegionBackendServicesHttpRequest,
@@ -107,11 +127,29 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
         .patchRegionBackendServiceSettings();
   }
 
+  /** Returns the object with the settings used for calls to patchRegionBackendService. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionBackendServiceOperationSettings() {
+    return ((RegionBackendServiceStubSettings) getStubSettings())
+        .patchRegionBackendServiceOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to updateRegionBackendService. */
   public UnaryCallSettings<UpdateRegionBackendServiceHttpRequest, Operation>
       updateRegionBackendServiceSettings() {
     return ((RegionBackendServiceStubSettings) getStubSettings())
         .updateRegionBackendServiceSettings();
+  }
+
+  /** Returns the object with the settings used for calls to updateRegionBackendService. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      updateRegionBackendServiceOperationSettings() {
+    return ((RegionBackendServiceStubSettings) getStubSettings())
+        .updateRegionBackendServiceOperationSettings();
   }
 
   public static final RegionBackendServiceSettings create(RegionBackendServiceStubSettings stub)
@@ -223,6 +261,15 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
       return getStubSettingsBuilder().deleteRegionBackendServiceSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteRegionBackendService. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        deleteRegionBackendServiceOperationSettings() {
+      return getStubSettingsBuilder().deleteRegionBackendServiceOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getRegionBackendService. */
     public UnaryCallSettings.Builder<GetRegionBackendServiceHttpRequest, BackendService>
         getRegionBackendServiceSettings() {
@@ -242,6 +289,15 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
       return getStubSettingsBuilder().insertRegionBackendServiceSettings();
     }
 
+    /** Returns the builder for the settings used for calls to insertRegionBackendService. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        insertRegionBackendServiceOperationSettings() {
+      return getStubSettingsBuilder().insertRegionBackendServiceOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to listRegionBackendServices. */
     public PagedCallSettings.Builder<
             ListRegionBackendServicesHttpRequest,
@@ -257,10 +313,28 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
       return getStubSettingsBuilder().patchRegionBackendServiceSettings();
     }
 
+    /** Returns the builder for the settings used for calls to patchRegionBackendService. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        patchRegionBackendServiceOperationSettings() {
+      return getStubSettingsBuilder().patchRegionBackendServiceOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to updateRegionBackendService. */
     public UnaryCallSettings.Builder<UpdateRegionBackendServiceHttpRequest, Operation>
         updateRegionBackendServiceSettings() {
       return getStubSettingsBuilder().updateRegionBackendServiceSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to updateRegionBackendService. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        updateRegionBackendServiceOperationSettings() {
+      return getStubSettingsBuilder().updateRegionBackendServiceOperationSettings();
     }
 
     @Override

@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of abandonInstancesRegionInstanceGroupManager to 30 seconds:
+ * example, to set the total timeout of getRegionInstanceGroupManager to 30 seconds:
  *
  * <pre>
  * <code>
  * RegionInstanceGroupManagerSettings.Builder regionInstanceGroupManagerSettingsBuilder =
  *     RegionInstanceGroupManagerSettings.newBuilder();
- * regionInstanceGroupManagerSettingsBuilder.abandonInstancesRegionInstanceGroupManagerSettings().getRetrySettings().toBuilder()
+ * regionInstanceGroupManagerSettingsBuilder.getRegionInstanceGroupManagerSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * RegionInstanceGroupManagerSettings regionInstanceGroupManagerSettings = regionInstanceGroupManagerSettingsBuilder.build();
  * </code>
@@ -74,11 +76,34 @@ public class RegionInstanceGroupManagerSettings
         .abandonInstancesRegionInstanceGroupManagerSettings();
   }
 
+  /**
+   * Returns the object with the settings used for calls to
+   * abandonInstancesRegionInstanceGroupManager.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      abandonInstancesRegionInstanceGroupManagerOperationSettings() {
+    return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
+        .abandonInstancesRegionInstanceGroupManagerOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to deleteRegionInstanceGroupManager. */
   public UnaryCallSettings<DeleteRegionInstanceGroupManagerHttpRequest, Operation>
       deleteRegionInstanceGroupManagerSettings() {
     return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
         .deleteRegionInstanceGroupManagerSettings();
+  }
+
+  /** Returns the object with the settings used for calls to deleteRegionInstanceGroupManager. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionInstanceGroupManagerOperationSettings() {
+    return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
+        .deleteRegionInstanceGroupManagerOperationSettings();
   }
 
   /**
@@ -89,6 +114,19 @@ public class RegionInstanceGroupManagerSettings
       deleteInstancesRegionInstanceGroupManagerSettings() {
     return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
         .deleteInstancesRegionInstanceGroupManagerSettings();
+  }
+
+  /**
+   * Returns the object with the settings used for calls to
+   * deleteInstancesRegionInstanceGroupManager.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstancesRegionInstanceGroupManagerOperationSettings() {
+    return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
+        .deleteInstancesRegionInstanceGroupManagerOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getRegionInstanceGroupManager. */
@@ -103,6 +141,16 @@ public class RegionInstanceGroupManagerSettings
       insertRegionInstanceGroupManagerSettings() {
     return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
         .insertRegionInstanceGroupManagerSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertRegionInstanceGroupManager. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionInstanceGroupManagerOperationSettings() {
+    return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
+        .insertRegionInstanceGroupManagerOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listRegionInstanceGroupManagers. */
@@ -134,6 +182,16 @@ public class RegionInstanceGroupManagerSettings
         .patchRegionInstanceGroupManagerSettings();
   }
 
+  /** Returns the object with the settings used for calls to patchRegionInstanceGroupManager. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionInstanceGroupManagerOperationSettings() {
+    return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
+        .patchRegionInstanceGroupManagerOperationSettings();
+  }
+
   /**
    * Returns the object with the settings used for calls to
    * recreateInstancesRegionInstanceGroupManager.
@@ -144,11 +202,34 @@ public class RegionInstanceGroupManagerSettings
         .recreateInstancesRegionInstanceGroupManagerSettings();
   }
 
+  /**
+   * Returns the object with the settings used for calls to
+   * recreateInstancesRegionInstanceGroupManager.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      recreateInstancesRegionInstanceGroupManagerOperationSettings() {
+    return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
+        .recreateInstancesRegionInstanceGroupManagerOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to resizeRegionInstanceGroupManager. */
   public UnaryCallSettings<ResizeRegionInstanceGroupManagerHttpRequest, Operation>
       resizeRegionInstanceGroupManagerSettings() {
     return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
         .resizeRegionInstanceGroupManagerSettings();
+  }
+
+  /** Returns the object with the settings used for calls to resizeRegionInstanceGroupManager. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      resizeRegionInstanceGroupManagerOperationSettings() {
+    return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
+        .resizeRegionInstanceGroupManagerOperationSettings();
   }
 
   /**
@@ -163,12 +244,38 @@ public class RegionInstanceGroupManagerSettings
 
   /**
    * Returns the object with the settings used for calls to
+   * setInstanceTemplateRegionInstanceGroupManager.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setInstanceTemplateRegionInstanceGroupManagerOperationSettings() {
+    return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
+        .setInstanceTemplateRegionInstanceGroupManagerOperationSettings();
+  }
+
+  /**
+   * Returns the object with the settings used for calls to
    * setTargetPoolsRegionInstanceGroupManager.
    */
   public UnaryCallSettings<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation>
       setTargetPoolsRegionInstanceGroupManagerSettings() {
     return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
         .setTargetPoolsRegionInstanceGroupManagerSettings();
+  }
+
+  /**
+   * Returns the object with the settings used for calls to
+   * setTargetPoolsRegionInstanceGroupManager.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetPoolsRegionInstanceGroupManagerOperationSettings() {
+    return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
+        .setTargetPoolsRegionInstanceGroupManagerOperationSettings();
   }
 
   public static final RegionInstanceGroupManagerSettings create(
@@ -284,10 +391,31 @@ public class RegionInstanceGroupManagerSettings
       return getStubSettingsBuilder().abandonInstancesRegionInstanceGroupManagerSettings();
     }
 
+    /**
+     * Returns the builder for the settings used for calls to
+     * abandonInstancesRegionInstanceGroupManager.
+     */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        abandonInstancesRegionInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().abandonInstancesRegionInstanceGroupManagerOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to deleteRegionInstanceGroupManager. */
     public UnaryCallSettings.Builder<DeleteRegionInstanceGroupManagerHttpRequest, Operation>
         deleteRegionInstanceGroupManagerSettings() {
       return getStubSettingsBuilder().deleteRegionInstanceGroupManagerSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to deleteRegionInstanceGroupManager. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        deleteRegionInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().deleteRegionInstanceGroupManagerOperationSettings();
     }
 
     /**
@@ -300,6 +428,18 @@ public class RegionInstanceGroupManagerSettings
       return getStubSettingsBuilder().deleteInstancesRegionInstanceGroupManagerSettings();
     }
 
+    /**
+     * Returns the builder for the settings used for calls to
+     * deleteInstancesRegionInstanceGroupManager.
+     */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        deleteInstancesRegionInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().deleteInstancesRegionInstanceGroupManagerOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getRegionInstanceGroupManager. */
     public UnaryCallSettings.Builder<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager>
         getRegionInstanceGroupManagerSettings() {
@@ -310,6 +450,15 @@ public class RegionInstanceGroupManagerSettings
     public UnaryCallSettings.Builder<InsertRegionInstanceGroupManagerHttpRequest, Operation>
         insertRegionInstanceGroupManagerSettings() {
       return getStubSettingsBuilder().insertRegionInstanceGroupManagerSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertRegionInstanceGroupManager. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        insertRegionInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().insertRegionInstanceGroupManagerOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listRegionInstanceGroupManagers. */
@@ -338,6 +487,15 @@ public class RegionInstanceGroupManagerSettings
       return getStubSettingsBuilder().patchRegionInstanceGroupManagerSettings();
     }
 
+    /** Returns the builder for the settings used for calls to patchRegionInstanceGroupManager. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        patchRegionInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().patchRegionInstanceGroupManagerOperationSettings();
+    }
+
     /**
      * Returns the builder for the settings used for calls to
      * recreateInstancesRegionInstanceGroupManager.
@@ -348,10 +506,32 @@ public class RegionInstanceGroupManagerSettings
       return getStubSettingsBuilder().recreateInstancesRegionInstanceGroupManagerSettings();
     }
 
+    /**
+     * Returns the builder for the settings used for calls to
+     * recreateInstancesRegionInstanceGroupManager.
+     */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        recreateInstancesRegionInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder()
+          .recreateInstancesRegionInstanceGroupManagerOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to resizeRegionInstanceGroupManager. */
     public UnaryCallSettings.Builder<ResizeRegionInstanceGroupManagerHttpRequest, Operation>
         resizeRegionInstanceGroupManagerSettings() {
       return getStubSettingsBuilder().resizeRegionInstanceGroupManagerSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to resizeRegionInstanceGroupManager. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        resizeRegionInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().resizeRegionInstanceGroupManagerOperationSettings();
     }
 
     /**
@@ -366,11 +546,36 @@ public class RegionInstanceGroupManagerSettings
 
     /**
      * Returns the builder for the settings used for calls to
+     * setInstanceTemplateRegionInstanceGroupManager.
+     */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        setInstanceTemplateRegionInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder()
+          .setInstanceTemplateRegionInstanceGroupManagerOperationSettings();
+    }
+
+    /**
+     * Returns the builder for the settings used for calls to
      * setTargetPoolsRegionInstanceGroupManager.
      */
     public UnaryCallSettings.Builder<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation>
         setTargetPoolsRegionInstanceGroupManagerSettings() {
       return getStubSettingsBuilder().setTargetPoolsRegionInstanceGroupManagerSettings();
+    }
+
+    /**
+     * Returns the builder for the settings used for calls to
+     * setTargetPoolsRegionInstanceGroupManager.
+     */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        setTargetPoolsRegionInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().setTargetPoolsRegionInstanceGroupManagerOperationSettings();
     }
 
     @Override

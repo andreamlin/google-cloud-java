@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.Address;
@@ -158,6 +160,7 @@ public class HttpJsonAddressStub extends AddressStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AggregatedListAddressesHttpRequest, AddressAggregatedList>
       aggregatedListAddressesCallable;
@@ -165,8 +168,12 @@ public class HttpJsonAddressStub extends AddressStub {
           AggregatedListAddressesHttpRequest, AggregatedListAddressesPagedResponse>
       aggregatedListAddressesPagedCallable;
   private final UnaryCallable<DeleteAddressHttpRequest, Operation> deleteAddressCallable;
+  private final OperationCallable<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+      deleteAddressOperationCallable;
   private final UnaryCallable<GetAddressHttpRequest, Address> getAddressCallable;
   private final UnaryCallable<InsertAddressHttpRequest, Operation> insertAddressCallable;
+  private final OperationCallable<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+      insertAddressOperationCallable;
   private final UnaryCallable<ListAddressesHttpRequest, AddressList> listAddressesCallable;
   private final UnaryCallable<ListAddressesHttpRequest, ListAddressesPagedResponse>
       listAddressesPagedCallable;
@@ -208,6 +215,7 @@ public class HttpJsonAddressStub extends AddressStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListAddressesHttpRequest, AddressAggregatedList>
         aggregatedListAddressesTransportSettings =
@@ -245,12 +253,24 @@ public class HttpJsonAddressStub extends AddressStub {
     this.deleteAddressCallable =
         callableFactory.createUnaryCallable(
             deleteAddressTransportSettings, settings.deleteAddressSettings(), clientContext);
+    this.deleteAddressOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteAddressTransportSettings,
+            settings.deleteAddressOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getAddressCallable =
         callableFactory.createUnaryCallable(
             getAddressTransportSettings, settings.getAddressSettings(), clientContext);
     this.insertAddressCallable =
         callableFactory.createUnaryCallable(
             insertAddressTransportSettings, settings.insertAddressSettings(), clientContext);
+    this.insertAddressOperationCallable =
+        callableFactory.createOperationCallable(
+            insertAddressTransportSettings,
+            settings.insertAddressOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listAddressesCallable =
         callableFactory.createUnaryCallable(
             listAddressesTransportSettings, settings.listAddressesSettings(), clientContext);
@@ -259,6 +279,11 @@ public class HttpJsonAddressStub extends AddressStub {
             listAddressesTransportSettings, settings.listAddressesSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
   }
 
   @BetaApi
@@ -273,6 +298,12 @@ public class HttpJsonAddressStub extends AddressStub {
     return aggregatedListAddressesCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+      deleteAddressOperationCallable() {
+    return deleteAddressOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteAddressHttpRequest, Operation> deleteAddressCallable() {
     return deleteAddressCallable;
@@ -281,6 +312,12 @@ public class HttpJsonAddressStub extends AddressStub {
   @BetaApi
   public UnaryCallable<GetAddressHttpRequest, Address> getAddressCallable() {
     return getAddressCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+      insertAddressOperationCallable() {
+    return insertAddressOperationCallable;
   }
 
   @BetaApi

@@ -23,13 +23,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -74,13 +79,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of addPeeringNetwork to 30 seconds:
+ * example, to set the total timeout of getNetwork to 30 seconds:
  *
  * <pre>
  * <code>
  * NetworkStubSettings.Builder networkSettingsBuilder =
  *     NetworkStubSettings.newBuilder();
- * networkSettingsBuilder.addPeeringNetworkSettings().getRetrySettings().toBuilder()
+ * networkSettingsBuilder.getNetworkSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * NetworkStubSettings networkSettings = networkSettingsBuilder.build();
  * </code>
@@ -102,25 +107,52 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
 
   private final UnaryCallSettings<AddPeeringNetworkHttpRequest, Operation>
       addPeeringNetworkSettings;
+  private final OperationCallSettings<AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      addPeeringNetworkOperationSettings;
   private final UnaryCallSettings<DeleteNetworkHttpRequest, Operation> deleteNetworkSettings;
+  private final OperationCallSettings<DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNetworkOperationSettings;
   private final UnaryCallSettings<GetNetworkHttpRequest, Network> getNetworkSettings;
   private final UnaryCallSettings<InsertNetworkHttpRequest, Operation> insertNetworkSettings;
+  private final OperationCallSettings<InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      insertNetworkOperationSettings;
   private final PagedCallSettings<ListNetworksHttpRequest, NetworkList, ListNetworksPagedResponse>
       listNetworksSettings;
   private final UnaryCallSettings<PatchNetworkHttpRequest, Operation> patchNetworkSettings;
+  private final OperationCallSettings<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      patchNetworkOperationSettings;
   private final UnaryCallSettings<RemovePeeringNetworkHttpRequest, Operation>
       removePeeringNetworkSettings;
+  private final OperationCallSettings<RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      removePeeringNetworkOperationSettings;
   private final UnaryCallSettings<SwitchToCustomModeNetworkHttpRequest, Operation>
       switchToCustomModeNetworkSettings;
+  private final OperationCallSettings<
+          SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      switchToCustomModeNetworkOperationSettings;
 
   /** Returns the object with the settings used for calls to addPeeringNetwork. */
   public UnaryCallSettings<AddPeeringNetworkHttpRequest, Operation> addPeeringNetworkSettings() {
     return addPeeringNetworkSettings;
   }
 
+  /** Returns the object with the settings used for calls to addPeeringNetwork. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      addPeeringNetworkOperationSettings() {
+    return addPeeringNetworkOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to deleteNetwork. */
   public UnaryCallSettings<DeleteNetworkHttpRequest, Operation> deleteNetworkSettings() {
     return deleteNetworkSettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteNetwork. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNetworkOperationSettings() {
+    return deleteNetworkOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getNetwork. */
@@ -131,6 +163,13 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
   /** Returns the object with the settings used for calls to insertNetwork. */
   public UnaryCallSettings<InsertNetworkHttpRequest, Operation> insertNetworkSettings() {
     return insertNetworkSettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertNetwork. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      insertNetworkOperationSettings() {
+    return insertNetworkOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listNetworks. */
@@ -144,16 +183,37 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
     return patchNetworkSettings;
   }
 
+  /** Returns the object with the settings used for calls to patchNetwork. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      patchNetworkOperationSettings() {
+    return patchNetworkOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to removePeeringNetwork. */
   public UnaryCallSettings<RemovePeeringNetworkHttpRequest, Operation>
       removePeeringNetworkSettings() {
     return removePeeringNetworkSettings;
   }
 
+  /** Returns the object with the settings used for calls to removePeeringNetwork. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      removePeeringNetworkOperationSettings() {
+    return removePeeringNetworkOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to switchToCustomModeNetwork. */
   public UnaryCallSettings<SwitchToCustomModeNetworkHttpRequest, Operation>
       switchToCustomModeNetworkSettings() {
     return switchToCustomModeNetworkSettings;
+  }
+
+  /** Returns the object with the settings used for calls to switchToCustomModeNetwork. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      switchToCustomModeNetworkOperationSettings() {
+    return switchToCustomModeNetworkOperationSettings;
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -231,13 +291,22 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
     super(settingsBuilder);
 
     addPeeringNetworkSettings = settingsBuilder.addPeeringNetworkSettings().build();
+    addPeeringNetworkOperationSettings =
+        settingsBuilder.addPeeringNetworkOperationSettings().build();
     deleteNetworkSettings = settingsBuilder.deleteNetworkSettings().build();
+    deleteNetworkOperationSettings = settingsBuilder.deleteNetworkOperationSettings().build();
     getNetworkSettings = settingsBuilder.getNetworkSettings().build();
     insertNetworkSettings = settingsBuilder.insertNetworkSettings().build();
+    insertNetworkOperationSettings = settingsBuilder.insertNetworkOperationSettings().build();
     listNetworksSettings = settingsBuilder.listNetworksSettings().build();
     patchNetworkSettings = settingsBuilder.patchNetworkSettings().build();
+    patchNetworkOperationSettings = settingsBuilder.patchNetworkOperationSettings().build();
     removePeeringNetworkSettings = settingsBuilder.removePeeringNetworkSettings().build();
+    removePeeringNetworkOperationSettings =
+        settingsBuilder.removePeeringNetworkOperationSettings().build();
     switchToCustomModeNetworkSettings = settingsBuilder.switchToCustomModeNetworkSettings().build();
+    switchToCustomModeNetworkOperationSettings =
+        settingsBuilder.switchToCustomModeNetworkOperationSettings().build();
   }
 
   private static final PagedListDescriptor<ListNetworksHttpRequest, NetworkList, Network>
@@ -301,20 +370,37 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
 
     private final UnaryCallSettings.Builder<AddPeeringNetworkHttpRequest, Operation>
         addPeeringNetworkSettings;
+    private final OperationCallSettings.Builder<
+            AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        addPeeringNetworkOperationSettings;
     private final UnaryCallSettings.Builder<DeleteNetworkHttpRequest, Operation>
         deleteNetworkSettings;
+    private final OperationCallSettings.Builder<
+            DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        deleteNetworkOperationSettings;
     private final UnaryCallSettings.Builder<GetNetworkHttpRequest, Network> getNetworkSettings;
     private final UnaryCallSettings.Builder<InsertNetworkHttpRequest, Operation>
         insertNetworkSettings;
+    private final OperationCallSettings.Builder<
+            InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        insertNetworkOperationSettings;
     private final PagedCallSettings.Builder<
             ListNetworksHttpRequest, NetworkList, ListNetworksPagedResponse>
         listNetworksSettings;
     private final UnaryCallSettings.Builder<PatchNetworkHttpRequest, Operation>
         patchNetworkSettings;
+    private final OperationCallSettings.Builder<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        patchNetworkOperationSettings;
     private final UnaryCallSettings.Builder<RemovePeeringNetworkHttpRequest, Operation>
         removePeeringNetworkSettings;
+    private final OperationCallSettings.Builder<
+            RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        removePeeringNetworkOperationSettings;
     private final UnaryCallSettings.Builder<SwitchToCustomModeNetworkHttpRequest, Operation>
         switchToCustomModeNetworkSettings;
+    private final OperationCallSettings.Builder<
+            SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        switchToCustomModeNetworkOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
         RETRYABLE_CODE_DEFINITIONS;
@@ -359,19 +445,31 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
 
       addPeeringNetworkSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      addPeeringNetworkOperationSettings = OperationCallSettings.newBuilder();
+
       deleteNetworkSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      deleteNetworkOperationSettings = OperationCallSettings.newBuilder();
 
       getNetworkSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertNetworkSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      insertNetworkOperationSettings = OperationCallSettings.newBuilder();
+
       listNetworksSettings = PagedCallSettings.newBuilder(LIST_NETWORKS_PAGE_STR_FACT);
 
       patchNetworkSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      patchNetworkOperationSettings = OperationCallSettings.newBuilder();
+
       removePeeringNetworkSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      removePeeringNetworkOperationSettings = OperationCallSettings.newBuilder();
+
       switchToCustomModeNetworkSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      switchToCustomModeNetworkOperationSettings = OperationCallSettings.newBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -437,6 +535,133 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
           .switchToCustomModeNetworkSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .addPeeringNetworkOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<AddPeeringNetworkHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .deleteNetworkOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteNetworkHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertNetworkOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertNetworkHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .patchNetworkOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<PatchNetworkHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .removePeeringNetworkOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<RemovePeeringNetworkHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .switchToCustomModeNetworkOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<SwitchToCustomModeNetworkHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -445,13 +670,21 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
       super(settings);
 
       addPeeringNetworkSettings = settings.addPeeringNetworkSettings.toBuilder();
+      addPeeringNetworkOperationSettings = settings.addPeeringNetworkOperationSettings.toBuilder();
       deleteNetworkSettings = settings.deleteNetworkSettings.toBuilder();
+      deleteNetworkOperationSettings = settings.deleteNetworkOperationSettings.toBuilder();
       getNetworkSettings = settings.getNetworkSettings.toBuilder();
       insertNetworkSettings = settings.insertNetworkSettings.toBuilder();
+      insertNetworkOperationSettings = settings.insertNetworkOperationSettings.toBuilder();
       listNetworksSettings = settings.listNetworksSettings.toBuilder();
       patchNetworkSettings = settings.patchNetworkSettings.toBuilder();
+      patchNetworkOperationSettings = settings.patchNetworkOperationSettings.toBuilder();
       removePeeringNetworkSettings = settings.removePeeringNetworkSettings.toBuilder();
+      removePeeringNetworkOperationSettings =
+          settings.removePeeringNetworkOperationSettings.toBuilder();
       switchToCustomModeNetworkSettings = settings.switchToCustomModeNetworkSettings.toBuilder();
+      switchToCustomModeNetworkOperationSettings =
+          settings.switchToCustomModeNetworkOperationSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -487,9 +720,25 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
       return addPeeringNetworkSettings;
     }
 
+    /** Returns the builder for the settings used for calls to addPeeringNetwork. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        addPeeringNetworkOperationSettings() {
+      return addPeeringNetworkOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to deleteNetwork. */
     public UnaryCallSettings.Builder<DeleteNetworkHttpRequest, Operation> deleteNetworkSettings() {
       return deleteNetworkSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to deleteNetwork. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        deleteNetworkOperationSettings() {
+      return deleteNetworkOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to getNetwork. */
@@ -500,6 +749,14 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
     /** Returns the builder for the settings used for calls to insertNetwork. */
     public UnaryCallSettings.Builder<InsertNetworkHttpRequest, Operation> insertNetworkSettings() {
       return insertNetworkSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertNetwork. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        insertNetworkOperationSettings() {
+      return insertNetworkOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listNetworks. */
@@ -514,16 +771,42 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
       return patchNetworkSettings;
     }
 
+    /** Returns the builder for the settings used for calls to patchNetwork. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        patchNetworkOperationSettings() {
+      return patchNetworkOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to removePeeringNetwork. */
     public UnaryCallSettings.Builder<RemovePeeringNetworkHttpRequest, Operation>
         removePeeringNetworkSettings() {
       return removePeeringNetworkSettings;
     }
 
+    /** Returns the builder for the settings used for calls to removePeeringNetwork. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        removePeeringNetworkOperationSettings() {
+      return removePeeringNetworkOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to switchToCustomModeNetwork. */
     public UnaryCallSettings.Builder<SwitchToCustomModeNetworkHttpRequest, Operation>
         switchToCustomModeNetworkSettings() {
       return switchToCustomModeNetworkSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to switchToCustomModeNetwork. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        switchToCustomModeNetworkOperationSettings() {
+      return switchToCustomModeNetworkOperationSettings;
     }
 
     @Override

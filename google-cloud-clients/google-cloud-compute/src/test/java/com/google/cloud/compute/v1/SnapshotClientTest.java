@@ -26,6 +26,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonSnapshotStub.testIamPermi
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -37,10 +38,10 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.SnapshotStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -92,18 +93,14 @@ public class SnapshotClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteSnapshotTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteSnapshotTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSnapshots.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteSnapshotTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalSnapshotName snapshot = ProjectGlobalSnapshotName.of("[PROJECT]", "[SNAPSHOT]");
 
-    Void actualResponse = client.deleteSnapshotAsync(snapshot).get();
+    EmptyMessage actualResponse = client.deleteSnapshotAsync(snapshot).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -137,7 +134,7 @@ public class SnapshotClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -380,21 +377,17 @@ public class SnapshotClientTest {
   @Test
   @SuppressWarnings("all")
   public void setLabelsSnapshotTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setLabelsSnapshotTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSnapshots.addResponse(resultOperation);
+        Operation.newBuilder().setName("setLabelsSnapshotTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalSnapshotResourceName resource =
         ProjectGlobalSnapshotResourceName.of("[PROJECT]", "[RESOURCE]");
     GlobalSetLabelsRequest globalSetLabelsRequestResource =
         GlobalSetLabelsRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.setLabelsSnapshotAsync(resource, globalSetLabelsRequestResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -432,7 +425,7 @@ public class SnapshotClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 

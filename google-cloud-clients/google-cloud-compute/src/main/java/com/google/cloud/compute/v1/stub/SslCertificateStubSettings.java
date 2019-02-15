@@ -23,13 +23,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -70,13 +75,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteSslCertificate to 30 seconds:
+ * example, to set the total timeout of getSslCertificate to 30 seconds:
  *
  * <pre>
  * <code>
  * SslCertificateStubSettings.Builder sslCertificateSettingsBuilder =
  *     SslCertificateStubSettings.newBuilder();
- * sslCertificateSettingsBuilder.deleteSslCertificateSettings().getRetrySettings().toBuilder()
+ * sslCertificateSettingsBuilder.getSslCertificateSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * SslCertificateStubSettings sslCertificateSettings = sslCertificateSettingsBuilder.build();
  * </code>
@@ -98,10 +103,14 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
 
   private final UnaryCallSettings<DeleteSslCertificateHttpRequest, Operation>
       deleteSslCertificateSettings;
+  private final OperationCallSettings<DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSslCertificateOperationSettings;
   private final UnaryCallSettings<GetSslCertificateHttpRequest, SslCertificate>
       getSslCertificateSettings;
   private final UnaryCallSettings<InsertSslCertificateHttpRequest, Operation>
       insertSslCertificateSettings;
+  private final OperationCallSettings<InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+      insertSslCertificateOperationSettings;
   private final PagedCallSettings<
           ListSslCertificatesHttpRequest, SslCertificateList, ListSslCertificatesPagedResponse>
       listSslCertificatesSettings;
@@ -110,6 +119,13 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
   public UnaryCallSettings<DeleteSslCertificateHttpRequest, Operation>
       deleteSslCertificateSettings() {
     return deleteSslCertificateSettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteSslCertificate. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSslCertificateOperationSettings() {
+    return deleteSslCertificateOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getSslCertificate. */
@@ -122,6 +138,13 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
   public UnaryCallSettings<InsertSslCertificateHttpRequest, Operation>
       insertSslCertificateSettings() {
     return insertSslCertificateSettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertSslCertificate. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+      insertSslCertificateOperationSettings() {
+    return insertSslCertificateOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listSslCertificates. */
@@ -207,8 +230,12 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
     super(settingsBuilder);
 
     deleteSslCertificateSettings = settingsBuilder.deleteSslCertificateSettings().build();
+    deleteSslCertificateOperationSettings =
+        settingsBuilder.deleteSslCertificateOperationSettings().build();
     getSslCertificateSettings = settingsBuilder.getSslCertificateSettings().build();
     insertSslCertificateSettings = settingsBuilder.insertSslCertificateSettings().build();
+    insertSslCertificateOperationSettings =
+        settingsBuilder.insertSslCertificateOperationSettings().build();
     listSslCertificatesSettings = settingsBuilder.listSslCertificatesSettings().build();
   }
 
@@ -281,10 +308,16 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
 
     private final UnaryCallSettings.Builder<DeleteSslCertificateHttpRequest, Operation>
         deleteSslCertificateSettings;
+    private final OperationCallSettings.Builder<
+            DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+        deleteSslCertificateOperationSettings;
     private final UnaryCallSettings.Builder<GetSslCertificateHttpRequest, SslCertificate>
         getSslCertificateSettings;
     private final UnaryCallSettings.Builder<InsertSslCertificateHttpRequest, Operation>
         insertSslCertificateSettings;
+    private final OperationCallSettings.Builder<
+            InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+        insertSslCertificateOperationSettings;
     private final PagedCallSettings.Builder<
             ListSslCertificatesHttpRequest, SslCertificateList, ListSslCertificatesPagedResponse>
         listSslCertificatesSettings;
@@ -332,9 +365,13 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
 
       deleteSslCertificateSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteSslCertificateOperationSettings = OperationCallSettings.newBuilder();
+
       getSslCertificateSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertSslCertificateSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      insertSslCertificateOperationSettings = OperationCallSettings.newBuilder();
 
       listSslCertificatesSettings =
           PagedCallSettings.newBuilder(LIST_SSL_CERTIFICATES_PAGE_STR_FACT);
@@ -379,6 +416,48 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
           .listSslCertificatesSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .deleteSslCertificateOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteSslCertificateHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertSslCertificateOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertSslCertificateHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -387,8 +466,12 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
       super(settings);
 
       deleteSslCertificateSettings = settings.deleteSslCertificateSettings.toBuilder();
+      deleteSslCertificateOperationSettings =
+          settings.deleteSslCertificateOperationSettings.toBuilder();
       getSslCertificateSettings = settings.getSslCertificateSettings.toBuilder();
       insertSslCertificateSettings = settings.insertSslCertificateSettings.toBuilder();
+      insertSslCertificateOperationSettings =
+          settings.insertSslCertificateOperationSettings.toBuilder();
       listSslCertificatesSettings = settings.listSslCertificatesSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
@@ -421,6 +504,15 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
       return deleteSslCertificateSettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteSslCertificate. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+        deleteSslCertificateOperationSettings() {
+      return deleteSslCertificateOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to getSslCertificate. */
     public UnaryCallSettings.Builder<GetSslCertificateHttpRequest, SslCertificate>
         getSslCertificateSettings() {
@@ -431,6 +523,15 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
     public UnaryCallSettings.Builder<InsertSslCertificateHttpRequest, Operation>
         insertSslCertificateSettings() {
       return insertSslCertificateSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertSslCertificate. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+        insertSslCertificateOperationSettings() {
+      return insertSslCertificateOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listSslCertificates. */

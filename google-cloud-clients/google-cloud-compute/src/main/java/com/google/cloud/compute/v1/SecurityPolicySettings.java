@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of addRuleSecurityPolicy to 30 seconds:
+ * example, to set the total timeout of getSecurityPolicy to 30 seconds:
  *
  * <pre>
  * <code>
  * SecurityPolicySettings.Builder securityPolicySettingsBuilder =
  *     SecurityPolicySettings.newBuilder();
- * securityPolicySettingsBuilder.addRuleSecurityPolicySettings().getRetrySettings().toBuilder()
+ * securityPolicySettingsBuilder.getSecurityPolicySettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * SecurityPolicySettings securityPolicySettings = securityPolicySettingsBuilder.build();
  * </code>
@@ -69,10 +71,27 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
     return ((SecurityPolicyStubSettings) getStubSettings()).addRuleSecurityPolicySettings();
   }
 
+  /** Returns the object with the settings used for calls to addRuleSecurityPolicy. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      addRuleSecurityPolicyOperationSettings() {
+    return ((SecurityPolicyStubSettings) getStubSettings())
+        .addRuleSecurityPolicyOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to deleteSecurityPolicy. */
   public UnaryCallSettings<DeleteSecurityPolicyHttpRequest, Operation>
       deleteSecurityPolicySettings() {
     return ((SecurityPolicyStubSettings) getStubSettings()).deleteSecurityPolicySettings();
+  }
+
+  /** Returns the object with the settings used for calls to deleteSecurityPolicy. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSecurityPolicyOperationSettings() {
+    return ((SecurityPolicyStubSettings) getStubSettings()).deleteSecurityPolicyOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getSecurityPolicy. */
@@ -93,6 +112,14 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
     return ((SecurityPolicyStubSettings) getStubSettings()).insertSecurityPolicySettings();
   }
 
+  /** Returns the object with the settings used for calls to insertSecurityPolicy. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      insertSecurityPolicyOperationSettings() {
+    return ((SecurityPolicyStubSettings) getStubSettings()).insertSecurityPolicyOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to listSecurityPolicies. */
   public PagedCallSettings<
           ListSecurityPoliciesHttpRequest, SecurityPolicyList, ListSecurityPoliciesPagedResponse>
@@ -106,16 +133,42 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
     return ((SecurityPolicyStubSettings) getStubSettings()).patchSecurityPolicySettings();
   }
 
+  /** Returns the object with the settings used for calls to patchSecurityPolicy. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchSecurityPolicyOperationSettings() {
+    return ((SecurityPolicyStubSettings) getStubSettings()).patchSecurityPolicyOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to patchRuleSecurityPolicy. */
   public UnaryCallSettings<PatchRuleSecurityPolicyHttpRequest, Operation>
       patchRuleSecurityPolicySettings() {
     return ((SecurityPolicyStubSettings) getStubSettings()).patchRuleSecurityPolicySettings();
   }
 
+  /** Returns the object with the settings used for calls to patchRuleSecurityPolicy. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchRuleSecurityPolicyOperationSettings() {
+    return ((SecurityPolicyStubSettings) getStubSettings())
+        .patchRuleSecurityPolicyOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to removeRuleSecurityPolicy. */
   public UnaryCallSettings<RemoveRuleSecurityPolicyHttpRequest, Operation>
       removeRuleSecurityPolicySettings() {
     return ((SecurityPolicyStubSettings) getStubSettings()).removeRuleSecurityPolicySettings();
+  }
+
+  /** Returns the object with the settings used for calls to removeRuleSecurityPolicy. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      removeRuleSecurityPolicyOperationSettings() {
+    return ((SecurityPolicyStubSettings) getStubSettings())
+        .removeRuleSecurityPolicyOperationSettings();
   }
 
   public static final SecurityPolicySettings create(SecurityPolicyStubSettings stub)
@@ -226,10 +279,28 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
       return getStubSettingsBuilder().addRuleSecurityPolicySettings();
     }
 
+    /** Returns the builder for the settings used for calls to addRuleSecurityPolicy. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        addRuleSecurityPolicyOperationSettings() {
+      return getStubSettingsBuilder().addRuleSecurityPolicyOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to deleteSecurityPolicy. */
     public UnaryCallSettings.Builder<DeleteSecurityPolicyHttpRequest, Operation>
         deleteSecurityPolicySettings() {
       return getStubSettingsBuilder().deleteSecurityPolicySettings();
+    }
+
+    /** Returns the builder for the settings used for calls to deleteSecurityPolicy. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        deleteSecurityPolicyOperationSettings() {
+      return getStubSettingsBuilder().deleteSecurityPolicyOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to getSecurityPolicy. */
@@ -250,6 +321,15 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
       return getStubSettingsBuilder().insertSecurityPolicySettings();
     }
 
+    /** Returns the builder for the settings used for calls to insertSecurityPolicy. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        insertSecurityPolicyOperationSettings() {
+      return getStubSettingsBuilder().insertSecurityPolicyOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to listSecurityPolicies. */
     public PagedCallSettings.Builder<
             ListSecurityPoliciesHttpRequest, SecurityPolicyList, ListSecurityPoliciesPagedResponse>
@@ -263,16 +343,42 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
       return getStubSettingsBuilder().patchSecurityPolicySettings();
     }
 
+    /** Returns the builder for the settings used for calls to patchSecurityPolicy. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        patchSecurityPolicyOperationSettings() {
+      return getStubSettingsBuilder().patchSecurityPolicyOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to patchRuleSecurityPolicy. */
     public UnaryCallSettings.Builder<PatchRuleSecurityPolicyHttpRequest, Operation>
         patchRuleSecurityPolicySettings() {
       return getStubSettingsBuilder().patchRuleSecurityPolicySettings();
     }
 
+    /** Returns the builder for the settings used for calls to patchRuleSecurityPolicy. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        patchRuleSecurityPolicyOperationSettings() {
+      return getStubSettingsBuilder().patchRuleSecurityPolicyOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to removeRuleSecurityPolicy. */
     public UnaryCallSettings.Builder<RemoveRuleSecurityPolicyHttpRequest, Operation>
         removeRuleSecurityPolicySettings() {
       return getStubSettingsBuilder().removeRuleSecurityPolicySettings();
+    }
+
+    /** Returns the builder for the settings used for calls to removeRuleSecurityPolicy. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        removeRuleSecurityPolicyOperationSettings() {
+      return getStubSettingsBuilder().removeRuleSecurityPolicyOperationSettings();
     }
 
     @Override

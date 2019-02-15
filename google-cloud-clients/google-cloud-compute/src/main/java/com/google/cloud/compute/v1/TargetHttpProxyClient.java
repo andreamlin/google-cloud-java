@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.TargetHttpProxyStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
  *   ProjectGlobalTargetHttpProxyName targetHttpProxy = ProjectGlobalTargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
- *   Operation response = targetHttpProxyClient.deleteTargetHttpProxy(targetHttpProxy);
+ *   TargetHttpProxy response = targetHttpProxyClient.getTargetHttpProxy(targetHttpProxy);
  * }
  * </code>
  * </pre>
@@ -104,6 +107,7 @@ import javax.annotation.Generated;
 public class TargetHttpProxyClient implements BackgroundResource {
   private final TargetHttpProxySettings settings;
   private final TargetHttpProxyStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of TargetHttpProxyClient with default settings. */
   public static final TargetHttpProxyClient create() throws IOException {
@@ -136,12 +140,14 @@ public class TargetHttpProxyClient implements BackgroundResource {
   protected TargetHttpProxyClient(TargetHttpProxySettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((TargetHttpProxyStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected TargetHttpProxyClient(TargetHttpProxyStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final TargetHttpProxySettings getSettings() {
@@ -153,30 +159,14 @@ public class TargetHttpProxyClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Deletes the specified TargetHttpProxy resource.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
-   *   ProjectGlobalTargetHttpProxyName targetHttpProxy = ProjectGlobalTargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
-   *   Operation response = targetHttpProxyClient.deleteTargetHttpProxy(targetHttpProxy);
-   * }
-   * </code></pre>
-   *
-   * @param targetHttpProxy Name of the TargetHttpProxy resource to delete.
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation deleteTargetHttpProxy(ProjectGlobalTargetHttpProxyName targetHttpProxy) {
-
-    DeleteTargetHttpProxyHttpRequest request =
-        DeleteTargetHttpProxyHttpRequest.newBuilder()
-            .setTargetHttpProxy(targetHttpProxy == null ? null : targetHttpProxy.toString())
-            .build();
-    return deleteTargetHttpProxy(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -188,19 +178,49 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * <pre><code>
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
    *   ProjectGlobalTargetHttpProxyName targetHttpProxy = ProjectGlobalTargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
-   *   Operation response = targetHttpProxyClient.deleteTargetHttpProxy(targetHttpProxy.toString());
+   *   targetHttpProxyClient.deleteTargetHttpProxyAsync(targetHttpProxy).get();
    * }
    * </code></pre>
    *
    * @param targetHttpProxy Name of the TargetHttpProxy resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteTargetHttpProxy(String targetHttpProxy) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetHttpProxyAsync(
+      ProjectGlobalTargetHttpProxyName targetHttpProxy) {
+
+    DeleteTargetHttpProxyHttpRequest request =
+        DeleteTargetHttpProxyHttpRequest.newBuilder()
+            .setTargetHttpProxy(targetHttpProxy == null ? null : targetHttpProxy.toString())
+            .build();
+    return deleteTargetHttpProxyAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified TargetHttpProxy resource.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
+   *   ProjectGlobalTargetHttpProxyName targetHttpProxy = ProjectGlobalTargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
+   *   targetHttpProxyClient.deleteTargetHttpProxyAsync(targetHttpProxy.toString()).get();
+   * }
+   * </code></pre>
+   *
+   * @param targetHttpProxy Name of the TargetHttpProxy resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetHttpProxyAsync(
+      String targetHttpProxy) {
 
     DeleteTargetHttpProxyHttpRequest request =
         DeleteTargetHttpProxyHttpRequest.newBuilder().setTargetHttpProxy(targetHttpProxy).build();
-    return deleteTargetHttpProxy(request);
+    return deleteTargetHttpProxyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -215,16 +235,42 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *   DeleteTargetHttpProxyHttpRequest request = DeleteTargetHttpProxyHttpRequest.newBuilder()
    *     .setTargetHttpProxy(targetHttpProxy.toString())
    *     .build();
-   *   Operation response = targetHttpProxyClient.deleteTargetHttpProxy(request);
+   *   targetHttpProxyClient.deleteTargetHttpProxyAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteTargetHttpProxy(DeleteTargetHttpProxyHttpRequest request) {
-    return deleteTargetHttpProxyCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetHttpProxyAsync(
+      DeleteTargetHttpProxyHttpRequest request) {
+    return deleteTargetHttpProxyOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified TargetHttpProxy resource.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
+   *   ProjectGlobalTargetHttpProxyName targetHttpProxy = ProjectGlobalTargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
+   *   DeleteTargetHttpProxyHttpRequest request = DeleteTargetHttpProxyHttpRequest.newBuilder()
+   *     .setTargetHttpProxy(targetHttpProxy.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetHttpProxyClient.deleteTargetHttpProxyOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetHttpProxyOperationCallable() {
+    return stub.deleteTargetHttpProxyOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -241,7 +287,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetHttpProxyClient.deleteTargetHttpProxyCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -365,7 +411,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   TargetHttpProxy targetHttpProxyResource = TargetHttpProxy.newBuilder().build();
-   *   Operation response = targetHttpProxyClient.insertTargetHttpProxy(project, targetHttpProxyResource);
+   *   targetHttpProxyClient.insertTargetHttpProxyAsync(project, targetHttpProxyResource).get();
    * }
    * </code></pre>
    *
@@ -374,8 +420,9 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *     (== resource_for beta.targetHttpProxies ==) (== resource_for v1.targetHttpProxies ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertTargetHttpProxy(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetHttpProxyAsync(
       ProjectName project, TargetHttpProxy targetHttpProxyResource) {
 
     InsertTargetHttpProxyHttpRequest request =
@@ -383,7 +430,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
             .setProject(project == null ? null : project.toString())
             .setTargetHttpProxyResource(targetHttpProxyResource)
             .build();
-    return insertTargetHttpProxy(request);
+    return insertTargetHttpProxyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -397,7 +444,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   TargetHttpProxy targetHttpProxyResource = TargetHttpProxy.newBuilder().build();
-   *   Operation response = targetHttpProxyClient.insertTargetHttpProxy(project.toString(), targetHttpProxyResource);
+   *   targetHttpProxyClient.insertTargetHttpProxyAsync(project.toString(), targetHttpProxyResource).get();
    * }
    * </code></pre>
    *
@@ -406,8 +453,9 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *     (== resource_for beta.targetHttpProxies ==) (== resource_for v1.targetHttpProxies ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertTargetHttpProxy(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetHttpProxyAsync(
       String project, TargetHttpProxy targetHttpProxyResource) {
 
     InsertTargetHttpProxyHttpRequest request =
@@ -415,7 +463,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
             .setProject(project)
             .setTargetHttpProxyResource(targetHttpProxyResource)
             .build();
-    return insertTargetHttpProxy(request);
+    return insertTargetHttpProxyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -433,16 +481,45 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setTargetHttpProxyResource(targetHttpProxyResource)
    *     .build();
-   *   Operation response = targetHttpProxyClient.insertTargetHttpProxy(request);
+   *   targetHttpProxyClient.insertTargetHttpProxyAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertTargetHttpProxy(InsertTargetHttpProxyHttpRequest request) {
-    return insertTargetHttpProxyCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetHttpProxyAsync(
+      InsertTargetHttpProxyHttpRequest request) {
+    return insertTargetHttpProxyOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a TargetHttpProxy resource in the specified project using the data included in the
+   * request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   TargetHttpProxy targetHttpProxyResource = TargetHttpProxy.newBuilder().build();
+   *   InsertTargetHttpProxyHttpRequest request = InsertTargetHttpProxyHttpRequest.newBuilder()
+   *     .setProject(project.toString())
+   *     .setTargetHttpProxyResource(targetHttpProxyResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetHttpProxyClient.insertTargetHttpProxyOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetHttpProxyOperationCallable() {
+    return stub.insertTargetHttpProxyOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -462,7 +539,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetHttpProxyClient.insertTargetHttpProxyCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -620,7 +697,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
    *   ProjectTargetHttpProxyName targetHttpProxy = ProjectTargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
    *   UrlMapReference urlMapReferenceResource = UrlMapReference.newBuilder().build();
-   *   Operation response = targetHttpProxyClient.setUrlMapTargetHttpProxy(targetHttpProxy, urlMapReferenceResource);
+   *   targetHttpProxyClient.setUrlMapTargetHttpProxyAsync(targetHttpProxy, urlMapReferenceResource).get();
    * }
    * </code></pre>
    *
@@ -628,8 +705,9 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * @param urlMapReferenceResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setUrlMapTargetHttpProxy(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setUrlMapTargetHttpProxyAsync(
       ProjectTargetHttpProxyName targetHttpProxy, UrlMapReference urlMapReferenceResource) {
 
     SetUrlMapTargetHttpProxyHttpRequest request =
@@ -637,7 +715,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
             .setTargetHttpProxy(targetHttpProxy == null ? null : targetHttpProxy.toString())
             .setUrlMapReferenceResource(urlMapReferenceResource)
             .build();
-    return setUrlMapTargetHttpProxy(request);
+    return setUrlMapTargetHttpProxyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -650,7 +728,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
    *   ProjectTargetHttpProxyName targetHttpProxy = ProjectTargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
    *   UrlMapReference urlMapReferenceResource = UrlMapReference.newBuilder().build();
-   *   Operation response = targetHttpProxyClient.setUrlMapTargetHttpProxy(targetHttpProxy.toString(), urlMapReferenceResource);
+   *   targetHttpProxyClient.setUrlMapTargetHttpProxyAsync(targetHttpProxy.toString(), urlMapReferenceResource).get();
    * }
    * </code></pre>
    *
@@ -658,8 +736,9 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * @param urlMapReferenceResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setUrlMapTargetHttpProxy(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setUrlMapTargetHttpProxyAsync(
       String targetHttpProxy, UrlMapReference urlMapReferenceResource) {
 
     SetUrlMapTargetHttpProxyHttpRequest request =
@@ -667,7 +746,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
             .setTargetHttpProxy(targetHttpProxy)
             .setUrlMapReferenceResource(urlMapReferenceResource)
             .build();
-    return setUrlMapTargetHttpProxy(request);
+    return setUrlMapTargetHttpProxyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -684,16 +763,44 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *     .setTargetHttpProxy(targetHttpProxy.toString())
    *     .setUrlMapReferenceResource(urlMapReferenceResource)
    *     .build();
-   *   Operation response = targetHttpProxyClient.setUrlMapTargetHttpProxy(request);
+   *   targetHttpProxyClient.setUrlMapTargetHttpProxyAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setUrlMapTargetHttpProxy(SetUrlMapTargetHttpProxyHttpRequest request) {
-    return setUrlMapTargetHttpProxyCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setUrlMapTargetHttpProxyAsync(
+      SetUrlMapTargetHttpProxyHttpRequest request) {
+    return setUrlMapTargetHttpProxyOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Changes the URL map for TargetHttpProxy.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
+   *   ProjectTargetHttpProxyName targetHttpProxy = ProjectTargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
+   *   UrlMapReference urlMapReferenceResource = UrlMapReference.newBuilder().build();
+   *   SetUrlMapTargetHttpProxyHttpRequest request = SetUrlMapTargetHttpProxyHttpRequest.newBuilder()
+   *     .setTargetHttpProxy(targetHttpProxy.toString())
+   *     .setUrlMapReferenceResource(urlMapReferenceResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetHttpProxyClient.setUrlMapTargetHttpProxyOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setUrlMapTargetHttpProxyOperationCallable() {
+    return stub.setUrlMapTargetHttpProxyOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -712,7 +819,7 @@ public class TargetHttpProxyClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetHttpProxyClient.setUrlMapTargetHttpProxyCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

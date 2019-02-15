@@ -25,6 +25,7 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
@@ -52,9 +53,9 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   @InternalApi
-  public static final ApiMethodDescriptor<DeleteZoneOperationHttpRequest, Void>
+  public static final ApiMethodDescriptor<DeleteZoneOperationHttpRequest, EmptyMessage>
       deleteZoneOperationMethodDescriptor =
-          ApiMethodDescriptor.<DeleteZoneOperationHttpRequest, Void>newBuilder()
+          ApiMethodDescriptor.<DeleteZoneOperationHttpRequest, EmptyMessage>newBuilder()
               .setFullMethodName("compute.zoneOperations.delete")
               .setHttpMethod(HttpMethods.DELETE)
               .setRequestFormatter(
@@ -109,7 +110,8 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
 
   private final BackgroundResource backgroundResources;
 
-  private final UnaryCallable<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationCallable;
+  private final UnaryCallable<DeleteZoneOperationHttpRequest, EmptyMessage>
+      deleteZoneOperationCallable;
   private final UnaryCallable<GetZoneOperationHttpRequest, Operation> getZoneOperationCallable;
   private final UnaryCallable<ListZoneOperationsHttpRequest, OperationList>
       listZoneOperationsCallable;
@@ -157,9 +159,9 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
       throws IOException {
     this.callableFactory = callableFactory;
 
-    HttpJsonCallSettings<DeleteZoneOperationHttpRequest, Void>
+    HttpJsonCallSettings<DeleteZoneOperationHttpRequest, EmptyMessage>
         deleteZoneOperationTransportSettings =
-            HttpJsonCallSettings.<DeleteZoneOperationHttpRequest, Void>newBuilder()
+            HttpJsonCallSettings.<DeleteZoneOperationHttpRequest, EmptyMessage>newBuilder()
                 .setMethodDescriptor(deleteZoneOperationMethodDescriptor)
                 .build();
     HttpJsonCallSettings<GetZoneOperationHttpRequest, Operation> getZoneOperationTransportSettings =
@@ -195,7 +197,7 @@ public class HttpJsonZoneOperationStub extends ZoneOperationStub {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteZoneOperationHttpRequest, Void> deleteZoneOperationCallable() {
+  public UnaryCallable<DeleteZoneOperationHttpRequest, EmptyMessage> deleteZoneOperationCallable() {
     return deleteZoneOperationCallable;
   }
 

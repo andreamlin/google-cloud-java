@@ -20,6 +20,8 @@ import static com.google.cloud.compute.v1.TargetVpnGatewayClient.ListTargetVpnGa
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AggregatedListTargetVpnGatewaysHttpRequest;
 import com.google.cloud.compute.v1.DeleteTargetVpnGatewayHttpRequest;
@@ -42,6 +44,11 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class TargetVpnGatewayStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
   @BetaApi
   public UnaryCallable<
           AggregatedListTargetVpnGatewaysHttpRequest, AggregatedListTargetVpnGatewaysPagedResponse>
@@ -57,6 +64,13 @@ public abstract class TargetVpnGatewayStub implements BackgroundResource {
         "Not implemented: aggregatedListTargetVpnGatewaysCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetVpnGatewayOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteTargetVpnGatewayOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteTargetVpnGatewayHttpRequest, Operation>
       deleteTargetVpnGatewayCallable() {
@@ -67,6 +81,13 @@ public abstract class TargetVpnGatewayStub implements BackgroundResource {
   public UnaryCallable<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>
       getTargetVpnGatewayCallable() {
     throw new UnsupportedOperationException("Not implemented: getTargetVpnGatewayCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetVpnGatewayOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertTargetVpnGatewayOperationCallable()");
   }
 
   @BetaApi

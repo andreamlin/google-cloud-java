@@ -19,6 +19,7 @@ import static com.google.cloud.compute.v1.RegionOperationClient.ListRegionOperat
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteRegionOperationHttpRequest;
 import com.google.cloud.compute.v1.GetRegionOperationHttpRequest;
@@ -38,7 +39,8 @@ import javax.annotation.Generated;
 public abstract class RegionOperationStub implements BackgroundResource {
 
   @BetaApi
-  public UnaryCallable<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationCallable() {
+  public UnaryCallable<DeleteRegionOperationHttpRequest, EmptyMessage>
+      deleteRegionOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteRegionOperationCallable()");
   }
 

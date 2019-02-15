@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.SecurityPolicyClient.ListSecurityPolic
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AddRuleSecurityPolicyHttpRequest;
 import com.google.cloud.compute.v1.DeleteSecurityPolicyHttpRequest;
@@ -45,10 +47,29 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class SecurityPolicyStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      addRuleSecurityPolicyOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: addRuleSecurityPolicyOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<AddRuleSecurityPolicyHttpRequest, Operation>
       addRuleSecurityPolicyCallable() {
     throw new UnsupportedOperationException("Not implemented: addRuleSecurityPolicyCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSecurityPolicyOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteSecurityPolicyOperationCallable()");
   }
 
   @BetaApi
@@ -65,6 +86,13 @@ public abstract class SecurityPolicyStub implements BackgroundResource {
   public UnaryCallable<GetRuleSecurityPolicyHttpRequest, SecurityPolicyRule>
       getRuleSecurityPolicyCallable() {
     throw new UnsupportedOperationException("Not implemented: getRuleSecurityPolicyCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      insertSecurityPolicyOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertSecurityPolicyOperationCallable()");
   }
 
   @BetaApi
@@ -84,15 +112,36 @@ public abstract class SecurityPolicyStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: listSecurityPoliciesCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchSecurityPolicyOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: patchSecurityPolicyOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<PatchSecurityPolicyHttpRequest, Operation> patchSecurityPolicyCallable() {
     throw new UnsupportedOperationException("Not implemented: patchSecurityPolicyCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchRuleSecurityPolicyOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: patchRuleSecurityPolicyOperationCallable()");
   }
 
   @BetaApi
   public UnaryCallable<PatchRuleSecurityPolicyHttpRequest, Operation>
       patchRuleSecurityPolicyCallable() {
     throw new UnsupportedOperationException("Not implemented: patchRuleSecurityPolicyCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      removeRuleSecurityPolicyOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: removeRuleSecurityPolicyOperationCallable()");
   }
 
   @BetaApi

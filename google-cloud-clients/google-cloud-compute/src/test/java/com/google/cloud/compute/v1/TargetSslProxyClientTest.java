@@ -27,6 +27,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonTargetSslProxyStub.setSsl
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -38,10 +39,10 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.TargetSslProxyStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -94,19 +95,15 @@ public class TargetSslProxyClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteTargetSslProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteTargetSslProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetSslProxies.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteTargetSslProxyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalTargetSslProxyName targetSslProxy =
         ProjectGlobalTargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
 
-    Void actualResponse = client.deleteTargetSslProxyAsync(targetSslProxy).get();
+    EmptyMessage actualResponse = client.deleteTargetSslProxyAsync(targetSslProxy).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -141,7 +138,7 @@ public class TargetSslProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -215,19 +212,16 @@ public class TargetSslProxyClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertTargetSslProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertTargetSslProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetSslProxies.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertTargetSslProxyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     TargetSslProxy targetSslProxyResource = TargetSslProxy.newBuilder().build();
 
-    Void actualResponse = client.insertTargetSslProxyAsync(project, targetSslProxyResource).get();
+    EmptyMessage actualResponse =
+        client.insertTargetSslProxyAsync(project, targetSslProxyResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -262,7 +256,7 @@ public class TargetSslProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -329,21 +323,20 @@ public class TargetSslProxyClientTest {
   @Test
   @SuppressWarnings("all")
   public void setBackendServiceTargetSslProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("setBackendServiceTargetSslProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockTargetSslProxies.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalTargetSslProxyName targetSslProxy =
         ProjectGlobalTargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
     TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequestResource =
         TargetSslProxiesSetBackendServiceRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setBackendServiceTargetSslProxyAsync(
                 targetSslProxy, targetSslProxiesSetBackendServiceRequestResource)
@@ -387,28 +380,27 @@ public class TargetSslProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setProxyHeaderTargetSslProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("setProxyHeaderTargetSslProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockTargetSslProxies.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalTargetSslProxyName targetSslProxy =
         ProjectGlobalTargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
     TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequestResource =
         TargetSslProxiesSetProxyHeaderRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setProxyHeaderTargetSslProxyAsync(
                 targetSslProxy, targetSslProxiesSetProxyHeaderRequestResource)
@@ -452,28 +444,27 @@ public class TargetSslProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setSslCertificatesTargetSslProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("setSslCertificatesTargetSslProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockTargetSslProxies.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalTargetSslProxyName targetSslProxy =
         ProjectGlobalTargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
     TargetSslProxiesSetSslCertificatesRequest targetSslProxiesSetSslCertificatesRequestResource =
         TargetSslProxiesSetSslCertificatesRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setSslCertificatesTargetSslProxyAsync(
                 targetSslProxy, targetSslProxiesSetSslCertificatesRequestResource)
@@ -517,27 +508,23 @@ public class TargetSslProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setSslPolicyTargetSslProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setSslPolicyTargetSslProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetSslProxies.addResponse(resultOperation);
+        Operation.newBuilder().setName("setSslPolicyTargetSslProxyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalTargetSslProxyName targetSslProxy =
         ProjectGlobalTargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
     SslPolicyReference sslPolicyReferenceResource = SslPolicyReference.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.setSslPolicyTargetSslProxyAsync(targetSslProxy, sslPolicyReferenceResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -574,7 +561,7 @@ public class TargetSslProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

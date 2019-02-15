@@ -44,7 +44,7 @@
  * <code>
  * try (AddressClient addressClient = AddressClient.create()) {
  *   ProjectRegionAddressName address = ProjectRegionAddressName.of("[PROJECT]", "[REGION]", "[ADDRESS]");
- *   Operation response = addressClient.deleteAddress(address);
+ *   Address response = addressClient.getAddress(address);
  * }
  * </code>
  * </pre>
@@ -59,7 +59,7 @@
  * <code>
  * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
  *   ProjectZoneAutoscalerName autoscaler = ProjectZoneAutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
- *   Operation response = autoscalerClient.deleteAutoscaler(autoscaler);
+ *   Autoscaler response = autoscalerClient.getAutoscaler(autoscaler);
  * }
  * </code>
  * </pre>
@@ -74,8 +74,7 @@
  * <code>
  * try (BackendBucketClient backendBucketClient = BackendBucketClient.create()) {
  *   ProjectGlobalBackendBucketName backendBucket = ProjectGlobalBackendBucketName.of("[PROJECT]", "[BACKEND_BUCKET]");
- *   SignedUrlKey signedUrlKeyResource = SignedUrlKey.newBuilder().build();
- *   Operation response = backendBucketClient.addSignedUrlKeyBackendBucket(backendBucket, signedUrlKeyResource);
+ *   BackendBucket response = backendBucketClient.getBackendBucket(backendBucket);
  * }
  * </code>
  * </pre>
@@ -90,8 +89,7 @@
  * <code>
  * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
  *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
- *   SignedUrlKey signedUrlKeyResource = SignedUrlKey.newBuilder().build();
- *   Operation response = backendServiceClient.addSignedUrlKeyBackendService(backendService, signedUrlKeyResource);
+ *   BackendService response = backendServiceClient.getBackendService(backendService);
  * }
  * </code>
  * </pre>
@@ -121,9 +119,7 @@
  * <code>
  * try (DiskClient diskClient = DiskClient.create()) {
  *   ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
- *   Boolean guestFlush = false;
- *   Snapshot snapshotResource = Snapshot.newBuilder().build();
- *   Operation response = diskClient.createSnapshotDisk(disk, guestFlush, snapshotResource);
+ *   Disk response = diskClient.getDisk(disk);
  * }
  * </code>
  * </pre>
@@ -138,7 +134,7 @@
  * <code>
  * try (FirewallClient firewallClient = FirewallClient.create()) {
  *   ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
- *   Operation response = firewallClient.deleteFirewall(firewall);
+ *   Firewall response = firewallClient.getFirewall(firewall);
  * }
  * </code>
  * </pre>
@@ -153,7 +149,7 @@
  * <code>
  * try (ForwardingRuleClient forwardingRuleClient = ForwardingRuleClient.create()) {
  *   ProjectRegionForwardingRuleName forwardingRule = ProjectRegionForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
- *   Operation response = forwardingRuleClient.deleteForwardingRule(forwardingRule);
+ *   ForwardingRule response = forwardingRuleClient.getForwardingRule(forwardingRule);
  * }
  * </code>
  * </pre>
@@ -168,7 +164,7 @@
  * <code>
  * try (GlobalAddressClient globalAddressClient = GlobalAddressClient.create()) {
  *   ProjectGlobalAddressName address = ProjectGlobalAddressName.of("[PROJECT]", "[ADDRESS]");
- *   Operation response = globalAddressClient.deleteGlobalAddress(address);
+ *   Address response = globalAddressClient.getGlobalAddress(address);
  * }
  * </code>
  * </pre>
@@ -183,7 +179,7 @@
  * <code>
  * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
  *   ProjectGlobalForwardingRuleName forwardingRule = ProjectGlobalForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
- *   Operation response = globalForwardingRuleClient.deleteGlobalForwardingRule(forwardingRule);
+ *   ForwardingRule response = globalForwardingRuleClient.getGlobalForwardingRule(forwardingRule);
  * }
  * </code>
  * </pre>
@@ -213,7 +209,7 @@
  * <code>
  * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
  *   ProjectGlobalHealthCheckName healthCheck = ProjectGlobalHealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
- *   Operation response = healthCheckClient.deleteHealthCheck(healthCheck);
+ *   HealthCheck response = healthCheckClient.getHealthCheck(healthCheck);
  * }
  * </code>
  * </pre>
@@ -228,7 +224,7 @@
  * <code>
  * try (HttpHealthCheckClient httpHealthCheckClient = HttpHealthCheckClient.create()) {
  *   ProjectGlobalHttpHealthCheckName httpHealthCheck = ProjectGlobalHttpHealthCheckName.of("[PROJECT]", "[HTTP_HEALTH_CHECK]");
- *   Operation response = httpHealthCheckClient.deleteHttpHealthCheck(httpHealthCheck);
+ *   HttpHealthCheck2 response = httpHealthCheckClient.getHttpHealthCheck(httpHealthCheck);
  * }
  * </code>
  * </pre>
@@ -243,7 +239,7 @@
  * <code>
  * try (HttpsHealthCheckClient httpsHealthCheckClient = HttpsHealthCheckClient.create()) {
  *   ProjectGlobalHttpsHealthCheckName httpsHealthCheck = ProjectGlobalHttpsHealthCheckName.of("[PROJECT]", "[HTTPS_HEALTH_CHECK]");
- *   Operation response = httpsHealthCheckClient.deleteHttpsHealthCheck(httpsHealthCheck);
+ *   HttpsHealthCheck2 response = httpsHealthCheckClient.getHttpsHealthCheck(httpsHealthCheck);
  * }
  * </code>
  * </pre>
@@ -258,7 +254,7 @@
  * <code>
  * try (ImageClient imageClient = ImageClient.create()) {
  *   ProjectGlobalImageName image = ProjectGlobalImageName.of("[PROJECT]", "[IMAGE]");
- *   Operation response = imageClient.deleteImage(image);
+ *   Image response = imageClient.getImage(image);
  * }
  * </code>
  * </pre>
@@ -273,8 +269,7 @@
  * <code>
  * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
  *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
- *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
- *   Operation response = instanceGroupManagerClient.abandonInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersAbandonInstancesRequestResource);
+ *   InstanceGroupManager response = instanceGroupManagerClient.getInstanceGroupManager(instanceGroupManager);
  * }
  * </code>
  * </pre>
@@ -289,8 +284,7 @@
  * <code>
  * try (InstanceGroupClient instanceGroupClient = InstanceGroupClient.create()) {
  *   ProjectZoneInstanceGroupName instanceGroup = ProjectZoneInstanceGroupName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP]");
- *   InstanceGroupsAddInstancesRequest instanceGroupsAddInstancesRequestResource = InstanceGroupsAddInstancesRequest.newBuilder().build();
- *   Operation response = instanceGroupClient.addInstancesInstanceGroup(instanceGroup, instanceGroupsAddInstancesRequestResource);
+ *   InstanceGroup response = instanceGroupClient.getInstanceGroup(instanceGroup);
  * }
  * </code>
  * </pre>
@@ -305,7 +299,7 @@
  * <code>
  * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
  *   ProjectGlobalInstanceTemplateName instanceTemplate = ProjectGlobalInstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
- *   Operation response = instanceTemplateClient.deleteInstanceTemplate(instanceTemplate);
+ *   InstanceTemplate response = instanceTemplateClient.getInstanceTemplate(instanceTemplate);
  * }
  * </code>
  * </pre>
@@ -320,9 +314,7 @@
  * <code>
  * try (InstanceClient instanceClient = InstanceClient.create()) {
  *   ProjectZoneInstanceName instance = ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
- *   String networkInterface = "";
- *   AccessConfig accessConfigResource = AccessConfig.newBuilder().build();
- *   Operation response = instanceClient.addAccessConfigInstance(instance, networkInterface, accessConfigResource);
+ *   Instance response = instanceClient.getInstance(instance);
  * }
  * </code>
  * </pre>
@@ -337,7 +329,7 @@
  * <code>
  * try (InterconnectAttachmentClient interconnectAttachmentClient = InterconnectAttachmentClient.create()) {
  *   ProjectRegionInterconnectAttachmentName interconnectAttachment = ProjectRegionInterconnectAttachmentName.of("[PROJECT]", "[REGION]", "[INTERCONNECT_ATTACHMENT]");
- *   Operation response = interconnectAttachmentClient.deleteInterconnectAttachment(interconnectAttachment);
+ *   InterconnectAttachment response = interconnectAttachmentClient.getInterconnectAttachment(interconnectAttachment);
  * }
  * </code>
  * </pre>
@@ -367,7 +359,7 @@
  * <code>
  * try (InterconnectClient interconnectClient = InterconnectClient.create()) {
  *   ProjectGlobalInterconnectName interconnect = ProjectGlobalInterconnectName.of("[PROJECT]", "[INTERCONNECT]");
- *   Operation response = interconnectClient.deleteInterconnect(interconnect);
+ *   Interconnect response = interconnectClient.getInterconnect(interconnect);
  * }
  * </code>
  * </pre>
@@ -397,7 +389,7 @@
  * <code>
  * try (LicenseClient licenseClient = LicenseClient.create()) {
  *   ProjectGlobalLicenseName license = ProjectGlobalLicenseName.of("[PROJECT]", "[LICENSE]");
- *   Operation response = licenseClient.deleteLicense(license);
+ *   License response = licenseClient.getLicense(license);
  * }
  * </code>
  * </pre>
@@ -427,8 +419,7 @@
  * <code>
  * try (NetworkClient networkClient = NetworkClient.create()) {
  *   ProjectGlobalNetworkName network = ProjectGlobalNetworkName.of("[PROJECT]", "[NETWORK]");
- *   NetworksAddPeeringRequest networksAddPeeringRequestResource = NetworksAddPeeringRequest.newBuilder().build();
- *   Operation response = networkClient.addPeeringNetwork(network, networksAddPeeringRequestResource);
+ *   Network response = networkClient.getNetwork(network);
  * }
  * </code>
  * </pre>
@@ -443,8 +434,7 @@
  * <code>
  * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
  *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
- *   NodeGroupsAddNodesRequest nodeGroupsAddNodesRequestResource = NodeGroupsAddNodesRequest.newBuilder().build();
- *   Operation response = nodeGroupClient.addNodesNodeGroup(nodeGroup, nodeGroupsAddNodesRequestResource);
+ *   NodeGroup response = nodeGroupClient.getNodeGroup(nodeGroup);
  * }
  * </code>
  * </pre>
@@ -459,7 +449,7 @@
  * <code>
  * try (NodeTemplateClient nodeTemplateClient = NodeTemplateClient.create()) {
  *   ProjectRegionNodeTemplateName nodeTemplate = ProjectRegionNodeTemplateName.of("[PROJECT]", "[REGION]", "[NODE_TEMPLATE]");
- *   Operation response = nodeTemplateClient.deleteNodeTemplate(nodeTemplate);
+ *   NodeTemplate response = nodeTemplateClient.getNodeTemplate(nodeTemplate);
  * }
  * </code>
  * </pre>
@@ -489,7 +479,7 @@
  * <code>
  * try (ProjectClient projectClient = ProjectClient.create()) {
  *   ProjectName project = ProjectName.of("[PROJECT]");
- *   Operation response = projectClient.disableXpnHostProject(project);
+ *   Project response = projectClient.getProject(project);
  * }
  * </code>
  * </pre>
@@ -504,7 +494,7 @@
  * <code>
  * try (RegionAutoscalerClient regionAutoscalerClient = RegionAutoscalerClient.create()) {
  *   ProjectRegionAutoscalerName autoscaler = ProjectRegionAutoscalerName.of("[PROJECT]", "[REGION]", "[AUTOSCALER]");
- *   Operation response = regionAutoscalerClient.deleteRegionAutoscaler(autoscaler);
+ *   Autoscaler response = regionAutoscalerClient.getRegionAutoscaler(autoscaler);
  * }
  * </code>
  * </pre>
@@ -519,7 +509,7 @@
  * <code>
  * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
  *   ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
- *   Operation response = regionBackendServiceClient.deleteRegionBackendService(backendService);
+ *   BackendService response = regionBackendServiceClient.getRegionBackendService(backendService);
  * }
  * </code>
  * </pre>
@@ -564,8 +554,7 @@
  * <code>
  * try (RegionDiskClient regionDiskClient = RegionDiskClient.create()) {
  *   ProjectRegionDiskName disk = ProjectRegionDiskName.of("[PROJECT]", "[REGION]", "[DISK]");
- *   Snapshot snapshotResource = Snapshot.newBuilder().build();
- *   Operation response = regionDiskClient.createSnapshotRegionDisk(disk, snapshotResource);
+ *   Disk response = regionDiskClient.getRegionDisk(disk);
  * }
  * </code>
  * </pre>
@@ -581,8 +570,7 @@
  * <code>
  * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
  *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
- *   RegionInstanceGroupManagersAbandonInstancesRequest regionInstanceGroupManagersAbandonInstancesRequestResource = RegionInstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
- *   Operation response = regionInstanceGroupManagerClient.abandonInstancesRegionInstanceGroupManager(instanceGroupManager, regionInstanceGroupManagersAbandonInstancesRequestResource);
+ *   InstanceGroupManager response = regionInstanceGroupManagerClient.getRegionInstanceGroupManager(instanceGroupManager);
  * }
  * </code>
  * </pre>
@@ -642,7 +630,7 @@
  * <code>
  * try (RouterClient routerClient = RouterClient.create()) {
  *   ProjectRegionRouterName router = ProjectRegionRouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
- *   Operation response = routerClient.deleteRouter(router);
+ *   Router response = routerClient.getRouter(router);
  * }
  * </code>
  * </pre>
@@ -657,7 +645,7 @@
  * <code>
  * try (RouteClient routeClient = RouteClient.create()) {
  *   ProjectGlobalRouteName route = ProjectGlobalRouteName.of("[PROJECT]", "[ROUTE]");
- *   Operation response = routeClient.deleteRoute(route);
+ *   Route response = routeClient.getRoute(route);
  * }
  * </code>
  * </pre>
@@ -672,8 +660,7 @@
  * <code>
  * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
  *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
- *   SecurityPolicyRule securityPolicyRuleResource = SecurityPolicyRule.newBuilder().build();
- *   Operation response = securityPolicyClient.addRuleSecurityPolicy(securityPolicy, securityPolicyRuleResource);
+ *   SecurityPolicy response = securityPolicyClient.getSecurityPolicy(securityPolicy);
  * }
  * </code>
  * </pre>
@@ -688,7 +675,7 @@
  * <code>
  * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
  *   ProjectGlobalSnapshotName snapshot = ProjectGlobalSnapshotName.of("[PROJECT]", "[SNAPSHOT]");
- *   Operation response = snapshotClient.deleteSnapshot(snapshot);
+ *   Snapshot response = snapshotClient.getSnapshot(snapshot);
  * }
  * </code>
  * </pre>
@@ -703,7 +690,7 @@
  * <code>
  * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
  *   ProjectGlobalSslCertificateName sslCertificate = ProjectGlobalSslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
- *   Operation response = sslCertificateClient.deleteSslCertificate(sslCertificate);
+ *   SslCertificate response = sslCertificateClient.getSslCertificate(sslCertificate);
  * }
  * </code>
  * </pre>
@@ -718,7 +705,7 @@
  * <code>
  * try (SslPolicyClient sslPolicyClient = SslPolicyClient.create()) {
  *   ProjectGlobalSslPolicyName sslPolicy = ProjectGlobalSslPolicyName.of("[PROJECT]", "[SSL_POLICY]");
- *   Operation response = sslPolicyClient.deleteSslPolicy(sslPolicy);
+ *   SslPolicy response = sslPolicyClient.getSslPolicy(sslPolicy);
  * }
  * </code>
  * </pre>
@@ -733,7 +720,7 @@
  * <code>
  * try (SubnetworkClient subnetworkClient = SubnetworkClient.create()) {
  *   ProjectRegionSubnetworkName subnetwork = ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
- *   Operation response = subnetworkClient.deleteSubnetwork(subnetwork);
+ *   Subnetwork response = subnetworkClient.getSubnetwork(subnetwork);
  * }
  * </code>
  * </pre>
@@ -748,7 +735,7 @@
  * <code>
  * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
  *   ProjectGlobalTargetHttpProxyName targetHttpProxy = ProjectGlobalTargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
- *   Operation response = targetHttpProxyClient.deleteTargetHttpProxy(targetHttpProxy);
+ *   TargetHttpProxy response = targetHttpProxyClient.getTargetHttpProxy(targetHttpProxy);
  * }
  * </code>
  * </pre>
@@ -763,7 +750,7 @@
  * <code>
  * try (TargetHttpsProxyClient targetHttpsProxyClient = TargetHttpsProxyClient.create()) {
  *   ProjectGlobalTargetHttpsProxyName targetHttpsProxy = ProjectGlobalTargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
- *   Operation response = targetHttpsProxyClient.deleteTargetHttpsProxy(targetHttpsProxy);
+ *   TargetHttpsProxy response = targetHttpsProxyClient.getTargetHttpsProxy(targetHttpsProxy);
  * }
  * </code>
  * </pre>
@@ -778,7 +765,7 @@
  * <code>
  * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
  *   ProjectZoneTargetInstanceName targetInstance = ProjectZoneTargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
- *   Operation response = targetInstanceClient.deleteTargetInstance(targetInstance);
+ *   TargetInstance response = targetInstanceClient.getTargetInstance(targetInstance);
  * }
  * </code>
  * </pre>
@@ -793,8 +780,7 @@
  * <code>
  * try (TargetPoolClient targetPoolClient = TargetPoolClient.create()) {
  *   ProjectRegionTargetPoolName targetPool = ProjectRegionTargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
- *   TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequestResource = TargetPoolsAddHealthCheckRequest.newBuilder().build();
- *   Operation response = targetPoolClient.addHealthCheckTargetPool(targetPool, targetPoolsAddHealthCheckRequestResource);
+ *   TargetPool response = targetPoolClient.getTargetPool(targetPool);
  * }
  * </code>
  * </pre>
@@ -809,7 +795,7 @@
  * <code>
  * try (TargetSslProxyClient targetSslProxyClient = TargetSslProxyClient.create()) {
  *   ProjectGlobalTargetSslProxyName targetSslProxy = ProjectGlobalTargetSslProxyName.of("[PROJECT]", "[TARGET_SSL_PROXY]");
- *   Operation response = targetSslProxyClient.deleteTargetSslProxy(targetSslProxy);
+ *   TargetSslProxy response = targetSslProxyClient.getTargetSslProxy(targetSslProxy);
  * }
  * </code>
  * </pre>
@@ -824,7 +810,7 @@
  * <code>
  * try (TargetTcpProxyClient targetTcpProxyClient = TargetTcpProxyClient.create()) {
  *   ProjectGlobalTargetTcpProxyName targetTcpProxy = ProjectGlobalTargetTcpProxyName.of("[PROJECT]", "[TARGET_TCP_PROXY]");
- *   Operation response = targetTcpProxyClient.deleteTargetTcpProxy(targetTcpProxy);
+ *   TargetTcpProxy response = targetTcpProxyClient.getTargetTcpProxy(targetTcpProxy);
  * }
  * </code>
  * </pre>
@@ -839,7 +825,7 @@
  * <code>
  * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
  *   ProjectRegionTargetVpnGatewayName targetVpnGateway = ProjectRegionTargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
- *   Operation response = targetVpnGatewayClient.deleteTargetVpnGateway(targetVpnGateway);
+ *   TargetVpnGateway response = targetVpnGatewayClient.getTargetVpnGateway(targetVpnGateway);
  * }
  * </code>
  * </pre>
@@ -854,7 +840,7 @@
  * <code>
  * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
  *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
- *   Operation response = urlMapClient.deleteUrlMap(urlMap);
+ *   UrlMap response = urlMapClient.getUrlMap(urlMap);
  * }
  * </code>
  * </pre>
@@ -869,7 +855,7 @@
  * <code>
  * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
  *   ProjectRegionVpnTunnelName vpnTunnel = ProjectRegionVpnTunnelName.of("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
- *   Operation response = vpnTunnelClient.deleteVpnTunnel(vpnTunnel);
+ *   VpnTunnel response = vpnTunnelClient.getVpnTunnel(vpnTunnel);
  * }
  * </code>
  * </pre>

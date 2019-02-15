@@ -24,13 +24,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -75,13 +80,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteInterconnectAttachment to 30 seconds:
+ * example, to set the total timeout of getInterconnectAttachment to 30 seconds:
  *
  * <pre>
  * <code>
  * InterconnectAttachmentStubSettings.Builder interconnectAttachmentSettingsBuilder =
  *     InterconnectAttachmentStubSettings.newBuilder();
- * interconnectAttachmentSettingsBuilder.deleteInterconnectAttachmentSettings().getRetrySettings().toBuilder()
+ * interconnectAttachmentSettingsBuilder.getInterconnectAttachmentSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * InterconnectAttachmentStubSettings interconnectAttachmentSettings = interconnectAttachmentSettingsBuilder.build();
  * </code>
@@ -109,10 +114,16 @@ public class InterconnectAttachmentStubSettings
       aggregatedListInterconnectAttachmentsSettings;
   private final UnaryCallSettings<DeleteInterconnectAttachmentHttpRequest, Operation>
       deleteInterconnectAttachmentSettings;
+  private final OperationCallSettings<
+          DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInterconnectAttachmentOperationSettings;
   private final UnaryCallSettings<GetInterconnectAttachmentHttpRequest, InterconnectAttachment>
       getInterconnectAttachmentSettings;
   private final UnaryCallSettings<InsertInterconnectAttachmentHttpRequest, Operation>
       insertInterconnectAttachmentSettings;
+  private final OperationCallSettings<
+          InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      insertInterconnectAttachmentOperationSettings;
   private final PagedCallSettings<
           ListInterconnectAttachmentsHttpRequest,
           InterconnectAttachmentList,
@@ -120,6 +131,9 @@ public class InterconnectAttachmentStubSettings
       listInterconnectAttachmentsSettings;
   private final UnaryCallSettings<PatchInterconnectAttachmentHttpRequest, Operation>
       patchInterconnectAttachmentSettings;
+  private final OperationCallSettings<
+          PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      patchInterconnectAttachmentOperationSettings;
 
   /**
    * Returns the object with the settings used for calls to aggregatedListInterconnectAttachments.
@@ -138,6 +152,13 @@ public class InterconnectAttachmentStubSettings
     return deleteInterconnectAttachmentSettings;
   }
 
+  /** Returns the object with the settings used for calls to deleteInterconnectAttachment. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInterconnectAttachmentOperationSettings() {
+    return deleteInterconnectAttachmentOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to getInterconnectAttachment. */
   public UnaryCallSettings<GetInterconnectAttachmentHttpRequest, InterconnectAttachment>
       getInterconnectAttachmentSettings() {
@@ -148,6 +169,13 @@ public class InterconnectAttachmentStubSettings
   public UnaryCallSettings<InsertInterconnectAttachmentHttpRequest, Operation>
       insertInterconnectAttachmentSettings() {
     return insertInterconnectAttachmentSettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertInterconnectAttachment. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      insertInterconnectAttachmentOperationSettings() {
+    return insertInterconnectAttachmentOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listInterconnectAttachments. */
@@ -163,6 +191,13 @@ public class InterconnectAttachmentStubSettings
   public UnaryCallSettings<PatchInterconnectAttachmentHttpRequest, Operation>
       patchInterconnectAttachmentSettings() {
     return patchInterconnectAttachmentSettings;
+  }
+
+  /** Returns the object with the settings used for calls to patchInterconnectAttachment. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      patchInterconnectAttachmentOperationSettings() {
+    return patchInterconnectAttachmentOperationSettings;
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -244,13 +279,19 @@ public class InterconnectAttachmentStubSettings
         settingsBuilder.aggregatedListInterconnectAttachmentsSettings().build();
     deleteInterconnectAttachmentSettings =
         settingsBuilder.deleteInterconnectAttachmentSettings().build();
+    deleteInterconnectAttachmentOperationSettings =
+        settingsBuilder.deleteInterconnectAttachmentOperationSettings().build();
     getInterconnectAttachmentSettings = settingsBuilder.getInterconnectAttachmentSettings().build();
     insertInterconnectAttachmentSettings =
         settingsBuilder.insertInterconnectAttachmentSettings().build();
+    insertInterconnectAttachmentOperationSettings =
+        settingsBuilder.insertInterconnectAttachmentOperationSettings().build();
     listInterconnectAttachmentsSettings =
         settingsBuilder.listInterconnectAttachmentsSettings().build();
     patchInterconnectAttachmentSettings =
         settingsBuilder.patchInterconnectAttachmentSettings().build();
+    patchInterconnectAttachmentOperationSettings =
+        settingsBuilder.patchInterconnectAttachmentOperationSettings().build();
   }
 
   private static final PagedListDescriptor<
@@ -426,11 +467,17 @@ public class InterconnectAttachmentStubSettings
         aggregatedListInterconnectAttachmentsSettings;
     private final UnaryCallSettings.Builder<DeleteInterconnectAttachmentHttpRequest, Operation>
         deleteInterconnectAttachmentSettings;
+    private final OperationCallSettings.Builder<
+            DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+        deleteInterconnectAttachmentOperationSettings;
     private final UnaryCallSettings.Builder<
             GetInterconnectAttachmentHttpRequest, InterconnectAttachment>
         getInterconnectAttachmentSettings;
     private final UnaryCallSettings.Builder<InsertInterconnectAttachmentHttpRequest, Operation>
         insertInterconnectAttachmentSettings;
+    private final OperationCallSettings.Builder<
+            InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+        insertInterconnectAttachmentOperationSettings;
     private final PagedCallSettings.Builder<
             ListInterconnectAttachmentsHttpRequest,
             InterconnectAttachmentList,
@@ -438,6 +485,9 @@ public class InterconnectAttachmentStubSettings
         listInterconnectAttachmentsSettings;
     private final UnaryCallSettings.Builder<PatchInterconnectAttachmentHttpRequest, Operation>
         patchInterconnectAttachmentSettings;
+    private final OperationCallSettings.Builder<
+            PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+        patchInterconnectAttachmentOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
         RETRYABLE_CODE_DEFINITIONS;
@@ -485,14 +535,20 @@ public class InterconnectAttachmentStubSettings
 
       deleteInterconnectAttachmentSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteInterconnectAttachmentOperationSettings = OperationCallSettings.newBuilder();
+
       getInterconnectAttachmentSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertInterconnectAttachmentSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      insertInterconnectAttachmentOperationSettings = OperationCallSettings.newBuilder();
 
       listInterconnectAttachmentsSettings =
           PagedCallSettings.newBuilder(LIST_INTERCONNECT_ATTACHMENTS_PAGE_STR_FACT);
 
       patchInterconnectAttachmentSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      patchInterconnectAttachmentOperationSettings = OperationCallSettings.newBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -546,6 +602,72 @@ public class InterconnectAttachmentStubSettings
           .patchInterconnectAttachmentSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .deleteInterconnectAttachmentOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteInterconnectAttachmentHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertInterconnectAttachmentOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertInterconnectAttachmentHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .patchInterconnectAttachmentOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<PatchInterconnectAttachmentHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -557,13 +679,19 @@ public class InterconnectAttachmentStubSettings
           settings.aggregatedListInterconnectAttachmentsSettings.toBuilder();
       deleteInterconnectAttachmentSettings =
           settings.deleteInterconnectAttachmentSettings.toBuilder();
+      deleteInterconnectAttachmentOperationSettings =
+          settings.deleteInterconnectAttachmentOperationSettings.toBuilder();
       getInterconnectAttachmentSettings = settings.getInterconnectAttachmentSettings.toBuilder();
       insertInterconnectAttachmentSettings =
           settings.insertInterconnectAttachmentSettings.toBuilder();
+      insertInterconnectAttachmentOperationSettings =
+          settings.insertInterconnectAttachmentOperationSettings.toBuilder();
       listInterconnectAttachmentsSettings =
           settings.listInterconnectAttachmentsSettings.toBuilder();
       patchInterconnectAttachmentSettings =
           settings.patchInterconnectAttachmentSettings.toBuilder();
+      patchInterconnectAttachmentOperationSettings =
+          settings.patchInterconnectAttachmentOperationSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -608,6 +736,15 @@ public class InterconnectAttachmentStubSettings
       return deleteInterconnectAttachmentSettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteInterconnectAttachment. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+        deleteInterconnectAttachmentOperationSettings() {
+      return deleteInterconnectAttachmentOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to getInterconnectAttachment. */
     public UnaryCallSettings.Builder<GetInterconnectAttachmentHttpRequest, InterconnectAttachment>
         getInterconnectAttachmentSettings() {
@@ -618,6 +755,15 @@ public class InterconnectAttachmentStubSettings
     public UnaryCallSettings.Builder<InsertInterconnectAttachmentHttpRequest, Operation>
         insertInterconnectAttachmentSettings() {
       return insertInterconnectAttachmentSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertInterconnectAttachment. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+        insertInterconnectAttachmentOperationSettings() {
+      return insertInterconnectAttachmentOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listInterconnectAttachments. */
@@ -633,6 +779,15 @@ public class InterconnectAttachmentStubSettings
     public UnaryCallSettings.Builder<PatchInterconnectAttachmentHttpRequest, Operation>
         patchInterconnectAttachmentSettings() {
       return patchInterconnectAttachmentSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to patchInterconnectAttachment. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+        patchInterconnectAttachmentOperationSettings() {
+      return patchInterconnectAttachmentOperationSettings;
     }
 
     @Override

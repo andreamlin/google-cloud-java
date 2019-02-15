@@ -20,6 +20,7 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
@@ -387,7 +388,7 @@ public class GlobalOperationClient implements BackgroundResource {
    * </code></pre>
    */
   @BetaApi
-  public final UnaryCallable<DeleteGlobalOperationHttpRequest, Void>
+  public final UnaryCallable<DeleteGlobalOperationHttpRequest, EmptyMessage>
       deleteGlobalOperationCallable() {
     return stub.deleteGlobalOperationCallable();
   }

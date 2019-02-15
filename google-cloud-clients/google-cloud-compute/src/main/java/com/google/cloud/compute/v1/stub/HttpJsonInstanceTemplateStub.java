@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DeleteInstanceTemplateHttpRequest;
@@ -212,15 +214,20 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteInstanceTemplateHttpRequest, Operation>
       deleteInstanceTemplateCallable;
+  private final OperationCallable<DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstanceTemplateOperationCallable;
   private final UnaryCallable<GetInstanceTemplateHttpRequest, InstanceTemplate>
       getInstanceTemplateCallable;
   private final UnaryCallable<GetIamPolicyInstanceTemplateHttpRequest, Policy>
       getIamPolicyInstanceTemplateCallable;
   private final UnaryCallable<InsertInstanceTemplateHttpRequest, Operation>
       insertInstanceTemplateCallable;
+  private final OperationCallable<InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      insertInstanceTemplateOperationCallable;
   private final UnaryCallable<ListInstanceTemplatesHttpRequest, InstanceTemplateList>
       listInstanceTemplatesCallable;
   private final UnaryCallable<ListInstanceTemplatesHttpRequest, ListInstanceTemplatesPagedResponse>
@@ -271,6 +278,7 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteInstanceTemplateHttpRequest, Operation>
         deleteInstanceTemplateTransportSettings =
@@ -316,6 +324,12 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
             deleteInstanceTemplateTransportSettings,
             settings.deleteInstanceTemplateSettings(),
             clientContext);
+    this.deleteInstanceTemplateOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteInstanceTemplateTransportSettings,
+            settings.deleteInstanceTemplateOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getInstanceTemplateCallable =
         callableFactory.createUnaryCallable(
             getInstanceTemplateTransportSettings,
@@ -331,6 +345,12 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
             insertInstanceTemplateTransportSettings,
             settings.insertInstanceTemplateSettings(),
             clientContext);
+    this.insertInstanceTemplateOperationCallable =
+        callableFactory.createOperationCallable(
+            insertInstanceTemplateTransportSettings,
+            settings.insertInstanceTemplateOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listInstanceTemplatesCallable =
         callableFactory.createUnaryCallable(
             listInstanceTemplatesTransportSettings,
@@ -355,6 +375,17 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstanceTemplateOperationCallable() {
+    return deleteInstanceTemplateOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteInstanceTemplateHttpRequest, Operation>
       deleteInstanceTemplateCallable() {
@@ -371,6 +402,12 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
   public UnaryCallable<GetIamPolicyInstanceTemplateHttpRequest, Policy>
       getIamPolicyInstanceTemplateCallable() {
     return getIamPolicyInstanceTemplateCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      insertInstanceTemplateOperationCallable() {
+    return insertInstanceTemplateOperationCallable;
   }
 
   @BetaApi

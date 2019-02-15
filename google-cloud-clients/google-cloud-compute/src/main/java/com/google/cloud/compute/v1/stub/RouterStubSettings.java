@@ -25,13 +25,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -84,13 +89,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteRouter to 30 seconds:
+ * example, to set the total timeout of getRouter to 30 seconds:
  *
  * <pre>
  * <code>
  * RouterStubSettings.Builder routerSettingsBuilder =
  *     RouterStubSettings.newBuilder();
- * routerSettingsBuilder.deleteRouterSettings().getRetrySettings().toBuilder()
+ * routerSettingsBuilder.getRouterSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * RouterStubSettings routerSettings = routerSettingsBuilder.build();
  * </code>
@@ -116,6 +121,8 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
           AggregatedListRoutersPagedResponse>
       aggregatedListRoutersSettings;
   private final UnaryCallSettings<DeleteRouterHttpRequest, Operation> deleteRouterSettings;
+  private final OperationCallSettings<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRouterOperationSettings;
   private final UnaryCallSettings<GetRouterHttpRequest, Router> getRouterSettings;
   private final PagedCallSettings<
           GetNatMappingInfoRoutersHttpRequest,
@@ -125,12 +132,18 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
   private final UnaryCallSettings<GetRouterStatusRouterHttpRequest, RouterStatusResponse>
       getRouterStatusRouterSettings;
   private final UnaryCallSettings<InsertRouterHttpRequest, Operation> insertRouterSettings;
+  private final OperationCallSettings<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+      insertRouterOperationSettings;
   private final PagedCallSettings<ListRoutersHttpRequest, RouterList, ListRoutersPagedResponse>
       listRoutersSettings;
   private final UnaryCallSettings<PatchRouterHttpRequest, Operation> patchRouterSettings;
+  private final OperationCallSettings<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+      patchRouterOperationSettings;
   private final UnaryCallSettings<PreviewRouterHttpRequest, RoutersPreviewResponse>
       previewRouterSettings;
   private final UnaryCallSettings<UpdateRouterHttpRequest, Operation> updateRouterSettings;
+  private final OperationCallSettings<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+      updateRouterOperationSettings;
 
   /** Returns the object with the settings used for calls to aggregatedListRouters. */
   public PagedCallSettings<
@@ -144,6 +157,13 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
   /** Returns the object with the settings used for calls to deleteRouter. */
   public UnaryCallSettings<DeleteRouterHttpRequest, Operation> deleteRouterSettings() {
     return deleteRouterSettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteRouter. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRouterOperationSettings() {
+    return deleteRouterOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getRouter. */
@@ -171,6 +191,13 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
     return insertRouterSettings;
   }
 
+  /** Returns the object with the settings used for calls to insertRouter. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+      insertRouterOperationSettings() {
+    return insertRouterOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to listRouters. */
   public PagedCallSettings<ListRoutersHttpRequest, RouterList, ListRoutersPagedResponse>
       listRoutersSettings() {
@@ -182,6 +209,13 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
     return patchRouterSettings;
   }
 
+  /** Returns the object with the settings used for calls to patchRouter. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+      patchRouterOperationSettings() {
+    return patchRouterOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to previewRouter. */
   public UnaryCallSettings<PreviewRouterHttpRequest, RoutersPreviewResponse>
       previewRouterSettings() {
@@ -191,6 +225,13 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
   /** Returns the object with the settings used for calls to updateRouter. */
   public UnaryCallSettings<UpdateRouterHttpRequest, Operation> updateRouterSettings() {
     return updateRouterSettings;
+  }
+
+  /** Returns the object with the settings used for calls to updateRouter. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+      updateRouterOperationSettings() {
+    return updateRouterOperationSettings;
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -269,14 +310,18 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
 
     aggregatedListRoutersSettings = settingsBuilder.aggregatedListRoutersSettings().build();
     deleteRouterSettings = settingsBuilder.deleteRouterSettings().build();
+    deleteRouterOperationSettings = settingsBuilder.deleteRouterOperationSettings().build();
     getRouterSettings = settingsBuilder.getRouterSettings().build();
     getNatMappingInfoRoutersSettings = settingsBuilder.getNatMappingInfoRoutersSettings().build();
     getRouterStatusRouterSettings = settingsBuilder.getRouterStatusRouterSettings().build();
     insertRouterSettings = settingsBuilder.insertRouterSettings().build();
+    insertRouterOperationSettings = settingsBuilder.insertRouterOperationSettings().build();
     listRoutersSettings = settingsBuilder.listRoutersSettings().build();
     patchRouterSettings = settingsBuilder.patchRouterSettings().build();
+    patchRouterOperationSettings = settingsBuilder.patchRouterOperationSettings().build();
     previewRouterSettings = settingsBuilder.previewRouterSettings().build();
     updateRouterSettings = settingsBuilder.updateRouterSettings().build();
+    updateRouterOperationSettings = settingsBuilder.updateRouterOperationSettings().build();
   }
 
   private static final PagedListDescriptor<
@@ -486,6 +531,8 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
         aggregatedListRoutersSettings;
     private final UnaryCallSettings.Builder<DeleteRouterHttpRequest, Operation>
         deleteRouterSettings;
+    private final OperationCallSettings.Builder<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+        deleteRouterOperationSettings;
     private final UnaryCallSettings.Builder<GetRouterHttpRequest, Router> getRouterSettings;
     private final PagedCallSettings.Builder<
             GetNatMappingInfoRoutersHttpRequest,
@@ -496,14 +543,20 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
         getRouterStatusRouterSettings;
     private final UnaryCallSettings.Builder<InsertRouterHttpRequest, Operation>
         insertRouterSettings;
+    private final OperationCallSettings.Builder<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+        insertRouterOperationSettings;
     private final PagedCallSettings.Builder<
             ListRoutersHttpRequest, RouterList, ListRoutersPagedResponse>
         listRoutersSettings;
     private final UnaryCallSettings.Builder<PatchRouterHttpRequest, Operation> patchRouterSettings;
+    private final OperationCallSettings.Builder<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+        patchRouterOperationSettings;
     private final UnaryCallSettings.Builder<PreviewRouterHttpRequest, RoutersPreviewResponse>
         previewRouterSettings;
     private final UnaryCallSettings.Builder<UpdateRouterHttpRequest, Operation>
         updateRouterSettings;
+    private final OperationCallSettings.Builder<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+        updateRouterOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
         RETRYABLE_CODE_DEFINITIONS;
@@ -551,6 +604,8 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
 
       deleteRouterSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteRouterOperationSettings = OperationCallSettings.newBuilder();
+
       getRouterSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       getNatMappingInfoRoutersSettings =
@@ -560,13 +615,19 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
 
       insertRouterSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      insertRouterOperationSettings = OperationCallSettings.newBuilder();
+
       listRoutersSettings = PagedCallSettings.newBuilder(LIST_ROUTERS_PAGE_STR_FACT);
 
       patchRouterSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      patchRouterOperationSettings = OperationCallSettings.newBuilder();
+
       previewRouterSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       updateRouterSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      updateRouterOperationSettings = OperationCallSettings.newBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -644,6 +705,90 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
           .updateRouterSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .deleteRouterOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteRouterHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertRouterOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertRouterHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .patchRouterOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<PatchRouterHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .updateRouterOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<UpdateRouterHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -653,14 +798,18 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
 
       aggregatedListRoutersSettings = settings.aggregatedListRoutersSettings.toBuilder();
       deleteRouterSettings = settings.deleteRouterSettings.toBuilder();
+      deleteRouterOperationSettings = settings.deleteRouterOperationSettings.toBuilder();
       getRouterSettings = settings.getRouterSettings.toBuilder();
       getNatMappingInfoRoutersSettings = settings.getNatMappingInfoRoutersSettings.toBuilder();
       getRouterStatusRouterSettings = settings.getRouterStatusRouterSettings.toBuilder();
       insertRouterSettings = settings.insertRouterSettings.toBuilder();
+      insertRouterOperationSettings = settings.insertRouterOperationSettings.toBuilder();
       listRoutersSettings = settings.listRoutersSettings.toBuilder();
       patchRouterSettings = settings.patchRouterSettings.toBuilder();
+      patchRouterOperationSettings = settings.patchRouterOperationSettings.toBuilder();
       previewRouterSettings = settings.previewRouterSettings.toBuilder();
       updateRouterSettings = settings.updateRouterSettings.toBuilder();
+      updateRouterOperationSettings = settings.updateRouterOperationSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -706,6 +855,14 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
       return deleteRouterSettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteRouter. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+        deleteRouterOperationSettings() {
+      return deleteRouterOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to getRouter. */
     public UnaryCallSettings.Builder<GetRouterHttpRequest, Router> getRouterSettings() {
       return getRouterSettings;
@@ -731,6 +888,14 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
       return insertRouterSettings;
     }
 
+    /** Returns the builder for the settings used for calls to insertRouter. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+        insertRouterOperationSettings() {
+      return insertRouterOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to listRouters. */
     public PagedCallSettings.Builder<ListRoutersHttpRequest, RouterList, ListRoutersPagedResponse>
         listRoutersSettings() {
@@ -742,6 +907,14 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
       return patchRouterSettings;
     }
 
+    /** Returns the builder for the settings used for calls to patchRouter. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+        patchRouterOperationSettings() {
+      return patchRouterOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to previewRouter. */
     public UnaryCallSettings.Builder<PreviewRouterHttpRequest, RoutersPreviewResponse>
         previewRouterSettings() {
@@ -751,6 +924,14 @@ public class RouterStubSettings extends StubSettings<RouterStubSettings> {
     /** Returns the builder for the settings used for calls to updateRouter. */
     public UnaryCallSettings.Builder<UpdateRouterHttpRequest, Operation> updateRouterSettings() {
       return updateRouterSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to updateRouter. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+        updateRouterOperationSettings() {
+      return updateRouterOperationSettings;
     }
 
     @Override

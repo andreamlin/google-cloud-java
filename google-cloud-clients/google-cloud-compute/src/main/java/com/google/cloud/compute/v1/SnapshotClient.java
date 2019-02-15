@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.SnapshotStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
  *   ProjectGlobalSnapshotName snapshot = ProjectGlobalSnapshotName.of("[PROJECT]", "[SNAPSHOT]");
- *   Operation response = snapshotClient.deleteSnapshot(snapshot);
+ *   Snapshot response = snapshotClient.getSnapshot(snapshot);
  * }
  * </code>
  * </pre>
@@ -103,6 +106,7 @@ import javax.annotation.Generated;
 public class SnapshotClient implements BackgroundResource {
   private final SnapshotSettings settings;
   private final SnapshotStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of SnapshotClient with default settings. */
   public static final SnapshotClient create() throws IOException {
@@ -133,12 +137,14 @@ public class SnapshotClient implements BackgroundResource {
   protected SnapshotClient(SnapshotSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((SnapshotStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected SnapshotClient(SnapshotStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final SnapshotSettings getSettings() {
@@ -150,35 +156,14 @@ public class SnapshotClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Deletes the specified Snapshot resource. Keep in mind that deleting a single snapshot might not
-   * necessarily delete all the data on that snapshot. If any data on the snapshot that is marked
-   * for deletion is needed for subsequent snapshots, the data will be moved to the next
-   * corresponding snapshot.
-   *
-   * <p>For more information, see Deleting snapshots.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
-   *   ProjectGlobalSnapshotName snapshot = ProjectGlobalSnapshotName.of("[PROJECT]", "[SNAPSHOT]");
-   *   Operation response = snapshotClient.deleteSnapshot(snapshot);
-   * }
-   * </code></pre>
-   *
-   * @param snapshot Name of the Snapshot resource to delete.
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation deleteSnapshot(ProjectGlobalSnapshotName snapshot) {
-
-    DeleteSnapshotHttpRequest request =
-        DeleteSnapshotHttpRequest.newBuilder()
-            .setSnapshot(snapshot == null ? null : snapshot.toString())
-            .build();
-    return deleteSnapshot(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -195,19 +180,53 @@ public class SnapshotClient implements BackgroundResource {
    * <pre><code>
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
    *   ProjectGlobalSnapshotName snapshot = ProjectGlobalSnapshotName.of("[PROJECT]", "[SNAPSHOT]");
-   *   Operation response = snapshotClient.deleteSnapshot(snapshot.toString());
+   *   snapshotClient.deleteSnapshotAsync(snapshot).get();
    * }
    * </code></pre>
    *
    * @param snapshot Name of the Snapshot resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSnapshot(String snapshot) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSnapshotAsync(
+      ProjectGlobalSnapshotName snapshot) {
+
+    DeleteSnapshotHttpRequest request =
+        DeleteSnapshotHttpRequest.newBuilder()
+            .setSnapshot(snapshot == null ? null : snapshot.toString())
+            .build();
+    return deleteSnapshotAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified Snapshot resource. Keep in mind that deleting a single snapshot might not
+   * necessarily delete all the data on that snapshot. If any data on the snapshot that is marked
+   * for deletion is needed for subsequent snapshots, the data will be moved to the next
+   * corresponding snapshot.
+   *
+   * <p>For more information, see Deleting snapshots.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
+   *   ProjectGlobalSnapshotName snapshot = ProjectGlobalSnapshotName.of("[PROJECT]", "[SNAPSHOT]");
+   *   snapshotClient.deleteSnapshotAsync(snapshot.toString()).get();
+   * }
+   * </code></pre>
+   *
+   * @param snapshot Name of the Snapshot resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSnapshotAsync(String snapshot) {
 
     DeleteSnapshotHttpRequest request =
         DeleteSnapshotHttpRequest.newBuilder().setSnapshot(snapshot).build();
-    return deleteSnapshot(request);
+    return deleteSnapshotAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -227,16 +246,47 @@ public class SnapshotClient implements BackgroundResource {
    *   DeleteSnapshotHttpRequest request = DeleteSnapshotHttpRequest.newBuilder()
    *     .setSnapshot(snapshot.toString())
    *     .build();
-   *   Operation response = snapshotClient.deleteSnapshot(request);
+   *   snapshotClient.deleteSnapshotAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSnapshot(DeleteSnapshotHttpRequest request) {
-    return deleteSnapshotCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSnapshotAsync(
+      DeleteSnapshotHttpRequest request) {
+    return deleteSnapshotOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified Snapshot resource. Keep in mind that deleting a single snapshot might not
+   * necessarily delete all the data on that snapshot. If any data on the snapshot that is marked
+   * for deletion is needed for subsequent snapshots, the data will be moved to the next
+   * corresponding snapshot.
+   *
+   * <p>For more information, see Deleting snapshots.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
+   *   ProjectGlobalSnapshotName snapshot = ProjectGlobalSnapshotName.of("[PROJECT]", "[SNAPSHOT]");
+   *   DeleteSnapshotHttpRequest request = DeleteSnapshotHttpRequest.newBuilder()
+   *     .setSnapshot(snapshot.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = snapshotClient.deleteSnapshotOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSnapshotOperationCallable() {
+    return stub.deleteSnapshotOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -258,7 +308,7 @@ public class SnapshotClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = snapshotClient.deleteSnapshotCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -730,7 +780,7 @@ public class SnapshotClient implements BackgroundResource {
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
    *   ProjectGlobalSnapshotResourceName resource = ProjectGlobalSnapshotResourceName.of("[PROJECT]", "[RESOURCE]");
    *   GlobalSetLabelsRequest globalSetLabelsRequestResource = GlobalSetLabelsRequest.newBuilder().build();
-   *   Operation response = snapshotClient.setLabelsSnapshot(resource, globalSetLabelsRequestResource);
+   *   snapshotClient.setLabelsSnapshotAsync(resource, globalSetLabelsRequestResource).get();
    * }
    * </code></pre>
    *
@@ -738,8 +788,9 @@ public class SnapshotClient implements BackgroundResource {
    * @param globalSetLabelsRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setLabelsSnapshot(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsSnapshotAsync(
       ProjectGlobalSnapshotResourceName resource,
       GlobalSetLabelsRequest globalSetLabelsRequestResource) {
 
@@ -748,7 +799,7 @@ public class SnapshotClient implements BackgroundResource {
             .setResource(resource == null ? null : resource.toString())
             .setGlobalSetLabelsRequestResource(globalSetLabelsRequestResource)
             .build();
-    return setLabelsSnapshot(request);
+    return setLabelsSnapshotAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -762,7 +813,7 @@ public class SnapshotClient implements BackgroundResource {
    * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
    *   ProjectGlobalSnapshotResourceName resource = ProjectGlobalSnapshotResourceName.of("[PROJECT]", "[RESOURCE]");
    *   GlobalSetLabelsRequest globalSetLabelsRequestResource = GlobalSetLabelsRequest.newBuilder().build();
-   *   Operation response = snapshotClient.setLabelsSnapshot(resource.toString(), globalSetLabelsRequestResource);
+   *   snapshotClient.setLabelsSnapshotAsync(resource.toString(), globalSetLabelsRequestResource).get();
    * }
    * </code></pre>
    *
@@ -770,8 +821,9 @@ public class SnapshotClient implements BackgroundResource {
    * @param globalSetLabelsRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setLabelsSnapshot(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsSnapshotAsync(
       String resource, GlobalSetLabelsRequest globalSetLabelsRequestResource) {
 
     SetLabelsSnapshotHttpRequest request =
@@ -779,7 +831,7 @@ public class SnapshotClient implements BackgroundResource {
             .setResource(resource)
             .setGlobalSetLabelsRequestResource(globalSetLabelsRequestResource)
             .build();
-    return setLabelsSnapshot(request);
+    return setLabelsSnapshotAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -797,16 +849,45 @@ public class SnapshotClient implements BackgroundResource {
    *     .setResource(resource.toString())
    *     .setGlobalSetLabelsRequestResource(globalSetLabelsRequestResource)
    *     .build();
-   *   Operation response = snapshotClient.setLabelsSnapshot(request);
+   *   snapshotClient.setLabelsSnapshotAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setLabelsSnapshot(SetLabelsSnapshotHttpRequest request) {
-    return setLabelsSnapshotCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsSnapshotAsync(
+      SetLabelsSnapshotHttpRequest request) {
+    return setLabelsSnapshotOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
+   * documentation.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SnapshotClient snapshotClient = SnapshotClient.create()) {
+   *   ProjectGlobalSnapshotResourceName resource = ProjectGlobalSnapshotResourceName.of("[PROJECT]", "[RESOURCE]");
+   *   GlobalSetLabelsRequest globalSetLabelsRequestResource = GlobalSetLabelsRequest.newBuilder().build();
+   *   SetLabelsSnapshotHttpRequest request = SetLabelsSnapshotHttpRequest.newBuilder()
+   *     .setResource(resource.toString())
+   *     .setGlobalSetLabelsRequestResource(globalSetLabelsRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = snapshotClient.setLabelsSnapshotOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsSnapshotOperationCallable() {
+    return stub.setLabelsSnapshotOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -826,7 +907,7 @@ public class SnapshotClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = snapshotClient.setLabelsSnapshotCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

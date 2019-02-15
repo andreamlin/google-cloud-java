@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.RegionAutoscalerClient.ListRegionAutos
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.Autoscaler;
 import com.google.cloud.compute.v1.DeleteRegionAutoscalerHttpRequest;
@@ -41,6 +43,18 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class RegionAutoscalerStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionAutoscalerOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteRegionAutoscalerOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteRegionAutoscalerHttpRequest, Operation>
       deleteRegionAutoscalerCallable() {
@@ -50,6 +64,13 @@ public abstract class RegionAutoscalerStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerCallable() {
     throw new UnsupportedOperationException("Not implemented: getRegionAutoscalerCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionAutoscalerOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertRegionAutoscalerOperationCallable()");
   }
 
   @BetaApi
@@ -71,10 +92,24 @@ public abstract class RegionAutoscalerStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: listRegionAutoscalersCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionAutoscalerOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: patchRegionAutoscalerOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<PatchRegionAutoscalerHttpRequest, Operation>
       patchRegionAutoscalerCallable() {
     throw new UnsupportedOperationException("Not implemented: patchRegionAutoscalerCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      updateRegionAutoscalerOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: updateRegionAutoscalerOperationCallable()");
   }
 
   @BetaApi

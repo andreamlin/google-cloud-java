@@ -26,6 +26,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonLicenseStub.testIamPermis
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -37,10 +38,10 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.LicenseStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -92,18 +93,14 @@ public class LicenseClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteLicenseTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteLicenseTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockLicenses.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteLicenseTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalLicenseName license = ProjectGlobalLicenseName.of("[PROJECT]", "[LICENSE]");
 
-    Void actualResponse = client.deleteLicenseAsync(license).get();
+    EmptyMessage actualResponse = client.deleteLicenseAsync(license).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -137,7 +134,7 @@ public class LicenseClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -259,19 +256,15 @@ public class LicenseClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertLicenseTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertLicenseTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockLicenses.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertLicenseTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     License licenseResource = License.newBuilder().build();
 
-    Void actualResponse = client.insertLicenseAsync(project, licenseResource).get();
+    EmptyMessage actualResponse = client.insertLicenseAsync(project, licenseResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -306,7 +299,7 @@ public class LicenseClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 

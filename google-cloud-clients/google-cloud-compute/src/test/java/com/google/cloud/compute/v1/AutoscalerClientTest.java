@@ -27,6 +27,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonAutoscalerStub.updateAuto
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -38,13 +39,13 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.AutoscalerStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -159,19 +160,15 @@ public class AutoscalerClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteAutoscalerTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteAutoscalerTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockAutoscalers.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteAutoscalerTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneAutoscalerName autoscaler =
         ProjectZoneAutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
 
-    Void actualResponse = client.deleteAutoscalerAsync(autoscaler).get();
+    EmptyMessage actualResponse = client.deleteAutoscalerAsync(autoscaler).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -206,7 +203,7 @@ public class AutoscalerClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -281,19 +278,15 @@ public class AutoscalerClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertAutoscalerTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertAutoscalerTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockAutoscalers.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertAutoscalerTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
     Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
 
-    Void actualResponse = client.insertAutoscalerAsync(zone, autoscalerResource).get();
+    EmptyMessage actualResponse = client.insertAutoscalerAsync(zone, autoscalerResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -328,7 +321,7 @@ public class AutoscalerClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -395,21 +388,17 @@ public class AutoscalerClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchAutoscalerTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("patchAutoscalerTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockAutoscalers.addResponse(resultOperation);
+        Operation.newBuilder().setName("patchAutoscalerTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     String autoscaler = "autoscaler517258967";
     ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
     Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.patchAutoscalerAsync(autoscaler, zone, autoscalerResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -447,28 +436,24 @@ public class AutoscalerClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void updateAutoscalerTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("updateAutoscalerTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockAutoscalers.addResponse(resultOperation);
+        Operation.newBuilder().setName("updateAutoscalerTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     String autoscaler = "autoscaler517258967";
     ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
     Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.updateAutoscalerAsync(autoscaler, zone, autoscalerResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -506,7 +491,7 @@ public class AutoscalerClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

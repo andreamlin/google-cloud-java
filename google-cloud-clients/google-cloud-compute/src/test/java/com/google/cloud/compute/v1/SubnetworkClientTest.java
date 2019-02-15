@@ -33,6 +33,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonSubnetworkStub.testIamPer
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -44,13 +45,13 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.SubnetworkStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -170,19 +171,15 @@ public class SubnetworkClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteSubnetworkTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteSubnetworkTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSubnetworks.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteSubnetworkTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionSubnetworkName subnetwork =
         ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
 
-    Void actualResponse = client.deleteSubnetworkAsync(subnetwork).get();
+    EmptyMessage actualResponse = client.deleteSubnetworkAsync(subnetwork).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -217,28 +214,24 @@ public class SubnetworkClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void expandIpCidrRangeSubnetworkTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("expandIpCidrRangeSubnetworkTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSubnetworks.addResponse(resultOperation);
+        Operation.newBuilder().setName("expandIpCidrRangeSubnetworkTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionSubnetworkName subnetwork =
         ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
     SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource =
         SubnetworksExpandIpCidrRangeRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .expandIpCidrRangeSubnetworkAsync(
                 subnetwork, subnetworksExpandIpCidrRangeRequestResource)
@@ -281,7 +274,7 @@ public class SubnetworkClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -412,19 +405,15 @@ public class SubnetworkClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertSubnetworkTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertSubnetworkTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSubnetworks.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertSubnetworkTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
     Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
 
-    Void actualResponse = client.insertSubnetworkAsync(region, subnetworkResource).get();
+    EmptyMessage actualResponse = client.insertSubnetworkAsync(region, subnetworkResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -459,7 +448,7 @@ public class SubnetworkClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -586,21 +575,17 @@ public class SubnetworkClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchSubnetworkTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("patchSubnetworkTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSubnetworks.addResponse(resultOperation);
+        Operation.newBuilder().setName("patchSubnetworkTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionSubnetworkName subnetwork =
         ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
     Subnetwork subnetworkResource = Subnetwork.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.patchSubnetworkAsync(subnetwork, subnetworkResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -638,7 +623,7 @@ public class SubnetworkClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -699,21 +684,20 @@ public class SubnetworkClientTest {
   @Test
   @SuppressWarnings("all")
   public void setPrivateIpGoogleAccessSubnetworkTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("setPrivateIpGoogleAccessSubnetworkTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockSubnetworks.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectRegionSubnetworkName subnetwork =
         ProjectRegionSubnetworkName.of("[PROJECT]", "[REGION]", "[SUBNETWORK]");
     SubnetworksSetPrivateIpGoogleAccessRequest subnetworksSetPrivateIpGoogleAccessRequestResource =
         SubnetworksSetPrivateIpGoogleAccessRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setPrivateIpGoogleAccessSubnetworkAsync(
                 subnetwork, subnetworksSetPrivateIpGoogleAccessRequestResource)
@@ -758,7 +742,7 @@ public class SubnetworkClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 

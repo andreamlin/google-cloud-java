@@ -23,13 +23,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -70,13 +75,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteGlobalAddress to 30 seconds:
+ * example, to set the total timeout of getGlobalAddress to 30 seconds:
  *
  * <pre>
  * <code>
  * GlobalAddressStubSettings.Builder globalAddressSettingsBuilder =
  *     GlobalAddressStubSettings.newBuilder();
- * globalAddressSettingsBuilder.deleteGlobalAddressSettings().getRetrySettings().toBuilder()
+ * globalAddressSettingsBuilder.getGlobalAddressSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * GlobalAddressStubSettings globalAddressSettings = globalAddressSettingsBuilder.build();
  * </code>
@@ -98,9 +103,13 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
 
   private final UnaryCallSettings<DeleteGlobalAddressHttpRequest, Operation>
       deleteGlobalAddressSettings;
+  private final OperationCallSettings<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+      deleteGlobalAddressOperationSettings;
   private final UnaryCallSettings<GetGlobalAddressHttpRequest, Address> getGlobalAddressSettings;
   private final UnaryCallSettings<InsertGlobalAddressHttpRequest, Operation>
       insertGlobalAddressSettings;
+  private final OperationCallSettings<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+      insertGlobalAddressOperationSettings;
   private final PagedCallSettings<
           ListGlobalAddressesHttpRequest, AddressList, ListGlobalAddressesPagedResponse>
       listGlobalAddressesSettings;
@@ -109,6 +118,13 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
   public UnaryCallSettings<DeleteGlobalAddressHttpRequest, Operation>
       deleteGlobalAddressSettings() {
     return deleteGlobalAddressSettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteGlobalAddress. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+      deleteGlobalAddressOperationSettings() {
+    return deleteGlobalAddressOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getGlobalAddress. */
@@ -120,6 +136,13 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
   public UnaryCallSettings<InsertGlobalAddressHttpRequest, Operation>
       insertGlobalAddressSettings() {
     return insertGlobalAddressSettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertGlobalAddress. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+      insertGlobalAddressOperationSettings() {
+    return insertGlobalAddressOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listGlobalAddresses. */
@@ -205,8 +228,12 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
     super(settingsBuilder);
 
     deleteGlobalAddressSettings = settingsBuilder.deleteGlobalAddressSettings().build();
+    deleteGlobalAddressOperationSettings =
+        settingsBuilder.deleteGlobalAddressOperationSettings().build();
     getGlobalAddressSettings = settingsBuilder.getGlobalAddressSettings().build();
     insertGlobalAddressSettings = settingsBuilder.insertGlobalAddressSettings().build();
+    insertGlobalAddressOperationSettings =
+        settingsBuilder.insertGlobalAddressOperationSettings().build();
     listGlobalAddressesSettings = settingsBuilder.listGlobalAddressesSettings().build();
   }
 
@@ -274,10 +301,16 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
 
     private final UnaryCallSettings.Builder<DeleteGlobalAddressHttpRequest, Operation>
         deleteGlobalAddressSettings;
+    private final OperationCallSettings.Builder<
+            DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+        deleteGlobalAddressOperationSettings;
     private final UnaryCallSettings.Builder<GetGlobalAddressHttpRequest, Address>
         getGlobalAddressSettings;
     private final UnaryCallSettings.Builder<InsertGlobalAddressHttpRequest, Operation>
         insertGlobalAddressSettings;
+    private final OperationCallSettings.Builder<
+            InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+        insertGlobalAddressOperationSettings;
     private final PagedCallSettings.Builder<
             ListGlobalAddressesHttpRequest, AddressList, ListGlobalAddressesPagedResponse>
         listGlobalAddressesSettings;
@@ -325,9 +358,13 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
 
       deleteGlobalAddressSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteGlobalAddressOperationSettings = OperationCallSettings.newBuilder();
+
       getGlobalAddressSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertGlobalAddressSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      insertGlobalAddressOperationSettings = OperationCallSettings.newBuilder();
 
       listGlobalAddressesSettings =
           PagedCallSettings.newBuilder(LIST_GLOBAL_ADDRESSES_PAGE_STR_FACT);
@@ -372,6 +409,48 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
           .listGlobalAddressesSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .deleteGlobalAddressOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteGlobalAddressHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertGlobalAddressOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertGlobalAddressHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -380,8 +459,12 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
       super(settings);
 
       deleteGlobalAddressSettings = settings.deleteGlobalAddressSettings.toBuilder();
+      deleteGlobalAddressOperationSettings =
+          settings.deleteGlobalAddressOperationSettings.toBuilder();
       getGlobalAddressSettings = settings.getGlobalAddressSettings.toBuilder();
       insertGlobalAddressSettings = settings.insertGlobalAddressSettings.toBuilder();
+      insertGlobalAddressOperationSettings =
+          settings.insertGlobalAddressOperationSettings.toBuilder();
       listGlobalAddressesSettings = settings.listGlobalAddressesSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
@@ -414,6 +497,14 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
       return deleteGlobalAddressSettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteGlobalAddress. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+        deleteGlobalAddressOperationSettings() {
+      return deleteGlobalAddressOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to getGlobalAddress. */
     public UnaryCallSettings.Builder<GetGlobalAddressHttpRequest, Address>
         getGlobalAddressSettings() {
@@ -424,6 +515,14 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
     public UnaryCallSettings.Builder<InsertGlobalAddressHttpRequest, Operation>
         insertGlobalAddressSettings() {
       return insertGlobalAddressSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertGlobalAddress. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+        insertGlobalAddressOperationSettings() {
+      return insertGlobalAddressOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listGlobalAddresses. */

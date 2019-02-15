@@ -22,10 +22,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -49,13 +51,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteNodeTemplate to 30 seconds:
+ * example, to set the total timeout of getNodeTemplate to 30 seconds:
  *
  * <pre>
  * <code>
  * NodeTemplateSettings.Builder nodeTemplateSettingsBuilder =
  *     NodeTemplateSettings.newBuilder();
- * nodeTemplateSettingsBuilder.deleteNodeTemplateSettings().getRetrySettings().toBuilder()
+ * nodeTemplateSettingsBuilder.getNodeTemplateSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * NodeTemplateSettings nodeTemplateSettings = nodeTemplateSettingsBuilder.build();
  * </code>
@@ -78,6 +80,14 @@ public class NodeTemplateSettings extends ClientSettings<NodeTemplateSettings> {
     return ((NodeTemplateStubSettings) getStubSettings()).deleteNodeTemplateSettings();
   }
 
+  /** Returns the object with the settings used for calls to deleteNodeTemplate. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodeTemplateOperationSettings() {
+    return ((NodeTemplateStubSettings) getStubSettings()).deleteNodeTemplateOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to getNodeTemplate. */
   public UnaryCallSettings<GetNodeTemplateHttpRequest, NodeTemplate> getNodeTemplateSettings() {
     return ((NodeTemplateStubSettings) getStubSettings()).getNodeTemplateSettings();
@@ -92,6 +102,14 @@ public class NodeTemplateSettings extends ClientSettings<NodeTemplateSettings> {
   /** Returns the object with the settings used for calls to insertNodeTemplate. */
   public UnaryCallSettings<InsertNodeTemplateHttpRequest, Operation> insertNodeTemplateSettings() {
     return ((NodeTemplateStubSettings) getStubSettings()).insertNodeTemplateSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertNodeTemplate. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      insertNodeTemplateOperationSettings() {
+    return ((NodeTemplateStubSettings) getStubSettings()).insertNodeTemplateOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listNodeTemplates. */
@@ -230,6 +248,14 @@ public class NodeTemplateSettings extends ClientSettings<NodeTemplateSettings> {
       return getStubSettingsBuilder().deleteNodeTemplateSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteNodeTemplate. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+        deleteNodeTemplateOperationSettings() {
+      return getStubSettingsBuilder().deleteNodeTemplateOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getNodeTemplate. */
     public UnaryCallSettings.Builder<GetNodeTemplateHttpRequest, NodeTemplate>
         getNodeTemplateSettings() {
@@ -246,6 +272,14 @@ public class NodeTemplateSettings extends ClientSettings<NodeTemplateSettings> {
     public UnaryCallSettings.Builder<InsertNodeTemplateHttpRequest, Operation>
         insertNodeTemplateSettings() {
       return getStubSettingsBuilder().insertNodeTemplateSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertNodeTemplate. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+        insertNodeTemplateOperationSettings() {
+      return getStubSettingsBuilder().insertNodeTemplateOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listNodeTemplates. */

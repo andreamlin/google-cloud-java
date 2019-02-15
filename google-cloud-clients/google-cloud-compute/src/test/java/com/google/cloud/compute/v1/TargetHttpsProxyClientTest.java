@@ -27,6 +27,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonTargetHttpsProxyStub.setU
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -38,10 +39,10 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.TargetHttpsProxyStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -94,19 +95,15 @@ public class TargetHttpsProxyClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteTargetHttpsProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteTargetHttpsProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetHttpsProxies.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteTargetHttpsProxyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalTargetHttpsProxyName targetHttpsProxy =
         ProjectGlobalTargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
 
-    Void actualResponse = client.deleteTargetHttpsProxyAsync(targetHttpsProxy).get();
+    EmptyMessage actualResponse = client.deleteTargetHttpsProxyAsync(targetHttpsProxy).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -141,7 +138,7 @@ public class TargetHttpsProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -215,19 +212,15 @@ public class TargetHttpsProxyClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertTargetHttpsProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertTargetHttpsProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetHttpsProxies.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertTargetHttpsProxyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     TargetHttpsProxy targetHttpsProxyResource = TargetHttpsProxy.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.insertTargetHttpsProxyAsync(project, targetHttpsProxyResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -263,7 +256,7 @@ public class TargetHttpsProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -330,21 +323,20 @@ public class TargetHttpsProxyClientTest {
   @Test
   @SuppressWarnings("all")
   public void setQuicOverrideTargetHttpsProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("setQuicOverrideTargetHttpsProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockTargetHttpsProxies.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalTargetHttpsProxyName targetHttpsProxy =
         ProjectGlobalTargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
     TargetHttpsProxiesSetQuicOverrideRequest targetHttpsProxiesSetQuicOverrideRequestResource =
         TargetHttpsProxiesSetQuicOverrideRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setQuicOverrideTargetHttpsProxyAsync(
                 targetHttpsProxy, targetHttpsProxiesSetQuicOverrideRequestResource)
@@ -388,21 +380,20 @@ public class TargetHttpsProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setSslCertificatesTargetHttpsProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("setSslCertificatesTargetHttpsProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockTargetHttpsProxies.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectTargetHttpsProxyName targetHttpsProxy =
         ProjectTargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
@@ -410,7 +401,7 @@ public class TargetHttpsProxyClientTest {
         targetHttpsProxiesSetSslCertificatesRequestResource =
             TargetHttpsProxiesSetSslCertificatesRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setSslCertificatesTargetHttpsProxyAsync(
                 targetHttpsProxy, targetHttpsProxiesSetSslCertificatesRequestResource)
@@ -455,27 +446,26 @@ public class TargetHttpsProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setSslPolicyTargetHttpsProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("setSslPolicyTargetHttpsProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockTargetHttpsProxies.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalTargetHttpsProxyName targetHttpsProxy =
         ProjectGlobalTargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
     SslPolicyReference sslPolicyReferenceResource = SslPolicyReference.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setSslPolicyTargetHttpsProxyAsync(targetHttpsProxy, sslPolicyReferenceResource)
             .get();
@@ -514,27 +504,23 @@ public class TargetHttpsProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setUrlMapTargetHttpsProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setUrlMapTargetHttpsProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetHttpsProxies.addResponse(resultOperation);
+        Operation.newBuilder().setName("setUrlMapTargetHttpsProxyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectTargetHttpsProxyName targetHttpsProxy =
         ProjectTargetHttpsProxyName.of("[PROJECT]", "[TARGET_HTTPS_PROXY]");
     UrlMapReference urlMapReferenceResource = UrlMapReference.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.setUrlMapTargetHttpsProxyAsync(targetHttpsProxy, urlMapReferenceResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -571,7 +557,7 @@ public class TargetHttpsProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

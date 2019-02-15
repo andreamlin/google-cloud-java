@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteLicense to 30 seconds:
+ * example, to set the total timeout of getLicense to 30 seconds:
  *
  * <pre>
  * <code>
  * LicenseSettings.Builder licenseSettingsBuilder =
  *     LicenseSettings.newBuilder();
- * licenseSettingsBuilder.deleteLicenseSettings().getRetrySettings().toBuilder()
+ * licenseSettingsBuilder.getLicenseSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * LicenseSettings licenseSettings = licenseSettingsBuilder.build();
  * </code>
@@ -66,6 +68,14 @@ public class LicenseSettings extends ClientSettings<LicenseSettings> {
   /** Returns the object with the settings used for calls to deleteLicense. */
   public UnaryCallSettings<DeleteLicenseHttpRequest, Operation> deleteLicenseSettings() {
     return ((LicenseStubSettings) getStubSettings()).deleteLicenseSettings();
+  }
+
+  /** Returns the object with the settings used for calls to deleteLicense. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+      deleteLicenseOperationSettings() {
+    return ((LicenseStubSettings) getStubSettings()).deleteLicenseOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getLicense. */
@@ -81,6 +91,14 @@ public class LicenseSettings extends ClientSettings<LicenseSettings> {
   /** Returns the object with the settings used for calls to insertLicense. */
   public UnaryCallSettings<InsertLicenseHttpRequest, Operation> insertLicenseSettings() {
     return ((LicenseStubSettings) getStubSettings()).insertLicenseSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertLicense. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+      insertLicenseOperationSettings() {
+    return ((LicenseStubSettings) getStubSettings()).insertLicenseOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listLicenses. */
@@ -206,6 +224,14 @@ public class LicenseSettings extends ClientSettings<LicenseSettings> {
       return getStubSettingsBuilder().deleteLicenseSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteLicense. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+        deleteLicenseOperationSettings() {
+      return getStubSettingsBuilder().deleteLicenseOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getLicense. */
     public UnaryCallSettings.Builder<GetLicenseHttpRequest, License> getLicenseSettings() {
       return getStubSettingsBuilder().getLicenseSettings();
@@ -220,6 +246,14 @@ public class LicenseSettings extends ClientSettings<LicenseSettings> {
     /** Returns the builder for the settings used for calls to insertLicense. */
     public UnaryCallSettings.Builder<InsertLicenseHttpRequest, Operation> insertLicenseSettings() {
       return getStubSettingsBuilder().insertLicenseSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertLicense. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+        insertLicenseOperationSettings() {
+      return getStubSettingsBuilder().insertLicenseOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listLicenses. */

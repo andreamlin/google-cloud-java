@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteGlobalForwardingRule to 30 seconds:
+ * example, to set the total timeout of getGlobalForwardingRule to 30 seconds:
  *
  * <pre>
  * <code>
  * GlobalForwardingRuleSettings.Builder globalForwardingRuleSettingsBuilder =
  *     GlobalForwardingRuleSettings.newBuilder();
- * globalForwardingRuleSettingsBuilder.deleteGlobalForwardingRuleSettings().getRetrySettings().toBuilder()
+ * globalForwardingRuleSettingsBuilder.getGlobalForwardingRuleSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * GlobalForwardingRuleSettings globalForwardingRuleSettings = globalForwardingRuleSettingsBuilder.build();
  * </code>
@@ -70,6 +72,15 @@ public class GlobalForwardingRuleSettings extends ClientSettings<GlobalForwardin
         .deleteGlobalForwardingRuleSettings();
   }
 
+  /** Returns the object with the settings used for calls to deleteGlobalForwardingRule. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      deleteGlobalForwardingRuleOperationSettings() {
+    return ((GlobalForwardingRuleStubSettings) getStubSettings())
+        .deleteGlobalForwardingRuleOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to getGlobalForwardingRule. */
   public UnaryCallSettings<GetGlobalForwardingRuleHttpRequest, ForwardingRule>
       getGlobalForwardingRuleSettings() {
@@ -81,6 +92,15 @@ public class GlobalForwardingRuleSettings extends ClientSettings<GlobalForwardin
       insertGlobalForwardingRuleSettings() {
     return ((GlobalForwardingRuleStubSettings) getStubSettings())
         .insertGlobalForwardingRuleSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertGlobalForwardingRule. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      insertGlobalForwardingRuleOperationSettings() {
+    return ((GlobalForwardingRuleStubSettings) getStubSettings())
+        .insertGlobalForwardingRuleOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listGlobalForwardingRules. */
@@ -98,6 +118,15 @@ public class GlobalForwardingRuleSettings extends ClientSettings<GlobalForwardin
       setTargetGlobalForwardingRuleSettings() {
     return ((GlobalForwardingRuleStubSettings) getStubSettings())
         .setTargetGlobalForwardingRuleSettings();
+  }
+
+  /** Returns the object with the settings used for calls to setTargetGlobalForwardingRule. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetGlobalForwardingRuleOperationSettings() {
+    return ((GlobalForwardingRuleStubSettings) getStubSettings())
+        .setTargetGlobalForwardingRuleOperationSettings();
   }
 
   public static final GlobalForwardingRuleSettings create(GlobalForwardingRuleStubSettings stub)
@@ -209,6 +238,15 @@ public class GlobalForwardingRuleSettings extends ClientSettings<GlobalForwardin
       return getStubSettingsBuilder().deleteGlobalForwardingRuleSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteGlobalForwardingRule. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+        deleteGlobalForwardingRuleOperationSettings() {
+      return getStubSettingsBuilder().deleteGlobalForwardingRuleOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getGlobalForwardingRule. */
     public UnaryCallSettings.Builder<GetGlobalForwardingRuleHttpRequest, ForwardingRule>
         getGlobalForwardingRuleSettings() {
@@ -219,6 +257,15 @@ public class GlobalForwardingRuleSettings extends ClientSettings<GlobalForwardin
     public UnaryCallSettings.Builder<InsertGlobalForwardingRuleHttpRequest, Operation>
         insertGlobalForwardingRuleSettings() {
       return getStubSettingsBuilder().insertGlobalForwardingRuleSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertGlobalForwardingRule. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+        insertGlobalForwardingRuleOperationSettings() {
+      return getStubSettingsBuilder().insertGlobalForwardingRuleOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listGlobalForwardingRules. */
@@ -234,6 +281,15 @@ public class GlobalForwardingRuleSettings extends ClientSettings<GlobalForwardin
     public UnaryCallSettings.Builder<SetTargetGlobalForwardingRuleHttpRequest, Operation>
         setTargetGlobalForwardingRuleSettings() {
       return getStubSettingsBuilder().setTargetGlobalForwardingRuleSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to setTargetGlobalForwardingRule. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+        setTargetGlobalForwardingRuleOperationSettings() {
+      return getStubSettingsBuilder().setTargetGlobalForwardingRuleOperationSettings();
     }
 
     @Override

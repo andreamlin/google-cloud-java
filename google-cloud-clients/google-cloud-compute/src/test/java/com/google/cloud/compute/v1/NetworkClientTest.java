@@ -27,6 +27,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonNetworkStub.switchToCusto
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -38,11 +39,11 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.NetworkStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -95,20 +96,16 @@ public class NetworkClientTest {
   @Test
   @SuppressWarnings("all")
   public void addPeeringNetworkTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("addPeeringNetworkTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockNetworks.addResponse(resultOperation);
+        Operation.newBuilder().setName("addPeeringNetworkTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalNetworkName network = ProjectGlobalNetworkName.of("[PROJECT]", "[NETWORK]");
     NetworksAddPeeringRequest networksAddPeeringRequestResource =
         NetworksAddPeeringRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.addPeeringNetworkAsync(network, networksAddPeeringRequestResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -145,25 +142,21 @@ public class NetworkClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void deleteNetworkTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteNetworkTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockNetworks.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteNetworkTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalNetworkName network = ProjectGlobalNetworkName.of("[PROJECT]", "[NETWORK]");
 
-    Void actualResponse = client.deleteNetworkAsync(network).get();
+    EmptyMessage actualResponse = client.deleteNetworkAsync(network).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -197,7 +190,7 @@ public class NetworkClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -268,19 +261,15 @@ public class NetworkClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertNetworkTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertNetworkTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockNetworks.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertNetworkTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     Network networkResource = Network.newBuilder().build();
 
-    Void actualResponse = client.insertNetworkAsync(project, networkResource).get();
+    EmptyMessage actualResponse = client.insertNetworkAsync(project, networkResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -315,7 +304,7 @@ public class NetworkClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -382,20 +371,17 @@ public class NetworkClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchNetworkTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("patchNetworkTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockNetworks.addResponse(resultOperation);
+        Operation.newBuilder().setName("patchNetworkTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalNetworkName network = ProjectGlobalNetworkName.of("[PROJECT]", "[NETWORK]");
     Network networkResource = Network.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse = client.patchNetworkAsync(network, networkResource, fieldMask).get();
+    EmptyMessage actualResponse =
+        client.patchNetworkAsync(network, networkResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -431,27 +417,23 @@ public class NetworkClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void removePeeringNetworkTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("removePeeringNetworkTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockNetworks.addResponse(resultOperation);
+        Operation.newBuilder().setName("removePeeringNetworkTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalNetworkName network = ProjectGlobalNetworkName.of("[PROJECT]", "[NETWORK]");
     NetworksRemovePeeringRequest networksRemovePeeringRequestResource =
         NetworksRemovePeeringRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.removePeeringNetworkAsync(network, networksRemovePeeringRequestResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -488,25 +470,21 @@ public class NetworkClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void switchToCustomModeNetworkTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("switchToCustomModeNetworkTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockNetworks.addResponse(resultOperation);
+        Operation.newBuilder().setName("switchToCustomModeNetworkTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalNetworkName network = ProjectGlobalNetworkName.of("[PROJECT]", "[NETWORK]");
 
-    Void actualResponse = client.switchToCustomModeNetworkAsync(network).get();
+    EmptyMessage actualResponse = client.switchToCustomModeNetworkAsync(network).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -540,7 +518,7 @@ public class NetworkClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

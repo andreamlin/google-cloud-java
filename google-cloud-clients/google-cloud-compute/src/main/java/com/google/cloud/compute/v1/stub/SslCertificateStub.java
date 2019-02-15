@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.SslCertificateClient.ListSslCertificat
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteSslCertificateHttpRequest;
 import com.google.cloud.compute.v1.GetSslCertificateHttpRequest;
@@ -39,6 +41,18 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class SslCertificateStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSslCertificateOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteSslCertificateOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteSslCertificateCallable()");
@@ -47,6 +61,13 @@ public abstract class SslCertificateStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateCallable() {
     throw new UnsupportedOperationException("Not implemented: getSslCertificateCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+      insertSslCertificateOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertSslCertificateOperationCallable()");
   }
 
   @BetaApi

@@ -21,6 +21,8 @@ import static com.google.cloud.compute.v1.SubnetworkClient.ListUsableSubnetworks
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AggregatedListSubnetworksHttpRequest;
 import com.google.cloud.compute.v1.DeleteSubnetworkHttpRequest;
@@ -53,6 +55,11 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class SubnetworkStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
   @BetaApi
   public UnaryCallable<AggregatedListSubnetworksHttpRequest, AggregatedListSubnetworksPagedResponse>
       aggregatedListSubnetworksPagedCallable() {
@@ -66,9 +73,22 @@ public abstract class SubnetworkStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: aggregatedListSubnetworksCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSubnetworkOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deleteSubnetworkOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteSubnetworkHttpRequest, Operation> deleteSubnetworkCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteSubnetworkCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      expandIpCidrRangeSubnetworkOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: expandIpCidrRangeSubnetworkOperationCallable()");
   }
 
   @BetaApi
@@ -86,6 +106,12 @@ public abstract class SubnetworkStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetIamPolicySubnetworkHttpRequest, Policy> getIamPolicySubnetworkCallable() {
     throw new UnsupportedOperationException("Not implemented: getIamPolicySubnetworkCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      insertSubnetworkOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: insertSubnetworkOperationCallable()");
   }
 
   @BetaApi
@@ -117,6 +143,12 @@ public abstract class SubnetworkStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: listUsableSubnetworksCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      patchSubnetworkOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: patchSubnetworkOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<PatchSubnetworkHttpRequest, Operation> patchSubnetworkCallable() {
     throw new UnsupportedOperationException("Not implemented: patchSubnetworkCallable()");
@@ -125,6 +157,14 @@ public abstract class SubnetworkStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<SetIamPolicySubnetworkHttpRequest, Policy> setIamPolicySubnetworkCallable() {
     throw new UnsupportedOperationException("Not implemented: setIamPolicySubnetworkCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      setPrivateIpGoogleAccessSubnetworkOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: setPrivateIpGoogleAccessSubnetworkOperationCallable()");
   }
 
   @BetaApi

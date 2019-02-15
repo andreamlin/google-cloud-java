@@ -20,6 +20,8 @@ import static com.google.cloud.compute.v1.AddressClient.ListAddressesPagedRespon
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.Address;
 import com.google.cloud.compute.v1.AddressAggregatedList;
@@ -42,6 +44,11 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class AddressStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
   @BetaApi
   public UnaryCallable<AggregatedListAddressesHttpRequest, AggregatedListAddressesPagedResponse>
       aggregatedListAddressesPagedCallable() {
@@ -55,6 +62,12 @@ public abstract class AddressStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: aggregatedListAddressesCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+      deleteAddressOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deleteAddressOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteAddressHttpRequest, Operation> deleteAddressCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteAddressCallable()");
@@ -63,6 +76,12 @@ public abstract class AddressStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetAddressHttpRequest, Address> getAddressCallable() {
     throw new UnsupportedOperationException("Not implemented: getAddressCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+      insertAddressOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: insertAddressOperationCallable()");
   }
 
   @BetaApi

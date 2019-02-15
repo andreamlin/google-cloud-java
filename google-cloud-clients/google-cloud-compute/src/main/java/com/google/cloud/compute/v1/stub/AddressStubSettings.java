@@ -24,13 +24,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -74,13 +79,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteAddress to 30 seconds:
+ * example, to set the total timeout of getAddress to 30 seconds:
  *
  * <pre>
  * <code>
  * AddressStubSettings.Builder addressSettingsBuilder =
  *     AddressStubSettings.newBuilder();
- * addressSettingsBuilder.deleteAddressSettings().getRetrySettings().toBuilder()
+ * addressSettingsBuilder.getAddressSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * AddressStubSettings addressSettings = addressSettingsBuilder.build();
  * </code>
@@ -106,8 +111,12 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
           AggregatedListAddressesPagedResponse>
       aggregatedListAddressesSettings;
   private final UnaryCallSettings<DeleteAddressHttpRequest, Operation> deleteAddressSettings;
+  private final OperationCallSettings<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+      deleteAddressOperationSettings;
   private final UnaryCallSettings<GetAddressHttpRequest, Address> getAddressSettings;
   private final UnaryCallSettings<InsertAddressHttpRequest, Operation> insertAddressSettings;
+  private final OperationCallSettings<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+      insertAddressOperationSettings;
   private final PagedCallSettings<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse>
       listAddressesSettings;
 
@@ -125,6 +134,13 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
     return deleteAddressSettings;
   }
 
+  /** Returns the object with the settings used for calls to deleteAddress. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+      deleteAddressOperationSettings() {
+    return deleteAddressOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to getAddress. */
   public UnaryCallSettings<GetAddressHttpRequest, Address> getAddressSettings() {
     return getAddressSettings;
@@ -133,6 +149,13 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
   /** Returns the object with the settings used for calls to insertAddress. */
   public UnaryCallSettings<InsertAddressHttpRequest, Operation> insertAddressSettings() {
     return insertAddressSettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertAddress. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+      insertAddressOperationSettings() {
+    return insertAddressOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listAddresses. */
@@ -217,8 +240,10 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
 
     aggregatedListAddressesSettings = settingsBuilder.aggregatedListAddressesSettings().build();
     deleteAddressSettings = settingsBuilder.deleteAddressSettings().build();
+    deleteAddressOperationSettings = settingsBuilder.deleteAddressOperationSettings().build();
     getAddressSettings = settingsBuilder.getAddressSettings().build();
     insertAddressSettings = settingsBuilder.insertAddressSettings().build();
+    insertAddressOperationSettings = settingsBuilder.insertAddressOperationSettings().build();
     listAddressesSettings = settingsBuilder.listAddressesSettings().build();
   }
 
@@ -358,9 +383,15 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
         aggregatedListAddressesSettings;
     private final UnaryCallSettings.Builder<DeleteAddressHttpRequest, Operation>
         deleteAddressSettings;
+    private final OperationCallSettings.Builder<
+            DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+        deleteAddressOperationSettings;
     private final UnaryCallSettings.Builder<GetAddressHttpRequest, Address> getAddressSettings;
     private final UnaryCallSettings.Builder<InsertAddressHttpRequest, Operation>
         insertAddressSettings;
+    private final OperationCallSettings.Builder<
+            InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+        insertAddressOperationSettings;
     private final PagedCallSettings.Builder<
             ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse>
         listAddressesSettings;
@@ -411,9 +442,13 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
 
       deleteAddressSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteAddressOperationSettings = OperationCallSettings.newBuilder();
+
       getAddressSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertAddressSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      insertAddressOperationSettings = OperationCallSettings.newBuilder();
 
       listAddressesSettings = PagedCallSettings.newBuilder(LIST_ADDRESSES_PAGE_STR_FACT);
 
@@ -463,6 +498,48 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
           .listAddressesSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .deleteAddressOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteAddressHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertAddressOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertAddressHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -472,8 +549,10 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
 
       aggregatedListAddressesSettings = settings.aggregatedListAddressesSettings.toBuilder();
       deleteAddressSettings = settings.deleteAddressSettings.toBuilder();
+      deleteAddressOperationSettings = settings.deleteAddressOperationSettings.toBuilder();
       getAddressSettings = settings.getAddressSettings.toBuilder();
       insertAddressSettings = settings.insertAddressSettings.toBuilder();
+      insertAddressOperationSettings = settings.insertAddressOperationSettings.toBuilder();
       listAddressesSettings = settings.listAddressesSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
@@ -515,6 +594,14 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
       return deleteAddressSettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteAddress. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+        deleteAddressOperationSettings() {
+      return deleteAddressOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to getAddress. */
     public UnaryCallSettings.Builder<GetAddressHttpRequest, Address> getAddressSettings() {
       return getAddressSettings;
@@ -523,6 +610,14 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
     /** Returns the builder for the settings used for calls to insertAddress. */
     public UnaryCallSettings.Builder<InsertAddressHttpRequest, Operation> insertAddressSettings() {
       return insertAddressSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertAddress. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+        insertAddressOperationSettings() {
+      return insertAddressOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listAddresses. */

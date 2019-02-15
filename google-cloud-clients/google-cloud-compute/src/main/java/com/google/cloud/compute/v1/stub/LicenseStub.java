@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.LicenseClient.ListLicensesPagedRespons
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteLicenseHttpRequest;
 import com.google.cloud.compute.v1.GetIamPolicyLicenseHttpRequest;
@@ -44,6 +46,17 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class LicenseStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+      deleteLicenseOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deleteLicenseOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteLicenseHttpRequest, Operation> deleteLicenseCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteLicenseCallable()");
@@ -57,6 +70,12 @@ public abstract class LicenseStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetIamPolicyLicenseHttpRequest, Policy> getIamPolicyLicenseCallable() {
     throw new UnsupportedOperationException("Not implemented: getIamPolicyLicenseCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+      insertLicenseOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: insertLicenseOperationCallable()");
   }
 
   @BetaApi

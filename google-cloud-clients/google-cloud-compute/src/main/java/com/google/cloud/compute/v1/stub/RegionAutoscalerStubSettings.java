@@ -23,13 +23,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -72,13 +77,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteRegionAutoscaler to 30 seconds:
+ * example, to set the total timeout of getRegionAutoscaler to 30 seconds:
  *
  * <pre>
  * <code>
  * RegionAutoscalerStubSettings.Builder regionAutoscalerSettingsBuilder =
  *     RegionAutoscalerStubSettings.newBuilder();
- * regionAutoscalerSettingsBuilder.deleteRegionAutoscalerSettings().getRetrySettings().toBuilder()
+ * regionAutoscalerSettingsBuilder.getRegionAutoscalerSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * RegionAutoscalerStubSettings regionAutoscalerSettings = regionAutoscalerSettingsBuilder.build();
  * </code>
@@ -100,10 +105,14 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
 
   private final UnaryCallSettings<DeleteRegionAutoscalerHttpRequest, Operation>
       deleteRegionAutoscalerSettings;
+  private final OperationCallSettings<DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionAutoscalerOperationSettings;
   private final UnaryCallSettings<GetRegionAutoscalerHttpRequest, Autoscaler>
       getRegionAutoscalerSettings;
   private final UnaryCallSettings<InsertRegionAutoscalerHttpRequest, Operation>
       insertRegionAutoscalerSettings;
+  private final OperationCallSettings<InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionAutoscalerOperationSettings;
   private final PagedCallSettings<
           ListRegionAutoscalersHttpRequest,
           RegionAutoscalerList,
@@ -111,13 +120,24 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
       listRegionAutoscalersSettings;
   private final UnaryCallSettings<PatchRegionAutoscalerHttpRequest, Operation>
       patchRegionAutoscalerSettings;
+  private final OperationCallSettings<PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionAutoscalerOperationSettings;
   private final UnaryCallSettings<UpdateRegionAutoscalerHttpRequest, Operation>
       updateRegionAutoscalerSettings;
+  private final OperationCallSettings<UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      updateRegionAutoscalerOperationSettings;
 
   /** Returns the object with the settings used for calls to deleteRegionAutoscaler. */
   public UnaryCallSettings<DeleteRegionAutoscalerHttpRequest, Operation>
       deleteRegionAutoscalerSettings() {
     return deleteRegionAutoscalerSettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteRegionAutoscaler. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionAutoscalerOperationSettings() {
+    return deleteRegionAutoscalerOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getRegionAutoscaler. */
@@ -130,6 +150,13 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
   public UnaryCallSettings<InsertRegionAutoscalerHttpRequest, Operation>
       insertRegionAutoscalerSettings() {
     return insertRegionAutoscalerSettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertRegionAutoscaler. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionAutoscalerOperationSettings() {
+    return insertRegionAutoscalerOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listRegionAutoscalers. */
@@ -147,10 +174,24 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
     return patchRegionAutoscalerSettings;
   }
 
+  /** Returns the object with the settings used for calls to patchRegionAutoscaler. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionAutoscalerOperationSettings() {
+    return patchRegionAutoscalerOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to updateRegionAutoscaler. */
   public UnaryCallSettings<UpdateRegionAutoscalerHttpRequest, Operation>
       updateRegionAutoscalerSettings() {
     return updateRegionAutoscalerSettings;
+  }
+
+  /** Returns the object with the settings used for calls to updateRegionAutoscaler. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      updateRegionAutoscalerOperationSettings() {
+    return updateRegionAutoscalerOperationSettings;
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -229,11 +270,19 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
     super(settingsBuilder);
 
     deleteRegionAutoscalerSettings = settingsBuilder.deleteRegionAutoscalerSettings().build();
+    deleteRegionAutoscalerOperationSettings =
+        settingsBuilder.deleteRegionAutoscalerOperationSettings().build();
     getRegionAutoscalerSettings = settingsBuilder.getRegionAutoscalerSettings().build();
     insertRegionAutoscalerSettings = settingsBuilder.insertRegionAutoscalerSettings().build();
+    insertRegionAutoscalerOperationSettings =
+        settingsBuilder.insertRegionAutoscalerOperationSettings().build();
     listRegionAutoscalersSettings = settingsBuilder.listRegionAutoscalersSettings().build();
     patchRegionAutoscalerSettings = settingsBuilder.patchRegionAutoscalerSettings().build();
+    patchRegionAutoscalerOperationSettings =
+        settingsBuilder.patchRegionAutoscalerOperationSettings().build();
     updateRegionAutoscalerSettings = settingsBuilder.updateRegionAutoscalerSettings().build();
+    updateRegionAutoscalerOperationSettings =
+        settingsBuilder.updateRegionAutoscalerOperationSettings().build();
   }
 
   private static final PagedListDescriptor<
@@ -309,10 +358,16 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
 
     private final UnaryCallSettings.Builder<DeleteRegionAutoscalerHttpRequest, Operation>
         deleteRegionAutoscalerSettings;
+    private final OperationCallSettings.Builder<
+            DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        deleteRegionAutoscalerOperationSettings;
     private final UnaryCallSettings.Builder<GetRegionAutoscalerHttpRequest, Autoscaler>
         getRegionAutoscalerSettings;
     private final UnaryCallSettings.Builder<InsertRegionAutoscalerHttpRequest, Operation>
         insertRegionAutoscalerSettings;
+    private final OperationCallSettings.Builder<
+            InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        insertRegionAutoscalerOperationSettings;
     private final PagedCallSettings.Builder<
             ListRegionAutoscalersHttpRequest,
             RegionAutoscalerList,
@@ -320,8 +375,14 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
         listRegionAutoscalersSettings;
     private final UnaryCallSettings.Builder<PatchRegionAutoscalerHttpRequest, Operation>
         patchRegionAutoscalerSettings;
+    private final OperationCallSettings.Builder<
+            PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        patchRegionAutoscalerOperationSettings;
     private final UnaryCallSettings.Builder<UpdateRegionAutoscalerHttpRequest, Operation>
         updateRegionAutoscalerSettings;
+    private final OperationCallSettings.Builder<
+            UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        updateRegionAutoscalerOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
         RETRYABLE_CODE_DEFINITIONS;
@@ -366,16 +427,24 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
 
       deleteRegionAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteRegionAutoscalerOperationSettings = OperationCallSettings.newBuilder();
+
       getRegionAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertRegionAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      insertRegionAutoscalerOperationSettings = OperationCallSettings.newBuilder();
 
       listRegionAutoscalersSettings =
           PagedCallSettings.newBuilder(LIST_REGION_AUTOSCALERS_PAGE_STR_FACT);
 
       patchRegionAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      patchRegionAutoscalerOperationSettings = OperationCallSettings.newBuilder();
+
       updateRegionAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      updateRegionAutoscalerOperationSettings = OperationCallSettings.newBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -429,6 +498,94 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
           .updateRegionAutoscalerSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .deleteRegionAutoscalerOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteRegionAutoscalerHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertRegionAutoscalerOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertRegionAutoscalerHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .patchRegionAutoscalerOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<PatchRegionAutoscalerHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .updateRegionAutoscalerOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<UpdateRegionAutoscalerHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -437,11 +594,19 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
       super(settings);
 
       deleteRegionAutoscalerSettings = settings.deleteRegionAutoscalerSettings.toBuilder();
+      deleteRegionAutoscalerOperationSettings =
+          settings.deleteRegionAutoscalerOperationSettings.toBuilder();
       getRegionAutoscalerSettings = settings.getRegionAutoscalerSettings.toBuilder();
       insertRegionAutoscalerSettings = settings.insertRegionAutoscalerSettings.toBuilder();
+      insertRegionAutoscalerOperationSettings =
+          settings.insertRegionAutoscalerOperationSettings.toBuilder();
       listRegionAutoscalersSettings = settings.listRegionAutoscalersSettings.toBuilder();
       patchRegionAutoscalerSettings = settings.patchRegionAutoscalerSettings.toBuilder();
+      patchRegionAutoscalerOperationSettings =
+          settings.patchRegionAutoscalerOperationSettings.toBuilder();
       updateRegionAutoscalerSettings = settings.updateRegionAutoscalerSettings.toBuilder();
+      updateRegionAutoscalerOperationSettings =
+          settings.updateRegionAutoscalerOperationSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -475,6 +640,15 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
       return deleteRegionAutoscalerSettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteRegionAutoscaler. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        deleteRegionAutoscalerOperationSettings() {
+      return deleteRegionAutoscalerOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to getRegionAutoscaler. */
     public UnaryCallSettings.Builder<GetRegionAutoscalerHttpRequest, Autoscaler>
         getRegionAutoscalerSettings() {
@@ -485,6 +659,15 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
     public UnaryCallSettings.Builder<InsertRegionAutoscalerHttpRequest, Operation>
         insertRegionAutoscalerSettings() {
       return insertRegionAutoscalerSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertRegionAutoscaler. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        insertRegionAutoscalerOperationSettings() {
+      return insertRegionAutoscalerOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listRegionAutoscalers. */
@@ -502,10 +685,28 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
       return patchRegionAutoscalerSettings;
     }
 
+    /** Returns the builder for the settings used for calls to patchRegionAutoscaler. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        patchRegionAutoscalerOperationSettings() {
+      return patchRegionAutoscalerOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to updateRegionAutoscaler. */
     public UnaryCallSettings.Builder<UpdateRegionAutoscalerHttpRequest, Operation>
         updateRegionAutoscalerSettings() {
       return updateRegionAutoscalerSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to updateRegionAutoscaler. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        updateRegionAutoscalerOperationSettings() {
+      return updateRegionAutoscalerOperationSettings;
     }
 
     @Override

@@ -26,6 +26,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonRegionBackendServiceStub.
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -37,11 +38,11 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.RegionBackendServiceStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -94,19 +95,15 @@ public class RegionBackendServiceClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteRegionBackendServiceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteRegionBackendServiceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockRegionBackendServices.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteRegionBackendServiceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionBackendServiceName backendService =
         ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
 
-    Void actualResponse = client.deleteRegionBackendServiceAsync(backendService).get();
+    EmptyMessage actualResponse = client.deleteRegionBackendServiceAsync(backendService).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -141,7 +138,7 @@ public class RegionBackendServiceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -284,19 +281,15 @@ public class RegionBackendServiceClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertRegionBackendServiceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertRegionBackendServiceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockRegionBackendServices.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertRegionBackendServiceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
     BackendService backendServiceResource = BackendService.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.insertRegionBackendServiceAsync(region, backendServiceResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -332,7 +325,7 @@ public class RegionBackendServiceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -400,21 +393,17 @@ public class RegionBackendServiceClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchRegionBackendServiceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("patchRegionBackendServiceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockRegionBackendServices.addResponse(resultOperation);
+        Operation.newBuilder().setName("patchRegionBackendServiceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionBackendServiceName backendService =
         ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
     BackendService backendServiceResource = BackendService.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .patchRegionBackendServiceAsync(backendService, backendServiceResource, fieldMask)
             .get();
@@ -456,28 +445,24 @@ public class RegionBackendServiceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void updateRegionBackendServiceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("updateRegionBackendServiceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockRegionBackendServices.addResponse(resultOperation);
+        Operation.newBuilder().setName("updateRegionBackendServiceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionBackendServiceName backendService =
         ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
     BackendService backendServiceResource = BackendService.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .updateRegionBackendServiceAsync(backendService, backendServiceResource, fieldMask)
             .get();
@@ -519,7 +504,7 @@ public class RegionBackendServiceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

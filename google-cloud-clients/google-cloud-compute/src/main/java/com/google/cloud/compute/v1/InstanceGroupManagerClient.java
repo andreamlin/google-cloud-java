@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.InstanceGroupManagerStub;
@@ -43,8 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
  *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
- *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
- *   Operation response = instanceGroupManagerClient.abandonInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersAbandonInstancesRequestResource);
+ *   InstanceGroupManager response = instanceGroupManagerClient.getInstanceGroupManager(instanceGroupManager);
  * }
  * </code>
  * </pre>
@@ -105,6 +107,7 @@ import javax.annotation.Generated;
 public class InstanceGroupManagerClient implements BackgroundResource {
   private final InstanceGroupManagerSettings settings;
   private final InstanceGroupManagerStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of InstanceGroupManagerClient with default settings. */
   public static final InstanceGroupManagerClient create() throws IOException {
@@ -137,12 +140,14 @@ public class InstanceGroupManagerClient implements BackgroundResource {
   protected InstanceGroupManagerClient(InstanceGroupManagerSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((InstanceGroupManagerStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected InstanceGroupManagerClient(InstanceGroupManagerStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final InstanceGroupManagerSettings getSettings() {
@@ -154,50 +159,14 @@ public class InstanceGroupManagerClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Flags the specified instances to be removed from the managed instance group. Abandoning an
-   * instance does not delete the instance, but it does remove the instance from any target pools
-   * that are applied by the managed instance group. This method reduces the targetSize of the
-   * managed instance group by the number of instances that you abandon. This operation is marked as
-   * DONE when the action is scheduled even if the instances have not yet been removed from the
-   * group. You must separately verify the status of the abandoning action with the
-   * listmanagedinstances method.
-   *
-   * <p>If the group is part of a backend service that has enabled connection draining, it can take
-   * up to 60 seconds after the connection draining duration has elapsed before the VM instance is
-   * removed or deleted.
-   *
-   * <p>You can specify a maximum of 1000 instances with this method per request.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
-   *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.abandonInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersAbandonInstancesRequestResource);
-   * }
-   * </code></pre>
-   *
-   * @param instanceGroupManager The name of the managed instance group.
-   * @param instanceGroupManagersAbandonInstancesRequestResource
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation abandonInstancesInstanceGroupManager(
-      ProjectZoneInstanceGroupManagerName instanceGroupManager,
-      InstanceGroupManagersAbandonInstancesRequest
-          instanceGroupManagersAbandonInstancesRequestResource) {
-
-    AbandonInstancesInstanceGroupManagerHttpRequest request =
-        AbandonInstancesInstanceGroupManagerHttpRequest.newBuilder()
-            .setInstanceGroupManager(
-                instanceGroupManager == null ? null : instanceGroupManager.toString())
-            .setInstanceGroupManagersAbandonInstancesRequestResource(
-                instanceGroupManagersAbandonInstancesRequestResource)
-            .build();
-    return abandonInstancesInstanceGroupManager(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -222,7 +191,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.abandonInstancesInstanceGroupManager(instanceGroupManager.toString(), instanceGroupManagersAbandonInstancesRequestResource);
+   *   instanceGroupManagerClient.abandonInstancesInstanceGroupManagerAsync(instanceGroupManager, instanceGroupManagersAbandonInstancesRequestResource).get();
    * }
    * </code></pre>
    *
@@ -230,11 +199,61 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * @param instanceGroupManagersAbandonInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation abandonInstancesInstanceGroupManager(
-      String instanceGroupManager,
-      InstanceGroupManagersAbandonInstancesRequest
-          instanceGroupManagersAbandonInstancesRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      abandonInstancesInstanceGroupManagerAsync(
+          ProjectZoneInstanceGroupManagerName instanceGroupManager,
+          InstanceGroupManagersAbandonInstancesRequest
+              instanceGroupManagersAbandonInstancesRequestResource) {
+
+    AbandonInstancesInstanceGroupManagerHttpRequest request =
+        AbandonInstancesInstanceGroupManagerHttpRequest.newBuilder()
+            .setInstanceGroupManager(
+                instanceGroupManager == null ? null : instanceGroupManager.toString())
+            .setInstanceGroupManagersAbandonInstancesRequestResource(
+                instanceGroupManagersAbandonInstancesRequestResource)
+            .build();
+    return abandonInstancesInstanceGroupManagerAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Flags the specified instances to be removed from the managed instance group. Abandoning an
+   * instance does not delete the instance, but it does remove the instance from any target pools
+   * that are applied by the managed instance group. This method reduces the targetSize of the
+   * managed instance group by the number of instances that you abandon. This operation is marked as
+   * DONE when the action is scheduled even if the instances have not yet been removed from the
+   * group. You must separately verify the status of the abandoning action with the
+   * listmanagedinstances method.
+   *
+   * <p>If the group is part of a backend service that has enabled connection draining, it can take
+   * up to 60 seconds after the connection draining duration has elapsed before the VM instance is
+   * removed or deleted.
+   *
+   * <p>You can specify a maximum of 1000 instances with this method per request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
+   *   instanceGroupManagerClient.abandonInstancesInstanceGroupManagerAsync(instanceGroupManager.toString(), instanceGroupManagersAbandonInstancesRequestResource).get();
+   * }
+   * </code></pre>
+   *
+   * @param instanceGroupManager The name of the managed instance group.
+   * @param instanceGroupManagersAbandonInstancesRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      abandonInstancesInstanceGroupManagerAsync(
+          String instanceGroupManager,
+          InstanceGroupManagersAbandonInstancesRequest
+              instanceGroupManagersAbandonInstancesRequestResource) {
 
     AbandonInstancesInstanceGroupManagerHttpRequest request =
         AbandonInstancesInstanceGroupManagerHttpRequest.newBuilder()
@@ -242,7 +261,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManagersAbandonInstancesRequestResource(
                 instanceGroupManagersAbandonInstancesRequestResource)
             .build();
-    return abandonInstancesInstanceGroupManager(request);
+    return abandonInstancesInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -271,17 +290,58 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setInstanceGroupManagersAbandonInstancesRequestResource(instanceGroupManagersAbandonInstancesRequestResource)
    *     .build();
-   *   Operation response = instanceGroupManagerClient.abandonInstancesInstanceGroupManager(request);
+   *   instanceGroupManagerClient.abandonInstancesInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation abandonInstancesInstanceGroupManager(
-      AbandonInstancesInstanceGroupManagerHttpRequest request) {
-    return abandonInstancesInstanceGroupManagerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      abandonInstancesInstanceGroupManagerAsync(
+          AbandonInstancesInstanceGroupManagerHttpRequest request) {
+    return abandonInstancesInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Flags the specified instances to be removed from the managed instance group. Abandoning an
+   * instance does not delete the instance, but it does remove the instance from any target pools
+   * that are applied by the managed instance group. This method reduces the targetSize of the
+   * managed instance group by the number of instances that you abandon. This operation is marked as
+   * DONE when the action is scheduled even if the instances have not yet been removed from the
+   * group. You must separately verify the status of the abandoning action with the
+   * listmanagedinstances method.
+   *
+   * <p>If the group is part of a backend service that has enabled connection draining, it can take
+   * up to 60 seconds after the connection draining duration has elapsed before the VM instance is
+   * removed or deleted.
+   *
+   * <p>You can specify a maximum of 1000 instances with this method per request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagersAbandonInstancesRequest instanceGroupManagersAbandonInstancesRequestResource = InstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
+   *   AbandonInstancesInstanceGroupManagerHttpRequest request = AbandonInstancesInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .setInstanceGroupManagersAbandonInstancesRequestResource(instanceGroupManagersAbandonInstancesRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.abandonInstancesInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      abandonInstancesInstanceGroupManagerOperationCallable() {
+    return stub.abandonInstancesInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -312,7 +372,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.abandonInstancesInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -476,15 +536,16 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   Operation response = instanceGroupManagerClient.deleteInstanceGroupManager(instanceGroupManager);
+   *   instanceGroupManagerClient.deleteInstanceGroupManagerAsync(instanceGroupManager).get();
    * }
    * </code></pre>
    *
    * @param instanceGroupManager The name of the managed instance group to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceGroupManagerAsync(
       ProjectZoneInstanceGroupManagerName instanceGroupManager) {
 
     DeleteInstanceGroupManagerHttpRequest request =
@@ -492,7 +553,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManager(
                 instanceGroupManager == null ? null : instanceGroupManager.toString())
             .build();
-    return deleteInstanceGroupManager(request);
+    return deleteInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -506,21 +567,23 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   Operation response = instanceGroupManagerClient.deleteInstanceGroupManager(instanceGroupManager.toString());
+   *   instanceGroupManagerClient.deleteInstanceGroupManagerAsync(instanceGroupManager.toString()).get();
    * }
    * </code></pre>
    *
    * @param instanceGroupManager The name of the managed instance group to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteInstanceGroupManager(String instanceGroupManager) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceGroupManagerAsync(
+      String instanceGroupManager) {
 
     DeleteInstanceGroupManagerHttpRequest request =
         DeleteInstanceGroupManagerHttpRequest.newBuilder()
             .setInstanceGroupManager(instanceGroupManager)
             .build();
-    return deleteInstanceGroupManager(request);
+    return deleteInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -537,16 +600,44 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *   DeleteInstanceGroupManagerHttpRequest request = DeleteInstanceGroupManagerHttpRequest.newBuilder()
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .build();
-   *   Operation response = instanceGroupManagerClient.deleteInstanceGroupManager(request);
+   *   instanceGroupManagerClient.deleteInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteInstanceGroupManager(DeleteInstanceGroupManagerHttpRequest request) {
-    return deleteInstanceGroupManagerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceGroupManagerAsync(
+      DeleteInstanceGroupManagerHttpRequest request) {
+    return deleteInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified managed instance group and all of the instances in that group. Note that
+   * the instance group must not belong to a backend service. Read Deleting an instance group for
+   * more information.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   DeleteInstanceGroupManagerHttpRequest request = DeleteInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.deleteInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstanceGroupManagerOperationCallable() {
+    return stub.deleteInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -565,7 +656,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.deleteInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -596,7 +687,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequestResource = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.deleteInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersDeleteInstancesRequestResource);
+   *   instanceGroupManagerClient.deleteInstancesInstanceGroupManagerAsync(instanceGroupManager, instanceGroupManagersDeleteInstancesRequestResource).get();
    * }
    * </code></pre>
    *
@@ -604,8 +695,9 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * @param instanceGroupManagersDeleteInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteInstancesInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstancesInstanceGroupManagerAsync(
       ProjectZoneInstanceGroupManagerName instanceGroupManager,
       InstanceGroupManagersDeleteInstancesRequest
           instanceGroupManagersDeleteInstancesRequestResource) {
@@ -617,7 +709,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManagersDeleteInstancesRequestResource(
                 instanceGroupManagersDeleteInstancesRequestResource)
             .build();
-    return deleteInstancesInstanceGroupManager(request);
+    return deleteInstancesInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -641,7 +733,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequestResource = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.deleteInstancesInstanceGroupManager(instanceGroupManager.toString(), instanceGroupManagersDeleteInstancesRequestResource);
+   *   instanceGroupManagerClient.deleteInstancesInstanceGroupManagerAsync(instanceGroupManager.toString(), instanceGroupManagersDeleteInstancesRequestResource).get();
    * }
    * </code></pre>
    *
@@ -649,8 +741,9 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * @param instanceGroupManagersDeleteInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteInstancesInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstancesInstanceGroupManagerAsync(
       String instanceGroupManager,
       InstanceGroupManagersDeleteInstancesRequest
           instanceGroupManagersDeleteInstancesRequestResource) {
@@ -661,7 +754,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManagersDeleteInstancesRequestResource(
                 instanceGroupManagersDeleteInstancesRequestResource)
             .build();
-    return deleteInstancesInstanceGroupManager(request);
+    return deleteInstancesInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -689,17 +782,56 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setInstanceGroupManagersDeleteInstancesRequestResource(instanceGroupManagersDeleteInstancesRequestResource)
    *     .build();
-   *   Operation response = instanceGroupManagerClient.deleteInstancesInstanceGroupManager(request);
+   *   instanceGroupManagerClient.deleteInstancesInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteInstancesInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstancesInstanceGroupManagerAsync(
       DeleteInstancesInstanceGroupManagerHttpRequest request) {
-    return deleteInstancesInstanceGroupManagerCallable().call(request);
+    return deleteInstancesInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Flags the specified instances in the managed instance group for immediate deletion. The
+   * instances are also removed from any target pools of which they were a member. This method
+   * reduces the targetSize of the managed instance group by the number of instances that you
+   * delete. This operation is marked as DONE when the action is scheduled even if the instances are
+   * still being deleted. You must separately verify the status of the deleting action with the
+   * listmanagedinstances method.
+   *
+   * <p>If the group is part of a backend service that has enabled connection draining, it can take
+   * up to 60 seconds after the connection draining duration has elapsed before the VM instance is
+   * removed or deleted.
+   *
+   * <p>You can specify a maximum of 1000 instances with this method per request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagersDeleteInstancesRequest instanceGroupManagersDeleteInstancesRequestResource = InstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
+   *   DeleteInstancesInstanceGroupManagerHttpRequest request = DeleteInstancesInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .setInstanceGroupManagersDeleteInstancesRequestResource(instanceGroupManagersDeleteInstancesRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.deleteInstancesInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstancesInstanceGroupManagerOperationCallable() {
+    return stub.deleteInstancesInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -729,7 +861,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.deleteInstancesInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -863,7 +995,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
    *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.insertInstanceGroupManager(zone, instanceGroupManagerResource);
+   *   instanceGroupManagerClient.insertInstanceGroupManagerAsync(zone, instanceGroupManagerResource).get();
    * }
    * </code></pre>
    *
@@ -874,8 +1006,9 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     v1.regionInstanceGroupManagers ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceGroupManagerAsync(
       ProjectZoneName zone, InstanceGroupManager instanceGroupManagerResource) {
 
     InsertInstanceGroupManagerHttpRequest request =
@@ -883,7 +1016,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setZone(zone == null ? null : zone.toString())
             .setInstanceGroupManagerResource(instanceGroupManagerResource)
             .build();
-    return insertInstanceGroupManager(request);
+    return insertInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -903,7 +1036,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
    *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.insertInstanceGroupManager(zone.toString(), instanceGroupManagerResource);
+   *   instanceGroupManagerClient.insertInstanceGroupManagerAsync(zone.toString(), instanceGroupManagerResource).get();
    * }
    * </code></pre>
    *
@@ -914,8 +1047,9 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     v1.regionInstanceGroupManagers ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceGroupManagerAsync(
       String zone, InstanceGroupManager instanceGroupManagerResource) {
 
     InsertInstanceGroupManagerHttpRequest request =
@@ -923,7 +1057,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setZone(zone)
             .setInstanceGroupManagerResource(instanceGroupManagerResource)
             .build();
-    return insertInstanceGroupManager(request);
+    return insertInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -947,16 +1081,51 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setZone(zone.toString())
    *     .setInstanceGroupManagerResource(instanceGroupManagerResource)
    *     .build();
-   *   Operation response = instanceGroupManagerClient.insertInstanceGroupManager(request);
+   *   instanceGroupManagerClient.insertInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertInstanceGroupManager(InsertInstanceGroupManagerHttpRequest request) {
-    return insertInstanceGroupManagerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceGroupManagerAsync(
+      InsertInstanceGroupManagerHttpRequest request) {
+    return insertInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a managed instance group using the information that you specify in the request. After
+   * the group is created, instances in the group are created using the specified instance template.
+   * This operation is marked as DONE when the group is created even if the instances in the group
+   * have not yet been created. You must separately verify the status of the individual instances
+   * with the listmanagedinstances method.
+   *
+   * <p>A managed instance group can have up to 1000 VM instances per group. Please contact Cloud
+   * Support if you need an increase in this limit.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
+   *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
+   *   InsertInstanceGroupManagerHttpRequest request = InsertInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setZone(zone.toString())
+   *     .setInstanceGroupManagerResource(instanceGroupManagerResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.insertInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      insertInstanceGroupManagerOperationCallable() {
+    return stub.insertInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -982,7 +1151,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.insertInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1272,7 +1441,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = instanceGroupManagerClient.patchInstanceGroupManager(instanceGroupManager, instanceGroupManagerResource, fieldMask);
+   *   instanceGroupManagerClient.patchInstanceGroupManagerAsync(instanceGroupManager, instanceGroupManagerResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -1287,8 +1456,9 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchInstanceGroupManagerAsync(
       ProjectZoneInstanceGroupManagerName instanceGroupManager,
       InstanceGroupManager instanceGroupManagerResource,
       List<String> fieldMask) {
@@ -1300,7 +1470,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManagerResource(instanceGroupManagerResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchInstanceGroupManager(request);
+    return patchInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1318,7 +1488,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = instanceGroupManagerClient.patchInstanceGroupManager(instanceGroupManager.toString(), instanceGroupManagerResource, fieldMask);
+   *   instanceGroupManagerClient.patchInstanceGroupManagerAsync(instanceGroupManager.toString(), instanceGroupManagerResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -1333,8 +1503,9 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchInstanceGroupManagerAsync(
       String instanceGroupManager,
       InstanceGroupManager instanceGroupManagerResource,
       List<String> fieldMask) {
@@ -1345,7 +1516,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManagerResource(instanceGroupManagerResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchInstanceGroupManager(request);
+    return patchInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1368,16 +1539,50 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManagerResource(instanceGroupManagerResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = instanceGroupManagerClient.patchInstanceGroupManager(request);
+   *   instanceGroupManagerClient.patchInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchInstanceGroupManager(PatchInstanceGroupManagerHttpRequest request) {
-    return patchInstanceGroupManagerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchInstanceGroupManagerAsync(
+      PatchInstanceGroupManagerHttpRequest request) {
+    return patchInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates a managed instance group using the information that you specify in the request. This
+   * operation is marked as DONE when the group is patched even if the instances in the group are
+   * still in the process of being patched. You must separately verify the status of the individual
+   * instances with the listManagedInstances method. This method supports PATCH semantics and uses
+   * the JSON merge patch format and processing rules.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   PatchInstanceGroupManagerHttpRequest request = PatchInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .setInstanceGroupManagerResource(instanceGroupManagerResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.patchInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<PatchInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      patchInstanceGroupManagerOperationCallable() {
+    return stub.patchInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1402,7 +1607,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.patchInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1432,7 +1637,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequestResource = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.recreateInstancesInstanceGroupManager(instanceGroupManager, instanceGroupManagersRecreateInstancesRequestResource);
+   *   instanceGroupManagerClient.recreateInstancesInstanceGroupManagerAsync(instanceGroupManager, instanceGroupManagersRecreateInstancesRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1440,11 +1645,13 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * @param instanceGroupManagersRecreateInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation recreateInstancesInstanceGroupManager(
-      ProjectZoneInstanceGroupManagerName instanceGroupManager,
-      InstanceGroupManagersRecreateInstancesRequest
-          instanceGroupManagersRecreateInstancesRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      recreateInstancesInstanceGroupManagerAsync(
+          ProjectZoneInstanceGroupManagerName instanceGroupManager,
+          InstanceGroupManagersRecreateInstancesRequest
+              instanceGroupManagersRecreateInstancesRequestResource) {
 
     RecreateInstancesInstanceGroupManagerHttpRequest request =
         RecreateInstancesInstanceGroupManagerHttpRequest.newBuilder()
@@ -1453,7 +1660,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManagersRecreateInstancesRequestResource(
                 instanceGroupManagersRecreateInstancesRequestResource)
             .build();
-    return recreateInstancesInstanceGroupManager(request);
+    return recreateInstancesInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1476,7 +1683,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequestResource = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.recreateInstancesInstanceGroupManager(instanceGroupManager.toString(), instanceGroupManagersRecreateInstancesRequestResource);
+   *   instanceGroupManagerClient.recreateInstancesInstanceGroupManagerAsync(instanceGroupManager.toString(), instanceGroupManagersRecreateInstancesRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1484,11 +1691,13 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * @param instanceGroupManagersRecreateInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation recreateInstancesInstanceGroupManager(
-      String instanceGroupManager,
-      InstanceGroupManagersRecreateInstancesRequest
-          instanceGroupManagersRecreateInstancesRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      recreateInstancesInstanceGroupManagerAsync(
+          String instanceGroupManager,
+          InstanceGroupManagersRecreateInstancesRequest
+              instanceGroupManagersRecreateInstancesRequestResource) {
 
     RecreateInstancesInstanceGroupManagerHttpRequest request =
         RecreateInstancesInstanceGroupManagerHttpRequest.newBuilder()
@@ -1496,7 +1705,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManagersRecreateInstancesRequestResource(
                 instanceGroupManagersRecreateInstancesRequestResource)
             .build();
-    return recreateInstancesInstanceGroupManager(request);
+    return recreateInstancesInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1523,17 +1732,56 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setInstanceGroupManagersRecreateInstancesRequestResource(instanceGroupManagersRecreateInstancesRequestResource)
    *     .build();
-   *   Operation response = instanceGroupManagerClient.recreateInstancesInstanceGroupManager(request);
+   *   instanceGroupManagerClient.recreateInstancesInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation recreateInstancesInstanceGroupManager(
-      RecreateInstancesInstanceGroupManagerHttpRequest request) {
-    return recreateInstancesInstanceGroupManagerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      recreateInstancesInstanceGroupManagerAsync(
+          RecreateInstancesInstanceGroupManagerHttpRequest request) {
+    return recreateInstancesInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Flags the specified instances in the managed instance group to be immediately recreated. The
+   * instances are deleted and recreated using the current instance template for the managed
+   * instance group. This operation is marked as DONE when the flag is set even if the instances
+   * have not yet been recreated. You must separately verify the status of the recreating action
+   * with the listmanagedinstances method.
+   *
+   * <p>If the group is part of a backend service that has enabled connection draining, it can take
+   * up to 60 seconds after the connection draining duration has elapsed before the VM instance is
+   * removed or deleted.
+   *
+   * <p>You can specify a maximum of 1000 instances with this method per request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagersRecreateInstancesRequest instanceGroupManagersRecreateInstancesRequestResource = InstanceGroupManagersRecreateInstancesRequest.newBuilder().build();
+   *   RecreateInstancesInstanceGroupManagerHttpRequest request = RecreateInstancesInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .setInstanceGroupManagersRecreateInstancesRequestResource(instanceGroupManagersRecreateInstancesRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.recreateInstancesInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      recreateInstancesInstanceGroupManagerOperationCallable() {
+    return stub.recreateInstancesInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1562,7 +1810,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.recreateInstancesInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1599,7 +1847,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   Integer size = 0;
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   Operation response = instanceGroupManagerClient.resizeInstanceGroupManager(size, instanceGroupManager);
+   *   instanceGroupManagerClient.resizeInstanceGroupManagerAsync(size, instanceGroupManager).get();
    * }
    * </code></pre>
    *
@@ -1609,8 +1857,9 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * @param instanceGroupManager The name of the managed instance group.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation resizeInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> resizeInstanceGroupManagerAsync(
       Integer size, ProjectZoneInstanceGroupManagerName instanceGroupManager) {
 
     ResizeInstanceGroupManagerHttpRequest request =
@@ -1619,7 +1868,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManager(
                 instanceGroupManager == null ? null : instanceGroupManager.toString())
             .build();
-    return resizeInstanceGroupManager(request);
+    return resizeInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1649,7 +1898,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   Integer size = 0;
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
-   *   Operation response = instanceGroupManagerClient.resizeInstanceGroupManager(size, instanceGroupManager.toString());
+   *   instanceGroupManagerClient.resizeInstanceGroupManagerAsync(size, instanceGroupManager.toString()).get();
    * }
    * </code></pre>
    *
@@ -1659,15 +1908,17 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * @param instanceGroupManager The name of the managed instance group.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation resizeInstanceGroupManager(Integer size, String instanceGroupManager) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> resizeInstanceGroupManagerAsync(
+      Integer size, String instanceGroupManager) {
 
     ResizeInstanceGroupManagerHttpRequest request =
         ResizeInstanceGroupManagerHttpRequest.newBuilder()
             .setSize(size)
             .setInstanceGroupManager(instanceGroupManager)
             .build();
-    return resizeInstanceGroupManager(request);
+    return resizeInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1701,16 +1952,61 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setSize(size)
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .build();
-   *   Operation response = instanceGroupManagerClient.resizeInstanceGroupManager(request);
+   *   instanceGroupManagerClient.resizeInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation resizeInstanceGroupManager(ResizeInstanceGroupManagerHttpRequest request) {
-    return resizeInstanceGroupManagerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> resizeInstanceGroupManagerAsync(
+      ResizeInstanceGroupManagerHttpRequest request) {
+    return resizeInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Resizes the managed instance group. If you increase the size, the group creates new instances
+   * using the current instance template. If you decrease the size, the group deletes instances. The
+   * resize operation is marked DONE when the resize actions are scheduled even if the group has not
+   * yet added or deleted any instances. You must separately verify the status of the creating or
+   * deleting actions with the listmanagedinstances method.
+   *
+   * <p>When resizing down, the instance group arbitrarily chooses the order in which VMs are
+   * deleted. The group takes into account some VM attributes when making the selection including:
+   *
+   * <p>+ The status of the VM instance. + The health of the VM instance. + The instance template
+   * version the VM is based on. + For regional managed instance groups, the location of the VM
+   * instance.
+   *
+   * <p>This list is subject to change.
+   *
+   * <p>If the group is part of a backend service that has enabled connection draining, it can take
+   * up to 60 seconds after the connection draining duration has elapsed before the VM instance is
+   * removed or deleted.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   Integer size = 0;
+   *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   ResizeInstanceGroupManagerHttpRequest request = ResizeInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setSize(size)
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.resizeInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<ResizeInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      resizeInstanceGroupManagerOperationCallable() {
+    return stub.resizeInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1746,7 +2042,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.resizeInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1767,7 +2063,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequestResource = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.setInstanceTemplateInstanceGroupManager(instanceGroupManager, instanceGroupManagersSetInstanceTemplateRequestResource);
+   *   instanceGroupManagerClient.setInstanceTemplateInstanceGroupManagerAsync(instanceGroupManager, instanceGroupManagersSetInstanceTemplateRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1775,11 +2071,13 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * @param instanceGroupManagersSetInstanceTemplateRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setInstanceTemplateInstanceGroupManager(
-      ProjectZoneInstanceGroupManagerName instanceGroupManager,
-      InstanceGroupManagersSetInstanceTemplateRequest
-          instanceGroupManagersSetInstanceTemplateRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      setInstanceTemplateInstanceGroupManagerAsync(
+          ProjectZoneInstanceGroupManagerName instanceGroupManager,
+          InstanceGroupManagersSetInstanceTemplateRequest
+              instanceGroupManagersSetInstanceTemplateRequestResource) {
 
     SetInstanceTemplateInstanceGroupManagerHttpRequest request =
         SetInstanceTemplateInstanceGroupManagerHttpRequest.newBuilder()
@@ -1788,7 +2086,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManagersSetInstanceTemplateRequestResource(
                 instanceGroupManagersSetInstanceTemplateRequestResource)
             .build();
-    return setInstanceTemplateInstanceGroupManager(request);
+    return setInstanceTemplateInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1802,7 +2100,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequestResource = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.setInstanceTemplateInstanceGroupManager(instanceGroupManager.toString(), instanceGroupManagersSetInstanceTemplateRequestResource);
+   *   instanceGroupManagerClient.setInstanceTemplateInstanceGroupManagerAsync(instanceGroupManager.toString(), instanceGroupManagersSetInstanceTemplateRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1810,11 +2108,13 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * @param instanceGroupManagersSetInstanceTemplateRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setInstanceTemplateInstanceGroupManager(
-      String instanceGroupManager,
-      InstanceGroupManagersSetInstanceTemplateRequest
-          instanceGroupManagersSetInstanceTemplateRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      setInstanceTemplateInstanceGroupManagerAsync(
+          String instanceGroupManager,
+          InstanceGroupManagersSetInstanceTemplateRequest
+              instanceGroupManagersSetInstanceTemplateRequestResource) {
 
     SetInstanceTemplateInstanceGroupManagerHttpRequest request =
         SetInstanceTemplateInstanceGroupManagerHttpRequest.newBuilder()
@@ -1822,7 +2122,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManagersSetInstanceTemplateRequestResource(
                 instanceGroupManagersSetInstanceTemplateRequestResource)
             .build();
-    return setInstanceTemplateInstanceGroupManager(request);
+    return setInstanceTemplateInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1840,17 +2140,47 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setInstanceGroupManagersSetInstanceTemplateRequestResource(instanceGroupManagersSetInstanceTemplateRequestResource)
    *     .build();
-   *   Operation response = instanceGroupManagerClient.setInstanceTemplateInstanceGroupManager(request);
+   *   instanceGroupManagerClient.setInstanceTemplateInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setInstanceTemplateInstanceGroupManager(
-      SetInstanceTemplateInstanceGroupManagerHttpRequest request) {
-    return setInstanceTemplateInstanceGroupManagerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      setInstanceTemplateInstanceGroupManagerAsync(
+          SetInstanceTemplateInstanceGroupManagerHttpRequest request) {
+    return setInstanceTemplateInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Specifies the instance template to use when creating new instances in this group. The templates
+   * for existing instances in the group do not change unless you recreate them.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagersSetInstanceTemplateRequest instanceGroupManagersSetInstanceTemplateRequestResource = InstanceGroupManagersSetInstanceTemplateRequest.newBuilder().build();
+   *   SetInstanceTemplateInstanceGroupManagerHttpRequest request = SetInstanceTemplateInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .setInstanceGroupManagersSetInstanceTemplateRequestResource(instanceGroupManagersSetInstanceTemplateRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.setInstanceTemplateInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setInstanceTemplateInstanceGroupManagerOperationCallable() {
+    return stub.setInstanceTemplateInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1870,7 +2200,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.setInstanceTemplateInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1894,7 +2224,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequestResource = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.setTargetPoolsInstanceGroupManager(instanceGroupManager, instanceGroupManagersSetTargetPoolsRequestResource);
+   *   instanceGroupManagerClient.setTargetPoolsInstanceGroupManagerAsync(instanceGroupManager, instanceGroupManagersSetTargetPoolsRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1902,8 +2232,9 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * @param instanceGroupManagersSetTargetPoolsRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setTargetPoolsInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetPoolsInstanceGroupManagerAsync(
       ProjectZoneInstanceGroupManagerName instanceGroupManager,
       InstanceGroupManagersSetTargetPoolsRequest
           instanceGroupManagersSetTargetPoolsRequestResource) {
@@ -1915,7 +2246,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManagersSetTargetPoolsRequestResource(
                 instanceGroupManagersSetTargetPoolsRequestResource)
             .build();
-    return setTargetPoolsInstanceGroupManager(request);
+    return setTargetPoolsInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1932,7 +2263,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
    *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
    *   InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequestResource = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
-   *   Operation response = instanceGroupManagerClient.setTargetPoolsInstanceGroupManager(instanceGroupManager.toString(), instanceGroupManagersSetTargetPoolsRequestResource);
+   *   instanceGroupManagerClient.setTargetPoolsInstanceGroupManagerAsync(instanceGroupManager.toString(), instanceGroupManagersSetTargetPoolsRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1940,8 +2271,9 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    * @param instanceGroupManagersSetTargetPoolsRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setTargetPoolsInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetPoolsInstanceGroupManagerAsync(
       String instanceGroupManager,
       InstanceGroupManagersSetTargetPoolsRequest
           instanceGroupManagersSetTargetPoolsRequestResource) {
@@ -1952,7 +2284,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManagersSetTargetPoolsRequestResource(
                 instanceGroupManagersSetTargetPoolsRequestResource)
             .build();
-    return setTargetPoolsInstanceGroupManager(request);
+    return setTargetPoolsInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1973,17 +2305,49 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setInstanceGroupManagersSetTargetPoolsRequestResource(instanceGroupManagersSetTargetPoolsRequestResource)
    *     .build();
-   *   Operation response = instanceGroupManagerClient.setTargetPoolsInstanceGroupManager(request);
+   *   instanceGroupManagerClient.setTargetPoolsInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setTargetPoolsInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetPoolsInstanceGroupManagerAsync(
       SetTargetPoolsInstanceGroupManagerHttpRequest request) {
-    return setTargetPoolsInstanceGroupManagerCallable().call(request);
+    return setTargetPoolsInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Modifies the target pools to which all instances in this managed instance group are assigned.
+   * The target pools automatically apply to all of the instances in the managed instance group.
+   * This operation is marked DONE when you make the request even if the instances have not yet been
+   * added to their target pools. The change might take some time to apply to all of the instances
+   * in the group depending on the size of the group.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceGroupManagerClient instanceGroupManagerClient = InstanceGroupManagerClient.create()) {
+   *   ProjectZoneInstanceGroupManagerName instanceGroupManager = ProjectZoneInstanceGroupManagerName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManagersSetTargetPoolsRequest instanceGroupManagersSetTargetPoolsRequestResource = InstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
+   *   SetTargetPoolsInstanceGroupManagerHttpRequest request = SetTargetPoolsInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .setInstanceGroupManagersSetTargetPoolsRequestResource(instanceGroupManagersSetTargetPoolsRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.setTargetPoolsInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetPoolsInstanceGroupManagerOperationCallable() {
+    return stub.setTargetPoolsInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -2006,7 +2370,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceGroupManagerClient.setTargetPoolsInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

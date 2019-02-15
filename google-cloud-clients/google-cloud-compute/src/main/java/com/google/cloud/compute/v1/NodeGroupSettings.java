@@ -23,10 +23,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -50,13 +52,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of addNodesNodeGroup to 30 seconds:
+ * example, to set the total timeout of getNodeGroup to 30 seconds:
  *
  * <pre>
  * <code>
  * NodeGroupSettings.Builder nodeGroupSettingsBuilder =
  *     NodeGroupSettings.newBuilder();
- * nodeGroupSettingsBuilder.addNodesNodeGroupSettings().getRetrySettings().toBuilder()
+ * nodeGroupSettingsBuilder.getNodeGroupSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * NodeGroupSettings nodeGroupSettings = nodeGroupSettingsBuilder.build();
  * </code>
@@ -68,6 +70,14 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
   /** Returns the object with the settings used for calls to addNodesNodeGroup. */
   public UnaryCallSettings<AddNodesNodeGroupHttpRequest, Operation> addNodesNodeGroupSettings() {
     return ((NodeGroupStubSettings) getStubSettings()).addNodesNodeGroupSettings();
+  }
+
+  /** Returns the object with the settings used for calls to addNodesNodeGroup. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      addNodesNodeGroupOperationSettings() {
+    return ((NodeGroupStubSettings) getStubSettings()).addNodesNodeGroupOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to aggregatedListNodeGroups. */
@@ -84,10 +94,26 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
     return ((NodeGroupStubSettings) getStubSettings()).deleteNodeGroupSettings();
   }
 
+  /** Returns the object with the settings used for calls to deleteNodeGroup. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodeGroupOperationSettings() {
+    return ((NodeGroupStubSettings) getStubSettings()).deleteNodeGroupOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to deleteNodesNodeGroup. */
   public UnaryCallSettings<DeleteNodesNodeGroupHttpRequest, Operation>
       deleteNodesNodeGroupSettings() {
     return ((NodeGroupStubSettings) getStubSettings()).deleteNodesNodeGroupSettings();
+  }
+
+  /** Returns the object with the settings used for calls to deleteNodesNodeGroup. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodesNodeGroupOperationSettings() {
+    return ((NodeGroupStubSettings) getStubSettings()).deleteNodesNodeGroupOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getNodeGroup. */
@@ -104,6 +130,14 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
   /** Returns the object with the settings used for calls to insertNodeGroup. */
   public UnaryCallSettings<InsertNodeGroupHttpRequest, Operation> insertNodeGroupSettings() {
     return ((NodeGroupStubSettings) getStubSettings()).insertNodeGroupSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertNodeGroup. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      insertNodeGroupOperationSettings() {
+    return ((NodeGroupStubSettings) getStubSettings()).insertNodeGroupOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listNodeGroups. */
@@ -129,6 +163,14 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
   public UnaryCallSettings<SetNodeTemplateNodeGroupHttpRequest, Operation>
       setNodeTemplateNodeGroupSettings() {
     return ((NodeGroupStubSettings) getStubSettings()).setNodeTemplateNodeGroupSettings();
+  }
+
+  /** Returns the object with the settings used for calls to setNodeTemplateNodeGroup. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNodeTemplateNodeGroupOperationSettings() {
+    return ((NodeGroupStubSettings) getStubSettings()).setNodeTemplateNodeGroupOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to testIamPermissionsNodeGroup. */
@@ -244,6 +286,14 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
       return getStubSettingsBuilder().addNodesNodeGroupSettings();
     }
 
+    /** Returns the builder for the settings used for calls to addNodesNodeGroup. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        addNodesNodeGroupOperationSettings() {
+      return getStubSettingsBuilder().addNodesNodeGroupOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to aggregatedListNodeGroups. */
     public PagedCallSettings.Builder<
             AggregatedListNodeGroupsHttpRequest,
@@ -259,10 +309,27 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
       return getStubSettingsBuilder().deleteNodeGroupSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteNodeGroup. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        deleteNodeGroupOperationSettings() {
+      return getStubSettingsBuilder().deleteNodeGroupOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to deleteNodesNodeGroup. */
     public UnaryCallSettings.Builder<DeleteNodesNodeGroupHttpRequest, Operation>
         deleteNodesNodeGroupSettings() {
       return getStubSettingsBuilder().deleteNodesNodeGroupSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to deleteNodesNodeGroup. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        deleteNodesNodeGroupOperationSettings() {
+      return getStubSettingsBuilder().deleteNodesNodeGroupOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to getNodeGroup. */
@@ -280,6 +347,14 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
     public UnaryCallSettings.Builder<InsertNodeGroupHttpRequest, Operation>
         insertNodeGroupSettings() {
       return getStubSettingsBuilder().insertNodeGroupSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertNodeGroup. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        insertNodeGroupOperationSettings() {
+      return getStubSettingsBuilder().insertNodeGroupOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listNodeGroups. */
@@ -306,6 +381,15 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
     public UnaryCallSettings.Builder<SetNodeTemplateNodeGroupHttpRequest, Operation>
         setNodeTemplateNodeGroupSettings() {
       return getStubSettingsBuilder().setNodeTemplateNodeGroupSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to setNodeTemplateNodeGroup. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        setNodeTemplateNodeGroupOperationSettings() {
+      return getStubSettingsBuilder().setNodeTemplateNodeGroupOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to testIamPermissionsNodeGroup. */

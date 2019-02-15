@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AggregatedListTargetInstancesHttpRequest;
@@ -164,6 +166,7 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<
           AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList>
@@ -173,10 +176,14 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
       aggregatedListTargetInstancesPagedCallable;
   private final UnaryCallable<DeleteTargetInstanceHttpRequest, Operation>
       deleteTargetInstanceCallable;
+  private final OperationCallable<DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetInstanceOperationCallable;
   private final UnaryCallable<GetTargetInstanceHttpRequest, TargetInstance>
       getTargetInstanceCallable;
   private final UnaryCallable<InsertTargetInstanceHttpRequest, Operation>
       insertTargetInstanceCallable;
+  private final OperationCallable<InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetInstanceOperationCallable;
   private final UnaryCallable<ListTargetInstancesHttpRequest, TargetInstanceList>
       listTargetInstancesCallable;
   private final UnaryCallable<ListTargetInstancesHttpRequest, ListTargetInstancesPagedResponse>
@@ -222,6 +229,7 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListTargetInstancesHttpRequest, TargetInstanceAggregatedList>
         aggregatedListTargetInstancesTransportSettings =
@@ -266,6 +274,12 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
             deleteTargetInstanceTransportSettings,
             settings.deleteTargetInstanceSettings(),
             clientContext);
+    this.deleteTargetInstanceOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteTargetInstanceTransportSettings,
+            settings.deleteTargetInstanceOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getTargetInstanceCallable =
         callableFactory.createUnaryCallable(
             getTargetInstanceTransportSettings,
@@ -276,6 +290,12 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
             insertTargetInstanceTransportSettings,
             settings.insertTargetInstanceSettings(),
             clientContext);
+    this.insertTargetInstanceOperationCallable =
+        callableFactory.createOperationCallable(
+            insertTargetInstanceTransportSettings,
+            settings.insertTargetInstanceOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listTargetInstancesCallable =
         callableFactory.createUnaryCallable(
             listTargetInstancesTransportSettings,
@@ -288,6 +308,11 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
             clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
   }
 
   @BetaApi
@@ -303,6 +328,12 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
     return aggregatedListTargetInstancesCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetInstanceOperationCallable() {
+    return deleteTargetInstanceOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteTargetInstanceHttpRequest, Operation> deleteTargetInstanceCallable() {
     return deleteTargetInstanceCallable;
@@ -311,6 +342,12 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
   @BetaApi
   public UnaryCallable<GetTargetInstanceHttpRequest, TargetInstance> getTargetInstanceCallable() {
     return getTargetInstanceCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetInstanceOperationCallable() {
+    return insertTargetInstanceOperationCallable;
   }
 
   @BetaApi

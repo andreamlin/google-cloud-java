@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.InterconnectStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (InterconnectClient interconnectClient = InterconnectClient.create()) {
  *   ProjectGlobalInterconnectName interconnect = ProjectGlobalInterconnectName.of("[PROJECT]", "[INTERCONNECT]");
- *   Operation response = interconnectClient.deleteInterconnect(interconnect);
+ *   Interconnect response = interconnectClient.getInterconnect(interconnect);
  * }
  * </code>
  * </pre>
@@ -103,6 +106,7 @@ import javax.annotation.Generated;
 public class InterconnectClient implements BackgroundResource {
   private final InterconnectSettings settings;
   private final InterconnectStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of InterconnectClient with default settings. */
   public static final InterconnectClient create() throws IOException {
@@ -134,12 +138,14 @@ public class InterconnectClient implements BackgroundResource {
   protected InterconnectClient(InterconnectSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((InterconnectStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected InterconnectClient(InterconnectStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final InterconnectSettings getSettings() {
@@ -151,30 +157,14 @@ public class InterconnectClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Deletes the specified interconnect.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (InterconnectClient interconnectClient = InterconnectClient.create()) {
-   *   ProjectGlobalInterconnectName interconnect = ProjectGlobalInterconnectName.of("[PROJECT]", "[INTERCONNECT]");
-   *   Operation response = interconnectClient.deleteInterconnect(interconnect);
-   * }
-   * </code></pre>
-   *
-   * @param interconnect Name of the interconnect to delete.
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation deleteInterconnect(ProjectGlobalInterconnectName interconnect) {
-
-    DeleteInterconnectHttpRequest request =
-        DeleteInterconnectHttpRequest.newBuilder()
-            .setInterconnect(interconnect == null ? null : interconnect.toString())
-            .build();
-    return deleteInterconnect(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -186,19 +176,49 @@ public class InterconnectClient implements BackgroundResource {
    * <pre><code>
    * try (InterconnectClient interconnectClient = InterconnectClient.create()) {
    *   ProjectGlobalInterconnectName interconnect = ProjectGlobalInterconnectName.of("[PROJECT]", "[INTERCONNECT]");
-   *   Operation response = interconnectClient.deleteInterconnect(interconnect.toString());
+   *   interconnectClient.deleteInterconnectAsync(interconnect).get();
    * }
    * </code></pre>
    *
    * @param interconnect Name of the interconnect to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteInterconnect(String interconnect) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInterconnectAsync(
+      ProjectGlobalInterconnectName interconnect) {
+
+    DeleteInterconnectHttpRequest request =
+        DeleteInterconnectHttpRequest.newBuilder()
+            .setInterconnect(interconnect == null ? null : interconnect.toString())
+            .build();
+    return deleteInterconnectAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified interconnect.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InterconnectClient interconnectClient = InterconnectClient.create()) {
+   *   ProjectGlobalInterconnectName interconnect = ProjectGlobalInterconnectName.of("[PROJECT]", "[INTERCONNECT]");
+   *   interconnectClient.deleteInterconnectAsync(interconnect.toString()).get();
+   * }
+   * </code></pre>
+   *
+   * @param interconnect Name of the interconnect to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInterconnectAsync(
+      String interconnect) {
 
     DeleteInterconnectHttpRequest request =
         DeleteInterconnectHttpRequest.newBuilder().setInterconnect(interconnect).build();
-    return deleteInterconnect(request);
+    return deleteInterconnectAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -213,16 +233,42 @@ public class InterconnectClient implements BackgroundResource {
    *   DeleteInterconnectHttpRequest request = DeleteInterconnectHttpRequest.newBuilder()
    *     .setInterconnect(interconnect.toString())
    *     .build();
-   *   Operation response = interconnectClient.deleteInterconnect(request);
+   *   interconnectClient.deleteInterconnectAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteInterconnect(DeleteInterconnectHttpRequest request) {
-    return deleteInterconnectCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInterconnectAsync(
+      DeleteInterconnectHttpRequest request) {
+    return deleteInterconnectOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified interconnect.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InterconnectClient interconnectClient = InterconnectClient.create()) {
+   *   ProjectGlobalInterconnectName interconnect = ProjectGlobalInterconnectName.of("[PROJECT]", "[INTERCONNECT]");
+   *   DeleteInterconnectHttpRequest request = DeleteInterconnectHttpRequest.newBuilder()
+   *     .setInterconnect(interconnect.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = interconnectClient.deleteInterconnectOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInterconnectOperationCallable() {
+    return stub.deleteInterconnectOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -239,7 +285,7 @@ public class InterconnectClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = interconnectClient.deleteInterconnectCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -461,7 +507,7 @@ public class InterconnectClient implements BackgroundResource {
    * try (InterconnectClient interconnectClient = InterconnectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Interconnect interconnectResource = Interconnect.newBuilder().build();
-   *   Operation response = interconnectClient.insertInterconnect(project, interconnectResource);
+   *   interconnectClient.insertInterconnectAsync(project, interconnectResource).get();
    * }
    * </code></pre>
    *
@@ -472,8 +518,9 @@ public class InterconnectClient implements BackgroundResource {
    *     resource_for beta.interconnects ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertInterconnect(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertInterconnectAsync(
       ProjectName project, Interconnect interconnectResource) {
 
     InsertInterconnectHttpRequest request =
@@ -481,7 +528,7 @@ public class InterconnectClient implements BackgroundResource {
             .setProject(project == null ? null : project.toString())
             .setInterconnectResource(interconnectResource)
             .build();
-    return insertInterconnect(request);
+    return insertInterconnectAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -494,7 +541,7 @@ public class InterconnectClient implements BackgroundResource {
    * try (InterconnectClient interconnectClient = InterconnectClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Interconnect interconnectResource = Interconnect.newBuilder().build();
-   *   Operation response = interconnectClient.insertInterconnect(project.toString(), interconnectResource);
+   *   interconnectClient.insertInterconnectAsync(project.toString(), interconnectResource).get();
    * }
    * </code></pre>
    *
@@ -505,15 +552,17 @@ public class InterconnectClient implements BackgroundResource {
    *     resource_for beta.interconnects ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertInterconnect(String project, Interconnect interconnectResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertInterconnectAsync(
+      String project, Interconnect interconnectResource) {
 
     InsertInterconnectHttpRequest request =
         InsertInterconnectHttpRequest.newBuilder()
             .setProject(project)
             .setInterconnectResource(interconnectResource)
             .build();
-    return insertInterconnect(request);
+    return insertInterconnectAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -530,16 +579,44 @@ public class InterconnectClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setInterconnectResource(interconnectResource)
    *     .build();
-   *   Operation response = interconnectClient.insertInterconnect(request);
+   *   interconnectClient.insertInterconnectAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertInterconnect(InsertInterconnectHttpRequest request) {
-    return insertInterconnectCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertInterconnectAsync(
+      InsertInterconnectHttpRequest request) {
+    return insertInterconnectOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a Interconnect in the specified project using the data included in the request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InterconnectClient interconnectClient = InterconnectClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   Interconnect interconnectResource = Interconnect.newBuilder().build();
+   *   InsertInterconnectHttpRequest request = InsertInterconnectHttpRequest.newBuilder()
+   *     .setProject(project.toString())
+   *     .setInterconnectResource(interconnectResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = interconnectClient.insertInterconnectOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+      insertInterconnectOperationCallable() {
+    return stub.insertInterconnectOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -558,7 +635,7 @@ public class InterconnectClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = interconnectClient.insertInterconnectCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -718,7 +795,7 @@ public class InterconnectClient implements BackgroundResource {
    *   ProjectGlobalInterconnectName interconnect = ProjectGlobalInterconnectName.of("[PROJECT]", "[INTERCONNECT]");
    *   Interconnect interconnectResource = Interconnect.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = interconnectClient.patchInterconnect(interconnect, interconnectResource, fieldMask);
+   *   interconnectClient.patchInterconnectAsync(interconnect, interconnectResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -733,8 +810,9 @@ public class InterconnectClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchInterconnect(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchInterconnectAsync(
       ProjectGlobalInterconnectName interconnect,
       Interconnect interconnectResource,
       List<String> fieldMask) {
@@ -745,7 +823,7 @@ public class InterconnectClient implements BackgroundResource {
             .setInterconnectResource(interconnectResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchInterconnect(request);
+    return patchInterconnectAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -760,7 +838,7 @@ public class InterconnectClient implements BackgroundResource {
    *   ProjectGlobalInterconnectName interconnect = ProjectGlobalInterconnectName.of("[PROJECT]", "[INTERCONNECT]");
    *   Interconnect interconnectResource = Interconnect.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = interconnectClient.patchInterconnect(interconnect.toString(), interconnectResource, fieldMask);
+   *   interconnectClient.patchInterconnectAsync(interconnect.toString(), interconnectResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -775,8 +853,9 @@ public class InterconnectClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchInterconnect(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchInterconnectAsync(
       String interconnect, Interconnect interconnectResource, List<String> fieldMask) {
 
     PatchInterconnectHttpRequest request =
@@ -785,7 +864,7 @@ public class InterconnectClient implements BackgroundResource {
             .setInterconnectResource(interconnectResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchInterconnect(request);
+    return patchInterconnectAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -805,16 +884,47 @@ public class InterconnectClient implements BackgroundResource {
    *     .setInterconnectResource(interconnectResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = interconnectClient.patchInterconnect(request);
+   *   interconnectClient.patchInterconnectAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchInterconnect(PatchInterconnectHttpRequest request) {
-    return patchInterconnectCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchInterconnectAsync(
+      PatchInterconnectHttpRequest request) {
+    return patchInterconnectOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the specified interconnect with the data included in the request. This method supports
+   * PATCH semantics and uses the JSON merge patch format and processing rules.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InterconnectClient interconnectClient = InterconnectClient.create()) {
+   *   ProjectGlobalInterconnectName interconnect = ProjectGlobalInterconnectName.of("[PROJECT]", "[INTERCONNECT]");
+   *   Interconnect interconnectResource = Interconnect.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   PatchInterconnectHttpRequest request = PatchInterconnectHttpRequest.newBuilder()
+   *     .setInterconnect(interconnect.toString())
+   *     .setInterconnectResource(interconnectResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = interconnectClient.patchInterconnectOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<PatchInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+      patchInterconnectOperationCallable() {
+    return stub.patchInterconnectOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -836,7 +946,7 @@ public class InterconnectClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = interconnectClient.patchInterconnectCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

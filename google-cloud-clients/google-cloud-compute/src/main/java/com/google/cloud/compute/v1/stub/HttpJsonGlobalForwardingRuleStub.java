@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DeleteGlobalForwardingRuleHttpRequest;
@@ -156,13 +158,18 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteGlobalForwardingRuleHttpRequest, Operation>
       deleteGlobalForwardingRuleCallable;
+  private final OperationCallable<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      deleteGlobalForwardingRuleOperationCallable;
   private final UnaryCallable<GetGlobalForwardingRuleHttpRequest, ForwardingRule>
       getGlobalForwardingRuleCallable;
   private final UnaryCallable<InsertGlobalForwardingRuleHttpRequest, Operation>
       insertGlobalForwardingRuleCallable;
+  private final OperationCallable<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      insertGlobalForwardingRuleOperationCallable;
   private final UnaryCallable<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList>
       listGlobalForwardingRulesCallable;
   private final UnaryCallable<
@@ -170,6 +177,9 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
       listGlobalForwardingRulesPagedCallable;
   private final UnaryCallable<SetTargetGlobalForwardingRuleHttpRequest, Operation>
       setTargetGlobalForwardingRuleCallable;
+  private final OperationCallable<
+          SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetGlobalForwardingRuleOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -211,6 +221,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteGlobalForwardingRuleHttpRequest, Operation>
         deleteGlobalForwardingRuleTransportSettings =
@@ -244,6 +255,12 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
             deleteGlobalForwardingRuleTransportSettings,
             settings.deleteGlobalForwardingRuleSettings(),
             clientContext);
+    this.deleteGlobalForwardingRuleOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteGlobalForwardingRuleTransportSettings,
+            settings.deleteGlobalForwardingRuleOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getGlobalForwardingRuleCallable =
         callableFactory.createUnaryCallable(
             getGlobalForwardingRuleTransportSettings,
@@ -254,6 +271,12 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
             insertGlobalForwardingRuleTransportSettings,
             settings.insertGlobalForwardingRuleSettings(),
             clientContext);
+    this.insertGlobalForwardingRuleOperationCallable =
+        callableFactory.createOperationCallable(
+            insertGlobalForwardingRuleTransportSettings,
+            settings.insertGlobalForwardingRuleOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listGlobalForwardingRulesCallable =
         callableFactory.createUnaryCallable(
             listGlobalForwardingRulesTransportSettings,
@@ -269,8 +292,25 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
             setTargetGlobalForwardingRuleTransportSettings,
             settings.setTargetGlobalForwardingRuleSettings(),
             clientContext);
+    this.setTargetGlobalForwardingRuleOperationCallable =
+        callableFactory.createOperationCallable(
+            setTargetGlobalForwardingRuleTransportSettings,
+            settings.setTargetGlobalForwardingRuleOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      deleteGlobalForwardingRuleOperationCallable() {
+    return deleteGlobalForwardingRuleOperationCallable;
   }
 
   @BetaApi
@@ -283,6 +323,12 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
   public UnaryCallable<GetGlobalForwardingRuleHttpRequest, ForwardingRule>
       getGlobalForwardingRuleCallable() {
     return getGlobalForwardingRuleCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      insertGlobalForwardingRuleOperationCallable() {
+    return insertGlobalForwardingRuleOperationCallable;
   }
 
   @BetaApi
@@ -301,6 +347,12 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
   public UnaryCallable<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList>
       listGlobalForwardingRulesCallable() {
     return listGlobalForwardingRulesCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetGlobalForwardingRuleOperationCallable() {
+    return setTargetGlobalForwardingRuleOperationCallable;
   }
 
   @BetaApi

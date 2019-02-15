@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.TargetVpnGatewayStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
  *   ProjectRegionTargetVpnGatewayName targetVpnGateway = ProjectRegionTargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
- *   Operation response = targetVpnGatewayClient.deleteTargetVpnGateway(targetVpnGateway);
+ *   TargetVpnGateway response = targetVpnGatewayClient.getTargetVpnGateway(targetVpnGateway);
  * }
  * </code>
  * </pre>
@@ -104,6 +107,7 @@ import javax.annotation.Generated;
 public class TargetVpnGatewayClient implements BackgroundResource {
   private final TargetVpnGatewaySettings settings;
   private final TargetVpnGatewayStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of TargetVpnGatewayClient with default settings. */
   public static final TargetVpnGatewayClient create() throws IOException {
@@ -136,12 +140,14 @@ public class TargetVpnGatewayClient implements BackgroundResource {
   protected TargetVpnGatewayClient(TargetVpnGatewaySettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((TargetVpnGatewayStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected TargetVpnGatewayClient(TargetVpnGatewayStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final TargetVpnGatewaySettings getSettings() {
@@ -151,6 +157,16 @@ public class TargetVpnGatewayClient implements BackgroundResource {
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public TargetVpnGatewayStub getStub() {
     return stub;
+  }
+
+  /**
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -304,22 +320,23 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   ProjectRegionTargetVpnGatewayName targetVpnGateway = ProjectRegionTargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
-   *   Operation response = targetVpnGatewayClient.deleteTargetVpnGateway(targetVpnGateway);
+   *   targetVpnGatewayClient.deleteTargetVpnGatewayAsync(targetVpnGateway).get();
    * }
    * </code></pre>
    *
    * @param targetVpnGateway Name of the target VPN gateway to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteTargetVpnGateway(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetVpnGatewayAsync(
       ProjectRegionTargetVpnGatewayName targetVpnGateway) {
 
     DeleteTargetVpnGatewayHttpRequest request =
         DeleteTargetVpnGatewayHttpRequest.newBuilder()
             .setTargetVpnGateway(targetVpnGateway == null ? null : targetVpnGateway.toString())
             .build();
-    return deleteTargetVpnGateway(request);
+    return deleteTargetVpnGatewayAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -331,21 +348,23 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * <pre><code>
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   ProjectRegionTargetVpnGatewayName targetVpnGateway = ProjectRegionTargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
-   *   Operation response = targetVpnGatewayClient.deleteTargetVpnGateway(targetVpnGateway.toString());
+   *   targetVpnGatewayClient.deleteTargetVpnGatewayAsync(targetVpnGateway.toString()).get();
    * }
    * </code></pre>
    *
    * @param targetVpnGateway Name of the target VPN gateway to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteTargetVpnGateway(String targetVpnGateway) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetVpnGatewayAsync(
+      String targetVpnGateway) {
 
     DeleteTargetVpnGatewayHttpRequest request =
         DeleteTargetVpnGatewayHttpRequest.newBuilder()
             .setTargetVpnGateway(targetVpnGateway)
             .build();
-    return deleteTargetVpnGateway(request);
+    return deleteTargetVpnGatewayAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -360,16 +379,42 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *   DeleteTargetVpnGatewayHttpRequest request = DeleteTargetVpnGatewayHttpRequest.newBuilder()
    *     .setTargetVpnGateway(targetVpnGateway.toString())
    *     .build();
-   *   Operation response = targetVpnGatewayClient.deleteTargetVpnGateway(request);
+   *   targetVpnGatewayClient.deleteTargetVpnGatewayAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteTargetVpnGateway(DeleteTargetVpnGatewayHttpRequest request) {
-    return deleteTargetVpnGatewayCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetVpnGatewayAsync(
+      DeleteTargetVpnGatewayHttpRequest request) {
+    return deleteTargetVpnGatewayOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified target VPN gateway.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
+   *   ProjectRegionTargetVpnGatewayName targetVpnGateway = ProjectRegionTargetVpnGatewayName.of("[PROJECT]", "[REGION]", "[TARGET_VPN_GATEWAY]");
+   *   DeleteTargetVpnGatewayHttpRequest request = DeleteTargetVpnGatewayHttpRequest.newBuilder()
+   *     .setTargetVpnGateway(targetVpnGateway.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetVpnGatewayClient.deleteTargetVpnGatewayOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetVpnGatewayOperationCallable() {
+    return stub.deleteTargetVpnGatewayOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -386,7 +431,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetVpnGatewayClient.deleteTargetVpnGatewayCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -510,7 +555,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
    *   TargetVpnGateway targetVpnGatewayResource = TargetVpnGateway.newBuilder().build();
-   *   Operation response = targetVpnGatewayClient.insertTargetVpnGateway(region, targetVpnGatewayResource);
+   *   targetVpnGatewayClient.insertTargetVpnGatewayAsync(region, targetVpnGatewayResource).get();
    * }
    * </code></pre>
    *
@@ -519,8 +564,9 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *     beta.targetVpnGateways ==) (== resource_for v1.targetVpnGateways ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertTargetVpnGateway(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetVpnGatewayAsync(
       ProjectRegionName region, TargetVpnGateway targetVpnGatewayResource) {
 
     InsertTargetVpnGatewayHttpRequest request =
@@ -528,7 +574,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
             .setRegion(region == null ? null : region.toString())
             .setTargetVpnGatewayResource(targetVpnGatewayResource)
             .build();
-    return insertTargetVpnGateway(request);
+    return insertTargetVpnGatewayAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -542,7 +588,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
    *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
    *   TargetVpnGateway targetVpnGatewayResource = TargetVpnGateway.newBuilder().build();
-   *   Operation response = targetVpnGatewayClient.insertTargetVpnGateway(region.toString(), targetVpnGatewayResource);
+   *   targetVpnGatewayClient.insertTargetVpnGatewayAsync(region.toString(), targetVpnGatewayResource).get();
    * }
    * </code></pre>
    *
@@ -551,8 +597,9 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *     beta.targetVpnGateways ==) (== resource_for v1.targetVpnGateways ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertTargetVpnGateway(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetVpnGatewayAsync(
       String region, TargetVpnGateway targetVpnGatewayResource) {
 
     InsertTargetVpnGatewayHttpRequest request =
@@ -560,7 +607,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
             .setRegion(region)
             .setTargetVpnGatewayResource(targetVpnGatewayResource)
             .build();
-    return insertTargetVpnGateway(request);
+    return insertTargetVpnGatewayAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -578,16 +625,45 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setTargetVpnGatewayResource(targetVpnGatewayResource)
    *     .build();
-   *   Operation response = targetVpnGatewayClient.insertTargetVpnGateway(request);
+   *   targetVpnGatewayClient.insertTargetVpnGatewayAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertTargetVpnGateway(InsertTargetVpnGatewayHttpRequest request) {
-    return insertTargetVpnGatewayCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetVpnGatewayAsync(
+      InsertTargetVpnGatewayHttpRequest request) {
+    return insertTargetVpnGatewayOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a target VPN gateway in the specified project and region using the data included in the
+   * request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (TargetVpnGatewayClient targetVpnGatewayClient = TargetVpnGatewayClient.create()) {
+   *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
+   *   TargetVpnGateway targetVpnGatewayResource = TargetVpnGateway.newBuilder().build();
+   *   InsertTargetVpnGatewayHttpRequest request = InsertTargetVpnGatewayHttpRequest.newBuilder()
+   *     .setRegion(region.toString())
+   *     .setTargetVpnGatewayResource(targetVpnGatewayResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetVpnGatewayClient.insertTargetVpnGatewayOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetVpnGatewayOperationCallable() {
+    return stub.insertTargetVpnGatewayOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -607,7 +683,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetVpnGatewayClient.insertTargetVpnGatewayCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

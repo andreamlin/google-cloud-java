@@ -27,9 +27,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AggregatedListRoutersHttpRequest;
@@ -271,12 +273,15 @@ public class HttpJsonRouterStub extends RouterStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AggregatedListRoutersHttpRequest, RouterAggregatedList>
       aggregatedListRoutersCallable;
   private final UnaryCallable<AggregatedListRoutersHttpRequest, AggregatedListRoutersPagedResponse>
       aggregatedListRoutersPagedCallable;
   private final UnaryCallable<DeleteRouterHttpRequest, Operation> deleteRouterCallable;
+  private final OperationCallable<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRouterOperationCallable;
   private final UnaryCallable<GetRouterHttpRequest, Router> getRouterCallable;
   private final UnaryCallable<GetNatMappingInfoRoutersHttpRequest, VmEndpointNatMappingsList>
       getNatMappingInfoRoutersCallable;
@@ -286,13 +291,19 @@ public class HttpJsonRouterStub extends RouterStub {
   private final UnaryCallable<GetRouterStatusRouterHttpRequest, RouterStatusResponse>
       getRouterStatusRouterCallable;
   private final UnaryCallable<InsertRouterHttpRequest, Operation> insertRouterCallable;
+  private final OperationCallable<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+      insertRouterOperationCallable;
   private final UnaryCallable<ListRoutersHttpRequest, RouterList> listRoutersCallable;
   private final UnaryCallable<ListRoutersHttpRequest, ListRoutersPagedResponse>
       listRoutersPagedCallable;
   private final UnaryCallable<PatchRouterHttpRequest, Operation> patchRouterCallable;
+  private final OperationCallable<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+      patchRouterOperationCallable;
   private final UnaryCallable<PreviewRouterHttpRequest, RoutersPreviewResponse>
       previewRouterCallable;
   private final UnaryCallable<UpdateRouterHttpRequest, Operation> updateRouterCallable;
+  private final OperationCallable<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+      updateRouterOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -331,6 +342,7 @@ public class HttpJsonRouterStub extends RouterStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListRoutersHttpRequest, RouterAggregatedList>
         aggregatedListRoutersTransportSettings =
@@ -393,6 +405,12 @@ public class HttpJsonRouterStub extends RouterStub {
     this.deleteRouterCallable =
         callableFactory.createUnaryCallable(
             deleteRouterTransportSettings, settings.deleteRouterSettings(), clientContext);
+    this.deleteRouterOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteRouterTransportSettings,
+            settings.deleteRouterOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getRouterCallable =
         callableFactory.createUnaryCallable(
             getRouterTransportSettings, settings.getRouterSettings(), clientContext);
@@ -414,6 +432,12 @@ public class HttpJsonRouterStub extends RouterStub {
     this.insertRouterCallable =
         callableFactory.createUnaryCallable(
             insertRouterTransportSettings, settings.insertRouterSettings(), clientContext);
+    this.insertRouterOperationCallable =
+        callableFactory.createOperationCallable(
+            insertRouterTransportSettings,
+            settings.insertRouterOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listRoutersCallable =
         callableFactory.createUnaryCallable(
             listRoutersTransportSettings, settings.listRoutersSettings(), clientContext);
@@ -423,14 +447,31 @@ public class HttpJsonRouterStub extends RouterStub {
     this.patchRouterCallable =
         callableFactory.createUnaryCallable(
             patchRouterTransportSettings, settings.patchRouterSettings(), clientContext);
+    this.patchRouterOperationCallable =
+        callableFactory.createOperationCallable(
+            patchRouterTransportSettings,
+            settings.patchRouterOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.previewRouterCallable =
         callableFactory.createUnaryCallable(
             previewRouterTransportSettings, settings.previewRouterSettings(), clientContext);
     this.updateRouterCallable =
         callableFactory.createUnaryCallable(
             updateRouterTransportSettings, settings.updateRouterSettings(), clientContext);
+    this.updateRouterOperationCallable =
+        callableFactory.createOperationCallable(
+            updateRouterTransportSettings,
+            settings.updateRouterOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
   }
 
   @BetaApi
@@ -443,6 +484,12 @@ public class HttpJsonRouterStub extends RouterStub {
   public UnaryCallable<AggregatedListRoutersHttpRequest, RouterAggregatedList>
       aggregatedListRoutersCallable() {
     return aggregatedListRoutersCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRouterOperationCallable() {
+    return deleteRouterOperationCallable;
   }
 
   @BetaApi
@@ -473,6 +520,12 @@ public class HttpJsonRouterStub extends RouterStub {
     return getRouterStatusRouterCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+      insertRouterOperationCallable() {
+    return insertRouterOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<InsertRouterHttpRequest, Operation> insertRouterCallable() {
     return insertRouterCallable;
@@ -489,6 +542,12 @@ public class HttpJsonRouterStub extends RouterStub {
     return listRoutersCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+      patchRouterOperationCallable() {
+    return patchRouterOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<PatchRouterHttpRequest, Operation> patchRouterCallable() {
     return patchRouterCallable;
@@ -497,6 +556,12 @@ public class HttpJsonRouterStub extends RouterStub {
   @BetaApi
   public UnaryCallable<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterCallable() {
     return previewRouterCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+      updateRouterOperationCallable() {
+    return updateRouterOperationCallable;
   }
 
   @BetaApi

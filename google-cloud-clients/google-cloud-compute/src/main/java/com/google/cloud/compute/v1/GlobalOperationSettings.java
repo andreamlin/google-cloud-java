@@ -22,6 +22,7 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
@@ -75,7 +76,8 @@ public class GlobalOperationSettings extends ClientSettings<GlobalOperationSetti
   }
 
   /** Returns the object with the settings used for calls to deleteGlobalOperation. */
-  public UnaryCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings() {
+  public UnaryCallSettings<DeleteGlobalOperationHttpRequest, EmptyMessage>
+      deleteGlobalOperationSettings() {
     return ((GlobalOperationStubSettings) getStubSettings()).deleteGlobalOperationSettings();
   }
 
@@ -203,7 +205,7 @@ public class GlobalOperationSettings extends ClientSettings<GlobalOperationSetti
     }
 
     /** Returns the builder for the settings used for calls to deleteGlobalOperation. */
-    public UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void>
+    public UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, EmptyMessage>
         deleteGlobalOperationSettings() {
       return getStubSettingsBuilder().deleteGlobalOperationSettings();
     }

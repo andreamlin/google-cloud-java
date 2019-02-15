@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AddHealthCheckTargetPoolHttpRequest;
@@ -297,30 +299,46 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AddHealthCheckTargetPoolHttpRequest, Operation>
       addHealthCheckTargetPoolCallable;
+  private final OperationCallable<AddHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      addHealthCheckTargetPoolOperationCallable;
   private final UnaryCallable<AddInstanceTargetPoolHttpRequest, Operation>
       addInstanceTargetPoolCallable;
+  private final OperationCallable<AddInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      addInstanceTargetPoolOperationCallable;
   private final UnaryCallable<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList>
       aggregatedListTargetPoolsCallable;
   private final UnaryCallable<
           AggregatedListTargetPoolsHttpRequest, AggregatedListTargetPoolsPagedResponse>
       aggregatedListTargetPoolsPagedCallable;
   private final UnaryCallable<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolCallable;
+  private final OperationCallable<DeleteTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetPoolOperationCallable;
   private final UnaryCallable<GetTargetPoolHttpRequest, TargetPool> getTargetPoolCallable;
   private final UnaryCallable<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth>
       getHealthTargetPoolCallable;
   private final UnaryCallable<InsertTargetPoolHttpRequest, Operation> insertTargetPoolCallable;
+  private final OperationCallable<InsertTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetPoolOperationCallable;
   private final UnaryCallable<ListTargetPoolsHttpRequest, TargetPoolList> listTargetPoolsCallable;
   private final UnaryCallable<ListTargetPoolsHttpRequest, ListTargetPoolsPagedResponse>
       listTargetPoolsPagedCallable;
   private final UnaryCallable<RemoveHealthCheckTargetPoolHttpRequest, Operation>
       removeHealthCheckTargetPoolCallable;
+  private final OperationCallable<
+          RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      removeHealthCheckTargetPoolOperationCallable;
   private final UnaryCallable<RemoveInstanceTargetPoolHttpRequest, Operation>
       removeInstanceTargetPoolCallable;
+  private final OperationCallable<RemoveInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      removeInstanceTargetPoolOperationCallable;
   private final UnaryCallable<SetBackupTargetPoolHttpRequest, Operation>
       setBackupTargetPoolCallable;
+  private final OperationCallable<SetBackupTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      setBackupTargetPoolOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -361,6 +379,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AddHealthCheckTargetPoolHttpRequest, Operation>
         addHealthCheckTargetPoolTransportSettings =
@@ -422,11 +441,23 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
             addHealthCheckTargetPoolTransportSettings,
             settings.addHealthCheckTargetPoolSettings(),
             clientContext);
+    this.addHealthCheckTargetPoolOperationCallable =
+        callableFactory.createOperationCallable(
+            addHealthCheckTargetPoolTransportSettings,
+            settings.addHealthCheckTargetPoolOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.addInstanceTargetPoolCallable =
         callableFactory.createUnaryCallable(
             addInstanceTargetPoolTransportSettings,
             settings.addInstanceTargetPoolSettings(),
             clientContext);
+    this.addInstanceTargetPoolOperationCallable =
+        callableFactory.createOperationCallable(
+            addInstanceTargetPoolTransportSettings,
+            settings.addInstanceTargetPoolOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.aggregatedListTargetPoolsCallable =
         callableFactory.createUnaryCallable(
             aggregatedListTargetPoolsTransportSettings,
@@ -440,6 +471,12 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
     this.deleteTargetPoolCallable =
         callableFactory.createUnaryCallable(
             deleteTargetPoolTransportSettings, settings.deleteTargetPoolSettings(), clientContext);
+    this.deleteTargetPoolOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteTargetPoolTransportSettings,
+            settings.deleteTargetPoolOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getTargetPoolCallable =
         callableFactory.createUnaryCallable(
             getTargetPoolTransportSettings, settings.getTargetPoolSettings(), clientContext);
@@ -451,6 +488,12 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
     this.insertTargetPoolCallable =
         callableFactory.createUnaryCallable(
             insertTargetPoolTransportSettings, settings.insertTargetPoolSettings(), clientContext);
+    this.insertTargetPoolOperationCallable =
+        callableFactory.createOperationCallable(
+            insertTargetPoolTransportSettings,
+            settings.insertTargetPoolOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listTargetPoolsCallable =
         callableFactory.createUnaryCallable(
             listTargetPoolsTransportSettings, settings.listTargetPoolsSettings(), clientContext);
@@ -462,24 +505,59 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
             removeHealthCheckTargetPoolTransportSettings,
             settings.removeHealthCheckTargetPoolSettings(),
             clientContext);
+    this.removeHealthCheckTargetPoolOperationCallable =
+        callableFactory.createOperationCallable(
+            removeHealthCheckTargetPoolTransportSettings,
+            settings.removeHealthCheckTargetPoolOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.removeInstanceTargetPoolCallable =
         callableFactory.createUnaryCallable(
             removeInstanceTargetPoolTransportSettings,
             settings.removeInstanceTargetPoolSettings(),
             clientContext);
+    this.removeInstanceTargetPoolOperationCallable =
+        callableFactory.createOperationCallable(
+            removeInstanceTargetPoolTransportSettings,
+            settings.removeInstanceTargetPoolOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setBackupTargetPoolCallable =
         callableFactory.createUnaryCallable(
             setBackupTargetPoolTransportSettings,
             settings.setBackupTargetPoolSettings(),
             clientContext);
+    this.setBackupTargetPoolOperationCallable =
+        callableFactory.createOperationCallable(
+            setBackupTargetPoolTransportSettings,
+            settings.setBackupTargetPoolOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<AddHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      addHealthCheckTargetPoolOperationCallable() {
+    return addHealthCheckTargetPoolOperationCallable;
   }
 
   @BetaApi
   public UnaryCallable<AddHealthCheckTargetPoolHttpRequest, Operation>
       addHealthCheckTargetPoolCallable() {
     return addHealthCheckTargetPoolCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<AddInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      addInstanceTargetPoolOperationCallable() {
+    return addInstanceTargetPoolOperationCallable;
   }
 
   @BetaApi
@@ -500,6 +578,12 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
     return aggregatedListTargetPoolsCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetPoolOperationCallable() {
+    return deleteTargetPoolOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolCallable() {
     return deleteTargetPoolCallable;
@@ -514,6 +598,12 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
   public UnaryCallable<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth>
       getHealthTargetPoolCallable() {
     return getHealthTargetPoolCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetPoolOperationCallable() {
+    return insertTargetPoolOperationCallable;
   }
 
   @BetaApi
@@ -532,16 +622,34 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
     return listTargetPoolsCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      removeHealthCheckTargetPoolOperationCallable() {
+    return removeHealthCheckTargetPoolOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<RemoveHealthCheckTargetPoolHttpRequest, Operation>
       removeHealthCheckTargetPoolCallable() {
     return removeHealthCheckTargetPoolCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<RemoveInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      removeInstanceTargetPoolOperationCallable() {
+    return removeInstanceTargetPoolOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<RemoveInstanceTargetPoolHttpRequest, Operation>
       removeInstanceTargetPoolCallable() {
     return removeInstanceTargetPoolCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetBackupTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      setBackupTargetPoolOperationCallable() {
+    return setBackupTargetPoolOperationCallable;
   }
 
   @BetaApi

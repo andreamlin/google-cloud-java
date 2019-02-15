@@ -23,13 +23,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -76,13 +81,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of addRuleSecurityPolicy to 30 seconds:
+ * example, to set the total timeout of getSecurityPolicy to 30 seconds:
  *
  * <pre>
  * <code>
  * SecurityPolicyStubSettings.Builder securityPolicySettingsBuilder =
  *     SecurityPolicyStubSettings.newBuilder();
- * securityPolicySettingsBuilder.addRuleSecurityPolicySettings().getRetrySettings().toBuilder()
+ * securityPolicySettingsBuilder.getSecurityPolicySettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * SecurityPolicyStubSettings securityPolicySettings = securityPolicySettingsBuilder.build();
  * </code>
@@ -104,23 +109,37 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
 
   private final UnaryCallSettings<AddRuleSecurityPolicyHttpRequest, Operation>
       addRuleSecurityPolicySettings;
+  private final OperationCallSettings<AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      addRuleSecurityPolicyOperationSettings;
   private final UnaryCallSettings<DeleteSecurityPolicyHttpRequest, Operation>
       deleteSecurityPolicySettings;
+  private final OperationCallSettings<DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSecurityPolicyOperationSettings;
   private final UnaryCallSettings<GetSecurityPolicyHttpRequest, SecurityPolicy>
       getSecurityPolicySettings;
   private final UnaryCallSettings<GetRuleSecurityPolicyHttpRequest, SecurityPolicyRule>
       getRuleSecurityPolicySettings;
   private final UnaryCallSettings<InsertSecurityPolicyHttpRequest, Operation>
       insertSecurityPolicySettings;
+  private final OperationCallSettings<InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      insertSecurityPolicyOperationSettings;
   private final PagedCallSettings<
           ListSecurityPoliciesHttpRequest, SecurityPolicyList, ListSecurityPoliciesPagedResponse>
       listSecurityPoliciesSettings;
   private final UnaryCallSettings<PatchSecurityPolicyHttpRequest, Operation>
       patchSecurityPolicySettings;
+  private final OperationCallSettings<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchSecurityPolicyOperationSettings;
   private final UnaryCallSettings<PatchRuleSecurityPolicyHttpRequest, Operation>
       patchRuleSecurityPolicySettings;
+  private final OperationCallSettings<
+          PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchRuleSecurityPolicyOperationSettings;
   private final UnaryCallSettings<RemoveRuleSecurityPolicyHttpRequest, Operation>
       removeRuleSecurityPolicySettings;
+  private final OperationCallSettings<
+          RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      removeRuleSecurityPolicyOperationSettings;
 
   /** Returns the object with the settings used for calls to addRuleSecurityPolicy. */
   public UnaryCallSettings<AddRuleSecurityPolicyHttpRequest, Operation>
@@ -128,10 +147,24 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
     return addRuleSecurityPolicySettings;
   }
 
+  /** Returns the object with the settings used for calls to addRuleSecurityPolicy. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      addRuleSecurityPolicyOperationSettings() {
+    return addRuleSecurityPolicyOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to deleteSecurityPolicy. */
   public UnaryCallSettings<DeleteSecurityPolicyHttpRequest, Operation>
       deleteSecurityPolicySettings() {
     return deleteSecurityPolicySettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteSecurityPolicy. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSecurityPolicyOperationSettings() {
+    return deleteSecurityPolicyOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getSecurityPolicy. */
@@ -152,6 +185,13 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
     return insertSecurityPolicySettings;
   }
 
+  /** Returns the object with the settings used for calls to insertSecurityPolicy. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      insertSecurityPolicyOperationSettings() {
+    return insertSecurityPolicyOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to listSecurityPolicies. */
   public PagedCallSettings<
           ListSecurityPoliciesHttpRequest, SecurityPolicyList, ListSecurityPoliciesPagedResponse>
@@ -165,16 +205,37 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
     return patchSecurityPolicySettings;
   }
 
+  /** Returns the object with the settings used for calls to patchSecurityPolicy. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchSecurityPolicyOperationSettings() {
+    return patchSecurityPolicyOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to patchRuleSecurityPolicy. */
   public UnaryCallSettings<PatchRuleSecurityPolicyHttpRequest, Operation>
       patchRuleSecurityPolicySettings() {
     return patchRuleSecurityPolicySettings;
   }
 
+  /** Returns the object with the settings used for calls to patchRuleSecurityPolicy. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchRuleSecurityPolicyOperationSettings() {
+    return patchRuleSecurityPolicyOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to removeRuleSecurityPolicy. */
   public UnaryCallSettings<RemoveRuleSecurityPolicyHttpRequest, Operation>
       removeRuleSecurityPolicySettings() {
     return removeRuleSecurityPolicySettings;
+  }
+
+  /** Returns the object with the settings used for calls to removeRuleSecurityPolicy. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      removeRuleSecurityPolicyOperationSettings() {
+    return removeRuleSecurityPolicyOperationSettings;
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -253,14 +314,26 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
     super(settingsBuilder);
 
     addRuleSecurityPolicySettings = settingsBuilder.addRuleSecurityPolicySettings().build();
+    addRuleSecurityPolicyOperationSettings =
+        settingsBuilder.addRuleSecurityPolicyOperationSettings().build();
     deleteSecurityPolicySettings = settingsBuilder.deleteSecurityPolicySettings().build();
+    deleteSecurityPolicyOperationSettings =
+        settingsBuilder.deleteSecurityPolicyOperationSettings().build();
     getSecurityPolicySettings = settingsBuilder.getSecurityPolicySettings().build();
     getRuleSecurityPolicySettings = settingsBuilder.getRuleSecurityPolicySettings().build();
     insertSecurityPolicySettings = settingsBuilder.insertSecurityPolicySettings().build();
+    insertSecurityPolicyOperationSettings =
+        settingsBuilder.insertSecurityPolicyOperationSettings().build();
     listSecurityPoliciesSettings = settingsBuilder.listSecurityPoliciesSettings().build();
     patchSecurityPolicySettings = settingsBuilder.patchSecurityPolicySettings().build();
+    patchSecurityPolicyOperationSettings =
+        settingsBuilder.patchSecurityPolicyOperationSettings().build();
     patchRuleSecurityPolicySettings = settingsBuilder.patchRuleSecurityPolicySettings().build();
+    patchRuleSecurityPolicyOperationSettings =
+        settingsBuilder.patchRuleSecurityPolicyOperationSettings().build();
     removeRuleSecurityPolicySettings = settingsBuilder.removeRuleSecurityPolicySettings().build();
+    removeRuleSecurityPolicyOperationSettings =
+        settingsBuilder.removeRuleSecurityPolicyOperationSettings().build();
   }
 
   private static final PagedListDescriptor<
@@ -334,23 +407,41 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
 
     private final UnaryCallSettings.Builder<AddRuleSecurityPolicyHttpRequest, Operation>
         addRuleSecurityPolicySettings;
+    private final OperationCallSettings.Builder<
+            AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        addRuleSecurityPolicyOperationSettings;
     private final UnaryCallSettings.Builder<DeleteSecurityPolicyHttpRequest, Operation>
         deleteSecurityPolicySettings;
+    private final OperationCallSettings.Builder<
+            DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        deleteSecurityPolicyOperationSettings;
     private final UnaryCallSettings.Builder<GetSecurityPolicyHttpRequest, SecurityPolicy>
         getSecurityPolicySettings;
     private final UnaryCallSettings.Builder<GetRuleSecurityPolicyHttpRequest, SecurityPolicyRule>
         getRuleSecurityPolicySettings;
     private final UnaryCallSettings.Builder<InsertSecurityPolicyHttpRequest, Operation>
         insertSecurityPolicySettings;
+    private final OperationCallSettings.Builder<
+            InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        insertSecurityPolicyOperationSettings;
     private final PagedCallSettings.Builder<
             ListSecurityPoliciesHttpRequest, SecurityPolicyList, ListSecurityPoliciesPagedResponse>
         listSecurityPoliciesSettings;
     private final UnaryCallSettings.Builder<PatchSecurityPolicyHttpRequest, Operation>
         patchSecurityPolicySettings;
+    private final OperationCallSettings.Builder<
+            PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        patchSecurityPolicyOperationSettings;
     private final UnaryCallSettings.Builder<PatchRuleSecurityPolicyHttpRequest, Operation>
         patchRuleSecurityPolicySettings;
+    private final OperationCallSettings.Builder<
+            PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        patchRuleSecurityPolicyOperationSettings;
     private final UnaryCallSettings.Builder<RemoveRuleSecurityPolicyHttpRequest, Operation>
         removeRuleSecurityPolicySettings;
+    private final OperationCallSettings.Builder<
+            RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        removeRuleSecurityPolicyOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
         RETRYABLE_CODE_DEFINITIONS;
@@ -395,7 +486,11 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
 
       addRuleSecurityPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      addRuleSecurityPolicyOperationSettings = OperationCallSettings.newBuilder();
+
       deleteSecurityPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      deleteSecurityPolicyOperationSettings = OperationCallSettings.newBuilder();
 
       getSecurityPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
@@ -403,14 +498,22 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
 
       insertSecurityPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      insertSecurityPolicyOperationSettings = OperationCallSettings.newBuilder();
+
       listSecurityPoliciesSettings =
           PagedCallSettings.newBuilder(LIST_SECURITY_POLICIES_PAGE_STR_FACT);
 
       patchSecurityPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      patchSecurityPolicyOperationSettings = OperationCallSettings.newBuilder();
+
       patchRuleSecurityPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      patchRuleSecurityPolicyOperationSettings = OperationCallSettings.newBuilder();
+
       removeRuleSecurityPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      removeRuleSecurityPolicyOperationSettings = OperationCallSettings.newBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -482,6 +585,135 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
           .removeRuleSecurityPolicySettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .addRuleSecurityPolicyOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<AddRuleSecurityPolicyHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .deleteSecurityPolicyOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteSecurityPolicyHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertSecurityPolicyOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertSecurityPolicyHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .patchSecurityPolicyOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<PatchSecurityPolicyHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .patchRuleSecurityPolicyOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<PatchRuleSecurityPolicyHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .removeRuleSecurityPolicyOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<RemoveRuleSecurityPolicyHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -490,14 +722,26 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
       super(settings);
 
       addRuleSecurityPolicySettings = settings.addRuleSecurityPolicySettings.toBuilder();
+      addRuleSecurityPolicyOperationSettings =
+          settings.addRuleSecurityPolicyOperationSettings.toBuilder();
       deleteSecurityPolicySettings = settings.deleteSecurityPolicySettings.toBuilder();
+      deleteSecurityPolicyOperationSettings =
+          settings.deleteSecurityPolicyOperationSettings.toBuilder();
       getSecurityPolicySettings = settings.getSecurityPolicySettings.toBuilder();
       getRuleSecurityPolicySettings = settings.getRuleSecurityPolicySettings.toBuilder();
       insertSecurityPolicySettings = settings.insertSecurityPolicySettings.toBuilder();
+      insertSecurityPolicyOperationSettings =
+          settings.insertSecurityPolicyOperationSettings.toBuilder();
       listSecurityPoliciesSettings = settings.listSecurityPoliciesSettings.toBuilder();
       patchSecurityPolicySettings = settings.patchSecurityPolicySettings.toBuilder();
+      patchSecurityPolicyOperationSettings =
+          settings.patchSecurityPolicyOperationSettings.toBuilder();
       patchRuleSecurityPolicySettings = settings.patchRuleSecurityPolicySettings.toBuilder();
+      patchRuleSecurityPolicyOperationSettings =
+          settings.patchRuleSecurityPolicyOperationSettings.toBuilder();
       removeRuleSecurityPolicySettings = settings.removeRuleSecurityPolicySettings.toBuilder();
+      removeRuleSecurityPolicyOperationSettings =
+          settings.removeRuleSecurityPolicyOperationSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -534,10 +778,28 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
       return addRuleSecurityPolicySettings;
     }
 
+    /** Returns the builder for the settings used for calls to addRuleSecurityPolicy. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        addRuleSecurityPolicyOperationSettings() {
+      return addRuleSecurityPolicyOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to deleteSecurityPolicy. */
     public UnaryCallSettings.Builder<DeleteSecurityPolicyHttpRequest, Operation>
         deleteSecurityPolicySettings() {
       return deleteSecurityPolicySettings;
+    }
+
+    /** Returns the builder for the settings used for calls to deleteSecurityPolicy. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        deleteSecurityPolicyOperationSettings() {
+      return deleteSecurityPolicyOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to getSecurityPolicy. */
@@ -558,6 +820,15 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
       return insertSecurityPolicySettings;
     }
 
+    /** Returns the builder for the settings used for calls to insertSecurityPolicy. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        insertSecurityPolicyOperationSettings() {
+      return insertSecurityPolicyOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to listSecurityPolicies. */
     public PagedCallSettings.Builder<
             ListSecurityPoliciesHttpRequest, SecurityPolicyList, ListSecurityPoliciesPagedResponse>
@@ -571,16 +842,42 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
       return patchSecurityPolicySettings;
     }
 
+    /** Returns the builder for the settings used for calls to patchSecurityPolicy. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        patchSecurityPolicyOperationSettings() {
+      return patchSecurityPolicyOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to patchRuleSecurityPolicy. */
     public UnaryCallSettings.Builder<PatchRuleSecurityPolicyHttpRequest, Operation>
         patchRuleSecurityPolicySettings() {
       return patchRuleSecurityPolicySettings;
     }
 
+    /** Returns the builder for the settings used for calls to patchRuleSecurityPolicy. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        patchRuleSecurityPolicyOperationSettings() {
+      return patchRuleSecurityPolicyOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to removeRuleSecurityPolicy. */
     public UnaryCallSettings.Builder<RemoveRuleSecurityPolicyHttpRequest, Operation>
         removeRuleSecurityPolicySettings() {
       return removeRuleSecurityPolicySettings;
+    }
+
+    /** Returns the builder for the settings used for calls to removeRuleSecurityPolicy. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        removeRuleSecurityPolicyOperationSettings() {
+      return removeRuleSecurityPolicyOperationSettings;
     }
 
     @Override

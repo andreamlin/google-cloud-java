@@ -28,6 +28,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonNodeTemplateStub.testIamP
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -39,12 +40,12 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.NodeTemplateStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -160,19 +161,15 @@ public class NodeTemplateClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteNodeTemplateTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteNodeTemplateTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockNodeTemplates.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteNodeTemplateTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionNodeTemplateName nodeTemplate =
         ProjectRegionNodeTemplateName.of("[PROJECT]", "[REGION]", "[NODE_TEMPLATE]");
 
-    Void actualResponse = client.deleteNodeTemplateAsync(nodeTemplate).get();
+    EmptyMessage actualResponse = client.deleteNodeTemplateAsync(nodeTemplate).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -207,7 +204,7 @@ public class NodeTemplateClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -333,19 +330,16 @@ public class NodeTemplateClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertNodeTemplateTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertNodeTemplateTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockNodeTemplates.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertNodeTemplateTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
     NodeTemplate nodeTemplateResource = NodeTemplate.newBuilder().build();
 
-    Void actualResponse = client.insertNodeTemplateAsync(region, nodeTemplateResource).get();
+    EmptyMessage actualResponse =
+        client.insertNodeTemplateAsync(region, nodeTemplateResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -380,7 +374,7 @@ public class NodeTemplateClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 

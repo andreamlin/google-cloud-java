@@ -26,6 +26,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonForwardingRuleStub.setTar
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -37,12 +38,12 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.ForwardingRuleStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -156,19 +157,15 @@ public class ForwardingRuleClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteForwardingRuleTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteForwardingRuleTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockForwardingRules.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteForwardingRuleTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionForwardingRuleName forwardingRule =
         ProjectRegionForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
 
-    Void actualResponse = client.deleteForwardingRuleAsync(forwardingRule).get();
+    EmptyMessage actualResponse = client.deleteForwardingRuleAsync(forwardingRule).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -203,7 +200,7 @@ public class ForwardingRuleClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -298,19 +295,16 @@ public class ForwardingRuleClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertForwardingRuleTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertForwardingRuleTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockForwardingRules.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertForwardingRuleTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
     ForwardingRule forwardingRuleResource = ForwardingRule.newBuilder().build();
 
-    Void actualResponse = client.insertForwardingRuleAsync(region, forwardingRuleResource).get();
+    EmptyMessage actualResponse =
+        client.insertForwardingRuleAsync(region, forwardingRuleResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -345,7 +339,7 @@ public class ForwardingRuleClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -412,20 +406,16 @@ public class ForwardingRuleClientTest {
   @Test
   @SuppressWarnings("all")
   public void setTargetForwardingRuleTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setTargetForwardingRuleTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockForwardingRules.addResponse(resultOperation);
+        Operation.newBuilder().setName("setTargetForwardingRuleTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionForwardingRuleName forwardingRule =
         ProjectRegionForwardingRuleName.of("[PROJECT]", "[REGION]", "[FORWARDING_RULE]");
     TargetReference targetReferenceResource = TargetReference.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.setTargetForwardingRuleAsync(forwardingRule, targetReferenceResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -462,7 +452,7 @@ public class ForwardingRuleClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

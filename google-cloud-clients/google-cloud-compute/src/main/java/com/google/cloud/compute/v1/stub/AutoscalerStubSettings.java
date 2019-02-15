@@ -24,13 +24,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -76,13 +81,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteAutoscaler to 30 seconds:
+ * example, to set the total timeout of getAutoscaler to 30 seconds:
  *
  * <pre>
  * <code>
  * AutoscalerStubSettings.Builder autoscalerSettingsBuilder =
  *     AutoscalerStubSettings.newBuilder();
- * autoscalerSettingsBuilder.deleteAutoscalerSettings().getRetrySettings().toBuilder()
+ * autoscalerSettingsBuilder.getAutoscalerSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * AutoscalerStubSettings autoscalerSettings = autoscalerSettingsBuilder.build();
  * </code>
@@ -108,13 +113,21 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
           AggregatedListAutoscalersPagedResponse>
       aggregatedListAutoscalersSettings;
   private final UnaryCallSettings<DeleteAutoscalerHttpRequest, Operation> deleteAutoscalerSettings;
+  private final OperationCallSettings<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteAutoscalerOperationSettings;
   private final UnaryCallSettings<GetAutoscalerHttpRequest, Autoscaler> getAutoscalerSettings;
   private final UnaryCallSettings<InsertAutoscalerHttpRequest, Operation> insertAutoscalerSettings;
+  private final OperationCallSettings<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      insertAutoscalerOperationSettings;
   private final PagedCallSettings<
           ListAutoscalersHttpRequest, AutoscalerList, ListAutoscalersPagedResponse>
       listAutoscalersSettings;
   private final UnaryCallSettings<PatchAutoscalerHttpRequest, Operation> patchAutoscalerSettings;
+  private final OperationCallSettings<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      patchAutoscalerOperationSettings;
   private final UnaryCallSettings<UpdateAutoscalerHttpRequest, Operation> updateAutoscalerSettings;
+  private final OperationCallSettings<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      updateAutoscalerOperationSettings;
 
   /** Returns the object with the settings used for calls to aggregatedListAutoscalers. */
   public PagedCallSettings<
@@ -130,6 +143,13 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
     return deleteAutoscalerSettings;
   }
 
+  /** Returns the object with the settings used for calls to deleteAutoscaler. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteAutoscalerOperationSettings() {
+    return deleteAutoscalerOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to getAutoscaler. */
   public UnaryCallSettings<GetAutoscalerHttpRequest, Autoscaler> getAutoscalerSettings() {
     return getAutoscalerSettings;
@@ -138,6 +158,13 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
   /** Returns the object with the settings used for calls to insertAutoscaler. */
   public UnaryCallSettings<InsertAutoscalerHttpRequest, Operation> insertAutoscalerSettings() {
     return insertAutoscalerSettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertAutoscaler. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      insertAutoscalerOperationSettings() {
+    return insertAutoscalerOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listAutoscalers. */
@@ -151,9 +178,23 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
     return patchAutoscalerSettings;
   }
 
+  /** Returns the object with the settings used for calls to patchAutoscaler. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      patchAutoscalerOperationSettings() {
+    return patchAutoscalerOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to updateAutoscaler. */
   public UnaryCallSettings<UpdateAutoscalerHttpRequest, Operation> updateAutoscalerSettings() {
     return updateAutoscalerSettings;
+  }
+
+  /** Returns the object with the settings used for calls to updateAutoscaler. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      updateAutoscalerOperationSettings() {
+    return updateAutoscalerOperationSettings;
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -233,11 +274,15 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
 
     aggregatedListAutoscalersSettings = settingsBuilder.aggregatedListAutoscalersSettings().build();
     deleteAutoscalerSettings = settingsBuilder.deleteAutoscalerSettings().build();
+    deleteAutoscalerOperationSettings = settingsBuilder.deleteAutoscalerOperationSettings().build();
     getAutoscalerSettings = settingsBuilder.getAutoscalerSettings().build();
     insertAutoscalerSettings = settingsBuilder.insertAutoscalerSettings().build();
+    insertAutoscalerOperationSettings = settingsBuilder.insertAutoscalerOperationSettings().build();
     listAutoscalersSettings = settingsBuilder.listAutoscalersSettings().build();
     patchAutoscalerSettings = settingsBuilder.patchAutoscalerSettings().build();
+    patchAutoscalerOperationSettings = settingsBuilder.patchAutoscalerOperationSettings().build();
     updateAutoscalerSettings = settingsBuilder.updateAutoscalerSettings().build();
+    updateAutoscalerOperationSettings = settingsBuilder.updateAutoscalerOperationSettings().build();
   }
 
   private static final PagedListDescriptor<
@@ -381,17 +426,29 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
         aggregatedListAutoscalersSettings;
     private final UnaryCallSettings.Builder<DeleteAutoscalerHttpRequest, Operation>
         deleteAutoscalerSettings;
+    private final OperationCallSettings.Builder<
+            DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        deleteAutoscalerOperationSettings;
     private final UnaryCallSettings.Builder<GetAutoscalerHttpRequest, Autoscaler>
         getAutoscalerSettings;
     private final UnaryCallSettings.Builder<InsertAutoscalerHttpRequest, Operation>
         insertAutoscalerSettings;
+    private final OperationCallSettings.Builder<
+            InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        insertAutoscalerOperationSettings;
     private final PagedCallSettings.Builder<
             ListAutoscalersHttpRequest, AutoscalerList, ListAutoscalersPagedResponse>
         listAutoscalersSettings;
     private final UnaryCallSettings.Builder<PatchAutoscalerHttpRequest, Operation>
         patchAutoscalerSettings;
+    private final OperationCallSettings.Builder<
+            PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        patchAutoscalerOperationSettings;
     private final UnaryCallSettings.Builder<UpdateAutoscalerHttpRequest, Operation>
         updateAutoscalerSettings;
+    private final OperationCallSettings.Builder<
+            UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        updateAutoscalerOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
         RETRYABLE_CODE_DEFINITIONS;
@@ -439,15 +496,23 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
 
       deleteAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteAutoscalerOperationSettings = OperationCallSettings.newBuilder();
+
       getAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      insertAutoscalerOperationSettings = OperationCallSettings.newBuilder();
 
       listAutoscalersSettings = PagedCallSettings.newBuilder(LIST_AUTOSCALERS_PAGE_STR_FACT);
 
       patchAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      patchAutoscalerOperationSettings = OperationCallSettings.newBuilder();
+
       updateAutoscalerSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      updateAutoscalerOperationSettings = OperationCallSettings.newBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -507,6 +572,90 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
           .updateAutoscalerSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .deleteAutoscalerOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteAutoscalerHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertAutoscalerOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertAutoscalerHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .patchAutoscalerOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<PatchAutoscalerHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .updateAutoscalerOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<UpdateAutoscalerHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -516,11 +665,15 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
 
       aggregatedListAutoscalersSettings = settings.aggregatedListAutoscalersSettings.toBuilder();
       deleteAutoscalerSettings = settings.deleteAutoscalerSettings.toBuilder();
+      deleteAutoscalerOperationSettings = settings.deleteAutoscalerOperationSettings.toBuilder();
       getAutoscalerSettings = settings.getAutoscalerSettings.toBuilder();
       insertAutoscalerSettings = settings.insertAutoscalerSettings.toBuilder();
+      insertAutoscalerOperationSettings = settings.insertAutoscalerOperationSettings.toBuilder();
       listAutoscalersSettings = settings.listAutoscalersSettings.toBuilder();
       patchAutoscalerSettings = settings.patchAutoscalerSettings.toBuilder();
+      patchAutoscalerOperationSettings = settings.patchAutoscalerOperationSettings.toBuilder();
       updateAutoscalerSettings = settings.updateAutoscalerSettings.toBuilder();
+      updateAutoscalerOperationSettings = settings.updateAutoscalerOperationSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -564,6 +717,14 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
       return deleteAutoscalerSettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteAutoscaler. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        deleteAutoscalerOperationSettings() {
+      return deleteAutoscalerOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to getAutoscaler. */
     public UnaryCallSettings.Builder<GetAutoscalerHttpRequest, Autoscaler> getAutoscalerSettings() {
       return getAutoscalerSettings;
@@ -573,6 +734,14 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
     public UnaryCallSettings.Builder<InsertAutoscalerHttpRequest, Operation>
         insertAutoscalerSettings() {
       return insertAutoscalerSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertAutoscaler. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        insertAutoscalerOperationSettings() {
+      return insertAutoscalerOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listAutoscalers. */
@@ -588,10 +757,26 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
       return patchAutoscalerSettings;
     }
 
+    /** Returns the builder for the settings used for calls to patchAutoscaler. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        patchAutoscalerOperationSettings() {
+      return patchAutoscalerOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to updateAutoscaler. */
     public UnaryCallSettings.Builder<UpdateAutoscalerHttpRequest, Operation>
         updateAutoscalerSettings() {
       return updateAutoscalerSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to updateAutoscaler. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        updateAutoscalerOperationSettings() {
+      return updateAutoscalerOperationSettings;
     }
 
     @Override

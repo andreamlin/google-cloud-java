@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.FirewallClient.ListFirewallsPagedRespo
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteFirewallHttpRequest;
 import com.google.cloud.compute.v1.Firewall;
@@ -41,6 +43,17 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class FirewallStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      deleteFirewallOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deleteFirewallOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteFirewallHttpRequest, Operation> deleteFirewallCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteFirewallCallable()");
@@ -49,6 +62,12 @@ public abstract class FirewallStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetFirewallHttpRequest, Firewall> getFirewallCallable() {
     throw new UnsupportedOperationException("Not implemented: getFirewallCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      insertFirewallOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: insertFirewallOperationCallable()");
   }
 
   @BetaApi
@@ -67,9 +86,21 @@ public abstract class FirewallStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: listFirewallsCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      patchFirewallOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: patchFirewallOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<PatchFirewallHttpRequest, Operation> patchFirewallCallable() {
     throw new UnsupportedOperationException("Not implemented: patchFirewallCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      updateFirewallOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: updateFirewallOperationCallable()");
   }
 
   @BetaApi

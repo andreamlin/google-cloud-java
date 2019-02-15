@@ -27,6 +27,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonUrlMapStub.validateUrlMap
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -38,11 +39,11 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.UrlMapStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -95,18 +96,14 @@ public class UrlMapClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteUrlMapTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteUrlMapTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockUrlMaps.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteUrlMapTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
 
-    Void actualResponse = client.deleteUrlMapAsync(urlMap).get();
+    EmptyMessage actualResponse = client.deleteUrlMapAsync(urlMap).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -140,7 +137,7 @@ public class UrlMapClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -209,19 +206,15 @@ public class UrlMapClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertUrlMapTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertUrlMapTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockUrlMaps.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertUrlMapTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     UrlMap urlMapResource = UrlMap.newBuilder().build();
 
-    Void actualResponse = client.insertUrlMapAsync(project, urlMapResource).get();
+    EmptyMessage actualResponse = client.insertUrlMapAsync(project, urlMapResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -256,27 +249,23 @@ public class UrlMapClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void invalidateCacheUrlMapTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("invalidateCacheUrlMapTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockUrlMaps.addResponse(resultOperation);
+        Operation.newBuilder().setName("invalidateCacheUrlMapTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
     CacheInvalidationRule cacheInvalidationRuleResource =
         CacheInvalidationRule.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.invalidateCacheUrlMapAsync(urlMap, cacheInvalidationRuleResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -313,7 +302,7 @@ public class UrlMapClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -380,20 +369,16 @@ public class UrlMapClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchUrlMapTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("patchUrlMapTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockUrlMaps.addResponse(resultOperation);
+        Operation.newBuilder().setName("patchUrlMapTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
     UrlMap urlMapResource = UrlMap.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse = client.patchUrlMapAsync(urlMap, urlMapResource, fieldMask).get();
+    EmptyMessage actualResponse = client.patchUrlMapAsync(urlMap, urlMapResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -429,27 +414,23 @@ public class UrlMapClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void updateUrlMapTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("updateUrlMapTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockUrlMaps.addResponse(resultOperation);
+        Operation.newBuilder().setName("updateUrlMapTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
     UrlMap urlMapResource = UrlMap.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse = client.updateUrlMapAsync(urlMap, urlMapResource, fieldMask).get();
+    EmptyMessage actualResponse = client.updateUrlMapAsync(urlMap, urlMapResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -485,7 +466,7 @@ public class UrlMapClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 

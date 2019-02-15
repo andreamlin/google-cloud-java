@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AggregatedListVpnTunnelsHttpRequest;
@@ -159,6 +161,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList>
       aggregatedListVpnTunnelsCallable;
@@ -166,8 +169,12 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
           AggregatedListVpnTunnelsHttpRequest, AggregatedListVpnTunnelsPagedResponse>
       aggregatedListVpnTunnelsPagedCallable;
   private final UnaryCallable<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelCallable;
+  private final OperationCallable<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+      deleteVpnTunnelOperationCallable;
   private final UnaryCallable<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelCallable;
   private final UnaryCallable<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelCallable;
+  private final OperationCallable<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+      insertVpnTunnelOperationCallable;
   private final UnaryCallable<ListVpnTunnelsHttpRequest, VpnTunnelList> listVpnTunnelsCallable;
   private final UnaryCallable<ListVpnTunnelsHttpRequest, ListVpnTunnelsPagedResponse>
       listVpnTunnelsPagedCallable;
@@ -210,6 +217,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListVpnTunnelsHttpRequest, VpnTunnelAggregatedList>
         aggregatedListVpnTunnelsTransportSettings =
@@ -247,12 +255,24 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
     this.deleteVpnTunnelCallable =
         callableFactory.createUnaryCallable(
             deleteVpnTunnelTransportSettings, settings.deleteVpnTunnelSettings(), clientContext);
+    this.deleteVpnTunnelOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteVpnTunnelTransportSettings,
+            settings.deleteVpnTunnelOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getVpnTunnelCallable =
         callableFactory.createUnaryCallable(
             getVpnTunnelTransportSettings, settings.getVpnTunnelSettings(), clientContext);
     this.insertVpnTunnelCallable =
         callableFactory.createUnaryCallable(
             insertVpnTunnelTransportSettings, settings.insertVpnTunnelSettings(), clientContext);
+    this.insertVpnTunnelOperationCallable =
+        callableFactory.createOperationCallable(
+            insertVpnTunnelTransportSettings,
+            settings.insertVpnTunnelOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listVpnTunnelsCallable =
         callableFactory.createUnaryCallable(
             listVpnTunnelsTransportSettings, settings.listVpnTunnelsSettings(), clientContext);
@@ -261,6 +281,11 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
             listVpnTunnelsTransportSettings, settings.listVpnTunnelsSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
   }
 
   @BetaApi
@@ -275,6 +300,12 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
     return aggregatedListVpnTunnelsCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+      deleteVpnTunnelOperationCallable() {
+    return deleteVpnTunnelOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelCallable() {
     return deleteVpnTunnelCallable;
@@ -283,6 +314,12 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
   @BetaApi
   public UnaryCallable<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelCallable() {
     return getVpnTunnelCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+      insertVpnTunnelOperationCallable() {
+    return insertVpnTunnelOperationCallable;
   }
 
   @BetaApi

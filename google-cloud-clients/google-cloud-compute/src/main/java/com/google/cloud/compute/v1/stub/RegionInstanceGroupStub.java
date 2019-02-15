@@ -20,6 +20,8 @@ import static com.google.cloud.compute.v1.RegionInstanceGroupClient.ListRegionIn
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.GetRegionInstanceGroupHttpRequest;
 import com.google.cloud.compute.v1.InstanceGroup;
@@ -40,6 +42,11 @@ import javax.annotation.Generated;
 @Generated("by gapic-generator")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class RegionInstanceGroupStub implements BackgroundResource {
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
 
   @BetaApi
   public UnaryCallable<GetRegionInstanceGroupHttpRequest, InstanceGroup>
@@ -75,6 +82,13 @@ public abstract class RegionInstanceGroupStub implements BackgroundResource {
       listInstancesRegionInstanceGroupsCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: listInstancesRegionInstanceGroupsCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNamedPortsRegionInstanceGroupOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: setNamedPortsRegionInstanceGroupOperationCallable()");
   }
 
   @BetaApi

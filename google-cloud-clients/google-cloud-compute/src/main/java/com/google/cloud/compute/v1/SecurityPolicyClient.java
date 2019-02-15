@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.SecurityPolicyStub;
@@ -43,8 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
  *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
- *   SecurityPolicyRule securityPolicyRuleResource = SecurityPolicyRule.newBuilder().build();
- *   Operation response = securityPolicyClient.addRuleSecurityPolicy(securityPolicy, securityPolicyRuleResource);
+ *   SecurityPolicy response = securityPolicyClient.getSecurityPolicy(securityPolicy);
  * }
  * </code>
  * </pre>
@@ -104,6 +106,7 @@ import javax.annotation.Generated;
 public class SecurityPolicyClient implements BackgroundResource {
   private final SecurityPolicySettings settings;
   private final SecurityPolicyStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of SecurityPolicyClient with default settings. */
   public static final SecurityPolicyClient create() throws IOException {
@@ -136,12 +139,14 @@ public class SecurityPolicyClient implements BackgroundResource {
   protected SecurityPolicyClient(SecurityPolicySettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((SecurityPolicyStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected SecurityPolicyClient(SecurityPolicyStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final SecurityPolicySettings getSettings() {
@@ -153,36 +158,14 @@ public class SecurityPolicyClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Inserts a rule into a security policy.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
-   *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
-   *   SecurityPolicyRule securityPolicyRuleResource = SecurityPolicyRule.newBuilder().build();
-   *   Operation response = securityPolicyClient.addRuleSecurityPolicy(securityPolicy, securityPolicyRuleResource);
-   * }
-   * </code></pre>
-   *
-   * @param securityPolicy Name of the security policy to update.
-   * @param securityPolicyRuleResource Represents a rule that describes one or more match conditions
-   *     along with the action to be taken when traffic matches this condition (allow or deny).
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation addRuleSecurityPolicy(
-      ProjectGlobalSecurityPolicyName securityPolicy,
-      SecurityPolicyRule securityPolicyRuleResource) {
-
-    AddRuleSecurityPolicyHttpRequest request =
-        AddRuleSecurityPolicyHttpRequest.newBuilder()
-            .setSecurityPolicy(securityPolicy == null ? null : securityPolicy.toString())
-            .setSecurityPolicyRuleResource(securityPolicyRuleResource)
-            .build();
-    return addRuleSecurityPolicy(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -195,7 +178,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
    *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
    *   SecurityPolicyRule securityPolicyRuleResource = SecurityPolicyRule.newBuilder().build();
-   *   Operation response = securityPolicyClient.addRuleSecurityPolicy(securityPolicy.toString(), securityPolicyRuleResource);
+   *   securityPolicyClient.addRuleSecurityPolicyAsync(securityPolicy, securityPolicyRuleResource).get();
    * }
    * </code></pre>
    *
@@ -204,8 +187,42 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     along with the action to be taken when traffic matches this condition (allow or deny).
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation addRuleSecurityPolicy(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> addRuleSecurityPolicyAsync(
+      ProjectGlobalSecurityPolicyName securityPolicy,
+      SecurityPolicyRule securityPolicyRuleResource) {
+
+    AddRuleSecurityPolicyHttpRequest request =
+        AddRuleSecurityPolicyHttpRequest.newBuilder()
+            .setSecurityPolicy(securityPolicy == null ? null : securityPolicy.toString())
+            .setSecurityPolicyRuleResource(securityPolicyRuleResource)
+            .build();
+    return addRuleSecurityPolicyAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Inserts a rule into a security policy.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
+   *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
+   *   SecurityPolicyRule securityPolicyRuleResource = SecurityPolicyRule.newBuilder().build();
+   *   securityPolicyClient.addRuleSecurityPolicyAsync(securityPolicy.toString(), securityPolicyRuleResource).get();
+   * }
+   * </code></pre>
+   *
+   * @param securityPolicy Name of the security policy to update.
+   * @param securityPolicyRuleResource Represents a rule that describes one or more match conditions
+   *     along with the action to be taken when traffic matches this condition (allow or deny).
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> addRuleSecurityPolicyAsync(
       String securityPolicy, SecurityPolicyRule securityPolicyRuleResource) {
 
     AddRuleSecurityPolicyHttpRequest request =
@@ -213,7 +230,7 @@ public class SecurityPolicyClient implements BackgroundResource {
             .setSecurityPolicy(securityPolicy)
             .setSecurityPolicyRuleResource(securityPolicyRuleResource)
             .build();
-    return addRuleSecurityPolicy(request);
+    return addRuleSecurityPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -230,16 +247,44 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .setSecurityPolicy(securityPolicy.toString())
    *     .setSecurityPolicyRuleResource(securityPolicyRuleResource)
    *     .build();
-   *   Operation response = securityPolicyClient.addRuleSecurityPolicy(request);
+   *   securityPolicyClient.addRuleSecurityPolicyAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation addRuleSecurityPolicy(AddRuleSecurityPolicyHttpRequest request) {
-    return addRuleSecurityPolicyCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> addRuleSecurityPolicyAsync(
+      AddRuleSecurityPolicyHttpRequest request) {
+    return addRuleSecurityPolicyOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Inserts a rule into a security policy.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
+   *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
+   *   SecurityPolicyRule securityPolicyRuleResource = SecurityPolicyRule.newBuilder().build();
+   *   AddRuleSecurityPolicyHttpRequest request = AddRuleSecurityPolicyHttpRequest.newBuilder()
+   *     .setSecurityPolicy(securityPolicy.toString())
+   *     .setSecurityPolicyRuleResource(securityPolicyRuleResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = securityPolicyClient.addRuleSecurityPolicyOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      addRuleSecurityPolicyOperationCallable() {
+    return stub.addRuleSecurityPolicyOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -258,7 +303,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = securityPolicyClient.addRuleSecurityPolicyCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -277,21 +322,23 @@ public class SecurityPolicyClient implements BackgroundResource {
    * <pre><code>
    * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
    *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
-   *   Operation response = securityPolicyClient.deleteSecurityPolicy(securityPolicy);
+   *   securityPolicyClient.deleteSecurityPolicyAsync(securityPolicy).get();
    * }
    * </code></pre>
    *
    * @param securityPolicy Name of the security policy to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSecurityPolicy(ProjectGlobalSecurityPolicyName securityPolicy) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSecurityPolicyAsync(
+      ProjectGlobalSecurityPolicyName securityPolicy) {
 
     DeleteSecurityPolicyHttpRequest request =
         DeleteSecurityPolicyHttpRequest.newBuilder()
             .setSecurityPolicy(securityPolicy == null ? null : securityPolicy.toString())
             .build();
-    return deleteSecurityPolicy(request);
+    return deleteSecurityPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -303,19 +350,21 @@ public class SecurityPolicyClient implements BackgroundResource {
    * <pre><code>
    * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
    *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
-   *   Operation response = securityPolicyClient.deleteSecurityPolicy(securityPolicy.toString());
+   *   securityPolicyClient.deleteSecurityPolicyAsync(securityPolicy.toString()).get();
    * }
    * </code></pre>
    *
    * @param securityPolicy Name of the security policy to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSecurityPolicy(String securityPolicy) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSecurityPolicyAsync(
+      String securityPolicy) {
 
     DeleteSecurityPolicyHttpRequest request =
         DeleteSecurityPolicyHttpRequest.newBuilder().setSecurityPolicy(securityPolicy).build();
-    return deleteSecurityPolicy(request);
+    return deleteSecurityPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -330,16 +379,42 @@ public class SecurityPolicyClient implements BackgroundResource {
    *   DeleteSecurityPolicyHttpRequest request = DeleteSecurityPolicyHttpRequest.newBuilder()
    *     .setSecurityPolicy(securityPolicy.toString())
    *     .build();
-   *   Operation response = securityPolicyClient.deleteSecurityPolicy(request);
+   *   securityPolicyClient.deleteSecurityPolicyAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSecurityPolicy(DeleteSecurityPolicyHttpRequest request) {
-    return deleteSecurityPolicyCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSecurityPolicyAsync(
+      DeleteSecurityPolicyHttpRequest request) {
+    return deleteSecurityPolicyOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified policy.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
+   *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
+   *   DeleteSecurityPolicyHttpRequest request = DeleteSecurityPolicyHttpRequest.newBuilder()
+   *     .setSecurityPolicy(securityPolicy.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = securityPolicyClient.deleteSecurityPolicyOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSecurityPolicyOperationCallable() {
+    return stub.deleteSecurityPolicyOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -356,7 +431,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = securityPolicyClient.deleteSecurityPolicyCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -585,7 +660,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   SecurityPolicy securityPolicyResource = SecurityPolicy.newBuilder().build();
-   *   Operation response = securityPolicyClient.insertSecurityPolicy(project, securityPolicyResource);
+   *   securityPolicyClient.insertSecurityPolicyAsync(project, securityPolicyResource).get();
    * }
    * </code></pre>
    *
@@ -595,8 +670,9 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     resource_for beta.securityPolicies ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertSecurityPolicy(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertSecurityPolicyAsync(
       ProjectName project, SecurityPolicy securityPolicyResource) {
 
     InsertSecurityPolicyHttpRequest request =
@@ -604,7 +680,7 @@ public class SecurityPolicyClient implements BackgroundResource {
             .setProject(project == null ? null : project.toString())
             .setSecurityPolicyResource(securityPolicyResource)
             .build();
-    return insertSecurityPolicy(request);
+    return insertSecurityPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -617,7 +693,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   SecurityPolicy securityPolicyResource = SecurityPolicy.newBuilder().build();
-   *   Operation response = securityPolicyClient.insertSecurityPolicy(project.toString(), securityPolicyResource);
+   *   securityPolicyClient.insertSecurityPolicyAsync(project.toString(), securityPolicyResource).get();
    * }
    * </code></pre>
    *
@@ -627,8 +703,9 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     resource_for beta.securityPolicies ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertSecurityPolicy(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertSecurityPolicyAsync(
       String project, SecurityPolicy securityPolicyResource) {
 
     InsertSecurityPolicyHttpRequest request =
@@ -636,7 +713,7 @@ public class SecurityPolicyClient implements BackgroundResource {
             .setProject(project)
             .setSecurityPolicyResource(securityPolicyResource)
             .build();
-    return insertSecurityPolicy(request);
+    return insertSecurityPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -653,16 +730,44 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setSecurityPolicyResource(securityPolicyResource)
    *     .build();
-   *   Operation response = securityPolicyClient.insertSecurityPolicy(request);
+   *   securityPolicyClient.insertSecurityPolicyAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertSecurityPolicy(InsertSecurityPolicyHttpRequest request) {
-    return insertSecurityPolicyCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertSecurityPolicyAsync(
+      InsertSecurityPolicyHttpRequest request) {
+    return insertSecurityPolicyOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a new policy in the specified project using the data included in the request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   SecurityPolicy securityPolicyResource = SecurityPolicy.newBuilder().build();
+   *   InsertSecurityPolicyHttpRequest request = InsertSecurityPolicyHttpRequest.newBuilder()
+   *     .setProject(project.toString())
+   *     .setSecurityPolicyResource(securityPolicyResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = securityPolicyClient.insertSecurityPolicyOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      insertSecurityPolicyOperationCallable() {
+    return stub.insertSecurityPolicyOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -681,7 +786,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = securityPolicyClient.insertSecurityPolicyCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -840,7 +945,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
    *   SecurityPolicy securityPolicyResource = SecurityPolicy.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = securityPolicyClient.patchSecurityPolicy(securityPolicy, securityPolicyResource, fieldMask);
+   *   securityPolicyClient.patchSecurityPolicyAsync(securityPolicy, securityPolicyResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -854,8 +959,9 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchSecurityPolicy(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchSecurityPolicyAsync(
       ProjectGlobalSecurityPolicyName securityPolicy,
       SecurityPolicy securityPolicyResource,
       List<String> fieldMask) {
@@ -866,7 +972,7 @@ public class SecurityPolicyClient implements BackgroundResource {
             .setSecurityPolicyResource(securityPolicyResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchSecurityPolicy(request);
+    return patchSecurityPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -880,7 +986,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
    *   SecurityPolicy securityPolicyResource = SecurityPolicy.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = securityPolicyClient.patchSecurityPolicy(securityPolicy.toString(), securityPolicyResource, fieldMask);
+   *   securityPolicyClient.patchSecurityPolicyAsync(securityPolicy.toString(), securityPolicyResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -894,8 +1000,9 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchSecurityPolicy(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchSecurityPolicyAsync(
       String securityPolicy, SecurityPolicy securityPolicyResource, List<String> fieldMask) {
 
     PatchSecurityPolicyHttpRequest request =
@@ -904,7 +1011,7 @@ public class SecurityPolicyClient implements BackgroundResource {
             .setSecurityPolicyResource(securityPolicyResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchSecurityPolicy(request);
+    return patchSecurityPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -923,16 +1030,46 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .setSecurityPolicyResource(securityPolicyResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = securityPolicyClient.patchSecurityPolicy(request);
+   *   securityPolicyClient.patchSecurityPolicyAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchSecurityPolicy(PatchSecurityPolicyHttpRequest request) {
-    return patchSecurityPolicyCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchSecurityPolicyAsync(
+      PatchSecurityPolicyHttpRequest request) {
+    return patchSecurityPolicyOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Patches the specified policy with the data included in the request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
+   *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
+   *   SecurityPolicy securityPolicyResource = SecurityPolicy.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   PatchSecurityPolicyHttpRequest request = PatchSecurityPolicyHttpRequest.newBuilder()
+   *     .setSecurityPolicy(securityPolicy.toString())
+   *     .setSecurityPolicyResource(securityPolicyResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = securityPolicyClient.patchSecurityPolicyOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchSecurityPolicyOperationCallable() {
+    return stub.patchSecurityPolicyOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -953,7 +1090,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = securityPolicyClient.patchSecurityPolicyCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -974,7 +1111,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    *   Integer priority = 0;
    *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
    *   SecurityPolicyRule securityPolicyRuleResource = SecurityPolicyRule.newBuilder().build();
-   *   Operation response = securityPolicyClient.patchRuleSecurityPolicy(priority, securityPolicy, securityPolicyRuleResource);
+   *   securityPolicyClient.patchRuleSecurityPolicyAsync(priority, securityPolicy, securityPolicyRuleResource).get();
    * }
    * </code></pre>
    *
@@ -984,8 +1121,9 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     along with the action to be taken when traffic matches this condition (allow or deny).
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchRuleSecurityPolicy(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchRuleSecurityPolicyAsync(
       Integer priority,
       ProjectGlobalSecurityPolicyName securityPolicy,
       SecurityPolicyRule securityPolicyRuleResource) {
@@ -996,7 +1134,7 @@ public class SecurityPolicyClient implements BackgroundResource {
             .setSecurityPolicy(securityPolicy == null ? null : securityPolicy.toString())
             .setSecurityPolicyRuleResource(securityPolicyRuleResource)
             .build();
-    return patchRuleSecurityPolicy(request);
+    return patchRuleSecurityPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1010,7 +1148,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    *   Integer priority = 0;
    *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
    *   SecurityPolicyRule securityPolicyRuleResource = SecurityPolicyRule.newBuilder().build();
-   *   Operation response = securityPolicyClient.patchRuleSecurityPolicy(priority, securityPolicy.toString(), securityPolicyRuleResource);
+   *   securityPolicyClient.patchRuleSecurityPolicyAsync(priority, securityPolicy.toString(), securityPolicyRuleResource).get();
    * }
    * </code></pre>
    *
@@ -1020,8 +1158,9 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     along with the action to be taken when traffic matches this condition (allow or deny).
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchRuleSecurityPolicy(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchRuleSecurityPolicyAsync(
       Integer priority, String securityPolicy, SecurityPolicyRule securityPolicyRuleResource) {
 
     PatchRuleSecurityPolicyHttpRequest request =
@@ -1030,7 +1169,7 @@ public class SecurityPolicyClient implements BackgroundResource {
             .setSecurityPolicy(securityPolicy)
             .setSecurityPolicyRuleResource(securityPolicyRuleResource)
             .build();
-    return patchRuleSecurityPolicy(request);
+    return patchRuleSecurityPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1049,16 +1188,46 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .setSecurityPolicy(securityPolicy.toString())
    *     .setSecurityPolicyRuleResource(securityPolicyRuleResource)
    *     .build();
-   *   Operation response = securityPolicyClient.patchRuleSecurityPolicy(request);
+   *   securityPolicyClient.patchRuleSecurityPolicyAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchRuleSecurityPolicy(PatchRuleSecurityPolicyHttpRequest request) {
-    return patchRuleSecurityPolicyCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchRuleSecurityPolicyAsync(
+      PatchRuleSecurityPolicyHttpRequest request) {
+    return patchRuleSecurityPolicyOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Patches a rule at the specified priority.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
+   *   Integer priority = 0;
+   *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
+   *   SecurityPolicyRule securityPolicyRuleResource = SecurityPolicyRule.newBuilder().build();
+   *   PatchRuleSecurityPolicyHttpRequest request = PatchRuleSecurityPolicyHttpRequest.newBuilder()
+   *     .setPriority(priority)
+   *     .setSecurityPolicy(securityPolicy.toString())
+   *     .setSecurityPolicyRuleResource(securityPolicyRuleResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = securityPolicyClient.patchRuleSecurityPolicyOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchRuleSecurityPolicyOperationCallable() {
+    return stub.patchRuleSecurityPolicyOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1079,7 +1248,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = securityPolicyClient.patchRuleSecurityPolicyCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1099,7 +1268,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
    *   Integer priority = 0;
    *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
-   *   Operation response = securityPolicyClient.removeRuleSecurityPolicy(priority, securityPolicy);
+   *   securityPolicyClient.removeRuleSecurityPolicyAsync(priority, securityPolicy).get();
    * }
    * </code></pre>
    *
@@ -1107,8 +1276,9 @@ public class SecurityPolicyClient implements BackgroundResource {
    * @param securityPolicy Name of the security policy to update.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation removeRuleSecurityPolicy(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> removeRuleSecurityPolicyAsync(
       Integer priority, ProjectGlobalSecurityPolicyName securityPolicy) {
 
     RemoveRuleSecurityPolicyHttpRequest request =
@@ -1116,7 +1286,7 @@ public class SecurityPolicyClient implements BackgroundResource {
             .setPriority(priority)
             .setSecurityPolicy(securityPolicy == null ? null : securityPolicy.toString())
             .build();
-    return removeRuleSecurityPolicy(request);
+    return removeRuleSecurityPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1129,7 +1299,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
    *   Integer priority = 0;
    *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
-   *   Operation response = securityPolicyClient.removeRuleSecurityPolicy(priority, securityPolicy.toString());
+   *   securityPolicyClient.removeRuleSecurityPolicyAsync(priority, securityPolicy.toString()).get();
    * }
    * </code></pre>
    *
@@ -1137,15 +1307,17 @@ public class SecurityPolicyClient implements BackgroundResource {
    * @param securityPolicy Name of the security policy to update.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation removeRuleSecurityPolicy(Integer priority, String securityPolicy) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> removeRuleSecurityPolicyAsync(
+      Integer priority, String securityPolicy) {
 
     RemoveRuleSecurityPolicyHttpRequest request =
         RemoveRuleSecurityPolicyHttpRequest.newBuilder()
             .setPriority(priority)
             .setSecurityPolicy(securityPolicy)
             .build();
-    return removeRuleSecurityPolicy(request);
+    return removeRuleSecurityPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1162,16 +1334,44 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .setPriority(priority)
    *     .setSecurityPolicy(securityPolicy.toString())
    *     .build();
-   *   Operation response = securityPolicyClient.removeRuleSecurityPolicy(request);
+   *   securityPolicyClient.removeRuleSecurityPolicyAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation removeRuleSecurityPolicy(RemoveRuleSecurityPolicyHttpRequest request) {
-    return removeRuleSecurityPolicyCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> removeRuleSecurityPolicyAsync(
+      RemoveRuleSecurityPolicyHttpRequest request) {
+    return removeRuleSecurityPolicyOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes a rule at the specified priority.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SecurityPolicyClient securityPolicyClient = SecurityPolicyClient.create()) {
+   *   Integer priority = 0;
+   *   ProjectGlobalSecurityPolicyName securityPolicy = ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
+   *   RemoveRuleSecurityPolicyHttpRequest request = RemoveRuleSecurityPolicyHttpRequest.newBuilder()
+   *     .setPriority(priority)
+   *     .setSecurityPolicy(securityPolicy.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = securityPolicyClient.removeRuleSecurityPolicyOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      removeRuleSecurityPolicyOperationCallable() {
+    return stub.removeRuleSecurityPolicyOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1190,7 +1390,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = securityPolicyClient.removeRuleSecurityPolicyCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

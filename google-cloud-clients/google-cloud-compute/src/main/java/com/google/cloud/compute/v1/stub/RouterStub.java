@@ -21,6 +21,8 @@ import static com.google.cloud.compute.v1.RouterClient.ListRoutersPagedResponse;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AggregatedListRoutersHttpRequest;
 import com.google.cloud.compute.v1.DeleteRouterHttpRequest;
@@ -51,6 +53,11 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class RouterStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
   @BetaApi
   public UnaryCallable<AggregatedListRoutersHttpRequest, AggregatedListRoutersPagedResponse>
       aggregatedListRoutersPagedCallable() {
@@ -62,6 +69,12 @@ public abstract class RouterStub implements BackgroundResource {
   public UnaryCallable<AggregatedListRoutersHttpRequest, RouterAggregatedList>
       aggregatedListRoutersCallable() {
     throw new UnsupportedOperationException("Not implemented: aggregatedListRoutersCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRouterOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deleteRouterOperationCallable()");
   }
 
   @BetaApi
@@ -93,6 +106,12 @@ public abstract class RouterStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: getRouterStatusRouterCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+      insertRouterOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: insertRouterOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<InsertRouterHttpRequest, Operation> insertRouterCallable() {
     throw new UnsupportedOperationException("Not implemented: insertRouterCallable()");
@@ -109,6 +128,12 @@ public abstract class RouterStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: listRoutersCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+      patchRouterOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: patchRouterOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<PatchRouterHttpRequest, Operation> patchRouterCallable() {
     throw new UnsupportedOperationException("Not implemented: patchRouterCallable()");
@@ -117,6 +142,12 @@ public abstract class RouterStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<PreviewRouterHttpRequest, RoutersPreviewResponse> previewRouterCallable() {
     throw new UnsupportedOperationException("Not implemented: previewRouterCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+      updateRouterOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: updateRouterOperationCallable()");
   }
 
   @BetaApi

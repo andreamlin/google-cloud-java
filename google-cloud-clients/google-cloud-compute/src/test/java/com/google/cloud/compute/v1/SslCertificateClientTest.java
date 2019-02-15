@@ -23,6 +23,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonSslCertificateStub.listSs
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -34,10 +35,10 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.SslCertificateStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -86,19 +87,15 @@ public class SslCertificateClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteSslCertificateTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteSslCertificateTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSslCertificates.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteSslCertificateTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalSslCertificateName sslCertificate =
         ProjectGlobalSslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
 
-    Void actualResponse = client.deleteSslCertificateAsync(sslCertificate).get();
+    EmptyMessage actualResponse = client.deleteSslCertificateAsync(sslCertificate).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -133,7 +130,7 @@ public class SslCertificateClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -204,19 +201,16 @@ public class SslCertificateClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertSslCertificateTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertSslCertificateTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSslCertificates.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertSslCertificateTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     SslCertificate sslCertificateResource = SslCertificate.newBuilder().build();
 
-    Void actualResponse = client.insertSslCertificateAsync(project, sslCertificateResource).get();
+    EmptyMessage actualResponse =
+        client.insertSslCertificateAsync(project, sslCertificateResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -251,7 +245,7 @@ public class SslCertificateClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 

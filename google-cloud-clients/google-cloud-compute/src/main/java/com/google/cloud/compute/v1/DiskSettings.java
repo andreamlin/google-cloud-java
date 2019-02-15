@@ -22,10 +22,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -49,13 +51,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of createSnapshotDisk to 30 seconds:
+ * example, to set the total timeout of getDisk to 30 seconds:
  *
  * <pre>
  * <code>
  * DiskSettings.Builder diskSettingsBuilder =
  *     DiskSettings.newBuilder();
- * diskSettingsBuilder.createSnapshotDiskSettings().getRetrySettings().toBuilder()
+ * diskSettingsBuilder.getDiskSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * DiskSettings diskSettings = diskSettingsBuilder.build();
  * </code>
@@ -76,9 +78,25 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
     return ((DiskStubSettings) getStubSettings()).createSnapshotDiskSettings();
   }
 
+  /** Returns the object with the settings used for calls to createSnapshotDisk. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+      createSnapshotDiskOperationSettings() {
+    return ((DiskStubSettings) getStubSettings()).createSnapshotDiskOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to deleteDisk. */
   public UnaryCallSettings<DeleteDiskHttpRequest, Operation> deleteDiskSettings() {
     return ((DiskStubSettings) getStubSettings()).deleteDiskSettings();
+  }
+
+  /** Returns the object with the settings used for calls to deleteDisk. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+      deleteDiskOperationSettings() {
+    return ((DiskStubSettings) getStubSettings()).deleteDiskOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getDisk. */
@@ -96,6 +114,14 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
     return ((DiskStubSettings) getStubSettings()).insertDiskSettings();
   }
 
+  /** Returns the object with the settings used for calls to insertDisk. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+      insertDiskOperationSettings() {
+    return ((DiskStubSettings) getStubSettings()).insertDiskOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to listDisks. */
   public PagedCallSettings<ListDisksHttpRequest, DiskList, ListDisksPagedResponse>
       listDisksSettings() {
@@ -107,6 +133,14 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
     return ((DiskStubSettings) getStubSettings()).resizeDiskSettings();
   }
 
+  /** Returns the object with the settings used for calls to resizeDisk. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+      resizeDiskOperationSettings() {
+    return ((DiskStubSettings) getStubSettings()).resizeDiskOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to setIamPolicyDisk. */
   public UnaryCallSettings<SetIamPolicyDiskHttpRequest, Policy> setIamPolicyDiskSettings() {
     return ((DiskStubSettings) getStubSettings()).setIamPolicyDiskSettings();
@@ -115,6 +149,14 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
   /** Returns the object with the settings used for calls to setLabelsDisk. */
   public UnaryCallSettings<SetLabelsDiskHttpRequest, Operation> setLabelsDiskSettings() {
     return ((DiskStubSettings) getStubSettings()).setLabelsDiskSettings();
+  }
+
+  /** Returns the object with the settings used for calls to setLabelsDisk. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsDiskOperationSettings() {
+    return ((DiskStubSettings) getStubSettings()).setLabelsDiskOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to testIamPermissionsDisk. */
@@ -237,9 +279,25 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
       return getStubSettingsBuilder().createSnapshotDiskSettings();
     }
 
+    /** Returns the builder for the settings used for calls to createSnapshotDisk. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+        createSnapshotDiskOperationSettings() {
+      return getStubSettingsBuilder().createSnapshotDiskOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to deleteDisk. */
     public UnaryCallSettings.Builder<DeleteDiskHttpRequest, Operation> deleteDiskSettings() {
       return getStubSettingsBuilder().deleteDiskSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to deleteDisk. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+        deleteDiskOperationSettings() {
+      return getStubSettingsBuilder().deleteDiskOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to getDisk. */
@@ -258,6 +316,14 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
       return getStubSettingsBuilder().insertDiskSettings();
     }
 
+    /** Returns the builder for the settings used for calls to insertDisk. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+        insertDiskOperationSettings() {
+      return getStubSettingsBuilder().insertDiskOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to listDisks. */
     public PagedCallSettings.Builder<ListDisksHttpRequest, DiskList, ListDisksPagedResponse>
         listDisksSettings() {
@@ -269,6 +335,14 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
       return getStubSettingsBuilder().resizeDiskSettings();
     }
 
+    /** Returns the builder for the settings used for calls to resizeDisk. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+        resizeDiskOperationSettings() {
+      return getStubSettingsBuilder().resizeDiskOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to setIamPolicyDisk. */
     public UnaryCallSettings.Builder<SetIamPolicyDiskHttpRequest, Policy>
         setIamPolicyDiskSettings() {
@@ -278,6 +352,14 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
     /** Returns the builder for the settings used for calls to setLabelsDisk. */
     public UnaryCallSettings.Builder<SetLabelsDiskHttpRequest, Operation> setLabelsDiskSettings() {
       return getStubSettingsBuilder().setLabelsDiskSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to setLabelsDisk. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+        setLabelsDiskOperationSettings() {
+      return getStubSettingsBuilder().setLabelsDiskOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to testIamPermissionsDisk. */

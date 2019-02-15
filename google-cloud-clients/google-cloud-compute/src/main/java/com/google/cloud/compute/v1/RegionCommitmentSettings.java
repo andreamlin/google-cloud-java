@@ -22,10 +22,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -84,6 +86,15 @@ public class RegionCommitmentSettings extends ClientSettings<RegionCommitmentSet
   public UnaryCallSettings<InsertRegionCommitmentHttpRequest, Operation>
       insertRegionCommitmentSettings() {
     return ((RegionCommitmentStubSettings) getStubSettings()).insertRegionCommitmentSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertRegionCommitment. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionCommitmentOperationSettings() {
+    return ((RegionCommitmentStubSettings) getStubSettings())
+        .insertRegionCommitmentOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listRegionCommitments. */
@@ -214,6 +225,15 @@ public class RegionCommitmentSettings extends ClientSettings<RegionCommitmentSet
     public UnaryCallSettings.Builder<InsertRegionCommitmentHttpRequest, Operation>
         insertRegionCommitmentSettings() {
       return getStubSettingsBuilder().insertRegionCommitmentSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertRegionCommitment. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+        insertRegionCommitmentOperationSettings() {
+      return getStubSettingsBuilder().insertRegionCommitmentOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listRegionCommitments. */

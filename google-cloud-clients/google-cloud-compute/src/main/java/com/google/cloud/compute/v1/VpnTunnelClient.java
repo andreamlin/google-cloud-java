@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.VpnTunnelStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
  *   ProjectRegionVpnTunnelName vpnTunnel = ProjectRegionVpnTunnelName.of("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
- *   Operation response = vpnTunnelClient.deleteVpnTunnel(vpnTunnel);
+ *   VpnTunnel response = vpnTunnelClient.getVpnTunnel(vpnTunnel);
  * }
  * </code>
  * </pre>
@@ -103,6 +106,7 @@ import javax.annotation.Generated;
 public class VpnTunnelClient implements BackgroundResource {
   private final VpnTunnelSettings settings;
   private final VpnTunnelStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of VpnTunnelClient with default settings. */
   public static final VpnTunnelClient create() throws IOException {
@@ -133,12 +137,14 @@ public class VpnTunnelClient implements BackgroundResource {
   protected VpnTunnelClient(VpnTunnelSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((VpnTunnelStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected VpnTunnelClient(VpnTunnelStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final VpnTunnelSettings getSettings() {
@@ -148,6 +154,16 @@ public class VpnTunnelClient implements BackgroundResource {
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public VpnTunnelStub getStub() {
     return stub;
+  }
+
+  /**
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -298,21 +314,23 @@ public class VpnTunnelClient implements BackgroundResource {
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
    *   ProjectRegionVpnTunnelName vpnTunnel = ProjectRegionVpnTunnelName.of("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
-   *   Operation response = vpnTunnelClient.deleteVpnTunnel(vpnTunnel);
+   *   vpnTunnelClient.deleteVpnTunnelAsync(vpnTunnel).get();
    * }
    * </code></pre>
    *
    * @param vpnTunnel Name of the VpnTunnel resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteVpnTunnel(ProjectRegionVpnTunnelName vpnTunnel) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteVpnTunnelAsync(
+      ProjectRegionVpnTunnelName vpnTunnel) {
 
     DeleteVpnTunnelHttpRequest request =
         DeleteVpnTunnelHttpRequest.newBuilder()
             .setVpnTunnel(vpnTunnel == null ? null : vpnTunnel.toString())
             .build();
-    return deleteVpnTunnel(request);
+    return deleteVpnTunnelAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -324,19 +342,20 @@ public class VpnTunnelClient implements BackgroundResource {
    * <pre><code>
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
    *   ProjectRegionVpnTunnelName vpnTunnel = ProjectRegionVpnTunnelName.of("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
-   *   Operation response = vpnTunnelClient.deleteVpnTunnel(vpnTunnel.toString());
+   *   vpnTunnelClient.deleteVpnTunnelAsync(vpnTunnel.toString()).get();
    * }
    * </code></pre>
    *
    * @param vpnTunnel Name of the VpnTunnel resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteVpnTunnel(String vpnTunnel) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteVpnTunnelAsync(String vpnTunnel) {
 
     DeleteVpnTunnelHttpRequest request =
         DeleteVpnTunnelHttpRequest.newBuilder().setVpnTunnel(vpnTunnel).build();
-    return deleteVpnTunnel(request);
+    return deleteVpnTunnelAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -351,16 +370,42 @@ public class VpnTunnelClient implements BackgroundResource {
    *   DeleteVpnTunnelHttpRequest request = DeleteVpnTunnelHttpRequest.newBuilder()
    *     .setVpnTunnel(vpnTunnel.toString())
    *     .build();
-   *   Operation response = vpnTunnelClient.deleteVpnTunnel(request);
+   *   vpnTunnelClient.deleteVpnTunnelAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteVpnTunnel(DeleteVpnTunnelHttpRequest request) {
-    return deleteVpnTunnelCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteVpnTunnelAsync(
+      DeleteVpnTunnelHttpRequest request) {
+    return deleteVpnTunnelOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified VpnTunnel resource.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
+   *   ProjectRegionVpnTunnelName vpnTunnel = ProjectRegionVpnTunnelName.of("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
+   *   DeleteVpnTunnelHttpRequest request = DeleteVpnTunnelHttpRequest.newBuilder()
+   *     .setVpnTunnel(vpnTunnel.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = vpnTunnelClient.deleteVpnTunnelOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+      deleteVpnTunnelOperationCallable() {
+    return stub.deleteVpnTunnelOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -377,7 +422,7 @@ public class VpnTunnelClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = vpnTunnelClient.deleteVpnTunnelCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -498,7 +543,7 @@ public class VpnTunnelClient implements BackgroundResource {
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
    *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
    *   VpnTunnel vpnTunnelResource = VpnTunnel.newBuilder().build();
-   *   Operation response = vpnTunnelClient.insertVpnTunnel(region, vpnTunnelResource);
+   *   vpnTunnelClient.insertVpnTunnelAsync(region, vpnTunnelResource).get();
    * }
    * </code></pre>
    *
@@ -507,15 +552,17 @@ public class VpnTunnelClient implements BackgroundResource {
    *     resource_for v1.vpnTunnels ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertVpnTunnel(ProjectRegionName region, VpnTunnel vpnTunnelResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertVpnTunnelAsync(
+      ProjectRegionName region, VpnTunnel vpnTunnelResource) {
 
     InsertVpnTunnelHttpRequest request =
         InsertVpnTunnelHttpRequest.newBuilder()
             .setRegion(region == null ? null : region.toString())
             .setVpnTunnelResource(vpnTunnelResource)
             .build();
-    return insertVpnTunnel(request);
+    return insertVpnTunnelAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -529,7 +576,7 @@ public class VpnTunnelClient implements BackgroundResource {
    * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
    *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
    *   VpnTunnel vpnTunnelResource = VpnTunnel.newBuilder().build();
-   *   Operation response = vpnTunnelClient.insertVpnTunnel(region.toString(), vpnTunnelResource);
+   *   vpnTunnelClient.insertVpnTunnelAsync(region.toString(), vpnTunnelResource).get();
    * }
    * </code></pre>
    *
@@ -538,15 +585,17 @@ public class VpnTunnelClient implements BackgroundResource {
    *     resource_for v1.vpnTunnels ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertVpnTunnel(String region, VpnTunnel vpnTunnelResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertVpnTunnelAsync(
+      String region, VpnTunnel vpnTunnelResource) {
 
     InsertVpnTunnelHttpRequest request =
         InsertVpnTunnelHttpRequest.newBuilder()
             .setRegion(region)
             .setVpnTunnelResource(vpnTunnelResource)
             .build();
-    return insertVpnTunnel(request);
+    return insertVpnTunnelAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -564,16 +613,45 @@ public class VpnTunnelClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setVpnTunnelResource(vpnTunnelResource)
    *     .build();
-   *   Operation response = vpnTunnelClient.insertVpnTunnel(request);
+   *   vpnTunnelClient.insertVpnTunnelAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertVpnTunnel(InsertVpnTunnelHttpRequest request) {
-    return insertVpnTunnelCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertVpnTunnelAsync(
+      InsertVpnTunnelHttpRequest request) {
+    return insertVpnTunnelOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a VpnTunnel resource in the specified project and region using the data included in the
+   * request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (VpnTunnelClient vpnTunnelClient = VpnTunnelClient.create()) {
+   *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
+   *   VpnTunnel vpnTunnelResource = VpnTunnel.newBuilder().build();
+   *   InsertVpnTunnelHttpRequest request = InsertVpnTunnelHttpRequest.newBuilder()
+   *     .setRegion(region.toString())
+   *     .setVpnTunnelResource(vpnTunnelResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = vpnTunnelClient.insertVpnTunnelOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+      insertVpnTunnelOperationCallable() {
+    return stub.insertVpnTunnelOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -593,7 +671,7 @@ public class VpnTunnelClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = vpnTunnelClient.insertVpnTunnelCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AggregatedListInterconnectAttachmentsHttpRequest;
@@ -198,6 +200,7 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<
           AggregatedListInterconnectAttachmentsHttpRequest, InterconnectAttachmentAggregatedList>
@@ -208,10 +211,16 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
       aggregatedListInterconnectAttachmentsPagedCallable;
   private final UnaryCallable<DeleteInterconnectAttachmentHttpRequest, Operation>
       deleteInterconnectAttachmentCallable;
+  private final OperationCallable<
+          DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInterconnectAttachmentOperationCallable;
   private final UnaryCallable<GetInterconnectAttachmentHttpRequest, InterconnectAttachment>
       getInterconnectAttachmentCallable;
   private final UnaryCallable<InsertInterconnectAttachmentHttpRequest, Operation>
       insertInterconnectAttachmentCallable;
+  private final OperationCallable<
+          InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      insertInterconnectAttachmentOperationCallable;
   private final UnaryCallable<ListInterconnectAttachmentsHttpRequest, InterconnectAttachmentList>
       listInterconnectAttachmentsCallable;
   private final UnaryCallable<
@@ -219,6 +228,9 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
       listInterconnectAttachmentsPagedCallable;
   private final UnaryCallable<PatchInterconnectAttachmentHttpRequest, Operation>
       patchInterconnectAttachmentCallable;
+  private final OperationCallable<
+          PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      patchInterconnectAttachmentOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -260,6 +272,7 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<
             AggregatedListInterconnectAttachmentsHttpRequest, InterconnectAttachmentAggregatedList>
@@ -313,6 +326,12 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
             deleteInterconnectAttachmentTransportSettings,
             settings.deleteInterconnectAttachmentSettings(),
             clientContext);
+    this.deleteInterconnectAttachmentOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteInterconnectAttachmentTransportSettings,
+            settings.deleteInterconnectAttachmentOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getInterconnectAttachmentCallable =
         callableFactory.createUnaryCallable(
             getInterconnectAttachmentTransportSettings,
@@ -323,6 +342,12 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
             insertInterconnectAttachmentTransportSettings,
             settings.insertInterconnectAttachmentSettings(),
             clientContext);
+    this.insertInterconnectAttachmentOperationCallable =
+        callableFactory.createOperationCallable(
+            insertInterconnectAttachmentTransportSettings,
+            settings.insertInterconnectAttachmentOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listInterconnectAttachmentsCallable =
         callableFactory.createUnaryCallable(
             listInterconnectAttachmentsTransportSettings,
@@ -338,8 +363,19 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
             patchInterconnectAttachmentTransportSettings,
             settings.patchInterconnectAttachmentSettings(),
             clientContext);
+    this.patchInterconnectAttachmentOperationCallable =
+        callableFactory.createOperationCallable(
+            patchInterconnectAttachmentTransportSettings,
+            settings.patchInterconnectAttachmentOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
   }
 
   @BetaApi
@@ -357,6 +393,12 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
     return aggregatedListInterconnectAttachmentsCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInterconnectAttachmentOperationCallable() {
+    return deleteInterconnectAttachmentOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteInterconnectAttachmentHttpRequest, Operation>
       deleteInterconnectAttachmentCallable() {
@@ -367,6 +409,12 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
   public UnaryCallable<GetInterconnectAttachmentHttpRequest, InterconnectAttachment>
       getInterconnectAttachmentCallable() {
     return getInterconnectAttachmentCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      insertInterconnectAttachmentOperationCallable() {
+    return insertInterconnectAttachmentOperationCallable;
   }
 
   @BetaApi
@@ -386,6 +434,12 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
   public UnaryCallable<ListInterconnectAttachmentsHttpRequest, InterconnectAttachmentList>
       listInterconnectAttachmentsCallable() {
     return listInterconnectAttachmentsCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      patchInterconnectAttachmentOperationCallable() {
+    return patchInterconnectAttachmentOperationCallable;
   }
 
   @BetaApi

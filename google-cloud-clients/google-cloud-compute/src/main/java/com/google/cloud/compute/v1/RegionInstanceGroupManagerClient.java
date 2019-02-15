@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.RegionInstanceGroupManagerStub;
@@ -43,8 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
  *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
- *   RegionInstanceGroupManagersAbandonInstancesRequest regionInstanceGroupManagersAbandonInstancesRequestResource = RegionInstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
- *   Operation response = regionInstanceGroupManagerClient.abandonInstancesRegionInstanceGroupManager(instanceGroupManager, regionInstanceGroupManagersAbandonInstancesRequestResource);
+ *   InstanceGroupManager response = regionInstanceGroupManagerClient.getRegionInstanceGroupManager(instanceGroupManager);
  * }
  * </code>
  * </pre>
@@ -105,6 +107,7 @@ import javax.annotation.Generated;
 public class RegionInstanceGroupManagerClient implements BackgroundResource {
   private final RegionInstanceGroupManagerSettings settings;
   private final RegionInstanceGroupManagerStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of RegionInstanceGroupManagerClient with default settings. */
   public static final RegionInstanceGroupManagerClient create() throws IOException {
@@ -139,12 +142,14 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
       throws IOException {
     this.settings = settings;
     this.stub = ((RegionInstanceGroupManagerStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected RegionInstanceGroupManagerClient(RegionInstanceGroupManagerStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final RegionInstanceGroupManagerSettings getSettings() {
@@ -156,50 +161,14 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Flags the specified instances to be immediately removed from the managed instance group.
-   * Abandoning an instance does not delete the instance, but it does remove the instance from any
-   * target pools that are applied by the managed instance group. This method reduces the targetSize
-   * of the managed instance group by the number of instances that you abandon. This operation is
-   * marked as DONE when the action is scheduled even if the instances have not yet been removed
-   * from the group. You must separately verify the status of the abandoning action with the
-   * listmanagedinstances method.
-   *
-   * <p>If the group is part of a backend service that has enabled connection draining, it can take
-   * up to 60 seconds after the connection draining duration has elapsed before the VM instance is
-   * removed or deleted.
-   *
-   * <p>You can specify a maximum of 1000 instances with this method per request.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
-   *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
-   *   RegionInstanceGroupManagersAbandonInstancesRequest regionInstanceGroupManagersAbandonInstancesRequestResource = RegionInstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
-   *   Operation response = regionInstanceGroupManagerClient.abandonInstancesRegionInstanceGroupManager(instanceGroupManager, regionInstanceGroupManagersAbandonInstancesRequestResource);
-   * }
-   * </code></pre>
-   *
-   * @param instanceGroupManager Name of the managed instance group.
-   * @param regionInstanceGroupManagersAbandonInstancesRequestResource
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation abandonInstancesRegionInstanceGroupManager(
-      ProjectRegionInstanceGroupManagerName instanceGroupManager,
-      RegionInstanceGroupManagersAbandonInstancesRequest
-          regionInstanceGroupManagersAbandonInstancesRequestResource) {
-
-    AbandonInstancesRegionInstanceGroupManagerHttpRequest request =
-        AbandonInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
-            .setInstanceGroupManager(
-                instanceGroupManager == null ? null : instanceGroupManager.toString())
-            .setRegionInstanceGroupManagersAbandonInstancesRequestResource(
-                regionInstanceGroupManagersAbandonInstancesRequestResource)
-            .build();
-    return abandonInstancesRegionInstanceGroupManager(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -224,7 +193,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersAbandonInstancesRequest regionInstanceGroupManagersAbandonInstancesRequestResource = RegionInstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
-   *   Operation response = regionInstanceGroupManagerClient.abandonInstancesRegionInstanceGroupManager(instanceGroupManager.toString(), regionInstanceGroupManagersAbandonInstancesRequestResource);
+   *   regionInstanceGroupManagerClient.abandonInstancesRegionInstanceGroupManagerAsync(instanceGroupManager, regionInstanceGroupManagersAbandonInstancesRequestResource).get();
    * }
    * </code></pre>
    *
@@ -232,11 +201,61 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * @param regionInstanceGroupManagersAbandonInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation abandonInstancesRegionInstanceGroupManager(
-      String instanceGroupManager,
-      RegionInstanceGroupManagersAbandonInstancesRequest
-          regionInstanceGroupManagersAbandonInstancesRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      abandonInstancesRegionInstanceGroupManagerAsync(
+          ProjectRegionInstanceGroupManagerName instanceGroupManager,
+          RegionInstanceGroupManagersAbandonInstancesRequest
+              regionInstanceGroupManagersAbandonInstancesRequestResource) {
+
+    AbandonInstancesRegionInstanceGroupManagerHttpRequest request =
+        AbandonInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
+            .setInstanceGroupManager(
+                instanceGroupManager == null ? null : instanceGroupManager.toString())
+            .setRegionInstanceGroupManagersAbandonInstancesRequestResource(
+                regionInstanceGroupManagersAbandonInstancesRequestResource)
+            .build();
+    return abandonInstancesRegionInstanceGroupManagerAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Flags the specified instances to be immediately removed from the managed instance group.
+   * Abandoning an instance does not delete the instance, but it does remove the instance from any
+   * target pools that are applied by the managed instance group. This method reduces the targetSize
+   * of the managed instance group by the number of instances that you abandon. This operation is
+   * marked as DONE when the action is scheduled even if the instances have not yet been removed
+   * from the group. You must separately verify the status of the abandoning action with the
+   * listmanagedinstances method.
+   *
+   * <p>If the group is part of a backend service that has enabled connection draining, it can take
+   * up to 60 seconds after the connection draining duration has elapsed before the VM instance is
+   * removed or deleted.
+   *
+   * <p>You can specify a maximum of 1000 instances with this method per request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
+   *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersAbandonInstancesRequest regionInstanceGroupManagersAbandonInstancesRequestResource = RegionInstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
+   *   regionInstanceGroupManagerClient.abandonInstancesRegionInstanceGroupManagerAsync(instanceGroupManager.toString(), regionInstanceGroupManagersAbandonInstancesRequestResource).get();
+   * }
+   * </code></pre>
+   *
+   * @param instanceGroupManager Name of the managed instance group.
+   * @param regionInstanceGroupManagersAbandonInstancesRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      abandonInstancesRegionInstanceGroupManagerAsync(
+          String instanceGroupManager,
+          RegionInstanceGroupManagersAbandonInstancesRequest
+              regionInstanceGroupManagersAbandonInstancesRequestResource) {
 
     AbandonInstancesRegionInstanceGroupManagerHttpRequest request =
         AbandonInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
@@ -244,7 +263,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setRegionInstanceGroupManagersAbandonInstancesRequestResource(
                 regionInstanceGroupManagersAbandonInstancesRequestResource)
             .build();
-    return abandonInstancesRegionInstanceGroupManager(request);
+    return abandonInstancesRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -273,17 +292,58 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setRegionInstanceGroupManagersAbandonInstancesRequestResource(regionInstanceGroupManagersAbandonInstancesRequestResource)
    *     .build();
-   *   Operation response = regionInstanceGroupManagerClient.abandonInstancesRegionInstanceGroupManager(request);
+   *   regionInstanceGroupManagerClient.abandonInstancesRegionInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation abandonInstancesRegionInstanceGroupManager(
-      AbandonInstancesRegionInstanceGroupManagerHttpRequest request) {
-    return abandonInstancesRegionInstanceGroupManagerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      abandonInstancesRegionInstanceGroupManagerAsync(
+          AbandonInstancesRegionInstanceGroupManagerHttpRequest request) {
+    return abandonInstancesRegionInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Flags the specified instances to be immediately removed from the managed instance group.
+   * Abandoning an instance does not delete the instance, but it does remove the instance from any
+   * target pools that are applied by the managed instance group. This method reduces the targetSize
+   * of the managed instance group by the number of instances that you abandon. This operation is
+   * marked as DONE when the action is scheduled even if the instances have not yet been removed
+   * from the group. You must separately verify the status of the abandoning action with the
+   * listmanagedinstances method.
+   *
+   * <p>If the group is part of a backend service that has enabled connection draining, it can take
+   * up to 60 seconds after the connection draining duration has elapsed before the VM instance is
+   * removed or deleted.
+   *
+   * <p>You can specify a maximum of 1000 instances with this method per request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
+   *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersAbandonInstancesRequest regionInstanceGroupManagersAbandonInstancesRequestResource = RegionInstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
+   *   AbandonInstancesRegionInstanceGroupManagerHttpRequest request = AbandonInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .setRegionInstanceGroupManagersAbandonInstancesRequestResource(regionInstanceGroupManagersAbandonInstancesRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionInstanceGroupManagerClient.abandonInstancesRegionInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      abandonInstancesRegionInstanceGroupManagerOperationCallable() {
+    return stub.abandonInstancesRegionInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -314,7 +374,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.abandonInstancesRegionInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -333,15 +393,16 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
-   *   Operation response = regionInstanceGroupManagerClient.deleteRegionInstanceGroupManager(instanceGroupManager);
+   *   regionInstanceGroupManagerClient.deleteRegionInstanceGroupManagerAsync(instanceGroupManager).get();
    * }
    * </code></pre>
    *
    * @param instanceGroupManager Name of the managed instance group to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteRegionInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionInstanceGroupManagerAsync(
       ProjectRegionInstanceGroupManagerName instanceGroupManager) {
 
     DeleteRegionInstanceGroupManagerHttpRequest request =
@@ -349,7 +410,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManager(
                 instanceGroupManager == null ? null : instanceGroupManager.toString())
             .build();
-    return deleteRegionInstanceGroupManager(request);
+    return deleteRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -361,21 +422,23 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * <pre><code>
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
-   *   Operation response = regionInstanceGroupManagerClient.deleteRegionInstanceGroupManager(instanceGroupManager.toString());
+   *   regionInstanceGroupManagerClient.deleteRegionInstanceGroupManagerAsync(instanceGroupManager.toString()).get();
    * }
    * </code></pre>
    *
    * @param instanceGroupManager Name of the managed instance group to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteRegionInstanceGroupManager(String instanceGroupManager) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionInstanceGroupManagerAsync(
+      String instanceGroupManager) {
 
     DeleteRegionInstanceGroupManagerHttpRequest request =
         DeleteRegionInstanceGroupManagerHttpRequest.newBuilder()
             .setInstanceGroupManager(instanceGroupManager)
             .build();
-    return deleteRegionInstanceGroupManager(request);
+    return deleteRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -390,17 +453,43 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *   DeleteRegionInstanceGroupManagerHttpRequest request = DeleteRegionInstanceGroupManagerHttpRequest.newBuilder()
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .build();
-   *   Operation response = regionInstanceGroupManagerClient.deleteRegionInstanceGroupManager(request);
+   *   regionInstanceGroupManagerClient.deleteRegionInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteRegionInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionInstanceGroupManagerAsync(
       DeleteRegionInstanceGroupManagerHttpRequest request) {
-    return deleteRegionInstanceGroupManagerCallable().call(request);
+    return deleteRegionInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified managed instance group and all of the instances in that group.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
+   *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   DeleteRegionInstanceGroupManagerHttpRequest request = DeleteRegionInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionInstanceGroupManagerClient.deleteRegionInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionInstanceGroupManagerOperationCallable() {
+    return stub.deleteRegionInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -417,7 +506,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.deleteRegionInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -448,7 +537,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersDeleteInstancesRequest regionInstanceGroupManagersDeleteInstancesRequestResource = RegionInstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
-   *   Operation response = regionInstanceGroupManagerClient.deleteInstancesRegionInstanceGroupManager(instanceGroupManager, regionInstanceGroupManagersDeleteInstancesRequestResource);
+   *   regionInstanceGroupManagerClient.deleteInstancesRegionInstanceGroupManagerAsync(instanceGroupManager, regionInstanceGroupManagersDeleteInstancesRequestResource).get();
    * }
    * </code></pre>
    *
@@ -456,11 +545,13 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * @param regionInstanceGroupManagersDeleteInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteInstancesRegionInstanceGroupManager(
-      ProjectRegionInstanceGroupManagerName instanceGroupManager,
-      RegionInstanceGroupManagersDeleteInstancesRequest
-          regionInstanceGroupManagersDeleteInstancesRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      deleteInstancesRegionInstanceGroupManagerAsync(
+          ProjectRegionInstanceGroupManagerName instanceGroupManager,
+          RegionInstanceGroupManagersDeleteInstancesRequest
+              regionInstanceGroupManagersDeleteInstancesRequestResource) {
 
     DeleteInstancesRegionInstanceGroupManagerHttpRequest request =
         DeleteInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
@@ -469,7 +560,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setRegionInstanceGroupManagersDeleteInstancesRequestResource(
                 regionInstanceGroupManagersDeleteInstancesRequestResource)
             .build();
-    return deleteInstancesRegionInstanceGroupManager(request);
+    return deleteInstancesRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -493,7 +584,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersDeleteInstancesRequest regionInstanceGroupManagersDeleteInstancesRequestResource = RegionInstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
-   *   Operation response = regionInstanceGroupManagerClient.deleteInstancesRegionInstanceGroupManager(instanceGroupManager.toString(), regionInstanceGroupManagersDeleteInstancesRequestResource);
+   *   regionInstanceGroupManagerClient.deleteInstancesRegionInstanceGroupManagerAsync(instanceGroupManager.toString(), regionInstanceGroupManagersDeleteInstancesRequestResource).get();
    * }
    * </code></pre>
    *
@@ -501,11 +592,13 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * @param regionInstanceGroupManagersDeleteInstancesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteInstancesRegionInstanceGroupManager(
-      String instanceGroupManager,
-      RegionInstanceGroupManagersDeleteInstancesRequest
-          regionInstanceGroupManagersDeleteInstancesRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      deleteInstancesRegionInstanceGroupManagerAsync(
+          String instanceGroupManager,
+          RegionInstanceGroupManagersDeleteInstancesRequest
+              regionInstanceGroupManagersDeleteInstancesRequestResource) {
 
     DeleteInstancesRegionInstanceGroupManagerHttpRequest request =
         DeleteInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
@@ -513,7 +606,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setRegionInstanceGroupManagersDeleteInstancesRequestResource(
                 regionInstanceGroupManagersDeleteInstancesRequestResource)
             .build();
-    return deleteInstancesRegionInstanceGroupManager(request);
+    return deleteInstancesRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -541,17 +634,57 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setRegionInstanceGroupManagersDeleteInstancesRequestResource(regionInstanceGroupManagersDeleteInstancesRequestResource)
    *     .build();
-   *   Operation response = regionInstanceGroupManagerClient.deleteInstancesRegionInstanceGroupManager(request);
+   *   regionInstanceGroupManagerClient.deleteInstancesRegionInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteInstancesRegionInstanceGroupManager(
-      DeleteInstancesRegionInstanceGroupManagerHttpRequest request) {
-    return deleteInstancesRegionInstanceGroupManagerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      deleteInstancesRegionInstanceGroupManagerAsync(
+          DeleteInstancesRegionInstanceGroupManagerHttpRequest request) {
+    return deleteInstancesRegionInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Flags the specified instances in the managed instance group to be immediately deleted. The
+   * instances are also removed from any target pools of which they were a member. This method
+   * reduces the targetSize of the managed instance group by the number of instances that you
+   * delete. The deleteInstances operation is marked DONE if the deleteInstances request is
+   * successful. The underlying actions take additional time. You must separately verify the status
+   * of the deleting action with the listmanagedinstances method.
+   *
+   * <p>If the group is part of a backend service that has enabled connection draining, it can take
+   * up to 60 seconds after the connection draining duration has elapsed before the VM instance is
+   * removed or deleted.
+   *
+   * <p>You can specify a maximum of 1000 instances with this method per request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
+   *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersDeleteInstancesRequest regionInstanceGroupManagersDeleteInstancesRequestResource = RegionInstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
+   *   DeleteInstancesRegionInstanceGroupManagerHttpRequest request = DeleteInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .setRegionInstanceGroupManagersDeleteInstancesRequestResource(regionInstanceGroupManagersDeleteInstancesRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionInstanceGroupManagerClient.deleteInstancesRegionInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstancesRegionInstanceGroupManagerOperationCallable() {
+    return stub.deleteInstancesRegionInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -581,7 +714,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.deleteInstancesRegionInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -710,7 +843,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
    *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
-   *   Operation response = regionInstanceGroupManagerClient.insertRegionInstanceGroupManager(region, instanceGroupManagerResource);
+   *   regionInstanceGroupManagerClient.insertRegionInstanceGroupManagerAsync(region, instanceGroupManagerResource).get();
    * }
    * </code></pre>
    *
@@ -721,8 +854,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     v1.regionInstanceGroupManagers ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertRegionInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionInstanceGroupManagerAsync(
       ProjectRegionName region, InstanceGroupManager instanceGroupManagerResource) {
 
     InsertRegionInstanceGroupManagerHttpRequest request =
@@ -730,7 +864,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setRegion(region == null ? null : region.toString())
             .setInstanceGroupManagerResource(instanceGroupManagerResource)
             .build();
-    return insertRegionInstanceGroupManager(request);
+    return insertRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -749,7 +883,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
    *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
-   *   Operation response = regionInstanceGroupManagerClient.insertRegionInstanceGroupManager(region.toString(), instanceGroupManagerResource);
+   *   regionInstanceGroupManagerClient.insertRegionInstanceGroupManagerAsync(region.toString(), instanceGroupManagerResource).get();
    * }
    * </code></pre>
    *
@@ -760,8 +894,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     v1.regionInstanceGroupManagers ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertRegionInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionInstanceGroupManagerAsync(
       String region, InstanceGroupManager instanceGroupManagerResource) {
 
     InsertRegionInstanceGroupManagerHttpRequest request =
@@ -769,7 +904,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setRegion(region)
             .setInstanceGroupManagerResource(instanceGroupManagerResource)
             .build();
-    return insertRegionInstanceGroupManager(request);
+    return insertRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -792,17 +927,51 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setInstanceGroupManagerResource(instanceGroupManagerResource)
    *     .build();
-   *   Operation response = regionInstanceGroupManagerClient.insertRegionInstanceGroupManager(request);
+   *   regionInstanceGroupManagerClient.insertRegionInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertRegionInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionInstanceGroupManagerAsync(
       InsertRegionInstanceGroupManagerHttpRequest request) {
-    return insertRegionInstanceGroupManagerCallable().call(request);
+    return insertRegionInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a managed instance group using the information that you specify in the request. After
+   * the group is created, instances in the group are created using the specified instance template.
+   * This operation is marked as DONE when the group is created even if the instances in the group
+   * have not yet been created. You must separately verify the status of the individual instances
+   * with the listmanagedinstances method.
+   *
+   * <p>A regional managed instance group can contain up to 2000 instances.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
+   *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
+   *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
+   *   InsertRegionInstanceGroupManagerHttpRequest request = InsertRegionInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setRegion(region.toString())
+   *     .setInstanceGroupManagerResource(instanceGroupManagerResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionInstanceGroupManagerClient.insertRegionInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionInstanceGroupManagerOperationCallable() {
+    return stub.insertRegionInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -827,7 +996,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.insertRegionInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1106,7 +1275,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = regionInstanceGroupManagerClient.patchRegionInstanceGroupManager(instanceGroupManager, instanceGroupManagerResource, fieldMask);
+   *   regionInstanceGroupManagerClient.patchRegionInstanceGroupManagerAsync(instanceGroupManager, instanceGroupManagerResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -1121,8 +1290,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchRegionInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchRegionInstanceGroupManagerAsync(
       ProjectRegionInstanceGroupManagerName instanceGroupManager,
       InstanceGroupManager instanceGroupManagerResource,
       List<String> fieldMask) {
@@ -1134,7 +1304,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManagerResource(instanceGroupManagerResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchRegionInstanceGroupManager(request);
+    return patchRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1152,7 +1322,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = regionInstanceGroupManagerClient.patchRegionInstanceGroupManager(instanceGroupManager.toString(), instanceGroupManagerResource, fieldMask);
+   *   regionInstanceGroupManagerClient.patchRegionInstanceGroupManagerAsync(instanceGroupManager.toString(), instanceGroupManagerResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -1167,8 +1337,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchRegionInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchRegionInstanceGroupManagerAsync(
       String instanceGroupManager,
       InstanceGroupManager instanceGroupManagerResource,
       List<String> fieldMask) {
@@ -1179,7 +1350,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManagerResource(instanceGroupManagerResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchRegionInstanceGroupManager(request);
+    return patchRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1202,17 +1373,51 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManagerResource(instanceGroupManagerResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = regionInstanceGroupManagerClient.patchRegionInstanceGroupManager(request);
+   *   regionInstanceGroupManagerClient.patchRegionInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchRegionInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchRegionInstanceGroupManagerAsync(
       PatchRegionInstanceGroupManagerHttpRequest request) {
-    return patchRegionInstanceGroupManagerCallable().call(request);
+    return patchRegionInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates a managed instance group using the information that you specify in the request. This
+   * operation is marked as DONE when the group is patched even if the instances in the group are
+   * still in the process of being patched. You must separately verify the status of the individual
+   * instances with the listmanagedinstances method. This method supports PATCH semantics and uses
+   * the JSON merge patch format and processing rules.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
+   *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   PatchRegionInstanceGroupManagerHttpRequest request = PatchRegionInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .setInstanceGroupManagerResource(instanceGroupManagerResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionInstanceGroupManagerClient.patchRegionInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionInstanceGroupManagerOperationCallable() {
+    return stub.patchRegionInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1237,7 +1442,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.patchRegionInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1267,7 +1472,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersRecreateRequest regionInstanceGroupManagersRecreateRequestResource = RegionInstanceGroupManagersRecreateRequest.newBuilder().build();
-   *   Operation response = regionInstanceGroupManagerClient.recreateInstancesRegionInstanceGroupManager(instanceGroupManager, regionInstanceGroupManagersRecreateRequestResource);
+   *   regionInstanceGroupManagerClient.recreateInstancesRegionInstanceGroupManagerAsync(instanceGroupManager, regionInstanceGroupManagersRecreateRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1275,11 +1480,13 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * @param regionInstanceGroupManagersRecreateRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation recreateInstancesRegionInstanceGroupManager(
-      ProjectRegionInstanceGroupManagerName instanceGroupManager,
-      RegionInstanceGroupManagersRecreateRequest
-          regionInstanceGroupManagersRecreateRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      recreateInstancesRegionInstanceGroupManagerAsync(
+          ProjectRegionInstanceGroupManagerName instanceGroupManager,
+          RegionInstanceGroupManagersRecreateRequest
+              regionInstanceGroupManagersRecreateRequestResource) {
 
     RecreateInstancesRegionInstanceGroupManagerHttpRequest request =
         RecreateInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
@@ -1288,7 +1495,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setRegionInstanceGroupManagersRecreateRequestResource(
                 regionInstanceGroupManagersRecreateRequestResource)
             .build();
-    return recreateInstancesRegionInstanceGroupManager(request);
+    return recreateInstancesRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1311,7 +1518,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersRecreateRequest regionInstanceGroupManagersRecreateRequestResource = RegionInstanceGroupManagersRecreateRequest.newBuilder().build();
-   *   Operation response = regionInstanceGroupManagerClient.recreateInstancesRegionInstanceGroupManager(instanceGroupManager.toString(), regionInstanceGroupManagersRecreateRequestResource);
+   *   regionInstanceGroupManagerClient.recreateInstancesRegionInstanceGroupManagerAsync(instanceGroupManager.toString(), regionInstanceGroupManagersRecreateRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1319,11 +1526,13 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * @param regionInstanceGroupManagersRecreateRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation recreateInstancesRegionInstanceGroupManager(
-      String instanceGroupManager,
-      RegionInstanceGroupManagersRecreateRequest
-          regionInstanceGroupManagersRecreateRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      recreateInstancesRegionInstanceGroupManagerAsync(
+          String instanceGroupManager,
+          RegionInstanceGroupManagersRecreateRequest
+              regionInstanceGroupManagersRecreateRequestResource) {
 
     RecreateInstancesRegionInstanceGroupManagerHttpRequest request =
         RecreateInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
@@ -1331,7 +1540,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setRegionInstanceGroupManagersRecreateRequestResource(
                 regionInstanceGroupManagersRecreateRequestResource)
             .build();
-    return recreateInstancesRegionInstanceGroupManager(request);
+    return recreateInstancesRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1358,17 +1567,56 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setRegionInstanceGroupManagersRecreateRequestResource(regionInstanceGroupManagersRecreateRequestResource)
    *     .build();
-   *   Operation response = regionInstanceGroupManagerClient.recreateInstancesRegionInstanceGroupManager(request);
+   *   regionInstanceGroupManagerClient.recreateInstancesRegionInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation recreateInstancesRegionInstanceGroupManager(
-      RecreateInstancesRegionInstanceGroupManagerHttpRequest request) {
-    return recreateInstancesRegionInstanceGroupManagerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      recreateInstancesRegionInstanceGroupManagerAsync(
+          RecreateInstancesRegionInstanceGroupManagerHttpRequest request) {
+    return recreateInstancesRegionInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Flags the specified instances in the managed instance group to be immediately recreated. The
+   * instances are deleted and recreated using the current instance template for the managed
+   * instance group. This operation is marked as DONE when the flag is set even if the instances
+   * have not yet been recreated. You must separately verify the status of the recreating action
+   * with the listmanagedinstances method.
+   *
+   * <p>If the group is part of a backend service that has enabled connection draining, it can take
+   * up to 60 seconds after the connection draining duration has elapsed before the VM instance is
+   * removed or deleted.
+   *
+   * <p>You can specify a maximum of 1000 instances with this method per request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
+   *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersRecreateRequest regionInstanceGroupManagersRecreateRequestResource = RegionInstanceGroupManagersRecreateRequest.newBuilder().build();
+   *   RecreateInstancesRegionInstanceGroupManagerHttpRequest request = RecreateInstancesRegionInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .setRegionInstanceGroupManagersRecreateRequestResource(regionInstanceGroupManagersRecreateRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionInstanceGroupManagerClient.recreateInstancesRegionInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      recreateInstancesRegionInstanceGroupManagerOperationCallable() {
+    return stub.recreateInstancesRegionInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1397,7 +1645,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.recreateInstancesRegionInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1427,7 +1675,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   Integer size = 0;
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
-   *   Operation response = regionInstanceGroupManagerClient.resizeRegionInstanceGroupManager(size, instanceGroupManager);
+   *   regionInstanceGroupManagerClient.resizeRegionInstanceGroupManagerAsync(size, instanceGroupManager).get();
    * }
    * </code></pre>
    *
@@ -1435,8 +1683,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * @param instanceGroupManager Name of the managed instance group.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation resizeRegionInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> resizeRegionInstanceGroupManagerAsync(
       Integer size, ProjectRegionInstanceGroupManagerName instanceGroupManager) {
 
     ResizeRegionInstanceGroupManagerHttpRequest request =
@@ -1445,7 +1694,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setInstanceGroupManager(
                 instanceGroupManager == null ? null : instanceGroupManager.toString())
             .build();
-    return resizeRegionInstanceGroupManager(request);
+    return resizeRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1468,7 +1717,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   Integer size = 0;
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
-   *   Operation response = regionInstanceGroupManagerClient.resizeRegionInstanceGroupManager(size, instanceGroupManager.toString());
+   *   regionInstanceGroupManagerClient.resizeRegionInstanceGroupManagerAsync(size, instanceGroupManager.toString()).get();
    * }
    * </code></pre>
    *
@@ -1476,8 +1725,9 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * @param instanceGroupManager Name of the managed instance group.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation resizeRegionInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> resizeRegionInstanceGroupManagerAsync(
       Integer size, String instanceGroupManager) {
 
     ResizeRegionInstanceGroupManagerHttpRequest request =
@@ -1485,7 +1735,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setSize(size)
             .setInstanceGroupManager(instanceGroupManager)
             .build();
-    return resizeRegionInstanceGroupManager(request);
+    return resizeRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1512,17 +1762,55 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .setSize(size)
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .build();
-   *   Operation response = regionInstanceGroupManagerClient.resizeRegionInstanceGroupManager(request);
+   *   regionInstanceGroupManagerClient.resizeRegionInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation resizeRegionInstanceGroupManager(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> resizeRegionInstanceGroupManagerAsync(
       ResizeRegionInstanceGroupManagerHttpRequest request) {
-    return resizeRegionInstanceGroupManagerCallable().call(request);
+    return resizeRegionInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Changes the intended size of the managed instance group. If you increase the size, the group
+   * creates new instances using the current instance template. If you decrease the size, the group
+   * deletes one or more instances.
+   *
+   * <p>The resize operation is marked DONE if the resize request is successful. The underlying
+   * actions take additional time. You must separately verify the status of the creating or deleting
+   * actions with the listmanagedinstances method.
+   *
+   * <p>If the group is part of a backend service that has enabled connection draining, it can take
+   * up to 60 seconds after the connection draining duration has elapsed before the VM instance is
+   * removed or deleted.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
+   *   Integer size = 0;
+   *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   ResizeRegionInstanceGroupManagerHttpRequest request = ResizeRegionInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setSize(size)
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionInstanceGroupManagerClient.resizeRegionInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      resizeRegionInstanceGroupManagerOperationCallable() {
+    return stub.resizeRegionInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1551,7 +1839,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.resizeRegionInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1572,7 +1860,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersSetTemplateRequest regionInstanceGroupManagersSetTemplateRequestResource = RegionInstanceGroupManagersSetTemplateRequest.newBuilder().build();
-   *   Operation response = regionInstanceGroupManagerClient.setInstanceTemplateRegionInstanceGroupManager(instanceGroupManager, regionInstanceGroupManagersSetTemplateRequestResource);
+   *   regionInstanceGroupManagerClient.setInstanceTemplateRegionInstanceGroupManagerAsync(instanceGroupManager, regionInstanceGroupManagersSetTemplateRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1580,11 +1868,13 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * @param regionInstanceGroupManagersSetTemplateRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setInstanceTemplateRegionInstanceGroupManager(
-      ProjectRegionInstanceGroupManagerName instanceGroupManager,
-      RegionInstanceGroupManagersSetTemplateRequest
-          regionInstanceGroupManagersSetTemplateRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      setInstanceTemplateRegionInstanceGroupManagerAsync(
+          ProjectRegionInstanceGroupManagerName instanceGroupManager,
+          RegionInstanceGroupManagersSetTemplateRequest
+              regionInstanceGroupManagersSetTemplateRequestResource) {
 
     SetInstanceTemplateRegionInstanceGroupManagerHttpRequest request =
         SetInstanceTemplateRegionInstanceGroupManagerHttpRequest.newBuilder()
@@ -1593,7 +1883,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setRegionInstanceGroupManagersSetTemplateRequestResource(
                 regionInstanceGroupManagersSetTemplateRequestResource)
             .build();
-    return setInstanceTemplateRegionInstanceGroupManager(request);
+    return setInstanceTemplateRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1607,7 +1897,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersSetTemplateRequest regionInstanceGroupManagersSetTemplateRequestResource = RegionInstanceGroupManagersSetTemplateRequest.newBuilder().build();
-   *   Operation response = regionInstanceGroupManagerClient.setInstanceTemplateRegionInstanceGroupManager(instanceGroupManager.toString(), regionInstanceGroupManagersSetTemplateRequestResource);
+   *   regionInstanceGroupManagerClient.setInstanceTemplateRegionInstanceGroupManagerAsync(instanceGroupManager.toString(), regionInstanceGroupManagersSetTemplateRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1615,11 +1905,13 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * @param regionInstanceGroupManagersSetTemplateRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setInstanceTemplateRegionInstanceGroupManager(
-      String instanceGroupManager,
-      RegionInstanceGroupManagersSetTemplateRequest
-          regionInstanceGroupManagersSetTemplateRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      setInstanceTemplateRegionInstanceGroupManagerAsync(
+          String instanceGroupManager,
+          RegionInstanceGroupManagersSetTemplateRequest
+              regionInstanceGroupManagersSetTemplateRequestResource) {
 
     SetInstanceTemplateRegionInstanceGroupManagerHttpRequest request =
         SetInstanceTemplateRegionInstanceGroupManagerHttpRequest.newBuilder()
@@ -1627,7 +1919,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setRegionInstanceGroupManagersSetTemplateRequestResource(
                 regionInstanceGroupManagersSetTemplateRequestResource)
             .build();
-    return setInstanceTemplateRegionInstanceGroupManager(request);
+    return setInstanceTemplateRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1645,17 +1937,47 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setRegionInstanceGroupManagersSetTemplateRequestResource(regionInstanceGroupManagersSetTemplateRequestResource)
    *     .build();
-   *   Operation response = regionInstanceGroupManagerClient.setInstanceTemplateRegionInstanceGroupManager(request);
+   *   regionInstanceGroupManagerClient.setInstanceTemplateRegionInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setInstanceTemplateRegionInstanceGroupManager(
-      SetInstanceTemplateRegionInstanceGroupManagerHttpRequest request) {
-    return setInstanceTemplateRegionInstanceGroupManagerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      setInstanceTemplateRegionInstanceGroupManagerAsync(
+          SetInstanceTemplateRegionInstanceGroupManagerHttpRequest request) {
+    return setInstanceTemplateRegionInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Sets the instance template to use when creating new instances or recreating instances in this
+   * group. Existing instances are not affected.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
+   *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersSetTemplateRequest regionInstanceGroupManagersSetTemplateRequestResource = RegionInstanceGroupManagersSetTemplateRequest.newBuilder().build();
+   *   SetInstanceTemplateRegionInstanceGroupManagerHttpRequest request = SetInstanceTemplateRegionInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .setRegionInstanceGroupManagersSetTemplateRequestResource(regionInstanceGroupManagersSetTemplateRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionInstanceGroupManagerClient.setInstanceTemplateRegionInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setInstanceTemplateRegionInstanceGroupManagerOperationCallable() {
+    return stub.setInstanceTemplateRegionInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1675,7 +1997,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.setInstanceTemplateRegionInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1696,7 +2018,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersSetTargetPoolsRequest regionInstanceGroupManagersSetTargetPoolsRequestResource = RegionInstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
-   *   Operation response = regionInstanceGroupManagerClient.setTargetPoolsRegionInstanceGroupManager(instanceGroupManager, regionInstanceGroupManagersSetTargetPoolsRequestResource);
+   *   regionInstanceGroupManagerClient.setTargetPoolsRegionInstanceGroupManagerAsync(instanceGroupManager, regionInstanceGroupManagersSetTargetPoolsRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1704,11 +2026,13 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * @param regionInstanceGroupManagersSetTargetPoolsRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setTargetPoolsRegionInstanceGroupManager(
-      ProjectRegionInstanceGroupManagerName instanceGroupManager,
-      RegionInstanceGroupManagersSetTargetPoolsRequest
-          regionInstanceGroupManagersSetTargetPoolsRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      setTargetPoolsRegionInstanceGroupManagerAsync(
+          ProjectRegionInstanceGroupManagerName instanceGroupManager,
+          RegionInstanceGroupManagersSetTargetPoolsRequest
+              regionInstanceGroupManagersSetTargetPoolsRequestResource) {
 
     SetTargetPoolsRegionInstanceGroupManagerHttpRequest request =
         SetTargetPoolsRegionInstanceGroupManagerHttpRequest.newBuilder()
@@ -1717,7 +2041,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setRegionInstanceGroupManagersSetTargetPoolsRequestResource(
                 regionInstanceGroupManagersSetTargetPoolsRequestResource)
             .build();
-    return setTargetPoolsRegionInstanceGroupManager(request);
+    return setTargetPoolsRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1731,7 +2055,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
    *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
    *   RegionInstanceGroupManagersSetTargetPoolsRequest regionInstanceGroupManagersSetTargetPoolsRequestResource = RegionInstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
-   *   Operation response = regionInstanceGroupManagerClient.setTargetPoolsRegionInstanceGroupManager(instanceGroupManager.toString(), regionInstanceGroupManagersSetTargetPoolsRequestResource);
+   *   regionInstanceGroupManagerClient.setTargetPoolsRegionInstanceGroupManagerAsync(instanceGroupManager.toString(), regionInstanceGroupManagersSetTargetPoolsRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1739,11 +2063,13 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    * @param regionInstanceGroupManagersSetTargetPoolsRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setTargetPoolsRegionInstanceGroupManager(
-      String instanceGroupManager,
-      RegionInstanceGroupManagersSetTargetPoolsRequest
-          regionInstanceGroupManagersSetTargetPoolsRequestResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      setTargetPoolsRegionInstanceGroupManagerAsync(
+          String instanceGroupManager,
+          RegionInstanceGroupManagersSetTargetPoolsRequest
+              regionInstanceGroupManagersSetTargetPoolsRequestResource) {
 
     SetTargetPoolsRegionInstanceGroupManagerHttpRequest request =
         SetTargetPoolsRegionInstanceGroupManagerHttpRequest.newBuilder()
@@ -1751,7 +2077,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
             .setRegionInstanceGroupManagersSetTargetPoolsRequestResource(
                 regionInstanceGroupManagersSetTargetPoolsRequestResource)
             .build();
-    return setTargetPoolsRegionInstanceGroupManager(request);
+    return setTargetPoolsRegionInstanceGroupManagerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1769,17 +2095,47 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setRegionInstanceGroupManagersSetTargetPoolsRequestResource(regionInstanceGroupManagersSetTargetPoolsRequestResource)
    *     .build();
-   *   Operation response = regionInstanceGroupManagerClient.setTargetPoolsRegionInstanceGroupManager(request);
+   *   regionInstanceGroupManagerClient.setTargetPoolsRegionInstanceGroupManagerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setTargetPoolsRegionInstanceGroupManager(
-      SetTargetPoolsRegionInstanceGroupManagerHttpRequest request) {
-    return setTargetPoolsRegionInstanceGroupManagerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage>
+      setTargetPoolsRegionInstanceGroupManagerAsync(
+          SetTargetPoolsRegionInstanceGroupManagerHttpRequest request) {
+    return setTargetPoolsRegionInstanceGroupManagerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Modifies the target pools to which all new instances in this group are assigned. Existing
+   * instances in the group are not affected.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionInstanceGroupManagerClient regionInstanceGroupManagerClient = RegionInstanceGroupManagerClient.create()) {
+   *   ProjectRegionInstanceGroupManagerName instanceGroupManager = ProjectRegionInstanceGroupManagerName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
+   *   RegionInstanceGroupManagersSetTargetPoolsRequest regionInstanceGroupManagersSetTargetPoolsRequestResource = RegionInstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
+   *   SetTargetPoolsRegionInstanceGroupManagerHttpRequest request = SetTargetPoolsRegionInstanceGroupManagerHttpRequest.newBuilder()
+   *     .setInstanceGroupManager(instanceGroupManager.toString())
+   *     .setRegionInstanceGroupManagersSetTargetPoolsRequestResource(regionInstanceGroupManagersSetTargetPoolsRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionInstanceGroupManagerClient.setTargetPoolsRegionInstanceGroupManagerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetPoolsRegionInstanceGroupManagerOperationCallable() {
+    return stub.setTargetPoolsRegionInstanceGroupManagerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1799,7 +2155,7 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupManagerClient.setTargetPoolsRegionInstanceGroupManagerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

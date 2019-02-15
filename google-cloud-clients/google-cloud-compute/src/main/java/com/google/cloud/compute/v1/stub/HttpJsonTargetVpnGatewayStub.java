@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AggregatedListTargetVpnGatewaysHttpRequest;
@@ -166,6 +168,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<
           AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList>
@@ -175,10 +178,14 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
       aggregatedListTargetVpnGatewaysPagedCallable;
   private final UnaryCallable<DeleteTargetVpnGatewayHttpRequest, Operation>
       deleteTargetVpnGatewayCallable;
+  private final OperationCallable<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetVpnGatewayOperationCallable;
   private final UnaryCallable<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>
       getTargetVpnGatewayCallable;
   private final UnaryCallable<InsertTargetVpnGatewayHttpRequest, Operation>
       insertTargetVpnGatewayCallable;
+  private final OperationCallable<InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetVpnGatewayOperationCallable;
   private final UnaryCallable<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList>
       listTargetVpnGatewaysCallable;
   private final UnaryCallable<ListTargetVpnGatewaysHttpRequest, ListTargetVpnGatewaysPagedResponse>
@@ -224,6 +231,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListTargetVpnGatewaysHttpRequest, TargetVpnGatewayAggregatedList>
         aggregatedListTargetVpnGatewaysTransportSettings =
@@ -269,6 +277,12 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
             deleteTargetVpnGatewayTransportSettings,
             settings.deleteTargetVpnGatewaySettings(),
             clientContext);
+    this.deleteTargetVpnGatewayOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteTargetVpnGatewayTransportSettings,
+            settings.deleteTargetVpnGatewayOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getTargetVpnGatewayCallable =
         callableFactory.createUnaryCallable(
             getTargetVpnGatewayTransportSettings,
@@ -279,6 +293,12 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
             insertTargetVpnGatewayTransportSettings,
             settings.insertTargetVpnGatewaySettings(),
             clientContext);
+    this.insertTargetVpnGatewayOperationCallable =
+        callableFactory.createOperationCallable(
+            insertTargetVpnGatewayTransportSettings,
+            settings.insertTargetVpnGatewayOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listTargetVpnGatewaysCallable =
         callableFactory.createUnaryCallable(
             listTargetVpnGatewaysTransportSettings,
@@ -291,6 +311,11 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
             clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
   }
 
   @BetaApi
@@ -306,6 +331,12 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
     return aggregatedListTargetVpnGatewaysCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetVpnGatewayOperationCallable() {
+    return deleteTargetVpnGatewayOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteTargetVpnGatewayHttpRequest, Operation>
       deleteTargetVpnGatewayCallable() {
@@ -316,6 +347,12 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
   public UnaryCallable<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>
       getTargetVpnGatewayCallable() {
     return getTargetVpnGatewayCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetVpnGatewayOperationCallable() {
+    return insertTargetVpnGatewayOperationCallable;
   }
 
   @BetaApi

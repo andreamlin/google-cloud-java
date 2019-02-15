@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.SslCertificateStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
  *   ProjectGlobalSslCertificateName sslCertificate = ProjectGlobalSslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
- *   Operation response = sslCertificateClient.deleteSslCertificate(sslCertificate);
+ *   SslCertificate response = sslCertificateClient.getSslCertificate(sslCertificate);
  * }
  * </code>
  * </pre>
@@ -103,6 +106,7 @@ import javax.annotation.Generated;
 public class SslCertificateClient implements BackgroundResource {
   private final SslCertificateSettings settings;
   private final SslCertificateStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of SslCertificateClient with default settings. */
   public static final SslCertificateClient create() throws IOException {
@@ -135,12 +139,14 @@ public class SslCertificateClient implements BackgroundResource {
   protected SslCertificateClient(SslCertificateSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((SslCertificateStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected SslCertificateClient(SslCertificateStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final SslCertificateSettings getSettings() {
@@ -152,30 +158,14 @@ public class SslCertificateClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Deletes the specified SslCertificate resource.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
-   *   ProjectGlobalSslCertificateName sslCertificate = ProjectGlobalSslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
-   *   Operation response = sslCertificateClient.deleteSslCertificate(sslCertificate);
-   * }
-   * </code></pre>
-   *
-   * @param sslCertificate Name of the SslCertificate resource to delete.
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation deleteSslCertificate(ProjectGlobalSslCertificateName sslCertificate) {
-
-    DeleteSslCertificateHttpRequest request =
-        DeleteSslCertificateHttpRequest.newBuilder()
-            .setSslCertificate(sslCertificate == null ? null : sslCertificate.toString())
-            .build();
-    return deleteSslCertificate(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -187,19 +177,49 @@ public class SslCertificateClient implements BackgroundResource {
    * <pre><code>
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
    *   ProjectGlobalSslCertificateName sslCertificate = ProjectGlobalSslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
-   *   Operation response = sslCertificateClient.deleteSslCertificate(sslCertificate.toString());
+   *   sslCertificateClient.deleteSslCertificateAsync(sslCertificate).get();
    * }
    * </code></pre>
    *
    * @param sslCertificate Name of the SslCertificate resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSslCertificate(String sslCertificate) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSslCertificateAsync(
+      ProjectGlobalSslCertificateName sslCertificate) {
+
+    DeleteSslCertificateHttpRequest request =
+        DeleteSslCertificateHttpRequest.newBuilder()
+            .setSslCertificate(sslCertificate == null ? null : sslCertificate.toString())
+            .build();
+    return deleteSslCertificateAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified SslCertificate resource.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
+   *   ProjectGlobalSslCertificateName sslCertificate = ProjectGlobalSslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   sslCertificateClient.deleteSslCertificateAsync(sslCertificate.toString()).get();
+   * }
+   * </code></pre>
+   *
+   * @param sslCertificate Name of the SslCertificate resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSslCertificateAsync(
+      String sslCertificate) {
 
     DeleteSslCertificateHttpRequest request =
         DeleteSslCertificateHttpRequest.newBuilder().setSslCertificate(sslCertificate).build();
-    return deleteSslCertificate(request);
+    return deleteSslCertificateAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -214,16 +234,42 @@ public class SslCertificateClient implements BackgroundResource {
    *   DeleteSslCertificateHttpRequest request = DeleteSslCertificateHttpRequest.newBuilder()
    *     .setSslCertificate(sslCertificate.toString())
    *     .build();
-   *   Operation response = sslCertificateClient.deleteSslCertificate(request);
+   *   sslCertificateClient.deleteSslCertificateAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSslCertificate(DeleteSslCertificateHttpRequest request) {
-    return deleteSslCertificateCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSslCertificateAsync(
+      DeleteSslCertificateHttpRequest request) {
+    return deleteSslCertificateOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified SslCertificate resource.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
+   *   ProjectGlobalSslCertificateName sslCertificate = ProjectGlobalSslCertificateName.of("[PROJECT]", "[SSL_CERTIFICATE]");
+   *   DeleteSslCertificateHttpRequest request = DeleteSslCertificateHttpRequest.newBuilder()
+   *     .setSslCertificate(sslCertificate.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = sslCertificateClient.deleteSslCertificateOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSslCertificateOperationCallable() {
+    return stub.deleteSslCertificateOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -240,7 +286,7 @@ public class SslCertificateClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = sslCertificateClient.deleteSslCertificateCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -363,7 +409,7 @@ public class SslCertificateClient implements BackgroundResource {
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   SslCertificate sslCertificateResource = SslCertificate.newBuilder().build();
-   *   Operation response = sslCertificateClient.insertSslCertificate(project, sslCertificateResource);
+   *   sslCertificateClient.insertSslCertificateAsync(project, sslCertificateResource).get();
    * }
    * </code></pre>
    *
@@ -373,8 +419,9 @@ public class SslCertificateClient implements BackgroundResource {
    *     user. (== resource_for beta.sslCertificates ==) (== resource_for v1.sslCertificates ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertSslCertificate(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertSslCertificateAsync(
       ProjectName project, SslCertificate sslCertificateResource) {
 
     InsertSslCertificateHttpRequest request =
@@ -382,7 +429,7 @@ public class SslCertificateClient implements BackgroundResource {
             .setProject(project == null ? null : project.toString())
             .setSslCertificateResource(sslCertificateResource)
             .build();
-    return insertSslCertificate(request);
+    return insertSslCertificateAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -396,7 +443,7 @@ public class SslCertificateClient implements BackgroundResource {
    * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   SslCertificate sslCertificateResource = SslCertificate.newBuilder().build();
-   *   Operation response = sslCertificateClient.insertSslCertificate(project.toString(), sslCertificateResource);
+   *   sslCertificateClient.insertSslCertificateAsync(project.toString(), sslCertificateResource).get();
    * }
    * </code></pre>
    *
@@ -406,8 +453,9 @@ public class SslCertificateClient implements BackgroundResource {
    *     user. (== resource_for beta.sslCertificates ==) (== resource_for v1.sslCertificates ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertSslCertificate(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertSslCertificateAsync(
       String project, SslCertificate sslCertificateResource) {
 
     InsertSslCertificateHttpRequest request =
@@ -415,7 +463,7 @@ public class SslCertificateClient implements BackgroundResource {
             .setProject(project)
             .setSslCertificateResource(sslCertificateResource)
             .build();
-    return insertSslCertificate(request);
+    return insertSslCertificateAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -433,16 +481,45 @@ public class SslCertificateClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setSslCertificateResource(sslCertificateResource)
    *     .build();
-   *   Operation response = sslCertificateClient.insertSslCertificate(request);
+   *   sslCertificateClient.insertSslCertificateAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertSslCertificate(InsertSslCertificateHttpRequest request) {
-    return insertSslCertificateCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertSslCertificateAsync(
+      InsertSslCertificateHttpRequest request) {
+    return insertSslCertificateOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a SslCertificate resource in the specified project using the data included in the
+   * request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SslCertificateClient sslCertificateClient = SslCertificateClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   SslCertificate sslCertificateResource = SslCertificate.newBuilder().build();
+   *   InsertSslCertificateHttpRequest request = InsertSslCertificateHttpRequest.newBuilder()
+   *     .setProject(project.toString())
+   *     .setSslCertificateResource(sslCertificateResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = sslCertificateClient.insertSslCertificateOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+      insertSslCertificateOperationCallable() {
+    return stub.insertSslCertificateOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -462,7 +539,7 @@ public class SslCertificateClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = sslCertificateClient.insertSslCertificateCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

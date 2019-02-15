@@ -29,6 +29,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonImageStub.testIamPermissi
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -40,10 +41,10 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.ImageStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -98,18 +99,14 @@ public class ImageClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteImageTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteImageTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockImages.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteImageTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalImageName image = ProjectGlobalImageName.of("[PROJECT]", "[IMAGE]");
 
-    Void actualResponse = client.deleteImageAsync(image).get();
+    EmptyMessage actualResponse = client.deleteImageAsync(image).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -143,26 +140,23 @@ public class ImageClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void deprecateImageTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deprecateImageTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockImages.addResponse(resultOperation);
+        Operation.newBuilder().setName("deprecateImageTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalImageName image = ProjectGlobalImageName.of("[PROJECT]", "[IMAGE]");
     DeprecationStatus deprecationStatusResource = DeprecationStatus.newBuilder().build();
 
-    Void actualResponse = client.deprecateImageAsync(image, deprecationStatusResource).get();
+    EmptyMessage actualResponse =
+        client.deprecateImageAsync(image, deprecationStatusResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -197,7 +191,7 @@ public class ImageClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -419,20 +413,17 @@ public class ImageClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertImageTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertImageTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockImages.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertImageTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     Boolean forceCreate = true;
     ProjectName project = ProjectName.of("[PROJECT]");
     Image imageResource = Image.newBuilder().build();
 
-    Void actualResponse = client.insertImageAsync(forceCreate, project, imageResource).get();
+    EmptyMessage actualResponse =
+        client.insertImageAsync(forceCreate, project, imageResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -468,7 +459,7 @@ public class ImageClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -589,21 +580,17 @@ public class ImageClientTest {
   @Test
   @SuppressWarnings("all")
   public void setLabelsImageTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setLabelsImageTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockImages.addResponse(resultOperation);
+        Operation.newBuilder().setName("setLabelsImageTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalImageResourceName resource =
         ProjectGlobalImageResourceName.of("[PROJECT]", "[RESOURCE]");
     GlobalSetLabelsRequest globalSetLabelsRequestResource =
         GlobalSetLabelsRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.setLabelsImageAsync(resource, globalSetLabelsRequestResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -641,7 +628,7 @@ public class ImageClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 

@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DeleteTargetHttpsProxyHttpRequest;
@@ -227,13 +229,18 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteTargetHttpsProxyHttpRequest, Operation>
       deleteTargetHttpsProxyCallable;
+  private final OperationCallable<DeleteTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetHttpsProxyOperationCallable;
   private final UnaryCallable<GetTargetHttpsProxyHttpRequest, TargetHttpsProxy>
       getTargetHttpsProxyCallable;
   private final UnaryCallable<InsertTargetHttpsProxyHttpRequest, Operation>
       insertTargetHttpsProxyCallable;
+  private final OperationCallable<InsertTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetHttpsProxyOperationCallable;
   private final UnaryCallable<ListTargetHttpsProxiesHttpRequest, TargetHttpsProxyList>
       listTargetHttpsProxiesCallable;
   private final UnaryCallable<
@@ -241,12 +248,23 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
       listTargetHttpsProxiesPagedCallable;
   private final UnaryCallable<SetQuicOverrideTargetHttpsProxyHttpRequest, Operation>
       setQuicOverrideTargetHttpsProxyCallable;
+  private final OperationCallable<
+          SetQuicOverrideTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setQuicOverrideTargetHttpsProxyOperationCallable;
   private final UnaryCallable<SetSslCertificatesTargetHttpsProxyHttpRequest, Operation>
       setSslCertificatesTargetHttpsProxyCallable;
+  private final OperationCallable<
+          SetSslCertificatesTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setSslCertificatesTargetHttpsProxyOperationCallable;
   private final UnaryCallable<SetSslPolicyTargetHttpsProxyHttpRequest, Operation>
       setSslPolicyTargetHttpsProxyCallable;
+  private final OperationCallable<
+          SetSslPolicyTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setSslPolicyTargetHttpsProxyOperationCallable;
   private final UnaryCallable<SetUrlMapTargetHttpsProxyHttpRequest, Operation>
       setUrlMapTargetHttpsProxyCallable;
+  private final OperationCallable<SetUrlMapTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setUrlMapTargetHttpsProxyOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -288,6 +306,7 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteTargetHttpsProxyHttpRequest, Operation>
         deleteTargetHttpsProxyTransportSettings =
@@ -337,6 +356,12 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
             deleteTargetHttpsProxyTransportSettings,
             settings.deleteTargetHttpsProxySettings(),
             clientContext);
+    this.deleteTargetHttpsProxyOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteTargetHttpsProxyTransportSettings,
+            settings.deleteTargetHttpsProxyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getTargetHttpsProxyCallable =
         callableFactory.createUnaryCallable(
             getTargetHttpsProxyTransportSettings,
@@ -347,6 +372,12 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
             insertTargetHttpsProxyTransportSettings,
             settings.insertTargetHttpsProxySettings(),
             clientContext);
+    this.insertTargetHttpsProxyOperationCallable =
+        callableFactory.createOperationCallable(
+            insertTargetHttpsProxyTransportSettings,
+            settings.insertTargetHttpsProxyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listTargetHttpsProxiesCallable =
         callableFactory.createUnaryCallable(
             listTargetHttpsProxiesTransportSettings,
@@ -362,23 +393,58 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
             setQuicOverrideTargetHttpsProxyTransportSettings,
             settings.setQuicOverrideTargetHttpsProxySettings(),
             clientContext);
+    this.setQuicOverrideTargetHttpsProxyOperationCallable =
+        callableFactory.createOperationCallable(
+            setQuicOverrideTargetHttpsProxyTransportSettings,
+            settings.setQuicOverrideTargetHttpsProxyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setSslCertificatesTargetHttpsProxyCallable =
         callableFactory.createUnaryCallable(
             setSslCertificatesTargetHttpsProxyTransportSettings,
             settings.setSslCertificatesTargetHttpsProxySettings(),
             clientContext);
+    this.setSslCertificatesTargetHttpsProxyOperationCallable =
+        callableFactory.createOperationCallable(
+            setSslCertificatesTargetHttpsProxyTransportSettings,
+            settings.setSslCertificatesTargetHttpsProxyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setSslPolicyTargetHttpsProxyCallable =
         callableFactory.createUnaryCallable(
             setSslPolicyTargetHttpsProxyTransportSettings,
             settings.setSslPolicyTargetHttpsProxySettings(),
             clientContext);
+    this.setSslPolicyTargetHttpsProxyOperationCallable =
+        callableFactory.createOperationCallable(
+            setSslPolicyTargetHttpsProxyTransportSettings,
+            settings.setSslPolicyTargetHttpsProxyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setUrlMapTargetHttpsProxyCallable =
         callableFactory.createUnaryCallable(
             setUrlMapTargetHttpsProxyTransportSettings,
             settings.setUrlMapTargetHttpsProxySettings(),
             clientContext);
+    this.setUrlMapTargetHttpsProxyOperationCallable =
+        callableFactory.createOperationCallable(
+            setUrlMapTargetHttpsProxyTransportSettings,
+            settings.setUrlMapTargetHttpsProxyOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetHttpsProxyOperationCallable() {
+    return deleteTargetHttpsProxyOperationCallable;
   }
 
   @BetaApi
@@ -391,6 +457,12 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
   public UnaryCallable<GetTargetHttpsProxyHttpRequest, TargetHttpsProxy>
       getTargetHttpsProxyCallable() {
     return getTargetHttpsProxyCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetHttpsProxyOperationCallable() {
+    return insertTargetHttpsProxyOperationCallable;
   }
 
   @BetaApi
@@ -411,10 +483,23 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
     return listTargetHttpsProxiesCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetQuicOverrideTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setQuicOverrideTargetHttpsProxyOperationCallable() {
+    return setQuicOverrideTargetHttpsProxyOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<SetQuicOverrideTargetHttpsProxyHttpRequest, Operation>
       setQuicOverrideTargetHttpsProxyCallable() {
     return setQuicOverrideTargetHttpsProxyCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          SetSslCertificatesTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setSslCertificatesTargetHttpsProxyOperationCallable() {
+    return setSslCertificatesTargetHttpsProxyOperationCallable;
   }
 
   @BetaApi
@@ -423,10 +508,22 @@ public class HttpJsonTargetHttpsProxyStub extends TargetHttpsProxyStub {
     return setSslCertificatesTargetHttpsProxyCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetSslPolicyTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setSslPolicyTargetHttpsProxyOperationCallable() {
+    return setSslPolicyTargetHttpsProxyOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<SetSslPolicyTargetHttpsProxyHttpRequest, Operation>
       setSslPolicyTargetHttpsProxyCallable() {
     return setSslPolicyTargetHttpsProxyCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetUrlMapTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setUrlMapTargetHttpsProxyOperationCallable() {
+    return setUrlMapTargetHttpsProxyOperationCallable;
   }
 
   @BetaApi

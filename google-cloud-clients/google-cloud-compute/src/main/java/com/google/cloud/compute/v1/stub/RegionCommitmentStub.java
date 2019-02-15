@@ -20,6 +20,8 @@ import static com.google.cloud.compute.v1.RegionCommitmentClient.ListRegionCommi
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AggregatedListRegionCommitmentsHttpRequest;
 import com.google.cloud.compute.v1.Commitment;
@@ -41,6 +43,11 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class RegionCommitmentStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
   @BetaApi
   public UnaryCallable<
           AggregatedListRegionCommitmentsHttpRequest, AggregatedListRegionCommitmentsPagedResponse>
@@ -59,6 +66,13 @@ public abstract class RegionCommitmentStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetRegionCommitmentHttpRequest, Commitment> getRegionCommitmentCallable() {
     throw new UnsupportedOperationException("Not implemented: getRegionCommitmentCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionCommitmentOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertRegionCommitmentOperationCallable()");
   }
 
   @BetaApi

@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.TargetHttpProxyClient.ListTargetHttpPr
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteTargetHttpProxyHttpRequest;
 import com.google.cloud.compute.v1.GetTargetHttpProxyHttpRequest;
@@ -40,6 +42,18 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class TargetHttpProxyStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetHttpProxyOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteTargetHttpProxyOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteTargetHttpProxyHttpRequest, Operation>
       deleteTargetHttpProxyCallable() {
@@ -50,6 +64,13 @@ public abstract class TargetHttpProxyStub implements BackgroundResource {
   public UnaryCallable<GetTargetHttpProxyHttpRequest, TargetHttpProxy>
       getTargetHttpProxyCallable() {
     throw new UnsupportedOperationException("Not implemented: getTargetHttpProxyCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetHttpProxyOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertTargetHttpProxyOperationCallable()");
   }
 
   @BetaApi
@@ -69,6 +90,13 @@ public abstract class TargetHttpProxyStub implements BackgroundResource {
   public UnaryCallable<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList>
       listTargetHttpProxiesCallable() {
     throw new UnsupportedOperationException("Not implemented: listTargetHttpProxiesCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setUrlMapTargetHttpProxyOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: setUrlMapTargetHttpProxyOperationCallable()");
   }
 
   @BetaApi

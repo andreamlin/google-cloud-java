@@ -25,6 +25,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonSslPolicyStub.patchSslPol
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -36,11 +37,11 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.SslPolicyStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -91,19 +92,15 @@ public class SslPolicyClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteSslPolicyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteSslPolicyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSslPolicies.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteSslPolicyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalSslPolicyName sslPolicy =
         ProjectGlobalSslPolicyName.of("[PROJECT]", "[SSL_POLICY]");
 
-    Void actualResponse = client.deleteSslPolicyAsync(sslPolicy).get();
+    EmptyMessage actualResponse = client.deleteSslPolicyAsync(sslPolicy).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -138,7 +135,7 @@ public class SslPolicyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -211,19 +208,15 @@ public class SslPolicyClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertSslPolicyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertSslPolicyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSslPolicies.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertSslPolicyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     SslPolicy sslPolicyResource = SslPolicy.newBuilder().build();
 
-    Void actualResponse = client.insertSslPolicyAsync(project, sslPolicyResource).get();
+    EmptyMessage actualResponse = client.insertSslPolicyAsync(project, sslPolicyResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -258,7 +251,7 @@ public class SslPolicyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -371,21 +364,18 @@ public class SslPolicyClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchSslPolicyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("patchSslPolicyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSslPolicies.addResponse(resultOperation);
+        Operation.newBuilder().setName("patchSslPolicyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalSslPolicyName sslPolicy =
         ProjectGlobalSslPolicyName.of("[PROJECT]", "[SSL_POLICY]");
     SslPolicy sslPolicyResource = SslPolicy.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse = client.patchSslPolicyAsync(sslPolicy, sslPolicyResource, fieldMask).get();
+    EmptyMessage actualResponse =
+        client.patchSslPolicyAsync(sslPolicy, sslPolicyResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -422,7 +412,7 @@ public class SslPolicyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteInstanceTemplate to 30 seconds:
+ * example, to set the total timeout of getInstanceTemplate to 30 seconds:
  *
  * <pre>
  * <code>
  * InstanceTemplateSettings.Builder instanceTemplateSettingsBuilder =
  *     InstanceTemplateSettings.newBuilder();
- * instanceTemplateSettingsBuilder.deleteInstanceTemplateSettings().getRetrySettings().toBuilder()
+ * instanceTemplateSettingsBuilder.getInstanceTemplateSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * InstanceTemplateSettings instanceTemplateSettings = instanceTemplateSettingsBuilder.build();
  * </code>
@@ -67,6 +69,15 @@ public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSet
   public UnaryCallSettings<DeleteInstanceTemplateHttpRequest, Operation>
       deleteInstanceTemplateSettings() {
     return ((InstanceTemplateStubSettings) getStubSettings()).deleteInstanceTemplateSettings();
+  }
+
+  /** Returns the object with the settings used for calls to deleteInstanceTemplate. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstanceTemplateOperationSettings() {
+    return ((InstanceTemplateStubSettings) getStubSettings())
+        .deleteInstanceTemplateOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getInstanceTemplate. */
@@ -86,6 +97,15 @@ public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSet
   public UnaryCallSettings<InsertInstanceTemplateHttpRequest, Operation>
       insertInstanceTemplateSettings() {
     return ((InstanceTemplateStubSettings) getStubSettings()).insertInstanceTemplateSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertInstanceTemplate. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      insertInstanceTemplateOperationSettings() {
+    return ((InstanceTemplateStubSettings) getStubSettings())
+        .insertInstanceTemplateOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listInstanceTemplates. */
@@ -219,6 +239,15 @@ public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSet
       return getStubSettingsBuilder().deleteInstanceTemplateSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteInstanceTemplate. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+        deleteInstanceTemplateOperationSettings() {
+      return getStubSettingsBuilder().deleteInstanceTemplateOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getInstanceTemplate. */
     public UnaryCallSettings.Builder<GetInstanceTemplateHttpRequest, InstanceTemplate>
         getInstanceTemplateSettings() {
@@ -235,6 +264,15 @@ public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSet
     public UnaryCallSettings.Builder<InsertInstanceTemplateHttpRequest, Operation>
         insertInstanceTemplateSettings() {
       return getStubSettingsBuilder().insertInstanceTemplateSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertInstanceTemplate. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+        insertInstanceTemplateOperationSettings() {
+      return getStubSettingsBuilder().insertInstanceTemplateOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listInstanceTemplates. */

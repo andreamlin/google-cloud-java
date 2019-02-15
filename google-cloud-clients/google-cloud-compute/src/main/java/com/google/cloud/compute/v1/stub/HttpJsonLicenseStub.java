@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DeleteLicenseHttpRequest;
@@ -200,11 +202,16 @@ public class HttpJsonLicenseStub extends LicenseStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteLicenseHttpRequest, Operation> deleteLicenseCallable;
+  private final OperationCallable<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+      deleteLicenseOperationCallable;
   private final UnaryCallable<GetLicenseHttpRequest, License> getLicenseCallable;
   private final UnaryCallable<GetIamPolicyLicenseHttpRequest, Policy> getIamPolicyLicenseCallable;
   private final UnaryCallable<InsertLicenseHttpRequest, Operation> insertLicenseCallable;
+  private final OperationCallable<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+      insertLicenseOperationCallable;
   private final UnaryCallable<ListLicensesHttpRequest, LicensesListResponse> listLicensesCallable;
   private final UnaryCallable<ListLicensesHttpRequest, ListLicensesPagedResponse>
       listLicensesPagedCallable;
@@ -249,6 +256,7 @@ public class HttpJsonLicenseStub extends LicenseStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteLicenseHttpRequest, Operation> deleteLicenseTransportSettings =
         HttpJsonCallSettings.<DeleteLicenseHttpRequest, Operation>newBuilder()
@@ -287,6 +295,12 @@ public class HttpJsonLicenseStub extends LicenseStub {
     this.deleteLicenseCallable =
         callableFactory.createUnaryCallable(
             deleteLicenseTransportSettings, settings.deleteLicenseSettings(), clientContext);
+    this.deleteLicenseOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteLicenseTransportSettings,
+            settings.deleteLicenseOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getLicenseCallable =
         callableFactory.createUnaryCallable(
             getLicenseTransportSettings, settings.getLicenseSettings(), clientContext);
@@ -298,6 +312,12 @@ public class HttpJsonLicenseStub extends LicenseStub {
     this.insertLicenseCallable =
         callableFactory.createUnaryCallable(
             insertLicenseTransportSettings, settings.insertLicenseSettings(), clientContext);
+    this.insertLicenseOperationCallable =
+        callableFactory.createOperationCallable(
+            insertLicenseTransportSettings,
+            settings.insertLicenseOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listLicensesCallable =
         callableFactory.createUnaryCallable(
             listLicensesTransportSettings, settings.listLicensesSettings(), clientContext);
@@ -318,6 +338,17 @@ public class HttpJsonLicenseStub extends LicenseStub {
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+      deleteLicenseOperationCallable() {
+    return deleteLicenseOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteLicenseHttpRequest, Operation> deleteLicenseCallable() {
     return deleteLicenseCallable;
@@ -331,6 +362,12 @@ public class HttpJsonLicenseStub extends LicenseStub {
   @BetaApi
   public UnaryCallable<GetIamPolicyLicenseHttpRequest, Policy> getIamPolicyLicenseCallable() {
     return getIamPolicyLicenseCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+      insertLicenseOperationCallable() {
+    return insertLicenseOperationCallable;
   }
 
   @BetaApi

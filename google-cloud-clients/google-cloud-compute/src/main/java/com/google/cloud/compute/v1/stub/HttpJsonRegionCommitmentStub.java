@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AggregatedListRegionCommitmentsHttpRequest;
@@ -142,6 +144,7 @@ public class HttpJsonRegionCommitmentStub extends RegionCommitmentStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AggregatedListRegionCommitmentsHttpRequest, CommitmentAggregatedList>
       aggregatedListRegionCommitmentsCallable;
@@ -152,6 +155,8 @@ public class HttpJsonRegionCommitmentStub extends RegionCommitmentStub {
       getRegionCommitmentCallable;
   private final UnaryCallable<InsertRegionCommitmentHttpRequest, Operation>
       insertRegionCommitmentCallable;
+  private final OperationCallable<InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionCommitmentOperationCallable;
   private final UnaryCallable<ListRegionCommitmentsHttpRequest, CommitmentList>
       listRegionCommitmentsCallable;
   private final UnaryCallable<ListRegionCommitmentsHttpRequest, ListRegionCommitmentsPagedResponse>
@@ -197,6 +202,7 @@ public class HttpJsonRegionCommitmentStub extends RegionCommitmentStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListRegionCommitmentsHttpRequest, CommitmentAggregatedList>
         aggregatedListRegionCommitmentsTransportSettings =
@@ -240,6 +246,12 @@ public class HttpJsonRegionCommitmentStub extends RegionCommitmentStub {
             insertRegionCommitmentTransportSettings,
             settings.insertRegionCommitmentSettings(),
             clientContext);
+    this.insertRegionCommitmentOperationCallable =
+        callableFactory.createOperationCallable(
+            insertRegionCommitmentTransportSettings,
+            settings.insertRegionCommitmentOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listRegionCommitmentsCallable =
         callableFactory.createUnaryCallable(
             listRegionCommitmentsTransportSettings,
@@ -252,6 +264,11 @@ public class HttpJsonRegionCommitmentStub extends RegionCommitmentStub {
             clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
   }
 
   @BetaApi
@@ -270,6 +287,12 @@ public class HttpJsonRegionCommitmentStub extends RegionCommitmentStub {
   @BetaApi
   public UnaryCallable<GetRegionCommitmentHttpRequest, Commitment> getRegionCommitmentCallable() {
     return getRegionCommitmentCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionCommitmentOperationCallable() {
+    return insertRegionCommitmentOperationCallable;
   }
 
   @BetaApi

@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.UrlMapClient.ListUrlMapsPagedResponse;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteUrlMapHttpRequest;
 import com.google.cloud.compute.v1.GetUrlMapHttpRequest;
@@ -44,6 +46,17 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class UrlMapStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      deleteUrlMapOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deleteUrlMapOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteUrlMapHttpRequest, Operation> deleteUrlMapCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteUrlMapCallable()");
@@ -54,9 +67,22 @@ public abstract class UrlMapStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: getUrlMapCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      insertUrlMapOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: insertUrlMapOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<InsertUrlMapHttpRequest, Operation> insertUrlMapCallable() {
     throw new UnsupportedOperationException("Not implemented: insertUrlMapCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      invalidateCacheUrlMapOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: invalidateCacheUrlMapOperationCallable()");
   }
 
   @BetaApi
@@ -76,9 +102,21 @@ public abstract class UrlMapStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: listUrlMapsCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      patchUrlMapOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: patchUrlMapOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<PatchUrlMapHttpRequest, Operation> patchUrlMapCallable() {
     throw new UnsupportedOperationException("Not implemented: patchUrlMapCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      updateUrlMapOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: updateUrlMapOperationCallable()");
   }
 
   @BetaApi

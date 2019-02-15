@@ -23,13 +23,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -72,13 +77,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteFirewall to 30 seconds:
+ * example, to set the total timeout of getFirewall to 30 seconds:
  *
  * <pre>
  * <code>
  * FirewallStubSettings.Builder firewallSettingsBuilder =
  *     FirewallStubSettings.newBuilder();
- * firewallSettingsBuilder.deleteFirewallSettings().getRetrySettings().toBuilder()
+ * firewallSettingsBuilder.getFirewallSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * FirewallStubSettings firewallSettings = firewallSettingsBuilder.build();
  * </code>
@@ -99,17 +104,32 @@ public class FirewallStubSettings extends StubSettings<FirewallStubSettings> {
           .build();
 
   private final UnaryCallSettings<DeleteFirewallHttpRequest, Operation> deleteFirewallSettings;
+  private final OperationCallSettings<DeleteFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      deleteFirewallOperationSettings;
   private final UnaryCallSettings<GetFirewallHttpRequest, Firewall> getFirewallSettings;
   private final UnaryCallSettings<InsertFirewallHttpRequest, Operation> insertFirewallSettings;
+  private final OperationCallSettings<InsertFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      insertFirewallOperationSettings;
   private final PagedCallSettings<
           ListFirewallsHttpRequest, FirewallList, ListFirewallsPagedResponse>
       listFirewallsSettings;
   private final UnaryCallSettings<PatchFirewallHttpRequest, Operation> patchFirewallSettings;
+  private final OperationCallSettings<PatchFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      patchFirewallOperationSettings;
   private final UnaryCallSettings<UpdateFirewallHttpRequest, Operation> updateFirewallSettings;
+  private final OperationCallSettings<UpdateFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      updateFirewallOperationSettings;
 
   /** Returns the object with the settings used for calls to deleteFirewall. */
   public UnaryCallSettings<DeleteFirewallHttpRequest, Operation> deleteFirewallSettings() {
     return deleteFirewallSettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteFirewall. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      deleteFirewallOperationSettings() {
+    return deleteFirewallOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getFirewall. */
@@ -120,6 +140,13 @@ public class FirewallStubSettings extends StubSettings<FirewallStubSettings> {
   /** Returns the object with the settings used for calls to insertFirewall. */
   public UnaryCallSettings<InsertFirewallHttpRequest, Operation> insertFirewallSettings() {
     return insertFirewallSettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertFirewall. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      insertFirewallOperationSettings() {
+    return insertFirewallOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listFirewalls. */
@@ -133,9 +160,23 @@ public class FirewallStubSettings extends StubSettings<FirewallStubSettings> {
     return patchFirewallSettings;
   }
 
+  /** Returns the object with the settings used for calls to patchFirewall. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      patchFirewallOperationSettings() {
+    return patchFirewallOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to updateFirewall. */
   public UnaryCallSettings<UpdateFirewallHttpRequest, Operation> updateFirewallSettings() {
     return updateFirewallSettings;
+  }
+
+  /** Returns the object with the settings used for calls to updateFirewall. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<UpdateFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      updateFirewallOperationSettings() {
+    return updateFirewallOperationSettings;
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -213,11 +254,15 @@ public class FirewallStubSettings extends StubSettings<FirewallStubSettings> {
     super(settingsBuilder);
 
     deleteFirewallSettings = settingsBuilder.deleteFirewallSettings().build();
+    deleteFirewallOperationSettings = settingsBuilder.deleteFirewallOperationSettings().build();
     getFirewallSettings = settingsBuilder.getFirewallSettings().build();
     insertFirewallSettings = settingsBuilder.insertFirewallSettings().build();
+    insertFirewallOperationSettings = settingsBuilder.insertFirewallOperationSettings().build();
     listFirewallsSettings = settingsBuilder.listFirewallsSettings().build();
     patchFirewallSettings = settingsBuilder.patchFirewallSettings().build();
+    patchFirewallOperationSettings = settingsBuilder.patchFirewallOperationSettings().build();
     updateFirewallSettings = settingsBuilder.updateFirewallSettings().build();
+    updateFirewallOperationSettings = settingsBuilder.updateFirewallOperationSettings().build();
   }
 
   private static final PagedListDescriptor<ListFirewallsHttpRequest, FirewallList, Firewall>
@@ -281,16 +326,28 @@ public class FirewallStubSettings extends StubSettings<FirewallStubSettings> {
 
     private final UnaryCallSettings.Builder<DeleteFirewallHttpRequest, Operation>
         deleteFirewallSettings;
+    private final OperationCallSettings.Builder<
+            DeleteFirewallHttpRequest, EmptyMessage, EmptyMessage>
+        deleteFirewallOperationSettings;
     private final UnaryCallSettings.Builder<GetFirewallHttpRequest, Firewall> getFirewallSettings;
     private final UnaryCallSettings.Builder<InsertFirewallHttpRequest, Operation>
         insertFirewallSettings;
+    private final OperationCallSettings.Builder<
+            InsertFirewallHttpRequest, EmptyMessage, EmptyMessage>
+        insertFirewallOperationSettings;
     private final PagedCallSettings.Builder<
             ListFirewallsHttpRequest, FirewallList, ListFirewallsPagedResponse>
         listFirewallsSettings;
     private final UnaryCallSettings.Builder<PatchFirewallHttpRequest, Operation>
         patchFirewallSettings;
+    private final OperationCallSettings.Builder<
+            PatchFirewallHttpRequest, EmptyMessage, EmptyMessage>
+        patchFirewallOperationSettings;
     private final UnaryCallSettings.Builder<UpdateFirewallHttpRequest, Operation>
         updateFirewallSettings;
+    private final OperationCallSettings.Builder<
+            UpdateFirewallHttpRequest, EmptyMessage, EmptyMessage>
+        updateFirewallOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
         RETRYABLE_CODE_DEFINITIONS;
@@ -335,15 +392,23 @@ public class FirewallStubSettings extends StubSettings<FirewallStubSettings> {
 
       deleteFirewallSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteFirewallOperationSettings = OperationCallSettings.newBuilder();
+
       getFirewallSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertFirewallSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      insertFirewallOperationSettings = OperationCallSettings.newBuilder();
 
       listFirewallsSettings = PagedCallSettings.newBuilder(LIST_FIREWALLS_PAGE_STR_FACT);
 
       patchFirewallSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      patchFirewallOperationSettings = OperationCallSettings.newBuilder();
+
       updateFirewallSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      updateFirewallOperationSettings = OperationCallSettings.newBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -397,6 +462,90 @@ public class FirewallStubSettings extends StubSettings<FirewallStubSettings> {
           .updateFirewallSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .deleteFirewallOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteFirewallHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertFirewallOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertFirewallHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .patchFirewallOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<PatchFirewallHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .updateFirewallOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<UpdateFirewallHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -405,11 +554,15 @@ public class FirewallStubSettings extends StubSettings<FirewallStubSettings> {
       super(settings);
 
       deleteFirewallSettings = settings.deleteFirewallSettings.toBuilder();
+      deleteFirewallOperationSettings = settings.deleteFirewallOperationSettings.toBuilder();
       getFirewallSettings = settings.getFirewallSettings.toBuilder();
       insertFirewallSettings = settings.insertFirewallSettings.toBuilder();
+      insertFirewallOperationSettings = settings.insertFirewallOperationSettings.toBuilder();
       listFirewallsSettings = settings.listFirewallsSettings.toBuilder();
       patchFirewallSettings = settings.patchFirewallSettings.toBuilder();
+      patchFirewallOperationSettings = settings.patchFirewallOperationSettings.toBuilder();
       updateFirewallSettings = settings.updateFirewallSettings.toBuilder();
+      updateFirewallOperationSettings = settings.updateFirewallOperationSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -443,6 +596,14 @@ public class FirewallStubSettings extends StubSettings<FirewallStubSettings> {
       return deleteFirewallSettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteFirewall. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteFirewallHttpRequest, EmptyMessage, EmptyMessage>
+        deleteFirewallOperationSettings() {
+      return deleteFirewallOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to getFirewall. */
     public UnaryCallSettings.Builder<GetFirewallHttpRequest, Firewall> getFirewallSettings() {
       return getFirewallSettings;
@@ -452,6 +613,14 @@ public class FirewallStubSettings extends StubSettings<FirewallStubSettings> {
     public UnaryCallSettings.Builder<InsertFirewallHttpRequest, Operation>
         insertFirewallSettings() {
       return insertFirewallSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertFirewall. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertFirewallHttpRequest, EmptyMessage, EmptyMessage>
+        insertFirewallOperationSettings() {
+      return insertFirewallOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listFirewalls. */
@@ -466,10 +635,26 @@ public class FirewallStubSettings extends StubSettings<FirewallStubSettings> {
       return patchFirewallSettings;
     }
 
+    /** Returns the builder for the settings used for calls to patchFirewall. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<PatchFirewallHttpRequest, EmptyMessage, EmptyMessage>
+        patchFirewallOperationSettings() {
+      return patchFirewallOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to updateFirewall. */
     public UnaryCallSettings.Builder<UpdateFirewallHttpRequest, Operation>
         updateFirewallSettings() {
       return updateFirewallSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to updateFirewall. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<UpdateFirewallHttpRequest, EmptyMessage, EmptyMessage>
+        updateFirewallOperationSettings() {
+      return updateFirewallOperationSettings;
     }
 
     @Override

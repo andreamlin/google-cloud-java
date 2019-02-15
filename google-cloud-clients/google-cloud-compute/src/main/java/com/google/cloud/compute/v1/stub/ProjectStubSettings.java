@@ -24,13 +24,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -82,13 +87,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of disableXpnHostProject to 30 seconds:
+ * example, to set the total timeout of getProject to 30 seconds:
  *
  * <pre>
  * <code>
  * ProjectStubSettings.Builder projectSettingsBuilder =
  *     ProjectStubSettings.newBuilder();
- * projectSettingsBuilder.disableXpnHostProjectSettings().getRetrySettings().toBuilder()
+ * projectSettingsBuilder.getProjectSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * ProjectStubSettings projectSettings = projectSettingsBuilder.build();
  * </code>
@@ -110,12 +115,22 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
 
   private final UnaryCallSettings<DisableXpnHostProjectHttpRequest, Operation>
       disableXpnHostProjectSettings;
+  private final OperationCallSettings<DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+      disableXpnHostProjectOperationSettings;
   private final UnaryCallSettings<DisableXpnResourceProjectHttpRequest, Operation>
       disableXpnResourceProjectSettings;
+  private final OperationCallSettings<
+          DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      disableXpnResourceProjectOperationSettings;
   private final UnaryCallSettings<EnableXpnHostProjectHttpRequest, Operation>
       enableXpnHostProjectSettings;
+  private final OperationCallSettings<EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+      enableXpnHostProjectOperationSettings;
   private final UnaryCallSettings<EnableXpnResourceProjectHttpRequest, Operation>
       enableXpnResourceProjectSettings;
+  private final OperationCallSettings<
+          EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      enableXpnResourceProjectOperationSettings;
   private final UnaryCallSettings<GetProjectHttpRequest, Project> getProjectSettings;
   private final UnaryCallSettings<GetXpnHostProjectHttpRequest, Project> getXpnHostProjectSettings;
   private final PagedCallSettings<
@@ -127,19 +142,39 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
           ListXpnHostsProjectsHttpRequest, XpnHostList, ListXpnHostsProjectsPagedResponse>
       listXpnHostsProjectsSettings;
   private final UnaryCallSettings<MoveDiskProjectHttpRequest, Operation> moveDiskProjectSettings;
+  private final OperationCallSettings<MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+      moveDiskProjectOperationSettings;
   private final UnaryCallSettings<MoveInstanceProjectHttpRequest, Operation>
       moveInstanceProjectSettings;
+  private final OperationCallSettings<MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      moveInstanceProjectOperationSettings;
   private final UnaryCallSettings<SetCommonInstanceMetadataProjectHttpRequest, Operation>
       setCommonInstanceMetadataProjectSettings;
+  private final OperationCallSettings<
+          SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setCommonInstanceMetadataProjectOperationSettings;
   private final UnaryCallSettings<SetDefaultNetworkTierProjectHttpRequest, Operation>
       setDefaultNetworkTierProjectSettings;
+  private final OperationCallSettings<
+          SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setDefaultNetworkTierProjectOperationSettings;
   private final UnaryCallSettings<SetUsageExportBucketProjectHttpRequest, Operation>
       setUsageExportBucketProjectSettings;
+  private final OperationCallSettings<
+          SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setUsageExportBucketProjectOperationSettings;
 
   /** Returns the object with the settings used for calls to disableXpnHostProject. */
   public UnaryCallSettings<DisableXpnHostProjectHttpRequest, Operation>
       disableXpnHostProjectSettings() {
     return disableXpnHostProjectSettings;
+  }
+
+  /** Returns the object with the settings used for calls to disableXpnHostProject. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+      disableXpnHostProjectOperationSettings() {
+    return disableXpnHostProjectOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to disableXpnResourceProject. */
@@ -148,16 +183,37 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
     return disableXpnResourceProjectSettings;
   }
 
+  /** Returns the object with the settings used for calls to disableXpnResourceProject. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      disableXpnResourceProjectOperationSettings() {
+    return disableXpnResourceProjectOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to enableXpnHostProject. */
   public UnaryCallSettings<EnableXpnHostProjectHttpRequest, Operation>
       enableXpnHostProjectSettings() {
     return enableXpnHostProjectSettings;
   }
 
+  /** Returns the object with the settings used for calls to enableXpnHostProject. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+      enableXpnHostProjectOperationSettings() {
+    return enableXpnHostProjectOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to enableXpnResourceProject. */
   public UnaryCallSettings<EnableXpnResourceProjectHttpRequest, Operation>
       enableXpnResourceProjectSettings() {
     return enableXpnResourceProjectSettings;
+  }
+
+  /** Returns the object with the settings used for calls to enableXpnResourceProject. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      enableXpnResourceProjectOperationSettings() {
+    return enableXpnResourceProjectOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getProject. */
@@ -191,10 +247,24 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
     return moveDiskProjectSettings;
   }
 
+  /** Returns the object with the settings used for calls to moveDiskProject. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+      moveDiskProjectOperationSettings() {
+    return moveDiskProjectOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to moveInstanceProject. */
   public UnaryCallSettings<MoveInstanceProjectHttpRequest, Operation>
       moveInstanceProjectSettings() {
     return moveInstanceProjectSettings;
+  }
+
+  /** Returns the object with the settings used for calls to moveInstanceProject. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      moveInstanceProjectOperationSettings() {
+    return moveInstanceProjectOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to setCommonInstanceMetadataProject. */
@@ -203,16 +273,38 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
     return setCommonInstanceMetadataProjectSettings;
   }
 
+  /** Returns the object with the settings used for calls to setCommonInstanceMetadataProject. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setCommonInstanceMetadataProjectOperationSettings() {
+    return setCommonInstanceMetadataProjectOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to setDefaultNetworkTierProject. */
   public UnaryCallSettings<SetDefaultNetworkTierProjectHttpRequest, Operation>
       setDefaultNetworkTierProjectSettings() {
     return setDefaultNetworkTierProjectSettings;
   }
 
+  /** Returns the object with the settings used for calls to setDefaultNetworkTierProject. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setDefaultNetworkTierProjectOperationSettings() {
+    return setDefaultNetworkTierProjectOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to setUsageExportBucketProject. */
   public UnaryCallSettings<SetUsageExportBucketProjectHttpRequest, Operation>
       setUsageExportBucketProjectSettings() {
     return setUsageExportBucketProjectSettings;
+  }
+
+  /** Returns the object with the settings used for calls to setUsageExportBucketProject. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setUsageExportBucketProjectOperationSettings() {
+    return setUsageExportBucketProjectOperationSettings;
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -290,21 +382,38 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
     super(settingsBuilder);
 
     disableXpnHostProjectSettings = settingsBuilder.disableXpnHostProjectSettings().build();
+    disableXpnHostProjectOperationSettings =
+        settingsBuilder.disableXpnHostProjectOperationSettings().build();
     disableXpnResourceProjectSettings = settingsBuilder.disableXpnResourceProjectSettings().build();
+    disableXpnResourceProjectOperationSettings =
+        settingsBuilder.disableXpnResourceProjectOperationSettings().build();
     enableXpnHostProjectSettings = settingsBuilder.enableXpnHostProjectSettings().build();
+    enableXpnHostProjectOperationSettings =
+        settingsBuilder.enableXpnHostProjectOperationSettings().build();
     enableXpnResourceProjectSettings = settingsBuilder.enableXpnResourceProjectSettings().build();
+    enableXpnResourceProjectOperationSettings =
+        settingsBuilder.enableXpnResourceProjectOperationSettings().build();
     getProjectSettings = settingsBuilder.getProjectSettings().build();
     getXpnHostProjectSettings = settingsBuilder.getXpnHostProjectSettings().build();
     getXpnResourcesProjectsSettings = settingsBuilder.getXpnResourcesProjectsSettings().build();
     listXpnHostsProjectsSettings = settingsBuilder.listXpnHostsProjectsSettings().build();
     moveDiskProjectSettings = settingsBuilder.moveDiskProjectSettings().build();
+    moveDiskProjectOperationSettings = settingsBuilder.moveDiskProjectOperationSettings().build();
     moveInstanceProjectSettings = settingsBuilder.moveInstanceProjectSettings().build();
+    moveInstanceProjectOperationSettings =
+        settingsBuilder.moveInstanceProjectOperationSettings().build();
     setCommonInstanceMetadataProjectSettings =
         settingsBuilder.setCommonInstanceMetadataProjectSettings().build();
+    setCommonInstanceMetadataProjectOperationSettings =
+        settingsBuilder.setCommonInstanceMetadataProjectOperationSettings().build();
     setDefaultNetworkTierProjectSettings =
         settingsBuilder.setDefaultNetworkTierProjectSettings().build();
+    setDefaultNetworkTierProjectOperationSettings =
+        settingsBuilder.setDefaultNetworkTierProjectOperationSettings().build();
     setUsageExportBucketProjectSettings =
         settingsBuilder.setUsageExportBucketProjectSettings().build();
+    setUsageExportBucketProjectOperationSettings =
+        settingsBuilder.setUsageExportBucketProjectOperationSettings().build();
   }
 
   private static final PagedListDescriptor<
@@ -441,12 +550,24 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
 
     private final UnaryCallSettings.Builder<DisableXpnHostProjectHttpRequest, Operation>
         disableXpnHostProjectSettings;
+    private final OperationCallSettings.Builder<
+            DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+        disableXpnHostProjectOperationSettings;
     private final UnaryCallSettings.Builder<DisableXpnResourceProjectHttpRequest, Operation>
         disableXpnResourceProjectSettings;
+    private final OperationCallSettings.Builder<
+            DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+        disableXpnResourceProjectOperationSettings;
     private final UnaryCallSettings.Builder<EnableXpnHostProjectHttpRequest, Operation>
         enableXpnHostProjectSettings;
+    private final OperationCallSettings.Builder<
+            EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+        enableXpnHostProjectOperationSettings;
     private final UnaryCallSettings.Builder<EnableXpnResourceProjectHttpRequest, Operation>
         enableXpnResourceProjectSettings;
+    private final OperationCallSettings.Builder<
+            EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+        enableXpnResourceProjectOperationSettings;
     private final UnaryCallSettings.Builder<GetProjectHttpRequest, Project> getProjectSettings;
     private final UnaryCallSettings.Builder<GetXpnHostProjectHttpRequest, Project>
         getXpnHostProjectSettings;
@@ -460,14 +581,29 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
         listXpnHostsProjectsSettings;
     private final UnaryCallSettings.Builder<MoveDiskProjectHttpRequest, Operation>
         moveDiskProjectSettings;
+    private final OperationCallSettings.Builder<
+            MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+        moveDiskProjectOperationSettings;
     private final UnaryCallSettings.Builder<MoveInstanceProjectHttpRequest, Operation>
         moveInstanceProjectSettings;
+    private final OperationCallSettings.Builder<
+            MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+        moveInstanceProjectOperationSettings;
     private final UnaryCallSettings.Builder<SetCommonInstanceMetadataProjectHttpRequest, Operation>
         setCommonInstanceMetadataProjectSettings;
+    private final OperationCallSettings.Builder<
+            SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+        setCommonInstanceMetadataProjectOperationSettings;
     private final UnaryCallSettings.Builder<SetDefaultNetworkTierProjectHttpRequest, Operation>
         setDefaultNetworkTierProjectSettings;
+    private final OperationCallSettings.Builder<
+            SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+        setDefaultNetworkTierProjectOperationSettings;
     private final UnaryCallSettings.Builder<SetUsageExportBucketProjectHttpRequest, Operation>
         setUsageExportBucketProjectSettings;
+    private final OperationCallSettings.Builder<
+            SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+        setUsageExportBucketProjectOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
         RETRYABLE_CODE_DEFINITIONS;
@@ -512,11 +648,19 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
 
       disableXpnHostProjectSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      disableXpnHostProjectOperationSettings = OperationCallSettings.newBuilder();
+
       disableXpnResourceProjectSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      disableXpnResourceProjectOperationSettings = OperationCallSettings.newBuilder();
 
       enableXpnHostProjectSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      enableXpnHostProjectOperationSettings = OperationCallSettings.newBuilder();
+
       enableXpnResourceProjectSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      enableXpnResourceProjectOperationSettings = OperationCallSettings.newBuilder();
 
       getProjectSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
@@ -530,13 +674,23 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
 
       moveDiskProjectSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      moveDiskProjectOperationSettings = OperationCallSettings.newBuilder();
+
       moveInstanceProjectSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      moveInstanceProjectOperationSettings = OperationCallSettings.newBuilder();
 
       setCommonInstanceMetadataProjectSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      setCommonInstanceMetadataProjectOperationSettings = OperationCallSettings.newBuilder();
+
       setDefaultNetworkTierProjectSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      setDefaultNetworkTierProjectOperationSettings = OperationCallSettings.newBuilder();
+
       setUsageExportBucketProjectSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      setUsageExportBucketProjectOperationSettings = OperationCallSettings.newBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -632,6 +786,201 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
           .setUsageExportBucketProjectSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .disableXpnHostProjectOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DisableXpnHostProjectHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .disableXpnResourceProjectOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DisableXpnResourceProjectHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .enableXpnHostProjectOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<EnableXpnHostProjectHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .enableXpnResourceProjectOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<EnableXpnResourceProjectHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .moveDiskProjectOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<MoveDiskProjectHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .moveInstanceProjectOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<MoveInstanceProjectHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .setCommonInstanceMetadataProjectOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<SetCommonInstanceMetadataProjectHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .setDefaultNetworkTierProjectOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<SetDefaultNetworkTierProjectHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .setUsageExportBucketProjectOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<SetUsageExportBucketProjectHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -640,21 +989,38 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
       super(settings);
 
       disableXpnHostProjectSettings = settings.disableXpnHostProjectSettings.toBuilder();
+      disableXpnHostProjectOperationSettings =
+          settings.disableXpnHostProjectOperationSettings.toBuilder();
       disableXpnResourceProjectSettings = settings.disableXpnResourceProjectSettings.toBuilder();
+      disableXpnResourceProjectOperationSettings =
+          settings.disableXpnResourceProjectOperationSettings.toBuilder();
       enableXpnHostProjectSettings = settings.enableXpnHostProjectSettings.toBuilder();
+      enableXpnHostProjectOperationSettings =
+          settings.enableXpnHostProjectOperationSettings.toBuilder();
       enableXpnResourceProjectSettings = settings.enableXpnResourceProjectSettings.toBuilder();
+      enableXpnResourceProjectOperationSettings =
+          settings.enableXpnResourceProjectOperationSettings.toBuilder();
       getProjectSettings = settings.getProjectSettings.toBuilder();
       getXpnHostProjectSettings = settings.getXpnHostProjectSettings.toBuilder();
       getXpnResourcesProjectsSettings = settings.getXpnResourcesProjectsSettings.toBuilder();
       listXpnHostsProjectsSettings = settings.listXpnHostsProjectsSettings.toBuilder();
       moveDiskProjectSettings = settings.moveDiskProjectSettings.toBuilder();
+      moveDiskProjectOperationSettings = settings.moveDiskProjectOperationSettings.toBuilder();
       moveInstanceProjectSettings = settings.moveInstanceProjectSettings.toBuilder();
+      moveInstanceProjectOperationSettings =
+          settings.moveInstanceProjectOperationSettings.toBuilder();
       setCommonInstanceMetadataProjectSettings =
           settings.setCommonInstanceMetadataProjectSettings.toBuilder();
+      setCommonInstanceMetadataProjectOperationSettings =
+          settings.setCommonInstanceMetadataProjectOperationSettings.toBuilder();
       setDefaultNetworkTierProjectSettings =
           settings.setDefaultNetworkTierProjectSettings.toBuilder();
+      setDefaultNetworkTierProjectOperationSettings =
+          settings.setDefaultNetworkTierProjectOperationSettings.toBuilder();
       setUsageExportBucketProjectSettings =
           settings.setUsageExportBucketProjectSettings.toBuilder();
+      setUsageExportBucketProjectOperationSettings =
+          settings.setUsageExportBucketProjectOperationSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -695,10 +1061,28 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
       return disableXpnHostProjectSettings;
     }
 
+    /** Returns the builder for the settings used for calls to disableXpnHostProject. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+        disableXpnHostProjectOperationSettings() {
+      return disableXpnHostProjectOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to disableXpnResourceProject. */
     public UnaryCallSettings.Builder<DisableXpnResourceProjectHttpRequest, Operation>
         disableXpnResourceProjectSettings() {
       return disableXpnResourceProjectSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to disableXpnResourceProject. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+        disableXpnResourceProjectOperationSettings() {
+      return disableXpnResourceProjectOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to enableXpnHostProject. */
@@ -707,10 +1091,28 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
       return enableXpnHostProjectSettings;
     }
 
+    /** Returns the builder for the settings used for calls to enableXpnHostProject. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+        enableXpnHostProjectOperationSettings() {
+      return enableXpnHostProjectOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to enableXpnResourceProject. */
     public UnaryCallSettings.Builder<EnableXpnResourceProjectHttpRequest, Operation>
         enableXpnResourceProjectSettings() {
       return enableXpnResourceProjectSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to enableXpnResourceProject. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+        enableXpnResourceProjectOperationSettings() {
+      return enableXpnResourceProjectOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to getProject. */
@@ -746,10 +1148,26 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
       return moveDiskProjectSettings;
     }
 
+    /** Returns the builder for the settings used for calls to moveDiskProject. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+        moveDiskProjectOperationSettings() {
+      return moveDiskProjectOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to moveInstanceProject. */
     public UnaryCallSettings.Builder<MoveInstanceProjectHttpRequest, Operation>
         moveInstanceProjectSettings() {
       return moveInstanceProjectSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to moveInstanceProject. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+        moveInstanceProjectOperationSettings() {
+      return moveInstanceProjectOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to setCommonInstanceMetadataProject. */
@@ -758,16 +1176,43 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
       return setCommonInstanceMetadataProjectSettings;
     }
 
+    /** Returns the builder for the settings used for calls to setCommonInstanceMetadataProject. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+        setCommonInstanceMetadataProjectOperationSettings() {
+      return setCommonInstanceMetadataProjectOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to setDefaultNetworkTierProject. */
     public UnaryCallSettings.Builder<SetDefaultNetworkTierProjectHttpRequest, Operation>
         setDefaultNetworkTierProjectSettings() {
       return setDefaultNetworkTierProjectSettings;
     }
 
+    /** Returns the builder for the settings used for calls to setDefaultNetworkTierProject. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+        setDefaultNetworkTierProjectOperationSettings() {
+      return setDefaultNetworkTierProjectOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to setUsageExportBucketProject. */
     public UnaryCallSettings.Builder<SetUsageExportBucketProjectHttpRequest, Operation>
         setUsageExportBucketProjectSettings() {
       return setUsageExportBucketProjectSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to setUsageExportBucketProject. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+        setUsageExportBucketProjectOperationSettings() {
+      return setUsageExportBucketProjectOperationSettings;
     }
 
     @Override

@@ -31,6 +31,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonRouterStub.updateRouterMe
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -42,13 +43,13 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.RouterStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -165,19 +166,15 @@ public class RouterClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteRouterTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteRouterTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockRouters.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteRouterTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionRouterName router =
         ProjectRegionRouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
 
-    Void actualResponse = client.deleteRouterAsync(router).get();
+    EmptyMessage actualResponse = client.deleteRouterAsync(router).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -212,7 +209,7 @@ public class RouterClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -393,19 +390,15 @@ public class RouterClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertRouterTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertRouterTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockRouters.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertRouterTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
     Router routerResource = Router.newBuilder().build();
 
-    Void actualResponse = client.insertRouterAsync(region, routerResource).get();
+    EmptyMessage actualResponse = client.insertRouterAsync(region, routerResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -440,7 +433,7 @@ public class RouterClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -507,21 +500,17 @@ public class RouterClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchRouterTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("patchRouterTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockRouters.addResponse(resultOperation);
+        Operation.newBuilder().setName("patchRouterTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionRouterName router =
         ProjectRegionRouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
     Router routerResource = Router.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse = client.patchRouterAsync(router, routerResource, fieldMask).get();
+    EmptyMessage actualResponse = client.patchRouterAsync(router, routerResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -558,7 +547,7 @@ public class RouterClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -613,21 +602,17 @@ public class RouterClientTest {
   @Test
   @SuppressWarnings("all")
   public void updateRouterTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("updateRouterTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockRouters.addResponse(resultOperation);
+        Operation.newBuilder().setName("updateRouterTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionRouterName router =
         ProjectRegionRouterName.of("[PROJECT]", "[REGION]", "[ROUTER]");
     Router routerResource = Router.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse = client.updateRouterAsync(router, routerResource, fieldMask).get();
+    EmptyMessage actualResponse = client.updateRouterAsync(router, routerResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -664,7 +649,7 @@ public class RouterClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

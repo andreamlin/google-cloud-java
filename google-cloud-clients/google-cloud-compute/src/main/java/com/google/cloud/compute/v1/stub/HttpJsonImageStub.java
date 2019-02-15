@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DeleteImageHttpRequest;
@@ -263,18 +265,27 @@ public class HttpJsonImageStub extends ImageStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteImageHttpRequest, Operation> deleteImageCallable;
+  private final OperationCallable<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+      deleteImageOperationCallable;
   private final UnaryCallable<DeprecateImageHttpRequest, Operation> deprecateImageCallable;
+  private final OperationCallable<DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+      deprecateImageOperationCallable;
   private final UnaryCallable<GetImageHttpRequest, Image> getImageCallable;
   private final UnaryCallable<GetFromFamilyImageHttpRequest, Image> getFromFamilyImageCallable;
   private final UnaryCallable<GetIamPolicyImageHttpRequest, Policy> getIamPolicyImageCallable;
   private final UnaryCallable<InsertImageHttpRequest, Operation> insertImageCallable;
+  private final OperationCallable<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+      insertImageOperationCallable;
   private final UnaryCallable<ListImagesHttpRequest, ImageList> listImagesCallable;
   private final UnaryCallable<ListImagesHttpRequest, ListImagesPagedResponse>
       listImagesPagedCallable;
   private final UnaryCallable<SetIamPolicyImageHttpRequest, Policy> setIamPolicyImageCallable;
   private final UnaryCallable<SetLabelsImageHttpRequest, Operation> setLabelsImageCallable;
+  private final OperationCallable<SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsImageOperationCallable;
   private final UnaryCallable<TestIamPermissionsImageHttpRequest, TestPermissionsResponse>
       testIamPermissionsImageCallable;
 
@@ -315,6 +326,7 @@ public class HttpJsonImageStub extends ImageStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteImageHttpRequest, Operation> deleteImageTransportSettings =
         HttpJsonCallSettings.<DeleteImageHttpRequest, Operation>newBuilder()
@@ -362,9 +374,21 @@ public class HttpJsonImageStub extends ImageStub {
     this.deleteImageCallable =
         callableFactory.createUnaryCallable(
             deleteImageTransportSettings, settings.deleteImageSettings(), clientContext);
+    this.deleteImageOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteImageTransportSettings,
+            settings.deleteImageOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.deprecateImageCallable =
         callableFactory.createUnaryCallable(
             deprecateImageTransportSettings, settings.deprecateImageSettings(), clientContext);
+    this.deprecateImageOperationCallable =
+        callableFactory.createOperationCallable(
+            deprecateImageTransportSettings,
+            settings.deprecateImageOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getImageCallable =
         callableFactory.createUnaryCallable(
             getImageTransportSettings, settings.getImageSettings(), clientContext);
@@ -381,6 +405,12 @@ public class HttpJsonImageStub extends ImageStub {
     this.insertImageCallable =
         callableFactory.createUnaryCallable(
             insertImageTransportSettings, settings.insertImageSettings(), clientContext);
+    this.insertImageOperationCallable =
+        callableFactory.createOperationCallable(
+            insertImageTransportSettings,
+            settings.insertImageOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listImagesCallable =
         callableFactory.createUnaryCallable(
             listImagesTransportSettings, settings.listImagesSettings(), clientContext);
@@ -395,6 +425,12 @@ public class HttpJsonImageStub extends ImageStub {
     this.setLabelsImageCallable =
         callableFactory.createUnaryCallable(
             setLabelsImageTransportSettings, settings.setLabelsImageSettings(), clientContext);
+    this.setLabelsImageOperationCallable =
+        callableFactory.createOperationCallable(
+            setLabelsImageTransportSettings,
+            settings.setLabelsImageOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.testIamPermissionsImageCallable =
         callableFactory.createUnaryCallable(
             testIamPermissionsImageTransportSettings,
@@ -404,9 +440,26 @@ public class HttpJsonImageStub extends ImageStub {
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+      deleteImageOperationCallable() {
+    return deleteImageOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteImageHttpRequest, Operation> deleteImageCallable() {
     return deleteImageCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+      deprecateImageOperationCallable() {
+    return deprecateImageOperationCallable;
   }
 
   @BetaApi
@@ -429,6 +482,12 @@ public class HttpJsonImageStub extends ImageStub {
     return getIamPolicyImageCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+      insertImageOperationCallable() {
+    return insertImageOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<InsertImageHttpRequest, Operation> insertImageCallable() {
     return insertImageCallable;
@@ -447,6 +506,12 @@ public class HttpJsonImageStub extends ImageStub {
   @BetaApi
   public UnaryCallable<SetIamPolicyImageHttpRequest, Policy> setIamPolicyImageCallable() {
     return setIamPolicyImageCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsImageOperationCallable() {
+    return setLabelsImageOperationCallable;
   }
 
   @BetaApi

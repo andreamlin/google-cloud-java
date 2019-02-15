@@ -22,10 +22,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -49,13 +51,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of abandonInstancesInstanceGroupManager to 30 seconds:
+ * example, to set the total timeout of getInstanceGroupManager to 30 seconds:
  *
  * <pre>
  * <code>
  * InstanceGroupManagerSettings.Builder instanceGroupManagerSettingsBuilder =
  *     InstanceGroupManagerSettings.newBuilder();
- * instanceGroupManagerSettingsBuilder.abandonInstancesInstanceGroupManagerSettings().getRetrySettings().toBuilder()
+ * instanceGroupManagerSettingsBuilder.getInstanceGroupManagerSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * InstanceGroupManagerSettings instanceGroupManagerSettings = instanceGroupManagerSettingsBuilder.build();
  * </code>
@@ -71,6 +73,18 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
       abandonInstancesInstanceGroupManagerSettings() {
     return ((InstanceGroupManagerStubSettings) getStubSettings())
         .abandonInstancesInstanceGroupManagerSettings();
+  }
+
+  /**
+   * Returns the object with the settings used for calls to abandonInstancesInstanceGroupManager.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      abandonInstancesInstanceGroupManagerOperationSettings() {
+    return ((InstanceGroupManagerStubSettings) getStubSettings())
+        .abandonInstancesInstanceGroupManagerOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to aggregatedListInstanceGroupManagers. */
@@ -90,11 +104,30 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
         .deleteInstanceGroupManagerSettings();
   }
 
+  /** Returns the object with the settings used for calls to deleteInstanceGroupManager. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstanceGroupManagerOperationSettings() {
+    return ((InstanceGroupManagerStubSettings) getStubSettings())
+        .deleteInstanceGroupManagerOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to deleteInstancesInstanceGroupManager. */
   public UnaryCallSettings<DeleteInstancesInstanceGroupManagerHttpRequest, Operation>
       deleteInstancesInstanceGroupManagerSettings() {
     return ((InstanceGroupManagerStubSettings) getStubSettings())
         .deleteInstancesInstanceGroupManagerSettings();
+  }
+
+  /** Returns the object with the settings used for calls to deleteInstancesInstanceGroupManager. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstancesInstanceGroupManagerOperationSettings() {
+    return ((InstanceGroupManagerStubSettings) getStubSettings())
+        .deleteInstancesInstanceGroupManagerOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getInstanceGroupManager. */
@@ -108,6 +141,15 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
       insertInstanceGroupManagerSettings() {
     return ((InstanceGroupManagerStubSettings) getStubSettings())
         .insertInstanceGroupManagerSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertInstanceGroupManager. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      insertInstanceGroupManagerOperationSettings() {
+    return ((InstanceGroupManagerStubSettings) getStubSettings())
+        .insertInstanceGroupManagerOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listInstanceGroupManagers. */
@@ -139,6 +181,15 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
         .patchInstanceGroupManagerSettings();
   }
 
+  /** Returns the object with the settings used for calls to patchInstanceGroupManager. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      patchInstanceGroupManagerOperationSettings() {
+    return ((InstanceGroupManagerStubSettings) getStubSettings())
+        .patchInstanceGroupManagerOperationSettings();
+  }
+
   /**
    * Returns the object with the settings used for calls to recreateInstancesInstanceGroupManager.
    */
@@ -148,11 +199,32 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
         .recreateInstancesInstanceGroupManagerSettings();
   }
 
+  /**
+   * Returns the object with the settings used for calls to recreateInstancesInstanceGroupManager.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      recreateInstancesInstanceGroupManagerOperationSettings() {
+    return ((InstanceGroupManagerStubSettings) getStubSettings())
+        .recreateInstancesInstanceGroupManagerOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to resizeInstanceGroupManager. */
   public UnaryCallSettings<ResizeInstanceGroupManagerHttpRequest, Operation>
       resizeInstanceGroupManagerSettings() {
     return ((InstanceGroupManagerStubSettings) getStubSettings())
         .resizeInstanceGroupManagerSettings();
+  }
+
+  /** Returns the object with the settings used for calls to resizeInstanceGroupManager. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<ResizeInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      resizeInstanceGroupManagerOperationSettings() {
+    return ((InstanceGroupManagerStubSettings) getStubSettings())
+        .resizeInstanceGroupManagerOperationSettings();
   }
 
   /**
@@ -164,11 +236,33 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
         .setInstanceTemplateInstanceGroupManagerSettings();
   }
 
+  /**
+   * Returns the object with the settings used for calls to setInstanceTemplateInstanceGroupManager.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setInstanceTemplateInstanceGroupManagerOperationSettings() {
+    return ((InstanceGroupManagerStubSettings) getStubSettings())
+        .setInstanceTemplateInstanceGroupManagerOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to setTargetPoolsInstanceGroupManager. */
   public UnaryCallSettings<SetTargetPoolsInstanceGroupManagerHttpRequest, Operation>
       setTargetPoolsInstanceGroupManagerSettings() {
     return ((InstanceGroupManagerStubSettings) getStubSettings())
         .setTargetPoolsInstanceGroupManagerSettings();
+  }
+
+  /** Returns the object with the settings used for calls to setTargetPoolsInstanceGroupManager. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetPoolsInstanceGroupManagerOperationSettings() {
+    return ((InstanceGroupManagerStubSettings) getStubSettings())
+        .setTargetPoolsInstanceGroupManagerOperationSettings();
   }
 
   public static final InstanceGroupManagerSettings create(InstanceGroupManagerStubSettings stub)
@@ -283,6 +377,17 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
     }
 
     /**
+     * Returns the builder for the settings used for calls to abandonInstancesInstanceGroupManager.
+     */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        abandonInstancesInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().abandonInstancesInstanceGroupManagerOperationSettings();
+    }
+
+    /**
      * Returns the builder for the settings used for calls to aggregatedListInstanceGroupManagers.
      */
     public PagedCallSettings.Builder<
@@ -299,12 +404,32 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
       return getStubSettingsBuilder().deleteInstanceGroupManagerSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteInstanceGroupManager. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        deleteInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().deleteInstanceGroupManagerOperationSettings();
+    }
+
     /**
      * Returns the builder for the settings used for calls to deleteInstancesInstanceGroupManager.
      */
     public UnaryCallSettings.Builder<DeleteInstancesInstanceGroupManagerHttpRequest, Operation>
         deleteInstancesInstanceGroupManagerSettings() {
       return getStubSettingsBuilder().deleteInstancesInstanceGroupManagerSettings();
+    }
+
+    /**
+     * Returns the builder for the settings used for calls to deleteInstancesInstanceGroupManager.
+     */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        deleteInstancesInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().deleteInstancesInstanceGroupManagerOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to getInstanceGroupManager. */
@@ -317,6 +442,15 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
     public UnaryCallSettings.Builder<InsertInstanceGroupManagerHttpRequest, Operation>
         insertInstanceGroupManagerSettings() {
       return getStubSettingsBuilder().insertInstanceGroupManagerSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertInstanceGroupManager. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        insertInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().insertInstanceGroupManagerOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listInstanceGroupManagers. */
@@ -345,6 +479,15 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
       return getStubSettingsBuilder().patchInstanceGroupManagerSettings();
     }
 
+    /** Returns the builder for the settings used for calls to patchInstanceGroupManager. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            PatchInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        patchInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().patchInstanceGroupManagerOperationSettings();
+    }
+
     /**
      * Returns the builder for the settings used for calls to recreateInstancesInstanceGroupManager.
      */
@@ -353,10 +496,30 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
       return getStubSettingsBuilder().recreateInstancesInstanceGroupManagerSettings();
     }
 
+    /**
+     * Returns the builder for the settings used for calls to recreateInstancesInstanceGroupManager.
+     */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        recreateInstancesInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().recreateInstancesInstanceGroupManagerOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to resizeInstanceGroupManager. */
     public UnaryCallSettings.Builder<ResizeInstanceGroupManagerHttpRequest, Operation>
         resizeInstanceGroupManagerSettings() {
       return getStubSettingsBuilder().resizeInstanceGroupManagerSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to resizeInstanceGroupManager. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            ResizeInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        resizeInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().resizeInstanceGroupManagerOperationSettings();
     }
 
     /**
@@ -369,11 +532,34 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
     }
 
     /**
+     * Returns the builder for the settings used for calls to
+     * setInstanceTemplateInstanceGroupManager.
+     */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        setInstanceTemplateInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().setInstanceTemplateInstanceGroupManagerOperationSettings();
+    }
+
+    /**
      * Returns the builder for the settings used for calls to setTargetPoolsInstanceGroupManager.
      */
     public UnaryCallSettings.Builder<SetTargetPoolsInstanceGroupManagerHttpRequest, Operation>
         setTargetPoolsInstanceGroupManagerSettings() {
       return getStubSettingsBuilder().setTargetPoolsInstanceGroupManagerSettings();
+    }
+
+    /**
+     * Returns the builder for the settings used for calls to setTargetPoolsInstanceGroupManager.
+     */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+        setTargetPoolsInstanceGroupManagerOperationSettings() {
+      return getStubSettingsBuilder().setTargetPoolsInstanceGroupManagerOperationSettings();
     }
 
     @Override

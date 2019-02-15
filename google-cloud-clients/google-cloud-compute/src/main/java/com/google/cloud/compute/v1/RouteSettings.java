@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteRoute to 30 seconds:
+ * example, to set the total timeout of getRoute to 30 seconds:
  *
  * <pre>
  * <code>
  * RouteSettings.Builder routeSettingsBuilder =
  *     RouteSettings.newBuilder();
- * routeSettingsBuilder.deleteRouteSettings().getRetrySettings().toBuilder()
+ * routeSettingsBuilder.getRouteSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * RouteSettings routeSettings = routeSettingsBuilder.build();
  * </code>
@@ -68,6 +70,14 @@ public class RouteSettings extends ClientSettings<RouteSettings> {
     return ((RouteStubSettings) getStubSettings()).deleteRouteSettings();
   }
 
+  /** Returns the object with the settings used for calls to deleteRoute. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRouteOperationSettings() {
+    return ((RouteStubSettings) getStubSettings()).deleteRouteOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to getRoute. */
   public UnaryCallSettings<GetRouteHttpRequest, Route> getRouteSettings() {
     return ((RouteStubSettings) getStubSettings()).getRouteSettings();
@@ -76,6 +86,14 @@ public class RouteSettings extends ClientSettings<RouteSettings> {
   /** Returns the object with the settings used for calls to insertRoute. */
   public UnaryCallSettings<InsertRouteHttpRequest, Operation> insertRouteSettings() {
     return ((RouteStubSettings) getStubSettings()).insertRouteSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertRoute. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+      insertRouteOperationSettings() {
+    return ((RouteStubSettings) getStubSettings()).insertRouteOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listRoutes. */
@@ -190,6 +208,14 @@ public class RouteSettings extends ClientSettings<RouteSettings> {
       return getStubSettingsBuilder().deleteRouteSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteRoute. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+        deleteRouteOperationSettings() {
+      return getStubSettingsBuilder().deleteRouteOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getRoute. */
     public UnaryCallSettings.Builder<GetRouteHttpRequest, Route> getRouteSettings() {
       return getStubSettingsBuilder().getRouteSettings();
@@ -198,6 +224,14 @@ public class RouteSettings extends ClientSettings<RouteSettings> {
     /** Returns the builder for the settings used for calls to insertRoute. */
     public UnaryCallSettings.Builder<InsertRouteHttpRequest, Operation> insertRouteSettings() {
       return getStubSettingsBuilder().insertRouteSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertRoute. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+        insertRouteOperationSettings() {
+      return getStubSettingsBuilder().insertRouteOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listRoutes. */

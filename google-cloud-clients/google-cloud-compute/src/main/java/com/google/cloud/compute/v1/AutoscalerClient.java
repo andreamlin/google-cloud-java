@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.AutoscalerStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
  *   ProjectZoneAutoscalerName autoscaler = ProjectZoneAutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
- *   Operation response = autoscalerClient.deleteAutoscaler(autoscaler);
+ *   Autoscaler response = autoscalerClient.getAutoscaler(autoscaler);
  * }
  * </code>
  * </pre>
@@ -103,6 +106,7 @@ import javax.annotation.Generated;
 public class AutoscalerClient implements BackgroundResource {
   private final AutoscalerSettings settings;
   private final AutoscalerStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of AutoscalerClient with default settings. */
   public static final AutoscalerClient create() throws IOException {
@@ -133,12 +137,14 @@ public class AutoscalerClient implements BackgroundResource {
   protected AutoscalerClient(AutoscalerSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((AutoscalerStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected AutoscalerClient(AutoscalerStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final AutoscalerSettings getSettings() {
@@ -148,6 +154,16 @@ public class AutoscalerClient implements BackgroundResource {
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public AutoscalerStub getStub() {
     return stub;
+  }
+
+  /**
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -299,21 +315,23 @@ public class AutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   ProjectZoneAutoscalerName autoscaler = ProjectZoneAutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
-   *   Operation response = autoscalerClient.deleteAutoscaler(autoscaler);
+   *   autoscalerClient.deleteAutoscalerAsync(autoscaler).get();
    * }
    * </code></pre>
    *
    * @param autoscaler Name of the autoscaler to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteAutoscaler(ProjectZoneAutoscalerName autoscaler) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteAutoscalerAsync(
+      ProjectZoneAutoscalerName autoscaler) {
 
     DeleteAutoscalerHttpRequest request =
         DeleteAutoscalerHttpRequest.newBuilder()
             .setAutoscaler(autoscaler == null ? null : autoscaler.toString())
             .build();
-    return deleteAutoscaler(request);
+    return deleteAutoscalerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -325,19 +343,21 @@ public class AutoscalerClient implements BackgroundResource {
    * <pre><code>
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   ProjectZoneAutoscalerName autoscaler = ProjectZoneAutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
-   *   Operation response = autoscalerClient.deleteAutoscaler(autoscaler.toString());
+   *   autoscalerClient.deleteAutoscalerAsync(autoscaler.toString()).get();
    * }
    * </code></pre>
    *
    * @param autoscaler Name of the autoscaler to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteAutoscaler(String autoscaler) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteAutoscalerAsync(
+      String autoscaler) {
 
     DeleteAutoscalerHttpRequest request =
         DeleteAutoscalerHttpRequest.newBuilder().setAutoscaler(autoscaler).build();
-    return deleteAutoscaler(request);
+    return deleteAutoscalerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -352,16 +372,42 @@ public class AutoscalerClient implements BackgroundResource {
    *   DeleteAutoscalerHttpRequest request = DeleteAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler.toString())
    *     .build();
-   *   Operation response = autoscalerClient.deleteAutoscaler(request);
+   *   autoscalerClient.deleteAutoscalerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteAutoscaler(DeleteAutoscalerHttpRequest request) {
-    return deleteAutoscalerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteAutoscalerAsync(
+      DeleteAutoscalerHttpRequest request) {
+    return deleteAutoscalerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified autoscaler.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
+   *   ProjectZoneAutoscalerName autoscaler = ProjectZoneAutoscalerName.of("[PROJECT]", "[ZONE]", "[AUTOSCALER]");
+   *   DeleteAutoscalerHttpRequest request = DeleteAutoscalerHttpRequest.newBuilder()
+   *     .setAutoscaler(autoscaler.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = autoscalerClient.deleteAutoscalerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteAutoscalerOperationCallable() {
+    return stub.deleteAutoscalerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -378,7 +424,7 @@ public class AutoscalerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = autoscalerClient.deleteAutoscalerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -498,7 +544,7 @@ public class AutoscalerClient implements BackgroundResource {
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
    *   Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
-   *   Operation response = autoscalerClient.insertAutoscaler(zone, autoscalerResource);
+   *   autoscalerClient.insertAutoscalerAsync(zone, autoscalerResource).get();
    * }
    * </code></pre>
    *
@@ -510,15 +556,17 @@ public class AutoscalerClient implements BackgroundResource {
    *     resource_for beta.regionAutoscalers ==) (== resource_for v1.regionAutoscalers ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertAutoscaler(ProjectZoneName zone, Autoscaler autoscalerResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertAutoscalerAsync(
+      ProjectZoneName zone, Autoscaler autoscalerResource) {
 
     InsertAutoscalerHttpRequest request =
         InsertAutoscalerHttpRequest.newBuilder()
             .setZone(zone == null ? null : zone.toString())
             .setAutoscalerResource(autoscalerResource)
             .build();
-    return insertAutoscaler(request);
+    return insertAutoscalerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -531,7 +579,7 @@ public class AutoscalerClient implements BackgroundResource {
    * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
    *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
    *   Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
-   *   Operation response = autoscalerClient.insertAutoscaler(zone.toString(), autoscalerResource);
+   *   autoscalerClient.insertAutoscalerAsync(zone.toString(), autoscalerResource).get();
    * }
    * </code></pre>
    *
@@ -543,15 +591,17 @@ public class AutoscalerClient implements BackgroundResource {
    *     resource_for beta.regionAutoscalers ==) (== resource_for v1.regionAutoscalers ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertAutoscaler(String zone, Autoscaler autoscalerResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertAutoscalerAsync(
+      String zone, Autoscaler autoscalerResource) {
 
     InsertAutoscalerHttpRequest request =
         InsertAutoscalerHttpRequest.newBuilder()
             .setZone(zone)
             .setAutoscalerResource(autoscalerResource)
             .build();
-    return insertAutoscaler(request);
+    return insertAutoscalerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -568,16 +618,44 @@ public class AutoscalerClient implements BackgroundResource {
    *     .setZone(zone.toString())
    *     .setAutoscalerResource(autoscalerResource)
    *     .build();
-   *   Operation response = autoscalerClient.insertAutoscaler(request);
+   *   autoscalerClient.insertAutoscalerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertAutoscaler(InsertAutoscalerHttpRequest request) {
-    return insertAutoscalerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertAutoscalerAsync(
+      InsertAutoscalerHttpRequest request) {
+    return insertAutoscalerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates an autoscaler in the specified project using the data included in the request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
+   *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
+   *   Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
+   *   InsertAutoscalerHttpRequest request = InsertAutoscalerHttpRequest.newBuilder()
+   *     .setZone(zone.toString())
+   *     .setAutoscalerResource(autoscalerResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = autoscalerClient.insertAutoscalerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      insertAutoscalerOperationCallable() {
+    return stub.insertAutoscalerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -596,7 +674,7 @@ public class AutoscalerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = autoscalerClient.insertAutoscalerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -754,7 +832,7 @@ public class AutoscalerClient implements BackgroundResource {
    *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
    *   Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = autoscalerClient.patchAutoscaler(autoscaler, zone, autoscalerResource, fieldMask);
+   *   autoscalerClient.patchAutoscalerAsync(autoscaler, zone, autoscalerResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -771,8 +849,9 @@ public class AutoscalerClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchAutoscaler(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchAutoscalerAsync(
       String autoscaler,
       ProjectZoneName zone,
       Autoscaler autoscalerResource,
@@ -785,7 +864,7 @@ public class AutoscalerClient implements BackgroundResource {
             .setAutoscalerResource(autoscalerResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchAutoscaler(request);
+    return patchAutoscalerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -801,7 +880,7 @@ public class AutoscalerClient implements BackgroundResource {
    *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
    *   Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = autoscalerClient.patchAutoscaler(autoscaler, zone.toString(), autoscalerResource, fieldMask);
+   *   autoscalerClient.patchAutoscalerAsync(autoscaler, zone.toString(), autoscalerResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -818,8 +897,9 @@ public class AutoscalerClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchAutoscaler(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchAutoscalerAsync(
       String autoscaler, String zone, Autoscaler autoscalerResource, List<String> fieldMask) {
 
     PatchAutoscalerHttpRequest request =
@@ -829,7 +909,7 @@ public class AutoscalerClient implements BackgroundResource {
             .setAutoscalerResource(autoscalerResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchAutoscaler(request);
+    return patchAutoscalerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -851,16 +931,49 @@ public class AutoscalerClient implements BackgroundResource {
    *     .setAutoscalerResource(autoscalerResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = autoscalerClient.patchAutoscaler(request);
+   *   autoscalerClient.patchAutoscalerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchAutoscaler(PatchAutoscalerHttpRequest request) {
-    return patchAutoscalerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchAutoscalerAsync(
+      PatchAutoscalerHttpRequest request) {
+    return patchAutoscalerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates an autoscaler in the specified project using the data included in the request. This
+   * method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
+   *   String autoscaler = "";
+   *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
+   *   Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   PatchAutoscalerHttpRequest request = PatchAutoscalerHttpRequest.newBuilder()
+   *     .setAutoscaler(autoscaler)
+   *     .setZone(zone.toString())
+   *     .setAutoscalerResource(autoscalerResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = autoscalerClient.patchAutoscalerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      patchAutoscalerOperationCallable() {
+    return stub.patchAutoscalerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -884,7 +997,7 @@ public class AutoscalerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = autoscalerClient.patchAutoscalerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -905,7 +1018,7 @@ public class AutoscalerClient implements BackgroundResource {
    *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
    *   Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = autoscalerClient.updateAutoscaler(autoscaler, zone, autoscalerResource, fieldMask);
+   *   autoscalerClient.updateAutoscalerAsync(autoscaler, zone, autoscalerResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -922,8 +1035,9 @@ public class AutoscalerClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateAutoscaler(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateAutoscalerAsync(
       String autoscaler,
       ProjectZoneName zone,
       Autoscaler autoscalerResource,
@@ -936,7 +1050,7 @@ public class AutoscalerClient implements BackgroundResource {
             .setAutoscalerResource(autoscalerResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return updateAutoscaler(request);
+    return updateAutoscalerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -951,7 +1065,7 @@ public class AutoscalerClient implements BackgroundResource {
    *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
    *   Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = autoscalerClient.updateAutoscaler(autoscaler, zone.toString(), autoscalerResource, fieldMask);
+   *   autoscalerClient.updateAutoscalerAsync(autoscaler, zone.toString(), autoscalerResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -968,8 +1082,9 @@ public class AutoscalerClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateAutoscaler(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateAutoscalerAsync(
       String autoscaler, String zone, Autoscaler autoscalerResource, List<String> fieldMask) {
 
     UpdateAutoscalerHttpRequest request =
@@ -979,7 +1094,7 @@ public class AutoscalerClient implements BackgroundResource {
             .setAutoscalerResource(autoscalerResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return updateAutoscaler(request);
+    return updateAutoscalerAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1000,16 +1115,48 @@ public class AutoscalerClient implements BackgroundResource {
    *     .setAutoscalerResource(autoscalerResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = autoscalerClient.updateAutoscaler(request);
+   *   autoscalerClient.updateAutoscalerAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateAutoscaler(UpdateAutoscalerHttpRequest request) {
-    return updateAutoscalerCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateAutoscalerAsync(
+      UpdateAutoscalerHttpRequest request) {
+    return updateAutoscalerOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates an autoscaler in the specified project using the data included in the request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (AutoscalerClient autoscalerClient = AutoscalerClient.create()) {
+   *   String autoscaler = "";
+   *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
+   *   Autoscaler autoscalerResource = Autoscaler.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   UpdateAutoscalerHttpRequest request = UpdateAutoscalerHttpRequest.newBuilder()
+   *     .setAutoscaler(autoscaler)
+   *     .setZone(zone.toString())
+   *     .setAutoscalerResource(autoscalerResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = autoscalerClient.updateAutoscalerOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      updateAutoscalerOperationCallable() {
+    return stub.updateAutoscalerOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1032,7 +1179,7 @@ public class AutoscalerClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = autoscalerClient.updateAutoscalerCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

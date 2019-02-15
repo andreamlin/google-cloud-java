@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AddSignedUrlKeyBackendServiceHttpRequest;
@@ -295,9 +297,13 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AddSignedUrlKeyBackendServiceHttpRequest, Operation>
       addSignedUrlKeyBackendServiceCallable;
+  private final OperationCallable<
+          AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      addSignedUrlKeyBackendServiceOperationCallable;
   private final UnaryCallable<
           AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList>
       aggregatedListBackendServicesCallable;
@@ -306,24 +312,38 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
       aggregatedListBackendServicesPagedCallable;
   private final UnaryCallable<DeleteBackendServiceHttpRequest, Operation>
       deleteBackendServiceCallable;
+  private final OperationCallable<DeleteBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteBackendServiceOperationCallable;
   private final UnaryCallable<DeleteSignedUrlKeyBackendServiceHttpRequest, Operation>
       deleteSignedUrlKeyBackendServiceCallable;
+  private final OperationCallable<
+          DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSignedUrlKeyBackendServiceOperationCallable;
   private final UnaryCallable<GetBackendServiceHttpRequest, BackendService>
       getBackendServiceCallable;
   private final UnaryCallable<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth>
       getHealthBackendServiceCallable;
   private final UnaryCallable<InsertBackendServiceHttpRequest, Operation>
       insertBackendServiceCallable;
+  private final OperationCallable<InsertBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      insertBackendServiceOperationCallable;
   private final UnaryCallable<ListBackendServicesHttpRequest, BackendServiceList>
       listBackendServicesCallable;
   private final UnaryCallable<ListBackendServicesHttpRequest, ListBackendServicesPagedResponse>
       listBackendServicesPagedCallable;
   private final UnaryCallable<PatchBackendServiceHttpRequest, Operation>
       patchBackendServiceCallable;
+  private final OperationCallable<PatchBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      patchBackendServiceOperationCallable;
   private final UnaryCallable<SetSecurityPolicyBackendServiceHttpRequest, Operation>
       setSecurityPolicyBackendServiceCallable;
+  private final OperationCallable<
+          SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      setSecurityPolicyBackendServiceOperationCallable;
   private final UnaryCallable<UpdateBackendServiceHttpRequest, Operation>
       updateBackendServiceCallable;
+  private final OperationCallable<UpdateBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      updateBackendServiceOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -365,6 +385,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AddSignedUrlKeyBackendServiceHttpRequest, Operation>
         addSignedUrlKeyBackendServiceTransportSettings =
@@ -431,6 +452,12 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
             addSignedUrlKeyBackendServiceTransportSettings,
             settings.addSignedUrlKeyBackendServiceSettings(),
             clientContext);
+    this.addSignedUrlKeyBackendServiceOperationCallable =
+        callableFactory.createOperationCallable(
+            addSignedUrlKeyBackendServiceTransportSettings,
+            settings.addSignedUrlKeyBackendServiceOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.aggregatedListBackendServicesCallable =
         callableFactory.createUnaryCallable(
             aggregatedListBackendServicesTransportSettings,
@@ -446,11 +473,23 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
             deleteBackendServiceTransportSettings,
             settings.deleteBackendServiceSettings(),
             clientContext);
+    this.deleteBackendServiceOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteBackendServiceTransportSettings,
+            settings.deleteBackendServiceOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.deleteSignedUrlKeyBackendServiceCallable =
         callableFactory.createUnaryCallable(
             deleteSignedUrlKeyBackendServiceTransportSettings,
             settings.deleteSignedUrlKeyBackendServiceSettings(),
             clientContext);
+    this.deleteSignedUrlKeyBackendServiceOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteSignedUrlKeyBackendServiceTransportSettings,
+            settings.deleteSignedUrlKeyBackendServiceOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getBackendServiceCallable =
         callableFactory.createUnaryCallable(
             getBackendServiceTransportSettings,
@@ -466,6 +505,12 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
             insertBackendServiceTransportSettings,
             settings.insertBackendServiceSettings(),
             clientContext);
+    this.insertBackendServiceOperationCallable =
+        callableFactory.createOperationCallable(
+            insertBackendServiceTransportSettings,
+            settings.insertBackendServiceOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listBackendServicesCallable =
         callableFactory.createUnaryCallable(
             listBackendServicesTransportSettings,
@@ -481,18 +526,47 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
             patchBackendServiceTransportSettings,
             settings.patchBackendServiceSettings(),
             clientContext);
+    this.patchBackendServiceOperationCallable =
+        callableFactory.createOperationCallable(
+            patchBackendServiceTransportSettings,
+            settings.patchBackendServiceOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setSecurityPolicyBackendServiceCallable =
         callableFactory.createUnaryCallable(
             setSecurityPolicyBackendServiceTransportSettings,
             settings.setSecurityPolicyBackendServiceSettings(),
             clientContext);
+    this.setSecurityPolicyBackendServiceOperationCallable =
+        callableFactory.createOperationCallable(
+            setSecurityPolicyBackendServiceTransportSettings,
+            settings.setSecurityPolicyBackendServiceOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.updateBackendServiceCallable =
         callableFactory.createUnaryCallable(
             updateBackendServiceTransportSettings,
             settings.updateBackendServiceSettings(),
             clientContext);
+    this.updateBackendServiceOperationCallable =
+        callableFactory.createOperationCallable(
+            updateBackendServiceTransportSettings,
+            settings.updateBackendServiceOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      addSignedUrlKeyBackendServiceOperationCallable() {
+    return addSignedUrlKeyBackendServiceOperationCallable;
   }
 
   @BetaApi
@@ -514,9 +588,21 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
     return aggregatedListBackendServicesCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteBackendServiceOperationCallable() {
+    return deleteBackendServiceOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteBackendServiceHttpRequest, Operation> deleteBackendServiceCallable() {
     return deleteBackendServiceCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSignedUrlKeyBackendServiceOperationCallable() {
+    return deleteSignedUrlKeyBackendServiceOperationCallable;
   }
 
   @BetaApi
@@ -536,6 +622,12 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
     return getHealthBackendServiceCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      insertBackendServiceOperationCallable() {
+    return insertBackendServiceOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<InsertBackendServiceHttpRequest, Operation> insertBackendServiceCallable() {
     return insertBackendServiceCallable;
@@ -553,15 +645,33 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
     return listBackendServicesCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      patchBackendServiceOperationCallable() {
+    return patchBackendServiceOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<PatchBackendServiceHttpRequest, Operation> patchBackendServiceCallable() {
     return patchBackendServiceCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      setSecurityPolicyBackendServiceOperationCallable() {
+    return setSecurityPolicyBackendServiceOperationCallable;
   }
 
   @BetaApi
   public UnaryCallable<SetSecurityPolicyBackendServiceHttpRequest, Operation>
       setSecurityPolicyBackendServiceCallable() {
     return setSecurityPolicyBackendServiceCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      updateBackendServiceOperationCallable() {
+    return updateBackendServiceOperationCallable;
   }
 
   @BetaApi

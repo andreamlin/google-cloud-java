@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteSnapshot to 30 seconds:
+ * example, to set the total timeout of getSnapshot to 30 seconds:
  *
  * <pre>
  * <code>
  * SnapshotSettings.Builder snapshotSettingsBuilder =
  *     SnapshotSettings.newBuilder();
- * snapshotSettingsBuilder.deleteSnapshotSettings().getRetrySettings().toBuilder()
+ * snapshotSettingsBuilder.getSnapshotSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * SnapshotSettings snapshotSettings = snapshotSettingsBuilder.build();
  * </code>
@@ -66,6 +68,14 @@ public class SnapshotSettings extends ClientSettings<SnapshotSettings> {
   /** Returns the object with the settings used for calls to deleteSnapshot. */
   public UnaryCallSettings<DeleteSnapshotHttpRequest, Operation> deleteSnapshotSettings() {
     return ((SnapshotStubSettings) getStubSettings()).deleteSnapshotSettings();
+  }
+
+  /** Returns the object with the settings used for calls to deleteSnapshot. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSnapshotOperationSettings() {
+    return ((SnapshotStubSettings) getStubSettings()).deleteSnapshotOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getSnapshot. */
@@ -92,6 +102,14 @@ public class SnapshotSettings extends ClientSettings<SnapshotSettings> {
   /** Returns the object with the settings used for calls to setLabelsSnapshot. */
   public UnaryCallSettings<SetLabelsSnapshotHttpRequest, Operation> setLabelsSnapshotSettings() {
     return ((SnapshotStubSettings) getStubSettings()).setLabelsSnapshotSettings();
+  }
+
+  /** Returns the object with the settings used for calls to setLabelsSnapshot. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsSnapshotOperationSettings() {
+    return ((SnapshotStubSettings) getStubSettings()).setLabelsSnapshotOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to testIamPermissionsSnapshot. */
@@ -207,6 +225,14 @@ public class SnapshotSettings extends ClientSettings<SnapshotSettings> {
       return getStubSettingsBuilder().deleteSnapshotSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteSnapshot. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+        deleteSnapshotOperationSettings() {
+      return getStubSettingsBuilder().deleteSnapshotOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getSnapshot. */
     public UnaryCallSettings.Builder<GetSnapshotHttpRequest, Snapshot> getSnapshotSettings() {
       return getStubSettingsBuilder().getSnapshotSettings();
@@ -235,6 +261,14 @@ public class SnapshotSettings extends ClientSettings<SnapshotSettings> {
     public UnaryCallSettings.Builder<SetLabelsSnapshotHttpRequest, Operation>
         setLabelsSnapshotSettings() {
       return getStubSettingsBuilder().setLabelsSnapshotSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to setLabelsSnapshot. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+        setLabelsSnapshotOperationSettings() {
+      return getStubSettingsBuilder().setLabelsSnapshotOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to testIamPermissionsSnapshot. */

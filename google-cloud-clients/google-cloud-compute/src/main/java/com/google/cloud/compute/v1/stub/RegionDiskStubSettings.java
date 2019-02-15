@@ -23,13 +23,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -75,13 +80,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of createSnapshotRegionDisk to 30 seconds:
+ * example, to set the total timeout of getRegionDisk to 30 seconds:
  *
  * <pre>
  * <code>
  * RegionDiskStubSettings.Builder regionDiskSettingsBuilder =
  *     RegionDiskStubSettings.newBuilder();
- * regionDiskSettingsBuilder.createSnapshotRegionDiskSettings().getRetrySettings().toBuilder()
+ * regionDiskSettingsBuilder.getRegionDiskSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * RegionDiskStubSettings regionDiskSettings = regionDiskSettingsBuilder.build();
  * </code>
@@ -103,15 +108,26 @@ public class RegionDiskStubSettings extends StubSettings<RegionDiskStubSettings>
 
   private final UnaryCallSettings<CreateSnapshotRegionDiskHttpRequest, Operation>
       createSnapshotRegionDiskSettings;
+  private final OperationCallSettings<
+          CreateSnapshotRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      createSnapshotRegionDiskOperationSettings;
   private final UnaryCallSettings<DeleteRegionDiskHttpRequest, Operation> deleteRegionDiskSettings;
+  private final OperationCallSettings<DeleteRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionDiskOperationSettings;
   private final UnaryCallSettings<GetRegionDiskHttpRequest, Disk> getRegionDiskSettings;
   private final UnaryCallSettings<InsertRegionDiskHttpRequest, Operation> insertRegionDiskSettings;
+  private final OperationCallSettings<InsertRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionDiskOperationSettings;
   private final PagedCallSettings<
           ListRegionDisksHttpRequest, DiskList, ListRegionDisksPagedResponse>
       listRegionDisksSettings;
   private final UnaryCallSettings<ResizeRegionDiskHttpRequest, Operation> resizeRegionDiskSettings;
+  private final OperationCallSettings<ResizeRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      resizeRegionDiskOperationSettings;
   private final UnaryCallSettings<SetLabelsRegionDiskHttpRequest, Operation>
       setLabelsRegionDiskSettings;
+  private final OperationCallSettings<SetLabelsRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsRegionDiskOperationSettings;
   private final UnaryCallSettings<TestIamPermissionsRegionDiskHttpRequest, TestPermissionsResponse>
       testIamPermissionsRegionDiskSettings;
 
@@ -121,9 +137,23 @@ public class RegionDiskStubSettings extends StubSettings<RegionDiskStubSettings>
     return createSnapshotRegionDiskSettings;
   }
 
+  /** Returns the object with the settings used for calls to createSnapshotRegionDisk. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<CreateSnapshotRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      createSnapshotRegionDiskOperationSettings() {
+    return createSnapshotRegionDiskOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to deleteRegionDisk. */
   public UnaryCallSettings<DeleteRegionDiskHttpRequest, Operation> deleteRegionDiskSettings() {
     return deleteRegionDiskSettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteRegionDisk. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionDiskOperationSettings() {
+    return deleteRegionDiskOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getRegionDisk. */
@@ -134,6 +164,13 @@ public class RegionDiskStubSettings extends StubSettings<RegionDiskStubSettings>
   /** Returns the object with the settings used for calls to insertRegionDisk. */
   public UnaryCallSettings<InsertRegionDiskHttpRequest, Operation> insertRegionDiskSettings() {
     return insertRegionDiskSettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertRegionDisk. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionDiskOperationSettings() {
+    return insertRegionDiskOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listRegionDisks. */
@@ -147,10 +184,24 @@ public class RegionDiskStubSettings extends StubSettings<RegionDiskStubSettings>
     return resizeRegionDiskSettings;
   }
 
+  /** Returns the object with the settings used for calls to resizeRegionDisk. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<ResizeRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      resizeRegionDiskOperationSettings() {
+    return resizeRegionDiskOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to setLabelsRegionDisk. */
   public UnaryCallSettings<SetLabelsRegionDiskHttpRequest, Operation>
       setLabelsRegionDiskSettings() {
     return setLabelsRegionDiskSettings;
+  }
+
+  /** Returns the object with the settings used for calls to setLabelsRegionDisk. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<SetLabelsRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsRegionDiskOperationSettings() {
+    return setLabelsRegionDiskOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to testIamPermissionsRegionDisk. */
@@ -235,12 +286,19 @@ public class RegionDiskStubSettings extends StubSettings<RegionDiskStubSettings>
     super(settingsBuilder);
 
     createSnapshotRegionDiskSettings = settingsBuilder.createSnapshotRegionDiskSettings().build();
+    createSnapshotRegionDiskOperationSettings =
+        settingsBuilder.createSnapshotRegionDiskOperationSettings().build();
     deleteRegionDiskSettings = settingsBuilder.deleteRegionDiskSettings().build();
+    deleteRegionDiskOperationSettings = settingsBuilder.deleteRegionDiskOperationSettings().build();
     getRegionDiskSettings = settingsBuilder.getRegionDiskSettings().build();
     insertRegionDiskSettings = settingsBuilder.insertRegionDiskSettings().build();
+    insertRegionDiskOperationSettings = settingsBuilder.insertRegionDiskOperationSettings().build();
     listRegionDisksSettings = settingsBuilder.listRegionDisksSettings().build();
     resizeRegionDiskSettings = settingsBuilder.resizeRegionDiskSettings().build();
+    resizeRegionDiskOperationSettings = settingsBuilder.resizeRegionDiskOperationSettings().build();
     setLabelsRegionDiskSettings = settingsBuilder.setLabelsRegionDiskSettings().build();
+    setLabelsRegionDiskOperationSettings =
+        settingsBuilder.setLabelsRegionDiskOperationSettings().build();
     testIamPermissionsRegionDiskSettings =
         settingsBuilder.testIamPermissionsRegionDiskSettings().build();
   }
@@ -306,18 +364,33 @@ public class RegionDiskStubSettings extends StubSettings<RegionDiskStubSettings>
 
     private final UnaryCallSettings.Builder<CreateSnapshotRegionDiskHttpRequest, Operation>
         createSnapshotRegionDiskSettings;
+    private final OperationCallSettings.Builder<
+            CreateSnapshotRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        createSnapshotRegionDiskOperationSettings;
     private final UnaryCallSettings.Builder<DeleteRegionDiskHttpRequest, Operation>
         deleteRegionDiskSettings;
+    private final OperationCallSettings.Builder<
+            DeleteRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        deleteRegionDiskOperationSettings;
     private final UnaryCallSettings.Builder<GetRegionDiskHttpRequest, Disk> getRegionDiskSettings;
     private final UnaryCallSettings.Builder<InsertRegionDiskHttpRequest, Operation>
         insertRegionDiskSettings;
+    private final OperationCallSettings.Builder<
+            InsertRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        insertRegionDiskOperationSettings;
     private final PagedCallSettings.Builder<
             ListRegionDisksHttpRequest, DiskList, ListRegionDisksPagedResponse>
         listRegionDisksSettings;
     private final UnaryCallSettings.Builder<ResizeRegionDiskHttpRequest, Operation>
         resizeRegionDiskSettings;
+    private final OperationCallSettings.Builder<
+            ResizeRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        resizeRegionDiskOperationSettings;
     private final UnaryCallSettings.Builder<SetLabelsRegionDiskHttpRequest, Operation>
         setLabelsRegionDiskSettings;
+    private final OperationCallSettings.Builder<
+            SetLabelsRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        setLabelsRegionDiskOperationSettings;
     private final UnaryCallSettings.Builder<
             TestIamPermissionsRegionDiskHttpRequest, TestPermissionsResponse>
         testIamPermissionsRegionDiskSettings;
@@ -365,17 +438,27 @@ public class RegionDiskStubSettings extends StubSettings<RegionDiskStubSettings>
 
       createSnapshotRegionDiskSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      createSnapshotRegionDiskOperationSettings = OperationCallSettings.newBuilder();
+
       deleteRegionDiskSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      deleteRegionDiskOperationSettings = OperationCallSettings.newBuilder();
 
       getRegionDiskSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertRegionDiskSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      insertRegionDiskOperationSettings = OperationCallSettings.newBuilder();
+
       listRegionDisksSettings = PagedCallSettings.newBuilder(LIST_REGION_DISKS_PAGE_STR_FACT);
 
       resizeRegionDiskSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      resizeRegionDiskOperationSettings = OperationCallSettings.newBuilder();
+
       setLabelsRegionDiskSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      setLabelsRegionDiskOperationSettings = OperationCallSettings.newBuilder();
 
       testIamPermissionsRegionDiskSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
@@ -443,6 +526,112 @@ public class RegionDiskStubSettings extends StubSettings<RegionDiskStubSettings>
           .testIamPermissionsRegionDiskSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .createSnapshotRegionDiskOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<CreateSnapshotRegionDiskHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .deleteRegionDiskOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteRegionDiskHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertRegionDiskOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertRegionDiskHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .resizeRegionDiskOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<ResizeRegionDiskHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .setLabelsRegionDiskOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<SetLabelsRegionDiskHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -451,12 +640,19 @@ public class RegionDiskStubSettings extends StubSettings<RegionDiskStubSettings>
       super(settings);
 
       createSnapshotRegionDiskSettings = settings.createSnapshotRegionDiskSettings.toBuilder();
+      createSnapshotRegionDiskOperationSettings =
+          settings.createSnapshotRegionDiskOperationSettings.toBuilder();
       deleteRegionDiskSettings = settings.deleteRegionDiskSettings.toBuilder();
+      deleteRegionDiskOperationSettings = settings.deleteRegionDiskOperationSettings.toBuilder();
       getRegionDiskSettings = settings.getRegionDiskSettings.toBuilder();
       insertRegionDiskSettings = settings.insertRegionDiskSettings.toBuilder();
+      insertRegionDiskOperationSettings = settings.insertRegionDiskOperationSettings.toBuilder();
       listRegionDisksSettings = settings.listRegionDisksSettings.toBuilder();
       resizeRegionDiskSettings = settings.resizeRegionDiskSettings.toBuilder();
+      resizeRegionDiskOperationSettings = settings.resizeRegionDiskOperationSettings.toBuilder();
       setLabelsRegionDiskSettings = settings.setLabelsRegionDiskSettings.toBuilder();
+      setLabelsRegionDiskOperationSettings =
+          settings.setLabelsRegionDiskOperationSettings.toBuilder();
       testIamPermissionsRegionDiskSettings =
           settings.testIamPermissionsRegionDiskSettings.toBuilder();
 
@@ -494,10 +690,27 @@ public class RegionDiskStubSettings extends StubSettings<RegionDiskStubSettings>
       return createSnapshotRegionDiskSettings;
     }
 
+    /** Returns the builder for the settings used for calls to createSnapshotRegionDisk. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            CreateSnapshotRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        createSnapshotRegionDiskOperationSettings() {
+      return createSnapshotRegionDiskOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to deleteRegionDisk. */
     public UnaryCallSettings.Builder<DeleteRegionDiskHttpRequest, Operation>
         deleteRegionDiskSettings() {
       return deleteRegionDiskSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to deleteRegionDisk. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        deleteRegionDiskOperationSettings() {
+      return deleteRegionDiskOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to getRegionDisk. */
@@ -509,6 +722,14 @@ public class RegionDiskStubSettings extends StubSettings<RegionDiskStubSettings>
     public UnaryCallSettings.Builder<InsertRegionDiskHttpRequest, Operation>
         insertRegionDiskSettings() {
       return insertRegionDiskSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertRegionDisk. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        insertRegionDiskOperationSettings() {
+      return insertRegionDiskOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listRegionDisks. */
@@ -524,10 +745,26 @@ public class RegionDiskStubSettings extends StubSettings<RegionDiskStubSettings>
       return resizeRegionDiskSettings;
     }
 
+    /** Returns the builder for the settings used for calls to resizeRegionDisk. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<ResizeRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        resizeRegionDiskOperationSettings() {
+      return resizeRegionDiskOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to setLabelsRegionDisk. */
     public UnaryCallSettings.Builder<SetLabelsRegionDiskHttpRequest, Operation>
         setLabelsRegionDiskSettings() {
       return setLabelsRegionDiskSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to setLabelsRegionDisk. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<SetLabelsRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+        setLabelsRegionDiskOperationSettings() {
+      return setLabelsRegionDiskOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to testIamPermissionsRegionDisk. */

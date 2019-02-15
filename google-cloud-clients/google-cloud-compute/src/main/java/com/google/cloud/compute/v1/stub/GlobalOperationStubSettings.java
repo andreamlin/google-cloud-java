@@ -24,6 +24,7 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
@@ -103,7 +104,7 @@ public class GlobalOperationStubSettings extends StubSettings<GlobalOperationStu
           OperationAggregatedList,
           AggregatedListGlobalOperationsPagedResponse>
       aggregatedListGlobalOperationsSettings;
-  private final UnaryCallSettings<DeleteGlobalOperationHttpRequest, Void>
+  private final UnaryCallSettings<DeleteGlobalOperationHttpRequest, EmptyMessage>
       deleteGlobalOperationSettings;
   private final UnaryCallSettings<GetGlobalOperationHttpRequest, Operation>
       getGlobalOperationSettings;
@@ -121,7 +122,8 @@ public class GlobalOperationStubSettings extends StubSettings<GlobalOperationStu
   }
 
   /** Returns the object with the settings used for calls to deleteGlobalOperation. */
-  public UnaryCallSettings<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationSettings() {
+  public UnaryCallSettings<DeleteGlobalOperationHttpRequest, EmptyMessage>
+      deleteGlobalOperationSettings() {
     return deleteGlobalOperationSettings;
   }
 
@@ -367,7 +369,7 @@ public class GlobalOperationStubSettings extends StubSettings<GlobalOperationStu
             OperationAggregatedList,
             AggregatedListGlobalOperationsPagedResponse>
         aggregatedListGlobalOperationsSettings;
-    private final UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void>
+    private final UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, EmptyMessage>
         deleteGlobalOperationSettings;
     private final UnaryCallSettings.Builder<GetGlobalOperationHttpRequest, Operation>
         getGlobalOperationSettings;
@@ -513,7 +515,7 @@ public class GlobalOperationStubSettings extends StubSettings<GlobalOperationStu
     }
 
     /** Returns the builder for the settings used for calls to deleteGlobalOperation. */
-    public UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, Void>
+    public UnaryCallSettings.Builder<DeleteGlobalOperationHttpRequest, EmptyMessage>
         deleteGlobalOperationSettings() {
       return deleteGlobalOperationSettings;
     }

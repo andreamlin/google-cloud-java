@@ -31,6 +31,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonTargetPoolStub.setBackupT
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -42,12 +43,12 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.TargetPoolStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -103,21 +104,17 @@ public class TargetPoolClientTest {
   @Test
   @SuppressWarnings("all")
   public void addHealthCheckTargetPoolTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("addHealthCheckTargetPoolTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetPools.addResponse(resultOperation);
+        Operation.newBuilder().setName("addHealthCheckTargetPoolTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionTargetPoolName targetPool =
         ProjectRegionTargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequestResource =
         TargetPoolsAddHealthCheckRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .addHealthCheckTargetPoolAsync(targetPool, targetPoolsAddHealthCheckRequestResource)
             .get();
@@ -159,28 +156,24 @@ public class TargetPoolClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void addInstanceTargetPoolTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("addInstanceTargetPoolTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetPools.addResponse(resultOperation);
+        Operation.newBuilder().setName("addInstanceTargetPoolTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionTargetPoolName targetPool =
         ProjectRegionTargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequestResource =
         TargetPoolsAddInstanceRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.addInstanceTargetPoolAsync(targetPool, targetPoolsAddInstanceRequestResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -218,7 +211,7 @@ public class TargetPoolClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -288,19 +281,15 @@ public class TargetPoolClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteTargetPoolTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteTargetPoolTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetPools.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteTargetPoolTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionTargetPoolName targetPool =
         ProjectRegionTargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
 
-    Void actualResponse = client.deleteTargetPoolAsync(targetPool).get();
+    EmptyMessage actualResponse = client.deleteTargetPoolAsync(targetPool).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -335,7 +324,7 @@ public class TargetPoolClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -461,19 +450,15 @@ public class TargetPoolClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertTargetPoolTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertTargetPoolTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetPools.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertTargetPoolTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
     TargetPool targetPoolResource = TargetPool.newBuilder().build();
 
-    Void actualResponse = client.insertTargetPoolAsync(region, targetPoolResource).get();
+    EmptyMessage actualResponse = client.insertTargetPoolAsync(region, targetPoolResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -508,7 +493,7 @@ public class TargetPoolClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -575,21 +560,17 @@ public class TargetPoolClientTest {
   @Test
   @SuppressWarnings("all")
   public void removeHealthCheckTargetPoolTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("removeHealthCheckTargetPoolTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetPools.addResponse(resultOperation);
+        Operation.newBuilder().setName("removeHealthCheckTargetPoolTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionTargetPoolName targetPool =
         ProjectRegionTargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequestResource =
         TargetPoolsRemoveHealthCheckRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .removeHealthCheckTargetPoolAsync(
                 targetPool, targetPoolsRemoveHealthCheckRequestResource)
@@ -632,28 +613,24 @@ public class TargetPoolClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void removeInstanceTargetPoolTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("removeInstanceTargetPoolTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetPools.addResponse(resultOperation);
+        Operation.newBuilder().setName("removeInstanceTargetPoolTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionTargetPoolName targetPool =
         ProjectRegionTargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequestResource =
         TargetPoolsRemoveInstanceRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .removeInstanceTargetPoolAsync(targetPool, targetPoolsRemoveInstanceRequestResource)
             .get();
@@ -695,28 +672,24 @@ public class TargetPoolClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setBackupTargetPoolTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setBackupTargetPoolTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetPools.addResponse(resultOperation);
+        Operation.newBuilder().setName("setBackupTargetPoolTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionTargetPoolName targetPool =
         ProjectRegionTargetPoolName.of("[PROJECT]", "[REGION]", "[TARGET_POOL]");
     Float failoverRatio = -8.6107481E7F;
     TargetReference targetReferenceResource = TargetReference.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.setBackupTargetPoolAsync(targetPool, failoverRatio, targetReferenceResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -754,7 +727,7 @@ public class TargetPoolClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

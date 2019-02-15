@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DeleteInterconnectHttpRequest;
@@ -180,18 +182,25 @@ public class HttpJsonInterconnectStub extends InterconnectStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteInterconnectHttpRequest, Operation> deleteInterconnectCallable;
+  private final OperationCallable<DeleteInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInterconnectOperationCallable;
   private final UnaryCallable<GetInterconnectHttpRequest, Interconnect> getInterconnectCallable;
   private final UnaryCallable<
           GetDiagnosticsInterconnectHttpRequest, InterconnectsGetDiagnosticsResponse>
       getDiagnosticsInterconnectCallable;
   private final UnaryCallable<InsertInterconnectHttpRequest, Operation> insertInterconnectCallable;
+  private final OperationCallable<InsertInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+      insertInterconnectOperationCallable;
   private final UnaryCallable<ListInterconnectsHttpRequest, InterconnectList>
       listInterconnectsCallable;
   private final UnaryCallable<ListInterconnectsHttpRequest, ListInterconnectsPagedResponse>
       listInterconnectsPagedCallable;
   private final UnaryCallable<PatchInterconnectHttpRequest, Operation> patchInterconnectCallable;
+  private final OperationCallable<PatchInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+      patchInterconnectOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -233,6 +242,7 @@ public class HttpJsonInterconnectStub extends InterconnectStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteInterconnectHttpRequest, Operation>
         deleteInterconnectTransportSettings =
@@ -272,6 +282,12 @@ public class HttpJsonInterconnectStub extends InterconnectStub {
             deleteInterconnectTransportSettings,
             settings.deleteInterconnectSettings(),
             clientContext);
+    this.deleteInterconnectOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteInterconnectTransportSettings,
+            settings.deleteInterconnectOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getInterconnectCallable =
         callableFactory.createUnaryCallable(
             getInterconnectTransportSettings, settings.getInterconnectSettings(), clientContext);
@@ -285,6 +301,12 @@ public class HttpJsonInterconnectStub extends InterconnectStub {
             insertInterconnectTransportSettings,
             settings.insertInterconnectSettings(),
             clientContext);
+    this.insertInterconnectOperationCallable =
+        callableFactory.createOperationCallable(
+            insertInterconnectTransportSettings,
+            settings.insertInterconnectOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listInterconnectsCallable =
         callableFactory.createUnaryCallable(
             listInterconnectsTransportSettings,
@@ -300,8 +322,25 @@ public class HttpJsonInterconnectStub extends InterconnectStub {
             patchInterconnectTransportSettings,
             settings.patchInterconnectSettings(),
             clientContext);
+    this.patchInterconnectOperationCallable =
+        callableFactory.createOperationCallable(
+            patchInterconnectTransportSettings,
+            settings.patchInterconnectOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInterconnectOperationCallable() {
+    return deleteInterconnectOperationCallable;
   }
 
   @BetaApi
@@ -320,6 +359,12 @@ public class HttpJsonInterconnectStub extends InterconnectStub {
     return getDiagnosticsInterconnectCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+      insertInterconnectOperationCallable() {
+    return insertInterconnectOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<InsertInterconnectHttpRequest, Operation> insertInterconnectCallable() {
     return insertInterconnectCallable;
@@ -334,6 +379,12 @@ public class HttpJsonInterconnectStub extends InterconnectStub {
   @BetaApi
   public UnaryCallable<ListInterconnectsHttpRequest, InterconnectList> listInterconnectsCallable() {
     return listInterconnectsCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+      patchInterconnectOperationCallable() {
+    return patchInterconnectOperationCallable;
   }
 
   @BetaApi

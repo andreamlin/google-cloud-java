@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.GlobalAddressClient.ListGlobalAddresse
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.Address;
 import com.google.cloud.compute.v1.AddressList;
@@ -39,6 +41,18 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class GlobalAddressStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+      deleteGlobalAddressOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteGlobalAddressOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteGlobalAddressHttpRequest, Operation> deleteGlobalAddressCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteGlobalAddressCallable()");
@@ -47,6 +61,13 @@ public abstract class GlobalAddressStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetGlobalAddressHttpRequest, Address> getGlobalAddressCallable() {
     throw new UnsupportedOperationException("Not implemented: getGlobalAddressCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+      insertGlobalAddressOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertGlobalAddressOperationCallable()");
   }
 
   @BetaApi

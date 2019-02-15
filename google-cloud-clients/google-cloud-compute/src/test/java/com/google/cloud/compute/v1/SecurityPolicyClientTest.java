@@ -28,6 +28,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonSecurityPolicyStub.remove
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -39,11 +40,11 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.SecurityPolicyStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -97,20 +98,16 @@ public class SecurityPolicyClientTest {
   @Test
   @SuppressWarnings("all")
   public void addRuleSecurityPolicyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("addRuleSecurityPolicyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSecurityPolicies.addResponse(resultOperation);
+        Operation.newBuilder().setName("addRuleSecurityPolicyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalSecurityPolicyName securityPolicy =
         ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
     SecurityPolicyRule securityPolicyRuleResource = SecurityPolicyRule.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.addRuleSecurityPolicyAsync(securityPolicy, securityPolicyRuleResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -147,26 +144,22 @@ public class SecurityPolicyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void deleteSecurityPolicyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteSecurityPolicyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSecurityPolicies.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteSecurityPolicyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalSecurityPolicyName securityPolicy =
         ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
 
-    Void actualResponse = client.deleteSecurityPolicyAsync(securityPolicy).get();
+    EmptyMessage actualResponse = client.deleteSecurityPolicyAsync(securityPolicy).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -201,7 +194,7 @@ public class SecurityPolicyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -330,19 +323,16 @@ public class SecurityPolicyClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertSecurityPolicyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertSecurityPolicyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSecurityPolicies.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertSecurityPolicyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     SecurityPolicy securityPolicyResource = SecurityPolicy.newBuilder().build();
 
-    Void actualResponse = client.insertSecurityPolicyAsync(project, securityPolicyResource).get();
+    EmptyMessage actualResponse =
+        client.insertSecurityPolicyAsync(project, securityPolicyResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -377,7 +367,7 @@ public class SecurityPolicyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -442,21 +432,17 @@ public class SecurityPolicyClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchSecurityPolicyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("patchSecurityPolicyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSecurityPolicies.addResponse(resultOperation);
+        Operation.newBuilder().setName("patchSecurityPolicyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalSecurityPolicyName securityPolicy =
         ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
     SecurityPolicy securityPolicyResource = SecurityPolicy.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.patchSecurityPolicyAsync(securityPolicy, securityPolicyResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -494,28 +480,24 @@ public class SecurityPolicyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void patchRuleSecurityPolicyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("patchRuleSecurityPolicyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSecurityPolicies.addResponse(resultOperation);
+        Operation.newBuilder().setName("patchRuleSecurityPolicyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     Integer priority = 1165461084;
     ProjectGlobalSecurityPolicyName securityPolicy =
         ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
     SecurityPolicyRule securityPolicyRuleResource = SecurityPolicyRule.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .patchRuleSecurityPolicyAsync(priority, securityPolicy, securityPolicyRuleResource)
             .get();
@@ -557,27 +539,24 @@ public class SecurityPolicyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void removeRuleSecurityPolicyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("removeRuleSecurityPolicyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockSecurityPolicies.addResponse(resultOperation);
+        Operation.newBuilder().setName("removeRuleSecurityPolicyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     Integer priority = 1165461084;
     ProjectGlobalSecurityPolicyName securityPolicy =
         ProjectGlobalSecurityPolicyName.of("[PROJECT]", "[SECURITY_POLICY]");
 
-    Void actualResponse = client.removeRuleSecurityPolicyAsync(priority, securityPolicy).get();
+    EmptyMessage actualResponse =
+        client.removeRuleSecurityPolicyAsync(priority, securityPolicy).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -613,7 +592,7 @@ public class SecurityPolicyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

@@ -18,6 +18,8 @@ package com.google.cloud.compute.v1.it;
 import static com.google.common.truth.Truth.assertThat;
 
 import com.google.api.gax.core.FixedCredentialsProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.Page;
 import com.google.api.gax.rpc.ApiException;
 import com.google.api.gax.rpc.NotFoundException;
@@ -150,24 +152,24 @@ public class ITComputeTest {
   private static void removeResources(List<Class<? extends ApiException>> exceptionTypes)
       throws Exception {
     try {
-      instanceClient.deleteInstance(INSTANCE_NAME);
+      instanceClient.deleteInstanceAsync(INSTANCE_NAME);
       Thread.sleep(10000);
     } catch (Exception e) {
       if (isNotExceptionType(exceptionTypes, e)) throw e;
     }
     Thread.sleep(10000);
     try {
-      diskClient.deleteDisk(DISK_NAME);
+      diskClient.deleteDiskAsync(DISK_NAME);
     } catch (Exception e) {
       if (isNotExceptionType(exceptionTypes, e)) throw e;
     }
     try {
-      instanceClient.deleteInstance(INSTANCE_NAME);
+      instanceClient.deleteInstanceAsync(INSTANCE_NAME);
     } catch (Exception e) {
       if (isNotExceptionType(exceptionTypes, e)) throw e;
     }
     try {
-      imageClient.deleteImage(IMAGE_NAME);
+      imageClient.deleteImageAsync(IMAGE_NAME);
     } catch (Exception e) {
       if (isNotExceptionType(exceptionTypes, e)) throw e;
     }
@@ -235,7 +237,7 @@ public class ITComputeTest {
             .setMachineType(MACHINE_TYPE_NAME.toString())
             .addDisks(bootDisk)
             .build();
-    Operation op1 = instanceClient.insertInstance(PROJECT_ZONE_NAME, instanceResource);
+    OperationFuture<EmptyMessage, EmptyMessage> op1 = instanceClient.insertInstanceAsync(PROJECT_ZONE_NAME, instanceResource);
     System.out.println(String.format("Instance created: %s", op1.toString()));
 
     // Insert a disk.
@@ -245,7 +247,7 @@ public class ITComputeTest {
             .setSizeGb(String.valueOf(7))
             .setType(diskTypeName.toString())
             .build();
-    Operation op2 = diskClient.insertDisk(PROJECT_ZONE_NAME, disk);
+    OperationFuture<EmptyMessage, EmptyMessage> op2 = diskClient.insertDiskAsync(PROJECT_ZONE_NAME, disk);
     System.out.println(String.format("Disk created: %s", op2.toString()));
     Thread.sleep(10000);
 
@@ -257,12 +259,12 @@ public class ITComputeTest {
             .setMode("READ_WRITE")
             .setSource(DISK_NAME.toString())
             .build();
-    Operation op3 = instanceClient.attachDiskInstance(INSTANCE_NAME, false, attachedDisk);
+    OperationFuture<EmptyMessage, EmptyMessage> op3 = instanceClient.attachDiskInstanceAsync(INSTANCE_NAME, false, attachedDisk);
     System.out.println(String.format("Disk attached: %s", op3.toString()));
     Thread.sleep(10000);
     System.out.println("----------------------------------------");
 
-    Operation op4 = instanceClient.detachDiskInstance(INSTANCE_NAME, DISK_NAME.getDisk());
+    OperationFuture<EmptyMessage, EmptyMessage> op4 = instanceClient.detachDiskInstanceAsync(INSTANCE_NAME, DISK_NAME.getDisk());
     System.out.println(String.format("Disk detached: %s", op4.toString()));
   }
 

@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.BackendService;
@@ -207,15 +209,20 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteRegionBackendServiceHttpRequest, Operation>
       deleteRegionBackendServiceCallable;
+  private final OperationCallable<DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionBackendServiceOperationCallable;
   private final UnaryCallable<GetRegionBackendServiceHttpRequest, BackendService>
       getRegionBackendServiceCallable;
   private final UnaryCallable<GetHealthRegionBackendServiceHttpRequest, BackendServiceGroupHealth>
       getHealthRegionBackendServiceCallable;
   private final UnaryCallable<InsertRegionBackendServiceHttpRequest, Operation>
       insertRegionBackendServiceCallable;
+  private final OperationCallable<InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionBackendServiceOperationCallable;
   private final UnaryCallable<ListRegionBackendServicesHttpRequest, BackendServiceList>
       listRegionBackendServicesCallable;
   private final UnaryCallable<
@@ -223,8 +230,12 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
       listRegionBackendServicesPagedCallable;
   private final UnaryCallable<PatchRegionBackendServiceHttpRequest, Operation>
       patchRegionBackendServiceCallable;
+  private final OperationCallable<PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionBackendServiceOperationCallable;
   private final UnaryCallable<UpdateRegionBackendServiceHttpRequest, Operation>
       updateRegionBackendServiceCallable;
+  private final OperationCallable<UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      updateRegionBackendServiceOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -266,6 +277,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteRegionBackendServiceHttpRequest, Operation>
         deleteRegionBackendServiceTransportSettings =
@@ -310,6 +322,12 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
             deleteRegionBackendServiceTransportSettings,
             settings.deleteRegionBackendServiceSettings(),
             clientContext);
+    this.deleteRegionBackendServiceOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteRegionBackendServiceTransportSettings,
+            settings.deleteRegionBackendServiceOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getRegionBackendServiceCallable =
         callableFactory.createUnaryCallable(
             getRegionBackendServiceTransportSettings,
@@ -325,6 +343,12 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
             insertRegionBackendServiceTransportSettings,
             settings.insertRegionBackendServiceSettings(),
             clientContext);
+    this.insertRegionBackendServiceOperationCallable =
+        callableFactory.createOperationCallable(
+            insertRegionBackendServiceTransportSettings,
+            settings.insertRegionBackendServiceOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listRegionBackendServicesCallable =
         callableFactory.createUnaryCallable(
             listRegionBackendServicesTransportSettings,
@@ -340,13 +364,36 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
             patchRegionBackendServiceTransportSettings,
             settings.patchRegionBackendServiceSettings(),
             clientContext);
+    this.patchRegionBackendServiceOperationCallable =
+        callableFactory.createOperationCallable(
+            patchRegionBackendServiceTransportSettings,
+            settings.patchRegionBackendServiceOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.updateRegionBackendServiceCallable =
         callableFactory.createUnaryCallable(
             updateRegionBackendServiceTransportSettings,
             settings.updateRegionBackendServiceSettings(),
             clientContext);
+    this.updateRegionBackendServiceOperationCallable =
+        callableFactory.createOperationCallable(
+            updateRegionBackendServiceTransportSettings,
+            settings.updateRegionBackendServiceOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionBackendServiceOperationCallable() {
+    return deleteRegionBackendServiceOperationCallable;
   }
 
   @BetaApi
@@ -367,6 +414,12 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
     return getHealthRegionBackendServiceCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionBackendServiceOperationCallable() {
+    return insertRegionBackendServiceOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<InsertRegionBackendServiceHttpRequest, Operation>
       insertRegionBackendServiceCallable() {
@@ -385,10 +438,22 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
     return listRegionBackendServicesCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionBackendServiceOperationCallable() {
+    return patchRegionBackendServiceOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<PatchRegionBackendServiceHttpRequest, Operation>
       patchRegionBackendServiceCallable() {
     return patchRegionBackendServiceCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      updateRegionBackendServiceOperationCallable() {
+    return updateRegionBackendServiceOperationCallable;
   }
 
   @BetaApi

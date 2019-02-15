@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DeleteSslCertificateHttpRequest;
@@ -133,13 +135,18 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteSslCertificateHttpRequest, Operation>
       deleteSslCertificateCallable;
+  private final OperationCallable<DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSslCertificateOperationCallable;
   private final UnaryCallable<GetSslCertificateHttpRequest, SslCertificate>
       getSslCertificateCallable;
   private final UnaryCallable<InsertSslCertificateHttpRequest, Operation>
       insertSslCertificateCallable;
+  private final OperationCallable<InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+      insertSslCertificateOperationCallable;
   private final UnaryCallable<ListSslCertificatesHttpRequest, SslCertificateList>
       listSslCertificatesCallable;
   private final UnaryCallable<ListSslCertificatesHttpRequest, ListSslCertificatesPagedResponse>
@@ -185,6 +192,7 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteSslCertificateHttpRequest, Operation>
         deleteSslCertificateTransportSettings =
@@ -212,6 +220,12 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
             deleteSslCertificateTransportSettings,
             settings.deleteSslCertificateSettings(),
             clientContext);
+    this.deleteSslCertificateOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteSslCertificateTransportSettings,
+            settings.deleteSslCertificateOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getSslCertificateCallable =
         callableFactory.createUnaryCallable(
             getSslCertificateTransportSettings,
@@ -222,6 +236,12 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
             insertSslCertificateTransportSettings,
             settings.insertSslCertificateSettings(),
             clientContext);
+    this.insertSslCertificateOperationCallable =
+        callableFactory.createOperationCallable(
+            insertSslCertificateTransportSettings,
+            settings.insertSslCertificateOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listSslCertificatesCallable =
         callableFactory.createUnaryCallable(
             listSslCertificatesTransportSettings,
@@ -236,6 +256,17 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSslCertificateOperationCallable() {
+    return deleteSslCertificateOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteSslCertificateHttpRequest, Operation> deleteSslCertificateCallable() {
     return deleteSslCertificateCallable;
@@ -244,6 +275,12 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
   @BetaApi
   public UnaryCallable<GetSslCertificateHttpRequest, SslCertificate> getSslCertificateCallable() {
     return getSslCertificateCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+      insertSslCertificateOperationCallable() {
+    return insertSslCertificateOperationCallable;
   }
 
   @BetaApi

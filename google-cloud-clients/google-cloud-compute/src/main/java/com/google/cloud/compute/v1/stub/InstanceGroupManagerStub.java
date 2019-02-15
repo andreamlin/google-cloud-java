@@ -20,6 +20,8 @@ import static com.google.cloud.compute.v1.InstanceGroupManagerClient.ListInstanc
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AbandonInstancesInstanceGroupManagerHttpRequest;
 import com.google.cloud.compute.v1.AggregatedListInstanceGroupManagersHttpRequest;
@@ -51,6 +53,19 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class InstanceGroupManagerStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      abandonInstancesInstanceGroupManagerOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: abandonInstancesInstanceGroupManagerOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<AbandonInstancesInstanceGroupManagerHttpRequest, Operation>
       abandonInstancesInstanceGroupManagerCallable() {
@@ -75,11 +90,26 @@ public abstract class InstanceGroupManagerStub implements BackgroundResource {
         "Not implemented: aggregatedListInstanceGroupManagersCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstanceGroupManagerOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteInstanceGroupManagerOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteInstanceGroupManagerHttpRequest, Operation>
       deleteInstanceGroupManagerCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteInstanceGroupManagerCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstancesInstanceGroupManagerOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteInstancesInstanceGroupManagerOperationCallable()");
   }
 
   @BetaApi
@@ -93,6 +123,13 @@ public abstract class InstanceGroupManagerStub implements BackgroundResource {
   public UnaryCallable<GetInstanceGroupManagerHttpRequest, InstanceGroupManager>
       getInstanceGroupManagerCallable() {
     throw new UnsupportedOperationException("Not implemented: getInstanceGroupManagerCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      insertInstanceGroupManagerOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertInstanceGroupManagerOperationCallable()");
   }
 
   @BetaApi
@@ -124,10 +161,25 @@ public abstract class InstanceGroupManagerStub implements BackgroundResource {
         "Not implemented: listManagedInstancesInstanceGroupManagersCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      patchInstanceGroupManagerOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: patchInstanceGroupManagerOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<PatchInstanceGroupManagerHttpRequest, Operation>
       patchInstanceGroupManagerCallable() {
     throw new UnsupportedOperationException("Not implemented: patchInstanceGroupManagerCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      recreateInstancesInstanceGroupManagerOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: recreateInstancesInstanceGroupManagerOperationCallable()");
   }
 
   @BetaApi
@@ -137,6 +189,13 @@ public abstract class InstanceGroupManagerStub implements BackgroundResource {
         "Not implemented: recreateInstancesInstanceGroupManagerCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<ResizeInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      resizeInstanceGroupManagerOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: resizeInstanceGroupManagerOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<ResizeInstanceGroupManagerHttpRequest, Operation>
       resizeInstanceGroupManagerCallable() {
@@ -144,11 +203,27 @@ public abstract class InstanceGroupManagerStub implements BackgroundResource {
         "Not implemented: resizeInstanceGroupManagerCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setInstanceTemplateInstanceGroupManagerOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: setInstanceTemplateInstanceGroupManagerOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<SetInstanceTemplateInstanceGroupManagerHttpRequest, Operation>
       setInstanceTemplateInstanceGroupManagerCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setInstanceTemplateInstanceGroupManagerCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetPoolsInstanceGroupManagerOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: setTargetPoolsInstanceGroupManagerOperationCallable()");
   }
 
   @BetaApi

@@ -25,6 +25,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonVpnTunnelStub.listVpnTunn
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -36,12 +37,12 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.VpnTunnelStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -154,19 +155,15 @@ public class VpnTunnelClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteVpnTunnelTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteVpnTunnelTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockVpnTunnels.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteVpnTunnelTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionVpnTunnelName vpnTunnel =
         ProjectRegionVpnTunnelName.of("[PROJECT]", "[REGION]", "[VPN_TUNNEL]");
 
-    Void actualResponse = client.deleteVpnTunnelAsync(vpnTunnel).get();
+    EmptyMessage actualResponse = client.deleteVpnTunnelAsync(vpnTunnel).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -201,7 +198,7 @@ public class VpnTunnelClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -288,19 +285,15 @@ public class VpnTunnelClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertVpnTunnelTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertVpnTunnelTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockVpnTunnels.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertVpnTunnelTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
     VpnTunnel vpnTunnelResource = VpnTunnel.newBuilder().build();
 
-    Void actualResponse = client.insertVpnTunnelAsync(region, vpnTunnelResource).get();
+    EmptyMessage actualResponse = client.insertVpnTunnelAsync(region, vpnTunnelResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -335,7 +328,7 @@ public class VpnTunnelClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 

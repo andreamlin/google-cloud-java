@@ -24,13 +24,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -113,6 +118,9 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
       listInstancesRegionInstanceGroupsSettings;
   private final UnaryCallSettings<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>
       setNamedPortsRegionInstanceGroupSettings;
+  private final OperationCallSettings<
+          SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNamedPortsRegionInstanceGroupOperationSettings;
 
   /** Returns the object with the settings used for calls to getRegionInstanceGroup. */
   public UnaryCallSettings<GetRegionInstanceGroupHttpRequest, InstanceGroup>
@@ -142,6 +150,14 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
   public UnaryCallSettings<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>
       setNamedPortsRegionInstanceGroupSettings() {
     return setNamedPortsRegionInstanceGroupSettings;
+  }
+
+  /** Returns the object with the settings used for calls to setNamedPortsRegionInstanceGroup. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNamedPortsRegionInstanceGroupOperationSettings() {
+    return setNamedPortsRegionInstanceGroupOperationSettings;
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -225,6 +241,8 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
         settingsBuilder.listInstancesRegionInstanceGroupsSettings().build();
     setNamedPortsRegionInstanceGroupSettings =
         settingsBuilder.setNamedPortsRegionInstanceGroupSettings().build();
+    setNamedPortsRegionInstanceGroupOperationSettings =
+        settingsBuilder.setNamedPortsRegionInstanceGroupOperationSettings().build();
   }
 
   private static final PagedListDescriptor<
@@ -397,6 +415,9 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
         listInstancesRegionInstanceGroupsSettings;
     private final UnaryCallSettings.Builder<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>
         setNamedPortsRegionInstanceGroupSettings;
+    private final OperationCallSettings.Builder<
+            SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+        setNamedPortsRegionInstanceGroupOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
         RETRYABLE_CODE_DEFINITIONS;
@@ -449,6 +470,8 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
 
       setNamedPortsRegionInstanceGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      setNamedPortsRegionInstanceGroupOperationSettings = OperationCallSettings.newBuilder();
+
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
               getRegionInstanceGroupSettings,
@@ -489,6 +512,28 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
           .setNamedPortsRegionInstanceGroupSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .setNamedPortsRegionInstanceGroupOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<SetNamedPortsRegionInstanceGroupHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -502,6 +547,8 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
           settings.listInstancesRegionInstanceGroupsSettings.toBuilder();
       setNamedPortsRegionInstanceGroupSettings =
           settings.setNamedPortsRegionInstanceGroupSettings.toBuilder();
+      setNamedPortsRegionInstanceGroupOperationSettings =
+          settings.setNamedPortsRegionInstanceGroupOperationSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -555,6 +602,15 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
     public UnaryCallSettings.Builder<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>
         setNamedPortsRegionInstanceGroupSettings() {
       return setNamedPortsRegionInstanceGroupSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to setNamedPortsRegionInstanceGroup. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+        setNamedPortsRegionInstanceGroupOperationSettings() {
+      return setNamedPortsRegionInstanceGroupOperationSettings;
     }
 
     @Override

@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.RegionInstanceGroupStub;
@@ -104,6 +107,7 @@ import javax.annotation.Generated;
 public class RegionInstanceGroupClient implements BackgroundResource {
   private final RegionInstanceGroupSettings settings;
   private final RegionInstanceGroupStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of RegionInstanceGroupClient with default settings. */
   public static final RegionInstanceGroupClient create() throws IOException {
@@ -136,12 +140,14 @@ public class RegionInstanceGroupClient implements BackgroundResource {
   protected RegionInstanceGroupClient(RegionInstanceGroupSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((RegionInstanceGroupStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected RegionInstanceGroupClient(RegionInstanceGroupStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final RegionInstanceGroupSettings getSettings() {
@@ -151,6 +157,16 @@ public class RegionInstanceGroupClient implements BackgroundResource {
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public RegionInstanceGroupStub getStub() {
     return stub;
+  }
+
+  /**
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -574,7 +590,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
    *   ProjectRegionInstanceGroupName instanceGroup = ProjectRegionInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
    *   RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequestResource = RegionInstanceGroupsSetNamedPortsRequest.newBuilder().build();
-   *   Operation response = regionInstanceGroupClient.setNamedPortsRegionInstanceGroup(instanceGroup, regionInstanceGroupsSetNamedPortsRequestResource);
+   *   regionInstanceGroupClient.setNamedPortsRegionInstanceGroupAsync(instanceGroup, regionInstanceGroupsSetNamedPortsRequestResource).get();
    * }
    * </code></pre>
    *
@@ -582,8 +598,9 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * @param regionInstanceGroupsSetNamedPortsRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setNamedPortsRegionInstanceGroup(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setNamedPortsRegionInstanceGroupAsync(
       ProjectRegionInstanceGroupName instanceGroup,
       RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequestResource) {
 
@@ -593,7 +610,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
             .setRegionInstanceGroupsSetNamedPortsRequestResource(
                 regionInstanceGroupsSetNamedPortsRequestResource)
             .build();
-    return setNamedPortsRegionInstanceGroup(request);
+    return setNamedPortsRegionInstanceGroupAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -606,7 +623,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
    *   ProjectRegionInstanceGroupName instanceGroup = ProjectRegionInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
    *   RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequestResource = RegionInstanceGroupsSetNamedPortsRequest.newBuilder().build();
-   *   Operation response = regionInstanceGroupClient.setNamedPortsRegionInstanceGroup(instanceGroup.toString(), regionInstanceGroupsSetNamedPortsRequestResource);
+   *   regionInstanceGroupClient.setNamedPortsRegionInstanceGroupAsync(instanceGroup.toString(), regionInstanceGroupsSetNamedPortsRequestResource).get();
    * }
    * </code></pre>
    *
@@ -614,8 +631,9 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    * @param regionInstanceGroupsSetNamedPortsRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setNamedPortsRegionInstanceGroup(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setNamedPortsRegionInstanceGroupAsync(
       String instanceGroup,
       RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequestResource) {
 
@@ -625,7 +643,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
             .setRegionInstanceGroupsSetNamedPortsRequestResource(
                 regionInstanceGroupsSetNamedPortsRequestResource)
             .build();
-    return setNamedPortsRegionInstanceGroup(request);
+    return setNamedPortsRegionInstanceGroupAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -642,17 +660,45 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    *     .setInstanceGroup(instanceGroup.toString())
    *     .setRegionInstanceGroupsSetNamedPortsRequestResource(regionInstanceGroupsSetNamedPortsRequestResource)
    *     .build();
-   *   Operation response = regionInstanceGroupClient.setNamedPortsRegionInstanceGroup(request);
+   *   regionInstanceGroupClient.setNamedPortsRegionInstanceGroupAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setNamedPortsRegionInstanceGroup(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setNamedPortsRegionInstanceGroupAsync(
       SetNamedPortsRegionInstanceGroupHttpRequest request) {
-    return setNamedPortsRegionInstanceGroupCallable().call(request);
+    return setNamedPortsRegionInstanceGroupOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Sets the named ports for the specified regional instance group.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionInstanceGroupClient regionInstanceGroupClient = RegionInstanceGroupClient.create()) {
+   *   ProjectRegionInstanceGroupName instanceGroup = ProjectRegionInstanceGroupName.of("[PROJECT]", "[REGION]", "[INSTANCE_GROUP]");
+   *   RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequestResource = RegionInstanceGroupsSetNamedPortsRequest.newBuilder().build();
+   *   SetNamedPortsRegionInstanceGroupHttpRequest request = SetNamedPortsRegionInstanceGroupHttpRequest.newBuilder()
+   *     .setInstanceGroup(instanceGroup.toString())
+   *     .setRegionInstanceGroupsSetNamedPortsRequestResource(regionInstanceGroupsSetNamedPortsRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionInstanceGroupClient.setNamedPortsRegionInstanceGroupOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNamedPortsRegionInstanceGroupOperationCallable() {
+    return stub.setNamedPortsRegionInstanceGroupOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -671,7 +717,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionInstanceGroupClient.setNamedPortsRegionInstanceGroupCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

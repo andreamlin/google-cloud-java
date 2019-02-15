@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.FirewallStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (FirewallClient firewallClient = FirewallClient.create()) {
  *   ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
- *   Operation response = firewallClient.deleteFirewall(firewall);
+ *   Firewall response = firewallClient.getFirewall(firewall);
  * }
  * </code>
  * </pre>
@@ -103,6 +106,7 @@ import javax.annotation.Generated;
 public class FirewallClient implements BackgroundResource {
   private final FirewallSettings settings;
   private final FirewallStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of FirewallClient with default settings. */
   public static final FirewallClient create() throws IOException {
@@ -133,12 +137,14 @@ public class FirewallClient implements BackgroundResource {
   protected FirewallClient(FirewallSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((FirewallStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected FirewallClient(FirewallStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final FirewallSettings getSettings() {
@@ -150,30 +156,14 @@ public class FirewallClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Deletes the specified firewall.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (FirewallClient firewallClient = FirewallClient.create()) {
-   *   ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
-   *   Operation response = firewallClient.deleteFirewall(firewall);
-   * }
-   * </code></pre>
-   *
-   * @param firewall Name of the firewall rule to delete.
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation deleteFirewall(ProjectGlobalFirewallName firewall) {
-
-    DeleteFirewallHttpRequest request =
-        DeleteFirewallHttpRequest.newBuilder()
-            .setFirewall(firewall == null ? null : firewall.toString())
-            .build();
-    return deleteFirewall(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -185,19 +175,48 @@ public class FirewallClient implements BackgroundResource {
    * <pre><code>
    * try (FirewallClient firewallClient = FirewallClient.create()) {
    *   ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
-   *   Operation response = firewallClient.deleteFirewall(firewall.toString());
+   *   firewallClient.deleteFirewallAsync(firewall).get();
    * }
    * </code></pre>
    *
    * @param firewall Name of the firewall rule to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteFirewall(String firewall) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteFirewallAsync(
+      ProjectGlobalFirewallName firewall) {
+
+    DeleteFirewallHttpRequest request =
+        DeleteFirewallHttpRequest.newBuilder()
+            .setFirewall(firewall == null ? null : firewall.toString())
+            .build();
+    return deleteFirewallAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified firewall.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (FirewallClient firewallClient = FirewallClient.create()) {
+   *   ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
+   *   firewallClient.deleteFirewallAsync(firewall.toString()).get();
+   * }
+   * </code></pre>
+   *
+   * @param firewall Name of the firewall rule to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteFirewallAsync(String firewall) {
 
     DeleteFirewallHttpRequest request =
         DeleteFirewallHttpRequest.newBuilder().setFirewall(firewall).build();
-    return deleteFirewall(request);
+    return deleteFirewallAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -212,16 +231,42 @@ public class FirewallClient implements BackgroundResource {
    *   DeleteFirewallHttpRequest request = DeleteFirewallHttpRequest.newBuilder()
    *     .setFirewall(firewall.toString())
    *     .build();
-   *   Operation response = firewallClient.deleteFirewall(request);
+   *   firewallClient.deleteFirewallAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteFirewall(DeleteFirewallHttpRequest request) {
-    return deleteFirewallCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteFirewallAsync(
+      DeleteFirewallHttpRequest request) {
+    return deleteFirewallOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified firewall.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (FirewallClient firewallClient = FirewallClient.create()) {
+   *   ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
+   *   DeleteFirewallHttpRequest request = DeleteFirewallHttpRequest.newBuilder()
+   *     .setFirewall(firewall.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = firewallClient.deleteFirewallOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      deleteFirewallOperationCallable() {
+    return stub.deleteFirewallOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -238,7 +283,7 @@ public class FirewallClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = firewallClient.deleteFirewallCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -354,7 +399,7 @@ public class FirewallClient implements BackgroundResource {
    * try (FirewallClient firewallClient = FirewallClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Firewall firewallResource = Firewall.newBuilder().build();
-   *   Operation response = firewallClient.insertFirewall(project, firewallResource);
+   *   firewallClient.insertFirewallAsync(project, firewallResource).get();
    * }
    * </code></pre>
    *
@@ -362,15 +407,17 @@ public class FirewallClient implements BackgroundResource {
    * @param firewallResource Represents a Firewall resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertFirewall(ProjectName project, Firewall firewallResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertFirewallAsync(
+      ProjectName project, Firewall firewallResource) {
 
     InsertFirewallHttpRequest request =
         InsertFirewallHttpRequest.newBuilder()
             .setProject(project == null ? null : project.toString())
             .setFirewallResource(firewallResource)
             .build();
-    return insertFirewall(request);
+    return insertFirewallAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -383,7 +430,7 @@ public class FirewallClient implements BackgroundResource {
    * try (FirewallClient firewallClient = FirewallClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   Firewall firewallResource = Firewall.newBuilder().build();
-   *   Operation response = firewallClient.insertFirewall(project.toString(), firewallResource);
+   *   firewallClient.insertFirewallAsync(project.toString(), firewallResource).get();
    * }
    * </code></pre>
    *
@@ -391,15 +438,17 @@ public class FirewallClient implements BackgroundResource {
    * @param firewallResource Represents a Firewall resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertFirewall(String project, Firewall firewallResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertFirewallAsync(
+      String project, Firewall firewallResource) {
 
     InsertFirewallHttpRequest request =
         InsertFirewallHttpRequest.newBuilder()
             .setProject(project)
             .setFirewallResource(firewallResource)
             .build();
-    return insertFirewall(request);
+    return insertFirewallAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -416,16 +465,44 @@ public class FirewallClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setFirewallResource(firewallResource)
    *     .build();
-   *   Operation response = firewallClient.insertFirewall(request);
+   *   firewallClient.insertFirewallAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertFirewall(InsertFirewallHttpRequest request) {
-    return insertFirewallCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertFirewallAsync(
+      InsertFirewallHttpRequest request) {
+    return insertFirewallOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a firewall rule in the specified project using the data included in the request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (FirewallClient firewallClient = FirewallClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   Firewall firewallResource = Firewall.newBuilder().build();
+   *   InsertFirewallHttpRequest request = InsertFirewallHttpRequest.newBuilder()
+   *     .setProject(project.toString())
+   *     .setFirewallResource(firewallResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = firewallClient.insertFirewallOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      insertFirewallOperationCallable() {
+    return stub.insertFirewallOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -444,7 +521,7 @@ public class FirewallClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = firewallClient.insertFirewallCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -601,7 +678,7 @@ public class FirewallClient implements BackgroundResource {
    *   ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
    *   Firewall firewallResource = Firewall.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = firewallClient.patchFirewall(firewall, firewallResource, fieldMask);
+   *   firewallClient.patchFirewallAsync(firewall, firewallResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -613,8 +690,9 @@ public class FirewallClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchFirewall(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchFirewallAsync(
       ProjectGlobalFirewallName firewall, Firewall firewallResource, List<String> fieldMask) {
 
     PatchFirewallHttpRequest request =
@@ -623,7 +701,7 @@ public class FirewallClient implements BackgroundResource {
             .setFirewallResource(firewallResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchFirewall(request);
+    return patchFirewallAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -638,7 +716,7 @@ public class FirewallClient implements BackgroundResource {
    *   ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
    *   Firewall firewallResource = Firewall.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = firewallClient.patchFirewall(firewall.toString(), firewallResource, fieldMask);
+   *   firewallClient.patchFirewallAsync(firewall.toString(), firewallResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -650,8 +728,9 @@ public class FirewallClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchFirewall(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchFirewallAsync(
       String firewall, Firewall firewallResource, List<String> fieldMask) {
 
     PatchFirewallHttpRequest request =
@@ -660,7 +739,7 @@ public class FirewallClient implements BackgroundResource {
             .setFirewallResource(firewallResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchFirewall(request);
+    return patchFirewallAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -680,16 +759,47 @@ public class FirewallClient implements BackgroundResource {
    *     .setFirewallResource(firewallResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = firewallClient.patchFirewall(request);
+   *   firewallClient.patchFirewallAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchFirewall(PatchFirewallHttpRequest request) {
-    return patchFirewallCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchFirewallAsync(
+      PatchFirewallHttpRequest request) {
+    return patchFirewallOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the specified firewall rule with the data included in the request. This method supports
+   * PATCH semantics and uses the JSON merge patch format and processing rules.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (FirewallClient firewallClient = FirewallClient.create()) {
+   *   ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
+   *   Firewall firewallResource = Firewall.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   PatchFirewallHttpRequest request = PatchFirewallHttpRequest.newBuilder()
+   *     .setFirewall(firewall.toString())
+   *     .setFirewallResource(firewallResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = firewallClient.patchFirewallOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<PatchFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      patchFirewallOperationCallable() {
+    return stub.patchFirewallOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -711,7 +821,7 @@ public class FirewallClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = firewallClient.patchFirewallCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -733,7 +843,7 @@ public class FirewallClient implements BackgroundResource {
    *   ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
    *   Firewall firewallResource = Firewall.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = firewallClient.updateFirewall(firewall, firewallResource, fieldMask);
+   *   firewallClient.updateFirewallAsync(firewall, firewallResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -745,8 +855,9 @@ public class FirewallClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateFirewall(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateFirewallAsync(
       ProjectGlobalFirewallName firewall, Firewall firewallResource, List<String> fieldMask) {
 
     UpdateFirewallHttpRequest request =
@@ -755,7 +866,7 @@ public class FirewallClient implements BackgroundResource {
             .setFirewallResource(firewallResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return updateFirewall(request);
+    return updateFirewallAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -771,7 +882,7 @@ public class FirewallClient implements BackgroundResource {
    *   ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
    *   Firewall firewallResource = Firewall.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = firewallClient.updateFirewall(firewall.toString(), firewallResource, fieldMask);
+   *   firewallClient.updateFirewallAsync(firewall.toString(), firewallResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -783,8 +894,9 @@ public class FirewallClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateFirewall(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateFirewallAsync(
       String firewall, Firewall firewallResource, List<String> fieldMask) {
 
     UpdateFirewallHttpRequest request =
@@ -793,7 +905,7 @@ public class FirewallClient implements BackgroundResource {
             .setFirewallResource(firewallResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return updateFirewall(request);
+    return updateFirewallAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -814,16 +926,48 @@ public class FirewallClient implements BackgroundResource {
    *     .setFirewallResource(firewallResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = firewallClient.updateFirewall(request);
+   *   firewallClient.updateFirewallAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateFirewall(UpdateFirewallHttpRequest request) {
-    return updateFirewallCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateFirewallAsync(
+      UpdateFirewallHttpRequest request) {
+    return updateFirewallOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the specified firewall rule with the data included in the request. The PUT method can
+   * only update the following fields of firewall rule: allowed, description, sourceRanges,
+   * sourceTags, targetTags.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (FirewallClient firewallClient = FirewallClient.create()) {
+   *   ProjectGlobalFirewallName firewall = ProjectGlobalFirewallName.of("[PROJECT]", "[FIREWALL]");
+   *   Firewall firewallResource = Firewall.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   UpdateFirewallHttpRequest request = UpdateFirewallHttpRequest.newBuilder()
+   *     .setFirewall(firewall.toString())
+   *     .setFirewallResource(firewallResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = firewallClient.updateFirewallOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<UpdateFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      updateFirewallOperationCallable() {
+    return stub.updateFirewallOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -846,7 +990,7 @@ public class FirewallClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = firewallClient.updateFirewallCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DeleteUrlMapHttpRequest;
@@ -213,17 +215,28 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteUrlMapHttpRequest, Operation> deleteUrlMapCallable;
+  private final OperationCallable<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      deleteUrlMapOperationCallable;
   private final UnaryCallable<GetUrlMapHttpRequest, UrlMap> getUrlMapCallable;
   private final UnaryCallable<InsertUrlMapHttpRequest, Operation> insertUrlMapCallable;
+  private final OperationCallable<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      insertUrlMapOperationCallable;
   private final UnaryCallable<InvalidateCacheUrlMapHttpRequest, Operation>
       invalidateCacheUrlMapCallable;
+  private final OperationCallable<InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      invalidateCacheUrlMapOperationCallable;
   private final UnaryCallable<ListUrlMapsHttpRequest, UrlMapList> listUrlMapsCallable;
   private final UnaryCallable<ListUrlMapsHttpRequest, ListUrlMapsPagedResponse>
       listUrlMapsPagedCallable;
   private final UnaryCallable<PatchUrlMapHttpRequest, Operation> patchUrlMapCallable;
+  private final OperationCallable<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      patchUrlMapOperationCallable;
   private final UnaryCallable<UpdateUrlMapHttpRequest, Operation> updateUrlMapCallable;
+  private final OperationCallable<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      updateUrlMapOperationCallable;
   private final UnaryCallable<ValidateUrlMapHttpRequest, UrlMapsValidateResponse>
       validateUrlMapCallable;
 
@@ -264,6 +277,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteUrlMapHttpRequest, Operation> deleteUrlMapTransportSettings =
         HttpJsonCallSettings.<DeleteUrlMapHttpRequest, Operation>newBuilder()
@@ -303,17 +317,35 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
     this.deleteUrlMapCallable =
         callableFactory.createUnaryCallable(
             deleteUrlMapTransportSettings, settings.deleteUrlMapSettings(), clientContext);
+    this.deleteUrlMapOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteUrlMapTransportSettings,
+            settings.deleteUrlMapOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getUrlMapCallable =
         callableFactory.createUnaryCallable(
             getUrlMapTransportSettings, settings.getUrlMapSettings(), clientContext);
     this.insertUrlMapCallable =
         callableFactory.createUnaryCallable(
             insertUrlMapTransportSettings, settings.insertUrlMapSettings(), clientContext);
+    this.insertUrlMapOperationCallable =
+        callableFactory.createOperationCallable(
+            insertUrlMapTransportSettings,
+            settings.insertUrlMapOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.invalidateCacheUrlMapCallable =
         callableFactory.createUnaryCallable(
             invalidateCacheUrlMapTransportSettings,
             settings.invalidateCacheUrlMapSettings(),
             clientContext);
+    this.invalidateCacheUrlMapOperationCallable =
+        callableFactory.createOperationCallable(
+            invalidateCacheUrlMapTransportSettings,
+            settings.invalidateCacheUrlMapOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listUrlMapsCallable =
         callableFactory.createUnaryCallable(
             listUrlMapsTransportSettings, settings.listUrlMapsSettings(), clientContext);
@@ -323,14 +355,37 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
     this.patchUrlMapCallable =
         callableFactory.createUnaryCallable(
             patchUrlMapTransportSettings, settings.patchUrlMapSettings(), clientContext);
+    this.patchUrlMapOperationCallable =
+        callableFactory.createOperationCallable(
+            patchUrlMapTransportSettings,
+            settings.patchUrlMapOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.updateUrlMapCallable =
         callableFactory.createUnaryCallable(
             updateUrlMapTransportSettings, settings.updateUrlMapSettings(), clientContext);
+    this.updateUrlMapOperationCallable =
+        callableFactory.createOperationCallable(
+            updateUrlMapTransportSettings,
+            settings.updateUrlMapOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.validateUrlMapCallable =
         callableFactory.createUnaryCallable(
             validateUrlMapTransportSettings, settings.validateUrlMapSettings(), clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      deleteUrlMapOperationCallable() {
+    return deleteUrlMapOperationCallable;
   }
 
   @BetaApi
@@ -343,9 +398,21 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
     return getUrlMapCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      insertUrlMapOperationCallable() {
+    return insertUrlMapOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<InsertUrlMapHttpRequest, Operation> insertUrlMapCallable() {
     return insertUrlMapCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      invalidateCacheUrlMapOperationCallable() {
+    return invalidateCacheUrlMapOperationCallable;
   }
 
   @BetaApi
@@ -365,9 +432,21 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
     return listUrlMapsCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      patchUrlMapOperationCallable() {
+    return patchUrlMapOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<PatchUrlMapHttpRequest, Operation> patchUrlMapCallable() {
     return patchUrlMapCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      updateUrlMapOperationCallable() {
+    return updateUrlMapOperationCallable;
   }
 
   @BetaApi

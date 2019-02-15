@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteRegionAutoscaler to 30 seconds:
+ * example, to set the total timeout of getRegionAutoscaler to 30 seconds:
  *
  * <pre>
  * <code>
  * RegionAutoscalerSettings.Builder regionAutoscalerSettingsBuilder =
  *     RegionAutoscalerSettings.newBuilder();
- * regionAutoscalerSettingsBuilder.deleteRegionAutoscalerSettings().getRetrySettings().toBuilder()
+ * regionAutoscalerSettingsBuilder.getRegionAutoscalerSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * RegionAutoscalerSettings regionAutoscalerSettings = regionAutoscalerSettingsBuilder.build();
  * </code>
@@ -69,6 +71,15 @@ public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSet
     return ((RegionAutoscalerStubSettings) getStubSettings()).deleteRegionAutoscalerSettings();
   }
 
+  /** Returns the object with the settings used for calls to deleteRegionAutoscaler. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionAutoscalerOperationSettings() {
+    return ((RegionAutoscalerStubSettings) getStubSettings())
+        .deleteRegionAutoscalerOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to getRegionAutoscaler. */
   public UnaryCallSettings<GetRegionAutoscalerHttpRequest, Autoscaler>
       getRegionAutoscalerSettings() {
@@ -79,6 +90,15 @@ public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSet
   public UnaryCallSettings<InsertRegionAutoscalerHttpRequest, Operation>
       insertRegionAutoscalerSettings() {
     return ((RegionAutoscalerStubSettings) getStubSettings()).insertRegionAutoscalerSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertRegionAutoscaler. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionAutoscalerOperationSettings() {
+    return ((RegionAutoscalerStubSettings) getStubSettings())
+        .insertRegionAutoscalerOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listRegionAutoscalers. */
@@ -96,10 +116,28 @@ public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSet
     return ((RegionAutoscalerStubSettings) getStubSettings()).patchRegionAutoscalerSettings();
   }
 
+  /** Returns the object with the settings used for calls to patchRegionAutoscaler. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionAutoscalerOperationSettings() {
+    return ((RegionAutoscalerStubSettings) getStubSettings())
+        .patchRegionAutoscalerOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to updateRegionAutoscaler. */
   public UnaryCallSettings<UpdateRegionAutoscalerHttpRequest, Operation>
       updateRegionAutoscalerSettings() {
     return ((RegionAutoscalerStubSettings) getStubSettings()).updateRegionAutoscalerSettings();
+  }
+
+  /** Returns the object with the settings used for calls to updateRegionAutoscaler. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      updateRegionAutoscalerOperationSettings() {
+    return ((RegionAutoscalerStubSettings) getStubSettings())
+        .updateRegionAutoscalerOperationSettings();
   }
 
   public static final RegionAutoscalerSettings create(RegionAutoscalerStubSettings stub)
@@ -210,6 +248,15 @@ public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSet
       return getStubSettingsBuilder().deleteRegionAutoscalerSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteRegionAutoscaler. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        deleteRegionAutoscalerOperationSettings() {
+      return getStubSettingsBuilder().deleteRegionAutoscalerOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getRegionAutoscaler. */
     public UnaryCallSettings.Builder<GetRegionAutoscalerHttpRequest, Autoscaler>
         getRegionAutoscalerSettings() {
@@ -220,6 +267,15 @@ public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSet
     public UnaryCallSettings.Builder<InsertRegionAutoscalerHttpRequest, Operation>
         insertRegionAutoscalerSettings() {
       return getStubSettingsBuilder().insertRegionAutoscalerSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertRegionAutoscaler. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        insertRegionAutoscalerOperationSettings() {
+      return getStubSettingsBuilder().insertRegionAutoscalerOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listRegionAutoscalers. */
@@ -237,10 +293,28 @@ public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSet
       return getStubSettingsBuilder().patchRegionAutoscalerSettings();
     }
 
+    /** Returns the builder for the settings used for calls to patchRegionAutoscaler. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        patchRegionAutoscalerOperationSettings() {
+      return getStubSettingsBuilder().patchRegionAutoscalerOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to updateRegionAutoscaler. */
     public UnaryCallSettings.Builder<UpdateRegionAutoscalerHttpRequest, Operation>
         updateRegionAutoscalerSettings() {
       return getStubSettingsBuilder().updateRegionAutoscalerSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to updateRegionAutoscaler. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+        updateRegionAutoscalerOperationSettings() {
+      return getStubSettingsBuilder().updateRegionAutoscalerOperationSettings();
     }
 
     @Override

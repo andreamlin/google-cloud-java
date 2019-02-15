@@ -23,13 +23,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -75,13 +80,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteUrlMap to 30 seconds:
+ * example, to set the total timeout of getUrlMap to 30 seconds:
  *
  * <pre>
  * <code>
  * UrlMapStubSettings.Builder urlMapSettingsBuilder =
  *     UrlMapStubSettings.newBuilder();
- * urlMapSettingsBuilder.deleteUrlMapSettings().getRetrySettings().toBuilder()
+ * urlMapSettingsBuilder.getUrlMapSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * UrlMapStubSettings urlMapSettings = urlMapSettingsBuilder.build();
  * </code>
@@ -102,20 +107,37 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
           .build();
 
   private final UnaryCallSettings<DeleteUrlMapHttpRequest, Operation> deleteUrlMapSettings;
+  private final OperationCallSettings<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      deleteUrlMapOperationSettings;
   private final UnaryCallSettings<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings;
   private final UnaryCallSettings<InsertUrlMapHttpRequest, Operation> insertUrlMapSettings;
+  private final OperationCallSettings<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      insertUrlMapOperationSettings;
   private final UnaryCallSettings<InvalidateCacheUrlMapHttpRequest, Operation>
       invalidateCacheUrlMapSettings;
+  private final OperationCallSettings<InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      invalidateCacheUrlMapOperationSettings;
   private final PagedCallSettings<ListUrlMapsHttpRequest, UrlMapList, ListUrlMapsPagedResponse>
       listUrlMapsSettings;
   private final UnaryCallSettings<PatchUrlMapHttpRequest, Operation> patchUrlMapSettings;
+  private final OperationCallSettings<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      patchUrlMapOperationSettings;
   private final UnaryCallSettings<UpdateUrlMapHttpRequest, Operation> updateUrlMapSettings;
+  private final OperationCallSettings<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      updateUrlMapOperationSettings;
   private final UnaryCallSettings<ValidateUrlMapHttpRequest, UrlMapsValidateResponse>
       validateUrlMapSettings;
 
   /** Returns the object with the settings used for calls to deleteUrlMap. */
   public UnaryCallSettings<DeleteUrlMapHttpRequest, Operation> deleteUrlMapSettings() {
     return deleteUrlMapSettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteUrlMap. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      deleteUrlMapOperationSettings() {
+    return deleteUrlMapOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getUrlMap. */
@@ -128,10 +150,24 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
     return insertUrlMapSettings;
   }
 
+  /** Returns the object with the settings used for calls to insertUrlMap. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      insertUrlMapOperationSettings() {
+    return insertUrlMapOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to invalidateCacheUrlMap. */
   public UnaryCallSettings<InvalidateCacheUrlMapHttpRequest, Operation>
       invalidateCacheUrlMapSettings() {
     return invalidateCacheUrlMapSettings;
+  }
+
+  /** Returns the object with the settings used for calls to invalidateCacheUrlMap. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      invalidateCacheUrlMapOperationSettings() {
+    return invalidateCacheUrlMapOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listUrlMaps. */
@@ -145,9 +181,23 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
     return patchUrlMapSettings;
   }
 
+  /** Returns the object with the settings used for calls to patchUrlMap. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      patchUrlMapOperationSettings() {
+    return patchUrlMapOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to updateUrlMap. */
   public UnaryCallSettings<UpdateUrlMapHttpRequest, Operation> updateUrlMapSettings() {
     return updateUrlMapSettings;
+  }
+
+  /** Returns the object with the settings used for calls to updateUrlMap. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      updateUrlMapOperationSettings() {
+    return updateUrlMapOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to validateUrlMap. */
@@ -231,12 +281,18 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
     super(settingsBuilder);
 
     deleteUrlMapSettings = settingsBuilder.deleteUrlMapSettings().build();
+    deleteUrlMapOperationSettings = settingsBuilder.deleteUrlMapOperationSettings().build();
     getUrlMapSettings = settingsBuilder.getUrlMapSettings().build();
     insertUrlMapSettings = settingsBuilder.insertUrlMapSettings().build();
+    insertUrlMapOperationSettings = settingsBuilder.insertUrlMapOperationSettings().build();
     invalidateCacheUrlMapSettings = settingsBuilder.invalidateCacheUrlMapSettings().build();
+    invalidateCacheUrlMapOperationSettings =
+        settingsBuilder.invalidateCacheUrlMapOperationSettings().build();
     listUrlMapsSettings = settingsBuilder.listUrlMapsSettings().build();
     patchUrlMapSettings = settingsBuilder.patchUrlMapSettings().build();
+    patchUrlMapOperationSettings = settingsBuilder.patchUrlMapOperationSettings().build();
     updateUrlMapSettings = settingsBuilder.updateUrlMapSettings().build();
+    updateUrlMapOperationSettings = settingsBuilder.updateUrlMapOperationSettings().build();
     validateUrlMapSettings = settingsBuilder.validateUrlMapSettings().build();
   }
 
@@ -301,17 +357,28 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
 
     private final UnaryCallSettings.Builder<DeleteUrlMapHttpRequest, Operation>
         deleteUrlMapSettings;
+    private final OperationCallSettings.Builder<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+        deleteUrlMapOperationSettings;
     private final UnaryCallSettings.Builder<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings;
     private final UnaryCallSettings.Builder<InsertUrlMapHttpRequest, Operation>
         insertUrlMapSettings;
+    private final OperationCallSettings.Builder<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+        insertUrlMapOperationSettings;
     private final UnaryCallSettings.Builder<InvalidateCacheUrlMapHttpRequest, Operation>
         invalidateCacheUrlMapSettings;
+    private final OperationCallSettings.Builder<
+            InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+        invalidateCacheUrlMapOperationSettings;
     private final PagedCallSettings.Builder<
             ListUrlMapsHttpRequest, UrlMapList, ListUrlMapsPagedResponse>
         listUrlMapsSettings;
     private final UnaryCallSettings.Builder<PatchUrlMapHttpRequest, Operation> patchUrlMapSettings;
+    private final OperationCallSettings.Builder<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+        patchUrlMapOperationSettings;
     private final UnaryCallSettings.Builder<UpdateUrlMapHttpRequest, Operation>
         updateUrlMapSettings;
+    private final OperationCallSettings.Builder<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+        updateUrlMapOperationSettings;
     private final UnaryCallSettings.Builder<ValidateUrlMapHttpRequest, UrlMapsValidateResponse>
         validateUrlMapSettings;
 
@@ -358,17 +425,27 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
 
       deleteUrlMapSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteUrlMapOperationSettings = OperationCallSettings.newBuilder();
+
       getUrlMapSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertUrlMapSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      insertUrlMapOperationSettings = OperationCallSettings.newBuilder();
+
       invalidateCacheUrlMapSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      invalidateCacheUrlMapOperationSettings = OperationCallSettings.newBuilder();
 
       listUrlMapsSettings = PagedCallSettings.newBuilder(LIST_URL_MAPS_PAGE_STR_FACT);
 
       patchUrlMapSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      patchUrlMapOperationSettings = OperationCallSettings.newBuilder();
+
       updateUrlMapSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      updateUrlMapOperationSettings = OperationCallSettings.newBuilder();
 
       validateUrlMapSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
@@ -436,6 +513,112 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
           .validateUrlMapSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .deleteUrlMapOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteUrlMapHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertUrlMapOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertUrlMapHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .invalidateCacheUrlMapOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InvalidateCacheUrlMapHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .patchUrlMapOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<PatchUrlMapHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .updateUrlMapOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<UpdateUrlMapHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -444,12 +627,18 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
       super(settings);
 
       deleteUrlMapSettings = settings.deleteUrlMapSettings.toBuilder();
+      deleteUrlMapOperationSettings = settings.deleteUrlMapOperationSettings.toBuilder();
       getUrlMapSettings = settings.getUrlMapSettings.toBuilder();
       insertUrlMapSettings = settings.insertUrlMapSettings.toBuilder();
+      insertUrlMapOperationSettings = settings.insertUrlMapOperationSettings.toBuilder();
       invalidateCacheUrlMapSettings = settings.invalidateCacheUrlMapSettings.toBuilder();
+      invalidateCacheUrlMapOperationSettings =
+          settings.invalidateCacheUrlMapOperationSettings.toBuilder();
       listUrlMapsSettings = settings.listUrlMapsSettings.toBuilder();
       patchUrlMapSettings = settings.patchUrlMapSettings.toBuilder();
+      patchUrlMapOperationSettings = settings.patchUrlMapOperationSettings.toBuilder();
       updateUrlMapSettings = settings.updateUrlMapSettings.toBuilder();
+      updateUrlMapOperationSettings = settings.updateUrlMapOperationSettings.toBuilder();
       validateUrlMapSettings = settings.validateUrlMapSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
@@ -485,6 +674,14 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
       return deleteUrlMapSettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteUrlMap. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+        deleteUrlMapOperationSettings() {
+      return deleteUrlMapOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to getUrlMap. */
     public UnaryCallSettings.Builder<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings() {
       return getUrlMapSettings;
@@ -495,10 +692,27 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
       return insertUrlMapSettings;
     }
 
+    /** Returns the builder for the settings used for calls to insertUrlMap. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+        insertUrlMapOperationSettings() {
+      return insertUrlMapOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to invalidateCacheUrlMap. */
     public UnaryCallSettings.Builder<InvalidateCacheUrlMapHttpRequest, Operation>
         invalidateCacheUrlMapSettings() {
       return invalidateCacheUrlMapSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to invalidateCacheUrlMap. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+        invalidateCacheUrlMapOperationSettings() {
+      return invalidateCacheUrlMapOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listUrlMaps. */
@@ -512,9 +726,25 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
       return patchUrlMapSettings;
     }
 
+    /** Returns the builder for the settings used for calls to patchUrlMap. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+        patchUrlMapOperationSettings() {
+      return patchUrlMapOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to updateUrlMap. */
     public UnaryCallSettings.Builder<UpdateUrlMapHttpRequest, Operation> updateUrlMapSettings() {
       return updateUrlMapSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to updateUrlMap. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+        updateUrlMapOperationSettings() {
+      return updateUrlMapOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to validateUrlMap. */

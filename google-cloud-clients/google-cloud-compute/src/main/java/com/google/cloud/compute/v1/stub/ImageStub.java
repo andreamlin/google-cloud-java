@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.ImageClient.ListImagesPagedResponse;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteImageHttpRequest;
 import com.google.cloud.compute.v1.DeprecateImageHttpRequest;
@@ -47,9 +49,26 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class ImageStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+      deleteImageOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deleteImageOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteImageHttpRequest, Operation> deleteImageCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteImageCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+      deprecateImageOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deprecateImageOperationCallable()");
   }
 
   @BetaApi
@@ -72,6 +91,12 @@ public abstract class ImageStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: getIamPolicyImageCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+      insertImageOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: insertImageOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<InsertImageHttpRequest, Operation> insertImageCallable() {
     throw new UnsupportedOperationException("Not implemented: insertImageCallable()");
@@ -90,6 +115,12 @@ public abstract class ImageStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<SetIamPolicyImageHttpRequest, Policy> setIamPolicyImageCallable() {
     throw new UnsupportedOperationException("Not implemented: setIamPolicyImageCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsImageOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: setLabelsImageOperationCallable()");
   }
 
   @BetaApi

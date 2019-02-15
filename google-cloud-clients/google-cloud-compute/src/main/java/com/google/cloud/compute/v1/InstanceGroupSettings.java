@@ -23,10 +23,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -50,13 +52,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of addInstancesInstanceGroup to 30 seconds:
+ * example, to set the total timeout of getInstanceGroup to 30 seconds:
  *
  * <pre>
  * <code>
  * InstanceGroupSettings.Builder instanceGroupSettingsBuilder =
  *     InstanceGroupSettings.newBuilder();
- * instanceGroupSettingsBuilder.addInstancesInstanceGroupSettings().getRetrySettings().toBuilder()
+ * instanceGroupSettingsBuilder.getInstanceGroupSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * InstanceGroupSettings instanceGroupSettings = instanceGroupSettingsBuilder.build();
  * </code>
@@ -69,6 +71,15 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
   public UnaryCallSettings<AddInstancesInstanceGroupHttpRequest, Operation>
       addInstancesInstanceGroupSettings() {
     return ((InstanceGroupStubSettings) getStubSettings()).addInstancesInstanceGroupSettings();
+  }
+
+  /** Returns the object with the settings used for calls to addInstancesInstanceGroup. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      addInstancesInstanceGroupOperationSettings() {
+    return ((InstanceGroupStubSettings) getStubSettings())
+        .addInstancesInstanceGroupOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to aggregatedListInstanceGroups. */
@@ -86,6 +97,14 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
     return ((InstanceGroupStubSettings) getStubSettings()).deleteInstanceGroupSettings();
   }
 
+  /** Returns the object with the settings used for calls to deleteInstanceGroup. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstanceGroupOperationSettings() {
+    return ((InstanceGroupStubSettings) getStubSettings()).deleteInstanceGroupOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to getInstanceGroup. */
   public UnaryCallSettings<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupSettings() {
     return ((InstanceGroupStubSettings) getStubSettings()).getInstanceGroupSettings();
@@ -95,6 +114,14 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
   public UnaryCallSettings<InsertInstanceGroupHttpRequest, Operation>
       insertInstanceGroupSettings() {
     return ((InstanceGroupStubSettings) getStubSettings()).insertInstanceGroupSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertInstanceGroup. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      insertInstanceGroupOperationSettings() {
+    return ((InstanceGroupStubSettings) getStubSettings()).insertInstanceGroupOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listInstanceGroups. */
@@ -119,10 +146,28 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
     return ((InstanceGroupStubSettings) getStubSettings()).removeInstancesInstanceGroupSettings();
   }
 
+  /** Returns the object with the settings used for calls to removeInstancesInstanceGroup. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      removeInstancesInstanceGroupOperationSettings() {
+    return ((InstanceGroupStubSettings) getStubSettings())
+        .removeInstancesInstanceGroupOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to setNamedPortsInstanceGroup. */
   public UnaryCallSettings<SetNamedPortsInstanceGroupHttpRequest, Operation>
       setNamedPortsInstanceGroupSettings() {
     return ((InstanceGroupStubSettings) getStubSettings()).setNamedPortsInstanceGroupSettings();
+  }
+
+  /** Returns the object with the settings used for calls to setNamedPortsInstanceGroup. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNamedPortsInstanceGroupOperationSettings() {
+    return ((InstanceGroupStubSettings) getStubSettings())
+        .setNamedPortsInstanceGroupOperationSettings();
   }
 
   public static final InstanceGroupSettings create(InstanceGroupStubSettings stub)
@@ -233,6 +278,15 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
       return getStubSettingsBuilder().addInstancesInstanceGroupSettings();
     }
 
+    /** Returns the builder for the settings used for calls to addInstancesInstanceGroup. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+        addInstancesInstanceGroupOperationSettings() {
+      return getStubSettingsBuilder().addInstancesInstanceGroupOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to aggregatedListInstanceGroups. */
     public PagedCallSettings.Builder<
             AggregatedListInstanceGroupsHttpRequest,
@@ -248,6 +302,14 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
       return getStubSettingsBuilder().deleteInstanceGroupSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteInstanceGroup. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+        deleteInstanceGroupOperationSettings() {
+      return getStubSettingsBuilder().deleteInstanceGroupOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getInstanceGroup. */
     public UnaryCallSettings.Builder<GetInstanceGroupHttpRequest, InstanceGroup>
         getInstanceGroupSettings() {
@@ -258,6 +320,14 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
     public UnaryCallSettings.Builder<InsertInstanceGroupHttpRequest, Operation>
         insertInstanceGroupSettings() {
       return getStubSettingsBuilder().insertInstanceGroupSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertInstanceGroup. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+        insertInstanceGroupOperationSettings() {
+      return getStubSettingsBuilder().insertInstanceGroupOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listInstanceGroups. */
@@ -282,10 +352,28 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
       return getStubSettingsBuilder().removeInstancesInstanceGroupSettings();
     }
 
+    /** Returns the builder for the settings used for calls to removeInstancesInstanceGroup. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+        removeInstancesInstanceGroupOperationSettings() {
+      return getStubSettingsBuilder().removeInstancesInstanceGroupOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to setNamedPortsInstanceGroup. */
     public UnaryCallSettings.Builder<SetNamedPortsInstanceGroupHttpRequest, Operation>
         setNamedPortsInstanceGroupSettings() {
       return getStubSettingsBuilder().setNamedPortsInstanceGroupSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to setNamedPortsInstanceGroup. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+        setNamedPortsInstanceGroupOperationSettings() {
+      return getStubSettingsBuilder().setNamedPortsInstanceGroupOperationSettings();
     }
 
     @Override

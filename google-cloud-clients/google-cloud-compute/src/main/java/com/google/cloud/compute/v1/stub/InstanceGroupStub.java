@@ -21,6 +21,8 @@ import static com.google.cloud.compute.v1.InstanceGroupClient.ListInstancesInsta
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AddInstancesInstanceGroupHttpRequest;
 import com.google.cloud.compute.v1.AggregatedListInstanceGroupsHttpRequest;
@@ -48,6 +50,18 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class InstanceGroupStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      addInstancesInstanceGroupOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: addInstancesInstanceGroupOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<AddInstancesInstanceGroupHttpRequest, Operation>
       addInstancesInstanceGroupCallable() {
@@ -69,6 +83,13 @@ public abstract class InstanceGroupStub implements BackgroundResource {
         "Not implemented: aggregatedListInstanceGroupsCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstanceGroupOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteInstanceGroupOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteInstanceGroupHttpRequest, Operation> deleteInstanceGroupCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteInstanceGroupCallable()");
@@ -77,6 +98,13 @@ public abstract class InstanceGroupStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupCallable() {
     throw new UnsupportedOperationException("Not implemented: getInstanceGroupCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      insertInstanceGroupOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertInstanceGroupOperationCallable()");
   }
 
   @BetaApi
@@ -111,11 +139,25 @@ public abstract class InstanceGroupStub implements BackgroundResource {
         "Not implemented: listInstancesInstanceGroupsCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      removeInstancesInstanceGroupOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: removeInstancesInstanceGroupOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<RemoveInstancesInstanceGroupHttpRequest, Operation>
       removeInstancesInstanceGroupCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: removeInstancesInstanceGroupCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNamedPortsInstanceGroupOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: setNamedPortsInstanceGroupOperationCallable()");
   }
 
   @BetaApi

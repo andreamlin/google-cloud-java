@@ -25,6 +25,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonTargetInstanceStub.listTa
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -36,12 +37,12 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.TargetInstanceStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -154,19 +155,15 @@ public class TargetInstanceClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteTargetInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteTargetInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteTargetInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneTargetInstanceName targetInstance =
         ProjectZoneTargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
 
-    Void actualResponse = client.deleteTargetInstanceAsync(targetInstance).get();
+    EmptyMessage actualResponse = client.deleteTargetInstanceAsync(targetInstance).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -201,7 +198,7 @@ public class TargetInstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -275,19 +272,16 @@ public class TargetInstanceClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertTargetInstanceTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertTargetInstanceTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetInstances.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertTargetInstanceTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
     TargetInstance targetInstanceResource = TargetInstance.newBuilder().build();
 
-    Void actualResponse = client.insertTargetInstanceAsync(zone, targetInstanceResource).get();
+    EmptyMessage actualResponse =
+        client.insertTargetInstanceAsync(zone, targetInstanceResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -322,7 +316,7 @@ public class TargetInstanceClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 

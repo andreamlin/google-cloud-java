@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.SslPolicyClient.ListSslPoliciesPagedRe
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteSslPolicyHttpRequest;
 import com.google.cloud.compute.v1.GetSslPolicyHttpRequest;
@@ -42,6 +44,17 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class SslPolicyStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSslPolicyOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deleteSslPolicyOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteSslPolicyHttpRequest, Operation> deleteSslPolicyCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteSslPolicyCallable()");
@@ -50,6 +63,12 @@ public abstract class SslPolicyStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetSslPolicyHttpRequest, SslPolicy> getSslPolicyCallable() {
     throw new UnsupportedOperationException("Not implemented: getSslPolicyCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      insertSslPolicyOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: insertSslPolicyOperationCallable()");
   }
 
   @BetaApi
@@ -74,6 +93,12 @@ public abstract class SslPolicyStub implements BackgroundResource {
       listAvailableFeaturesSslPoliciesCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: listAvailableFeaturesSslPoliciesCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchSslPolicyOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: patchSslPolicyOperationCallable()");
   }
 
   @BetaApi

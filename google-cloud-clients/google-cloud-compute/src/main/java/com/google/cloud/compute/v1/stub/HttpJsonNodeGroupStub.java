@@ -27,9 +27,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AddNodesNodeGroupHttpRequest;
@@ -322,20 +324,29 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AddNodesNodeGroupHttpRequest, Operation> addNodesNodeGroupCallable;
+  private final OperationCallable<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      addNodesNodeGroupOperationCallable;
   private final UnaryCallable<AggregatedListNodeGroupsHttpRequest, NodeGroupAggregatedList>
       aggregatedListNodeGroupsCallable;
   private final UnaryCallable<
           AggregatedListNodeGroupsHttpRequest, AggregatedListNodeGroupsPagedResponse>
       aggregatedListNodeGroupsPagedCallable;
   private final UnaryCallable<DeleteNodeGroupHttpRequest, Operation> deleteNodeGroupCallable;
+  private final OperationCallable<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodeGroupOperationCallable;
   private final UnaryCallable<DeleteNodesNodeGroupHttpRequest, Operation>
       deleteNodesNodeGroupCallable;
+  private final OperationCallable<DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodesNodeGroupOperationCallable;
   private final UnaryCallable<GetNodeGroupHttpRequest, NodeGroup> getNodeGroupCallable;
   private final UnaryCallable<GetIamPolicyNodeGroupHttpRequest, Policy>
       getIamPolicyNodeGroupCallable;
   private final UnaryCallable<InsertNodeGroupHttpRequest, Operation> insertNodeGroupCallable;
+  private final OperationCallable<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      insertNodeGroupOperationCallable;
   private final UnaryCallable<ListNodeGroupsHttpRequest, NodeGroupList> listNodeGroupsCallable;
   private final UnaryCallable<ListNodeGroupsHttpRequest, ListNodeGroupsPagedResponse>
       listNodeGroupsPagedCallable;
@@ -347,6 +358,8 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
       setIamPolicyNodeGroupCallable;
   private final UnaryCallable<SetNodeTemplateNodeGroupHttpRequest, Operation>
       setNodeTemplateNodeGroupCallable;
+  private final OperationCallable<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNodeTemplateNodeGroupOperationCallable;
   private final UnaryCallable<TestIamPermissionsNodeGroupHttpRequest, TestPermissionsResponse>
       testIamPermissionsNodeGroupCallable;
 
@@ -388,6 +401,7 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AddNodesNodeGroupHttpRequest, Operation>
         addNodesNodeGroupTransportSettings =
@@ -453,6 +467,12 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
             addNodesNodeGroupTransportSettings,
             settings.addNodesNodeGroupSettings(),
             clientContext);
+    this.addNodesNodeGroupOperationCallable =
+        callableFactory.createOperationCallable(
+            addNodesNodeGroupTransportSettings,
+            settings.addNodesNodeGroupOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.aggregatedListNodeGroupsCallable =
         callableFactory.createUnaryCallable(
             aggregatedListNodeGroupsTransportSettings,
@@ -466,11 +486,23 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
     this.deleteNodeGroupCallable =
         callableFactory.createUnaryCallable(
             deleteNodeGroupTransportSettings, settings.deleteNodeGroupSettings(), clientContext);
+    this.deleteNodeGroupOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteNodeGroupTransportSettings,
+            settings.deleteNodeGroupOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.deleteNodesNodeGroupCallable =
         callableFactory.createUnaryCallable(
             deleteNodesNodeGroupTransportSettings,
             settings.deleteNodesNodeGroupSettings(),
             clientContext);
+    this.deleteNodesNodeGroupOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteNodesNodeGroupTransportSettings,
+            settings.deleteNodesNodeGroupOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getNodeGroupCallable =
         callableFactory.createUnaryCallable(
             getNodeGroupTransportSettings, settings.getNodeGroupSettings(), clientContext);
@@ -482,6 +514,12 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
     this.insertNodeGroupCallable =
         callableFactory.createUnaryCallable(
             insertNodeGroupTransportSettings, settings.insertNodeGroupSettings(), clientContext);
+    this.insertNodeGroupOperationCallable =
+        callableFactory.createOperationCallable(
+            insertNodeGroupTransportSettings,
+            settings.insertNodeGroupOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listNodeGroupsCallable =
         callableFactory.createUnaryCallable(
             listNodeGroupsTransportSettings, settings.listNodeGroupsSettings(), clientContext);
@@ -508,6 +546,12 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
             setNodeTemplateNodeGroupTransportSettings,
             settings.setNodeTemplateNodeGroupSettings(),
             clientContext);
+    this.setNodeTemplateNodeGroupOperationCallable =
+        callableFactory.createOperationCallable(
+            setNodeTemplateNodeGroupTransportSettings,
+            settings.setNodeTemplateNodeGroupOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.testIamPermissionsNodeGroupCallable =
         callableFactory.createUnaryCallable(
             testIamPermissionsNodeGroupTransportSettings,
@@ -515,6 +559,17 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
             clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      addNodesNodeGroupOperationCallable() {
+    return addNodesNodeGroupOperationCallable;
   }
 
   @BetaApi
@@ -534,9 +589,21 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
     return aggregatedListNodeGroupsCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodeGroupOperationCallable() {
+    return deleteNodeGroupOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteNodeGroupHttpRequest, Operation> deleteNodeGroupCallable() {
     return deleteNodeGroupCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodesNodeGroupOperationCallable() {
+    return deleteNodesNodeGroupOperationCallable;
   }
 
   @BetaApi
@@ -552,6 +619,12 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
   @BetaApi
   public UnaryCallable<GetIamPolicyNodeGroupHttpRequest, Policy> getIamPolicyNodeGroupCallable() {
     return getIamPolicyNodeGroupCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      insertNodeGroupOperationCallable() {
+    return insertNodeGroupOperationCallable;
   }
 
   @BetaApi
@@ -585,6 +658,12 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
   @BetaApi
   public UnaryCallable<SetIamPolicyNodeGroupHttpRequest, Policy> setIamPolicyNodeGroupCallable() {
     return setIamPolicyNodeGroupCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNodeTemplateNodeGroupOperationCallable() {
+    return setNodeTemplateNodeGroupOperationCallable;
   }
 
   @BetaApi

@@ -23,13 +23,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -74,13 +79,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of addSignedUrlKeyBackendBucket to 30 seconds:
+ * example, to set the total timeout of getBackendBucket to 30 seconds:
  *
  * <pre>
  * <code>
  * BackendBucketStubSettings.Builder backendBucketSettingsBuilder =
  *     BackendBucketStubSettings.newBuilder();
- * backendBucketSettingsBuilder.addSignedUrlKeyBackendBucketSettings().getRetrySettings().toBuilder()
+ * backendBucketSettingsBuilder.getBackendBucketSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * BackendBucketStubSettings backendBucketSettings = backendBucketSettingsBuilder.build();
  * </code>
@@ -102,26 +107,47 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
 
   private final UnaryCallSettings<AddSignedUrlKeyBackendBucketHttpRequest, Operation>
       addSignedUrlKeyBackendBucketSettings;
+  private final OperationCallSettings<
+          AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      addSignedUrlKeyBackendBucketOperationSettings;
   private final UnaryCallSettings<DeleteBackendBucketHttpRequest, Operation>
       deleteBackendBucketSettings;
+  private final OperationCallSettings<DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      deleteBackendBucketOperationSettings;
   private final UnaryCallSettings<DeleteSignedUrlKeyBackendBucketHttpRequest, Operation>
       deleteSignedUrlKeyBackendBucketSettings;
+  private final OperationCallSettings<
+          DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSignedUrlKeyBackendBucketOperationSettings;
   private final UnaryCallSettings<GetBackendBucketHttpRequest, BackendBucket>
       getBackendBucketSettings;
   private final UnaryCallSettings<InsertBackendBucketHttpRequest, Operation>
       insertBackendBucketSettings;
+  private final OperationCallSettings<InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      insertBackendBucketOperationSettings;
   private final PagedCallSettings<
           ListBackendBucketsHttpRequest, BackendBucketList, ListBackendBucketsPagedResponse>
       listBackendBucketsSettings;
   private final UnaryCallSettings<PatchBackendBucketHttpRequest, Operation>
       patchBackendBucketSettings;
+  private final OperationCallSettings<PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      patchBackendBucketOperationSettings;
   private final UnaryCallSettings<UpdateBackendBucketHttpRequest, Operation>
       updateBackendBucketSettings;
+  private final OperationCallSettings<UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      updateBackendBucketOperationSettings;
 
   /** Returns the object with the settings used for calls to addSignedUrlKeyBackendBucket. */
   public UnaryCallSettings<AddSignedUrlKeyBackendBucketHttpRequest, Operation>
       addSignedUrlKeyBackendBucketSettings() {
     return addSignedUrlKeyBackendBucketSettings;
+  }
+
+  /** Returns the object with the settings used for calls to addSignedUrlKeyBackendBucket. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      addSignedUrlKeyBackendBucketOperationSettings() {
+    return addSignedUrlKeyBackendBucketOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to deleteBackendBucket. */
@@ -130,10 +156,25 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
     return deleteBackendBucketSettings;
   }
 
+  /** Returns the object with the settings used for calls to deleteBackendBucket. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      deleteBackendBucketOperationSettings() {
+    return deleteBackendBucketOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to deleteSignedUrlKeyBackendBucket. */
   public UnaryCallSettings<DeleteSignedUrlKeyBackendBucketHttpRequest, Operation>
       deleteSignedUrlKeyBackendBucketSettings() {
     return deleteSignedUrlKeyBackendBucketSettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteSignedUrlKeyBackendBucket. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSignedUrlKeyBackendBucketOperationSettings() {
+    return deleteSignedUrlKeyBackendBucketOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getBackendBucket. */
@@ -145,6 +186,13 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
   public UnaryCallSettings<InsertBackendBucketHttpRequest, Operation>
       insertBackendBucketSettings() {
     return insertBackendBucketSettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertBackendBucket. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      insertBackendBucketOperationSettings() {
+    return insertBackendBucketOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listBackendBuckets. */
@@ -159,10 +207,24 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
     return patchBackendBucketSettings;
   }
 
+  /** Returns the object with the settings used for calls to patchBackendBucket. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      patchBackendBucketOperationSettings() {
+    return patchBackendBucketOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to updateBackendBucket. */
   public UnaryCallSettings<UpdateBackendBucketHttpRequest, Operation>
       updateBackendBucketSettings() {
     return updateBackendBucketSettings;
+  }
+
+  /** Returns the object with the settings used for calls to updateBackendBucket. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+      updateBackendBucketOperationSettings() {
+    return updateBackendBucketOperationSettings;
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -242,14 +304,26 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
 
     addSignedUrlKeyBackendBucketSettings =
         settingsBuilder.addSignedUrlKeyBackendBucketSettings().build();
+    addSignedUrlKeyBackendBucketOperationSettings =
+        settingsBuilder.addSignedUrlKeyBackendBucketOperationSettings().build();
     deleteBackendBucketSettings = settingsBuilder.deleteBackendBucketSettings().build();
+    deleteBackendBucketOperationSettings =
+        settingsBuilder.deleteBackendBucketOperationSettings().build();
     deleteSignedUrlKeyBackendBucketSettings =
         settingsBuilder.deleteSignedUrlKeyBackendBucketSettings().build();
+    deleteSignedUrlKeyBackendBucketOperationSettings =
+        settingsBuilder.deleteSignedUrlKeyBackendBucketOperationSettings().build();
     getBackendBucketSettings = settingsBuilder.getBackendBucketSettings().build();
     insertBackendBucketSettings = settingsBuilder.insertBackendBucketSettings().build();
+    insertBackendBucketOperationSettings =
+        settingsBuilder.insertBackendBucketOperationSettings().build();
     listBackendBucketsSettings = settingsBuilder.listBackendBucketsSettings().build();
     patchBackendBucketSettings = settingsBuilder.patchBackendBucketSettings().build();
+    patchBackendBucketOperationSettings =
+        settingsBuilder.patchBackendBucketOperationSettings().build();
     updateBackendBucketSettings = settingsBuilder.updateBackendBucketSettings().build();
+    updateBackendBucketOperationSettings =
+        settingsBuilder.updateBackendBucketOperationSettings().build();
   }
 
   private static final PagedListDescriptor<
@@ -319,21 +393,39 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
 
     private final UnaryCallSettings.Builder<AddSignedUrlKeyBackendBucketHttpRequest, Operation>
         addSignedUrlKeyBackendBucketSettings;
+    private final OperationCallSettings.Builder<
+            AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+        addSignedUrlKeyBackendBucketOperationSettings;
     private final UnaryCallSettings.Builder<DeleteBackendBucketHttpRequest, Operation>
         deleteBackendBucketSettings;
+    private final OperationCallSettings.Builder<
+            DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+        deleteBackendBucketOperationSettings;
     private final UnaryCallSettings.Builder<DeleteSignedUrlKeyBackendBucketHttpRequest, Operation>
         deleteSignedUrlKeyBackendBucketSettings;
+    private final OperationCallSettings.Builder<
+            DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+        deleteSignedUrlKeyBackendBucketOperationSettings;
     private final UnaryCallSettings.Builder<GetBackendBucketHttpRequest, BackendBucket>
         getBackendBucketSettings;
     private final UnaryCallSettings.Builder<InsertBackendBucketHttpRequest, Operation>
         insertBackendBucketSettings;
+    private final OperationCallSettings.Builder<
+            InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+        insertBackendBucketOperationSettings;
     private final PagedCallSettings.Builder<
             ListBackendBucketsHttpRequest, BackendBucketList, ListBackendBucketsPagedResponse>
         listBackendBucketsSettings;
     private final UnaryCallSettings.Builder<PatchBackendBucketHttpRequest, Operation>
         patchBackendBucketSettings;
+    private final OperationCallSettings.Builder<
+            PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+        patchBackendBucketOperationSettings;
     private final UnaryCallSettings.Builder<UpdateBackendBucketHttpRequest, Operation>
         updateBackendBucketSettings;
+    private final OperationCallSettings.Builder<
+            UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+        updateBackendBucketOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
         RETRYABLE_CODE_DEFINITIONS;
@@ -378,19 +470,31 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
 
       addSignedUrlKeyBackendBucketSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      addSignedUrlKeyBackendBucketOperationSettings = OperationCallSettings.newBuilder();
+
       deleteBackendBucketSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteBackendBucketOperationSettings = OperationCallSettings.newBuilder();
+
       deleteSignedUrlKeyBackendBucketSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      deleteSignedUrlKeyBackendBucketOperationSettings = OperationCallSettings.newBuilder();
 
       getBackendBucketSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertBackendBucketSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      insertBackendBucketOperationSettings = OperationCallSettings.newBuilder();
+
       listBackendBucketsSettings = PagedCallSettings.newBuilder(LIST_BACKEND_BUCKETS_PAGE_STR_FACT);
 
       patchBackendBucketSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      patchBackendBucketOperationSettings = OperationCallSettings.newBuilder();
+
       updateBackendBucketSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      updateBackendBucketOperationSettings = OperationCallSettings.newBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -456,6 +560,134 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
           .updateBackendBucketSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .addSignedUrlKeyBackendBucketOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<AddSignedUrlKeyBackendBucketHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .deleteBackendBucketOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteBackendBucketHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .deleteSignedUrlKeyBackendBucketOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteSignedUrlKeyBackendBucketHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertBackendBucketOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertBackendBucketHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .patchBackendBucketOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<PatchBackendBucketHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .updateBackendBucketOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<UpdateBackendBucketHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -465,14 +697,26 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
 
       addSignedUrlKeyBackendBucketSettings =
           settings.addSignedUrlKeyBackendBucketSettings.toBuilder();
+      addSignedUrlKeyBackendBucketOperationSettings =
+          settings.addSignedUrlKeyBackendBucketOperationSettings.toBuilder();
       deleteBackendBucketSettings = settings.deleteBackendBucketSettings.toBuilder();
+      deleteBackendBucketOperationSettings =
+          settings.deleteBackendBucketOperationSettings.toBuilder();
       deleteSignedUrlKeyBackendBucketSettings =
           settings.deleteSignedUrlKeyBackendBucketSettings.toBuilder();
+      deleteSignedUrlKeyBackendBucketOperationSettings =
+          settings.deleteSignedUrlKeyBackendBucketOperationSettings.toBuilder();
       getBackendBucketSettings = settings.getBackendBucketSettings.toBuilder();
       insertBackendBucketSettings = settings.insertBackendBucketSettings.toBuilder();
+      insertBackendBucketOperationSettings =
+          settings.insertBackendBucketOperationSettings.toBuilder();
       listBackendBucketsSettings = settings.listBackendBucketsSettings.toBuilder();
       patchBackendBucketSettings = settings.patchBackendBucketSettings.toBuilder();
+      patchBackendBucketOperationSettings =
+          settings.patchBackendBucketOperationSettings.toBuilder();
       updateBackendBucketSettings = settings.updateBackendBucketSettings.toBuilder();
+      updateBackendBucketOperationSettings =
+          settings.updateBackendBucketOperationSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -508,16 +752,42 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
       return addSignedUrlKeyBackendBucketSettings;
     }
 
+    /** Returns the builder for the settings used for calls to addSignedUrlKeyBackendBucket. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+        addSignedUrlKeyBackendBucketOperationSettings() {
+      return addSignedUrlKeyBackendBucketOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to deleteBackendBucket. */
     public UnaryCallSettings.Builder<DeleteBackendBucketHttpRequest, Operation>
         deleteBackendBucketSettings() {
       return deleteBackendBucketSettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteBackendBucket. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+        deleteBackendBucketOperationSettings() {
+      return deleteBackendBucketOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to deleteSignedUrlKeyBackendBucket. */
     public UnaryCallSettings.Builder<DeleteSignedUrlKeyBackendBucketHttpRequest, Operation>
         deleteSignedUrlKeyBackendBucketSettings() {
       return deleteSignedUrlKeyBackendBucketSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to deleteSignedUrlKeyBackendBucket. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+        deleteSignedUrlKeyBackendBucketOperationSettings() {
+      return deleteSignedUrlKeyBackendBucketOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to getBackendBucket. */
@@ -530,6 +800,14 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
     public UnaryCallSettings.Builder<InsertBackendBucketHttpRequest, Operation>
         insertBackendBucketSettings() {
       return insertBackendBucketSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertBackendBucket. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+        insertBackendBucketOperationSettings() {
+      return insertBackendBucketOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listBackendBuckets. */
@@ -545,10 +823,26 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
       return patchBackendBucketSettings;
     }
 
+    /** Returns the builder for the settings used for calls to patchBackendBucket. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+        patchBackendBucketOperationSettings() {
+      return patchBackendBucketOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to updateBackendBucket. */
     public UnaryCallSettings.Builder<UpdateBackendBucketHttpRequest, Operation>
         updateBackendBucketSettings() {
       return updateBackendBucketSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to updateBackendBucket. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+        updateBackendBucketOperationSettings() {
+      return updateBackendBucketOperationSettings;
     }
 
     @Override

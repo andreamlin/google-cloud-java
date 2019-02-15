@@ -20,6 +20,8 @@ import static com.google.cloud.compute.v1.BackendServiceClient.ListBackendServic
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AddSignedUrlKeyBackendServiceHttpRequest;
 import com.google.cloud.compute.v1.AggregatedListBackendServicesHttpRequest;
@@ -49,6 +51,18 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class BackendServiceStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      addSignedUrlKeyBackendServiceOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: addSignedUrlKeyBackendServiceOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<AddSignedUrlKeyBackendServiceHttpRequest, Operation>
       addSignedUrlKeyBackendServiceCallable() {
@@ -71,9 +85,23 @@ public abstract class BackendServiceStub implements BackgroundResource {
         "Not implemented: aggregatedListBackendServicesCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteBackendServiceOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteBackendServiceOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteBackendServiceHttpRequest, Operation> deleteBackendServiceCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteBackendServiceCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSignedUrlKeyBackendServiceOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteSignedUrlKeyBackendServiceOperationCallable()");
   }
 
   @BetaApi
@@ -94,6 +122,13 @@ public abstract class BackendServiceStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: getHealthBackendServiceCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      insertBackendServiceOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertBackendServiceOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<InsertBackendServiceHttpRequest, Operation> insertBackendServiceCallable() {
     throw new UnsupportedOperationException("Not implemented: insertBackendServiceCallable()");
@@ -111,9 +146,23 @@ public abstract class BackendServiceStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: listBackendServicesCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      patchBackendServiceOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: patchBackendServiceOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<PatchBackendServiceHttpRequest, Operation> patchBackendServiceCallable() {
     throw new UnsupportedOperationException("Not implemented: patchBackendServiceCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      setSecurityPolicyBackendServiceOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: setSecurityPolicyBackendServiceOperationCallable()");
   }
 
   @BetaApi
@@ -121,6 +170,13 @@ public abstract class BackendServiceStub implements BackgroundResource {
       setSecurityPolicyBackendServiceCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setSecurityPolicyBackendServiceCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      updateBackendServiceOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: updateBackendServiceOperationCallable()");
   }
 
   @BetaApi

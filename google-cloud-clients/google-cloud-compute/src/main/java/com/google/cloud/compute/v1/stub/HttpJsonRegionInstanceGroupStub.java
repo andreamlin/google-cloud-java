@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.GetRegionInstanceGroupHttpRequest;
@@ -148,6 +150,7 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<GetRegionInstanceGroupHttpRequest, InstanceGroup>
       getRegionInstanceGroupCallable;
@@ -165,6 +168,9 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
       listInstancesRegionInstanceGroupsPagedCallable;
   private final UnaryCallable<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>
       setNamedPortsRegionInstanceGroupCallable;
+  private final OperationCallable<
+          SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNamedPortsRegionInstanceGroupOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -206,6 +212,7 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<GetRegionInstanceGroupHttpRequest, InstanceGroup>
         getRegionInstanceGroupTransportSettings =
@@ -263,8 +270,19 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
             setNamedPortsRegionInstanceGroupTransportSettings,
             settings.setNamedPortsRegionInstanceGroupSettings(),
             clientContext);
+    this.setNamedPortsRegionInstanceGroupOperationCallable =
+        callableFactory.createOperationCallable(
+            setNamedPortsRegionInstanceGroupTransportSettings,
+            settings.setNamedPortsRegionInstanceGroupOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
   }
 
   @BetaApi
@@ -298,6 +316,12 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
           ListInstancesRegionInstanceGroupsHttpRequest, RegionInstanceGroupsListInstances>
       listInstancesRegionInstanceGroupsCallable() {
     return listInstancesRegionInstanceGroupsCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNamedPortsRegionInstanceGroupOperationCallable() {
+    return setNamedPortsRegionInstanceGroupOperationCallable;
   }
 
   @BetaApi

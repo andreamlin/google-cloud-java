@@ -26,6 +26,7 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
@@ -78,9 +79,9 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
               .build();
 
   @InternalApi
-  public static final ApiMethodDescriptor<DeleteGlobalOperationHttpRequest, Void>
+  public static final ApiMethodDescriptor<DeleteGlobalOperationHttpRequest, EmptyMessage>
       deleteGlobalOperationMethodDescriptor =
-          ApiMethodDescriptor.<DeleteGlobalOperationHttpRequest, Void>newBuilder()
+          ApiMethodDescriptor.<DeleteGlobalOperationHttpRequest, EmptyMessage>newBuilder()
               .setFullMethodName("compute.globalOperations.delete")
               .setHttpMethod(HttpMethods.DELETE)
               .setRequestFormatter(
@@ -140,7 +141,8 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
   private final UnaryCallable<
           AggregatedListGlobalOperationsHttpRequest, AggregatedListGlobalOperationsPagedResponse>
       aggregatedListGlobalOperationsPagedCallable;
-  private final UnaryCallable<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationCallable;
+  private final UnaryCallable<DeleteGlobalOperationHttpRequest, EmptyMessage>
+      deleteGlobalOperationCallable;
   private final UnaryCallable<GetGlobalOperationHttpRequest, Operation> getGlobalOperationCallable;
   private final UnaryCallable<ListGlobalOperationsHttpRequest, OperationList>
       listGlobalOperationsCallable;
@@ -194,9 +196,9 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
                 .<AggregatedListGlobalOperationsHttpRequest, OperationAggregatedList>newBuilder()
                 .setMethodDescriptor(aggregatedListGlobalOperationsMethodDescriptor)
                 .build();
-    HttpJsonCallSettings<DeleteGlobalOperationHttpRequest, Void>
+    HttpJsonCallSettings<DeleteGlobalOperationHttpRequest, EmptyMessage>
         deleteGlobalOperationTransportSettings =
-            HttpJsonCallSettings.<DeleteGlobalOperationHttpRequest, Void>newBuilder()
+            HttpJsonCallSettings.<DeleteGlobalOperationHttpRequest, EmptyMessage>newBuilder()
                 .setMethodDescriptor(deleteGlobalOperationMethodDescriptor)
                 .build();
     HttpJsonCallSettings<GetGlobalOperationHttpRequest, Operation>
@@ -258,7 +260,8 @@ public class HttpJsonGlobalOperationStub extends GlobalOperationStub {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteGlobalOperationHttpRequest, Void> deleteGlobalOperationCallable() {
+  public UnaryCallable<DeleteGlobalOperationHttpRequest, EmptyMessage>
+      deleteGlobalOperationCallable() {
     return deleteGlobalOperationCallable;
   }
 

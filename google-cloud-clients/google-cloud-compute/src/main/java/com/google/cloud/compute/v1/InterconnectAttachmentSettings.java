@@ -22,10 +22,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -49,13 +51,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteInterconnectAttachment to 30 seconds:
+ * example, to set the total timeout of getInterconnectAttachment to 30 seconds:
  *
  * <pre>
  * <code>
  * InterconnectAttachmentSettings.Builder interconnectAttachmentSettingsBuilder =
  *     InterconnectAttachmentSettings.newBuilder();
- * interconnectAttachmentSettingsBuilder.deleteInterconnectAttachmentSettings().getRetrySettings().toBuilder()
+ * interconnectAttachmentSettingsBuilder.getInterconnectAttachmentSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * InterconnectAttachmentSettings interconnectAttachmentSettings = interconnectAttachmentSettingsBuilder.build();
  * </code>
@@ -83,6 +85,15 @@ public class InterconnectAttachmentSettings extends ClientSettings<InterconnectA
         .deleteInterconnectAttachmentSettings();
   }
 
+  /** Returns the object with the settings used for calls to deleteInterconnectAttachment. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInterconnectAttachmentOperationSettings() {
+    return ((InterconnectAttachmentStubSettings) getStubSettings())
+        .deleteInterconnectAttachmentOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to getInterconnectAttachment. */
   public UnaryCallSettings<GetInterconnectAttachmentHttpRequest, InterconnectAttachment>
       getInterconnectAttachmentSettings() {
@@ -95,6 +106,15 @@ public class InterconnectAttachmentSettings extends ClientSettings<InterconnectA
       insertInterconnectAttachmentSettings() {
     return ((InterconnectAttachmentStubSettings) getStubSettings())
         .insertInterconnectAttachmentSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertInterconnectAttachment. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      insertInterconnectAttachmentOperationSettings() {
+    return ((InterconnectAttachmentStubSettings) getStubSettings())
+        .insertInterconnectAttachmentOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listInterconnectAttachments. */
@@ -112,6 +132,15 @@ public class InterconnectAttachmentSettings extends ClientSettings<InterconnectA
       patchInterconnectAttachmentSettings() {
     return ((InterconnectAttachmentStubSettings) getStubSettings())
         .patchInterconnectAttachmentSettings();
+  }
+
+  /** Returns the object with the settings used for calls to patchInterconnectAttachment. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      patchInterconnectAttachmentOperationSettings() {
+    return ((InterconnectAttachmentStubSettings) getStubSettings())
+        .patchInterconnectAttachmentOperationSettings();
   }
 
   public static final InterconnectAttachmentSettings create(InterconnectAttachmentStubSettings stub)
@@ -234,6 +263,15 @@ public class InterconnectAttachmentSettings extends ClientSettings<InterconnectA
       return getStubSettingsBuilder().deleteInterconnectAttachmentSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteInterconnectAttachment. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+        deleteInterconnectAttachmentOperationSettings() {
+      return getStubSettingsBuilder().deleteInterconnectAttachmentOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getInterconnectAttachment. */
     public UnaryCallSettings.Builder<GetInterconnectAttachmentHttpRequest, InterconnectAttachment>
         getInterconnectAttachmentSettings() {
@@ -244,6 +282,15 @@ public class InterconnectAttachmentSettings extends ClientSettings<InterconnectA
     public UnaryCallSettings.Builder<InsertInterconnectAttachmentHttpRequest, Operation>
         insertInterconnectAttachmentSettings() {
       return getStubSettingsBuilder().insertInterconnectAttachmentSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertInterconnectAttachment. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+        insertInterconnectAttachmentOperationSettings() {
+      return getStubSettingsBuilder().insertInterconnectAttachmentOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listInterconnectAttachments. */
@@ -259,6 +306,15 @@ public class InterconnectAttachmentSettings extends ClientSettings<InterconnectA
     public UnaryCallSettings.Builder<PatchInterconnectAttachmentHttpRequest, Operation>
         patchInterconnectAttachmentSettings() {
       return getStubSettingsBuilder().patchInterconnectAttachmentSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to patchInterconnectAttachment. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+        patchInterconnectAttachmentOperationSettings() {
+      return getStubSettingsBuilder().patchInterconnectAttachmentOperationSettings();
     }
 
     @Override

@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.TargetTcpProxyClient.ListTargetTcpProx
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteTargetTcpProxyHttpRequest;
 import com.google.cloud.compute.v1.GetTargetTcpProxyHttpRequest;
@@ -41,6 +43,18 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class TargetTcpProxyStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetTcpProxyOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteTargetTcpProxyOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteTargetTcpProxyHttpRequest, Operation> deleteTargetTcpProxyCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteTargetTcpProxyCallable()");
@@ -49,6 +63,13 @@ public abstract class TargetTcpProxyStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetTargetTcpProxyHttpRequest, TargetTcpProxy> getTargetTcpProxyCallable() {
     throw new UnsupportedOperationException("Not implemented: getTargetTcpProxyCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetTcpProxyOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertTargetTcpProxyOperationCallable()");
   }
 
   @BetaApi
@@ -68,11 +89,25 @@ public abstract class TargetTcpProxyStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: listTargetTcpProxiesCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setBackendServiceTargetTcpProxyOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: setBackendServiceTargetTcpProxyOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<SetBackendServiceTargetTcpProxyHttpRequest, Operation>
       setBackendServiceTargetTcpProxyCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setBackendServiceTargetTcpProxyCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setProxyHeaderTargetTcpProxyOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: setProxyHeaderTargetTcpProxyOperationCallable()");
   }
 
   @BetaApi

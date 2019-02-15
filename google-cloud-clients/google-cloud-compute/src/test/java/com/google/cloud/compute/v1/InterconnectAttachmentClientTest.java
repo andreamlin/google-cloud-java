@@ -26,6 +26,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonInterconnectAttachmentStu
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -37,13 +38,13 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.InterconnectAttachmentStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -160,20 +161,20 @@ public class InterconnectAttachmentClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteInterconnectAttachmentTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("deleteInterconnectAttachmentTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockInterconnectAttachments.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectRegionInterconnectAttachmentName interconnectAttachment =
         ProjectRegionInterconnectAttachmentName.of(
             "[PROJECT]", "[REGION]", "[INTERCONNECT_ATTACHMENT]");
 
-    Void actualResponse = client.deleteInterconnectAttachmentAsync(interconnectAttachment).get();
+    EmptyMessage actualResponse =
+        client.deleteInterconnectAttachmentAsync(interconnectAttachment).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -209,7 +210,7 @@ public class InterconnectAttachmentClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -311,20 +312,19 @@ public class InterconnectAttachmentClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertInterconnectAttachmentTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("insertInterconnectAttachmentTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockInterconnectAttachments.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
     InterconnectAttachment interconnectAttachmentResource =
         InterconnectAttachment.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.insertInterconnectAttachmentAsync(region, interconnectAttachmentResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -361,7 +361,7 @@ public class InterconnectAttachmentClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -429,14 +429,10 @@ public class InterconnectAttachmentClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchInterconnectAttachmentTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("patchInterconnectAttachmentTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInterconnectAttachments.addResponse(resultOperation);
+        Operation.newBuilder().setName("patchInterconnectAttachmentTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectRegionInterconnectAttachmentName interconnectAttachment =
         ProjectRegionInterconnectAttachmentName.of(
@@ -445,7 +441,7 @@ public class InterconnectAttachmentClientTest {
         InterconnectAttachment.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .patchInterconnectAttachmentAsync(
                 interconnectAttachment, interconnectAttachmentResource, fieldMask)
@@ -491,7 +487,7 @@ public class InterconnectAttachmentClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

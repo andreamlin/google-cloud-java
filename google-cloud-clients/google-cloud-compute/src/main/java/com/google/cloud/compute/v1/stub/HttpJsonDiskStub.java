@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AggregatedListDisksHttpRequest;
@@ -288,21 +290,32 @@ public class HttpJsonDiskStub extends DiskStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AggregatedListDisksHttpRequest, DiskAggregatedList>
       aggregatedListDisksCallable;
   private final UnaryCallable<AggregatedListDisksHttpRequest, AggregatedListDisksPagedResponse>
       aggregatedListDisksPagedCallable;
   private final UnaryCallable<CreateSnapshotDiskHttpRequest, Operation> createSnapshotDiskCallable;
+  private final OperationCallable<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+      createSnapshotDiskOperationCallable;
   private final UnaryCallable<DeleteDiskHttpRequest, Operation> deleteDiskCallable;
+  private final OperationCallable<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+      deleteDiskOperationCallable;
   private final UnaryCallable<GetDiskHttpRequest, Disk> getDiskCallable;
   private final UnaryCallable<GetIamPolicyDiskHttpRequest, Policy> getIamPolicyDiskCallable;
   private final UnaryCallable<InsertDiskHttpRequest, Operation> insertDiskCallable;
+  private final OperationCallable<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+      insertDiskOperationCallable;
   private final UnaryCallable<ListDisksHttpRequest, DiskList> listDisksCallable;
   private final UnaryCallable<ListDisksHttpRequest, ListDisksPagedResponse> listDisksPagedCallable;
   private final UnaryCallable<ResizeDiskHttpRequest, Operation> resizeDiskCallable;
+  private final OperationCallable<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+      resizeDiskOperationCallable;
   private final UnaryCallable<SetIamPolicyDiskHttpRequest, Policy> setIamPolicyDiskCallable;
   private final UnaryCallable<SetLabelsDiskHttpRequest, Operation> setLabelsDiskCallable;
+  private final OperationCallable<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsDiskOperationCallable;
   private final UnaryCallable<TestIamPermissionsDiskHttpRequest, TestPermissionsResponse>
       testIamPermissionsDiskCallable;
 
@@ -341,6 +354,7 @@ public class HttpJsonDiskStub extends DiskStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListDisksHttpRequest, DiskAggregatedList>
         aggregatedListDisksTransportSettings =
@@ -406,9 +420,21 @@ public class HttpJsonDiskStub extends DiskStub {
             createSnapshotDiskTransportSettings,
             settings.createSnapshotDiskSettings(),
             clientContext);
+    this.createSnapshotDiskOperationCallable =
+        callableFactory.createOperationCallable(
+            createSnapshotDiskTransportSettings,
+            settings.createSnapshotDiskOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.deleteDiskCallable =
         callableFactory.createUnaryCallable(
             deleteDiskTransportSettings, settings.deleteDiskSettings(), clientContext);
+    this.deleteDiskOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteDiskTransportSettings,
+            settings.deleteDiskOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getDiskCallable =
         callableFactory.createUnaryCallable(
             getDiskTransportSettings, settings.getDiskSettings(), clientContext);
@@ -418,6 +444,12 @@ public class HttpJsonDiskStub extends DiskStub {
     this.insertDiskCallable =
         callableFactory.createUnaryCallable(
             insertDiskTransportSettings, settings.insertDiskSettings(), clientContext);
+    this.insertDiskOperationCallable =
+        callableFactory.createOperationCallable(
+            insertDiskTransportSettings,
+            settings.insertDiskOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listDisksCallable =
         callableFactory.createUnaryCallable(
             listDisksTransportSettings, settings.listDisksSettings(), clientContext);
@@ -427,12 +459,24 @@ public class HttpJsonDiskStub extends DiskStub {
     this.resizeDiskCallable =
         callableFactory.createUnaryCallable(
             resizeDiskTransportSettings, settings.resizeDiskSettings(), clientContext);
+    this.resizeDiskOperationCallable =
+        callableFactory.createOperationCallable(
+            resizeDiskTransportSettings,
+            settings.resizeDiskOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setIamPolicyDiskCallable =
         callableFactory.createUnaryCallable(
             setIamPolicyDiskTransportSettings, settings.setIamPolicyDiskSettings(), clientContext);
     this.setLabelsDiskCallable =
         callableFactory.createUnaryCallable(
             setLabelsDiskTransportSettings, settings.setLabelsDiskSettings(), clientContext);
+    this.setLabelsDiskOperationCallable =
+        callableFactory.createOperationCallable(
+            setLabelsDiskTransportSettings,
+            settings.setLabelsDiskOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.testIamPermissionsDiskCallable =
         callableFactory.createUnaryCallable(
             testIamPermissionsDiskTransportSettings,
@@ -440,6 +484,11 @@ public class HttpJsonDiskStub extends DiskStub {
             clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
   }
 
   @BetaApi
@@ -454,9 +503,21 @@ public class HttpJsonDiskStub extends DiskStub {
     return aggregatedListDisksCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+      createSnapshotDiskOperationCallable() {
+    return createSnapshotDiskOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<CreateSnapshotDiskHttpRequest, Operation> createSnapshotDiskCallable() {
     return createSnapshotDiskCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+      deleteDiskOperationCallable() {
+    return deleteDiskOperationCallable;
   }
 
   @BetaApi
@@ -474,6 +535,12 @@ public class HttpJsonDiskStub extends DiskStub {
     return getIamPolicyDiskCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+      insertDiskOperationCallable() {
+    return insertDiskOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<InsertDiskHttpRequest, Operation> insertDiskCallable() {
     return insertDiskCallable;
@@ -489,6 +556,12 @@ public class HttpJsonDiskStub extends DiskStub {
     return listDisksCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+      resizeDiskOperationCallable() {
+    return resizeDiskOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<ResizeDiskHttpRequest, Operation> resizeDiskCallable() {
     return resizeDiskCallable;
@@ -497,6 +570,12 @@ public class HttpJsonDiskStub extends DiskStub {
   @BetaApi
   public UnaryCallable<SetIamPolicyDiskHttpRequest, Policy> setIamPolicyDiskCallable() {
     return setIamPolicyDiskCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsDiskOperationCallable() {
+    return setLabelsDiskOperationCallable;
   }
 
   @BetaApi

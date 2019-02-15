@@ -31,6 +31,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonRegionInstanceGroupManage
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -42,11 +43,11 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.RegionInstanceGroupManagerStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -104,14 +105,13 @@ public class RegionInstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void abandonInstancesRegionInstanceGroupManagerTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("abandonInstancesRegionInstanceGroupManagerTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockRegionInstanceGroupManagers.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
@@ -120,7 +120,7 @@ public class RegionInstanceGroupManagerClientTest {
         regionInstanceGroupManagersAbandonInstancesRequestResource =
             RegionInstanceGroupManagersAbandonInstancesRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .abandonInstancesRegionInstanceGroupManagerAsync(
                 instanceGroupManager, regionInstanceGroupManagersAbandonInstancesRequestResource)
@@ -166,27 +166,27 @@ public class RegionInstanceGroupManagerClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void deleteRegionInstanceGroupManagerTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("deleteRegionInstanceGroupManagerTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockRegionInstanceGroupManagers.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
             "[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
 
-    Void actualResponse = client.deleteRegionInstanceGroupManagerAsync(instanceGroupManager).get();
+    EmptyMessage actualResponse =
+        client.deleteRegionInstanceGroupManagerAsync(instanceGroupManager).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -222,21 +222,20 @@ public class RegionInstanceGroupManagerClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void deleteInstancesRegionInstanceGroupManagerTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("deleteInstancesRegionInstanceGroupManagerTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockRegionInstanceGroupManagers.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
@@ -245,7 +244,7 @@ public class RegionInstanceGroupManagerClientTest {
         regionInstanceGroupManagersDeleteInstancesRequestResource =
             RegionInstanceGroupManagersDeleteInstancesRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .deleteInstancesRegionInstanceGroupManagerAsync(
                 instanceGroupManager, regionInstanceGroupManagersDeleteInstancesRequestResource)
@@ -291,7 +290,7 @@ public class RegionInstanceGroupManagerClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -377,19 +376,18 @@ public class RegionInstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertRegionInstanceGroupManagerTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("insertRegionInstanceGroupManagerTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockRegionInstanceGroupManagers.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
     InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.insertRegionInstanceGroupManagerAsync(region, instanceGroupManagerResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -425,7 +423,7 @@ public class RegionInstanceGroupManagerClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -543,14 +541,13 @@ public class RegionInstanceGroupManagerClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchRegionInstanceGroupManagerTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("patchRegionInstanceGroupManagerTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockRegionInstanceGroupManagers.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
@@ -558,7 +555,7 @@ public class RegionInstanceGroupManagerClientTest {
     InstanceGroupManager instanceGroupManagerResource = InstanceGroupManager.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .patchRegionInstanceGroupManagerAsync(
                 instanceGroupManager, instanceGroupManagerResource, fieldMask)
@@ -603,21 +600,20 @@ public class RegionInstanceGroupManagerClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void recreateInstancesRegionInstanceGroupManagerTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("recreateInstancesRegionInstanceGroupManagerTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockRegionInstanceGroupManagers.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
@@ -625,7 +621,7 @@ public class RegionInstanceGroupManagerClientTest {
     RegionInstanceGroupManagersRecreateRequest regionInstanceGroupManagersRecreateRequestResource =
         RegionInstanceGroupManagersRecreateRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .recreateInstancesRegionInstanceGroupManagerAsync(
                 instanceGroupManager, regionInstanceGroupManagersRecreateRequestResource)
@@ -671,28 +667,27 @@ public class RegionInstanceGroupManagerClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void resizeRegionInstanceGroupManagerTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("resizeRegionInstanceGroupManagerTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockRegionInstanceGroupManagers.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     Integer size = 3530753;
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
             "[PROJECT]", "[REGION]", "[INSTANCE_GROUP_MANAGER]");
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.resizeRegionInstanceGroupManagerAsync(size, instanceGroupManager).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -730,21 +725,20 @@ public class RegionInstanceGroupManagerClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setInstanceTemplateRegionInstanceGroupManagerTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("setInstanceTemplateRegionInstanceGroupManagerTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockRegionInstanceGroupManagers.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
@@ -753,7 +747,7 @@ public class RegionInstanceGroupManagerClientTest {
         regionInstanceGroupManagersSetTemplateRequestResource =
             RegionInstanceGroupManagersSetTemplateRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setInstanceTemplateRegionInstanceGroupManagerAsync(
                 instanceGroupManager, regionInstanceGroupManagersSetTemplateRequestResource)
@@ -799,21 +793,20 @@ public class RegionInstanceGroupManagerClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setTargetPoolsRegionInstanceGroupManagerTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("setTargetPoolsRegionInstanceGroupManagerTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockRegionInstanceGroupManagers.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectRegionInstanceGroupManagerName instanceGroupManager =
         ProjectRegionInstanceGroupManagerName.of(
@@ -822,7 +815,7 @@ public class RegionInstanceGroupManagerClientTest {
         regionInstanceGroupManagersSetTargetPoolsRequestResource =
             RegionInstanceGroupManagersSetTargetPoolsRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setTargetPoolsRegionInstanceGroupManagerAsync(
                 instanceGroupManager, regionInstanceGroupManagersSetTargetPoolsRequestResource)
@@ -868,7 +861,7 @@ public class RegionInstanceGroupManagerClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

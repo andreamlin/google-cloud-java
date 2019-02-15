@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteTargetHttpsProxy to 30 seconds:
+ * example, to set the total timeout of getTargetHttpsProxy to 30 seconds:
  *
  * <pre>
  * <code>
  * TargetHttpsProxySettings.Builder targetHttpsProxySettingsBuilder =
  *     TargetHttpsProxySettings.newBuilder();
- * targetHttpsProxySettingsBuilder.deleteTargetHttpsProxySettings().getRetrySettings().toBuilder()
+ * targetHttpsProxySettingsBuilder.getTargetHttpsProxySettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * TargetHttpsProxySettings targetHttpsProxySettings = targetHttpsProxySettingsBuilder.build();
  * </code>
@@ -69,6 +71,15 @@ public class TargetHttpsProxySettings extends ClientSettings<TargetHttpsProxySet
     return ((TargetHttpsProxyStubSettings) getStubSettings()).deleteTargetHttpsProxySettings();
   }
 
+  /** Returns the object with the settings used for calls to deleteTargetHttpsProxy. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetHttpsProxyOperationSettings() {
+    return ((TargetHttpsProxyStubSettings) getStubSettings())
+        .deleteTargetHttpsProxyOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to getTargetHttpsProxy. */
   public UnaryCallSettings<GetTargetHttpsProxyHttpRequest, TargetHttpsProxy>
       getTargetHttpsProxySettings() {
@@ -79,6 +90,15 @@ public class TargetHttpsProxySettings extends ClientSettings<TargetHttpsProxySet
   public UnaryCallSettings<InsertTargetHttpsProxyHttpRequest, Operation>
       insertTargetHttpsProxySettings() {
     return ((TargetHttpsProxyStubSettings) getStubSettings()).insertTargetHttpsProxySettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertTargetHttpsProxy. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetHttpsProxyOperationSettings() {
+    return ((TargetHttpsProxyStubSettings) getStubSettings())
+        .insertTargetHttpsProxyOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listTargetHttpsProxies. */
@@ -97,11 +117,31 @@ public class TargetHttpsProxySettings extends ClientSettings<TargetHttpsProxySet
         .setQuicOverrideTargetHttpsProxySettings();
   }
 
+  /** Returns the object with the settings used for calls to setQuicOverrideTargetHttpsProxy. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          SetQuicOverrideTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setQuicOverrideTargetHttpsProxyOperationSettings() {
+    return ((TargetHttpsProxyStubSettings) getStubSettings())
+        .setQuicOverrideTargetHttpsProxyOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to setSslCertificatesTargetHttpsProxy. */
   public UnaryCallSettings<SetSslCertificatesTargetHttpsProxyHttpRequest, Operation>
       setSslCertificatesTargetHttpsProxySettings() {
     return ((TargetHttpsProxyStubSettings) getStubSettings())
         .setSslCertificatesTargetHttpsProxySettings();
+  }
+
+  /** Returns the object with the settings used for calls to setSslCertificatesTargetHttpsProxy. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          SetSslCertificatesTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setSslCertificatesTargetHttpsProxyOperationSettings() {
+    return ((TargetHttpsProxyStubSettings) getStubSettings())
+        .setSslCertificatesTargetHttpsProxyOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to setSslPolicyTargetHttpsProxy. */
@@ -111,10 +151,28 @@ public class TargetHttpsProxySettings extends ClientSettings<TargetHttpsProxySet
         .setSslPolicyTargetHttpsProxySettings();
   }
 
+  /** Returns the object with the settings used for calls to setSslPolicyTargetHttpsProxy. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<SetSslPolicyTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setSslPolicyTargetHttpsProxyOperationSettings() {
+    return ((TargetHttpsProxyStubSettings) getStubSettings())
+        .setSslPolicyTargetHttpsProxyOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to setUrlMapTargetHttpsProxy. */
   public UnaryCallSettings<SetUrlMapTargetHttpsProxyHttpRequest, Operation>
       setUrlMapTargetHttpsProxySettings() {
     return ((TargetHttpsProxyStubSettings) getStubSettings()).setUrlMapTargetHttpsProxySettings();
+  }
+
+  /** Returns the object with the settings used for calls to setUrlMapTargetHttpsProxy. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<SetUrlMapTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setUrlMapTargetHttpsProxyOperationSettings() {
+    return ((TargetHttpsProxyStubSettings) getStubSettings())
+        .setUrlMapTargetHttpsProxyOperationSettings();
   }
 
   public static final TargetHttpsProxySettings create(TargetHttpsProxyStubSettings stub)
@@ -225,6 +283,15 @@ public class TargetHttpsProxySettings extends ClientSettings<TargetHttpsProxySet
       return getStubSettingsBuilder().deleteTargetHttpsProxySettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteTargetHttpsProxy. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+        deleteTargetHttpsProxyOperationSettings() {
+      return getStubSettingsBuilder().deleteTargetHttpsProxyOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getTargetHttpsProxy. */
     public UnaryCallSettings.Builder<GetTargetHttpsProxyHttpRequest, TargetHttpsProxy>
         getTargetHttpsProxySettings() {
@@ -235,6 +302,15 @@ public class TargetHttpsProxySettings extends ClientSettings<TargetHttpsProxySet
     public UnaryCallSettings.Builder<InsertTargetHttpsProxyHttpRequest, Operation>
         insertTargetHttpsProxySettings() {
       return getStubSettingsBuilder().insertTargetHttpsProxySettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertTargetHttpsProxy. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+        insertTargetHttpsProxyOperationSettings() {
+      return getStubSettingsBuilder().insertTargetHttpsProxyOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listTargetHttpsProxies. */
@@ -252,6 +328,15 @@ public class TargetHttpsProxySettings extends ClientSettings<TargetHttpsProxySet
       return getStubSettingsBuilder().setQuicOverrideTargetHttpsProxySettings();
     }
 
+    /** Returns the builder for the settings used for calls to setQuicOverrideTargetHttpsProxy. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetQuicOverrideTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+        setQuicOverrideTargetHttpsProxyOperationSettings() {
+      return getStubSettingsBuilder().setQuicOverrideTargetHttpsProxyOperationSettings();
+    }
+
     /**
      * Returns the builder for the settings used for calls to setSslCertificatesTargetHttpsProxy.
      */
@@ -260,16 +345,45 @@ public class TargetHttpsProxySettings extends ClientSettings<TargetHttpsProxySet
       return getStubSettingsBuilder().setSslCertificatesTargetHttpsProxySettings();
     }
 
+    /**
+     * Returns the builder for the settings used for calls to setSslCertificatesTargetHttpsProxy.
+     */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetSslCertificatesTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+        setSslCertificatesTargetHttpsProxyOperationSettings() {
+      return getStubSettingsBuilder().setSslCertificatesTargetHttpsProxyOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to setSslPolicyTargetHttpsProxy. */
     public UnaryCallSettings.Builder<SetSslPolicyTargetHttpsProxyHttpRequest, Operation>
         setSslPolicyTargetHttpsProxySettings() {
       return getStubSettingsBuilder().setSslPolicyTargetHttpsProxySettings();
     }
 
+    /** Returns the builder for the settings used for calls to setSslPolicyTargetHttpsProxy. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetSslPolicyTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+        setSslPolicyTargetHttpsProxyOperationSettings() {
+      return getStubSettingsBuilder().setSslPolicyTargetHttpsProxyOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to setUrlMapTargetHttpsProxy. */
     public UnaryCallSettings.Builder<SetUrlMapTargetHttpsProxyHttpRequest, Operation>
         setUrlMapTargetHttpsProxySettings() {
       return getStubSettingsBuilder().setUrlMapTargetHttpsProxySettings();
+    }
+
+    /** Returns the builder for the settings used for calls to setUrlMapTargetHttpsProxy. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetUrlMapTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+        setUrlMapTargetHttpsProxyOperationSettings() {
+      return getStubSettingsBuilder().setUrlMapTargetHttpsProxyOperationSettings();
     }
 
     @Override

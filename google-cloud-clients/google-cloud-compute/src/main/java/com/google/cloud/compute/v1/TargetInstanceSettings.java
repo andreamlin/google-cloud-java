@@ -22,10 +22,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -49,13 +51,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteTargetInstance to 30 seconds:
+ * example, to set the total timeout of getTargetInstance to 30 seconds:
  *
  * <pre>
  * <code>
  * TargetInstanceSettings.Builder targetInstanceSettingsBuilder =
  *     TargetInstanceSettings.newBuilder();
- * targetInstanceSettingsBuilder.deleteTargetInstanceSettings().getRetrySettings().toBuilder()
+ * targetInstanceSettingsBuilder.getTargetInstanceSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * TargetInstanceSettings targetInstanceSettings = targetInstanceSettingsBuilder.build();
  * </code>
@@ -79,6 +81,14 @@ public class TargetInstanceSettings extends ClientSettings<TargetInstanceSetting
     return ((TargetInstanceStubSettings) getStubSettings()).deleteTargetInstanceSettings();
   }
 
+  /** Returns the object with the settings used for calls to deleteTargetInstance. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetInstanceOperationSettings() {
+    return ((TargetInstanceStubSettings) getStubSettings()).deleteTargetInstanceOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to getTargetInstance. */
   public UnaryCallSettings<GetTargetInstanceHttpRequest, TargetInstance>
       getTargetInstanceSettings() {
@@ -89,6 +99,14 @@ public class TargetInstanceSettings extends ClientSettings<TargetInstanceSetting
   public UnaryCallSettings<InsertTargetInstanceHttpRequest, Operation>
       insertTargetInstanceSettings() {
     return ((TargetInstanceStubSettings) getStubSettings()).insertTargetInstanceSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertTargetInstance. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetInstanceOperationSettings() {
+    return ((TargetInstanceStubSettings) getStubSettings()).insertTargetInstanceOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listTargetInstances. */
@@ -215,6 +233,15 @@ public class TargetInstanceSettings extends ClientSettings<TargetInstanceSetting
       return getStubSettingsBuilder().deleteTargetInstanceSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteTargetInstance. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+        deleteTargetInstanceOperationSettings() {
+      return getStubSettingsBuilder().deleteTargetInstanceOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getTargetInstance. */
     public UnaryCallSettings.Builder<GetTargetInstanceHttpRequest, TargetInstance>
         getTargetInstanceSettings() {
@@ -225,6 +252,15 @@ public class TargetInstanceSettings extends ClientSettings<TargetInstanceSetting
     public UnaryCallSettings.Builder<InsertTargetInstanceHttpRequest, Operation>
         insertTargetInstanceSettings() {
       return getStubSettingsBuilder().insertTargetInstanceSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertTargetInstance. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+        insertTargetInstanceOperationSettings() {
+      return getStubSettingsBuilder().insertTargetInstanceOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listTargetInstances. */

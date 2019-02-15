@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.SslPolicyStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (SslPolicyClient sslPolicyClient = SslPolicyClient.create()) {
  *   ProjectGlobalSslPolicyName sslPolicy = ProjectGlobalSslPolicyName.of("[PROJECT]", "[SSL_POLICY]");
- *   Operation response = sslPolicyClient.deleteSslPolicy(sslPolicy);
+ *   SslPolicy response = sslPolicyClient.getSslPolicy(sslPolicy);
  * }
  * </code>
  * </pre>
@@ -103,6 +106,7 @@ import javax.annotation.Generated;
 public class SslPolicyClient implements BackgroundResource {
   private final SslPolicySettings settings;
   private final SslPolicyStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of SslPolicyClient with default settings. */
   public static final SslPolicyClient create() throws IOException {
@@ -133,12 +137,14 @@ public class SslPolicyClient implements BackgroundResource {
   protected SslPolicyClient(SslPolicySettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((SslPolicyStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected SslPolicyClient(SslPolicyStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final SslPolicySettings getSettings() {
@@ -150,32 +156,14 @@ public class SslPolicyClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Deletes the specified SSL policy. The SSL policy resource can be deleted only if it is not in
-   * use by any TargetHttpsProxy or TargetSslProxy resources.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (SslPolicyClient sslPolicyClient = SslPolicyClient.create()) {
-   *   ProjectGlobalSslPolicyName sslPolicy = ProjectGlobalSslPolicyName.of("[PROJECT]", "[SSL_POLICY]");
-   *   Operation response = sslPolicyClient.deleteSslPolicy(sslPolicy);
-   * }
-   * </code></pre>
-   *
-   * @param sslPolicy Name of the SSL policy to delete. The name must be 1-63 characters long, and
-   *     comply with RFC1035.
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation deleteSslPolicy(ProjectGlobalSslPolicyName sslPolicy) {
-
-    DeleteSslPolicyHttpRequest request =
-        DeleteSslPolicyHttpRequest.newBuilder()
-            .setSslPolicy(sslPolicy == null ? null : sslPolicy.toString())
-            .build();
-    return deleteSslPolicy(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -188,7 +176,7 @@ public class SslPolicyClient implements BackgroundResource {
    * <pre><code>
    * try (SslPolicyClient sslPolicyClient = SslPolicyClient.create()) {
    *   ProjectGlobalSslPolicyName sslPolicy = ProjectGlobalSslPolicyName.of("[PROJECT]", "[SSL_POLICY]");
-   *   Operation response = sslPolicyClient.deleteSslPolicy(sslPolicy.toString());
+   *   sslPolicyClient.deleteSslPolicyAsync(sslPolicy).get();
    * }
    * </code></pre>
    *
@@ -196,12 +184,43 @@ public class SslPolicyClient implements BackgroundResource {
    *     comply with RFC1035.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSslPolicy(String sslPolicy) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSslPolicyAsync(
+      ProjectGlobalSslPolicyName sslPolicy) {
+
+    DeleteSslPolicyHttpRequest request =
+        DeleteSslPolicyHttpRequest.newBuilder()
+            .setSslPolicy(sslPolicy == null ? null : sslPolicy.toString())
+            .build();
+    return deleteSslPolicyAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified SSL policy. The SSL policy resource can be deleted only if it is not in
+   * use by any TargetHttpsProxy or TargetSslProxy resources.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SslPolicyClient sslPolicyClient = SslPolicyClient.create()) {
+   *   ProjectGlobalSslPolicyName sslPolicy = ProjectGlobalSslPolicyName.of("[PROJECT]", "[SSL_POLICY]");
+   *   sslPolicyClient.deleteSslPolicyAsync(sslPolicy.toString()).get();
+   * }
+   * </code></pre>
+   *
+   * @param sslPolicy Name of the SSL policy to delete. The name must be 1-63 characters long, and
+   *     comply with RFC1035.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSslPolicyAsync(String sslPolicy) {
 
     DeleteSslPolicyHttpRequest request =
         DeleteSslPolicyHttpRequest.newBuilder().setSslPolicy(sslPolicy).build();
-    return deleteSslPolicy(request);
+    return deleteSslPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -217,16 +236,43 @@ public class SslPolicyClient implements BackgroundResource {
    *   DeleteSslPolicyHttpRequest request = DeleteSslPolicyHttpRequest.newBuilder()
    *     .setSslPolicy(sslPolicy.toString())
    *     .build();
-   *   Operation response = sslPolicyClient.deleteSslPolicy(request);
+   *   sslPolicyClient.deleteSslPolicyAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSslPolicy(DeleteSslPolicyHttpRequest request) {
-    return deleteSslPolicyCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSslPolicyAsync(
+      DeleteSslPolicyHttpRequest request) {
+    return deleteSslPolicyOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified SSL policy. The SSL policy resource can be deleted only if it is not in
+   * use by any TargetHttpsProxy or TargetSslProxy resources.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SslPolicyClient sslPolicyClient = SslPolicyClient.create()) {
+   *   ProjectGlobalSslPolicyName sslPolicy = ProjectGlobalSslPolicyName.of("[PROJECT]", "[SSL_POLICY]");
+   *   DeleteSslPolicyHttpRequest request = DeleteSslPolicyHttpRequest.newBuilder()
+   *     .setSslPolicy(sslPolicy.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = sslPolicyClient.deleteSslPolicyOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSslPolicyOperationCallable() {
+    return stub.deleteSslPolicyOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -244,7 +290,7 @@ public class SslPolicyClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = sslPolicyClient.deleteSslPolicyCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -363,7 +409,7 @@ public class SslPolicyClient implements BackgroundResource {
    * try (SslPolicyClient sslPolicyClient = SslPolicyClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   SslPolicy sslPolicyResource = SslPolicy.newBuilder().build();
-   *   Operation response = sslPolicyClient.insertSslPolicy(project, sslPolicyResource);
+   *   sslPolicyClient.insertSslPolicyAsync(project, sslPolicyResource).get();
    * }
    * </code></pre>
    *
@@ -374,15 +420,17 @@ public class SslPolicyClient implements BackgroundResource {
    *     the load balancers and the backends.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertSslPolicy(ProjectName project, SslPolicy sslPolicyResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertSslPolicyAsync(
+      ProjectName project, SslPolicy sslPolicyResource) {
 
     InsertSslPolicyHttpRequest request =
         InsertSslPolicyHttpRequest.newBuilder()
             .setProject(project == null ? null : project.toString())
             .setSslPolicyResource(sslPolicyResource)
             .build();
-    return insertSslPolicy(request);
+    return insertSslPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -396,7 +444,7 @@ public class SslPolicyClient implements BackgroundResource {
    * try (SslPolicyClient sslPolicyClient = SslPolicyClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   SslPolicy sslPolicyResource = SslPolicy.newBuilder().build();
-   *   Operation response = sslPolicyClient.insertSslPolicy(project.toString(), sslPolicyResource);
+   *   sslPolicyClient.insertSslPolicyAsync(project.toString(), sslPolicyResource).get();
    * }
    * </code></pre>
    *
@@ -407,15 +455,17 @@ public class SslPolicyClient implements BackgroundResource {
    *     the load balancers and the backends.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertSslPolicy(String project, SslPolicy sslPolicyResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertSslPolicyAsync(
+      String project, SslPolicy sslPolicyResource) {
 
     InsertSslPolicyHttpRequest request =
         InsertSslPolicyHttpRequest.newBuilder()
             .setProject(project)
             .setSslPolicyResource(sslPolicyResource)
             .build();
-    return insertSslPolicy(request);
+    return insertSslPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -433,16 +483,45 @@ public class SslPolicyClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setSslPolicyResource(sslPolicyResource)
    *     .build();
-   *   Operation response = sslPolicyClient.insertSslPolicy(request);
+   *   sslPolicyClient.insertSslPolicyAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertSslPolicy(InsertSslPolicyHttpRequest request) {
-    return insertSslPolicyCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertSslPolicyAsync(
+      InsertSslPolicyHttpRequest request) {
+    return insertSslPolicyOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified SSL policy resource. Gets a list of available SSL policies by making a
+   * list() request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SslPolicyClient sslPolicyClient = SslPolicyClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   SslPolicy sslPolicyResource = SslPolicy.newBuilder().build();
+   *   InsertSslPolicyHttpRequest request = InsertSslPolicyHttpRequest.newBuilder()
+   *     .setProject(project.toString())
+   *     .setSslPolicyResource(sslPolicyResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = sslPolicyClient.insertSslPolicyOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      insertSslPolicyOperationCallable() {
+    return stub.insertSslPolicyOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -462,7 +541,7 @@ public class SslPolicyClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = sslPolicyClient.insertSslPolicyCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -721,7 +800,7 @@ public class SslPolicyClient implements BackgroundResource {
    *   ProjectGlobalSslPolicyName sslPolicy = ProjectGlobalSslPolicyName.of("[PROJECT]", "[SSL_POLICY]");
    *   SslPolicy sslPolicyResource = SslPolicy.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = sslPolicyClient.patchSslPolicy(sslPolicy, sslPolicyResource, fieldMask);
+   *   sslPolicyClient.patchSslPolicyAsync(sslPolicy, sslPolicyResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -737,8 +816,9 @@ public class SslPolicyClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchSslPolicy(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchSslPolicyAsync(
       ProjectGlobalSslPolicyName sslPolicy, SslPolicy sslPolicyResource, List<String> fieldMask) {
 
     PatchSslPolicyHttpRequest request =
@@ -747,7 +827,7 @@ public class SslPolicyClient implements BackgroundResource {
             .setSslPolicyResource(sslPolicyResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchSslPolicy(request);
+    return patchSslPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -761,7 +841,7 @@ public class SslPolicyClient implements BackgroundResource {
    *   ProjectGlobalSslPolicyName sslPolicy = ProjectGlobalSslPolicyName.of("[PROJECT]", "[SSL_POLICY]");
    *   SslPolicy sslPolicyResource = SslPolicy.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = sslPolicyClient.patchSslPolicy(sslPolicy.toString(), sslPolicyResource, fieldMask);
+   *   sslPolicyClient.patchSslPolicyAsync(sslPolicy.toString(), sslPolicyResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -777,8 +857,9 @@ public class SslPolicyClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchSslPolicy(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchSslPolicyAsync(
       String sslPolicy, SslPolicy sslPolicyResource, List<String> fieldMask) {
 
     PatchSslPolicyHttpRequest request =
@@ -787,7 +868,7 @@ public class SslPolicyClient implements BackgroundResource {
             .setSslPolicyResource(sslPolicyResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchSslPolicy(request);
+    return patchSslPolicyAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -806,16 +887,46 @@ public class SslPolicyClient implements BackgroundResource {
    *     .setSslPolicyResource(sslPolicyResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = sslPolicyClient.patchSslPolicy(request);
+   *   sslPolicyClient.patchSslPolicyAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchSslPolicy(PatchSslPolicyHttpRequest request) {
-    return patchSslPolicyCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchSslPolicyAsync(
+      PatchSslPolicyHttpRequest request) {
+    return patchSslPolicyOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Patches the specified SSL policy with the data included in the request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (SslPolicyClient sslPolicyClient = SslPolicyClient.create()) {
+   *   ProjectGlobalSslPolicyName sslPolicy = ProjectGlobalSslPolicyName.of("[PROJECT]", "[SSL_POLICY]");
+   *   SslPolicy sslPolicyResource = SslPolicy.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   PatchSslPolicyHttpRequest request = PatchSslPolicyHttpRequest.newBuilder()
+   *     .setSslPolicy(sslPolicy.toString())
+   *     .setSslPolicyResource(sslPolicyResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = sslPolicyClient.patchSslPolicyOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<PatchSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchSslPolicyOperationCallable() {
+    return stub.patchSslPolicyOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -836,7 +947,7 @@ public class SslPolicyClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = sslPolicyClient.patchSslPolicyCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.GlobalForwardingRuleClient.ListGlobalF
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteGlobalForwardingRuleHttpRequest;
 import com.google.cloud.compute.v1.ForwardingRule;
@@ -40,6 +42,18 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class GlobalForwardingRuleStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      deleteGlobalForwardingRuleOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteGlobalForwardingRuleOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteGlobalForwardingRuleHttpRequest, Operation>
       deleteGlobalForwardingRuleCallable() {
@@ -51,6 +65,13 @@ public abstract class GlobalForwardingRuleStub implements BackgroundResource {
   public UnaryCallable<GetGlobalForwardingRuleHttpRequest, ForwardingRule>
       getGlobalForwardingRuleCallable() {
     throw new UnsupportedOperationException("Not implemented: getGlobalForwardingRuleCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      insertGlobalForwardingRuleOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertGlobalForwardingRuleOperationCallable()");
   }
 
   @BetaApi
@@ -71,6 +92,13 @@ public abstract class GlobalForwardingRuleStub implements BackgroundResource {
   public UnaryCallable<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList>
       listGlobalForwardingRulesCallable() {
     throw new UnsupportedOperationException("Not implemented: listGlobalForwardingRulesCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetGlobalForwardingRuleOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: setTargetGlobalForwardingRuleOperationCallable()");
   }
 
   @BetaApi

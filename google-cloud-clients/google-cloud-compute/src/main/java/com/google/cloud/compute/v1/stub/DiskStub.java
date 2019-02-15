@@ -20,6 +20,8 @@ import static com.google.cloud.compute.v1.DiskClient.ListDisksPagedResponse;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AggregatedListDisksHttpRequest;
 import com.google.cloud.compute.v1.CreateSnapshotDiskHttpRequest;
@@ -50,6 +52,11 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class DiskStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
   @BetaApi
   public UnaryCallable<AggregatedListDisksHttpRequest, AggregatedListDisksPagedResponse>
       aggregatedListDisksPagedCallable() {
@@ -62,9 +69,22 @@ public abstract class DiskStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: aggregatedListDisksCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+      createSnapshotDiskOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: createSnapshotDiskOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<CreateSnapshotDiskHttpRequest, Operation> createSnapshotDiskCallable() {
     throw new UnsupportedOperationException("Not implemented: createSnapshotDiskCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+      deleteDiskOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deleteDiskOperationCallable()");
   }
 
   @BetaApi
@@ -82,6 +102,12 @@ public abstract class DiskStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: getIamPolicyDiskCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+      insertDiskOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: insertDiskOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<InsertDiskHttpRequest, Operation> insertDiskCallable() {
     throw new UnsupportedOperationException("Not implemented: insertDiskCallable()");
@@ -97,6 +123,12 @@ public abstract class DiskStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: listDisksCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+      resizeDiskOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: resizeDiskOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<ResizeDiskHttpRequest, Operation> resizeDiskCallable() {
     throw new UnsupportedOperationException("Not implemented: resizeDiskCallable()");
@@ -105,6 +137,12 @@ public abstract class DiskStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<SetIamPolicyDiskHttpRequest, Policy> setIamPolicyDiskCallable() {
     throw new UnsupportedOperationException("Not implemented: setIamPolicyDiskCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsDiskOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: setLabelsDiskOperationCallable()");
   }
 
   @BetaApi

@@ -41,7 +41,8 @@ import javax.annotation.Generated;
  */
 @Generated("by gapic-generator")
 @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-public class HttpJsonRegionAutoscalerCallableFactory implements HttpJsonStubCallableFactory<Operation, GlobalOperationStub> {
+public class HttpJsonRegionAutoscalerCallableFactory
+    implements HttpJsonStubCallableFactory<Operation, GlobalOperationStub> {
   @Override
   public <RequestT, ResponseT> UnaryCallable<RequestT, ResponseT> createUnaryCallable(
       HttpJsonCallSettings<RequestT, ResponseT> httpJsonCallSettings,
@@ -55,18 +56,21 @@ public class HttpJsonRegionAutoscalerCallableFactory implements HttpJsonStubCall
       "The surface for long-running operations is not stable yet and may change in the future.")
   @Override
   public <RequestT, ResponseT, MetadataT>
-  OperationCallable<RequestT, ResponseT, MetadataT> createOperationCallable(
-      HttpJsonCallSettings<RequestT, Operation>
-          httpJsonCallSettings,
-      OperationCallSettings<RequestT, ResponseT, MetadataT> operationCallSettings,
-      ClientContext clientContext,
-      GlobalOperationStub operationsStub) {
-
-    UnaryCallable<RequestT, Operation> initialHttpCallable = HttpJsonCallableFactory.createBaseUnaryCallable(httpJsonCallSettings, operationCallSettings.getInitialCallSettings(), clientContext);
-    UnaryCallable<RequestT, OperationSnapshot> initialCallable = new OperationSnapshotCallable<>(initialHttpCallable);
+      OperationCallable<RequestT, ResponseT, MetadataT> createOperationCallable(
+          HttpJsonCallSettings<RequestT, com.google.cloud.compute.v1.Operation>
+              httpJsonCallSettings,
+          OperationCallSettings<RequestT, ResponseT, MetadataT> operationCallSettings,
+          ClientContext clientContext,
+          GlobalOperationStub operationsStub) {
+    UnaryCallable<RequestT, Operation> initialHttpCallable =
+        HttpJsonCallableFactory.createBaseUnaryCallable(
+            httpJsonCallSettings, operationCallSettings.getInitialCallSettings(), clientContext);
+    UnaryCallable<RequestT, OperationSnapshot> initialCallable =
+        new OperationSnapshotCallable<>(initialHttpCallable);
     ComputeLongRunningClient longRunningClient = ComputeLongRunningClient.create(operationsStub);
-    OperationCallable<RequestT, ResponseT, MetadataT> operationCallable = Callables
-        .longRunningOperation(initialCallable, operationCallSettings, clientContext, longRunningClient);
+    OperationCallable<RequestT, ResponseT, MetadataT> operationCallable =
+        Callables.longRunningOperation(
+            initialCallable, operationCallSettings, clientContext, longRunningClient);
     return HttpJsonCallableFactory.createOperationCallable(
         operationCallSettings, clientContext, longRunningClient, initialCallable);
   }

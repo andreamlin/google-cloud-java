@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.RouteClient.ListRoutesPagedResponse;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteRouteHttpRequest;
 import com.google.cloud.compute.v1.GetRouteHttpRequest;
@@ -39,6 +41,17 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class RouteStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRouteOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deleteRouteOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteRouteHttpRequest, Operation> deleteRouteCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteRouteCallable()");
@@ -47,6 +60,12 @@ public abstract class RouteStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetRouteHttpRequest, Route> getRouteCallable() {
     throw new UnsupportedOperationException("Not implemented: getRouteCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+      insertRouteOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: insertRouteOperationCallable()");
   }
 
   @BetaApi

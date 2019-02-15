@@ -24,13 +24,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -81,13 +86,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of addHealthCheckTargetPool to 30 seconds:
+ * example, to set the total timeout of getTargetPool to 30 seconds:
  *
  * <pre>
  * <code>
  * TargetPoolStubSettings.Builder targetPoolSettingsBuilder =
  *     TargetPoolStubSettings.newBuilder();
- * targetPoolSettingsBuilder.addHealthCheckTargetPoolSettings().getRetrySettings().toBuilder()
+ * targetPoolSettingsBuilder.getTargetPoolSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * TargetPoolStubSettings targetPoolSettings = targetPoolSettingsBuilder.build();
  * </code>
@@ -109,27 +114,44 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
 
   private final UnaryCallSettings<AddHealthCheckTargetPoolHttpRequest, Operation>
       addHealthCheckTargetPoolSettings;
+  private final OperationCallSettings<
+          AddHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      addHealthCheckTargetPoolOperationSettings;
   private final UnaryCallSettings<AddInstanceTargetPoolHttpRequest, Operation>
       addInstanceTargetPoolSettings;
+  private final OperationCallSettings<AddInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      addInstanceTargetPoolOperationSettings;
   private final PagedCallSettings<
           AggregatedListTargetPoolsHttpRequest,
           TargetPoolAggregatedList,
           AggregatedListTargetPoolsPagedResponse>
       aggregatedListTargetPoolsSettings;
   private final UnaryCallSettings<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolSettings;
+  private final OperationCallSettings<DeleteTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetPoolOperationSettings;
   private final UnaryCallSettings<GetTargetPoolHttpRequest, TargetPool> getTargetPoolSettings;
   private final UnaryCallSettings<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth>
       getHealthTargetPoolSettings;
   private final UnaryCallSettings<InsertTargetPoolHttpRequest, Operation> insertTargetPoolSettings;
+  private final OperationCallSettings<InsertTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetPoolOperationSettings;
   private final PagedCallSettings<
           ListTargetPoolsHttpRequest, TargetPoolList, ListTargetPoolsPagedResponse>
       listTargetPoolsSettings;
   private final UnaryCallSettings<RemoveHealthCheckTargetPoolHttpRequest, Operation>
       removeHealthCheckTargetPoolSettings;
+  private final OperationCallSettings<
+          RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      removeHealthCheckTargetPoolOperationSettings;
   private final UnaryCallSettings<RemoveInstanceTargetPoolHttpRequest, Operation>
       removeInstanceTargetPoolSettings;
+  private final OperationCallSettings<
+          RemoveInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      removeInstanceTargetPoolOperationSettings;
   private final UnaryCallSettings<SetBackupTargetPoolHttpRequest, Operation>
       setBackupTargetPoolSettings;
+  private final OperationCallSettings<SetBackupTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      setBackupTargetPoolOperationSettings;
 
   /** Returns the object with the settings used for calls to addHealthCheckTargetPool. */
   public UnaryCallSettings<AddHealthCheckTargetPoolHttpRequest, Operation>
@@ -137,10 +159,24 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
     return addHealthCheckTargetPoolSettings;
   }
 
+  /** Returns the object with the settings used for calls to addHealthCheckTargetPool. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<AddHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      addHealthCheckTargetPoolOperationSettings() {
+    return addHealthCheckTargetPoolOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to addInstanceTargetPool. */
   public UnaryCallSettings<AddInstanceTargetPoolHttpRequest, Operation>
       addInstanceTargetPoolSettings() {
     return addInstanceTargetPoolSettings;
+  }
+
+  /** Returns the object with the settings used for calls to addInstanceTargetPool. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<AddInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      addInstanceTargetPoolOperationSettings() {
+    return addInstanceTargetPoolOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to aggregatedListTargetPools. */
@@ -155,6 +191,13 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
   /** Returns the object with the settings used for calls to deleteTargetPool. */
   public UnaryCallSettings<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolSettings() {
     return deleteTargetPoolSettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteTargetPool. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetPoolOperationSettings() {
+    return deleteTargetPoolOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getTargetPool. */
@@ -173,6 +216,13 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
     return insertTargetPoolSettings;
   }
 
+  /** Returns the object with the settings used for calls to insertTargetPool. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetPoolOperationSettings() {
+    return insertTargetPoolOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to listTargetPools. */
   public PagedCallSettings<ListTargetPoolsHttpRequest, TargetPoolList, ListTargetPoolsPagedResponse>
       listTargetPoolsSettings() {
@@ -185,16 +235,37 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
     return removeHealthCheckTargetPoolSettings;
   }
 
+  /** Returns the object with the settings used for calls to removeHealthCheckTargetPool. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      removeHealthCheckTargetPoolOperationSettings() {
+    return removeHealthCheckTargetPoolOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to removeInstanceTargetPool. */
   public UnaryCallSettings<RemoveInstanceTargetPoolHttpRequest, Operation>
       removeInstanceTargetPoolSettings() {
     return removeInstanceTargetPoolSettings;
   }
 
+  /** Returns the object with the settings used for calls to removeInstanceTargetPool. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<RemoveInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      removeInstanceTargetPoolOperationSettings() {
+    return removeInstanceTargetPoolOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to setBackupTargetPool. */
   public UnaryCallSettings<SetBackupTargetPoolHttpRequest, Operation>
       setBackupTargetPoolSettings() {
     return setBackupTargetPoolSettings;
+  }
+
+  /** Returns the object with the settings used for calls to setBackupTargetPool. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<SetBackupTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      setBackupTargetPoolOperationSettings() {
+    return setBackupTargetPoolOperationSettings;
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -273,17 +344,29 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
     super(settingsBuilder);
 
     addHealthCheckTargetPoolSettings = settingsBuilder.addHealthCheckTargetPoolSettings().build();
+    addHealthCheckTargetPoolOperationSettings =
+        settingsBuilder.addHealthCheckTargetPoolOperationSettings().build();
     addInstanceTargetPoolSettings = settingsBuilder.addInstanceTargetPoolSettings().build();
+    addInstanceTargetPoolOperationSettings =
+        settingsBuilder.addInstanceTargetPoolOperationSettings().build();
     aggregatedListTargetPoolsSettings = settingsBuilder.aggregatedListTargetPoolsSettings().build();
     deleteTargetPoolSettings = settingsBuilder.deleteTargetPoolSettings().build();
+    deleteTargetPoolOperationSettings = settingsBuilder.deleteTargetPoolOperationSettings().build();
     getTargetPoolSettings = settingsBuilder.getTargetPoolSettings().build();
     getHealthTargetPoolSettings = settingsBuilder.getHealthTargetPoolSettings().build();
     insertTargetPoolSettings = settingsBuilder.insertTargetPoolSettings().build();
+    insertTargetPoolOperationSettings = settingsBuilder.insertTargetPoolOperationSettings().build();
     listTargetPoolsSettings = settingsBuilder.listTargetPoolsSettings().build();
     removeHealthCheckTargetPoolSettings =
         settingsBuilder.removeHealthCheckTargetPoolSettings().build();
+    removeHealthCheckTargetPoolOperationSettings =
+        settingsBuilder.removeHealthCheckTargetPoolOperationSettings().build();
     removeInstanceTargetPoolSettings = settingsBuilder.removeInstanceTargetPoolSettings().build();
+    removeInstanceTargetPoolOperationSettings =
+        settingsBuilder.removeInstanceTargetPoolOperationSettings().build();
     setBackupTargetPoolSettings = settingsBuilder.setBackupTargetPoolSettings().build();
+    setBackupTargetPoolOperationSettings =
+        settingsBuilder.setBackupTargetPoolOperationSettings().build();
   }
 
   private static final PagedListDescriptor<
@@ -422,8 +505,14 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
 
     private final UnaryCallSettings.Builder<AddHealthCheckTargetPoolHttpRequest, Operation>
         addHealthCheckTargetPoolSettings;
+    private final OperationCallSettings.Builder<
+            AddHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        addHealthCheckTargetPoolOperationSettings;
     private final UnaryCallSettings.Builder<AddInstanceTargetPoolHttpRequest, Operation>
         addInstanceTargetPoolSettings;
+    private final OperationCallSettings.Builder<
+            AddInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        addInstanceTargetPoolOperationSettings;
     private final PagedCallSettings.Builder<
             AggregatedListTargetPoolsHttpRequest,
             TargetPoolAggregatedList,
@@ -431,6 +520,9 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
         aggregatedListTargetPoolsSettings;
     private final UnaryCallSettings.Builder<DeleteTargetPoolHttpRequest, Operation>
         deleteTargetPoolSettings;
+    private final OperationCallSettings.Builder<
+            DeleteTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        deleteTargetPoolOperationSettings;
     private final UnaryCallSettings.Builder<GetTargetPoolHttpRequest, TargetPool>
         getTargetPoolSettings;
     private final UnaryCallSettings.Builder<
@@ -438,15 +530,27 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
         getHealthTargetPoolSettings;
     private final UnaryCallSettings.Builder<InsertTargetPoolHttpRequest, Operation>
         insertTargetPoolSettings;
+    private final OperationCallSettings.Builder<
+            InsertTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        insertTargetPoolOperationSettings;
     private final PagedCallSettings.Builder<
             ListTargetPoolsHttpRequest, TargetPoolList, ListTargetPoolsPagedResponse>
         listTargetPoolsSettings;
     private final UnaryCallSettings.Builder<RemoveHealthCheckTargetPoolHttpRequest, Operation>
         removeHealthCheckTargetPoolSettings;
+    private final OperationCallSettings.Builder<
+            RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        removeHealthCheckTargetPoolOperationSettings;
     private final UnaryCallSettings.Builder<RemoveInstanceTargetPoolHttpRequest, Operation>
         removeInstanceTargetPoolSettings;
+    private final OperationCallSettings.Builder<
+            RemoveInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        removeInstanceTargetPoolOperationSettings;
     private final UnaryCallSettings.Builder<SetBackupTargetPoolHttpRequest, Operation>
         setBackupTargetPoolSettings;
+    private final OperationCallSettings.Builder<
+            SetBackupTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        setBackupTargetPoolOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
         RETRYABLE_CODE_DEFINITIONS;
@@ -491,12 +595,18 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
 
       addHealthCheckTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      addHealthCheckTargetPoolOperationSettings = OperationCallSettings.newBuilder();
+
       addInstanceTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      addInstanceTargetPoolOperationSettings = OperationCallSettings.newBuilder();
 
       aggregatedListTargetPoolsSettings =
           PagedCallSettings.newBuilder(AGGREGATED_LIST_TARGET_POOLS_PAGE_STR_FACT);
 
       deleteTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      deleteTargetPoolOperationSettings = OperationCallSettings.newBuilder();
 
       getTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
@@ -504,13 +614,21 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
 
       insertTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      insertTargetPoolOperationSettings = OperationCallSettings.newBuilder();
+
       listTargetPoolsSettings = PagedCallSettings.newBuilder(LIST_TARGET_POOLS_PAGE_STR_FACT);
 
       removeHealthCheckTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      removeHealthCheckTargetPoolOperationSettings = OperationCallSettings.newBuilder();
+
       removeInstanceTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      removeInstanceTargetPoolOperationSettings = OperationCallSettings.newBuilder();
+
       setBackupTargetPoolSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      setBackupTargetPoolOperationSettings = OperationCallSettings.newBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -594,6 +712,157 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
           .setBackupTargetPoolSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .addHealthCheckTargetPoolOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<AddHealthCheckTargetPoolHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .addInstanceTargetPoolOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<AddInstanceTargetPoolHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .deleteTargetPoolOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteTargetPoolHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertTargetPoolOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertTargetPoolHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .removeHealthCheckTargetPoolOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<RemoveHealthCheckTargetPoolHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .removeInstanceTargetPoolOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<RemoveInstanceTargetPoolHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .setBackupTargetPoolOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<SetBackupTargetPoolHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -602,17 +871,29 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
       super(settings);
 
       addHealthCheckTargetPoolSettings = settings.addHealthCheckTargetPoolSettings.toBuilder();
+      addHealthCheckTargetPoolOperationSettings =
+          settings.addHealthCheckTargetPoolOperationSettings.toBuilder();
       addInstanceTargetPoolSettings = settings.addInstanceTargetPoolSettings.toBuilder();
+      addInstanceTargetPoolOperationSettings =
+          settings.addInstanceTargetPoolOperationSettings.toBuilder();
       aggregatedListTargetPoolsSettings = settings.aggregatedListTargetPoolsSettings.toBuilder();
       deleteTargetPoolSettings = settings.deleteTargetPoolSettings.toBuilder();
+      deleteTargetPoolOperationSettings = settings.deleteTargetPoolOperationSettings.toBuilder();
       getTargetPoolSettings = settings.getTargetPoolSettings.toBuilder();
       getHealthTargetPoolSettings = settings.getHealthTargetPoolSettings.toBuilder();
       insertTargetPoolSettings = settings.insertTargetPoolSettings.toBuilder();
+      insertTargetPoolOperationSettings = settings.insertTargetPoolOperationSettings.toBuilder();
       listTargetPoolsSettings = settings.listTargetPoolsSettings.toBuilder();
       removeHealthCheckTargetPoolSettings =
           settings.removeHealthCheckTargetPoolSettings.toBuilder();
+      removeHealthCheckTargetPoolOperationSettings =
+          settings.removeHealthCheckTargetPoolOperationSettings.toBuilder();
       removeInstanceTargetPoolSettings = settings.removeInstanceTargetPoolSettings.toBuilder();
+      removeInstanceTargetPoolOperationSettings =
+          settings.removeInstanceTargetPoolOperationSettings.toBuilder();
       setBackupTargetPoolSettings = settings.setBackupTargetPoolSettings.toBuilder();
+      setBackupTargetPoolOperationSettings =
+          settings.setBackupTargetPoolOperationSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -651,10 +932,28 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
       return addHealthCheckTargetPoolSettings;
     }
 
+    /** Returns the builder for the settings used for calls to addHealthCheckTargetPool. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            AddHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        addHealthCheckTargetPoolOperationSettings() {
+      return addHealthCheckTargetPoolOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to addInstanceTargetPool. */
     public UnaryCallSettings.Builder<AddInstanceTargetPoolHttpRequest, Operation>
         addInstanceTargetPoolSettings() {
       return addInstanceTargetPoolSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to addInstanceTargetPool. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            AddInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        addInstanceTargetPoolOperationSettings() {
+      return addInstanceTargetPoolOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to aggregatedListTargetPools. */
@@ -670,6 +969,14 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
     public UnaryCallSettings.Builder<DeleteTargetPoolHttpRequest, Operation>
         deleteTargetPoolSettings() {
       return deleteTargetPoolSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to deleteTargetPool. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        deleteTargetPoolOperationSettings() {
+      return deleteTargetPoolOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to getTargetPool. */
@@ -689,6 +996,14 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
       return insertTargetPoolSettings;
     }
 
+    /** Returns the builder for the settings used for calls to insertTargetPool. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        insertTargetPoolOperationSettings() {
+      return insertTargetPoolOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to listTargetPools. */
     public PagedCallSettings.Builder<
             ListTargetPoolsHttpRequest, TargetPoolList, ListTargetPoolsPagedResponse>
@@ -702,16 +1017,42 @@ public class TargetPoolStubSettings extends StubSettings<TargetPoolStubSettings>
       return removeHealthCheckTargetPoolSettings;
     }
 
+    /** Returns the builder for the settings used for calls to removeHealthCheckTargetPool. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        removeHealthCheckTargetPoolOperationSettings() {
+      return removeHealthCheckTargetPoolOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to removeInstanceTargetPool. */
     public UnaryCallSettings.Builder<RemoveInstanceTargetPoolHttpRequest, Operation>
         removeInstanceTargetPoolSettings() {
       return removeInstanceTargetPoolSettings;
     }
 
+    /** Returns the builder for the settings used for calls to removeInstanceTargetPool. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            RemoveInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        removeInstanceTargetPoolOperationSettings() {
+      return removeInstanceTargetPoolOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to setBackupTargetPool. */
     public UnaryCallSettings.Builder<SetBackupTargetPoolHttpRequest, Operation>
         setBackupTargetPoolSettings() {
       return setBackupTargetPoolSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to setBackupTargetPool. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<SetBackupTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        setBackupTargetPoolOperationSettings() {
+      return setBackupTargetPoolOperationSettings;
     }
 
     @Override

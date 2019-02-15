@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.SnapshotClient.ListSnapshotsPagedRespo
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteSnapshotHttpRequest;
 import com.google.cloud.compute.v1.GetIamPolicySnapshotHttpRequest;
@@ -43,6 +45,17 @@ import javax.annotation.Generated;
 @Generated("by gapic-generator")
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class SnapshotStub implements BackgroundResource {
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSnapshotOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deleteSnapshotOperationCallable()");
+  }
 
   @BetaApi
   public UnaryCallable<DeleteSnapshotHttpRequest, Operation> deleteSnapshotCallable() {
@@ -73,6 +86,13 @@ public abstract class SnapshotStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<SetIamPolicySnapshotHttpRequest, Policy> setIamPolicySnapshotCallable() {
     throw new UnsupportedOperationException("Not implemented: setIamPolicySnapshotCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsSnapshotOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: setLabelsSnapshotOperationCallable()");
   }
 
   @BetaApi

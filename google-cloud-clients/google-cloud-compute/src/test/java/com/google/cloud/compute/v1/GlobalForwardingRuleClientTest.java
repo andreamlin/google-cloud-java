@@ -24,6 +24,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonGlobalForwardingRuleStub.
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -35,10 +36,10 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.GlobalForwardingRuleStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -89,19 +90,15 @@ public class GlobalForwardingRuleClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteGlobalForwardingRuleTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteGlobalForwardingRuleTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockGlobalForwardingRules.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteGlobalForwardingRuleTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalForwardingRuleName forwardingRule =
         ProjectGlobalForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
 
-    Void actualResponse = client.deleteGlobalForwardingRuleAsync(forwardingRule).get();
+    EmptyMessage actualResponse = client.deleteGlobalForwardingRuleAsync(forwardingRule).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -136,7 +133,7 @@ public class GlobalForwardingRuleClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -231,19 +228,15 @@ public class GlobalForwardingRuleClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertGlobalForwardingRuleTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertGlobalForwardingRuleTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockGlobalForwardingRules.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertGlobalForwardingRuleTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     ForwardingRule forwardingRuleResource = ForwardingRule.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.insertGlobalForwardingRuleAsync(project, forwardingRuleResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -279,7 +272,7 @@ public class GlobalForwardingRuleClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -347,20 +340,19 @@ public class GlobalForwardingRuleClientTest {
   @Test
   @SuppressWarnings("all")
   public void setTargetGlobalForwardingRuleTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("setTargetGlobalForwardingRuleTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockGlobalForwardingRules.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalForwardingRuleName forwardingRule =
         ProjectGlobalForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
     TargetReference targetReferenceResource = TargetReference.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.setTargetGlobalForwardingRuleAsync(forwardingRule, targetReferenceResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -397,7 +389,7 @@ public class GlobalForwardingRuleClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

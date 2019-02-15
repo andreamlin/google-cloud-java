@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AggregatedListForwardingRulesHttpRequest;
@@ -186,6 +188,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<
           AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList>
@@ -195,16 +198,22 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
       aggregatedListForwardingRulesPagedCallable;
   private final UnaryCallable<DeleteForwardingRuleHttpRequest, Operation>
       deleteForwardingRuleCallable;
+  private final OperationCallable<DeleteForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      deleteForwardingRuleOperationCallable;
   private final UnaryCallable<GetForwardingRuleHttpRequest, ForwardingRule>
       getForwardingRuleCallable;
   private final UnaryCallable<InsertForwardingRuleHttpRequest, Operation>
       insertForwardingRuleCallable;
+  private final OperationCallable<InsertForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      insertForwardingRuleOperationCallable;
   private final UnaryCallable<ListForwardingRulesHttpRequest, ForwardingRuleList>
       listForwardingRulesCallable;
   private final UnaryCallable<ListForwardingRulesHttpRequest, ListForwardingRulesPagedResponse>
       listForwardingRulesPagedCallable;
   private final UnaryCallable<SetTargetForwardingRuleHttpRequest, Operation>
       setTargetForwardingRuleCallable;
+  private final OperationCallable<SetTargetForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetForwardingRuleOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -246,6 +255,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListForwardingRulesHttpRequest, ForwardingRuleAggregatedList>
         aggregatedListForwardingRulesTransportSettings =
@@ -295,6 +305,12 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
             deleteForwardingRuleTransportSettings,
             settings.deleteForwardingRuleSettings(),
             clientContext);
+    this.deleteForwardingRuleOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteForwardingRuleTransportSettings,
+            settings.deleteForwardingRuleOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getForwardingRuleCallable =
         callableFactory.createUnaryCallable(
             getForwardingRuleTransportSettings,
@@ -305,6 +321,12 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
             insertForwardingRuleTransportSettings,
             settings.insertForwardingRuleSettings(),
             clientContext);
+    this.insertForwardingRuleOperationCallable =
+        callableFactory.createOperationCallable(
+            insertForwardingRuleTransportSettings,
+            settings.insertForwardingRuleOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listForwardingRulesCallable =
         callableFactory.createUnaryCallable(
             listForwardingRulesTransportSettings,
@@ -320,8 +342,19 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
             setTargetForwardingRuleTransportSettings,
             settings.setTargetForwardingRuleSettings(),
             clientContext);
+    this.setTargetForwardingRuleOperationCallable =
+        callableFactory.createOperationCallable(
+            setTargetForwardingRuleTransportSettings,
+            settings.setTargetForwardingRuleOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
   }
 
   @BetaApi
@@ -337,6 +370,12 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
     return aggregatedListForwardingRulesCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      deleteForwardingRuleOperationCallable() {
+    return deleteForwardingRuleOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteForwardingRuleHttpRequest, Operation> deleteForwardingRuleCallable() {
     return deleteForwardingRuleCallable;
@@ -345,6 +384,12 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
   @BetaApi
   public UnaryCallable<GetForwardingRuleHttpRequest, ForwardingRule> getForwardingRuleCallable() {
     return getForwardingRuleCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      insertForwardingRuleOperationCallable() {
+    return insertForwardingRuleOperationCallable;
   }
 
   @BetaApi
@@ -362,6 +407,12 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
   public UnaryCallable<ListForwardingRulesHttpRequest, ForwardingRuleList>
       listForwardingRulesCallable() {
     return listForwardingRulesCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetTargetForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetForwardingRuleOperationCallable() {
+    return setTargetForwardingRuleOperationCallable;
   }
 
   @BetaApi

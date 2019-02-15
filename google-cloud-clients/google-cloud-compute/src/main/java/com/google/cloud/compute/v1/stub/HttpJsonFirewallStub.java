@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DeleteFirewallHttpRequest;
@@ -171,15 +173,24 @@ public class HttpJsonFirewallStub extends FirewallStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteFirewallHttpRequest, Operation> deleteFirewallCallable;
+  private final OperationCallable<DeleteFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      deleteFirewallOperationCallable;
   private final UnaryCallable<GetFirewallHttpRequest, Firewall> getFirewallCallable;
   private final UnaryCallable<InsertFirewallHttpRequest, Operation> insertFirewallCallable;
+  private final OperationCallable<InsertFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      insertFirewallOperationCallable;
   private final UnaryCallable<ListFirewallsHttpRequest, FirewallList> listFirewallsCallable;
   private final UnaryCallable<ListFirewallsHttpRequest, ListFirewallsPagedResponse>
       listFirewallsPagedCallable;
   private final UnaryCallable<PatchFirewallHttpRequest, Operation> patchFirewallCallable;
+  private final OperationCallable<PatchFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      patchFirewallOperationCallable;
   private final UnaryCallable<UpdateFirewallHttpRequest, Operation> updateFirewallCallable;
+  private final OperationCallable<UpdateFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      updateFirewallOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -219,6 +230,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteFirewallHttpRequest, Operation> deleteFirewallTransportSettings =
         HttpJsonCallSettings.<DeleteFirewallHttpRequest, Operation>newBuilder()
@@ -248,12 +260,24 @@ public class HttpJsonFirewallStub extends FirewallStub {
     this.deleteFirewallCallable =
         callableFactory.createUnaryCallable(
             deleteFirewallTransportSettings, settings.deleteFirewallSettings(), clientContext);
+    this.deleteFirewallOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteFirewallTransportSettings,
+            settings.deleteFirewallOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getFirewallCallable =
         callableFactory.createUnaryCallable(
             getFirewallTransportSettings, settings.getFirewallSettings(), clientContext);
     this.insertFirewallCallable =
         callableFactory.createUnaryCallable(
             insertFirewallTransportSettings, settings.insertFirewallSettings(), clientContext);
+    this.insertFirewallOperationCallable =
+        callableFactory.createOperationCallable(
+            insertFirewallTransportSettings,
+            settings.insertFirewallOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listFirewallsCallable =
         callableFactory.createUnaryCallable(
             listFirewallsTransportSettings, settings.listFirewallsSettings(), clientContext);
@@ -263,11 +287,34 @@ public class HttpJsonFirewallStub extends FirewallStub {
     this.patchFirewallCallable =
         callableFactory.createUnaryCallable(
             patchFirewallTransportSettings, settings.patchFirewallSettings(), clientContext);
+    this.patchFirewallOperationCallable =
+        callableFactory.createOperationCallable(
+            patchFirewallTransportSettings,
+            settings.patchFirewallOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.updateFirewallCallable =
         callableFactory.createUnaryCallable(
             updateFirewallTransportSettings, settings.updateFirewallSettings(), clientContext);
+    this.updateFirewallOperationCallable =
+        callableFactory.createOperationCallable(
+            updateFirewallTransportSettings,
+            settings.updateFirewallOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      deleteFirewallOperationCallable() {
+    return deleteFirewallOperationCallable;
   }
 
   @BetaApi
@@ -278,6 +325,12 @@ public class HttpJsonFirewallStub extends FirewallStub {
   @BetaApi
   public UnaryCallable<GetFirewallHttpRequest, Firewall> getFirewallCallable() {
     return getFirewallCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      insertFirewallOperationCallable() {
+    return insertFirewallOperationCallable;
   }
 
   @BetaApi
@@ -296,9 +349,21 @@ public class HttpJsonFirewallStub extends FirewallStub {
     return listFirewallsCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      patchFirewallOperationCallable() {
+    return patchFirewallOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<PatchFirewallHttpRequest, Operation> patchFirewallCallable() {
     return patchFirewallCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateFirewallHttpRequest, EmptyMessage, EmptyMessage>
+      updateFirewallOperationCallable() {
+    return updateFirewallOperationCallable;
   }
 
   @BetaApi

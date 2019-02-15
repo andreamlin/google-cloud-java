@@ -24,13 +24,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -74,13 +79,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteTargetInstance to 30 seconds:
+ * example, to set the total timeout of getTargetInstance to 30 seconds:
  *
  * <pre>
  * <code>
  * TargetInstanceStubSettings.Builder targetInstanceSettingsBuilder =
  *     TargetInstanceStubSettings.newBuilder();
- * targetInstanceSettingsBuilder.deleteTargetInstanceSettings().getRetrySettings().toBuilder()
+ * targetInstanceSettingsBuilder.getTargetInstanceSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * TargetInstanceStubSettings targetInstanceSettings = targetInstanceSettingsBuilder.build();
  * </code>
@@ -107,10 +112,14 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
       aggregatedListTargetInstancesSettings;
   private final UnaryCallSettings<DeleteTargetInstanceHttpRequest, Operation>
       deleteTargetInstanceSettings;
+  private final OperationCallSettings<DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetInstanceOperationSettings;
   private final UnaryCallSettings<GetTargetInstanceHttpRequest, TargetInstance>
       getTargetInstanceSettings;
   private final UnaryCallSettings<InsertTargetInstanceHttpRequest, Operation>
       insertTargetInstanceSettings;
+  private final OperationCallSettings<InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetInstanceOperationSettings;
   private final PagedCallSettings<
           ListTargetInstancesHttpRequest, TargetInstanceList, ListTargetInstancesPagedResponse>
       listTargetInstancesSettings;
@@ -130,6 +139,13 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
     return deleteTargetInstanceSettings;
   }
 
+  /** Returns the object with the settings used for calls to deleteTargetInstance. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetInstanceOperationSettings() {
+    return deleteTargetInstanceOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to getTargetInstance. */
   public UnaryCallSettings<GetTargetInstanceHttpRequest, TargetInstance>
       getTargetInstanceSettings() {
@@ -140,6 +156,13 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
   public UnaryCallSettings<InsertTargetInstanceHttpRequest, Operation>
       insertTargetInstanceSettings() {
     return insertTargetInstanceSettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertTargetInstance. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetInstanceOperationSettings() {
+    return insertTargetInstanceOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listTargetInstances. */
@@ -227,8 +250,12 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
     aggregatedListTargetInstancesSettings =
         settingsBuilder.aggregatedListTargetInstancesSettings().build();
     deleteTargetInstanceSettings = settingsBuilder.deleteTargetInstanceSettings().build();
+    deleteTargetInstanceOperationSettings =
+        settingsBuilder.deleteTargetInstanceOperationSettings().build();
     getTargetInstanceSettings = settingsBuilder.getTargetInstanceSettings().build();
     insertTargetInstanceSettings = settingsBuilder.insertTargetInstanceSettings().build();
+    insertTargetInstanceOperationSettings =
+        settingsBuilder.insertTargetInstanceOperationSettings().build();
     listTargetInstancesSettings = settingsBuilder.listTargetInstancesSettings().build();
   }
 
@@ -387,10 +414,16 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
         aggregatedListTargetInstancesSettings;
     private final UnaryCallSettings.Builder<DeleteTargetInstanceHttpRequest, Operation>
         deleteTargetInstanceSettings;
+    private final OperationCallSettings.Builder<
+            DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+        deleteTargetInstanceOperationSettings;
     private final UnaryCallSettings.Builder<GetTargetInstanceHttpRequest, TargetInstance>
         getTargetInstanceSettings;
     private final UnaryCallSettings.Builder<InsertTargetInstanceHttpRequest, Operation>
         insertTargetInstanceSettings;
+    private final OperationCallSettings.Builder<
+            InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+        insertTargetInstanceOperationSettings;
     private final PagedCallSettings.Builder<
             ListTargetInstancesHttpRequest, TargetInstanceList, ListTargetInstancesPagedResponse>
         listTargetInstancesSettings;
@@ -441,9 +474,13 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
 
       deleteTargetInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteTargetInstanceOperationSettings = OperationCallSettings.newBuilder();
+
       getTargetInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertTargetInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      insertTargetInstanceOperationSettings = OperationCallSettings.newBuilder();
 
       listTargetInstancesSettings =
           PagedCallSettings.newBuilder(LIST_TARGET_INSTANCES_PAGE_STR_FACT);
@@ -494,6 +531,48 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
           .listTargetInstancesSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .deleteTargetInstanceOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteTargetInstanceHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertTargetInstanceOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertTargetInstanceHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -504,8 +583,12 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
       aggregatedListTargetInstancesSettings =
           settings.aggregatedListTargetInstancesSettings.toBuilder();
       deleteTargetInstanceSettings = settings.deleteTargetInstanceSettings.toBuilder();
+      deleteTargetInstanceOperationSettings =
+          settings.deleteTargetInstanceOperationSettings.toBuilder();
       getTargetInstanceSettings = settings.getTargetInstanceSettings.toBuilder();
       insertTargetInstanceSettings = settings.insertTargetInstanceSettings.toBuilder();
+      insertTargetInstanceOperationSettings =
+          settings.insertTargetInstanceOperationSettings.toBuilder();
       listTargetInstancesSettings = settings.listTargetInstancesSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
@@ -548,6 +631,15 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
       return deleteTargetInstanceSettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteTargetInstance. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+        deleteTargetInstanceOperationSettings() {
+      return deleteTargetInstanceOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to getTargetInstance. */
     public UnaryCallSettings.Builder<GetTargetInstanceHttpRequest, TargetInstance>
         getTargetInstanceSettings() {
@@ -558,6 +650,15 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
     public UnaryCallSettings.Builder<InsertTargetInstanceHttpRequest, Operation>
         insertTargetInstanceSettings() {
       return insertTargetInstanceSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertTargetInstance. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+        insertTargetInstanceOperationSettings() {
+      return insertTargetInstanceOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listTargetInstances. */

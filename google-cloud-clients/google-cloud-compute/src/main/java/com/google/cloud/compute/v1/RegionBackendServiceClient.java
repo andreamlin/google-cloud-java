@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.RegionBackendServiceStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
  *   ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
- *   Operation response = regionBackendServiceClient.deleteRegionBackendService(backendService);
+ *   BackendService response = regionBackendServiceClient.getRegionBackendService(backendService);
  * }
  * </code>
  * </pre>
@@ -104,6 +107,7 @@ import javax.annotation.Generated;
 public class RegionBackendServiceClient implements BackgroundResource {
   private final RegionBackendServiceSettings settings;
   private final RegionBackendServiceStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of RegionBackendServiceClient with default settings. */
   public static final RegionBackendServiceClient create() throws IOException {
@@ -136,12 +140,14 @@ public class RegionBackendServiceClient implements BackgroundResource {
   protected RegionBackendServiceClient(RegionBackendServiceSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((RegionBackendServiceStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected RegionBackendServiceClient(RegionBackendServiceStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final RegionBackendServiceSettings getSettings() {
@@ -153,31 +159,14 @@ public class RegionBackendServiceClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Deletes the specified regional BackendService resource.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
-   *   ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
-   *   Operation response = regionBackendServiceClient.deleteRegionBackendService(backendService);
-   * }
-   * </code></pre>
-   *
-   * @param backendService Name of the BackendService resource to delete.
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation deleteRegionBackendService(
-      ProjectRegionBackendServiceName backendService) {
-
-    DeleteRegionBackendServiceHttpRequest request =
-        DeleteRegionBackendServiceHttpRequest.newBuilder()
-            .setBackendService(backendService == null ? null : backendService.toString())
-            .build();
-    return deleteRegionBackendService(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -189,21 +178,51 @@ public class RegionBackendServiceClient implements BackgroundResource {
    * <pre><code>
    * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
    *   ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
-   *   Operation response = regionBackendServiceClient.deleteRegionBackendService(backendService.toString());
+   *   regionBackendServiceClient.deleteRegionBackendServiceAsync(backendService).get();
    * }
    * </code></pre>
    *
    * @param backendService Name of the BackendService resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteRegionBackendService(String backendService) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionBackendServiceAsync(
+      ProjectRegionBackendServiceName backendService) {
+
+    DeleteRegionBackendServiceHttpRequest request =
+        DeleteRegionBackendServiceHttpRequest.newBuilder()
+            .setBackendService(backendService == null ? null : backendService.toString())
+            .build();
+    return deleteRegionBackendServiceAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified regional BackendService resource.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
+   *   ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+   *   regionBackendServiceClient.deleteRegionBackendServiceAsync(backendService.toString()).get();
+   * }
+   * </code></pre>
+   *
+   * @param backendService Name of the BackendService resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionBackendServiceAsync(
+      String backendService) {
 
     DeleteRegionBackendServiceHttpRequest request =
         DeleteRegionBackendServiceHttpRequest.newBuilder()
             .setBackendService(backendService)
             .build();
-    return deleteRegionBackendService(request);
+    return deleteRegionBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -218,16 +237,42 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *   DeleteRegionBackendServiceHttpRequest request = DeleteRegionBackendServiceHttpRequest.newBuilder()
    *     .setBackendService(backendService.toString())
    *     .build();
-   *   Operation response = regionBackendServiceClient.deleteRegionBackendService(request);
+   *   regionBackendServiceClient.deleteRegionBackendServiceAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteRegionBackendService(DeleteRegionBackendServiceHttpRequest request) {
-    return deleteRegionBackendServiceCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionBackendServiceAsync(
+      DeleteRegionBackendServiceHttpRequest request) {
+    return deleteRegionBackendServiceOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified regional BackendService resource.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
+   *   ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+   *   DeleteRegionBackendServiceHttpRequest request = DeleteRegionBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(backendService.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionBackendServiceClient.deleteRegionBackendServiceOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionBackendServiceOperationCallable() {
+    return stub.deleteRegionBackendServiceOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -244,7 +289,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionBackendServiceClient.deleteRegionBackendServiceCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -479,7 +524,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
    *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
    *   BackendService backendServiceResource = BackendService.newBuilder().build();
-   *   Operation response = regionBackendServiceClient.insertRegionBackendService(region, backendServiceResource);
+   *   regionBackendServiceClient.insertRegionBackendServiceAsync(region, backendServiceResource).get();
    * }
    * </code></pre>
    *
@@ -489,8 +534,9 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     (== resource_for beta.backendService ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertRegionBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionBackendServiceAsync(
       ProjectRegionName region, BackendService backendServiceResource) {
 
     InsertRegionBackendServiceHttpRequest request =
@@ -498,7 +544,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
             .setRegion(region == null ? null : region.toString())
             .setBackendServiceResource(backendServiceResource)
             .build();
-    return insertRegionBackendService(request);
+    return insertRegionBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -513,7 +559,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
    *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
    *   BackendService backendServiceResource = BackendService.newBuilder().build();
-   *   Operation response = regionBackendServiceClient.insertRegionBackendService(region.toString(), backendServiceResource);
+   *   regionBackendServiceClient.insertRegionBackendServiceAsync(region.toString(), backendServiceResource).get();
    * }
    * </code></pre>
    *
@@ -523,8 +569,9 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     (== resource_for beta.backendService ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertRegionBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionBackendServiceAsync(
       String region, BackendService backendServiceResource) {
 
     InsertRegionBackendServiceHttpRequest request =
@@ -532,7 +579,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
             .setRegion(region)
             .setBackendServiceResource(backendServiceResource)
             .build();
-    return insertRegionBackendService(request);
+    return insertRegionBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -551,16 +598,46 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setBackendServiceResource(backendServiceResource)
    *     .build();
-   *   Operation response = regionBackendServiceClient.insertRegionBackendService(request);
+   *   regionBackendServiceClient.insertRegionBackendServiceAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertRegionBackendService(InsertRegionBackendServiceHttpRequest request) {
-    return insertRegionBackendServiceCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionBackendServiceAsync(
+      InsertRegionBackendServiceHttpRequest request) {
+    return insertRegionBackendServiceOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a regional BackendService resource in the specified project using the data included in
+   * the request. There are several restrictions and guidelines to keep in mind when creating a
+   * regional backend service. Read Restrictions and Guidelines for more information.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
+   *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
+   *   BackendService backendServiceResource = BackendService.newBuilder().build();
+   *   InsertRegionBackendServiceHttpRequest request = InsertRegionBackendServiceHttpRequest.newBuilder()
+   *     .setRegion(region.toString())
+   *     .setBackendServiceResource(backendServiceResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionBackendServiceClient.insertRegionBackendServiceOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionBackendServiceOperationCallable() {
+    return stub.insertRegionBackendServiceOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -581,7 +658,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionBackendServiceClient.insertRegionBackendServiceCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -750,7 +827,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *   ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
    *   BackendService backendServiceResource = BackendService.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = regionBackendServiceClient.patchRegionBackendService(backendService, backendServiceResource, fieldMask);
+   *   regionBackendServiceClient.patchRegionBackendServiceAsync(backendService, backendServiceResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -764,8 +841,9 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchRegionBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchRegionBackendServiceAsync(
       ProjectRegionBackendServiceName backendService,
       BackendService backendServiceResource,
       List<String> fieldMask) {
@@ -776,7 +854,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
             .setBackendServiceResource(backendServiceResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchRegionBackendService(request);
+    return patchRegionBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -793,7 +871,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *   ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
    *   BackendService backendServiceResource = BackendService.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = regionBackendServiceClient.patchRegionBackendService(backendService.toString(), backendServiceResource, fieldMask);
+   *   regionBackendServiceClient.patchRegionBackendServiceAsync(backendService.toString(), backendServiceResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -807,8 +885,9 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchRegionBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchRegionBackendServiceAsync(
       String backendService, BackendService backendServiceResource, List<String> fieldMask) {
 
     PatchRegionBackendServiceHttpRequest request =
@@ -817,7 +896,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
             .setBackendServiceResource(backendServiceResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchRegionBackendService(request);
+    return patchRegionBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -839,16 +918,49 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     .setBackendServiceResource(backendServiceResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = regionBackendServiceClient.patchRegionBackendService(request);
+   *   regionBackendServiceClient.patchRegionBackendServiceAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchRegionBackendService(PatchRegionBackendServiceHttpRequest request) {
-    return patchRegionBackendServiceCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchRegionBackendServiceAsync(
+      PatchRegionBackendServiceHttpRequest request) {
+    return patchRegionBackendServiceOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the specified regional BackendService resource with the data included in the request.
+   * There are several restrictions and guidelines to keep in mind when updating a backend service.
+   * Read Restrictions and Guidelines for more information. This method supports PATCH semantics and
+   * uses the JSON merge patch format and processing rules.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
+   *   ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+   *   BackendService backendServiceResource = BackendService.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   PatchRegionBackendServiceHttpRequest request = PatchRegionBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(backendService.toString())
+   *     .setBackendServiceResource(backendServiceResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionBackendServiceClient.patchRegionBackendServiceOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionBackendServiceOperationCallable() {
+    return stub.patchRegionBackendServiceOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -872,7 +984,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionBackendServiceClient.patchRegionBackendServiceCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -895,7 +1007,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *   ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
    *   BackendService backendServiceResource = BackendService.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = regionBackendServiceClient.updateRegionBackendService(backendService, backendServiceResource, fieldMask);
+   *   regionBackendServiceClient.updateRegionBackendServiceAsync(backendService, backendServiceResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -909,8 +1021,9 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateRegionBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateRegionBackendServiceAsync(
       ProjectRegionBackendServiceName backendService,
       BackendService backendServiceResource,
       List<String> fieldMask) {
@@ -921,7 +1034,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
             .setBackendServiceResource(backendServiceResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return updateRegionBackendService(request);
+    return updateRegionBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -937,7 +1050,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *   ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
    *   BackendService backendServiceResource = BackendService.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = regionBackendServiceClient.updateRegionBackendService(backendService.toString(), backendServiceResource, fieldMask);
+   *   regionBackendServiceClient.updateRegionBackendServiceAsync(backendService.toString(), backendServiceResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -951,8 +1064,9 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateRegionBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateRegionBackendServiceAsync(
       String backendService, BackendService backendServiceResource, List<String> fieldMask) {
 
     UpdateRegionBackendServiceHttpRequest request =
@@ -961,7 +1075,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
             .setBackendServiceResource(backendServiceResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return updateRegionBackendService(request);
+    return updateRegionBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -982,16 +1096,48 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     .setBackendServiceResource(backendServiceResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = regionBackendServiceClient.updateRegionBackendService(request);
+   *   regionBackendServiceClient.updateRegionBackendServiceAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateRegionBackendService(UpdateRegionBackendServiceHttpRequest request) {
-    return updateRegionBackendServiceCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateRegionBackendServiceAsync(
+      UpdateRegionBackendServiceHttpRequest request) {
+    return updateRegionBackendServiceOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the specified regional BackendService resource with the data included in the request.
+   * There are several restrictions and guidelines to keep in mind when updating a backend service.
+   * Read Restrictions and Guidelines for more information.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (RegionBackendServiceClient regionBackendServiceClient = RegionBackendServiceClient.create()) {
+   *   ProjectRegionBackendServiceName backendService = ProjectRegionBackendServiceName.of("[PROJECT]", "[REGION]", "[BACKEND_SERVICE]");
+   *   BackendService backendServiceResource = BackendService.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   UpdateRegionBackendServiceHttpRequest request = UpdateRegionBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(backendService.toString())
+   *     .setBackendServiceResource(backendServiceResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionBackendServiceClient.updateRegionBackendServiceOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      updateRegionBackendServiceOperationCallable() {
+    return stub.updateRegionBackendServiceOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1014,7 +1160,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = regionBackendServiceClient.updateRegionBackendServiceCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.InstanceTemplateStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
  *   ProjectGlobalInstanceTemplateName instanceTemplate = ProjectGlobalInstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
- *   Operation response = instanceTemplateClient.deleteInstanceTemplate(instanceTemplate);
+ *   InstanceTemplate response = instanceTemplateClient.getInstanceTemplate(instanceTemplate);
  * }
  * </code>
  * </pre>
@@ -104,6 +107,7 @@ import javax.annotation.Generated;
 public class InstanceTemplateClient implements BackgroundResource {
   private final InstanceTemplateSettings settings;
   private final InstanceTemplateStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of InstanceTemplateClient with default settings. */
   public static final InstanceTemplateClient create() throws IOException {
@@ -136,12 +140,14 @@ public class InstanceTemplateClient implements BackgroundResource {
   protected InstanceTemplateClient(InstanceTemplateSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((InstanceTemplateStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected InstanceTemplateClient(InstanceTemplateStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final InstanceTemplateSettings getSettings() {
@@ -153,33 +159,14 @@ public class InstanceTemplateClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Deletes the specified instance template. Deleting an instance template is permanent and cannot
-   * be undone. It is not possible to delete templates that are already in use by a managed instance
-   * group.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
-   *   ProjectGlobalInstanceTemplateName instanceTemplate = ProjectGlobalInstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
-   *   Operation response = instanceTemplateClient.deleteInstanceTemplate(instanceTemplate);
-   * }
-   * </code></pre>
-   *
-   * @param instanceTemplate The name of the instance template to delete.
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation deleteInstanceTemplate(
-      ProjectGlobalInstanceTemplateName instanceTemplate) {
-
-    DeleteInstanceTemplateHttpRequest request =
-        DeleteInstanceTemplateHttpRequest.newBuilder()
-            .setInstanceTemplate(instanceTemplate == null ? null : instanceTemplate.toString())
-            .build();
-    return deleteInstanceTemplate(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -193,21 +180,53 @@ public class InstanceTemplateClient implements BackgroundResource {
    * <pre><code>
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
    *   ProjectGlobalInstanceTemplateName instanceTemplate = ProjectGlobalInstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
-   *   Operation response = instanceTemplateClient.deleteInstanceTemplate(instanceTemplate.toString());
+   *   instanceTemplateClient.deleteInstanceTemplateAsync(instanceTemplate).get();
    * }
    * </code></pre>
    *
    * @param instanceTemplate The name of the instance template to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteInstanceTemplate(String instanceTemplate) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceTemplateAsync(
+      ProjectGlobalInstanceTemplateName instanceTemplate) {
+
+    DeleteInstanceTemplateHttpRequest request =
+        DeleteInstanceTemplateHttpRequest.newBuilder()
+            .setInstanceTemplate(instanceTemplate == null ? null : instanceTemplate.toString())
+            .build();
+    return deleteInstanceTemplateAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified instance template. Deleting an instance template is permanent and cannot
+   * be undone. It is not possible to delete templates that are already in use by a managed instance
+   * group.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
+   *   ProjectGlobalInstanceTemplateName instanceTemplate = ProjectGlobalInstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
+   *   instanceTemplateClient.deleteInstanceTemplateAsync(instanceTemplate.toString()).get();
+   * }
+   * </code></pre>
+   *
+   * @param instanceTemplate The name of the instance template to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceTemplateAsync(
+      String instanceTemplate) {
 
     DeleteInstanceTemplateHttpRequest request =
         DeleteInstanceTemplateHttpRequest.newBuilder()
             .setInstanceTemplate(instanceTemplate)
             .build();
-    return deleteInstanceTemplate(request);
+    return deleteInstanceTemplateAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -224,16 +243,44 @@ public class InstanceTemplateClient implements BackgroundResource {
    *   DeleteInstanceTemplateHttpRequest request = DeleteInstanceTemplateHttpRequest.newBuilder()
    *     .setInstanceTemplate(instanceTemplate.toString())
    *     .build();
-   *   Operation response = instanceTemplateClient.deleteInstanceTemplate(request);
+   *   instanceTemplateClient.deleteInstanceTemplateAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteInstanceTemplate(DeleteInstanceTemplateHttpRequest request) {
-    return deleteInstanceTemplateCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceTemplateAsync(
+      DeleteInstanceTemplateHttpRequest request) {
+    return deleteInstanceTemplateOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified instance template. Deleting an instance template is permanent and cannot
+   * be undone. It is not possible to delete templates that are already in use by a managed instance
+   * group.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
+   *   ProjectGlobalInstanceTemplateName instanceTemplate = ProjectGlobalInstanceTemplateName.of("[PROJECT]", "[INSTANCE_TEMPLATE]");
+   *   DeleteInstanceTemplateHttpRequest request = DeleteInstanceTemplateHttpRequest.newBuilder()
+   *     .setInstanceTemplate(instanceTemplate.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceTemplateClient.deleteInstanceTemplateOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstanceTemplateOperationCallable() {
+    return stub.deleteInstanceTemplateOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -252,7 +299,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceTemplateClient.deleteInstanceTemplateCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -482,7 +529,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   InstanceTemplate instanceTemplateResource = InstanceTemplate.newBuilder().build();
-   *   Operation response = instanceTemplateClient.insertInstanceTemplate(project, instanceTemplateResource);
+   *   instanceTemplateClient.insertInstanceTemplateAsync(project, instanceTemplateResource).get();
    * }
    * </code></pre>
    *
@@ -491,8 +538,9 @@ public class InstanceTemplateClient implements BackgroundResource {
    *     beta.instanceTemplates ==) (== resource_for v1.instanceTemplates ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertInstanceTemplate(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceTemplateAsync(
       ProjectName project, InstanceTemplate instanceTemplateResource) {
 
     InsertInstanceTemplateHttpRequest request =
@@ -500,7 +548,7 @@ public class InstanceTemplateClient implements BackgroundResource {
             .setProject(project == null ? null : project.toString())
             .setInstanceTemplateResource(instanceTemplateResource)
             .build();
-    return insertInstanceTemplate(request);
+    return insertInstanceTemplateAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -516,7 +564,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   InstanceTemplate instanceTemplateResource = InstanceTemplate.newBuilder().build();
-   *   Operation response = instanceTemplateClient.insertInstanceTemplate(project.toString(), instanceTemplateResource);
+   *   instanceTemplateClient.insertInstanceTemplateAsync(project.toString(), instanceTemplateResource).get();
    * }
    * </code></pre>
    *
@@ -525,8 +573,9 @@ public class InstanceTemplateClient implements BackgroundResource {
    *     beta.instanceTemplates ==) (== resource_for v1.instanceTemplates ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertInstanceTemplate(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceTemplateAsync(
       String project, InstanceTemplate instanceTemplateResource) {
 
     InsertInstanceTemplateHttpRequest request =
@@ -534,7 +583,7 @@ public class InstanceTemplateClient implements BackgroundResource {
             .setProject(project)
             .setInstanceTemplateResource(instanceTemplateResource)
             .build();
-    return insertInstanceTemplate(request);
+    return insertInstanceTemplateAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -554,16 +603,47 @@ public class InstanceTemplateClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setInstanceTemplateResource(instanceTemplateResource)
    *     .build();
-   *   Operation response = instanceTemplateClient.insertInstanceTemplate(request);
+   *   instanceTemplateClient.insertInstanceTemplateAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertInstanceTemplate(InsertInstanceTemplateHttpRequest request) {
-    return insertInstanceTemplateCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceTemplateAsync(
+      InsertInstanceTemplateHttpRequest request) {
+    return insertInstanceTemplateOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates an instance template in the specified project using the data that is included in the
+   * request. If you are creating a new template to update an existing instance group, your new
+   * instance template must use the same network or, if applicable, the same subnetwork as the
+   * original template.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceTemplateClient instanceTemplateClient = InstanceTemplateClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   InstanceTemplate instanceTemplateResource = InstanceTemplate.newBuilder().build();
+   *   InsertInstanceTemplateHttpRequest request = InsertInstanceTemplateHttpRequest.newBuilder()
+   *     .setProject(project.toString())
+   *     .setInstanceTemplateResource(instanceTemplateResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceTemplateClient.insertInstanceTemplateOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      insertInstanceTemplateOperationCallable() {
+    return stub.insertInstanceTemplateOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -585,7 +665,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = instanceTemplateClient.insertInstanceTemplateCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

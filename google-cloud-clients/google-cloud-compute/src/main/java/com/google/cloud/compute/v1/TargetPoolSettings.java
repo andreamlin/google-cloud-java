@@ -22,10 +22,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -49,13 +51,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of addHealthCheckTargetPool to 30 seconds:
+ * example, to set the total timeout of getTargetPool to 30 seconds:
  *
  * <pre>
  * <code>
  * TargetPoolSettings.Builder targetPoolSettingsBuilder =
  *     TargetPoolSettings.newBuilder();
- * targetPoolSettingsBuilder.addHealthCheckTargetPoolSettings().getRetrySettings().toBuilder()
+ * targetPoolSettingsBuilder.getTargetPoolSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * TargetPoolSettings targetPoolSettings = targetPoolSettingsBuilder.build();
  * </code>
@@ -70,10 +72,26 @@ public class TargetPoolSettings extends ClientSettings<TargetPoolSettings> {
     return ((TargetPoolStubSettings) getStubSettings()).addHealthCheckTargetPoolSettings();
   }
 
+  /** Returns the object with the settings used for calls to addHealthCheckTargetPool. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<AddHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      addHealthCheckTargetPoolOperationSettings() {
+    return ((TargetPoolStubSettings) getStubSettings()).addHealthCheckTargetPoolOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to addInstanceTargetPool. */
   public UnaryCallSettings<AddInstanceTargetPoolHttpRequest, Operation>
       addInstanceTargetPoolSettings() {
     return ((TargetPoolStubSettings) getStubSettings()).addInstanceTargetPoolSettings();
+  }
+
+  /** Returns the object with the settings used for calls to addInstanceTargetPool. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<AddInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      addInstanceTargetPoolOperationSettings() {
+    return ((TargetPoolStubSettings) getStubSettings()).addInstanceTargetPoolOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to aggregatedListTargetPools. */
@@ -88,6 +106,14 @@ public class TargetPoolSettings extends ClientSettings<TargetPoolSettings> {
   /** Returns the object with the settings used for calls to deleteTargetPool. */
   public UnaryCallSettings<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolSettings() {
     return ((TargetPoolStubSettings) getStubSettings()).deleteTargetPoolSettings();
+  }
+
+  /** Returns the object with the settings used for calls to deleteTargetPool. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetPoolOperationSettings() {
+    return ((TargetPoolStubSettings) getStubSettings()).deleteTargetPoolOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getTargetPool. */
@@ -106,6 +132,14 @@ public class TargetPoolSettings extends ClientSettings<TargetPoolSettings> {
     return ((TargetPoolStubSettings) getStubSettings()).insertTargetPoolSettings();
   }
 
+  /** Returns the object with the settings used for calls to insertTargetPool. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetPoolOperationSettings() {
+    return ((TargetPoolStubSettings) getStubSettings()).insertTargetPoolOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to listTargetPools. */
   public PagedCallSettings<ListTargetPoolsHttpRequest, TargetPoolList, ListTargetPoolsPagedResponse>
       listTargetPoolsSettings() {
@@ -118,16 +152,41 @@ public class TargetPoolSettings extends ClientSettings<TargetPoolSettings> {
     return ((TargetPoolStubSettings) getStubSettings()).removeHealthCheckTargetPoolSettings();
   }
 
+  /** Returns the object with the settings used for calls to removeHealthCheckTargetPool. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      removeHealthCheckTargetPoolOperationSettings() {
+    return ((TargetPoolStubSettings) getStubSettings())
+        .removeHealthCheckTargetPoolOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to removeInstanceTargetPool. */
   public UnaryCallSettings<RemoveInstanceTargetPoolHttpRequest, Operation>
       removeInstanceTargetPoolSettings() {
     return ((TargetPoolStubSettings) getStubSettings()).removeInstanceTargetPoolSettings();
   }
 
+  /** Returns the object with the settings used for calls to removeInstanceTargetPool. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<RemoveInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      removeInstanceTargetPoolOperationSettings() {
+    return ((TargetPoolStubSettings) getStubSettings()).removeInstanceTargetPoolOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to setBackupTargetPool. */
   public UnaryCallSettings<SetBackupTargetPoolHttpRequest, Operation>
       setBackupTargetPoolSettings() {
     return ((TargetPoolStubSettings) getStubSettings()).setBackupTargetPoolSettings();
+  }
+
+  /** Returns the object with the settings used for calls to setBackupTargetPool. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<SetBackupTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+      setBackupTargetPoolOperationSettings() {
+    return ((TargetPoolStubSettings) getStubSettings()).setBackupTargetPoolOperationSettings();
   }
 
   public static final TargetPoolSettings create(TargetPoolStubSettings stub) throws IOException {
@@ -237,10 +296,28 @@ public class TargetPoolSettings extends ClientSettings<TargetPoolSettings> {
       return getStubSettingsBuilder().addHealthCheckTargetPoolSettings();
     }
 
+    /** Returns the builder for the settings used for calls to addHealthCheckTargetPool. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            AddHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        addHealthCheckTargetPoolOperationSettings() {
+      return getStubSettingsBuilder().addHealthCheckTargetPoolOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to addInstanceTargetPool. */
     public UnaryCallSettings.Builder<AddInstanceTargetPoolHttpRequest, Operation>
         addInstanceTargetPoolSettings() {
       return getStubSettingsBuilder().addInstanceTargetPoolSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to addInstanceTargetPool. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            AddInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        addInstanceTargetPoolOperationSettings() {
+      return getStubSettingsBuilder().addInstanceTargetPoolOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to aggregatedListTargetPools. */
@@ -256,6 +333,14 @@ public class TargetPoolSettings extends ClientSettings<TargetPoolSettings> {
     public UnaryCallSettings.Builder<DeleteTargetPoolHttpRequest, Operation>
         deleteTargetPoolSettings() {
       return getStubSettingsBuilder().deleteTargetPoolSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to deleteTargetPool. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        deleteTargetPoolOperationSettings() {
+      return getStubSettingsBuilder().deleteTargetPoolOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to getTargetPool. */
@@ -275,6 +360,14 @@ public class TargetPoolSettings extends ClientSettings<TargetPoolSettings> {
       return getStubSettingsBuilder().insertTargetPoolSettings();
     }
 
+    /** Returns the builder for the settings used for calls to insertTargetPool. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        insertTargetPoolOperationSettings() {
+      return getStubSettingsBuilder().insertTargetPoolOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to listTargetPools. */
     public PagedCallSettings.Builder<
             ListTargetPoolsHttpRequest, TargetPoolList, ListTargetPoolsPagedResponse>
@@ -288,16 +381,42 @@ public class TargetPoolSettings extends ClientSettings<TargetPoolSettings> {
       return getStubSettingsBuilder().removeHealthCheckTargetPoolSettings();
     }
 
+    /** Returns the builder for the settings used for calls to removeHealthCheckTargetPool. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        removeHealthCheckTargetPoolOperationSettings() {
+      return getStubSettingsBuilder().removeHealthCheckTargetPoolOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to removeInstanceTargetPool. */
     public UnaryCallSettings.Builder<RemoveInstanceTargetPoolHttpRequest, Operation>
         removeInstanceTargetPoolSettings() {
       return getStubSettingsBuilder().removeInstanceTargetPoolSettings();
     }
 
+    /** Returns the builder for the settings used for calls to removeInstanceTargetPool. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            RemoveInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        removeInstanceTargetPoolOperationSettings() {
+      return getStubSettingsBuilder().removeInstanceTargetPoolOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to setBackupTargetPool. */
     public UnaryCallSettings.Builder<SetBackupTargetPoolHttpRequest, Operation>
         setBackupTargetPoolSettings() {
       return getStubSettingsBuilder().setBackupTargetPoolSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to setBackupTargetPool. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<SetBackupTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+        setBackupTargetPoolOperationSettings() {
+      return getStubSettingsBuilder().setBackupTargetPoolOperationSettings();
     }
 
     @Override

@@ -23,10 +23,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -50,13 +52,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteRouter to 30 seconds:
+ * example, to set the total timeout of getRouter to 30 seconds:
  *
  * <pre>
  * <code>
  * RouterSettings.Builder routerSettingsBuilder =
  *     RouterSettings.newBuilder();
- * routerSettingsBuilder.deleteRouterSettings().getRetrySettings().toBuilder()
+ * routerSettingsBuilder.getRouterSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * RouterSettings routerSettings = routerSettingsBuilder.build();
  * </code>
@@ -77,6 +79,14 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
   /** Returns the object with the settings used for calls to deleteRouter. */
   public UnaryCallSettings<DeleteRouterHttpRequest, Operation> deleteRouterSettings() {
     return ((RouterStubSettings) getStubSettings()).deleteRouterSettings();
+  }
+
+  /** Returns the object with the settings used for calls to deleteRouter. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRouterOperationSettings() {
+    return ((RouterStubSettings) getStubSettings()).deleteRouterOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getRouter. */
@@ -104,6 +114,14 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
     return ((RouterStubSettings) getStubSettings()).insertRouterSettings();
   }
 
+  /** Returns the object with the settings used for calls to insertRouter. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+      insertRouterOperationSettings() {
+    return ((RouterStubSettings) getStubSettings()).insertRouterOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to listRouters. */
   public PagedCallSettings<ListRoutersHttpRequest, RouterList, ListRoutersPagedResponse>
       listRoutersSettings() {
@@ -115,6 +133,14 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
     return ((RouterStubSettings) getStubSettings()).patchRouterSettings();
   }
 
+  /** Returns the object with the settings used for calls to patchRouter. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+      patchRouterOperationSettings() {
+    return ((RouterStubSettings) getStubSettings()).patchRouterOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to previewRouter. */
   public UnaryCallSettings<PreviewRouterHttpRequest, RoutersPreviewResponse>
       previewRouterSettings() {
@@ -124,6 +150,14 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
   /** Returns the object with the settings used for calls to updateRouter. */
   public UnaryCallSettings<UpdateRouterHttpRequest, Operation> updateRouterSettings() {
     return ((RouterStubSettings) getStubSettings()).updateRouterSettings();
+  }
+
+  /** Returns the object with the settings used for calls to updateRouter. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+      updateRouterOperationSettings() {
+    return ((RouterStubSettings) getStubSettings()).updateRouterOperationSettings();
   }
 
   public static final RouterSettings create(RouterStubSettings stub) throws IOException {
@@ -241,6 +275,14 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
       return getStubSettingsBuilder().deleteRouterSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteRouter. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+        deleteRouterOperationSettings() {
+      return getStubSettingsBuilder().deleteRouterOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getRouter. */
     public UnaryCallSettings.Builder<GetRouterHttpRequest, Router> getRouterSettings() {
       return getStubSettingsBuilder().getRouterSettings();
@@ -266,6 +308,14 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
       return getStubSettingsBuilder().insertRouterSettings();
     }
 
+    /** Returns the builder for the settings used for calls to insertRouter. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+        insertRouterOperationSettings() {
+      return getStubSettingsBuilder().insertRouterOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to listRouters. */
     public PagedCallSettings.Builder<ListRoutersHttpRequest, RouterList, ListRoutersPagedResponse>
         listRoutersSettings() {
@@ -277,6 +327,14 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
       return getStubSettingsBuilder().patchRouterSettings();
     }
 
+    /** Returns the builder for the settings used for calls to patchRouter. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+        patchRouterOperationSettings() {
+      return getStubSettingsBuilder().patchRouterOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to previewRouter. */
     public UnaryCallSettings.Builder<PreviewRouterHttpRequest, RoutersPreviewResponse>
         previewRouterSettings() {
@@ -286,6 +344,14 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
     /** Returns the builder for the settings used for calls to updateRouter. */
     public UnaryCallSettings.Builder<UpdateRouterHttpRequest, Operation> updateRouterSettings() {
       return getStubSettingsBuilder().updateRouterSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to updateRouter. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+        updateRouterOperationSettings() {
+      return getStubSettingsBuilder().updateRouterOperationSettings();
     }
 
     @Override

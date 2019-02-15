@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AggregatedListNodeTemplatesHttpRequest;
@@ -236,6 +238,7 @@ public class HttpJsonNodeTemplateStub extends NodeTemplateStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AggregatedListNodeTemplatesHttpRequest, NodeTemplateAggregatedList>
       aggregatedListNodeTemplatesCallable;
@@ -243,10 +246,14 @@ public class HttpJsonNodeTemplateStub extends NodeTemplateStub {
           AggregatedListNodeTemplatesHttpRequest, AggregatedListNodeTemplatesPagedResponse>
       aggregatedListNodeTemplatesPagedCallable;
   private final UnaryCallable<DeleteNodeTemplateHttpRequest, Operation> deleteNodeTemplateCallable;
+  private final OperationCallable<DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodeTemplateOperationCallable;
   private final UnaryCallable<GetNodeTemplateHttpRequest, NodeTemplate> getNodeTemplateCallable;
   private final UnaryCallable<GetIamPolicyNodeTemplateHttpRequest, Policy>
       getIamPolicyNodeTemplateCallable;
   private final UnaryCallable<InsertNodeTemplateHttpRequest, Operation> insertNodeTemplateCallable;
+  private final OperationCallable<InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      insertNodeTemplateOperationCallable;
   private final UnaryCallable<ListNodeTemplatesHttpRequest, NodeTemplateList>
       listNodeTemplatesCallable;
   private final UnaryCallable<ListNodeTemplatesHttpRequest, ListNodeTemplatesPagedResponse>
@@ -296,6 +303,7 @@ public class HttpJsonNodeTemplateStub extends NodeTemplateStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListNodeTemplatesHttpRequest, NodeTemplateAggregatedList>
         aggregatedListNodeTemplatesTransportSettings =
@@ -355,6 +363,12 @@ public class HttpJsonNodeTemplateStub extends NodeTemplateStub {
             deleteNodeTemplateTransportSettings,
             settings.deleteNodeTemplateSettings(),
             clientContext);
+    this.deleteNodeTemplateOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteNodeTemplateTransportSettings,
+            settings.deleteNodeTemplateOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getNodeTemplateCallable =
         callableFactory.createUnaryCallable(
             getNodeTemplateTransportSettings, settings.getNodeTemplateSettings(), clientContext);
@@ -368,6 +382,12 @@ public class HttpJsonNodeTemplateStub extends NodeTemplateStub {
             insertNodeTemplateTransportSettings,
             settings.insertNodeTemplateSettings(),
             clientContext);
+    this.insertNodeTemplateOperationCallable =
+        callableFactory.createOperationCallable(
+            insertNodeTemplateTransportSettings,
+            settings.insertNodeTemplateOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listNodeTemplatesCallable =
         callableFactory.createUnaryCallable(
             listNodeTemplatesTransportSettings,
@@ -392,6 +412,11 @@ public class HttpJsonNodeTemplateStub extends NodeTemplateStub {
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
   @BetaApi
   public UnaryCallable<
           AggregatedListNodeTemplatesHttpRequest, AggregatedListNodeTemplatesPagedResponse>
@@ -403,6 +428,12 @@ public class HttpJsonNodeTemplateStub extends NodeTemplateStub {
   public UnaryCallable<AggregatedListNodeTemplatesHttpRequest, NodeTemplateAggregatedList>
       aggregatedListNodeTemplatesCallable() {
     return aggregatedListNodeTemplatesCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodeTemplateOperationCallable() {
+    return deleteNodeTemplateOperationCallable;
   }
 
   @BetaApi
@@ -419,6 +450,12 @@ public class HttpJsonNodeTemplateStub extends NodeTemplateStub {
   public UnaryCallable<GetIamPolicyNodeTemplateHttpRequest, Policy>
       getIamPolicyNodeTemplateCallable() {
     return getIamPolicyNodeTemplateCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      insertNodeTemplateOperationCallable() {
+    return insertNodeTemplateOperationCallable;
   }
 
   @BetaApi

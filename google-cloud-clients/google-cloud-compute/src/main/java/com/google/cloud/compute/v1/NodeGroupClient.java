@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.NodeGroupStub;
@@ -43,8 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
  *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
- *   NodeGroupsAddNodesRequest nodeGroupsAddNodesRequestResource = NodeGroupsAddNodesRequest.newBuilder().build();
- *   Operation response = nodeGroupClient.addNodesNodeGroup(nodeGroup, nodeGroupsAddNodesRequestResource);
+ *   NodeGroup response = nodeGroupClient.getNodeGroup(nodeGroup);
  * }
  * </code>
  * </pre>
@@ -104,6 +106,7 @@ import javax.annotation.Generated;
 public class NodeGroupClient implements BackgroundResource {
   private final NodeGroupSettings settings;
   private final NodeGroupStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of NodeGroupClient with default settings. */
   public static final NodeGroupClient create() throws IOException {
@@ -134,12 +137,14 @@ public class NodeGroupClient implements BackgroundResource {
   protected NodeGroupClient(NodeGroupSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((NodeGroupStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected NodeGroupClient(NodeGroupStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final NodeGroupSettings getSettings() {
@@ -151,35 +156,14 @@ public class NodeGroupClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Adds specified number of nodes to the node group.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
-   *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
-   *   NodeGroupsAddNodesRequest nodeGroupsAddNodesRequestResource = NodeGroupsAddNodesRequest.newBuilder().build();
-   *   Operation response = nodeGroupClient.addNodesNodeGroup(nodeGroup, nodeGroupsAddNodesRequestResource);
-   * }
-   * </code></pre>
-   *
-   * @param nodeGroup Name of the NodeGroup resource.
-   * @param nodeGroupsAddNodesRequestResource
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation addNodesNodeGroup(
-      ProjectZoneNodeGroupName nodeGroup,
-      NodeGroupsAddNodesRequest nodeGroupsAddNodesRequestResource) {
-
-    AddNodesNodeGroupHttpRequest request =
-        AddNodesNodeGroupHttpRequest.newBuilder()
-            .setNodeGroup(nodeGroup == null ? null : nodeGroup.toString())
-            .setNodeGroupsAddNodesRequestResource(nodeGroupsAddNodesRequestResource)
-            .build();
-    return addNodesNodeGroup(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -192,7 +176,7 @@ public class NodeGroupClient implements BackgroundResource {
    * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
    *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
    *   NodeGroupsAddNodesRequest nodeGroupsAddNodesRequestResource = NodeGroupsAddNodesRequest.newBuilder().build();
-   *   Operation response = nodeGroupClient.addNodesNodeGroup(nodeGroup.toString(), nodeGroupsAddNodesRequestResource);
+   *   nodeGroupClient.addNodesNodeGroupAsync(nodeGroup, nodeGroupsAddNodesRequestResource).get();
    * }
    * </code></pre>
    *
@@ -200,8 +184,41 @@ public class NodeGroupClient implements BackgroundResource {
    * @param nodeGroupsAddNodesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation addNodesNodeGroup(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> addNodesNodeGroupAsync(
+      ProjectZoneNodeGroupName nodeGroup,
+      NodeGroupsAddNodesRequest nodeGroupsAddNodesRequestResource) {
+
+    AddNodesNodeGroupHttpRequest request =
+        AddNodesNodeGroupHttpRequest.newBuilder()
+            .setNodeGroup(nodeGroup == null ? null : nodeGroup.toString())
+            .setNodeGroupsAddNodesRequestResource(nodeGroupsAddNodesRequestResource)
+            .build();
+    return addNodesNodeGroupAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Adds specified number of nodes to the node group.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
+   *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
+   *   NodeGroupsAddNodesRequest nodeGroupsAddNodesRequestResource = NodeGroupsAddNodesRequest.newBuilder().build();
+   *   nodeGroupClient.addNodesNodeGroupAsync(nodeGroup.toString(), nodeGroupsAddNodesRequestResource).get();
+   * }
+   * </code></pre>
+   *
+   * @param nodeGroup Name of the NodeGroup resource.
+   * @param nodeGroupsAddNodesRequestResource
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> addNodesNodeGroupAsync(
       String nodeGroup, NodeGroupsAddNodesRequest nodeGroupsAddNodesRequestResource) {
 
     AddNodesNodeGroupHttpRequest request =
@@ -209,7 +226,7 @@ public class NodeGroupClient implements BackgroundResource {
             .setNodeGroup(nodeGroup)
             .setNodeGroupsAddNodesRequestResource(nodeGroupsAddNodesRequestResource)
             .build();
-    return addNodesNodeGroup(request);
+    return addNodesNodeGroupAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -226,16 +243,44 @@ public class NodeGroupClient implements BackgroundResource {
    *     .setNodeGroup(nodeGroup.toString())
    *     .setNodeGroupsAddNodesRequestResource(nodeGroupsAddNodesRequestResource)
    *     .build();
-   *   Operation response = nodeGroupClient.addNodesNodeGroup(request);
+   *   nodeGroupClient.addNodesNodeGroupAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation addNodesNodeGroup(AddNodesNodeGroupHttpRequest request) {
-    return addNodesNodeGroupCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> addNodesNodeGroupAsync(
+      AddNodesNodeGroupHttpRequest request) {
+    return addNodesNodeGroupOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Adds specified number of nodes to the node group.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
+   *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
+   *   NodeGroupsAddNodesRequest nodeGroupsAddNodesRequestResource = NodeGroupsAddNodesRequest.newBuilder().build();
+   *   AddNodesNodeGroupHttpRequest request = AddNodesNodeGroupHttpRequest.newBuilder()
+   *     .setNodeGroup(nodeGroup.toString())
+   *     .setNodeGroupsAddNodesRequestResource(nodeGroupsAddNodesRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = nodeGroupClient.addNodesNodeGroupOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      addNodesNodeGroupOperationCallable() {
+    return stub.addNodesNodeGroupOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -254,7 +299,7 @@ public class NodeGroupClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = nodeGroupClient.addNodesNodeGroupCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -416,21 +461,23 @@ public class NodeGroupClient implements BackgroundResource {
    * <pre><code>
    * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
    *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
-   *   Operation response = nodeGroupClient.deleteNodeGroup(nodeGroup);
+   *   nodeGroupClient.deleteNodeGroupAsync(nodeGroup).get();
    * }
    * </code></pre>
    *
    * @param nodeGroup Name of the NodeGroup resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteNodeGroup(ProjectZoneNodeGroupName nodeGroup) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodeGroupAsync(
+      ProjectZoneNodeGroupName nodeGroup) {
 
     DeleteNodeGroupHttpRequest request =
         DeleteNodeGroupHttpRequest.newBuilder()
             .setNodeGroup(nodeGroup == null ? null : nodeGroup.toString())
             .build();
-    return deleteNodeGroup(request);
+    return deleteNodeGroupAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -442,19 +489,20 @@ public class NodeGroupClient implements BackgroundResource {
    * <pre><code>
    * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
    *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
-   *   Operation response = nodeGroupClient.deleteNodeGroup(nodeGroup.toString());
+   *   nodeGroupClient.deleteNodeGroupAsync(nodeGroup.toString()).get();
    * }
    * </code></pre>
    *
    * @param nodeGroup Name of the NodeGroup resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteNodeGroup(String nodeGroup) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodeGroupAsync(String nodeGroup) {
 
     DeleteNodeGroupHttpRequest request =
         DeleteNodeGroupHttpRequest.newBuilder().setNodeGroup(nodeGroup).build();
-    return deleteNodeGroup(request);
+    return deleteNodeGroupAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -469,16 +517,42 @@ public class NodeGroupClient implements BackgroundResource {
    *   DeleteNodeGroupHttpRequest request = DeleteNodeGroupHttpRequest.newBuilder()
    *     .setNodeGroup(nodeGroup.toString())
    *     .build();
-   *   Operation response = nodeGroupClient.deleteNodeGroup(request);
+   *   nodeGroupClient.deleteNodeGroupAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteNodeGroup(DeleteNodeGroupHttpRequest request) {
-    return deleteNodeGroupCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodeGroupAsync(
+      DeleteNodeGroupHttpRequest request) {
+    return deleteNodeGroupOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified NodeGroup resource.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
+   *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
+   *   DeleteNodeGroupHttpRequest request = DeleteNodeGroupHttpRequest.newBuilder()
+   *     .setNodeGroup(nodeGroup.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = nodeGroupClient.deleteNodeGroupOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodeGroupOperationCallable() {
+    return stub.deleteNodeGroupOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -495,7 +569,7 @@ public class NodeGroupClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = nodeGroupClient.deleteNodeGroupCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -514,7 +588,7 @@ public class NodeGroupClient implements BackgroundResource {
    * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
    *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
    *   NodeGroupsDeleteNodesRequest nodeGroupsDeleteNodesRequestResource = NodeGroupsDeleteNodesRequest.newBuilder().build();
-   *   Operation response = nodeGroupClient.deleteNodesNodeGroup(nodeGroup, nodeGroupsDeleteNodesRequestResource);
+   *   nodeGroupClient.deleteNodesNodeGroupAsync(nodeGroup, nodeGroupsDeleteNodesRequestResource).get();
    * }
    * </code></pre>
    *
@@ -522,8 +596,9 @@ public class NodeGroupClient implements BackgroundResource {
    * @param nodeGroupsDeleteNodesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteNodesNodeGroup(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodesNodeGroupAsync(
       ProjectZoneNodeGroupName nodeGroup,
       NodeGroupsDeleteNodesRequest nodeGroupsDeleteNodesRequestResource) {
 
@@ -532,7 +607,7 @@ public class NodeGroupClient implements BackgroundResource {
             .setNodeGroup(nodeGroup == null ? null : nodeGroup.toString())
             .setNodeGroupsDeleteNodesRequestResource(nodeGroupsDeleteNodesRequestResource)
             .build();
-    return deleteNodesNodeGroup(request);
+    return deleteNodesNodeGroupAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -545,7 +620,7 @@ public class NodeGroupClient implements BackgroundResource {
    * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
    *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
    *   NodeGroupsDeleteNodesRequest nodeGroupsDeleteNodesRequestResource = NodeGroupsDeleteNodesRequest.newBuilder().build();
-   *   Operation response = nodeGroupClient.deleteNodesNodeGroup(nodeGroup.toString(), nodeGroupsDeleteNodesRequestResource);
+   *   nodeGroupClient.deleteNodesNodeGroupAsync(nodeGroup.toString(), nodeGroupsDeleteNodesRequestResource).get();
    * }
    * </code></pre>
    *
@@ -553,8 +628,9 @@ public class NodeGroupClient implements BackgroundResource {
    * @param nodeGroupsDeleteNodesRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteNodesNodeGroup(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodesNodeGroupAsync(
       String nodeGroup, NodeGroupsDeleteNodesRequest nodeGroupsDeleteNodesRequestResource) {
 
     DeleteNodesNodeGroupHttpRequest request =
@@ -562,7 +638,7 @@ public class NodeGroupClient implements BackgroundResource {
             .setNodeGroup(nodeGroup)
             .setNodeGroupsDeleteNodesRequestResource(nodeGroupsDeleteNodesRequestResource)
             .build();
-    return deleteNodesNodeGroup(request);
+    return deleteNodesNodeGroupAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -579,16 +655,44 @@ public class NodeGroupClient implements BackgroundResource {
    *     .setNodeGroup(nodeGroup.toString())
    *     .setNodeGroupsDeleteNodesRequestResource(nodeGroupsDeleteNodesRequestResource)
    *     .build();
-   *   Operation response = nodeGroupClient.deleteNodesNodeGroup(request);
+   *   nodeGroupClient.deleteNodesNodeGroupAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteNodesNodeGroup(DeleteNodesNodeGroupHttpRequest request) {
-    return deleteNodesNodeGroupCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodesNodeGroupAsync(
+      DeleteNodesNodeGroupHttpRequest request) {
+    return deleteNodesNodeGroupOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes specified nodes from the node group.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
+   *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
+   *   NodeGroupsDeleteNodesRequest nodeGroupsDeleteNodesRequestResource = NodeGroupsDeleteNodesRequest.newBuilder().build();
+   *   DeleteNodesNodeGroupHttpRequest request = DeleteNodesNodeGroupHttpRequest.newBuilder()
+   *     .setNodeGroup(nodeGroup.toString())
+   *     .setNodeGroupsDeleteNodesRequestResource(nodeGroupsDeleteNodesRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = nodeGroupClient.deleteNodesNodeGroupOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodesNodeGroupOperationCallable() {
+    return stub.deleteNodesNodeGroupOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -607,7 +711,7 @@ public class NodeGroupClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = nodeGroupClient.deleteNodesNodeGroupCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -831,7 +935,7 @@ public class NodeGroupClient implements BackgroundResource {
    *   Integer initialNodeCount = 0;
    *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
    *   NodeGroup nodeGroupResource = NodeGroup.newBuilder().build();
-   *   Operation response = nodeGroupClient.insertNodeGroup(initialNodeCount, zone, nodeGroupResource);
+   *   nodeGroupClient.insertNodeGroupAsync(initialNodeCount, zone, nodeGroupResource).get();
    * }
    * </code></pre>
    *
@@ -840,8 +944,9 @@ public class NodeGroupClient implements BackgroundResource {
    * @param nodeGroupResource A NodeGroup resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertNodeGroup(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertNodeGroupAsync(
       Integer initialNodeCount, ProjectZoneName zone, NodeGroup nodeGroupResource) {
 
     InsertNodeGroupHttpRequest request =
@@ -850,7 +955,7 @@ public class NodeGroupClient implements BackgroundResource {
             .setZone(zone == null ? null : zone.toString())
             .setNodeGroupResource(nodeGroupResource)
             .build();
-    return insertNodeGroup(request);
+    return insertNodeGroupAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -864,7 +969,7 @@ public class NodeGroupClient implements BackgroundResource {
    *   Integer initialNodeCount = 0;
    *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
    *   NodeGroup nodeGroupResource = NodeGroup.newBuilder().build();
-   *   Operation response = nodeGroupClient.insertNodeGroup(initialNodeCount, zone.toString(), nodeGroupResource);
+   *   nodeGroupClient.insertNodeGroupAsync(initialNodeCount, zone.toString(), nodeGroupResource).get();
    * }
    * </code></pre>
    *
@@ -873,8 +978,9 @@ public class NodeGroupClient implements BackgroundResource {
    * @param nodeGroupResource A NodeGroup resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertNodeGroup(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertNodeGroupAsync(
       Integer initialNodeCount, String zone, NodeGroup nodeGroupResource) {
 
     InsertNodeGroupHttpRequest request =
@@ -883,7 +989,7 @@ public class NodeGroupClient implements BackgroundResource {
             .setZone(zone)
             .setNodeGroupResource(nodeGroupResource)
             .build();
-    return insertNodeGroup(request);
+    return insertNodeGroupAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -902,16 +1008,46 @@ public class NodeGroupClient implements BackgroundResource {
    *     .setZone(zone.toString())
    *     .setNodeGroupResource(nodeGroupResource)
    *     .build();
-   *   Operation response = nodeGroupClient.insertNodeGroup(request);
+   *   nodeGroupClient.insertNodeGroupAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertNodeGroup(InsertNodeGroupHttpRequest request) {
-    return insertNodeGroupCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertNodeGroupAsync(
+      InsertNodeGroupHttpRequest request) {
+    return insertNodeGroupOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a NodeGroup resource in the specified project using the data included in the request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
+   *   Integer initialNodeCount = 0;
+   *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
+   *   NodeGroup nodeGroupResource = NodeGroup.newBuilder().build();
+   *   InsertNodeGroupHttpRequest request = InsertNodeGroupHttpRequest.newBuilder()
+   *     .setInitialNodeCount(initialNodeCount)
+   *     .setZone(zone.toString())
+   *     .setNodeGroupResource(nodeGroupResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = nodeGroupClient.insertNodeGroupOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      insertNodeGroupOperationCallable() {
+    return stub.insertNodeGroupOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -932,7 +1068,7 @@ public class NodeGroupClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = nodeGroupClient.insertNodeGroupCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1344,7 +1480,7 @@ public class NodeGroupClient implements BackgroundResource {
    * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
    *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
    *   NodeGroupsSetNodeTemplateRequest nodeGroupsSetNodeTemplateRequestResource = NodeGroupsSetNodeTemplateRequest.newBuilder().build();
-   *   Operation response = nodeGroupClient.setNodeTemplateNodeGroup(nodeGroup, nodeGroupsSetNodeTemplateRequestResource);
+   *   nodeGroupClient.setNodeTemplateNodeGroupAsync(nodeGroup, nodeGroupsSetNodeTemplateRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1352,8 +1488,9 @@ public class NodeGroupClient implements BackgroundResource {
    * @param nodeGroupsSetNodeTemplateRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setNodeTemplateNodeGroup(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setNodeTemplateNodeGroupAsync(
       ProjectZoneNodeGroupName nodeGroup,
       NodeGroupsSetNodeTemplateRequest nodeGroupsSetNodeTemplateRequestResource) {
 
@@ -1362,7 +1499,7 @@ public class NodeGroupClient implements BackgroundResource {
             .setNodeGroup(nodeGroup == null ? null : nodeGroup.toString())
             .setNodeGroupsSetNodeTemplateRequestResource(nodeGroupsSetNodeTemplateRequestResource)
             .build();
-    return setNodeTemplateNodeGroup(request);
+    return setNodeTemplateNodeGroupAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1375,7 +1512,7 @@ public class NodeGroupClient implements BackgroundResource {
    * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
    *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
    *   NodeGroupsSetNodeTemplateRequest nodeGroupsSetNodeTemplateRequestResource = NodeGroupsSetNodeTemplateRequest.newBuilder().build();
-   *   Operation response = nodeGroupClient.setNodeTemplateNodeGroup(nodeGroup.toString(), nodeGroupsSetNodeTemplateRequestResource);
+   *   nodeGroupClient.setNodeTemplateNodeGroupAsync(nodeGroup.toString(), nodeGroupsSetNodeTemplateRequestResource).get();
    * }
    * </code></pre>
    *
@@ -1383,8 +1520,9 @@ public class NodeGroupClient implements BackgroundResource {
    * @param nodeGroupsSetNodeTemplateRequestResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setNodeTemplateNodeGroup(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setNodeTemplateNodeGroupAsync(
       String nodeGroup, NodeGroupsSetNodeTemplateRequest nodeGroupsSetNodeTemplateRequestResource) {
 
     SetNodeTemplateNodeGroupHttpRequest request =
@@ -1392,7 +1530,7 @@ public class NodeGroupClient implements BackgroundResource {
             .setNodeGroup(nodeGroup)
             .setNodeGroupsSetNodeTemplateRequestResource(nodeGroupsSetNodeTemplateRequestResource)
             .build();
-    return setNodeTemplateNodeGroup(request);
+    return setNodeTemplateNodeGroupAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1409,16 +1547,44 @@ public class NodeGroupClient implements BackgroundResource {
    *     .setNodeGroup(nodeGroup.toString())
    *     .setNodeGroupsSetNodeTemplateRequestResource(nodeGroupsSetNodeTemplateRequestResource)
    *     .build();
-   *   Operation response = nodeGroupClient.setNodeTemplateNodeGroup(request);
+   *   nodeGroupClient.setNodeTemplateNodeGroupAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setNodeTemplateNodeGroup(SetNodeTemplateNodeGroupHttpRequest request) {
-    return setNodeTemplateNodeGroupCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setNodeTemplateNodeGroupAsync(
+      SetNodeTemplateNodeGroupHttpRequest request) {
+    return setNodeTemplateNodeGroupOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the node template of the node group.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (NodeGroupClient nodeGroupClient = NodeGroupClient.create()) {
+   *   ProjectZoneNodeGroupName nodeGroup = ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
+   *   NodeGroupsSetNodeTemplateRequest nodeGroupsSetNodeTemplateRequestResource = NodeGroupsSetNodeTemplateRequest.newBuilder().build();
+   *   SetNodeTemplateNodeGroupHttpRequest request = SetNodeTemplateNodeGroupHttpRequest.newBuilder()
+   *     .setNodeGroup(nodeGroup.toString())
+   *     .setNodeGroupsSetNodeTemplateRequestResource(nodeGroupsSetNodeTemplateRequestResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = nodeGroupClient.setNodeTemplateNodeGroupOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNodeTemplateNodeGroupOperationCallable() {
+    return stub.setNodeTemplateNodeGroupOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1437,7 +1603,7 @@ public class NodeGroupClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = nodeGroupClient.setNodeTemplateNodeGroupCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

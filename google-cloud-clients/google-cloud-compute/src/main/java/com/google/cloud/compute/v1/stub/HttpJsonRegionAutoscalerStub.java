@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.Autoscaler;
@@ -179,21 +181,30 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteRegionAutoscalerHttpRequest, Operation>
       deleteRegionAutoscalerCallable;
+  private final OperationCallable<DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionAutoscalerOperationCallable;
   private final UnaryCallable<GetRegionAutoscalerHttpRequest, Autoscaler>
       getRegionAutoscalerCallable;
   private final UnaryCallable<InsertRegionAutoscalerHttpRequest, Operation>
       insertRegionAutoscalerCallable;
+  private final OperationCallable<InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionAutoscalerOperationCallable;
   private final UnaryCallable<ListRegionAutoscalersHttpRequest, RegionAutoscalerList>
       listRegionAutoscalersCallable;
   private final UnaryCallable<ListRegionAutoscalersHttpRequest, ListRegionAutoscalersPagedResponse>
       listRegionAutoscalersPagedCallable;
   private final UnaryCallable<PatchRegionAutoscalerHttpRequest, Operation>
       patchRegionAutoscalerCallable;
+  private final OperationCallable<PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionAutoscalerOperationCallable;
   private final UnaryCallable<UpdateRegionAutoscalerHttpRequest, Operation>
       updateRegionAutoscalerCallable;
+  private final OperationCallable<UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      updateRegionAutoscalerOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -235,6 +246,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteRegionAutoscalerHttpRequest, Operation>
         deleteRegionAutoscalerTransportSettings =
@@ -273,6 +285,12 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
             deleteRegionAutoscalerTransportSettings,
             settings.deleteRegionAutoscalerSettings(),
             clientContext);
+    this.deleteRegionAutoscalerOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteRegionAutoscalerTransportSettings,
+            settings.deleteRegionAutoscalerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getRegionAutoscalerCallable =
         callableFactory.createUnaryCallable(
             getRegionAutoscalerTransportSettings,
@@ -283,6 +301,12 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
             insertRegionAutoscalerTransportSettings,
             settings.insertRegionAutoscalerSettings(),
             clientContext);
+    this.insertRegionAutoscalerOperationCallable =
+        callableFactory.createOperationCallable(
+            insertRegionAutoscalerTransportSettings,
+            settings.insertRegionAutoscalerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listRegionAutoscalersCallable =
         callableFactory.createUnaryCallable(
             listRegionAutoscalersTransportSettings,
@@ -298,13 +322,36 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
             patchRegionAutoscalerTransportSettings,
             settings.patchRegionAutoscalerSettings(),
             clientContext);
+    this.patchRegionAutoscalerOperationCallable =
+        callableFactory.createOperationCallable(
+            patchRegionAutoscalerTransportSettings,
+            settings.patchRegionAutoscalerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.updateRegionAutoscalerCallable =
         callableFactory.createUnaryCallable(
             updateRegionAutoscalerTransportSettings,
             settings.updateRegionAutoscalerSettings(),
             clientContext);
+    this.updateRegionAutoscalerOperationCallable =
+        callableFactory.createOperationCallable(
+            updateRegionAutoscalerTransportSettings,
+            settings.updateRegionAutoscalerOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionAutoscalerOperationCallable() {
+    return deleteRegionAutoscalerOperationCallable;
   }
 
   @BetaApi
@@ -316,6 +363,12 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
   @BetaApi
   public UnaryCallable<GetRegionAutoscalerHttpRequest, Autoscaler> getRegionAutoscalerCallable() {
     return getRegionAutoscalerCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionAutoscalerOperationCallable() {
+    return insertRegionAutoscalerOperationCallable;
   }
 
   @BetaApi
@@ -336,10 +389,22 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
     return listRegionAutoscalersCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionAutoscalerOperationCallable() {
+    return patchRegionAutoscalerOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<PatchRegionAutoscalerHttpRequest, Operation>
       patchRegionAutoscalerCallable() {
     return patchRegionAutoscalerCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      updateRegionAutoscalerOperationCallable() {
+    return updateRegionAutoscalerOperationCallable;
   }
 
   @BetaApi

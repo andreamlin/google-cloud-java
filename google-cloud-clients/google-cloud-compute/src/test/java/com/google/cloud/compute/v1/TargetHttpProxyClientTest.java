@@ -24,6 +24,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonTargetHttpProxyStub.setUr
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -35,10 +36,10 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.TargetHttpProxyStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -88,19 +89,15 @@ public class TargetHttpProxyClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteTargetHttpProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteTargetHttpProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetHttpProxies.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteTargetHttpProxyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalTargetHttpProxyName targetHttpProxy =
         ProjectGlobalTargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
 
-    Void actualResponse = client.deleteTargetHttpProxyAsync(targetHttpProxy).get();
+    EmptyMessage actualResponse = client.deleteTargetHttpProxyAsync(targetHttpProxy).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -135,7 +132,7 @@ public class TargetHttpProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -204,19 +201,16 @@ public class TargetHttpProxyClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertTargetHttpProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertTargetHttpProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetHttpProxies.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertTargetHttpProxyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     TargetHttpProxy targetHttpProxyResource = TargetHttpProxy.newBuilder().build();
 
-    Void actualResponse = client.insertTargetHttpProxyAsync(project, targetHttpProxyResource).get();
+    EmptyMessage actualResponse =
+        client.insertTargetHttpProxyAsync(project, targetHttpProxyResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -251,7 +245,7 @@ public class TargetHttpProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -318,20 +312,16 @@ public class TargetHttpProxyClientTest {
   @Test
   @SuppressWarnings("all")
   public void setUrlMapTargetHttpProxyTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setUrlMapTargetHttpProxyTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockTargetHttpProxies.addResponse(resultOperation);
+        Operation.newBuilder().setName("setUrlMapTargetHttpProxyTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectTargetHttpProxyName targetHttpProxy =
         ProjectTargetHttpProxyName.of("[PROJECT]", "[TARGET_HTTP_PROXY]");
     UrlMapReference urlMapReferenceResource = UrlMapReference.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.setUrlMapTargetHttpProxyAsync(targetHttpProxy, urlMapReferenceResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -368,7 +358,7 @@ public class TargetHttpProxyClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

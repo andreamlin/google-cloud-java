@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.TargetInstanceStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
  *   ProjectZoneTargetInstanceName targetInstance = ProjectZoneTargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
- *   Operation response = targetInstanceClient.deleteTargetInstance(targetInstance);
+ *   TargetInstance response = targetInstanceClient.getTargetInstance(targetInstance);
  * }
  * </code>
  * </pre>
@@ -103,6 +106,7 @@ import javax.annotation.Generated;
 public class TargetInstanceClient implements BackgroundResource {
   private final TargetInstanceSettings settings;
   private final TargetInstanceStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of TargetInstanceClient with default settings. */
   public static final TargetInstanceClient create() throws IOException {
@@ -135,12 +139,14 @@ public class TargetInstanceClient implements BackgroundResource {
   protected TargetInstanceClient(TargetInstanceSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((TargetInstanceStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected TargetInstanceClient(TargetInstanceStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final TargetInstanceSettings getSettings() {
@@ -150,6 +156,16 @@ public class TargetInstanceClient implements BackgroundResource {
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public TargetInstanceStub getStub() {
     return stub;
+  }
+
+  /**
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -302,21 +318,23 @@ public class TargetInstanceClient implements BackgroundResource {
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   ProjectZoneTargetInstanceName targetInstance = ProjectZoneTargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
-   *   Operation response = targetInstanceClient.deleteTargetInstance(targetInstance);
+   *   targetInstanceClient.deleteTargetInstanceAsync(targetInstance).get();
    * }
    * </code></pre>
    *
    * @param targetInstance Name of the TargetInstance resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteTargetInstance(ProjectZoneTargetInstanceName targetInstance) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetInstanceAsync(
+      ProjectZoneTargetInstanceName targetInstance) {
 
     DeleteTargetInstanceHttpRequest request =
         DeleteTargetInstanceHttpRequest.newBuilder()
             .setTargetInstance(targetInstance == null ? null : targetInstance.toString())
             .build();
-    return deleteTargetInstance(request);
+    return deleteTargetInstanceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -328,19 +346,21 @@ public class TargetInstanceClient implements BackgroundResource {
    * <pre><code>
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   ProjectZoneTargetInstanceName targetInstance = ProjectZoneTargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
-   *   Operation response = targetInstanceClient.deleteTargetInstance(targetInstance.toString());
+   *   targetInstanceClient.deleteTargetInstanceAsync(targetInstance.toString()).get();
    * }
    * </code></pre>
    *
    * @param targetInstance Name of the TargetInstance resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteTargetInstance(String targetInstance) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetInstanceAsync(
+      String targetInstance) {
 
     DeleteTargetInstanceHttpRequest request =
         DeleteTargetInstanceHttpRequest.newBuilder().setTargetInstance(targetInstance).build();
-    return deleteTargetInstance(request);
+    return deleteTargetInstanceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -355,16 +375,42 @@ public class TargetInstanceClient implements BackgroundResource {
    *   DeleteTargetInstanceHttpRequest request = DeleteTargetInstanceHttpRequest.newBuilder()
    *     .setTargetInstance(targetInstance.toString())
    *     .build();
-   *   Operation response = targetInstanceClient.deleteTargetInstance(request);
+   *   targetInstanceClient.deleteTargetInstanceAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteTargetInstance(DeleteTargetInstanceHttpRequest request) {
-    return deleteTargetInstanceCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetInstanceAsync(
+      DeleteTargetInstanceHttpRequest request) {
+    return deleteTargetInstanceOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified TargetInstance resource.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
+   *   ProjectZoneTargetInstanceName targetInstance = ProjectZoneTargetInstanceName.of("[PROJECT]", "[ZONE]", "[TARGET_INSTANCE]");
+   *   DeleteTargetInstanceHttpRequest request = DeleteTargetInstanceHttpRequest.newBuilder()
+   *     .setTargetInstance(targetInstance.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetInstanceClient.deleteTargetInstanceOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetInstanceOperationCallable() {
+    return stub.deleteTargetInstanceOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -381,7 +427,7 @@ public class TargetInstanceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetInstanceClient.deleteTargetInstanceCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -504,7 +550,7 @@ public class TargetInstanceClient implements BackgroundResource {
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
    *   TargetInstance targetInstanceResource = TargetInstance.newBuilder().build();
-   *   Operation response = targetInstanceClient.insertTargetInstance(zone, targetInstanceResource);
+   *   targetInstanceClient.insertTargetInstanceAsync(zone, targetInstanceResource).get();
    * }
    * </code></pre>
    *
@@ -514,8 +560,9 @@ public class TargetInstanceClient implements BackgroundResource {
    *     beta.targetInstances ==) (== resource_for v1.targetInstances ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertTargetInstance(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetInstanceAsync(
       ProjectZoneName zone, TargetInstance targetInstanceResource) {
 
     InsertTargetInstanceHttpRequest request =
@@ -523,7 +570,7 @@ public class TargetInstanceClient implements BackgroundResource {
             .setZone(zone == null ? null : zone.toString())
             .setTargetInstanceResource(targetInstanceResource)
             .build();
-    return insertTargetInstance(request);
+    return insertTargetInstanceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -537,7 +584,7 @@ public class TargetInstanceClient implements BackgroundResource {
    * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
    *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
    *   TargetInstance targetInstanceResource = TargetInstance.newBuilder().build();
-   *   Operation response = targetInstanceClient.insertTargetInstance(zone.toString(), targetInstanceResource);
+   *   targetInstanceClient.insertTargetInstanceAsync(zone.toString(), targetInstanceResource).get();
    * }
    * </code></pre>
    *
@@ -547,15 +594,17 @@ public class TargetInstanceClient implements BackgroundResource {
    *     beta.targetInstances ==) (== resource_for v1.targetInstances ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertTargetInstance(String zone, TargetInstance targetInstanceResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetInstanceAsync(
+      String zone, TargetInstance targetInstanceResource) {
 
     InsertTargetInstanceHttpRequest request =
         InsertTargetInstanceHttpRequest.newBuilder()
             .setZone(zone)
             .setTargetInstanceResource(targetInstanceResource)
             .build();
-    return insertTargetInstance(request);
+    return insertTargetInstanceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -573,16 +622,45 @@ public class TargetInstanceClient implements BackgroundResource {
    *     .setZone(zone.toString())
    *     .setTargetInstanceResource(targetInstanceResource)
    *     .build();
-   *   Operation response = targetInstanceClient.insertTargetInstance(request);
+   *   targetInstanceClient.insertTargetInstanceAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertTargetInstance(InsertTargetInstanceHttpRequest request) {
-    return insertTargetInstanceCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetInstanceAsync(
+      InsertTargetInstanceHttpRequest request) {
+    return insertTargetInstanceOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a TargetInstance resource in the specified project and zone using the data included in
+   * the request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (TargetInstanceClient targetInstanceClient = TargetInstanceClient.create()) {
+   *   ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
+   *   TargetInstance targetInstanceResource = TargetInstance.newBuilder().build();
+   *   InsertTargetInstanceHttpRequest request = InsertTargetInstanceHttpRequest.newBuilder()
+   *     .setZone(zone.toString())
+   *     .setTargetInstanceResource(targetInstanceResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetInstanceClient.insertTargetInstanceOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetInstanceOperationCallable() {
+    return stub.insertTargetInstanceOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -602,7 +680,7 @@ public class TargetInstanceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = targetInstanceClient.insertTargetInstanceCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

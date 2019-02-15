@@ -23,13 +23,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -73,13 +78,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteSslPolicy to 30 seconds:
+ * example, to set the total timeout of getSslPolicy to 30 seconds:
  *
  * <pre>
  * <code>
  * SslPolicyStubSettings.Builder sslPolicySettingsBuilder =
  *     SslPolicyStubSettings.newBuilder();
- * sslPolicySettingsBuilder.deleteSslPolicySettings().getRetrySettings().toBuilder()
+ * sslPolicySettingsBuilder.getSslPolicySettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * SslPolicyStubSettings sslPolicySettings = sslPolicySettingsBuilder.build();
  * </code>
@@ -100,8 +105,12 @@ public class SslPolicyStubSettings extends StubSettings<SslPolicyStubSettings> {
           .build();
 
   private final UnaryCallSettings<DeleteSslPolicyHttpRequest, Operation> deleteSslPolicySettings;
+  private final OperationCallSettings<DeleteSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSslPolicyOperationSettings;
   private final UnaryCallSettings<GetSslPolicyHttpRequest, SslPolicy> getSslPolicySettings;
   private final UnaryCallSettings<InsertSslPolicyHttpRequest, Operation> insertSslPolicySettings;
+  private final OperationCallSettings<InsertSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      insertSslPolicyOperationSettings;
   private final PagedCallSettings<
           ListSslPoliciesHttpRequest, SslPoliciesList, ListSslPoliciesPagedResponse>
       listSslPoliciesSettings;
@@ -109,10 +118,19 @@ public class SslPolicyStubSettings extends StubSettings<SslPolicyStubSettings> {
           ListAvailableFeaturesSslPoliciesHttpRequest, SslPoliciesListAvailableFeaturesResponse>
       listAvailableFeaturesSslPoliciesSettings;
   private final UnaryCallSettings<PatchSslPolicyHttpRequest, Operation> patchSslPolicySettings;
+  private final OperationCallSettings<PatchSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchSslPolicyOperationSettings;
 
   /** Returns the object with the settings used for calls to deleteSslPolicy. */
   public UnaryCallSettings<DeleteSslPolicyHttpRequest, Operation> deleteSslPolicySettings() {
     return deleteSslPolicySettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteSslPolicy. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSslPolicyOperationSettings() {
+    return deleteSslPolicyOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getSslPolicy. */
@@ -123,6 +141,13 @@ public class SslPolicyStubSettings extends StubSettings<SslPolicyStubSettings> {
   /** Returns the object with the settings used for calls to insertSslPolicy. */
   public UnaryCallSettings<InsertSslPolicyHttpRequest, Operation> insertSslPolicySettings() {
     return insertSslPolicySettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertSslPolicy. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      insertSslPolicyOperationSettings() {
+    return insertSslPolicyOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listSslPolicies. */
@@ -142,6 +167,13 @@ public class SslPolicyStubSettings extends StubSettings<SslPolicyStubSettings> {
   /** Returns the object with the settings used for calls to patchSslPolicy. */
   public UnaryCallSettings<PatchSslPolicyHttpRequest, Operation> patchSslPolicySettings() {
     return patchSslPolicySettings;
+  }
+
+  /** Returns the object with the settings used for calls to patchSslPolicy. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchSslPolicyOperationSettings() {
+    return patchSslPolicyOperationSettings;
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -219,12 +251,15 @@ public class SslPolicyStubSettings extends StubSettings<SslPolicyStubSettings> {
     super(settingsBuilder);
 
     deleteSslPolicySettings = settingsBuilder.deleteSslPolicySettings().build();
+    deleteSslPolicyOperationSettings = settingsBuilder.deleteSslPolicyOperationSettings().build();
     getSslPolicySettings = settingsBuilder.getSslPolicySettings().build();
     insertSslPolicySettings = settingsBuilder.insertSslPolicySettings().build();
+    insertSslPolicyOperationSettings = settingsBuilder.insertSslPolicyOperationSettings().build();
     listSslPoliciesSettings = settingsBuilder.listSslPoliciesSettings().build();
     listAvailableFeaturesSslPoliciesSettings =
         settingsBuilder.listAvailableFeaturesSslPoliciesSettings().build();
     patchSslPolicySettings = settingsBuilder.patchSslPolicySettings().build();
+    patchSslPolicyOperationSettings = settingsBuilder.patchSslPolicyOperationSettings().build();
   }
 
   private static final PagedListDescriptor<ListSslPoliciesHttpRequest, SslPoliciesList, SslPolicy>
@@ -288,10 +323,16 @@ public class SslPolicyStubSettings extends StubSettings<SslPolicyStubSettings> {
 
     private final UnaryCallSettings.Builder<DeleteSslPolicyHttpRequest, Operation>
         deleteSslPolicySettings;
+    private final OperationCallSettings.Builder<
+            DeleteSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        deleteSslPolicyOperationSettings;
     private final UnaryCallSettings.Builder<GetSslPolicyHttpRequest, SslPolicy>
         getSslPolicySettings;
     private final UnaryCallSettings.Builder<InsertSslPolicyHttpRequest, Operation>
         insertSslPolicySettings;
+    private final OperationCallSettings.Builder<
+            InsertSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        insertSslPolicyOperationSettings;
     private final PagedCallSettings.Builder<
             ListSslPoliciesHttpRequest, SslPoliciesList, ListSslPoliciesPagedResponse>
         listSslPoliciesSettings;
@@ -300,6 +341,9 @@ public class SslPolicyStubSettings extends StubSettings<SslPolicyStubSettings> {
         listAvailableFeaturesSslPoliciesSettings;
     private final UnaryCallSettings.Builder<PatchSslPolicyHttpRequest, Operation>
         patchSslPolicySettings;
+    private final OperationCallSettings.Builder<
+            PatchSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        patchSslPolicyOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
         RETRYABLE_CODE_DEFINITIONS;
@@ -344,15 +388,21 @@ public class SslPolicyStubSettings extends StubSettings<SslPolicyStubSettings> {
 
       deleteSslPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteSslPolicyOperationSettings = OperationCallSettings.newBuilder();
+
       getSslPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertSslPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      insertSslPolicyOperationSettings = OperationCallSettings.newBuilder();
 
       listSslPoliciesSettings = PagedCallSettings.newBuilder(LIST_SSL_POLICIES_PAGE_STR_FACT);
 
       listAvailableFeaturesSslPoliciesSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       patchSslPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      patchSslPolicyOperationSettings = OperationCallSettings.newBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -406,6 +456,69 @@ public class SslPolicyStubSettings extends StubSettings<SslPolicyStubSettings> {
           .patchSslPolicySettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .deleteSslPolicyOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteSslPolicyHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertSslPolicyOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertSslPolicyHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .patchSslPolicyOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<PatchSslPolicyHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -414,12 +527,15 @@ public class SslPolicyStubSettings extends StubSettings<SslPolicyStubSettings> {
       super(settings);
 
       deleteSslPolicySettings = settings.deleteSslPolicySettings.toBuilder();
+      deleteSslPolicyOperationSettings = settings.deleteSslPolicyOperationSettings.toBuilder();
       getSslPolicySettings = settings.getSslPolicySettings.toBuilder();
       insertSslPolicySettings = settings.insertSslPolicySettings.toBuilder();
+      insertSslPolicyOperationSettings = settings.insertSslPolicyOperationSettings.toBuilder();
       listSslPoliciesSettings = settings.listSslPoliciesSettings.toBuilder();
       listAvailableFeaturesSslPoliciesSettings =
           settings.listAvailableFeaturesSslPoliciesSettings.toBuilder();
       patchSslPolicySettings = settings.patchSslPolicySettings.toBuilder();
+      patchSslPolicyOperationSettings = settings.patchSslPolicyOperationSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -453,6 +569,14 @@ public class SslPolicyStubSettings extends StubSettings<SslPolicyStubSettings> {
       return deleteSslPolicySettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteSslPolicy. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        deleteSslPolicyOperationSettings() {
+      return deleteSslPolicyOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to getSslPolicy. */
     public UnaryCallSettings.Builder<GetSslPolicyHttpRequest, SslPolicy> getSslPolicySettings() {
       return getSslPolicySettings;
@@ -462,6 +586,14 @@ public class SslPolicyStubSettings extends StubSettings<SslPolicyStubSettings> {
     public UnaryCallSettings.Builder<InsertSslPolicyHttpRequest, Operation>
         insertSslPolicySettings() {
       return insertSslPolicySettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertSslPolicy. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        insertSslPolicyOperationSettings() {
+      return insertSslPolicyOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listSslPolicies. */
@@ -482,6 +614,14 @@ public class SslPolicyStubSettings extends StubSettings<SslPolicyStubSettings> {
     public UnaryCallSettings.Builder<PatchSslPolicyHttpRequest, Operation>
         patchSslPolicySettings() {
       return patchSslPolicySettings;
+    }
+
+    /** Returns the builder for the settings used for calls to patchSslPolicy. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<PatchSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+        patchSslPolicyOperationSettings() {
+      return patchSslPolicyOperationSettings;
     }
 
     @Override

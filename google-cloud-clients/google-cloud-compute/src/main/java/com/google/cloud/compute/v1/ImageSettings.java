@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteImage to 30 seconds:
+ * example, to set the total timeout of getImage to 30 seconds:
  *
  * <pre>
  * <code>
  * ImageSettings.Builder imageSettingsBuilder =
  *     ImageSettings.newBuilder();
- * imageSettingsBuilder.deleteImageSettings().getRetrySettings().toBuilder()
+ * imageSettingsBuilder.getImageSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * ImageSettings imageSettings = imageSettingsBuilder.build();
  * </code>
@@ -68,9 +70,25 @@ public class ImageSettings extends ClientSettings<ImageSettings> {
     return ((ImageStubSettings) getStubSettings()).deleteImageSettings();
   }
 
+  /** Returns the object with the settings used for calls to deleteImage. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+      deleteImageOperationSettings() {
+    return ((ImageStubSettings) getStubSettings()).deleteImageOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to deprecateImage. */
   public UnaryCallSettings<DeprecateImageHttpRequest, Operation> deprecateImageSettings() {
     return ((ImageStubSettings) getStubSettings()).deprecateImageSettings();
+  }
+
+  /** Returns the object with the settings used for calls to deprecateImage. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+      deprecateImageOperationSettings() {
+    return ((ImageStubSettings) getStubSettings()).deprecateImageOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getImage. */
@@ -93,6 +111,14 @@ public class ImageSettings extends ClientSettings<ImageSettings> {
     return ((ImageStubSettings) getStubSettings()).insertImageSettings();
   }
 
+  /** Returns the object with the settings used for calls to insertImage. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+      insertImageOperationSettings() {
+    return ((ImageStubSettings) getStubSettings()).insertImageOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to listImages. */
   public PagedCallSettings<ListImagesHttpRequest, ImageList, ListImagesPagedResponse>
       listImagesSettings() {
@@ -107,6 +133,14 @@ public class ImageSettings extends ClientSettings<ImageSettings> {
   /** Returns the object with the settings used for calls to setLabelsImage. */
   public UnaryCallSettings<SetLabelsImageHttpRequest, Operation> setLabelsImageSettings() {
     return ((ImageStubSettings) getStubSettings()).setLabelsImageSettings();
+  }
+
+  /** Returns the object with the settings used for calls to setLabelsImage. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsImageOperationSettings() {
+    return ((ImageStubSettings) getStubSettings()).setLabelsImageOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to testIamPermissionsImage. */
@@ -221,10 +255,26 @@ public class ImageSettings extends ClientSettings<ImageSettings> {
       return getStubSettingsBuilder().deleteImageSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteImage. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+        deleteImageOperationSettings() {
+      return getStubSettingsBuilder().deleteImageOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to deprecateImage. */
     public UnaryCallSettings.Builder<DeprecateImageHttpRequest, Operation>
         deprecateImageSettings() {
       return getStubSettingsBuilder().deprecateImageSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to deprecateImage. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+        deprecateImageOperationSettings() {
+      return getStubSettingsBuilder().deprecateImageOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to getImage. */
@@ -249,6 +299,14 @@ public class ImageSettings extends ClientSettings<ImageSettings> {
       return getStubSettingsBuilder().insertImageSettings();
     }
 
+    /** Returns the builder for the settings used for calls to insertImage. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+        insertImageOperationSettings() {
+      return getStubSettingsBuilder().insertImageOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to listImages. */
     public PagedCallSettings.Builder<ListImagesHttpRequest, ImageList, ListImagesPagedResponse>
         listImagesSettings() {
@@ -265,6 +323,14 @@ public class ImageSettings extends ClientSettings<ImageSettings> {
     public UnaryCallSettings.Builder<SetLabelsImageHttpRequest, Operation>
         setLabelsImageSettings() {
       return getStubSettingsBuilder().setLabelsImageSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to setLabelsImage. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+        setLabelsImageOperationSettings() {
+      return getStubSettingsBuilder().setLabelsImageOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to testIamPermissionsImage. */

@@ -24,13 +24,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -81,13 +86,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of addSignedUrlKeyBackendService to 30 seconds:
+ * example, to set the total timeout of getBackendService to 30 seconds:
  *
  * <pre>
  * <code>
  * BackendServiceStubSettings.Builder backendServiceSettingsBuilder =
  *     BackendServiceStubSettings.newBuilder();
- * backendServiceSettingsBuilder.addSignedUrlKeyBackendServiceSettings().getRetrySettings().toBuilder()
+ * backendServiceSettingsBuilder.getBackendServiceSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * BackendServiceStubSettings backendServiceSettings = backendServiceSettingsBuilder.build();
  * </code>
@@ -109,6 +114,9 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
 
   private final UnaryCallSettings<AddSignedUrlKeyBackendServiceHttpRequest, Operation>
       addSignedUrlKeyBackendServiceSettings;
+  private final OperationCallSettings<
+          AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      addSignedUrlKeyBackendServiceOperationSettings;
   private final PagedCallSettings<
           AggregatedListBackendServicesHttpRequest,
           BackendServiceAggregatedList,
@@ -116,28 +124,49 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
       aggregatedListBackendServicesSettings;
   private final UnaryCallSettings<DeleteBackendServiceHttpRequest, Operation>
       deleteBackendServiceSettings;
+  private final OperationCallSettings<DeleteBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteBackendServiceOperationSettings;
   private final UnaryCallSettings<DeleteSignedUrlKeyBackendServiceHttpRequest, Operation>
       deleteSignedUrlKeyBackendServiceSettings;
+  private final OperationCallSettings<
+          DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSignedUrlKeyBackendServiceOperationSettings;
   private final UnaryCallSettings<GetBackendServiceHttpRequest, BackendService>
       getBackendServiceSettings;
   private final UnaryCallSettings<GetHealthBackendServiceHttpRequest, BackendServiceGroupHealth>
       getHealthBackendServiceSettings;
   private final UnaryCallSettings<InsertBackendServiceHttpRequest, Operation>
       insertBackendServiceSettings;
+  private final OperationCallSettings<InsertBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      insertBackendServiceOperationSettings;
   private final PagedCallSettings<
           ListBackendServicesHttpRequest, BackendServiceList, ListBackendServicesPagedResponse>
       listBackendServicesSettings;
   private final UnaryCallSettings<PatchBackendServiceHttpRequest, Operation>
       patchBackendServiceSettings;
+  private final OperationCallSettings<PatchBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      patchBackendServiceOperationSettings;
   private final UnaryCallSettings<SetSecurityPolicyBackendServiceHttpRequest, Operation>
       setSecurityPolicyBackendServiceSettings;
+  private final OperationCallSettings<
+          SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      setSecurityPolicyBackendServiceOperationSettings;
   private final UnaryCallSettings<UpdateBackendServiceHttpRequest, Operation>
       updateBackendServiceSettings;
+  private final OperationCallSettings<UpdateBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      updateBackendServiceOperationSettings;
 
   /** Returns the object with the settings used for calls to addSignedUrlKeyBackendService. */
   public UnaryCallSettings<AddSignedUrlKeyBackendServiceHttpRequest, Operation>
       addSignedUrlKeyBackendServiceSettings() {
     return addSignedUrlKeyBackendServiceSettings;
+  }
+
+  /** Returns the object with the settings used for calls to addSignedUrlKeyBackendService. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      addSignedUrlKeyBackendServiceOperationSettings() {
+    return addSignedUrlKeyBackendServiceOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to aggregatedListBackendServices. */
@@ -155,10 +184,25 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
     return deleteBackendServiceSettings;
   }
 
+  /** Returns the object with the settings used for calls to deleteBackendService. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteBackendServiceOperationSettings() {
+    return deleteBackendServiceOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to deleteSignedUrlKeyBackendService. */
   public UnaryCallSettings<DeleteSignedUrlKeyBackendServiceHttpRequest, Operation>
       deleteSignedUrlKeyBackendServiceSettings() {
     return deleteSignedUrlKeyBackendServiceSettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteSignedUrlKeyBackendService. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSignedUrlKeyBackendServiceOperationSettings() {
+    return deleteSignedUrlKeyBackendServiceOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getBackendService. */
@@ -179,6 +223,13 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
     return insertBackendServiceSettings;
   }
 
+  /** Returns the object with the settings used for calls to insertBackendService. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      insertBackendServiceOperationSettings() {
+    return insertBackendServiceOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to listBackendServices. */
   public PagedCallSettings<
           ListBackendServicesHttpRequest, BackendServiceList, ListBackendServicesPagedResponse>
@@ -192,16 +243,38 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
     return patchBackendServiceSettings;
   }
 
+  /** Returns the object with the settings used for calls to patchBackendService. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      patchBackendServiceOperationSettings() {
+    return patchBackendServiceOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to setSecurityPolicyBackendService. */
   public UnaryCallSettings<SetSecurityPolicyBackendServiceHttpRequest, Operation>
       setSecurityPolicyBackendServiceSettings() {
     return setSecurityPolicyBackendServiceSettings;
   }
 
+  /** Returns the object with the settings used for calls to setSecurityPolicyBackendService. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      setSecurityPolicyBackendServiceOperationSettings() {
+    return setSecurityPolicyBackendServiceOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to updateBackendService. */
   public UnaryCallSettings<UpdateBackendServiceHttpRequest, Operation>
       updateBackendServiceSettings() {
     return updateBackendServiceSettings;
+  }
+
+  /** Returns the object with the settings used for calls to updateBackendService. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<UpdateBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      updateBackendServiceOperationSettings() {
+    return updateBackendServiceOperationSettings;
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
@@ -281,19 +354,33 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
 
     addSignedUrlKeyBackendServiceSettings =
         settingsBuilder.addSignedUrlKeyBackendServiceSettings().build();
+    addSignedUrlKeyBackendServiceOperationSettings =
+        settingsBuilder.addSignedUrlKeyBackendServiceOperationSettings().build();
     aggregatedListBackendServicesSettings =
         settingsBuilder.aggregatedListBackendServicesSettings().build();
     deleteBackendServiceSettings = settingsBuilder.deleteBackendServiceSettings().build();
+    deleteBackendServiceOperationSettings =
+        settingsBuilder.deleteBackendServiceOperationSettings().build();
     deleteSignedUrlKeyBackendServiceSettings =
         settingsBuilder.deleteSignedUrlKeyBackendServiceSettings().build();
+    deleteSignedUrlKeyBackendServiceOperationSettings =
+        settingsBuilder.deleteSignedUrlKeyBackendServiceOperationSettings().build();
     getBackendServiceSettings = settingsBuilder.getBackendServiceSettings().build();
     getHealthBackendServiceSettings = settingsBuilder.getHealthBackendServiceSettings().build();
     insertBackendServiceSettings = settingsBuilder.insertBackendServiceSettings().build();
+    insertBackendServiceOperationSettings =
+        settingsBuilder.insertBackendServiceOperationSettings().build();
     listBackendServicesSettings = settingsBuilder.listBackendServicesSettings().build();
     patchBackendServiceSettings = settingsBuilder.patchBackendServiceSettings().build();
+    patchBackendServiceOperationSettings =
+        settingsBuilder.patchBackendServiceOperationSettings().build();
     setSecurityPolicyBackendServiceSettings =
         settingsBuilder.setSecurityPolicyBackendServiceSettings().build();
+    setSecurityPolicyBackendServiceOperationSettings =
+        settingsBuilder.setSecurityPolicyBackendServiceOperationSettings().build();
     updateBackendServiceSettings = settingsBuilder.updateBackendServiceSettings().build();
+    updateBackendServiceOperationSettings =
+        settingsBuilder.updateBackendServiceOperationSettings().build();
   }
 
   private static final PagedListDescriptor<
@@ -446,6 +533,9 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
 
     private final UnaryCallSettings.Builder<AddSignedUrlKeyBackendServiceHttpRequest, Operation>
         addSignedUrlKeyBackendServiceSettings;
+    private final OperationCallSettings.Builder<
+            AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        addSignedUrlKeyBackendServiceOperationSettings;
     private final PagedCallSettings.Builder<
             AggregatedListBackendServicesHttpRequest,
             BackendServiceAggregatedList,
@@ -453,8 +543,14 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
         aggregatedListBackendServicesSettings;
     private final UnaryCallSettings.Builder<DeleteBackendServiceHttpRequest, Operation>
         deleteBackendServiceSettings;
+    private final OperationCallSettings.Builder<
+            DeleteBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        deleteBackendServiceOperationSettings;
     private final UnaryCallSettings.Builder<DeleteSignedUrlKeyBackendServiceHttpRequest, Operation>
         deleteSignedUrlKeyBackendServiceSettings;
+    private final OperationCallSettings.Builder<
+            DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        deleteSignedUrlKeyBackendServiceOperationSettings;
     private final UnaryCallSettings.Builder<GetBackendServiceHttpRequest, BackendService>
         getBackendServiceSettings;
     private final UnaryCallSettings.Builder<
@@ -462,15 +558,27 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
         getHealthBackendServiceSettings;
     private final UnaryCallSettings.Builder<InsertBackendServiceHttpRequest, Operation>
         insertBackendServiceSettings;
+    private final OperationCallSettings.Builder<
+            InsertBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        insertBackendServiceOperationSettings;
     private final PagedCallSettings.Builder<
             ListBackendServicesHttpRequest, BackendServiceList, ListBackendServicesPagedResponse>
         listBackendServicesSettings;
     private final UnaryCallSettings.Builder<PatchBackendServiceHttpRequest, Operation>
         patchBackendServiceSettings;
+    private final OperationCallSettings.Builder<
+            PatchBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        patchBackendServiceOperationSettings;
     private final UnaryCallSettings.Builder<SetSecurityPolicyBackendServiceHttpRequest, Operation>
         setSecurityPolicyBackendServiceSettings;
+    private final OperationCallSettings.Builder<
+            SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        setSecurityPolicyBackendServiceOperationSettings;
     private final UnaryCallSettings.Builder<UpdateBackendServiceHttpRequest, Operation>
         updateBackendServiceSettings;
+    private final OperationCallSettings.Builder<
+            UpdateBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        updateBackendServiceOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
         RETRYABLE_CODE_DEFINITIONS;
@@ -515,12 +623,18 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
 
       addSignedUrlKeyBackendServiceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      addSignedUrlKeyBackendServiceOperationSettings = OperationCallSettings.newBuilder();
+
       aggregatedListBackendServicesSettings =
           PagedCallSettings.newBuilder(AGGREGATED_LIST_BACKEND_SERVICES_PAGE_STR_FACT);
 
       deleteBackendServiceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteBackendServiceOperationSettings = OperationCallSettings.newBuilder();
+
       deleteSignedUrlKeyBackendServiceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      deleteSignedUrlKeyBackendServiceOperationSettings = OperationCallSettings.newBuilder();
 
       getBackendServiceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
@@ -528,14 +642,22 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
 
       insertBackendServiceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      insertBackendServiceOperationSettings = OperationCallSettings.newBuilder();
+
       listBackendServicesSettings =
           PagedCallSettings.newBuilder(LIST_BACKEND_SERVICES_PAGE_STR_FACT);
 
       patchBackendServiceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      patchBackendServiceOperationSettings = OperationCallSettings.newBuilder();
+
       setSecurityPolicyBackendServiceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      setSecurityPolicyBackendServiceOperationSettings = OperationCallSettings.newBuilder();
+
       updateBackendServiceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      updateBackendServiceOperationSettings = OperationCallSettings.newBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -619,6 +741,156 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
           .updateBackendServiceSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .addSignedUrlKeyBackendServiceOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<AddSignedUrlKeyBackendServiceHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .deleteBackendServiceOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteBackendServiceHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .deleteSignedUrlKeyBackendServiceOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteSignedUrlKeyBackendServiceHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertBackendServiceOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertBackendServiceHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .patchBackendServiceOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<PatchBackendServiceHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .setSecurityPolicyBackendServiceOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<SetSecurityPolicyBackendServiceHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .updateBackendServiceOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<UpdateBackendServiceHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -628,19 +900,33 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
 
       addSignedUrlKeyBackendServiceSettings =
           settings.addSignedUrlKeyBackendServiceSettings.toBuilder();
+      addSignedUrlKeyBackendServiceOperationSettings =
+          settings.addSignedUrlKeyBackendServiceOperationSettings.toBuilder();
       aggregatedListBackendServicesSettings =
           settings.aggregatedListBackendServicesSettings.toBuilder();
       deleteBackendServiceSettings = settings.deleteBackendServiceSettings.toBuilder();
+      deleteBackendServiceOperationSettings =
+          settings.deleteBackendServiceOperationSettings.toBuilder();
       deleteSignedUrlKeyBackendServiceSettings =
           settings.deleteSignedUrlKeyBackendServiceSettings.toBuilder();
+      deleteSignedUrlKeyBackendServiceOperationSettings =
+          settings.deleteSignedUrlKeyBackendServiceOperationSettings.toBuilder();
       getBackendServiceSettings = settings.getBackendServiceSettings.toBuilder();
       getHealthBackendServiceSettings = settings.getHealthBackendServiceSettings.toBuilder();
       insertBackendServiceSettings = settings.insertBackendServiceSettings.toBuilder();
+      insertBackendServiceOperationSettings =
+          settings.insertBackendServiceOperationSettings.toBuilder();
       listBackendServicesSettings = settings.listBackendServicesSettings.toBuilder();
       patchBackendServiceSettings = settings.patchBackendServiceSettings.toBuilder();
+      patchBackendServiceOperationSettings =
+          settings.patchBackendServiceOperationSettings.toBuilder();
       setSecurityPolicyBackendServiceSettings =
           settings.setSecurityPolicyBackendServiceSettings.toBuilder();
+      setSecurityPolicyBackendServiceOperationSettings =
+          settings.setSecurityPolicyBackendServiceOperationSettings.toBuilder();
       updateBackendServiceSettings = settings.updateBackendServiceSettings.toBuilder();
+      updateBackendServiceOperationSettings =
+          settings.updateBackendServiceOperationSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -679,6 +965,15 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
       return addSignedUrlKeyBackendServiceSettings;
     }
 
+    /** Returns the builder for the settings used for calls to addSignedUrlKeyBackendService. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        addSignedUrlKeyBackendServiceOperationSettings() {
+      return addSignedUrlKeyBackendServiceOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to aggregatedListBackendServices. */
     public PagedCallSettings.Builder<
             AggregatedListBackendServicesHttpRequest,
@@ -694,10 +989,28 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
       return deleteBackendServiceSettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteBackendService. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        deleteBackendServiceOperationSettings() {
+      return deleteBackendServiceOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to deleteSignedUrlKeyBackendService. */
     public UnaryCallSettings.Builder<DeleteSignedUrlKeyBackendServiceHttpRequest, Operation>
         deleteSignedUrlKeyBackendServiceSettings() {
       return deleteSignedUrlKeyBackendServiceSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to deleteSignedUrlKeyBackendService. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        deleteSignedUrlKeyBackendServiceOperationSettings() {
+      return deleteSignedUrlKeyBackendServiceOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to getBackendService. */
@@ -718,6 +1031,15 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
       return insertBackendServiceSettings;
     }
 
+    /** Returns the builder for the settings used for calls to insertBackendService. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        insertBackendServiceOperationSettings() {
+      return insertBackendServiceOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to listBackendServices. */
     public PagedCallSettings.Builder<
             ListBackendServicesHttpRequest, BackendServiceList, ListBackendServicesPagedResponse>
@@ -731,16 +1053,42 @@ public class BackendServiceStubSettings extends StubSettings<BackendServiceStubS
       return patchBackendServiceSettings;
     }
 
+    /** Returns the builder for the settings used for calls to patchBackendService. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<PatchBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        patchBackendServiceOperationSettings() {
+      return patchBackendServiceOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to setSecurityPolicyBackendService. */
     public UnaryCallSettings.Builder<SetSecurityPolicyBackendServiceHttpRequest, Operation>
         setSecurityPolicyBackendServiceSettings() {
       return setSecurityPolicyBackendServiceSettings;
     }
 
+    /** Returns the builder for the settings used for calls to setSecurityPolicyBackendService. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        setSecurityPolicyBackendServiceOperationSettings() {
+      return setSecurityPolicyBackendServiceOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to updateBackendService. */
     public UnaryCallSettings.Builder<UpdateBackendServiceHttpRequest, Operation>
         updateBackendServiceSettings() {
       return updateBackendServiceSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to updateBackendService. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            UpdateBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+        updateBackendServiceOperationSettings() {
+      return updateBackendServiceOperationSettings;
     }
 
     @Override

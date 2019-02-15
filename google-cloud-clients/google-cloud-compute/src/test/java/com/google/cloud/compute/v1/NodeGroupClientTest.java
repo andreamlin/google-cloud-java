@@ -33,6 +33,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonNodeGroupStub.testIamPerm
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -44,12 +45,12 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.NodeGroupStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -106,21 +107,17 @@ public class NodeGroupClientTest {
   @Test
   @SuppressWarnings("all")
   public void addNodesNodeGroupTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("addNodesNodeGroupTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockNodeGroups.addResponse(resultOperation);
+        Operation.newBuilder().setName("addNodesNodeGroupTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneNodeGroupName nodeGroup =
         ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
     NodeGroupsAddNodesRequest nodeGroupsAddNodesRequestResource =
         NodeGroupsAddNodesRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.addNodesNodeGroupAsync(nodeGroup, nodeGroupsAddNodesRequestResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -158,7 +155,7 @@ public class NodeGroupClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -228,19 +225,15 @@ public class NodeGroupClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteNodeGroupTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteNodeGroupTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockNodeGroups.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteNodeGroupTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneNodeGroupName nodeGroup =
         ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
 
-    Void actualResponse = client.deleteNodeGroupAsync(nodeGroup).get();
+    EmptyMessage actualResponse = client.deleteNodeGroupAsync(nodeGroup).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -275,28 +268,24 @@ public class NodeGroupClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void deleteNodesNodeGroupTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteNodesNodeGroupTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockNodeGroups.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteNodesNodeGroupTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneNodeGroupName nodeGroup =
         ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
     NodeGroupsDeleteNodesRequest nodeGroupsDeleteNodesRequestResource =
         NodeGroupsDeleteNodesRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.deleteNodesNodeGroupAsync(nodeGroup, nodeGroupsDeleteNodesRequestResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -334,7 +323,7 @@ public class NodeGroupClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -460,20 +449,16 @@ public class NodeGroupClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertNodeGroupTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertNodeGroupTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockNodeGroups.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertNodeGroupTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     Integer initialNodeCount = 1682564205;
     ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
     NodeGroup nodeGroupResource = NodeGroup.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.insertNodeGroupAsync(initialNodeCount, zone, nodeGroupResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -510,7 +495,7 @@ public class NodeGroupClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -691,21 +676,17 @@ public class NodeGroupClientTest {
   @Test
   @SuppressWarnings("all")
   public void setNodeTemplateNodeGroupTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setNodeTemplateNodeGroupTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockNodeGroups.addResponse(resultOperation);
+        Operation.newBuilder().setName("setNodeTemplateNodeGroupTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneNodeGroupName nodeGroup =
         ProjectZoneNodeGroupName.of("[PROJECT]", "[ZONE]", "[NODE_GROUP]");
     NodeGroupsSetNodeTemplateRequest nodeGroupsSetNodeTemplateRequestResource =
         NodeGroupsSetNodeTemplateRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setNodeTemplateNodeGroupAsync(nodeGroup, nodeGroupsSetNodeTemplateRequestResource)
             .get();
@@ -747,7 +728,7 @@ public class NodeGroupClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 

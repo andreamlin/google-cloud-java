@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.InterconnectClient.ListInterconnectsPa
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteInterconnectHttpRequest;
 import com.google.cloud.compute.v1.GetDiagnosticsInterconnectHttpRequest;
@@ -42,6 +44,18 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class InterconnectStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInterconnectOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteInterconnectOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteInterconnectHttpRequest, Operation> deleteInterconnectCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteInterconnectCallable()");
@@ -59,6 +73,13 @@ public abstract class InterconnectStub implements BackgroundResource {
         "Not implemented: getDiagnosticsInterconnectCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+      insertInterconnectOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertInterconnectOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<InsertInterconnectHttpRequest, Operation> insertInterconnectCallable() {
     throw new UnsupportedOperationException("Not implemented: insertInterconnectCallable()");
@@ -73,6 +94,13 @@ public abstract class InterconnectStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<ListInterconnectsHttpRequest, InterconnectList> listInterconnectsCallable() {
     throw new UnsupportedOperationException("Not implemented: listInterconnectsCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+      patchInterconnectOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: patchInterconnectOperationCallable()");
   }
 
   @BetaApi

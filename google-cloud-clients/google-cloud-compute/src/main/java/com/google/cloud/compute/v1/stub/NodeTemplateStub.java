@@ -20,6 +20,8 @@ import static com.google.cloud.compute.v1.NodeTemplateClient.ListNodeTemplatesPa
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AggregatedListNodeTemplatesHttpRequest;
 import com.google.cloud.compute.v1.DeleteNodeTemplateHttpRequest;
@@ -47,6 +49,11 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class NodeTemplateStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
   @BetaApi
   public UnaryCallable<
           AggregatedListNodeTemplatesHttpRequest, AggregatedListNodeTemplatesPagedResponse>
@@ -60,6 +67,13 @@ public abstract class NodeTemplateStub implements BackgroundResource {
       aggregatedListNodeTemplatesCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: aggregatedListNodeTemplatesCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodeTemplateOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteNodeTemplateOperationCallable()");
   }
 
   @BetaApi
@@ -76,6 +90,13 @@ public abstract class NodeTemplateStub implements BackgroundResource {
   public UnaryCallable<GetIamPolicyNodeTemplateHttpRequest, Policy>
       getIamPolicyNodeTemplateCallable() {
     throw new UnsupportedOperationException("Not implemented: getIamPolicyNodeTemplateCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      insertNodeTemplateOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertNodeTemplateOperationCallable()");
   }
 
   @BetaApi

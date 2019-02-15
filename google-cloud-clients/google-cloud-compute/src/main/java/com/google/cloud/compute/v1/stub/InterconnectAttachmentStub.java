@@ -20,6 +20,8 @@ import static com.google.cloud.compute.v1.InterconnectAttachmentClient.ListInter
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AggregatedListInterconnectAttachmentsHttpRequest;
 import com.google.cloud.compute.v1.DeleteInterconnectAttachmentHttpRequest;
@@ -43,6 +45,11 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class InterconnectAttachmentStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
   @BetaApi
   public UnaryCallable<
           AggregatedListInterconnectAttachmentsHttpRequest,
@@ -60,6 +67,13 @@ public abstract class InterconnectAttachmentStub implements BackgroundResource {
         "Not implemented: aggregatedListInterconnectAttachmentsCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInterconnectAttachmentOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteInterconnectAttachmentOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteInterconnectAttachmentHttpRequest, Operation>
       deleteInterconnectAttachmentCallable() {
@@ -71,6 +85,13 @@ public abstract class InterconnectAttachmentStub implements BackgroundResource {
   public UnaryCallable<GetInterconnectAttachmentHttpRequest, InterconnectAttachment>
       getInterconnectAttachmentCallable() {
     throw new UnsupportedOperationException("Not implemented: getInterconnectAttachmentCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      insertInterconnectAttachmentOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertInterconnectAttachmentOperationCallable()");
   }
 
   @BetaApi
@@ -93,6 +114,13 @@ public abstract class InterconnectAttachmentStub implements BackgroundResource {
       listInterconnectAttachmentsCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: listInterconnectAttachmentsCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+      patchInterconnectAttachmentOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: patchInterconnectAttachmentOperationCallable()");
   }
 
   @BetaApi

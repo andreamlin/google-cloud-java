@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.LicenseStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (LicenseClient licenseClient = LicenseClient.create()) {
  *   ProjectGlobalLicenseName license = ProjectGlobalLicenseName.of("[PROJECT]", "[LICENSE]");
- *   Operation response = licenseClient.deleteLicense(license);
+ *   License response = licenseClient.getLicense(license);
  * }
  * </code>
  * </pre>
@@ -103,6 +106,7 @@ import javax.annotation.Generated;
 public class LicenseClient implements BackgroundResource {
   private final LicenseSettings settings;
   private final LicenseStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of LicenseClient with default settings. */
   public static final LicenseClient create() throws IOException {
@@ -133,12 +137,14 @@ public class LicenseClient implements BackgroundResource {
   protected LicenseClient(LicenseSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((LicenseStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected LicenseClient(LicenseStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final LicenseSettings getSettings() {
@@ -150,30 +156,14 @@ public class LicenseClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Deletes the specified license.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (LicenseClient licenseClient = LicenseClient.create()) {
-   *   ProjectGlobalLicenseName license = ProjectGlobalLicenseName.of("[PROJECT]", "[LICENSE]");
-   *   Operation response = licenseClient.deleteLicense(license);
-   * }
-   * </code></pre>
-   *
-   * @param license Name of the license resource to delete.
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation deleteLicense(ProjectGlobalLicenseName license) {
-
-    DeleteLicenseHttpRequest request =
-        DeleteLicenseHttpRequest.newBuilder()
-            .setLicense(license == null ? null : license.toString())
-            .build();
-    return deleteLicense(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -185,19 +175,48 @@ public class LicenseClient implements BackgroundResource {
    * <pre><code>
    * try (LicenseClient licenseClient = LicenseClient.create()) {
    *   ProjectGlobalLicenseName license = ProjectGlobalLicenseName.of("[PROJECT]", "[LICENSE]");
-   *   Operation response = licenseClient.deleteLicense(license.toString());
+   *   licenseClient.deleteLicenseAsync(license).get();
    * }
    * </code></pre>
    *
    * @param license Name of the license resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteLicense(String license) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteLicenseAsync(
+      ProjectGlobalLicenseName license) {
+
+    DeleteLicenseHttpRequest request =
+        DeleteLicenseHttpRequest.newBuilder()
+            .setLicense(license == null ? null : license.toString())
+            .build();
+    return deleteLicenseAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified license.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (LicenseClient licenseClient = LicenseClient.create()) {
+   *   ProjectGlobalLicenseName license = ProjectGlobalLicenseName.of("[PROJECT]", "[LICENSE]");
+   *   licenseClient.deleteLicenseAsync(license.toString()).get();
+   * }
+   * </code></pre>
+   *
+   * @param license Name of the license resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteLicenseAsync(String license) {
 
     DeleteLicenseHttpRequest request =
         DeleteLicenseHttpRequest.newBuilder().setLicense(license).build();
-    return deleteLicense(request);
+    return deleteLicenseAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -212,16 +231,42 @@ public class LicenseClient implements BackgroundResource {
    *   DeleteLicenseHttpRequest request = DeleteLicenseHttpRequest.newBuilder()
    *     .setLicense(license.toString())
    *     .build();
-   *   Operation response = licenseClient.deleteLicense(request);
+   *   licenseClient.deleteLicenseAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteLicense(DeleteLicenseHttpRequest request) {
-    return deleteLicenseCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteLicenseAsync(
+      DeleteLicenseHttpRequest request) {
+    return deleteLicenseOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified license.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (LicenseClient licenseClient = LicenseClient.create()) {
+   *   ProjectGlobalLicenseName license = ProjectGlobalLicenseName.of("[PROJECT]", "[LICENSE]");
+   *   DeleteLicenseHttpRequest request = DeleteLicenseHttpRequest.newBuilder()
+   *     .setLicense(license.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = licenseClient.deleteLicenseOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+      deleteLicenseOperationCallable() {
+    return stub.deleteLicenseOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -238,7 +283,7 @@ public class LicenseClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = licenseClient.deleteLicenseCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -454,7 +499,7 @@ public class LicenseClient implements BackgroundResource {
    * try (LicenseClient licenseClient = LicenseClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   License licenseResource = License.newBuilder().build();
-   *   Operation response = licenseClient.insertLicense(project, licenseResource);
+   *   licenseClient.insertLicenseAsync(project, licenseResource).get();
    * }
    * </code></pre>
    *
@@ -462,15 +507,17 @@ public class LicenseClient implements BackgroundResource {
    * @param licenseResource A license resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertLicense(ProjectName project, License licenseResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertLicenseAsync(
+      ProjectName project, License licenseResource) {
 
     InsertLicenseHttpRequest request =
         InsertLicenseHttpRequest.newBuilder()
             .setProject(project == null ? null : project.toString())
             .setLicenseResource(licenseResource)
             .build();
-    return insertLicense(request);
+    return insertLicenseAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -483,7 +530,7 @@ public class LicenseClient implements BackgroundResource {
    * try (LicenseClient licenseClient = LicenseClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   License licenseResource = License.newBuilder().build();
-   *   Operation response = licenseClient.insertLicense(project.toString(), licenseResource);
+   *   licenseClient.insertLicenseAsync(project.toString(), licenseResource).get();
    * }
    * </code></pre>
    *
@@ -491,15 +538,17 @@ public class LicenseClient implements BackgroundResource {
    * @param licenseResource A license resource.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertLicense(String project, License licenseResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertLicenseAsync(
+      String project, License licenseResource) {
 
     InsertLicenseHttpRequest request =
         InsertLicenseHttpRequest.newBuilder()
             .setProject(project)
             .setLicenseResource(licenseResource)
             .build();
-    return insertLicense(request);
+    return insertLicenseAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -516,16 +565,44 @@ public class LicenseClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setLicenseResource(licenseResource)
    *     .build();
-   *   Operation response = licenseClient.insertLicense(request);
+   *   licenseClient.insertLicenseAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertLicense(InsertLicenseHttpRequest request) {
-    return insertLicenseCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertLicenseAsync(
+      InsertLicenseHttpRequest request) {
+    return insertLicenseOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Create a License resource in the specified project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (LicenseClient licenseClient = LicenseClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   License licenseResource = License.newBuilder().build();
+   *   InsertLicenseHttpRequest request = InsertLicenseHttpRequest.newBuilder()
+   *     .setProject(project.toString())
+   *     .setLicenseResource(licenseResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = licenseClient.insertLicenseOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+      insertLicenseOperationCallable() {
+    return stub.insertLicenseOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -544,7 +621,7 @@ public class LicenseClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = licenseClient.insertLicenseCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

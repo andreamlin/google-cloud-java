@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DeleteSslPolicyHttpRequest;
@@ -184,10 +186,15 @@ public class HttpJsonSslPolicyStub extends SslPolicyStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteSslPolicyHttpRequest, Operation> deleteSslPolicyCallable;
+  private final OperationCallable<DeleteSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSslPolicyOperationCallable;
   private final UnaryCallable<GetSslPolicyHttpRequest, SslPolicy> getSslPolicyCallable;
   private final UnaryCallable<InsertSslPolicyHttpRequest, Operation> insertSslPolicyCallable;
+  private final OperationCallable<InsertSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      insertSslPolicyOperationCallable;
   private final UnaryCallable<ListSslPoliciesHttpRequest, SslPoliciesList> listSslPoliciesCallable;
   private final UnaryCallable<ListSslPoliciesHttpRequest, ListSslPoliciesPagedResponse>
       listSslPoliciesPagedCallable;
@@ -195,6 +202,8 @@ public class HttpJsonSslPolicyStub extends SslPolicyStub {
           ListAvailableFeaturesSslPoliciesHttpRequest, SslPoliciesListAvailableFeaturesResponse>
       listAvailableFeaturesSslPoliciesCallable;
   private final UnaryCallable<PatchSslPolicyHttpRequest, Operation> patchSslPolicyCallable;
+  private final OperationCallable<PatchSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchSslPolicyOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -234,6 +243,7 @@ public class HttpJsonSslPolicyStub extends SslPolicyStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteSslPolicyHttpRequest, Operation> deleteSslPolicyTransportSettings =
         HttpJsonCallSettings.<DeleteSslPolicyHttpRequest, Operation>newBuilder()
@@ -269,12 +279,24 @@ public class HttpJsonSslPolicyStub extends SslPolicyStub {
     this.deleteSslPolicyCallable =
         callableFactory.createUnaryCallable(
             deleteSslPolicyTransportSettings, settings.deleteSslPolicySettings(), clientContext);
+    this.deleteSslPolicyOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteSslPolicyTransportSettings,
+            settings.deleteSslPolicyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getSslPolicyCallable =
         callableFactory.createUnaryCallable(
             getSslPolicyTransportSettings, settings.getSslPolicySettings(), clientContext);
     this.insertSslPolicyCallable =
         callableFactory.createUnaryCallable(
             insertSslPolicyTransportSettings, settings.insertSslPolicySettings(), clientContext);
+    this.insertSslPolicyOperationCallable =
+        callableFactory.createOperationCallable(
+            insertSslPolicyTransportSettings,
+            settings.insertSslPolicyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listSslPoliciesCallable =
         callableFactory.createUnaryCallable(
             listSslPoliciesTransportSettings, settings.listSslPoliciesSettings(), clientContext);
@@ -289,8 +311,25 @@ public class HttpJsonSslPolicyStub extends SslPolicyStub {
     this.patchSslPolicyCallable =
         callableFactory.createUnaryCallable(
             patchSslPolicyTransportSettings, settings.patchSslPolicySettings(), clientContext);
+    this.patchSslPolicyOperationCallable =
+        callableFactory.createOperationCallable(
+            patchSslPolicyTransportSettings,
+            settings.patchSslPolicyOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSslPolicyOperationCallable() {
+    return deleteSslPolicyOperationCallable;
   }
 
   @BetaApi
@@ -301,6 +340,12 @@ public class HttpJsonSslPolicyStub extends SslPolicyStub {
   @BetaApi
   public UnaryCallable<GetSslPolicyHttpRequest, SslPolicy> getSslPolicyCallable() {
     return getSslPolicyCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      insertSslPolicyOperationCallable() {
+    return insertSslPolicyOperationCallable;
   }
 
   @BetaApi
@@ -324,6 +369,12 @@ public class HttpJsonSslPolicyStub extends SslPolicyStub {
           ListAvailableFeaturesSslPoliciesHttpRequest, SslPoliciesListAvailableFeaturesResponse>
       listAvailableFeaturesSslPoliciesCallable() {
     return listAvailableFeaturesSslPoliciesCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+      patchSslPolicyOperationCallable() {
+    return patchSslPolicyOperationCallable;
   }
 
   @BetaApi

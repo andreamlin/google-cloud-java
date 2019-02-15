@@ -21,6 +21,8 @@ import static com.google.cloud.compute.v1.NodeGroupClient.ListNodesNodeGroupsPag
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AddNodesNodeGroupHttpRequest;
 import com.google.cloud.compute.v1.AggregatedListNodeGroupsHttpRequest;
@@ -53,6 +55,18 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class NodeGroupStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      addNodesNodeGroupOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: addNodesNodeGroupOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<AddNodesNodeGroupHttpRequest, Operation> addNodesNodeGroupCallable() {
     throw new UnsupportedOperationException("Not implemented: addNodesNodeGroupCallable()");
@@ -71,9 +85,22 @@ public abstract class NodeGroupStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: aggregatedListNodeGroupsCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodeGroupOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deleteNodeGroupOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteNodeGroupHttpRequest, Operation> deleteNodeGroupCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteNodeGroupCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodesNodeGroupOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteNodesNodeGroupOperationCallable()");
   }
 
   @BetaApi
@@ -89,6 +116,12 @@ public abstract class NodeGroupStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetIamPolicyNodeGroupHttpRequest, Policy> getIamPolicyNodeGroupCallable() {
     throw new UnsupportedOperationException("Not implemented: getIamPolicyNodeGroupCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      insertNodeGroupOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: insertNodeGroupOperationCallable()");
   }
 
   @BetaApi
@@ -122,6 +155,13 @@ public abstract class NodeGroupStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<SetIamPolicyNodeGroupHttpRequest, Policy> setIamPolicyNodeGroupCallable() {
     throw new UnsupportedOperationException("Not implemented: setIamPolicyNodeGroupCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNodeTemplateNodeGroupOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: setNodeTemplateNodeGroupOperationCallable()");
   }
 
   @BetaApi

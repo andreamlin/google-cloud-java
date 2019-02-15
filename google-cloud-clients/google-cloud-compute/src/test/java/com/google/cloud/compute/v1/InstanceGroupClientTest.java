@@ -30,6 +30,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonInstanceGroupStub.setName
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -41,12 +42,12 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.InstanceGroupStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -100,21 +101,17 @@ public class InstanceGroupClientTest {
   @Test
   @SuppressWarnings("all")
   public void addInstancesInstanceGroupTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("addInstancesInstanceGroupTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstanceGroups.addResponse(resultOperation);
+        Operation.newBuilder().setName("addInstancesInstanceGroupTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceGroupName instanceGroup =
         ProjectZoneInstanceGroupName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP]");
     InstanceGroupsAddInstancesRequest instanceGroupsAddInstancesRequestResource =
         InstanceGroupsAddInstancesRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .addInstancesInstanceGroupAsync(
                 instanceGroup, instanceGroupsAddInstancesRequestResource)
@@ -157,7 +154,7 @@ public class InstanceGroupClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -227,19 +224,15 @@ public class InstanceGroupClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteInstanceGroupTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteInstanceGroupTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstanceGroups.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteInstanceGroupTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceGroupName instanceGroup =
         ProjectZoneInstanceGroupName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP]");
 
-    Void actualResponse = client.deleteInstanceGroupAsync(instanceGroup).get();
+    EmptyMessage actualResponse = client.deleteInstanceGroupAsync(instanceGroup).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -274,7 +267,7 @@ public class InstanceGroupClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -354,19 +347,16 @@ public class InstanceGroupClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertInstanceGroupTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertInstanceGroupTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstanceGroups.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertInstanceGroupTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
     InstanceGroup instanceGroupResource = InstanceGroup.newBuilder().build();
 
-    Void actualResponse = client.insertInstanceGroupAsync(zone, instanceGroupResource).get();
+    EmptyMessage actualResponse =
+        client.insertInstanceGroupAsync(zone, instanceGroupResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -401,7 +391,7 @@ public class InstanceGroupClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -536,21 +526,20 @@ public class InstanceGroupClientTest {
   @Test
   @SuppressWarnings("all")
   public void removeInstancesInstanceGroupTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
         Operation.newBuilder()
             .setName("removeInstancesInstanceGroupTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
+            .setStatus("DONE")
             .build();
-    mockInstanceGroups.addResponse(resultOperation);
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceGroupName instanceGroup =
         ProjectZoneInstanceGroupName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP]");
     InstanceGroupsRemoveInstancesRequest instanceGroupsRemoveInstancesRequestResource =
         InstanceGroupsRemoveInstancesRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .removeInstancesInstanceGroupAsync(
                 instanceGroup, instanceGroupsRemoveInstancesRequestResource)
@@ -594,28 +583,24 @@ public class InstanceGroupClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void setNamedPortsInstanceGroupTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("setNamedPortsInstanceGroupTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockInstanceGroups.addResponse(resultOperation);
+        Operation.newBuilder().setName("setNamedPortsInstanceGroupTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectZoneInstanceGroupName instanceGroup =
         ProjectZoneInstanceGroupName.of("[PROJECT]", "[ZONE]", "[INSTANCE_GROUP]");
     InstanceGroupsSetNamedPortsRequest instanceGroupsSetNamedPortsRequestResource =
         InstanceGroupsSetNamedPortsRequest.newBuilder().build();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client
             .setNamedPortsInstanceGroupAsync(
                 instanceGroup, instanceGroupsSetNamedPortsRequestResource)
@@ -659,7 +644,7 @@ public class InstanceGroupClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

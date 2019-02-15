@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DeleteTargetTcpProxyHttpRequest;
@@ -179,21 +181,32 @@ public class HttpJsonTargetTcpProxyStub extends TargetTcpProxyStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteTargetTcpProxyHttpRequest, Operation>
       deleteTargetTcpProxyCallable;
+  private final OperationCallable<DeleteTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetTcpProxyOperationCallable;
   private final UnaryCallable<GetTargetTcpProxyHttpRequest, TargetTcpProxy>
       getTargetTcpProxyCallable;
   private final UnaryCallable<InsertTargetTcpProxyHttpRequest, Operation>
       insertTargetTcpProxyCallable;
+  private final OperationCallable<InsertTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetTcpProxyOperationCallable;
   private final UnaryCallable<ListTargetTcpProxiesHttpRequest, TargetTcpProxyList>
       listTargetTcpProxiesCallable;
   private final UnaryCallable<ListTargetTcpProxiesHttpRequest, ListTargetTcpProxiesPagedResponse>
       listTargetTcpProxiesPagedCallable;
   private final UnaryCallable<SetBackendServiceTargetTcpProxyHttpRequest, Operation>
       setBackendServiceTargetTcpProxyCallable;
+  private final OperationCallable<
+          SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setBackendServiceTargetTcpProxyOperationCallable;
   private final UnaryCallable<SetProxyHeaderTargetTcpProxyHttpRequest, Operation>
       setProxyHeaderTargetTcpProxyCallable;
+  private final OperationCallable<
+          SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setProxyHeaderTargetTcpProxyOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -235,6 +248,7 @@ public class HttpJsonTargetTcpProxyStub extends TargetTcpProxyStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteTargetTcpProxyHttpRequest, Operation>
         deleteTargetTcpProxyTransportSettings =
@@ -272,6 +286,12 @@ public class HttpJsonTargetTcpProxyStub extends TargetTcpProxyStub {
             deleteTargetTcpProxyTransportSettings,
             settings.deleteTargetTcpProxySettings(),
             clientContext);
+    this.deleteTargetTcpProxyOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteTargetTcpProxyTransportSettings,
+            settings.deleteTargetTcpProxyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getTargetTcpProxyCallable =
         callableFactory.createUnaryCallable(
             getTargetTcpProxyTransportSettings,
@@ -282,6 +302,12 @@ public class HttpJsonTargetTcpProxyStub extends TargetTcpProxyStub {
             insertTargetTcpProxyTransportSettings,
             settings.insertTargetTcpProxySettings(),
             clientContext);
+    this.insertTargetTcpProxyOperationCallable =
+        callableFactory.createOperationCallable(
+            insertTargetTcpProxyTransportSettings,
+            settings.insertTargetTcpProxyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listTargetTcpProxiesCallable =
         callableFactory.createUnaryCallable(
             listTargetTcpProxiesTransportSettings,
@@ -297,13 +323,36 @@ public class HttpJsonTargetTcpProxyStub extends TargetTcpProxyStub {
             setBackendServiceTargetTcpProxyTransportSettings,
             settings.setBackendServiceTargetTcpProxySettings(),
             clientContext);
+    this.setBackendServiceTargetTcpProxyOperationCallable =
+        callableFactory.createOperationCallable(
+            setBackendServiceTargetTcpProxyTransportSettings,
+            settings.setBackendServiceTargetTcpProxyOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setProxyHeaderTargetTcpProxyCallable =
         callableFactory.createUnaryCallable(
             setProxyHeaderTargetTcpProxyTransportSettings,
             settings.setProxyHeaderTargetTcpProxySettings(),
             clientContext);
+    this.setProxyHeaderTargetTcpProxyOperationCallable =
+        callableFactory.createOperationCallable(
+            setProxyHeaderTargetTcpProxyTransportSettings,
+            settings.setProxyHeaderTargetTcpProxyOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetTcpProxyOperationCallable() {
+    return deleteTargetTcpProxyOperationCallable;
   }
 
   @BetaApi
@@ -314,6 +363,12 @@ public class HttpJsonTargetTcpProxyStub extends TargetTcpProxyStub {
   @BetaApi
   public UnaryCallable<GetTargetTcpProxyHttpRequest, TargetTcpProxy> getTargetTcpProxyCallable() {
     return getTargetTcpProxyCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetTcpProxyOperationCallable() {
+    return insertTargetTcpProxyOperationCallable;
   }
 
   @BetaApi
@@ -333,10 +388,22 @@ public class HttpJsonTargetTcpProxyStub extends TargetTcpProxyStub {
     return listTargetTcpProxiesCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setBackendServiceTargetTcpProxyOperationCallable() {
+    return setBackendServiceTargetTcpProxyOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<SetBackendServiceTargetTcpProxyHttpRequest, Operation>
       setBackendServiceTargetTcpProxyCallable() {
     return setBackendServiceTargetTcpProxyCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+      setProxyHeaderTargetTcpProxyOperationCallable() {
+    return setProxyHeaderTargetTcpProxyOperationCallable;
   }
 
   @BetaApi

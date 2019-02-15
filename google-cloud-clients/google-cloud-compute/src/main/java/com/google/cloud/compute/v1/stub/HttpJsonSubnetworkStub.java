@@ -27,9 +27,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AggregatedListSubnetworksHttpRequest;
@@ -329,6 +331,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList>
       aggregatedListSubnetworksCallable;
@@ -336,12 +339,19 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           AggregatedListSubnetworksHttpRequest, AggregatedListSubnetworksPagedResponse>
       aggregatedListSubnetworksPagedCallable;
   private final UnaryCallable<DeleteSubnetworkHttpRequest, Operation> deleteSubnetworkCallable;
+  private final OperationCallable<DeleteSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSubnetworkOperationCallable;
   private final UnaryCallable<ExpandIpCidrRangeSubnetworkHttpRequest, Operation>
       expandIpCidrRangeSubnetworkCallable;
+  private final OperationCallable<
+          ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      expandIpCidrRangeSubnetworkOperationCallable;
   private final UnaryCallable<GetSubnetworkHttpRequest, Subnetwork> getSubnetworkCallable;
   private final UnaryCallable<GetIamPolicySubnetworkHttpRequest, Policy>
       getIamPolicySubnetworkCallable;
   private final UnaryCallable<InsertSubnetworkHttpRequest, Operation> insertSubnetworkCallable;
+  private final OperationCallable<InsertSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      insertSubnetworkOperationCallable;
   private final UnaryCallable<ListSubnetworksHttpRequest, SubnetworkList> listSubnetworksCallable;
   private final UnaryCallable<ListSubnetworksHttpRequest, ListSubnetworksPagedResponse>
       listSubnetworksPagedCallable;
@@ -350,10 +360,15 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
   private final UnaryCallable<ListUsableSubnetworksHttpRequest, ListUsableSubnetworksPagedResponse>
       listUsableSubnetworksPagedCallable;
   private final UnaryCallable<PatchSubnetworkHttpRequest, Operation> patchSubnetworkCallable;
+  private final OperationCallable<PatchSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      patchSubnetworkOperationCallable;
   private final UnaryCallable<SetIamPolicySubnetworkHttpRequest, Policy>
       setIamPolicySubnetworkCallable;
   private final UnaryCallable<SetPrivateIpGoogleAccessSubnetworkHttpRequest, Operation>
       setPrivateIpGoogleAccessSubnetworkCallable;
+  private final OperationCallable<
+          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      setPrivateIpGoogleAccessSubnetworkOperationCallable;
   private final UnaryCallable<TestIamPermissionsSubnetworkHttpRequest, TestPermissionsResponse>
       testIamPermissionsSubnetworkCallable;
 
@@ -396,6 +411,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList>
         aggregatedListSubnetworksTransportSettings =
@@ -471,11 +487,23 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
     this.deleteSubnetworkCallable =
         callableFactory.createUnaryCallable(
             deleteSubnetworkTransportSettings, settings.deleteSubnetworkSettings(), clientContext);
+    this.deleteSubnetworkOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteSubnetworkTransportSettings,
+            settings.deleteSubnetworkOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.expandIpCidrRangeSubnetworkCallable =
         callableFactory.createUnaryCallable(
             expandIpCidrRangeSubnetworkTransportSettings,
             settings.expandIpCidrRangeSubnetworkSettings(),
             clientContext);
+    this.expandIpCidrRangeSubnetworkOperationCallable =
+        callableFactory.createOperationCallable(
+            expandIpCidrRangeSubnetworkTransportSettings,
+            settings.expandIpCidrRangeSubnetworkOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getSubnetworkCallable =
         callableFactory.createUnaryCallable(
             getSubnetworkTransportSettings, settings.getSubnetworkSettings(), clientContext);
@@ -487,6 +515,12 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
     this.insertSubnetworkCallable =
         callableFactory.createUnaryCallable(
             insertSubnetworkTransportSettings, settings.insertSubnetworkSettings(), clientContext);
+    this.insertSubnetworkOperationCallable =
+        callableFactory.createOperationCallable(
+            insertSubnetworkTransportSettings,
+            settings.insertSubnetworkOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listSubnetworksCallable =
         callableFactory.createUnaryCallable(
             listSubnetworksTransportSettings, settings.listSubnetworksSettings(), clientContext);
@@ -506,6 +540,12 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
     this.patchSubnetworkCallable =
         callableFactory.createUnaryCallable(
             patchSubnetworkTransportSettings, settings.patchSubnetworkSettings(), clientContext);
+    this.patchSubnetworkOperationCallable =
+        callableFactory.createOperationCallable(
+            patchSubnetworkTransportSettings,
+            settings.patchSubnetworkOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setIamPolicySubnetworkCallable =
         callableFactory.createUnaryCallable(
             setIamPolicySubnetworkTransportSettings,
@@ -516,6 +556,12 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
             setPrivateIpGoogleAccessSubnetworkTransportSettings,
             settings.setPrivateIpGoogleAccessSubnetworkSettings(),
             clientContext);
+    this.setPrivateIpGoogleAccessSubnetworkOperationCallable =
+        callableFactory.createOperationCallable(
+            setPrivateIpGoogleAccessSubnetworkTransportSettings,
+            settings.setPrivateIpGoogleAccessSubnetworkOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.testIamPermissionsSubnetworkCallable =
         callableFactory.createUnaryCallable(
             testIamPermissionsSubnetworkTransportSettings,
@@ -523,6 +569,11 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
             clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
   }
 
   @BetaApi
@@ -537,9 +588,21 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
     return aggregatedListSubnetworksCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSubnetworkOperationCallable() {
+    return deleteSubnetworkOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteSubnetworkHttpRequest, Operation> deleteSubnetworkCallable() {
     return deleteSubnetworkCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      expandIpCidrRangeSubnetworkOperationCallable() {
+    return expandIpCidrRangeSubnetworkOperationCallable;
   }
 
   @BetaApi
@@ -556,6 +619,12 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
   @BetaApi
   public UnaryCallable<GetIamPolicySubnetworkHttpRequest, Policy> getIamPolicySubnetworkCallable() {
     return getIamPolicySubnetworkCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      insertSubnetworkOperationCallable() {
+    return insertSubnetworkOperationCallable;
   }
 
   @BetaApi
@@ -586,6 +655,12 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
     return listUsableSubnetworksCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      patchSubnetworkOperationCallable() {
+    return patchSubnetworkOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<PatchSubnetworkHttpRequest, Operation> patchSubnetworkCallable() {
     return patchSubnetworkCallable;
@@ -594,6 +669,13 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
   @BetaApi
   public UnaryCallable<SetIamPolicySubnetworkHttpRequest, Policy> setIamPolicySubnetworkCallable() {
     return setIamPolicySubnetworkCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+      setPrivateIpGoogleAccessSubnetworkOperationCallable() {
+    return setPrivateIpGoogleAccessSubnetworkOperationCallable;
   }
 
   @BetaApi

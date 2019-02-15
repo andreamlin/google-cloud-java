@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DeleteSnapshotHttpRequest;
@@ -201,8 +203,11 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteSnapshotHttpRequest, Operation> deleteSnapshotCallable;
+  private final OperationCallable<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSnapshotOperationCallable;
   private final UnaryCallable<GetSnapshotHttpRequest, Snapshot> getSnapshotCallable;
   private final UnaryCallable<GetIamPolicySnapshotHttpRequest, Policy> getIamPolicySnapshotCallable;
   private final UnaryCallable<ListSnapshotsHttpRequest, SnapshotList> listSnapshotsCallable;
@@ -210,6 +215,8 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
       listSnapshotsPagedCallable;
   private final UnaryCallable<SetIamPolicySnapshotHttpRequest, Policy> setIamPolicySnapshotCallable;
   private final UnaryCallable<SetLabelsSnapshotHttpRequest, Operation> setLabelsSnapshotCallable;
+  private final OperationCallable<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsSnapshotOperationCallable;
   private final UnaryCallable<TestIamPermissionsSnapshotHttpRequest, TestPermissionsResponse>
       testIamPermissionsSnapshotCallable;
 
@@ -251,6 +258,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteSnapshotHttpRequest, Operation> deleteSnapshotTransportSettings =
         HttpJsonCallSettings.<DeleteSnapshotHttpRequest, Operation>newBuilder()
@@ -289,6 +297,12 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
     this.deleteSnapshotCallable =
         callableFactory.createUnaryCallable(
             deleteSnapshotTransportSettings, settings.deleteSnapshotSettings(), clientContext);
+    this.deleteSnapshotOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteSnapshotTransportSettings,
+            settings.deleteSnapshotOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getSnapshotCallable =
         callableFactory.createUnaryCallable(
             getSnapshotTransportSettings, settings.getSnapshotSettings(), clientContext);
@@ -313,6 +327,12 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
             setLabelsSnapshotTransportSettings,
             settings.setLabelsSnapshotSettings(),
             clientContext);
+    this.setLabelsSnapshotOperationCallable =
+        callableFactory.createOperationCallable(
+            setLabelsSnapshotTransportSettings,
+            settings.setLabelsSnapshotOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.testIamPermissionsSnapshotCallable =
         callableFactory.createUnaryCallable(
             testIamPermissionsSnapshotTransportSettings,
@@ -320,6 +340,17 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
             clientContext);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSnapshotOperationCallable() {
+    return deleteSnapshotOperationCallable;
   }
 
   @BetaApi
@@ -351,6 +382,12 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
   @BetaApi
   public UnaryCallable<SetIamPolicySnapshotHttpRequest, Policy> setIamPolicySnapshotCallable() {
     return setIamPolicySnapshotCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsSnapshotOperationCallable() {
+    return setLabelsSnapshotOperationCallable;
   }
 
   @BetaApi

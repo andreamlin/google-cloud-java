@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.UrlMapStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
  *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
- *   Operation response = urlMapClient.deleteUrlMap(urlMap);
+ *   UrlMap response = urlMapClient.getUrlMap(urlMap);
  * }
  * </code>
  * </pre>
@@ -103,6 +106,7 @@ import javax.annotation.Generated;
 public class UrlMapClient implements BackgroundResource {
   private final UrlMapSettings settings;
   private final UrlMapStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of UrlMapClient with default settings. */
   public static final UrlMapClient create() throws IOException {
@@ -133,12 +137,14 @@ public class UrlMapClient implements BackgroundResource {
   protected UrlMapClient(UrlMapSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((UrlMapStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected UrlMapClient(UrlMapStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final UrlMapSettings getSettings() {
@@ -150,30 +156,14 @@ public class UrlMapClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Deletes the specified UrlMap resource.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
-   *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
-   *   Operation response = urlMapClient.deleteUrlMap(urlMap);
-   * }
-   * </code></pre>
-   *
-   * @param urlMap Name of the UrlMap resource to delete.
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation deleteUrlMap(ProjectGlobalUrlMapName urlMap) {
-
-    DeleteUrlMapHttpRequest request =
-        DeleteUrlMapHttpRequest.newBuilder()
-            .setUrlMap(urlMap == null ? null : urlMap.toString())
-            .build();
-    return deleteUrlMap(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -185,19 +175,48 @@ public class UrlMapClient implements BackgroundResource {
    * <pre><code>
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
-   *   Operation response = urlMapClient.deleteUrlMap(urlMap.toString());
+   *   urlMapClient.deleteUrlMapAsync(urlMap).get();
    * }
    * </code></pre>
    *
    * @param urlMap Name of the UrlMap resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteUrlMap(String urlMap) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteUrlMapAsync(
+      ProjectGlobalUrlMapName urlMap) {
+
+    DeleteUrlMapHttpRequest request =
+        DeleteUrlMapHttpRequest.newBuilder()
+            .setUrlMap(urlMap == null ? null : urlMap.toString())
+            .build();
+    return deleteUrlMapAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified UrlMap resource.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
+   *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
+   *   urlMapClient.deleteUrlMapAsync(urlMap.toString()).get();
+   * }
+   * </code></pre>
+   *
+   * @param urlMap Name of the UrlMap resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteUrlMapAsync(String urlMap) {
 
     DeleteUrlMapHttpRequest request =
         DeleteUrlMapHttpRequest.newBuilder().setUrlMap(urlMap).build();
-    return deleteUrlMap(request);
+    return deleteUrlMapAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -212,16 +231,42 @@ public class UrlMapClient implements BackgroundResource {
    *   DeleteUrlMapHttpRequest request = DeleteUrlMapHttpRequest.newBuilder()
    *     .setUrlMap(urlMap.toString())
    *     .build();
-   *   Operation response = urlMapClient.deleteUrlMap(request);
+   *   urlMapClient.deleteUrlMapAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteUrlMap(DeleteUrlMapHttpRequest request) {
-    return deleteUrlMapCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteUrlMapAsync(
+      DeleteUrlMapHttpRequest request) {
+    return deleteUrlMapOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified UrlMap resource.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
+   *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
+   *   DeleteUrlMapHttpRequest request = DeleteUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(urlMap.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = urlMapClient.deleteUrlMapOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      deleteUrlMapOperationCallable() {
+    return stub.deleteUrlMapOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -238,7 +283,7 @@ public class UrlMapClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = urlMapClient.deleteUrlMapCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -357,7 +402,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   UrlMap urlMapResource = UrlMap.newBuilder().build();
-   *   Operation response = urlMapClient.insertUrlMap(project, urlMapResource);
+   *   urlMapClient.insertUrlMapAsync(project, urlMapResource).get();
    * }
    * </code></pre>
    *
@@ -366,15 +411,17 @@ public class UrlMapClient implements BackgroundResource {
    *     BackendService resource, based on the "longest-match" of the URL's host and path.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertUrlMap(ProjectName project, UrlMap urlMapResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertUrlMapAsync(
+      ProjectName project, UrlMap urlMapResource) {
 
     InsertUrlMapHttpRequest request =
         InsertUrlMapHttpRequest.newBuilder()
             .setProject(project == null ? null : project.toString())
             .setUrlMapResource(urlMapResource)
             .build();
-    return insertUrlMap(request);
+    return insertUrlMapAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -387,7 +434,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   UrlMap urlMapResource = UrlMap.newBuilder().build();
-   *   Operation response = urlMapClient.insertUrlMap(project.toString(), urlMapResource);
+   *   urlMapClient.insertUrlMapAsync(project.toString(), urlMapResource).get();
    * }
    * </code></pre>
    *
@@ -396,15 +443,17 @@ public class UrlMapClient implements BackgroundResource {
    *     BackendService resource, based on the "longest-match" of the URL's host and path.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertUrlMap(String project, UrlMap urlMapResource) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertUrlMapAsync(
+      String project, UrlMap urlMapResource) {
 
     InsertUrlMapHttpRequest request =
         InsertUrlMapHttpRequest.newBuilder()
             .setProject(project)
             .setUrlMapResource(urlMapResource)
             .build();
-    return insertUrlMap(request);
+    return insertUrlMapAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -421,16 +470,44 @@ public class UrlMapClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setUrlMapResource(urlMapResource)
    *     .build();
-   *   Operation response = urlMapClient.insertUrlMap(request);
+   *   urlMapClient.insertUrlMapAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertUrlMap(InsertUrlMapHttpRequest request) {
-    return insertUrlMapCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertUrlMapAsync(
+      InsertUrlMapHttpRequest request) {
+    return insertUrlMapOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a UrlMap resource in the specified project using the data included in the request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   UrlMap urlMapResource = UrlMap.newBuilder().build();
+   *   InsertUrlMapHttpRequest request = InsertUrlMapHttpRequest.newBuilder()
+   *     .setProject(project.toString())
+   *     .setUrlMapResource(urlMapResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = urlMapClient.insertUrlMapOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      insertUrlMapOperationCallable() {
+    return stub.insertUrlMapOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -449,7 +526,7 @@ public class UrlMapClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = urlMapClient.insertUrlMapCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -469,7 +546,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   CacheInvalidationRule cacheInvalidationRuleResource = CacheInvalidationRule.newBuilder().build();
-   *   Operation response = urlMapClient.invalidateCacheUrlMap(urlMap, cacheInvalidationRuleResource);
+   *   urlMapClient.invalidateCacheUrlMapAsync(urlMap, cacheInvalidationRuleResource).get();
    * }
    * </code></pre>
    *
@@ -477,8 +554,9 @@ public class UrlMapClient implements BackgroundResource {
    * @param cacheInvalidationRuleResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation invalidateCacheUrlMap(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> invalidateCacheUrlMapAsync(
       ProjectGlobalUrlMapName urlMap, CacheInvalidationRule cacheInvalidationRuleResource) {
 
     InvalidateCacheUrlMapHttpRequest request =
@@ -486,7 +564,7 @@ public class UrlMapClient implements BackgroundResource {
             .setUrlMap(urlMap == null ? null : urlMap.toString())
             .setCacheInvalidationRuleResource(cacheInvalidationRuleResource)
             .build();
-    return invalidateCacheUrlMap(request);
+    return invalidateCacheUrlMapAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -500,7 +578,7 @@ public class UrlMapClient implements BackgroundResource {
    * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
    *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   CacheInvalidationRule cacheInvalidationRuleResource = CacheInvalidationRule.newBuilder().build();
-   *   Operation response = urlMapClient.invalidateCacheUrlMap(urlMap.toString(), cacheInvalidationRuleResource);
+   *   urlMapClient.invalidateCacheUrlMapAsync(urlMap.toString(), cacheInvalidationRuleResource).get();
    * }
    * </code></pre>
    *
@@ -508,8 +586,9 @@ public class UrlMapClient implements BackgroundResource {
    * @param cacheInvalidationRuleResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation invalidateCacheUrlMap(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> invalidateCacheUrlMapAsync(
       String urlMap, CacheInvalidationRule cacheInvalidationRuleResource) {
 
     InvalidateCacheUrlMapHttpRequest request =
@@ -517,7 +596,7 @@ public class UrlMapClient implements BackgroundResource {
             .setUrlMap(urlMap)
             .setCacheInvalidationRuleResource(cacheInvalidationRuleResource)
             .build();
-    return invalidateCacheUrlMap(request);
+    return invalidateCacheUrlMapAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -535,16 +614,45 @@ public class UrlMapClient implements BackgroundResource {
    *     .setUrlMap(urlMap.toString())
    *     .setCacheInvalidationRuleResource(cacheInvalidationRuleResource)
    *     .build();
-   *   Operation response = urlMapClient.invalidateCacheUrlMap(request);
+   *   urlMapClient.invalidateCacheUrlMapAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation invalidateCacheUrlMap(InvalidateCacheUrlMapHttpRequest request) {
-    return invalidateCacheUrlMapCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> invalidateCacheUrlMapAsync(
+      InvalidateCacheUrlMapHttpRequest request) {
+    return invalidateCacheUrlMapOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Initiates a cache invalidation operation, invalidating the specified path, scoped to the
+   * specified UrlMap.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
+   *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
+   *   CacheInvalidationRule cacheInvalidationRuleResource = CacheInvalidationRule.newBuilder().build();
+   *   InvalidateCacheUrlMapHttpRequest request = InvalidateCacheUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(urlMap.toString())
+   *     .setCacheInvalidationRuleResource(cacheInvalidationRuleResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = urlMapClient.invalidateCacheUrlMapOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      invalidateCacheUrlMapOperationCallable() {
+    return stub.invalidateCacheUrlMapOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -564,7 +672,7 @@ public class UrlMapClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = urlMapClient.invalidateCacheUrlMapCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -722,7 +830,7 @@ public class UrlMapClient implements BackgroundResource {
    *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   UrlMap urlMapResource = UrlMap.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = urlMapClient.patchUrlMap(urlMap, urlMapResource, fieldMask);
+   *   urlMapClient.patchUrlMapAsync(urlMap, urlMapResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -735,8 +843,9 @@ public class UrlMapClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchUrlMap(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchUrlMapAsync(
       ProjectGlobalUrlMapName urlMap, UrlMap urlMapResource, List<String> fieldMask) {
 
     PatchUrlMapHttpRequest request =
@@ -745,7 +854,7 @@ public class UrlMapClient implements BackgroundResource {
             .setUrlMapResource(urlMapResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchUrlMap(request);
+    return patchUrlMapAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -760,7 +869,7 @@ public class UrlMapClient implements BackgroundResource {
    *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   UrlMap urlMapResource = UrlMap.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = urlMapClient.patchUrlMap(urlMap.toString(), urlMapResource, fieldMask);
+   *   urlMapClient.patchUrlMapAsync(urlMap.toString(), urlMapResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -773,8 +882,10 @@ public class UrlMapClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchUrlMap(String urlMap, UrlMap urlMapResource, List<String> fieldMask) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchUrlMapAsync(
+      String urlMap, UrlMap urlMapResource, List<String> fieldMask) {
 
     PatchUrlMapHttpRequest request =
         PatchUrlMapHttpRequest.newBuilder()
@@ -782,7 +893,7 @@ public class UrlMapClient implements BackgroundResource {
             .setUrlMapResource(urlMapResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchUrlMap(request);
+    return patchUrlMapAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -802,16 +913,47 @@ public class UrlMapClient implements BackgroundResource {
    *     .setUrlMapResource(urlMapResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = urlMapClient.patchUrlMap(request);
+   *   urlMapClient.patchUrlMapAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchUrlMap(PatchUrlMapHttpRequest request) {
-    return patchUrlMapCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchUrlMapAsync(
+      PatchUrlMapHttpRequest request) {
+    return patchUrlMapOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Patches the specified UrlMap resource with the data included in the request. This method
+   * supports PATCH semantics and uses the JSON merge patch format and processing rules.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
+   *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
+   *   UrlMap urlMapResource = UrlMap.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   PatchUrlMapHttpRequest request = PatchUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(urlMap.toString())
+   *     .setUrlMapResource(urlMapResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = urlMapClient.patchUrlMapOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      patchUrlMapOperationCallable() {
+    return stub.patchUrlMapOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -833,7 +975,7 @@ public class UrlMapClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = urlMapClient.patchUrlMapCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -853,7 +995,7 @@ public class UrlMapClient implements BackgroundResource {
    *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   UrlMap urlMapResource = UrlMap.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = urlMapClient.updateUrlMap(urlMap, urlMapResource, fieldMask);
+   *   urlMapClient.updateUrlMapAsync(urlMap, urlMapResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -866,8 +1008,9 @@ public class UrlMapClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateUrlMap(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateUrlMapAsync(
       ProjectGlobalUrlMapName urlMap, UrlMap urlMapResource, List<String> fieldMask) {
 
     UpdateUrlMapHttpRequest request =
@@ -876,7 +1019,7 @@ public class UrlMapClient implements BackgroundResource {
             .setUrlMapResource(urlMapResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return updateUrlMap(request);
+    return updateUrlMapAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -890,7 +1033,7 @@ public class UrlMapClient implements BackgroundResource {
    *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
    *   UrlMap urlMapResource = UrlMap.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = urlMapClient.updateUrlMap(urlMap.toString(), urlMapResource, fieldMask);
+   *   urlMapClient.updateUrlMapAsync(urlMap.toString(), urlMapResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -903,8 +1046,9 @@ public class UrlMapClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateUrlMap(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateUrlMapAsync(
       String urlMap, UrlMap urlMapResource, List<String> fieldMask) {
 
     UpdateUrlMapHttpRequest request =
@@ -913,7 +1057,7 @@ public class UrlMapClient implements BackgroundResource {
             .setUrlMapResource(urlMapResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return updateUrlMap(request);
+    return updateUrlMapAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -932,16 +1076,46 @@ public class UrlMapClient implements BackgroundResource {
    *     .setUrlMapResource(urlMapResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = urlMapClient.updateUrlMap(request);
+   *   urlMapClient.updateUrlMapAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateUrlMap(UpdateUrlMapHttpRequest request) {
-    return updateUrlMapCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateUrlMapAsync(
+      UpdateUrlMapHttpRequest request) {
+    return updateUrlMapOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the specified UrlMap resource with the data included in the request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
+   *   ProjectGlobalUrlMapName urlMap = ProjectGlobalUrlMapName.of("[PROJECT]", "[URL_MAP]");
+   *   UrlMap urlMapResource = UrlMap.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   UpdateUrlMapHttpRequest request = UpdateUrlMapHttpRequest.newBuilder()
+   *     .setUrlMap(urlMap.toString())
+   *     .setUrlMapResource(urlMapResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = urlMapClient.updateUrlMapOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+      updateUrlMapOperationCallable() {
+    return stub.updateUrlMapOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -962,7 +1136,7 @@ public class UrlMapClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = urlMapClient.updateUrlMapCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

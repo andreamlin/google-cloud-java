@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteSslCertificate to 30 seconds:
+ * example, to set the total timeout of getSslCertificate to 30 seconds:
  *
  * <pre>
  * <code>
  * SslCertificateSettings.Builder sslCertificateSettingsBuilder =
  *     SslCertificateSettings.newBuilder();
- * sslCertificateSettingsBuilder.deleteSslCertificateSettings().getRetrySettings().toBuilder()
+ * sslCertificateSettingsBuilder.getSslCertificateSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * SslCertificateSettings sslCertificateSettings = sslCertificateSettingsBuilder.build();
  * </code>
@@ -69,6 +71,14 @@ public class SslCertificateSettings extends ClientSettings<SslCertificateSetting
     return ((SslCertificateStubSettings) getStubSettings()).deleteSslCertificateSettings();
   }
 
+  /** Returns the object with the settings used for calls to deleteSslCertificate. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSslCertificateOperationSettings() {
+    return ((SslCertificateStubSettings) getStubSettings()).deleteSslCertificateOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to getSslCertificate. */
   public UnaryCallSettings<GetSslCertificateHttpRequest, SslCertificate>
       getSslCertificateSettings() {
@@ -79,6 +89,14 @@ public class SslCertificateSettings extends ClientSettings<SslCertificateSetting
   public UnaryCallSettings<InsertSslCertificateHttpRequest, Operation>
       insertSslCertificateSettings() {
     return ((SslCertificateStubSettings) getStubSettings()).insertSslCertificateSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertSslCertificate. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+      insertSslCertificateOperationSettings() {
+    return ((SslCertificateStubSettings) getStubSettings()).insertSslCertificateOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listSslCertificates. */
@@ -196,6 +214,15 @@ public class SslCertificateSettings extends ClientSettings<SslCertificateSetting
       return getStubSettingsBuilder().deleteSslCertificateSettings();
     }
 
+    /** Returns the builder for the settings used for calls to deleteSslCertificate. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+        deleteSslCertificateOperationSettings() {
+      return getStubSettingsBuilder().deleteSslCertificateOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getSslCertificate. */
     public UnaryCallSettings.Builder<GetSslCertificateHttpRequest, SslCertificate>
         getSslCertificateSettings() {
@@ -206,6 +233,15 @@ public class SslCertificateSettings extends ClientSettings<SslCertificateSetting
     public UnaryCallSettings.Builder<InsertSslCertificateHttpRequest, Operation>
         insertSslCertificateSettings() {
       return getStubSettingsBuilder().insertSslCertificateSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertSslCertificate. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+        insertSslCertificateOperationSettings() {
+      return getStubSettingsBuilder().insertSslCertificateOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listSslCertificates. */

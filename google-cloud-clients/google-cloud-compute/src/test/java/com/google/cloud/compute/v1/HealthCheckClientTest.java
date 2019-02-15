@@ -25,6 +25,7 @@ import static com.google.cloud.compute.v1.stub.HttpJsonHealthCheckStub.updateHea
 
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.testing.MockHttpService;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
@@ -36,11 +37,11 @@ import com.google.api.gax.rpc.testing.FakeStatusCode;
 import com.google.cloud.compute.v1.stub.HealthCheckStubSettings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.protobuf.Any;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -91,19 +92,15 @@ public class HealthCheckClientTest {
   @Test
   @SuppressWarnings("all")
   public void deleteHealthCheckTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("deleteHealthCheckTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockHealthChecks.addResponse(resultOperation);
+        Operation.newBuilder().setName("deleteHealthCheckTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalHealthCheckName healthCheck =
         ProjectGlobalHealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
 
-    Void actualResponse = client.deleteHealthCheckAsync(healthCheck).get();
+    EmptyMessage actualResponse = client.deleteHealthCheckAsync(healthCheck).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -138,7 +135,7 @@ public class HealthCheckClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -215,19 +212,15 @@ public class HealthCheckClientTest {
   @Test
   @SuppressWarnings("all")
   public void insertHealthCheckTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("insertHealthCheckTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockHealthChecks.addResponse(resultOperation);
+        Operation.newBuilder().setName("insertHealthCheckTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectName project = ProjectName.of("[PROJECT]");
     HealthCheck healthCheckResource = HealthCheck.newBuilder().build();
 
-    Void actualResponse = client.insertHealthCheckAsync(project, healthCheckResource).get();
+    EmptyMessage actualResponse = client.insertHealthCheckAsync(project, healthCheckResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();
@@ -262,7 +255,7 @@ public class HealthCheckClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
@@ -329,21 +322,17 @@ public class HealthCheckClientTest {
   @Test
   @SuppressWarnings("all")
   public void patchHealthCheckTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("patchHealthCheckTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockHealthChecks.addResponse(resultOperation);
+        Operation.newBuilder().setName("patchHealthCheckTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalHealthCheckName healthCheck =
         ProjectGlobalHealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
     HealthCheck healthCheckResource = HealthCheck.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.patchHealthCheckAsync(healthCheck, healthCheckResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -381,28 +370,24 @@ public class HealthCheckClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 
   @Test
   @SuppressWarnings("all")
   public void updateHealthCheckTest() throws Exception {
-    Void expectedResponse = null;
+    EmptyMessage expectedResponse = null;
     Operation resultOperation =
-        Operation.newBuilder()
-            .setName("updateHealthCheckTest")
-            .setDone(true)
-            .setResponse(Any.pack(expectedResponse))
-            .build();
-    mockHealthChecks.addResponse(resultOperation);
+        Operation.newBuilder().setName("updateHealthCheckTest").setStatus("DONE").build();
+    mockService.addResponse(resultOperation);
 
     ProjectGlobalHealthCheckName healthCheck =
         ProjectGlobalHealthCheckName.of("[PROJECT]", "[HEALTH_CHECK]");
     HealthCheck healthCheckResource = HealthCheck.newBuilder().build();
     List<String> fieldMask = new ArrayList<>();
 
-    Void actualResponse =
+    EmptyMessage actualResponse =
         client.updateHealthCheckAsync(healthCheck, healthCheckResource, fieldMask).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
@@ -440,7 +425,7 @@ public class HealthCheckClientTest {
     } catch (ExecutionException e) {
       Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
       InvalidArgumentException apiException = (InvalidArgumentException) e.getCause();
-      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+      Assert.assertEquals(Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
     }
   }
 }

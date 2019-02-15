@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DeleteRouteHttpRequest;
@@ -130,10 +132,15 @@ public class HttpJsonRouteStub extends RouteStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteRouteHttpRequest, Operation> deleteRouteCallable;
+  private final OperationCallable<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRouteOperationCallable;
   private final UnaryCallable<GetRouteHttpRequest, Route> getRouteCallable;
   private final UnaryCallable<InsertRouteHttpRequest, Operation> insertRouteCallable;
+  private final OperationCallable<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+      insertRouteOperationCallable;
   private final UnaryCallable<ListRoutesHttpRequest, RouteList> listRoutesCallable;
   private final UnaryCallable<ListRoutesHttpRequest, ListRoutesPagedResponse>
       listRoutesPagedCallable;
@@ -175,6 +182,7 @@ public class HttpJsonRouteStub extends RouteStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteRouteHttpRequest, Operation> deleteRouteTransportSettings =
         HttpJsonCallSettings.<DeleteRouteHttpRequest, Operation>newBuilder()
@@ -196,12 +204,24 @@ public class HttpJsonRouteStub extends RouteStub {
     this.deleteRouteCallable =
         callableFactory.createUnaryCallable(
             deleteRouteTransportSettings, settings.deleteRouteSettings(), clientContext);
+    this.deleteRouteOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteRouteTransportSettings,
+            settings.deleteRouteOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getRouteCallable =
         callableFactory.createUnaryCallable(
             getRouteTransportSettings, settings.getRouteSettings(), clientContext);
     this.insertRouteCallable =
         callableFactory.createUnaryCallable(
             insertRouteTransportSettings, settings.insertRouteSettings(), clientContext);
+    this.insertRouteOperationCallable =
+        callableFactory.createOperationCallable(
+            insertRouteTransportSettings,
+            settings.insertRouteOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listRoutesCallable =
         callableFactory.createUnaryCallable(
             listRoutesTransportSettings, settings.listRoutesSettings(), clientContext);
@@ -212,6 +232,17 @@ public class HttpJsonRouteStub extends RouteStub {
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRouteOperationCallable() {
+    return deleteRouteOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteRouteHttpRequest, Operation> deleteRouteCallable() {
     return deleteRouteCallable;
@@ -220,6 +251,12 @@ public class HttpJsonRouteStub extends RouteStub {
   @BetaApi
   public UnaryCallable<GetRouteHttpRequest, Route> getRouteCallable() {
     return getRouteCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+      insertRouteOperationCallable() {
+    return insertRouteOperationCallable;
   }
 
   @BetaApi

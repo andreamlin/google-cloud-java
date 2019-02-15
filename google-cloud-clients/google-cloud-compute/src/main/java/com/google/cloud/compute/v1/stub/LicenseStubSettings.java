@@ -23,13 +23,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -75,13 +80,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteLicense to 30 seconds:
+ * example, to set the total timeout of getLicense to 30 seconds:
  *
  * <pre>
  * <code>
  * LicenseStubSettings.Builder licenseSettingsBuilder =
  *     LicenseStubSettings.newBuilder();
- * licenseSettingsBuilder.deleteLicenseSettings().getRetrySettings().toBuilder()
+ * licenseSettingsBuilder.getLicenseSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * LicenseStubSettings licenseSettings = licenseSettingsBuilder.build();
  * </code>
@@ -102,10 +107,14 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
           .build();
 
   private final UnaryCallSettings<DeleteLicenseHttpRequest, Operation> deleteLicenseSettings;
+  private final OperationCallSettings<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+      deleteLicenseOperationSettings;
   private final UnaryCallSettings<GetLicenseHttpRequest, License> getLicenseSettings;
   private final UnaryCallSettings<GetIamPolicyLicenseHttpRequest, Policy>
       getIamPolicyLicenseSettings;
   private final UnaryCallSettings<InsertLicenseHttpRequest, Operation> insertLicenseSettings;
+  private final OperationCallSettings<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+      insertLicenseOperationSettings;
   private final PagedCallSettings<
           ListLicensesHttpRequest, LicensesListResponse, ListLicensesPagedResponse>
       listLicensesSettings;
@@ -117,6 +126,13 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
   /** Returns the object with the settings used for calls to deleteLicense. */
   public UnaryCallSettings<DeleteLicenseHttpRequest, Operation> deleteLicenseSettings() {
     return deleteLicenseSettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteLicense. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+      deleteLicenseOperationSettings() {
+    return deleteLicenseOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getLicense. */
@@ -132,6 +148,13 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
   /** Returns the object with the settings used for calls to insertLicense. */
   public UnaryCallSettings<InsertLicenseHttpRequest, Operation> insertLicenseSettings() {
     return insertLicenseSettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertLicense. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+      insertLicenseOperationSettings() {
+    return insertLicenseOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listLicenses. */
@@ -226,9 +249,11 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
     super(settingsBuilder);
 
     deleteLicenseSettings = settingsBuilder.deleteLicenseSettings().build();
+    deleteLicenseOperationSettings = settingsBuilder.deleteLicenseOperationSettings().build();
     getLicenseSettings = settingsBuilder.getLicenseSettings().build();
     getIamPolicyLicenseSettings = settingsBuilder.getIamPolicyLicenseSettings().build();
     insertLicenseSettings = settingsBuilder.insertLicenseSettings().build();
+    insertLicenseOperationSettings = settingsBuilder.insertLicenseOperationSettings().build();
     listLicensesSettings = settingsBuilder.listLicensesSettings().build();
     setIamPolicyLicenseSettings = settingsBuilder.setIamPolicyLicenseSettings().build();
     testIamPermissionsLicenseSettings = settingsBuilder.testIamPermissionsLicenseSettings().build();
@@ -295,11 +320,17 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
 
     private final UnaryCallSettings.Builder<DeleteLicenseHttpRequest, Operation>
         deleteLicenseSettings;
+    private final OperationCallSettings.Builder<
+            DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+        deleteLicenseOperationSettings;
     private final UnaryCallSettings.Builder<GetLicenseHttpRequest, License> getLicenseSettings;
     private final UnaryCallSettings.Builder<GetIamPolicyLicenseHttpRequest, Policy>
         getIamPolicyLicenseSettings;
     private final UnaryCallSettings.Builder<InsertLicenseHttpRequest, Operation>
         insertLicenseSettings;
+    private final OperationCallSettings.Builder<
+            InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+        insertLicenseOperationSettings;
     private final PagedCallSettings.Builder<
             ListLicensesHttpRequest, LicensesListResponse, ListLicensesPagedResponse>
         listLicensesSettings;
@@ -352,11 +383,15 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
 
       deleteLicenseSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteLicenseOperationSettings = OperationCallSettings.newBuilder();
+
       getLicenseSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       getIamPolicyLicenseSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertLicenseSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      insertLicenseOperationSettings = OperationCallSettings.newBuilder();
 
       listLicensesSettings = PagedCallSettings.newBuilder(LIST_LICENSES_PAGE_STR_FACT);
 
@@ -422,6 +457,48 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
           .testIamPermissionsLicenseSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .deleteLicenseOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteLicenseHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertLicenseOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertLicenseHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -430,9 +507,11 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
       super(settings);
 
       deleteLicenseSettings = settings.deleteLicenseSettings.toBuilder();
+      deleteLicenseOperationSettings = settings.deleteLicenseOperationSettings.toBuilder();
       getLicenseSettings = settings.getLicenseSettings.toBuilder();
       getIamPolicyLicenseSettings = settings.getIamPolicyLicenseSettings.toBuilder();
       insertLicenseSettings = settings.insertLicenseSettings.toBuilder();
+      insertLicenseOperationSettings = settings.insertLicenseOperationSettings.toBuilder();
       listLicensesSettings = settings.listLicensesSettings.toBuilder();
       setIamPolicyLicenseSettings = settings.setIamPolicyLicenseSettings.toBuilder();
       testIamPermissionsLicenseSettings = settings.testIamPermissionsLicenseSettings.toBuilder();
@@ -469,6 +548,14 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
       return deleteLicenseSettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteLicense. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+        deleteLicenseOperationSettings() {
+      return deleteLicenseOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to getLicense. */
     public UnaryCallSettings.Builder<GetLicenseHttpRequest, License> getLicenseSettings() {
       return getLicenseSettings;
@@ -483,6 +570,14 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
     /** Returns the builder for the settings used for calls to insertLicense. */
     public UnaryCallSettings.Builder<InsertLicenseHttpRequest, Operation> insertLicenseSettings() {
       return insertLicenseSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertLicense. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+        insertLicenseOperationSettings() {
+      return insertLicenseOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listLicenses. */

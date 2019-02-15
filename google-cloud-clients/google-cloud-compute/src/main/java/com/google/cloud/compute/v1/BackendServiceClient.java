@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.BackendServiceStub;
@@ -43,8 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
  *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
- *   SignedUrlKey signedUrlKeyResource = SignedUrlKey.newBuilder().build();
- *   Operation response = backendServiceClient.addSignedUrlKeyBackendService(backendService, signedUrlKeyResource);
+ *   BackendService response = backendServiceClient.getBackendService(backendService);
  * }
  * </code>
  * </pre>
@@ -104,6 +106,7 @@ import javax.annotation.Generated;
 public class BackendServiceClient implements BackgroundResource {
   private final BackendServiceSettings settings;
   private final BackendServiceStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of BackendServiceClient with default settings. */
   public static final BackendServiceClient create() throws IOException {
@@ -136,12 +139,14 @@ public class BackendServiceClient implements BackgroundResource {
   protected BackendServiceClient(BackendServiceSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((BackendServiceStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected BackendServiceClient(BackendServiceStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final BackendServiceSettings getSettings() {
@@ -153,36 +158,14 @@ public class BackendServiceClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Adds a key for validating requests with signed URLs for this backend service.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
-   *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
-   *   SignedUrlKey signedUrlKeyResource = SignedUrlKey.newBuilder().build();
-   *   Operation response = backendServiceClient.addSignedUrlKeyBackendService(backendService, signedUrlKeyResource);
-   * }
-   * </code></pre>
-   *
-   * @param backendService Name of the BackendService resource to which the Signed URL Key should be
-   *     added. The name should conform to RFC1035.
-   * @param signedUrlKeyResource Represents a customer-supplied Signing Key used by Cloud CDN Signed
-   *     URLs
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation addSignedUrlKeyBackendService(
-      ProjectGlobalBackendServiceName backendService, SignedUrlKey signedUrlKeyResource) {
-
-    AddSignedUrlKeyBackendServiceHttpRequest request =
-        AddSignedUrlKeyBackendServiceHttpRequest.newBuilder()
-            .setBackendService(backendService == null ? null : backendService.toString())
-            .setSignedUrlKeyResource(signedUrlKeyResource)
-            .build();
-    return addSignedUrlKeyBackendService(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -195,7 +178,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   SignedUrlKey signedUrlKeyResource = SignedUrlKey.newBuilder().build();
-   *   Operation response = backendServiceClient.addSignedUrlKeyBackendService(backendService.toString(), signedUrlKeyResource);
+   *   backendServiceClient.addSignedUrlKeyBackendServiceAsync(backendService, signedUrlKeyResource).get();
    * }
    * </code></pre>
    *
@@ -205,8 +188,42 @@ public class BackendServiceClient implements BackgroundResource {
    *     URLs
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation addSignedUrlKeyBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> addSignedUrlKeyBackendServiceAsync(
+      ProjectGlobalBackendServiceName backendService, SignedUrlKey signedUrlKeyResource) {
+
+    AddSignedUrlKeyBackendServiceHttpRequest request =
+        AddSignedUrlKeyBackendServiceHttpRequest.newBuilder()
+            .setBackendService(backendService == null ? null : backendService.toString())
+            .setSignedUrlKeyResource(signedUrlKeyResource)
+            .build();
+    return addSignedUrlKeyBackendServiceAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Adds a key for validating requests with signed URLs for this backend service.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
+   *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
+   *   SignedUrlKey signedUrlKeyResource = SignedUrlKey.newBuilder().build();
+   *   backendServiceClient.addSignedUrlKeyBackendServiceAsync(backendService.toString(), signedUrlKeyResource).get();
+   * }
+   * </code></pre>
+   *
+   * @param backendService Name of the BackendService resource to which the Signed URL Key should be
+   *     added. The name should conform to RFC1035.
+   * @param signedUrlKeyResource Represents a customer-supplied Signing Key used by Cloud CDN Signed
+   *     URLs
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> addSignedUrlKeyBackendServiceAsync(
       String backendService, SignedUrlKey signedUrlKeyResource) {
 
     AddSignedUrlKeyBackendServiceHttpRequest request =
@@ -214,7 +231,7 @@ public class BackendServiceClient implements BackgroundResource {
             .setBackendService(backendService)
             .setSignedUrlKeyResource(signedUrlKeyResource)
             .build();
-    return addSignedUrlKeyBackendService(request);
+    return addSignedUrlKeyBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -231,17 +248,45 @@ public class BackendServiceClient implements BackgroundResource {
    *     .setBackendService(backendService.toString())
    *     .setSignedUrlKeyResource(signedUrlKeyResource)
    *     .build();
-   *   Operation response = backendServiceClient.addSignedUrlKeyBackendService(request);
+   *   backendServiceClient.addSignedUrlKeyBackendServiceAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation addSignedUrlKeyBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> addSignedUrlKeyBackendServiceAsync(
       AddSignedUrlKeyBackendServiceHttpRequest request) {
-    return addSignedUrlKeyBackendServiceCallable().call(request);
+    return addSignedUrlKeyBackendServiceOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Adds a key for validating requests with signed URLs for this backend service.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
+   *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
+   *   SignedUrlKey signedUrlKeyResource = SignedUrlKey.newBuilder().build();
+   *   AddSignedUrlKeyBackendServiceHttpRequest request = AddSignedUrlKeyBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(backendService.toString())
+   *     .setSignedUrlKeyResource(signedUrlKeyResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendServiceClient.addSignedUrlKeyBackendServiceOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      addSignedUrlKeyBackendServiceOperationCallable() {
+    return stub.addSignedUrlKeyBackendServiceOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -260,7 +305,7 @@ public class BackendServiceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = backendServiceClient.addSignedUrlKeyBackendServiceCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -425,21 +470,23 @@ public class BackendServiceClient implements BackgroundResource {
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
-   *   Operation response = backendServiceClient.deleteBackendService(backendService);
+   *   backendServiceClient.deleteBackendServiceAsync(backendService).get();
    * }
    * </code></pre>
    *
    * @param backendService Name of the BackendService resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteBackendService(ProjectGlobalBackendServiceName backendService) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteBackendServiceAsync(
+      ProjectGlobalBackendServiceName backendService) {
 
     DeleteBackendServiceHttpRequest request =
         DeleteBackendServiceHttpRequest.newBuilder()
             .setBackendService(backendService == null ? null : backendService.toString())
             .build();
-    return deleteBackendService(request);
+    return deleteBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -451,19 +498,21 @@ public class BackendServiceClient implements BackgroundResource {
    * <pre><code>
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
-   *   Operation response = backendServiceClient.deleteBackendService(backendService.toString());
+   *   backendServiceClient.deleteBackendServiceAsync(backendService.toString()).get();
    * }
    * </code></pre>
    *
    * @param backendService Name of the BackendService resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteBackendService(String backendService) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteBackendServiceAsync(
+      String backendService) {
 
     DeleteBackendServiceHttpRequest request =
         DeleteBackendServiceHttpRequest.newBuilder().setBackendService(backendService).build();
-    return deleteBackendService(request);
+    return deleteBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -478,16 +527,42 @@ public class BackendServiceClient implements BackgroundResource {
    *   DeleteBackendServiceHttpRequest request = DeleteBackendServiceHttpRequest.newBuilder()
    *     .setBackendService(backendService.toString())
    *     .build();
-   *   Operation response = backendServiceClient.deleteBackendService(request);
+   *   backendServiceClient.deleteBackendServiceAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteBackendService(DeleteBackendServiceHttpRequest request) {
-    return deleteBackendServiceCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteBackendServiceAsync(
+      DeleteBackendServiceHttpRequest request) {
+    return deleteBackendServiceOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified BackendService resource.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
+   *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
+   *   DeleteBackendServiceHttpRequest request = DeleteBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(backendService.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendServiceClient.deleteBackendServiceOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteBackendServiceOperationCallable() {
+    return stub.deleteBackendServiceOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -504,7 +579,7 @@ public class BackendServiceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = backendServiceClient.deleteBackendServiceCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -524,7 +599,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   String keyName = "";
-   *   Operation response = backendServiceClient.deleteSignedUrlKeyBackendService(backendService, keyName);
+   *   backendServiceClient.deleteSignedUrlKeyBackendServiceAsync(backendService, keyName).get();
    * }
    * </code></pre>
    *
@@ -533,8 +608,9 @@ public class BackendServiceClient implements BackgroundResource {
    * @param keyName The name of the Signed URL Key to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSignedUrlKeyBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSignedUrlKeyBackendServiceAsync(
       ProjectGlobalBackendServiceName backendService, String keyName) {
 
     DeleteSignedUrlKeyBackendServiceHttpRequest request =
@@ -542,7 +618,7 @@ public class BackendServiceClient implements BackgroundResource {
             .setBackendService(backendService == null ? null : backendService.toString())
             .setKeyName(keyName)
             .build();
-    return deleteSignedUrlKeyBackendService(request);
+    return deleteSignedUrlKeyBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -555,7 +631,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   String keyName = "";
-   *   Operation response = backendServiceClient.deleteSignedUrlKeyBackendService(backendService.toString(), keyName);
+   *   backendServiceClient.deleteSignedUrlKeyBackendServiceAsync(backendService.toString(), keyName).get();
    * }
    * </code></pre>
    *
@@ -564,15 +640,17 @@ public class BackendServiceClient implements BackgroundResource {
    * @param keyName The name of the Signed URL Key to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSignedUrlKeyBackendService(String backendService, String keyName) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSignedUrlKeyBackendServiceAsync(
+      String backendService, String keyName) {
 
     DeleteSignedUrlKeyBackendServiceHttpRequest request =
         DeleteSignedUrlKeyBackendServiceHttpRequest.newBuilder()
             .setBackendService(backendService)
             .setKeyName(keyName)
             .build();
-    return deleteSignedUrlKeyBackendService(request);
+    return deleteSignedUrlKeyBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -589,17 +667,45 @@ public class BackendServiceClient implements BackgroundResource {
    *     .setBackendService(backendService.toString())
    *     .setKeyName(keyName)
    *     .build();
-   *   Operation response = backendServiceClient.deleteSignedUrlKeyBackendService(request);
+   *   backendServiceClient.deleteSignedUrlKeyBackendServiceAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteSignedUrlKeyBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSignedUrlKeyBackendServiceAsync(
       DeleteSignedUrlKeyBackendServiceHttpRequest request) {
-    return deleteSignedUrlKeyBackendServiceCallable().call(request);
+    return deleteSignedUrlKeyBackendServiceOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes a key for validating requests with signed URLs for this backend service.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
+   *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
+   *   String keyName = "";
+   *   DeleteSignedUrlKeyBackendServiceHttpRequest request = DeleteSignedUrlKeyBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(backendService.toString())
+   *     .setKeyName(keyName)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendServiceClient.deleteSignedUrlKeyBackendServiceOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteSignedUrlKeyBackendServiceOperationCallable() {
+    return stub.deleteSignedUrlKeyBackendServiceOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -618,7 +724,7 @@ public class BackendServiceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = backendServiceClient.deleteSignedUrlKeyBackendServiceCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -854,7 +960,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   BackendService backendServiceResource = BackendService.newBuilder().build();
-   *   Operation response = backendServiceClient.insertBackendService(project, backendServiceResource);
+   *   backendServiceClient.insertBackendServiceAsync(project, backendServiceResource).get();
    * }
    * </code></pre>
    *
@@ -864,8 +970,9 @@ public class BackendServiceClient implements BackgroundResource {
    *     (== resource_for beta.backendService ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertBackendServiceAsync(
       ProjectName project, BackendService backendServiceResource) {
 
     InsertBackendServiceHttpRequest request =
@@ -873,7 +980,7 @@ public class BackendServiceClient implements BackgroundResource {
             .setProject(project == null ? null : project.toString())
             .setBackendServiceResource(backendServiceResource)
             .build();
-    return insertBackendService(request);
+    return insertBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -888,7 +995,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   BackendService backendServiceResource = BackendService.newBuilder().build();
-   *   Operation response = backendServiceClient.insertBackendService(project.toString(), backendServiceResource);
+   *   backendServiceClient.insertBackendServiceAsync(project.toString(), backendServiceResource).get();
    * }
    * </code></pre>
    *
@@ -898,8 +1005,9 @@ public class BackendServiceClient implements BackgroundResource {
    *     (== resource_for beta.backendService ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertBackendServiceAsync(
       String project, BackendService backendServiceResource) {
 
     InsertBackendServiceHttpRequest request =
@@ -907,7 +1015,7 @@ public class BackendServiceClient implements BackgroundResource {
             .setProject(project)
             .setBackendServiceResource(backendServiceResource)
             .build();
-    return insertBackendService(request);
+    return insertBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -926,16 +1034,46 @@ public class BackendServiceClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setBackendServiceResource(backendServiceResource)
    *     .build();
-   *   Operation response = backendServiceClient.insertBackendService(request);
+   *   backendServiceClient.insertBackendServiceAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertBackendService(InsertBackendServiceHttpRequest request) {
-    return insertBackendServiceCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertBackendServiceAsync(
+      InsertBackendServiceHttpRequest request) {
+    return insertBackendServiceOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a BackendService resource in the specified project using the data included in the
+   * request. There are several restrictions and guidelines to keep in mind when creating a backend
+   * service. Read Restrictions and Guidelines for more information.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   BackendService backendServiceResource = BackendService.newBuilder().build();
+   *   InsertBackendServiceHttpRequest request = InsertBackendServiceHttpRequest.newBuilder()
+   *     .setProject(project.toString())
+   *     .setBackendServiceResource(backendServiceResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendServiceClient.insertBackendServiceOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      insertBackendServiceOperationCallable() {
+    return stub.insertBackendServiceOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -956,7 +1094,7 @@ public class BackendServiceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = backendServiceClient.insertBackendServiceCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1118,7 +1256,7 @@ public class BackendServiceClient implements BackgroundResource {
    *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   BackendService backendServiceResource = BackendService.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = backendServiceClient.patchBackendService(backendService, backendServiceResource, fieldMask);
+   *   backendServiceClient.patchBackendServiceAsync(backendService, backendServiceResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -1132,8 +1270,9 @@ public class BackendServiceClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchBackendServiceAsync(
       ProjectGlobalBackendServiceName backendService,
       BackendService backendServiceResource,
       List<String> fieldMask) {
@@ -1144,7 +1283,7 @@ public class BackendServiceClient implements BackgroundResource {
             .setBackendServiceResource(backendServiceResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchBackendService(request);
+    return patchBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1161,7 +1300,7 @@ public class BackendServiceClient implements BackgroundResource {
    *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   BackendService backendServiceResource = BackendService.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = backendServiceClient.patchBackendService(backendService.toString(), backendServiceResource, fieldMask);
+   *   backendServiceClient.patchBackendServiceAsync(backendService.toString(), backendServiceResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -1175,8 +1314,9 @@ public class BackendServiceClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchBackendServiceAsync(
       String backendService, BackendService backendServiceResource, List<String> fieldMask) {
 
     PatchBackendServiceHttpRequest request =
@@ -1185,7 +1325,7 @@ public class BackendServiceClient implements BackgroundResource {
             .setBackendServiceResource(backendServiceResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return patchBackendService(request);
+    return patchBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1207,16 +1347,49 @@ public class BackendServiceClient implements BackgroundResource {
    *     .setBackendServiceResource(backendServiceResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = backendServiceClient.patchBackendService(request);
+   *   backendServiceClient.patchBackendServiceAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation patchBackendService(PatchBackendServiceHttpRequest request) {
-    return patchBackendServiceCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> patchBackendServiceAsync(
+      PatchBackendServiceHttpRequest request) {
+    return patchBackendServiceOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Patches the specified BackendService resource with the data included in the request. There are
+   * several restrictions and guidelines to keep in mind when updating a backend service. Read
+   * Restrictions and Guidelines for more information. This method supports PATCH semantics and uses
+   * the JSON merge patch format and processing rules.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
+   *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
+   *   BackendService backendServiceResource = BackendService.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   PatchBackendServiceHttpRequest request = PatchBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(backendService.toString())
+   *     .setBackendServiceResource(backendServiceResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendServiceClient.patchBackendServiceOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<PatchBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      patchBackendServiceOperationCallable() {
+    return stub.patchBackendServiceOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1240,7 +1413,7 @@ public class BackendServiceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = backendServiceClient.patchBackendServiceCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1260,7 +1433,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   SecurityPolicyReference securityPolicyReferenceResource = SecurityPolicyReference.newBuilder().build();
-   *   Operation response = backendServiceClient.setSecurityPolicyBackendService(backendService, securityPolicyReferenceResource);
+   *   backendServiceClient.setSecurityPolicyBackendServiceAsync(backendService, securityPolicyReferenceResource).get();
    * }
    * </code></pre>
    *
@@ -1269,8 +1442,9 @@ public class BackendServiceClient implements BackgroundResource {
    * @param securityPolicyReferenceResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setSecurityPolicyBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setSecurityPolicyBackendServiceAsync(
       ProjectGlobalBackendServiceName backendService,
       SecurityPolicyReference securityPolicyReferenceResource) {
 
@@ -1279,7 +1453,7 @@ public class BackendServiceClient implements BackgroundResource {
             .setBackendService(backendService == null ? null : backendService.toString())
             .setSecurityPolicyReferenceResource(securityPolicyReferenceResource)
             .build();
-    return setSecurityPolicyBackendService(request);
+    return setSecurityPolicyBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1292,7 +1466,7 @@ public class BackendServiceClient implements BackgroundResource {
    * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
    *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   SecurityPolicyReference securityPolicyReferenceResource = SecurityPolicyReference.newBuilder().build();
-   *   Operation response = backendServiceClient.setSecurityPolicyBackendService(backendService.toString(), securityPolicyReferenceResource);
+   *   backendServiceClient.setSecurityPolicyBackendServiceAsync(backendService.toString(), securityPolicyReferenceResource).get();
    * }
    * </code></pre>
    *
@@ -1301,8 +1475,9 @@ public class BackendServiceClient implements BackgroundResource {
    * @param securityPolicyReferenceResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setSecurityPolicyBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setSecurityPolicyBackendServiceAsync(
       String backendService, SecurityPolicyReference securityPolicyReferenceResource) {
 
     SetSecurityPolicyBackendServiceHttpRequest request =
@@ -1310,7 +1485,7 @@ public class BackendServiceClient implements BackgroundResource {
             .setBackendService(backendService)
             .setSecurityPolicyReferenceResource(securityPolicyReferenceResource)
             .build();
-    return setSecurityPolicyBackendService(request);
+    return setSecurityPolicyBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1327,17 +1502,45 @@ public class BackendServiceClient implements BackgroundResource {
    *     .setBackendService(backendService.toString())
    *     .setSecurityPolicyReferenceResource(securityPolicyReferenceResource)
    *     .build();
-   *   Operation response = backendServiceClient.setSecurityPolicyBackendService(request);
+   *   backendServiceClient.setSecurityPolicyBackendServiceAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setSecurityPolicyBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setSecurityPolicyBackendServiceAsync(
       SetSecurityPolicyBackendServiceHttpRequest request) {
-    return setSecurityPolicyBackendServiceCallable().call(request);
+    return setSecurityPolicyBackendServiceOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Sets the security policy for the specified backend service.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
+   *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
+   *   SecurityPolicyReference securityPolicyReferenceResource = SecurityPolicyReference.newBuilder().build();
+   *   SetSecurityPolicyBackendServiceHttpRequest request = SetSecurityPolicyBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(backendService.toString())
+   *     .setSecurityPolicyReferenceResource(securityPolicyReferenceResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendServiceClient.setSecurityPolicyBackendServiceOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      setSecurityPolicyBackendServiceOperationCallable() {
+    return stub.setSecurityPolicyBackendServiceOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1356,7 +1559,7 @@ public class BackendServiceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = backendServiceClient.setSecurityPolicyBackendServiceCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -1379,7 +1582,7 @@ public class BackendServiceClient implements BackgroundResource {
    *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   BackendService backendServiceResource = BackendService.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = backendServiceClient.updateBackendService(backendService, backendServiceResource, fieldMask);
+   *   backendServiceClient.updateBackendServiceAsync(backendService, backendServiceResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -1393,8 +1596,9 @@ public class BackendServiceClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateBackendServiceAsync(
       ProjectGlobalBackendServiceName backendService,
       BackendService backendServiceResource,
       List<String> fieldMask) {
@@ -1405,7 +1609,7 @@ public class BackendServiceClient implements BackgroundResource {
             .setBackendServiceResource(backendServiceResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return updateBackendService(request);
+    return updateBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1421,7 +1625,7 @@ public class BackendServiceClient implements BackgroundResource {
    *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
    *   BackendService backendServiceResource = BackendService.newBuilder().build();
    *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
-   *   Operation response = backendServiceClient.updateBackendService(backendService.toString(), backendServiceResource, fieldMask);
+   *   backendServiceClient.updateBackendServiceAsync(backendService.toString(), backendServiceResource, fieldMask).get();
    * }
    * </code></pre>
    *
@@ -1435,8 +1639,9 @@ public class BackendServiceClient implements BackgroundResource {
    *     not have a fieldmask, then only non-empty fields will be serialized.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateBackendService(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateBackendServiceAsync(
       String backendService, BackendService backendServiceResource, List<String> fieldMask) {
 
     UpdateBackendServiceHttpRequest request =
@@ -1445,7 +1650,7 @@ public class BackendServiceClient implements BackgroundResource {
             .setBackendServiceResource(backendServiceResource)
             .addAllFieldMask(fieldMask)
             .build();
-    return updateBackendService(request);
+    return updateBackendServiceAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1466,16 +1671,48 @@ public class BackendServiceClient implements BackgroundResource {
    *     .setBackendServiceResource(backendServiceResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   Operation response = backendServiceClient.updateBackendService(request);
+   *   backendServiceClient.updateBackendServiceAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation updateBackendService(UpdateBackendServiceHttpRequest request) {
-    return updateBackendServiceCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> updateBackendServiceAsync(
+      UpdateBackendServiceHttpRequest request) {
+    return updateBackendServiceOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the specified BackendService resource with the data included in the request. There are
+   * several restrictions and guidelines to keep in mind when updating a backend service. Read
+   * Restrictions and Guidelines for more information.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (BackendServiceClient backendServiceClient = BackendServiceClient.create()) {
+   *   ProjectGlobalBackendServiceName backendService = ProjectGlobalBackendServiceName.of("[PROJECT]", "[BACKEND_SERVICE]");
+   *   BackendService backendServiceResource = BackendService.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   UpdateBackendServiceHttpRequest request = UpdateBackendServiceHttpRequest.newBuilder()
+   *     .setBackendService(backendService.toString())
+   *     .setBackendServiceResource(backendServiceResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendServiceClient.updateBackendServiceOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<UpdateBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      updateBackendServiceOperationCallable() {
+    return stub.updateBackendServiceOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -1498,7 +1735,7 @@ public class BackendServiceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = backendServiceClient.updateBackendServiceCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

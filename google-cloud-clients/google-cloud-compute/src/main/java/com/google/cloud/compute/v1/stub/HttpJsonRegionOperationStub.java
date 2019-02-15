@@ -25,6 +25,7 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
@@ -52,9 +53,9 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public class HttpJsonRegionOperationStub extends RegionOperationStub {
   @InternalApi
-  public static final ApiMethodDescriptor<DeleteRegionOperationHttpRequest, Void>
+  public static final ApiMethodDescriptor<DeleteRegionOperationHttpRequest, EmptyMessage>
       deleteRegionOperationMethodDescriptor =
-          ApiMethodDescriptor.<DeleteRegionOperationHttpRequest, Void>newBuilder()
+          ApiMethodDescriptor.<DeleteRegionOperationHttpRequest, EmptyMessage>newBuilder()
               .setFullMethodName("compute.regionOperations.delete")
               .setHttpMethod(HttpMethods.DELETE)
               .setRequestFormatter(
@@ -109,7 +110,8 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
 
   private final BackgroundResource backgroundResources;
 
-  private final UnaryCallable<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationCallable;
+  private final UnaryCallable<DeleteRegionOperationHttpRequest, EmptyMessage>
+      deleteRegionOperationCallable;
   private final UnaryCallable<GetRegionOperationHttpRequest, Operation> getRegionOperationCallable;
   private final UnaryCallable<ListRegionOperationsHttpRequest, OperationList>
       listRegionOperationsCallable;
@@ -157,9 +159,9 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
       throws IOException {
     this.callableFactory = callableFactory;
 
-    HttpJsonCallSettings<DeleteRegionOperationHttpRequest, Void>
+    HttpJsonCallSettings<DeleteRegionOperationHttpRequest, EmptyMessage>
         deleteRegionOperationTransportSettings =
-            HttpJsonCallSettings.<DeleteRegionOperationHttpRequest, Void>newBuilder()
+            HttpJsonCallSettings.<DeleteRegionOperationHttpRequest, EmptyMessage>newBuilder()
                 .setMethodDescriptor(deleteRegionOperationMethodDescriptor)
                 .build();
     HttpJsonCallSettings<GetRegionOperationHttpRequest, Operation>
@@ -198,7 +200,8 @@ public class HttpJsonRegionOperationStub extends RegionOperationStub {
   }
 
   @BetaApi
-  public UnaryCallable<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationCallable() {
+  public UnaryCallable<DeleteRegionOperationHttpRequest, EmptyMessage>
+      deleteRegionOperationCallable() {
     return deleteRegionOperationCallable;
   }
 

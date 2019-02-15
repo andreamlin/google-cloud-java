@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AbandonInstancesInstanceGroupManagerHttpRequest;
@@ -366,9 +368,13 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AbandonInstancesInstanceGroupManagerHttpRequest, Operation>
       abandonInstancesInstanceGroupManagerCallable;
+  private final OperationCallable<
+          AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      abandonInstancesInstanceGroupManagerOperationCallable;
   private final UnaryCallable<
           AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList>
       aggregatedListInstanceGroupManagersCallable;
@@ -378,12 +384,19 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
       aggregatedListInstanceGroupManagersPagedCallable;
   private final UnaryCallable<DeleteInstanceGroupManagerHttpRequest, Operation>
       deleteInstanceGroupManagerCallable;
+  private final OperationCallable<DeleteInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstanceGroupManagerOperationCallable;
   private final UnaryCallable<DeleteInstancesInstanceGroupManagerHttpRequest, Operation>
       deleteInstancesInstanceGroupManagerCallable;
+  private final OperationCallable<
+          DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstancesInstanceGroupManagerOperationCallable;
   private final UnaryCallable<GetInstanceGroupManagerHttpRequest, InstanceGroupManager>
       getInstanceGroupManagerCallable;
   private final UnaryCallable<InsertInstanceGroupManagerHttpRequest, Operation>
       insertInstanceGroupManagerCallable;
+  private final OperationCallable<InsertInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      insertInstanceGroupManagerOperationCallable;
   private final UnaryCallable<ListInstanceGroupManagersHttpRequest, InstanceGroupManagerList>
       listInstanceGroupManagersCallable;
   private final UnaryCallable<
@@ -395,14 +408,27 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
       listManagedInstancesInstanceGroupManagersCallable;
   private final UnaryCallable<PatchInstanceGroupManagerHttpRequest, Operation>
       patchInstanceGroupManagerCallable;
+  private final OperationCallable<PatchInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      patchInstanceGroupManagerOperationCallable;
   private final UnaryCallable<RecreateInstancesInstanceGroupManagerHttpRequest, Operation>
       recreateInstancesInstanceGroupManagerCallable;
+  private final OperationCallable<
+          RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      recreateInstancesInstanceGroupManagerOperationCallable;
   private final UnaryCallable<ResizeInstanceGroupManagerHttpRequest, Operation>
       resizeInstanceGroupManagerCallable;
+  private final OperationCallable<ResizeInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      resizeInstanceGroupManagerOperationCallable;
   private final UnaryCallable<SetInstanceTemplateInstanceGroupManagerHttpRequest, Operation>
       setInstanceTemplateInstanceGroupManagerCallable;
+  private final OperationCallable<
+          SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setInstanceTemplateInstanceGroupManagerOperationCallable;
   private final UnaryCallable<SetTargetPoolsInstanceGroupManagerHttpRequest, Operation>
       setTargetPoolsInstanceGroupManagerCallable;
+  private final OperationCallable<
+          SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetPoolsInstanceGroupManagerOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -444,6 +470,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AbandonInstancesInstanceGroupManagerHttpRequest, Operation>
         abandonInstancesInstanceGroupManagerTransportSettings =
@@ -532,6 +559,12 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
             abandonInstancesInstanceGroupManagerTransportSettings,
             settings.abandonInstancesInstanceGroupManagerSettings(),
             clientContext);
+    this.abandonInstancesInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            abandonInstancesInstanceGroupManagerTransportSettings,
+            settings.abandonInstancesInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.aggregatedListInstanceGroupManagersCallable =
         callableFactory.createUnaryCallable(
             aggregatedListInstanceGroupManagersTransportSettings,
@@ -547,11 +580,23 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
             deleteInstanceGroupManagerTransportSettings,
             settings.deleteInstanceGroupManagerSettings(),
             clientContext);
+    this.deleteInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteInstanceGroupManagerTransportSettings,
+            settings.deleteInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.deleteInstancesInstanceGroupManagerCallable =
         callableFactory.createUnaryCallable(
             deleteInstancesInstanceGroupManagerTransportSettings,
             settings.deleteInstancesInstanceGroupManagerSettings(),
             clientContext);
+    this.deleteInstancesInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteInstancesInstanceGroupManagerTransportSettings,
+            settings.deleteInstancesInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getInstanceGroupManagerCallable =
         callableFactory.createUnaryCallable(
             getInstanceGroupManagerTransportSettings,
@@ -562,6 +607,12 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
             insertInstanceGroupManagerTransportSettings,
             settings.insertInstanceGroupManagerSettings(),
             clientContext);
+    this.insertInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            insertInstanceGroupManagerTransportSettings,
+            settings.insertInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listInstanceGroupManagersCallable =
         callableFactory.createUnaryCallable(
             listInstanceGroupManagersTransportSettings,
@@ -582,28 +633,70 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
             patchInstanceGroupManagerTransportSettings,
             settings.patchInstanceGroupManagerSettings(),
             clientContext);
+    this.patchInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            patchInstanceGroupManagerTransportSettings,
+            settings.patchInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.recreateInstancesInstanceGroupManagerCallable =
         callableFactory.createUnaryCallable(
             recreateInstancesInstanceGroupManagerTransportSettings,
             settings.recreateInstancesInstanceGroupManagerSettings(),
             clientContext);
+    this.recreateInstancesInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            recreateInstancesInstanceGroupManagerTransportSettings,
+            settings.recreateInstancesInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.resizeInstanceGroupManagerCallable =
         callableFactory.createUnaryCallable(
             resizeInstanceGroupManagerTransportSettings,
             settings.resizeInstanceGroupManagerSettings(),
             clientContext);
+    this.resizeInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            resizeInstanceGroupManagerTransportSettings,
+            settings.resizeInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setInstanceTemplateInstanceGroupManagerCallable =
         callableFactory.createUnaryCallable(
             setInstanceTemplateInstanceGroupManagerTransportSettings,
             settings.setInstanceTemplateInstanceGroupManagerSettings(),
             clientContext);
+    this.setInstanceTemplateInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            setInstanceTemplateInstanceGroupManagerTransportSettings,
+            settings.setInstanceTemplateInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setTargetPoolsInstanceGroupManagerCallable =
         callableFactory.createUnaryCallable(
             setTargetPoolsInstanceGroupManagerTransportSettings,
             settings.setTargetPoolsInstanceGroupManagerSettings(),
             clientContext);
+    this.setTargetPoolsInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            setTargetPoolsInstanceGroupManagerTransportSettings,
+            settings.setTargetPoolsInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      abandonInstancesInstanceGroupManagerOperationCallable() {
+    return abandonInstancesInstanceGroupManagerOperationCallable;
   }
 
   @BetaApi
@@ -627,10 +720,23 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
     return aggregatedListInstanceGroupManagersCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstanceGroupManagerOperationCallable() {
+    return deleteInstanceGroupManagerOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteInstanceGroupManagerHttpRequest, Operation>
       deleteInstanceGroupManagerCallable() {
     return deleteInstanceGroupManagerCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstancesInstanceGroupManagerOperationCallable() {
+    return deleteInstancesInstanceGroupManagerOperationCallable;
   }
 
   @BetaApi
@@ -643,6 +749,12 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
   public UnaryCallable<GetInstanceGroupManagerHttpRequest, InstanceGroupManager>
       getInstanceGroupManagerCallable() {
     return getInstanceGroupManagerCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      insertInstanceGroupManagerOperationCallable() {
+    return insertInstanceGroupManagerOperationCallable;
   }
 
   @BetaApi
@@ -671,10 +783,23 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
     return listManagedInstancesInstanceGroupManagersCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      patchInstanceGroupManagerOperationCallable() {
+    return patchInstanceGroupManagerOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<PatchInstanceGroupManagerHttpRequest, Operation>
       patchInstanceGroupManagerCallable() {
     return patchInstanceGroupManagerCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      recreateInstancesInstanceGroupManagerOperationCallable() {
+    return recreateInstancesInstanceGroupManagerOperationCallable;
   }
 
   @BetaApi
@@ -683,16 +808,36 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
     return recreateInstancesInstanceGroupManagerCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<ResizeInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      resizeInstanceGroupManagerOperationCallable() {
+    return resizeInstanceGroupManagerOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<ResizeInstanceGroupManagerHttpRequest, Operation>
       resizeInstanceGroupManagerCallable() {
     return resizeInstanceGroupManagerCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setInstanceTemplateInstanceGroupManagerOperationCallable() {
+    return setInstanceTemplateInstanceGroupManagerOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<SetInstanceTemplateInstanceGroupManagerHttpRequest, Operation>
       setInstanceTemplateInstanceGroupManagerCallable() {
     return setInstanceTemplateInstanceGroupManagerCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetPoolsInstanceGroupManagerOperationCallable() {
+    return setTargetPoolsInstanceGroupManagerOperationCallable;
   }
 
   @BetaApi

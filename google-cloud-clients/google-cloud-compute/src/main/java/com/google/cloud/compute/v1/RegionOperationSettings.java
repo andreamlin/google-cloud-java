@@ -21,6 +21,7 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
@@ -64,7 +65,8 @@ import javax.annotation.Generated;
 @BetaApi
 public class RegionOperationSettings extends ClientSettings<RegionOperationSettings> {
   /** Returns the object with the settings used for calls to deleteRegionOperation. */
-  public UnaryCallSettings<DeleteRegionOperationHttpRequest, Void> deleteRegionOperationSettings() {
+  public UnaryCallSettings<DeleteRegionOperationHttpRequest, EmptyMessage>
+      deleteRegionOperationSettings() {
     return ((RegionOperationStubSettings) getStubSettings()).deleteRegionOperationSettings();
   }
 
@@ -183,7 +185,7 @@ public class RegionOperationSettings extends ClientSettings<RegionOperationSetti
     }
 
     /** Returns the builder for the settings used for calls to deleteRegionOperation. */
-    public UnaryCallSettings.Builder<DeleteRegionOperationHttpRequest, Void>
+    public UnaryCallSettings.Builder<DeleteRegionOperationHttpRequest, EmptyMessage>
         deleteRegionOperationSettings() {
       return getStubSettingsBuilder().deleteRegionOperationSettings();
     }

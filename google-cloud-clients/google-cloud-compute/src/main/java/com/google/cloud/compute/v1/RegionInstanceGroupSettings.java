@@ -22,10 +22,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -94,6 +96,16 @@ public class RegionInstanceGroupSettings extends ClientSettings<RegionInstanceGr
       setNamedPortsRegionInstanceGroupSettings() {
     return ((RegionInstanceGroupStubSettings) getStubSettings())
         .setNamedPortsRegionInstanceGroupSettings();
+  }
+
+  /** Returns the object with the settings used for calls to setNamedPortsRegionInstanceGroup. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNamedPortsRegionInstanceGroupOperationSettings() {
+    return ((RegionInstanceGroupStubSettings) getStubSettings())
+        .setNamedPortsRegionInstanceGroupOperationSettings();
   }
 
   public static final RegionInstanceGroupSettings create(RegionInstanceGroupStubSettings stub)
@@ -226,6 +238,15 @@ public class RegionInstanceGroupSettings extends ClientSettings<RegionInstanceGr
     public UnaryCallSettings.Builder<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>
         setNamedPortsRegionInstanceGroupSettings() {
       return getStubSettingsBuilder().setNamedPortsRegionInstanceGroupSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to setNamedPortsRegionInstanceGroup. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+        setNamedPortsRegionInstanceGroupOperationSettings() {
+      return getStubSettingsBuilder().setNamedPortsRegionInstanceGroupOperationSettings();
     }
 
     @Override

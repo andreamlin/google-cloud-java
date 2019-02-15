@@ -20,6 +20,8 @@ import static com.google.cloud.compute.v1.VpnTunnelClient.ListVpnTunnelsPagedRes
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AggregatedListVpnTunnelsHttpRequest;
 import com.google.cloud.compute.v1.DeleteVpnTunnelHttpRequest;
@@ -42,6 +44,11 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class VpnTunnelStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
   @BetaApi
   public UnaryCallable<AggregatedListVpnTunnelsHttpRequest, AggregatedListVpnTunnelsPagedResponse>
       aggregatedListVpnTunnelsPagedCallable() {
@@ -55,6 +62,12 @@ public abstract class VpnTunnelStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: aggregatedListVpnTunnelsCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+      deleteVpnTunnelOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deleteVpnTunnelOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteVpnTunnelCallable()");
@@ -63,6 +76,12 @@ public abstract class VpnTunnelStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelCallable() {
     throw new UnsupportedOperationException("Not implemented: getVpnTunnelCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+      insertVpnTunnelOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: insertVpnTunnelOperationCallable()");
   }
 
   @BetaApi

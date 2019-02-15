@@ -25,13 +25,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -86,13 +91,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of addNodesNodeGroup to 30 seconds:
+ * example, to set the total timeout of getNodeGroup to 30 seconds:
  *
  * <pre>
  * <code>
  * NodeGroupStubSettings.Builder nodeGroupSettingsBuilder =
  *     NodeGroupStubSettings.newBuilder();
- * nodeGroupSettingsBuilder.addNodesNodeGroupSettings().getRetrySettings().toBuilder()
+ * nodeGroupSettingsBuilder.getNodeGroupSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * NodeGroupStubSettings nodeGroupSettings = nodeGroupSettingsBuilder.build();
  * </code>
@@ -114,18 +119,26 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
 
   private final UnaryCallSettings<AddNodesNodeGroupHttpRequest, Operation>
       addNodesNodeGroupSettings;
+  private final OperationCallSettings<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      addNodesNodeGroupOperationSettings;
   private final PagedCallSettings<
           AggregatedListNodeGroupsHttpRequest,
           NodeGroupAggregatedList,
           AggregatedListNodeGroupsPagedResponse>
       aggregatedListNodeGroupsSettings;
   private final UnaryCallSettings<DeleteNodeGroupHttpRequest, Operation> deleteNodeGroupSettings;
+  private final OperationCallSettings<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodeGroupOperationSettings;
   private final UnaryCallSettings<DeleteNodesNodeGroupHttpRequest, Operation>
       deleteNodesNodeGroupSettings;
+  private final OperationCallSettings<DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodesNodeGroupOperationSettings;
   private final UnaryCallSettings<GetNodeGroupHttpRequest, NodeGroup> getNodeGroupSettings;
   private final UnaryCallSettings<GetIamPolicyNodeGroupHttpRequest, Policy>
       getIamPolicyNodeGroupSettings;
   private final UnaryCallSettings<InsertNodeGroupHttpRequest, Operation> insertNodeGroupSettings;
+  private final OperationCallSettings<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      insertNodeGroupOperationSettings;
   private final PagedCallSettings<
           ListNodeGroupsHttpRequest, NodeGroupList, ListNodeGroupsPagedResponse>
       listNodeGroupsSettings;
@@ -136,12 +149,22 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
       setIamPolicyNodeGroupSettings;
   private final UnaryCallSettings<SetNodeTemplateNodeGroupHttpRequest, Operation>
       setNodeTemplateNodeGroupSettings;
+  private final OperationCallSettings<
+          SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNodeTemplateNodeGroupOperationSettings;
   private final UnaryCallSettings<TestIamPermissionsNodeGroupHttpRequest, TestPermissionsResponse>
       testIamPermissionsNodeGroupSettings;
 
   /** Returns the object with the settings used for calls to addNodesNodeGroup. */
   public UnaryCallSettings<AddNodesNodeGroupHttpRequest, Operation> addNodesNodeGroupSettings() {
     return addNodesNodeGroupSettings;
+  }
+
+  /** Returns the object with the settings used for calls to addNodesNodeGroup. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      addNodesNodeGroupOperationSettings() {
+    return addNodesNodeGroupOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to aggregatedListNodeGroups. */
@@ -158,10 +181,24 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
     return deleteNodeGroupSettings;
   }
 
+  /** Returns the object with the settings used for calls to deleteNodeGroup. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodeGroupOperationSettings() {
+    return deleteNodeGroupOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to deleteNodesNodeGroup. */
   public UnaryCallSettings<DeleteNodesNodeGroupHttpRequest, Operation>
       deleteNodesNodeGroupSettings() {
     return deleteNodesNodeGroupSettings;
+  }
+
+  /** Returns the object with the settings used for calls to deleteNodesNodeGroup. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNodesNodeGroupOperationSettings() {
+    return deleteNodesNodeGroupOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to getNodeGroup. */
@@ -178,6 +215,13 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
   /** Returns the object with the settings used for calls to insertNodeGroup. */
   public UnaryCallSettings<InsertNodeGroupHttpRequest, Operation> insertNodeGroupSettings() {
     return insertNodeGroupSettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertNodeGroup. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      insertNodeGroupOperationSettings() {
+    return insertNodeGroupOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listNodeGroups. */
@@ -203,6 +247,13 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
   public UnaryCallSettings<SetNodeTemplateNodeGroupHttpRequest, Operation>
       setNodeTemplateNodeGroupSettings() {
     return setNodeTemplateNodeGroupSettings;
+  }
+
+  /** Returns the object with the settings used for calls to setNodeTemplateNodeGroup. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+      setNodeTemplateNodeGroupOperationSettings() {
+    return setNodeTemplateNodeGroupOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to testIamPermissionsNodeGroup. */
@@ -286,16 +337,24 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
     super(settingsBuilder);
 
     addNodesNodeGroupSettings = settingsBuilder.addNodesNodeGroupSettings().build();
+    addNodesNodeGroupOperationSettings =
+        settingsBuilder.addNodesNodeGroupOperationSettings().build();
     aggregatedListNodeGroupsSettings = settingsBuilder.aggregatedListNodeGroupsSettings().build();
     deleteNodeGroupSettings = settingsBuilder.deleteNodeGroupSettings().build();
+    deleteNodeGroupOperationSettings = settingsBuilder.deleteNodeGroupOperationSettings().build();
     deleteNodesNodeGroupSettings = settingsBuilder.deleteNodesNodeGroupSettings().build();
+    deleteNodesNodeGroupOperationSettings =
+        settingsBuilder.deleteNodesNodeGroupOperationSettings().build();
     getNodeGroupSettings = settingsBuilder.getNodeGroupSettings().build();
     getIamPolicyNodeGroupSettings = settingsBuilder.getIamPolicyNodeGroupSettings().build();
     insertNodeGroupSettings = settingsBuilder.insertNodeGroupSettings().build();
+    insertNodeGroupOperationSettings = settingsBuilder.insertNodeGroupOperationSettings().build();
     listNodeGroupsSettings = settingsBuilder.listNodeGroupsSettings().build();
     listNodesNodeGroupsSettings = settingsBuilder.listNodesNodeGroupsSettings().build();
     setIamPolicyNodeGroupSettings = settingsBuilder.setIamPolicyNodeGroupSettings().build();
     setNodeTemplateNodeGroupSettings = settingsBuilder.setNodeTemplateNodeGroupSettings().build();
+    setNodeTemplateNodeGroupOperationSettings =
+        settingsBuilder.setNodeTemplateNodeGroupOperationSettings().build();
     testIamPermissionsNodeGroupSettings =
         settingsBuilder.testIamPermissionsNodeGroupSettings().build();
   }
@@ -498,6 +557,9 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
 
     private final UnaryCallSettings.Builder<AddNodesNodeGroupHttpRequest, Operation>
         addNodesNodeGroupSettings;
+    private final OperationCallSettings.Builder<
+            AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        addNodesNodeGroupOperationSettings;
     private final PagedCallSettings.Builder<
             AggregatedListNodeGroupsHttpRequest,
             NodeGroupAggregatedList,
@@ -505,14 +567,23 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
         aggregatedListNodeGroupsSettings;
     private final UnaryCallSettings.Builder<DeleteNodeGroupHttpRequest, Operation>
         deleteNodeGroupSettings;
+    private final OperationCallSettings.Builder<
+            DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        deleteNodeGroupOperationSettings;
     private final UnaryCallSettings.Builder<DeleteNodesNodeGroupHttpRequest, Operation>
         deleteNodesNodeGroupSettings;
+    private final OperationCallSettings.Builder<
+            DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        deleteNodesNodeGroupOperationSettings;
     private final UnaryCallSettings.Builder<GetNodeGroupHttpRequest, NodeGroup>
         getNodeGroupSettings;
     private final UnaryCallSettings.Builder<GetIamPolicyNodeGroupHttpRequest, Policy>
         getIamPolicyNodeGroupSettings;
     private final UnaryCallSettings.Builder<InsertNodeGroupHttpRequest, Operation>
         insertNodeGroupSettings;
+    private final OperationCallSettings.Builder<
+            InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        insertNodeGroupOperationSettings;
     private final PagedCallSettings.Builder<
             ListNodeGroupsHttpRequest, NodeGroupList, ListNodeGroupsPagedResponse>
         listNodeGroupsSettings;
@@ -523,6 +594,9 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
         setIamPolicyNodeGroupSettings;
     private final UnaryCallSettings.Builder<SetNodeTemplateNodeGroupHttpRequest, Operation>
         setNodeTemplateNodeGroupSettings;
+    private final OperationCallSettings.Builder<
+            SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        setNodeTemplateNodeGroupOperationSettings;
     private final UnaryCallSettings.Builder<
             TestIamPermissionsNodeGroupHttpRequest, TestPermissionsResponse>
         testIamPermissionsNodeGroupSettings;
@@ -570,18 +644,26 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
 
       addNodesNodeGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      addNodesNodeGroupOperationSettings = OperationCallSettings.newBuilder();
+
       aggregatedListNodeGroupsSettings =
           PagedCallSettings.newBuilder(AGGREGATED_LIST_NODE_GROUPS_PAGE_STR_FACT);
 
       deleteNodeGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteNodeGroupOperationSettings = OperationCallSettings.newBuilder();
+
       deleteNodesNodeGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      deleteNodesNodeGroupOperationSettings = OperationCallSettings.newBuilder();
 
       getNodeGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       getIamPolicyNodeGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertNodeGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      insertNodeGroupOperationSettings = OperationCallSettings.newBuilder();
 
       listNodeGroupsSettings = PagedCallSettings.newBuilder(LIST_NODE_GROUPS_PAGE_STR_FACT);
 
@@ -591,6 +673,8 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
       setIamPolicyNodeGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       setNodeTemplateNodeGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      setNodeTemplateNodeGroupOperationSettings = OperationCallSettings.newBuilder();
 
       testIamPermissionsNodeGroupSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
@@ -682,6 +766,112 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
           .testIamPermissionsNodeGroupSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .addNodesNodeGroupOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<AddNodesNodeGroupHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .deleteNodeGroupOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteNodeGroupHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .deleteNodesNodeGroupOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteNodesNodeGroupHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertNodeGroupOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertNodeGroupHttpRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .setNodeTemplateNodeGroupOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<SetNodeTemplateNodeGroupHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -690,16 +880,23 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
       super(settings);
 
       addNodesNodeGroupSettings = settings.addNodesNodeGroupSettings.toBuilder();
+      addNodesNodeGroupOperationSettings = settings.addNodesNodeGroupOperationSettings.toBuilder();
       aggregatedListNodeGroupsSettings = settings.aggregatedListNodeGroupsSettings.toBuilder();
       deleteNodeGroupSettings = settings.deleteNodeGroupSettings.toBuilder();
+      deleteNodeGroupOperationSettings = settings.deleteNodeGroupOperationSettings.toBuilder();
       deleteNodesNodeGroupSettings = settings.deleteNodesNodeGroupSettings.toBuilder();
+      deleteNodesNodeGroupOperationSettings =
+          settings.deleteNodesNodeGroupOperationSettings.toBuilder();
       getNodeGroupSettings = settings.getNodeGroupSettings.toBuilder();
       getIamPolicyNodeGroupSettings = settings.getIamPolicyNodeGroupSettings.toBuilder();
       insertNodeGroupSettings = settings.insertNodeGroupSettings.toBuilder();
+      insertNodeGroupOperationSettings = settings.insertNodeGroupOperationSettings.toBuilder();
       listNodeGroupsSettings = settings.listNodeGroupsSettings.toBuilder();
       listNodesNodeGroupsSettings = settings.listNodesNodeGroupsSettings.toBuilder();
       setIamPolicyNodeGroupSettings = settings.setIamPolicyNodeGroupSettings.toBuilder();
       setNodeTemplateNodeGroupSettings = settings.setNodeTemplateNodeGroupSettings.toBuilder();
+      setNodeTemplateNodeGroupOperationSettings =
+          settings.setNodeTemplateNodeGroupOperationSettings.toBuilder();
       testIamPermissionsNodeGroupSettings =
           settings.testIamPermissionsNodeGroupSettings.toBuilder();
 
@@ -741,6 +938,14 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
       return addNodesNodeGroupSettings;
     }
 
+    /** Returns the builder for the settings used for calls to addNodesNodeGroup. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        addNodesNodeGroupOperationSettings() {
+      return addNodesNodeGroupOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to aggregatedListNodeGroups. */
     public PagedCallSettings.Builder<
             AggregatedListNodeGroupsHttpRequest,
@@ -756,10 +961,27 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
       return deleteNodeGroupSettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteNodeGroup. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        deleteNodeGroupOperationSettings() {
+      return deleteNodeGroupOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to deleteNodesNodeGroup. */
     public UnaryCallSettings.Builder<DeleteNodesNodeGroupHttpRequest, Operation>
         deleteNodesNodeGroupSettings() {
       return deleteNodesNodeGroupSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to deleteNodesNodeGroup. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        deleteNodesNodeGroupOperationSettings() {
+      return deleteNodesNodeGroupOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to getNodeGroup. */
@@ -777,6 +999,14 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
     public UnaryCallSettings.Builder<InsertNodeGroupHttpRequest, Operation>
         insertNodeGroupSettings() {
       return insertNodeGroupSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertNodeGroup. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        insertNodeGroupOperationSettings() {
+      return insertNodeGroupOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listNodeGroups. */
@@ -803,6 +1033,15 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
     public UnaryCallSettings.Builder<SetNodeTemplateNodeGroupHttpRequest, Operation>
         setNodeTemplateNodeGroupSettings() {
       return setNodeTemplateNodeGroupSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to setNodeTemplateNodeGroup. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+        setNodeTemplateNodeGroupOperationSettings() {
+      return setNodeTemplateNodeGroupOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to testIamPermissionsNodeGroup. */

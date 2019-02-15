@@ -20,9 +20,12 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.stub.GlobalForwardingRuleStub;
@@ -43,7 +46,7 @@ import javax.annotation.Generated;
  * <code>
  * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
  *   ProjectGlobalForwardingRuleName forwardingRule = ProjectGlobalForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
- *   Operation response = globalForwardingRuleClient.deleteGlobalForwardingRule(forwardingRule);
+ *   ForwardingRule response = globalForwardingRuleClient.getGlobalForwardingRule(forwardingRule);
  * }
  * </code>
  * </pre>
@@ -104,6 +107,7 @@ import javax.annotation.Generated;
 public class GlobalForwardingRuleClient implements BackgroundResource {
   private final GlobalForwardingRuleSettings settings;
   private final GlobalForwardingRuleStub stub;
+  private final GlobalOperationClient operationsClient;
 
   /** Constructs an instance of GlobalForwardingRuleClient with default settings. */
   public static final GlobalForwardingRuleClient create() throws IOException {
@@ -136,12 +140,14 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
   protected GlobalForwardingRuleClient(GlobalForwardingRuleSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((GlobalForwardingRuleStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected GlobalForwardingRuleClient(GlobalForwardingRuleStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final GlobalForwardingRuleSettings getSettings() {
@@ -153,31 +159,14 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
     return stub;
   }
 
-  // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
-   * Deletes the specified GlobalForwardingRule resource.
-   *
-   * <p>Sample code:
-   *
-   * <pre><code>
-   * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
-   *   ProjectGlobalForwardingRuleName forwardingRule = ProjectGlobalForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
-   *   Operation response = globalForwardingRuleClient.deleteGlobalForwardingRule(forwardingRule);
-   * }
-   * </code></pre>
-   *
-   * @param forwardingRule Name of the ForwardingRule resource to delete.
-   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * operation returned by another API method call.
    */
-  @BetaApi
-  public final Operation deleteGlobalForwardingRule(
-      ProjectGlobalForwardingRuleName forwardingRule) {
-
-    DeleteGlobalForwardingRuleHttpRequest request =
-        DeleteGlobalForwardingRuleHttpRequest.newBuilder()
-            .setForwardingRule(forwardingRule == null ? null : forwardingRule.toString())
-            .build();
-    return deleteGlobalForwardingRule(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final GlobalOperationClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -189,21 +178,51 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * <pre><code>
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
    *   ProjectGlobalForwardingRuleName forwardingRule = ProjectGlobalForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
-   *   Operation response = globalForwardingRuleClient.deleteGlobalForwardingRule(forwardingRule.toString());
+   *   globalForwardingRuleClient.deleteGlobalForwardingRuleAsync(forwardingRule).get();
    * }
    * </code></pre>
    *
    * @param forwardingRule Name of the ForwardingRule resource to delete.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteGlobalForwardingRule(String forwardingRule) {
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteGlobalForwardingRuleAsync(
+      ProjectGlobalForwardingRuleName forwardingRule) {
+
+    DeleteGlobalForwardingRuleHttpRequest request =
+        DeleteGlobalForwardingRuleHttpRequest.newBuilder()
+            .setForwardingRule(forwardingRule == null ? null : forwardingRule.toString())
+            .build();
+    return deleteGlobalForwardingRuleAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified GlobalForwardingRule resource.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
+   *   ProjectGlobalForwardingRuleName forwardingRule = ProjectGlobalForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
+   *   globalForwardingRuleClient.deleteGlobalForwardingRuleAsync(forwardingRule.toString()).get();
+   * }
+   * </code></pre>
+   *
+   * @param forwardingRule Name of the ForwardingRule resource to delete.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteGlobalForwardingRuleAsync(
+      String forwardingRule) {
 
     DeleteGlobalForwardingRuleHttpRequest request =
         DeleteGlobalForwardingRuleHttpRequest.newBuilder()
             .setForwardingRule(forwardingRule)
             .build();
-    return deleteGlobalForwardingRule(request);
+    return deleteGlobalForwardingRuleAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -218,16 +237,42 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    *   DeleteGlobalForwardingRuleHttpRequest request = DeleteGlobalForwardingRuleHttpRequest.newBuilder()
    *     .setForwardingRule(forwardingRule.toString())
    *     .build();
-   *   Operation response = globalForwardingRuleClient.deleteGlobalForwardingRule(request);
+   *   globalForwardingRuleClient.deleteGlobalForwardingRuleAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation deleteGlobalForwardingRule(DeleteGlobalForwardingRuleHttpRequest request) {
-    return deleteGlobalForwardingRuleCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> deleteGlobalForwardingRuleAsync(
+      DeleteGlobalForwardingRuleHttpRequest request) {
+    return deleteGlobalForwardingRuleOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Deletes the specified GlobalForwardingRule resource.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
+   *   ProjectGlobalForwardingRuleName forwardingRule = ProjectGlobalForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
+   *   DeleteGlobalForwardingRuleHttpRequest request = DeleteGlobalForwardingRuleHttpRequest.newBuilder()
+   *     .setForwardingRule(forwardingRule.toString())
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = globalForwardingRuleClient.deleteGlobalForwardingRuleOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      deleteGlobalForwardingRuleOperationCallable() {
+    return stub.deleteGlobalForwardingRuleOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -244,7 +289,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = globalForwardingRuleClient.deleteGlobalForwardingRuleCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -368,7 +413,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ForwardingRule forwardingRuleResource = ForwardingRule.newBuilder().build();
-   *   Operation response = globalForwardingRuleClient.insertGlobalForwardingRule(project, forwardingRuleResource);
+   *   globalForwardingRuleClient.insertGlobalForwardingRuleAsync(project, forwardingRuleResource).get();
    * }
    * </code></pre>
    *
@@ -381,8 +426,9 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    *     (== resource_for v1.regionForwardingRules ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertGlobalForwardingRule(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertGlobalForwardingRuleAsync(
       ProjectName project, ForwardingRule forwardingRuleResource) {
 
     InsertGlobalForwardingRuleHttpRequest request =
@@ -390,7 +436,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
             .setProject(project == null ? null : project.toString())
             .setForwardingRuleResource(forwardingRuleResource)
             .build();
-    return insertGlobalForwardingRule(request);
+    return insertGlobalForwardingRuleAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -404,7 +450,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
    *   ProjectName project = ProjectName.of("[PROJECT]");
    *   ForwardingRule forwardingRuleResource = ForwardingRule.newBuilder().build();
-   *   Operation response = globalForwardingRuleClient.insertGlobalForwardingRule(project.toString(), forwardingRuleResource);
+   *   globalForwardingRuleClient.insertGlobalForwardingRuleAsync(project.toString(), forwardingRuleResource).get();
    * }
    * </code></pre>
    *
@@ -417,8 +463,9 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    *     (== resource_for v1.regionForwardingRules ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertGlobalForwardingRule(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertGlobalForwardingRuleAsync(
       String project, ForwardingRule forwardingRuleResource) {
 
     InsertGlobalForwardingRuleHttpRequest request =
@@ -426,7 +473,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
             .setProject(project)
             .setForwardingRuleResource(forwardingRuleResource)
             .build();
-    return insertGlobalForwardingRule(request);
+    return insertGlobalForwardingRuleAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -444,16 +491,45 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setForwardingRuleResource(forwardingRuleResource)
    *     .build();
-   *   Operation response = globalForwardingRuleClient.insertGlobalForwardingRule(request);
+   *   globalForwardingRuleClient.insertGlobalForwardingRuleAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation insertGlobalForwardingRule(InsertGlobalForwardingRuleHttpRequest request) {
-    return insertGlobalForwardingRuleCallable().call(request);
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> insertGlobalForwardingRuleAsync(
+      InsertGlobalForwardingRuleHttpRequest request) {
+    return insertGlobalForwardingRuleOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Creates a GlobalForwardingRule resource in the specified project using the data included in the
+   * request.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   ForwardingRule forwardingRuleResource = ForwardingRule.newBuilder().build();
+   *   InsertGlobalForwardingRuleHttpRequest request = InsertGlobalForwardingRuleHttpRequest.newBuilder()
+   *     .setProject(project.toString())
+   *     .setForwardingRuleResource(forwardingRuleResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = globalForwardingRuleClient.insertGlobalForwardingRuleOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      insertGlobalForwardingRuleOperationCallable() {
+    return stub.insertGlobalForwardingRuleOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -473,7 +549,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = globalForwardingRuleClient.insertGlobalForwardingRuleCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */
@@ -634,7 +710,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
    *   ProjectGlobalForwardingRuleName forwardingRule = ProjectGlobalForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
    *   TargetReference targetReferenceResource = TargetReference.newBuilder().build();
-   *   Operation response = globalForwardingRuleClient.setTargetGlobalForwardingRule(forwardingRule, targetReferenceResource);
+   *   globalForwardingRuleClient.setTargetGlobalForwardingRuleAsync(forwardingRule, targetReferenceResource).get();
    * }
    * </code></pre>
    *
@@ -642,8 +718,9 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * @param targetReferenceResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setTargetGlobalForwardingRule(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetGlobalForwardingRuleAsync(
       ProjectGlobalForwardingRuleName forwardingRule, TargetReference targetReferenceResource) {
 
     SetTargetGlobalForwardingRuleHttpRequest request =
@@ -651,7 +728,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
             .setForwardingRule(forwardingRule == null ? null : forwardingRule.toString())
             .setTargetReferenceResource(targetReferenceResource)
             .build();
-    return setTargetGlobalForwardingRule(request);
+    return setTargetGlobalForwardingRuleAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -665,7 +742,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
    *   ProjectGlobalForwardingRuleName forwardingRule = ProjectGlobalForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
    *   TargetReference targetReferenceResource = TargetReference.newBuilder().build();
-   *   Operation response = globalForwardingRuleClient.setTargetGlobalForwardingRule(forwardingRule.toString(), targetReferenceResource);
+   *   globalForwardingRuleClient.setTargetGlobalForwardingRuleAsync(forwardingRule.toString(), targetReferenceResource).get();
    * }
    * </code></pre>
    *
@@ -673,8 +750,9 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    * @param targetReferenceResource
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setTargetGlobalForwardingRule(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetGlobalForwardingRuleAsync(
       String forwardingRule, TargetReference targetReferenceResource) {
 
     SetTargetGlobalForwardingRuleHttpRequest request =
@@ -682,7 +760,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
             .setForwardingRule(forwardingRule)
             .setTargetReferenceResource(targetReferenceResource)
             .build();
-    return setTargetGlobalForwardingRule(request);
+    return setTargetGlobalForwardingRuleAsync(request);
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -700,17 +778,46 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    *     .setForwardingRule(forwardingRule.toString())
    *     .setTargetReferenceResource(targetReferenceResource)
    *     .build();
-   *   Operation response = globalForwardingRuleClient.setTargetGlobalForwardingRule(request);
+   *   globalForwardingRuleClient.setTargetGlobalForwardingRuleAsync(request).get();
    * }
    * </code></pre>
    *
    * @param request The request object containing all of the parameters for the API call.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
-  @BetaApi
-  public final Operation setTargetGlobalForwardingRule(
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetGlobalForwardingRuleAsync(
       SetTargetGlobalForwardingRuleHttpRequest request) {
-    return setTargetGlobalForwardingRuleCallable().call(request);
+    return setTargetGlobalForwardingRuleOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Changes target URL for the GlobalForwardingRule resource. The new target should be of the same
+   * type as the old target.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (GlobalForwardingRuleClient globalForwardingRuleClient = GlobalForwardingRuleClient.create()) {
+   *   ProjectGlobalForwardingRuleName forwardingRule = ProjectGlobalForwardingRuleName.of("[PROJECT]", "[FORWARDING_RULE]");
+   *   TargetReference targetReferenceResource = TargetReference.newBuilder().build();
+   *   SetTargetGlobalForwardingRuleHttpRequest request = SetTargetGlobalForwardingRuleHttpRequest.newBuilder()
+   *     .setForwardingRule(forwardingRule.toString())
+   *     .setTargetReferenceResource(targetReferenceResource)
+   *     .build();
+   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = globalForwardingRuleClient.setTargetGlobalForwardingRuleOperationCallable().futureCall(request);
+   *   // Do something
+   *   future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<
+          SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetGlobalForwardingRuleOperationCallable() {
+    return stub.setTargetGlobalForwardingRuleOperationCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -730,7 +837,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;Operation&gt; future = globalForwardingRuleClient.setTargetGlobalForwardingRuleCallable().futureCall(request);
    *   // Do something
-   *   Operation response = future.get();
+   *   future.get();
    * }
    * </code></pre>
    */

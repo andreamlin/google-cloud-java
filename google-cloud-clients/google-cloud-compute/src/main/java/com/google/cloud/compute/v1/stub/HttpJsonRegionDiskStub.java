@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.CreateSnapshotRegionDiskHttpRequest;
@@ -225,18 +227,29 @@ public class HttpJsonRegionDiskStub extends RegionDiskStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<CreateSnapshotRegionDiskHttpRequest, Operation>
       createSnapshotRegionDiskCallable;
+  private final OperationCallable<CreateSnapshotRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      createSnapshotRegionDiskOperationCallable;
   private final UnaryCallable<DeleteRegionDiskHttpRequest, Operation> deleteRegionDiskCallable;
+  private final OperationCallable<DeleteRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionDiskOperationCallable;
   private final UnaryCallable<GetRegionDiskHttpRequest, Disk> getRegionDiskCallable;
   private final UnaryCallable<InsertRegionDiskHttpRequest, Operation> insertRegionDiskCallable;
+  private final OperationCallable<InsertRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionDiskOperationCallable;
   private final UnaryCallable<ListRegionDisksHttpRequest, DiskList> listRegionDisksCallable;
   private final UnaryCallable<ListRegionDisksHttpRequest, ListRegionDisksPagedResponse>
       listRegionDisksPagedCallable;
   private final UnaryCallable<ResizeRegionDiskHttpRequest, Operation> resizeRegionDiskCallable;
+  private final OperationCallable<ResizeRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      resizeRegionDiskOperationCallable;
   private final UnaryCallable<SetLabelsRegionDiskHttpRequest, Operation>
       setLabelsRegionDiskCallable;
+  private final OperationCallable<SetLabelsRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsRegionDiskOperationCallable;
   private final UnaryCallable<TestIamPermissionsRegionDiskHttpRequest, TestPermissionsResponse>
       testIamPermissionsRegionDiskCallable;
 
@@ -279,6 +292,7 @@ public class HttpJsonRegionDiskStub extends RegionDiskStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<CreateSnapshotRegionDiskHttpRequest, Operation>
         createSnapshotRegionDiskTransportSettings =
@@ -322,15 +336,33 @@ public class HttpJsonRegionDiskStub extends RegionDiskStub {
             createSnapshotRegionDiskTransportSettings,
             settings.createSnapshotRegionDiskSettings(),
             clientContext);
+    this.createSnapshotRegionDiskOperationCallable =
+        callableFactory.createOperationCallable(
+            createSnapshotRegionDiskTransportSettings,
+            settings.createSnapshotRegionDiskOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.deleteRegionDiskCallable =
         callableFactory.createUnaryCallable(
             deleteRegionDiskTransportSettings, settings.deleteRegionDiskSettings(), clientContext);
+    this.deleteRegionDiskOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteRegionDiskTransportSettings,
+            settings.deleteRegionDiskOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getRegionDiskCallable =
         callableFactory.createUnaryCallable(
             getRegionDiskTransportSettings, settings.getRegionDiskSettings(), clientContext);
     this.insertRegionDiskCallable =
         callableFactory.createUnaryCallable(
             insertRegionDiskTransportSettings, settings.insertRegionDiskSettings(), clientContext);
+    this.insertRegionDiskOperationCallable =
+        callableFactory.createOperationCallable(
+            insertRegionDiskTransportSettings,
+            settings.insertRegionDiskOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listRegionDisksCallable =
         callableFactory.createUnaryCallable(
             listRegionDisksTransportSettings, settings.listRegionDisksSettings(), clientContext);
@@ -340,11 +372,23 @@ public class HttpJsonRegionDiskStub extends RegionDiskStub {
     this.resizeRegionDiskCallable =
         callableFactory.createUnaryCallable(
             resizeRegionDiskTransportSettings, settings.resizeRegionDiskSettings(), clientContext);
+    this.resizeRegionDiskOperationCallable =
+        callableFactory.createOperationCallable(
+            resizeRegionDiskTransportSettings,
+            settings.resizeRegionDiskOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setLabelsRegionDiskCallable =
         callableFactory.createUnaryCallable(
             setLabelsRegionDiskTransportSettings,
             settings.setLabelsRegionDiskSettings(),
             clientContext);
+    this.setLabelsRegionDiskOperationCallable =
+        callableFactory.createOperationCallable(
+            setLabelsRegionDiskTransportSettings,
+            settings.setLabelsRegionDiskOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.testIamPermissionsRegionDiskCallable =
         callableFactory.createUnaryCallable(
             testIamPermissionsRegionDiskTransportSettings,
@@ -354,10 +398,27 @@ public class HttpJsonRegionDiskStub extends RegionDiskStub {
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<CreateSnapshotRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      createSnapshotRegionDiskOperationCallable() {
+    return createSnapshotRegionDiskOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<CreateSnapshotRegionDiskHttpRequest, Operation>
       createSnapshotRegionDiskCallable() {
     return createSnapshotRegionDiskCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionDiskOperationCallable() {
+    return deleteRegionDiskOperationCallable;
   }
 
   @BetaApi
@@ -368,6 +429,12 @@ public class HttpJsonRegionDiskStub extends RegionDiskStub {
   @BetaApi
   public UnaryCallable<GetRegionDiskHttpRequest, Disk> getRegionDiskCallable() {
     return getRegionDiskCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionDiskOperationCallable() {
+    return insertRegionDiskOperationCallable;
   }
 
   @BetaApi
@@ -386,9 +453,21 @@ public class HttpJsonRegionDiskStub extends RegionDiskStub {
     return listRegionDisksCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<ResizeRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      resizeRegionDiskOperationCallable() {
+    return resizeRegionDiskOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<ResizeRegionDiskHttpRequest, Operation> resizeRegionDiskCallable() {
     return resizeRegionDiskCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetLabelsRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+      setLabelsRegionDiskOperationCallable() {
+    return setLabelsRegionDiskOperationCallable;
   }
 
   @BetaApi

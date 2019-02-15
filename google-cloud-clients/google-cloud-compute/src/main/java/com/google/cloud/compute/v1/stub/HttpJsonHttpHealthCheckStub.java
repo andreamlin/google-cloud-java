@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DeleteHttpHealthCheckHttpRequest;
@@ -179,21 +181,30 @@ public class HttpJsonHttpHealthCheckStub extends HttpHealthCheckStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteHttpHealthCheckHttpRequest, Operation>
       deleteHttpHealthCheckCallable;
+  private final OperationCallable<DeleteHttpHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      deleteHttpHealthCheckOperationCallable;
   private final UnaryCallable<GetHttpHealthCheckHttpRequest, HttpHealthCheck2>
       getHttpHealthCheckCallable;
   private final UnaryCallable<InsertHttpHealthCheckHttpRequest, Operation>
       insertHttpHealthCheckCallable;
+  private final OperationCallable<InsertHttpHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      insertHttpHealthCheckOperationCallable;
   private final UnaryCallable<ListHttpHealthChecksHttpRequest, HttpHealthCheckList>
       listHttpHealthChecksCallable;
   private final UnaryCallable<ListHttpHealthChecksHttpRequest, ListHttpHealthChecksPagedResponse>
       listHttpHealthChecksPagedCallable;
   private final UnaryCallable<PatchHttpHealthCheckHttpRequest, Operation>
       patchHttpHealthCheckCallable;
+  private final OperationCallable<PatchHttpHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      patchHttpHealthCheckOperationCallable;
   private final UnaryCallable<UpdateHttpHealthCheckHttpRequest, Operation>
       updateHttpHealthCheckCallable;
+  private final OperationCallable<UpdateHttpHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      updateHttpHealthCheckOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -235,6 +246,7 @@ public class HttpJsonHttpHealthCheckStub extends HttpHealthCheckStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteHttpHealthCheckHttpRequest, Operation>
         deleteHttpHealthCheckTransportSettings =
@@ -272,6 +284,12 @@ public class HttpJsonHttpHealthCheckStub extends HttpHealthCheckStub {
             deleteHttpHealthCheckTransportSettings,
             settings.deleteHttpHealthCheckSettings(),
             clientContext);
+    this.deleteHttpHealthCheckOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteHttpHealthCheckTransportSettings,
+            settings.deleteHttpHealthCheckOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getHttpHealthCheckCallable =
         callableFactory.createUnaryCallable(
             getHttpHealthCheckTransportSettings,
@@ -282,6 +300,12 @@ public class HttpJsonHttpHealthCheckStub extends HttpHealthCheckStub {
             insertHttpHealthCheckTransportSettings,
             settings.insertHttpHealthCheckSettings(),
             clientContext);
+    this.insertHttpHealthCheckOperationCallable =
+        callableFactory.createOperationCallable(
+            insertHttpHealthCheckTransportSettings,
+            settings.insertHttpHealthCheckOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listHttpHealthChecksCallable =
         callableFactory.createUnaryCallable(
             listHttpHealthChecksTransportSettings,
@@ -297,13 +321,36 @@ public class HttpJsonHttpHealthCheckStub extends HttpHealthCheckStub {
             patchHttpHealthCheckTransportSettings,
             settings.patchHttpHealthCheckSettings(),
             clientContext);
+    this.patchHttpHealthCheckOperationCallable =
+        callableFactory.createOperationCallable(
+            patchHttpHealthCheckTransportSettings,
+            settings.patchHttpHealthCheckOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.updateHttpHealthCheckCallable =
         callableFactory.createUnaryCallable(
             updateHttpHealthCheckTransportSettings,
             settings.updateHttpHealthCheckSettings(),
             clientContext);
+    this.updateHttpHealthCheckOperationCallable =
+        callableFactory.createOperationCallable(
+            updateHttpHealthCheckTransportSettings,
+            settings.updateHttpHealthCheckOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteHttpHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      deleteHttpHealthCheckOperationCallable() {
+    return deleteHttpHealthCheckOperationCallable;
   }
 
   @BetaApi
@@ -316,6 +363,12 @@ public class HttpJsonHttpHealthCheckStub extends HttpHealthCheckStub {
   public UnaryCallable<GetHttpHealthCheckHttpRequest, HttpHealthCheck2>
       getHttpHealthCheckCallable() {
     return getHttpHealthCheckCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertHttpHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      insertHttpHealthCheckOperationCallable() {
+    return insertHttpHealthCheckOperationCallable;
   }
 
   @BetaApi
@@ -336,9 +389,21 @@ public class HttpJsonHttpHealthCheckStub extends HttpHealthCheckStub {
     return listHttpHealthChecksCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchHttpHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      patchHttpHealthCheckOperationCallable() {
+    return patchHttpHealthCheckOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<PatchHttpHealthCheckHttpRequest, Operation> patchHttpHealthCheckCallable() {
     return patchHttpHealthCheckCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateHttpHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+      updateHttpHealthCheckOperationCallable() {
+    return updateHttpHealthCheckOperationCallable;
   }
 
   @BetaApi

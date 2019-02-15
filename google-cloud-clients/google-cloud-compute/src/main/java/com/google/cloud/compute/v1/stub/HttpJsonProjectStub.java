@@ -26,9 +26,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.DisableXpnHostProjectHttpRequest;
@@ -318,15 +320,24 @@ public class HttpJsonProjectStub extends ProjectStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DisableXpnHostProjectHttpRequest, Operation>
       disableXpnHostProjectCallable;
+  private final OperationCallable<DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+      disableXpnHostProjectOperationCallable;
   private final UnaryCallable<DisableXpnResourceProjectHttpRequest, Operation>
       disableXpnResourceProjectCallable;
+  private final OperationCallable<DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      disableXpnResourceProjectOperationCallable;
   private final UnaryCallable<EnableXpnHostProjectHttpRequest, Operation>
       enableXpnHostProjectCallable;
+  private final OperationCallable<EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+      enableXpnHostProjectOperationCallable;
   private final UnaryCallable<EnableXpnResourceProjectHttpRequest, Operation>
       enableXpnResourceProjectCallable;
+  private final OperationCallable<EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      enableXpnResourceProjectOperationCallable;
   private final UnaryCallable<GetProjectHttpRequest, Project> getProjectCallable;
   private final UnaryCallable<GetXpnHostProjectHttpRequest, Project> getXpnHostProjectCallable;
   private final UnaryCallable<GetXpnResourcesProjectsHttpRequest, ProjectsGetXpnResources>
@@ -339,14 +350,27 @@ public class HttpJsonProjectStub extends ProjectStub {
   private final UnaryCallable<ListXpnHostsProjectsHttpRequest, ListXpnHostsProjectsPagedResponse>
       listXpnHostsProjectsPagedCallable;
   private final UnaryCallable<MoveDiskProjectHttpRequest, Operation> moveDiskProjectCallable;
+  private final OperationCallable<MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+      moveDiskProjectOperationCallable;
   private final UnaryCallable<MoveInstanceProjectHttpRequest, Operation>
       moveInstanceProjectCallable;
+  private final OperationCallable<MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      moveInstanceProjectOperationCallable;
   private final UnaryCallable<SetCommonInstanceMetadataProjectHttpRequest, Operation>
       setCommonInstanceMetadataProjectCallable;
+  private final OperationCallable<
+          SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setCommonInstanceMetadataProjectOperationCallable;
   private final UnaryCallable<SetDefaultNetworkTierProjectHttpRequest, Operation>
       setDefaultNetworkTierProjectCallable;
+  private final OperationCallable<
+          SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setDefaultNetworkTierProjectOperationCallable;
   private final UnaryCallable<SetUsageExportBucketProjectHttpRequest, Operation>
       setUsageExportBucketProjectCallable;
+  private final OperationCallable<
+          SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setUsageExportBucketProjectOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -385,6 +409,7 @@ public class HttpJsonProjectStub extends ProjectStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DisableXpnHostProjectHttpRequest, Operation>
         disableXpnHostProjectTransportSettings =
@@ -456,21 +481,45 @@ public class HttpJsonProjectStub extends ProjectStub {
             disableXpnHostProjectTransportSettings,
             settings.disableXpnHostProjectSettings(),
             clientContext);
+    this.disableXpnHostProjectOperationCallable =
+        callableFactory.createOperationCallable(
+            disableXpnHostProjectTransportSettings,
+            settings.disableXpnHostProjectOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.disableXpnResourceProjectCallable =
         callableFactory.createUnaryCallable(
             disableXpnResourceProjectTransportSettings,
             settings.disableXpnResourceProjectSettings(),
             clientContext);
+    this.disableXpnResourceProjectOperationCallable =
+        callableFactory.createOperationCallable(
+            disableXpnResourceProjectTransportSettings,
+            settings.disableXpnResourceProjectOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.enableXpnHostProjectCallable =
         callableFactory.createUnaryCallable(
             enableXpnHostProjectTransportSettings,
             settings.enableXpnHostProjectSettings(),
             clientContext);
+    this.enableXpnHostProjectOperationCallable =
+        callableFactory.createOperationCallable(
+            enableXpnHostProjectTransportSettings,
+            settings.enableXpnHostProjectOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.enableXpnResourceProjectCallable =
         callableFactory.createUnaryCallable(
             enableXpnResourceProjectTransportSettings,
             settings.enableXpnResourceProjectSettings(),
             clientContext);
+    this.enableXpnResourceProjectOperationCallable =
+        callableFactory.createOperationCallable(
+            enableXpnResourceProjectTransportSettings,
+            settings.enableXpnResourceProjectOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getProjectCallable =
         callableFactory.createUnaryCallable(
             getProjectTransportSettings, settings.getProjectSettings(), clientContext);
@@ -502,28 +551,69 @@ public class HttpJsonProjectStub extends ProjectStub {
     this.moveDiskProjectCallable =
         callableFactory.createUnaryCallable(
             moveDiskProjectTransportSettings, settings.moveDiskProjectSettings(), clientContext);
+    this.moveDiskProjectOperationCallable =
+        callableFactory.createOperationCallable(
+            moveDiskProjectTransportSettings,
+            settings.moveDiskProjectOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.moveInstanceProjectCallable =
         callableFactory.createUnaryCallable(
             moveInstanceProjectTransportSettings,
             settings.moveInstanceProjectSettings(),
             clientContext);
+    this.moveInstanceProjectOperationCallable =
+        callableFactory.createOperationCallable(
+            moveInstanceProjectTransportSettings,
+            settings.moveInstanceProjectOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setCommonInstanceMetadataProjectCallable =
         callableFactory.createUnaryCallable(
             setCommonInstanceMetadataProjectTransportSettings,
             settings.setCommonInstanceMetadataProjectSettings(),
             clientContext);
+    this.setCommonInstanceMetadataProjectOperationCallable =
+        callableFactory.createOperationCallable(
+            setCommonInstanceMetadataProjectTransportSettings,
+            settings.setCommonInstanceMetadataProjectOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setDefaultNetworkTierProjectCallable =
         callableFactory.createUnaryCallable(
             setDefaultNetworkTierProjectTransportSettings,
             settings.setDefaultNetworkTierProjectSettings(),
             clientContext);
+    this.setDefaultNetworkTierProjectOperationCallable =
+        callableFactory.createOperationCallable(
+            setDefaultNetworkTierProjectTransportSettings,
+            settings.setDefaultNetworkTierProjectOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setUsageExportBucketProjectCallable =
         callableFactory.createUnaryCallable(
             setUsageExportBucketProjectTransportSettings,
             settings.setUsageExportBucketProjectSettings(),
             clientContext);
+    this.setUsageExportBucketProjectOperationCallable =
+        callableFactory.createOperationCallable(
+            setUsageExportBucketProjectTransportSettings,
+            settings.setUsageExportBucketProjectOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+      disableXpnHostProjectOperationCallable() {
+    return disableXpnHostProjectOperationCallable;
   }
 
   @BetaApi
@@ -532,15 +622,33 @@ public class HttpJsonProjectStub extends ProjectStub {
     return disableXpnHostProjectCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      disableXpnResourceProjectOperationCallable() {
+    return disableXpnResourceProjectOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DisableXpnResourceProjectHttpRequest, Operation>
       disableXpnResourceProjectCallable() {
     return disableXpnResourceProjectCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+      enableXpnHostProjectOperationCallable() {
+    return enableXpnHostProjectOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<EnableXpnHostProjectHttpRequest, Operation> enableXpnHostProjectCallable() {
     return enableXpnHostProjectCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      enableXpnResourceProjectOperationCallable() {
+    return enableXpnResourceProjectOperationCallable;
   }
 
   @BetaApi
@@ -583,14 +691,32 @@ public class HttpJsonProjectStub extends ProjectStub {
     return listXpnHostsProjectsCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+      moveDiskProjectOperationCallable() {
+    return moveDiskProjectOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<MoveDiskProjectHttpRequest, Operation> moveDiskProjectCallable() {
     return moveDiskProjectCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      moveInstanceProjectOperationCallable() {
+    return moveInstanceProjectOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<MoveInstanceProjectHttpRequest, Operation> moveInstanceProjectCallable() {
     return moveInstanceProjectCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setCommonInstanceMetadataProjectOperationCallable() {
+    return setCommonInstanceMetadataProjectOperationCallable;
   }
 
   @BetaApi
@@ -599,10 +725,22 @@ public class HttpJsonProjectStub extends ProjectStub {
     return setCommonInstanceMetadataProjectCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setDefaultNetworkTierProjectOperationCallable() {
+    return setDefaultNetworkTierProjectOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<SetDefaultNetworkTierProjectHttpRequest, Operation>
       setDefaultNetworkTierProjectCallable() {
     return setDefaultNetworkTierProjectCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setUsageExportBucketProjectOperationCallable() {
+    return setUsageExportBucketProjectOperationCallable;
   }
 
   @BetaApi

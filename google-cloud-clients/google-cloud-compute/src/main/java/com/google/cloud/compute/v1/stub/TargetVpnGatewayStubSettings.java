@@ -24,13 +24,18 @@ import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GaxProperties;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.ApiMessageOperationTransformers;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.GaxHttpJsonProperties;
 import com.google.api.gax.httpjson.HttpJsonTransportChannel;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
+import com.google.api.gax.longrunning.OperationSnapshot;
+import com.google.api.gax.longrunning.OperationTimedPollAlgorithm;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.PagedListDescriptor;
@@ -74,13 +79,13 @@ import org.threeten.bp.Duration;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of deleteTargetVpnGateway to 30 seconds:
+ * example, to set the total timeout of getTargetVpnGateway to 30 seconds:
  *
  * <pre>
  * <code>
  * TargetVpnGatewayStubSettings.Builder targetVpnGatewaySettingsBuilder =
  *     TargetVpnGatewayStubSettings.newBuilder();
- * targetVpnGatewaySettingsBuilder.deleteTargetVpnGatewaySettings().getRetrySettings().toBuilder()
+ * targetVpnGatewaySettingsBuilder.getTargetVpnGatewaySettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * TargetVpnGatewayStubSettings targetVpnGatewaySettings = targetVpnGatewaySettingsBuilder.build();
  * </code>
@@ -107,10 +112,14 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
       aggregatedListTargetVpnGatewaysSettings;
   private final UnaryCallSettings<DeleteTargetVpnGatewayHttpRequest, Operation>
       deleteTargetVpnGatewaySettings;
+  private final OperationCallSettings<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetVpnGatewayOperationSettings;
   private final UnaryCallSettings<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>
       getTargetVpnGatewaySettings;
   private final UnaryCallSettings<InsertTargetVpnGatewayHttpRequest, Operation>
       insertTargetVpnGatewaySettings;
+  private final OperationCallSettings<InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetVpnGatewayOperationSettings;
   private final PagedCallSettings<
           ListTargetVpnGatewaysHttpRequest,
           TargetVpnGatewayList,
@@ -132,6 +141,13 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
     return deleteTargetVpnGatewaySettings;
   }
 
+  /** Returns the object with the settings used for calls to deleteTargetVpnGateway. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+      deleteTargetVpnGatewayOperationSettings() {
+    return deleteTargetVpnGatewayOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to getTargetVpnGateway. */
   public UnaryCallSettings<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>
       getTargetVpnGatewaySettings() {
@@ -142,6 +158,13 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
   public UnaryCallSettings<InsertTargetVpnGatewayHttpRequest, Operation>
       insertTargetVpnGatewaySettings() {
     return insertTargetVpnGatewaySettings;
+  }
+
+  /** Returns the object with the settings used for calls to insertTargetVpnGateway. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+      insertTargetVpnGatewayOperationSettings() {
+    return insertTargetVpnGatewayOperationSettings;
   }
 
   /** Returns the object with the settings used for calls to listTargetVpnGateways. */
@@ -231,8 +254,12 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
     aggregatedListTargetVpnGatewaysSettings =
         settingsBuilder.aggregatedListTargetVpnGatewaysSettings().build();
     deleteTargetVpnGatewaySettings = settingsBuilder.deleteTargetVpnGatewaySettings().build();
+    deleteTargetVpnGatewayOperationSettings =
+        settingsBuilder.deleteTargetVpnGatewayOperationSettings().build();
     getTargetVpnGatewaySettings = settingsBuilder.getTargetVpnGatewaySettings().build();
     insertTargetVpnGatewaySettings = settingsBuilder.insertTargetVpnGatewaySettings().build();
+    insertTargetVpnGatewayOperationSettings =
+        settingsBuilder.insertTargetVpnGatewayOperationSettings().build();
     listTargetVpnGatewaysSettings = settingsBuilder.listTargetVpnGatewaysSettings().build();
   }
 
@@ -395,10 +422,16 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
         aggregatedListTargetVpnGatewaysSettings;
     private final UnaryCallSettings.Builder<DeleteTargetVpnGatewayHttpRequest, Operation>
         deleteTargetVpnGatewaySettings;
+    private final OperationCallSettings.Builder<
+            DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+        deleteTargetVpnGatewayOperationSettings;
     private final UnaryCallSettings.Builder<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>
         getTargetVpnGatewaySettings;
     private final UnaryCallSettings.Builder<InsertTargetVpnGatewayHttpRequest, Operation>
         insertTargetVpnGatewaySettings;
+    private final OperationCallSettings.Builder<
+            InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+        insertTargetVpnGatewayOperationSettings;
     private final PagedCallSettings.Builder<
             ListTargetVpnGatewaysHttpRequest,
             TargetVpnGatewayList,
@@ -451,9 +484,13 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
 
       deleteTargetVpnGatewaySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      deleteTargetVpnGatewayOperationSettings = OperationCallSettings.newBuilder();
+
       getTargetVpnGatewaySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       insertTargetVpnGatewaySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      insertTargetVpnGatewayOperationSettings = OperationCallSettings.newBuilder();
 
       listTargetVpnGatewaysSettings =
           PagedCallSettings.newBuilder(LIST_TARGET_VPN_GATEWAYS_PAGE_STR_FACT);
@@ -504,6 +541,50 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
           .listTargetVpnGatewaysSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+      builder
+          .deleteTargetVpnGatewayOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<DeleteTargetVpnGatewayHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
+      builder
+          .insertTargetVpnGatewayOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<InsertTargetVpnGatewayHttpRequest, OperationSnapshot>
+                      newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -514,8 +595,12 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
       aggregatedListTargetVpnGatewaysSettings =
           settings.aggregatedListTargetVpnGatewaysSettings.toBuilder();
       deleteTargetVpnGatewaySettings = settings.deleteTargetVpnGatewaySettings.toBuilder();
+      deleteTargetVpnGatewayOperationSettings =
+          settings.deleteTargetVpnGatewayOperationSettings.toBuilder();
       getTargetVpnGatewaySettings = settings.getTargetVpnGatewaySettings.toBuilder();
       insertTargetVpnGatewaySettings = settings.insertTargetVpnGatewaySettings.toBuilder();
+      insertTargetVpnGatewayOperationSettings =
+          settings.insertTargetVpnGatewayOperationSettings.toBuilder();
       listTargetVpnGatewaysSettings = settings.listTargetVpnGatewaysSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
@@ -558,6 +643,15 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
       return deleteTargetVpnGatewaySettings;
     }
 
+    /** Returns the builder for the settings used for calls to deleteTargetVpnGateway. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+        deleteTargetVpnGatewayOperationSettings() {
+      return deleteTargetVpnGatewayOperationSettings;
+    }
+
     /** Returns the builder for the settings used for calls to getTargetVpnGateway. */
     public UnaryCallSettings.Builder<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>
         getTargetVpnGatewaySettings() {
@@ -568,6 +662,15 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
     public UnaryCallSettings.Builder<InsertTargetVpnGatewayHttpRequest, Operation>
         insertTargetVpnGatewaySettings() {
       return insertTargetVpnGatewaySettings;
+    }
+
+    /** Returns the builder for the settings used for calls to insertTargetVpnGateway. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+        insertTargetVpnGatewayOperationSettings() {
+      return insertTargetVpnGatewayOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to listTargetVpnGateways. */

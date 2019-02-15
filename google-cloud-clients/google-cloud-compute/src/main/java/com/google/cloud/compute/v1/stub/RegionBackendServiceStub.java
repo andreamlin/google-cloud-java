@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.RegionBackendServiceClient.ListRegionB
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.BackendService;
 import com.google.cloud.compute.v1.BackendServiceGroupHealth;
@@ -43,6 +45,18 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class RegionBackendServiceStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionBackendServiceOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteRegionBackendServiceOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteRegionBackendServiceHttpRequest, Operation>
       deleteRegionBackendServiceCallable() {
@@ -61,6 +75,13 @@ public abstract class RegionBackendServiceStub implements BackgroundResource {
       getHealthRegionBackendServiceCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: getHealthRegionBackendServiceCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionBackendServiceOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertRegionBackendServiceOperationCallable()");
   }
 
   @BetaApi
@@ -83,10 +104,24 @@ public abstract class RegionBackendServiceStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: listRegionBackendServicesCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionBackendServiceOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: patchRegionBackendServiceOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<PatchRegionBackendServiceHttpRequest, Operation>
       patchRegionBackendServiceCallable() {
     throw new UnsupportedOperationException("Not implemented: patchRegionBackendServiceCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+      updateRegionBackendServiceOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: updateRegionBackendServiceOperationCallable()");
   }
 
   @BetaApi

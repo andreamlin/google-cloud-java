@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.AbandonInstancesRegionInstanceGroupManagerHttpRequest;
@@ -349,17 +351,30 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation>
       abandonInstancesRegionInstanceGroupManagerCallable;
+  private final OperationCallable<
+          AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      abandonInstancesRegionInstanceGroupManagerOperationCallable;
   private final UnaryCallable<DeleteRegionInstanceGroupManagerHttpRequest, Operation>
       deleteRegionInstanceGroupManagerCallable;
+  private final OperationCallable<
+          DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionInstanceGroupManagerOperationCallable;
   private final UnaryCallable<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation>
       deleteInstancesRegionInstanceGroupManagerCallable;
+  private final OperationCallable<
+          DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstancesRegionInstanceGroupManagerOperationCallable;
   private final UnaryCallable<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager>
       getRegionInstanceGroupManagerCallable;
   private final UnaryCallable<InsertRegionInstanceGroupManagerHttpRequest, Operation>
       insertRegionInstanceGroupManagerCallable;
+  private final OperationCallable<
+          InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionInstanceGroupManagerOperationCallable;
   private final UnaryCallable<
           ListRegionInstanceGroupManagersHttpRequest, RegionInstanceGroupManagerList>
       listRegionInstanceGroupManagersCallable;
@@ -372,14 +387,29 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
       listManagedInstancesRegionInstanceGroupManagersCallable;
   private final UnaryCallable<PatchRegionInstanceGroupManagerHttpRequest, Operation>
       patchRegionInstanceGroupManagerCallable;
+  private final OperationCallable<
+          PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionInstanceGroupManagerOperationCallable;
   private final UnaryCallable<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation>
       recreateInstancesRegionInstanceGroupManagerCallable;
+  private final OperationCallable<
+          RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      recreateInstancesRegionInstanceGroupManagerOperationCallable;
   private final UnaryCallable<ResizeRegionInstanceGroupManagerHttpRequest, Operation>
       resizeRegionInstanceGroupManagerCallable;
+  private final OperationCallable<
+          ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      resizeRegionInstanceGroupManagerOperationCallable;
   private final UnaryCallable<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation>
       setInstanceTemplateRegionInstanceGroupManagerCallable;
+  private final OperationCallable<
+          SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setInstanceTemplateRegionInstanceGroupManagerOperationCallable;
   private final UnaryCallable<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation>
       setTargetPoolsRegionInstanceGroupManagerCallable;
+  private final OperationCallable<
+          SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetPoolsRegionInstanceGroupManagerOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
 
@@ -424,6 +454,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation>
         abandonInstancesRegionInstanceGroupManagerTransportSettings =
@@ -508,16 +539,34 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
             abandonInstancesRegionInstanceGroupManagerTransportSettings,
             settings.abandonInstancesRegionInstanceGroupManagerSettings(),
             clientContext);
+    this.abandonInstancesRegionInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            abandonInstancesRegionInstanceGroupManagerTransportSettings,
+            settings.abandonInstancesRegionInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.deleteRegionInstanceGroupManagerCallable =
         callableFactory.createUnaryCallable(
             deleteRegionInstanceGroupManagerTransportSettings,
             settings.deleteRegionInstanceGroupManagerSettings(),
             clientContext);
+    this.deleteRegionInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteRegionInstanceGroupManagerTransportSettings,
+            settings.deleteRegionInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.deleteInstancesRegionInstanceGroupManagerCallable =
         callableFactory.createUnaryCallable(
             deleteInstancesRegionInstanceGroupManagerTransportSettings,
             settings.deleteInstancesRegionInstanceGroupManagerSettings(),
             clientContext);
+    this.deleteInstancesRegionInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteInstancesRegionInstanceGroupManagerTransportSettings,
+            settings.deleteInstancesRegionInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getRegionInstanceGroupManagerCallable =
         callableFactory.createUnaryCallable(
             getRegionInstanceGroupManagerTransportSettings,
@@ -528,6 +577,12 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
             insertRegionInstanceGroupManagerTransportSettings,
             settings.insertRegionInstanceGroupManagerSettings(),
             clientContext);
+    this.insertRegionInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            insertRegionInstanceGroupManagerTransportSettings,
+            settings.insertRegionInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listRegionInstanceGroupManagersCallable =
         callableFactory.createUnaryCallable(
             listRegionInstanceGroupManagersTransportSettings,
@@ -548,28 +603,70 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
             patchRegionInstanceGroupManagerTransportSettings,
             settings.patchRegionInstanceGroupManagerSettings(),
             clientContext);
+    this.patchRegionInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            patchRegionInstanceGroupManagerTransportSettings,
+            settings.patchRegionInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.recreateInstancesRegionInstanceGroupManagerCallable =
         callableFactory.createUnaryCallable(
             recreateInstancesRegionInstanceGroupManagerTransportSettings,
             settings.recreateInstancesRegionInstanceGroupManagerSettings(),
             clientContext);
+    this.recreateInstancesRegionInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            recreateInstancesRegionInstanceGroupManagerTransportSettings,
+            settings.recreateInstancesRegionInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.resizeRegionInstanceGroupManagerCallable =
         callableFactory.createUnaryCallable(
             resizeRegionInstanceGroupManagerTransportSettings,
             settings.resizeRegionInstanceGroupManagerSettings(),
             clientContext);
+    this.resizeRegionInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            resizeRegionInstanceGroupManagerTransportSettings,
+            settings.resizeRegionInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setInstanceTemplateRegionInstanceGroupManagerCallable =
         callableFactory.createUnaryCallable(
             setInstanceTemplateRegionInstanceGroupManagerTransportSettings,
             settings.setInstanceTemplateRegionInstanceGroupManagerSettings(),
             clientContext);
+    this.setInstanceTemplateRegionInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            setInstanceTemplateRegionInstanceGroupManagerTransportSettings,
+            settings.setInstanceTemplateRegionInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.setTargetPoolsRegionInstanceGroupManagerCallable =
         callableFactory.createUnaryCallable(
             setTargetPoolsRegionInstanceGroupManagerTransportSettings,
             settings.setTargetPoolsRegionInstanceGroupManagerSettings(),
             clientContext);
+    this.setTargetPoolsRegionInstanceGroupManagerOperationCallable =
+        callableFactory.createOperationCallable(
+            setTargetPoolsRegionInstanceGroupManagerTransportSettings,
+            settings.setTargetPoolsRegionInstanceGroupManagerOperationSettings(),
+            clientContext,
+            this.operationsStub);
 
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      abandonInstancesRegionInstanceGroupManagerOperationCallable() {
+    return abandonInstancesRegionInstanceGroupManagerOperationCallable;
   }
 
   @BetaApi
@@ -578,10 +675,23 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
     return abandonInstancesRegionInstanceGroupManagerCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteRegionInstanceGroupManagerOperationCallable() {
+    return deleteRegionInstanceGroupManagerOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteRegionInstanceGroupManagerHttpRequest, Operation>
       deleteRegionInstanceGroupManagerCallable() {
     return deleteRegionInstanceGroupManagerCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstancesRegionInstanceGroupManagerOperationCallable() {
+    return deleteInstancesRegionInstanceGroupManagerOperationCallable;
   }
 
   @BetaApi
@@ -594,6 +704,12 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
   public UnaryCallable<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager>
       getRegionInstanceGroupManagerCallable() {
     return getRegionInstanceGroupManagerCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      insertRegionInstanceGroupManagerOperationCallable() {
+    return insertRegionInstanceGroupManagerOperationCallable;
   }
 
   @BetaApi
@@ -623,10 +739,23 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
     return listManagedInstancesRegionInstanceGroupManagersCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      patchRegionInstanceGroupManagerOperationCallable() {
+    return patchRegionInstanceGroupManagerOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<PatchRegionInstanceGroupManagerHttpRequest, Operation>
       patchRegionInstanceGroupManagerCallable() {
     return patchRegionInstanceGroupManagerCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      recreateInstancesRegionInstanceGroupManagerOperationCallable() {
+    return recreateInstancesRegionInstanceGroupManagerOperationCallable;
   }
 
   @BetaApi
@@ -635,16 +764,36 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
     return recreateInstancesRegionInstanceGroupManagerCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      resizeRegionInstanceGroupManagerOperationCallable() {
+    return resizeRegionInstanceGroupManagerOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<ResizeRegionInstanceGroupManagerHttpRequest, Operation>
       resizeRegionInstanceGroupManagerCallable() {
     return resizeRegionInstanceGroupManagerCallable;
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setInstanceTemplateRegionInstanceGroupManagerOperationCallable() {
+    return setInstanceTemplateRegionInstanceGroupManagerOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation>
       setInstanceTemplateRegionInstanceGroupManagerCallable() {
     return setInstanceTemplateRegionInstanceGroupManagerCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<
+          SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+      setTargetPoolsRegionInstanceGroupManagerOperationCallable() {
+    return setTargetPoolsRegionInstanceGroupManagerOperationCallable;
   }
 
   @BetaApi

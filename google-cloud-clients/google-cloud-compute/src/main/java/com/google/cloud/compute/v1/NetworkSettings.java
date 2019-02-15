@@ -21,10 +21,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -48,13 +50,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of addPeeringNetwork to 30 seconds:
+ * example, to set the total timeout of getNetwork to 30 seconds:
  *
  * <pre>
  * <code>
  * NetworkSettings.Builder networkSettingsBuilder =
  *     NetworkSettings.newBuilder();
- * networkSettingsBuilder.addPeeringNetworkSettings().getRetrySettings().toBuilder()
+ * networkSettingsBuilder.getNetworkSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * NetworkSettings networkSettings = networkSettingsBuilder.build();
  * </code>
@@ -68,9 +70,25 @@ public class NetworkSettings extends ClientSettings<NetworkSettings> {
     return ((NetworkStubSettings) getStubSettings()).addPeeringNetworkSettings();
   }
 
+  /** Returns the object with the settings used for calls to addPeeringNetwork. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      addPeeringNetworkOperationSettings() {
+    return ((NetworkStubSettings) getStubSettings()).addPeeringNetworkOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to deleteNetwork. */
   public UnaryCallSettings<DeleteNetworkHttpRequest, Operation> deleteNetworkSettings() {
     return ((NetworkStubSettings) getStubSettings()).deleteNetworkSettings();
+  }
+
+  /** Returns the object with the settings used for calls to deleteNetwork. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      deleteNetworkOperationSettings() {
+    return ((NetworkStubSettings) getStubSettings()).deleteNetworkOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getNetwork. */
@@ -81,6 +99,14 @@ public class NetworkSettings extends ClientSettings<NetworkSettings> {
   /** Returns the object with the settings used for calls to insertNetwork. */
   public UnaryCallSettings<InsertNetworkHttpRequest, Operation> insertNetworkSettings() {
     return ((NetworkStubSettings) getStubSettings()).insertNetworkSettings();
+  }
+
+  /** Returns the object with the settings used for calls to insertNetwork. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      insertNetworkOperationSettings() {
+    return ((NetworkStubSettings) getStubSettings()).insertNetworkOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to listNetworks. */
@@ -94,16 +120,40 @@ public class NetworkSettings extends ClientSettings<NetworkSettings> {
     return ((NetworkStubSettings) getStubSettings()).patchNetworkSettings();
   }
 
+  /** Returns the object with the settings used for calls to patchNetwork. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      patchNetworkOperationSettings() {
+    return ((NetworkStubSettings) getStubSettings()).patchNetworkOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to removePeeringNetwork. */
   public UnaryCallSettings<RemovePeeringNetworkHttpRequest, Operation>
       removePeeringNetworkSettings() {
     return ((NetworkStubSettings) getStubSettings()).removePeeringNetworkSettings();
   }
 
+  /** Returns the object with the settings used for calls to removePeeringNetwork. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      removePeeringNetworkOperationSettings() {
+    return ((NetworkStubSettings) getStubSettings()).removePeeringNetworkOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to switchToCustomModeNetwork. */
   public UnaryCallSettings<SwitchToCustomModeNetworkHttpRequest, Operation>
       switchToCustomModeNetworkSettings() {
     return ((NetworkStubSettings) getStubSettings()).switchToCustomModeNetworkSettings();
+  }
+
+  /** Returns the object with the settings used for calls to switchToCustomModeNetwork. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+      switchToCustomModeNetworkOperationSettings() {
+    return ((NetworkStubSettings) getStubSettings()).switchToCustomModeNetworkOperationSettings();
   }
 
   public static final NetworkSettings create(NetworkStubSettings stub) throws IOException {
@@ -213,9 +263,25 @@ public class NetworkSettings extends ClientSettings<NetworkSettings> {
       return getStubSettingsBuilder().addPeeringNetworkSettings();
     }
 
+    /** Returns the builder for the settings used for calls to addPeeringNetwork. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        addPeeringNetworkOperationSettings() {
+      return getStubSettingsBuilder().addPeeringNetworkOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to deleteNetwork. */
     public UnaryCallSettings.Builder<DeleteNetworkHttpRequest, Operation> deleteNetworkSettings() {
       return getStubSettingsBuilder().deleteNetworkSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to deleteNetwork. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        deleteNetworkOperationSettings() {
+      return getStubSettingsBuilder().deleteNetworkOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to getNetwork. */
@@ -226,6 +292,14 @@ public class NetworkSettings extends ClientSettings<NetworkSettings> {
     /** Returns the builder for the settings used for calls to insertNetwork. */
     public UnaryCallSettings.Builder<InsertNetworkHttpRequest, Operation> insertNetworkSettings() {
       return getStubSettingsBuilder().insertNetworkSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to insertNetwork. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        insertNetworkOperationSettings() {
+      return getStubSettingsBuilder().insertNetworkOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to listNetworks. */
@@ -240,16 +314,42 @@ public class NetworkSettings extends ClientSettings<NetworkSettings> {
       return getStubSettingsBuilder().patchNetworkSettings();
     }
 
+    /** Returns the builder for the settings used for calls to patchNetwork. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        patchNetworkOperationSettings() {
+      return getStubSettingsBuilder().patchNetworkOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to removePeeringNetwork. */
     public UnaryCallSettings.Builder<RemovePeeringNetworkHttpRequest, Operation>
         removePeeringNetworkSettings() {
       return getStubSettingsBuilder().removePeeringNetworkSettings();
     }
 
+    /** Returns the builder for the settings used for calls to removePeeringNetwork. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        removePeeringNetworkOperationSettings() {
+      return getStubSettingsBuilder().removePeeringNetworkOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to switchToCustomModeNetwork. */
     public UnaryCallSettings.Builder<SwitchToCustomModeNetworkHttpRequest, Operation>
         switchToCustomModeNetworkSettings() {
       return getStubSettingsBuilder().switchToCustomModeNetworkSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to switchToCustomModeNetwork. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+        switchToCustomModeNetworkOperationSettings() {
+      return getStubSettingsBuilder().switchToCustomModeNetworkOperationSettings();
     }
 
     @Override

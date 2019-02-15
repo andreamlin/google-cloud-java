@@ -19,6 +19,8 @@ import static com.google.cloud.compute.v1.InstanceTemplateClient.ListInstanceTem
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteInstanceTemplateHttpRequest;
 import com.google.cloud.compute.v1.GetIamPolicyInstanceTemplateHttpRequest;
@@ -44,6 +46,18 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class InstanceTemplateStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      deleteInstanceTemplateOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: deleteInstanceTemplateOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteInstanceTemplateHttpRequest, Operation>
       deleteInstanceTemplateCallable() {
@@ -61,6 +75,13 @@ public abstract class InstanceTemplateStub implements BackgroundResource {
       getIamPolicyInstanceTemplateCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: getIamPolicyInstanceTemplateCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+      insertInstanceTemplateOperationCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: insertInstanceTemplateOperationCallable()");
   }
 
   @BetaApi

@@ -20,6 +20,8 @@ import static com.google.cloud.compute.v1.AutoscalerClient.ListAutoscalersPagedR
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.httpjson.EmptyMessage;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.AggregatedListAutoscalersHttpRequest;
 import com.google.cloud.compute.v1.Autoscaler;
@@ -44,6 +46,11 @@ import javax.annotation.Generated;
 @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
 public abstract class AutoscalerStub implements BackgroundResource {
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public GlobalOperationStub getOperationsStub() {
+    throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
+  }
+
   @BetaApi
   public UnaryCallable<AggregatedListAutoscalersHttpRequest, AggregatedListAutoscalersPagedResponse>
       aggregatedListAutoscalersPagedCallable() {
@@ -57,6 +64,12 @@ public abstract class AutoscalerStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: aggregatedListAutoscalersCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      deleteAutoscalerOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: deleteAutoscalerOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<DeleteAutoscalerHttpRequest, Operation> deleteAutoscalerCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteAutoscalerCallable()");
@@ -65,6 +78,12 @@ public abstract class AutoscalerStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetAutoscalerHttpRequest, Autoscaler> getAutoscalerCallable() {
     throw new UnsupportedOperationException("Not implemented: getAutoscalerCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      insertAutoscalerOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: insertAutoscalerOperationCallable()");
   }
 
   @BetaApi
@@ -83,9 +102,21 @@ public abstract class AutoscalerStub implements BackgroundResource {
     throw new UnsupportedOperationException("Not implemented: listAutoscalersCallable()");
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      patchAutoscalerOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: patchAutoscalerOperationCallable()");
+  }
+
   @BetaApi
   public UnaryCallable<PatchAutoscalerHttpRequest, Operation> patchAutoscalerCallable() {
     throw new UnsupportedOperationException("Not implemented: patchAutoscalerCallable()");
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+      updateAutoscalerOperationCallable() {
+    throw new UnsupportedOperationException("Not implemented: updateAutoscalerOperationCallable()");
   }
 
   @BetaApi

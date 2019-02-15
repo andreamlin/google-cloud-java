@@ -22,10 +22,12 @@ import com.google.api.core.ApiFunction;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.GoogleCredentialsProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.InstantiatingHttpJsonChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -49,13 +51,13 @@ import javax.annotation.Generated;
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
  * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of disableXpnHostProject to 30 seconds:
+ * example, to set the total timeout of getProject to 30 seconds:
  *
  * <pre>
  * <code>
  * ProjectSettings.Builder projectSettingsBuilder =
  *     ProjectSettings.newBuilder();
- * projectSettingsBuilder.disableXpnHostProjectSettings().getRetrySettings().toBuilder()
+ * projectSettingsBuilder.getProjectSettings().getRetrySettings().toBuilder()
  *     .setTotalTimeout(Duration.ofSeconds(30));
  * ProjectSettings projectSettings = projectSettingsBuilder.build();
  * </code>
@@ -70,10 +72,26 @@ public class ProjectSettings extends ClientSettings<ProjectSettings> {
     return ((ProjectStubSettings) getStubSettings()).disableXpnHostProjectSettings();
   }
 
+  /** Returns the object with the settings used for calls to disableXpnHostProject. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+      disableXpnHostProjectOperationSettings() {
+    return ((ProjectStubSettings) getStubSettings()).disableXpnHostProjectOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to disableXpnResourceProject. */
   public UnaryCallSettings<DisableXpnResourceProjectHttpRequest, Operation>
       disableXpnResourceProjectSettings() {
     return ((ProjectStubSettings) getStubSettings()).disableXpnResourceProjectSettings();
+  }
+
+  /** Returns the object with the settings used for calls to disableXpnResourceProject. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      disableXpnResourceProjectOperationSettings() {
+    return ((ProjectStubSettings) getStubSettings()).disableXpnResourceProjectOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to enableXpnHostProject. */
@@ -82,10 +100,26 @@ public class ProjectSettings extends ClientSettings<ProjectSettings> {
     return ((ProjectStubSettings) getStubSettings()).enableXpnHostProjectSettings();
   }
 
+  /** Returns the object with the settings used for calls to enableXpnHostProject. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+      enableXpnHostProjectOperationSettings() {
+    return ((ProjectStubSettings) getStubSettings()).enableXpnHostProjectOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to enableXpnResourceProject. */
   public UnaryCallSettings<EnableXpnResourceProjectHttpRequest, Operation>
       enableXpnResourceProjectSettings() {
     return ((ProjectStubSettings) getStubSettings()).enableXpnResourceProjectSettings();
+  }
+
+  /** Returns the object with the settings used for calls to enableXpnResourceProject. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      enableXpnResourceProjectOperationSettings() {
+    return ((ProjectStubSettings) getStubSettings()).enableXpnResourceProjectOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to getProject. */
@@ -119,10 +153,26 @@ public class ProjectSettings extends ClientSettings<ProjectSettings> {
     return ((ProjectStubSettings) getStubSettings()).moveDiskProjectSettings();
   }
 
+  /** Returns the object with the settings used for calls to moveDiskProject. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+      moveDiskProjectOperationSettings() {
+    return ((ProjectStubSettings) getStubSettings()).moveDiskProjectOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to moveInstanceProject. */
   public UnaryCallSettings<MoveInstanceProjectHttpRequest, Operation>
       moveInstanceProjectSettings() {
     return ((ProjectStubSettings) getStubSettings()).moveInstanceProjectSettings();
+  }
+
+  /** Returns the object with the settings used for calls to moveInstanceProject. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+      moveInstanceProjectOperationSettings() {
+    return ((ProjectStubSettings) getStubSettings()).moveInstanceProjectOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to setCommonInstanceMetadataProject. */
@@ -131,16 +181,43 @@ public class ProjectSettings extends ClientSettings<ProjectSettings> {
     return ((ProjectStubSettings) getStubSettings()).setCommonInstanceMetadataProjectSettings();
   }
 
+  /** Returns the object with the settings used for calls to setCommonInstanceMetadataProject. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<
+          SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setCommonInstanceMetadataProjectOperationSettings() {
+    return ((ProjectStubSettings) getStubSettings())
+        .setCommonInstanceMetadataProjectOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to setDefaultNetworkTierProject. */
   public UnaryCallSettings<SetDefaultNetworkTierProjectHttpRequest, Operation>
       setDefaultNetworkTierProjectSettings() {
     return ((ProjectStubSettings) getStubSettings()).setDefaultNetworkTierProjectSettings();
   }
 
+  /** Returns the object with the settings used for calls to setDefaultNetworkTierProject. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setDefaultNetworkTierProjectOperationSettings() {
+    return ((ProjectStubSettings) getStubSettings())
+        .setDefaultNetworkTierProjectOperationSettings();
+  }
+
   /** Returns the object with the settings used for calls to setUsageExportBucketProject. */
   public UnaryCallSettings<SetUsageExportBucketProjectHttpRequest, Operation>
       setUsageExportBucketProjectSettings() {
     return ((ProjectStubSettings) getStubSettings()).setUsageExportBucketProjectSettings();
+  }
+
+  /** Returns the object with the settings used for calls to setUsageExportBucketProject. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+      setUsageExportBucketProjectOperationSettings() {
+    return ((ProjectStubSettings) getStubSettings()).setUsageExportBucketProjectOperationSettings();
   }
 
   public static final ProjectSettings create(ProjectStubSettings stub) throws IOException {
@@ -250,10 +327,28 @@ public class ProjectSettings extends ClientSettings<ProjectSettings> {
       return getStubSettingsBuilder().disableXpnHostProjectSettings();
     }
 
+    /** Returns the builder for the settings used for calls to disableXpnHostProject. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+        disableXpnHostProjectOperationSettings() {
+      return getStubSettingsBuilder().disableXpnHostProjectOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to disableXpnResourceProject. */
     public UnaryCallSettings.Builder<DisableXpnResourceProjectHttpRequest, Operation>
         disableXpnResourceProjectSettings() {
       return getStubSettingsBuilder().disableXpnResourceProjectSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to disableXpnResourceProject. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+        disableXpnResourceProjectOperationSettings() {
+      return getStubSettingsBuilder().disableXpnResourceProjectOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to enableXpnHostProject. */
@@ -262,10 +357,28 @@ public class ProjectSettings extends ClientSettings<ProjectSettings> {
       return getStubSettingsBuilder().enableXpnHostProjectSettings();
     }
 
+    /** Returns the builder for the settings used for calls to enableXpnHostProject. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+        enableXpnHostProjectOperationSettings() {
+      return getStubSettingsBuilder().enableXpnHostProjectOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to enableXpnResourceProject. */
     public UnaryCallSettings.Builder<EnableXpnResourceProjectHttpRequest, Operation>
         enableXpnResourceProjectSettings() {
       return getStubSettingsBuilder().enableXpnResourceProjectSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to enableXpnResourceProject. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+        enableXpnResourceProjectOperationSettings() {
+      return getStubSettingsBuilder().enableXpnResourceProjectOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to getProject. */
@@ -301,10 +414,26 @@ public class ProjectSettings extends ClientSettings<ProjectSettings> {
       return getStubSettingsBuilder().moveDiskProjectSettings();
     }
 
+    /** Returns the builder for the settings used for calls to moveDiskProject. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+        moveDiskProjectOperationSettings() {
+      return getStubSettingsBuilder().moveDiskProjectOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to moveInstanceProject. */
     public UnaryCallSettings.Builder<MoveInstanceProjectHttpRequest, Operation>
         moveInstanceProjectSettings() {
       return getStubSettingsBuilder().moveInstanceProjectSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to moveInstanceProject. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+        moveInstanceProjectOperationSettings() {
+      return getStubSettingsBuilder().moveInstanceProjectOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to setCommonInstanceMetadataProject. */
@@ -313,16 +442,43 @@ public class ProjectSettings extends ClientSettings<ProjectSettings> {
       return getStubSettingsBuilder().setCommonInstanceMetadataProjectSettings();
     }
 
+    /** Returns the builder for the settings used for calls to setCommonInstanceMetadataProject. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+        setCommonInstanceMetadataProjectOperationSettings() {
+      return getStubSettingsBuilder().setCommonInstanceMetadataProjectOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to setDefaultNetworkTierProject. */
     public UnaryCallSettings.Builder<SetDefaultNetworkTierProjectHttpRequest, Operation>
         setDefaultNetworkTierProjectSettings() {
       return getStubSettingsBuilder().setDefaultNetworkTierProjectSettings();
     }
 
+    /** Returns the builder for the settings used for calls to setDefaultNetworkTierProject. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+        setDefaultNetworkTierProjectOperationSettings() {
+      return getStubSettingsBuilder().setDefaultNetworkTierProjectOperationSettings();
+    }
+
     /** Returns the builder for the settings used for calls to setUsageExportBucketProject. */
     public UnaryCallSettings.Builder<SetUsageExportBucketProjectHttpRequest, Operation>
         setUsageExportBucketProjectSettings() {
       return getStubSettingsBuilder().setUsageExportBucketProjectSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to setUsageExportBucketProject. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+        setUsageExportBucketProjectOperationSettings() {
+      return getStubSettingsBuilder().setUsageExportBucketProjectOperationSettings();
     }
 
     @Override

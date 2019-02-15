@@ -25,9 +25,11 @@ import com.google.api.gax.core.BackgroundResourceAggregation;
 import com.google.api.gax.httpjson.ApiMessageHttpRequestFormatter;
 import com.google.api.gax.httpjson.ApiMessageHttpResponseParser;
 import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonCallSettings;
 import com.google.api.gax.httpjson.HttpJsonStubCallableFactory;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.pathtemplate.PathTemplate;
 import com.google.cloud.compute.v1.Address;
@@ -131,12 +133,17 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
               .build();
 
   private final BackgroundResource backgroundResources;
+  private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteGlobalAddressHttpRequest, Operation>
       deleteGlobalAddressCallable;
+  private final OperationCallable<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+      deleteGlobalAddressOperationCallable;
   private final UnaryCallable<GetGlobalAddressHttpRequest, Address> getGlobalAddressCallable;
   private final UnaryCallable<InsertGlobalAddressHttpRequest, Operation>
       insertGlobalAddressCallable;
+  private final OperationCallable<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+      insertGlobalAddressOperationCallable;
   private final UnaryCallable<ListGlobalAddressesHttpRequest, AddressList>
       listGlobalAddressesCallable;
   private final UnaryCallable<ListGlobalAddressesHttpRequest, ListGlobalAddressesPagedResponse>
@@ -182,6 +189,7 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
+    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteGlobalAddressHttpRequest, Operation>
         deleteGlobalAddressTransportSettings =
@@ -208,6 +216,12 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
             deleteGlobalAddressTransportSettings,
             settings.deleteGlobalAddressSettings(),
             clientContext);
+    this.deleteGlobalAddressOperationCallable =
+        callableFactory.createOperationCallable(
+            deleteGlobalAddressTransportSettings,
+            settings.deleteGlobalAddressOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.getGlobalAddressCallable =
         callableFactory.createUnaryCallable(
             getGlobalAddressTransportSettings, settings.getGlobalAddressSettings(), clientContext);
@@ -216,6 +230,12 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
             insertGlobalAddressTransportSettings,
             settings.insertGlobalAddressSettings(),
             clientContext);
+    this.insertGlobalAddressOperationCallable =
+        callableFactory.createOperationCallable(
+            insertGlobalAddressTransportSettings,
+            settings.insertGlobalAddressOperationSettings(),
+            clientContext,
+            this.operationsStub);
     this.listGlobalAddressesCallable =
         callableFactory.createUnaryCallable(
             listGlobalAddressesTransportSettings,
@@ -230,6 +250,17 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
     backgroundResources = new BackgroundResourceAggregation(clientContext.getBackgroundResources());
   }
 
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public HttpJsonGlobalOperationStub getOperationsStub() {
+    return operationsStub;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+      deleteGlobalAddressOperationCallable() {
+    return deleteGlobalAddressOperationCallable;
+  }
+
   @BetaApi
   public UnaryCallable<DeleteGlobalAddressHttpRequest, Operation> deleteGlobalAddressCallable() {
     return deleteGlobalAddressCallable;
@@ -238,6 +269,12 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
   @BetaApi
   public UnaryCallable<GetGlobalAddressHttpRequest, Address> getGlobalAddressCallable() {
     return getGlobalAddressCallable;
+  }
+
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallable<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+      insertGlobalAddressOperationCallable() {
+    return insertGlobalAddressOperationCallable;
   }
 
   @BetaApi
