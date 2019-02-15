@@ -64,6 +64,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -71,6 +74,8 @@ import org.junit.Test;
 import org.junit.rules.Timeout;
 
 public class ITComputeTest {
+
+  private static final Logger log = Logger.getLogger(ITComputeTest.class.getName());
 
   private static final String ZONE = "us-west1-a";
   private static final String DISK_TYPE = "local-ssd";
@@ -109,6 +114,8 @@ public class ITComputeTest {
 
   @BeforeClass
   public static void beforeClass() throws Exception {
+    Logger.getLogger("").setLevel(Level.WARNING);
+
     Credentials credentials =
         GoogleCredentials.getApplicationDefault()
             .createScoped(DiskTypeSettings.getDefaultServiceScopes());
@@ -152,24 +159,26 @@ public class ITComputeTest {
   private static void removeResources(List<Class<? extends ApiException>> exceptionTypes)
       throws Exception {
     try {
-      instanceClient.deleteInstanceAsync(INSTANCE_NAME);
-      Thread.sleep(10000);
-    } catch (Exception e) {
-      if (isNotExceptionType(exceptionTypes, e)) throw e;
-    }
-    Thread.sleep(10000);
-    try {
-      diskClient.deleteDiskAsync(DISK_NAME);
+      OperationFuture<EmptyMessage, EmptyMessage> future = instanceClient.deleteInstanceAsync(INSTANCE_NAME);
+      future.get(10, TimeUnit.SECONDS); // Block until operation completes.
     } catch (Exception e) {
       if (isNotExceptionType(exceptionTypes, e)) throw e;
     }
     try {
-      instanceClient.deleteInstanceAsync(INSTANCE_NAME);
+      OperationFuture<EmptyMessage, EmptyMessage> future = diskClient.deleteDiskAsync(DISK_NAME);
+      future.get(10, TimeUnit.SECONDS); // Block until operation completes.
     } catch (Exception e) {
       if (isNotExceptionType(exceptionTypes, e)) throw e;
     }
     try {
-      imageClient.deleteImageAsync(IMAGE_NAME);
+      OperationFuture<EmptyMessage, EmptyMessage> future = instanceClient.deleteInstanceAsync(INSTANCE_NAME);
+      future.get(10, TimeUnit.SECONDS); // Block until operation completes.
+    } catch (Exception e) {
+      if (isNotExceptionType(exceptionTypes, e)) throw e;
+    }
+    try {
+      OperationFuture<EmptyMessage, EmptyMessage> future = imageClient.deleteImageAsync(IMAGE_NAME);
+      future.get(10, TimeUnit.SECONDS); // Block until operation completes.
     } catch (Exception e) {
       if (isNotExceptionType(exceptionTypes, e)) throw e;
     }
@@ -179,6 +188,9 @@ public class ITComputeTest {
       List<Class<? extends ApiException>> exceptionTypes, Exception e) {
     for (Class<? extends ApiException> type : exceptionTypes) {
       if (type.isInstance(e)) {
+        return false;
+      }
+      if (e.getCause() != null && type.isInstance(e.getCause())) {
         return false;
       }
     }
@@ -206,8 +218,6 @@ public class ITComputeTest {
     // Fetch a subnetwork, assuming there is one. Projects start with a default network.
     Iterable<SubnetworksScopedList> subnetworks =
         subNetworkClient.aggregatedListSubnetworks(DEFAULT_PROJECT).iterateAll();
-    // TODO(andrealin): Implement futures for Compute methods.
-    Thread.sleep(10000);
     Subnetwork subnetwork = subnetworks.iterator().next().getSubnetworksList().get(0);
 
     NetworkInterface networkInterface =
@@ -238,7 +248,8 @@ public class ITComputeTest {
             .addDisks(bootDisk)
             .build();
     OperationFuture<EmptyMessage, EmptyMessage> op1 = instanceClient.insertInstanceAsync(PROJECT_ZONE_NAME, instanceResource);
-    System.out.println(String.format("Instance created: %s", op1.toString()));
+    op1.get(10, TimeUnit.SECONDS); // Blocking until operation completes or times out.
+    log.log(Level.INFO, (String.format("Instance created: %s", op1.toString())));
 
     // Insert a disk.
     Disk disk =
@@ -248,8 +259,8 @@ public class ITComputeTest {
             .setType(diskTypeName.toString())
             .build();
     OperationFuture<EmptyMessage, EmptyMessage> op2 = diskClient.insertDiskAsync(PROJECT_ZONE_NAME, disk);
-    System.out.println(String.format("Disk created: %s", op2.toString()));
-    Thread.sleep(10000);
+    log.log(Level.INFO, String.format("Disk created: %s", op2.toString()));
+    op1.get(10, TimeUnit.SECONDS); // Blocking until operation completes or times out.
 
     // Attach the disk to the instance.
     AttachedDisk attachedDisk =
@@ -260,12 +271,11 @@ public class ITComputeTest {
             .setSource(DISK_NAME.toString())
             .build();
     OperationFuture<EmptyMessage, EmptyMessage> op3 = instanceClient.attachDiskInstanceAsync(INSTANCE_NAME, false, attachedDisk);
-    System.out.println(String.format("Disk attached: %s", op3.toString()));
-    Thread.sleep(10000);
-    System.out.println("----------------------------------------");
+    log.log(Level.INFO, String.format("Disk attached: %s", op3.toString()));
+    op1.get(10, TimeUnit.SECONDS); // Blocking until operation completes or times out.
 
     OperationFuture<EmptyMessage, EmptyMessage> op4 = instanceClient.detachDiskInstanceAsync(INSTANCE_NAME, DISK_NAME.getDisk());
-    System.out.println(String.format("Disk detached: %s", op4.toString()));
+    log.log(Level.INFO, String.format("Disk detached: %s", op4.toString()));
   }
 
   @Test
