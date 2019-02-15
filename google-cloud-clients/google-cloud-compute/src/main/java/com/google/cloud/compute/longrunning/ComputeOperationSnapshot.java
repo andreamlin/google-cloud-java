@@ -1,12 +1,11 @@
 package com.google.cloud.compute.longrunning;
 
-import static com.google.cloud.compute.longrunning.ComputeOperationSnapshot.Status.DONE;
-
 import com.google.api.gax.httpjson.HttpJsonStatusCode;
 import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.StatusCode;
 import com.google.cloud.compute.v1.Operation;
 
+/** Implementation of a long-running operation for the Compute client. */
 public class ComputeOperationSnapshot implements OperationSnapshot {
 
   public enum Status {
@@ -37,7 +36,7 @@ public class ComputeOperationSnapshot implements OperationSnapshot {
 
   @Override
   public boolean isDone() {
-    return DONE.equals(getOperationStatus());
+    return Status.DONE.equals(getOperationStatus());
   }
 
   @Override
@@ -47,8 +46,11 @@ public class ComputeOperationSnapshot implements OperationSnapshot {
 
   @Override
   public StatusCode getErrorCode() {
-    if (operation.getError().getErrorsList().isEmpty()) {
-      return null;
+    if (operation.getError() == null
+        || operation.getError().getErrorsList() == null
+        || operation.getError().getErrorsList().isEmpty()) {
+      // No errors; return 200.
+      return HttpJsonStatusCode.of(200, "OK");
     }
 
     // Return the first Error code.

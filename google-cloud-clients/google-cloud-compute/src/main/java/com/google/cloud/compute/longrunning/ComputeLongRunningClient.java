@@ -32,7 +32,6 @@ public class ComputeLongRunningClient implements LongRunningClient {
         new ApiFunction<String, GetGlobalOperationHttpRequest>() {
           @Override
           public GetGlobalOperationHttpRequest apply(String request) {
-            // GrpcLongRunningClient uses .setName() instead of .setOperation()
             return GetGlobalOperationHttpRequest.newBuilder().setOperation(request).build();
           }
         },
