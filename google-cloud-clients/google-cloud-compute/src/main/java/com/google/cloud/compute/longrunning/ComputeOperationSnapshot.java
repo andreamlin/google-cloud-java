@@ -5,7 +5,8 @@ import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.StatusCode;
 import com.google.cloud.compute.v1.Operation;
 
-/** Implementation of a long-running operation for the Compute client. */
+/** Implementation of a long-running operation for the Compute client.
+ *  Wraps a compute Operation object. */
 public class ComputeOperationSnapshot implements OperationSnapshot {
 
   public enum Status {
