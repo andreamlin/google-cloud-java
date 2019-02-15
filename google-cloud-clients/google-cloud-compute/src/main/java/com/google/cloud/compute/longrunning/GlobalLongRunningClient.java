@@ -11,17 +11,16 @@ import com.google.cloud.compute.v1.GetGlobalOperationHttpRequest;
 import com.google.cloud.compute.v1.GlobalOperationClient;
 import com.google.cloud.compute.v1.Operation;
 import com.google.cloud.compute.v1.stub.GlobalOperationStub;
+import com.google.cloud.compute.v1.stub.RegionOperationStub;
+import com.google.cloud.compute.v1.stub.ZoneOperationStub;
 
-/** Implementation of LongRunningClient for the Compute client. */
-public class ComputeLongRunningClient implements LongRunningClient {
+/** Implementation of LongRunningClient for the Compute client.
+ *  Package-private for internal use. */
+class GlobalLongRunningClient implements LongRunningClient {
 
   private final GlobalOperationStub operationStub;
 
-  public ComputeLongRunningClient(GlobalOperationClient globalOperationClient) {
-    this.operationStub = globalOperationClient.getStub();
-  }
-
-  public ComputeLongRunningClient(GlobalOperationStub operationStub) {
+  public GlobalLongRunningClient(GlobalOperationStub operationStub) {
     this.operationStub = operationStub;
   }
 
@@ -64,9 +63,5 @@ public class ComputeLongRunningClient implements LongRunningClient {
             return null;
           }
         });
-  }
-
-  public static ComputeLongRunningClient create(GlobalOperationStub operationsStub) {
-    return new ComputeLongRunningClient(operationsStub);
   }
 }
