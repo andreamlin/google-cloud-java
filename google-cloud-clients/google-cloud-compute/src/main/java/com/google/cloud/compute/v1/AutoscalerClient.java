@@ -106,7 +106,7 @@ import javax.annotation.Generated;
 public class AutoscalerClient implements BackgroundResource {
   private final AutoscalerSettings settings;
   private final AutoscalerStub stub;
-  private final GlobalOperationClient operationsClient;
+  private final ZoneOperationClient operationsClient;
 
   /** Constructs an instance of AutoscalerClient with default settings. */
   public static final AutoscalerClient create() throws IOException {
@@ -137,14 +137,14 @@ public class AutoscalerClient implements BackgroundResource {
   protected AutoscalerClient(AutoscalerSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((AutoscalerStubSettings) settings.getStubSettings()).createStub();
-    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
+    this.operationsClient = ZoneOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected AutoscalerClient(AutoscalerStub stub) {
     this.settings = null;
     this.stub = stub;
-    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
+    this.operationsClient = ZoneOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final AutoscalerSettings getSettings() {
@@ -157,12 +157,12 @@ public class AutoscalerClient implements BackgroundResource {
   }
 
   /**
-   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * Returns the ZoneOperationClient that can be used to query the status of a long-running
    * operation returned by another API method call.
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final GlobalOperationClient getOperationsClient() {
+  public final ZoneOperationClient getOperationsClient() {
     return operationsClient;
   }
 

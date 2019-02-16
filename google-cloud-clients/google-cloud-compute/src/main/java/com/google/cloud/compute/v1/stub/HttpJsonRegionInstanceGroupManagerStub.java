@@ -351,7 +351,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
               .build();
 
   private final BackgroundResource backgroundResources;
-  private final HttpJsonGlobalOperationStub operationsStub;
+  private final HttpJsonRegionOperationStub operationsStub;
 
   private final UnaryCallable<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation>
       abandonInstancesRegionInstanceGroupManagerCallable;
@@ -454,7 +454,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
-    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
+    this.operationsStub = HttpJsonRegionOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation>
         abandonInstancesRegionInstanceGroupManagerTransportSettings =
@@ -658,7 +658,7 @@ public class HttpJsonRegionInstanceGroupManagerStub extends RegionInstanceGroupM
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public HttpJsonGlobalOperationStub getOperationsStub() {
+  public HttpJsonRegionOperationStub getOperationsStub() {
     return operationsStub;
   }
 

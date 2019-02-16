@@ -23,12 +23,13 @@ import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.BatchingCallSettings;
 import com.google.api.gax.rpc.Callables;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.LongRunningClient;
 import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.cloud.compute.longrunning.ComputeLongRunningClient;
+import com.google.cloud.compute.longrunning.ComputeLongRunningClientFactory;
 import com.google.cloud.compute.longrunning.OperationSnapshotCallable;
 import com.google.cloud.compute.v1.Operation;
 import javax.annotation.Generated;
@@ -42,7 +43,7 @@ import javax.annotation.Generated;
 @Generated("by gapic-generator")
 @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
 public class HttpJsonNodeGroupCallableFactory
-    implements HttpJsonStubCallableFactory<Operation, GlobalOperationStub> {
+    implements HttpJsonStubCallableFactory<Operation, ZoneOperationStub> {
   @Override
   public <RequestT, ResponseT> UnaryCallable<RequestT, ResponseT> createUnaryCallable(
       HttpJsonCallSettings<RequestT, ResponseT> httpJsonCallSettings,
@@ -61,13 +62,13 @@ public class HttpJsonNodeGroupCallableFactory
               httpJsonCallSettings,
           OperationCallSettings<RequestT, ResponseT, MetadataT> operationCallSettings,
           ClientContext clientContext,
-          GlobalOperationStub operationsStub) {
+          ZoneOperationStub operationsStub) {
     UnaryCallable<RequestT, Operation> initialHttpCallable =
         HttpJsonCallableFactory.createBaseUnaryCallable(
             httpJsonCallSettings, operationCallSettings.getInitialCallSettings(), clientContext);
     UnaryCallable<RequestT, OperationSnapshot> initialCallable =
         new OperationSnapshotCallable<>(initialHttpCallable);
-    ComputeLongRunningClient longRunningClient = ComputeLongRunningClient.create(operationsStub);
+    LongRunningClient longRunningClient = ComputeLongRunningClientFactory.create(operationsStub);
     OperationCallable<RequestT, ResponseT, MetadataT> operationCallable =
         Callables.longRunningOperation(
             initialCallable, operationCallSettings, clientContext, longRunningClient);

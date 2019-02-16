@@ -106,7 +106,7 @@ import javax.annotation.Generated;
 public class ForwardingRuleClient implements BackgroundResource {
   private final ForwardingRuleSettings settings;
   private final ForwardingRuleStub stub;
-  private final GlobalOperationClient operationsClient;
+  private final RegionOperationClient operationsClient;
 
   /** Constructs an instance of ForwardingRuleClient with default settings. */
   public static final ForwardingRuleClient create() throws IOException {
@@ -139,14 +139,14 @@ public class ForwardingRuleClient implements BackgroundResource {
   protected ForwardingRuleClient(ForwardingRuleSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((ForwardingRuleStubSettings) settings.getStubSettings()).createStub();
-    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
+    this.operationsClient = RegionOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected ForwardingRuleClient(ForwardingRuleStub stub) {
     this.settings = null;
     this.stub = stub;
-    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
+    this.operationsClient = RegionOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final ForwardingRuleSettings getSettings() {
@@ -159,12 +159,12 @@ public class ForwardingRuleClient implements BackgroundResource {
   }
 
   /**
-   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * Returns the RegionOperationClient that can be used to query the status of a long-running
    * operation returned by another API method call.
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final GlobalOperationClient getOperationsClient() {
+  public final RegionOperationClient getOperationsClient() {
     return operationsClient;
   }
 

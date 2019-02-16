@@ -23,12 +23,13 @@ import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.BatchingCallSettings;
 import com.google.api.gax.rpc.Callables;
 import com.google.api.gax.rpc.ClientContext;
+import com.google.api.gax.rpc.LongRunningClient;
 import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.cloud.compute.longrunning.ComputeLongRunningClient;
+import com.google.cloud.compute.longrunning.ComputeLongRunningClientFactory;
 import com.google.cloud.compute.longrunning.OperationSnapshotCallable;
 import com.google.cloud.compute.v1.Operation;
 import javax.annotation.Generated;
@@ -67,7 +68,7 @@ public class HttpJsonGlobalForwardingRuleCallableFactory
             httpJsonCallSettings, operationCallSettings.getInitialCallSettings(), clientContext);
     UnaryCallable<RequestT, OperationSnapshot> initialCallable =
         new OperationSnapshotCallable<>(initialHttpCallable);
-    ComputeLongRunningClient longRunningClient = ComputeLongRunningClient.create(operationsStub);
+    LongRunningClient longRunningClient = ComputeLongRunningClientFactory.create(operationsStub);
     OperationCallable<RequestT, ResponseT, MetadataT> operationCallable =
         Callables.longRunningOperation(
             initialCallable, operationCallSettings, clientContext, longRunningClient);

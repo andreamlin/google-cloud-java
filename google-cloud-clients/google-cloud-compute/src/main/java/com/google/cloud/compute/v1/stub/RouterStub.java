@@ -54,7 +54,7 @@ import javax.annotation.Generated;
 public abstract class RouterStub implements BackgroundResource {
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public GlobalOperationStub getOperationsStub() {
+  public RegionOperationStub getOperationsStub() {
     throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
   }
 

@@ -76,7 +76,7 @@ import javax.annotation.Generated;
 public abstract class InstanceStub implements BackgroundResource {
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public GlobalOperationStub getOperationsStub() {
+  public ZoneOperationStub getOperationsStub() {
     throw new UnsupportedOperationException("Not implemented: getOperationsStub()");
   }
 
@@ -173,7 +173,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertInstanceHttpRequest, Operation, Operation>
       insertInstanceOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertInstanceOperationCallable()");
   }

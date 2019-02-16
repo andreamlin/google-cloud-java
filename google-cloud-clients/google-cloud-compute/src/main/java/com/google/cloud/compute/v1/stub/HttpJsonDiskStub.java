@@ -290,7 +290,7 @@ public class HttpJsonDiskStub extends DiskStub {
               .build();
 
   private final BackgroundResource backgroundResources;
-  private final HttpJsonGlobalOperationStub operationsStub;
+  private final HttpJsonZoneOperationStub operationsStub;
 
   private final UnaryCallable<AggregatedListDisksHttpRequest, DiskAggregatedList>
       aggregatedListDisksCallable;
@@ -354,7 +354,7 @@ public class HttpJsonDiskStub extends DiskStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
-    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
+    this.operationsStub = HttpJsonZoneOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListDisksHttpRequest, DiskAggregatedList>
         aggregatedListDisksTransportSettings =
@@ -487,7 +487,7 @@ public class HttpJsonDiskStub extends DiskStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public HttpJsonGlobalOperationStub getOperationsStub() {
+  public HttpJsonZoneOperationStub getOperationsStub() {
     return operationsStub;
   }
 

@@ -181,7 +181,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
               .build();
 
   private final BackgroundResource backgroundResources;
-  private final HttpJsonGlobalOperationStub operationsStub;
+  private final HttpJsonRegionOperationStub operationsStub;
 
   private final UnaryCallable<DeleteRegionAutoscalerHttpRequest, Operation>
       deleteRegionAutoscalerCallable;
@@ -246,7 +246,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
-    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
+    this.operationsStub = HttpJsonRegionOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<DeleteRegionAutoscalerHttpRequest, Operation>
         deleteRegionAutoscalerTransportSettings =
@@ -344,7 +344,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public HttpJsonGlobalOperationStub getOperationsStub() {
+  public HttpJsonRegionOperationStub getOperationsStub() {
     return operationsStub;
   }
 

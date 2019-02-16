@@ -748,7 +748,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
               .build();
 
   private final BackgroundResource backgroundResources;
-  private final HttpJsonGlobalOperationStub operationsStub;
+  private final HttpJsonZoneOperationStub operationsStub;
 
   private final UnaryCallable<AddAccessConfigInstanceHttpRequest, Operation>
       addAccessConfigInstanceCallable;
@@ -777,7 +777,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   private final UnaryCallable<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput>
       getSerialPortOutputInstanceCallable;
   private final UnaryCallable<InsertInstanceHttpRequest, Operation> insertInstanceCallable;
-  private final OperationCallable<InsertInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertInstanceHttpRequest, Operation, Operation>
       insertInstanceOperationCallable;
   private final UnaryCallable<ListInstancesHttpRequest, InstanceList> listInstancesCallable;
   private final UnaryCallable<ListInstancesHttpRequest, ListInstancesPagedResponse>
@@ -897,7 +897,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
-    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
+    this.operationsStub = HttpJsonZoneOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AddAccessConfigInstanceHttpRequest, Operation>
         addAccessConfigInstanceTransportSettings =
@@ -1347,7 +1347,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public HttpJsonGlobalOperationStub getOperationsStub() {
+  public HttpJsonZoneOperationStub getOperationsStub() {
     return operationsStub;
   }
 
@@ -1437,7 +1437,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertInstanceHttpRequest, Operation, Operation>
       insertInstanceOperationCallable() {
     return insertInstanceOperationCallable;
   }

@@ -8,13 +8,12 @@ import com.google.api.gax.rpc.TranslatingUnaryCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.Operation;
 
-
-/** Implementation of LongRunningClient for the Compute client.
- *  Package-private for internal use. */
-abstract class ComputeLongRunningInterface<GetRequestT, DeleteRequestT> implements LongRunningClient {
-
+/** Implementation of LongRunningClient for the Compute client. Package-private for internal use. */
+abstract class ComputeLongRunningInterface<GetRequestT, DeleteRequestT>
+    implements LongRunningClient {
 
   abstract UnaryCallable<GetRequestT, Operation> getGetOperationCallable();
+
   abstract UnaryCallable<DeleteRequestT, EmptyMessage> getDeleteOperationCallable();
 
   /* Function that takes an Operation name as a String and creates a Get request object from it. */
@@ -22,7 +21,6 @@ abstract class ComputeLongRunningInterface<GetRequestT, DeleteRequestT> implemen
 
   /* Function that takes an Operation name as a String and creates a Delete request object from it. */
   abstract ApiFunction<String, DeleteRequestT> createDeleteRequest();
-
 
   @Override
   public UnaryCallable<String, OperationSnapshot> getOperationCallable() {

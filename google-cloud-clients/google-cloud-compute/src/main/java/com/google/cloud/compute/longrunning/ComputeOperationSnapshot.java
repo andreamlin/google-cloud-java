@@ -4,15 +4,12 @@ import com.google.api.gax.httpjson.HttpJsonStatusCode;
 import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.StatusCode;
 import com.google.cloud.compute.v1.Operation;
-import com.google.cloud.compute.v1.ProjectGlobalOperationName;
-import com.google.cloud.compute.v1.ProjectRegionOperationName;
-import com.google.cloud.compute.v1.ProjectZoneOperationName;
-import com.google.common.base.Strings;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/** Implementation of a long-running operation for the Compute client.
- *  Wraps a compute Operation object. */
+/**
+ * Implementation of a long-running operation for the Compute client. Wraps a compute Operation
+ * object.
+ */
 public class ComputeOperationSnapshot implements OperationSnapshot {
 
   private static final Logger logger = Logger.getLogger(ComputeOperationSnapshot.class.getName());

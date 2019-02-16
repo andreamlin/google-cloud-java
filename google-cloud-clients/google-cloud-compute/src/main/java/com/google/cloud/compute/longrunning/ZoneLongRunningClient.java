@@ -8,26 +8,30 @@ import com.google.cloud.compute.v1.GetZoneOperationHttpRequest;
 import com.google.cloud.compute.v1.Operation;
 import com.google.cloud.compute.v1.stub.ZoneOperationStub;
 
-
-/** Implementation of LongRunningClient for the Compute client.
- *  Package-private for internal use. */
-class ZoneLongRunningClient extends ComputeLongRunningInterface<GetZoneOperationHttpRequest, DeleteZoneOperationHttpRequest> {
+/** Implementation of LongRunningClient for the Compute client. Package-private for internal use. */
+class ZoneLongRunningClient
+    extends ComputeLongRunningInterface<
+        GetZoneOperationHttpRequest, DeleteZoneOperationHttpRequest> {
 
   private final ZoneOperationStub operationStub;
 
-  private final ApiFunction<String, GetZoneOperationHttpRequest> createGetRequestFunc = new ApiFunction<String, GetZoneOperationHttpRequest>() {
-    public GetZoneOperationHttpRequest apply(String operationSelfLink) {
-      // Make sure operation is a formatted string.
-      return GetZoneOperationHttpRequest.newBuilder().setOperation(operationSelfLink).build();
-    }
-  };
+  private final ApiFunction<String, GetZoneOperationHttpRequest> createGetRequestFunc =
+      new ApiFunction<String, GetZoneOperationHttpRequest>() {
+        public GetZoneOperationHttpRequest apply(String operationSelfLink) {
+          // Make sure operation is a formatted string.
+          return GetZoneOperationHttpRequest.newBuilder().setOperation(operationSelfLink).build();
+        }
+      };
 
-  private final ApiFunction<String, DeleteZoneOperationHttpRequest> createDeleteRequestFunc = new ApiFunction<String, DeleteZoneOperationHttpRequest>() {
-    public DeleteZoneOperationHttpRequest apply(String operationSelfLink) {
-      // Make sure operation is a formatted string.
-      return DeleteZoneOperationHttpRequest.newBuilder().setOperation(operationSelfLink).build();
-    }
-  };
+  private final ApiFunction<String, DeleteZoneOperationHttpRequest> createDeleteRequestFunc =
+      new ApiFunction<String, DeleteZoneOperationHttpRequest>() {
+        public DeleteZoneOperationHttpRequest apply(String operationSelfLink) {
+          // Make sure operation is a formatted string.
+          return DeleteZoneOperationHttpRequest.newBuilder()
+              .setOperation(operationSelfLink)
+              .build();
+        }
+      };
 
   ZoneLongRunningClient(ZoneOperationStub operationStub) {
     this.operationStub = operationStub;
@@ -50,6 +54,4 @@ class ZoneLongRunningClient extends ComputeLongRunningInterface<GetZoneOperation
   ApiFunction<String, DeleteZoneOperationHttpRequest> createDeleteRequest() {
     return createDeleteRequestFunc;
   }
-
-
 }

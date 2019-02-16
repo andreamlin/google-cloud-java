@@ -107,7 +107,7 @@ import javax.annotation.Generated;
 public class InstanceGroupManagerClient implements BackgroundResource {
   private final InstanceGroupManagerSettings settings;
   private final InstanceGroupManagerStub stub;
-  private final GlobalOperationClient operationsClient;
+  private final ZoneOperationClient operationsClient;
 
   /** Constructs an instance of InstanceGroupManagerClient with default settings. */
   public static final InstanceGroupManagerClient create() throws IOException {
@@ -140,14 +140,14 @@ public class InstanceGroupManagerClient implements BackgroundResource {
   protected InstanceGroupManagerClient(InstanceGroupManagerSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((InstanceGroupManagerStubSettings) settings.getStubSettings()).createStub();
-    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
+    this.operationsClient = ZoneOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected InstanceGroupManagerClient(InstanceGroupManagerStub stub) {
     this.settings = null;
     this.stub = stub;
-    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
+    this.operationsClient = ZoneOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final InstanceGroupManagerSettings getSettings() {
@@ -160,12 +160,12 @@ public class InstanceGroupManagerClient implements BackgroundResource {
   }
 
   /**
-   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * Returns the ZoneOperationClient that can be used to query the status of a long-running
    * operation returned by another API method call.
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final GlobalOperationClient getOperationsClient() {
+  public final ZoneOperationClient getOperationsClient() {
     return operationsClient;
   }
 

@@ -144,7 +144,7 @@ public class HttpJsonRegionCommitmentStub extends RegionCommitmentStub {
               .build();
 
   private final BackgroundResource backgroundResources;
-  private final HttpJsonGlobalOperationStub operationsStub;
+  private final HttpJsonRegionOperationStub operationsStub;
 
   private final UnaryCallable<AggregatedListRegionCommitmentsHttpRequest, CommitmentAggregatedList>
       aggregatedListRegionCommitmentsCallable;
@@ -202,7 +202,7 @@ public class HttpJsonRegionCommitmentStub extends RegionCommitmentStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
-    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
+    this.operationsStub = HttpJsonRegionOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListRegionCommitmentsHttpRequest, CommitmentAggregatedList>
         aggregatedListRegionCommitmentsTransportSettings =
@@ -267,7 +267,7 @@ public class HttpJsonRegionCommitmentStub extends RegionCommitmentStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public HttpJsonGlobalOperationStub getOperationsStub() {
+  public HttpJsonRegionOperationStub getOperationsStub() {
     return operationsStub;
   }
 

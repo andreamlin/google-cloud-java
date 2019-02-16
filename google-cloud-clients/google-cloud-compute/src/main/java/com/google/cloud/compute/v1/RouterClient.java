@@ -106,7 +106,7 @@ import javax.annotation.Generated;
 public class RouterClient implements BackgroundResource {
   private final RouterSettings settings;
   private final RouterStub stub;
-  private final GlobalOperationClient operationsClient;
+  private final RegionOperationClient operationsClient;
 
   /** Constructs an instance of RouterClient with default settings. */
   public static final RouterClient create() throws IOException {
@@ -137,14 +137,14 @@ public class RouterClient implements BackgroundResource {
   protected RouterClient(RouterSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((RouterStubSettings) settings.getStubSettings()).createStub();
-    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
+    this.operationsClient = RegionOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected RouterClient(RouterStub stub) {
     this.settings = null;
     this.stub = stub;
-    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
+    this.operationsClient = RegionOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final RouterSettings getSettings() {
@@ -157,12 +157,12 @@ public class RouterClient implements BackgroundResource {
   }
 
   /**
-   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * Returns the RegionOperationClient that can be used to query the status of a long-running
    * operation returned by another API method call.
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final GlobalOperationClient getOperationsClient() {
+  public final RegionOperationClient getOperationsClient() {
     return operationsClient;
   }
 

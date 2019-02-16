@@ -106,7 +106,7 @@ import javax.annotation.Generated;
 public class InstanceGroupClient implements BackgroundResource {
   private final InstanceGroupSettings settings;
   private final InstanceGroupStub stub;
-  private final GlobalOperationClient operationsClient;
+  private final ZoneOperationClient operationsClient;
 
   /** Constructs an instance of InstanceGroupClient with default settings. */
   public static final InstanceGroupClient create() throws IOException {
@@ -139,14 +139,14 @@ public class InstanceGroupClient implements BackgroundResource {
   protected InstanceGroupClient(InstanceGroupSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((InstanceGroupStubSettings) settings.getStubSettings()).createStub();
-    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
+    this.operationsClient = ZoneOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected InstanceGroupClient(InstanceGroupStub stub) {
     this.settings = null;
     this.stub = stub;
-    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
+    this.operationsClient = ZoneOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final InstanceGroupSettings getSettings() {
@@ -159,12 +159,12 @@ public class InstanceGroupClient implements BackgroundResource {
   }
 
   /**
-   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * Returns the ZoneOperationClient that can be used to query the status of a long-running
    * operation returned by another API method call.
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final GlobalOperationClient getOperationsClient() {
+  public final ZoneOperationClient getOperationsClient() {
     return operationsClient;
   }
 

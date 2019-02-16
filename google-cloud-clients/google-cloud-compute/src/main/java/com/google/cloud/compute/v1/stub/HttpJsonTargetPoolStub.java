@@ -299,7 +299,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
               .build();
 
   private final BackgroundResource backgroundResources;
-  private final HttpJsonGlobalOperationStub operationsStub;
+  private final HttpJsonRegionOperationStub operationsStub;
 
   private final UnaryCallable<AddHealthCheckTargetPoolHttpRequest, Operation>
       addHealthCheckTargetPoolCallable;
@@ -379,7 +379,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
-    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
+    this.operationsStub = HttpJsonRegionOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AddHealthCheckTargetPoolHttpRequest, Operation>
         addHealthCheckTargetPoolTransportSettings =
@@ -538,7 +538,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public HttpJsonGlobalOperationStub getOperationsStub() {
+  public HttpJsonRegionOperationStub getOperationsStub() {
     return operationsStub;
   }
 

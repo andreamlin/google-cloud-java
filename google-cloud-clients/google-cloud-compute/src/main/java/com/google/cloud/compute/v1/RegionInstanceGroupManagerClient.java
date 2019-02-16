@@ -107,7 +107,7 @@ import javax.annotation.Generated;
 public class RegionInstanceGroupManagerClient implements BackgroundResource {
   private final RegionInstanceGroupManagerSettings settings;
   private final RegionInstanceGroupManagerStub stub;
-  private final GlobalOperationClient operationsClient;
+  private final RegionOperationClient operationsClient;
 
   /** Constructs an instance of RegionInstanceGroupManagerClient with default settings. */
   public static final RegionInstanceGroupManagerClient create() throws IOException {
@@ -142,14 +142,14 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
       throws IOException {
     this.settings = settings;
     this.stub = ((RegionInstanceGroupManagerStubSettings) settings.getStubSettings()).createStub();
-    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
+    this.operationsClient = RegionOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected RegionInstanceGroupManagerClient(RegionInstanceGroupManagerStub stub) {
     this.settings = null;
     this.stub = stub;
-    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
+    this.operationsClient = RegionOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final RegionInstanceGroupManagerSettings getSettings() {
@@ -162,12 +162,12 @@ public class RegionInstanceGroupManagerClient implements BackgroundResource {
   }
 
   /**
-   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * Returns the RegionOperationClient that can be used to query the status of a long-running
    * operation returned by another API method call.
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final GlobalOperationClient getOperationsClient() {
+  public final RegionOperationClient getOperationsClient() {
     return operationsClient;
   }
 

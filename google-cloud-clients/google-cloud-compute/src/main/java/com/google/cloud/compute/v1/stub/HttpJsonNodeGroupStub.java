@@ -324,7 +324,7 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
               .build();
 
   private final BackgroundResource backgroundResources;
-  private final HttpJsonGlobalOperationStub operationsStub;
+  private final HttpJsonZoneOperationStub operationsStub;
 
   private final UnaryCallable<AddNodesNodeGroupHttpRequest, Operation> addNodesNodeGroupCallable;
   private final OperationCallable<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
@@ -401,7 +401,7 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
-    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
+    this.operationsStub = HttpJsonZoneOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AddNodesNodeGroupHttpRequest, Operation>
         addNodesNodeGroupTransportSettings =
@@ -562,7 +562,7 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public HttpJsonGlobalOperationStub getOperationsStub() {
+  public HttpJsonZoneOperationStub getOperationsStub() {
     return operationsStub;
   }
 

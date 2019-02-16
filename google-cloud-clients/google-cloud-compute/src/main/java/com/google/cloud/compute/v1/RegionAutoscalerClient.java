@@ -107,7 +107,7 @@ import javax.annotation.Generated;
 public class RegionAutoscalerClient implements BackgroundResource {
   private final RegionAutoscalerSettings settings;
   private final RegionAutoscalerStub stub;
-  private final GlobalOperationClient operationsClient;
+  private final RegionOperationClient operationsClient;
 
   /** Constructs an instance of RegionAutoscalerClient with default settings. */
   public static final RegionAutoscalerClient create() throws IOException {
@@ -140,14 +140,14 @@ public class RegionAutoscalerClient implements BackgroundResource {
   protected RegionAutoscalerClient(RegionAutoscalerSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((RegionAutoscalerStubSettings) settings.getStubSettings()).createStub();
-    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
+    this.operationsClient = RegionOperationClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected RegionAutoscalerClient(RegionAutoscalerStub stub) {
     this.settings = null;
     this.stub = stub;
-    this.operationsClient = GlobalOperationClient.create(this.stub.getOperationsStub());
+    this.operationsClient = RegionOperationClient.create(this.stub.getOperationsStub());
   }
 
   public final RegionAutoscalerSettings getSettings() {
@@ -160,12 +160,12 @@ public class RegionAutoscalerClient implements BackgroundResource {
   }
 
   /**
-   * Returns the GlobalOperationClient that can be used to query the status of a long-running
+   * Returns the RegionOperationClient that can be used to query the status of a long-running
    * operation returned by another API method call.
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final GlobalOperationClient getOperationsClient() {
+  public final RegionOperationClient getOperationsClient() {
     return operationsClient;
   }
 

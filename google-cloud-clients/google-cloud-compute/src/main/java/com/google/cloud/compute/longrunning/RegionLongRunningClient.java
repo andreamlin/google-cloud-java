@@ -8,26 +8,30 @@ import com.google.cloud.compute.v1.GetRegionOperationHttpRequest;
 import com.google.cloud.compute.v1.Operation;
 import com.google.cloud.compute.v1.stub.RegionOperationStub;
 
-
-/** Implementation of LongRunningClient for the Compute client.
- *  Package-private for internal use. */
-class RegionLongRunningClient extends ComputeLongRunningInterface<GetRegionOperationHttpRequest, DeleteRegionOperationHttpRequest> {
+/** Implementation of LongRunningClient for the Compute client. Package-private for internal use. */
+class RegionLongRunningClient
+    extends ComputeLongRunningInterface<
+        GetRegionOperationHttpRequest, DeleteRegionOperationHttpRequest> {
 
   private final RegionOperationStub operationStub;
 
-  private final ApiFunction<String, GetRegionOperationHttpRequest> createGetRequestFunc = new ApiFunction<String, GetRegionOperationHttpRequest>() {
-    public GetRegionOperationHttpRequest apply(String operationSelfLink) {
-      // Make sure operation is a formatted string.
-      return GetRegionOperationHttpRequest.newBuilder().setOperation(operationSelfLink).build();
-    }
-  };
+  private final ApiFunction<String, GetRegionOperationHttpRequest> createGetRequestFunc =
+      new ApiFunction<String, GetRegionOperationHttpRequest>() {
+        public GetRegionOperationHttpRequest apply(String operationSelfLink) {
+          // Make sure operation is a formatted string.
+          return GetRegionOperationHttpRequest.newBuilder().setOperation(operationSelfLink).build();
+        }
+      };
 
-  private final ApiFunction<String, DeleteRegionOperationHttpRequest> createDeleteRequestFunc = new ApiFunction<String, DeleteRegionOperationHttpRequest>() {
-    public DeleteRegionOperationHttpRequest apply(String operationSelfLink) {
-      // Make sure operation is a formatted string.
-      return DeleteRegionOperationHttpRequest.newBuilder().setOperation(operationSelfLink).build();
-    }
-  };
+  private final ApiFunction<String, DeleteRegionOperationHttpRequest> createDeleteRequestFunc =
+      new ApiFunction<String, DeleteRegionOperationHttpRequest>() {
+        public DeleteRegionOperationHttpRequest apply(String operationSelfLink) {
+          // Make sure operation is a formatted string.
+          return DeleteRegionOperationHttpRequest.newBuilder()
+              .setOperation(operationSelfLink)
+              .build();
+        }
+      };
 
   RegionLongRunningClient(RegionOperationStub operationStub) {
     this.operationStub = operationStub;
@@ -50,6 +54,4 @@ class RegionLongRunningClient extends ComputeLongRunningInterface<GetRegionOpera
   ApiFunction<String, DeleteRegionOperationHttpRequest> createDeleteRequest() {
     return createDeleteRequestFunc;
   }
-
-
 }

@@ -160,7 +160,7 @@ public class HttpJsonAddressStub extends AddressStub {
               .build();
 
   private final BackgroundResource backgroundResources;
-  private final HttpJsonGlobalOperationStub operationsStub;
+  private final HttpJsonRegionOperationStub operationsStub;
 
   private final UnaryCallable<AggregatedListAddressesHttpRequest, AddressAggregatedList>
       aggregatedListAddressesCallable;
@@ -215,7 +215,7 @@ public class HttpJsonAddressStub extends AddressStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
-    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
+    this.operationsStub = HttpJsonRegionOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListAddressesHttpRequest, AddressAggregatedList>
         aggregatedListAddressesTransportSettings =
@@ -282,7 +282,7 @@ public class HttpJsonAddressStub extends AddressStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public HttpJsonGlobalOperationStub getOperationsStub() {
+  public HttpJsonRegionOperationStub getOperationsStub() {
     return operationsStub;
   }
 

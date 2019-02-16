@@ -8,14 +8,10 @@ import com.google.api.gax.rpc.TranslatingUnaryCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteGlobalOperationHttpRequest;
 import com.google.cloud.compute.v1.GetGlobalOperationHttpRequest;
-import com.google.cloud.compute.v1.GlobalOperationClient;
 import com.google.cloud.compute.v1.Operation;
 import com.google.cloud.compute.v1.stub.GlobalOperationStub;
-import com.google.cloud.compute.v1.stub.RegionOperationStub;
-import com.google.cloud.compute.v1.stub.ZoneOperationStub;
 
-/** Implementation of LongRunningClient for the Compute client.
- *  Package-private for internal use. */
+/** Implementation of LongRunningClient for the Compute client. Package-private for internal use. */
 class GlobalLongRunningClient implements LongRunningClient {
 
   private final GlobalOperationStub operationStub;

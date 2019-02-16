@@ -29,7 +29,6 @@ import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.cloud.compute.longrunning.ComputeLongRunningClient;
 import com.google.cloud.compute.longrunning.ComputeLongRunningClientFactory;
 import com.google.cloud.compute.longrunning.OperationSnapshotCallable;
 import com.google.cloud.compute.v1.Operation;
@@ -44,7 +43,7 @@ import javax.annotation.Generated;
 @Generated("by gapic-generator")
 @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
 public class HttpJsonRegionInstanceGroupCallableFactory
-    implements HttpJsonStubCallableFactory<Operation, GlobalOperationStub> {
+    implements HttpJsonStubCallableFactory<Operation, RegionOperationStub> {
   @Override
   public <RequestT, ResponseT> UnaryCallable<RequestT, ResponseT> createUnaryCallable(
       HttpJsonCallSettings<RequestT, ResponseT> httpJsonCallSettings,
@@ -63,7 +62,7 @@ public class HttpJsonRegionInstanceGroupCallableFactory
               httpJsonCallSettings,
           OperationCallSettings<RequestT, ResponseT, MetadataT> operationCallSettings,
           ClientContext clientContext,
-          GlobalOperationStub operationsStub) {
+          RegionOperationStub operationsStub) {
     UnaryCallable<RequestT, Operation> initialHttpCallable =
         HttpJsonCallableFactory.createBaseUnaryCallable(
             httpJsonCallSettings, operationCallSettings.getInitialCallSettings(), clientContext);

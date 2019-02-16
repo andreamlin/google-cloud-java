@@ -201,7 +201,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
               .build();
 
   private final BackgroundResource backgroundResources;
-  private final HttpJsonGlobalOperationStub operationsStub;
+  private final HttpJsonZoneOperationStub operationsStub;
 
   private final UnaryCallable<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList>
       aggregatedListAutoscalersCallable;
@@ -264,7 +264,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
-    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
+    this.operationsStub = HttpJsonZoneOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListAutoscalersHttpRequest, AutoscalerAggregatedList>
         aggregatedListAutoscalersTransportSettings =
@@ -358,7 +358,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public HttpJsonGlobalOperationStub getOperationsStub() {
+  public HttpJsonZoneOperationStub getOperationsStub() {
     return operationsStub;
   }
 

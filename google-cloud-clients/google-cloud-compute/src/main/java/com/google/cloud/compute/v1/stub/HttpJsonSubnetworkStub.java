@@ -331,7 +331,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
               .build();
 
   private final BackgroundResource backgroundResources;
-  private final HttpJsonGlobalOperationStub operationsStub;
+  private final HttpJsonRegionOperationStub operationsStub;
 
   private final UnaryCallable<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList>
       aggregatedListSubnetworksCallable;
@@ -411,7 +411,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
       HttpJsonStubCallableFactory callableFactory)
       throws IOException {
     this.callableFactory = callableFactory;
-    this.operationsStub = HttpJsonGlobalOperationStub.create(clientContext, callableFactory);
+    this.operationsStub = HttpJsonRegionOperationStub.create(clientContext, callableFactory);
 
     HttpJsonCallSettings<AggregatedListSubnetworksHttpRequest, SubnetworkAggregatedList>
         aggregatedListSubnetworksTransportSettings =
@@ -572,7 +572,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public HttpJsonGlobalOperationStub getOperationsStub() {
+  public HttpJsonRegionOperationStub getOperationsStub() {
     return operationsStub;
   }
 
